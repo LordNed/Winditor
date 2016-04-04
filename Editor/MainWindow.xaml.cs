@@ -11,6 +11,8 @@ namespace Editor
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WindEditor m_editor;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,8 +22,9 @@ namespace Editor
         {
             ColorFormat cF = new ColorFormat(8);
             GraphicsMode gm = new GraphicsMode(cF, 24, 8, 1);
-
             glControlHost.Child = new GLControl(gm);
+
+            m_editor = new WindEditor();
 
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
             editorTickTimer.Interval = 16; //60-ish FPS
@@ -33,16 +36,18 @@ namespace Editor
                 // ToDo: Clamp it to screne-space of the viewport.
                 //m_editorCore.InputSetMousePosition(...)
 
-                DoEditorTick();
+                DoApplicationTick();
             };
             editorTickTimer.Enabled = true;
         }
 
 
-        private void DoEditorTick()
+        private void DoApplicationTick()
         {
             GL.ClearColor(0.6f, 0.25f, 0.35f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
+
+            m_editor.ProcessTick();
 
             GLControl glControl = (GLControl)glControlHost.Child;
             glControl.SwapBuffers();
