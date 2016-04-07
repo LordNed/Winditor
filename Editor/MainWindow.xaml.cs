@@ -44,8 +44,8 @@ namespace Editor
 
         private void DoApplicationTick()
         {
-            GL.ClearColor(0.6f, 0.25f, 0.35f, 1f);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
+            //GL.ClearColor(0.6f, 0.25f, 0.35f, 1f);
+            //GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
 
             m_editor.ProcessTick();
 
