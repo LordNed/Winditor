@@ -75,6 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Editor\Collision\CollisionMesh.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\WindEditor.cs" />
     <Compile Include="Editor\LinearColor.cs" />
@@ -103,6 +104,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Editor\Shaders\UnselectedCollision.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Editor\Shaders\UnselectedCollision.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Editor\Shaders\UnlitColor.frag">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

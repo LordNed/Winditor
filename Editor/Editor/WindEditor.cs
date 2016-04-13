@@ -1,4 +1,6 @@
-﻿using OpenTK;
+﻿using Editor.Collision;
+using GameFormatReader.Common;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.IO;
@@ -10,9 +12,17 @@ namespace Editor
         private Shader m_primitiveShader;
 
         private int m_vbo, m_ebo;
+        private WCollisionMesh m_collision;
 
         public WindEditor()
         {
+            m_collision = new WCollisionMesh();
+            using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniHyo\Room0\dzb\room.dzb"), Endian.Big))
+            {
+                m_collision.Load(reader);
+            }
+
+
             m_primitiveShader = new Shader("UnlitColor");
             m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.vert"), ShaderType.VertexShader);
             m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.frag"), ShaderType.FragmentShader);
@@ -62,8 +72,8 @@ namespace Editor
             GL.DepthMask(true);
 
             Matrix4 modelMatrix = Matrix4.CreateTranslation(Vector3.Zero);
-            Matrix4 viewMatrix = Matrix4.LookAt(new Vector3(0, 5, -1), Vector3.Zero, Vector3.UnitY);
-            Matrix4 projMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(90f), 1.5f /* hack */, 1, 100);
+            Matrix4 viewMatrix = Matrix4.LookAt(new Vector3(0, 0, -100), Vector3.Zero, Vector3.UnitY);
+            Matrix4 projMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(90f), 1.5f /* hack */, 1, 1000000);
 
             m_primitiveShader.Bind();
             GL.UniformMatrix4(m_primitiveShader.UniformModelMtx, false, ref modelMatrix);
@@ -80,6 +90,9 @@ namespace Editor
 
             // Draw!
             GL.DrawElements(BeginMode.Triangles, 3, DrawElementsType.UnsignedInt, 0);
+
+
+            m_collision.Render(viewMatrix, projMatrix);
 
             GL.Flush();
         }
