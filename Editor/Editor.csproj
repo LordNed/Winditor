@@ -76,6 +76,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
+    <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\WindEditor.cs" />
     <Compile Include="Editor\LinearColor.cs" />

@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Editor.Collision
 {
-    class WCollisionMesh
+    class WCollisionMesh : IRenderable
     {
         private int m_vbo, m_ebo;
         private Shader m_primitiveShader;
@@ -86,7 +86,13 @@ namespace Editor.Collision
 
             // Draw!
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+        }
 
+        public void ReleaseResources()
+        {
+            m_primitiveShader.ReleaseResources();
+            GL.DeleteBuffer(m_ebo);
+            GL.DeleteBuffer(m_vbo);
         }
     }
 }

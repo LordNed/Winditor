@@ -3,6 +3,7 @@ using GameFormatReader.Common;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Editor
@@ -12,17 +13,26 @@ namespace Editor
         private Shader m_primitiveShader;
 
         private int m_vbo, m_ebo;
-        private WCollisionMesh m_collision;
+
+        private List<IRenderable> m_renderables = new List<IRenderable>();
 
         public WindEditor()
         {
-            m_collision = new WCollisionMesh();
+            var collision = new WCollisionMesh();
             using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniHyo\Room0\dzb\room.dzb"), Endian.Big))
             {
-                m_collision.Load(reader);
+                collision.Load(reader);
             }
+            m_renderables.Add(collision);
 
 
+            //collision = new WCollisionMesh();
+            //using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\Obombh\Room0\dzb\room.dzb"), Endian.Big))
+            //{
+            //    collision.Load(reader);
+            //}
+            //m_renderables.Add(collision);
+          
             m_primitiveShader = new Shader("UnlitColor");
             m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.vert"), ShaderType.VertexShader);
             m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.frag"), ShaderType.FragmentShader);
@@ -55,6 +65,11 @@ namespace Editor
             GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * indexes.Length), indexes, BufferUsageHint.StaticDraw);
         }
 
+        public void OnApplicationShutdown()
+        {
+            ReleaseResources();
+        }
+
         public void ProcessTick()
         {
             RenderObjects();
@@ -64,7 +79,6 @@ namespace Editor
         {
             GL.ClearColor(0.6f, 0.25f, 0.35f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
-
 
             GL.CullFace(CullFaceMode.Back);
             GL.FrontFace(FrontFaceDirection.Cw); // Windwaker is backwards!
@@ -91,10 +105,18 @@ namespace Editor
             // Draw!
             GL.DrawElements(BeginMode.Triangles, 3, DrawElementsType.UnsignedInt, 0);
 
-
-            m_collision.Render(viewMatrix, projMatrix);
+            foreach (var item in m_renderables)
+            {
+                item.Render(viewMatrix, projMatrix);
+            }
 
             GL.Flush();
+        }
+
+        public void ReleaseResources()
+        {
+            foreach (var item in m_renderables)
+                item.ReleaseResources();
         }
     }
 }
