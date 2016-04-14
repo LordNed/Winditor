@@ -70,6 +70,14 @@ namespace Editor
             //GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * indexes.Length), indexes, BufferUsageHint.StaticDraw);
         }
 
+        internal void OnViewportResized(int width, int height)
+        {
+            foreach(WWorld world in m_editorWorlds)
+            {
+                world.OnViewportResized(width, height);
+            }
+        }
+
         public void OnApplicationShutdown()
         {
             ReleaseResources();

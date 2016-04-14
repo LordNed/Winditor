@@ -1,8 +1,7 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace Editor
 {
@@ -14,6 +13,9 @@ namespace Editor
         private WWorld m_world;
         private IList<IRenderable> m_renderList;
 
+        private int m_viewWidth;
+        private int m_viewHeight;
+
         public WSceneView(WWorld world, IList<IRenderable> renderList)
         {
             m_world = world;
@@ -22,6 +24,8 @@ namespace Editor
 
         public void Render()
         {
+            GL.Viewport(0, 0, m_viewWidth, m_viewHeight);
+
             GL.CullFace(CullFaceMode.Back);
             GL.FrontFace(FrontFaceDirection.Cw); // Windwaker is backwards!
             GL.Enable(EnableCap.CullFace);
@@ -39,7 +43,13 @@ namespace Editor
         private void GetViewAndProjMatrixForView(out Matrix4 viewMatrix, out Matrix4 projMatrix)
         {
             viewMatrix = Matrix4.LookAt(new Vector3(0, 0, -100), Vector3.Zero, Vector3.UnitY);
-            projMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(90f), 1.5f /* hack */, 1, 1000000);
+            projMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(90f), m_viewWidth/(float)m_viewHeight, 1, 100 * 1000);
+        }
+
+        public void SetViewportSize(int width, int height)
+        {
+            m_viewWidth = width;
+            m_viewHeight = height;
         }
     }
 }

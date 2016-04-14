@@ -23,29 +23,33 @@ namespace Editor
             ColorFormat cF = new ColorFormat(8);
             GraphicsMode gm = new GraphicsMode(cF, 24, 8, 1);
             glControlHost.Child = new GLControl(gm);
+            glControlHost.SizeChanged += GlControlHost_SizeChanged;
 
+
+            // Set up the Editor Tick Loop
             m_editor = new WindEditor();
-
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
-            editorTickTimer.Interval = 16; //60-ish FPS
+            editorTickTimer.Interval = 16; //ms
             editorTickTimer.Tick += (o, args) =>
             {
-                // Poll the mouse at a high resolution
-                System.Drawing.Point mousePos = glControlHost.Child.PointToClient(System.Windows.Forms.Cursor.Position);
-
-                // ToDo: Clamp it to screne-space of the viewport.
-                //m_editorCore.InputSetMousePosition(...)
-
                 DoApplicationTick();
             };
             editorTickTimer.Enabled = true;
         }
 
+        private void GlControlHost_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            m_editor.OnViewportResized((int)e.NewSize.Width, (int)e.NewSize.Height);
+        }
 
         private void DoApplicationTick()
         {
-            //GL.ClearColor(0.6f, 0.25f, 0.35f, 1f);
-            //GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
+            // Poll the mouse at a high resolution
+            System.Drawing.Point mousePos = glControlHost.Child.PointToClient(System.Windows.Forms.Cursor.Position);
+
+            // ToDo: Clamp it to screne-space of the viewport.
+            //m_editorCore.InputSetMousePosition(...)
+
 
             m_editor.ProcessTick();
 

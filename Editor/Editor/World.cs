@@ -2,6 +2,7 @@
 using GameFormatReader.Common;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace Editor
 {
@@ -79,6 +80,14 @@ namespace Editor
             foreach (var item in m_renderableObjects)
             {
                 item.ReleaseResources();
+            }
+        }
+
+        public void OnViewportResized(int width, int height)
+        {
+            foreach(WSceneView view in m_sceneViews)
+            {
+                view.SetViewportSize(width, height);
             }
         }
     }
