@@ -82,6 +82,7 @@
     <Compile Include="Editor\LinearColor.cs" />
     <Compile Include="Editor\LineBatcher.cs" />
     <Compile Include="Editor\PrimitiveComponent.cs" />
+    <Compile Include="Editor\World.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
