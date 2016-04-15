@@ -6,7 +6,7 @@ using System;
 namespace Editor
 {
     /// <summary>
-    /// A scene view represents a particular viewport into a given <see cref="WWorld"/>. This allows us to have multiple
+    /// A scene view represents a particular viewport into a given <see cref="WWorld"/>. This allows us to have multiple views into a single world.
     /// </summary>
     class WSceneView
     {
