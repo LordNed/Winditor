@@ -15,11 +15,15 @@ namespace Editor
 
         private int m_viewWidth;
         private int m_viewHeight;
+        private WCamera m_viewCamera;
 
         public WSceneView(WWorld world, IList<IRenderable> renderList)
         {
             m_world = world;
             m_renderList = renderList;
+
+            m_viewCamera = new WCamera();
+            world.RegisterObject(m_viewCamera);
         }
 
         public void Render()
@@ -42,14 +46,17 @@ namespace Editor
 
         private void GetViewAndProjMatrixForView(out Matrix4 viewMatrix, out Matrix4 projMatrix)
         {
-            viewMatrix = Matrix4.LookAt(new Vector3(0, 0, -100), Vector3.Zero, Vector3.UnitY);
-            projMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(90f), m_viewWidth/(float)m_viewHeight, 1, 100 * 1000);
+            viewMatrix = Matrix4.LookAt(m_viewCamera.Transform.Position, m_viewCamera.Transform.Position - m_viewCamera.Transform.Forward,  Vector3.UnitY);
+            projMatrix = m_viewCamera.ProjectionMatrix;
         }
 
         public void SetViewportSize(int width, int height)
         {
             m_viewWidth = width;
             m_viewHeight = height;
+
+            // Recalculate the aspect ratio of our view camera.
+            m_viewCamera.AspectRatio = width / (float)height;
         }
     }
 }

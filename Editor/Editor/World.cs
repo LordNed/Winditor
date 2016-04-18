@@ -65,7 +65,7 @@ namespace Editor
             RegisterObject(collision);
         }   
 
-        private void RegisterObject(object obj)
+        public void RegisterObject(object obj)
         {
             // This is awesome.
             if (obj is IRenderable)
@@ -79,7 +79,7 @@ namespace Editor
             }
         }
 
-        private void UnregisterObject(object obj)
+        public void UnregisterObject(object obj)
         {
             if(obj is IRenderable)
             {
