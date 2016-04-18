@@ -75,7 +75,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Editor\Actor.cs" />
+    <Compile Include="Editor\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
+    <Compile Include="Editor\Input.cs" />
     <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\ITickableObject.cs" />
     <Compile Include="Editor\SceneView.cs" />
@@ -91,6 +94,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Math\Math.cs" />
+    <Compile Include="Math\Ray.cs" />
+    <Compile Include="Math\Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

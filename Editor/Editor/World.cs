@@ -12,12 +12,12 @@ namespace Editor
         private List<ITickableObject> m_tickableObjects = new List<ITickableObject>();
         private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
-        private DateTime m_lastDateTime;
+        private WLineBatcher m_persistentLines;
+        private System.Diagnostics.Stopwatch m_dtStopwatch;
 
         public WWorld()
         {
-            m_lastDateTime = DateTime.Now;
-
+            m_dtStopwatch = new System.Diagnostics.Stopwatch();
 
             WSceneView sceneView = new WSceneView(this, m_renderableObjects);
             m_sceneViews.Add(sceneView);
@@ -26,8 +26,9 @@ namespace Editor
         public void LoadMap(string filePath)
         {
             UnloadMap();
+            AllocateDefaultWorldResources();
 
-            foreach(var folder in Directory.GetDirectories(filePath))
+            foreach (var folder in Directory.GetDirectories(filePath))
             {
                 LoadLevel(folder);                    
             }
@@ -62,23 +63,42 @@ namespace Editor
             }
 
             RegisterObject(collision);
-        }
+        }   
 
         private void RegisterObject(object obj)
         {
             // This is awesome.
-            if(obj is IRenderable)
+            if (obj is IRenderable)
             {
                 m_renderableObjects.Add(obj as IRenderable);
+            }
+
+            if(obj is ITickableObject)
+            {
+                m_tickableObjects.Add(obj as ITickableObject);
+            }
+        }
+
+        private void UnregisterObject(object obj)
+        {
+            if(obj is IRenderable)
+            {
+                IRenderable renderable = obj as IRenderable;
+                renderable.ReleaseResources();
+
+                m_renderableObjects.Remove(renderable);
+            }
+
+            if(obj is ITickableObject)
+            {
+                m_tickableObjects.Remove(obj as ITickableObject);
             }
         }
 
         public void ProcessTick()
         {
-            long tickCount = System.Diagnostics.Stopwatch.GetTimestamp();
-            DateTime highResDateTime = new DateTime(tickCount);
-            float deltaTime = (float)highResDateTime.Subtract(m_lastDateTime).TotalSeconds;
-            m_lastDateTime = highResDateTime;
+            float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
+            m_dtStopwatch.Restart();
 
             foreach (var item in m_tickableObjects)
             {
@@ -105,6 +125,15 @@ namespace Editor
             {
                 view.SetViewportSize(width, height);
             }
+        }
+
+        private void AllocateDefaultWorldResources()
+        {
+            m_persistentLines = new WLineBatcher();
+            RegisterObject(m_persistentLines);
+
+            // DEBAUG
+            m_persistentLines.DrawLine(OpenTK.Vector3.Zero, new OpenTK.Vector3(250, 50, 250), WLinearColor.White, 25f, 5);
         }
     }
 }

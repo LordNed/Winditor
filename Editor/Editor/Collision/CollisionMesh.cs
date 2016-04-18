@@ -14,7 +14,7 @@ namespace Editor.Collision
 
         public WCollisionMesh()
         {
-            m_primitiveShader = new Shader("UnlitColor");
+            m_primitiveShader = new Shader("UnselectedCollision");
             m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnselectedCollision.vert"), ShaderType.VertexShader);
             m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnselectedCollision.frag"), ShaderType.FragmentShader);
             m_primitiveShader.LinkShader();
@@ -45,7 +45,6 @@ namespace Editor.Collision
                 triangleIndexes[(i * 3) + 2] = stream.ReadUInt16();
                 stream.Skip(4); 
             }
-
 
             GL.GenBuffers(1, out m_vbo);
             GL.GenBuffers(1, out m_ebo);
@@ -86,6 +85,12 @@ namespace Editor.Collision
 
             // Draw!
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+
+            // Disable all of our shit.
+            GL.Disable(EnableCap.CullFace);
+            GL.Disable(EnableCap.Blend);
+            GL.DepthMask(false);
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
         }
 
         public void ReleaseResources()
