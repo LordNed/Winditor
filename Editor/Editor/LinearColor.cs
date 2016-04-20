@@ -7,7 +7,7 @@ namespace Editor
     /// <summary>
     /// RGBA Color that uses 32-bit floats to represent each component.
     /// </summary>
-    public class WLinearColor
+    public struct WLinearColor
     {
         /// <summary> Red component of the <see cref="WLinearColor"/>. </summary>
         public float R;
@@ -20,18 +20,6 @@ namespace Editor
 
         /// <summary> Alpha component of the <see cref="WLinearColor"/>. Defaults to 1f. </summary>
         public float A;
-
-
-        /// <summary>
-        /// Construct a new <see cref="WLinearColor"/> with default values of R = 0, G = 0, B = 0, A = 1.
-        /// </summary>
-        public WLinearColor()
-        {
-            R = 0f;
-            G = 0f;
-            B = 0f;
-            A = 1f;
-        }
 
         /// <summary>
         /// Construct new <see cref="WLinearColor"/> with the given R, G, B, and A components.
