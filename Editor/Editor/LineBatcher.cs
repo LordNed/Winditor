@@ -30,18 +30,20 @@ namespace Editor
 
         private Shader m_primitiveShader;
         private int m_vbo;
+        private int m_vertColors;
 
         public WLineBatcher()
         {
             m_batchedLines = new List<WBatchedLine>();
 
             m_primitiveShader = new Shader("UnlitColor");
-            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnselectedCollision.vert"), ShaderType.VertexShader);
-            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnselectedCollision.frag"), ShaderType.FragmentShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.vert"), ShaderType.VertexShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.frag"), ShaderType.FragmentShader);
             m_primitiveShader.LinkShader();
 
             // Allocate our buffers now as they get reused a lot.
             m_vbo = GL.GenBuffer();
+            m_vertColors = GL.GenBuffer();
         }
 
         public void DrawLine(Vector3 start, Vector3 end, WLinearColor color, float thickness, float lifetime)
@@ -60,13 +62,14 @@ namespace Editor
                 if(line.RemainingLifetime > 0)
                 {
                     line.RemainingLifetime -= deltaTime;
-                    if(line.RemainingLifetime <= 0f)
-                    {
-                        // Remove the line from the array and deincrement to avoid skipping a line.
-                        m_batchedLines.RemoveAt(lineIndex--);
-                        dirty = true;
-                        continue;
-                    }
+                }
+
+                if (line.RemainingLifetime <= 0f)
+                {
+                    // Remove the line from the array and deincrement to avoid skipping a line.
+                    m_batchedLines.RemoveAt(lineIndex--);
+                    dirty = true;
+                    continue;
                 }
 
                 m_batchedLines[lineIndex] = line;
@@ -86,6 +89,7 @@ namespace Editor
         {
             m_primitiveShader.ReleaseResources();
             GL.DeleteBuffer(m_vbo);
+            GL.DeleteBuffer(m_vertColors);
         }
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
@@ -94,16 +98,26 @@ namespace Editor
             {
                 // We've changed what we want to draw since we last rendered, so we'll re-calculate the mesh and upload.
                 Vector3[] lineVerts = new Vector3[m_batchedLines.Count * 2];
+                WLinearColor[] lineColors = new WLinearColor[m_batchedLines.Count * 2];
+
                 for (int i = 0; i < m_batchedLines.Count; i++)
                 {
                     WBatchedLine batchedLine = m_batchedLines[i];
                     lineVerts[(i * 2) + 0] = batchedLine.Start;
                     lineVerts[(i * 2) + 1] = batchedLine.End;
+
+                    lineColors[(i * 2) + 0] = batchedLine.Color;
+                    lineColors[(i * 2) + 1] = batchedLine.Color;
                 }
+
 
                 // Upload Verts
                 GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(12 * lineVerts.Length), lineVerts, BufferUsageHint.DynamicDraw);
+
+                GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertColors);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * lineColors.Length), lineColors, BufferUsageHint.DynamicDraw);
+
                 RenderStateDirty = false;
             }
 
@@ -122,12 +136,22 @@ namespace Editor
             GL.UniformMatrix4(m_primitiveShader.UniformViewMtx, false, ref viewMatrix);
             GL.UniformMatrix4(m_primitiveShader.UniformProjMtx, false, ref projMatrix);
 
+
+            // Position
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
             GL.EnableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.VertexAttribPointer((int)ShaderAttributeIds.Position, 3, VertexAttribPointerType.Float, false, 12, 0);
 
+            // Color
+            GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertColors);
+            GL.EnableVertexAttribArray((int)ShaderAttributeIds.Color0);
+            GL.VertexAttribPointer((int)ShaderAttributeIds.Color0, 4, VertexAttribPointerType.Float, true, 16, 0);
+
             // Draw!
             GL.DrawArrays(PrimitiveType.Lines, 0, m_batchedLines.Count * 2);
+
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
         }
     }
 }
