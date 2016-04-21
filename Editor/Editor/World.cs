@@ -105,9 +105,6 @@ namespace Editor
                 item.Tick(deltaTime);
             }
 
-            m_persistentLines.DrawLine(OpenTK.Vector3.Zero, new OpenTK.Vector3(250, 50, 250), WLinearColor.Red, 25f, 0);
-
-
             foreach (WSceneView view in m_sceneViews)
             {
                 view.Render();
@@ -134,6 +131,8 @@ namespace Editor
         {
             m_persistentLines = new WLineBatcher();
             RegisterObject(m_persistentLines);
+
+            RegisterObject(new WTransformGizmo(m_persistentLines));
         }
     }
 }

@@ -37,8 +37,17 @@ namespace Editor
         private TransformMode m_mode;
         private SelectedAxes m_selectedAxes;
 
-        public WTransformGizmo()
+        private bool m_isSelected;
+
+        // hack...
+        private WLineBatcher m_lineBatcher;
+
+        public WTransformGizmo(WLineBatcher lines)
         {
+            // hack...
+            m_lineBatcher = lines;
+
+
             m_transform = new WTransform();
             m_mode = TransformMode.Translation;
             m_selectedAxes = SelectedAxes.None;
@@ -47,14 +56,25 @@ namespace Editor
 
         public override void Tick(float deltaTime)
         {
-            if(WInput.GetMouseButtonDown(0))
+            if (WInput.GetMouseButtonDown(0))
             {
-                WRay fakeRay = new WRay(new Vector3(25, 0, 0), new Vector3(1, 0, 0));
+                WRay fakeRay = new WRay(new Vector3(6, 6, 0), new Vector3(1, 0, 0));
 
-                if(CheckSelectedAxes(fakeRay))
+                if (CheckSelectedAxes(fakeRay))
                 {
-
+                    Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_selectedAxes);
+                    m_isSelected = true;
                 }
+            }
+
+            if(WInput.GetMouseButtonUp(0))
+            {
+                m_isSelected = false;
+            }
+
+            if(m_isSelected)
+            {
+                // Raytrace per frame, aaah.
             }
         }
 
@@ -66,7 +86,7 @@ namespace Editor
 
             if (m_mode == TransformMode.Translation)
             {
-                float boxLength = 50f;
+                float boxLength = 75f;
                 float boxHalfWidth = 5;
 
                 AABox[] translationAABB = new[]
@@ -76,21 +96,40 @@ namespace Editor
                     // Y Axis
                     new AABox(new Vector3(-boxHalfWidth, 0, -boxHalfWidth), new Vector3(boxHalfWidth, boxLength, boxHalfWidth)),
                     // Z Axis
-                    new AABox(new Vector3(-boxHalfWidth, -boxHalfWidth, -boxLength), new Vector3(boxHalfWidth, boxHalfWidth, 0))
+                    new AABox(new Vector3(-boxHalfWidth, -boxHalfWidth, 0), new Vector3(boxHalfWidth, boxHalfWidth, boxLength)),
+                    // YX Axes
+                    new AABox(new Vector3(0, 0, -2), new Vector3(boxHalfWidth*6, boxHalfWidth*6, 2)),
+                    // YZ Axes
+                    new AABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
+                    // XZ Axes
+                    new AABox(new Vector3(0, -2, 0), new Vector3(boxHalfWidth*6, 2, boxHalfWidth*6))
+                };
+
+                WLinearColor[] gizmoColors = new[]
+                {
+                    WLinearColor.Red,
+                    WLinearColor.Green,
+                    WLinearColor.Blue,
+                    WLinearColor.Blue,
+                    WLinearColor.Red,
+                    WLinearColor.Green
                 };
 
                 List<AxisDistanceResult> results = new List<AxisDistanceResult>();
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < translationAABB.Length; i++)
                 {
+                    m_lineBatcher.DrawBox(translationAABB[i].Min, translationAABB[i].Max, gizmoColors[i], 25, 15);
+
+
                     float intersectDist;
-                    if(WMath.RayIntersectsAABB(localRay, translationAABB[i].Min, translationAABB[i].Max, out intersectDist))
+                    if (WMath.RayIntersectsAABB(localRay, translationAABB[i].Min, translationAABB[i].Max, out intersectDist))
                     {
                         results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
                     }
                 }
 
-                if(results.Count == 0)
+                if (results.Count == 0)
                 {
                     m_selectedAxes = SelectedAxes.None;
                     return false;
@@ -103,7 +142,7 @@ namespace Editor
                 return true;
             }
 
-            return false;   
+            return false;
         }
 
 
