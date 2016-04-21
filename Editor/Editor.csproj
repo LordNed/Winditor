@@ -83,6 +83,7 @@
     <Compile Include="Editor\ITickableObject.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\Shader.cs" />
+    <Compile Include="Editor\TransformGizmo.cs" />
     <Compile Include="Editor\WindEditor.cs" />
     <Compile Include="Editor\LinearColor.cs" />
     <Compile Include="Editor\LineBatcher.cs" />
@@ -94,6 +95,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Math\AABox.cs" />
     <Compile Include="Math\Math.cs" />
     <Compile Include="Math\Ray.cs" />
     <Compile Include="Math\Transform.cs" />
