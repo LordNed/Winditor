@@ -53,13 +53,36 @@ namespace Editor
             MarkRenderStateAsDirty();
         }
 
+        public void DrawBox(Vector3 min, Vector3 max, WLinearColor color, float thickness, float lifetime)
+        {
+            // Base
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, min.Z), new Vector3(max.X, min.Y, min.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, max.Z), new Vector3(max.X, min.Y, max.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, min.Z), new Vector3(min.X, min.Y, max.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, min.Y, min.Z), new Vector3(max.X, min.Y, max.Z), color, thickness, lifetime));
+
+            // Top
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, max.Y, max.Z), new Vector3(max.X, max.Y, max.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, max.Y, min.Z), new Vector3(min.X, max.Y, max.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, max.Y, min.Z), new Vector3(max.X, max.Y, max.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, max.Y, min.Z), new Vector3(max.X, max.Y, min.Z), color, thickness, lifetime));
+
+            // Corners
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, min.Z), new Vector3(min.X, max.Y, min.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, min.Y, min.Z), new Vector3(max.X, max.Y, min.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, max.Z), new Vector3(min.X, max.Y, max.Z), color, thickness, lifetime));
+            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, min.Y, max.Z), new Vector3(max.X, max.Y, max.Z), color, thickness, lifetime));
+
+            MarkRenderStateAsDirty();
+        }
+
         public override void Tick(float deltaTime)
         {
             bool dirty = false;
-            for(int lineIndex = 0; lineIndex < m_batchedLines.Count; lineIndex++)
+            for (int lineIndex = 0; lineIndex < m_batchedLines.Count; lineIndex++)
             {
                 WBatchedLine line = m_batchedLines[lineIndex];
-                if(line.RemainingLifetime > 0)
+                if (line.RemainingLifetime > 0)
                 {
                     line.RemainingLifetime -= deltaTime;
                 }
@@ -94,7 +117,7 @@ namespace Editor
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
-            if(RenderStateDirty)
+            if (RenderStateDirty)
             {
                 // We've changed what we want to draw since we last rendered, so we'll re-calculate the mesh and upload.
                 Vector3[] lineVerts = new Vector3[m_batchedLines.Count * 2];
