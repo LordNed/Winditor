@@ -17,6 +17,8 @@ namespace Editor
         private int m_viewHeight;
         private WCamera m_viewCamera;
 
+        private static WSceneView m_dontlookatme;
+
         public WSceneView(WWorld world, IList<IRenderable> renderList)
         {
             m_world = world;
@@ -24,6 +26,10 @@ namespace Editor
 
             m_viewCamera = new WCamera();
             world.RegisterObject(m_viewCamera);
+
+
+            // ... :(
+            m_dontlookatme = this;
         }
 
         public void Render()
@@ -31,7 +37,7 @@ namespace Editor
             GL.Viewport(0, 0, m_viewWidth, m_viewHeight);
 
             GL.CullFace(CullFaceMode.Back);
-            GL.FrontFace(FrontFaceDirection.Cw); // Windwaker is backwards!
+            GL.FrontFace(FrontFaceDirection.Ccw); // Windwaker is backwards!
             GL.Enable(EnableCap.CullFace);
             GL.DepthMask(true);
 
@@ -57,6 +63,12 @@ namespace Editor
 
             // Recalculate the aspect ratio of our view camera.
             m_viewCamera.AspectRatio = width / (float)height;
+        }
+
+        public static WRay DeprojectScreenToWorld(Vector3 mousePosition)
+        {
+            var viewCam = m_dontlookatme.m_viewCamera;
+            return viewCam.ViewportPointToRay(mousePosition, new Vector2(m_dontlookatme.m_viewWidth, m_dontlookatme.m_viewHeight));
         }
     }
 }

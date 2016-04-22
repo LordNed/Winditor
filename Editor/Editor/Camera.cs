@@ -63,7 +63,7 @@ namespace Editor
             }
         }
 
-        private float m_nearClipPlane = 100f;
+        private float m_nearClipPlane = 10f;
         private float m_farClipPlane = 100000f;
         private float m_fieldOfView = 45f;
         private float m_aspectRatio = 16 / 9f;

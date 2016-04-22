@@ -58,9 +58,9 @@ namespace Editor
         {
             if (WInput.GetMouseButtonDown(0))
             {
-                WRay fakeRay = new WRay(new Vector3(6, 6, 0), new Vector3(1, 0, 0));
-
-                if (CheckSelectedAxes(fakeRay))
+                WRay mouseRay = WSceneView.DeprojectScreenToWorld(WInput.MousePosition);
+                m_lineBatcher.DrawLine(mouseRay.Origin, mouseRay.Origin + (mouseRay.Direction * 1000), WLinearColor.Black, 25, 25);
+                if (CheckSelectedAxes(mouseRay))
                 {
                     Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_selectedAxes);
                     m_isSelected = true;
