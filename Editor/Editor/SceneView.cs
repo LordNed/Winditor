@@ -70,5 +70,10 @@ namespace Editor
             var viewCam = m_dontlookatme.m_viewCamera;
             return viewCam.ViewportPointToRay(mousePosition, new Vector2(m_dontlookatme.m_viewWidth, m_dontlookatme.m_viewHeight));
         }
+
+        internal static Vector3 GetCameraPos()
+        {
+            return m_dontlookatme.m_viewCamera.Transform.Position;
+        }
     }
 }
