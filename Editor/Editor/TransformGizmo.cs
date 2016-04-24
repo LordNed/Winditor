@@ -207,13 +207,13 @@ namespace Editor
                     axisB = ContainsAxis(m_selectedAxes, SelectedAxes.Y) ? Vector3.UnitY : Vector3.UnitZ;
                 }
 
-                Vector3 planeNormal = Vector3.Cross(axisA, axisB);
+                Vector3 planeNormal = Vector3.Cross(axisA, axisB).Normalized();
                 m_translationPlane = new WPlane(planeNormal, m_transform.Position);
-                m_lineBatcher.DrawLine(m_transform.Position, m_transform.Position + (planeNormal * 500), WLinearColor.Yellow, 5, 0);
                 float intersectDist;
                 bool bIntersectsPlane = m_translationPlane.RayIntersectsPlane(ray, out intersectDist);
+                m_lineBatcher.DrawLine(m_transform.Position, m_transform.Position + (planeNormal * 500), WLinearColor.Yellow, 5, 0);
 
-                Console.WriteLine("planeNormal: {0} axisA: {1}, axisB: {2} numAxis: {3} selectedAxes: {4} intersectsPlane: {5} @dist: {6}", planeNormal, axisA, axisB, numAxis, m_selectedAxes, bIntersectsPlane, intersectDist);
+                //Console.WriteLine("planeNormal: {0} axisA: {1}, axisB: {2} numAxis: {3} selectedAxes: {4} intersectsPlane: {5} @dist: {6}", planeNormal, axisA, axisB, numAxis, m_selectedAxes, bIntersectsPlane, intersectDist);
                 if (bIntersectsPlane)
                 {
                     Vector3 hitPos = ray.Origin + (ray.Direction * intersectDist);
@@ -233,7 +233,7 @@ namespace Editor
                     Vector3 newPosDirToCamera = (newPos - cameraPos).Normalized();
                     float dot = Math.Abs(Vector3.Dot(planeNormal, newPosDirToCamera));
 
-                    Console.WriteLine("hitPos: {0} localOffset: {1} newPos: {2}, dotResult: {3}", hitPos, localOffset, newPos, dot);
+                    //Console.WriteLine("hitPos: {0} localOffset: {1} newPos: {2}, dotResult: {3}", hitPos, localOffset, newPos, dot);
                     if (dot < 0.02f)
                         return false;
 
@@ -250,7 +250,7 @@ namespace Editor
                     {
                         // Apply Translation
                         m_deltaTranslation = Vector3.Transform(newPos - m_transform.Position + m_translateOffset, m_transform.Rotation.Inverted());
-                        Console.WriteLine("deltaTranslation: {0}", m_deltaTranslation);
+                        //Console.WriteLine("deltaTranslation: {0}", m_deltaTranslation);
                         if (!ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_deltaTranslation.X = 0f;
                         if (!ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_deltaTranslation.Y = 0f;
                         if (!ContainsAxis(m_selectedAxes, SelectedAxes.Z)) m_deltaTranslation.Z = 0f;

@@ -16,8 +16,8 @@ namespace Editor
 
         public WPlane(Vector3 normal, Vector3 pointOnPlane)
         {
-            Normal = normal;
-            Distance = Vector3.Dot(normal, pointOnPlane);
+            Normal = normal.Normalized();
+            Distance = -Vector3.Dot(normal, pointOnPlane);
         }
 
         public bool RayIntersectsPlane(WRay ray, out float intersectDist)
