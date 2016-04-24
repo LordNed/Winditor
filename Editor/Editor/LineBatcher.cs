@@ -37,8 +37,8 @@ namespace Editor
             m_batchedLines = new List<WBatchedLine>();
 
             m_primitiveShader = new Shader("UnlitColor");
-            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.vert"), ShaderType.VertexShader);
-            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnlitColor.frag"), ShaderType.FragmentShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnlitColor.vert"), ShaderType.VertexShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnlitColor.frag"), ShaderType.FragmentShader);
             m_primitiveShader.LinkShader();
 
             // Allocate our buffers now as they get reused a lot.

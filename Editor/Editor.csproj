@@ -101,6 +101,7 @@
     <Compile Include="Editor\Input.cs" />
     <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\ITickableObject.cs" />
+    <Compile Include="Editor\Obj.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
@@ -137,15 +138,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Editor\Shaders\UnselectedCollision.vert">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Editor\Shaders\UnselectedCollision.frag">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Editor\Shaders\UnlitColor.frag">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -155,11 +147,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Editor\Shaders\UnlitColor.vert">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Include="resources\*\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

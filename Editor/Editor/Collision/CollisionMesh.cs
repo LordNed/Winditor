@@ -15,8 +15,8 @@ namespace Editor.Collision
         public WCollisionMesh()
         {
             m_primitiveShader = new Shader("UnselectedCollision");
-            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnselectedCollision.vert"), ShaderType.VertexShader);
-            m_primitiveShader.CompileSource(File.ReadAllText("Editor/Shaders/UnselectedCollision.frag"), ShaderType.FragmentShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnselectedCollision.vert"), ShaderType.VertexShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnselectedCollision.frag"), ShaderType.FragmentShader);
             m_primitiveShader.LinkShader();
         }
 
