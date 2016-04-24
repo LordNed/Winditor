@@ -104,6 +104,7 @@
     <Compile Include="Editor\Obj.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\Shader.cs" />
+    <Compile Include="Editor\SimpleObjRenderer.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
     <Compile Include="Editor\WindEditor.cs" />
     <Compile Include="Editor\LinearColor.cs" />
@@ -143,6 +144,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Content Include="resources\shaders\UnlitTexture.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\UnlitTexture.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

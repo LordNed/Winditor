@@ -49,6 +49,7 @@ namespace Editor
 
         // hack...
         private WLineBatcher m_lineBatcher;
+        private SimpleObjRenderer[] m_meshes;
 
         public WTransformGizmo(WLineBatcher lines)
         {
@@ -59,6 +60,19 @@ namespace Editor
             m_transform = new WTransform();
             m_mode = TransformMode.Translation;
             m_selectedAxes = SelectedAxes.None;
+
+            string[] meshNames = new[]
+            {
+                "TranslateCenter", "TranslateZ", "TranslateX", "TranslateY", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ"
+            };
+
+            m_meshes = new SimpleObjRenderer[meshNames.Length];
+            for(int i = 0; i < m_meshes.Length; i++)
+            {
+                Obj obj = new Obj();
+                obj.Load("resources/editor/" + meshNames[i] + ".obj");
+                m_meshes[i] = new SimpleObjRenderer(obj);
+            }
         }
 
 
@@ -286,10 +300,14 @@ namespace Editor
 
         public override void ReleaseResources()
         {
+            for (int i = 0; i < m_meshes.Length; i++)
+                m_meshes[i].ReleaseResources();
         }
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
+            for (int i = 0; i < m_meshes.Length; i++)
+                m_meshes[i].Render(viewMatrix, projMatrix);
         }
 
         private bool ContainsAxis(SelectedAxes valToCheck, SelectedAxes majorAxis)

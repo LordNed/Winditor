@@ -21,6 +21,9 @@ namespace Editor
 
             WSceneView sceneView = new WSceneView(this, m_renderableObjects);
             m_sceneViews.Add(sceneView);
+
+            AllocateDefaultWorldResources();
+
         }
 
         public void LoadMap(string filePath)

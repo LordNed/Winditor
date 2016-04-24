@@ -13,7 +13,7 @@ namespace Editor
             m_editorWorlds.Add(baseWorld);
 
 
-            baseWorld.LoadMap(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniHyo\");
+            //baseWorld.LoadMap(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniHyo\");
         }
 
         internal void OnViewportResized(int width, int height)
