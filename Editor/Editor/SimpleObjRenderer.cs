@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Editor
 {
-    class SimpleObjRenderer : PrimitiveComponent
+    class SimpleObjRenderer
     {
         struct UniqueVertex
         {
@@ -15,13 +15,16 @@ namespace Editor
             public Vector3 Normal;
         }
 
+        public bool Highlighted;
+
         private int m_vertexVBO;
         private int m_indexVBO;
         private int m_texcoordVBO;
         private int m_normalVBO;
         private int m_textureVBO;
 
-        private Shader m_shader;
+        private Shader m_unhighlightedShader;
+        private Shader m_highlightedShader;
         private int m_triangleCount;
 
         public SimpleObjRenderer(Obj file)
@@ -32,10 +35,15 @@ namespace Editor
             m_normalVBO = file.Normals.Count > 0 ? GL.GenBuffer() : -1;
             m_textureVBO = file.Material.Diffuse != null ? GL.GenTexture() : -1;
 
-            m_shader = new Shader("UnlitTexture");
-            m_shader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.vert"), ShaderType.VertexShader);
-            m_shader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.frag"), ShaderType.FragmentShader);
-            m_shader.LinkShader();
+            m_unhighlightedShader = new Shader("UnlitTexture");
+            m_unhighlightedShader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.vert"), ShaderType.VertexShader);
+            m_unhighlightedShader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.frag"), ShaderType.FragmentShader);
+            m_unhighlightedShader.LinkShader();
+
+            m_highlightedShader = new Shader("TransformGizmoHighlight");
+            m_highlightedShader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.vert"), ShaderType.VertexShader);
+            m_highlightedShader.CompileSource(File.ReadAllText("resources/shaders/TransformGizmoHighlight.frag"), ShaderType.FragmentShader);
+            m_highlightedShader.LinkShader();
 
             // Generate an array of all vertices instead of the compact form OBJ comes as.
             Vector3[] positions = null;
@@ -106,60 +114,50 @@ namespace Editor
             if (m_textureVBO >= 0)
             {
                 Obj.ObjMaterial mat = file.Material;
-                //using (var imageData = new MemoryStream())
-                //{
-                  //  mat.Diffuse.Save(imageData, System.Drawing.Imaging.ImageFormat.Bmp);
-                    //byte[] data = imageData.ToArray();
 
-                    GL.BindTexture(TextureTarget.Texture2D, m_textureVBO);
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
-                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+                GL.BindTexture(TextureTarget.Texture2D, m_textureVBO);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
 
-                    // Black/white checkerboard
-                    float[] pixels = new[]
-                    {
-                        0.0f, 0.0f, 0.0f,   255.0f, 255.0f, 255.0f,
-                        255.0f, 255.0f, 255.0f,   0.0f, 0.0f, 0.0f
-                    };
-                    //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, 2, 2, 0, PixelFormat.Rgb, PixelType.Float, pixels);
+                // Black/white checkerboard
+                float[] pixels = new[]
+                {
+                    0.0f, 0.0f, 0.0f,   255.0f, 255.0f, 255.0f,
+                    255.0f, 255.0f, 255.0f,   0.0f, 0.0f, 0.0f
+                };
+                //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, 2, 2, 0, PixelFormat.Rgb, PixelType.Float, pixels);
 
-
-                    System.Drawing.Imaging.BitmapData bmpData = mat.Diffuse.LockBits(new System.Drawing.Rectangle(0, 0, mat.Diffuse.Width, mat.Diffuse.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                    GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, mat.Diffuse.Width, mat.Diffuse.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bmpData.Scan0);
-                    mat.Diffuse.UnlockBits(bmpData);
-
-                    //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, mat.Diffuse.Width, mat.Diffuse.Height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, data);
-                    //GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
-
-                //}
+                System.Drawing.Imaging.BitmapData bmpData = mat.Diffuse.LockBits(new System.Drawing.Rectangle(0, 0, mat.Diffuse.Width, mat.Diffuse.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, mat.Diffuse.Width, mat.Diffuse.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bmpData.Scan0);
+                mat.Diffuse.UnlockBits(bmpData);
             }
         }
 
-        public override void ReleaseResources()
+        public void ReleaseResources()
         {
             GL.DeleteBuffer(m_vertexVBO);
             GL.DeleteBuffer(m_indexVBO);
             GL.DeleteTexture(m_textureVBO);
             if (m_texcoordVBO >= 0) GL.DeleteBuffer(m_texcoordVBO);
             if (m_normalVBO >= 0) GL.DeleteBuffer(m_normalVBO);
-            m_shader.ReleaseResources();
+            m_unhighlightedShader.ReleaseResources();
+            m_highlightedShader.ReleaseResources();
         }
 
-        public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
             GL.FrontFace(FrontFaceDirection.Ccw);
             GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.DepthTest);
 
+            Shader curShader = Highlighted ? m_highlightedShader : m_unhighlightedShader;
+            curShader.Bind();
 
-            Matrix4 modelMatrix = Matrix4.Identity;
-
-            m_shader.Bind();
-            GL.UniformMatrix4(m_shader.UniformModelMtx, false, ref modelMatrix);
-            GL.UniformMatrix4(m_shader.UniformViewMtx, false, ref viewMatrix);
-            GL.UniformMatrix4(m_shader.UniformProjMtx, false, ref projMatrix);
+            GL.UniformMatrix4(curShader.UniformModelMtx, false, ref modelMatrix);
+            GL.UniformMatrix4(curShader.UniformViewMtx, false, ref viewMatrix);
+            GL.UniformMatrix4(curShader.UniformProjMtx, false, ref projMatrix);
 
             // Position
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertexVBO);
@@ -203,11 +201,6 @@ namespace Editor
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Tex0);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Normal);
             GL.BindTexture(TextureTarget.Texture2D, -1);
-        }
-
-        public override void Tick(float deltaTime)
-        {
-
         }
     }
 }

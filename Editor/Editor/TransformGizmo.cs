@@ -63,7 +63,7 @@ namespace Editor
 
             string[] meshNames = new[]
             {
-                "TranslateCenter", "TranslateZ", "TranslateX", "TranslateY", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ"
+                "TranslateCenter", "TranslateX", "TranslateY", "TranslateZ", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ"
             };
 
             m_meshes = new SimpleObjRenderer[meshNames.Length];
@@ -93,6 +93,7 @@ namespace Editor
             {
                 m_isSelected = false;
                 m_hasSetMouseOffset = false;
+                m_selectedAxes = SelectedAxes.None;
             }
 
             if(m_isSelected)
@@ -102,7 +103,6 @@ namespace Editor
                 Vector3 cameraPos = WSceneView.GetCameraPos();
                 TransformFromInput(mouseRay, cameraPos);
             }
-
 
             float boxLength = 75f;
             float boxHalfWidth = 5;
@@ -139,6 +139,14 @@ namespace Editor
             {
                 m_lineBatcher.DrawBox(translationAABB[i].Min + m_transform.Position, translationAABB[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
             }
+
+            // Update Highlight Status of Models. ToDo: Less awful.
+            m_meshes[1].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.X);
+            m_meshes[2].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Y);
+            m_meshes[3].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Z);
+            m_meshes[4].Highlighted = m_selectedAxes == SelectedAxes.XY;
+            m_meshes[5].Highlighted = m_selectedAxes == SelectedAxes.XZ;
+            m_meshes[6].Highlighted = m_selectedAxes == SelectedAxes.YZ;
         }
 
         private bool CheckSelectedAxes(WRay ray)
@@ -306,8 +314,10 @@ namespace Editor
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
+            // Construct a model matrix for the gizmo mesh to render at.
+            Matrix4 modelMatrix = Matrix4.CreateTranslation(m_transform.Position) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateScale(m_transform.LocalScale);
             for (int i = 0; i < m_meshes.Length; i++)
-                m_meshes[i].Render(viewMatrix, projMatrix);
+                m_meshes[i].Render(viewMatrix, projMatrix, modelMatrix);
         }
 
         private bool ContainsAxis(SelectedAxes valToCheck, SelectedAxes majorAxis)

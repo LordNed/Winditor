@@ -1,0 +1,33 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 23.04.2016 16:37:49
+
+mtllib TranslatePolyXY.mtl
+
+#
+# object translate_poly_xy
+#
+
+v  25.0000 0.5000 0.0000
+v  0.0000 0.5000 0.0000
+v  0.0000 0.5000 25.0000
+v  25.0000 0.5000 25.0000
+v  0.0000 -0.5000 0.0000
+v  25.0000 -0.5000 0.0000
+v  25.0000 -0.5000 25.0000
+v  0.0000 -0.5000 25.0000
+# 8 vertices
+
+vt 0.5007 0.0012 0.0000
+vt 0.9998 0.0012 0.0000
+vt 0.9998 0.5003 0.0000
+vt 0.5007 0.5003 0.0000
+# 4 texture coords
+
+g translate_poly_xy
+usemtl Material__25
+f 1/1 2/2 3/3 
+f 3/3 4/4 1/1 
+f 5/1 6/2 7/3 
+f 7/3 8/4 5/1 
+# 4 faces
+
