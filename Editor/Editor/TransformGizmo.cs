@@ -2,6 +2,8 @@
 using OpenTK;
 using System.Collections.Generic;
 
+// http://pastebin.com/raw/p8EqPs8p
+// http://pastebin.com/raw/QRHEcsW2
 namespace Editor
 {
     class WTransformGizmo : PrimitiveComponent
@@ -283,6 +285,10 @@ namespace Editor
             if (m_mode != TransformMode.Translation)
                 WrapCursor();
 
+            int numAxis = (m_selectedAxes == SelectedAxes.X || m_selectedAxes == SelectedAxes.Y || m_selectedAxes == SelectedAxes.Z) ? 1 : 2;
+            if (m_selectedAxes == SelectedAxes.All)
+                numAxis = 3;
+
             // Store the cursor position in viewport coordinates.
             Vector2 screenDimensions = App.GetScreenGeometry();
             Vector2 cursorPos = App.GetCursorPosition();
@@ -292,7 +298,6 @@ namespace Editor
             {
                 // Create a Translation Plane
                 Vector3 axisA, axisB;
-                int numAxis = (m_selectedAxes == SelectedAxes.X || m_selectedAxes == SelectedAxes.Y || m_selectedAxes == SelectedAxes.Z) ? 1 : 2;
 
                 if (numAxis == 1)
                 {
@@ -431,7 +436,81 @@ namespace Editor
             }
             else if (m_mode == TransformMode.Scale)
             {
+                // Create a line in screen space.
+                // Convert these from [0-1] to [-1, 1] to match our mouse coords.
+                Vector2 lineOrigin = (WSceneView.UnprojectWorldToViewport(m_transform.Position) * 2) - Vector2.One;
+                lineOrigin.Y = -lineOrigin.Y;
 
+                // Determine the appropriate world space directoin using the selected axes and then conver this for use with
+                // screen-space controlls. This has to be done every frame because the axes can be flipped while the gizmo
+                // is transforming, so we can't pre-calculate this.
+                Vector3 dirX = mFlipScaleX ? -Vector3.UnitX : Vector3.UnitX; // ToDo, transform these by our rotation.
+                Vector3 dirY = mFlipScaleY ? -Vector3.UnitY : Vector3.UnitY; // ToDo, transform these by our rotation.
+                Vector3 dirZ = mFlipScaleZ ? -Vector3.UnitZ : Vector3.UnitZ; // ToDo, transform these by our rotation.
+                Vector2 lineDir;
+
+                // If there is only one axis, then the world space direction is the selected axis.
+                if (numAxis == 1)
+                {
+                    Vector3 worldDir;
+                    if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) worldDir = dirX;
+                    if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) worldDir = dirY;
+                    else worldDir = dirZ;
+
+                    Vector2 worldPoint = (WSceneView.UnprojectWorldToViewport(m_transform.Position + worldDir) * 2) - Vector2.One;
+                    worldPoint.Y = -lineOrigin.Y;
+
+                    lineDir = (worldPoint - lineOrigin).Normalized();
+                }
+                // If there's two axii selected, then convert both to screen space and average them out to get the line direction.
+                else if (numAxis == 2)
+                {
+                    Vector3 axisA = ContainsAxis(m_selectedAxes, SelectedAxes.X) ? dirX : dirY;
+                    Vector3 axisB = ContainsAxis(m_selectedAxes, SelectedAxes.Z) ? dirZ : dirY;
+
+                    Vector2 screenA = (WSceneView.UnprojectWorldToViewport(m_transform.Position + axisA) * 2) - Vector2.One;
+                    screenA.Y = -screenA.Y;
+                    Vector2 screenB = (WSceneView.UnprojectWorldToViewport(m_transform.Position + axisB) * 2) - Vector2.One;
+                    screenB.Y = -screenB.Y;
+
+                    screenA = (screenA - lineOrigin).Normalized();
+                    screenB = (screenB - lineOrigin).Normalized();
+                    lineDir = ((screenA + screenB) / 2f).Normalized();
+                }
+                // There's three axis, just use up.
+                else lineDir = Vector2.UnitY;
+
+                float scaleAmount = Vector2.Dot(lineDir, mouseCoords + m_wrapOffset - lineOrigin) * 5f;
+
+                // Set their initial offset if we haven't already
+                if(!m_hasSetMouseOffset)
+                {
+                    m_scaleOffset = -scaleAmount;
+                    m_deltaScale = Vector3.One;
+                    m_hasSetMouseOffset = true;
+                    return false;
+                }
+
+                // Apply the scale
+                scaleAmount = scaleAmount + m_scaleOffset + 1f;
+
+                // A multiplier is applied to the scale amount if it's less than one to prevent it dropping into the negatives.
+                // ???
+                if (scaleAmount < 1f)
+                    scaleAmount = 1f / (-(scaleAmount - 1f) + 1f);
+
+                Vector3 oldScale = m_totalScale;
+
+                m_totalScale = Vector3.One;
+                if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_totalScale.X = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_totalScale.Y = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, SelectedAxes.Z)) m_totalScale.Z = scaleAmount;
+
+                m_deltaScale = m_totalScale / oldScale;
+                if (!m_hasTransformed && (scaleAmount != 1f))
+                    m_hasTransformed = true;
+
+                return m_hasTransformed;
             }
 
             return false;
