@@ -65,15 +65,26 @@ namespace Editor
             m_viewCamera.AspectRatio = width / (float)height;
         }
 
-        public static WRay DeprojectScreenToWorld(Vector3 mousePosition)
+        public static WRay ProjectScreenToWorld(Vector2 mousePosition)
         {
             var viewCam = m_dontlookatme.m_viewCamera;
             return viewCam.ViewportPointToRay(mousePosition, new Vector2(m_dontlookatme.m_viewWidth, m_dontlookatme.m_viewHeight));
         }
 
+        public static Vector2 UnprojectWorldToViewport(Vector3 worldLocation)
+        {
+            var viewCam = m_dontlookatme.m_viewCamera;
+            return viewCam.WorldPointToViewportPoint(worldLocation);
+        }            
+
         internal static Vector3 GetCameraPos()
         {
             return m_dontlookatme.m_viewCamera.Transform.Position;
+        }
+
+        internal static Vector2 GetViewportDimensions()
+        {
+            return new Vector2(m_dontlookatme.m_viewWidth, m_dontlookatme.m_viewHeight);
         }
     }
 }

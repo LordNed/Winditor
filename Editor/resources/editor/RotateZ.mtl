@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 25.04.2016 19:24:06
+# File Created: 25.04.2016 22:33:09
 
-newmtl Material__25
+newmtl Rotate
 	Ns 10.0000
 	Ni 1.5000
 	d 1.0000
@@ -12,5 +12,6 @@ newmtl Material__25
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka T_TransformGizmo.png
-	map_Kd T_TransformGizmo.png
+	map_Ka T_RotationGizmo.png
+	map_Kd T_RotationGizmo.png
+	map_d T_RotationGizmo.png

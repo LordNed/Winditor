@@ -149,8 +149,10 @@ namespace Editor
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
             GL.FrontFace(FrontFaceDirection.Ccw);
-            GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.Blend);
+            GL.Disable(EnableCap.CullFace);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             Shader curShader = Highlighted ? m_highlightedShader : m_unhighlightedShader;
             curShader.Bind();
@@ -194,7 +196,7 @@ namespace Editor
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
 
             // Disable all of our shit.
-            GL.Disable(EnableCap.CullFace);
+            GL.Disable(EnableCap.Blend);
             GL.Disable(EnableCap.DepthTest);
 
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);

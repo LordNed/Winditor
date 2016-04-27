@@ -1,0 +1,27 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.04.2016 22:33:18
+
+mtllib RotateY.mtl
+
+#
+# object rotate_y
+#
+
+v  0.0000 100.0000 0.0000
+v  0.0000 0.0000 -0.0000
+v  100.0000 100.0000 0.0000
+v  100.0000 0.0000 -0.0000
+# 4 vertices
+
+vt 0.4997 1.0000 0.0000
+vt 0.4997 0.4997 0.0000
+vt 1.0000 1.0000 0.0000
+vt 1.0000 0.4997 0.0000
+# 4 texture coords
+
+g rotate_y
+usemtl Rotate
+f 1/1 2/2 3/3 
+f 4/4 3/3 2/2 
+# 2 faces
+

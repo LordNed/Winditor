@@ -5,9 +5,6 @@ namespace Editor
 {
     static class WMath
     {
-        public const float Rad2Deg = (float)(180.0 / Math.PI);
-        public const float Deg2Rad = (float)(Math.PI / 180.0);
-
         public static int Clamp(int value, int min, int max)
         {
             if (value < min)
@@ -26,6 +23,16 @@ namespace Editor
                 value = max;
 
             return value;
+        }
+
+        public static float DegreesToRadians(float degrees)
+        {
+            return degrees * (float)(Math.PI / 180.0);
+        }
+
+        public static float RadiansToDegrees(float radians)
+        {
+            return radians * (float)(180.0 / Math.PI); 
         }
 
         public static bool RayIntersectsAABB(WRay ray, Vector3 aabbMin, Vector3 aabbMax, out float intersectionDistance)

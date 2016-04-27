@@ -186,7 +186,7 @@ namespace Editor
 
         public void Rotate(Vector3 axis, float angleInDegrees)
         {
-            Quaternion rotQuat = Quaternion.FromAxisAngle(axis, angleInDegrees * WMath.Deg2Rad);
+            Quaternion rotQuat = Quaternion.FromAxisAngle(axis, WMath.DegreesToRadians(angleInDegrees));
             Rotation = rotQuat * Rotation;
         }
 

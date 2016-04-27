@@ -1,4 +1,5 @@
 ﻿using OpenTK;
+using System;
 
 namespace Editor
 {
@@ -72,6 +73,9 @@ namespace Editor
 
         public override void Tick(float deltaTime)
         {
+            if (!WInput.GetMouseButton(1))
+                return;
+
             Vector3 moveDir = Vector3.Zero;
             if (WInput.GetKey(System.Windows.Input.Key.W))
             {
@@ -143,7 +147,7 @@ namespace Editor
             }
         }
 
-        public WRay ViewportPointToRay(Vector3 mousePos, Vector2 screenSize)
+        public WRay ViewportPointToRay(Vector2 mousePos, Vector2 screenSize)
         {
             Vector3 mousePosA = new Vector3(mousePos.X, mousePos.Y, 0f);
             Vector3 mousePosB = new Vector3(mousePos.X, mousePos.Y, 1f);
@@ -158,8 +162,19 @@ namespace Editor
             return new WRay(nearUnproj.Xyz, dir);
         }
 
+        // Effectively a Project() functon
+        public Vector2 WorldPointToViewportPoint(Vector3 worldPoint)
+        {
+            Matrix4 viewProjMatrix = ViewMatrix * ProjectionMatrix;
 
-        public Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 mousePos, Vector2 screenSize)
+            // Transform World to Clip Space
+            Vector3 clipSpacePoint = Vector3.TransformPerspective(worldPoint, viewProjMatrix);
+            Vector2 viewportSpace = new Vector2((clipSpacePoint.X + 1) / 2f, (-clipSpacePoint.Y + 1) / 2f);
+            return viewportSpace;
+        }
+
+
+        private Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 mousePos, Vector2 screenSize)
         {
             Vector4 vec = new Vector4();
 

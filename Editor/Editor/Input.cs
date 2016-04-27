@@ -6,9 +6,9 @@ namespace Editor
     public static class WInput
     {
         /// <summary> Mouse position in pixel coordinates. Read only. </summary>
-        public static Vector3 MousePosition { get; private set; }
+        public static Vector2 MousePosition { get; private set; }
         /// <summary> Delta position in pixel coordinates between frames. Read only. </summary>
-        public static Vector3 MouseDelta { get; private set; }
+        public static Vector2 MouseDelta { get; private set; }
         /// <summary> Delta of the scroll wheel, one int per notch on wheel. </summary>
         public static int MouseScrollDelta { get; private set; }
 
@@ -19,7 +19,7 @@ namespace Editor
 
         private static readonly bool[] m_mouseBtnsDown = new bool[3];
         private static readonly bool[] m_prevMouseBtnsDown = new bool[3];
-        private static Vector3 m_prevMousePos;
+        private static Vector2 m_prevMousePos;
 
         public static bool GetKey(Key key)
         {
@@ -76,7 +76,7 @@ namespace Editor
 
         public static void SetMousePosition(Vector2 mousePos)
         {
-            MousePosition = new Vector3(mousePos.X, mousePos.Y, 0);
+            MousePosition = new Vector2(mousePos.X, mousePos.Y);
         }
 
         public static void SetMouseScrollDelta(int delta)

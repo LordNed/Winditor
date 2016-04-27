@@ -6,7 +6,7 @@ namespace Editor
 {
     class WTransformGizmo : PrimitiveComponent
     {
-        enum TransformMode
+        public enum TransformMode
         {
             None,
             Translation,
@@ -18,7 +18,8 @@ namespace Editor
         {
             None,
             X, Y, Z,
-            XY, XZ, YZ
+            XY, XZ, YZ,
+            All,
         }
 
         struct AxisDistanceResult
@@ -37,15 +38,22 @@ namespace Editor
         private TransformMode m_mode;
         private SelectedAxes m_selectedAxes;
 
-        private bool m_isSelected;
         private WPlane m_translationPlane;
-        private bool m_hasTransformed;
         private bool m_hasSetMouseOffset;
+        private bool m_isTransforming;
+        private bool m_hasTransformed;
+        private Vector3 m_hitPoint;
+        private Vector3 m_moveDir;
+        private Vector2 m_wrapOffset;
 
         // Delta Transforms
         private Vector3 m_deltaTranslation;
         private Vector3 m_totalTranslation;
         private Vector3 m_translateOffset;
+
+        private Quaternion m_deltaRotation;
+        private Vector3 m_totalRotation; // Stored as Vec3 for UI Purposes.
+        private float m_rotateOffset;
 
         // hack...
         private WLineBatcher m_lineBatcher;
@@ -63,11 +71,11 @@ namespace Editor
 
             string[] meshNames = new[]
             {
-                "TranslateCenter", "TranslateX", "TranslateY", "TranslateZ", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ"
+                /*"TranslateCenter", "TranslateX", "TranslateY", "TranslateZ", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ", "RotateX", "RotateY", "RotateZ",*/ "ScaleCenter", "ScaleX", "ScaleY", "ScaleZ", "ScaleLinesXY", "ScaleLinesXZ", "ScaleLinesYZ", 
             };
 
             m_meshes = new SimpleObjRenderer[meshNames.Length];
-            for(int i = 0; i < m_meshes.Length; i++)
+            for (int i = 0; i < m_meshes.Length; i++)
             {
                 Obj obj = new Obj();
                 obj.Load("resources/editor/" + meshNames[i] + ".obj");
@@ -75,53 +83,95 @@ namespace Editor
             }
         }
 
+        public void SetMode(TransformMode mode)
+        {
+            m_mode = mode;
+
+            switch (mode)
+            {
+                case TransformMode.Translation:
+                    m_deltaRotation = Quaternion.Identity;
+                    //m_deltaScale = Vector3.One;
+                    break;
+                case TransformMode.Rotation:
+                    m_deltaTranslation = Vector3.Zero;
+                    //m_deltaScale = Vector3.One;
+                    break;
+            }
+        }
+
+        private void StartTransform()
+        {
+            m_isTransforming = true;
+            m_hasTransformed = false;
+            m_hasSetMouseOffset = false;
+            m_totalTranslation = Vector3.Zero;
+            m_totalRotation = Vector3.Zero;
+            m_transform.Rotation = Quaternion.Identity;
+            m_transform.LocalScale = Vector3.One;
+            m_wrapOffset = Vector2.Zero;
+
+            if (m_mode == TransformMode.Rotation)
+            {
+                // We need to determine which side of the gizmo they are on, so that goes the expected direction when
+                // we pull up/down in screenspace.
+                Vector3 rotAxis;
+                if (m_selectedAxes == SelectedAxes.X) rotAxis = Vector3.UnitX;
+                if (m_selectedAxes == SelectedAxes.Y) rotAxis = Vector3.UnitY;
+                else rotAxis = Vector3.UnitZ;
+
+                Vector3 dirFromGizmoToHitPoint = (m_hitPoint - m_transform.Position).Normalized();
+                m_moveDir = Vector3.Cross(rotAxis, dirFromGizmoToHitPoint);
+            }
+        }
+
+        private void EndTransform()
+        {
+            m_isTransforming = false;
+            m_selectedAxes = SelectedAxes.None;
+        }
+
 
         public override void Tick(float deltaTime)
         {
+            if (WInput.GetKeyDown(System.Windows.Input.Key.Q) && !WInput.GetMouseButton(1))
+            {
+                SetMode(TransformMode.None);
+            }
+            if (WInput.GetKeyDown(System.Windows.Input.Key.W) && !WInput.GetMouseButton(1))
+            {
+                SetMode(TransformMode.Translation);
+            }
+            if (WInput.GetKeyDown(System.Windows.Input.Key.E) && !WInput.GetMouseButton(1))
+            {
+                SetMode(TransformMode.Rotation);
+            }
+            if (WInput.GetKeyDown(System.Windows.Input.Key.R) && !WInput.GetMouseButton(1))
+            {
+                SetMode(TransformMode.Scale);
+            }
+
             if (WInput.GetMouseButtonDown(0))
             {
-                WRay mouseRay = WSceneView.DeprojectScreenToWorld(WInput.MousePosition);
-                m_lineBatcher.DrawLine(mouseRay.Origin, mouseRay.Origin + (mouseRay.Direction * 1000), WLinearColor.Black, 25, 25);
+                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
                 if (CheckSelectedAxes(mouseRay))
                 {
                     Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_selectedAxes);
-                    m_isSelected = true;
+                    StartTransform();
                 }
             }
 
-            if(WInput.GetMouseButtonUp(0))
+            if (WInput.GetMouseButtonUp(0))
             {
-                m_isSelected = false;
-                m_hasSetMouseOffset = false;
-                m_selectedAxes = SelectedAxes.None;
+                EndTransform();
             }
 
-            if(m_isSelected)
+            if (m_isTransforming)
             {
-                // Raytrace per frame, aaah.
-                WRay mouseRay = WSceneView.DeprojectScreenToWorld(WInput.MousePosition);
+                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
                 Vector3 cameraPos = WSceneView.GetCameraPos();
                 TransformFromInput(mouseRay, cameraPos);
             }
-
-            float boxLength = 75f;
-            float boxHalfWidth = 5;
-
-            AABox[] translationAABB = new[]
-            {
-                    // X Axis
-                    new AABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
-                    // Y Axis
-                    new AABox(new Vector3(-boxHalfWidth, 0, -boxHalfWidth), new Vector3(boxHalfWidth, boxLength, boxHalfWidth)),
-                    // Z Axis
-                    new AABox(new Vector3(-boxHalfWidth, -boxHalfWidth, 0), new Vector3(boxHalfWidth, boxHalfWidth, boxLength)),
-                    // XY Axes
-                    new AABox(new Vector3(0, 0, -2), new Vector3(boxHalfWidth*6, boxHalfWidth*6, 2)),
-                    // XZ Axes
-                    new AABox(new Vector3(0, -2, 0), new Vector3(boxHalfWidth*6, 2, boxHalfWidth*6)),
-                    // YZ Axes
-                    new AABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
-                };
 
             WLinearColor[] gizmoColors = new[]
             {
@@ -130,54 +180,40 @@ namespace Editor
                     WLinearColor.Blue,
                     WLinearColor.Blue,
                     WLinearColor.Red,
-                    WLinearColor.Green
+                    WLinearColor.Green,
+                    WLinearColor.White,
                 };
 
             List<AxisDistanceResult> results = new List<AxisDistanceResult>();
 
-            for (int i = 0; i < translationAABB.Length; i++)
+            var gizmoBoxes = GetAABBBoundsForMode(m_mode);
+            for (int i = 0; i < gizmoBoxes.Length; i++)
             {
-                m_lineBatcher.DrawBox(translationAABB[i].Min + m_transform.Position, translationAABB[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
+                m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_transform.Position, gizmoBoxes[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
             }
 
             // Update Highlight Status of Models. ToDo: Less awful.
-            m_meshes[1].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.X);
-            m_meshes[2].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Y);
-            m_meshes[3].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Z);
-            m_meshes[4].Highlighted = m_selectedAxes == SelectedAxes.XY;
-            m_meshes[5].Highlighted = m_selectedAxes == SelectedAxes.XZ;
-            m_meshes[6].Highlighted = m_selectedAxes == SelectedAxes.YZ;
+            //m_meshes[1].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.X);
+            //m_meshes[2].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Y);
+            //m_meshes[3].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Z);
+            //m_meshes[4].Highlighted = m_selectedAxes == SelectedAxes.XY;
+            //m_meshes[5].Highlighted = m_selectedAxes == SelectedAxes.XZ;
+            //m_meshes[6].Highlighted = m_selectedAxes == SelectedAxes.YZ;
         }
 
         private bool CheckSelectedAxes(WRay ray)
         {
+            // Convert the ray into local space so we can use axis-aligned checks, this solves the checking problem
+            // when the gizmo is rotated due to being in Local mode.
             WRay localRay = new WRay();
             localRay.Direction = Vector3.Transform(ray.Direction, m_transform.Rotation.Inverted());
-            localRay.Origin = ray.Origin - m_transform.Position;
+            localRay.Origin = Vector3.Transform(ray.Origin, m_transform.Rotation.Inverted()) - m_transform.Position;
+
+            List<AxisDistanceResult> results = new List<AxisDistanceResult>();
 
             if (m_mode == TransformMode.Translation)
             {
-                float boxLength = 75f;
-                float boxHalfWidth = 5;
-
-                AABox[] translationAABB = new[]
-                {
-                    // X Axis
-                    new AABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
-                    // Y Axis
-                    new AABox(new Vector3(-boxHalfWidth, 0, -boxHalfWidth), new Vector3(boxHalfWidth, boxLength, boxHalfWidth)),
-                    // Z Axis
-                    new AABox(new Vector3(-boxHalfWidth, -boxHalfWidth, 0), new Vector3(boxHalfWidth, boxHalfWidth, boxLength)),
-                    // YX Axes
-                    new AABox(new Vector3(0, 0, -2), new Vector3(boxHalfWidth*6, boxHalfWidth*6, 2)),
-                    // YZ Axes
-                    new AABox(new Vector3(0, -2, 0), new Vector3(boxHalfWidth*6, 2, boxHalfWidth*6)),
-                    // XZ Axes
-                    new AABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
-                };
-
-                List<AxisDistanceResult> results = new List<AxisDistanceResult>();
-
+                AABox[] translationAABB = GetAABBBoundsForMode(TransformMode.Translation);
                 for (int i = 0; i < translationAABB.Length; i++)
                 {
                     float intersectDist;
@@ -186,25 +222,72 @@ namespace Editor
                         results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
                     }
                 }
+            }
+            else if (m_mode == TransformMode.Rotation)
+            {
+                // We'll use a combination of AABB and Distance checks to give us the quarter-circles we need.
+                AABox[] rotationAABB = GetAABBBoundsForMode(TransformMode.Rotation);
 
-                if (results.Count == 0)
+                for (int i = 0; i < rotationAABB.Length; i++)
                 {
-                    m_selectedAxes = SelectedAxes.None;
-                    return false;
+                    float intersectDist;
+                    if (WMath.RayIntersectsAABB(localRay, rotationAABB[i].Min, rotationAABB[i].Max, out intersectDist))
+                    {
+                        Vector3 intersectPoint = localRay.Origin + (localRay.Direction * intersectDist);
+
+                        // Convert this aabb check into a radius check so we clip it by the semi-circles
+                        // that the rotation tool actually is.
+                        if (intersectPoint.Length > 100f)
+                            continue;
+
+                        results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
+                    }
                 }
+            }
+            else if (m_mode == TransformMode.Scale)
+            {
+                AABox[] scaleAABB = GetAABBBoundsForMode(TransformMode.Scale);
+                for (int i = 0; i < scaleAABB.Length; i++)
+                {
+                    float intersectDist;
+                    if (WMath.RayIntersectsAABB(localRay, scaleAABB[i].Min, scaleAABB[i].Max, out intersectDist))
+                    {
+                        // Special-case here to give the center scale point overriding priority. Because we intersected
+                        // it, we can just override its distance to zero to make it clickable through the other bounding boxes.
+                        if ((SelectedAxes)i + 1 == SelectedAxes.All)
+                            intersectDist = 0f;
 
-                // If we get an intersection, sort them by the closest intersection distance.
-                results.Sort((x, y) => x.Distance.CompareTo(y.Distance));
-
-                m_selectedAxes = results[0].Axis;
-                return true;
+                        results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
+                    }
+                }
             }
 
-            return false;
+            if (results.Count == 0)
+            {
+                m_selectedAxes = SelectedAxes.None;
+                return false;
+            }
+
+            // If we get an intersection, sort them by the closest intersection distance.
+            results.Sort((x, y) => x.Distance.CompareTo(y.Distance));
+            m_selectedAxes = results[0].Axis;
+
+            // Store where the mouse hit on the first frame in world space. This means converting the ray back to worldspace.
+            Vector3 localHitPoint = localRay.Origin + (localRay.Direction * results[0].Distance);
+            m_hitPoint = Vector3.Transform(localHitPoint, m_transform.Rotation) + m_transform.Position;
+            return true;
         }
 
         private bool TransformFromInput(WRay ray, Vector3 cameraPos)
         {
+            if (m_mode != TransformMode.Translation)
+                WrapCursor();
+
+            // Store the cursor position in viewport coordinates.
+            Vector2 screenDimensions = App.GetScreenGeometry();
+            Vector2 cursorPos = App.GetCursorPosition();
+            Vector2 mouseCoords = new Vector2(((2f * cursorPos.X) / screenDimensions.X) - 1f, (1f - ((2f * cursorPos.Y) / screenDimensions.Y))); //[-1,1] range
+
             if (m_mode == TransformMode.Translation)
             {
                 // Create a Translation Plane
@@ -233,7 +316,6 @@ namespace Editor
                 m_translationPlane = new WPlane(planeNormal, m_transform.Position);
                 float intersectDist;
                 bool bIntersectsPlane = m_translationPlane.RayIntersectsPlane(ray, out intersectDist);
-                m_lineBatcher.DrawLine(m_transform.Position, m_transform.Position + (planeNormal * 500), WLinearColor.Yellow, 5, 0);
 
                 //Console.WriteLine("planeNormal: {0} axisA: {1}, axisB: {2} numAxis: {3} selectedAxes: {4} intersectsPlane: {5} @dist: {6}", planeNormal, axisA, axisB, numAxis, m_selectedAxes, bIntersectsPlane, intersectDist);
                 if (bIntersectsPlane)
@@ -261,7 +343,7 @@ namespace Editor
 
                     // This is used to set the offset to the gizmo the mouse cursor is from the origin of the gizmo on the first frame
                     // that you click on the gizmo.
-                    if(!m_hasSetMouseOffset)
+                    if (!m_hasSetMouseOffset)
                     {
                         m_translateOffset = m_transform.Position - newPos;
                         m_deltaTranslation = Vector3.Zero;
@@ -295,7 +377,57 @@ namespace Editor
             }
             else if (m_mode == TransformMode.Rotation)
             {
+                Vector3 rotationAxis;
+                if (m_selectedAxes == SelectedAxes.X) rotationAxis = Vector3.UnitX;
+                else if (m_selectedAxes == SelectedAxes.Y) rotationAxis = Vector3.UnitY;
+                else rotationAxis = Vector3.UnitZ;
 
+                // Convert these from [0-1] to [-1, 1] to match our mouse coords.
+                Vector2 lineOrigin = (WSceneView.UnprojectWorldToViewport(m_hitPoint) * 2) - Vector2.One;
+                Vector2 lineEnd = (WSceneView.UnprojectWorldToViewport(m_hitPoint + m_moveDir) * 2) - Vector2.One;
+
+                lineOrigin.Y = -lineOrigin.Y;
+                lineEnd.Y = -lineEnd.Y;
+
+
+                Vector2 lineDir = (lineEnd - lineOrigin).Normalized();
+                float rotAmount = Vector2.Dot(lineDir, mouseCoords + m_wrapOffset - lineOrigin) * 180f;
+                //Console.WriteLine("lineDir: {0} rotAmount: {1} mc-lo: {2}", lineDir, rotAmount, (mouseCoords-lineOrigin));
+
+                if (float.IsNaN(rotAmount))
+                {
+                    Console.WriteLine("rotAmountNaN!");
+                    return false;
+                }
+
+                if (!m_hasSetMouseOffset)
+                {
+                    m_rotateOffset = -rotAmount;
+                    m_deltaRotation = Quaternion.Identity;
+                    m_hasSetMouseOffset = true;
+                    return false;
+                }
+
+                // Apply Rotation
+                float oldRotAmount = rotAmount;
+                rotAmount += m_rotateOffset;
+
+                Quaternion oldRot = m_transform.Rotation;
+                m_transform.Rotation = Quaternion.FromAxisAngle(rotationAxis, WMath.DegreesToRadians(rotAmount));
+                m_deltaRotation = m_transform.Rotation * oldRot.Inverted();
+
+                //if(m_transformSpace == TransformSpace.Local)
+                //m_transform.Rotation *= m_deltaRotation;
+
+                // Add to Total Rotation recorded for UI.
+                if (m_selectedAxes == SelectedAxes.X) m_totalRotation.X = rotAmount;
+                else if (m_selectedAxes == SelectedAxes.Y) m_totalRotation.Y = rotAmount;
+                else m_totalRotation.Z = rotAmount;
+
+                if (!m_hasTransformed && rotAmount != 0f)
+                    m_hasTransformed = true;
+
+                return m_hasTransformed;
             }
             else if (m_mode == TransformMode.Scale)
             {
@@ -303,21 +435,6 @@ namespace Editor
             }
 
             return false;
-        }
-
-
-        public override void ReleaseResources()
-        {
-            for (int i = 0; i < m_meshes.Length; i++)
-                m_meshes[i].ReleaseResources();
-        }
-
-        public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
-        {
-            // Construct a model matrix for the gizmo mesh to render at.
-            Matrix4 modelMatrix = Matrix4.CreateTranslation(m_transform.Position) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateScale(m_transform.LocalScale);
-            for (int i = 0; i < m_meshes.Length; i++)
-                m_meshes[i].Render(viewMatrix, projMatrix, modelMatrix);
         }
 
         private bool ContainsAxis(SelectedAxes valToCheck, SelectedAxes majorAxis)
@@ -337,5 +454,120 @@ namespace Editor
 
             return false;
         }
+
+        private AABox[] GetAABBBoundsForMode(TransformMode mode)
+        {
+            switch (mode)
+            {
+                case TransformMode.Translation:
+                    float boxLength = 100f;
+                    float boxHalfWidth = 5;
+
+                    return new[]
+                    {
+                        // X Axis
+                        new AABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
+                        // Y Axis
+                        new AABox(new Vector3(-boxHalfWidth, 0, -boxHalfWidth), new Vector3(boxHalfWidth, boxLength, boxHalfWidth)),
+                        // Z Axis
+                        new AABox(new Vector3(-boxHalfWidth, -boxHalfWidth, 0), new Vector3(boxHalfWidth, boxHalfWidth, boxLength)),
+                        // YX Axes
+                        new AABox(new Vector3(0, 0, -2), new Vector3(boxHalfWidth*6, boxHalfWidth*6, 2)),
+                        // YZ Axes
+                        new AABox(new Vector3(0, -2, 0), new Vector3(boxHalfWidth*6, 2, boxHalfWidth*6)),
+                        // XZ Axes
+                        new AABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
+                    };
+
+                case TransformMode.Rotation:
+                    float radius = 100f;
+
+                    return new[]
+                    {
+                         // Y Axis (XZ Plane)
+                        new AABox(new Vector3(-2, 0, 0), new Vector3(2, radius, radius)),
+                        // Z Axis (XY Plane)
+                        new AABox(new Vector3(0, -2, 0), new Vector3(radius, 2, radius)),
+                        // X Axis (YZ Plane)
+                        new AABox(new Vector3(0, 0, -2), new Vector3(radius, radius, 2)),
+                    };
+
+                case TransformMode.Scale:
+                    float scaleLength = 100f;
+                    float scaleHalfWidth = 5;
+                    float scaleCornerSize = 38;
+
+                    return new[]
+                    {
+                        // X Axis
+                        new AABox(new Vector3(0, -scaleHalfWidth, -scaleHalfWidth), new Vector3(scaleLength, scaleHalfWidth, scaleHalfWidth)),
+                        // Y Axis
+                        new AABox(new Vector3(-scaleHalfWidth, 0, -scaleHalfWidth), new Vector3(scaleHalfWidth, scaleLength, scaleHalfWidth)),
+                        // Z Axis
+                        new AABox(new Vector3(-scaleHalfWidth, -scaleHalfWidth, 0), new Vector3(scaleHalfWidth, scaleHalfWidth, scaleLength)),
+                        // YX Axes
+                        new AABox(new Vector3(0, 0, -2), new Vector3(scaleCornerSize, scaleCornerSize, 2)),
+                        // YZ Axes
+                        new AABox(new Vector3(0, -2, 0), new Vector3(scaleCornerSize, 2, scaleCornerSize)),
+                        // XZ Axes
+                        new AABox(new Vector3(-2, 0, 0), new Vector3(2, scaleCornerSize, scaleCornerSize)),
+                        // Center
+                        new AABox(new Vector3(-7, -7, -7), new Vector3(7, 7, 7))
+                  };
+            }
+
+            return new AABox[0];
+        }
+
+        private void WrapCursor()
+        {
+            Vector2 screenSize = App.GetScreenGeometry();
+            Vector2 cursorPos = App.GetCursorPosition();
+
+            // Horizontal
+            if (cursorPos.X >= screenSize.X - 1)
+            {
+                App.SetCursorPosition(1, cursorPos.Y);
+                m_wrapOffset.X += 2f;
+            }
+            else if (cursorPos.X <= 0)
+            {
+                App.SetCursorPosition(screenSize.X - 2, cursorPos.Y);
+                m_wrapOffset.X -= 2f;
+            }
+
+            cursorPos = App.GetCursorPosition();
+
+            // Vertical
+            if (cursorPos.Y >= screenSize.Y - 1)
+            {
+                App.SetCursorPosition(cursorPos.X, 1);
+                m_wrapOffset.Y -= 2f;
+            }
+            else if (cursorPos.Y <= 0)
+            {
+                App.SetCursorPosition(cursorPos.X, screenSize.Y - 2);
+                m_wrapOffset.Y += 2f;
+            }
+        }
+
+        #region Rendering
+        public override void ReleaseResources()
+        {
+            for (int i = 0; i < m_meshes.Length; i++)
+                m_meshes[i].ReleaseResources();
+        }
+
+        public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        {
+
+
+            // Construct a model matrix for the gizmo mesh to render at.
+            //Matrix4 modelMatrix = Matrix4.CreateTranslation(m_transform.Position) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateScale(m_transform.LocalScale);
+            Matrix4 modelMatrix = Matrix4.CreateScale(m_transform.LocalScale) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateTranslation(m_transform.Position);
+            for (int i = 0; i < m_meshes.Length; i++)
+                m_meshes[i].Render(viewMatrix, projMatrix, modelMatrix);
+        }
+        #endregion
     }
 }
