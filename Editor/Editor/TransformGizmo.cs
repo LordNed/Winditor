@@ -47,6 +47,11 @@ namespace Editor
         private Vector3 m_hitPoint;
         private Vector3 m_moveDir;
         private Vector2 m_wrapOffset;
+        private float m_cameraDistance;
+
+        private bool mFlipScaleX;
+        private bool mFlipScaleY;
+        private bool mFlipScaleZ;
 
         // Delta Transforms
         private Vector3 m_deltaTranslation;
@@ -57,9 +62,14 @@ namespace Editor
         private Vector3 m_totalRotation; // Stored as Vec3 for UI Purposes.
         private float m_rotateOffset;
 
+
+        private Vector3 m_deltaScale;
+        private float m_scaleOffset;
+
         // hack...
         private WLineBatcher m_lineBatcher;
         private SimpleObjRenderer[] m_meshes;
+
 
         public WTransformGizmo(WLineBatcher lines)
         {
@@ -175,6 +185,12 @@ namespace Editor
                 TransformFromInput(mouseRay, cameraPos);
             }
 
+            // Update camera distance to our camera.
+            if((!m_isTransforming) || (m_mode != TransformMode.Translation))
+            {
+                m_cameraDistance = (WSceneView.GetCameraPos() - m_transform.Position).Length;
+            }
+
             WLinearColor[] gizmoColors = new[]
             {
                     WLinearColor.Red,
@@ -211,6 +227,7 @@ namespace Editor
             localRay.Direction = Vector3.Transform(ray.Direction, m_transform.Rotation.Inverted());
             localRay.Origin = Vector3.Transform(ray.Origin, m_transform.Rotation.Inverted()) - m_transform.Position;
 
+            m_lineBatcher.DrawLine(localRay.Origin, localRay.Origin + (localRay.Direction * 10000), WLinearColor.White, 25, 5);
             List<AxisDistanceResult> results = new List<AxisDistanceResult>();
 
             if (m_mode == TransformMode.Translation)
@@ -499,14 +516,21 @@ namespace Editor
                 if (scaleAmount < 1f)
                     scaleAmount = 1f / (-(scaleAmount - 1f) + 1f);
 
-                Vector3 oldScale = m_totalScale;
+                Vector3 oldScale = m_transform.LocalScale;
+                Vector3 totalScale = Vector3.One;
+                //m_totalScale = Vector3.One;
+                //if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_totalScale.X = scaleAmount;
+                //if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_totalScale.Y = scaleAmount;
+                //if (ContainsAxis(m_selectedAxes, SelectedAxes.Z)) m_totalScale.Z = scaleAmount;
 
-                m_totalScale = Vector3.One;
-                if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_totalScale.X = scaleAmount;
-                if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_totalScale.Y = scaleAmount;
-                if (ContainsAxis(m_selectedAxes, SelectedAxes.Z)) m_totalScale.Z = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) totalScale.X = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) totalScale.Y = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, SelectedAxes.Z)) totalScale.Z = scaleAmount;
 
-                m_deltaScale = m_totalScale / oldScale;
+                //m_deltaScale = m_totalScale / oldScale;
+                m_deltaScale = new Vector3(totalScale.X / oldScale.X, totalScale.Y / oldScale.Y, totalScale.Z / oldScale.Z);
+                m_transform.LocalScale = m_deltaScale;
+
                 if (!m_hasTransformed && (scaleAmount != 1f))
                     m_hasTransformed = true;
 
@@ -542,7 +566,7 @@ namespace Editor
                     float boxLength = 100f;
                     float boxHalfWidth = 5;
 
-                    return new[]
+                    var translationAABB =  new[]
                     {
                         // X Axis
                         new AABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
@@ -557,11 +581,14 @@ namespace Editor
                         // XZ Axes
                         new AABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
                     };
+                    for (int i = 0; i < translationAABB.Length; i++)
+                        translationAABB[i].ScaleBy(m_transform.LocalScale);
+                    return translationAABB;
 
                 case TransformMode.Rotation:
                     float radius = 100f;
 
-                    return new[]
+                    var rotationAABB = new[]
                     {
                          // Y Axis (XZ Plane)
                         new AABox(new Vector3(-2, 0, 0), new Vector3(2, radius, radius)),
@@ -571,12 +598,16 @@ namespace Editor
                         new AABox(new Vector3(0, 0, -2), new Vector3(radius, radius, 2)),
                     };
 
+                    for (int i = 0; i < rotationAABB.Length; i++)
+                        rotationAABB[i].ScaleBy(m_transform.LocalScale);
+                    return rotationAABB;
+
                 case TransformMode.Scale:
                     float scaleLength = 100f;
                     float scaleHalfWidth = 5;
                     float scaleCornerSize = 38;
 
-                    return new[]
+                    var scaleAABB =  new[]
                     {
                         // X Axis
                         new AABox(new Vector3(0, -scaleHalfWidth, -scaleHalfWidth), new Vector3(scaleLength, scaleHalfWidth, scaleHalfWidth)),
@@ -593,6 +624,10 @@ namespace Editor
                         // Center
                         new AABox(new Vector3(-7, -7, -7), new Vector3(7, 7, 7))
                   };
+
+                    for (int i = 0; i < scaleAABB.Length; i++)
+                        scaleAABB[i].ScaleBy(m_transform.LocalScale);
+                    return scaleAABB;
             }
 
             return new AABox[0];
@@ -639,10 +674,10 @@ namespace Editor
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
-
+            // hack
+                m_transform.LocalScale = Vector3.One * (0.1f * (m_cameraDistance / 100f));
 
             // Construct a model matrix for the gizmo mesh to render at.
-            //Matrix4 modelMatrix = Matrix4.CreateTranslation(m_transform.Position) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateScale(m_transform.LocalScale);
             Matrix4 modelMatrix = Matrix4.CreateScale(m_transform.LocalScale) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateTranslation(m_transform.Position);
             for (int i = 0; i < m_meshes.Length; i++)
                 m_meshes[i].Render(viewMatrix, projMatrix, modelMatrix);
