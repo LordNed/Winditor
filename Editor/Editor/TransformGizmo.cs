@@ -214,7 +214,7 @@ namespace Editor
             var gizmoBoxes = GetAABBBoundsForMode(m_mode);
             for (int i = 0; i < gizmoBoxes.Length; i++)
             {
-                m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_transform.Position, gizmoBoxes[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
+                //m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_transform.Position, gizmoBoxes[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
             }
 
             // Update Highlight Status of Models.
@@ -224,7 +224,8 @@ namespace Editor
             {
                 for(int i = 0; i < m_gizmoMeshes[gizmoIndex].Length; i++)
                 {
-                    m_gizmoMeshes[gizmoIndex][i].Highlighted = ContainsAxis(m_selectedAxes, (SelectedAxes)i+1);
+                    SelectedAxes axis = (SelectedAxes)(m_mode == TransformMode.Rotation ? i + 1 : i); // Rotation doesn't have a center, thus it needs an index fixup.
+                    m_gizmoMeshes[gizmoIndex][i].Highlighted = ContainsAxis(m_selectedAxes, axis);
                 }
             }
         }
@@ -257,17 +258,25 @@ namespace Editor
                 // We'll use a combination of AABB and Distance checks to give us the quarter-circles we need.
                 AABox[] rotationAABB = GetAABBBoundsForMode(TransformMode.Rotation);
 
+                // ToDo: this is dumb.
+                float onscreenScale = 0f;
+                onscreenScale += m_transform.LocalScale.X;
+                onscreenScale += m_transform.LocalScale.Y;
+                onscreenScale += m_transform.LocalScale.Z;
+                onscreenScale /= 3f;
+
                 for (int i = 0; i < rotationAABB.Length; i++)
                 {
                     float intersectDist;
                     if (WMath.RayIntersectsAABB(localRay, rotationAABB[i].Min, rotationAABB[i].Max, out intersectDist))
                     {
                         Vector3 intersectPoint = localRay.Origin + (localRay.Direction * intersectDist);
-
                         // Convert this aabb check into a radius check so we clip it by the semi-circles
                         // that the rotation tool actually is.
-                        if (intersectPoint.Length > 100f)
+                        if (intersectPoint.Length > 105f * onscreenScale)
+                        {
                             continue;
+                        }
 
                         results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
                     }
