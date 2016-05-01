@@ -68,7 +68,7 @@ namespace Editor
 
         // hack...
         private WLineBatcher m_lineBatcher;
-        private SimpleObjRenderer[] m_meshes;
+        private SimpleObjRenderer[][] m_gizmoMeshes;
 
 
         public WTransformGizmo(WLineBatcher lines)
@@ -81,17 +81,24 @@ namespace Editor
             m_mode = TransformMode.Translation;
             m_selectedAxes = SelectedAxes.None;
 
-            string[] meshNames = new[]
+            string[][] meshNames = new string[][]
             {
-                /*"TranslateCenter", "TranslateX", "TranslateY", "TranslateZ", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ", "RotateX", "RotateY", "RotateZ",*/ "ScaleCenter", "ScaleX", "ScaleY", "ScaleZ", "ScaleLinesXY", "ScaleLinesXZ", "ScaleLinesYZ", 
+                new string[] {"TranslateCenter", "TranslateX", "TranslateY", "TranslateZ", "TranslateLinesXY", "TranslateLinesXZ", "TranslateLinesYZ" },
+                new string[] { "RotateX", "RotateY", "RotateZ" },
+                new string[] { "ScaleCenter", "ScaleX", "ScaleY", "ScaleZ", "ScaleLinesXY", "ScaleLinesXZ", "ScaleLinesYZ" }
             };
 
-            m_meshes = new SimpleObjRenderer[meshNames.Length];
-            for (int i = 0; i < m_meshes.Length; i++)
+            m_gizmoMeshes = new SimpleObjRenderer[meshNames.Length][];
+            for (int i = 0; i < m_gizmoMeshes.Length; i++)
             {
-                Obj obj = new Obj();
-                obj.Load("resources/editor/" + meshNames[i] + ".obj");
-                m_meshes[i] = new SimpleObjRenderer(obj);
+                m_gizmoMeshes[i] = new SimpleObjRenderer[meshNames[i].Length];
+                
+                for(int j = 0; j < m_gizmoMeshes[i].Length; j++)
+                {
+                    Obj obj = new Obj();
+                    obj.Load("resources/editor/" + meshNames[i][j] + ".obj");
+                    m_gizmoMeshes[i][j] = new SimpleObjRenderer(obj);
+                }
             }
         }
 
@@ -186,7 +193,7 @@ namespace Editor
             }
 
             // Update camera distance to our camera.
-            if((!m_isTransforming) || (m_mode != TransformMode.Translation))
+            if ((!m_isTransforming) || (m_mode != TransformMode.Translation))
             {
                 m_cameraDistance = (WSceneView.GetCameraPos() - m_transform.Position).Length;
             }
@@ -210,13 +217,16 @@ namespace Editor
                 m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_transform.Position, gizmoBoxes[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
             }
 
-            // Update Highlight Status of Models. ToDo: Less awful.
-            //m_meshes[1].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.X);
-            //m_meshes[2].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Y);
-            //m_meshes[3].Highlighted = ContainsAxis(m_selectedAxes, SelectedAxes.Z);
-            //m_meshes[4].Highlighted = m_selectedAxes == SelectedAxes.XY;
-            //m_meshes[5].Highlighted = m_selectedAxes == SelectedAxes.XZ;
-            //m_meshes[6].Highlighted = m_selectedAxes == SelectedAxes.YZ;
+            // Update Highlight Status of Models.
+
+            int gizmoIndex = (int)m_mode - 1;
+            if (gizmoIndex >= 0)
+            {
+                for(int i = 0; i < m_gizmoMeshes[gizmoIndex].Length; i++)
+                {
+                    m_gizmoMeshes[gizmoIndex][i].Highlighted = ContainsAxis(m_selectedAxes, (SelectedAxes)i+1);
+                }
+            }
         }
 
         private bool CheckSelectedAxes(WRay ray)
@@ -500,7 +510,7 @@ namespace Editor
                 float scaleAmount = Vector2.Dot(lineDir, mouseCoords + m_wrapOffset - lineOrigin) * 5f;
 
                 // Set their initial offset if we haven't already
-                if(!m_hasSetMouseOffset)
+                if (!m_hasSetMouseOffset)
                 {
                     m_scaleOffset = -scaleAmount;
                     m_deltaScale = Vector3.One;
@@ -542,17 +552,20 @@ namespace Editor
 
         private bool ContainsAxis(SelectedAxes valToCheck, SelectedAxes majorAxis)
         {
-            if (!(majorAxis == SelectedAxes.X || majorAxis == SelectedAxes.Y || majorAxis == SelectedAxes.Z))
-                throw new ArgumentException("Only use X, Y, or Z here.", "majorAxis");
-
             switch (majorAxis)
             {
                 case SelectedAxes.X:
-                    return valToCheck == SelectedAxes.X || valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.XZ;
+                    return valToCheck == SelectedAxes.X || valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.All;
                 case SelectedAxes.Y:
-                    return valToCheck == SelectedAxes.Y || valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.YZ;
+                    return valToCheck == SelectedAxes.Y || valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.YZ || valToCheck == SelectedAxes.All;
                 case SelectedAxes.Z:
-                    return valToCheck == SelectedAxes.Z || valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.YZ;
+                    return valToCheck == SelectedAxes.Z || valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.YZ || valToCheck == SelectedAxes.All;
+                case SelectedAxes.XY:
+                    return valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.All;
+                case SelectedAxes.XZ:
+                    return valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.All;
+                case SelectedAxes.YZ:
+                    return valToCheck == SelectedAxes.YZ || valToCheck == SelectedAxes.All;
             }
 
             return false;
@@ -566,7 +579,7 @@ namespace Editor
                     float boxLength = 100f;
                     float boxHalfWidth = 5;
 
-                    var translationAABB =  new[]
+                    var translationAABB = new[]
                     {
                         // X Axis
                         new AABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
@@ -607,7 +620,7 @@ namespace Editor
                     float scaleHalfWidth = 5;
                     float scaleCornerSize = 38;
 
-                    var scaleAABB =  new[]
+                    var scaleAABB = new[]
                     {
                         // X Axis
                         new AABox(new Vector3(0, -scaleHalfWidth, -scaleHalfWidth), new Vector3(scaleLength, scaleHalfWidth, scaleHalfWidth)),
@@ -668,19 +681,29 @@ namespace Editor
         #region Rendering
         public override void ReleaseResources()
         {
-            for (int i = 0; i < m_meshes.Length; i++)
-                m_meshes[i].ReleaseResources();
+            for (int i = 0; i < m_gizmoMeshes.Length; i++)
+            {
+                for (int j = 0; j < m_gizmoMeshes[i].Length; j++)
+                    m_gizmoMeshes[i][j].ReleaseResources();
+            }
         }
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
             // hack
-                m_transform.LocalScale = Vector3.One * (0.1f * (m_cameraDistance / 100f));
+            m_transform.LocalScale = Vector3.One * (0.25f * (m_cameraDistance / 100f));
 
             // Construct a model matrix for the gizmo mesh to render at.
             Matrix4 modelMatrix = Matrix4.CreateScale(m_transform.LocalScale) * Matrix4.CreateFromQuaternion(m_transform.Rotation) * Matrix4.CreateTranslation(m_transform.Position);
-            for (int i = 0; i < m_meshes.Length; i++)
-                m_meshes[i].Render(viewMatrix, projMatrix, modelMatrix);
+
+            int gizmoIndex = (int)m_mode-1;
+            if(gizmoIndex >= 0)
+            {
+                for (int j = 0; j < m_gizmoMeshes[gizmoIndex].Length; j++)
+                {
+                    m_gizmoMeshes[gizmoIndex][j].Render(viewMatrix, projMatrix, modelMatrix);
+                }
+            }
         }
         #endregion
     }
