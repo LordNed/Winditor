@@ -31,8 +31,6 @@ namespace Editor
         private int m_fragmentAddress = -1;
         private int m_programAddress = -1;
 
-        private bool m_disposed;
-
         public Shader(string name)
         {
             Name = name;
