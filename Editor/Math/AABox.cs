@@ -18,7 +18,7 @@ namespace Editor
             Min = min;
             Max = max;
 
-            Center = (max - min) / 2;
+            Center = (max + min) / 2;
         }
 
         public bool Contains(Vector3 point)
