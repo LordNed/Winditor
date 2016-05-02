@@ -61,6 +61,7 @@ namespace Editor
 
             m_undoLimit = limit;
             m_undoStack.SetMaxSize(m_undoLimit);
+            m_redoStack.SetMaxSize(m_undoLimit);
         }
     }
 }
