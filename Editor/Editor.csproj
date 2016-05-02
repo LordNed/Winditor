@@ -106,6 +106,9 @@
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\SimpleObjRenderer.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
+    <Compile Include="Editor\UndoRedo\IAction.cs" />
+    <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
+    <Compile Include="Editor\UndoRedo\UndoStack.cs" />
     <Compile Include="Editor\WindEditor.cs" />
     <Compile Include="Editor\LinearColor.cs" />
     <Compile Include="Editor\LineBatcher.cs" />
