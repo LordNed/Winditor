@@ -6,40 +6,46 @@ using System.Collections.Generic;
 // http://pastebin.com/raw/QRHEcsW2
 namespace Editor
 {
+    public enum FTransformMode
+    {
+        None,
+        Translation,
+        Rotation,
+        Scale
+    }
+
+    public enum FTransformSpace
+    {
+        Local,
+        World
+    }
+
+    public enum FSelectedAxes
+    {
+        None,//    = 0x0,
+        X,//       = 0x1,
+        Y,//       = 0x2,
+        Z,//       = 0x4,
+        XY,//      = X | Y,
+        XZ,//      = X | Z,
+        YZ,//      = Y | Z,
+        All,//     = X | Y | Z
+    }
+
     class WTransformGizmo : PrimitiveComponent
     {
-        public enum TransformMode
-        {
-            None,
-            Translation,
-            Rotation,
-            Scale
-        }
+        public FSelectedAxes SelectedAxes { get { return m_selectedAxes; } }
+        public FTransformMode Mode { get { return m_mode; } }
+        public FTransformSpace TransformSpace { get { return m_transformSpace; } }
+        public bool IsTransforming { get { return m_isTransforming; } }
 
-        public enum TransformSpace
-        {
-            Local,
-            World
-        }
-
-        enum SelectedAxes
-        {
-            None,//    = 0x0,
-            X,//       = 0x1,
-            Y,//       = 0x2,
-            Z,//       = 0x4,
-            XY,//      = X | Y,
-            XZ,//      = X | Z,
-            YZ,//      = Y | Z,
-            All,//     = X | Y | Z
-        }
 
         struct AxisDistanceResult
         {
-            public SelectedAxes Axis;
+            public FSelectedAxes Axis;
             public float Distance;
 
-            public AxisDistanceResult(SelectedAxes axis, float intersectDist)
+            public AxisDistanceResult(FSelectedAxes axis, float intersectDist)
             {
                 Axis = axis;
                 Distance = intersectDist;
@@ -47,9 +53,9 @@ namespace Editor
         }
 
         //private WTransform m_transform;
-        private TransformMode m_mode;
-        private SelectedAxes m_selectedAxes = SelectedAxes.None;
-        private TransformSpace m_transformSpace = TransformSpace.World;
+        private FTransformMode m_mode;
+        private FSelectedAxes m_selectedAxes = FSelectedAxes.None;
+        private FTransformSpace m_transformSpace = FTransformSpace.World;
 
         private bool m_isTransforming;
         private bool m_hasTransformed;
@@ -104,7 +110,7 @@ namespace Editor
             // hack...
             m_lineBatcher = lines;
 
-            SetMode(TransformMode.Translation);
+            SetMode(FTransformMode.Translation);
 
             string[][] meshNames = new string[][]
             {
@@ -127,28 +133,28 @@ namespace Editor
             }
         }
 
-        public void SetMode(TransformMode mode)
+        public void SetMode(FTransformMode mode)
         {
             m_mode = mode;
 
             switch (mode)
             {
-                case TransformMode.Translation:
+                case FTransformMode.Translation:
                     m_deltaRotation = Quaternion.Identity;
                     m_deltaScale = Vector3.One;
                     break;
-                case TransformMode.Rotation:
+                case FTransformMode.Rotation:
                     m_deltaTranslation = Vector3.Zero;
                     m_deltaScale = Vector3.One;
                     break;
-                case TransformMode.Scale:
+                case FTransformMode.Scale:
                     m_deltaTranslation = Vector3.Zero;
                     m_deltaRotation = Quaternion.Identity;
                     break;
             }
         }
 
-        private void StartTransform()
+        public void StartTransform()
         {
             m_isTransforming = true;
             m_hasTransformed = false;
@@ -160,13 +166,13 @@ namespace Editor
             m_totalScale = Vector3.One;
 
             // Set the rotaiton direction.
-            if (m_mode == TransformMode.Rotation)
+            if (m_mode == FTransformMode.Rotation)
             {
                 // We need to determine which side of the gizmo they are on, so that goes the expected direction when
                 // we pull up/down in screenspace.
                 Vector3 rotAxis;
-                if (m_selectedAxes == SelectedAxes.X) rotAxis = Vector3.UnitX;
-                if (m_selectedAxes == SelectedAxes.Y) rotAxis = Vector3.UnitY;
+                if (m_selectedAxes == FSelectedAxes.X) rotAxis = Vector3.UnitX;
+                if (m_selectedAxes == FSelectedAxes.Y) rotAxis = Vector3.UnitY;
                 else rotAxis = Vector3.UnitZ;
 
                 Vector3 dirFromGizmoToHitPoint = (m_hitPoint - m_position).Normalized();
@@ -174,23 +180,29 @@ namespace Editor
             }
 
             // Set the scale direction.
-            else if (m_mode == TransformMode.Scale)
+            else if (m_mode == FTransformMode.Scale)
             {
                 // If we're transforming only on one axis, then the directon is in the selected axis.
                 if(GetNumSelectedAxes() == 1)
                 {
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_moveDir = Vector3.Transform(Vector3.UnitX, m_rotation);
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_moveDir = Vector3.Transform(Vector3.UnitY, m_rotation);
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.X)) m_moveDir = Vector3.Transform(Vector3.UnitX, m_rotation);
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) m_moveDir = Vector3.Transform(Vector3.UnitY, m_rotation);
                     else                                              m_moveDir = Vector3.Transform(Vector3.UnitZ, m_rotation);
                 }
                 // Two axes however, means interpolate between both.
                 if(GetNumSelectedAxes() == 2)
                 {
-                    Vector3 axisA = ContainsAxis(m_selectedAxes, SelectedAxes.X) ? Vector3.Transform(Vector3.UnitX, m_rotation) : Vector3.Transform(Vector3.UnitY, m_rotation);
-                    Vector3 axisB = ContainsAxis(m_selectedAxes, SelectedAxes.Z) ? Vector3.Transform(Vector3.UnitZ, m_rotation) : Vector3.Transform(Vector3.UnitY, m_rotation);
+                    Vector3 axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? Vector3.Transform(Vector3.UnitX, m_rotation) : Vector3.Transform(Vector3.UnitY, m_rotation);
+                    Vector3 axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Z) ? Vector3.Transform(Vector3.UnitZ, m_rotation) : Vector3.Transform(Vector3.UnitY, m_rotation);
                     m_moveDir = (axisA + axisB) / 2f;
                 }
             }
+        }
+
+        public void EndTransform()
+        {
+            m_isTransforming = false;
+            m_selectedAxes = FSelectedAxes.None;
         }
 
         private int GetNumSelectedAxes()
@@ -198,22 +210,16 @@ namespace Editor
             // ToDo: This seems kind of stupid...
             switch (m_selectedAxes)
             {
-                case SelectedAxes.X: 
-                case SelectedAxes.Y:
-                case SelectedAxes.Z: return 1;
-                case SelectedAxes.XY:
-                case SelectedAxes.YZ:
-                case SelectedAxes.XZ: return 2;
-                case SelectedAxes.All: return 3;
+                case FSelectedAxes.X: 
+                case FSelectedAxes.Y:
+                case FSelectedAxes.Z: return 1;
+                case FSelectedAxes.XY:
+                case FSelectedAxes.YZ:
+                case FSelectedAxes.XZ: return 2;
+                case FSelectedAxes.All: return 3;
             }
 
             return 0;
-        }
-
-        private void EndTransform()
-        {
-            m_isTransforming = false;
-            m_selectedAxes = SelectedAxes.None;
         }
 
         public void IncrementSize()
@@ -234,14 +240,14 @@ namespace Editor
         public void SetLocalRotation(Quaternion orientation)
         {
             m_localRotation = orientation;
-            if (m_transformSpace == TransformSpace.Local)
+            if (m_transformSpace == FTransformSpace.Local)
                 m_rotation = orientation;
         }
 
-        public void SetTransformSpace(TransformSpace space)
+        public void SetTransformSpace(FTransformSpace space)
         {
             m_transformSpace = space;
-            if (space == TransformSpace.World)
+            if (space == FTransformSpace.World)
                 m_rotation = Quaternion.Identity;
             else
                 m_rotation = m_localRotation;
@@ -249,47 +255,8 @@ namespace Editor
 
         public override void Tick(float deltaTime)
         {
-            if (WInput.GetKeyDown(System.Windows.Input.Key.Q) && !WInput.GetMouseButton(1))
-            {
-                SetMode(TransformMode.None);
-            }
-            if (WInput.GetKeyDown(System.Windows.Input.Key.W) && !WInput.GetMouseButton(1))
-            {
-                SetMode(TransformMode.Translation);
-            }
-            if (WInput.GetKeyDown(System.Windows.Input.Key.E) && !WInput.GetMouseButton(1))
-            {
-                SetMode(TransformMode.Rotation);
-            }
-            if (WInput.GetKeyDown(System.Windows.Input.Key.R) && !WInput.GetMouseButton(1))
-            {
-                SetMode(TransformMode.Scale);
-            }
-
-            if (WInput.GetMouseButtonDown(0))
-            {
-                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
-                if (CheckSelectedAxes(mouseRay))
-                {
-                    Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_selectedAxes);
-                    StartTransform();
-                }
-            }
-
-            if (WInput.GetMouseButtonUp(0))
-            {
-                EndTransform();
-            }
-
-            if (m_isTransforming)
-            {
-                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
-                Vector3 cameraPos = WSceneView.GetCameraPos();
-                TransformFromInput(mouseRay, cameraPos);
-            }
-
             // Update camera distance to our camera.
-            if ((!m_isTransforming) || (m_mode != TransformMode.Translation))
+            if ((!m_isTransforming) || (m_mode != FTransformMode.Translation))
             {
                 m_cameraDistance = (WSceneView.GetCameraPos() - m_position).Length; // ToDo: This is still bad.
             }
@@ -319,7 +286,7 @@ namespace Editor
             {
                 for(int i = 0; i < m_gizmoMeshes[gizmoIndex].Length; i++)
                 {
-                    SelectedAxes axis = (SelectedAxes)(m_mode == TransformMode.Rotation ? i + 1 : i); // Rotation doesn't have a center, thus it needs an index fixup.
+                    FSelectedAxes axis = (FSelectedAxes)(m_mode == FTransformMode.Rotation ? i + 1 : i); // Rotation doesn't have a center, thus it needs an index fixup.
                     m_gizmoMeshes[gizmoIndex][i].Highlighted = ContainsAxis(m_selectedAxes, axis);
                 }
             }
@@ -340,7 +307,7 @@ namespace Editor
             //}
         }
 
-        private bool CheckSelectedAxes(WRay ray)
+        public bool CheckSelectedAxes(WRay ray)
         {
             // Convert the ray into local space so we can use axis-aligned checks, this solves the checking problem
             // when the gizmo is rotated due to being in Local mode.
@@ -351,22 +318,22 @@ namespace Editor
             //m_lineBatcher.DrawLine(localRay.Origin, localRay.Origin + (localRay.Direction * 10000), WLinearColor.White, 25, 5);
             List<AxisDistanceResult> results = new List<AxisDistanceResult>();
 
-            if (m_mode == TransformMode.Translation)
+            if (m_mode == FTransformMode.Translation)
             {
-                AABox[] translationAABB = GetAABBBoundsForMode(TransformMode.Translation);
+                AABox[] translationAABB = GetAABBBoundsForMode(FTransformMode.Translation);
                 for (int i = 0; i < translationAABB.Length; i++)
                 {
                     float intersectDist;
                     if (WMath.RayIntersectsAABB(localRay, translationAABB[i].Min, translationAABB[i].Max, out intersectDist))
                     {
-                        results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
+                        results.Add(new AxisDistanceResult((FSelectedAxes)(i + 1), intersectDist));
                     }
                 }
             }
-            else if (m_mode == TransformMode.Rotation)
+            else if (m_mode == FTransformMode.Rotation)
             {
                 // We'll use a combination of AABB and Distance checks to give us the quarter-circles we need.
-                AABox[] rotationAABB = GetAABBBoundsForMode(TransformMode.Rotation);
+                AABox[] rotationAABB = GetAABBBoundsForMode(FTransformMode.Rotation);
 
                 float screenScale = 0f;
                 for (int i = 0; i < 3; i++) screenScale += m_scale[i];
@@ -385,13 +352,13 @@ namespace Editor
                             continue;
                         }
 
-                        results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
+                        results.Add(new AxisDistanceResult((FSelectedAxes)(i + 1), intersectDist));
                     }
                 }
             }
-            else if (m_mode == TransformMode.Scale)
+            else if (m_mode == FTransformMode.Scale)
             {
-                AABox[] scaleAABB = GetAABBBoundsForMode(TransformMode.Scale);
+                AABox[] scaleAABB = GetAABBBoundsForMode(FTransformMode.Scale);
                 for (int i = 0; i < scaleAABB.Length; i++)
                 {
                     float intersectDist;
@@ -399,17 +366,17 @@ namespace Editor
                     {
                         // Special-case here to give the center scale point overriding priority. Because we intersected
                         // it, we can just override its distance to zero to make it clickable through the other bounding boxes.
-                        if ((SelectedAxes)i + 1 == SelectedAxes.All)
+                        if ((FSelectedAxes)i + 1 == FSelectedAxes.All)
                             intersectDist = 0f;
 
-                        results.Add(new AxisDistanceResult((SelectedAxes)(i + 1), intersectDist));
+                        results.Add(new AxisDistanceResult((FSelectedAxes)(i + 1), intersectDist));
                     }
                 }
             }
 
             if (results.Count == 0)
             {
-                m_selectedAxes = SelectedAxes.None;
+                m_selectedAxes = FSelectedAxes.None;
                 return false;
             }
 
@@ -423,9 +390,9 @@ namespace Editor
             return true;
         }
 
-        private bool TransformFromInput(WRay ray, Vector3 cameraPos)
+        public  bool TransformFromInput(WRay ray, Vector3 cameraPos)
         {
-            if (m_mode != TransformMode.Translation)
+            if (m_mode != FTransformMode.Translation)
                 WrapCursor();
 
             // Store the cursor position in viewport coordinates.
@@ -433,15 +400,15 @@ namespace Editor
             Vector2 cursorPos = App.GetCursorPosition();
             Vector2 mouseCoords = new Vector2(((2f * cursorPos.X) / screenDimensions.X) - 1f, (1f - ((2f * cursorPos.Y) / screenDimensions.Y))); //[-1,1] range
 
-            if (m_mode == TransformMode.Translation)
+            if (m_mode == FTransformMode.Translation)
             {
                 // Create a Translation Plane
                 Vector3 axisA, axisB;
 
                 if (GetNumSelectedAxes() == 1)
                 {
-                    if (m_selectedAxes == SelectedAxes.X)           axisB = Vector3.UnitX;
-                    else if (m_selectedAxes == SelectedAxes.Y)      axisB = Vector3.UnitY;
+                    if (m_selectedAxes == FSelectedAxes.X)           axisB = Vector3.UnitX;
+                    else if (m_selectedAxes == FSelectedAxes.Y)      axisB = Vector3.UnitY;
                     else                                            axisB = Vector3.UnitZ;
 
                     Vector3 dirToCamera = (m_position - cameraPos).Normalized();
@@ -449,8 +416,8 @@ namespace Editor
                 }
                 else
                 {
-                    axisA = ContainsAxis(m_selectedAxes, SelectedAxes.X) ? Vector3.UnitX : Vector3.UnitZ;
-                    axisB = ContainsAxis(m_selectedAxes, SelectedAxes.Y) ? Vector3.UnitY : Vector3.UnitZ;
+                    axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? Vector3.UnitX : Vector3.UnitZ;
+                    axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Y) ? Vector3.UnitY : Vector3.UnitZ;
                 }
 
                 Vector3 planeNormal = Vector3.Cross(axisA, axisB).Normalized();
@@ -464,11 +431,11 @@ namespace Editor
 
                     // Calculate a new position
                     Vector3 newPos = m_position;
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.X))
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.X))
                         newPos += Vector3.Transform(Vector3.UnitX, m_rotation) * localDelta.X;
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.Y))
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y))
                         newPos += Vector3.Transform(Vector3.UnitY, m_rotation) * localDelta.Y;
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.Z))
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.Z))
                         newPos += Vector3.Transform(Vector3.UnitZ, m_rotation) * localDelta.Z;
 
 
@@ -493,9 +460,9 @@ namespace Editor
                     // Apply Translation
                     m_deltaTranslation = Vector3.Transform(newPos - m_position + m_translateOffset, m_rotation.Inverted());
 
-                    if (!ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_deltaTranslation.X = 0f;
-                    if (!ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_deltaTranslation.Y = 0f;
-                    if (!ContainsAxis(m_selectedAxes, SelectedAxes.Z)) m_deltaTranslation.Z = 0f;
+                    if (!ContainsAxis(m_selectedAxes, FSelectedAxes.X)) m_deltaTranslation.X = 0f;
+                    if (!ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) m_deltaTranslation.Y = 0f;
+                    if (!ContainsAxis(m_selectedAxes, FSelectedAxes.Z)) m_deltaTranslation.Z = 0f;
 
                     m_totalTranslation += m_deltaTranslation;
                     m_position += Vector3.Transform(m_deltaTranslation, m_rotation);
@@ -512,11 +479,11 @@ namespace Editor
                     return false;
                 }
             }
-            else if (m_mode == TransformMode.Rotation)
+            else if (m_mode == FTransformMode.Rotation)
             {
                 Vector3 rotationAxis;
-                if (m_selectedAxes == SelectedAxes.X) rotationAxis = Vector3.UnitX;
-                else if (m_selectedAxes == SelectedAxes.Y) rotationAxis = Vector3.UnitY;
+                if (m_selectedAxes == FSelectedAxes.X) rotationAxis = Vector3.UnitX;
+                else if (m_selectedAxes == FSelectedAxes.Y) rotationAxis = Vector3.UnitY;
                 else rotationAxis = Vector3.UnitZ;
 
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
@@ -550,12 +517,12 @@ namespace Editor
                 m_currentRotation = Quaternion.FromAxisAngle(rotationAxis, WMath.DegreesToRadians(rotAmount));
                 m_deltaRotation = m_currentRotation * oldRot.Inverted();
 
-                if(m_transformSpace == TransformSpace.Local)
+                if(m_transformSpace == FTransformSpace.Local)
                     m_rotation *= m_deltaRotation;
 
                 // Add to Total Rotation recorded for UI.
-                if (m_selectedAxes == SelectedAxes.X) m_totalRotation.X = rotAmount;
-                else if (m_selectedAxes == SelectedAxes.Y) m_totalRotation.Y = rotAmount;
+                if (m_selectedAxes == FSelectedAxes.X) m_totalRotation.X = rotAmount;
+                else if (m_selectedAxes == FSelectedAxes.Y) m_totalRotation.Y = rotAmount;
                 else m_totalRotation.Z = rotAmount;
 
                 if (!m_hasTransformed && rotAmount != 0f)
@@ -563,7 +530,7 @@ namespace Editor
 
                 return m_hasTransformed;
             }
-            else if (m_mode == TransformMode.Scale)
+            else if (m_mode == FTransformMode.Scale)
             {
                 // Create a line in screen space.
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
@@ -582,8 +549,8 @@ namespace Editor
                 if (GetNumSelectedAxes() == 1)
                 {
                     Vector3 worldDir;
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) worldDir = dirX;
-                    if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) worldDir = dirY;
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.X)) worldDir = dirX;
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) worldDir = dirY;
                     else worldDir = dirZ;
 
                     Vector2 worldPoint = (WSceneView.UnprojectWorldToViewport(m_position + worldDir) * 2) - Vector2.One;
@@ -594,8 +561,8 @@ namespace Editor
                 // If there's two axii selected, then convert both to screen space and average them out to get the line direction.
                 else if (GetNumSelectedAxes() == 2)
                 {
-                    Vector3 axisA = ContainsAxis(m_selectedAxes, SelectedAxes.X) ? dirX : dirY;
-                    Vector3 axisB = ContainsAxis(m_selectedAxes, SelectedAxes.Z) ? dirZ : dirY;
+                    Vector3 axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? dirX : dirY;
+                    Vector3 axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Z) ? dirZ : dirY;
 
                     Vector2 screenA = (WSceneView.UnprojectWorldToViewport(m_position + axisA) * 2) - Vector2.One;
                     screenA.Y = -screenA.Y;
@@ -631,9 +598,9 @@ namespace Editor
 
                 Vector3 oldScale = m_totalScale;
                 m_totalScale = Vector3.One;
-                if (ContainsAxis(m_selectedAxes, SelectedAxes.X)) m_totalScale.X = scaleAmount;
-                if (ContainsAxis(m_selectedAxes, SelectedAxes.Y)) m_totalScale.Y = scaleAmount;
-                if (ContainsAxis(m_selectedAxes, SelectedAxes.Z)) m_totalScale.Z = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, FSelectedAxes.X)) m_totalScale.X = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) m_totalScale.Y = scaleAmount;
+                if (ContainsAxis(m_selectedAxes, FSelectedAxes.Z)) m_totalScale.Z = scaleAmount;
 
                 m_deltaScale = new Vector3(m_totalScale.X / oldScale.X, m_totalScale.Y / oldScale.Y, m_totalScale.Z / oldScale.Z);
 
@@ -646,32 +613,32 @@ namespace Editor
             return false;
         }
 
-        private bool ContainsAxis(SelectedAxes valToCheck, SelectedAxes majorAxis)
+        private bool ContainsAxis(FSelectedAxes valToCheck, FSelectedAxes majorAxis)
         {
             switch (majorAxis)
             {
-                case SelectedAxes.X:
-                    return valToCheck == SelectedAxes.X || valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.All;
-                case SelectedAxes.Y:
-                    return valToCheck == SelectedAxes.Y || valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.YZ || valToCheck == SelectedAxes.All;
-                case SelectedAxes.Z:
-                    return valToCheck == SelectedAxes.Z || valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.YZ || valToCheck == SelectedAxes.All;
-                case SelectedAxes.XY:
-                    return valToCheck == SelectedAxes.XY || valToCheck == SelectedAxes.All;
-                case SelectedAxes.XZ:
-                    return valToCheck == SelectedAxes.XZ || valToCheck == SelectedAxes.All;
-                case SelectedAxes.YZ:
-                    return valToCheck == SelectedAxes.YZ || valToCheck == SelectedAxes.All;
+                case FSelectedAxes.X:
+                    return valToCheck == FSelectedAxes.X || valToCheck == FSelectedAxes.XY || valToCheck == FSelectedAxes.XZ || valToCheck == FSelectedAxes.All;
+                case FSelectedAxes.Y:
+                    return valToCheck == FSelectedAxes.Y || valToCheck == FSelectedAxes.XY || valToCheck == FSelectedAxes.YZ || valToCheck == FSelectedAxes.All;
+                case FSelectedAxes.Z:
+                    return valToCheck == FSelectedAxes.Z || valToCheck == FSelectedAxes.XZ || valToCheck == FSelectedAxes.YZ || valToCheck == FSelectedAxes.All;
+                case FSelectedAxes.XY:
+                    return valToCheck == FSelectedAxes.XY || valToCheck == FSelectedAxes.All;
+                case FSelectedAxes.XZ:
+                    return valToCheck == FSelectedAxes.XZ || valToCheck == FSelectedAxes.All;
+                case FSelectedAxes.YZ:
+                    return valToCheck == FSelectedAxes.YZ || valToCheck == FSelectedAxes.All;
             }
 
             return false;
         }
 
-        private AABox[] GetAABBBoundsForMode(TransformMode mode)
+        private AABox[] GetAABBBoundsForMode(FTransformMode mode)
         {
             switch (mode)
             {
-                case TransformMode.Translation:
+                case FTransformMode.Translation:
                     float boxLength = 100f;
                     float boxHalfWidth = 5;
 
@@ -694,7 +661,7 @@ namespace Editor
                         translationAABB[i].ScaleBy(m_scale);
                     return translationAABB;
 
-                case TransformMode.Rotation:
+                case FTransformMode.Rotation:
                     float radius = 100f;
 
                     var rotationAABB = new[]
@@ -711,7 +678,7 @@ namespace Editor
                         rotationAABB[i].ScaleBy(m_scale);
                     return rotationAABB;
 
-                case TransformMode.Scale:
+                case FTransformMode.Scale:
                     float scaleLength = 100f;
                     float scaleHalfWidth = 5;
                     float scaleCornerSize = 38;

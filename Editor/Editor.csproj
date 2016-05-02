@@ -96,6 +96,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Editor\Actor.cs" />
+    <Compile Include="Editor\ActorEditor.cs" />
     <Compile Include="Editor\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
     <Compile Include="Editor\Input.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\SimpleObjRenderer.cs" />
+    <Compile Include="Editor\StaticMeshActor.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
     <Compile Include="Editor\UndoRedo\IAction.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />

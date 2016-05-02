@@ -16,16 +16,22 @@ namespace Editor
         private WLineBatcher m_persistentLines;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
+        private WActorEditor m_actorEditor;
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_undoStack = new WUndoStack();
+            m_actorEditor = new WActorEditor(this, m_tickableObjects);
 
             WSceneView sceneView = new WSceneView(this, m_renderableObjects);
             m_sceneViews.Add(sceneView);
 
             AllocateDefaultWorldResources();
+
+            // dflskdf
+            WActor testActor = new WActor();
+            RegisterObject(testActor);
         }
 
         public void LoadMap(string filePath)
@@ -80,7 +86,10 @@ namespace Editor
 
             if(obj is ITickableObject)
             {
-                m_tickableObjects.Add(obj as ITickableObject);
+                ITickableObject tickableObj = (ITickableObject)obj;
+                tickableObj.SetWorld(this);
+                m_tickableObjects.Add(tickableObj);
+                
             }
         }
 
@@ -110,6 +119,8 @@ namespace Editor
                 item.Tick(deltaTime);
             }
 
+            m_actorEditor.Tick(deltaTime);
+
             foreach (WSceneView view in m_sceneViews)
             {
                 view.Render();
@@ -136,8 +147,6 @@ namespace Editor
         {
             m_persistentLines = new WLineBatcher();
             RegisterObject(m_persistentLines);
-
-            RegisterObject(new WTransformGizmo(m_persistentLines));
         }
     }
 }

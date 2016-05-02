@@ -1,8 +1,13 @@
-﻿namespace Editor
+﻿using System;
+using OpenTK;
+
+namespace Editor
 {
     abstract class WActor : ITickableObject
     {
         public WTransform Transform { get; protected set; }
+
+        private WWorld m_world;
 
         public WActor()
         {
@@ -10,5 +15,20 @@
         }
 
         public abstract void Tick(float deltaTime);
+
+        public virtual AABox GetAABB()
+        {
+            return new AABox(Transform.Position - (Vector3.One * 50), Transform.Position + (Vector3.One * 50));
+        }
+
+        public void SetWorld(WWorld world)
+        {
+            m_world = world;
+        }
+
+        public WWorld GetWorld()
+        {
+            return m_world;
+        }
     }
 }
