@@ -1,12 +1,23 @@
 ﻿using System;
+using System.Windows.Input;
 
 namespace Editor
 {
-    class WUndoStack
+    public class WUndoStack
     {
         public bool CanUndo { get { return m_undoStack.Count > 0; } }
         public bool CanRedo { get { return m_redoStack.Count > 0; } }
         public int UndoLimit { get { return m_undoStack.MaxSize; } }
+
+        public ICommand UndoCommand
+        {
+            get { return new RelayCommand(x => Undo(), (x) => CanUndo); }
+        }
+
+        public ICommand RedoCommand
+        {
+            get { return new RelayCommand(x => Redo(), (x) => CanRedo); }
+        }
 
         private LimitedSizeStack<IAction> m_undoStack;
         private LimitedSizeStack<IAction> m_redoStack;

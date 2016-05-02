@@ -1,15 +1,11 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
-using System.Windows.Input;
 
 namespace Editor
 {
     class WindEditor
     {
-        public ICommand UndoCommand
-        {
-            get { return new RelayCommand(x => OnApplicationShutdown()); }
-        }
+        public WWorld MainWorld { get { return m_editorWorlds[0]; } }
 
         private List<WWorld> m_editorWorlds = new List<WWorld>();
 

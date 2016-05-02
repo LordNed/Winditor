@@ -2,28 +2,30 @@
 using GameFormatReader.Common;
 using System.Collections.Generic;
 using System.IO;
-using System;
 
 namespace Editor
 {
     public class WWorld
     {
+        public WUndoStack UndoStack { get { return m_undoStack; } }
+
         private List<IRenderable> m_renderableObjects = new List<IRenderable>();
         private List<ITickableObject> m_tickableObjects = new List<ITickableObject>();
         private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
         private WLineBatcher m_persistentLines;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
+        private WUndoStack m_undoStack;
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
+            m_undoStack = new WUndoStack();
 
             WSceneView sceneView = new WSceneView(this, m_renderableObjects);
             m_sceneViews.Add(sceneView);
 
             AllocateDefaultWorldResources();
-
         }
 
         public void LoadMap(string filePath)

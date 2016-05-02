@@ -1,6 +1,6 @@
 ﻿namespace Editor
 {
-    interface IAction
+    public interface IAction
     {
         /// <summary>
         /// A short string which describes the action for display in the UI.
