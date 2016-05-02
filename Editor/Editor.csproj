@@ -115,6 +115,7 @@
     <Compile Include="Editor\PrimitiveComponent.cs" />
     <Compile Include="Editor\World.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Editor\RelayCommand.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

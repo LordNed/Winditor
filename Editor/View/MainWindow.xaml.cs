@@ -1,6 +1,6 @@
-﻿using OpenTK;
+﻿using Editor.ViewModel;
+using OpenTK;
 using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
 using System.Windows;
 using System.Windows.Forms.Integration;
 
@@ -11,7 +11,7 @@ namespace Editor
     /// </summary>
     public partial class MainWindow : Window
     {
-        private WindEditor m_editor;
+        private MainWindowViewModel m_viewModel;
 
         public MainWindow()
         {
@@ -31,15 +31,8 @@ namespace Editor
             glControlHost.Child.MouseUp += GlControlHost_MouseUp;
             glControlHost.Child.MouseWheel += GlControlHost_MouseWheel;
 
-            // Set up the Editor Tick Loop
-            m_editor = new WindEditor();
-            System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
-            editorTickTimer.Interval = 16; //ms
-            editorTickTimer.Tick += (o, args) =>
-            {
-                DoApplicationTick();
-            };
-            editorTickTimer.Enabled = true;
+            m_viewModel = (MainWindowViewModel)DataContext;
+            m_viewModel.OnMainEditorWindowLoaded((GLControl)glControlHost.Child);
         }
 
         private void GlControlHost_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -69,24 +62,7 @@ namespace Editor
 
         private void GlControlHost_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            m_editor.OnViewportResized((int)e.NewSize.Width, (int)e.NewSize.Height);
-        }
-
-        private void DoApplicationTick()
-        {
-            // Poll the mouse at a high resolution
-            System.Drawing.Point mousePos = glControlHost.Child.PointToClient(System.Windows.Forms.Cursor.Position);
-
-            mousePos.X = WMath.Clamp(mousePos.X, 0, (int)glControlHost.ActualWidth);
-            mousePos.Y = WMath.Clamp(mousePos.Y, 0, (int)glControlHost.ActualHeight);
-            WInput.SetMousePosition(new Vector2(mousePos.X, mousePos.Y));
-
-
-            m_editor.ProcessTick();
-            WInput.Internal_UpdateInputState();
-
-            GLControl glControl = (GLControl)glControlHost.Child;
-            glControl.SwapBuffers();
+            m_viewModel.WindEditor.OnViewportResized((int)e.NewSize.Width, (int)e.NewSize.Height);
         }
 
         private static System.Windows.Input.MouseButton WinFormToWPFMouseButton(System.Windows.Forms.MouseEventArgs e)
