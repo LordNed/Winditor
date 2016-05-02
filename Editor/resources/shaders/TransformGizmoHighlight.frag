@@ -11,4 +11,5 @@ uniform sampler2D Texture;
 void main()
 {
 	PixelColor = vec4(1, 1, 0, 1);
+	PixelColor.a = texture(Texture, Tex0).a;
 }

@@ -29,8 +29,8 @@ namespace Editor
             Y,//       = 0x2,
             Z,//       = 0x4,
             XY,//      = X | Y,
-            YZ,//      = Y | Z,
             XZ,//      = X | Z,
+            YZ,//      = Y | Z,
             All,//     = X | Y | Z
         }
 
@@ -58,21 +58,31 @@ namespace Editor
         private float m_gizmoSize = 0.25f;
 
         // Transform Values - stored outside of the transform so we can store their values without modifying how they're rendered.
+
+        /// <summary> What is the current position of the gizmo. </summary>
         private Vector3 m_position = Vector3.Zero;
         private Quaternion m_rotation = Quaternion.Identity;
         private Quaternion m_localRotation = Quaternion.Identity;
+        /// <summary> Current scale of the gizmo, modified by the distance on screen.</summary>
         private Vector3 m_scale = Vector3.One;
         private bool mFlipScaleX;
         private bool mFlipScaleY;
         private bool mFlipScaleZ;
 
         // Delta Transforms
+        /// <summary> What is the delta translation for this frame. </summary>
         private Vector3 m_deltaTranslation;
+        /// <summary> The total translation of the gizmo since the gizmo started moving. Cleared the next time the gizmo is clicked. </summary>
         private Vector3 m_totalTranslation;
+        /// <summary> The delta rotation as a <see cref="Quaternion"/> for this frame. </summary>
         private Quaternion m_deltaRotation;
+        /// <summary> The total rotation of the gizmo since it was last clicked as a <see cref="Quaternion"/>. </summary>
         private Quaternion m_currentRotation;
-        private Vector3 m_totalRotation; // Stored as Vec3 for UI Purposes.
+        /// <summary> The total rotation of the gizmo since it was last clicked as a <see cref="Vector3"/> for UI purposes. </summary>
+        private Vector3 m_totalRotation;
+        /// <summary> The delta in scale for this frame. Set to 1,1,1 when no change is made. </summary>
         private Vector3 m_deltaScale = Vector3.One;
+        /// <summary> The total scale of the gizmo since the last time the gizmo was clicked. Cleared the next time it is clicked. </summary>
         private Vector3 m_totalScale = Vector3.One;
 
         // Transform Helpers
@@ -181,8 +191,6 @@ namespace Editor
                     m_moveDir = (axisA + axisB) / 2f;
                 }
             }
-
-            Console.WriteLine("NumSelectedAxes: {0}", GetNumSelectedAxes());
         }
 
         private int GetNumSelectedAxes()
@@ -306,7 +314,6 @@ namespace Editor
             }
 
             // Update Highlight Status of Models.
-
             int gizmoIndex = (int)m_mode - 1;
             if (gizmoIndex >= 0)
             {
@@ -316,6 +323,21 @@ namespace Editor
                     m_gizmoMeshes[gizmoIndex][i].Highlighted = ContainsAxis(m_selectedAxes, axis);
                 }
             }
+
+            //switch (m_mode)
+            //{
+            //    case TransformMode.Translation:
+            //        Console.WriteLine("m_position: {0} m_deltaTranslation: {1} m_totalTranslation: {2}", m_position, m_deltaTranslation, m_totalTranslation);
+            //        break;
+            //    case TransformMode.Rotation:
+            //        Console.WriteLine("m_rotation: {0} m_localRotation: {1} m_deltaRotation: {2} m_currentRotation: {3} m_totalRotation(UI): {4}", m_rotation, m_localRotation, m_deltaRotation, m_currentRotation, m_totalRotation);
+            //        break;
+            //    case TransformMode.Scale:
+            //        Console.WriteLine("m_scale: {0} m_deltaScale: {1} m_totalScale: {2}", m_scale, m_deltaScale, m_totalScale);
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         private bool CheckSelectedAxes(WRay ray)
