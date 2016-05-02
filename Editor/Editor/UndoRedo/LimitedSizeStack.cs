@@ -2,8 +2,13 @@
 
 namespace Editor
 {
+    /// <summary>
+    /// A limited size stack, which stores the newest values first and oldest values last.
+    /// </summary>
     class LimitedSizeStack<T> : LinkedList<T>
     {
+        public int MaxSize { get { return m_maxSize; } }
+
         private int m_maxSize;
 
         public LimitedSizeStack()
@@ -14,6 +19,10 @@ namespace Editor
         public void SetMaxSize(int maxSize)
         {
             m_maxSize = maxSize;
+
+            // If we've been downsized, make sure we remove all of the old entries right away.
+            while(Count > m_maxSize)
+                RemoveLast();
         }
 
         public void Push(T item)
@@ -29,6 +38,11 @@ namespace Editor
             var item = First.Value;
             RemoveFirst();
             return item;
+        }
+
+        public T Peek()
+        {
+            return First.Value;
         }
     }
 }

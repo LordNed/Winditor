@@ -6,11 +6,10 @@ namespace Editor
     {
         public bool CanUndo { get { return m_undoStack.Count > 0; } }
         public bool CanRedo { get { return m_redoStack.Count > 0; } }
-        public int UndoLimit { get { return m_undoLimit; } }
+        public int UndoLimit { get { return m_undoStack.MaxSize; } }
 
         private LimitedSizeStack<IAction> m_undoStack;
         private LimitedSizeStack<IAction> m_redoStack;
-        private int m_undoLimit;
 
         public WUndoStack()
         {
@@ -42,11 +41,24 @@ namespace Editor
             m_undoStack.Push(action);
         }
 
+        /// <summary>
+        /// Push a new <see cref="IAction"/> onto the <see cref="WUndoStack"/>, or merges it with the most recently executed command.
+        /// This function executes the <see cref="IAction.Redo"/> function in either case. Calling this will clear the <see cref="WUndoStack"/>'s
+        /// Redo stack, so the command will always end up being the top-most on the stack.
+        /// </summary>
+        /// <param name="command"></param>
         public void Push(IAction command)
         {
             // Clear the redo stack when we add a new item to the undo stack.
             m_redoStack.Clear();
-            m_undoStack.Push(command);
+
+            // Call the Redo function to apply the state change encapsulated by the IAction.
+            command.Redo();
+
+            // Attempt to merge with our new action. If this fails, add our new action to the undo stack.
+            IAction latestAction = m_undoStack.Peek();
+            if(!latestAction.MergeWith(command))
+                m_undoStack.Push(command);
         }
 
         public void SetUndoLimit(int limit)
@@ -54,14 +66,8 @@ namespace Editor
             if (limit < 0)
                 throw new ArgumentException("Undo Limit cannot be negative!", "limit");
 
-            if(limit < m_undoLimit)
-            {
-                throw new NotImplementedException("todo: implement trimming off the oldest entries in the stack.");
-            }
-
-            m_undoLimit = limit;
-            m_undoStack.SetMaxSize(m_undoLimit);
-            m_redoStack.SetMaxSize(m_undoLimit);
+            m_undoStack.SetMaxSize(limit);
+            m_redoStack.SetMaxSize(limit);
         }
     }
 }
