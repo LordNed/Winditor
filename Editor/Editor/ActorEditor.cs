@@ -71,13 +71,13 @@ namespace Editor
 
         private void UpdateSelectionGizmo()
         {
-            if(m_transformGizmo == null && m_selectionList.Count > 0)
+            if (m_transformGizmo == null && m_selectionList.Count > 0)
             {
                 // Create the Transform Gizmo.
                 m_transformGizmo = new WTransformGizmo(null);
                 m_world.RegisterObject(m_transformGizmo);
             }
-            else if(m_transformGizmo != null && m_selectionList.Count == 0)
+            else if (m_transformGizmo != null && m_selectionList.Count == 0)
             {
                 // Remove the Transform Gizmo.
                 m_world.UnregisterObject(m_transformGizmo);
@@ -118,7 +118,7 @@ namespace Editor
             {
                 WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.CheckSelectedAxes(mouseRay))
-                {
+                {                            
                     Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_transformGizmo.SelectedAxes);
                     m_transformGizmo.StartTransform();
                 }
@@ -126,16 +126,38 @@ namespace Editor
 
             if (WInput.GetMouseButtonUp(0))
             {
-                m_transformGizmo.EndTransform();
+                if(m_transformGizmo.IsTransforming)
+                {
+                    // When we end let go of the gizmo, we want to make one last action which specifies that it is done,
+                    // so that the next gizmo move doesn't merge with the previous.
+                    IAction undoAction = null;
+                    switch (m_transformGizmo.Mode)
+                    {
+                        case FTransformMode.Translation:
+                            undoAction = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation, true);
+                            break;
+                        case FTransformMode.Rotation:
+                            break;
+                        case FTransformMode.Scale:
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (undoAction != null)
+                        m_world.UndoStack.Push(undoAction);
+
+                    m_transformGizmo.EndTransform();
+                }
             }
 
             if (m_transformGizmo.IsTransforming)
             {
                 WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
                 Vector3 cameraPos = WSceneView.GetCameraPos();
-                if(m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
+                if (m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
                 {
-                    TranslateActorAction deltaMovement = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation);
+                    TranslateActorAction deltaMovement = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation, false);
                     m_world.UndoStack.Push(deltaMovement);
                 }
             }
@@ -146,7 +168,7 @@ namespace Editor
             WActor closestResult = null;
             float closestDistance = float.MaxValue;
 
-            foreach(ITickableObject obj in m_objectList)
+            foreach (ITickableObject obj in m_objectList)
             {
                 WActor actor = obj as WActor;
                 if (actor == null)
@@ -155,9 +177,9 @@ namespace Editor
                 AABox actorBoundingBox = actor.GetAABB();
                 float intersectDistance;
 
-                if(WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+                if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
                 {
-                    if(intersectDistance < closestDistance)
+                    if (intersectDistance < closestDistance)
                     {
                         closestDistance = intersectDistance;
                         closestResult = actor;

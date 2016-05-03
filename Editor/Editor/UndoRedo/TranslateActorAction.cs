@@ -7,11 +7,13 @@ namespace Editor
     {
         private List<WActor> m_affectedActors;
         private Vector3 m_delta;
+        private bool m_isDone;
 
-        public TranslateActorAction(WActor[] actors, Vector3 delta)
+        public TranslateActorAction(WActor[] actors, Vector3 delta, bool isDone)
         {
             m_affectedActors = new List<WActor>(actors);
             m_delta = delta;
+            m_isDone = isDone;
         }
 
         public string ActionText()
@@ -22,7 +24,7 @@ namespace Editor
         public bool MergeWith(IAction withAction)
         {
             TranslateActorAction otherAction = withAction as TranslateActorAction;
-            if (otherAction == null)
+            if (m_isDone || otherAction == null)
                 return false;
 
             bool arrayEquals = m_affectedActors.Count == otherAction.m_affectedActors.Count;
@@ -41,6 +43,7 @@ namespace Editor
             if(arrayEquals)
             {
                 m_delta += otherAction.m_delta;
+                m_isDone = otherAction.m_isDone;
                 return true;
             }
 
