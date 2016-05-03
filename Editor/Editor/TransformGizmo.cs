@@ -39,6 +39,8 @@ namespace Editor
         public FTransformSpace TransformSpace { get { return m_transformSpace; } }
         public bool IsTransforming { get { return m_isTransforming; } }
 
+        // Delta Transforms
+        public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
 
         struct AxisDistanceResult
         {
@@ -224,7 +226,7 @@ namespace Editor
 
         public void IncrementSize()
         {
-            m_gizmoSize =+ 0.05f;
+            m_gizmoSize += 0.05f;
         }
 
         public void DecrementSize()

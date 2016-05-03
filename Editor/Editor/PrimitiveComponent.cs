@@ -2,7 +2,7 @@
 
 namespace Editor
 {
-    abstract class PrimitiveComponent : WActor
+    abstract class PrimitiveComponent : WActor, IRenderable
     {
         public bool RenderStateDirty { get; protected set; }
 

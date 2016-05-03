@@ -18,7 +18,7 @@ namespace Editor
 
         public virtual AABox GetAABB()
         {
-            return new AABox(Transform.Position - (Vector3.One * 50), Transform.Position + (Vector3.One * 50));
+            return new AABox();
         }
 
         public void SetWorld(WWorld world)

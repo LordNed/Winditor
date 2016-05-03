@@ -27,6 +27,8 @@ namespace Editor
         private Shader m_highlightedShader;
         private int m_triangleCount;
 
+        private AABox m_boundingBox;
+
         public SimpleObjRenderer(Obj file)
         {
             m_vertexVBO = GL.GenBuffer();
@@ -81,9 +83,12 @@ namespace Editor
             texcoords = file.TexCoords.Count > 0 ? new Vector2[uniqueVerts.Count] : null;
             normals = file.Normals.Count > 0 ? new Vector3[uniqueVerts.Count] : null;
 
+            m_boundingBox = new AABox();
             for (int i = 0; i < uniqueVerts.Count; i++)
             {
                 positions[i] = uniqueVerts[i].Position;
+                m_boundingBox.Encapsulate(positions[i]);
+
                 if (texcoords != null) texcoords[i] = new Vector2(uniqueVerts[i].TexCoord.X, 1-uniqueVerts[i].TexCoord.Y);
                 if (normals != null) normals[i] = uniqueVerts[i].Normal;
             }
@@ -133,6 +138,11 @@ namespace Editor
                 GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, mat.Diffuse.Width, mat.Diffuse.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bmpData.Scan0);
                 mat.Diffuse.UnlockBits(bmpData);
             }
+        }
+
+        public AABox GetAABB()
+        {
+            return m_boundingBox;
         }
 
         public void ReleaseResources()

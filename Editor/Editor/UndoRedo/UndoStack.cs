@@ -68,7 +68,9 @@ namespace Editor
 
             // Attempt to merge with our new action. If this fails, add our new action to the undo stack.
             IAction latestAction = m_undoStack.Peek();
-            if(!latestAction.MergeWith(command))
+            if (latestAction == null)
+                m_undoStack.Push(command);
+            else if(!latestAction.MergeWith(command))
                 m_undoStack.Push(command);
         }
 

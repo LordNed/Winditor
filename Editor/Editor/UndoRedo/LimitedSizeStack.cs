@@ -42,6 +42,9 @@ namespace Editor
 
         public T Peek()
         {
+            if (First == null)
+                return default(T);
+
             return First.Value;
         }
     }

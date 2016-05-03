@@ -22,15 +22,20 @@ namespace Editor
 
         public void Tick(float deltaTime)
         {
+            // Update our Selection Gizmo first, so we can check if it is currently transforming when we check to see
+            // if the user's selection has changed.
+            UpdateSelectionGizmo();
+
             // Check to see if they've left clicked and are changing their selection.
             CheckForObjectSelectionChange();
-
-            // Then either create, destroy, or check for movement of a movement gizmo.
-            UpdateSelectionGizmo();
         }
 
         private void CheckForObjectSelectionChange()
         {
+            // If we have a gizmo and we're transforming it, don't check for selection change.
+            if (m_transformGizmo != null && m_transformGizmo.IsTransforming)
+                return;
+
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
@@ -40,9 +45,10 @@ namespace Editor
                 // Click w/o Modifiers = Clear Selection, add result to selection
                 // Click /w Ctrl = Toggle Selection State
                 // Click /w Shift = Add to Selection
-                bool ctrlPressed = WInput.GetKey(System.Windows.Input.Key.LeftShift) || WInput.GetKey(System.Windows.Input.Key.RightShift);
+                bool ctrlPressed = WInput.GetKey(System.Windows.Input.Key.LeftCtrl) || WInput.GetKey(System.Windows.Input.Key.RightCtrl);
                 bool shiftPressed = WInput.GetKey(System.Windows.Input.Key.LeftShift) || WInput.GetKey(System.Windows.Input.Key.RightShift);
 
+                Console.WriteLine("ctrl {0} shift {1}", ctrlPressed, shiftPressed);
 
                 if (!ctrlPressed & !shiftPressed)
                 {
@@ -127,7 +133,11 @@ namespace Editor
             {
                 WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
                 Vector3 cameraPos = WSceneView.GetCameraPos();
-                m_transformGizmo.TransformFromInput(mouseRay, cameraPos);
+                if(m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
+                {
+                    TranslateActorAction deltaMovement = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation);
+                    m_world.UndoStack.Push(deltaMovement);
+                }
             }
         }
 
