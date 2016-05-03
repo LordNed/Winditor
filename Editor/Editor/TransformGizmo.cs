@@ -41,6 +41,7 @@ namespace Editor
 
         // Delta Transforms
         public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
+        public Quaternion DeltaRotation { get { return m_deltaRotation; } }
 
         struct AxisDistanceResult
         {
@@ -113,6 +114,7 @@ namespace Editor
             m_lineBatcher = lines;
 
             SetMode(FTransformMode.Translation);
+            SetTransformSpace(FTransformSpace.World);
 
             string[][] meshNames = new string[][]
             {
@@ -295,13 +297,13 @@ namespace Editor
 
             //switch (m_mode)
             //{
-            //    case TransformMode.Translation:
+            //    case FTransformMode.Translation:
             //        Console.WriteLine("m_position: {0} m_deltaTranslation: {1} m_totalTranslation: {2}", m_position, m_deltaTranslation, m_totalTranslation);
             //        break;
-            //    case TransformMode.Rotation:
+            //    case FTransformMode.Rotation:
             //        Console.WriteLine("m_rotation: {0} m_localRotation: {1} m_deltaRotation: {2} m_currentRotation: {3} m_totalRotation(UI): {4}", m_rotation, m_localRotation, m_deltaRotation, m_currentRotation, m_totalRotation);
             //        break;
-            //    case TransformMode.Scale:
+            //    case FTransformMode.Scale:
             //        Console.WriteLine("m_scale: {0} m_deltaScale: {1} m_totalScale: {2}", m_scale, m_deltaScale, m_totalScale);
             //        break;
             //    default:

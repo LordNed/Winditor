@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Editor
 {
-    class TranslateActorAction : IAction
+    class RotateActorAction : IAction
     {
         private List<WActor> m_affectedActors;
-        private Vector3 m_delta;
+        private Quaternion m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
 
-        public TranslateActorAction(WActor[] actors, Vector3 delta, FTransformSpace transformSpace, bool isDone)
+        public RotateActorAction(WActor[] actors, Quaternion delta, FTransformSpace transformSpace, bool isDone)
         {
             m_affectedActors = new List<WActor>(actors);
             m_delta = delta;
@@ -20,12 +20,12 @@ namespace Editor
 
         public string ActionText()
         {
-            return "Move";
+            return "Rotate";
         }
 
         public bool MergeWith(IAction withAction)
         {
-            TranslateActorAction otherAction = withAction as TranslateActorAction;
+            RotateActorAction otherAction = withAction as RotateActorAction;
             if (m_isDone || otherAction == null)
                 return false;
 
@@ -44,7 +44,7 @@ namespace Editor
 
             if(arrayEquals)
             {
-                m_delta += otherAction.m_delta;
+                m_delta *= otherAction.m_delta;
                 m_isDone = otherAction.m_isDone;
                 return true;
             }
@@ -56,25 +56,30 @@ namespace Editor
         {
             for (int i = 0; i < m_affectedActors.Count; i++)
             {
-                Vector3 transformedDelta = Vector3.Zero;
-                if (m_transformSpace == FTransformSpace.World)
+                if(m_transformSpace == FTransformSpace.Local)
                 {
-                    transformedDelta = m_delta;
+                    m_affectedActors[i].Transform.Rotation *= m_delta;
                 }
                 else
                 {
-                    transformedDelta = Vector3.Transform(m_delta, m_affectedActors[i].Transform.Rotation);
+                    m_affectedActors[i].Transform.Rotation = m_delta * m_affectedActors[i].Transform.Rotation;
                 }
-                System.Console.WriteLine("delta: {0} trnsformed: {1} space: {2}", m_delta, transformedDelta, m_transformSpace);
-
-                m_affectedActors[i].Transform.Position += transformedDelta;
             }
         }
 
         public void Undo()
         {
             for (int i = 0; i < m_affectedActors.Count; i++)
-                m_affectedActors[i].Transform.Position -= m_delta;
+            {
+                if (m_transformSpace == FTransformSpace.Local)
+                {
+                    m_affectedActors[i].Transform.Rotation *= Quaternion.Invert(m_delta);
+                }
+                else
+                {
+                    m_affectedActors[i].Transform.Rotation = Quaternion.Invert(m_delta) * m_affectedActors[i].Transform.Rotation;
+                }
+            }
         }
     }
 }

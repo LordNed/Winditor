@@ -114,6 +114,17 @@ namespace Editor
                 m_transformGizmo.IncrementSize();
             }
 
+            if(WInput.GetKeyDown(System.Windows.Input.Key.OemTilde))
+            {
+                if (m_transformGizmo.TransformSpace == FTransformSpace.World)
+                    m_transformGizmo.SetTransformSpace(FTransformSpace.Local);
+                else
+                    m_transformGizmo.SetTransformSpace(FTransformSpace.World);
+
+                m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
+                m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
+            }
+
             if (WInput.GetMouseButtonDown(0))
             {
                 WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
@@ -130,20 +141,7 @@ namespace Editor
                 {
                     // When we end let go of the gizmo, we want to make one last action which specifies that it is done,
                     // so that the next gizmo move doesn't merge with the previous.
-                    IAction undoAction = null;
-                    switch (m_transformGizmo.Mode)
-                    {
-                        case FTransformMode.Translation:
-                            undoAction = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation, true);
-                            break;
-                        case FTransformMode.Rotation:
-                            break;
-                        case FTransformMode.Scale:
-                            break;
-                        default:
-                            break;
-                    }
-
+                    IAction undoAction = CreateUndoActionForGizmo(true);
                     if (undoAction != null)
                         m_world.UndoStack.Push(undoAction);
 
@@ -157,8 +155,9 @@ namespace Editor
                 Vector3 cameraPos = WSceneView.GetCameraPos();
                 if (m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
                 {
-                    TranslateActorAction deltaMovement = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation, false);
-                    m_world.UndoStack.Push(deltaMovement);
+                    IAction undoAction = CreateUndoActionForGizmo(false);
+                    if(undoAction != null)
+                        m_world.UndoStack.Push(undoAction);
                 }
             }
         }
@@ -188,6 +187,30 @@ namespace Editor
             }
 
             return closestResult;
+        }
+
+        private IAction CreateUndoActionForGizmo(bool isDone)
+        {
+            if (m_transformGizmo == null)
+                return null;
+
+            IAction undoAction = null;
+
+            switch (m_transformGizmo.Mode)
+            {
+                case FTransformMode.Translation:
+                    undoAction = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
+                    break;
+                case FTransformMode.Rotation:
+                    undoAction = new RotateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
+                    break;
+                case FTransformMode.Scale:
+                    break;
+                default:
+                    break;
+            }
+
+            return undoAction;
         }
     }
 }
