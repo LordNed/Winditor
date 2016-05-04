@@ -65,7 +65,6 @@ namespace Editor
                 {
                     transformedDelta = Vector3.Transform(m_delta, m_affectedActors[i].Transform.Rotation);
                 }
-                System.Console.WriteLine("delta: {0} trnsformed: {1} space: {2}", m_delta, transformedDelta, m_transformSpace);
 
                 m_affectedActors[i].Transform.Position += transformedDelta;
             }
@@ -74,7 +73,18 @@ namespace Editor
         public void Undo()
         {
             for (int i = 0; i < m_affectedActors.Count; i++)
-                m_affectedActors[i].Transform.Position -= m_delta;
+            {
+                Vector3 transformedDelta = Vector3.Zero;
+                if (m_transformSpace == FTransformSpace.World)
+                {
+                    transformedDelta = m_delta;
+                }
+                else
+                {
+                    transformedDelta = Vector3.Transform(m_delta, m_affectedActors[i].Transform.Rotation);
+                }
+                m_affectedActors[i].Transform.Position -= transformedDelta;
+            }
         }
     }
 }

@@ -66,6 +66,12 @@ namespace Editor
                 {
                     if (!m_selectionList.Contains(addedActor)) m_selectionList.Add(addedActor);
                 }
+
+                if(m_transformGizmo != null && m_selectionList.Count > 0)
+                {
+                    m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
+                    m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
+                }
             }
         }
 
@@ -74,8 +80,14 @@ namespace Editor
             if (m_transformGizmo == null && m_selectionList.Count > 0)
             {
                 // Create the Transform Gizmo.
-                m_transformGizmo = new WTransformGizmo(null);
+                m_transformGizmo = new WTransformGizmo(m_world.m_persistentLines);
                 m_world.RegisterObject(m_transformGizmo);
+
+                if(m_selectionList.Count > 0)
+                {
+                    m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
+                    m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
+                }
             }
             else if (m_transformGizmo != null && m_selectionList.Count == 0)
             {

@@ -281,7 +281,8 @@ namespace Editor
             var gizmoBoxes = GetAABBBoundsForMode(m_mode);
             for (int i = 0; i < gizmoBoxes.Length; i++)
             {
-                //m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_transform.Position, gizmoBoxes[i].Max + m_transform.Position, gizmoColors[i], 25, 0f);
+                //m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_position, gizmoBoxes[i].Max + m_position, gizmoColors[i], 25, 0f);
+                m_lineBatcher.DrawBox(gizmoBoxes[i].Min, gizmoBoxes[i].Max, gizmoColors[i], 25, 0f);
             }
 
             // Update Highlight Status of Models.
@@ -317,9 +318,9 @@ namespace Editor
             // when the gizmo is rotated due to being in Local mode.
             WRay localRay = new WRay();
             localRay.Direction = Vector3.Transform(ray.Direction, m_rotation.Inverted());
-            localRay.Origin = Vector3.Transform(ray.Origin, m_rotation.Inverted()) - m_position;
+            localRay.Origin = Vector3.Transform(ray.Origin - m_position, m_rotation.Inverted());
 
-            //m_lineBatcher.DrawLine(localRay.Origin, localRay.Origin + (localRay.Direction * 10000), WLinearColor.White, 25, 5);
+            m_lineBatcher.DrawLine(localRay.Origin, localRay.Origin + (localRay.Direction * 10000), WLinearColor.White, 25, 5);
             List<AxisDistanceResult> results = new List<AxisDistanceResult>();
 
             if (m_mode == FTransformMode.Translation)

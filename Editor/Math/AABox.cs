@@ -1,10 +1,9 @@
 ﻿using OpenTK;
 using System.Diagnostics;
-using System;
 
 namespace Editor
 {
-    struct AABox
+    public struct AABox
     {
         public Vector3 Min { get { return m_min; } }
         public Vector3 Max { get { return m_max; } }
@@ -54,6 +53,9 @@ namespace Editor
 
             Vector3 halfExtents = extents / 2;
             Vector3 oldCenter = Center;
+            oldCenter.X *= amount.X;
+            oldCenter.Y *= amount.Y;
+            oldCenter.Z *= amount.Z;
 
             m_min = oldCenter + halfExtents;
             m_max = oldCenter - halfExtents;
