@@ -80,7 +80,7 @@ namespace Editor
             if (m_transformGizmo == null && m_selectionList.Count > 0)
             {
                 // Create the Transform Gizmo.
-                m_transformGizmo = new WTransformGizmo(m_world.m_persistentLines);
+                m_transformGizmo = new WTransformGizmo(null);
                 m_world.RegisterObject(m_transformGizmo);
 
                 if(m_selectionList.Count > 0)
