@@ -40,7 +40,9 @@ namespace Editor
         public bool IsTransforming { get { return m_isTransforming; } }
 
         // Delta Transforms
+        /// <summary> The amount of translation this frame the Gizmo has experienced in local space. </summary>
         public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
+        /// <summary> The amount of rotation this frame the Gizmo has experienced in local space. </summary>
         public Quaternion DeltaRotation { get { return m_deltaRotation; } }
 
         struct AxisDistanceResult
