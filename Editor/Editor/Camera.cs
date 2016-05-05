@@ -93,6 +93,22 @@ namespace Editor
             {
                 moveDir -= Vector3.UnitX;
             }
+
+            // If they're holding down the shift key adjust their FOV when they scroll, otherwise adjust move speed.
+            MoveSpeed += WInput.MouseScrollDelta * 100 * deltaTime;
+            MoveSpeed = WMath.Clamp(MoveSpeed, 100, 8000);
+
+            if (WInput.GetMouseButton(1))
+            {
+                Rotate(deltaTime, WInput.MouseDelta.X, WInput.MouseDelta.Y);
+            }
+
+            float moveSpeed = WInput.GetKey(System.Windows.Input.Key.LeftShift) ? MoveSpeed * 3f : MoveSpeed;
+
+            // Make it relative to the current rotation.
+            moveDir = Vector3.Transform(moveDir, Transform.Rotation);
+
+            // Do Q and E after we transform the moveDir so they're always in worldspace.
             if (WInput.GetKey(System.Windows.Input.Key.Q))
             {
                 moveDir -= Vector3.UnitY;
@@ -102,34 +118,12 @@ namespace Editor
                 moveDir += Vector3.UnitY;
             }
 
-            // If they're holding down the shift key adjust their FOV when they scroll, otherwise adjust move speed.
-            //if (WInput.GetKey(System.Windows.Input.Key.LeftShift) || WInput.GetKey(System.Windows.Input.Key.RightShift))
-            //{
-            //    Camera.NearClipPlane = MathE.Clamp(Camera.NearClipPlane + Input.MouseScrollDelta * 50 * deltaTime * 1.0f, 100, 10000);
-            //    Camera.FarClipPlane = MathE.Clamp(Camera.FarClipPlane + Input.MouseScrollDelta * 10 * deltaTime * 1.2f, 5000, 100000);
-            //}
-            //else
-            {
-                MoveSpeed += WInput.MouseScrollDelta * 100 * deltaTime;
-                MoveSpeed = WMath.Clamp(MoveSpeed, 100, 8000);
-            }
-
-            if (WInput.GetMouseButton(1))
-            {
-                Rotate(deltaTime, WInput.MouseDelta.X, WInput.MouseDelta.Y);
-            }
+            // Normalize the move direction
+            moveDir.NormalizeFast();
 
             // Early out if we're not moving this frame.
             if (moveDir.LengthFast < 0.1f)
                 return;
-
-            float moveSpeed = WInput.GetKey(System.Windows.Input.Key.LeftShift) ? MoveSpeed * 3f : MoveSpeed;
-
-            // Normalize the move direction
-            moveDir.NormalizeFast();
-
-            // Make it relative to the current rotation.
-            moveDir = Vector3.Transform(moveDir, Transform.Rotation);
 
             Transform.Position += Vector3.Multiply(moveDir, moveSpeed * deltaTime);
         }
