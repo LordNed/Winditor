@@ -23,7 +23,9 @@
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Undo" InputGestureText="Ctrl + Z" Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" >
-                    <MenuItem.Icon><Image Source="../resources/ui/undo_16x.png"/></MenuItem.Icon>
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/undo_16x.png"/>
+                    </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="_Redo" InputGestureText="Ctrl + Y" Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" >
                     <MenuItem.Icon>
@@ -34,7 +36,13 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
-            <WindowsFormsHost x:Name="glControlHost" Margin="10"/>
+            <WindowsFormsHost x:Name="glControlHost" Margin="10,10,263,10"/>
+            <GroupBox Header="GroupBox" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" Height="431" Width="248">
+                <ListBox>
+                    <CheckBox IsChecked="{Binding Path=WindEditor.MainWorld.TestUndoRedoObj.TestBoolValue.Value}"/>
+                    <TextBox Text="{Binding Path=WindEditor.MainWorld.TestUndoRedoObj.TestStringValue.Value}"/>
+                </ListBox>
+            </GroupBox>
         </Grid>
     </Grid>
 </Window>

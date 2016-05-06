@@ -103,11 +103,14 @@
     <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\ITickableObject.cs" />
     <Compile Include="Editor\Obj.cs" />
+    <Compile Include="Editor\PropertyValue.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\SimpleObjRenderer.cs" />
     <Compile Include="Editor\StaticMeshActor.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
+    <Compile Include="Editor\TUndoRedoObject.cs" />
+    <Compile Include="Editor\UndoRedo\EditPropertyValueAction.cs" />
     <Compile Include="Editor\UndoRedo\IAction.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
     <Compile Include="Editor\UndoRedo\RotateActorAction.cs" />

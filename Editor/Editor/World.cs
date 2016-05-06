@@ -8,6 +8,7 @@ namespace Editor
     public class WWorld
     {
         public WUndoStack UndoStack { get { return m_undoStack; } }
+        public TUndoRedoObject TestUndoRedoObj { get; set; }
 
         private List<IRenderable> m_renderableObjects = new List<IRenderable>();
         private List<ITickableObject> m_tickableObjects = new List<ITickableObject>();
@@ -22,7 +23,9 @@ namespace Editor
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_undoStack = new WUndoStack();
+            TestUndoRedoObj = new TUndoRedoObject(m_undoStack);
             m_actorEditor = new WActorEditor(this, m_tickableObjects);
+
 
             WSceneView sceneView = new WSceneView(this, m_renderableObjects);
             m_sceneViews.Add(sceneView);
