@@ -27,8 +27,12 @@ namespace Editor
             m_actorEditor = new WActorEditor(this, m_tickableObjects);
 
 
-            WSceneView sceneView = new WSceneView(this, m_renderableObjects);
-            m_sceneViews.Add(sceneView);
+            WSceneView perspectiveView = new WSceneView(this, m_renderableObjects); perspectiveView.SetViewRect(new WRect(0, 0, 0.5f, 0.5f));
+            WSceneView topView = new WSceneView(this, m_renderableObjects); topView.SetViewRect(new WRect(0.5f, 0, 0.5f, 0.5f));
+            WSceneView leftView = new WSceneView(this, m_renderableObjects); leftView.SetViewRect(new WRect(0f, 0.5f, 0.5f, 0.5f));
+            WSceneView frontView = new WSceneView(this, m_renderableObjects); frontView.SetViewRect(new WRect(0.5f, 0.5f, 0.5f, 0.5f));
+            m_sceneViews.AddRange(new[] { perspectiveView, topView, leftView, frontView });
+
 
             AllocateDefaultWorldResources();
 

@@ -121,6 +121,7 @@
     <Compile Include="Editor\LineBatcher.cs" />
     <Compile Include="Editor\PrimitiveComponent.cs" />
     <Compile Include="Editor\World.cs" />
+    <Compile Include="Math\Rect.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Editor\RelayCommand.cs" />
     <Compile Include="View\MainWindow.xaml.cs">

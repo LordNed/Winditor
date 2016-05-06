@@ -33,9 +33,6 @@ namespace Editor
 
         public void ProcessTick()
         {
-            GL.ClearColor(0.6f, 0.25f, 0.35f, 1f);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
-
             foreach (WWorld world in m_editorWorlds)
                 world.ProcessTick();
 
