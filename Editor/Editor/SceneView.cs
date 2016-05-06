@@ -70,37 +70,16 @@ namespace Editor
 
         private void DrawOrientationWidget(int viewportXOffset, int viewportYOffset, Matrix4 viewMatrix, Matrix4 projMatrix)
         {
-            GL.Viewport(viewportXOffset + 8, viewportYOffset + 8, 64, 64);
+            GL.Viewport(viewportXOffset, viewportYOffset, 64, 64);
             GL.Enable(EnableCap.DepthTest);
             GL.Clear(ClearBufferMask.DepthBufferBit);
 
             // Rotation only
-            viewMatrix = viewMatrix.ClearTranslation();// Matrix4.LookAt(Vector3.Zero, m_viewCamera.Transform.Forward, Vector3.UnitY);
-            //viewMatrix = viewMatrix * Matrix4.CreateTranslation(m_viewCamera.Transform.Forward * )
-
-
-
+            viewMatrix = viewMatrix.ClearTranslation();
             projMatrix = Matrix4.CreateOrthographic(m_viewportRect.Width * m_viewWidth, m_viewportRect.Height * m_viewHeight, 0.01f, 250f);
-            Matrix4 modelMatrix = Matrix4.CreateScale(1) * Matrix4.CreateTranslation(m_viewCamera.Transform.Forward * -25f);
+            Matrix4 modelMatrix = Matrix4.CreateScale(0.9f) * Matrix4.CreateTranslation(m_viewCamera.Transform.Forward * -100f);
 
             m_orientationWidget.Render(m_viewCamera.Transform.Rotation, viewMatrix, projMatrix, modelMatrix);
-
-
-            //// Draw 64x64 axes in lower-left corner with 8px margins
-            //glViewport(8, 8, 64, 64);
-            //glEnable(GL_DEPTH_TEST);
-            //glClear(GL_DEPTH_BUFFER_BIT);
-            //glDepthRange(0.f, 1.f);
-
-            //CGraphics::sMVPBlock.ModelMatrix = CTransform4f::TranslationMatrix(mCamera.Direction() * 5);
-            //CGraphics::sMVPBlock.ViewMatrix = mViewInfo.RotationOnlyViewMatrix;
-            //CGraphics::sMVPBlock.ProjectionMatrix = Math::OrthographicMatrix(-1.f, 1.f, -1.f, 1.f, 0.1f, 100.f);
-            //CGraphics::UpdateMVPBlock();
-
-            //glLineWidth(1.f);
-            //CDrawUtil::DrawLine(CVector3f(0, 0, 0), CVector3f(1, 0, 0), CColor::skRed);   // X
-            //CDrawUtil::DrawLine(CVector3f(0, 0, 0), CVector3f(0, 1, 0), CColor::skGreen); // Y
-            //CDrawUtil::DrawLine(CVector3f(0, 0, 0), CVector3f(0, 0, 1), CColor::skBlue);  // Z
         }
 
         private void GetViewAndProjMatrixForView(out Matrix4 viewMatrix, out Matrix4 projMatrix)
