@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Editor
 {
-    public class WWorld
+    public partial class WWorld
     {
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public TUndoRedoObject TestUndoRedoObj { get; set; }

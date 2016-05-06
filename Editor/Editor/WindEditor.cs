@@ -11,10 +11,8 @@ namespace Editor
 
         public WindEditor()
         {
-            WWorld baseWorld = new WWorld();
-            m_editorWorlds.Add(baseWorld);
-
-            //baseWorld.LoadMap(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniHyo\");
+            // Add the default Editor World.
+            m_editorWorlds.Add(new WWorld());
         }
 
         internal void OnViewportResized(int width, int height)

@@ -99,6 +99,7 @@
     <Compile Include="Editor\ActorEditor.cs" />
     <Compile Include="Editor\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
+    <Compile Include="Editor\DebugDrawing.cs" />
     <Compile Include="Editor\Input.cs" />
     <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\ITickableObject.cs" />

@@ -22,14 +22,14 @@ namespace Editor
 
     public enum FSelectedAxes
     {
-        None,//    = 0x0,
-        X,//       = 0x1,
-        Y,//       = 0x2,
-        Z,//       = 0x4,
-        XY,//      = X | Y,
-        XZ,//      = X | Z,
-        YZ,//      = Y | Z,
-        All,//     = X | Y | Z
+        None,   //    = 0x0,
+        X,      //       = 0x1,
+        Y,      //       = 0x2,
+        Z,      //       = 0x4,
+        XY,     //      = X | Y,
+        XZ,     //      = X | Z,
+        YZ,     //      = Y | Z,
+        All,    //     = X | Y | Z
     }
 
     class WTransformGizmo : PrimitiveComponent
@@ -37,6 +37,8 @@ namespace Editor
         public FSelectedAxes SelectedAxes { get { return m_selectedAxes; } }
         public FTransformMode Mode { get { return m_mode; } }
         public FTransformSpace TransformSpace { get { return m_transformSpace; } }
+
+        /// <summary> Is this gizmo currently being transformed by input. </summary>
         public bool IsTransforming { get { return m_isTransforming; } }
 
         // Delta Transforms
@@ -76,9 +78,9 @@ namespace Editor
         private Quaternion m_localRotation = Quaternion.Identity;
         /// <summary> Current scale of the gizmo, modified by the distance on screen.</summary>
         private Vector3 m_scale = Vector3.One;
-        private bool mFlipScaleX;
-        private bool mFlipScaleY;
-        private bool mFlipScaleZ;
+        private bool mFlipScaleX = false;
+        private bool mFlipScaleY = false;
+        private bool mFlipScaleZ = false;
 
         // Delta Transforms
         /// <summary> What is the delta translation for this frame. </summary>
@@ -106,14 +108,12 @@ namespace Editor
         private Vector3 m_moveDir;
 
         // hack...
-        private WLineBatcher m_lineBatcher;
         private SimpleObjRenderer[][] m_gizmoMeshes;
+        private WWorld m_world;
 
-
-        public WTransformGizmo(WLineBatcher lines)
+        public WTransformGizmo(WWorld parentWorld)
         {
-            // hack...
-            m_lineBatcher = lines;
+            m_world = parentWorld;
 
             SetMode(FTransformMode.Translation);
             SetTransformSpace(FTransformSpace.World);
@@ -283,7 +283,7 @@ namespace Editor
             var gizmoBoxes = GetAABBBoundsForMode(m_mode);
             for (int i = 0; i < gizmoBoxes.Length; i++)
             {
-                //m_lineBatcher.DrawBox(gizmoBoxes[i].Min + m_position, gizmoBoxes[i].Max + m_position, gizmoColors[i], 25, 0f);
+                m_world.DebugDrawBox(gizmoBoxes[i].Min + m_position, gizmoBoxes[i].Max + m_position, gizmoColors[i], 25, 0f);
             }
 
             // Update Highlight Status of Models.

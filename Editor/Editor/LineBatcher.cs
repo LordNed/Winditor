@@ -159,7 +159,6 @@ namespace Editor
             GL.UniformMatrix4(m_primitiveShader.UniformViewMtx, false, ref viewMatrix);
             GL.UniformMatrix4(m_primitiveShader.UniformProjMtx, false, ref projMatrix);
 
-
             // Position
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
             GL.EnableVertexAttribArray((int)ShaderAttributeIds.Position);
