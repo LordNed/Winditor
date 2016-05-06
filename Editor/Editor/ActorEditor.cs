@@ -17,7 +17,8 @@ namespace Editor
             m_world = world;
             m_objectList = actorList;
             m_selectionList = new List<WActor>();
-            // RegisterObject(new WTransformGizmo(m_persistentLines));
+            m_transformGizmo = new WTransformGizmo(m_world);
+            m_world.RegisterObject(m_transformGizmo);
         }
 
         public void Tick(float deltaTime)
@@ -77,26 +78,21 @@ namespace Editor
 
         private void UpdateSelectionGizmo()
         {
-            if (m_transformGizmo == null && m_selectionList.Count > 0)
+            if (!m_transformGizmo.Enabled && m_selectionList.Count > 0)
             {
-                // Create the Transform Gizmo.
-                m_transformGizmo = new WTransformGizmo(m_world);
-                m_world.RegisterObject(m_transformGizmo);
+                // Show the Transform Gizmo.
+                m_transformGizmo.Enabled = true;
 
-                if(m_selectionList.Count > 0)
-                {
-                    m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
-                    m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
-                }
+                m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
+                m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
             }
-            else if (m_transformGizmo != null && m_selectionList.Count == 0)
+            else if (m_transformGizmo.Enabled && m_selectionList.Count == 0)
             {
-                // Remove the Transform Gizmo.
-                m_world.UnregisterObject(m_transformGizmo);
-                m_transformGizmo = null;
+                // Hide the Transform Gizmo.
+                m_transformGizmo.Enabled = false;
             }
 
-            if (m_transformGizmo == null)
+            if (!m_transformGizmo.Enabled)
                 return;
 
             if (WInput.GetKeyDown(System.Windows.Input.Key.Q) && !WInput.GetMouseButton(1))
@@ -203,9 +199,6 @@ namespace Editor
 
         private IAction CreateUndoActionForGizmo(bool isDone)
         {
-            if (m_transformGizmo == null)
-                return null;
-
             IAction undoAction = null;
 
             switch (m_transformGizmo.Mode)

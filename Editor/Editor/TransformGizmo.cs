@@ -41,6 +41,9 @@ namespace Editor
         /// <summary> Is this gizmo currently being transformed by input. </summary>
         public bool IsTransforming { get { return m_isTransforming; } }
 
+        /// <summary> Does this Gizmo respond to input and draw? </summary>
+        public bool Enabled = true;
+
         // Delta Transforms
         /// <summary> The amount of translation this frame the Gizmo has experienced in local space. </summary>
         public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
@@ -261,6 +264,9 @@ namespace Editor
 
         public override void Tick(float deltaTime)
         {
+            if (!Enabled)
+                return;
+
             // Update camera distance to our camera.
             if ((!m_isTransforming) || (m_mode != FTransformMode.Translation))
             {
@@ -759,6 +765,9 @@ namespace Editor
 
         public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
+            if (!Enabled)
+                return;
+
             m_scale = Vector3.One * m_gizmoSize * (m_cameraDistance / 100f);
 
             // Construct a model matrix for the gizmo mesh to render at.
