@@ -35,17 +35,6 @@ namespace Editor
 
 
             AllocateDefaultWorldResources();
-
-            // dflskdf
-            WActor testActor = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            WActor testActor2 = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            WActor testActor3 = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            RegisterObject(testActor);
-            RegisterObject(testActor2);
-            RegisterObject(testActor3);
-
-            testActor2.Transform.Position = new OpenTK.Vector3(500, 0, 0);
-            testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);
         }
 
         public void LoadMap(string filePath)
@@ -161,6 +150,17 @@ namespace Editor
         {
             m_persistentLines = new WLineBatcher();
             RegisterObject(m_persistentLines);
+
+            // dflskdf
+            WActor testActor = new WStaticMeshActor("resources/editor/EditorCube.obj");
+            WActor testActor2 = new WStaticMeshActor("resources/editor/EditorCube.obj");
+            WActor testActor3 = new WStaticMeshActor("resources/editor/EditorCube.obj");
+            RegisterObject(testActor);
+            RegisterObject(testActor2);
+            RegisterObject(testActor3);
+
+            testActor2.Transform.Position = new OpenTK.Vector3(500, 0, 0);
+            testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);
         }
     }
 }
