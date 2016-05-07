@@ -2,6 +2,7 @@
 using GameFormatReader.Common;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 namespace Editor
 {
@@ -117,6 +118,8 @@ namespace Editor
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
             m_dtStopwatch.Restart();
 
+            UpdateSceneViews();
+
             foreach (var item in m_tickableObjects)
             {
                 item.Tick(deltaTime);
@@ -161,6 +164,38 @@ namespace Editor
 
             testActor2.Transform.Position = new OpenTK.Vector3(500, 0, 0);
             testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);
+        }
+
+
+        private void UpdateSceneViews()
+        {
+            // If they've clicked, check which view is in focus.
+            if(WInput.GetMouseButtonDown(0) || WInput.GetMouseButtonDown(1) || WInput.GetMouseButtonDown(2))
+            {
+                WSceneView focusedScene = GetFocusedSceneView();
+                foreach (var scene in m_sceneViews)
+                {
+                    scene.IsFocused = false;
+                    WRect viewport = scene.GetViewportDimensions();
+                    if(viewport.Contains(WInput.MousePosition.X, WInput.MousePosition.Y))
+                    {
+                        focusedScene = scene;
+                        break;
+                    }
+                }
+
+                focusedScene.IsFocused = true;
+            }
+        }
+
+
+        public WSceneView GetFocusedSceneView()
+        {
+            foreach (var scene in m_sceneViews)
+                if (scene.IsFocused)
+                    return scene;
+
+            return m_sceneViews[0];
         }
     }
 }

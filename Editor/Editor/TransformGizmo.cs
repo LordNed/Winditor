@@ -270,7 +270,7 @@ namespace Editor
             // Update camera distance to our camera.
             if ((!m_isTransforming) || (m_mode != FTransformMode.Translation))
             {
-                m_cameraDistance = (WSceneView.GetCameraPos() - m_position).Length; // ToDo: This is still bad.
+                m_cameraDistance = (m_world.GetFocusedSceneView().GetCameraPos() - m_position).Length; // ToDo: This is still bad.
             }
 
             WLinearColor[] gizmoColors = new[]
@@ -499,8 +499,8 @@ namespace Editor
                 else rotationAxis = Vector3.UnitZ;
 
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
-                Vector2 lineOrigin = (WSceneView.UnprojectWorldToViewport(m_hitPoint) * 2) - Vector2.One;
-                Vector2 lineEnd = (WSceneView.UnprojectWorldToViewport(m_hitPoint + m_moveDir) * 2) - Vector2.One;
+                Vector2 lineOrigin = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_hitPoint) * 2) - Vector2.One;
+                Vector2 lineEnd = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_hitPoint + m_moveDir) * 2) - Vector2.One;
 
                 lineOrigin.Y = -lineOrigin.Y;
                 lineEnd.Y = -lineEnd.Y;
@@ -546,7 +546,7 @@ namespace Editor
             {
                 // Create a line in screen space.
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
-                Vector2 lineOrigin = (WSceneView.UnprojectWorldToViewport(m_position) * 2) - Vector2.One;
+                Vector2 lineOrigin = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position) * 2) - Vector2.One;
                 lineOrigin.Y = -lineOrigin.Y;
 
                 // Determine the appropriate world space directoin using the selected axes and then conver this for use with
@@ -565,7 +565,7 @@ namespace Editor
                     if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) worldDir = dirY;
                     else worldDir = dirZ;
 
-                    Vector2 worldPoint = (WSceneView.UnprojectWorldToViewport(m_position + worldDir) * 2) - Vector2.One;
+                    Vector2 worldPoint = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position + worldDir) * 2) - Vector2.One;
                     worldPoint.Y = -lineOrigin.Y;
 
                     lineDir = (worldPoint - lineOrigin).Normalized();
@@ -576,9 +576,9 @@ namespace Editor
                     Vector3 axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? dirX : dirY;
                     Vector3 axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Z) ? dirZ : dirY;
 
-                    Vector2 screenA = (WSceneView.UnprojectWorldToViewport(m_position + axisA) * 2) - Vector2.One;
+                    Vector2 screenA = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position + axisA) * 2) - Vector2.One;
                     screenA.Y = -screenA.Y;
-                    Vector2 screenB = (WSceneView.UnprojectWorldToViewport(m_position + axisB) * 2) - Vector2.One;
+                    Vector2 screenB = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position + axisB) * 2) - Vector2.One;
                     screenB.Y = -screenB.Y;
 
                     screenA = (screenA - lineOrigin).Normalized();

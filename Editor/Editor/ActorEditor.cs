@@ -39,7 +39,7 @@ namespace Editor
 
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
-                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
+                WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
                 WActor addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
@@ -135,7 +135,7 @@ namespace Editor
 
             if (WInput.GetMouseButtonDown(0))
             {
-                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
+                WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.CheckSelectedAxes(mouseRay))
                 {                            
                     Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_transformGizmo.SelectedAxes);
@@ -159,8 +159,8 @@ namespace Editor
 
             if (m_transformGizmo.IsTransforming)
             {
-                WRay mouseRay = WSceneView.ProjectScreenToWorld(WInput.MousePosition);
-                Vector3 cameraPos = WSceneView.GetCameraPos();
+                WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
+                Vector3 cameraPos = m_world.GetFocusedSceneView().GetCameraPos();
                 if (m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
                 {
                     IAction undoAction = CreateUndoActionForGizmo(false);

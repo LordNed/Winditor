@@ -1,6 +1,9 @@
-﻿namespace Editor
+﻿using System;
+using OpenTK;
+
+namespace Editor
 {
-    struct WRect
+    public struct WRect
     {
         public float X, Y, Width, Height;
 
@@ -15,6 +18,11 @@
         public override string ToString()
         {
             return string.Format("X: {0} Y: {1} Width: {2} Height: {3}", X, Y, Width, Height);
+        }
+
+        public bool Contains(float x, float y)
+        {
+            return (x >= X && x <= (X + Width)) && (y >= Y && y <= (Y + Height));
         }
     }
 }

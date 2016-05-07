@@ -8,8 +8,10 @@ namespace Editor
     /// <summary>
     /// A scene view represents a particular viewport into a given <see cref="WWorld"/>. This allows us to have multiple views into a single world.
     /// </summary>
-    class WSceneView
+    public class WSceneView
     {
+        public bool IsFocused { get; set; }
+
         private WWorld m_world;
         private IList<IRenderable> m_renderList;
 
@@ -103,21 +105,35 @@ namespace Editor
             m_viewCamera.AspectRatio = (m_viewportRect.Width * width) / (m_viewportRect.Height * height);
         }
 
-        public static WRay ProjectScreenToWorld(Vector2 mousePosition)
+        public WRay ProjectScreenToWorld(Vector2 mousePosition)
         {
             var viewCam = m_dontlookatme.m_viewCamera;
             return viewCam.ViewportPointToRay(mousePosition, new Vector2(m_dontlookatme.m_viewWidth, m_dontlookatme.m_viewHeight));
         }
 
-        public static Vector2 UnprojectWorldToViewport(Vector3 worldLocation)
+        public Vector2 UnprojectWorldToViewport(Vector3 worldLocation)
         {
             var viewCam = m_dontlookatme.m_viewCamera;
             return viewCam.WorldPointToViewportPoint(worldLocation);
         }            
 
-        internal static Vector3 GetCameraPos()
+        internal Vector3 GetCameraPos()
         {
             return m_dontlookatme.m_viewCamera.Transform.Position;
+        }
+
+        /// <summary>
+        /// Returns the position of the viewport in screenspace pixel coordinates.
+        /// </summary>
+        public WRect GetViewportDimensions()
+        {
+            WRect newRect = new WRect();
+            newRect.X = m_viewportRect.X * m_viewWidth;
+            newRect.Y = m_viewportRect.Y * m_viewHeight;
+            newRect.Width = m_viewportRect.Width * m_viewWidth;
+            newRect.Height = m_viewportRect.Height * m_viewHeight;
+
+            return newRect;
         }
     }
 }
