@@ -180,7 +180,6 @@ namespace Editor
                     if(viewport.Contains(WInput.MousePosition.X, WInput.MousePosition.Y))
                     {
                         focusedScene = scene;
-                        break;
                     }
                 }
 

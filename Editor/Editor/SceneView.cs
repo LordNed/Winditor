@@ -21,8 +21,6 @@ namespace Editor
         private WRect m_viewportRect;
         private WViewportOrientationWidget m_orientationWidget;
 
-        private static WSceneView m_dontlookatme;
-
         public WSceneView(WWorld world, IList<IRenderable> renderList)
         {
             m_world = world;
@@ -32,9 +30,6 @@ namespace Editor
             m_viewCamera = new WCamera();
             m_orientationWidget = new WViewportOrientationWidget();
             world.RegisterObject(m_viewCamera);
-
-            // ... :(
-            m_dontlookatme = this;
         }
 
         public void Render()
@@ -101,25 +96,43 @@ namespace Editor
             m_viewHeight = height;
 
             // Recalculate the aspect ratio of our view camera.
-            //m_viewCamera.AspectRatio = width / (float)height;
             m_viewCamera.AspectRatio = (m_viewportRect.Width * width) / (m_viewportRect.Height * height);
         }
 
         public WRay ProjectScreenToWorld(Vector2 mousePosition)
         {
-            var viewCam = m_dontlookatme.m_viewCamera;
-            return viewCam.ViewportPointToRay(mousePosition, new Vector2(m_dontlookatme.m_viewWidth, m_dontlookatme.m_viewHeight));
+            WRect viewportDimensions = GetViewportDimensions();
+            mousePosition.X -= viewportDimensions.X;
+            mousePosition.Y -= viewportDimensions.Y;
+
+
+            Vector3 mousePosA = new Vector3(mousePosition.X, mousePosition.Y, 0f);
+            Vector3 mousePosB = new Vector3(mousePosition.X, mousePosition.Y, 1f);
+
+            Vector2 screenSize = new Vector2(viewportDimensions.Width, viewportDimensions.Height);
+
+            Vector4 nearUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mousePosA, screenSize);
+            Vector4 farUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mousePosB, screenSize);
+
+            Vector3 dir = farUnproj.Xyz - nearUnproj.Xyz;
+            dir.Normalize();
+
+            return new WRay(nearUnproj.Xyz, dir);
         }
 
         public Vector2 UnprojectWorldToViewport(Vector3 worldLocation)
         {
-            var viewCam = m_dontlookatme.m_viewCamera;
-            return viewCam.WorldPointToViewportPoint(worldLocation);
-        }            
+            Matrix4 viewProjMatrix = m_viewCamera.ViewMatrix * m_viewCamera.ProjectionMatrix;
+
+            // Transform World to Clip Space
+            Vector3 clipSpacePoint = Vector3.TransformPerspective(worldLocation, viewProjMatrix);
+            Vector2 viewportSpace = new Vector2((clipSpacePoint.X + 1) / 2f, (-clipSpacePoint.Y + 1) / 2f);
+            return viewportSpace;
+        }
 
         internal Vector3 GetCameraPos()
         {
-            return m_dontlookatme.m_viewCamera.Transform.Position;
+            return m_viewCamera.Transform.Position;
         }
 
         /// <summary>
@@ -134,6 +147,31 @@ namespace Editor
             newRect.Height = m_viewportRect.Height * m_viewHeight;
 
             return newRect;
+        }
+
+        private Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 mousePos, Vector2 screenSize)
+        {
+            Vector4 vec = new Vector4();
+
+            vec.X = 2.0f * mousePos.X / screenSize.X - 1;
+            vec.Y = -(2.0f * mousePos.Y / screenSize.Y - 1);
+            vec.Z = mousePos.Z;
+            vec.W = 1.0f;
+
+            Matrix4 viewInv = Matrix4.Invert(view);
+            Matrix4 projInv = Matrix4.Invert(projection);
+
+            Vector4.Transform(ref vec, ref projInv, out vec);
+            Vector4.Transform(ref vec, ref viewInv, out vec);
+
+            if (vec.W > float.Epsilon || vec.W < float.Epsilon)
+            {
+                vec.X /= vec.W;
+                vec.Y /= vec.W;
+                vec.Z /= vec.W;
+            }
+
+            return vec;
         }
     }
 }

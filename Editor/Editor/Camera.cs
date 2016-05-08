@@ -141,58 +141,6 @@ namespace Editor
             }
         }
 
-        public WRay ViewportPointToRay(Vector2 mousePos, Vector2 screenSize)
-        {
-            Vector3 mousePosA = new Vector3(mousePos.X, mousePos.Y, 0f);
-            Vector3 mousePosB = new Vector3(mousePos.X, mousePos.Y, 1f);
-
-
-            Vector4 nearUnproj = UnProject(ProjectionMatrix, ViewMatrix, mousePosA, screenSize);
-            Vector4 farUnproj = UnProject(ProjectionMatrix, ViewMatrix, mousePosB, screenSize);
-
-            Vector3 dir = farUnproj.Xyz - nearUnproj.Xyz;
-            dir.Normalize();
-
-            return new WRay(nearUnproj.Xyz, dir);
-        }
-
-        // Effectively a Project() functon
-        public Vector2 WorldPointToViewportPoint(Vector3 worldPoint)
-        {
-            Matrix4 viewProjMatrix = ViewMatrix * ProjectionMatrix;
-
-            // Transform World to Clip Space
-            Vector3 clipSpacePoint = Vector3.TransformPerspective(worldPoint, viewProjMatrix);
-            Vector2 viewportSpace = new Vector2((clipSpacePoint.X + 1) / 2f, (-clipSpacePoint.Y + 1) / 2f);
-            return viewportSpace;
-        }
-
-
-        private Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 mousePos, Vector2 screenSize)
-        {
-            Vector4 vec = new Vector4();
-
-            vec.X = 2.0f * mousePos.X / screenSize.X - 1;
-            vec.Y = -(2.0f * mousePos.Y / screenSize.Y - 1);
-            vec.Z = mousePos.Z;
-            vec.W = 1.0f;
-
-            Matrix4 viewInv = Matrix4.Invert(view);
-            Matrix4 projInv = Matrix4.Invert(projection);
-
-            Vector4.Transform(ref vec, ref projInv, out vec);
-            Vector4.Transform(ref vec, ref viewInv, out vec);
-
-            if (vec.W > float.Epsilon || vec.W < float.Epsilon)
-            {
-                vec.X /= vec.W;
-                vec.Y /= vec.W;
-                vec.Z /= vec.W;
-            }
-
-            return vec;
-        }
-
         private void CalculateProjectionMatrix()
         {
             m_projectionMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(FieldOfView), AspectRatio, m_nearClipPlane, FarClipPlane);
