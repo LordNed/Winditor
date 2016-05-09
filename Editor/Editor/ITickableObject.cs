@@ -1,4 +1,4 @@
-﻿namespace Editor
+﻿namespace WindEditor
 {
     public interface ITickableObject
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace Editor
+namespace WindEditor
 {
     /// <summary>
     /// Implements the ICommand interface

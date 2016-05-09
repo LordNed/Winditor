@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using System.Collections.Generic;
 
-namespace Editor
+namespace WindEditor
 {
     class TranslateActorAction : IAction
     {

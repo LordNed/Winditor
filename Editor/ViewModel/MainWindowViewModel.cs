@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using System.ComponentModel;
 
-namespace Editor.ViewModel
+namespace WindEditor.ViewModel
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {

@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using OpenTK.Graphics.OpenGL;
 
-namespace Editor
+namespace WindEditor
 {
     struct WBatchedLine
     {

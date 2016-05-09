@@ -1,6 +1,6 @@
 ﻿using OpenTK;
 
-namespace Editor
+namespace WindEditor
 {
     class WStaticMeshActor : WActor, IRenderable
     {

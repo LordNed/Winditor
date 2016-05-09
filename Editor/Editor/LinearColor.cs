@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace Editor
+namespace WindEditor
 {
     /// <summary>
     /// RGBA Color that uses 32-bit floats to represent each component.

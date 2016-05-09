@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenTK;
 
-namespace Editor
+namespace WindEditor
 {
     abstract class WActor : ITickableObject
     {

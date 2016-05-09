@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System;
 
-namespace Editor
+namespace WindEditor
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using System;
 
-namespace Editor
+namespace WindEditor
 {
     static class WMath
     {

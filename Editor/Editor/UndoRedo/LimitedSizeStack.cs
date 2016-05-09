@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Editor
+namespace WindEditor
 {
     /// <summary>
     /// A limited size stack, which stores the newest values first and oldest values last.

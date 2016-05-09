@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using System.Diagnostics;
 
-namespace Editor
+namespace WindEditor
 {
     public struct AABox
     {

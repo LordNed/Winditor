@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using System.Windows.Input;
 
-namespace Editor
+namespace WindEditor
 {
     public static class WInput
     {

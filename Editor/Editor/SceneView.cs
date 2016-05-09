@@ -3,7 +3,7 @@ using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
 using System;
 
-namespace Editor
+namespace WindEditor
 {
     /// <summary>
     /// A scene view represents a particular viewport into a given <see cref="WWorld"/>. This allows us to have multiple views into a single world.

@@ -1,10 +1,10 @@
-﻿using Editor.ViewModel;
+﻿using WindEditor.ViewModel;
 using OpenTK;
 using OpenTK.Graphics;
 using System.Windows;
 using System.Windows.Forms.Integration;
 
-namespace Editor
+namespace WindEditor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

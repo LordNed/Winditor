@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Editor
+namespace WindEditor
 {
     public class PropertyValue<T> : INotifyPropertyChanged
     {

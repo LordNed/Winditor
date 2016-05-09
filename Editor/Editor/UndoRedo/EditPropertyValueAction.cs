@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Editor
+namespace WindEditor
 {
     public class EditPropertyValueAction : IAction
     {

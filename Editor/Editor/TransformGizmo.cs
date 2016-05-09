@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 // http://pastebin.com/raw/p8EqPs8p
 // http://pastebin.com/raw/QRHEcsW2
-namespace Editor
+namespace WindEditor
 {
     public enum FTransformMode
     {

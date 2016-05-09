@@ -1,6 +1,6 @@
 ﻿using OpenTK;
 
-namespace Editor
+namespace WindEditor
 {
     public interface IRenderable
     {

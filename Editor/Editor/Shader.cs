@@ -1,7 +1,7 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using System;
 
-namespace Editor
+namespace WindEditor
 {
     public enum ShaderAttributeIds
     {
