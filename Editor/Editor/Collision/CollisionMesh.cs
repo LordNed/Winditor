@@ -62,7 +62,7 @@ namespace WindEditor.Collision
 
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
-            GL.FrontFace(FrontFaceDirection.Cw);
+            GL.FrontFace(FrontFaceDirection.Ccw);
             GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.Blend);
             GL.DepthMask(true);

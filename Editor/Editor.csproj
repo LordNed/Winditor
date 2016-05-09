@@ -111,6 +111,16 @@
     <Compile Include="Editor\Loaders\MapActor.cs" />
     <Compile Include="Editor\Obj.cs" />
     <Compile Include="Editor\PropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\IntPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\FloatPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\Vector2PropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\Vector3PropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\ShortPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\BytePropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\StringPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\BoolPropertyValue.cs" />
+    <Compile Include="Editor\IPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\SimpleObjRenderer.cs" />

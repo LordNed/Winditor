@@ -1,0 +1,17 @@
+﻿{
+	"FourCC" : "PLYR",
+	"Fields" :
+	[
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8},
+		{"Name" : "Event Index", "Type" : "Byte"},
+		{"Name" : "Unknown 1", "Type" : "Byte"},
+		{"Name" : "Spawn Type", "Type" : "Byte", "EnumType" : "SpawnRoomEntranceTypes"},
+		{"Name" : "Room", "Type" : "Byte", "ReferenceType" : "Room"},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "Unknown 2", "Type" : "Short"},
+		{"Name" : "Y Rotation", "Type" : "YRotation"},
+		{"Name" : "Unknown 3", "Type" : "Byte"},
+		{"Name" : "Spawn Index", "Type" : "Byte"},
+		{"Name" : "Unknown 4", "Type" : "Short"}
+	]
+}

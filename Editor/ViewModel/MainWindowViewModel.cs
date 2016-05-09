@@ -7,9 +7,9 @@ namespace WindEditor.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public WindEditor WindEditor { get { return m_editor; } }
+        public WWindEditor WindEditor { get { return m_editor; } }
 
-        private WindEditor m_editor;
+        private WWindEditor m_editor;
         private GLControl m_glControl;
 
 
@@ -22,7 +22,7 @@ namespace WindEditor.ViewModel
             m_glControl = glControl;
 
             // Delay the creation of the editor until the UI is created, so that we can fire off GL commands immediately in the editor.
-            m_editor = new WindEditor();
+            m_editor = new WWindEditor();
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("WindEditor"));
 
             // Set up the Editor Tick Loop

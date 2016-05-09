@@ -3,16 +3,18 @@ using System.Collections.Generic;
 
 namespace WindEditor
 {
-    class WindEditor
+    class WWindEditor
     {
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
 
         private List<WWorld> m_editorWorlds = new List<WWorld>();
 
-        public WindEditor()
+        public WWindEditor()
         {
             // Add the default Editor World.
             m_editorWorlds.Add(new WWorld());
+
+            m_editorWorlds[0].LoadMap(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniKaz");
         }
 
         internal void OnViewportResized(int width, int height)

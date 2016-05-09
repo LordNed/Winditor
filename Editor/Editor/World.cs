@@ -59,14 +59,25 @@ namespace WindEditor
                 switch(folderName.ToLower())
                 {
                     case "dzb":
-                        string fileName = Path.Combine(folder, "room.dzb");
-                        LoadLevelCollisionFromFolder(fileName);
+                        {
+                            string fileName = Path.Combine(folder, "room.dzb");
+                            LoadLevelCollisionFromFile(fileName);
+                        }
+                        break;
+                    case "dzr":
+                    case "dzs:":
+                        {
+                            string fileName = Path.Combine(folder, "room.dzr");
+                            if (!File.Exists(fileName))
+                                fileName = Path.Combine(folder, "stage.dzs");
+                            LoadLevelEntitiesFromFile(fileName);
+                        }
                         break;
                 }
             }
         }
 
-        private void LoadLevelCollisionFromFolder(string filePath)
+        private void LoadLevelCollisionFromFile(string filePath)
         {
             var collision = new WCollisionMesh();
             using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(filePath), Endian.Big))
@@ -75,7 +86,15 @@ namespace WindEditor
             }
 
             RegisterObject(collision);
-        }   
+        }
+
+        private void LoadLevelEntitiesFromFile(string filePath)
+        {
+            ActorLoader actorLoader = new ActorLoader();
+            var loadedActors = actorLoader.LoadFromFile(filePath, m_undoStack);
+            foreach (var actor in loadedActors)
+                RegisterObject(actor);
+        }
 
         public void RegisterObject(object obj)
         {
@@ -152,7 +171,7 @@ namespace WindEditor
             RegisterObject(m_persistentLines);
 
             // dflskdf
-            WActor testActor = new WStaticMeshActor("resources/editor/EditorCube.obj");
+            /*WActor testActor = new WStaticMeshActor("resources/editor/EditorCube.obj");
             WActor testActor2 = new WStaticMeshActor("resources/editor/EditorCube.obj");
             WActor testActor3 = new WStaticMeshActor("resources/editor/EditorCube.obj");
             RegisterObject(testActor);
@@ -160,7 +179,7 @@ namespace WindEditor
             RegisterObject(testActor3);
 
             testActor2.Transform.Position = new OpenTK.Vector3(500, 0, 0);
-            testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);
+            testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);*/
         }
 
 

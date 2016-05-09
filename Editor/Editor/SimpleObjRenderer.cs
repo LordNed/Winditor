@@ -158,7 +158,7 @@ namespace WindEditor
 
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
-            GL.FrontFace(FrontFaceDirection.Ccw);
+            GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Blend);
             GL.Disable(EnableCap.CullFace);
