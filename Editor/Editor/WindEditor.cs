@@ -14,7 +14,7 @@ namespace WindEditor
             // Add the default Editor World.
             m_editorWorlds.Add(new WWorld());
 
-            m_editorWorlds[0].LoadMap(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\MiniKaz");
+            m_editorWorlds[0].LoadMap(@"E:\New_Data_Drive\WindwakerModding\De-Arc-ed Stage\Ojhous");
         }
 
         internal void OnViewportResized(int width, int height)

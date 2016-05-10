@@ -1,6 +1,6 @@
 ﻿namespace WindEditor
 {
-    interface IPropertyValue
+    public interface IPropertyValue
     {
         void SetValue(object value);
         object GetValue();

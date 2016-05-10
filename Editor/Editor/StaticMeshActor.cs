@@ -2,7 +2,7 @@
 
 namespace WindEditor
 {
-    class WStaticMeshActor : WActor, IRenderable
+    public class WStaticMeshActor : WActor, IRenderable
     {
         private SimpleObjRenderer m_objRenderer;
 

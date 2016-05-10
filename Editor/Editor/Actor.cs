@@ -3,7 +3,7 @@ using OpenTK;
 
 namespace WindEditor
 {
-    abstract class WActor : ITickableObject
+    abstract public class WActor : ITickableObject
     {
         public WTransform Transform { get; protected set; }
 

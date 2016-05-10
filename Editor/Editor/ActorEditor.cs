@@ -1,24 +1,29 @@
 ﻿using OpenTK;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace WindEditor
 {
-    class WActorEditor
+    public class WActorEditor
     {
+        public SelectionAggregate SelectedObjects { get; protected set; }
+
         private WWorld m_world;
         private IList<ITickableObject> m_objectList;
 
         private WTransformGizmo m_transformGizmo;
-        private List<WActor> m_selectionList;
+        private BindingList<WMapActor> m_selectionList;
 
         public WActorEditor(WWorld world, IList<ITickableObject> actorList)
         {
             m_world = world;
             m_objectList = actorList;
-            m_selectionList = new List<WActor>();
+            m_selectionList = new BindingList<WMapActor>();
             m_transformGizmo = new WTransformGizmo(m_world);
             m_world.RegisterObject(m_transformGizmo);
+
+            SelectedObjects = new SelectionAggregate(m_selectionList);
         }
 
         public void Tick(float deltaTime)
@@ -40,7 +45,7 @@ namespace WindEditor
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
-                WActor addedActor = Raycast(mouseRay);
+                WMapActor addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
                 // Click w/o Modifiers = Clear Selection, add result to selection
@@ -170,14 +175,14 @@ namespace WindEditor
             }
         }
 
-        private WActor Raycast(WRay ray)
+        private WMapActor Raycast(WRay ray)
         {
-            WActor closestResult = null;
+            WMapActor closestResult = null;
             float closestDistance = float.MaxValue;
 
             foreach (ITickableObject obj in m_objectList)
             {
-                WActor actor = obj as WActor;
+                WMapActor actor = obj as WMapActor;
                 if (actor == null)
                     continue;
 
@@ -201,13 +206,19 @@ namespace WindEditor
         {
             IAction undoAction = null;
 
+            WActor[] actors = new WActor[m_selectionList.Count];
+            for (int i = 0; i < m_selectionList.Count; i++)
+            {
+                actors[i] = m_selectionList[i];
+            }
+
             switch (m_transformGizmo.Mode)
             {
                 case FTransformMode.Translation:
-                    undoAction = new TranslateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
+                    undoAction = new TranslateActorAction(actors, m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Rotation:
-                    undoAction = new RotateActorAction(m_selectionList.ToArray(), m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
+                    undoAction = new RotateActorAction(actors, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Scale:
                     break;

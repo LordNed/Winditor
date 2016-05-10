@@ -2,7 +2,7 @@
 
 namespace WindEditor
 {
-    class WMapActor : WStaticMeshActor
+    public class WMapActor : WStaticMeshActor
     {
         public List<IPropertyValue> Properties { get; set; }
         public MapLayer Layer { get; set; }

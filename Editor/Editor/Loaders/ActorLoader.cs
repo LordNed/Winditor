@@ -207,7 +207,20 @@ namespace WindEditor
                         break;
                 }
 
-                newActor.Properties.Add(propValue);
+                // Post Fixup...
+                if(string.Compare(field.FieldName, "Position", true) == 0)
+                {
+                    newActor.Transform.Position = (OpenTK.Vector3)propValue.GetValue();
+                }
+                /*if(string.Compare(field.FieldName, "YRotation", true) == 0)
+                {
+
+                }*/
+                else
+                {
+                    newActor.Properties.Add(propValue);
+                }
+
             }
 
             return newActor;

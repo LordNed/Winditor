@@ -14,6 +14,19 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="BooleanDataTemplate">
+            <CheckBox IsChecked="{Binding Path=Value}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringDataTemplate">
+            <TextBox Text="{Binding Path=Value}"/>
+        </DataTemplate>
+
+        <vm:PropertyValueDataTemplateSelector x:Key="PropertyValueTemplateSelector"
+            BooleanDataTemplate="{StaticResource BooleanDataTemplate}"
+            StringDataTemplate="{StaticResource StringDataTemplate}"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -38,9 +51,7 @@
         <Grid Grid.Row="1">
             <WindowsFormsHost x:Name="glControlHost" Margin="10,10,263,10"/>
             <GroupBox Header="GroupBox" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" Height="431" Width="248">
-                <ListBox>
-                    <CheckBox IsChecked="{Binding Path=WindEditor.MainWorld.TestUndoRedoObj.TestBoolValue.Value}"/>
-                    <TextBox Text="{Binding Path=WindEditor.MainWorld.TestUndoRedoObj.TestStringValue.Value}"/>
+                <ListBox DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}" ItemsSource="{Binding Path=SelectedObjects.Values}" ItemTemplateSelector="{StaticResource PropertyValueTemplateSelector}" Grid.IsSharedSizeScope="True" HorizontalContentAlignment="Stretch">
                 </ListBox>
             </GroupBox>
         </Grid>

@@ -10,6 +10,7 @@ namespace WindEditor
     {
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public TUndoRedoObject TestUndoRedoObj { get; set; }
+        public WActorEditor ActorEditor { get { return m_actorEditor; } }
 
         private List<IRenderable> m_renderableObjects = new List<IRenderable>();
         private List<ITickableObject> m_tickableObjects = new List<ITickableObject>();
@@ -37,8 +38,8 @@ namespace WindEditor
 
         public void LoadMap(string filePath)
         {
-            UnloadMap();
-            AllocateDefaultWorldResources();
+            //UnloadMap();
+            //AllocateDefaultWorldResources();
 
             foreach (var folder in Directory.GetDirectories(filePath))
             {
@@ -79,6 +80,9 @@ namespace WindEditor
 
         private void LoadLevelCollisionFromFile(string filePath)
         {
+            if (!File.Exists(filePath))
+                return;
+
             var collision = new WCollisionMesh();
             using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(filePath), Endian.Big))
             {
