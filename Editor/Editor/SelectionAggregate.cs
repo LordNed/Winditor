@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace WindEditor
@@ -16,7 +17,7 @@ namespace WindEditor
                 Dictionary<System.Type, List<IPropertyValue>> values = new Dictionary<System.Type, List<IPropertyValue>>();
 
 
-                foreach(var mapActor in m_selectionList)
+                foreach(var mapActor in m_testList)
                 {
                     foreach (var field in mapActor.Properties)
                     {
@@ -45,12 +46,21 @@ namespace WindEditor
         }
 
         private BindingList<WMapActor> m_selectionList;
+        private ObservableCollection<WMapActor> m_testList;
 
-
-        public SelectionAggregate(BindingList<WMapActor> selectionList)
+        public SelectionAggregate(ObservableCollection<WMapActor> selectionList)
         {
-            m_selectionList = selectionList;
-            selectionList.ListChanged += SelectionList_ListChanged;
+            //m_selectionList = selectionList;
+            //selectionList.ListChanged += SelectionList_ListChanged;
+            m_testList = selectionList;
+            m_testList.CollectionChanged += M_testList_CollectionChanged;
+        }
+
+        private void M_testList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            System.Console.WriteLine(e.Action);
+
+            OnPropertyChanged("Values");
         }
 
         private void SelectionList_ListChanged(object sender, ListChangedEventArgs e)
@@ -58,6 +68,10 @@ namespace WindEditor
             if(e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.Reset)
             {
                 OnPropertyChanged("Values");
+            }
+            if(e.ListChangedType == ListChangedType.PropertyDescriptorChanged)
+            {
+                System.Console.WriteLine("Test");
             }
         }
 

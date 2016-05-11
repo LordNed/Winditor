@@ -24,11 +24,16 @@ namespace WindEditor
         public TStringValueAggregate(IList<IPropertyValue> properties)
         {
             m_associatedProperties = properties;
+            foreach(INotifyPropertyChanged propChange in m_associatedProperties)
+            {
+                propChange.PropertyChanged += PropChange_PropertyChanged;
+            }
         }
 
-        protected void OnPropertyChanged(string propertyName)
+        private void PropChange_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            System.Console.WriteLine("sender: {0} e: {1}", sender, e);
+            OnPropertyChanged("Value");
         }
 
         void IPropertyValue.SetValue(object value)
@@ -53,6 +58,11 @@ namespace WindEditor
             }
 
             return commonValue;
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

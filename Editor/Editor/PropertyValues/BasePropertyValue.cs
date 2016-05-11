@@ -2,7 +2,7 @@
 
 namespace WindEditor
 {
-    public abstract class TBasePropertyValue<T> : IPropertyValue, INotifyPropertyChanged
+    public abstract class TBasePropertyValue<T> : IPropertyValue
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

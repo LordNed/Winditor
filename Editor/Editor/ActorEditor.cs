@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace WindEditor
@@ -13,13 +14,13 @@ namespace WindEditor
         private IList<ITickableObject> m_objectList;
 
         private WTransformGizmo m_transformGizmo;
-        private BindingList<WMapActor> m_selectionList;
+        private ObservableCollection<WMapActor> m_selectionList;
 
         public WActorEditor(WWorld world, IList<ITickableObject> actorList)
         {
             m_world = world;
             m_objectList = actorList;
-            m_selectionList = new BindingList<WMapActor>();
+            m_selectionList = new ObservableCollection<WMapActor>();
             m_transformGizmo = new WTransformGizmo(m_world);
             m_world.RegisterObject(m_transformGizmo);
 
