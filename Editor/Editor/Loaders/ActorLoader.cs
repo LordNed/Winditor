@@ -95,7 +95,7 @@ namespace WindEditor
                 }
             }
         }
-
+#pragma warning disable 0649
         public class MapActorDescriptor
         {
             public string FourCC;
@@ -112,6 +112,7 @@ namespace WindEditor
 
             public uint Length;
         }
+#pragma warning restore 0649
 
         private List<MapActorDescriptor> m_actorDescriptors;
 

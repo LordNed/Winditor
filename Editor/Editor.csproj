@@ -148,6 +148,7 @@
     <Compile Include="Math\Rect.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Editor\RelayCommand.cs" />
+    <Compile Include="ViewModel\PropertyValueConverters.cs" />
     <Compile Include="ViewModel\PropertyValueDataTemplateSelector.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
