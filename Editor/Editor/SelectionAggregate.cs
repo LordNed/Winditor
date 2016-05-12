@@ -13,32 +13,35 @@ namespace WindEditor
         {
             get
             {
+                List<List<IPropertyValue>> values = new List<List<IPropertyValue>>();
                 // ... the first one is a field type..., the second is every field that is that.
-                Dictionary<System.Type, List<IPropertyValue>> values = new Dictionary<System.Type, List<IPropertyValue>>();
+                //Dictionary<System.Type, List<IPropertyValue>> values = new Dictionary<System.Type, List<IPropertyValue>>();
 
-
-                foreach(var mapActor in m_testList)
+                if(m_testList.Count > 0)
                 {
-                    foreach (var field in mapActor.Properties)
+                    // Copy all of the values from the first selected actor and then compare them against the rest.
+                    foreach (var field in m_testList[0].Properties)
                     {
-                        if (field == null)
-                            continue;
+                        values.Add(new List<IPropertyValue>());
+                    }
 
-                        if (!values.ContainsKey(field.GetType()))
-                            values[field.GetType()] = new List<IPropertyValue>();
-
-                        values[field.GetType()].Add(field);
+                    foreach (var mapActor in m_testList)
+                    {
+                        for (int i = 0; i < mapActor.Properties.Count; i++)
+                        {
+                            values[i].Add(mapActor.Properties[i]);
+                        }
                     }
                 }
 
                 // Now we have a list of all of the field types and their associated fields we can make Aggregates for them.
                 BindingList<IPropertyValue> properties = new BindingList<IPropertyValue>();
-                foreach(var kvp in values)
+                foreach(var list in values)
                 {
-                    if (kvp.Key ==  typeof(TStringPropertyValue))
-                        properties.Add(new TStringValueAggregate(kvp.Value));
+                    if(list[0].GetType() == typeof(TStringPropertyValue))
+                        properties.Add(new TStringValueAggregate(list));
                     else
-                        properties.Add(kvp.Value[0]);
+                        properties.Add(list[0]);
                 }
 
                 return properties;

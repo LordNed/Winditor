@@ -199,9 +199,7 @@ namespace WindEditor
                         propValue = new TVector3PropertyValue(new OpenTK.Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), undoStack);
                         break;
                     case PropertyValueType.YRotation:
-                        float yRotation = reader.ReadInt16() * (180 / 32786f);
-                        OpenTK.Quaternion yAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 1, 0), WMath.DegreesToRadians(yRotation));
-                        newActor.Transform.Rotation = yAxis;
+                        propValue = new TFloatPropertyValue(reader.ReadInt16(), undoStack);
                         break;
                     default:
                         break;
@@ -212,15 +210,16 @@ namespace WindEditor
                 {
                     newActor.Transform.Position = (OpenTK.Vector3)propValue.GetValue();
                 }
-                /*if(string.Compare(field.FieldName, "YRotation", true) == 0)
+                if(string.Compare(field.FieldName, "Y Rotation", true) == 0)
                 {
-
-                }*/
+                    float yRotation = (float)propValue.GetValue() * (180 / 32786f);
+                    OpenTK.Quaternion yAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 1, 0), WMath.DegreesToRadians(yRotation));
+                    newActor.Transform.Rotation = yAxis;
+                }
                 else
                 {
                     newActor.Properties.Add(propValue);
                 }
-
             }
 
             return newActor;
