@@ -38,8 +38,10 @@ namespace WindEditor
                 BindingList<IPropertyValue> properties = new BindingList<IPropertyValue>();
                 foreach(var list in values)
                 {
-                    if(list[0].GetType() == typeof(TStringPropertyValue))
-                        properties.Add(new TStringValueAggregate(list[0].Name, list));
+                    if (list[0].GetType() == typeof(TStringPropertyValue))
+                        properties.Add(new BaseValueAggregate<string>(list[0].Name, list));
+                    else if (list[0].GetType() == typeof(TBytePropertyValue))
+                        properties.Add(new BaseValueAggregate<byte>(list[0].Name, list));
                     else
                         properties.Add(list[0]);
                 }

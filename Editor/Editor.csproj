@@ -115,9 +115,9 @@
     <Compile Include="Editor\Loaders\MapActor.cs" />
     <Compile Include="Editor\Obj.cs" />
     <Compile Include="Editor\PropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\BaseValueAggregate.cs" />
     <Compile Include="Editor\PropertyValues\IntPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\FloatPropertyValue.cs" />
-    <Compile Include="Editor\PropertyValues\StringValueAggregate.cs" />
     <Compile Include="Editor\PropertyValues\Vector2PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\Vector3PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\ShortPropertyValue.cs" />
@@ -132,7 +132,6 @@
     <Compile Include="Editor\SimpleObjRenderer.cs" />
     <Compile Include="Editor\StaticMeshActor.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
-    <Compile Include="Editor\TUndoRedoObject.cs" />
     <Compile Include="Editor\UndoRedo\EditPropertyValueAction.cs" />
     <Compile Include="Editor\UndoRedo\IAction.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />

@@ -9,7 +9,6 @@ namespace WindEditor
     public partial class WWorld
     {
         public WUndoStack UndoStack { get { return m_undoStack; } }
-        public TUndoRedoObject TestUndoRedoObj { get; set; }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
 
         private List<IRenderable> m_renderableObjects = new List<IRenderable>();
@@ -25,7 +24,6 @@ namespace WindEditor
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_undoStack = new WUndoStack();
-            TestUndoRedoObj = new TUndoRedoObject(m_undoStack);
             m_actorEditor = new WActorEditor(this, m_tickableObjects);
 
 

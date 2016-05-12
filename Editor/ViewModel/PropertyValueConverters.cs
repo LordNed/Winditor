@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace WindEditor.ViewModel
@@ -8,6 +9,9 @@ namespace WindEditor.ViewModel
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null)
+                return "--";
+
             byte val = (byte)value;
             return val.ToString();
         }
@@ -19,8 +23,7 @@ namespace WindEditor.ViewModel
             if (byte.TryParse(val, out output))
                 return output;
 
-            Console.WriteLine("Failed to convert back!");
-            return null;
+            return new ValidationResult(false, "Not a byte");
         }
     }
 }

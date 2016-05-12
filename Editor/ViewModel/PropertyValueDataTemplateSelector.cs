@@ -14,9 +14,9 @@ namespace WindEditor.ViewModel
             IPropertyValue val = item as IPropertyValue;
             if (val is TBoolPropertyValue)
                 return BooleanDataTemplate;
-            else if (val is TStringValueAggregate)
+            else if (val is BaseValueAggregate<string>)
                 return StringDataTemplate;
-            else if (val is TBytePropertyValue)
+            else if (val is BaseValueAggregate<byte>)
                 return ByteDataTemplate;   
 
             return base.SelectTemplate(item, container);
