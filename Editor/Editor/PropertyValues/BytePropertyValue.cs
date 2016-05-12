@@ -20,7 +20,7 @@
         private readonly WUndoStack m_undoStack;
         private byte m_value;
 
-        public TBytePropertyValue(byte defaultValue, WUndoStack undoStack)
+        public TBytePropertyValue(byte defaultValue, string propertyName, WUndoStack undoStack) : base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;

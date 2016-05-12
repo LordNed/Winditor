@@ -8,6 +8,13 @@ namespace WindEditor
 
         public abstract T Value { get; set; }
 
+        public string Name { get; }
+
+        public TBasePropertyValue(string propertyName)
+        {
+            Name = propertyName;
+        }
+
         public object GetValue()
         {
             return Value;

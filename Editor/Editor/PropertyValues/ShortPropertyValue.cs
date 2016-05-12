@@ -20,7 +20,7 @@
         private readonly WUndoStack m_undoStack;
         private short m_value;
 
-        public TShortPropertyValue(short defaultValue, WUndoStack undoStack)
+        public TShortPropertyValue(short defaultValue, string propertyName, WUndoStack undoStack):base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;

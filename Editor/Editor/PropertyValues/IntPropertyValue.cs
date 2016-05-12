@@ -20,7 +20,7 @@
         private readonly WUndoStack m_undoStack;
         private int m_value;
 
-        public TIntPropertyValue(int defaultValue, WUndoStack undoStack)
+        public TIntPropertyValue(int defaultValue, string propertyName, WUndoStack undoStack) : base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;

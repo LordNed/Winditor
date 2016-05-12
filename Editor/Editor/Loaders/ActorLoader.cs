@@ -174,32 +174,32 @@ namespace WindEditor
                 switch (field.FieldType)
                 {
                     case PropertyValueType.Bool:
-                        propValue = new TBoolPropertyValue(reader.ReadBoolean(), undoStack);
+                        propValue = new TBoolPropertyValue(reader.ReadBoolean(), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.Byte:
-                        propValue = new TBytePropertyValue(reader.ReadByte(), undoStack);
+                        propValue = new TBytePropertyValue(reader.ReadByte(), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.Short:
-                        propValue = new TShortPropertyValue(reader.ReadInt16(), undoStack);
+                        propValue = new TShortPropertyValue(reader.ReadInt16(), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.Int:
-                        propValue = new TIntPropertyValue(reader.ReadInt32(), undoStack);
+                        propValue = new TIntPropertyValue(reader.ReadInt32(), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.Float:
-                        propValue = new TFloatPropertyValue(reader.ReadSingle(), undoStack);
+                        propValue = new TFloatPropertyValue(reader.ReadSingle(), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.FixedLengthString:
                     case PropertyValueType.String:
-                        propValue = new TStringPropertyValue((field.Length == 0) ? reader.ReadStringUntil('\0') : reader.ReadString(field.Length), undoStack);
+                        propValue = new TStringPropertyValue((field.Length == 0) ? reader.ReadStringUntil('\0') : reader.ReadString(field.Length), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.Vector2:
-                        propValue = new TVector2PropertyValue(new OpenTK.Vector2(reader.ReadSingle(), reader.ReadSingle()), undoStack);
+                        propValue = new TVector2PropertyValue(new OpenTK.Vector2(reader.ReadSingle(), reader.ReadSingle()), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.Vector3:
-                        propValue = new TVector3PropertyValue(new OpenTK.Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), undoStack);
+                        propValue = new TVector3PropertyValue(new OpenTK.Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), field.FieldName, undoStack);
                         break;
                     case PropertyValueType.YRotation:
-                        propValue = new TFloatPropertyValue(reader.ReadInt16(), undoStack);
+                        propValue = new TFloatPropertyValue(reader.ReadInt16(), field.FieldName, undoStack);
                         break;
                     default:
                         break;

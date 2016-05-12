@@ -20,7 +20,7 @@
         private readonly WUndoStack m_undoStack;
         private string m_value;
 
-        public TStringPropertyValue(string defaultValue, WUndoStack undoStack)
+        public TStringPropertyValue(string defaultValue, string propertyName, WUndoStack undoStack):base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;

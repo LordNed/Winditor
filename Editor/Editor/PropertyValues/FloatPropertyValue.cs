@@ -20,7 +20,7 @@
         private readonly WUndoStack m_undoStack;
         private float m_value;
 
-        public TFloatPropertyValue(float defaultValue, WUndoStack undoStack)
+        public TFloatPropertyValue(float defaultValue, string propertyName, WUndoStack undoStack) : base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;

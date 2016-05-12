@@ -39,7 +39,7 @@ namespace WindEditor
                 foreach(var list in values)
                 {
                     if(list[0].GetType() == typeof(TStringPropertyValue))
-                        properties.Add(new TStringValueAggregate(list));
+                        properties.Add(new TStringValueAggregate(list[0].Name, list));
                     else
                         properties.Add(list[0]);
                 }

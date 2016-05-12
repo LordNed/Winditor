@@ -9,22 +9,22 @@ namespace WindEditor
 
         public string Value
         {
-            get
-            {
-                return (string)((IPropertyValue)this).GetValue();
-            }
-            set
-            {
-                ((IPropertyValue)this).SetValue(value);
-            }
+            get { return (string)((IPropertyValue)this).GetValue(); }
+            set { ((IPropertyValue)this).SetValue(value); }
         }
 
-        private IList<IPropertyValue> m_associatedProperties;
+        public string Name { get; protected set; }
 
-        public TStringValueAggregate(IList<IPropertyValue> properties)
+        private IList<IPropertyValue> m_associatedProperties;
+        
+
+        public TStringValueAggregate(string propertyName, IList<IPropertyValue> properties)
         {
             m_associatedProperties = properties;
-            foreach(INotifyPropertyChanged propChange in m_associatedProperties)
+            Name = propertyName;
+
+            // Listen to PropertyChanged events on every property value incase Undo/Redo changes the value.
+            foreach (INotifyPropertyChanged propChange in m_associatedProperties)
             {
                 propChange.PropertyChanged += PropChange_PropertyChanged;
             }

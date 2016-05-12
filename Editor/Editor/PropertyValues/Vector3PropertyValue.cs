@@ -22,7 +22,7 @@ namespace WindEditor
         private readonly WUndoStack m_undoStack;
         private Vector3 m_value;
 
-        public TVector3PropertyValue(Vector3 defaultValue, WUndoStack undoStack)
+        public TVector3PropertyValue(Vector3 defaultValue, string propertyName, WUndoStack undoStack):base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;

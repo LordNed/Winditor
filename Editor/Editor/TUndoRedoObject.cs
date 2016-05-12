@@ -7,8 +7,8 @@
 
         public TUndoRedoObject(WUndoStack undoStack)
         {
-            TestBoolValue = new TBoolPropertyValue(true, undoStack);
-            TestStringValue = new TStringPropertyValue("Hello World", undoStack);
+            TestBoolValue = new TBoolPropertyValue(true, "TestBoolValue", undoStack);
+            TestStringValue = new TStringPropertyValue("Hello World", "TestStringValue", undoStack);
         }
     }
 }

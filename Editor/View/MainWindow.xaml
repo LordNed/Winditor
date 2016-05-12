@@ -16,11 +16,22 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate x:Key="BooleanDataTemplate">
-            <CheckBox IsChecked="{Binding Path=Value}"/>
+            <Grid>
+                <Label Content="{Binding Path=Name}"/>
+                <CheckBox IsChecked="{Binding Path=Value}"/>
+            </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="StringDataTemplate">
-            <TextBox Text="{Binding Path=Value}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="0" Content="{Binding Path=Name}"/>
+                <TextBox Grid.Column="1" Text="{Binding Path=Value}"/>
+            </Grid>
         </DataTemplate>
 
         <vm:PropertyValueDataTemplateSelector x:Key="PropertyValueTemplateSelector"

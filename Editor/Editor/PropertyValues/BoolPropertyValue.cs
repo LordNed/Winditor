@@ -20,7 +20,7 @@
         private readonly WUndoStack m_undoStack;
         private bool m_value;
 
-        public TBoolPropertyValue(bool defaultValue, WUndoStack undoStack)
+        public TBoolPropertyValue(bool defaultValue, string propertyName, WUndoStack undoStack) : base(propertyName)
         {
             m_value = defaultValue;
             m_undoStack = undoStack;
