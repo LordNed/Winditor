@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:WindEditor.ViewModel;assembly=WindEditor">
+        <DataTemplate x:Key="BooleanDataTemplate">
+            <Grid>
+                <Label Content="{Binding Path=Name}"/>
+                <CheckBox IsChecked="{Binding Path=Value}"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringDataTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Content="{Binding Path=Name}"/>
+                <TextBox Grid.Column="1" Text="{Binding Path=Value}"/>
+            </Grid>
+        </DataTemplate>
+
+        <vm:PropertyValueDataTemplateSelector x:Key="PropertyValueTemplateSelector"
+            BooleanDataTemplate="{StaticResource BooleanDataTemplate}"
+            StringDataTemplate="{StaticResource StringDataTemplate}"/>
+</ResourceDictionary>
