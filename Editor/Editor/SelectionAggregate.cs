@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace WindEditor
@@ -14,18 +13,16 @@ namespace WindEditor
             get
             {
                 List<List<IPropertyValue>> values = new List<List<IPropertyValue>>();
-                // ... the first one is a field type..., the second is every field that is that.
-                //Dictionary<System.Type, List<IPropertyValue>> values = new Dictionary<System.Type, List<IPropertyValue>>();
 
-                if(m_testList.Count > 0)
+                if(m_selectionList.Count > 0)
                 {
                     // Copy all of the values from the first selected actor and then compare them against the rest.
-                    foreach (var field in m_testList[0].Properties)
+                    foreach (var field in m_selectionList[0].Properties)
                     {
                         values.Add(new List<IPropertyValue>());
                     }
 
-                    foreach (var mapActor in m_testList)
+                    foreach (var mapActor in m_selectionList)
                     {
                         for (int i = 0; i < mapActor.Properties.Count; i++)
                         {
@@ -51,32 +48,19 @@ namespace WindEditor
         }
 
         private BindingList<WMapActor> m_selectionList;
-        private ObservableCollection<WMapActor> m_testList;
 
-        public SelectionAggregate(ObservableCollection<WMapActor> selectionList)
+        public SelectionAggregate(BindingList<WMapActor> selectionList)
         {
-            //m_selectionList = selectionList;
-            //selectionList.ListChanged += SelectionList_ListChanged;
-            m_testList = selectionList;
-            m_testList.CollectionChanged += M_testList_CollectionChanged;
+            m_selectionList = selectionList;
+            selectionList.ListChanged += SelectionList_ListChanged;
         }
 
-        private void M_testList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            System.Console.WriteLine(e.Action);
-
-            OnPropertyChanged("Values");
-        }
 
         private void SelectionList_ListChanged(object sender, ListChangedEventArgs e)
         {
             if(e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.Reset)
             {
                 OnPropertyChanged("Values");
-            }
-            if(e.ListChangedType == ListChangedType.PropertyDescriptorChanged)
-            {
-                System.Console.WriteLine("Test");
             }
         }
 

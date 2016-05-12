@@ -1,7 +1,4 @@
-﻿using System;
-using OpenTK;
-
-namespace WindEditor
+﻿namespace WindEditor
 {
     abstract public class WActor : ITickableObject
     {
@@ -14,7 +11,7 @@ namespace WindEditor
             Transform = new WTransform();
         }
 
-        public abstract void Tick(float deltaTime);
+        public virtual void Tick(float deltaTime) { }
 
         public virtual AABox GetAABB()
         {

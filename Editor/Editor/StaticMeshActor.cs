@@ -13,10 +13,6 @@ namespace WindEditor
             m_objRenderer = new SimpleObjRenderer(obj);
         }
 
-        public override void Tick(float deltaTime)
-        {
-        }
-
         public void ReleaseResources()
         {
             m_objRenderer.ReleaseResources();
