@@ -10,6 +10,7 @@
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="o" Modifiers="Ctrl"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
