@@ -145,6 +145,7 @@
     <Compile Include="Editor\PrimitiveComponent.cs" />
     <Compile Include="Editor\World.cs" />
     <Compile Include="Math\Rect.cs" />
+    <Compile Include="ViewModel\GridWidthCalculatorMultiConverter.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Editor\RelayCommand.cs" />
     <Compile Include="ViewModel\PropertyValueConverters.cs" />
