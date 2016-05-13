@@ -211,7 +211,7 @@ namespace WindEditor
                 {
                     newActor.Transform.Position = (OpenTK.Vector3)propValue.GetValue();
                 }
-                if(string.Compare(field.FieldName, "Y Rotation", true) == 0)
+                else if(string.Compare(field.FieldName, "Y Rotation", true) == 0)
                 {
                     float yRotation = (float)propValue.GetValue() * (180 / 32786f);
                     OpenTK.Quaternion yAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 1, 0), WMath.DegreesToRadians(yRotation));

@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:WindEditor.ViewModel;assembly=WindEditor">
     <vm:ByteToStringConverter x:Key="ByteToStringConverter"/>
+    <vm:ShortToStringConverter x:Key="ShortToStringConverter"/>
+    <vm:IntToStringConverter x:Key="IntToStringConverter"/>
 
     <DataTemplate x:Key="BooleanDataTemplate">
             <Grid>

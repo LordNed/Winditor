@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace WindEditor
 {
@@ -11,7 +12,18 @@ namespace WindEditor
         public object Value
         {
             get { return ((IPropertyValue)this).GetValue(); }
-            set { ((IPropertyValue)this).SetValue(value); }
+            set
+            {
+                // Converters will return a ValidationResult if the conversion
+                // from string to type fails. If it failed to convert, we don't
+                // want to try to set the value as there's no way to cast this
+                // in reference types which are structs.
+                ValidationResult valResult = value as ValidationResult;
+                if (valResult != null && !valResult.IsValid)
+                    return;
+
+                ((IPropertyValue)this).SetValue(value);
+            }
         }
 
         private IList<IPropertyValue> m_associatedProperties;
