@@ -137,6 +137,7 @@
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
     <Compile Include="Editor\UndoRedo\RotateActorAction.cs" />
     <Compile Include="Editor\UndoRedo\TranslateActorAction.cs" />
+    <Compile Include="Editor\UndoRedo\UndoCommand.cs" />
     <Compile Include="Editor\UndoRedo\UndoStack.cs" />
     <Compile Include="Editor\ViewportOrientationWidget.cs" />
     <Compile Include="Editor\WindEditor.cs" />
