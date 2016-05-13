@@ -50,8 +50,8 @@ namespace WindEditor
                 var folderPath = ofd.FileName;
 
                 // ToDo: Close all of the additional worlds as well.
-                foreach (WWorld world in m_editorWorlds)
-                    world.UnloadMap();
+                //foreach (WWorld world in m_editorWorlds)
+                    //world.UnloadMap();
 
                 MainWorld.LoadMap(folderPath);
             }
@@ -59,8 +59,8 @@ namespace WindEditor
 
         public void OnApplicationShutdown()
         {
-            //foreach (WWorld world in m_editorWorlds)
-            //    world.UnloadMap();
+            foreach (WWorld world in m_editorWorlds)
+                world.UnloadMap();
             App.Current.Shutdown();
         }
 
