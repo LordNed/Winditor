@@ -21,6 +21,7 @@ namespace WindEditor.ViewModel
                 otherColumnsTotalWidth += arrayOfColumns[i].Width;
             }
 
+            otherColumnsTotalWidth += 8; // Weird padding?
             return (totalWindowWidth - otherColumnsTotalWidth) < 0 ?
                          0 : (totalWindowWidth - otherColumnsTotalWidth);
         }

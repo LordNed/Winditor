@@ -38,7 +38,7 @@
         <Grid Grid.Row="1">
             <WindowsFormsHost x:Name="glControlHost" Margin="10,10,263,10"/>
             <GroupBox Header="GroupBox" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" Height="431" Width="248" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
-                <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch">
+                <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
