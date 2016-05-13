@@ -21,6 +21,11 @@
         </Grid.RowDefinitions>
 
         <Menu IsMainMenu="True" Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
+                <Separator/>
+                <MenuItem Header="_Exit" Command="{Binding Path=WindEditor.ExitApplicationCommand}"/>
+            </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Undo" InputGestureText="Ctrl + Z" Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" >
                     <MenuItem.Icon>
