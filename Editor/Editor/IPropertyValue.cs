@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace WindEditor
 {
@@ -8,5 +9,6 @@ namespace WindEditor
 
         void SetValue(object value);
         object GetValue();
+        IPropertyValueAggregate GetValueAggregateInstance(string propertyName, IList<IPropertyValue> properties);
     }
 }

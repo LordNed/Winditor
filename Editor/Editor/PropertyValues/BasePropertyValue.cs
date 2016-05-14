@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace WindEditor
@@ -42,6 +43,11 @@ namespace WindEditor
         public void SetUndoStack(WUndoStack undoStack)
         {
             m_undoStack = undoStack;
+        }
+
+        public IPropertyValueAggregate GetValueAggregateInstance(string propertyName, IList<IPropertyValue> properties)
+        {
+            return new BaseValueAggregate<T>(propertyName, properties);
         }
     }
 }
