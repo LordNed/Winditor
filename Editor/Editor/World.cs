@@ -111,7 +111,12 @@ namespace WindEditor
                 ITickableObject tickableObj = (ITickableObject)obj;
                 tickableObj.SetWorld(this);
                 m_tickableObjects.Add(tickableObj);
-                
+            }
+
+            if (obj is IUndoable)
+            {
+                IUndoable undoable = obj as IUndoable;
+                undoable.SetUndoStack(m_undoStack);
             }
         }
 

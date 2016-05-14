@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace WindEditor
 {
@@ -9,6 +10,8 @@ namespace WindEditor
         public abstract T Value { get; set; }
 
         public string Name { get; }
+
+        protected WUndoStack m_undoStack;
 
         public TBasePropertyValue(string propertyName)
         {
@@ -29,6 +32,16 @@ namespace WindEditor
         {
             if(PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public WUndoStack GetUndoStack()
+        {
+            return m_undoStack;
+        }
+
+        public void SetUndoStack(WUndoStack undoStack)
+        {
+            m_undoStack = undoStack;
         }
     }
 }

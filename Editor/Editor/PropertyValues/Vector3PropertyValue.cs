@@ -15,17 +15,17 @@ namespace WindEditor
                     () => m_value = oldValue,
                     () => m_value = value,
                     () => OnPropertyChanged("Value"));
-                m_undoStack.Push(undoRedoEntry);
+
+                if (m_undoStack != null)
+                    m_undoStack.Push(undoRedoEntry);
             }
         }
 
-        private readonly WUndoStack m_undoStack;
         private Vector3 m_value;
 
-        public TVector3PropertyValue(Vector3 defaultValue, string propertyName, WUndoStack undoStack):base(propertyName)
+        public TVector3PropertyValue(Vector3 defaultValue, string propertyName):base(propertyName)
         {
             m_value = defaultValue;
-            m_undoStack = undoStack;
         }
     }
 }

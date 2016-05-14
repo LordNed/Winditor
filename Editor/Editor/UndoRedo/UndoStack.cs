@@ -95,7 +95,7 @@ namespace WindEditor
         {
             // If we have an open macro, we push it to the macro instead of the stack, and when the macro is ended, that is when it is finally pushed to the stack.
             // command.GetType().IsSubclassOf(typeof(WUndoCommand)) will return false if we're pushing a WUndoCommand, ie: the end of a macro.
-            if(m_macroParent != null && !command.GetType().IsSubclassOf(typeof(WUndoCommand)))
+            if(m_macroParent != null && command.GetType().IsSubclassOf(typeof(WUndoCommand)))
             {
                 command.SetParent(m_macroParent);
                 return;

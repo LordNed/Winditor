@@ -13,8 +13,8 @@ namespace WindEditor.ViewModel
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            IPropertyValue val = item as IPropertyValue;
-            if (val is TBoolPropertyValue)
+            IPropertyValueAggregate val = item as IPropertyValueAggregate;
+            if (val is BaseValueAggregate<bool>)
                 return BooleanDataTemplate;
             else if (val is BaseValueAggregate<byte>)
                 return ByteDataTemplate;

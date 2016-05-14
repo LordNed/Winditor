@@ -2,7 +2,7 @@
 
 namespace WindEditor
 {
-    public interface IPropertyValue : INotifyPropertyChanged, IUndoable
+    public interface IPropertyValueAggregate : INotifyPropertyChanged
     {
         string Name { get; }
 

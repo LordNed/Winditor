@@ -8,7 +8,7 @@ namespace WindEditor
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public BindingList<IPropertyValue> Values
+        public BindingList<IPropertyValueAggregate> Values
         {
             get
             {
@@ -32,7 +32,7 @@ namespace WindEditor
                 }
 
                 // Now we have a list of all of the field types and their associated fields we can make Aggregates for them.
-                BindingList<IPropertyValue> properties = new BindingList<IPropertyValue>();
+                BindingList<IPropertyValueAggregate> properties = new BindingList<IPropertyValueAggregate>();
                 foreach(var list in values)
                 {
                     if (list[0].GetType() == typeof(TStringPropertyValue))
@@ -44,7 +44,7 @@ namespace WindEditor
                     else if (list[0].GetType() == typeof(TIntPropertyValue))
                         properties.Add(new BaseValueAggregate<int>(list[0].Name, list));
                     else
-                        properties.Add(list[0]);
+                        properties.Add(null);
                 }
 
                 return properties;

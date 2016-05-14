@@ -4,14 +4,14 @@ using System.Windows.Controls;
 
 namespace WindEditor
 {
-    public class BaseValueAggregate<T> : INotifyPropertyChanged, IPropertyValue
+    public class BaseValueAggregate<T> : INotifyPropertyChanged, IPropertyValueAggregate
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Name { get; protected set; }
         public object Value
         {
-            get { return ((IPropertyValue)this).GetValue(); }
+            get { return ((IPropertyValueAggregate)this).GetValue(); }
             set
             {
                 // Converters will return a ValidationResult if the conversion
@@ -22,7 +22,7 @@ namespace WindEditor
                 if (valResult != null && !valResult.IsValid)
                     return;
 
-                ((IPropertyValue)this).SetValue(value);
+                ((IPropertyValueAggregate)this).SetValue(value);
             }
         }
 
@@ -40,15 +40,29 @@ namespace WindEditor
             }
         }
 
-        void IPropertyValue.SetValue(object value)
+        void IPropertyValueAggregate.SetValue(object value)
         {
+            // Snag the Undo/Redo system off of the first associated property, so we can put all of these Set values into a macro.
+            WUndoStack undoStack = null;
+            if(m_associatedProperties.Count > 0)
+            {
+                IUndoable undoableValue = m_associatedProperties[0] as IUndoable;
+                undoStack = undoableValue.GetUndoStack();
+            }
+
+            if (undoStack != null)
+                undoStack.BeginMacro(string.Format("Set {0}", Name));
+
             foreach (var property in m_associatedProperties)
             {
                 property.SetValue(value);
             }
+
+            if (undoStack != null)
+                undoStack.EndMacro();
         }
 
-        object IPropertyValue.GetValue()
+        object IPropertyValueAggregate.GetValue()
         {
             // Return either the common value or null for no value.
             T commonValue = default(T);
