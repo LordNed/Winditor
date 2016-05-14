@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace WindEditor
 {
-    class TranslateActorAction : IAction
+    class WTranslateActorAction : WUndoCommand
     {
         private List<WActor> m_affectedActors;
         private Vector3 m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
 
-        public TranslateActorAction(WActor[] actors, Vector3 delta, FTransformSpace transformSpace, bool isDone)
+        public WTranslateActorAction(WActor[] actors, Vector3 delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Move", parent)
         {
             m_affectedActors = new List<WActor>(actors);
             m_delta = delta;
@@ -18,14 +18,9 @@ namespace WindEditor
             m_transformSpace = transformSpace;
         }
 
-        public string ActionText()
+        public override bool MergeWith(WUndoCommand withAction)
         {
-            return "Move";
-        }
-
-        public bool MergeWith(IAction withAction)
-        {
-            TranslateActorAction otherAction = withAction as TranslateActorAction;
+            WTranslateActorAction otherAction = withAction as WTranslateActorAction;
             if (m_isDone || otherAction == null)
                 return false;
 
@@ -52,8 +47,9 @@ namespace WindEditor
             return false;
         }
 
-        public void Redo()
+        public override void Redo()
         {
+            base.Redo();
             for (int i = 0; i < m_affectedActors.Count; i++)
             {
                 Vector3 transformedDelta = Vector3.Zero;
@@ -70,8 +66,9 @@ namespace WindEditor
             }
         }
 
-        public void Undo()
+        public override void Undo()
         {
+            base.Undo();
             for (int i = 0; i < m_affectedActors.Count; i++)
             {
                 Vector3 transformedDelta = Vector3.Zero;

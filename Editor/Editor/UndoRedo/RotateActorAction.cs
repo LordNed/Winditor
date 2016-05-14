@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace WindEditor
 {
-    class RotateActorAction : IAction
+    class WRotateActorAction : WUndoCommand
     {
         private List<WActor> m_affectedActors;
         private Quaternion m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
 
-        public RotateActorAction(WActor[] actors, Quaternion delta, FTransformSpace transformSpace, bool isDone)
+        public WRotateActorAction(WActor[] actors, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
         {
             m_affectedActors = new List<WActor>(actors);
             m_delta = delta;
@@ -18,14 +18,9 @@ namespace WindEditor
             m_transformSpace = transformSpace;
         }
 
-        public string ActionText()
+        public override bool MergeWith(WUndoCommand withAction)
         {
-            return "Rotate";
-        }
-
-        public bool MergeWith(IAction withAction)
-        {
-            RotateActorAction otherAction = withAction as RotateActorAction;
+            WRotateActorAction otherAction = withAction as WRotateActorAction;
             if (m_isDone || otherAction == null)
                 return false;
 
@@ -52,8 +47,10 @@ namespace WindEditor
             return false;
         }
 
-        public void Redo()
+        public override void Redo()
         {
+            base.Redo();
+
             for (int i = 0; i < m_affectedActors.Count; i++)
             {
                 if(m_transformSpace == FTransformSpace.Local)
@@ -67,8 +64,9 @@ namespace WindEditor
             }
         }
 
-        public void Undo()
+        public override void Undo()
         {
+            base.Undo();
             for (int i = 0; i < m_affectedActors.Count; i++)
             {
                 if (m_transformSpace == FTransformSpace.Local)

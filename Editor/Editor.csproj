@@ -57,6 +57,10 @@
     <Reference Include="GameFormatReader">
       <HintPath>..\lib\GameFormatReader.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
       <Private>True</Private>
@@ -129,7 +133,6 @@
     <Compile Include="Editor\StaticMeshActor.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
     <Compile Include="Editor\UndoRedo\EditPropertyValueAction.cs" />
-    <Compile Include="Editor\UndoRedo\IAction.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
     <Compile Include="Editor\UndoRedo\RotateActorAction.cs" />
     <Compile Include="Editor\UndoRedo\TranslateActorAction.cs" />

@@ -2,18 +2,13 @@
 
 namespace WindEditor
 {
-    public class EditPropertyValueAction : IAction
+    public class WEditPropertyValueAction : WUndoCommand
     {
         private Action m_undoAction;
         private Action m_redoAction;
         private Action m_onPropertyChanged;
 
-        public string ActionText()
-        {
-            return "Value";
-        }
-
-        public EditPropertyValueAction(Action onUndo, Action onRedo, Action onPropertyChanged)
+        public WEditPropertyValueAction(Action onUndo, Action onRedo, Action onPropertyChanged, WUndoCommand parent = null) : base("Value", parent)
         {
             if (onUndo == null)
                 throw new ArgumentNullException("onUndo", "Undo callback cannot be null.");
@@ -27,19 +22,21 @@ namespace WindEditor
             m_onPropertyChanged = onPropertyChanged;
         }
 
-        public bool MergeWith(IAction withAction)
+        public override bool MergeWith(WUndoCommand withAction)
         {
             return false;
         }
 
-        public void Redo()
+        public override void Redo()
         {
+            base.Redo();
             m_redoAction.Invoke();
             m_onPropertyChanged.Invoke();
         }
 
-        public void Undo()
+        public override void Undo()
         {
+            base.Undo();
             m_undoAction.Invoke();
             m_onPropertyChanged.Invoke();
         }

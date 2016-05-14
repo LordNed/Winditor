@@ -154,7 +154,7 @@ namespace WindEditor
                 {
                     // When we end let go of the gizmo, we want to make one last action which specifies that it is done,
                     // so that the next gizmo move doesn't merge with the previous.
-                    IAction undoAction = CreateUndoActionForGizmo(true);
+                    WUndoCommand undoAction = CreateUndoActionForGizmo(true);
                     if (undoAction != null)
                         m_world.UndoStack.Push(undoAction);
 
@@ -168,7 +168,7 @@ namespace WindEditor
                 Vector3 cameraPos = m_world.GetFocusedSceneView().GetCameraPos();
                 if (m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
                 {
-                    IAction undoAction = CreateUndoActionForGizmo(false);
+                    WUndoCommand undoAction = CreateUndoActionForGizmo(false);
                     if(undoAction != null)
                         m_world.UndoStack.Push(undoAction);
                 }
@@ -202,9 +202,9 @@ namespace WindEditor
             return closestResult;
         }
 
-        private IAction CreateUndoActionForGizmo(bool isDone)
+        private WUndoCommand CreateUndoActionForGizmo(bool isDone)
         {
-            IAction undoAction = null;
+            WUndoCommand undoAction = null;
 
             WActor[] actors = new WActor[m_selectionList.Count];
             for (int i = 0; i < m_selectionList.Count; i++)
@@ -215,10 +215,10 @@ namespace WindEditor
             switch (m_transformGizmo.Mode)
             {
                 case FTransformMode.Translation:
-                    undoAction = new TranslateActorAction(actors, m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
+                    undoAction = new WTranslateActorAction(actors, m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Rotation:
-                    undoAction = new RotateActorAction(actors, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
+                    undoAction = new WRotateActorAction(actors, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Scale:
                     break;

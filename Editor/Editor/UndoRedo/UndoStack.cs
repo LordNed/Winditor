@@ -5,8 +5,8 @@ namespace WindEditor
 {
     public class WUndoStack
     {
-        public bool CanUndo { get { return m_undoStack.Count > 0; } }
-        public bool CanRedo { get { return m_redoStack.Count > 0; } }
+        public bool CanUndo { get { return m_undoStack.Count > 0 || m_macroParent != null; } }
+        public bool CanRedo { get { return m_redoStack.Count > 0 || m_macroParent != null; } }
         public int UndoLimit { get { return m_undoStack.MaxSize; } }
 
         public ICommand UndoCommand
@@ -19,23 +19,24 @@ namespace WindEditor
             get { return new RelayCommand(x => Redo(), (x) => CanRedo); }
         }
 
-        private LimitedSizeStack<IAction> m_undoStack;
-        private LimitedSizeStack<IAction> m_redoStack;
+        private LimitedSizeStack<WUndoCommand> m_undoStack;
+        private LimitedSizeStack<WUndoCommand> m_redoStack;
+        private WUndoCommand m_macroParent;
 
         public WUndoStack()
         {
-            m_undoStack = new LimitedSizeStack<IAction>();
-            m_redoStack = new LimitedSizeStack<IAction>();
+            m_undoStack = new LimitedSizeStack<WUndoCommand>();
+            m_redoStack = new LimitedSizeStack<WUndoCommand>();
 
             SetUndoLimit(50);
         }
 
         public void Undo()
         {
-            if (m_undoStack.Count == 0)
+            if (!CanUndo)
                 return;
 
-            IAction action = m_undoStack.Pop();
+            WUndoCommand action = m_undoStack.Pop();
             action.Undo();
 
             m_redoStack.Push(action);
@@ -43,13 +44,45 @@ namespace WindEditor
 
         public void Redo()
         {
-            if (m_redoStack.Count == 0)
+            if (!CanRedo)
                 return;
 
-            IAction action = m_redoStack.Pop();
+            WUndoCommand action = m_redoStack.Pop();
             action.Redo();
 
             m_undoStack.Push(action);
+        }
+
+        /// <summary>
+        /// Pushes an empty command with the specified actionText onto the Undo/Redo stack. Any subsequent commands 
+        /// pushed onto the stack will be appended to the empty command's children until <see cref="EndMacro"/> is called.
+        /// 
+        /// You can nestle BeginMacro/EndMacro calls, but every Begin must have an End, and while a macro is being composed
+        /// the stack is disabled. Disabling the stack means that CanUndo and CanRedo return false, and attempting to Undo
+        /// or Redo will fail.
+        /// </summary>
+        /// <param name="actionText"></param>
+        public void BeginMacro(string actionText)
+        {
+            WUndoCommand macroCommand = new WUndoCommand(actionText, m_macroParent);
+            m_macroParent = macroCommand;
+        }
+
+        /// <summary>
+        /// This ends the composition of the lastest macro created by <see cref="BeginMacro(string)"/>.
+        /// </summary>
+        public void EndMacro()
+        {
+            if(m_macroParent == null)
+            {
+                Console.WriteLine("WUndoStack: EndMacro called but no previous call to BeginMacro!");
+                return;
+            }
+
+            Push(m_macroParent);
+
+            // Grab the parent, which will either be the next macro we want to end, or null meaning we have no macros left.
+            m_macroParent = m_macroParent.Parent;
         }
 
         /// <summary>
@@ -58,8 +91,16 @@ namespace WindEditor
         /// Redo stack, so the command will always end up being the top-most on the stack.
         /// </summary>
         /// <param name="command"></param>
-        public void Push(IAction command)
+        public void Push(WUndoCommand command)
         {
+            // If we have an open macro, we push it to the macro instead of the stack, and when the macro is ended, that is when it is finally pushed to the stack.
+            // command.GetType().IsSubclassOf(typeof(WUndoCommand)) will return false if we're pushing a WUndoCommand, ie: the end of a macro.
+            if(m_macroParent != null && !command.GetType().IsSubclassOf(typeof(WUndoCommand)))
+            {
+                command.SetParent(m_macroParent);
+                return;
+            }
+
             // Clear the redo stack when we add a new item to the undo stack.
             m_redoStack.Clear();
 
@@ -67,7 +108,7 @@ namespace WindEditor
             command.Redo();
 
             // Attempt to merge with our new action. If this fails, add our new action to the undo stack.
-            IAction latestAction = m_undoStack.Peek();
+            WUndoCommand latestAction = m_undoStack.Peek();
             if (latestAction == null)
                 m_undoStack.Push(command);
             else if(!latestAction.MergeWith(command))

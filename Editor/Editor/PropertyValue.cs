@@ -23,7 +23,7 @@ namespace WindEditor
             set
             {
                 T oldValue = m_value;
-                EditPropertyValueAction undoRedoEntry = new EditPropertyValueAction(
+                WEditPropertyValueAction undoRedoEntry = new WEditPropertyValueAction(
                     () => m_value = oldValue,
                     () => m_value = value,
                     () => OnPropertyChanged("Value"));

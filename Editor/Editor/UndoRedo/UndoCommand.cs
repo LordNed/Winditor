@@ -3,36 +3,47 @@ using System.Collections.Generic;
 
 namespace WindEditor
 {
-    public abstract class WUndoCommand
+    public class WUndoCommand
     {
         public string ActionText { get { return m_text; } }
 
-        private WUndoCommand m_parent;
-        private string m_text;
-        private List<WUndoCommand> m_commandChildren;
+        public WUndoCommand Parent { get { return m_parent; } }
+
+        protected WUndoCommand m_parent;
+        protected string m_text;
+        protected List<WUndoCommand> m_commandChildren;
 
         public WUndoCommand(WUndoCommand parent = null)
         {
-            m_parent = parent;
+            SetParent(parent);
             m_text = string.Empty;
             m_commandChildren = new List<WUndoCommand>();
-
-            if(m_parent != null)
-            {
-                m_parent.m_commandChildren.Add(this);
-            }
         }
 
         public WUndoCommand(string text, WUndoCommand parent = null)
         {
-            m_parent = parent;
+            SetParent(parent);
             m_text = text;
             m_commandChildren = new List<WUndoCommand>();
+        }
+        
+        public void SetText(string text)
+        {
+            m_text = text;
+        }
 
-            if (m_parent != null)
-            {
-                m_parent.m_commandChildren.Add(this);
-            }
+        public virtual void Undo()
+        {
+            // Invoke all of our Children's undo functions as well so that we can use WUndoCommands to group like, but non-mergable, undo commands together.
+            foreach (var child in m_commandChildren)
+                child.Undo();
+        }
+
+        public virtual void Redo()
+        {
+            // Invoke all of our Children's redo functions as well so that we can use WUndoCommands to group like, but non-mergable, redo commands together.
+            foreach (var child in m_commandChildren)
+                child.Redo();
         }
 
         public int GetNumChildren()
@@ -48,13 +59,19 @@ namespace WindEditor
             return m_commandChildren[index];
         }
 
-        public void SetText(string text)
+        public void SetParent(WUndoCommand parent)
         {
-            m_text = text;
+            // Remove us from the old parent
+            if (m_parent != null)
+                m_parent.m_commandChildren.Remove(this);
+
+            m_parent = parent;
+            if(m_parent != null)
+            {
+                m_parent.m_commandChildren.Add(this);
+            }
         }
 
         public virtual bool MergeWith(WUndoCommand withAction) { return false; }
-        public abstract void Undo();
-        public abstract void Redo();
     }
 }
