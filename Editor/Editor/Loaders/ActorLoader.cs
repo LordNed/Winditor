@@ -127,7 +127,7 @@ namespace WindEditor
             }
         }
 
-        public List<WMapActor> LoadFromFile(string fileName, WUndoStack undoStack)
+        public List<WMapActor> LoadFromFile(string fileName)
         {
             List<WMapActor> loadedActors = new List<WMapActor>();
 
@@ -154,7 +154,7 @@ namespace WindEditor
 
                     for(int i = 0; i < chunk.ElementCount; i++)
                     {
-                        WMapActor newActor = LoadActorFromChunk(chunk.FourCC, reader, template, undoStack);
+                        WMapActor newActor = LoadActorFromChunk(chunk.FourCC, reader, template);
                         newActor.Layer = chunk.Layer;
 
                         loadedActors.Add(newActor);
@@ -165,7 +165,7 @@ namespace WindEditor
             return loadedActors;
         }
 
-        private WMapActor LoadActorFromChunk(string fourCC, EndianBinaryReader reader, MapActorDescriptor template, WUndoStack undoStack)
+        private WMapActor LoadActorFromChunk(string fourCC, EndianBinaryReader reader, MapActorDescriptor template)
         {
             WMapActor newActor = new WMapActor();
             foreach(var field in template.Fields)

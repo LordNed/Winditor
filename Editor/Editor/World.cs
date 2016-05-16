@@ -1,8 +1,7 @@
-﻿using WindEditor.Collision;
-using GameFormatReader.Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System;
+using System.ComponentModel;
 
 namespace WindEditor
 {
@@ -10,32 +9,31 @@ namespace WindEditor
     {
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
+        public BindingList<WScene> LoadedScenes { get { return m_loadedScenes; } }
 
-        private List<IRenderable> m_renderableObjects = new List<IRenderable>();
-        private List<ITickableObject> m_tickableObjects = new List<ITickableObject>();
         private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
         private WLineBatcher m_persistentLines;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
         private WActorEditor m_actorEditor;
+        private BindingList<WScene> m_loadedScenes;
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
+            m_persistentLines = new WLineBatcher();
             m_undoStack = new WUndoStack();
-            m_actorEditor = new WActorEditor(this, m_tickableObjects);
+            m_actorEditor = new WActorEditor(this, m_loadedScenes);
+            m_loadedScenes = new BindingList<WScene>();
 
-
-            WSceneView perspectiveView = new WSceneView(this, m_renderableObjects);
+            WSceneView perspectiveView = new WSceneView(this, m_loadedScenes);
             m_sceneViews.AddRange(new[] { perspectiveView });
-
-
-            AllocateDefaultWorldResources();
         }
 
         public void LoadMap(string filePath)
         {
+            throw new NotImplementedException();
             //UnloadMap();
             //AllocateDefaultWorldResources();
 
@@ -47,7 +45,7 @@ namespace WindEditor
 
         public void UnloadMap()
         {
-            ReleaseResources();
+            throw new NotImplementedException();
         }
 
         public void ProcessTick()
@@ -57,24 +55,14 @@ namespace WindEditor
 
             UpdateSceneViews();
 
-            foreach (var item in m_tickableObjects)
-            {
-                item.Tick(deltaTime);
-            }
-
+            m_persistentLines.Tick(deltaTime);
             m_actorEditor.Tick(deltaTime);
 
+            // Todo: Figure out how to make this work.
+            m_persistentLines.Render();
             foreach (WSceneView view in m_sceneViews)
             {
                 view.Render();
-            }
-        }
-
-        public void ReleaseResources()
-        {
-            foreach (var item in m_renderableObjects)
-            {
-                item.ReleaseResources();
             }
         }
 
@@ -85,24 +73,6 @@ namespace WindEditor
                 view.SetViewportSize(width, height);
             }
         }
-
-        private void AllocateDefaultWorldResources()
-        {
-            m_persistentLines = new WLineBatcher();
-            RegisterObject(m_persistentLines);
-
-            // dflskdf
-            /*WActor testActor = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            WActor testActor2 = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            WActor testActor3 = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            RegisterObject(testActor);
-            RegisterObject(testActor2);
-            RegisterObject(testActor3);
-
-            testActor2.Transform.Position = new OpenTK.Vector3(500, 0, 0);
-            testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);*/
-        }
-
 
         private void UpdateSceneViews()
         {

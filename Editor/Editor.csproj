@@ -127,6 +127,7 @@
     <Compile Include="Editor\PropertyValues\BoolPropertyValue.cs" />
     <Compile Include="Editor\IPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
+    <Compile Include="Editor\Scene.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\SelectionAggregate.cs" />
     <Compile Include="Editor\Shader.cs" />

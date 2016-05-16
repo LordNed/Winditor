@@ -1,9 +1,24 @@
-﻿using System.IO;
+﻿using GameFormatReader.Common;
+using System.Collections.Generic;
+using System.IO;
+using WindEditor.Collision;
 
 namespace WindEditor
 {
     public class WScene
     {
+        private List<IRenderable> m_renderableObjects;
+        private List<ITickableObject> m_tickableObjects;
+
+        private WUndoStack m_undoStack;
+
+        public WScene(WUndoStack undoRedoStack)
+        {
+            m_undoStack = undoRedoStack;
+            m_renderableObjects = new List<IRenderable>();
+            m_tickableObjects = new List<ITickableObject>();
+        }
+
         public void LoadLevel(string filePath)
         {
             foreach (var folder in Directory.GetDirectories(filePath))
@@ -32,7 +47,7 @@ namespace WindEditor
 
         public void UnloadLevel()
         {
-
+            throw new System.NotImplementedException();
         }
 
         private void LoadLevelCollisionFromFile(string filePath)
@@ -52,7 +67,7 @@ namespace WindEditor
         private void LoadLevelEntitiesFromFile(string filePath)
         {
             ActorLoader actorLoader = new ActorLoader();
-            var loadedActors = actorLoader.LoadFromFile(filePath, m_undoStack);
+            var loadedActors = actorLoader.LoadFromFile(filePath);
             foreach (var actor in loadedActors)
                 RegisterObject(actor);
         }
@@ -101,6 +116,11 @@ namespace WindEditor
             {
                 item.Tick(deltaTime);
             }
+        }
+
+        public void Render()
+        {
+
         }
     }
 }
