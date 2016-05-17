@@ -9,7 +9,7 @@ namespace WindEditor
     {
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
-        public BindingList<WScene> LoadedScenes { get { return m_loadedScenes; } }
+        public BindingList<WScene> SceneList { get { return m_sceneList; } }
 
         private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
@@ -17,29 +17,29 @@ namespace WindEditor
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
         private WActorEditor m_actorEditor;
-        private BindingList<WScene> m_loadedScenes;
+        private BindingList<WScene> m_sceneList;
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
             m_undoStack = new WUndoStack();
-            m_actorEditor = new WActorEditor(this, m_loadedScenes);
-            m_loadedScenes = new BindingList<WScene>();
+            m_actorEditor = new WActorEditor(this);
+            m_sceneList = new BindingList<WScene>();
 
-            WSceneView perspectiveView = new WSceneView(this, m_loadedScenes);
+            WSceneView perspectiveView = new WSceneView(this);
             m_sceneViews.AddRange(new[] { perspectiveView });
         }
 
-        public void LoadMap(string filePath)
+        public void LoadMapFromDirectory(string dirPath)
         {
-            throw new NotImplementedException();
             //UnloadMap();
-            //AllocateDefaultWorldResources();
-
-            foreach (var folder in Directory.GetDirectories(filePath))
+            foreach(var sceneFolder in Directory.GetDirectories(dirPath))
             {
-                LoadLevel(folder);                    
+                WScene scene = new WScene(this);
+                scene.LoadLevel(sceneFolder);
+
+                m_sceneList.Add(scene);
             }
         }
 
@@ -48,6 +48,7 @@ namespace WindEditor
             throw new NotImplementedException();
         }
 
+        [Obsolete("Please bring back persistent lines :-(")]
         public void ProcessTick()
         {
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
@@ -58,8 +59,13 @@ namespace WindEditor
             m_persistentLines.Tick(deltaTime);
             m_actorEditor.Tick(deltaTime);
 
+            foreach(WScene scene in m_sceneList)
+            {
+                scene.ProcessTick(deltaTime);
+            }
+
             // Todo: Figure out how to make this work.
-            m_persistentLines.Render();
+            //m_persistentLines.Render();
             foreach (WSceneView view in m_sceneViews)
             {
                 view.Render();
@@ -93,7 +99,6 @@ namespace WindEditor
                 focusedScene.IsFocused = true;
             }
         }
-
 
         public WSceneView GetFocusedSceneView()
         {

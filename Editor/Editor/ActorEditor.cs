@@ -1,6 +1,5 @@
 ﻿using OpenTK;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace WindEditor
@@ -10,24 +9,25 @@ namespace WindEditor
         public SelectionAggregate SelectedObjects { get; protected set; }
 
         private WWorld m_world;
-        private IList<ITickableObject> m_objectList;
 
         private WTransformGizmo m_transformGizmo;
         private BindingList<WMapActor> m_selectionList;
 
-        public WActorEditor(WWorld world, IList<ITickableObject> actorList)
+        [Obsolete("Bring back the transform gizmo :-(")]
+        public WActorEditor(WWorld world)
         {
             m_world = world;
-            m_objectList = actorList;
             m_selectionList = new BindingList<WMapActor>();
             m_transformGizmo = new WTransformGizmo(m_world);
-            m_world.RegisterObject(m_transformGizmo);
+            //m_world.RegisterInternalObject(m_transformGizmo);
 
             SelectedObjects = new SelectionAggregate(m_selectionList);
         }
 
         public void Tick(float deltaTime)
         {
+            m_transformGizmo.Tick(deltaTime);
+
             // Update our Selection Gizmo first, so we can check if it is currently transforming when we check to see
             // if the user's selection has changed.
             UpdateSelectionGizmo();
@@ -180,21 +180,24 @@ namespace WindEditor
             WMapActor closestResult = null;
             float closestDistance = float.MaxValue;
 
-            foreach (ITickableObject obj in m_objectList)
+            foreach (var scene in m_world.SceneList)
             {
-                WMapActor actor = obj as WMapActor;
-                if (actor == null)
-                    continue;
-
-                AABox actorBoundingBox = actor.GetAABB();
-                float intersectDistance;
-
-                if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+                foreach (IRenderable obj in scene.RenderableObjects)
                 {
-                    if (intersectDistance < closestDistance)
+                    WMapActor actor = obj as WMapActor;
+                    if (actor == null)
+                        continue;
+
+                    AABox actorBoundingBox = actor.GetAABB();
+                    float intersectDistance;
+
+                    if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
                     {
-                        closestDistance = intersectDistance;
-                        closestResult = actor;
+                        if (intersectDistance < closestDistance)
+                        {
+                            closestDistance = intersectDistance;
+                            closestResult = actor;
+                        }
                     }
                 }
             }

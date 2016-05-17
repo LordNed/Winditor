@@ -53,7 +53,7 @@ namespace WindEditor
                 //foreach (WWorld world in m_editorWorlds)
                     //world.UnloadMap();
 
-                MainWorld.LoadMap(folderPath);
+                MainWorld.LoadMapFromDirectory(folderPath);
             }
         }
 

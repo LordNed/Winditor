@@ -262,6 +262,7 @@ namespace WindEditor
                 m_rotation = m_localRotation;
         }
 
+        [Obsolete("This should just be updated per scene-view that is going to be rendered.")]
         public override void Tick(float deltaTime)
         {
             if (!Enabled)

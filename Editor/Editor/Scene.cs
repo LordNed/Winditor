@@ -7,14 +7,16 @@ namespace WindEditor
 {
     public class WScene
     {
+        public List<IRenderable> RenderableObjects { get { return m_renderableObjects; } }
+
         private List<IRenderable> m_renderableObjects;
         private List<ITickableObject> m_tickableObjects;
 
-        private WUndoStack m_undoStack;
+        private WWorld m_world;
 
-        public WScene(WUndoStack undoRedoStack)
+        public WScene(WWorld world)
         {
-            m_undoStack = undoRedoStack;
+            m_world = world;
             m_renderableObjects = new List<IRenderable>();
             m_tickableObjects = new List<ITickableObject>();
         }
@@ -83,14 +85,14 @@ namespace WindEditor
             if (obj is ITickableObject)
             {
                 ITickableObject tickableObj = (ITickableObject)obj;
-                tickableObj.SetWorld(this);
+                tickableObj.SetWorld(m_world);
                 m_tickableObjects.Add(tickableObj);
             }
 
             if (obj is IUndoable)
             {
                 IUndoable undoable = obj as IUndoable;
-                undoable.SetUndoStack(m_undoStack);
+                undoable.SetUndoStack(m_world.UndoStack);
             }
         }
 
@@ -116,11 +118,6 @@ namespace WindEditor
             {
                 item.Tick(deltaTime);
             }
-        }
-
-        public void Render()
-        {
-
         }
     }
 }
