@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using OpenTK;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -16,8 +16,14 @@ namespace WindEditor
         public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => AttemptToDeserializeObjectsFromClipboard() != null); } }
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => m_selectionList.Count > 0); } }
+        public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
 
         private WWorld m_world;
+        private enum SelectionType
+        {
+            Add,
+            Remove
+        }
 
         private WTransformGizmo m_transformGizmo;
         private BindingList<WMapActor> m_selectionList;
@@ -66,19 +72,24 @@ namespace WindEditor
 
                 if (!ctrlPressed & !shiftPressed)
                 {
-                    m_selectionList.Clear();
-                    if (addedActor != null) m_selectionList.Add(addedActor);
+                    ModifySelection(SelectionType.Add, addedActor, true);
+                    //m_selectionList.Clear();
+                    //if (addedActor != null) m_selectionList.Add(addedActor);
                 }
                 else if (addedActor != null && (ctrlPressed && !shiftPressed))
                 {
                     if (m_selectionList.Contains(addedActor))
-                        m_selectionList.Remove(addedActor);
+                        ModifySelection(SelectionType.Remove, addedActor, false);
+                    //m_selectionList.Remove(addedActor);
                     else
-                        m_selectionList.Add(addedActor);
+                        ModifySelection(SelectionType.Add, addedActor, false);
+                        //m_selectionList.Add(addedActor);
                 }
                 else if (addedActor != null && shiftPressed)
                 {
-                    if (!m_selectionList.Contains(addedActor)) m_selectionList.Add(addedActor);
+                    if (!m_selectionList.Contains(addedActor))
+                        ModifySelection(SelectionType.Add, addedActor, false);
+                        //m_selectionList.Add(addedActor);
                 }
 
                 if(m_transformGizmo != null && m_selectionList.Count > 0)
@@ -183,6 +194,50 @@ namespace WindEditor
             }
         }
 
+        private void ModifySelection(SelectionType action, WMapActor actor, bool clearSelection)
+        {
+            ModifySelection(action, new[] { actor }, clearSelection);
+        }
+
+        private void ModifySelection(SelectionType action, WMapActor[] actors, bool clearSelection)
+        {
+            // Cache the current selection list.
+            WMapActor[] currentSelection = new WMapActor[m_selectionList.Count];
+            m_selectionList.CopyTo(currentSelection, 0);
+
+            List<WMapActor> newSelection = new List<WMapActor>(currentSelection);
+
+            // Now build us a new array depending on the action.
+            if(clearSelection)
+            {
+                newSelection.Clear();
+            }
+
+            if (action == SelectionType.Add)
+            {
+                for(int i = 0; i < actors.Length; i++)
+                {
+                    if(actors[i] != null)
+                    {
+                        newSelection.Add(actors[i]);
+                    }
+                }
+            }
+            else if (action == SelectionType.Remove)
+            {
+                for(int i = 0; i < actors.Length; i++)
+                {
+                    if(actors[i] != null)
+                    {
+                        newSelection.Remove(actors[i]);
+                    }
+                }
+            }
+
+            WSelectionChangedAction selectionAction = new WSelectionChangedAction(currentSelection, newSelection.ToArray(), m_selectionList);
+            m_world.UndoStack.Push(selectionAction);
+        }
+
         private WMapActor Raycast(WRay ray)
         {
             WMapActor closestResult = null;
@@ -282,11 +337,15 @@ namespace WindEditor
             if (serializedObjects == null)
                 return;
 
-            m_selectionList.Clear();
+            WMapActor[] actorRange = new WMapActor[serializedObjects.Count];
+            serializedObjects.CopyTo(actorRange, 0);
+
+            ModifySelection(SelectionType.Add, actorRange, true);
+            //m_selectionList.Clear();
             foreach(var item in serializedObjects)
             {
                 m_world.FocusedScene.RegisterObject(item);
-                m_selectionList.Add(item);
+                //m_selectionList.Add(item);
             }
         }
 
@@ -297,7 +356,13 @@ namespace WindEditor
                 item.GetScene().UnregisterObject(item);
             }
 
-            m_selectionList.Clear();
+            ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
+            ///m_selectionList.Clear();
+        }
+
+        private void SelectAll()
+        {
+            throw new NotImplementedException();
         }
 
         private BindingList<WMapActor> AttemptToDeserializeObjectsFromClipboard()

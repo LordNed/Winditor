@@ -142,6 +142,7 @@
     <Compile Include="Editor\UndoRedo\IUndoable.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
     <Compile Include="Editor\UndoRedo\RotateActorAction.cs" />
+    <Compile Include="Editor\UndoRedo\SelectionChangedAction.cs" />
     <Compile Include="Editor\UndoRedo\TranslateActorAction.cs" />
     <Compile Include="Editor\UndoRedo\UndoCommand.cs" />
     <Compile Include="Editor\UndoRedo\UndoStack.cs" />
