@@ -1,4 +1,6 @@
-﻿namespace WindEditor
+﻿using Newtonsoft.Json;
+
+namespace WindEditor
 {
     public class TShortPropertyValue : TBasePropertyValue<short>
     {
@@ -19,6 +21,7 @@
             }
         }
 
+        [JsonProperty("m_value")]
         private short m_value;
 
         public TShortPropertyValue(short defaultValue, string propertyName):base(propertyName)

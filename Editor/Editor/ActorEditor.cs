@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using OpenTK;
 using System;
 using System.ComponentModel;
@@ -49,7 +50,6 @@ namespace WindEditor
             // If we have a gizmo and we're transforming it, don't check for selection change.
             if (m_transformGizmo != null && m_transformGizmo.IsTransforming)
                 return;
-
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
@@ -265,10 +265,12 @@ namespace WindEditor
 
             var jsonSettings = new JsonSerializerSettings();
             jsonSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            jsonSettings.TypeNameHandling = TypeNameHandling.Auto;
             jsonSettings.ContractResolver = jsonResolver;
             jsonSettings.Converters.Add(new Vector2Converter());
             jsonSettings.Converters.Add(new Vector3Converter());
             jsonSettings.Converters.Add(new QuaternionConverter());
+
 
             string serializedSelectionList = JsonConvert.SerializeObject(m_selectionList, jsonSettings);
             Clipboard.SetText(serializedSelectionList);
@@ -280,14 +282,12 @@ namespace WindEditor
             if (serializedObjects == null)
                 return;
 
+            m_selectionList.Clear();
             foreach(var item in serializedObjects)
             {
-                // ToDo:
-                // We'll need to get our selected WWorld and then call RegisterObject on each object.
+                m_world.FocusedScene.RegisterObject(item);
+                m_selectionList.Add(item);
             }
-
-            // Now, make the serializedObjects our selected list.
-            // ToDo:
         }
 
         private void DeleteSelection()
@@ -309,7 +309,14 @@ namespace WindEditor
             BindingList<WMapActor> serializedObjects = null;
             try
             {
-                 serializedObjects = JsonConvert.DeserializeObject<BindingList<WMapActor>>(clipboardContents);
+                var jsonSettings = new JsonSerializerSettings();
+                jsonSettings.TypeNameHandling = TypeNameHandling.All;
+
+                serializedObjects = JsonConvert.DeserializeObject<BindingList<WMapActor>>(clipboardContents, jsonSettings);
+            }
+            catch(JsonSerializationException ex)
+            {
+                Console.WriteLine("Failed to deseralize clipboard contents. Exception: {0}", ex.Message);
             }
             catch(Exception) { }
 

@@ -1,4 +1,6 @@
-﻿namespace WindEditor
+﻿using Newtonsoft.Json;
+
+namespace WindEditor
 {
     public class TBoolPropertyValue : TBasePropertyValue<bool>
     {
@@ -19,6 +21,7 @@
             }
         }
 
+        [JsonProperty("m_value")]
         private bool m_value;
 
         public TBoolPropertyValue(bool defaultValue, string propertyName) : base(propertyName)

@@ -5,11 +5,24 @@ using System.ComponentModel;
 
 namespace WindEditor
 {
-    public partial class WWorld
+    public partial class WWorld : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
         public BindingList<WScene> SceneList { get { return m_sceneList; } }
+        public WScene FocusedScene
+        {
+            get { return m_focusedScene; }
+            set
+            {
+                m_focusedScene = value;
+                OnPropertyChanged("FocusedScene");
+                OnPropertyChanged("FocusedSceneLabel");
+            }
+        }
+        public string FocusedSceneLabel { get { return FocusedScene == null ? "" : string.Format("Level: {0}", FocusedScene.Name); } }
 
         private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
@@ -18,6 +31,8 @@ namespace WindEditor
         private WUndoStack m_undoStack;
         private WActorEditor m_actorEditor;
         private BindingList<WScene> m_sceneList;
+        private WScene m_focusedScene;
+
 
         public WWorld()
         {
@@ -41,6 +56,9 @@ namespace WindEditor
 
                 m_sceneList.Add(scene);
             }
+
+            if (m_sceneList.Count > 0)
+                FocusedScene = m_sceneList[m_sceneList.Count - 1];
         }
 
         public void UnloadMap()
@@ -100,6 +118,7 @@ namespace WindEditor
             }
         }
 
+        [Obsolete("This isn't really a good solution either...")]
         public WSceneView GetFocusedSceneView()
         {
             foreach (var scene in m_sceneViews)
@@ -107,6 +126,12 @@ namespace WindEditor
                     return scene;
 
             return m_sceneViews[0];
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

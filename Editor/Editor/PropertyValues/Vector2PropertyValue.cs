@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using Newtonsoft.Json;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -21,6 +22,7 @@ namespace WindEditor
             }
         }
 
+        [JsonProperty("m_value")]
         private Vector2 m_value;
 
         public TVector2PropertyValue(Vector2 defaultValue, string propertyName):base(propertyName)

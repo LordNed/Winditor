@@ -8,6 +8,7 @@ namespace WindEditor
     public class WScene
     {
         public List<IRenderable> RenderableObjects { get { return m_renderableObjects; } }
+        public string Name;
 
         private List<IRenderable> m_renderableObjects;
         private List<ITickableObject> m_tickableObjects;
@@ -23,6 +24,8 @@ namespace WindEditor
 
         public void LoadLevel(string filePath)
         {
+            Name = Path.GetFileNameWithoutExtension(filePath);
+
             foreach (var folder in Directory.GetDirectories(filePath))
             {
                 string folderName = Path.GetFileNameWithoutExtension(folder);

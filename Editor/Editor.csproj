@@ -109,13 +109,13 @@
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
     <Compile Include="Editor\DebugDrawing.cs" />
     <Compile Include="Editor\Input.cs" />
-    <Compile Include="Editor\IPropertyValueAggregate.cs" />
+    <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
     <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\ITickableObject.cs" />
     <Compile Include="Editor\Loaders\ActorLoader.cs" />
     <Compile Include="Editor\Loaders\MapActor.cs" />
     <Compile Include="Editor\Obj.cs" />
-    <Compile Include="Editor\PropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BaseValueAggregate.cs" />
     <Compile Include="Editor\PropertyValues\IntPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\FloatPropertyValue.cs" />
@@ -125,7 +125,7 @@
     <Compile Include="Editor\PropertyValues\BytePropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\StringPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BoolPropertyValue.cs" />
-    <Compile Include="Editor\IPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\IPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
     <Compile Include="Editor\Scene.cs" />
     <Compile Include="Editor\SceneView.cs" />

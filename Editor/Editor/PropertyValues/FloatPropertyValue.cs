@@ -1,4 +1,6 @@
-﻿namespace WindEditor
+﻿using Newtonsoft.Json;
+
+namespace WindEditor
 {
     public class TFloatPropertyValue : TBasePropertyValue<float>
     {
@@ -19,6 +21,7 @@
             }
         }
 
+        [JsonProperty("m_value")]
         private float m_value;
 
         public TFloatPropertyValue(float defaultValue, string propertyName) : base(propertyName)
