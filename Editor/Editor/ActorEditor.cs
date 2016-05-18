@@ -1,12 +1,20 @@
-﻿using OpenTK;
+﻿using Newtonsoft.Json;
+using OpenTK;
 using System;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+using WindEditor.Serialization;
 
 namespace WindEditor
 {
     public class WActorEditor
     {
         public SelectionAggregate SelectedObjects { get; protected set; }
+        public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => m_selectionList.Count > 0); } }
+        public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => m_selectionList.Count > 0); } }
+        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => AttemptToDeserializeObjectsFromClipboard() != null); } }
+        public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => m_selectionList.Count > 0); } }
 
         private WWorld m_world;
 
@@ -230,6 +238,80 @@ namespace WindEditor
             }
 
             return undoAction;
+        }
+
+        private void CutSelection()
+        {
+            if (m_selectionList.Count == 0)
+                return;
+
+            CopySelection();
+            DeleteSelection();
+        }
+
+        private void CopySelection()
+        {
+            if (m_selectionList.Count == 0)
+                return;
+
+            // We're going to copy the selection by serializing it to a json string. Before we serialize it
+            // though, we're going to exclude a few members from being serialized as they're owned by the
+            // editor, and irrelevent when pasted.
+            var jsonResolver = new IgnorableSerializerContractResolver();
+            jsonResolver.Ignore(typeof(WWorld));
+            jsonResolver.Ignore(typeof(WScene));
+            jsonResolver.Ignore(typeof(WUndoStack));
+            jsonResolver.Ignore(typeof(SimpleObjRenderer));
+
+            var jsonSettings = new JsonSerializerSettings();
+            jsonSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            jsonSettings.ContractResolver = jsonResolver;
+            jsonSettings.Converters.Add(new Vector2Converter());
+            jsonSettings.Converters.Add(new Vector3Converter());
+            jsonSettings.Converters.Add(new QuaternionConverter());
+
+            string serializedSelectionList = JsonConvert.SerializeObject(m_selectionList, jsonSettings);
+            Clipboard.SetText(serializedSelectionList);
+        }
+
+        private void PasteSelection()
+        {
+            BindingList<WMapActor> serializedObjects = AttemptToDeserializeObjectsFromClipboard();
+            if (serializedObjects == null)
+                return;
+
+            foreach(var item in serializedObjects)
+            {
+                // ToDo:
+                // We'll need to get our selected WWorld and then call RegisterObject on each object.
+            }
+
+            // Now, make the serializedObjects our selected list.
+            // ToDo:
+        }
+
+        private void DeleteSelection()
+        {
+            foreach (var item in m_selectionList)
+            {
+                item.GetScene().UnregisterObject(item);
+            }
+        }
+
+        private BindingList<WMapActor> AttemptToDeserializeObjectsFromClipboard()
+        {
+            string clipboardContents = Clipboard.GetText();
+            if (string.IsNullOrEmpty(clipboardContents))
+                return null;
+
+            BindingList<WMapActor> serializedObjects = null;
+            try
+            {
+                 serializedObjects = JsonConvert.DeserializeObject<BindingList<WMapActor>>(clipboardContents);
+            }
+            catch(Exception) { }
+
+            return serializedObjects;
         }
     }
 }

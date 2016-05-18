@@ -86,6 +86,7 @@ namespace WindEditor
             {
                 ITickableObject tickableObj = (ITickableObject)obj;
                 tickableObj.SetWorld(m_world);
+                tickableObj.SetScene(this);
                 m_tickableObjects.Add(tickableObj);
             }
 

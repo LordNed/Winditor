@@ -5,6 +5,7 @@
         public WTransform Transform { get; protected set; }
 
         private WWorld m_world;
+        private WScene m_scene;
 
         public WActor()
         {
@@ -23,9 +24,19 @@
             m_world = world;
         }
 
+        public void SetScene(WScene scene)
+        {
+            m_scene = scene;
+        }
+
         public WWorld GetWorld()
         {
             return m_world;
+        }
+
+        public WScene GetScene()
+        {
+            return m_scene;
         }
     }
 }

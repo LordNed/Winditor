@@ -10,7 +10,11 @@
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="o" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}" Key="Delete"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -39,6 +43,26 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
+                <MenuItem Header="Cu_t" InputGestureText="Ctrl + X" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/cut_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Copy" InputGestureText="Ctrl + C" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/copy_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Paste" InputGestureText="Ctrl + V" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/paste_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Delete" InputGestureText="Del" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/deleteuser_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
