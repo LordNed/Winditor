@@ -192,7 +192,7 @@ namespace WindEditor
                     case PropertyValueType.FixedLengthString:
                     case PropertyValueType.String:
                         string stringVal = (field.Length == 0) ? reader.ReadStringUntil('\0') : reader.ReadString(field.Length);
-                        stringVal = stringVal.Trim();
+                        stringVal = stringVal.Trim(new[] { '\0' });
                         propValue = new TStringPropertyValue(stringVal, field.FieldName);
                         break;
                     case PropertyValueType.Vector2:
