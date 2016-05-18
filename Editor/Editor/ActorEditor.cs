@@ -296,6 +296,8 @@ namespace WindEditor
             {
                 item.GetScene().UnregisterObject(item);
             }
+
+            m_selectionList.Clear();
         }
 
         private BindingList<WMapActor> AttemptToDeserializeObjectsFromClipboard()
