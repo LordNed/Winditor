@@ -6,7 +6,7 @@ using System.IO;
 
 namespace WindEditor
 {
-    class SimpleObjRenderer
+    public class SimpleObjRenderer
     {
         struct UniqueVertex
         {

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -7,6 +7,7 @@ namespace WindEditor
     {
         public List<IPropertyValue> Properties { get; set; }
         public MapLayer Layer { get; set; }
+        public bool IsSelected;
 
         public WMapActor() : base("resources/editor/EditorCube.obj")
         {
@@ -25,6 +26,12 @@ namespace WindEditor
         {
             foreach (var property in Properties)
                 property.SetUndoStack(undoStack);
+        }
+
+        public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        {
+            m_objRenderer.Highlighted = IsSelected;
+            base.Render(viewMatrix, projMatrix);
         }
     }
 }
