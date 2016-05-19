@@ -3,7 +3,7 @@ using OpenTK;
 
 namespace WindEditor
 {
-    struct WPlane
+    public struct WPlane
     {
         public Vector3 Normal;
         public float Distance;

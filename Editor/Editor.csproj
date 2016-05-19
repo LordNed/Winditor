@@ -152,7 +152,6 @@
     <Compile Include="Editor\LineBatcher.cs" />
     <Compile Include="Editor\PrimitiveComponent.cs" />
     <Compile Include="Editor\World.cs" />
-    <Compile Include="Math\Rect.cs" />
     <Compile Include="ViewModel\GridWidthCalculatorMultiConverter.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Editor\RelayCommand.cs" />
@@ -165,11 +164,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Math\AABox.cs" />
-    <Compile Include="Math\Math.cs" />
-    <Compile Include="Math\Plane.cs" />
-    <Compile Include="Math\Ray.cs" />
-    <Compile Include="Math\Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -219,6 +213,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\templates\MapEntityData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCommon\WCommon.csproj">
+      <Project>{e8af46cc-76dc-4541-a578-5067ead07087}</Project>
+      <Name>WCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

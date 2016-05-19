@@ -3,7 +3,7 @@ using System;
 
 namespace WindEditor
 {
-    static class WMath
+    public static class WMath
     {
         public static int Clamp(int value, int min, int max)
         {
