@@ -1,0 +1,9 @@
+﻿<Application x:Class="J3DRenderer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:J3DRenderer"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

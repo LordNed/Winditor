@@ -1,0 +1,62 @@
+﻿<Window x:Class="J3DRenderer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:J3DRenderer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- File Menu Strip -->
+        <Menu IsMainMenu="True" Grid.Row="0">
+            <MenuItem Header="_File"/>
+        </Menu>
+        
+        <!-- Toolbar Buttons -->
+        <Grid Grid.Row="1">
+            
+        </Grid>
+        
+        <!-- Main Application Grid -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" MinWidth="250"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="400" MinWidth="400"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Left Info -->
+            <Grid Grid.Column="0">
+                
+            </Grid>
+            
+            <!-- Left Splitter -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+            
+            <!-- 3D Viewport -->
+            <Grid Grid.Column="2">
+                <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
+            </Grid>
+            
+            <!-- Right Splitter -->
+            <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch"/>
+
+            <!-- Right Info -->
+            <Grid Grid.Column="4">
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
