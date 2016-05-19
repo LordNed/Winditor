@@ -2,11 +2,19 @@
 using OpenTK;
 using WindEditor;
 using System.IO;
+using J3DRenderer.JStudio;
+using GameFormatReader.Common;
+using System.ComponentModel;
 
 namespace J3DRenderer
 {
-    class MainWindowViewModel
+    class MainWindowViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public JStudio3D LoadedModel { get { return m_model; } }
+
+
         private GLControl m_glControl;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
 
@@ -15,10 +23,14 @@ namespace J3DRenderer
         private SimpleObjRenderer m_stockMesh;
         private int m_viewportHeight;
         private int m_viewportWidth;
+        private JStudio3D m_model;
+
 
         public MainWindowViewModel()
         {
             m_renderCamera = new WCamera();
+            m_renderCamera.Transform.Position = new Vector3(500, 75, 500);
+            m_renderCamera.Transform.Rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(45f));
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
         }
 
@@ -29,6 +41,11 @@ namespace J3DRenderer
             Obj obj = new Obj();
             obj.Load("Framework/EditorCube.obj");
             m_stockMesh = new SimpleObjRenderer(obj);
+
+            m_model = new JStudio3D();
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/model.bdl"), Endian.Big));
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -66,9 +83,9 @@ namespace J3DRenderer
 
             m_renderCamera.Tick(deltaTime);
 
-
             // Render something
             m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
+            m_model.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
         }
 
         internal void OnViewportResized(int width, int height)

@@ -79,6 +79,8 @@
     <Compile Include="Framework\Camera.cs" />
     <Compile Include="Framework\Input.cs" />
     <Compile Include="Framework\SimpleObjRenderer.cs" />
+    <Compile Include="JStudio\INF1.cs" />
+    <Compile Include="JStudio\JStudio3D.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,6 +120,9 @@
     <Content Include="resources\shaders\TransformGizmoHighlight.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="resources\model.bdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Resource Include="Framework\T_DevCheckersOrange.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

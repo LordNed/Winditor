@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:J3DRenderer"
+        xmlns:jstudio="clr-namespace:J3DRenderer.JStudio"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded">
     <Window.DataContext>
@@ -38,7 +39,79 @@
             </Grid.ColumnDefinitions>
             
             <!-- Left Info -->
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" DataContext="{Binding Path=LoadedModel}">
+                <ItemsControl HorizontalContentAlignment="Stretch">
+                    <GroupBox Header="Header">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Content="Magic:"/>
+                            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=Magic}"/>
+
+                            <Label Grid.Column="0" Grid.Row="1" Content="JStudio Type:"/>
+                            <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=StudioType}"/>
+
+                            <Label Grid.Column="0" Grid.Row="2" Content="Total File Size:"/>
+                            <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=TotalFileSize}"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="INF1 Section" DataContext="{Binding Path=INF1Tag}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!-- Info Header -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Column="0" Grid.Row="0" Content="Unknown 1:"/>
+                                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=Unknown1}"/>
+
+                                <Label Grid.Column="0" Grid.Row="1" Content="Packet Count:"/>
+                                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=PacketCount}"/>
+
+                                <Label Grid.Column="0" Grid.Row="2" Content="Vertex Count:"/>
+                                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=VertexCount}"/>
+                            </Grid>
+                            
+                            <!-- Treeview -->
+                            <TreeView Grid.Row="1" MinHeight="45" ItemsSource="{Binding Path=Hierarchy.Children}">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}" DataType="{x:Type jstudio:HierarchyNode}">
+                                        <TextBlock Text="{Binding}"/>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                        </Grid>
+                            
+                    </GroupBox>
+                </ItemsControl>
                 
             </Grid>
             
