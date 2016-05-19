@@ -97,7 +97,7 @@ namespace J3DRenderer.JStudio
         public List<VertexFormat> VertexFormats { get; protected set; }
         public MeshVertexAttributeHolder VertexData { get; protected set; }
 
-        public void LoadVTX1FromFile(EndianBinaryReader reader, long chunkStart, int chunkSize)
+        public void LoadVTX1FromStream(EndianBinaryReader reader, long chunkStart, int chunkSize)
         {
             int vertexFormatOffset = reader.ReadInt32();
             int[] vertexDataOffsets = new int[13];

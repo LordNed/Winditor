@@ -79,8 +79,12 @@
     <Compile Include="Framework\Camera.cs" />
     <Compile Include="Framework\Input.cs" />
     <Compile Include="Framework\SimpleObjRenderer.cs" />
+    <Compile Include="JStudio\GXEnums.cs" />
     <Compile Include="JStudio\INF1.cs" />
     <Compile Include="JStudio\JStudio3D.cs" />
+    <Compile Include="JStudio\MAT3.cs" />
+    <Compile Include="JStudio\Material.cs" />
+    <Compile Include="JStudio\StringTable.cs" />
     <Compile Include="JStudio\VTX1.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

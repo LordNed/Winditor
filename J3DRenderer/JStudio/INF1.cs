@@ -64,7 +64,7 @@ namespace J3DRenderer.JStudio
             }
         }
 
-        public void LoadINF1FromFile(EndianBinaryReader reader, long chunkStart)
+        public void LoadINF1FromStream(EndianBinaryReader reader, long chunkStart)
         {
             Unknown1 = reader.ReadUInt16(); // 
             reader.Skip(2); // Padding
