@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WindEditor
 {
-    public class WTransform : IEnumerable
+    public class WTransform
     {
         /// <summary> The parent of this transform that this transform moves locally to. null if a root object. </summary>
         public WTransform Parent
@@ -190,13 +190,13 @@ namespace WindEditor
             Rotation = rotQuat * Rotation;
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            foreach (WTransform trns in m_children)
-            {
-                yield return trns;
-            }
-        }
+        //public IEnumerator GetEnumerator()
+        //{
+        //    foreach (WTransform trns in m_children)
+        //    {
+        //        yield return trns;
+        //    }
+        //}
 
         public override bool Equals(object o)
         {

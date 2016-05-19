@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -10,13 +11,16 @@ namespace WindEditor
 
         public abstract T Value { get; set; }
 
-        public string Name { get; }
+        public string Name { get { return m_name; } }
 
         protected WUndoStack m_undoStack;
 
+        [JsonProperty("m_name")]
+        protected string m_name;
+
         public TBasePropertyValue(string propertyName)
         {
-            Name = propertyName;
+            m_name = propertyName;
         }
 
         public object GetValue()

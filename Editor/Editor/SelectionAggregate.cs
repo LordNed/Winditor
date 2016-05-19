@@ -37,7 +37,6 @@ namespace WindEditor
                 {
                     properties.Add(list[0].GetValueAggregateInstance(list[0].Name, list));
                 }
-
                 return properties;
             }
         }

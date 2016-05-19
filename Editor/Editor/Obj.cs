@@ -6,7 +6,7 @@ using System.IO;
 
 namespace WindEditor
 {
-    class Obj
+    public class Obj
     {
         public class ObjFace
         {

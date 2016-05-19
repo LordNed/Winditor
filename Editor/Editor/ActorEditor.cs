@@ -1,33 +1,49 @@
-﻿using OpenTK;
+﻿using Newtonsoft.Json;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+using WindEditor.Serialization;
 
 namespace WindEditor
 {
     public class WActorEditor
     {
         public SelectionAggregate SelectedObjects { get; protected set; }
+        public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => m_selectionList.Count > 0); } }
+        public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => m_selectionList.Count > 0); } }
+        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => AttemptToDeserializeObjectsFromClipboard() != null); } }
+        public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => m_selectionList.Count > 0); } }
+        public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
+        public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => m_selectionList.Count > 0); } }
 
         private WWorld m_world;
-        private IList<ITickableObject> m_objectList;
+        private enum SelectionType
+        {
+            Add,
+            Remove
+        }
 
         private WTransformGizmo m_transformGizmo;
         private BindingList<WMapActor> m_selectionList;
 
-        public WActorEditor(WWorld world, IList<ITickableObject> actorList)
+        [Obsolete("Bring back the transform gizmo :-(")]
+        public WActorEditor(WWorld world)
         {
             m_world = world;
-            m_objectList = actorList;
             m_selectionList = new BindingList<WMapActor>();
             m_transformGizmo = new WTransformGizmo(m_world);
-            m_world.RegisterObject(m_transformGizmo);
+            //m_world.RegisterInternalObject(m_transformGizmo);
 
             SelectedObjects = new SelectionAggregate(m_selectionList);
         }
 
         public void Tick(float deltaTime)
         {
+            m_transformGizmo.Tick(deltaTime);
+
             // Update our Selection Gizmo first, so we can check if it is currently transforming when we check to see
             // if the user's selection has changed.
             UpdateSelectionGizmo();
@@ -41,7 +57,6 @@ namespace WindEditor
             // If we have a gizmo and we're transforming it, don't check for selection change.
             if (m_transformGizmo != null && m_transformGizmo.IsTransforming)
                 return;
-
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
@@ -58,19 +73,24 @@ namespace WindEditor
 
                 if (!ctrlPressed & !shiftPressed)
                 {
-                    m_selectionList.Clear();
-                    if (addedActor != null) m_selectionList.Add(addedActor);
+                    ModifySelection(SelectionType.Add, addedActor, true);
+                    //m_selectionList.Clear();
+                    //if (addedActor != null) m_selectionList.Add(addedActor);
                 }
                 else if (addedActor != null && (ctrlPressed && !shiftPressed))
                 {
                     if (m_selectionList.Contains(addedActor))
-                        m_selectionList.Remove(addedActor);
+                        ModifySelection(SelectionType.Remove, addedActor, false);
+                    //m_selectionList.Remove(addedActor);
                     else
-                        m_selectionList.Add(addedActor);
+                        ModifySelection(SelectionType.Add, addedActor, false);
+                        //m_selectionList.Add(addedActor);
                 }
                 else if (addedActor != null && shiftPressed)
                 {
-                    if (!m_selectionList.Contains(addedActor)) m_selectionList.Add(addedActor);
+                    if (!m_selectionList.Contains(addedActor))
+                        ModifySelection(SelectionType.Add, addedActor, false);
+                        //m_selectionList.Add(addedActor);
                 }
 
                 if(m_transformGizmo != null && m_selectionList.Count > 0)
@@ -175,26 +195,73 @@ namespace WindEditor
             }
         }
 
+        private void ModifySelection(SelectionType action, WMapActor actor, bool clearSelection)
+        {
+            ModifySelection(action, new[] { actor }, clearSelection);
+        }
+
+        private void ModifySelection(SelectionType action, WMapActor[] actors, bool clearSelection)
+        {
+            // Cache the current selection list.
+            WMapActor[] currentSelection = new WMapActor[m_selectionList.Count];
+            m_selectionList.CopyTo(currentSelection, 0);
+
+            List<WMapActor> newSelection = new List<WMapActor>(currentSelection);
+
+            // Now build us a new array depending on the action.
+            if(clearSelection)
+            {
+                newSelection.Clear();
+            }
+
+            if (action == SelectionType.Add)
+            {
+                for(int i = 0; i < actors.Length; i++)
+                {
+                    if(actors[i] != null)
+                    {
+                        newSelection.Add(actors[i]);
+                    }
+                }
+            }
+            else if (action == SelectionType.Remove)
+            {
+                for(int i = 0; i < actors.Length; i++)
+                {
+                    if(actors[i] != null)
+                    {
+                        newSelection.Remove(actors[i]);
+                    }
+                }
+            }
+
+            WSelectionChangedAction selectionAction = new WSelectionChangedAction(currentSelection, newSelection.ToArray(), m_selectionList);
+            m_world.UndoStack.Push(selectionAction);
+        }
+
         private WMapActor Raycast(WRay ray)
         {
             WMapActor closestResult = null;
             float closestDistance = float.MaxValue;
 
-            foreach (ITickableObject obj in m_objectList)
+            foreach (var scene in m_world.SceneList)
             {
-                WMapActor actor = obj as WMapActor;
-                if (actor == null)
-                    continue;
-
-                AABox actorBoundingBox = actor.GetAABB();
-                float intersectDistance;
-
-                if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+                foreach (IRenderable obj in scene.RenderableObjects)
                 {
-                    if (intersectDistance < closestDistance)
+                    WMapActor actor = obj as WMapActor;
+                    if (actor == null)
+                        continue;
+
+                    AABox actorBoundingBox = actor.GetAABB();
+                    float intersectDistance;
+
+                    if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
                     {
-                        closestDistance = intersectDistance;
-                        closestResult = actor;
+                        if (intersectDistance < closestDistance)
+                        {
+                            closestDistance = intersectDistance;
+                            closestResult = actor;
+                        }
                     }
                 }
             }
@@ -227,6 +294,114 @@ namespace WindEditor
             }
 
             return undoAction;
+        }
+
+        private void CutSelection()
+        {
+            if (m_selectionList.Count == 0)
+                return;
+
+            CopySelection();
+            DeleteSelection();
+        }
+
+        private void CopySelection()
+        {
+            if (m_selectionList.Count == 0)
+                return;
+
+            // We're going to copy the selection by serializing it to a json string. Before we serialize it
+            // though, we're going to exclude a few members from being serialized as they're owned by the
+            // editor, and irrelevent when pasted.
+            var jsonResolver = new IgnorableSerializerContractResolver();
+            jsonResolver.Ignore(typeof(WWorld));
+            jsonResolver.Ignore(typeof(WScene));
+            jsonResolver.Ignore(typeof(WUndoStack));
+            jsonResolver.Ignore(typeof(SimpleObjRenderer));
+
+            var jsonSettings = new JsonSerializerSettings();
+            jsonSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            jsonSettings.TypeNameHandling = TypeNameHandling.Auto;
+            jsonSettings.ContractResolver = jsonResolver;
+            jsonSettings.Converters.Add(new Vector2Converter());
+            jsonSettings.Converters.Add(new Vector3Converter());
+            jsonSettings.Converters.Add(new QuaternionConverter());
+
+
+            string serializedSelectionList = JsonConvert.SerializeObject(m_selectionList, jsonSettings);
+            Clipboard.SetText(serializedSelectionList);
+        }
+
+        private void PasteSelection()
+        {
+            BindingList<WMapActor> serializedObjects = AttemptToDeserializeObjectsFromClipboard();
+            if (serializedObjects == null)
+                return;
+
+            WMapActor[] actorRange = new WMapActor[serializedObjects.Count];
+            serializedObjects.CopyTo(actorRange, 0);
+
+            ModifySelection(SelectionType.Add, actorRange, true);
+            //m_selectionList.Clear();
+            foreach(var item in serializedObjects)
+            {
+                m_world.FocusedScene.RegisterObject(item);
+                //m_selectionList.Add(item);
+            }
+        }
+
+        private void DeleteSelection()
+        {
+            foreach (var item in m_selectionList)
+            {
+                item.GetScene().UnregisterObject(item);
+            }
+
+            ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
+            ///m_selectionList.Clear();
+        }
+
+        private void SelectAll()
+        {
+            List<WMapActor> allActors = new List<WMapActor>();
+            foreach (IRenderable obj in m_world.FocusedScene.RenderableObjects)
+            {
+                WMapActor actor = obj as WMapActor;
+                if (actor == null)
+                    continue;
+
+                allActors.Add(actor);
+            }
+
+            ModifySelection(SelectionType.Add, allActors.ToArray(), true);
+        }
+
+        private void SelectNone()
+        {
+            ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
+        }
+
+        private BindingList<WMapActor> AttemptToDeserializeObjectsFromClipboard()
+        {
+            string clipboardContents = Clipboard.GetText();
+            if (string.IsNullOrEmpty(clipboardContents))
+                return null;
+
+            BindingList<WMapActor> serializedObjects = null;
+            try
+            {
+                var jsonSettings = new JsonSerializerSettings();
+                jsonSettings.TypeNameHandling = TypeNameHandling.All;
+
+                serializedObjects = JsonConvert.DeserializeObject<BindingList<WMapActor>>(clipboardContents, jsonSettings);
+            }
+            catch(JsonSerializationException ex)
+            {
+                Console.WriteLine("Failed to deseralize clipboard contents. Exception: {0}", ex.Message);
+            }
+            catch(Exception) { }
+
+            return serializedObjects;
         }
     }
 }

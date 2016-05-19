@@ -10,7 +10,13 @@
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="o" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}" Key="Delete"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}" Key="D" Modifiers="Shift"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -39,35 +45,103 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
+                <MenuItem Header="Cu_t" InputGestureText="Ctrl + X" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/cut_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Copy" InputGestureText="Ctrl + C" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/copy_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Paste" InputGestureText="Ctrl + V" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/paste_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Delete" InputGestureText="Del" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../resources/ui/deleteuser_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}"/>
+                <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
-            <WindowsFormsHost x:Name="glControlHost" Margin="10,10,263,10"/>
-            <GroupBox Header="GroupBox" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" Height="431" Width="248" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
-                <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            <Setter Property="Padding" Value="0"/>
-                            <Setter Property="Margin" Value="0"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="80"/>
-                            <GridViewColumn Header="Value" CellTemplateSelector="{StaticResource PropertyValueTemplateSelector}">
-                                <!-- We need to use a custom converter and some binding magic to force the Value column to take up all of the remaining space.-->
-                                <GridViewColumn.Width>
-                                    <MultiBinding Converter="{StaticResource LastColumnMaximizerConverter}">
-                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ListView}"/>
-                                        <Binding Path="View.Columns" RelativeSource="{RelativeSource AncestorType=ListView}"/>
-                                    </MultiBinding>
-                                </GridViewColumn.Width>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </GroupBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="248"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="Auto" MinHeight="135"/>
+                                </Grid.RowDefinitions>
+                                <ListBox Grid.Row="2" ItemsSource="{Binding Path=WindEditor.MainWorld.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.FocusedScene}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Path=Name}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                
+                            </Grid>
+                        </Grid>
+                        <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="18"/>
+                            </Grid.RowDefinitions>
+                            <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <Label Content="{Binding Path=WindEditor.MainWorld.FocusedSceneLabel}"  Padding="0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <GroupBox Grid.Column="1" Header="GroupBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
+                    <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="80"/>
+                                <GridViewColumn Header="Value" CellTemplateSelector="{StaticResource PropertyValueTemplateSelector}">
+                                    <!-- We need to use a custom converter and some binding magic to force the Value column to take up all of the remaining space.-->
+                                    <GridViewColumn.Width>
+                                        <MultiBinding Converter="{StaticResource LastColumnMaximizerConverter}">
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ListView}"/>
+                                            <Binding Path="View.Columns" RelativeSource="{RelativeSource AncestorType=ListView}"/>
+                                        </MultiBinding>
+                                    </GridViewColumn.Width>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

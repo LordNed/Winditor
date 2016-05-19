@@ -109,13 +109,13 @@
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
     <Compile Include="Editor\DebugDrawing.cs" />
     <Compile Include="Editor\Input.cs" />
-    <Compile Include="Editor\IPropertyValueAggregate.cs" />
+    <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
     <Compile Include="Editor\IRenderable.cs" />
     <Compile Include="Editor\ITickableObject.cs" />
     <Compile Include="Editor\Loaders\ActorLoader.cs" />
     <Compile Include="Editor\Loaders\MapActor.cs" />
     <Compile Include="Editor\Obj.cs" />
-    <Compile Include="Editor\PropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BaseValueAggregate.cs" />
     <Compile Include="Editor\PropertyValues\IntPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\FloatPropertyValue.cs" />
@@ -125,10 +125,15 @@
     <Compile Include="Editor\PropertyValues\BytePropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\StringPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BoolPropertyValue.cs" />
-    <Compile Include="Editor\IPropertyValue.cs" />
+    <Compile Include="Editor\PropertyValues\IPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
+    <Compile Include="Editor\Scene.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\SelectionAggregate.cs" />
+    <Compile Include="Editor\Serialization\IgnorableSerializerContractResolver.cs" />
+    <Compile Include="Editor\Serialization\QuaternionConverter.cs" />
+    <Compile Include="Editor\Serialization\Vector3Converter.cs" />
+    <Compile Include="Editor\Serialization\Vector2Converter.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\SimpleObjRenderer.cs" />
     <Compile Include="Editor\StaticMeshActor.cs" />
@@ -137,6 +142,7 @@
     <Compile Include="Editor\UndoRedo\IUndoable.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
     <Compile Include="Editor\UndoRedo\RotateActorAction.cs" />
+    <Compile Include="Editor\UndoRedo\SelectionChangedAction.cs" />
     <Compile Include="Editor\UndoRedo\TranslateActorAction.cs" />
     <Compile Include="Editor\UndoRedo\UndoCommand.cs" />
     <Compile Include="Editor\UndoRedo\UndoStack.cs" />
@@ -177,6 +183,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="resources\ui\DeleteUser_16x.png" />
+    <Resource Include="resources\ui\Paste_16x.png" />
+    <Resource Include="resources\ui\Copy_16x.png" />
+    <Resource Include="resources\ui\Cut_16x.png" />
     <Resource Include="resources\ui\Redo_16x.png" />
     <Resource Include="resources\ui\Undo_16x.png" />
     <EmbeddedResource Include="Properties\Resources.resx">

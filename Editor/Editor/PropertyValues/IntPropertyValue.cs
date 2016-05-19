@@ -1,4 +1,6 @@
-﻿namespace WindEditor
+﻿using Newtonsoft.Json;
+
+namespace WindEditor
 {
     public class TIntPropertyValue : TBasePropertyValue<int>
     {
@@ -19,6 +21,7 @@
             }
         }
 
+        [JsonProperty("m_value")]
         private int m_value;
 
         public TIntPropertyValue(int defaultValue, string propertyName) : base(propertyName)

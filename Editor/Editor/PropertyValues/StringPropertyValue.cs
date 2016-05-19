@@ -1,4 +1,6 @@
-﻿namespace WindEditor
+﻿using Newtonsoft.Json;
+
+namespace WindEditor
 {
     public class TStringPropertyValue : TBasePropertyValue<string>
     {
@@ -18,7 +20,8 @@
                     m_undoStack.Push(undoRedoEntry);
             }
         }
-
+        
+        [JsonProperty("m_value")]
         private string m_value;
 
         public TStringPropertyValue(string defaultValue, string propertyName):base(propertyName)

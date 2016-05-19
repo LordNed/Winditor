@@ -4,7 +4,7 @@ namespace WindEditor
 {
     public class WStaticMeshActor : WActor, IRenderable
     {
-        private SimpleObjRenderer m_objRenderer;
+        protected SimpleObjRenderer m_objRenderer;
 
         public WStaticMeshActor(string filePath)
         {
@@ -18,7 +18,7 @@ namespace WindEditor
             m_objRenderer.ReleaseResources();
         }
 
-        public void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        public virtual void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
         {
             Matrix4 modelMatrix = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
             m_objRenderer.Render(viewMatrix, projMatrix, modelMatrix);

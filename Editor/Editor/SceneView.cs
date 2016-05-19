@@ -13,7 +13,6 @@ namespace WindEditor
         public bool IsFocused { get; set; }
 
         private WWorld m_world;
-        private IList<IRenderable> m_renderList;
 
         private int m_viewWidth;
         private int m_viewHeight;
@@ -21,19 +20,20 @@ namespace WindEditor
         private WRect m_viewportRect;
         private WViewportOrientationWidget m_orientationWidget;
 
-        public WSceneView(WWorld world, IList<IRenderable> renderList)
+        public WSceneView(WWorld world)
         {
             m_world = world;
-            m_renderList = renderList;
             m_viewportRect = new WRect(0, 0, 1f, 1f);
 
             m_viewCamera = new WCamera();
             m_orientationWidget = new WViewportOrientationWidget();
-            world.RegisterObject(m_viewCamera);
         }
 
+        [Obsolete("Hack hack, get a real tick function in here.")]
         public void Render()
         {
+            m_viewCamera.Tick(1 / 60f);
+
             int x = (int)(m_viewportRect.X * m_viewWidth);
             int y = (int)(m_viewportRect.Y * m_viewHeight);
             int width = (int)(m_viewportRect.Width * m_viewWidth);
@@ -53,9 +53,12 @@ namespace WindEditor
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
 
-            foreach (var item in m_renderList)
-            {   
-                item.Render(viewMatrix, projMatrix);
+            foreach(var scene in m_world.SceneList)
+            {
+                foreach (var item in scene.RenderableObjects)
+                {   
+                    item.Render(viewMatrix, projMatrix);
+                }
             }
 
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);

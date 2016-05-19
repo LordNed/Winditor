@@ -1,141 +1,72 @@
-﻿using WindEditor.Collision;
-using GameFormatReader.Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System;
+using System.ComponentModel;
 
 namespace WindEditor
 {
-    public partial class WWorld
+    public partial class WWorld : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
+        public BindingList<WScene> SceneList { get { return m_sceneList; } }
+        public WScene FocusedScene
+        {
+            get { return m_focusedScene; }
+            set
+            {
+                m_focusedScene = value;
+                OnPropertyChanged("FocusedScene");
+                OnPropertyChanged("FocusedSceneLabel");
+            }
+        }
+        public string FocusedSceneLabel { get { return FocusedScene == null ? "" : string.Format("Level: {0}", FocusedScene.Name); } }
 
-        private List<IRenderable> m_renderableObjects = new List<IRenderable>();
-        private List<ITickableObject> m_tickableObjects = new List<ITickableObject>();
         private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
         private WLineBatcher m_persistentLines;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
         private WActorEditor m_actorEditor;
+        private BindingList<WScene> m_sceneList;
+        private WScene m_focusedScene;
+
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
+            m_persistentLines = new WLineBatcher();
             m_undoStack = new WUndoStack();
-            m_actorEditor = new WActorEditor(this, m_tickableObjects);
+            m_actorEditor = new WActorEditor(this);
+            m_sceneList = new BindingList<WScene>();
 
-
-            WSceneView perspectiveView = new WSceneView(this, m_renderableObjects);
+            WSceneView perspectiveView = new WSceneView(this);
             m_sceneViews.AddRange(new[] { perspectiveView });
-
-
-            AllocateDefaultWorldResources();
         }
 
-        public void LoadMap(string filePath)
+        public void LoadMapFromDirectory(string dirPath)
         {
             //UnloadMap();
-            //AllocateDefaultWorldResources();
-
-            foreach (var folder in Directory.GetDirectories(filePath))
+            foreach(var sceneFolder in Directory.GetDirectories(dirPath))
             {
-                LoadLevel(folder);                    
+                WScene scene = new WScene(this);
+                scene.LoadLevel(sceneFolder);
+
+                m_sceneList.Add(scene);
             }
+
+            if (m_sceneList.Count > 0)
+                FocusedScene = m_sceneList[m_sceneList.Count - 1];
         }
 
         public void UnloadMap()
         {
-            ReleaseResources();
+            throw new NotImplementedException();
         }
 
-        private void LoadLevel(string filePath)
-        {
-            foreach (var folder in Directory.GetDirectories(filePath))
-            {
-                string folderName = Path.GetFileNameWithoutExtension(folder);
-                switch(folderName.ToLower())
-                {
-                    case "dzb":
-                        {
-                            string fileName = Path.Combine(folder, "room.dzb");
-                            LoadLevelCollisionFromFile(fileName);
-                        }
-                        break;
-                    case "dzr":
-                    case "dzs:":
-                        {
-                            string fileName = Path.Combine(folder, "room.dzr");
-                            if (!File.Exists(fileName))
-                                fileName = Path.Combine(folder, "stage.dzs");
-                            LoadLevelEntitiesFromFile(fileName);
-                        }
-                        break;
-                }
-            }
-        }
-
-        private void LoadLevelCollisionFromFile(string filePath)
-        {
-            if (!File.Exists(filePath))
-                return;
-
-            var collision = new WCollisionMesh();
-            using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(filePath), Endian.Big))
-            {
-                collision.Load(reader);
-            }
-
-            RegisterObject(collision);
-        }
-
-        private void LoadLevelEntitiesFromFile(string filePath)
-        {
-            ActorLoader actorLoader = new ActorLoader();
-            var loadedActors = actorLoader.LoadFromFile(filePath, m_undoStack);
-            foreach (var actor in loadedActors)
-                RegisterObject(actor);
-        }
-
-        public void RegisterObject(object obj)
-        {
-            // This is awesome.
-            if (obj is IRenderable)
-            {
-                m_renderableObjects.Add(obj as IRenderable);
-            }
-
-            if(obj is ITickableObject)
-            {
-                ITickableObject tickableObj = (ITickableObject)obj;
-                tickableObj.SetWorld(this);
-                m_tickableObjects.Add(tickableObj);
-            }
-
-            if (obj is IUndoable)
-            {
-                IUndoable undoable = obj as IUndoable;
-                undoable.SetUndoStack(m_undoStack);
-            }
-        }
-
-        public void UnregisterObject(object obj)
-        {
-            if(obj is IRenderable)
-            {
-                IRenderable renderable = obj as IRenderable;
-                renderable.ReleaseResources();
-
-                m_renderableObjects.Remove(renderable);
-            }
-
-            if(obj is ITickableObject)
-            {
-                m_tickableObjects.Remove(obj as ITickableObject);
-            }
-        }
-
+        [Obsolete("Please bring back persistent lines :-(")]
         public void ProcessTick()
         {
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
@@ -143,24 +74,19 @@ namespace WindEditor
 
             UpdateSceneViews();
 
-            foreach (var item in m_tickableObjects)
-            {
-                item.Tick(deltaTime);
-            }
-
+            m_persistentLines.Tick(deltaTime);
             m_actorEditor.Tick(deltaTime);
 
+            foreach(WScene scene in m_sceneList)
+            {
+                scene.ProcessTick(deltaTime);
+            }
+
+            // Todo: Figure out how to make this work.
+            //m_persistentLines.Render();
             foreach (WSceneView view in m_sceneViews)
             {
                 view.Render();
-            }
-        }
-
-        public void ReleaseResources()
-        {
-            foreach (var item in m_renderableObjects)
-            {
-                item.ReleaseResources();
             }
         }
 
@@ -171,24 +97,6 @@ namespace WindEditor
                 view.SetViewportSize(width, height);
             }
         }
-
-        private void AllocateDefaultWorldResources()
-        {
-            m_persistentLines = new WLineBatcher();
-            RegisterObject(m_persistentLines);
-
-            // dflskdf
-            /*WActor testActor = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            WActor testActor2 = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            WActor testActor3 = new WStaticMeshActor("resources/editor/EditorCube.obj");
-            RegisterObject(testActor);
-            RegisterObject(testActor2);
-            RegisterObject(testActor3);
-
-            testActor2.Transform.Position = new OpenTK.Vector3(500, 0, 0);
-            testActor3.Transform.Position = new OpenTK.Vector3(0, 0, 500);*/
-        }
-
 
         private void UpdateSceneViews()
         {
@@ -210,7 +118,7 @@ namespace WindEditor
             }
         }
 
-
+        [Obsolete("This isn't really a good solution either...")]
         public WSceneView GetFocusedSceneView()
         {
             foreach (var scene in m_sceneViews)
@@ -218,6 +126,12 @@ namespace WindEditor
                     return scene;
 
             return m_sceneViews[0];
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

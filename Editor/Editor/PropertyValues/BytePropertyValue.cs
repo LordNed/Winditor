@@ -1,4 +1,6 @@
-﻿namespace WindEditor
+﻿using Newtonsoft.Json;
+
+namespace WindEditor
 {
     public class TBytePropertyValue : TBasePropertyValue<byte>
     {
@@ -19,6 +21,7 @@
             }
         }
 
+        [JsonProperty("m_value")]
         private byte m_value;
 
         public TBytePropertyValue(byte defaultValue, string propertyName) : base(propertyName)
