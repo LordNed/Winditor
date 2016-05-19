@@ -17,6 +17,7 @@ namespace WindEditor
         public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => AttemptToDeserializeObjectsFromClipboard() != null); } }
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
+        public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => m_selectionList.Count > 0); } }
 
         private WWorld m_world;
         private enum SelectionType
@@ -362,7 +363,22 @@ namespace WindEditor
 
         private void SelectAll()
         {
-            throw new NotImplementedException();
+            List<WMapActor> allActors = new List<WMapActor>();
+            foreach (IRenderable obj in m_world.FocusedScene.RenderableObjects)
+            {
+                WMapActor actor = obj as WMapActor;
+                if (actor == null)
+                    continue;
+
+                allActors.Add(actor);
+            }
+
+            ModifySelection(SelectionType.Add, allActors.ToArray(), true);
+        }
+
+        private void SelectNone()
+        {
+            ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
         }
 
         private BindingList<WMapActor> AttemptToDeserializeObjectsFromClipboard()

@@ -15,6 +15,8 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}" Key="Delete"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}" Key="D" Modifiers="Shift"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -63,6 +65,9 @@
                         <Image Source="../resources/ui/deleteuser_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <Separator/>
+                <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}"/>
+                <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
