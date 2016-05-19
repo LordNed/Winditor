@@ -79,14 +79,40 @@
 
                 <Grid Grid.Column="0">
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="18"/>
-                        </Grid.RowDefinitions>
-                        <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <Label Content="{Binding Path=WindEditor.MainWorld.FocusedSceneLabel}"  Padding="0"/>
-                        </StackPanel>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="Auto" MinHeight="135"/>
+                                </Grid.RowDefinitions>
+                                <ListBox Grid.Row="2" ItemsSource="{Binding Path=WindEditor.MainWorld.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.FocusedScene}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Path=Name}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                
+                            </Grid>
+                        </Grid>
+                        <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="18"/>
+                            </Grid.RowDefinitions>
+                            <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <Label Content="{Binding Path=WindEditor.MainWorld.FocusedSceneLabel}"  Padding="0"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                 </Grid>
 
@@ -116,7 +142,6 @@
                     </ListView>
                 </GroupBox>
             </Grid>
-            
         </Grid>
     </Grid>
 </Window>

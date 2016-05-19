@@ -8,7 +8,7 @@ namespace WindEditor
     public class WScene
     {
         public List<IRenderable> RenderableObjects { get { return m_renderableObjects; } }
-        public string Name;
+        public string Name { get; set; }
 
         private List<IRenderable> m_renderableObjects;
         private List<ITickableObject> m_tickableObjects;
