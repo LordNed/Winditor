@@ -36,12 +36,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinearColor.cs" />
     <Compile Include="Math\AABox.cs" />
     <Compile Include="Math\Math.cs" />
     <Compile Include="Math\Plane.cs" />
     <Compile Include="Math\Ray.cs" />
     <Compile Include="Math\Rect.cs" />
-    <Compile Include="Math\Transform.cs" />
+    <Compile Include="Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

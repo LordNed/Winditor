@@ -148,7 +148,6 @@
     <Compile Include="Editor\UndoRedo\UndoStack.cs" />
     <Compile Include="Editor\ViewportOrientationWidget.cs" />
     <Compile Include="Editor\WindEditor.cs" />
-    <Compile Include="Editor\LinearColor.cs" />
     <Compile Include="Editor\LineBatcher.cs" />
     <Compile Include="Editor\PrimitiveComponent.cs" />
     <Compile Include="Editor\World.cs" />

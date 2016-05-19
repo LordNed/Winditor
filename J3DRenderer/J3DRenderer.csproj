@@ -81,6 +81,7 @@
     <Compile Include="Framework\SimpleObjRenderer.cs" />
     <Compile Include="JStudio\INF1.cs" />
     <Compile Include="JStudio\JStudio3D.cs" />
+    <Compile Include="JStudio\VTX1.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

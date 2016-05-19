@@ -109,7 +109,46 @@
                                 </TreeView.ItemTemplate>
                             </TreeView>
                         </Grid>
-                            
+                    </GroupBox>
+                    
+                    <!-- VTX 1 Section-->
+                    <GroupBox Header="VTX1 Section" HorizontalAlignment="Stretch" DataContext="{Binding Path=VTX1Tag}">
+                        <ListBox ItemsSource="{Binding Path=VertexFormats}" MaxHeight="400" MinHeight="35">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0" Content="Array Type:"/>
+                                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=ArrayType}"/>
+
+                                        <Label Grid.Column="0" Grid.Row="1" Content="Component Count:"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=ComponentCount}"/>
+
+                                        <Label Grid.Column="0" Grid.Row="2" Content="Data Type:"/>
+                                        <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=DataType}"/>
+
+                                        <Label Grid.Column="0" Grid.Row="3" Content="Color Type:"/>
+                                        <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=ColorDataType}"/>
+
+                                        <Label Grid.Column="0" Grid.Row="4" Content="Decimal Point:"/>
+                                        <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=DecimalPoint}"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </GroupBox>
                 </ItemsControl>
                 

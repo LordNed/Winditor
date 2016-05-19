@@ -12,6 +12,7 @@ namespace J3DRenderer.JStudio
         public string StudioType { get; protected set; }
         public string TotalFileSize { get { return string.Format("{0} bytes", m_totalFileSize); } }
         public INF1 INF1Tag { get; protected set; }
+        public VTX1 VTX1Tag { get; protected set; }
 
         private int m_totalFileSize;
 
@@ -45,6 +46,12 @@ namespace J3DRenderer.JStudio
                     case "INF1":
                         INF1Tag = new INF1();
                         INF1Tag.LoadINF1FromFile(reader, chunkStart);
+                        break;
+                    // VERTEX - Stores vertex arrays for pos/normal/color0/tex0 etc.
+                    // Contains VertexAttributes which describe how the data is stored/laid out.
+                    case "VTX1":
+                        VTX1Tag = new VTX1();
+                        VTX1Tag.LoadVTX1FromFile(reader, chunkStart, tagSize);
                         break;
                 }
             }
