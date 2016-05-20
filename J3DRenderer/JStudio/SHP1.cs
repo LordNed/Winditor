@@ -149,10 +149,10 @@ namespace J3DRenderer.JStudio
 
                         for(int v = 0; v < vertexCount; v++)
                         {
-                            // We need to keep track of how many game vertices we've read, instead of just using the length of the Index buffer, or
-                            // the length of any vertex buffer as we don't know which buffer is being used.
-                            shape.Indexes.Add(numVertexRead);
-                            numVertexRead++;
+                            //// We need to keep track of how many game vertices we've read, instead of just using the length of the Index buffer, or
+                            //// the length of any vertex buffer as we don't know which buffer is being used.
+                            //shape.Indexes.Add(numVertexRead);
+                            //numVertexRead++;
 
                             // Each vertex has an index for each ShapeAttribute specified by the Shape that we belong to. So we'll loop through
                             // each index and load it appropriately (as vertices can have different data sizes).
@@ -209,6 +209,47 @@ namespace J3DRenderer.JStudio
                         // After we write a primitive we want to insert a Primitive Restart index so that the GPU restarts the tri-strip.
                         shape.Indexes.Add(0xFFFF);
                     }
+                }
+            }
+        }
+
+        // To Do Test
+        public void ConvertTopologyToTriangles(GXPrimitiveType fromType, List<int> indexes)
+        {
+            List<int> triList = new List<int>();
+            if(fromType == GXPrimitiveType.TriangleStrip)
+            {
+                for (int v = 2; v < indexes.Count; v++)
+                {
+                    bool isEven = v % 2 == 0;
+                    int[] newTri = new int[3];
+
+                    newTri[0] = indexes[v] - 2;
+                    newTri[1] = isEven ? indexes[v] : indexes[v- 1];
+                    newTri[2] = isEven ? indexes[v - 1] : indexes[v];
+
+                    // Check against degenerate triangles (a triangle which shares indexes)
+                    if (newTri[0] != newTri[1] && newTri[1] != newTri[2] && newTri[2] != newTri[0])
+                        triList.AddRange(newTri);
+                    else
+                        System.Console.WriteLine("Degenerate triangle detected, skipping TriangleStrip conversion to triangle.");
+                }
+            }
+            else if(fromType == GXPrimitiveType.TriangleFan)
+            {
+                for(int v = 1; v < indexes.Count-1; v++)
+                {
+                    // Triangle is always, v, v+1, and index[0]?
+                    int[] newTri = new int[3];
+                    newTri[0] = indexes[v];
+                    newTri[1] = indexes[v + 1];
+                    newTri[2] = indexes[0];
+
+                    // Check against degenerate triangles (a triangle which shares indexes)
+                    if (newTri[0] != newTri[1] && newTri[1] != newTri[2] && newTri[2] != newTri[0])
+                        triList.AddRange(newTri);
+                    else
+                        System.Console.WriteLine("Degenerate triangle detected, skipping TriangleFan conversion to triangle.");
                 }
             }
         }
