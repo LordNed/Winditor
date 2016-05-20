@@ -1,5 +1,4 @@
-﻿using System;
-using GameFormatReader.Common;
+﻿using GameFormatReader.Common;
 using System.Diagnostics;
 using System.Collections.Generic;
 using WindEditor;
@@ -25,7 +24,7 @@ namespace J3DRenderer.JStudio
             for (int i = 0; i < offsets.Length; i++)
                 offsets[i] = reader.ReadInt32();
 
-            List<Material> materialList = new List<Material>();
+            //List<Material> materialList = new List<Material>();
 
             /* MATERIAL REMAP TABLE (See start of Material loader below) */
             var matIndexToMaterial = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 1, ReadShort, 2);
@@ -152,7 +151,7 @@ namespace J3DRenderer.JStudio
 
                 // Now that we've read the contents of the material section, we can load their values into a material 
                 // class which keeps it nice and tidy and full of class references and not indexes.
-                WEditor.Common.Nintendo.J3D.Material material = new WEditor.Common.Nintendo.J3D.Material();
+                /*WEditor.Common.Nintendo.J3D.Material material = new WEditor.Common.Nintendo.J3D.Material();
                 materialList.Add(material);
 
                 material.Name = nameTable[m];
@@ -288,7 +287,7 @@ namespace J3DRenderer.JStudio
                 short alphaCompareIndex = reader.ReadInt16();
                 material.AlphaCompare = alphaCompares[alphaCompareIndex];
                 material.BlendMode = blendModeInfos[reader.ReadInt16()];
-                material.UnknownIndex2 = reader.ReadInt16();
+                material.UnknownIndex2 = reader.ReadInt16();*/
             }
         }
 
@@ -557,4 +556,5 @@ namespace J3DRenderer.JStudio
             // If we didn't find a dataOffset that was valid, then we go to the end of the chunk.
             return endChunkOffset - currentOffset;
         }
+    }
 }

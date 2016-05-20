@@ -74,7 +74,7 @@ namespace J3DRenderer.JStudio
 
     }
 
-    public sealed class MeshVertexAttributeHolder
+    public sealed class MeshVertexHolder
     {
         public List<Vector3> Position = new List<Vector3>();
         public List<Vector3> Normal = new List<Vector3>();
@@ -95,7 +95,7 @@ namespace J3DRenderer.JStudio
     public class VTX1
     {
         public List<VertexFormat> VertexFormats { get; protected set; }
-        public MeshVertexAttributeHolder VertexData { get; protected set; }
+        public MeshVertexHolder VertexData { get; protected set; }
 
         public void LoadVTX1FromStream(EndianBinaryReader reader, long chunkStart, int chunkSize)
         {
@@ -125,7 +125,7 @@ namespace J3DRenderer.JStudio
             // Remove the last one because it simply the NullAttr that defines the end of the list.
             VertexFormats.RemoveAt(VertexFormats.Count - 1);
 
-            VertexData = new MeshVertexAttributeHolder();
+            VertexData = new MeshVertexHolder();
 
             // Retrieve the data from the 13 possible types of data using the above VertexFormats as a guide to the data.
             for (int k = 0; k < vertexDataOffsets.Length; k++)

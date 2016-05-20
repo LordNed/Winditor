@@ -84,6 +84,7 @@
     <Compile Include="JStudio\JStudio3D.cs" />
     <Compile Include="JStudio\MAT3.cs" />
     <Compile Include="JStudio\Material.cs" />
+    <Compile Include="JStudio\SHP1.cs" />
     <Compile Include="JStudio\StringTable.cs" />
     <Compile Include="JStudio\VTX1.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
@@ -126,6 +127,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\model.bdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\model_b.bdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\model_a.bdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Resource Include="Framework\T_DevCheckersOrange.png">

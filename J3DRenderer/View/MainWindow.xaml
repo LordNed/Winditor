@@ -137,10 +137,10 @@
                                         <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=ComponentCount}"/>
 
                                         <Label Grid.Column="0" Grid.Row="2" Content="Data Type:"/>
-                                        <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=DataType}"/>
+                                        <!--<Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=DataType}"/>-->
 
                                         <Label Grid.Column="0" Grid.Row="3" Content="Color Type:"/>
-                                        <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=ColorDataType}"/>
+                                        <!--<Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=ColorDataType}"/>-->
 
                                         <Label Grid.Column="0" Grid.Row="4" Content="Decimal Point:"/>
                                         <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=DecimalPoint}"/>
