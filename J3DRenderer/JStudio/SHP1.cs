@@ -1,5 +1,7 @@
 ﻿using GameFormatReader.Common;
 using OpenTK;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using WindEditor;
@@ -28,11 +30,85 @@ namespace J3DRenderer.JStudio
             public MeshVertexHolder VertexData { get; internal set; }
             public List<int> Indexes { get; internal set; }
 
+            public int[] m_glBufferIndexes;
+            public int m_glIndexBuffer;
+            private VertexDescription m_glVertexDescription;
+
             public Shape()
             {
                 Attributes = new List<ShapeAttribute>();
                 VertexData = new MeshVertexHolder();
                 Indexes = new List<int>();
+                m_glVertexDescription = new VertexDescription();
+
+                m_glBufferIndexes = new int[12];
+            }
+
+            public void UploadBuffersToGPU()
+            {
+                GL.GenBuffers(1, out m_glIndexBuffer);
+
+                // Upload the Indexes
+                GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);
+                GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * Indexes.Count), Indexes.ToArray(), BufferUsageHint.StaticDraw);
+
+                if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, VertexData.Position.ToArray());
+                if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
+                if (VertexData.Color0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color0, VertexData.Color0.ToArray());
+                if (VertexData.Color1.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color1, VertexData.Color1.ToArray());
+                if (VertexData.Tex0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex0, VertexData.Tex0.ToArray());
+                if (VertexData.Tex1.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex1, VertexData.Tex1.ToArray());
+                if (VertexData.Tex2.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex2, VertexData.Tex2.ToArray());
+                if (VertexData.Tex3.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex3, VertexData.Tex3.ToArray());
+                if (VertexData.Tex4.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex4, VertexData.Tex4.ToArray());
+                if (VertexData.Tex5.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex5, VertexData.Tex5.ToArray());
+                if (VertexData.Tex6.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex6, VertexData.Tex6.ToArray());
+                if (VertexData.Tex7.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex7, VertexData.Tex7.ToArray());
+            }
+
+            public void Bind()
+            {
+                for(int i = 0; i < m_glBufferIndexes.Length; i++)
+                {
+                    ShaderAttributeIds id = (ShaderAttributeIds)i;
+                    if(m_glVertexDescription.AttributeIsEnabled(id))
+                    {
+                        GL.BindBuffer(BufferTarget.ArrayBuffer, m_glBufferIndexes[i]);
+                        GL.EnableVertexAttribArray(i);
+                        GL.VertexAttribPointer(i, m_glVertexDescription.GetAttributeSize(id), m_glVertexDescription.GetAttributePointerType(id), false, m_glVertexDescription.GetStride(id), 0);
+                    }
+                }
+
+                // Bind the Element Array Buffer as well
+                GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);
+            }
+
+            public void Unbind()
+            {
+                for (int i = 0; i < m_glBufferIndexes.Length; i++)
+                    GL.DisableVertexAttribArray(i);
+            }
+
+            public void Draw()
+            {
+                GL.DrawElements(BeginMode.Triangles, Indexes.Count, DrawElementsType.UnsignedInt, 0);
+            }
+
+            private void UpdateAttributeAndBuffers<T>(ShaderAttributeIds attribute, T[] data) where T : struct
+            {
+                // See if this attribute is already enabled. If it's not already enabled, we need to generate a buffer for it.
+                if (!m_glVertexDescription.AttributeIsEnabled(attribute))
+                {
+                    m_glBufferIndexes[(int)attribute] = GL.GenBuffer();
+                    m_glVertexDescription.EnableAttribute(attribute);
+                }
+
+                // Bind the buffer before updating the data.
+                GL.BindBuffer(BufferTarget.ArrayBuffer, m_glBufferIndexes[(int)attribute]);
+
+                // Finally, update the data.
+                int stride = m_glVertexDescription.GetStride(attribute);
+                GL.BufferData<T>(BufferTarget.ArrayBuffer, (IntPtr)(data.Length * stride), data, BufferUsageHint.StaticDraw);
             }
         }
 
@@ -233,10 +309,11 @@ namespace J3DRenderer.JStudio
                         }
                     }
                 }
+
+                shape.UploadBuffersToGPU();
             }
         }
 
-        // To Do Test
         public List<MeshVertexIndex> ConvertTopologyToTriangles(GXPrimitiveType fromType, List<MeshVertexIndex> indexes)
         {
             List<MeshVertexIndex> sortedIndexes = new List<MeshVertexIndex>();

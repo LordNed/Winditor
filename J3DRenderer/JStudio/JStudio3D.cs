@@ -30,8 +30,6 @@ namespace J3DRenderer.JStudio
         private Matrix4 m_modelMatrix;
 
         // More hack
-        private int[] m_vertexBuffer, m_indexBuffer, m_texcoordBuffer;
-        private int m_textureVBO;
         private Shader m_shader;
 
         public JStudio3D()
@@ -93,52 +91,6 @@ namespace J3DRenderer.JStudio
                     case "SHP1":
                         SHP1Tag = new SHP1();
                         SHP1Tag.ReadSHP1FromStream(reader, tagStart, VTX1Tag.VertexData);
-
-                        // Hack
-                        m_vertexBuffer = new int[SHP1Tag.ShapeCount];
-                        m_indexBuffer = new int[SHP1Tag.ShapeCount];
-                        m_texcoordBuffer = new int[SHP1Tag.ShapeCount];
-                        m_textureVBO = GL.GenBuffer();
-
-                        for(int s = 0; s < SHP1Tag.ShapeCount; s++)
-                        {
-                            SHP1.Shape shape = SHP1Tag.Shapes[s];
-                            m_vertexBuffer[s] = GL.GenBuffer();
-                            m_indexBuffer[s] = GL.GenBuffer();
-                            m_texcoordBuffer[s] = GL.GenBuffer();
-
-                            // Positions
-                            int vbo = m_vertexBuffer[s];
-                            GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
-                            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(12 * shape.VertexData.Position.Count), shape.VertexData.Position.ToArray(), BufferUsageHint.StaticDraw);
-
-                            GL.BindBuffer(BufferTarget.ArrayBuffer, m_texcoordBuffer[s]);
-                            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(8 * shape.VertexData.Tex0.Count), shape.VertexData.Tex0.ToArray(), BufferUsageHint.StaticDraw);
-
-                            // Upload Indexes
-                            int ebo = m_indexBuffer[s];
-                            GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
-                            GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * shape.Indexes.Count), shape.Indexes.ToArray(), BufferUsageHint.StaticDraw);
-                        }
-
-                        GL.BindTexture(TextureTarget.Texture2D, m_textureVBO);
-                        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-                        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
-                        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
-                        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
-
-                        // Black/white checkerboard
-                        float[] pixels = new[]
-                        {
-                            0.0f, 0.0f, 0.0f,   255.0f, 255.0f, 255.0f,
-                            255.0f, 255.0f, 255.0f,   0.0f, 0.0f, 0.0f
-                        };
-                        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, 2, 2, 0, PixelFormat.Rgb, PixelType.Float, pixels);
-
-                        //System.Drawing.Imaging.BitmapData bmpData = mat.Diffuse.LockBits(new System.Drawing.Rectangle(0, 0, mat.Diffuse.Width, mat.Diffuse.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                        //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, mat.Diffuse.Width, mat.Diffuse.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bmpData.Scan0);
-                        //mat.Diffuse.UnlockBits(bmpData);
-
                         break;
                     // MATERIAL - Stores materials (which describes how textures, etc. are drawn)
                     case "MAT3":
@@ -205,29 +157,11 @@ namespace J3DRenderer.JStudio
             GL.UniformMatrix4(m_shader.UniformViewMtx, false, ref m_viewMatrix);
             GL.UniformMatrix4(m_shader.UniformProjMtx, false, ref m_projMatrix);
 
-            // Position
-            GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertexBuffer[index]);
-            GL.EnableVertexAttribArray((int)ShaderAttributeIds.Position);
-            GL.VertexAttribPointer((int)ShaderAttributeIds.Position, 3, VertexAttribPointerType.Float, false, 12, 0);
-
-            // Texcoord
-            GL.BindBuffer(BufferTarget.ArrayBuffer, m_texcoordBuffer[index]);
-            GL.EnableVertexAttribArray((int)ShaderAttributeIds.Tex0);
-            GL.VertexAttribPointer((int)ShaderAttributeIds.Tex0, 2, VertexAttribPointerType.Float, false, 8, 0);
-
-            // Texture
-            //GL.ActiveTexture(TextureUnit.Texture0);
-            //GL.BindTexture(TextureTarget.Texture2D, m_textureVBO);
             TEX1Tag.Textures[0].Bind();
 
-            // EBO
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_indexBuffer[index]);
-
-            // Draw!
-            GL.DrawElements(BeginMode.Triangles, SHP1Tag.Shapes[index].Indexes.Count, DrawElementsType.UnsignedInt, 0);
-
-            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
-            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Tex0);
+            SHP1Tag.Shapes[index].Bind();
+            SHP1Tag.Shapes[index].Draw();
+            SHP1Tag.Shapes[index].Unbind();
         }
 
 

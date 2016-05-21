@@ -81,7 +81,7 @@
     <Compile Include="Framework\SimpleObjRenderer.cs" />
     <Compile Include="JStudio\BinaryTextureImage.cs" />
     <Compile Include="JStudio\GXEnums.cs" />
-    <Compile Include="JStudio\GXToOpenGL.cs" />
+    <Compile Include="Framework\GXToOpenGL.cs" />
     <Compile Include="JStudio\INF1.cs" />
     <Compile Include="JStudio\JStudio3D.cs" />
     <Compile Include="JStudio\MAT3.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="JStudio\SHP1.cs" />
     <Compile Include="JStudio\StringTable.cs" />
     <Compile Include="JStudio\TEX1.cs" />
+    <Compile Include="Framework\VertexDescription.cs" />
     <Compile Include="JStudio\VTX1.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
