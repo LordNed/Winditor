@@ -33,5 +33,10 @@ namespace WindEditor
             intersectDist = num / a;
             return intersectDist > 0f;
         }
+
+        public override string ToString()
+        {
+            return string.Format("Normal: {0} Distance: {1}", Normal, Distance);
+        }
     }
 }

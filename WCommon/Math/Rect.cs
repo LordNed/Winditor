@@ -15,14 +15,14 @@ namespace WindEditor
             Height = height;
         }
 
-        public override string ToString()
-        {
-            return string.Format("X: {0} Y: {1} Width: {2} Height: {3}", X, Y, Width, Height);
-        }
-
         public bool Contains(float x, float y)
         {
             return (x >= X && x <= (X + Width)) && (y >= Y && y <= (Y + Height));
+        }
+
+        public override string ToString()
+        {
+            return string.Format("X: {0} Y: {1} Width: {2} Height: {3}", X, Y, Width, Height);
         }
     }
 }

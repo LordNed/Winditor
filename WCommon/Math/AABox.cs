@@ -79,5 +79,10 @@ namespace WindEditor
             if (point.Z > m_max.Z)
                 m_max.Z = point.Z;
         }
+
+        public override string ToString()
+        {
+            return string.Format("Min: {0} Max: {1} Center: {2}", Min, Max, Center);
+        }
     }
 }
