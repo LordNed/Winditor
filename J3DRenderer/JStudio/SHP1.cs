@@ -141,18 +141,21 @@ namespace J3DRenderer.JStudio
                         if (type == 0 || numPrimitiveBytesRead >= packetSize)
                             break;
 
-                        System.Console.WriteLine(type);
-
                         // The number of vertices this primitive has indexes for
                         ushort vertexCount = reader.ReadUInt16();
                         numPrimitiveBytesRead += 0x3; // 2 bytes for vertex count, one byte for GXPrimitiveType.
 
+                        List<MeshVertexIndex> primitiveVertices = new List<MeshVertexIndex>();
+
                         for(int v = 0; v < vertexCount; v++)
                         {
-                            //// We need to keep track of how many game vertices we've read, instead of just using the length of the Index buffer, or
-                            //// the length of any vertex buffer as we don't know which buffer is being used.
+                            // We need to keep track of how many game vertices we've read, instead of just using the length of the Index buffer, or
+                            // the length of any vertex buffer as we don't know which buffer is being used.
                             //shape.Indexes.Add(numVertexRead);
                             //numVertexRead++;
+
+                            MeshVertexIndex newVert = new MeshVertexIndex();
+                            primitiveVertices.Add(newVert);
 
                             // Each vertex has an index for each ShapeAttribute specified by the Shape that we belong to. So we'll loop through
                             // each index and load it appropriately (as vertices can have different data sizes).
@@ -184,19 +187,19 @@ namespace J3DRenderer.JStudio
                                 // attribute to get the value out of the correct source array.
                                 switch (curAttribute.ArrayType)
                                 {
-                                    case VertexArrayType.Position: shape.VertexData.Position.Add(compressedVertexData.Position[index]); break;
-                                    case VertexArrayType.PositionMatrixIndex: shape.VertexData.PositionMatrixIndexes.Add(index); break;
-                                    case VertexArrayType.Normal: shape.VertexData.Normal.Add(compressedVertexData.Normal[index]); break;
-                                    case VertexArrayType.Color0: shape.VertexData.Color0.Add(compressedVertexData.Color0[index]); break;
-                                    case VertexArrayType.Color1: shape.VertexData.Color1.Add(compressedVertexData.Color1[index]); break;
-                                    case VertexArrayType.Tex0: shape.VertexData.Tex0.Add(compressedVertexData.Tex0[index]); break;
-                                    case VertexArrayType.Tex1: shape.VertexData.Tex1.Add(compressedVertexData.Tex1[index]); break;
-                                    case VertexArrayType.Tex2: shape.VertexData.Tex2.Add(compressedVertexData.Tex2[index]); break;
-                                    case VertexArrayType.Tex3: shape.VertexData.Tex3.Add(compressedVertexData.Tex3[index]); break;
-                                    case VertexArrayType.Tex4: shape.VertexData.Tex4.Add(compressedVertexData.Tex4[index]); break;
-                                    case VertexArrayType.Tex5: shape.VertexData.Tex5.Add(compressedVertexData.Tex5[index]); break;
-                                    case VertexArrayType.Tex6: shape.VertexData.Tex6.Add(compressedVertexData.Tex6[index]); break;
-                                    case VertexArrayType.Tex7: shape.VertexData.Tex7.Add(compressedVertexData.Tex7[index]); break;
+                                    case VertexArrayType.Position: newVert.Position = index; break;
+                                    //case VertexArrayType.PositionMatrixIndex: newVert.m; break;
+                                    case VertexArrayType.Normal: newVert.Normal = index; break;
+                                    case VertexArrayType.Color0: newVert.Color0 = index; break;
+                                    case VertexArrayType.Color1: newVert.Color1 = index; break;
+                                    case VertexArrayType.Tex0:  newVert.Tex0 = index; break;
+                                    case VertexArrayType.Tex1:  newVert.Tex1 = index; break;
+                                    case VertexArrayType.Tex2:  newVert.Tex2 = index; break;
+                                    case VertexArrayType.Tex3:  newVert.Tex3 = index; break;
+                                    case VertexArrayType.Tex4:  newVert.Tex4 = index; break;
+                                    case VertexArrayType.Tex5:  newVert.Tex5 = index; break;
+                                    case VertexArrayType.Tex6:  newVert.Tex6 = index; break;
+                                    case VertexArrayType.Tex7:  newVert.Tex7 = index; break;
                                     default:
                                         System.Console.WriteLine("Unsupported ArrayType {0} for ShapeAttribute!", curAttribute.ArrayType);
                                         break;
@@ -206,31 +209,51 @@ namespace J3DRenderer.JStudio
                             }
                         }
 
-                        // After we write a primitive we want to insert a Primitive Restart index so that the GPU restarts the tri-strip.
-                        shape.Indexes.Add(0xFFFF);
+                        // All vertices have now been loaded into the primitiveIndexes array. We can now convert them if needed
+                        // to triangle lists, instead of triangle fans, strips, etc.
+                        var triangleList = ConvertTopologyToTriangles(type, primitiveVertices);
+                        for(int i = 0; i < triangleList.Count; i++)
+                        {
+                            shape.Indexes.Add(numVertexRead);
+                            numVertexRead++;
+
+                            var tri = triangleList[i];
+                            if (tri.Position >= 0) shape.VertexData.Position.Add(compressedVertexData.Position[tri.Position]);
+                            if (tri.Normal >= 0) shape.VertexData.Normal.Add(compressedVertexData.Normal[tri.Normal]);
+                            if (tri.Color0 >= 0) shape.VertexData.Color0.Add(compressedVertexData.Color0[tri.Color0]);
+                            if (tri.Color1 >= 0) shape.VertexData.Color1.Add(compressedVertexData.Color1[tri.Color1]);
+                            if (tri.Tex0 >= 0) shape.VertexData.Tex0.Add(compressedVertexData.Tex0[tri.Tex0]);
+                            if (tri.Tex1 >= 0) shape.VertexData.Tex1.Add(compressedVertexData.Tex1[tri.Tex1]);
+                            if (tri.Tex2 >= 0) shape.VertexData.Tex2.Add(compressedVertexData.Tex2[tri.Tex2]);
+                            if (tri.Tex3 >= 0) shape.VertexData.Tex3.Add(compressedVertexData.Tex3[tri.Tex3]);
+                            if (tri.Tex4 >= 0) shape.VertexData.Tex4.Add(compressedVertexData.Tex4[tri.Tex4]);
+                            if (tri.Tex5 >= 0) shape.VertexData.Tex5.Add(compressedVertexData.Tex5[tri.Tex5]);
+                            if (tri.Tex6 >= 0) shape.VertexData.Tex6.Add(compressedVertexData.Tex6[tri.Tex6]);
+                            if (tri.Tex7 >= 0) shape.VertexData.Tex7.Add(compressedVertexData.Tex7[tri.Tex7]);
+                        }
                     }
                 }
             }
         }
 
         // To Do Test
-        public void ConvertTopologyToTriangles(GXPrimitiveType fromType, List<int> indexes)
+        public List<MeshVertexIndex> ConvertTopologyToTriangles(GXPrimitiveType fromType, List<MeshVertexIndex> indexes)
         {
-            List<int> triList = new List<int>();
+            List<MeshVertexIndex> sortedIndexes = new List<MeshVertexIndex>();
             if(fromType == GXPrimitiveType.TriangleStrip)
             {
                 for (int v = 2; v < indexes.Count; v++)
                 {
-                    bool isEven = v % 2 == 0;
-                    int[] newTri = new int[3];
+                    bool isEven = v % 2 != 0;
+                    MeshVertexIndex[] newTri = new MeshVertexIndex[3];
 
-                    newTri[0] = indexes[v] - 2;
-                    newTri[1] = isEven ? indexes[v] : indexes[v- 1];
+                    newTri[0] = indexes[v - 2];
+                    newTri[1] = isEven ? indexes[v] : indexes[v - 1];
                     newTri[2] = isEven ? indexes[v - 1] : indexes[v];
 
                     // Check against degenerate triangles (a triangle which shares indexes)
                     if (newTri[0] != newTri[1] && newTri[1] != newTri[2] && newTri[2] != newTri[0])
-                        triList.AddRange(newTri);
+                        sortedIndexes.AddRange(newTri);
                     else
                         System.Console.WriteLine("Degenerate triangle detected, skipping TriangleStrip conversion to triangle.");
                 }
@@ -240,18 +263,29 @@ namespace J3DRenderer.JStudio
                 for(int v = 1; v < indexes.Count-1; v++)
                 {
                     // Triangle is always, v, v+1, and index[0]?
-                    int[] newTri = new int[3];
+                    MeshVertexIndex[] newTri = new MeshVertexIndex[3];
                     newTri[0] = indexes[v];
                     newTri[1] = indexes[v + 1];
                     newTri[2] = indexes[0];
 
                     // Check against degenerate triangles (a triangle which shares indexes)
                     if (newTri[0] != newTri[1] && newTri[1] != newTri[2] && newTri[2] != newTri[0])
-                        triList.AddRange(newTri);
+                        sortedIndexes.AddRange(newTri);
                     else
                         System.Console.WriteLine("Degenerate triangle detected, skipping TriangleFan conversion to triangle.");
                 }
             }
+            else if(fromType == GXPrimitiveType.Triangles)
+            {
+                // The good news is, Triangles just go straight though!
+                sortedIndexes.AddRange(indexes);
+            }
+            else
+            {
+                System.Console.WriteLine("Unsupported GXPrimitiveType: {0} in conversion to Triangle List.", fromType);
+            }
+
+            return sortedIndexes;
         }
     }
 }

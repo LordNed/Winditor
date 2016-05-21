@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GameFormatReader.Common;
 using OpenTK;
 using WindEditor;
@@ -89,7 +86,22 @@ namespace J3DRenderer.JStudio
         public List<Vector2> Tex6 = new List<Vector2>();
         public List<Vector2> Tex7 = new List<Vector2>();
         public List<int> PositionMatrixIndexes = new List<int>();
-        public List<int> Indexes = new List<int>();
+    }
+
+    public class MeshVertexIndex
+    {
+        public int Position = -1;
+        public int Normal = -1;
+        public int Color0 = -1;
+        public int Color1 = -1;
+        public int Tex0 = -1;
+        public int Tex1 = -1;
+        public int Tex2 = -1;
+        public int Tex3 = -1;
+        public int Tex4 = -1;
+        public int Tex5 = -1;
+        public int Tex6 = -1;
+        public int Tex7 = -1;
     }
 
     public class VTX1

@@ -186,11 +186,12 @@ namespace J3DRenderer.JStudio
 
         private void RenderBatchByIndex(ushort index)
         {
-            GL.Enable(EnableCap.PrimitiveRestart);
-            GL.PrimitiveRestartIndex(0xFFFF);
+            //GL.Enable(EnableCap.PrimitiveRestart);
+            //GL.PrimitiveRestartIndex(0xFFFF);
             GL.CullFace(CullFaceMode.Back);
-            GL.FrontFace(FrontFaceDirection.Ccw);
+            GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.CullFace);
 
             m_shader.Bind();
             GL.UniformMatrix4(m_shader.UniformModelMtx, false, ref m_modelMatrix);
@@ -215,7 +216,7 @@ namespace J3DRenderer.JStudio
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_indexBuffer[index]);
 
             // Draw!
-            GL.DrawElements(BeginMode.Triangles, SHP1Tag.Shapes[index].Indexes.Count * 3, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(BeginMode.Triangles, SHP1Tag.Shapes[index].Indexes.Count, DrawElementsType.UnsignedInt, 0);
 
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Tex0);

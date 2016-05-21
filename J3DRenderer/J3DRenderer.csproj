@@ -126,18 +126,18 @@
     <Content Include="resources\shaders\TransformGizmoHighlight.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="resources\model.bdl">
+    <Content Include="resources\model.bdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="resources\model_b.bdl">
+    </Content>
+    <Content Include="resources\model_b.bdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="resources\model_a.bdl">
+    </Content>
+    <Content Include="resources\model_a.bdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Resource Include="Framework\T_DevCheckersOrange.png">
+    </Content>
+    <Content Include="Framework\T_DevCheckersOrange.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
