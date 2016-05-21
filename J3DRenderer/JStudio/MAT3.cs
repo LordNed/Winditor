@@ -6,6 +6,41 @@ using System;
 
 namespace J3DRenderer.JStudio
 {
+    public class Material
+    {
+        public string Name { get; internal set; }
+        public byte Flag { get; internal set; }
+        public byte CullModeIndex { get; internal set; }
+        public byte NumChannelControlsIndex { get; internal set; }
+        public byte NumTexGensIndex { get; internal set; }
+        public byte NumTevStagesIndex { get; internal set; }
+        public byte ZCompLocIndex { get; internal set; }
+        public byte ZModeIndex { get; internal set; }
+        public byte DitherIndex { get; internal set; }
+        public short[] MaterialColorIndexes { get; internal set; }
+        public short[] ChannelControlIndexes { get; internal set; }
+        public short[] AmbientColorIndexes { get; internal set; }
+        public short[] LightingColorIndexes { get; internal set; }
+        public short[] TexGenInfoIndexes { get; internal set; }
+        public short[] TexGen2InfoIndexes { get; internal set; }
+        public short[] TexMatrixIndexes { get; internal set; }
+        public short[] DttMatrixIndexes { get; internal set; }
+        public short[] TextureIndexes { get; internal set; }
+        public short[] TevKonstColorIndexes { get; internal set; }
+        public byte[] KonstColorSelectorIndexes { get; internal set; }
+        public byte[] KonstAlphaSelectorIndexes { get; internal set; }
+        public short[] TevOrderInfoIndexes { get; internal set; }
+        public short[] TevColorIndexes { get; internal set; }
+        public short[] TevStageInfoIndexes { get; internal set; }
+        public short[] TevSwapModeIndexes { get; internal set; }
+        public short[] TevSwapModeTableIndexes { get; internal set; }
+        public short[] UnknownIndexes { get; internal set; }
+        public short FogModeIndex { get; internal set; }
+        public short AlphaCompareIndex { get; internal set; }
+        public short BlendModeIndex { get; internal set; }
+        public short UnknownIndex2 { get; internal set; }
+    }
+
     public class MAT3
     {
         /// <summary> Delegate defines a function that decodes one instance of type T.</summary>
@@ -25,7 +60,7 @@ namespace J3DRenderer.JStudio
             for (int i = 0; i < offsets.Length; i++)
                 offsets[i] = reader.ReadInt32();
 
-            //List<Material> materialList = new List<Material>();
+            List<Material> materialList = new List<Material>();
 
             /* MATERIAL REMAP TABLE (See start of Material loader below) */
             var matIndexToMaterial = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 1, ReadShort, 2);
@@ -130,11 +165,11 @@ namespace J3DRenderer.JStudio
                 // stuff referencing the old one. We're going to read each one as a unique material (by overwriting the index we
                 // read from) after going through the material lookup table. This removes the duplicates when we load them and turns
                 // them all into unique instances.
-                int matIndex = matIndexToMaterial[m];
+                //int matIndex = matIndexToMaterial[m];
 
 
                 // A Material entry is 0x14c long.
-                reader.BaseStream.Position = chunkStart + offsets[0] + (matIndex * 0x14c);
+                reader.BaseStream.Position = chunkStart + offsets[0] + (m * 0x14c);
 
                 // The first byte of a material is some form of flag. Values found so far are 1, 4 and 0. 1 is the most common.
                 // bmdview2 documentation says that means "draw on way down" while 4 means "draw on way up" (of INF1 heirarchy)
@@ -152,143 +187,99 @@ namespace J3DRenderer.JStudio
 
                 // Now that we've read the contents of the material section, we can load their values into a material 
                 // class which keeps it nice and tidy and full of class references and not indexes.
-                /*WEditor.Common.Nintendo.J3D.Material material = new WEditor.Common.Nintendo.J3D.Material();
+                Material material = new Material();
                 materialList.Add(material);
 
                 material.Name = nameTable[m];
                 material.Flag = flag;
-                material.CullMode = (GXCullMode)cullModes[reader.ReadByte()];
-                material.NumChannelControls = numChannelControls[reader.ReadByte()];
-                material.NumTexGens = numTexGens[reader.ReadByte()];
-                material.NumTevStages = numTevStages[reader.ReadByte()];
-                material.ZCompLoc = zCompLocInfos[reader.ReadByte()];
-                material.ZMode = zModeInfos[reader.ReadByte()];
-                material.Dither = ditherInfos[reader.ReadByte()];
+                material.CullModeIndex = reader.ReadByte();
+                material.NumChannelControlsIndex = reader.ReadByte();
+                material.NumTexGensIndex = reader.ReadByte();
+                material.NumTevStagesIndex = reader.ReadByte();
+                material.ZCompLocIndex = reader.ReadByte();
+                material.ZModeIndex = reader.ReadByte();
+                material.DitherIndex = reader.ReadByte();
 
                 // Not sure what these materials are used for. gxColorMaterial is the function that reads them.
-                material.MaterialColors = new WLinearColor[2];
-                for (int i = 0; i < material.MaterialColors.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    material.MaterialColors[i] = materialColors[index];
-                }
+                material.MaterialColorIndexes = new short[2];
+                for (int i = 0; i < material.MaterialColorIndexes.Length; i++)
+                    material.MaterialColorIndexes[i] = reader.ReadInt16();
 
-                material.ChannelControls = new ChanCtrl[4];
-                for (int i = 0; i < material.ChannelControls.Length; i++)
-                    material.ChannelControls[i] = colorChannelInfos[reader.ReadInt16()];
+                material.ChannelControlIndexes = new short[4];
+                for (int i = 0; i < material.ChannelControlIndexes.Length; i++)
+                    material.ChannelControlIndexes[i] = reader.ReadInt16();
 
-                material.AmbientColors = new WLinearColor[2];
-                for (int i = 0; i < material.AmbientColors.Length; i++)
-                    material.AmbientColors[i] = ambientColors[reader.ReadInt16()];
+                material.AmbientColorIndexes = new short[2];
+                for (int i = 0; i < material.AmbientColorIndexes.Length; i++)
+                    material.AmbientColorIndexes[i] = reader.ReadInt16();
 
-                material.LightingColors = new WLinearColor[8];
-                for (int i = 0; i < material.LightingColors.Length; i++)
-                {
-                    // Index will be -1 if there's no Lighting Colors on this material.
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.LightingColors[i] = lightingColors[index];
-                }
+                material.LightingColorIndexes = new short[8];
+                for (int i = 0; i < material.LightingColorIndexes.Length; i++)
+                    material.LightingColorIndexes[i] = reader.ReadInt16();
 
-                material.TexGenInfos = new TexCoordGen[8];
-                for (int i = 0; i < material.TexGenInfos.Length; i++)
-                {
-                    // Index will be -1 if there's no Tex Gens on this material.
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TexGenInfos[i] = texGenInfos[index];
-                }
+                material.TexGenInfoIndexes = new short[8];
+                for (int i = 0; i < material.TexGenInfoIndexes.Length; i++)
 
-                material.TexGen2Infos = new TexCoordGen[8];
-                for (int i = 0; i < material.TexGen2Infos.Length; i++)
-                {
-                    // Index will be -1 if there's no Tex Gen 2s on this material.
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TexGen2Infos[i] = texGenInfos[index];
-                }
+                        material.TexGenInfoIndexes[i] = reader.ReadInt16();
 
-                material.TexMatrices = new TexMatrix[10];
-                for (int i = 0; i < material.TexMatrices.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TexMatrices[i] = texMatrixInfo[index];
-                }
+                material.TexGen2InfoIndexes = new short[8];
+                for (int i = 0; i < material.TexGen2InfoIndexes.Length; i++)
+                    material.TexGen2InfoIndexes[i] = reader.ReadInt16();
 
-                material.DttMatrices = new TexMatrix[20];
-                for (int i = 0; i < material.DttMatrices.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.DttMatrices[i] = texMatrix2Info[index];
-                }
+                material.TexMatrixIndexes = new short[10];
+                for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
+                        material.TexMatrixIndexes[i] = reader.ReadInt16();
 
-                material.TextureIndexes = new short[8] { -1, -1, -1, -1, -1, -1, -1, -1 };
+                material.DttMatrixIndexes = new short[20];
+                for (int i = 0; i < material.DttMatrixIndexes.Length; i++)
+                    material.DttMatrixIndexes[i] = reader.ReadInt16();
+
+                material.TextureIndexes = new short[8];
                 for (int i = 0; i < material.TextureIndexes.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TextureIndexes[i] = texIndexes[index];
-                }
+                    material.TextureIndexes[i] = reader.ReadInt16();
 
-                material.TevKonstColors = new WLinearColor[4];
-                for (int i = 0; i < material.TevKonstColors.Length; i++)
-                    material.TevKonstColors[i] = tevKonstColors[reader.ReadInt16()];
+                material.TevKonstColorIndexes = new short[4];
+                for (int i = 0; i < material.TevKonstColorIndexes.Length; i++)
+                    material.TevKonstColorIndexes[i] = reader.ReadInt16();
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
-                material.KonstColorSels = new GXKonstColorSel[16];
-                for (int i = 0; i < material.KonstColorSels.Length; i++)
-                    material.KonstColorSels[i] = (GXKonstColorSel)reader.ReadByte();
+                material.KonstColorSelectorIndexes = new byte[16];
+                for (int i = 0; i < material.KonstColorSelectorIndexes.Length; i++)
+                    material.KonstColorSelectorIndexes[i] = reader.ReadByte();
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
-                material.KonstAlphaSels = new GXKonstAlphaSel[16];
-                for (int i = 0; i < material.KonstAlphaSels.Length; i++)
-                    material.KonstAlphaSels[i] = (GXKonstAlphaSel)reader.ReadByte();
+                material.KonstAlphaSelectorIndexes = new byte[16];
+                for (int i = 0; i < material.KonstAlphaSelectorIndexes.Length; i++)
+                    material.KonstAlphaSelectorIndexes[i] = reader.ReadByte();
 
-                material.TevOrderInfos = new TevOrder[16];
-                for (int i = 0; i < material.TevOrderInfos.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TevOrderInfos[i] = tevOrderInfos[index];
-                }
+                material.TevOrderInfoIndexes = new short[16];
+                for (int i = 0; i < material.TevOrderInfoIndexes.Length; i++)
+                    material.TevOrderInfoIndexes[i] = reader.ReadInt16();
 
-                material.TevColor = new WLinearColor[4];
-                for (int i = 0; i < material.TevColor.Length; i++)
-                    material.TevColor[i] = tevColors[reader.ReadInt16()];
+                material.TevColorIndexes = new short[4];
+                for (int i = 0; i < material.TevColorIndexes.Length; i++)
+                    material.TevColorIndexes[i] = reader.ReadInt16();
 
-                material.TevStageInfos = new TevStage[16];
-                for (int i = 0; i < material.TevStageInfos.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TevStageInfos[i] = tevStageInfos[index];
-                }
+                material.TevStageInfoIndexes = new short[16];
+                for (int i = 0; i < material.TevStageInfoIndexes.Length; i++)
+                    material.TevStageInfoIndexes[i] = reader.ReadInt16();
 
-                material.TevSwapModes = new TevSwapMode[16];
-                for (int i = 0; i < material.TevSwapModes.Length; i++)
-                {
-                    short index = reader.ReadInt16();
-                    if (index >= 0)
-                        material.TevSwapModes[i] = tevSwapModeInfos[index];
-                }
+                material.TevSwapModeIndexes = new short[16];
+                for (int i = 0; i < material.TevSwapModeIndexes.Length; i++)
+                    material.TevSwapModeIndexes[i] = reader.ReadInt16();
 
-                material.TevSwapModeTables = new TevSwapModeTable[4];
-                for (int i = 0; i < material.TevSwapModeTables.Length; i++)
-                    material.TevSwapModeTables[i] = tevSwapModeTables[reader.ReadInt16()];
+                material.TevSwapModeTableIndexes = new short[4];
+                for (int i = 0; i < material.TevSwapModeTableIndexes.Length; i++)
+                    material.TevSwapModeTableIndexes[i] = reader.ReadInt16();
 
                 material.UnknownIndexes = new short[12];
                 for (int l = 0; l < material.UnknownIndexes.Length; l++)
                     material.UnknownIndexes[l] = reader.ReadInt16();
 
-                short fogIndex = reader.ReadInt16();
-                material.Fog = fogInfos[fogIndex];
-
-                short alphaCompareIndex = reader.ReadInt16();
-                material.AlphaCompare = alphaCompares[alphaCompareIndex];
-                material.BlendMode = blendModeInfos[reader.ReadInt16()];
-                material.UnknownIndex2 = reader.ReadInt16();*/
+                material.FogModeIndex = reader.ReadInt16();
+                material.AlphaCompareIndex = reader.ReadInt16();
+                material.BlendModeIndex = reader.ReadInt16();
+                material.UnknownIndex2 = reader.ReadInt16();
             }
         }
 
