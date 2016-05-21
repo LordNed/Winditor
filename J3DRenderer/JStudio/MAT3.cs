@@ -40,6 +40,11 @@ namespace J3DRenderer.JStudio
         public short AlphaCompareIndex { get; internal set; }
         public short BlendModeIndex { get; internal set; }
         public short UnknownIndex2 { get; internal set; }
+
+        public void Bind()
+        {
+
+        }
     }
 
     public class MAT3
@@ -189,16 +194,6 @@ namespace J3DRenderer.JStudio
 
             for (int m = 0; m < materialCount; m++)
             {
-                // A MAT3 section can potentially specify more materials than there is actually material data for. For example, 
-                // Link (cl.bdl) specifies 24 materials, but anything after m = 16 doesn't exist. This is because if you examine
-                // the materialRemap table, we can see that indexes 17+ all point back to 0. It appears they duplicated his materials
-                // and when the tool exported them, it crushed the actual Material structures down to non-duplicates but left the
-                // stuff referencing the old one. We're going to read each one as a unique material (by overwriting the index we
-                // read from) after going through the material lookup table. This removes the duplicates when we load them and turns
-                // them all into unique instances.
-                //int matIndex = matIndexToMaterial[m];
-
-
                 // A Material entry is 0x14c long.
                 reader.BaseStream.Position = chunkStart + offsets[0] + (m * 0x14c);
 

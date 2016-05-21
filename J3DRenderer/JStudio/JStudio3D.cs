@@ -19,6 +19,7 @@ namespace J3DRenderer.JStudio
         public VTX1 VTX1Tag { get; protected set; }
         public MAT3 MAT3Tag { get; protected set; }
         public SHP1 SHP1Tag { get; protected set; }
+        public JNT1 JNT1Tag { get; protected set; }
 
         private int m_totalFileSize;
 
@@ -84,6 +85,8 @@ namespace J3DRenderer.JStudio
                         break;
                     // JOINTS - Stores the skeletal joints (position, rotation, scale, etc...)
                     case "JNT1":
+                        JNT1Tag = new JNT1();
+                        JNT1Tag.LoadJNT1FromStream(reader, tagStart);
                         break;
                     // SHAPE - Face/Triangle information for model.
                     case "SHP1":
@@ -181,7 +184,8 @@ namespace J3DRenderer.JStudio
 
         private void BindMaterialByIndex(ushort index)
         {
-            
+            Material material = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[index]];
+            material.Bind();
         }
 
         private void RenderBatchByIndex(ushort index)
