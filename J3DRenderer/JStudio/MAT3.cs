@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using WindEditor;
 using System;
+using System.ComponentModel;
 
 namespace J3DRenderer.JStudio
 {
@@ -43,6 +44,37 @@ namespace J3DRenderer.JStudio
 
     public class MAT3
     {
+        public BindingList<Material> MaterialList { get; protected set; }
+        public List<short> MaterialRemapTable { get; protected set; }
+        public List<IndirectTexture> IndirectTextures { get; protected set; }
+        public List<int> CullModes { get; protected set; }
+        public List<WLinearColor> MaterialColors { get; protected set; }
+        public List<byte> NumChannelControls { get; protected set; }
+        public List<ChanCtrl> ColorChannelInfos { get; protected set; }
+        public List<WLinearColor> AmbientColors { get; protected set; }
+        public List<WLinearColor> LightingColors { get; protected set; }
+        public List<byte> NumTexGens { get; protected set; }
+        public List<TexCoordGen> TexGenInfos { get; protected set; }
+        public List<TexCoordGen> TexGen2Infos { get; protected set; }
+        public List<TexMatrix> TexMatrixInfos { get; protected set; }
+        public List<TexMatrix> TexMatrix2Infos { get; protected set; }
+        public List<short> TextureIndexes { get; protected set; }
+        public List<TevOrder> TevOrderInfos { get; protected set; }
+        public List<WLinearColor> TevColors { get; protected set; }
+        public List<WLinearColor> TevKonstColors { get; protected set; }
+        public List<byte> NumTevStages { get; protected set; }
+        public List<TevStage> TevStageInfos { get; protected set; }
+        public List<TevSwapMode> TevSwapModeInfos { get; protected set; }
+        public List<TevSwapModeTable> TevSwapModeTables { get; protected set; }
+        public List<FogInfo> FogInfos { get; protected set; }
+        public List<AlphaCompare> AlphaCompares { get; protected set; }
+        public List<BlendMode> BlendModeInfos { get; protected set; }
+        public List<ZMode> ZModeInfos { get; protected set; }
+        public List<bool> ZCompareLocInfo { get; protected set; }
+        public List<bool> DitherInfos { get; protected set; }
+        public List<NBTScale> NBTScale { get; protected set; }
+        
+
         /// <summary> Delegate defines a function that decodes one instance of type T.</summary>
         /// <param name="stream">The stream to decode the instance from</param>
         private delegate T LoadTypeFromStream<T>(EndianBinaryReader stream);
@@ -52,6 +84,7 @@ namespace J3DRenderer.JStudio
             short materialCount = reader.ReadInt16();
             Trace.Assert(reader.ReadUInt16() == 0xFFFF); // Padding
 
+            MaterialList = new BindingList<Material>();
 
             // Nintendo sets unused offsets to zero, so we can't just use the next variable name in the list. Instead we have to search
             // until we find a non-zero one and calculate the difference that way. Thus, we convert all of the offsets into an int[] for
@@ -60,100 +93,98 @@ namespace J3DRenderer.JStudio
             for (int i = 0; i < offsets.Length; i++)
                 offsets[i] = reader.ReadInt32();
 
-            List<Material> materialList = new List<Material>();
-
             /* MATERIAL REMAP TABLE (See start of Material loader below) */
-            var matIndexToMaterial = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 1, ReadShort, 2);
+            MaterialRemapTable = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 1, ReadShort, 2);
 
             /* STRING TABLE */
             reader.BaseStream.Position = chunkStart + offsets[2];
             StringTable nameTable = StringTable.FromStream(reader);
 
             /* INDIRECT TEXTURING */
-            var indirectTexture = ReadSection<IndirectTexture>(reader, chunkStart, chunkSize, offsets, 3, ReadIndirectTexture, 312);
+            IndirectTextures = ReadSection<IndirectTexture>(reader, chunkStart, chunkSize, offsets, 3, ReadIndirectTexture, 312);
 
             /* CULL MODE */
-            var cullModes = ReadSection<int>(reader, chunkStart, chunkSize, offsets, 4, ReadInt32, 4);
+            CullModes = ReadSection<int>(reader, chunkStart, chunkSize, offsets, 4, ReadInt32, 4);
 
             /* MATERIAL COLOR */
-            var materialColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 5, ReadColor32, 4);
+            MaterialColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 5, ReadColor32, 4);
 
             /* NUM COLOR CHAN */
             // THIS IS A GUESS AT DATA TYPE
-            var numChannelControls = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 6, ReadByte, 1);
+            NumChannelControls = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 6, ReadByte, 1);
 
             /* COLOR CHAN INFO */
-            var colorChannelInfos = ReadSection<ChanCtrl>(reader, chunkStart, chunkSize, offsets, 7, ReadChannelControl, 8);
+            ColorChannelInfos = ReadSection<ChanCtrl>(reader, chunkStart, chunkSize, offsets, 7, ReadChannelControl, 8);
 
             /* AMBIENT COLOR */
-            var ambientColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 8, ReadColor32, 4);
+            AmbientColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 8, ReadColor32, 4);
 
             /* LIGHT INFO */
             // THIS IS A GUESS AT DATA TYPE
-            var lightingColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 9, ReadColorShort, 8);
+            LightingColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 9, ReadColorShort, 8);
 
             /* TEX GEN NUMBER */
-            var numTexGens = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 10, ReadByte, 1);
+            NumTexGens = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 10, ReadByte, 1);
 
             /* TEX GEN INFO */
-            var texGenInfos = ReadSection<TexCoordGen>(reader, chunkStart, chunkSize, offsets, 11, ReadTexCoordGen, 4);
+            TexGenInfos = ReadSection<TexCoordGen>(reader, chunkStart, chunkSize, offsets, 11, ReadTexCoordGen, 4);
 
             /* TEX GEN 2 INFO */
-            var texGen2Infos = ReadSection<TexCoordGen>(reader, chunkStart, chunkSize, offsets, 12, ReadTexCoordGen, 4);
+            TexGen2Infos = ReadSection<TexCoordGen>(reader, chunkStart, chunkSize, offsets, 12, ReadTexCoordGen, 4);
 
             /* TEX MATRIX INFO */
-            var texMatrixInfo = ReadSection<TexMatrix>(reader, chunkStart, chunkSize, offsets, 13, ReadTexMatrix, 100);
+            TexMatrixInfos = ReadSection<TexMatrix>(reader, chunkStart, chunkSize, offsets, 13, ReadTexMatrix, 100);
 
             /* POST TRANSFORM MATRIX INFO */
-            var texMatrix2Info = ReadSection<TexMatrix>(reader, chunkStart, chunkSize, offsets, 14, ReadTexMatrix, 100);
+            TexMatrix2Infos = ReadSection<TexMatrix>(reader, chunkStart, chunkSize, offsets, 14, ReadTexMatrix, 100);
 
             /* TEXURE INDEX */
-            var texIndexes = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 15, ReadShort, 2);
+            TextureIndexes = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 15, ReadShort, 2);
 
             /* TEV ORDER INFO */
-            var tevOrderInfos = ReadSection<TevOrder>(reader, chunkStart, chunkSize, offsets, 16, ReadTevOrder, 4);
+            TevOrderInfos = ReadSection<TevOrder>(reader, chunkStart, chunkSize, offsets, 16, ReadTevOrder, 4);
 
             /* TEV COLORS */
-            var tevColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 17, ReadColorShort, 8);
+            TevColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 17, ReadColorShort, 8);
 
             /* TEV KONST COLORS */
-            var tevKonstColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 18, ReadColor32, 4);
+            TevKonstColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 18, ReadColor32, 4);
 
             /* NUM TEV STAGES */
             // THIS IS A GUESS AT DATA TYPE
-            var numTevStages = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 19, ReadByte, 1);
+            NumTevStages = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 19, ReadByte, 1);
 
             /* TEV STAGE INFO */
-            var tevStageInfos = ReadSection<TevStage>(reader, chunkStart, chunkSize, offsets, 20, ReadTevCombinerStage, 20);
+            TevStageInfos = ReadSection<TevStage>(reader, chunkStart, chunkSize, offsets, 20, ReadTevCombinerStage, 20);
 
             /* TEV SWAP MODE INFO */
-            var tevSwapModeInfos = ReadSection<TevSwapMode>(reader, chunkStart, chunkSize, offsets, 21, ReadTevSwapMode, 4);
+            TevSwapModeInfos = ReadSection<TevSwapMode>(reader, chunkStart, chunkSize, offsets, 21, ReadTevSwapMode, 4);
 
             /* TEV SWAP MODE TABLE INFO */
-            var tevSwapModeTables = ReadSection<TevSwapModeTable>(reader, chunkStart, chunkSize, offsets, 22, ReadTevSwapModeTable, 4);
+            TevSwapModeTables = ReadSection<TevSwapModeTable>(reader, chunkStart, chunkSize, offsets, 22, ReadTevSwapModeTable, 4);
 
             /* FOG INFO */
-            var fogInfos = ReadSection<FogInfo>(reader, chunkStart, chunkSize, offsets, 23, ReadFogInfo, 44);
+            FogInfos = ReadSection<FogInfo>(reader, chunkStart, chunkSize, offsets, 23, ReadFogInfo, 44);
 
             /* ALPHA COMPARE INFO */
-            var alphaCompares = ReadSection<AlphaCompare>(reader, chunkStart, chunkSize, offsets, 24, ReadAlphaCompare, 8);
+            AlphaCompares = ReadSection<AlphaCompare>(reader, chunkStart, chunkSize, offsets, 24, ReadAlphaCompare, 8);
 
             /* BLEND INFO */
-            var blendModeInfos = ReadSection<BlendMode>(reader, chunkStart, chunkSize, offsets, 25, ReadBlendMode, 4);
+            BlendModeInfos = ReadSection<BlendMode>(reader, chunkStart, chunkSize, offsets, 25, ReadBlendMode, 4);
 
             /* ZMODE INFO */
-            var zModeInfos = ReadSection<ZMode>(reader, chunkStart, chunkSize, offsets, 26, ReadZMode, 4);
+            ZModeInfos = ReadSection<ZMode>(reader, chunkStart, chunkSize, offsets, 26, ReadZMode, 4);
 
             /* ZCOMP LOC INFO */
             // THIS IS A GUESS AT DATA TYPE
-            var zCompLocInfos = ReadSection<bool>(reader, chunkStart, chunkSize, offsets, 27, ReadBool, 1);
+            ZCompareLocInfo = ReadSection<bool>(reader, chunkStart, chunkSize, offsets, 27, ReadBool, 1);
 
             /* DITHER INFO */
             // THIS IS A GUESS AT DATA TYPE
-            var ditherInfos = ReadSection<bool>(reader, chunkStart, chunkSize, offsets, 28, ReadBool, 1);
+            DitherInfos = ReadSection<bool>(reader, chunkStart, chunkSize, offsets, 28, ReadBool, 1);
 
             /* NBT SCALE INFO */
-            var nbtScale = ReadSection<NBTScale>(reader, chunkStart, chunkSize, offsets, 29, ReadNBTScale, 16);
+            NBTScale = ReadSection<NBTScale>(reader, chunkStart, chunkSize, offsets, 29, ReadNBTScale, 16);
 
 
             for (int m = 0; m < materialCount; m++)
@@ -188,7 +219,7 @@ namespace J3DRenderer.JStudio
                 // Now that we've read the contents of the material section, we can load their values into a material 
                 // class which keeps it nice and tidy and full of class references and not indexes.
                 Material material = new Material();
-                materialList.Add(material);
+                MaterialList.Add(material);
 
                 material.Name = nameTable[m];
                 material.Flag = flag;
