@@ -1,4 +1,5 @@
-﻿using WindEditor;
+﻿using OpenTK;
+using WindEditor;
 
 namespace J3DRenderer.JStudio
 {
@@ -175,6 +176,20 @@ namespace J3DRenderer.JStudio
         public byte Alpha;
     }
 
+    public class NBTScale
+    {
+        public byte Unknown1;
+        public Vector3 Scale;
+
+        public NBTScale() { }
+
+        public NBTScale(byte unknown, Vector3 scale)
+        {
+            Unknown1 = unknown;
+            Scale = scale;
+        }
+    }
+
     public class TevSwapMode
     {
         public byte RasSel;
@@ -204,12 +219,6 @@ namespace J3DRenderer.JStudio
     {
         public byte ScaleS;
         public byte ScaleT;
-    }
-
-    public class IndTexMatrix
-    {
-        public float[] OffsetMatrix; // 2 of them
-        public byte ScaleExponent;
     }
 
     public class TevStage
@@ -247,5 +256,82 @@ namespace J3DRenderer.JStudio
         public float FarZ;
         public WLinearColor Color;
         public ushort[] Table; // 10 of these.
+    }
+
+    public class IndirectTexture
+    {
+        /// <summary> Determines if an indirect texture lookup is to take place </summary>
+        public bool HasLookup;
+
+        /// <summary> The number of indirect texturing stages to use </summary>
+        public byte IndTexStageNum;
+
+        /// <summary> Unknown value 1. Related to TevOrders. </summary>
+        public byte Unknown1;
+
+        /// <summary> Unknown value 2. Related to TevOrders. </summary>
+        public byte Unknown2;
+
+        /// <summary> The dynamic 2x3 matrices to use when transforming the texture coordinates. </summary>
+        public IndirectTextureMatrix[] Matrices;
+
+        /// <summary> U and V scales to use when transforming the texture coordinates </summary>
+        public IndirectTextureScale[] Scales;
+
+        /// <summary> Instructions for setting up the specified TEV stage for lookup operations </summary>
+        public IndirectTevOrder[] TevOrders;
+
+        public IndirectTexture()
+        {
+            Matrices = new IndirectTextureMatrix[3];
+            Scales = new IndirectTextureScale[4];
+            TevOrders = new IndirectTevOrder[16];
+        }
+    }
+
+    public class IndirectTextureMatrix
+    {
+        public Matrix2x3 Matrix;
+        public byte ScaleExponent; // 2^Exponent to multiply the matrix by.
+
+        public IndirectTextureMatrix(Matrix2x3 matrix, byte scaleExponent)
+        {
+            Matrix = matrix;
+            ScaleExponent = scaleExponent;
+        }
+    }
+
+    /// <summary>
+    /// Defines S (U) and T (V) scale values to transform source texture coordinates during an indirect texture lookup.
+    /// </summary>
+    public class IndirectTextureScale
+    {
+        /// <summary> Scale value for the source texture coordinates' S (U) component. </summary>
+        public byte ScaleS;
+
+        /// <summary> Scale value for the source texture coordinates' T (V) component. </summary>
+        public byte ScaleT;
+
+        public IndirectTextureScale(byte scaleS, byte scaleT)
+        {
+            ScaleS = scaleS;
+            ScaleT = scaleT;
+        }
+    }
+
+    /// <summary>
+    /// Configures a TEV stage during an indirect texture lookup.
+    /// </summary>
+    public class IndirectTevOrder
+    {
+        public byte TevStageID;
+        public byte IndTexFormat;
+        public byte IndTexBiasSel;
+        public byte IndTexMtxId;
+        public byte IndTexWrapS;
+        public byte IndTexWrapT;
+        public bool AddPrev;
+        public bool UtcLod;
+        public byte AlphaSel;
     }
 }

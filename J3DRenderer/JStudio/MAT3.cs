@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using WindEditor;
+using System;
 
 namespace J3DRenderer.JStudio
 {
@@ -34,7 +35,7 @@ namespace J3DRenderer.JStudio
             StringTable nameTable = StringTable.FromStream(reader);
 
             /* INDIRECT TEXTURING */
-            // ???????
+            var indirectTexture = ReadSection<IndirectTexture>(reader, chunkStart, chunkSize, offsets, 3, ReadIndirectTexture, 312);
 
             /* CULL MODE */
             var cullModes = ReadSection<int>(reader, chunkStart, chunkSize, offsets, 4, ReadInt32, 4);
@@ -117,7 +118,7 @@ namespace J3DRenderer.JStudio
             var ditherInfos = ReadSection<bool>(reader, chunkStart, chunkSize, offsets, 28, ReadBool, 1);
 
             /* NBT SCALE INFO */
-            // ????
+            var nbtScale = ReadSection<NBTScale>(reader, chunkStart, chunkSize, offsets, 29, ReadNBTScale, 16);
 
 
             for (int m = 0; m < materialCount; m++)
@@ -322,7 +323,75 @@ namespace J3DRenderer.JStudio
         private static WLinearColor ReadColorShort(EndianBinaryReader stream)
         {
             // ToDo: Are these actually just divided by 255f? Wouldn't they be divided by short.MaxValue?
-            return new WLinearColor(stream.ReadInt16() / 255f, stream.ReadInt16() / 255f, stream.ReadInt16() / 255f, stream.ReadInt16() / 255f);
+            ushort r = stream.ReadUInt16();
+            ushort g = stream.ReadUInt16();
+            ushort b = stream.ReadUInt16();
+            ushort a = stream.ReadUInt16();
+            Trace.Assert(r <= 255 && g <= 255 && b <= 255 && a <= 255);
+            return new WLinearColor(r / 255f, g / 255f, b / 255f, a/255f);
+        }
+
+        private static IndirectTexture ReadIndirectTexture(EndianBinaryReader stream)
+        {
+            IndirectTexture itm = new IndirectTexture();
+            itm.HasLookup = stream.ReadBoolean();
+            itm.IndTexStageNum = stream.ReadByte();
+            ushort val = stream.ReadUInt16();
+            //Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
+            itm.Unknown1 = stream.ReadByte();
+            itm.Unknown2 = stream.ReadByte();
+
+            for (int i = 0; i < 7; i++)
+            {
+                Console.WriteLine(stream.ReadUInt16());// == 0xFFFF); // Padding
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                itm.Matrices[i] = new IndirectTextureMatrix(new OpenTK.Matrix2x3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()), stream.ReadByte());
+                Trace.Assert(stream.ReadByte() == 0xFF); // Padding
+                Trace.Assert(stream.ReadByte() == 0xFF);
+                Trace.Assert(stream.ReadByte() == 0xFF);
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                itm.Scales[i] = new IndirectTextureScale(stream.ReadByte(), stream.ReadByte());
+                Trace.Assert(stream.ReadByte() == 0xFF); // Padding
+                Trace.Assert(stream.ReadByte() == 0xFF);
+            }
+
+            for (int i = 0; i < 16; i++)
+            {
+                var indirectTevOrder = new IndirectTevOrder();
+                indirectTevOrder.TevStageID = stream.ReadByte();
+                indirectTevOrder.IndTexFormat = stream.ReadByte();
+                indirectTevOrder.IndTexBiasSel = stream.ReadByte();
+                indirectTevOrder.IndTexMtxId = stream.ReadByte();
+                indirectTevOrder.IndTexWrapS = stream.ReadByte();
+                indirectTevOrder.IndTexWrapT = stream.ReadByte();
+                indirectTevOrder.AddPrev = stream.ReadBoolean();
+                indirectTevOrder.UtcLod = stream.ReadBoolean();
+                indirectTevOrder.AlphaSel = stream.ReadByte();
+                Trace.Assert(stream.ReadByte() == 0xFF); // Padding
+                Trace.Assert(stream.ReadByte() == 0xFF);
+                Trace.Assert(stream.ReadByte() == 0xFF);
+
+                itm.TevOrders[i] = indirectTevOrder;
+            }
+
+            return itm;
+        }
+
+        private static NBTScale ReadNBTScale(EndianBinaryReader stream)
+        {
+            var nbtScale = new NBTScale();
+            nbtScale.Unknown1 = stream.ReadByte();
+            Trace.Assert(stream.ReadByte() == 0xFF); // Padding
+            Trace.Assert(stream.ReadByte() == 0xFF); 
+            Trace.Assert(stream.ReadByte() == 0xFF);
+            nbtScale.Scale = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());
+            return nbtScale;
         }
 
         private static ZMode ReadZMode(EndianBinaryReader stream)

@@ -43,7 +43,7 @@ namespace J3DRenderer
             m_stockMesh = new SimpleObjRenderer(obj);
 
             m_model = new JStudio3D();
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/model_b.bdl"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/K_Testb.bmd"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
