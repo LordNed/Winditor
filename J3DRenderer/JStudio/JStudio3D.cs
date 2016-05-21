@@ -20,6 +20,7 @@ namespace J3DRenderer.JStudio
         public MAT3 MAT3Tag { get; protected set; }
         public SHP1 SHP1Tag { get; protected set; }
         public JNT1 JNT1Tag { get; protected set; }
+        public TEX1 TEX1Tag { get; private set; }
 
         private int m_totalFileSize;
 
@@ -146,6 +147,8 @@ namespace J3DRenderer.JStudio
                         break;
                     // TEXTURES - Stores binary texture images.
                     case "TEX1":
+                        TEX1Tag = new TEX1();
+                        TEX1Tag.LoadTEX1FromStream(reader, tagStart);
                         break;
                     // MODEL - Seems to be bypass commands for Materials and invokes GX registers directly.
                     case "MDL3":
