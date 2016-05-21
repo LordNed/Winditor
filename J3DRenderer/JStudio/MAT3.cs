@@ -360,7 +360,7 @@ namespace J3DRenderer.JStudio
 
             for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine(stream.ReadUInt16());// == 0xFFFF); // Padding
+                Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
             }
 
             for (int i = 0; i < 3; i++)

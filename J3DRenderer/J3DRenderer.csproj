@@ -81,6 +81,7 @@
     <Compile Include="Framework\SimpleObjRenderer.cs" />
     <Compile Include="JStudio\BinaryTextureImage.cs" />
     <Compile Include="JStudio\GXEnums.cs" />
+    <Compile Include="JStudio\GXToOpenGL.cs" />
     <Compile Include="JStudio\INF1.cs" />
     <Compile Include="JStudio\JStudio3D.cs" />
     <Compile Include="JStudio\MAT3.cs" />

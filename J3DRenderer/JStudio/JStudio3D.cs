@@ -216,8 +216,9 @@ namespace J3DRenderer.JStudio
             GL.VertexAttribPointer((int)ShaderAttributeIds.Tex0, 2, VertexAttribPointerType.Float, false, 8, 0);
 
             // Texture
-            GL.ActiveTexture(TextureUnit.Texture0);
-            GL.BindTexture(TextureTarget.Texture2D, m_textureVBO);
+            //GL.ActiveTexture(TextureUnit.Texture0);
+            //GL.BindTexture(TextureTarget.Texture2D, m_textureVBO);
+            TEX1Tag.Textures[0].Bind();
 
             // EBO
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_indexBuffer[index]);

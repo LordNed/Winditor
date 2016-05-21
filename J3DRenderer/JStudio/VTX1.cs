@@ -167,8 +167,8 @@ namespace J3DRenderer.JStudio
                         break;
 
                     // Normal Binormal Tangent Data (presumed)
-                    case 2:
-                        break;
+                    //case 2:
+                    //    break;
 
                     // Color 0 Data
                     case 3:
@@ -228,6 +228,9 @@ namespace J3DRenderer.JStudio
                     case 12:
                         vertexFormat = VertexFormats.Find(x => x.ArrayType == VertexArrayType.Tex7);
                         VertexData.Tex7 = LoadVertexAttribute<Vector2>(reader, totalLength, vertexFormat.DecimalPoint, VertexArrayType.Tex7, vertexFormat.DataType, VertexColorType.None);
+                        break;
+                    default:
+                        Console.WriteLine("Unsupported VertexFormat Index: {0}", k);
                         break;
                 }
             }
