@@ -81,14 +81,14 @@ namespace J3DRenderer.JStudio
     }
 
     /// <summary>
-    /// The color channel can have 1-8 lights associated with it, set using <see cref="ChanCtrl.LitMask"/>. 
-    /// The <see cref="ChanCtrl.DiffuseFunction"/> and <see cref="ChanCtrl.AttenuationFunction"/> parameters control the lighting equation for all lights associated with this channel.
-    /// The <see cref="ChanCtrl.AmbientSrc"/> and <see cref="ChanCtrl.MaterialSrc"/> used to select whether the input source colors come from the register colors or vertex colors.
+    /// The color channel can have 1-8 lights associated with it, set using <see cref="ColorChannelControl.LitMask"/>. 
+    /// The <see cref="ColorChannelControl.DiffuseFunction"/> and <see cref="ColorChannelControl.AttenuationFunction"/> parameters control the lighting equation for all lights associated with this channel.
+    /// The <see cref="ColorChannelControl.AmbientSrc"/> and <see cref="ColorChannelControl.MaterialSrc"/> used to select whether the input source colors come from the register colors or vertex colors.
     /// </summary>
-    public class ChanCtrl
+    public class ColorChannelControl
     {
         /// <summary> Whether or not to enable lighting for this channel. If false, the material source color is passed through as the material output color.</summary>
-        public bool Enable;
+        public bool LightingEnabled;
 
         /// <summary> Source for the Material color. When set to <see cref="GXColorSrc.Register"/> the color set by GX_SetChanMatColor is used. </summary>
         public GXColorSrc MaterialSrc;

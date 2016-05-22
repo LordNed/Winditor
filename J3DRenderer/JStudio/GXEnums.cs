@@ -1,4 +1,6 @@
-﻿namespace J3DRenderer.JStudio
+﻿using System;
+
+namespace J3DRenderer.JStudio
 {
 
     public enum GXCompareType
@@ -238,6 +240,7 @@
         Quads = 0x80,
     }
 
+    [Flags]
     public enum GXLightId
     {
         Light0 = 0x001,

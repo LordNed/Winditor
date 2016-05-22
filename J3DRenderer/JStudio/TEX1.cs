@@ -18,7 +18,7 @@ namespace J3DRenderer.JStudio
             Name = name;
             CompressedData = compressedData;
 
-            m_glTextureIndex = GL.GenBuffer();
+            m_glTextureIndex = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, m_glTextureIndex);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)GXToOpenGL.GetWrapMode(compressedData.WrapS));
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)GXToOpenGL.GetWrapMode(compressedData.WrapT));

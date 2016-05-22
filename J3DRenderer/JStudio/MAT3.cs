@@ -2,14 +2,17 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using WindEditor;
-using System;
 using System.ComponentModel;
+using J3DRenderer.Framework;
 
 namespace J3DRenderer.JStudio
 {
     public class Material
     {
         public string Name { get; internal set; }
+        public Shader Shader { get; internal set; }
+        public VertexDescription VtxDesc { get; internal set; }
+
         public byte Flag { get; internal set; }
         public byte CullModeIndex { get; internal set; }
         public byte NumChannelControlsIndex { get; internal set; }
@@ -19,7 +22,7 @@ namespace J3DRenderer.JStudio
         public byte ZModeIndex { get; internal set; }
         public byte DitherIndex { get; internal set; }
         public short[] MaterialColorIndexes { get; internal set; }
-        public short[] ChannelControlIndexes { get; internal set; }
+        public short[] ColorChannelControlIndexes { get; internal set; }
         public short[] AmbientColorIndexes { get; internal set; }
         public short[] LightingColorIndexes { get; internal set; }
         public short[] TexGenInfoIndexes { get; internal set; }
@@ -43,7 +46,7 @@ namespace J3DRenderer.JStudio
 
         public void Bind()
         {
-
+            Shader.Bind();
         }
     }
 
@@ -55,7 +58,7 @@ namespace J3DRenderer.JStudio
         public List<int> CullModes { get; protected set; }
         public List<WLinearColor> MaterialColors { get; protected set; }
         public List<byte> NumChannelControls { get; protected set; }
-        public List<ChanCtrl> ColorChannelInfos { get; protected set; }
+        public List<ColorChannelControl> ColorChannelControls { get; protected set; }
         public List<WLinearColor> AmbientColors { get; protected set; }
         public List<WLinearColor> LightingColors { get; protected set; }
         public List<byte> NumTexGens { get; protected set; }
@@ -119,7 +122,7 @@ namespace J3DRenderer.JStudio
             NumChannelControls = ReadSection<byte>(reader, chunkStart, chunkSize, offsets, 6, ReadByte, 1);
 
             /* COLOR CHAN INFO */
-            ColorChannelInfos = ReadSection<ChanCtrl>(reader, chunkStart, chunkSize, offsets, 7, ReadChannelControl, 8);
+            ColorChannelControls = ReadSection<ColorChannelControl>(reader, chunkStart, chunkSize, offsets, 7, ReadChannelControl, 8);
 
             /* AMBIENT COLOR */
             AmbientColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 8, ReadColor32, 4);
@@ -231,9 +234,9 @@ namespace J3DRenderer.JStudio
                 for (int i = 0; i < material.MaterialColorIndexes.Length; i++)
                     material.MaterialColorIndexes[i] = reader.ReadInt16();
 
-                material.ChannelControlIndexes = new short[4];
-                for (int i = 0; i < material.ChannelControlIndexes.Length; i++)
-                    material.ChannelControlIndexes[i] = reader.ReadInt16();
+                material.ColorChannelControlIndexes = new short[4];
+                for (int i = 0; i < material.ColorChannelControlIndexes.Length; i++)
+                    material.ColorChannelControlIndexes[i] = reader.ReadInt16();
 
                 material.AmbientColorIndexes = new short[2];
                 for (int i = 0; i < material.AmbientColorIndexes.Length; i++)
@@ -307,6 +310,11 @@ namespace J3DRenderer.JStudio
                 material.BlendModeIndex = reader.ReadInt16();
                 material.UnknownIndex2 = reader.ReadInt16();
             }
+
+
+            // Now, generate a shader from the data.
+            foreach (var material in MaterialList)
+                material.Shader = TEVShaderGenerator.GenerateShader(material, this);
         }
 
         private static List<T> Collect<T>(EndianBinaryReader stream, LoadTypeFromStream<T> function, int count)
@@ -452,11 +460,11 @@ namespace J3DRenderer.JStudio
             };
         }
 
-        private static ChanCtrl ReadChannelControl(EndianBinaryReader stream)
+        private static ColorChannelControl ReadChannelControl(EndianBinaryReader stream)
         {
-            var retVal = new ChanCtrl
+            var retVal = new ColorChannelControl
             {
-                Enable = stream.ReadBoolean(),
+                LightingEnabled = stream.ReadBoolean(),
                 MaterialSrc = (GXColorSrc)stream.ReadByte(),
                 LitMask = (GXLightId)stream.ReadByte(),
                 DiffuseFunction = (GXDiffuseFn)stream.ReadByte(),

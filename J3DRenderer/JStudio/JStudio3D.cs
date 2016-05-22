@@ -5,6 +5,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using WindEditor;
 using System.IO;
+using J3DRenderer.Framework;
 
 namespace J3DRenderer.JStudio
 {
