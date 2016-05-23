@@ -19,8 +19,8 @@ namespace J3DRenderer.Framework
             }
             if (success)
             {
-                string fragmentShader = GenerateFragmentShader(shader, fromMat, data);
-                success = shader.CompileSource(fragmentShader, ShaderType.FragmentShader);
+                //string fragmentShader = GenerateFragmentShader(shader, fromMat, data);
+                //success = shader.CompileSource(fragmentShader, ShaderType.FragmentShader);
             }
 
             if (success)
@@ -93,16 +93,16 @@ namespace J3DRenderer.Framework
             stream.AppendLine("// Uniforms");
             stream.AppendLine
                 (
-                "    uniform mat4 ModelMtx;\n" +
-                "    uniform mat4 ViewMtx;\n" +
-                "    uniform mat4 ProjMtx;\n" +
+                "uniform mat4 ModelMtx;\n" +
+                "uniform mat4 ViewMtx;\n" +
+                "uniform mat4 ProjMtx;\n" +
                 "\n" +
-                "    uniform mat4 TexMtx[10];" +
-                "    uniform mat4 PostMtx[20];" +
-                "    uniform vec4 COLOR0_Amb;\n" +
-                "    uniform vec4 COLOR0_Mat;\n" +
-                "    uniform vec4 COLOR1_Mat;\n" +
-                "    uniform vec4 COLOR1_Amb;\n"
+                "uniform mat4 TexMtx[10];\n" +
+                "uniform mat4 PostMtx[20];\n" +
+                "uniform vec4 COLOR0_Amb;\n" +
+                "uniform vec4 COLOR0_Mat;\n" +
+                "uniform vec4 COLOR1_Mat;\n" +
+                "uniform vec4 COLOR1_Amb;\n"
                 //"\n" +
                 //"    struct GXLight\n" +
                 //"    {\n" +
@@ -121,13 +121,13 @@ namespace J3DRenderer.Framework
 
             // Main Shader Code
             stream.AppendLine("// Main Vertex Shader");
-            stream.AppendLine("void main()\n{\n");
+            stream.AppendLine("void main()\n{");
             stream.AppendLine("\tmat4 MVP = ProjMtx * ViewMtx * ModelMtx;");
             stream.AppendLine("\tmat4 MV = ViewMtx * ModelMtx;");
             if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Position)) stream.AppendLine("\tgl_Position = MVP * vec4(RawPosition, 1);");
             stream.AppendLine();
 
-            stream.AppendFormat("\t// Ambient Colors & Material Colors. {0} Ambient Colors, {1} Material Colors.", mat.AmbientColorIndexes.Length, mat.MaterialColorIndexes.Length);
+            stream.AppendFormat("\t// Ambient Colors & Material Colors. {0} Ambient Colors, {1} Material Colors.\n", mat.AmbientColorIndexes.Length, mat.MaterialColorIndexes.Length);
 
             // Upload Ambient Colors specified by the material
             for (int i = 0; i < mat.AmbientColorIndexes.Length; i++)
@@ -177,6 +177,7 @@ namespace J3DRenderer.Framework
                 string ambColor = (channelControl.AmbientSrc == GXColorSrc.Vertex ? "RawColor" : "ambColor") + channel + swizzle;
                 string matColor = (channelControl.MaterialSrc == GXColorSrc.Vertex ? "RawColor" : "matColor") + channel + swizzle;
 
+                #region 0
                 // When no local diffuse *light* is applied to an object, the color is equal to the ambient pre-lit color which is simply: "pre_lit_clr * amb_scale"
                 // When a light is shining on the object, the percentage of pre-lit color is increased until when the light is brightest, where the full value of pre-lit color is used.
                 // lit_clr = pre_lit_clr * (amb_scale + diff_scale * other_attn * diff_lit_color)
@@ -188,10 +189,54 @@ namespace J3DRenderer.Framework
                 //string aattl(j) = Clamp0(lj*Ldir) || GX_AF_SPOT
                 //string atten = ??; /* GX_AF_NONE ? 1 : (Clamp0(a2, AAtti(j)^2 + aljAAtt(j) +a0j)/ k2dl(j)^2+k1jdl(j)+k0j. WHAT THE FUCK.*/
 
-                string lightFunc = channelControl.LightingEnabled ? "1" : "1"; // ToDo: Equation 12
-                stream.AppendFormat("\t{0} = {1}*{2};\n", channelTarget, matColor, lightFunc); // Equation 10
-                stream.AppendLine();
-                stream.AppendLine();
+                ////string aatt;
+                ////switch (channelControl.AttenuationFunction)
+                ////{
+                ////    case GXAttenuationFn.None: aatt = "float aatt = 1.0;"; break;
+                ////    case GXAttenuationFn.Spec: aatt = string.Format("float aatt = (dot(RawNormal, lightDir) >= 0.0) ? max(0.0, dot(RawNormal, {0}.Direction.xyz)) : 0.0;\n", < lightIndex >); break;
+                ////    case GXAttenuationFn.Spot: ??;
+                ////        break;
+                ////    default:
+                ////        break;
+                ////}
+
+
+                ////string attenuationParams = string.Format("float a0 = {0}; float a1 = {1}; float a2 = {2}; float k0 = {3}; float k1 = {4}; float k2 = {5};", 0f, 0f, 1f, 0.5f, 0f, 1 - 0.5f); //ToDo: Get these values from Wind Waker
+                ////string aattn = "float aattn = clamp(dot("
+                ////string attenuation = "clamp(a2^2 * aattn^2 + a1 * aattn + a0) / (k2 * d^2 + k1 * d + k0, 0, 1);";
+                ////string lighting_sum = "vec4 lighting_sum = "
+
+
+
+                ////string illum = string.Format("clamp({0} + lighting_sum, 0, 1);\n", ambColor);
+                ////string lightFunc = channelControl.LightingEnabled ? illum : "1"; // ToDo: Equation 12
+                ////stream.AppendFormat("\t{0} = {1}*{2};\n", channelTarget, matColor, lightFunc); // Equation 9-10
+                ////stream.AppendLine();
+                ////stream.AppendLine();
+                #endregion
+
+                // see: https://github.com/dolphin-emu/dolphin/blob/master/Source/Core/VideoCommon/LightingShaderGen.h#L61
+                // From the Top:
+                // Ambient = GX_SRC_REG ? AmbientRegister : VertexColor;
+                // Material = GX_SRC_REG ? MaterialRegister : VertexColor;
+                // Pre-declare: float lightAccum, float3 lightDir, h, cosAttn, distATtn, float dist, dist2, attn
+                // lightAccum = 0f; 
+                // for(int i = 0; i < 8; i++)
+                //    if(LIGHTMASK_ENABLED(i))
+                //      dist2 = dot(LIGHT_DIR(i), LIGHT_DIR(i));
+                //      dist = sqrt(dist2);
+                //      switch(LIGHT_ATTN_FUNC)
+                //      case NONE: aatt = 1.0
+                //      case SPEC: aatt = max(??? toDo:)
+                //      case SPOT: aatt = ???
+                //      light_attenuation = clamp(a2^2 * aatt^2 + a1 * aatt + a0) / (k2 * d^2 + k1 * d + k0, 0, 1);
+                //      Atten = LIGHT_ATTEN_FUNC == NONE ? 1 : light_attenuation;
+                //      DiffuseAtten = DIFFUSE_ATTN_FUNC == NONE ? 1.0 : DIFFUSE_ATTN_FUNC == SIGN ? dot(RawNormal, LIGHT_DIR(i)) : clamp(dot(RawNormal, LIGHT_DIR(i)), 0, 1);
+                //      lightAccum += Atten * DiffuseAtten * LIGHT_COLOR(i); <- This dedepends on the Diffuse Function. 
+                //
+                // Illum = clamp(Ambient + lightAccum, 0, 1);
+                // LightFunc = LIGHTING_ENABLED ? Illum : 1.0
+                // ChannelColor = Material * LightFunc <-- Final Results
             }
 
             // TEV "TexGen" Texture Coordinate Generation
@@ -204,7 +249,7 @@ namespace J3DRenderer.Framework
             {
                 TexCoordGen texGen = data.TexGenInfos[mat.TexGenInfoIndexes[i]];
                 stream.AppendFormat("\t// TexGen: {0} Type: {1} Source: {2} TexMatrixIndex: {3}\n", i, texGen.Type, texGen.Source, texGen.TexMatrixSource);
-
+                // https://github.com/dolphin-emu/dolphin/blob/master/Source/Core/VideoCommon/VertexShaderGen.cpp#L190
                 string texGenSource;
                 switch (texGen.Source)
                 {

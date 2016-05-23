@@ -44,7 +44,7 @@ namespace J3DRenderer.JStudio
         public ushort Unknown1 { get; set; }
         public uint PacketCount { get; set; }
         public uint VertexCount { get; set; }
-        public HierarchyNode Hierarchy { get { return m_hierarchy; } }
+        public HierarchyNode HierarchyRoot { get { return m_hierarchy; } }
 
 
         private HierarchyNode m_hierarchy;

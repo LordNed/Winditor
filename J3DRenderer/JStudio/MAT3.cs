@@ -310,11 +310,6 @@ namespace J3DRenderer.JStudio
                 material.BlendModeIndex = reader.ReadInt16();
                 material.UnknownIndex2 = reader.ReadInt16();
             }
-
-
-            // Now, generate a shader from the data.
-            foreach (var material in MaterialList)
-                material.Shader = TEVShaderGenerator.GenerateShader(material, this);
         }
 
         private static List<T> Collect<T>(EndianBinaryReader stream, LoadTypeFromStream<T> function, int count)

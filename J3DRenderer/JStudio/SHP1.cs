@@ -29,17 +29,17 @@ namespace J3DRenderer.JStudio
             public List<ShapeAttribute> Attributes { get; internal set; }
             public MeshVertexHolder VertexData { get; internal set; }
             public List<int> Indexes { get; internal set; }
+            public VertexDescription VertexDescription { get; private set; }
 
             public int[] m_glBufferIndexes;
             public int m_glIndexBuffer;
-            private VertexDescription m_glVertexDescription;
 
             public Shape()
             {
                 Attributes = new List<ShapeAttribute>();
                 VertexData = new MeshVertexHolder();
                 Indexes = new List<int>();
-                m_glVertexDescription = new VertexDescription();
+                VertexDescription = new VertexDescription();
 
                 m_glBufferIndexes = new int[12];
             }
@@ -71,11 +71,11 @@ namespace J3DRenderer.JStudio
                 for(int i = 0; i < m_glBufferIndexes.Length; i++)
                 {
                     ShaderAttributeIds id = (ShaderAttributeIds)i;
-                    if(m_glVertexDescription.AttributeIsEnabled(id))
+                    if(VertexDescription.AttributeIsEnabled(id))
                     {
                         GL.BindBuffer(BufferTarget.ArrayBuffer, m_glBufferIndexes[i]);
                         GL.EnableVertexAttribArray(i);
-                        GL.VertexAttribPointer(i, m_glVertexDescription.GetAttributeSize(id), m_glVertexDescription.GetAttributePointerType(id), false, m_glVertexDescription.GetStride(id), 0);
+                        GL.VertexAttribPointer(i, VertexDescription.GetAttributeSize(id), VertexDescription.GetAttributePointerType(id), false, VertexDescription.GetStride(id), 0);
                     }
                 }
 
@@ -97,23 +97,25 @@ namespace J3DRenderer.JStudio
             private void UpdateAttributeAndBuffers<T>(ShaderAttributeIds attribute, T[] data) where T : struct
             {
                 // See if this attribute is already enabled. If it's not already enabled, we need to generate a buffer for it.
-                if (!m_glVertexDescription.AttributeIsEnabled(attribute))
+                if (!VertexDescription.AttributeIsEnabled(attribute))
                 {
                     m_glBufferIndexes[(int)attribute] = GL.GenBuffer();
-                    m_glVertexDescription.EnableAttribute(attribute);
+                    VertexDescription.EnableAttribute(attribute);
                 }
 
                 // Bind the buffer before updating the data.
                 GL.BindBuffer(BufferTarget.ArrayBuffer, m_glBufferIndexes[(int)attribute]);
 
                 // Finally, update the data.
-                int stride = m_glVertexDescription.GetStride(attribute);
+                int stride = VertexDescription.GetStride(attribute);
                 GL.BufferData<T>(BufferTarget.ArrayBuffer, (IntPtr)(data.Length * stride), data, BufferUsageHint.StaticDraw);
             }
         }
 
         public short ShapeCount { get; private set; }
         public List<Shape> Shapes { get; private set; }
+        public List<short> ShapeRemapTable;
+
 
         public SHP1()
         {
@@ -125,7 +127,10 @@ namespace J3DRenderer.JStudio
             ShapeCount = reader.ReadInt16();
             Trace.Assert(reader.ReadUInt16() == 0xFFFF); // Padding
             int shapeOffset = reader.ReadInt32();
-            int unknownTableOffset = reader.ReadInt32(); // Another remap table I think, probably important.
+
+            // Another index remap table.
+            int remapTableOffset = reader.ReadInt32();
+
             Trace.Assert(reader.ReadInt32() == 0);
             int attributeOffset = reader.ReadInt32();
             
@@ -137,8 +142,12 @@ namespace J3DRenderer.JStudio
             int matrixDataOffset = reader.ReadInt32();
             int packetLocationOffset = reader.ReadInt32();
 
+            reader.BaseStream.Position = tagStart + remapTableOffset;
+            ShapeRemapTable = new List<short>();
+            for (int i = 0; i < ShapeCount; i++)
+                ShapeRemapTable.Add(reader.ReadInt16());
 
-            for(int s = 0; s < ShapeCount; s++)
+            for (int s = 0; s < ShapeCount; s++)
             {
                 // Shapes can have different attributes for each shape. (ie: Some have only Position, while others have Pos & TexCoord, etc.)
                 // Within each shape (which has a consistent number of attributes) it is split into individual packets, which are a collection

@@ -126,7 +126,7 @@ namespace J3DRenderer.JStudio
 
     public class TexMatrix
     {
-        public byte Projection;
+        public byte Projection; // Dolphin XF_TEXPROJ_STQ
         public byte Type;
         public float CenterS;
         public float CenterT;

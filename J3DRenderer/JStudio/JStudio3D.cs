@@ -108,8 +108,33 @@ namespace J3DRenderer.JStudio
                         break;
                 }
 
+                // Skip the stream reader to the start of the next tag since it gets moved around during loading.
                 reader.BaseStream.Position = tagStart + tagSize;
             }
+
+            // To generate shaders we need to know which vertex attributes need to be enabled for the shader. However,
+            // the shader has no knowledge in our book as to what attributes are enabled. Theoretically we could enable
+            // them on the fly as something requested it, but that'd involve more code that I don't want to do right now.
+            // To resolve, we iterate once through the hierarchy to see which mesh is called after a material and bind the
+            // vertex descriptions.
+            Material dummyMat = null;
+            AssignVertexAttributesToMaterialsRecursive(INF1Tag.HierarchyRoot, ref dummyMat);
+
+            // Now that the vertex attributes are assigned to the materials, generate a shader from the data.
+            foreach (var material in MAT3Tag.MaterialList)
+                material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
+        }
+
+        private void AssignVertexAttributesToMaterialsRecursive(HierarchyNode curNode, ref Material curMaterial)
+        {
+            switch (curNode.Type)
+            {
+                case HierarchyDataType.Material: curMaterial = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[curNode.Value]]; break;
+                case HierarchyDataType.Batch: curMaterial.VtxDesc = SHP1Tag.Shapes[SHP1Tag.ShapeRemapTable[curNode.Value]].VertexDescription; break;
+            }
+
+            foreach (var child in curNode.Children)
+                AssignVertexAttributesToMaterialsRecursive(child, ref curMaterial);
         }
 
         internal void Render(Matrix4 viewMatrix, Matrix4 projectionMatrix, Matrix4 modelMatrix)
@@ -118,10 +143,10 @@ namespace J3DRenderer.JStudio
             m_projMatrix = projectionMatrix;
             m_modelMatrix = modelMatrix;
 
-            RenderMeshRecursive(INF1Tag.Hierarchy);
+            RenderMeshRecursive(INF1Tag.HierarchyRoot);
         }
 
-        public void RenderMeshRecursive(HierarchyNode curNode)
+        private void RenderMeshRecursive(HierarchyNode curNode)
         {
             switch(curNode.Type)
             {
