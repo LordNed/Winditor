@@ -2,10 +2,9 @@
 using OpenTK;
 using System.ComponentModel;
 using OpenTK.Graphics.OpenGL;
-using System;
 using WindEditor;
 using System.IO;
-using J3DRenderer.Framework;
+using J3DRenderer.ShaderGen;
 
 namespace J3DRenderer.JStudio
 {

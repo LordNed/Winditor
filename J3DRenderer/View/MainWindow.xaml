@@ -101,7 +101,7 @@
                             </Grid>
                             
                             <!-- Treeview -->
-                            <TreeView Grid.Row="1" MinHeight="45" ItemsSource="{Binding Path=Hierarchy.Children}">
+                            <TreeView Grid.Row="1" MinHeight="45" ItemsSource="{Binding Path=HierarchyRoot.Children}">
                                 <TreeView.ItemTemplate>
                                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}" DataType="{x:Type jstudio:HierarchyNode}">
                                         <TextBlock Text="{Binding}"/>

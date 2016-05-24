@@ -79,7 +79,8 @@
     <Compile Include="Framework\Camera.cs" />
     <Compile Include="Framework\Input.cs" />
     <Compile Include="Framework\SimpleObjRenderer.cs" />
-    <Compile Include="Framework\TEVShaderGenerator.cs" />
+    <Compile Include="JStudio\ShaderGen\FragmentShaderGen.cs" />
+    <Compile Include="JStudio\ShaderGen\TEVShaderGenerator.cs" />
     <Compile Include="JStudio\BinaryTextureImage.cs" />
     <Compile Include="JStudio\GXEnums.cs" />
     <Compile Include="Framework\GXToOpenGL.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="JStudio\StringTable.cs" />
     <Compile Include="JStudio\TEX1.cs" />
     <Compile Include="Framework\VertexDescription.cs" />
+    <Compile Include="JStudio\ShaderGen\VertexShaderGen.cs" />
     <Compile Include="JStudio\VTX1.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

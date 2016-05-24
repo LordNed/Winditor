@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using WindEditor;
 using System.ComponentModel;
-using J3DRenderer.Framework;
 
 namespace J3DRenderer.JStudio
 {
