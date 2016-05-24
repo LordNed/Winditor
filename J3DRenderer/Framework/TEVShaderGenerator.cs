@@ -86,7 +86,7 @@ namespace J3DRenderer.Framework
             // TEV can generate up to 16 (?) sets of Texture Coordinates by taking an incoming data value (UV, POS, NRM, BINRM, TNGT) and transforming it by a matrix.
             stream.AppendFormat("// NumTexGens: {0}\n", data.NumTexGens[mat.NumTexGensIndex]);
             for (int i = 0; i < data.NumTexGens[mat.NumTexGensIndex]; i++)
-                stream.AppendFormat("out vec3 Tex{0};\n", i);
+                stream.AppendFormat("out vec3 TexGen{0};\n", i);
             stream.AppendLine();
 
             // Declare shader Uniforms coming in from the CPU.
@@ -205,8 +205,10 @@ namespace J3DRenderer.Framework
             for (int i = 0; i < data.NumTexGens[mat.NumTexGensIndex]; i++)
             {
                 TexCoordGen texGen = data.TexGenInfos[mat.TexGenInfoIndexes[i]];
+                TexMatrix texMtx = data.TexMatrixInfos[((int)texGen.TexMatrixSource)-30];
+
                 stream.AppendFormat("\t// TexGen: {0} Type: {1} Source: {2} TexMatrixIndex: {3}\n", i, texGen.Type, texGen.Source, texGen.TexMatrixSource);
-                // https://github.com/dolphin-emu/dolphin/blob/master/Source/Core/VideoCommon/VertexShaderGen.cpp#L190
+                stream.AppendLine("{"); // False scope block so we can re-declare variables
                 string texGenSource;
                 switch (texGen.Source)
                 {
@@ -239,14 +241,31 @@ namespace J3DRenderer.Framework
                 // TEV Texture Coordinate generation takes the general form:
                 // dst_coord = func(src_param, mtx), where func is GXTexGenType, src_param is GXTexGenSrc, and mtx is GXTexMtx.
                 string destCoord = string.Format("TexGen{0}", i);
-
                 switch (texGen.Type)
                 {
                     case GXTexGenType.Matrix3x4:
                     case GXTexGenType.Matrix2x4:
+                        //if(mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.TexMtxId))
+                        //{
+                        //    stream.AppendFormat("int temp = {0}.z\n", destCoord);
+                        //    if (texMtx.Projection == TexMatrixProjection.TexProj_STQ)
+                        //        stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[temp]), dot({1}, TexMtx[temp+1]), dot({1}, TexMtx[temp+2]));\n", destCoord, texGenSource);
+                        //    else
+                        //        stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[temp]), dot({1}, TexMtx[temp+1]), 1);\n", destCoord, texGenSource);
+                        //}
+                        //else
+                        {
+                            if (texMtx.Projection == TexMatrixProjection.TexProj_STQ)
+                                //stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[{2}]), dot({1}, TexMtx[{3}]), dot({1}, TexMtx[{4}]));\n", destCoord, texGenSource, 3 * i, 3 * i + 1, 3 * i + 2);
+                                stream.AppendFormat("{0} = ({1} * {2}).xyz;\n", destCoord, texGenSource, i);
+                            else
+                                //stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[{2}]), dot({1}, TexMtx[{3}]), 1);\n", destCoord, texGenSource, 3 * i, 3 * i + 1);
+                                stream.AppendFormat("{0} = ({1} * {2}).xyz;\n", destCoord, texGenSource, i); // Untested, this might be a 2x4 multiply?
+                        }
                         // destCoord = {texGenSource} * texMtx[texGen.TexMatrixSource]
+                        break;
                     case GXTexGenType.SRTG:
-                        // destCoord = vec4({texGenSource}.rg, 1, 1) * texMtx[texGen.TexMatrixSource]
+                        stream.AppendFormat("{0} = vec3({1}.rg, 1);\n", destCoord, texGenSource); break;
                     case GXTexGenType.Bump0:
                     case GXTexGenType.Bump1:
                     case GXTexGenType.Bump2:
@@ -255,9 +274,28 @@ namespace J3DRenderer.Framework
                     case GXTexGenType.Bump5:
                     case GXTexGenType.Bump6:
                     case GXTexGenType.Bump7:
+                        // Transform the light dir into tangent space.
+                        // ldir = normalize(Lights[{0}.Position.xyz - RawPosition.xyz);\n {0} = "texInfo.embosslightshift";
+                        // destCoord = TexGen{0} + float3(dot(ldir, RawNormal), dot(ldir, RawBinormal), 0.0);\n", {0} = i, {1} = "texInfo.embosssourceshift";
                     default:
                         Console.WriteLine("Unsupported TexGenType: {0}", texGen.Type); break;
                 }
+
+                // Dual Tex Transforms
+                if (data.TexMatrix2Infos.Count > 0)
+                {
+                    // ToDo: Should this just be... i? lol
+                    Console.WriteLine("PostMtx transforms are... not really anything supported?");
+                    TexMatrix postTexMtx = data.TexMatrix2Infos[((int)texGen.TexMatrixSource) - 30];
+                    int postIndex = mat.PostTexMatrixIndexes[i];
+                    stream.AppendFormat("float4 P0 = PostMtx[{0}];\n", postIndex);
+                    stream.AppendFormat("float4 P1 = PostMtx[{0}];\n", postIndex + 1);
+                    stream.AppendFormat("float4 P2 = PostMtx[{0}];\n", postIndex + 2);
+
+                    stream.AppendFormat("{0}.xyz = vec3(dot(P0.xyz, {0}.xyz) + P0.w, dot(P1.xyz, {0}.xyz) + P1.w, dot(P2.xyz, {0}.xyz) + P2.w);\n", destCoord);
+                }
+
+                stream.AppendLine("}"); // End of false-scope block.
             }
 
             // Append the tail end of our shader file.

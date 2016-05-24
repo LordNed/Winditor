@@ -26,9 +26,9 @@ namespace J3DRenderer.JStudio
         public short[] AmbientColorIndexes { get; internal set; }
         public short[] LightingColorIndexes { get; internal set; }
         public short[] TexGenInfoIndexes { get; internal set; }
-        public short[] TexGen2InfoIndexes { get; internal set; }
+        public short[] PostTexGenInfoIndexes { get; internal set; }
         public short[] TexMatrixIndexes { get; internal set; }
-        public short[] DttMatrixIndexes { get; internal set; }
+        public short[] PostTexMatrixIndexes { get; internal set; }
         public short[] TextureIndexes { get; internal set; }
         public short[] TevKonstColorIndexes { get; internal set; }
         public byte[] KonstColorSelectorIndexes { get; internal set; }
@@ -251,17 +251,17 @@ namespace J3DRenderer.JStudio
 
                         material.TexGenInfoIndexes[i] = reader.ReadInt16();
 
-                material.TexGen2InfoIndexes = new short[8];
-                for (int i = 0; i < material.TexGen2InfoIndexes.Length; i++)
-                    material.TexGen2InfoIndexes[i] = reader.ReadInt16();
+                material.PostTexGenInfoIndexes = new short[8];
+                for (int i = 0; i < material.PostTexGenInfoIndexes.Length; i++)
+                    material.PostTexGenInfoIndexes[i] = reader.ReadInt16();
 
                 material.TexMatrixIndexes = new short[10];
                 for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
                         material.TexMatrixIndexes[i] = reader.ReadInt16();
 
-                material.DttMatrixIndexes = new short[20];
-                for (int i = 0; i < material.DttMatrixIndexes.Length; i++)
-                    material.DttMatrixIndexes[i] = reader.ReadInt16();
+                material.PostTexMatrixIndexes = new short[20];
+                for (int i = 0; i < material.PostTexMatrixIndexes.Length; i++)
+                    material.PostTexMatrixIndexes[i] = reader.ReadInt16();
 
                 material.TextureIndexes = new short[8];
                 for (int i = 0; i < material.TextureIndexes.Length; i++)
@@ -487,7 +487,7 @@ namespace J3DRenderer.JStudio
         private static TexMatrix ReadTexMatrix(EndianBinaryReader stream)
         {
             var retVal = new TexMatrix();
-            retVal.Projection = stream.ReadByte();
+            retVal.Projection = (TexMatrixProjection)stream.ReadByte();
             retVal.Type = stream.ReadByte();
             Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
             retVal.CenterS = stream.ReadSingle();

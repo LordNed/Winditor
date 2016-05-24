@@ -124,9 +124,15 @@ namespace J3DRenderer.JStudio
         public GXTexMatrix TexMatrixSource;
     }
 
+    public enum TexMatrixProjection
+    {
+        TexProj_ST = 0,
+        TexProj_STQ = 1
+    }
+
     public class TexMatrix
     {
-        public byte Projection; // Dolphin XF_TEXPROJ_STQ
+        public TexMatrixProjection Projection;
         public byte Type;
         public float CenterS;
         public float CenterT;
