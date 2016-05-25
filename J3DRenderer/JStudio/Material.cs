@@ -142,7 +142,7 @@ namespace J3DRenderer.JStudio
         public float Rotation;
         public float TranslateS;
         public float TranslateT;
-        public float[,] PreMatrix; // 4x4
+        public Matrix4 Matrix;
     }
 
     public class TevIn

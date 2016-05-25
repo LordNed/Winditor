@@ -29,17 +29,6 @@ namespace J3DRenderer.JStudio
         private Matrix4 m_projMatrix;
         private Matrix4 m_modelMatrix;
 
-        // More hack
-        private Shader m_shader;
-
-        public JStudio3D()
-        {
-            m_shader = new Shader("UnlitTexture");
-            m_shader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.vert"), ShaderType.VertexShader);
-            m_shader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.frag"), ShaderType.FragmentShader);
-            m_shader.LinkShader();
-        }
-
         public void LoadFromStream(EndianBinaryReader reader)
         {
             // Read the J3D Header
@@ -166,6 +155,35 @@ namespace J3DRenderer.JStudio
         {
             Material material = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[index]];
             material.Bind();
+
+            Shader shader = material.Shader;
+
+            GL.UniformMatrix4(shader.UniformModelMtx, false, ref m_modelMatrix);
+            GL.UniformMatrix4(shader.UniformViewMtx, false, ref m_viewMatrix);
+            GL.UniformMatrix4(shader.UniformProjMtx, false, ref m_projMatrix);
+
+            if (shader.UniformTexMtx >= 0)
+            {
+                for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
+                {
+                    int idx = material.TexMatrixIndexes[i];
+                    if (idx < 0)
+                        continue;
+
+                    Matrix4 matrix = MAT3Tag.TexMatrixInfos[idx].Matrix;
+                    GL.UniformMatrix4(GL.GetUniformLocation(shader.Program, string.Format("TexMtx[{0}]", i)), false, ref matrix);
+                }
+            }
+
+            var color0Amb = MAT3Tag.AmbientColors[material.AmbientColorIndexes[0]];
+            var color0Mat = MAT3Tag.MaterialColors[material.MaterialColorIndexes[0]];
+            var color1Amb = MAT3Tag.AmbientColors[material.AmbientColorIndexes[1]];
+            var color1Mat = MAT3Tag.MaterialColors[material.MaterialColorIndexes[1]];
+
+            if (shader.UniformColor0Amb >= 0) GL.Uniform4(shader.UniformColor0Amb, color0Amb.R, color0Amb.G, color0Amb.B, color0Amb.A);
+            if (shader.UniformColor0Mat >= 0) GL.Uniform4(shader.UniformColor0Mat, color0Mat.R, color0Mat.G, color0Mat.B, color0Mat.A);
+            if (shader.UniformColor1Amb >= 0) GL.Uniform4(shader.UniformColor1Amb, color1Amb.R, color1Amb.G, color1Amb.B, color1Amb.A);
+            if (shader.UniformColor1Mat >= 0) GL.Uniform4(shader.UniformColor1Mat, color1Mat.R, color1Mat.G, color1Mat.B, color1Mat.A);
         }
 
         private void RenderBatchByIndex(ushort index)
@@ -177,12 +195,11 @@ namespace J3DRenderer.JStudio
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.CullFace);
 
-            m_shader.Bind();
-            GL.UniformMatrix4(m_shader.UniformModelMtx, false, ref m_modelMatrix);
-            GL.UniformMatrix4(m_shader.UniformViewMtx, false, ref m_viewMatrix);
-            GL.UniformMatrix4(m_shader.UniformProjMtx, false, ref m_projMatrix);
 
-            TEX1Tag.Textures[0].Bind();
+            //m_shader.Bind();
+
+            for (int i = 0; i < TEX1Tag.Textures.Count; i++)
+                TEX1Tag.Textures[i].Bind(i);
 
             SHP1Tag.Shapes[index].Bind();
             SHP1Tag.Shapes[index].Draw();

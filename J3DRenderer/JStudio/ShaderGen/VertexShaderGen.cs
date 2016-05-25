@@ -221,10 +221,10 @@ namespace J3DRenderer.ShaderGen
                         {
                             if (texMtx.Projection == TexMatrixProjection.TexProj_STQ)
                                 //stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[{2}]), dot({1}, TexMtx[{3}]), dot({1}, TexMtx[{4}]));\n", destCoord, texGenSource, 3 * i, 3 * i + 1, 3 * i + 2);
-                                stream.AppendFormat("{0} = ({1} * {2}).xyz;\n", destCoord, texGenSource, i);
+                                stream.AppendFormat("{0} = ({1} * TexMtx[{2}]).xyz;\n", destCoord, texGenSource, i);
                             else
                                 //stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[{2}]), dot({1}, TexMtx[{3}]), 1);\n", destCoord, texGenSource, 3 * i, 3 * i + 1);
-                                stream.AppendFormat("{0} = ({1} * {2}).xyz;\n", destCoord, texGenSource, i); // Untested, this might be a 2x4 multiply?
+                                stream.AppendFormat("{0} = ({1} * TexMtx[{2}]).xyz;\n", destCoord, texGenSource, i); // Untested, this might be a 2x4 multiply?
                         }
                         // destCoord = {texGenSource} * texMtx[texGen.TexMatrixSource]
                         break;

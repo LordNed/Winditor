@@ -30,8 +30,8 @@ namespace J3DRenderer.JStudio
         public short[] PostTexMatrixIndexes { get; internal set; }
         public short[] TextureIndexes { get; internal set; }
         public short[] TevKonstColorIndexes { get; internal set; }
-        public byte[] KonstColorSelectorIndexes { get; internal set; }
-        public byte[] KonstAlphaSelectorIndexes { get; internal set; }
+        public GXKonstColorSel[] KonstColorSelectorIndexes { get; internal set; }
+        public GXKonstAlphaSel[] KonstAlphaSelectorIndexes { get; internal set; }
         public short[] TevOrderInfoIndexes { get; internal set; }
         public short[] TevColorIndexes { get; internal set; }
         public short[] TevStageInfoIndexes { get; internal set; }
@@ -271,14 +271,14 @@ namespace J3DRenderer.JStudio
                     material.TevKonstColorIndexes[i] = reader.ReadInt16();
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
-                material.KonstColorSelectorIndexes = new byte[16];
+                material.KonstColorSelectorIndexes = new GXKonstColorSel[16];
                 for (int i = 0; i < material.KonstColorSelectorIndexes.Length; i++)
-                    material.KonstColorSelectorIndexes[i] = reader.ReadByte();
+                    material.KonstColorSelectorIndexes[i] = (GXKonstColorSel)reader.ReadByte();
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
-                material.KonstAlphaSelectorIndexes = new byte[16];
+                material.KonstAlphaSelectorIndexes = new GXKonstAlphaSel[16];
                 for (int i = 0; i < material.KonstAlphaSelectorIndexes.Length; i++)
-                    material.KonstAlphaSelectorIndexes[i] = reader.ReadByte();
+                    material.KonstAlphaSelectorIndexes[i] = (GXKonstAlphaSel)reader.ReadByte();
 
                 material.TevOrderInfoIndexes = new short[16];
                 for (int i = 0; i < material.TevOrderInfoIndexes.Length; i++)
@@ -498,12 +498,12 @@ namespace J3DRenderer.JStudio
             Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
             retVal.TranslateS = stream.ReadSingle();
             retVal.TranslateT = stream.ReadSingle();
-            retVal.PreMatrix = new float[4, 4];
+            retVal.Matrix = new OpenTK.Matrix4();
             for (int y = 0; y < 4; y++)
             {
                 for (int x = 0; x < 4; x++)
                 {
-                    retVal.PreMatrix[x, y] = stream.ReadSingle();
+                    retVal.Matrix[x, y] = stream.ReadSingle();
                 }
             }
 

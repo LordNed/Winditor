@@ -39,9 +39,10 @@ namespace J3DRenderer.JStudio
                 GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
         }
 
-        public void Bind()
+        public void Bind(int toIndex)
         {
-            GL.ActiveTexture(TextureUnit.Texture0);
+            int glIndex = toIndex + (int)TextureUnit.Texture0;
+            GL.ActiveTexture((TextureUnit)glIndex);
             GL.BindTexture(TextureTarget.Texture2D, m_glTextureIndex);
         }
 

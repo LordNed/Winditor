@@ -26,6 +26,13 @@ namespace WindEditor
         public int UniformModelMtx { get; private set; }
         public int UniformViewMtx { get; private set; }
         public int UniformProjMtx { get; private set; }
+        public int UniformTexMtx { get; private set; }
+        public int UniformPostTexMtx { get; private set; }
+        public int UniformColor0Amb { get; private set; }
+        public int UniformColor0Mat { get; private set; }
+        public int UniformColor1Amb { get; private set; }
+        public int UniformColor1Mat { get; private set; }
+        public int Program { get { return m_programAddress; } }
 
         private int m_vertexAddress = -1;
         private int m_fragmentAddress = -1;
@@ -128,6 +135,13 @@ namespace WindEditor
             UniformViewMtx = GL.GetUniformLocation(m_programAddress, "ViewMtx");
             UniformProjMtx = GL.GetUniformLocation(m_programAddress, "ProjMtx");
 
+            UniformTexMtx = GL.GetUniformLocation(m_programAddress, "TexMtx");
+            UniformPostTexMtx = GL.GetUniformLocation(m_programAddress, "PostMtx");
+            UniformColor0Amb = GL.GetUniformLocation(m_programAddress, "COLOR0_Amb");
+            UniformColor0Mat = GL.GetUniformLocation(m_programAddress, "COLOR0_Mat");
+            UniformColor1Amb = GL.GetUniformLocation(m_programAddress, "COLOR1_Amb");
+            UniformColor1Mat = GL.GetUniformLocation(m_programAddress, "COLOR1_Mat");
+
             // Now that we've (presumably) set both a vertex and a fragment shader and linked them to the program,
             // we're going to clean up the reference to the shaders as the Program now keeps its own reference.
             GL.DeleteShader(m_vertexAddress);
@@ -136,7 +150,7 @@ namespace WindEditor
             m_fragmentAddress = -1;
             return true;
         }
-        
+
         public void ReleaseResources()
         {
             if (m_vertexAddress >= 0)
