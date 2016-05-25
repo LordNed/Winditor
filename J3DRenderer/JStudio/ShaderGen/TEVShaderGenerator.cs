@@ -18,8 +18,8 @@ namespace J3DRenderer.ShaderGen
             }
             if (success)
             {
-                //string fragmentShader = GenerateFragmentShader(shader, fromMat, data);
-                //success = shader.CompileSource(fragmentShader, ShaderType.FragmentShader);
+                string fragmentShader = FragmentShaderGen.GenerateFragmentShader(fromMat, data);
+                success = shader.CompileSource(fragmentShader, ShaderType.FragmentShader);
             }
 
             if (success)

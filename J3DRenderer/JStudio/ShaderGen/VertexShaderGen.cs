@@ -73,8 +73,8 @@ namespace J3DRenderer.ShaderGen
                 "    vec3 Position;\n" +
                 "    vec3 Direction;\n" +
                 "    vec4 Color;\n" +
-                "    vec4 CosAtten; //AngleAtten\n" +
-                "    vec4 DistAtten;\n" +
+                "    vec4 CosAtten; //AngleAtten\n" + // 1.875000, 0, 0 ?
+                "    vec4 DistAtten;\n" + // 1.875000, 0, 0 ?
                 "};\n" +
                 "\n" +
                 "GXLight Lights[8];\n"
