@@ -162,6 +162,17 @@ namespace J3DRenderer.JStudio
             GL.UniformMatrix4(shader.UniformViewMtx, false, ref m_viewMatrix);
             GL.UniformMatrix4(shader.UniformProjMtx, false, ref m_projMatrix);
 
+            for(int i = 0; i < 8; i++)
+            {
+                int idx = material.TextureIndexes[i];
+                if (idx < 0)
+                    continue;
+
+                int glTextureIndex = GL.GetUniformLocation(shader.Program, string.Format("Texture{0}", i));
+                GL.Uniform1(glTextureIndex, i);
+                TEX1Tag.Textures[idx].Bind(i);
+            }
+
             if (shader.UniformTexMtx >= 0)
             {
                 for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
@@ -188,22 +199,15 @@ namespace J3DRenderer.JStudio
 
         private void RenderBatchByIndex(ushort index)
         {
-            //GL.Enable(EnableCap.PrimitiveRestart);
-            //GL.PrimitiveRestartIndex(0xFFFF);
             GL.CullFace(CullFaceMode.Back);
             GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.CullFace);
 
-
-            //m_shader.Bind();
-
-            for (int i = 0; i < TEX1Tag.Textures.Count; i++)
-                TEX1Tag.Textures[i].Bind(i);
-
-            SHP1Tag.Shapes[index].Bind();
-            SHP1Tag.Shapes[index].Draw();
-            SHP1Tag.Shapes[index].Unbind();
+            SHP1.Shape shape = SHP1Tag.Shapes[SHP1Tag.ShapeRemapTable[index]];
+            shape.Bind();
+            shape.Draw();
+            shape.Unbind();
         }
 
 

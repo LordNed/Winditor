@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using OpenTK.Graphics.OpenGL;
 using WindEditor;
+using System.IO;
 
 namespace J3DRenderer.JStudio
 {
@@ -32,7 +33,7 @@ namespace J3DRenderer.JStudio
             // ToDo: Min/Mag LOD & Biases
 
             // Upload Image Data
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, compressedData.Width, compressedData.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, compressedData.GetData());
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, compressedData.Width, compressedData.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, compressedData.GetData());
 
             // Generate Mip Maps
             if (compressedData.MipMapCount > 0)
@@ -80,6 +81,8 @@ namespace J3DRenderer.JStudio
 
                 Texture texture = new Texture(nameTable[t], compressedTex);
                 Textures.Add(texture);
+
+                compressedTex.SaveImageToDisk("TextureDump/" + texture.Name + ".png");
             }
         }
     }
