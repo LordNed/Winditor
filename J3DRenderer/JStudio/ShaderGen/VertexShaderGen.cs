@@ -150,12 +150,12 @@ namespace J3DRenderer.ShaderGen
                     stream.AppendFormat("// ChannelControl: {0} Light: {1} LitMask: {2}\n", i, l, isLit);
                     if (isLit)
                     {
-                        GenerateLightVertexShader(stream, channelControl, l, swizzle);
+                        GenerateLightVertexShader(stream, channelControl, l, swizzle, isAlphaChannel ? 1 : 3);
                     }
                 }
 
                 if (channelControl.LightingEnabled)
-                    stream.AppendLine("vec4 illum = clamp(ambColor + lightAccum, 0, 1)");
+                    stream.AppendLine("vec4 illum = clamp(ambColor + lightAccum, 0, 1);");
                 stream.AppendFormat("lightFunc = {0};\n", channelControl.LightingEnabled ? "illum" : "vec4(1.0, 1.0, 1.0, 1.0)");
                 stream.AppendFormat("{0} = (matColor * lightFunc){1};\n", channelTarget, swizzle);
             }
@@ -186,8 +186,8 @@ namespace J3DRenderer.ShaderGen
                     case GXTexGenSrc.Tex5: texGenSource = "vec4(RawTex5.xy, 1.0, 1.0)"; break;
                     case GXTexGenSrc.Tex6: texGenSource = "vec4(RawTex6.xy, 1.0, 1.0)"; break;
                     case GXTexGenSrc.Tex7: texGenSource = "vec4(RawTex7.xy, 1.0, 1.0)"; break;
-                    case GXTexGenSrc.Color0: texGenSource = "RawColor0"; break;
-                    case GXTexGenSrc.Color1: texGenSource = "RawColor1"; break;
+                    case GXTexGenSrc.Color0: texGenSource = "Color0"; break; // ? Link's hands specifiy Color0 but have no mesh color. Maybe this indicates color channel?
+                    case GXTexGenSrc.Color1: texGenSource = "Color1"; break;
                     case GXTexGenSrc.Binormal: texGenSource = "vec4(RawBinormal.xyz, 1.0)"; break;
                     case GXTexGenSrc.Tangent: texGenSource = "vec4(RawTangent.xyz, 1.0)"; break;
 
@@ -271,7 +271,7 @@ namespace J3DRenderer.ShaderGen
             return stream.ToString();
         }
 
-        private static void GenerateLightVertexShader(StringBuilder stream, ColorChannelControl channelControl, int lightIndex, string lightAccumSwizzle)
+        private static void GenerateLightVertexShader(StringBuilder stream, ColorChannelControl channelControl, int lightIndex, string lightAccumSwizzle, int numSwizzleComponents)
         {
             switch (channelControl.AttenuationFunction)
             {
@@ -280,20 +280,20 @@ namespace J3DRenderer.ShaderGen
                     stream.AppendLine("attn = 1.0;");
                     stream.AppendLine("if(length(ldir) == 0.0)\n\tldir = RawNormal;");
                     break;
-                case GXAttenuationFn.Spot:
+                case GXAttenuationFn.Spec:
                     stream.AppendFormat("ldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
                     stream.AppendFormat("attn = (dot(RawNormal, ldir) >= 0.0) ? max(0.0, dot(RawNormal, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
-                    stream.AppendFormat("cosAttn = Lights[{0}].CosAtten.xyz);\n", lightIndex);
-                    stream.AppendFormat("distAttn = {1}Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFn.None) ? "" : "normalize");
-                    stream.AppendFormat("attn = max(0.0f, dot(cosAttn, float3(1.0, attn, attn*attn))) / dot(distAttn, float3(1.0, attn, attn*attn));");
+                    stream.AppendFormat("cosAttn = Lights[{0}].CosAtten.xyz;\n", lightIndex);
+                    stream.AppendFormat("distAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFn.None) ? "" : "normalize");
+                    stream.AppendFormat("attn = max(0.0f, dot(cosAttn, vec3(1.0, attn, attn*attn))) / dot(distAttn, vec3(1.0, attn, attn*attn));");
                     break;
-                case GXAttenuationFn.Spec:
-                    stream.AppendFormat("ldir = normalize(Lights[{0)].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                case GXAttenuationFn.Spot:
+                    stream.AppendFormat("ldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
                     stream.AppendLine("dist2 = dot(ldir, ldir);");
                     stream.AppendLine("dist = sqrt(dist2);");
                     stream.AppendLine("ldir = ldir/dist;");
                     stream.AppendFormat("attn = max(0.0, dot(ldir, Lights[{0}].Direction.xyz));\n", lightIndex);
-                    stream.AppendFormat("attn = max(0.0, Lights[{0}].CosAtten.x + Lights[{0}].CosAtten.y*attn + Lights[{0}].CosAtten.z*attn*attn) / dot(Lights[{0}].DistAtten.xyz, float3(1.0, dist, dist2));\n", lightIndex);
+                    stream.AppendFormat("attn = max(0.0, Lights[{0}].CosAtten.x + Lights[{0}].CosAtten.y*attn + Lights[{0}].CosAtten.z*attn*attn) / dot(Lights[{0}].DistAtten.xyz, vec3(1.0, dist, dist2));\n", lightIndex);
                     break;
                 default:
                     Console.WriteLine("Unsupported AttenuationFunction Value: {0}", channelControl.AttenuationFunction);
@@ -307,8 +307,8 @@ namespace J3DRenderer.ShaderGen
                     break;
                 case GXDiffuseFn.Signed:
                 case GXDiffuseFn.Clamp:
-                    stream.AppendFormat("lightAccum{1} += attn * {2}dot(ldir, RawNormal)) * float{3}(Lights[{0}].Color{1})));\n",
-                        lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFn.Signed ? "max(0.0," : "(", lightAccumSwizzle);
+                    stream.AppendFormat("lightAccum{1} += attn * {2}dot(ldir, RawNormal)) * vec{3}(Lights[{0}].Color{1});\n",
+                        lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFn.Signed ? "max(0.0," : "(", numSwizzleComponents);
                     break;
                 default:
                     Console.WriteLine("Unsupported DiffusenFunction Value: {0}", channelControl.AttenuationFunction);
