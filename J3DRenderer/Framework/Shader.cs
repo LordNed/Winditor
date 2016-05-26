@@ -8,16 +8,18 @@ namespace WindEditor
         None = 0,
         Position = 1,
         Normal = 2,
-        Color0 = 3,
-        Color1 = 4,
-        Tex0 = 5,
-        Tex1 = 6,
-        Tex2 = 7,
-        Tex3 = 8,
-        Tex4 = 9,
-        Tex5 = 10,
-        Tex6 = 11,
-        Tex7 = 12,
+        Binormal = 3,
+        Color0 = 4,
+        Color1 = 5,
+        Tex0 = 6,
+        Tex1 = 7,
+        Tex2 = 8,
+        Tex3 = 9,
+        Tex4 = 10,
+        Tex5 = 11,
+        Tex6 = 12,
+        Tex7 = 13,
+        PosMtxIndex = 14,
     }
 
     public class Shader
@@ -109,6 +111,7 @@ namespace WindEditor
             // Bind our Attribute locations before we link the program.
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Position, "RawPosition");
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Normal, "RawNormal");
+            GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Binormal, "RawBinormal");
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Color0, "RawColor0");
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Color1, "RawColor1");
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Tex0, "RawTex0");
@@ -119,6 +122,7 @@ namespace WindEditor
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Tex5, "RawTex5");
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Tex6, "RawTex6");
             GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.Tex7, "RawTex7");
+            GL.BindAttribLocation(m_programAddress, (int)ShaderAttributeIds.PosMtxIndex, "RawPosMtxIndex");
 
             GL.LinkProgram(m_programAddress);
 

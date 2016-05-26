@@ -75,6 +75,7 @@ namespace J3DRenderer.JStudio
     {
         public List<Vector3> Position = new List<Vector3>();
         public List<Vector3> Normal = new List<Vector3>();
+        public List<Vector3> Binormal = new List<Vector3>();
         public List<WLinearColor> Color0 = new List<WLinearColor>();
         public List<WLinearColor> Color1 = new List<WLinearColor>();
         public List<Vector2> Tex0 = new List<Vector2>();
@@ -92,6 +93,7 @@ namespace J3DRenderer.JStudio
     {
         public int Position = -1;
         public int Normal = -1;
+        public int Binormal = -1;
         public int Color0 = -1;
         public int Color1 = -1;
         public int Tex0 = -1;
@@ -102,6 +104,7 @@ namespace J3DRenderer.JStudio
         public int Tex5 = -1;
         public int Tex6 = -1;
         public int Tex7 = -1;
+        public int PosMtxIndex = -1;
     }
 
     public class VTX1
@@ -167,8 +170,10 @@ namespace J3DRenderer.JStudio
                         break;
 
                     // Normal Binormal Tangent Data (presumed)
-                    //case 2:
-                    //    break;
+                    case 2:
+                        vertexFormat = VertexFormats.Find(x => x.ArrayType == VertexArrayType.NormalBinormalTangent);
+                        VertexData.Binormal = LoadVertexAttribute<Vector3>(reader, totalLength, vertexFormat.DecimalPoint, VertexArrayType.NormalBinormalTangent, vertexFormat.DataType, VertexColorType.None);
+                        break;
 
                     // Color 0 Data
                     case 3:
@@ -243,6 +248,7 @@ namespace J3DRenderer.JStudio
             {
                 case VertexArrayType.Position:
                 case VertexArrayType.Normal:
+                case VertexArrayType.NormalBinormalTangent:
                     componentCount = 3;
                     break;
                 case VertexArrayType.Color0:

@@ -47,6 +47,11 @@ namespace J3DRenderer.JStudio
         {
             Shader.Bind();
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public class MAT3

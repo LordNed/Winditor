@@ -273,7 +273,7 @@ namespace J3DRenderer.JStudio
                                 switch (curAttribute.ArrayType)
                                 {
                                     case VertexArrayType.Position: newVert.Position = index; break;
-                                    //case VertexArrayType.PositionMatrixIndex: newVert.m; break;
+                                    case VertexArrayType.PositionMatrixIndex: newVert.PosMtxIndex = index; break;
                                     case VertexArrayType.Normal: newVert.Normal = index; break;
                                     case VertexArrayType.Color0: newVert.Color0 = index; break;
                                     case VertexArrayType.Color1: newVert.Color1 = index; break;
@@ -304,7 +304,9 @@ namespace J3DRenderer.JStudio
 
                             var tri = triangleList[i];
                             if (tri.Position >= 0) shape.VertexData.Position.Add(compressedVertexData.Position[tri.Position]);
+                            if (tri.PosMtxIndex >= 0) shape.VertexData.PositionMatrixIndexes.Add(tri.PosMtxIndex);
                             if (tri.Normal >= 0) shape.VertexData.Normal.Add(compressedVertexData.Normal[tri.Normal]);
+                            if (tri.Binormal >= 0) shape.VertexData.Binormal.Add(compressedVertexData.Binormal[tri.Binormal]);
                             if (tri.Color0 >= 0) shape.VertexData.Color0.Add(compressedVertexData.Color0[tri.Color0]);
                             if (tri.Color1 >= 0) shape.VertexData.Color1.Add(compressedVertexData.Color1[tri.Color1]);
                             if (tri.Tex0 >= 0) shape.VertexData.Tex0.Add(compressedVertexData.Tex0[tri.Tex0]);

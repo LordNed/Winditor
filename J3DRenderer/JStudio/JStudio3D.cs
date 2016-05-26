@@ -110,7 +110,14 @@ namespace J3DRenderer.JStudio
 
             // Now that the vertex attributes are assigned to the materials, generate a shader from the data.
             foreach (var material in MAT3Tag.MaterialList)
+            {
+                if (material.VtxDesc == null)
+                {
+                    System.Console.WriteLine("Skipping generating Shader for Unreferenced Material: {0}", material);
+                    continue;
+                }
                 material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
+            }
         }
 
         private void AssignVertexAttributesToMaterialsRecursive(HierarchyNode curNode, ref Material curMaterial)
