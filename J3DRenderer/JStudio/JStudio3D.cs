@@ -175,6 +175,8 @@ namespace J3DRenderer.JStudio
                 if (idx < 0)
                     continue;
 
+                idx = MAT3Tag.TextureRemapTable[idx];
+
                 int glTextureIndex = GL.GetUniformLocation(shader.Program, string.Format("Texture{0}", i));
                 GL.Uniform1(glTextureIndex, i);
                 TEX1Tag.Textures[idx].Bind(i);

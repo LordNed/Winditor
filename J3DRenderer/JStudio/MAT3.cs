@@ -70,7 +70,7 @@ namespace J3DRenderer.JStudio
         public List<TexCoordGen> TexGen2Infos { get; protected set; }
         public List<TexMatrix> TexMatrixInfos { get; protected set; }
         public List<TexMatrix> TexMatrix2Infos { get; protected set; }
-        public List<short> TextureIndexes { get; protected set; }
+        public List<short> TextureRemapTable { get; protected set; }
         public List<TevOrder> TevOrderInfos { get; protected set; }
         public List<WLinearColor> TevColors { get; protected set; }
         public List<WLinearColor> TevKonstColors { get; protected set; }
@@ -151,7 +151,7 @@ namespace J3DRenderer.JStudio
             TexMatrix2Infos = ReadSection<TexMatrix>(reader, chunkStart, chunkSize, offsets, 14, ReadTexMatrix, 100);
 
             /* TEXURE INDEX */
-            TextureIndexes = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 15, ReadShort, 2);
+            TextureRemapTable = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 15, ReadShort, 2);
 
             /* TEV ORDER INFO */
             TevOrderInfos = ReadSection<TevOrder>(reader, chunkStart, chunkSize, offsets, 16, ReadTevOrder, 4);

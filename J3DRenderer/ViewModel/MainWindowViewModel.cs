@@ -75,7 +75,10 @@ namespace J3DRenderer
 
         private void ProcessTick()
         {
-            GL.ClearColor(0.15f, 0.83f, 0.10f, 1f);
+            System.Random rnd = new System.Random(m_glControl.GetHashCode());
+            //GL.ClearColor(0.15f, 0.83f, 0.10f, 1f);
+            GL.ClearColor(rnd.Next(255)/255f, rnd.Next(255)/255f, rnd.Next(255)/255f, 1f);
+
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
             GL.Viewport(0, 0, m_viewportWidth, m_viewportHeight);
 
