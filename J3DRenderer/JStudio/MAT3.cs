@@ -361,9 +361,7 @@ namespace J3DRenderer.JStudio
             itm.Unknown2 = stream.ReadByte();
 
             for (int i = 0; i < 7; i++)
-            {
-                Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
-            }
+                itm.Unknown3[i] = stream.ReadUInt16();
 
             for (int i = 0; i < 3; i++)
             {

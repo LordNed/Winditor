@@ -278,6 +278,9 @@ namespace J3DRenderer.JStudio
         /// <summary> Unknown value 2. Related to TevOrders. </summary>
         public byte Unknown2;
 
+        /// <summary> Usually 0xFFFF but sometimes 0x0000. </summary>
+        public ushort[] Unknown3;
+
         /// <summary> The dynamic 2x3 matrices to use when transforming the texture coordinates. </summary>
         public IndirectTextureMatrix[] Matrices;
 
@@ -292,6 +295,7 @@ namespace J3DRenderer.JStudio
             Matrices = new IndirectTextureMatrix[3];
             Scales = new IndirectTextureScale[4];
             TevOrders = new IndirectTevOrder[16];
+            Unknown3 = new ushort[7];
         }
     }
 
