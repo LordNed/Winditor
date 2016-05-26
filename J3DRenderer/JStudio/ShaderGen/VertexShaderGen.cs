@@ -70,14 +70,15 @@ namespace J3DRenderer.ShaderGen
                 "\n" +
                 "struct GXLight\n" +
                 "{\n" +
-                "    vec3 Position;\n" +
-                "    vec3 Direction;\n" +
+                "    vec4 Position;\n" +
+                "    vec4 Direction;\n" +
                 "    vec4 Color;\n" +
                 "    vec4 CosAtten; //AngleAtten\n" + // 1.875000, 0, 0 ?
                 "    vec4 DistAtten;\n" + // 1.875000, 0, 0 ?
                 "};\n" +
                 "\n" +
-                "GXLight Lights[8];\n"
+                "layout(std140) uniform LightBlock\n" +
+                "{\n GXLight Lights[8];\n};\n"
                 );
             stream.AppendLine();
 
