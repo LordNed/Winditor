@@ -41,7 +41,7 @@ namespace J3DRenderer.JStudio
                 Indexes = new List<int>();
                 VertexDescription = new VertexDescription();
 
-                m_glBufferIndexes = new int[12];
+                m_glBufferIndexes = new int[15];
             }
 
             public void UploadBuffersToGPU()
@@ -54,6 +54,7 @@ namespace J3DRenderer.JStudio
 
                 if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, VertexData.Position.ToArray());
                 if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
+                if (VertexData.Binormal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Binormal, VertexData.Binormal.ToArray());
                 if (VertexData.Color0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color0, VertexData.Color0.ToArray());
                 if (VertexData.Color1.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color1, VertexData.Color1.ToArray());
                 if (VertexData.Tex0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex0, VertexData.Tex0.ToArray());
@@ -64,6 +65,7 @@ namespace J3DRenderer.JStudio
                 if (VertexData.Tex5.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex5, VertexData.Tex5.ToArray());
                 if (VertexData.Tex6.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex6, VertexData.Tex6.ToArray());
                 if (VertexData.Tex7.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Tex7, VertexData.Tex7.ToArray());
+                if (VertexData.PositionMatrixIndexes.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.PosMtxIndex, VertexData.PositionMatrixIndexes.ToArray());
             }
 
             public void Bind()

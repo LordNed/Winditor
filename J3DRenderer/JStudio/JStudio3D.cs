@@ -21,6 +21,8 @@ namespace J3DRenderer.JStudio
         public SHP1 SHP1Tag { get; protected set; }
         public JNT1 JNT1Tag { get; protected set; }
         public TEX1 TEX1Tag { get; private set; }
+        public EVP1 EVP1Tag { get; private set; }
+        public DRW1 DRW1Tag { get; private set; }
 
         private int m_totalFileSize;
 
@@ -67,9 +69,13 @@ namespace J3DRenderer.JStudio
                         break;
                     // ENVELOPES - Defines vertex weights for skinning
                     case "EVP1":
+                        EVP1Tag = new EVP1();
+                        EVP1Tag.LoadEVP1FromStream(reader, tagStart);
                         break;
                     // DRAW (Skeletal Animation Data) - Stores which matrices (?) are weighted, and which are used directly
                     case "DRW1":
+                        DRW1Tag = new DRW1();
+                        DRW1Tag.LoadDRW1FromStream(reader, tagStart);
                         break;
                     // JOINTS - Stores the skeletal joints (position, rotation, scale, etc...)
                     case "JNT1":

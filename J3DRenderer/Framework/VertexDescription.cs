@@ -43,6 +43,7 @@ namespace J3DRenderer.JStudio
             {
                 case ShaderAttributeIds.Position:
                 case ShaderAttributeIds.Normal:
+                case ShaderAttributeIds.Binormal:
                 case ShaderAttributeIds.Color0:
                 case ShaderAttributeIds.Color1:
                 case ShaderAttributeIds.Tex0:
@@ -54,6 +55,8 @@ namespace J3DRenderer.JStudio
                 case ShaderAttributeIds.Tex6:
                 case ShaderAttributeIds.Tex7:
                     return VertexAttribPointerType.Float;
+                case ShaderAttributeIds.PosMtxIndex:
+                    return VertexAttribPointerType.Int;
 
                 default:
                     Console.WriteLine("Unsupported ShaderAttributeId: {0}", attribute);
@@ -67,6 +70,7 @@ namespace J3DRenderer.JStudio
             {
                 case ShaderAttributeIds.Position:
                 case ShaderAttributeIds.Normal:
+                case ShaderAttributeIds.Binormal:
                     return 4 * 3;
                 case ShaderAttributeIds.Color0:
                 case ShaderAttributeIds.Color1:
@@ -80,6 +84,8 @@ namespace J3DRenderer.JStudio
                 case ShaderAttributeIds.Tex6:
                 case ShaderAttributeIds.Tex7:
                     return 4 * 2;
+                case ShaderAttributeIds.PosMtxIndex:
+                    return 4 * 1;
                 default:
                     Console.WriteLine("Unsupported ShaderAttributeId: {0}", attribute);
                     return 0;
