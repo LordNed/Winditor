@@ -3,8 +3,9 @@ using OpenTK;
 using System.ComponentModel;
 using OpenTK.Graphics.OpenGL;
 using WindEditor;
-using System.IO;
 using J3DRenderer.ShaderGen;
+using System.Runtime.InteropServices;
+using System;
 
 namespace J3DRenderer.JStudio
 {
@@ -114,6 +115,26 @@ namespace J3DRenderer.JStudio
             Material dummyMat = null;
             AssignVertexAttributesToMaterialsRecursive(INF1Tag.HierarchyRoot, ref dummyMat);
 
+
+            // Upload our Lights
+            GXLight[] lights = new GXLight[8];
+            for (int i = 0; i < lights.Length; i++)
+            {
+                var light = new GXLight();
+                // Upload to the GPU
+                light.Position = i == 1 ? new Vector4(0, 500, 250, 0) : new Vector4(-250, 500, 0, 0);
+                light.Direction = -light.Position.Normalized();
+                light.Color = i == 1 ? new Vector4(.1f, 0, .1f, 1) : new Vector4(.1f, 0, 0, 1);
+                light.CosAtten = new Vector4(1.875f, 0, 0, 0);
+                light.DistAtten = new Vector4(1.875f, 0f, 0f, 0f);
+
+                lights[i] = light;
+            }
+
+
+            m_lightBufferUniform = GL.GenBuffer();
+            GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 0, m_lightBufferUniform);
+
             // Now that the vertex attributes are assigned to the materials, generate a shader from the data.
             foreach (var material in MAT3Tag.MaterialList)
             {
@@ -123,7 +144,12 @@ namespace J3DRenderer.JStudio
                     continue;
                 }
                 material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
+                int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock");
+                GL.UniformBlockBinding(material.Shader.Program, ubi, 0);
+                GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(Marshal.SizeOf(lights[0]) * 8), lights, BufferUsageHint.DynamicDraw);
             }
+
+
         }
 
         private void AssignVertexAttributesToMaterialsRecursive(HierarchyNode curNode, ref Material curMaterial)
@@ -210,6 +236,19 @@ namespace J3DRenderer.JStudio
             if (shader.UniformColor0Mat >= 0) GL.Uniform4(shader.UniformColor0Mat, color0Mat.R, color0Mat.G, color0Mat.B, color0Mat.A);
             if (shader.UniformColor1Amb >= 0) GL.Uniform4(shader.UniformColor1Amb, color1Amb.R, color1Amb.G, color1Amb.B, color1Amb.A);
             if (shader.UniformColor1Mat >= 0) GL.Uniform4(shader.UniformColor1Mat, color1Mat.R, color1Mat.G, color1Mat.B, color1Mat.A);
+
+            int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock");
+            GL.UniformBlockBinding(material.Shader.Program, ubi, 0);
+        }
+
+        private int m_lightBufferUniform;
+        struct GXLight
+        {
+            public Vector4 Position;
+            public Vector4 Direction;
+            public Vector4 Color;
+            public Vector4 CosAtten;
+            public Vector4 DistAtten;
         }
 
         private void RenderBatchByIndex(ushort index)
@@ -230,6 +269,29 @@ namespace J3DRenderer.JStudio
         {
             if(PropertyChanged != null)
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void SkinStuff()
+        {
+            //SkeletonJoint[] allBones = ...;
+            //Matrix4[] transformedBones = new Matrix4[allBones.Length];
+
+            //for (int i = 0; i < transformedBones.Length; i++)
+            //{
+            //    transformedBones[i] = Matrix4.CreateTranslation(allBones[i].Translation) * Matrix4.CreateFromQuaternion(allBones[i].Rotation) * Matrix4.CreateScale(allBones[i].Scale) * allBones.InverseBindPose;
+            //}
+
+            //for(int i = 0; i < allVertices.Length; i++)
+            //{
+            //    BoneWeight boneWeight = GetBoneWeightForVertex(i);
+            //    Vector3 transformedPos;
+            //    for(int k = 0; k < 4; k++)
+            //    {
+            //        transformedPos += transformedBones[boneWeight.Index[k]] * boneWeight.Influence[k];
+            //    }
+            //}
+
+            // World-space skinned locations of vertices is now transformedPos
         }
     }
 }

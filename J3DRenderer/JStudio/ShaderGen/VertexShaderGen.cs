@@ -170,7 +170,15 @@ namespace J3DRenderer.ShaderGen
             for (int i = 0; i < data.NumTexGens[mat.NumTexGensIndex]; i++)
             {
                 TexCoordGen texGen = data.TexGenInfos[mat.TexGenInfoIndexes[i]];
-                TexMatrix texMtx = data.TexMatrixInfos[((int)texGen.TexMatrixSource) - 30];
+                TexMatrix texMtx = null;
+                if (texGen.TexMatrixSource == GXTexMatrix.Identity)
+                {
+                    texMtx = new TexMatrix(); // Hack
+                }
+                else
+                {
+                    texMtx = data.TexMatrixInfos[(((int)texGen.TexMatrixSource) - 30)/3];
+                }
 
                 stream.AppendFormat("\t// TexGen: {0} Type: {1} Source: {2} TexMatrixIndex: {3}\n", i, texGen.Type, texGen.Source, texGen.TexMatrixSource);
                 stream.AppendLine("{"); // False scope block so we can re-declare variables

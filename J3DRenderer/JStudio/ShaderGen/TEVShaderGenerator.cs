@@ -33,8 +33,8 @@ namespace J3DRenderer.ShaderGen
 
                 // Generate a Fallback Shader for rendering
                 shader = new Shader("UnlitTexture");
-                shader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.vert"), ShaderType.VertexShader);
-                shader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.frag"), ShaderType.FragmentShader);
+                shader.CompileSource(File.ReadAllText("resources/shaders/Debug_LightColors.vert"), ShaderType.VertexShader);
+                shader.CompileSource(File.ReadAllText("resources/shaders/Debug_LightColors.frag"), ShaderType.FragmentShader);
                 shader.LinkShader();
 
                 return shader;

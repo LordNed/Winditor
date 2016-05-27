@@ -44,7 +44,7 @@ namespace J3DRenderer
 
             m_model = new JStudio3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/MiniHyo.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/ITest_R.bmd"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
@@ -88,7 +88,7 @@ namespace J3DRenderer
             m_renderCamera.Tick(deltaTime);
 
             // Render something
-            m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
+            //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
             m_model.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
         }
 
