@@ -31,9 +31,13 @@ namespace J3DRenderer.JStudio
         private Matrix4 m_viewMatrix;
         private Matrix4 m_projMatrix;
         private Matrix4 m_modelMatrix;
+        private WLineBatcher m_lineBatcher;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
+            m_lineBatcher = new WLineBatcher();
+
+
             // Read the J3D Header
             Magic = new string(reader.ReadChars(4));
             StudioType = new string(reader.ReadChars(4));
@@ -115,6 +119,8 @@ namespace J3DRenderer.JStudio
             Material dummyMat = null;
             AssignVertexAttributesToMaterialsRecursive(INF1Tag.HierarchyRoot, ref dummyMat);
 
+            JNT1Tag.CalculateInverseBindPose(INF1Tag.HierarchyRoot, m_lineBatcher);
+
 
             // Upload our Lights
             GXLight[] lights = new GXLight[8];
@@ -169,8 +175,10 @@ namespace J3DRenderer.JStudio
             m_viewMatrix = viewMatrix;
             m_projMatrix = projectionMatrix;
             m_modelMatrix = modelMatrix;
+            m_lineBatcher.Tick(1 / 60f);
+            m_lineBatcher.Render(viewMatrix, projectionMatrix);
 
-            RenderMeshRecursive(INF1Tag.HierarchyRoot);
+            //RenderMeshRecursive(INF1Tag.HierarchyRoot);
         }
 
         private void RenderMeshRecursive(HierarchyNode curNode)

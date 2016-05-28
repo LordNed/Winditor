@@ -3,6 +3,7 @@ using GameFormatReader.Common;
 using System.Diagnostics;
 using OpenTK;
 using WindEditor;
+using System;
 
 namespace J3DRenderer.JStudio
 {
@@ -16,6 +17,10 @@ namespace J3DRenderer.JStudio
         public Vector3 Translation { get; internal set; }
         public float BoundingSphereDiameter { get; internal set; }
         public AABox BoundingBox { get; internal set; }
+
+        // Useful for easier traversal
+        public int ParentId { get; internal set; }
+        public Matrix4 InverseBindPose { get; internal set; }
     }
 
     public class JNT1
@@ -65,7 +70,55 @@ namespace J3DRenderer.JStudio
                 joint.Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                 joint.BoundingSphereDiameter = reader.ReadSingle();
                 joint.BoundingBox = new AABox(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
+
+
+                joint.ParentId = -1;
             }
+        }
+
+        public void CalculateInverseBindPose(HierarchyNode hierarchyRoot, WLineBatcher lineBatcher)
+        {
+            List<SkeletonJoint> processedJoints = new List<SkeletonJoint>();
+            IterateHierarchyForSkeletonRecursive(hierarchyRoot, processedJoints, -1, lineBatcher);
+        }
+
+        private void IterateHierarchyForSkeletonRecursive(HierarchyNode curNode, List<SkeletonJoint> processedJoints, int parentIndex, WLineBatcher lineBatcher)
+        {
+            switch (curNode.Type)
+            {
+                case HierarchyDataType.NewNode: parentIndex = processedJoints.Count - 1; break;
+                case HierarchyDataType.Joint:
+                    SkeletonJoint joint = Joints[JointRemapTable[curNode.Value]];
+                    joint.ParentId = parentIndex;
+
+                    if (joint.ParentId >= 0)
+                    {
+                        SkeletonJoint parentJoint = processedJoints[parentIndex];
+
+                        Vector3 worldPos = parentJoint.Translation +  Vector3.Transform(joint.Translation, parentJoint.Rotation);
+                        Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
+                        Matrix4 bindPose = Matrix4.CreateTranslation(worldPos) * Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale);
+                        joint.InverseBindPose = bindPose.Inverted();
+
+                        lineBatcher.DrawLine(parentJoint.Translation, worldPos, WLinearColor.Red, 5, 300f);
+
+                        // Stupid Test, clone the joint so we get worldpos/worldrot from it.
+                        SkeletonJoint worldJoint = new SkeletonJoint();
+                        worldJoint.Name = joint.Name;
+                        worldJoint.Translation = worldPos;
+                        worldJoint.Rotation = worldRot;
+                        processedJoints.Add(worldJoint);
+                    }
+                    else
+                    {
+                        processedJoints.Add(joint);
+                    }
+
+                    break;
+            }
+
+            foreach (var child in curNode.Children)
+                IterateHierarchyForSkeletonRecursive(child, processedJoints, parentIndex, lineBatcher);
         }
     }
 }
