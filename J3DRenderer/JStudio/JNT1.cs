@@ -21,6 +21,7 @@ namespace J3DRenderer.JStudio
         // Useful for easier traversal
         public int ParentId { get; internal set; }
         public Matrix4 InverseBindPose { get; internal set; }
+        public Matrix4 BindPose { get; internal set; }
     }
 
     public class JNT1
@@ -65,7 +66,10 @@ namespace J3DRenderer.JStudio
                     eulerRot[e] = reader.ReadInt16() * (180 / 32786f); // [-32786, 32786] to [-180, 180]
 
                 // ZYX order
-                joint.Rotation = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(eulerRot.Z)) * Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(eulerRot.Y)) * Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(eulerRot.Z));
+                joint.Rotation = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(eulerRot.Z)) * 
+                                 Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(eulerRot.Y)) * 
+                                 Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(eulerRot.X));
+
                 Trace.Assert(reader.ReadUInt16() == 0xFFFF); // Padding
                 joint.Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                 joint.BoundingSphereDiameter = reader.ReadSingle();
@@ -99,15 +103,18 @@ namespace J3DRenderer.JStudio
                         Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
                         Matrix4 bindPose = Matrix4.CreateTranslation(worldPos) * Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale);
                         joint.InverseBindPose = bindPose.Inverted();
+                        joint.BindPose = bindPose;
 
-                        lineBatcher.DrawLine(parentJoint.Translation, worldPos, WLinearColor.Red, 5, 300f);
-
-                        // Stupid Test, clone the joint so we get worldpos/worldrot from it.
+                        // We store away a clone of the existing joint for the purposes of not having to walk the entire chain again
+                        // for each bone. This lets us store the world-position and rotation of the parent joint for multiplication above.
                         SkeletonJoint worldJoint = new SkeletonJoint();
                         worldJoint.Name = joint.Name;
                         worldJoint.Translation = worldPos;
                         worldJoint.Rotation = worldRot;
                         processedJoints.Add(worldJoint);
+
+                        // Debug Drawing
+                        //lineBatcher.DrawLine(parentJoint.Translation, worldPos, WLinearColor.Red, 5, 300f);
                     }
                     else
                     {

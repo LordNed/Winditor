@@ -18,6 +18,11 @@ namespace J3DRenderer.JStudio
             ArrayType = arrayType;
             DataType = dataType;
         }
+
+        public override string ToString()
+        {
+            return string.Format("ArrayType: {0} DataType: {1}", ArrayType, DataType);
+        }
     }
 
     public class SHP1
@@ -30,6 +35,10 @@ namespace J3DRenderer.JStudio
             public MeshVertexHolder VertexData { get; internal set; }
             public List<int> Indexes { get; internal set; }
             public VertexDescription VertexDescription { get; private set; }
+            public List<Vector3> OverrideVertPos { get; set; }
+
+            // This is a list of all Matrix Table entries for all sub-primitives. 
+            public List<ushort> MatrixTable { get; private set; }
 
             public int[] m_glBufferIndexes;
             public int m_glIndexBuffer;
@@ -40,6 +49,8 @@ namespace J3DRenderer.JStudio
                 VertexData = new MeshVertexHolder();
                 Indexes = new List<int>();
                 VertexDescription = new VertexDescription();
+                MatrixTable = new List<ushort>();
+                OverrideVertPos = new List<Vector3>();
 
                 m_glBufferIndexes = new int[15];
             }
@@ -52,7 +63,7 @@ namespace J3DRenderer.JStudio
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);
                 GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * Indexes.Count), Indexes.ToArray(), BufferUsageHint.StaticDraw);
 
-                if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, VertexData.Position.ToArray());
+                if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, OverrideVertPos.Count > 0 ? OverrideVertPos.ToArray() : VertexData.Position.ToArray());
                 if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
                 if (VertexData.Binormal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Binormal, VertexData.Binormal.ToArray());
                 if (VertexData.Color0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color0, VertexData.Color0.ToArray());
@@ -117,7 +128,6 @@ namespace J3DRenderer.JStudio
         public short ShapeCount { get; private set; }
         public List<Shape> Shapes { get; private set; }
         public List<short> ShapeRemapTable;
-
 
         public SHP1()
         {
@@ -193,8 +203,11 @@ namespace J3DRenderer.JStudio
                 shape.Attributes = attributes;
                 Shapes.Add(shape);
 
-                int numVertexRead = 0;
+                // HACK DEBUG - Don't load meshes which have no PMI data.
+                //if (shape.Attributes.Find(x => x.ArrayType == VertexArrayType.PositionMatrixIndex) == null)
+                //    packetCount = 0; 
 
+                int numVertexRead = 0;
                 for (ushort p = 0; p < packetCount; p++)
                 {
                     // The packets are all stored linerally and then they point to the specific size and offset of the data for this particular packet.
@@ -209,12 +222,15 @@ namespace J3DRenderer.JStudio
                     ushort matrixCount = reader.ReadUInt16();
                     uint matrixFirstIndex = reader.ReadUInt32();
 
-                    // Read Matrix Data ??
+                    // Read Matrix Table data. Matrix Tables are technically per-packet, but we don't
+                    // track anything on a per-packet level right now. Because of this, we'll store 
+                    // the count of how many MT entries there are, and offset our loaded data by
+                    // that much.
+                    int firstMatrixTableEntry = shape.MatrixTable.Count;
                     reader.BaseStream.Position = tagStart + matrixTableOffset + (matrixFirstIndex * 0x2); /* 0x2 is the size of one Matrix Table entry */
-
                     List<ushort> matrixTable = new List<ushort>();
                     for (int m = 0; m < matrixCount; m++)
-                        matrixTable.Add(reader.ReadUInt16());
+                        shape.MatrixTable.Add(reader.ReadUInt16());
 
                     // Read the Primitive Data
                     reader.BaseStream.Position = tagStart + primitiveDataOffset + packetOffset;
@@ -306,7 +322,6 @@ namespace J3DRenderer.JStudio
 
                             var tri = triangleList[i];
                             if (tri.Position >= 0) shape.VertexData.Position.Add(compressedVertexData.Position[tri.Position]);
-                            if (tri.PosMtxIndex >= 0) shape.VertexData.PositionMatrixIndexes.Add(tri.PosMtxIndex);
                             if (tri.Normal >= 0) shape.VertexData.Normal.Add(compressedVertexData.Normal[tri.Normal]);
                             if (tri.Binormal >= 0) shape.VertexData.Binormal.Add(compressedVertexData.Binormal[tri.Binormal]);
                             if (tri.Color0 >= 0) shape.VertexData.Color0.Add(compressedVertexData.Color0[tri.Color0]);
@@ -319,6 +334,12 @@ namespace J3DRenderer.JStudio
                             if (tri.Tex5 >= 0) shape.VertexData.Tex5.Add(compressedVertexData.Tex5[tri.Tex5]);
                             if (tri.Tex6 >= 0) shape.VertexData.Tex6.Add(compressedVertexData.Tex6[tri.Tex6]);
                             if (tri.Tex7 >= 0) shape.VertexData.Tex7.Add(compressedVertexData.Tex7[tri.Tex7]);
+
+                            // We need to offset the triangle's PosMtxIndex, since we're storing all Matrix Tables
+                            // in one list, instead of per-packet, so we offset the number (which would be relative
+                            // to the primitive) to be relative to the whole list instead. 
+                            if (tri.PosMtxIndex >= 0) shape.VertexData.PositionMatrixIndexes.Add(firstMatrixTableEntry + tri.PosMtxIndex);
+                            else shape.VertexData.PositionMatrixIndexes.Add(firstMatrixTableEntry);
                         }
                     }
                 }
