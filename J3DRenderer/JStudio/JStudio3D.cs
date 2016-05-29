@@ -53,14 +53,14 @@ namespace J3DRenderer.JStudio
 
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
         {
-            for(int i = 0; i < tagCount; i++)
+            for (int i = 0; i < tagCount; i++)
             {
                 long tagStart = reader.BaseStream.Position;
 
                 string tagName = reader.ReadString(4);
                 int tagSize = reader.ReadInt32();
 
-                switch(tagName)
+                switch (tagName)
                 {
                     // INFO - Vertex Count, Scene Hierarchy
                     case "INF1":
@@ -171,6 +171,7 @@ namespace J3DRenderer.JStudio
                 AssignVertexAttributesToMaterialsRecursive(child, ref curMaterial);
         }
 
+
         internal void Render(Matrix4 viewMatrix, Matrix4 projectionMatrix, Matrix4 modelMatrix)
         {
             m_viewMatrix = viewMatrix;
@@ -180,7 +181,7 @@ namespace J3DRenderer.JStudio
             m_lineBatcher.Tick(1 / 60f);
 
             SkeletonJoint[] skeletonCopy = new SkeletonJoint[JNT1Tag.Joints.Count];
-            for(int i = 0; i < skeletonCopy.Length; i++)
+            for (int i = 0; i < skeletonCopy.Length; i++)
             {
                 skeletonCopy[i] = new SkeletonJoint();
                 skeletonCopy[i].Translation = JNT1Tag.Joints[i].Translation;
@@ -191,10 +192,10 @@ namespace J3DRenderer.JStudio
                 skeletonCopy[i].BindPose = JNT1Tag.Joints[i].BindPose;
             }
 
-            for(int i = 0; i < skeletonCopy.Length; i++)
+            for (int i = 0; i < skeletonCopy.Length; i++)
             {
                 SkeletonJoint joint = skeletonCopy[i];
-                if(joint.ParentId >= 0)
+                if (joint.ParentId >= 0)
                 {
                     SkeletonJoint parentJoint = skeletonCopy[joint.ParentId];
 
@@ -214,29 +215,38 @@ namespace J3DRenderer.JStudio
             foreach (var shape in SHP1Tag.Shapes)
             {
                 var transformedVerts = new List<Vector3>(shape.VertexData.Position);
-                for(int i = 0; i < shape.VertexData.Position.Count; i++)
-                {
-                    ushort posMtxIndex = (ushort)(shape.VertexData.PositionMatrixIndexes[i]);
-                    ushort matrixTableIndex = shape.MatrixTable[posMtxIndex];
 
+                for (int i = 0; i < shape.VertexData.Position.Count; i++)
+                {
+                    // This is relative to the vertex's original packet's matrix table.  
+                    ushort posMtxIndex = (ushort)(shape.VertexData.PositionMatrixIndexes[i]);
+
+                    // We need to calculate which packet data table that is.
+                    int originalPacketIndex = 0;
+                    for(int p = 0; p < shape.MatrixDataTable.Count; p++)
+                    {
+                        if(i >= shape.MatrixDataTable[p].FirstRelevantVertexIndex && i < shape.MatrixDataTable[p].LastRelevantVertexIndex)
+                        {
+                            originalPacketIndex = p; break;
+                        }
+                    }
+
+                    // Now that we know which packet this vertex belongs to, we can get the index from it.
                     // If the Matrix Table index is 0xFFFF then it means "use previous", and we have to
                     // continue backwards until it is no longer 0xFFFF.
-                    while(matrixTableIndex == 0xFFFF)
+                    ushort matrixTableIndex;
+                    do
                     {
-                        posMtxIndex--;
-                        matrixTableIndex = shape.MatrixTable[posMtxIndex];
-                    }
+                        matrixTableIndex = shape.MatrixDataTable[originalPacketIndex].MatrixTable[posMtxIndex];
+                        originalPacketIndex--;
+                    } while (matrixTableIndex == 0xFFFF);
 
                     bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
                     ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
 
-                    Console.WriteLine("Vert: {0} matrixTableIndex: {1} isPartiallyWeighted: {2} indexFromDR1: {3}", i, matrixTableIndex, isPartiallyWeighted, indexFromDRW1);
-                    // the indexFromDRW1 is definitely used to index into the EVP1Tag.InverseBindPose matrix array.
-
                     if (isPartiallyWeighted)
                     {
                         ushort numBonesAffecting = EVP1Tag.NumBoneInfluences[indexFromDRW1];
-                        Console.WriteLine("numBonesAffecting: {0}", numBonesAffecting);
 
                         // We need to figure out our offset into the arrays.
                         ushort firstBoneInfluence = 0;
@@ -245,34 +255,15 @@ namespace J3DRenderer.JStudio
                             firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
                         }
 
-                        //Vector3 transformedVert = Vector3.Zero;
-                        //for(int b = 0; b < numBonesAffecting; b++)
-                        //{
-                        //    ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
-                        //    float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
-
-                        //    SkeletonJoint joint = skeletonCopy[boneIndex];
-                        //    Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-
-                        //    jointMtx = (EVP1Tag.InverseBindPose[indexFromDRW1]* jointMtx) * boneWeight;
-
-
-
-                        //    Vector3 newPos = Vector3.Transform(transformedVerts[i], jointMtx);
-                        //    transformedVert += newPos;
-                        //}
-                        //transformedVerts[i] = transformedVert;
-
                         Matrix4 finalTransform = Matrix4.Zero;
                         for (int b = 0; b < numBonesAffecting; b++)
                         {
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
                             float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
 
-                            Console.WriteLine("boneIndex: {0} boneWeight: {1}", boneIndex, boneWeight);
                             SkeletonJoint joint = skeletonCopy[boneIndex];
                             Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-                            finalTransform += (jointMtx * EVP1Tag.InverseBindPose[boneIndex] * boneWeight);
+                            finalTransform += (jointMtx * JNT1Tag.Joints[boneIndex].InverseBindPose) * boneWeight;
                         }
 
                         Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
@@ -287,8 +278,6 @@ namespace J3DRenderer.JStudio
                         Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
                         transformedVerts[i] = transformedVertPos;
                     }
-
-                    //Console.WriteLine("{0}: posMtxIndex: {1} drw1RemapTable: {2} isWeighted: {3}", i, posMtxIndex, drw1RemapTable, isWeighted);
                 }
 
                 // Re-upload to the GPU.
@@ -301,7 +290,7 @@ namespace J3DRenderer.JStudio
 
         private void RenderMeshRecursive(HierarchyNode curNode)
         {
-            switch(curNode.Type)
+            switch (curNode.Type)
             {
                 case HierarchyDataType.Material:
                     BindMaterialByIndex(curNode.Value);
@@ -327,7 +316,7 @@ namespace J3DRenderer.JStudio
             GL.UniformMatrix4(shader.UniformViewMtx, false, ref m_viewMatrix);
             GL.UniformMatrix4(shader.UniformProjMtx, false, ref m_projMatrix);
 
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 int idx = material.TextureIndexes[i];
                 if (idx < 0)
@@ -395,31 +384,9 @@ namespace J3DRenderer.JStudio
 
         protected void OnPropertyChanged(string propertyName)
         {
-            if(PropertyChanged != null)
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void SkinStuff()
-        {
-            //SkeletonJoint[] allBones = ...;
-            //Matrix4[] transformedBones = new Matrix4[allBones.Length];
-
-            //for (int i = 0; i < transformedBones.Length; i++)
-            //{
-            //    transformedBones[i] = Matrix4.CreateTranslation(allBones[i].Translation) * Matrix4.CreateFromQuaternion(allBones[i].Rotation) * Matrix4.CreateScale(allBones[i].Scale) * allBones.InverseBindPose;
-            //}
-
-            //for(int i = 0; i < allVertices.Length; i++)
-            //{
-            //    BoneWeight boneWeight = GetBoneWeightForVertex(i);
-            //    Vector3 transformedPos;
-            //    for(int k = 0; k < 4; k++)
-            //    {
-            //        transformedPos += transformedBones[boneWeight.Index[k]] * boneWeight.Influence[k];
-            //    }
-            //}
-
-            // World-space skinned locations of vertices is now transformedPos
-        }
     }
 }
