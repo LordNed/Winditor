@@ -8,10 +8,10 @@ namespace J3DRenderer.JStudio
 {
     public class EVP1
     {
-        List<byte> numBoneInfluences;
-        List<ushort> indexRemap;
-        List<float> weightList;
-        List<Matrix3x4> inverseBindPose;
+        public List<byte> NumBoneInfluences;
+        public List<ushort> IndexRemap;
+        public List<float> WeightList;
+        public List<Matrix3x4> InverseBindPose;
 
         public void LoadEVP1FromStream(EndianBinaryReader reader, long tagStart)
         {
@@ -24,23 +24,23 @@ namespace J3DRenderer.JStudio
             uint boneMatrixOffset = reader.ReadUInt32(); // Matrix Table (3x4 float array) - Skeleton Inverse Bind Pose
 
 
-            numBoneInfluences = new List<byte>();
-            indexRemap = new List<ushort>();
-            weightList = new List<float>();
-            inverseBindPose = new List<Matrix3x4>();
+            NumBoneInfluences = new List<byte>();
+            IndexRemap = new List<ushort>();
+            WeightList = new List<float>();
+            InverseBindPose = new List<Matrix3x4>();
 
             // How many bones influence the given index
             reader.BaseStream.Position = tagStart + boneInfluenceCountOffset;
             for (int i = 0; i < envelopeCount; i++)
-                numBoneInfluences.Add(reader.ReadByte());
+                NumBoneInfluences.Add(reader.ReadByte());
 
             // For each influence, an index remap?
             reader.BaseStream.Position = tagStart + indexDataOffset;
             for(int m = 0; m < envelopeCount; m++)
             {
-                for(int j =0; j < numBoneInfluences[m]; j++)
+                for(int j =0; j < NumBoneInfluences[m]; j++)
                 {
-                    indexRemap.Add(reader.ReadUInt16());
+                    IndexRemap.Add(reader.ReadUInt16());
                 }
             }
 
@@ -48,9 +48,9 @@ namespace J3DRenderer.JStudio
             reader.BaseStream.Position = tagStart + weightDataOffset;
             for(int m = 0; m < envelopeCount; m++)
             {
-                for(int j = 0; j < numBoneInfluences[m]; j++)
+                for(int j = 0; j < NumBoneInfluences[m]; j++)
                 {
-                    weightList.Add(reader.ReadSingle());
+                    WeightList.Add(reader.ReadSingle());
                 }
             }
 
@@ -66,7 +66,7 @@ namespace J3DRenderer.JStudio
                         matrix[j, k] = reader.ReadSingle();
                 }
 
-                inverseBindPose.Add(matrix);
+                InverseBindPose.Add(matrix);
             }
         }
     }

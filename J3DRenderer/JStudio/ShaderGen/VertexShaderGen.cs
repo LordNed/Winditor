@@ -274,9 +274,6 @@ namespace J3DRenderer.ShaderGen
             // Append the tail end of our shader file.
             stream.AppendLine("}");
             stream.AppendLine();
-
-            Directory.CreateDirectory("ShaderDump");
-            File.WriteAllText("ShaderDump/" + mat.Name + ".vert", stream.ToString());
             return stream.ToString();
         }
 

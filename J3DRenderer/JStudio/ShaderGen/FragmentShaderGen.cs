@@ -183,8 +183,6 @@ namespace J3DRenderer.ShaderGen
             stream.AppendLine("}");
             stream.AppendLine();
 
-            Directory.CreateDirectory("ShaderDump");
-            File.WriteAllText("ShaderDump/" + mat.Name + ".frag", stream.ToString());
             return stream.ToString();
         }
 
