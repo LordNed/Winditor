@@ -11,7 +11,7 @@ namespace J3DRenderer.JStudio
         public List<byte> NumBoneInfluences;
         public List<ushort> IndexRemap;
         public List<float> WeightList;
-        public List<Matrix4> InverseBindPose;
+        public List<Matrix4> InverseBindPose; // Definitely indexed by the Indexes section from DRW1.
 
         public void LoadEVP1FromStream(EndianBinaryReader reader, long tagStart)
         {

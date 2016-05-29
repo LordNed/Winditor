@@ -203,10 +203,6 @@ namespace J3DRenderer.JStudio
                 shape.Attributes = attributes;
                 Shapes.Add(shape);
 
-                // HACK DEBUG - Don't load meshes which have no PMI data.
-                //if (shape.Attributes.Find(x => x.ArrayType == VertexArrayType.PositionMatrixIndex) == null)
-                //    packetCount = 0; 
-
                 int numVertexRead = 0;
                 for (ushort p = 0; p < packetCount; p++)
                 {
@@ -251,11 +247,6 @@ namespace J3DRenderer.JStudio
 
                         for(int v = 0; v < vertexCount; v++)
                         {
-                            // We need to keep track of how many game vertices we've read, instead of just using the length of the Index buffer, or
-                            // the length of any vertex buffer as we don't know which buffer is being used.
-                            //shape.Indexes.Add(numVertexRead);
-                            //numVertexRead++;
-
                             MeshVertexIndex newVert = new MeshVertexIndex();
                             primitiveVertices.Add(newVert);
 
