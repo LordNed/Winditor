@@ -304,7 +304,8 @@ namespace J3DRenderer.JStudio
 
                         // All vertices have now been loaded into the primitiveIndexes array. We can now convert them if needed
                         // to triangle lists, instead of triangle fans, strips, etc.
-                        var triangleList = ConvertTopologyToTriangles(type, primitiveVertices);
+                        //var triangleList = ConvertTopologyToTriangles(type, primitiveVertices);
+                        var triangleList = primitiveVertices; // Don't convert their topology during debugging it desyncs it with other tools for comparison.
                         for(int i = 0; i < triangleList.Count; i++)
                         {
                             shape.Indexes.Add(numVertexRead);

@@ -230,11 +230,13 @@ namespace J3DRenderer.JStudio
                     bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
                     ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
 
+                    Console.WriteLine("Vert: {0} matrixTableIndex: {1} isPartiallyWeighted: {2} indexFromDR1: {3}", i, matrixTableIndex, isPartiallyWeighted, indexFromDRW1);
                     // the indexFromDRW1 is definitely used to index into the EVP1Tag.InverseBindPose matrix array.
 
                     if (isPartiallyWeighted)
                     {
                         ushort numBonesAffecting = EVP1Tag.NumBoneInfluences[indexFromDRW1];
+                        Console.WriteLine("numBonesAffecting: {0}", numBonesAffecting);
 
                         // We need to figure out our offset into the arrays.
                         ushort firstBoneInfluence = 0;
@@ -267,6 +269,7 @@ namespace J3DRenderer.JStudio
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
                             float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
 
+                            Console.WriteLine("boneIndex: {0} boneWeight: {1}", boneIndex, boneWeight);
                             SkeletonJoint joint = skeletonCopy[boneIndex];
                             Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
                             finalTransform += (jointMtx * EVP1Tag.InverseBindPose[boneIndex] * boneWeight);
