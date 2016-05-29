@@ -101,7 +101,8 @@ namespace J3DRenderer.JStudio
 
                         Vector3 worldPos = parentJoint.Translation +  Vector3.Transform(joint.Translation, parentJoint.Rotation);
                         Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
-                        Matrix4 bindPose = Matrix4.CreateTranslation(worldPos) * Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale);
+                        //Matrix4 bindPose = Matrix4.CreateTranslation(worldPos) * Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale);
+                        Matrix4 bindPose = Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale) * Matrix4.CreateTranslation(worldPos);
                         joint.InverseBindPose = bindPose.Inverted();
                         joint.BindPose = bindPose;
 

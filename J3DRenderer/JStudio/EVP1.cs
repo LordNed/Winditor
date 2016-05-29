@@ -11,7 +11,7 @@ namespace J3DRenderer.JStudio
         public List<byte> NumBoneInfluences;
         public List<ushort> IndexRemap;
         public List<float> WeightList;
-        public List<Matrix3x4> InverseBindPose;
+        public List<Matrix4> InverseBindPose;
 
         public void LoadEVP1FromStream(EndianBinaryReader reader, long tagStart)
         {
@@ -27,7 +27,7 @@ namespace J3DRenderer.JStudio
             NumBoneInfluences = new List<byte>();
             IndexRemap = new List<ushort>();
             WeightList = new List<float>();
-            InverseBindPose = new List<Matrix3x4>();
+            InverseBindPose = new List<Matrix4>();
 
             // How many bones influence the given index
             reader.BaseStream.Position = tagStart + boneInfluenceCountOffset;
@@ -66,7 +66,7 @@ namespace J3DRenderer.JStudio
                         matrix[j, k] = reader.ReadSingle();
                 }
 
-                InverseBindPose.Add(matrix);
+                InverseBindPose.Add(new Matrix4(matrix.Row0, matrix.Row1, matrix.Row2, new Vector4(0, 0, 0, 1)));
             }
         }
     }

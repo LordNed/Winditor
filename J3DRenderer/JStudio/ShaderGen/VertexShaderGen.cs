@@ -119,7 +119,7 @@ namespace J3DRenderer.ShaderGen
             // material color comes from the Vertex Color, or from the Material Register. If the channel is enabled, then lighting needs to be computed for each light
             // enabled in the light_mask.
             stream.AppendFormat("\t// {0} Channel Controller(s).\n", data.NumChannelControls[mat.NumChannelControlsIndex]);
-            stream.AppendLine("vec4 ambColor;\nvec4 matColor;\nvec4 lightAccum;\nvec4 lightFunc;");
+            stream.AppendLine("vec4 ambColor = vec4(1,1,1,1);\nvec4 matColor = vec4(1,1,1,1);\nvec4 lightAccum = vec4(0,0,0,0);\nvec4 lightFunc;");
             stream.AppendLine("vec3 ldir; float dist; float dist2; float attn;"); // Declaring these all anyways in case we use lighting.
             for (int i = 0; i < data.NumChannelControls[mat.NumChannelControlsIndex]; i++)
             {

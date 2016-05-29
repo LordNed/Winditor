@@ -228,7 +228,6 @@ namespace J3DRenderer.JStudio
                     // that much.
                     int firstMatrixTableEntry = shape.MatrixTable.Count;
                     reader.BaseStream.Position = tagStart + matrixTableOffset + (matrixFirstIndex * 0x2); /* 0x2 is the size of one Matrix Table entry */
-                    List<ushort> matrixTable = new List<ushort>();
                     for (int m = 0; m < matrixCount; m++)
                         shape.MatrixTable.Add(reader.ReadUInt16());
 
@@ -337,8 +336,10 @@ namespace J3DRenderer.JStudio
 
                             // We need to offset the triangle's PosMtxIndex, since we're storing all Matrix Tables
                             // in one list, instead of per-packet, so we offset the number (which would be relative
-                            // to the primitive) to be relative to the whole list instead. 
-                            if (tri.PosMtxIndex >= 0) shape.VertexData.PositionMatrixIndexes.Add(firstMatrixTableEntry + tri.PosMtxIndex);
+                            // to the primitive) to be relative to the whole list instead. This means we need to pre-divide
+                            // the index we get from the PMI - the PMI requires a division for some reason to not be OOB, and typically
+                            // we do it later, but when you do a global list you can't divide later.
+                            if (tri.PosMtxIndex >= 0) shape.VertexData.PositionMatrixIndexes.Add(firstMatrixTableEntry + (tri.PosMtxIndex/3));
                             else shape.VertexData.PositionMatrixIndexes.Add(firstMatrixTableEntry);
                         }
                     }

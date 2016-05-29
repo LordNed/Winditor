@@ -6,6 +6,7 @@ using WindEditor;
 using J3DRenderer.ShaderGen;
 using System.Runtime.InteropServices;
 using System;
+using System.Collections.Generic;
 
 namespace J3DRenderer.JStudio
 {
@@ -175,10 +176,132 @@ namespace J3DRenderer.JStudio
             m_viewMatrix = viewMatrix;
             m_projMatrix = projectionMatrix;
             m_modelMatrix = modelMatrix;
-            m_lineBatcher.Tick(1 / 60f);
             m_lineBatcher.Render(viewMatrix, projectionMatrix);
+            m_lineBatcher.Tick(1 / 60f);
 
-            //RenderMeshRecursive(INF1Tag.HierarchyRoot);
+            SkeletonJoint[] skeletonCopy = new SkeletonJoint[JNT1Tag.Joints.Count];
+            for(int i = 0; i < skeletonCopy.Length; i++)
+            {
+                skeletonCopy[i] = new SkeletonJoint();
+                skeletonCopy[i].Translation = JNT1Tag.Joints[i].Translation;
+                skeletonCopy[i].Rotation = JNT1Tag.Joints[i].Rotation;
+                skeletonCopy[i].ParentId = JNT1Tag.Joints[i].ParentId;
+                skeletonCopy[i].Scale = JNT1Tag.Joints[i].Scale;
+                skeletonCopy[i].Name = JNT1Tag.Joints[i].Name;
+                skeletonCopy[i].BindPose = JNT1Tag.Joints[i].BindPose;
+            }
+
+            for(int i = 0; i < skeletonCopy.Length; i++)
+            {
+                SkeletonJoint joint = skeletonCopy[i];
+                if(joint.ParentId >= 0)
+                {
+                    SkeletonJoint parentJoint = skeletonCopy[joint.ParentId];
+
+                    Vector3 worldPos = parentJoint.Translation + Vector3.Transform(joint.Translation, parentJoint.Rotation);
+                    Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
+
+                    joint.Translation = worldPos;
+                    joint.Rotation = worldRot;
+                    joint.BindPose = Matrix4.CreateTranslation(worldPos) * Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale);
+
+
+                    skeletonCopy[i] = joint;
+                    m_lineBatcher.DrawLine(parentJoint.Translation, joint.Translation, WLinearColor.Blue, 0, 1);
+                }
+            }
+
+            foreach (var shape in SHP1Tag.Shapes)
+            {
+                var transformedVerts = new List<Vector3>(shape.VertexData.Position);
+                for(int i = 0; i < shape.VertexData.PositionMatrixIndexes.Count; i++)
+                {
+                    ushort posMtxIndex = (ushort)(shape.VertexData.PositionMatrixIndexes[i]);
+                    ushort matrixTableIndex = shape.MatrixTable[posMtxIndex];
+
+
+                    // If the Matrix Table index is 0xFFFF then it means "use previous", and we have to
+                    // continue backwards until it is no longer 0xFFFF.
+                    while(matrixTableIndex == 0xFFFF)
+                    {
+                        posMtxIndex--;
+                        matrixTableIndex = shape.MatrixTable[posMtxIndex];
+                    }
+
+                    //ushort drw1RemapTable = DRW1Tag.Indexes[matrixTableIndex]; 
+
+                    bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
+                    ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
+
+                    if (isPartiallyWeighted)
+                    {
+                        // BMDView2:
+                        //for (size_t r = 0; r < mm.weights.size(); ++r)
+                        //{
+                        //    const Matrix44f&sm1 = bmd.evp1.matrices[mm.indices[r]];
+                        //    const Matrix44f&sm2 = localMatrix(mm.indices[r], bmd);
+                        //    mad(m, sm2 * sm1, mm.weights[r]);
+                        //}
+                        #region no_code_here
+                        //ushort numBonesAffecting = EVP1Tag.NumBoneInfluences[indexFromDRW1];
+
+                        //// We need to figure out our offset into the arrays.
+                        //ushort firstBoneInfluence = 0;
+                        //for (ushort e = 0; e < indexFromDRW1; e++)
+                        //{
+                        //    firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
+                        //}
+
+                        //Vector4 newVertPos = Vector4.Zero;
+                        //for(ushort b = 0; b < numBonesAffecting; b++)
+                        //{
+                        //    ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
+                        //    float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
+                        //    SkeletonJoint joint = skeletonCopy[boneIndex];
+                        //    Matrix3x4 invBindPose = EVP1Tag.InverseBindPose[boneIndex];
+                        //    Matrix4 invBindPose4 = new Matrix4(invBindPose.Row0, invBindPose.Row1, invBindPose.Row2, new Vector4(0, 0, 0, 1));
+
+                        //    newVertPos += Vector4.Transform(new Vector4(transformedVerts[i], 1f), invBindPose4.Inverted()) * boneWeight;
+                        //}
+
+
+                        //transformedVerts[i] = new Vector3(newVertPos.X / newVertPos.W, newVertPos.Y / newVertPos.W, newVertPos.Z / newVertPos.W);
+
+                        //Matrix4 finalTransform = Matrix4.Identity;
+                        //for (ushort b = 0; b < numBonesAffecting; b++)
+                        //{
+
+
+                        //    Matrix3x4 invBindPose = EVP1Tag.InverseBindPose[boneIndex];
+                        //    Matrix4 invBindPose4 = new Matrix4(invBindPose.Row0, invBindPose.Row1, invBindPose.Row2, new Vector4(0, 0, 0, 1));
+                        //    SkeletonJoint joint = skeletonCopy[boneIndex];
+                        //    Matrix4 newTransform = Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation) * invBindPose4;
+                        //    finalTransform = Matrix4.Mult(newTransform, boneWeight) * finalTransform;
+                        //}
+
+                        //Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
+                        ////transformedVerts[i] = transformedVertPos;
+                        #endregion
+                    }
+                    else
+                    {
+                        // If the vertex is not weighted then we use a 1:1 movement with the bone matrix.
+                        SkeletonJoint joint = skeletonCopy[indexFromDRW1];
+                        Matrix4 finalTransform = Matrix4.CreateScale(joint.Scale) *  Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+
+                        Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
+                        transformedVerts[i] = transformedVertPos;
+                    }
+
+                    //Console.WriteLine("{0}: posMtxIndex: {1} drw1RemapTable: {2} isWeighted: {3}", i, posMtxIndex, drw1RemapTable, isWeighted);
+                }
+
+                // Re-upload to the GPU.
+                shape.OverrideVertPos = transformedVerts;
+                shape.UploadBuffersToGPU();
+            }
+
+            RenderMeshRecursive(INF1Tag.HierarchyRoot);
         }
 
         private void RenderMeshRecursive(HierarchyNode curNode)
@@ -265,6 +388,8 @@ namespace J3DRenderer.JStudio
             GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.CullFace);
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             SHP1.Shape shape = SHP1Tag.Shapes[SHP1Tag.ShapeRemapTable[index]];
             shape.Bind();
