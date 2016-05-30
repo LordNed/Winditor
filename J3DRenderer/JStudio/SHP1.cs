@@ -67,12 +67,11 @@ namespace J3DRenderer.JStudio
                 OverrideVertPos = new List<Vector3>();
 
                 m_glBufferIndexes = new int[15];
+                m_glIndexBuffer = GL.GenBuffer();
             }
 
             public void UploadBuffersToGPU()
             {
-                GL.GenBuffers(1, out m_glIndexBuffer);
-
                 // Upload the Indexes
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);
                 GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * Indexes.Count), Indexes.ToArray(), BufferUsageHint.StaticDraw);
