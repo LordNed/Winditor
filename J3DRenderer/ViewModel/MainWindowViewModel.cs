@@ -5,6 +5,7 @@ using System.IO;
 using J3DRenderer.JStudio;
 using GameFormatReader.Common;
 using System.ComponentModel;
+using J3DRenderer.JStudio.Animation;
 
 namespace J3DRenderer
 {
@@ -24,7 +25,8 @@ namespace J3DRenderer
         private int m_viewportHeight;
         private int m_viewportWidth;
         private JStudio3D m_model;
-
+        private BCK m_testAnim;
+        private float m_timeSinceStartup;
 
         public MainWindowViewModel()
         {
@@ -47,6 +49,10 @@ namespace J3DRenderer
             m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/ba.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
+
+             m_testAnim = new BCK();
+            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/wait02.bck"), Endian.Big));
+
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -86,6 +92,11 @@ namespace J3DRenderer
             m_dtStopwatch.Restart();
 
             m_renderCamera.Tick(deltaTime);
+
+            deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
+
+            m_timeSinceStartup += deltaTime;
+            m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
