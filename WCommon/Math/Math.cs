@@ -85,5 +85,10 @@ namespace WindEditor
             intersectionDistance = tNear;
             return true;
         }
+
+        public static int Floor(float val)
+        {
+            return (int)Math.Floor(val);
+        }
     }
 }
