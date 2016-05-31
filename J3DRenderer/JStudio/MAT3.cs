@@ -252,8 +252,7 @@ namespace J3DRenderer.JStudio
 
                 material.TexGenInfoIndexes = new short[8];
                 for (int i = 0; i < material.TexGenInfoIndexes.Length; i++)
-
-                        material.TexGenInfoIndexes[i] = reader.ReadInt16();
+                    material.TexGenInfoIndexes[i] = reader.ReadInt16();
 
                 material.PostTexGenInfoIndexes = new short[8];
                 for (int i = 0; i < material.PostTexGenInfoIndexes.Length; i++)
@@ -261,7 +260,7 @@ namespace J3DRenderer.JStudio
 
                 material.TexMatrixIndexes = new short[10];
                 for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
-                        material.TexMatrixIndexes[i] = reader.ReadInt16();
+                    material.TexMatrixIndexes[i] = reader.ReadInt16();
 
                 material.PostTexMatrixIndexes = new short[20];
                 for (int i = 0; i < material.PostTexMatrixIndexes.Length; i++)

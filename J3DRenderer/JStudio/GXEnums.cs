@@ -82,6 +82,12 @@ namespace J3DRenderer.JStudio
         Divide_2 = 3
     }
 
+    /// <summary>
+    /// GXSetTevColorIn(GXTevStageID stage, GXTevColorArg a, GXTevColorArg b, GXTevColorArg c, GXTevColorArg d)
+    /// Defines the color input source to a TEV Stage, allowing the TEV Stage to choose
+    /// between constant (register) colors/alphas, rasterized color/alpha (per-vertex lighting 
+    /// result) and pre-defined constants.
+    /// </summary>
     public enum GXCombineColorInput
     {
         ColorPrev = 0,  // ! < Use Color Value from previous TEV stage
@@ -98,10 +104,15 @@ namespace J3DRenderer.JStudio
         RasAlpha = 11,  // ! < Use the alpha value from rasterizer
         One = 12,
         Half = 13,
-        Konst = 14,
+        Konst = 14, // ToDo: Is this GX_CC_QUARTER?
         Zero = 15       // 
+            // ToDo: Is this missing GX_CC_TEXRRR, GX_CC_TEXGGG, GX_CC_TEXBBBB?
     }
 
+    /// <summary>
+    /// GXSetTevAlphaIn(GXTevStageID stage, GXTevAlphaArg a, GXTevAlphaArg b, GXTevAlphaArg c, GXTevAlphaArg d)
+    /// Defines the alpha input source for a TEV stage, allowing the TEV stage to choose different alpha sources.
+    /// </summary>
     public enum GXCombineAlphaInput
     {
         AlphaPrev = 0,  // Use the Alpha value form the previous TEV stage
@@ -110,7 +121,7 @@ namespace J3DRenderer.JStudio
         A2 = 3,         // Use the Alpha value from the Color/Output Register 2
         TexAlpha = 4,   // Use the Alpha value from the Texture
         RasAlpha = 5,   // Use the Alpha value from the rasterizer
-        Konst = 6,
+        Konst = 6,      // ToDO: Is this GX_CA_ONE?
         Zero = 7
     }
 
@@ -333,4 +344,5 @@ namespace J3DRenderer.JStudio
         None = 0,
         Top = 1
     }*/
+
 }

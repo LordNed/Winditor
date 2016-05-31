@@ -15,18 +15,141 @@ namespace J3DRenderer.ShaderGen
         private static readonly string[] m_tevAOutputTable = new[] { "prev.a", "c0.a", "c1.a", "c2.a" };
         private static string[] m_tevOutputRegs = new[]
         {
-            "result",
+            "prev",
             "color0",
             "color1",
             "color2"
         };
 
+        /// <summary>
+        /// See <see cref="GXColorChannelId"/>
+        /// </summary>
+        private static string[] m_tevRasTable = new[]
+        {
+            "col0",                                             // Color0
+            "col1",                                             // Color1
+            "ERROR13",                                          // Alpha0 (Not Valid?)
+            "ERROR14",                                          // Alpha1 (Not Valid?)
+            "col0",                                             // Color0A0
+            "col1",                                             // Color0A1
+            "vec4(0,0,0,0)",                                    // Zero
+            "(vec4(1,1,1,1) * alphabump)",                      // Bump Alpha (0...248)
+            "(vec4(1,1,1,1) * (alphabump | (alphabump >> 5)))", // Normalized Bump Alpha (0..255)
+        };
+
+        /// <summary>
+        /// See <see cref="GXKonstColorSel"/>
+        /// </summary>
+        private static string[] m_tevKSelTableC = new[]
+        {
+            "255,255,255",      // 1   = 0x00
+	        "223,223,223",      // 7_8 = 0x01
+	        "191,191,191",      // 3_4 = 0x02
+	        "159,159,159",      // 5_8 = 0x03
+	        "128,128,128",      // 1_2 = 0x04
+	        "96,96,96",         // 3_8 = 0x05
+	        "64,64,64",         // 1_4 = 0x06
+	        "32,32,32",         // 1_8 = 0x07
+	        "0,0,0",            // Invalid = 0x08
+	        "0,0,0",            // Invalid = 0x09
+	        "0,0,0",            // Invalid = 0x0a
+	        "0,0,0",            // Invalid = 0x0b
+	        "kColor[0].rgb",    // K0 = 0x0C
+	        "kColor[1].rgb",    // K1 = 0x0D
+	        "kColor[2].rgb",    // K2 = 0x0E
+	        "kColor[3].rgb",    // K3 = 0x0F
+	        "kColor[0].rrr",    // K0_R = 0x10
+	        "kColor[1].rrr",    // K1_R = 0x11
+	        "kColor[2].rrr",    // K2_R = 0x12
+	        "kColor[3].rrr",    // K3_R = 0x13
+	        "kColor[0].ggg",    // K0_G = 0x14
+	        "kColor[1].ggg",    // K1_G = 0x15
+	        "kColor[2].ggg",    // K2_G = 0x16
+	        "kColor[3].ggg",    // K3_G = 0x17
+	        "kColor[0].bbb",    // K0_B = 0x18
+	        "kColor[1].bbb",    // K1_B = 0x19
+	        "kColor[2].bbb",    // K2_B = 0x1A
+	        "kColor[3].bbb",    // K3_B = 0x1B
+	        "kColor[0].aaa",    // K0_A = 0x1C
+	        "kColor[1].aaa",    // K1_A = 0x1D
+	        "kColor[2].aaa",    // K2_A = 0x1E
+	        "kColor[3].aaa",    // K3_A = 0x1F
+        };
+
+        private static string[] m_tevKSelTableA = new[]
+        {
+            "255",              // 1   = 0x00
+	        "223",              // 7_8 = 0x01
+	        "191",              // 3_4 = 0x02
+	        "159",              // 5_8 = 0x03
+	        "128",              // 1_2 = 0x04
+	        "96",               // 3_8 = 0x05
+	        "64",               // 1_4 = 0x06
+	        "32",               // 1_8 = 0x07
+	        "0",                // Invalid = 0x08
+	        "0",                // Invalid = 0x09
+	        "0",                // Invalid = 0x0a
+	        "0",                // Invalid = 0x0b
+	        "0",                // Invalid = 0x0c
+	        "0",                // Invalid = 0x0d
+	        "0",                // Invalid = 0x0e
+	        "0",                // Invalid = 0x0f
+	        "kColor[0].r",      // K0_R = 0x10
+	        "kColor[1].r",      // K1_R = 0x11
+	        "kColor[2].r",      // K2_R = 0x12
+	        "kColor[3].r",      // K3_R = 0x13
+	        "kColor[0].g",      // K0_G = 0x14
+	        "kColor[1].g",      // K1_G = 0x15
+	        "kColor[2].g",      // K2_G = 0x16
+	        "kColor[3].g",      // K3_G = 0x17
+	        "kColor[0].b",      // K0_B = 0x18
+	        "kColor[1].b",      // K1_B = 0x19
+	        "kColor[2].b",      // K2_B = 0x1A
+	        "kColor[3].b",      // K3_B = 0x1B
+	        "kColor[0].a",      // K0_A = 0x1C
+	        "kColor[1].a",      // K1_A = 0x1D
+	        "kColor[2].a",      // K2_A = 0x1E
+	        "kColor[3].a",      // K3_A = 0x1F
+        };
+
+        private static string[] m_tevCInputTable = new[]
+        {
+            "prev.rgb",          // CPREV
+	        "prev.aaa",          // APREV
+	        "c0.rgb",            // C0
+	        "c0.aaa",            // A0
+	        "c1.rgb",            // C1
+	        "c1.aaa",            // A1
+	        "c2.rgb",            // C2
+	        "c2.aaa",            // A2
+	        "textemp.rgb",       // TEXC
+	        "textemp.aaa",       // TEXA
+	        "rastemp.rgb",       // RASC
+	        "rastemp.aaa",       // RASA
+	        "vec3(255,255,255)", // ONE
+	        "vec3(128,128,128)", // HALF
+	        "konsttemp.rgb",     // KONST
+	        "vec3(0,0,0)",       // ZERO
+        };
+
+        private static string[] m_tevAInputTable = new []
+        {
+            "prev.a",           // APREV
+	        "c0.a",             // A0
+	        "c1.a",             // A1
+	        "c2.a",             // A2
+	        "textemp.a",        // TEXA
+	        "rastemp.a",        // RASA
+	        "konsttemp.a",      // KONST
+	        "0",                // ZERO
+        };
 
         public static string GenerateFragmentShader(Material mat, MAT3 data)
         {
             StringBuilder stream = new StringBuilder();
 
             // Shader Header
+            stream.AppendLine("// Automatically Generated File. All changes will be lost.");
             stream.AppendLine("#version 330 core");
             stream.AppendLine();
 
@@ -37,118 +160,51 @@ namespace J3DRenderer.ShaderGen
             if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Normal))
                 stream.AppendLine("in vec3 Normal;");
 
-            for (int i = 0; i < data.NumChannelControls[mat.NumChannelControlsIndex]; i++)
-                stream.AppendLine(string.Format("in vec4 Color{0};", i));
+            //for (int i = 0; i < data.NumChannelControls[mat.NumChannelControlsIndex]; i++)
+            stream.AppendLine("in vec4 colors_0;");
+            stream.AppendLine("in vec4 colors_1;");
 
             for (int texGen = 0; texGen < data.NumTexGens[mat.NumTexGensIndex]; texGen++)
                 stream.AppendLine(string.Format("in vec3 TexGen{0};", texGen));
 
             stream.AppendLine();
 
-            // Final Output
-            stream.AppendLine("// Final Output");
-            stream.AppendLine("out vec4 PixelColor;");
 
             // Texture Inputs
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 stream.AppendFormat("uniform sampler2D Texture{0};\n", i);
             }
 
+            stream.AppendLine("layout(std140) uniform PSBlock\n{");
+            stream.AppendLine(
+                "\tvec4 color[4];\n" +
+                "\tvec4 kColor[4];\n" +
+                "};");
+
+            // Final Output
+            stream.AppendLine("// Final Output");
+            stream.AppendLine("out vec4 PixelColor;\n\n");
+
             // Main Function
-            stream.AppendLine("void main()");
-            stream.AppendLine("{");
+            stream.AppendLine("void main()\n{\n");
+            stream.Append("\tvec4 c0 = color[1], c1 = color[2], c2 = color[3], prev = color[0];\n" +
+                        "\tvec4 rastemp = vec4(0,0,0,0), textemp = vec4(0,0,0,0), konsttemp = vec4(0,0,0,0);\n" +
+                        "\tvec3 comp16 = vec3(1, 256, 0), comp24 = vec3(1, 256, 256*256);\n" + // Uhh
+                        "\tfloat alphabump=0;\n" +
+                        "\tvec3 tevcoord=vec3(0,0,0);\n" +
+                        //"\tvec2 wrappedcoord=vec2(0,0), tempcoord=vec2(0,0);\n" +
+                        "\tvec4 tevin_a = vec4(0, 0, 0, 0), tevin_b = vec4(0, 0, 0, 0), tevin_c = vec4(0, 0, 0, 0), tevin_d = vec4(0, 0, 0, 0);\n");
 
-            // Default initial values of the TEV registers.
-            // ToDo: Does this need swizzling? themikelester has it marked as mat.registerColor[i==0?3:i-1]]
-            stream.AppendLine("    // Initial TEV Register Values");
-            for (int i = 0; i < 4; i++)
-            {
-                var tevColor = data.TevColors[mat.TevColorIndexes[i]];
-                stream.AppendLine(string.Format("    vec4 {0} = vec4({1}, {2}, {3}, {4});", m_tevOutputRegs[i], tevColor.R, tevColor.G, tevColor.B, tevColor.A));
-            }
+            // Cannot assign to input variables in GLSL so we copy them to a local instance instead.
+            stream.AppendFormat("\tvec4 col0 = colors_0;\n");
+            stream.AppendFormat("\tvec4 col1 = colors_1;\n");
             stream.AppendLine();
 
-            // Constant Color Registers
-            stream.AppendLine("    // Konst TEV Colors");
-            for (int i = 0; i < 4; i++)
-            {
-                var konstColor = data.TevKonstColors[mat.TevKonstColorIndexes[i]];
-                stream.AppendLine(string.Format("    vec4 konst{0} = vec4({1}, {2}, {3}, {4});", i, konstColor.R, konstColor.G, konstColor.B, konstColor.A));
-            }
-            stream.AppendLine();
 
-            // Texture Samples
-            bool[] oldCombos = new bool[256];
-            for (int i = 0; i < data.NumTevStages[mat.NumTevStagesIndex];  i++)
-            {
-                TevOrder order = data.TevOrderInfos[mat.TevOrderInfoIndexes[i]];
-                int tex = order.TexMap;
-                GXTexCoordSlot coord = order.TexCoordId;
-
-                // This TEV probably doesn't use textures.
-                if (tex == 0xFF || coord == GXTexCoordSlot.Null)
-                    continue;
-
-                if (IsNewTexCombo(tex, (int)coord, oldCombos))
-                {
-                    string swizzle = ""; // Uhh I don't know if we need to swizzle since everyone's been converted into ARGB
-                    stream.AppendLine(string.Format("    vec4 texCol{0} = texture(Texture{0}, TexGen{1}.xy){2};", tex, (int)coord, swizzle));
-                }
-            }
-            stream.AppendLine();
-
-            // ToDo: Implement indirect texturing.
-            stream.AppendLine("    // TEV Stages");
-            stream.AppendLine();
-            stream.AppendLine();
-
+            // Write up to 16 TEV Stage Operations
             for (int i = 0; i < data.NumTevStages[mat.NumTevStagesIndex]; i++)
-            {
-                stream.AppendLine(string.Format("    // TEV Stage {0}", i));
-                TevOrder order = data.TevOrderInfos[mat.TevOrderInfoIndexes[i]];
-                TevStage stage = data.TevStageInfos[mat.TevStageInfoIndexes[i]];
-
-                TevSwapMode swap = data.TevSwapModeInfos[mat.TevSwapModeIndexes[i]];
-                TevSwapModeTable rasTable = data.TevSwapModeTables[swap.RasSel];
-                TevSwapModeTable texTable = data.TevSwapModeTables[swap.TexSel];
-
-                // There's swapping involved in the ras table.
-                stream.AppendLine(string.Format("    // Rasterization Swap Table: {0}", rasTable));
-                if (!(rasTable.R == 0 && rasTable.G == 1 && rasTable.B == 2 && rasTable.A == 3))
-                {
-                    stream.AppendLine(string.Format("    {0} = {1}{2};", GetVertColorString(order), GetVertColorString(order), GetSwapModeSwizzleString(rasTable)));
-                }
-                stream.AppendLine();
-
-
-                // There's swapping involved in the texture table.
-                stream.AppendLine(string.Format("    // Texture Swap Table: {0}", texTable));
-                if (!(texTable.R == 0 && texTable.G == 1 && texTable.B == 2 && texTable.A == 3))
-                {
-                    stream.AppendLine(string.Format("    {0} = {1}{2};", GetTexTapString(order), GetTexTapString(order), GetSwapModeSwizzleString(rasTable)));
-                }
-                stream.AppendLine();
-
-                string[] colorInputs = new string[4];
-                colorInputs[0] = GetColorInString(stage.ColorIn[0], mat.KonstColorSelectorIndexes[i], order);
-                colorInputs[1] = GetColorInString(stage.ColorIn[1], mat.KonstColorSelectorIndexes[i], order);
-                colorInputs[2] = GetColorInString(stage.ColorIn[2], mat.KonstColorSelectorIndexes[i], order);
-                colorInputs[3] = GetColorInString(stage.ColorIn[3], mat.KonstColorSelectorIndexes[i], order);
-
-                stream.AppendLine("    // Color and Alpha Operations");
-                stream.AppendLine(string.Format("    {0}", GetColorOpString(stage.ColorOp, stage.ColorBias, stage.ColorScale, stage.ColorClamp, stage.ColorRegId, colorInputs)));
-
-                string[] alphaInputs = new string[4];
-                alphaInputs[0] = GetAlphaInString(stage.AlphaIn[0], mat.KonstAlphaSelectorIndexes[i], order);
-                alphaInputs[1] = GetAlphaInString(stage.AlphaIn[1], mat.KonstAlphaSelectorIndexes[i], order);
-                alphaInputs[2] = GetAlphaInString(stage.AlphaIn[2], mat.KonstAlphaSelectorIndexes[i], order);
-                alphaInputs[3] = GetAlphaInString(stage.AlphaIn[3], mat.KonstAlphaSelectorIndexes[i], order);
-
-                stream.AppendLine(string.Format("    {0}", GetAlphaOpString(stage.AlphaOp, stage.AlphaBias, stage.AlphaScale, stage.AlphaClamp, stage.AlphaRegId, alphaInputs)));
-                stream.AppendLine();
-            }
-            stream.AppendLine();
+                WriteStage(stream, i, mat, data);
 
             // Alpha Compare
             stream.AppendLine("    // Alpha Compare Test");
@@ -174,16 +230,209 @@ namespace J3DRenderer.ShaderGen
 
             // clip equivelent
             stream.AppendLine("    // Alpha Compare (Clip)");
-            stream.AppendLine(string.Format("    if{0}\n\t\tdiscard;", ifContents));
+            stream.AppendLine(string.Format("\tif{0}\n\t\tdiscard;", ifContents));
 
             //string output = "PixelColor = texCol0" + (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Color0) ? " * Color0;" : ";");
             //stream.AppendLine(output);
-            stream.AppendLine(string.Format("    PixelColor = {0};", m_tevOutputRegs[0]));
+            stream.AppendLine("\tPixelColor = prev;");
 
             stream.AppendLine("}");
             stream.AppendLine();
 
             return stream.ToString();
+        }
+
+        private static void WriteStage(StringBuilder stream, int stageIndex, Material mat, MAT3 data)
+        {
+            // Basic TEV Operation:
+            // Inputs: [0 <= A, B, C <= 255] [-1024 <= D <= 1023]
+            // Lerp between A and B using C as the interpolation factor. Optionally negate the result 
+            // using op. Input D and a bias (0, +0.5, -0.5) are added to the result. Then a constant
+            // scale (1, 2, 4, 0.5) is applied. Result is optionally clamped before being written to 
+            // an output buffer. 
+
+            TevStage tevStage = data.TevStageInfos[mat.TevStageInfoIndexes[stageIndex]];
+            TevOrder tevOrder = data.TevOrderInfos[mat.TevOrderInfoIndexes[stageIndex]];
+            stream.AppendFormat("\t// TEV Stage {0}\n", stageIndex);
+            stream.AppendFormat("\t// Unknown0: {0} ColorInA: {1} ColorInB: {2} ColorInC: {3} ColorInD: {4} ColorOp: {5} ColorBias: {6} ColorScale: {7} ColorClamp: {8} ColorRegId: {9}\n", tevStage.Unknown0, tevStage.ColorIn[0], tevStage.ColorIn[1], tevStage.ColorIn[2], tevStage.ColorIn[3], tevStage.ColorOp, tevStage.ColorBias, tevStage.ColorScale, tevStage.ColorClamp, tevStage.ColorRegId);
+            stream.AppendFormat("\t// AlphaInA: {0} AlphaInB: {1} AlphaInC: {2} AlphaInD: {3} AlphaOp: {4} AlphaBias: {5} AlphaScale: {6} AlphaClamp: {7} AlphaRegId: {8} Unknown1: {9}\n", tevStage.AlphaIn[0], tevStage.AlphaIn[1], tevStage.AlphaIn[2], tevStage.AlphaIn[3], tevStage.AlphaOp, tevStage.AlphaBias, tevStage.AlphaScale, tevStage.AlphaClamp, tevStage.AlphaRegId, tevStage.Unknown1);
+            stream.AppendFormat("\t// Tev Order TexCoordId: {0} TexMap: {1} ChannelId: {2}\n", tevOrder.TexCoordId, tevOrder.TexMap, tevOrder.ChannelId);
+
+            TevSwapMode swapMode = data.TevSwapModeInfos[mat.TevSwapModeIndexes[stageIndex]];
+            TevSwapModeTable rasSwapTable = data.TevSwapModeTables[swapMode.RasSel];
+            TevSwapModeTable texSwapTable = data.TevSwapModeTables[swapMode.TexSel];
+            stream.AppendFormat("\t// TEV Swap Mode: RasSel: {0} TexSel: {1}\n", swapMode.RasSel, swapMode.TexSel);
+            stream.AppendFormat("\t// Ras Swap Table: R: {0} G: {1} B: {2} A: {3}\n", rasSwapTable.R, rasSwapTable.G, rasSwapTable.B, rasSwapTable.A);
+            stream.AppendFormat("\t// Tex Swap Table: R: {0} G: {1} B: {2} A: {3}\n", texSwapTable.R, texSwapTable.G, texSwapTable.B, texSwapTable.A);
+
+            int texcoord = (int)tevOrder.TexCoordId;
+            bool bHasTexCoord = (int)tevOrder.TexCoordId < data.NumTexGens[mat.NumTexGensIndex];
+
+            // Build a Swap Mode for swapping texture color input/rasterized color input to the TEV Stage.
+            string[] swapModeTable = new string[4];
+            string swapColors = "rgba";
+            for (int i = 0; i < 4; i++)
+            {
+                char[] swapTable = new char[4];
+
+                swapTable[0] = swapColors[rasSwapTable.R];
+                swapTable[1] = swapColors[rasSwapTable.G];
+                swapTable[2] = swapColors[rasSwapTable.B];
+                swapTable[3] = swapColors[rasSwapTable.A];
+                swapModeTable[i] = new string(swapTable);
+            }
+
+
+            // ToDo: Implement Indirect Stages
+
+            // If our TEV Stage uses rasterized alpha or color inputs
+            if (tevStage.ColorIn[0] == GXCombineColorInput.RasAlpha || tevStage.ColorIn[0] == GXCombineColorInput.RasColor ||
+                tevStage.ColorIn[1] == GXCombineColorInput.RasAlpha || tevStage.ColorIn[1] == GXCombineColorInput.RasColor ||
+                tevStage.ColorIn[2] == GXCombineColorInput.RasAlpha || tevStage.ColorIn[2] == GXCombineColorInput.RasColor ||
+                tevStage.ColorIn[3] == GXCombineColorInput.RasAlpha || tevStage.ColorIn[3] == GXCombineColorInput.RasColor ||
+                tevStage.AlphaIn[0] == GXCombineAlphaInput.RasAlpha || tevStage.AlphaIn[1] == GXCombineAlphaInput.RasAlpha ||
+                tevStage.AlphaIn[2] == GXCombineAlphaInput.RasAlpha || tevStage.AlphaIn[3] == GXCombineAlphaInput.RasAlpha)
+            {
+                stream.AppendFormat("\t// TEV Swap Mode\n");
+                stream.AppendFormat("\trastemp = {0}.{1};\n", m_tevRasTable[(int)tevOrder.ChannelId], swapModeTable[rasSwapTable.A]); // ToDo: No idea if this works.
+            }
+
+            if(tevOrder.TexCoordId != GXTexCoordSlot.Null)
+            {
+                int texmap = tevOrder.TexMap;
+                if(true /* !bHasIndStage*/)
+                {
+                    if (bHasTexCoord)
+                        stream.AppendFormat("\ttevcoord.xy = TexGen{0}.xy;\n", texcoord);
+                    else
+                        stream.AppendFormat("\ttevcoord.xy = vec2(0, 0);\n"); 
+                }
+
+                string texswap = swapModeTable[rasSwapTable.A]; // Again, no idea if this works.
+
+                stream.Append("\ttextemp = ");
+                SampleTexture(stream, "vec2(tevcoord.xy)", texswap, texmap);
+            }
+            else
+            {
+                stream.AppendFormat("\ttextemp = vec4(1,1,1,1); // tevOrder specified no texture!\n");
+            }
+
+            if(tevStage.ColorIn[0] == GXCombineColorInput.Konst || tevStage.ColorIn[1] == GXCombineColorInput.Konst ||
+               tevStage.ColorIn[2] == GXCombineColorInput.Konst || tevStage.ColorIn[3] == GXCombineColorInput.Konst ||
+               tevStage.AlphaIn[0] == GXCombineAlphaInput.Konst || tevStage.AlphaIn[1] == GXCombineAlphaInput.Konst ||
+               tevStage.AlphaIn[2] == GXCombineAlphaInput.Konst || tevStage.AlphaIn[3] == GXCombineAlphaInput.Konst)
+            {
+                GXKonstColorSel kc = mat.KonstColorSelectorIndexes[stageIndex];
+                GXKonstAlphaSel ka = mat.KonstAlphaSelectorIndexes[stageIndex];
+                stream.AppendFormat("\t// KonstColorSel: {0} KonstAlphaSel: {1}\n", kc, ka);
+                stream.AppendFormat("\tkonsttemp = vec4({0}, {1});\n", m_tevKSelTableC[(int)kc], m_tevKSelTableA[(int)ka]);
+            }
+
+            stream.AppendFormat("\ttevin_a = vec4({0}, {1});\n", m_tevCInputTable[(int)tevStage.ColorIn[0]], m_tevAInputTable[(int)tevStage.AlphaIn[0]]);
+            stream.AppendFormat("\ttevin_b = vec4({0}, {1});\n", m_tevCInputTable[(int)tevStage.ColorIn[1]], m_tevAInputTable[(int)tevStage.AlphaIn[1]]);
+            stream.AppendFormat("\ttevin_c = vec4({0}, {1});\n", m_tevCInputTable[(int)tevStage.ColorIn[2]], m_tevAInputTable[(int)tevStage.AlphaIn[2]]);
+            stream.AppendFormat("\ttevin_d = vec4({0}, {1});\n", m_tevCInputTable[(int)tevStage.ColorIn[3]], m_tevAInputTable[(int)tevStage.AlphaIn[3]]);
+
+            // COLOR COMBINER
+            stream.AppendFormat("\t// Color Combine\n");
+            stream.AppendFormat("\t{0} = clamp(", m_tevCOutputTable[tevStage.ColorRegId]);
+            if(tevStage.ColorOp == GXTevOp.Add || tevStage.ColorOp == GXTevOp.Sub)
+            {
+                WriteTevRegular(stream, "rgb", tevStage.ColorBias, tevStage.ColorOp, tevStage.ColorScale, tevStage.ColorClamp);
+            }
+            else
+            {
+                string[] opTable = new string[]
+                {
+                    "((tevin_a.r > tevin_b.r) ?  tevin_c.rgb : vec3(0,0,0))",                                // GXTevOp::Comp_R8_GT
+                    "((tevin_a.r == tevin_b.r) ? tevin_c.rgb : vec3(0,0,0))",                                // GXTevOp::Comp_R8_EQ
+                    "((dot(tevin_a.rgb, comp16) >  dot(tevin_b.rgb, comp16)) ? tevin_c.rgb : vec3(0,0,0))",  // GXTevOp::Comp_GR16_GT
+                    "((dot(tevin_a.rgb, comp16) == dot(tevin_b.rgb, comp16)) ? tevin_c.rgb : vec3(0,0,0))",  // GXTevOp::Comp_GR16_EQ
+                    "((dot(tevin_a.rgb, comp24) >  dot(tevin_b.rgb, comp24)) ? tevin_c.rgb : vec3(0,0,0))",  // GXTevOp::Comp_GR24_GT
+                    "((dot(tevin_a.rgb, comp24) == dot(tevin_b.rgb, comp24)) ? tevin_c.rgb : vec3(0,0,0))",  // GXTevOp::Comp_GR24_EQ
+                    "(max(sign(tevin_a.rgb - tevin_b.rgb), vec3(0,0,0)) * tevin_c.rgb)",                     // GXTevOp::Comp_RGB8_GT
+                    "((vec3(1,1,1) - sign(abs(tevin_a.rgb - tevin_b.rgb))) * tevin_c.rgb)",                  // GXTevOp::Comp_RGB8_EQ
+                };
+
+                int index = (int)tevStage.ColorOp - 8;
+                stream.AppendFormat("tevin_d.rgb + {0}", opTable[index]);
+            }
+
+            if (tevStage.ColorClamp)
+                stream.AppendFormat(", vec3(0,0,0), vec3(1,1,1))");
+            else
+                stream.AppendFormat(", vec3(-1024, -1024, -1024), vec3(1023, 1023, 1023))");
+            stream.AppendFormat(";\n");
+
+            // ALPHA COMBINER
+            stream.AppendFormat("\t// Alpha Combine\n");
+            stream.AppendFormat("\t{0} = clamp(", m_tevAOutputTable[tevStage.AlphaRegId]);
+            if (tevStage.AlphaOp == GXTevOp.Add || tevStage.AlphaOp == GXTevOp.Sub)
+            {
+                WriteTevRegular(stream, "a", tevStage.AlphaBias, tevStage.AlphaOp, tevStage.AlphaScale, tevStage.AlphaClamp);
+            }
+            else
+            {
+                string[] opTable = new string[]
+                {
+                    "((tevin_a.r > tevin_b.r) ?  tevin_c.a : 0)",                                   // GXTevOp::Comp_R8_GT
+                    "((tevin_a.r == tevin_b.r) ? tevin_c.a : 0)",                                   // GXTevOp::Comp_R8_EQ
+                    "((dot(tevin_a.rgb, comp16) >  dot(tevin_b.rgb, comp16)) ? tevin_c.a : 0)",     // GXTevOp::Comp_GR16_GT
+                    "((dot(tevin_a.rgb, comp16) == dot(tevin_b.rgb, comp16)) ? tevin_c.a : 0)",     // GXTevOp::Comp_GR16_EQ
+                    "((dot(tevin_a.rgb, comp24) >  dot(tevin_b.rgb, comp24)) ? tevin_c.a : 0)",     // GXTevOp::Comp_GR24_GT
+                    "((dot(tevin_a.rgb, comp24) == dot(tevin_b.rgb, comp24)) ? tevin_c.a : 0)",     // GXTevOp::Comp_GR24_EQ
+                    "((tevin_a.a >  tevin_b.a) ? tevin_c.a : 0)",                                   // GXTevOp::Comp_RGB8_GT
+                    "((tevin_a.a == tevin_b.a) ? tevin_c.a : 0)",                                   // GXTevOp::Comp_RGB8_EQ
+                };
+
+                int index = (int)tevStage.AlphaOp - 8;
+                stream.AppendFormat("tevin_d.a + {0}", opTable[index]);
+            }
+
+            if (tevStage.AlphaClamp)
+                stream.AppendFormat(", 0, 1)");
+            else
+                stream.AppendFormat(", -1024, 1023)");
+            stream.AppendFormat(";\n");
+            stream.AppendLine();
+        }
+
+        private static void SampleTexture(StringBuilder stream, string texCoords, string texSwap, int texMap)
+        {
+            stream.AppendFormat("texture(Texture{0}, {1}.xy).{2};\n", texMap, texCoords, texSwap);
+        }
+
+        private static void WriteTevRegular(StringBuilder stream, string components, GXTevBias bias, GXTevOp op, GXTevScale scale, bool clamp)
+        {
+            string[] tevScale = new[]
+            {
+                "* 1",      // GXTevScale::Scale_1
+                "* 2",      // GXTevScale::Scale_2
+                "* 4",      // GXTevScale::Scale_4
+                "* 0.5"     // GXTevScale::Divide_2
+            };
+
+            string[] tevBias = new[]
+            {
+                "",         // GXTevBias::Zero
+                " + 0.5",   // GXTevBias::AddHalf
+                " - 0.5",   // GXTevBias::SubHalf
+                ""
+            };
+
+            string[] tevOpTable = new[]
+            {
+                "+",    // GXTevOp::Add
+                "-",    // GXTevOp::Sub
+            };
+
+            // Regular TEV stage: ((d + bias) + lerp(a,b,c)) *scale
+            // lerp(a, b, c) op (d + bias) * scale
+            stream.AppendFormat("(mix(tevin_a.{0}, tevin_b.{0}, tevin_c.{0})", components); // lerp(a, b, c)
+            stream.AppendFormat(" {0} ", tevOpTable[(int)op]); // "+/-" (op)
+            stream.AppendFormat("(tevin_d.{0}{1})", components, tevBias[(int)bias]); // (d + bias)
+            stream.AppendFormat("{0})", tevScale[(int)scale]);
         }
 
         private static bool IsNewTexCombo(int texMap, int texCoordId, bool[] oldCombos)

@@ -40,11 +40,8 @@ namespace J3DRenderer.ShaderGen
             // TEV uses up to 4 channels to accumulate the result of Per-Vertex Lighting/Material/Ambient lighting.
             // Color0, Alpha0, Color1, and Alpha1 are the four possible channel names.
             stream.AppendFormat("// NumChannelControls: {0}\n", data.NumChannelControls[mat.NumChannelControlsIndex]);
-            for (int i = 0; i < data.NumChannelControls[mat.NumChannelControlsIndex]; i++)
-            {
-                bool isAlphaChannel = i % 2 != 0;
-                if (!isAlphaChannel) stream.AppendFormat("out vec3 Color{0};\n", i / 2); else stream.AppendFormat("out float Alpha{0};\n", i / 2);
-            }
+            stream.AppendFormat("out vec4 colors_0;\n");
+            stream.AppendFormat("out vec4 colors_1;\n");
             stream.AppendLine();
 
             // TEV can generate up to 16 (?) sets of Texture Coordinates by taking an incoming data value (UV, POS, NRM, BINRM, TNGT) and transforming it by a matrix.
@@ -78,7 +75,7 @@ namespace J3DRenderer.ShaderGen
                 "};\n" +
                 "\n" +
                 "layout(std140) uniform LightBlock\n" +
-                "{\n GXLight Lights[8];\n};\n"
+                "{\n\tGXLight Lights[8];\n};\n"
                 );
             stream.AppendLine();
 
@@ -89,6 +86,15 @@ namespace J3DRenderer.ShaderGen
             stream.AppendLine("\tmat4 MV = ViewMtx * ModelMtx;");
             if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Position)) stream.AppendLine("\tgl_Position = MVP * vec4(RawPosition, 1);");
             stream.AppendLine();
+
+            // Do Color Channel Fixups
+            if(data.NumChannelControls[mat.NumChannelControlsIndex] < 2)
+            {
+                if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Color1))
+                    stream.AppendFormat("\tcolors_1 = RawColor1;\n");
+                else
+                    stream.AppendFormat("\tcolors_1 = vec4(1, 1, 1, 1);\n");
+            }
 
             stream.AppendFormat("\t// Ambient Colors & Material Colors. {0} Ambient Colors, {1} Material Colors.\n", mat.AmbientColorIndexes.Length, mat.MaterialColorIndexes.Length);
 
@@ -119,8 +125,8 @@ namespace J3DRenderer.ShaderGen
             // material color comes from the Vertex Color, or from the Material Register. If the channel is enabled, then lighting needs to be computed for each light
             // enabled in the light_mask.
             stream.AppendFormat("\t// {0} Channel Controller(s).\n", data.NumChannelControls[mat.NumChannelControlsIndex]);
-            stream.AppendLine("vec4 ambColor = vec4(1,1,1,1);\nvec4 matColor = vec4(1,1,1,1);\nvec4 lightAccum = vec4(0,0,0,0);\nvec4 lightFunc;");
-            stream.AppendLine("vec3 ldir; float dist; float dist2; float attn;"); // Declaring these all anyways in case we use lighting.
+            stream.AppendLine("\tvec4 ambColor = vec4(1,1,1,1);\n\tvec4 matColor = vec4(1,1,1,1);\n\tvec4 lightAccum = vec4(0,0,0,0);\n\tvec4 lightFunc;");
+            stream.AppendLine("\tvec3 ldir; float dist; float dist2; float attn;"); // Declaring these all anyways in case we use lighting.
             for (int i = 0; i < data.NumChannelControls[mat.NumChannelControlsIndex]; i++)
             {
                 ColorChannelControl channelControl = data.ColorChannelControls[mat.ColorChannelControlIndexes[i]];
@@ -138,12 +144,12 @@ namespace J3DRenderer.ShaderGen
                 }
 
                 bool isAlphaChannel = i % 2 != 0;
-                string channelTarget = string.Format("{0}{1}", isAlphaChannel ? "Alpha" : "Color", channel);
+                string channelTarget = string.Format("colors_{0}", channel);
                 string ambColor = (channelControl.AmbientSrc == GXColorSrc.Vertex ? "RawColor" : "ambColor") + channel;
                 string matColor = (channelControl.MaterialSrc == GXColorSrc.Vertex ? "RawColor" : "matColor") + channel;
 
-                stream.AppendFormat("ambColor = {0};\n", ambColor);
-                stream.AppendFormat("matColor = {0};\n", matColor);
+                stream.AppendFormat("\tambColor = {0};\n", ambColor);
+                stream.AppendFormat("\tmatColor = {0};\n", matColor);
 
                 for (int l = 0; l < 8; l++)
                 {
@@ -156,9 +162,9 @@ namespace J3DRenderer.ShaderGen
                 }
 
                 if (channelControl.LightingEnabled)
-                    stream.AppendLine("vec4 illum = clamp(ambColor + lightAccum, 0, 1);");
-                stream.AppendFormat("lightFunc = {0};\n", channelControl.LightingEnabled ? "illum" : "vec4(1.0, 1.0, 1.0, 1.0)");
-                stream.AppendFormat("{0} = (matColor * lightFunc){1};\n", channelTarget, swizzle);
+                    stream.AppendLine("\tvec4 illum = clamp(ambColor + lightAccum, 0, 1);");
+                stream.AppendFormat("\tlightFunc = {0};\n", channelControl.LightingEnabled ? "illum" : "vec4(1.0, 1.0, 1.0, 1.0)");
+                stream.AppendFormat("\t{0}{1} = (matColor * lightFunc){1};\n", channelTarget, swizzle);
             }
 
             // TEV "TexGen" Texture Coordinate Generation
@@ -181,7 +187,7 @@ namespace J3DRenderer.ShaderGen
                 }
 
                 stream.AppendFormat("\t// TexGen: {0} Type: {1} Source: {2} TexMatrixIndex: {3}\n", i, texGen.Type, texGen.Source, texGen.TexMatrixSource);
-                stream.AppendLine("{"); // False scope block so we can re-declare variables
+                stream.AppendLine("\t{"); // False scope block so we can re-declare variables
                 string texGenSource;
                 switch (texGen.Source)
                 {
@@ -195,8 +201,8 @@ namespace J3DRenderer.ShaderGen
                     case GXTexGenSrc.Tex5: texGenSource = "vec4(RawTex5.xy, 1.0, 1.0)"; break;
                     case GXTexGenSrc.Tex6: texGenSource = "vec4(RawTex6.xy, 1.0, 1.0)"; break;
                     case GXTexGenSrc.Tex7: texGenSource = "vec4(RawTex7.xy, 1.0, 1.0)"; break;
-                    case GXTexGenSrc.Color0: texGenSource = "Color0"; break; // ? Link's hands specifiy Color0 but have no mesh color. Maybe this indicates color channel?
-                    case GXTexGenSrc.Color1: texGenSource = "Color1"; break;
+                    case GXTexGenSrc.Color0: texGenSource = "colors_0"; break;
+                    case GXTexGenSrc.Color1: texGenSource = "colors_1"; break;
                     case GXTexGenSrc.Binormal: texGenSource = "vec4(RawBinormal.xyz, 1.0)"; break;
                     case GXTexGenSrc.Tangent: texGenSource = "vec4(RawTangent.xyz, 1.0)"; break;
 
@@ -238,7 +244,7 @@ namespace J3DRenderer.ShaderGen
                         // destCoord = {texGenSource} * texMtx[texGen.TexMatrixSource]
                         break;
                     case GXTexGenType.SRTG:
-                        stream.AppendFormat("{0} = vec3({1}.rg, 1);\n", destCoord, texGenSource); break;
+                        stream.AppendFormat("\t{0} = vec3({1}.rg, 1);\n", destCoord, texGenSource); break;
                     case GXTexGenType.Bump0:
                     case GXTexGenType.Bump1:
                     case GXTexGenType.Bump2:
@@ -268,7 +274,7 @@ namespace J3DRenderer.ShaderGen
                     stream.AppendFormat("{0}.xyz = vec3(dot(P0.xyz, {0}.xyz) + P0.w, dot(P1.xyz, {0}.xyz) + P1.w, dot(P2.xyz, {0}.xyz) + P2.w);\n", destCoord);
                 }
 
-                stream.AppendLine("}"); // End of false-scope block.
+                stream.AppendLine("\t}"); // End of false-scope block.
             }
 
             // Append the tail end of our shader file.
@@ -282,24 +288,24 @@ namespace J3DRenderer.ShaderGen
             switch (channelControl.AttenuationFunction)
             {
                 case GXAttenuationFn.None:
-                    stream.AppendFormat("ldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
-                    stream.AppendLine("attn = 1.0;");
-                    stream.AppendLine("if(length(ldir) == 0.0)\n\tldir = RawNormal;");
+                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                    stream.AppendLine("\tattn = 1.0;");
+                    stream.AppendLine("\tif(length(ldir) == 0.0)\n\t\tldir = RawNormal;");
                     break;
                 case GXAttenuationFn.Spec:
-                    stream.AppendFormat("ldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
-                    stream.AppendFormat("attn = (dot(RawNormal, ldir) >= 0.0) ? max(0.0, dot(RawNormal, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
-                    stream.AppendFormat("cosAttn = Lights[{0}].CosAtten.xyz;\n", lightIndex);
-                    stream.AppendFormat("distAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFn.None) ? "" : "normalize");
-                    stream.AppendFormat("attn = max(0.0f, dot(cosAttn, vec3(1.0, attn, attn*attn))) / dot(distAttn, vec3(1.0, attn, attn*attn));");
+                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                    stream.AppendFormat("\tattn = (dot(RawNormal, ldir) >= 0.0) ? max(0.0, dot(RawNormal, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
+                    stream.AppendFormat("\tcosAttn = Lights[{0}].CosAtten.xyz;\n", lightIndex);
+                    stream.AppendFormat("\tdistAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFn.None) ? "" : "normalize");
+                    stream.AppendFormat("\tattn = max(0.0f, dot(cosAttn, vec3(1.0, attn, attn*attn))) / dot(distAttn, vec3(1.0, attn, attn*attn));");
                     break;
                 case GXAttenuationFn.Spot:
-                    stream.AppendFormat("ldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
-                    stream.AppendLine("dist2 = dot(ldir, ldir);");
-                    stream.AppendLine("dist = sqrt(dist2);");
-                    stream.AppendLine("ldir = ldir/dist;");
-                    stream.AppendFormat("attn = max(0.0, dot(ldir, Lights[{0}].Direction.xyz));\n", lightIndex);
-                    stream.AppendFormat("attn = max(0.0, Lights[{0}].CosAtten.x + Lights[{0}].CosAtten.y*attn + Lights[{0}].CosAtten.z*attn*attn) / dot(Lights[{0}].DistAtten.xyz, vec3(1.0, dist, dist2));\n", lightIndex);
+                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                    stream.AppendLine("\tdist2 = dot(ldir, ldir);");
+                    stream.AppendLine("\tdist = sqrt(dist2);");
+                    stream.AppendLine("\tldir = ldir/dist;");
+                    stream.AppendFormat("\tattn = max(0.0, dot(ldir, Lights[{0}].Direction.xyz));\n", lightIndex);
+                    stream.AppendFormat("\tattn = max(0.0, Lights[{0}].CosAtten.x + Lights[{0}].CosAtten.y*attn + Lights[{0}].CosAtten.z*attn*attn) / dot(Lights[{0}].DistAtten.xyz, vec3(1.0, dist, dist2));\n", lightIndex);
                     break;
                 default:
                     Console.WriteLine("Unsupported AttenuationFunction Value: {0}", channelControl.AttenuationFunction);
@@ -309,11 +315,11 @@ namespace J3DRenderer.ShaderGen
             switch (channelControl.DiffuseFunction)
             {
                 case GXDiffuseFn.None:
-                    stream.AppendFormat("lightAccum{1} += attn * Lights[{0}].Color;\n", lightIndex, lightAccumSwizzle);
+                    stream.AppendFormat("\tlightAccum{1} += attn * Lights[{0}].Color;\n", lightIndex, lightAccumSwizzle);
                     break;
                 case GXDiffuseFn.Signed:
                 case GXDiffuseFn.Clamp:
-                    stream.AppendFormat("lightAccum{1} += attn * {2}dot(ldir, RawNormal)) * vec{3}(Lights[{0}].Color{1});\n",
+                    stream.AppendFormat("\tlightAccum{1} += attn * {2}dot(ldir, RawNormal)) * vec{3}(Lights[{0}].Color{1});\n",
                         lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFn.Signed ? "max(0.0," : "(", numSwizzleComponents);
                     break;
                 default:

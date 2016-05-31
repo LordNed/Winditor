@@ -162,6 +162,12 @@ namespace J3DRenderer.JStudio
         public byte Out;
     }
 
+    /// <summary>
+    /// GXSetTevOrder(GXTevStageID stage, GXTexCoordID coord, GXTexMapID map, GXChannelID color)
+    /// Determines which texture and rasterize color inputs are available to each TEV
+    /// stage. GXSetTevColorIn/GXSetTevAlphaIn control how the inputs plug into each 
+    /// TEV operation for each stage.
+    /// </summary>
     public class TevOrder
     {
         public GXTexCoordSlot TexCoordId;
@@ -196,12 +202,26 @@ namespace J3DRenderer.JStudio
         }
     }
 
+    /// <summary>
+    /// GXSetTevSwapMode(GXTevStageID stage, GXTevSwapSel ras_sel, GXTevSwapSel tex_sel)
+    /// For each TEV Stage you can select entry from the GXSetTevSwapModeTable for the rasterized
+    /// input and the texture color input. The texture color inputs and the rasterized color inputs 
+    /// can be swapped, and a color channel can be selected.
+    /// </summary>
     public class TevSwapMode
     {
         public byte RasSel;
         public byte TexSel;
     }
 
+    /// <summary>
+    /// GXSetTevSwapModeTable(GXTevSwapSel select, GXTevColorChan red, GXTevColorChan green, GXTevColorChan blue, GXColorChan alpha)
+    /// The swap table allows the rasterized/color colors to be swapped component-wise. An entry 
+    /// into the swap table specifies how input components remap to output components.
+    /// 
+    /// For any given R, G, B, or A it defines the input component which should be mapped to the
+    /// respective R, G, B, or A output component.
+    /// </summary>
     public class TevSwapModeTable
     {
         public byte R;

@@ -84,7 +84,7 @@ namespace WindEditor
 
             if (compileStatus != 1)
             {
-                Console.WriteLine("Failed to compile shader {0}. Log:\n{1}", Name, GL.GetShaderInfoLog(shaderAddress));
+                Console.WriteLine("Failed to compile {0} shader {1}. Log:\n{2}", type, Name, GL.GetShaderInfoLog(shaderAddress));
                 return false;
             }
 
