@@ -138,9 +138,9 @@ namespace J3DRenderer.JStudio
                 lights[i] = light;
             }
 
+            
 
             m_lightBufferUniform = GL.GenBuffer();
-            GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 0, m_lightBufferUniform);
 
             // Now that the vertex attributes are assigned to the materials, generate a shader from the data.
             foreach (var material in MAT3Tag.MaterialList)
@@ -151,11 +151,28 @@ namespace J3DRenderer.JStudio
                     continue;
                 }
                 material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
-                int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock");
-                GL.UniformBlockBinding(material.Shader.Program, ubi, 0);
-                GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(Marshal.SizeOf(lights[0]) * 8), lights, BufferUsageHint.DynamicDraw);
-            }
+                m_psBlockUniform = GL.GenBuffer();
 
+                int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock"); // Get the index of the Uniform Block in the Shader
+                GL.UniformBlockBinding(material.Shader.Program, ubi, 0); // Bind our buffer to the Uniform Block.
+                GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 0, m_lightBufferUniform);
+                GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(Marshal.SizeOf(lights[0]) * 8), lights, BufferUsageHint.DynamicDraw);
+
+                PSBlock psBlock = new PSBlock();
+                psBlock.Color = new Vector4[4];
+                psBlock.kColor = new Vector4[4];
+
+                for (int i = 0; i < 4; i++)
+                    psBlock.Color[i] = new Vector4(MAT3Tag.TevColors[material.TevColorIndexes[i]].R, MAT3Tag.TevColors[material.TevColorIndexes[i]].G, MAT3Tag.TevColors[material.TevColorIndexes[i]].B, MAT3Tag.TevColors[material.TevColorIndexes[i]].A);
+
+                for (int i = 0; i < 4; i++)
+                    psBlock.kColor[i] = new Vector4(MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].R, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].G, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].B, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].A);
+
+                ubi = GL.GetUniformBlockIndex(material.Shader.Program, "PSBlock");
+                GL.UniformBlockBinding(material.Shader.Program, ubi, 1);
+                GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 1, m_psBlockUniform);
+                GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(16 * 4 * 2), ref psBlock, BufferUsageHint.DynamicDraw);   
+            }
 
         }
 
@@ -357,6 +374,9 @@ namespace J3DRenderer.JStudio
         }
 
         private int m_lightBufferUniform;
+        private int m_psBlockUniform;
+
+        [Serializable][StructLayout(LayoutKind.Sequential)]
         struct GXLight
         {
             public Vector4 Position;
@@ -366,14 +386,22 @@ namespace J3DRenderer.JStudio
             public Vector4 DistAtten;
         }
 
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential)]
+        struct PSBlock
+        {
+            public Vector4[] Color;
+            public Vector4[] kColor;
+        }
+
         private void RenderBatchByIndex(ushort index)
         {
             GL.CullFace(CullFaceMode.Back);
             GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.CullFace);
-            GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            //GL.Enable(EnableCap.Blend);
+            //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             SHP1.Shape shape = SHP1Tag.Shapes[SHP1Tag.ShapeRemapTable[index]];
             shape.Bind();

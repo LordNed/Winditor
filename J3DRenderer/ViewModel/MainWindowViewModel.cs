@@ -45,12 +45,12 @@ namespace J3DRenderer
             m_stockMesh = new SimpleObjRenderer(obj);
 
             m_model = new JStudio3D();
-            //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/MiniHyo.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/ba.bdl"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/MiniHyo.bdl"), Endian.Big));
+            //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/ba.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
-             m_testAnim = new BCK();
+            m_testAnim = new BCK();
             m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/wait02.bck"), Endian.Big));
 
 
@@ -83,7 +83,7 @@ namespace J3DRenderer
         {
             System.Random rnd = new System.Random(m_glControl.GetHashCode());
             //GL.ClearColor(0.15f, 0.83f, 0.10f, 1f);
-            GL.ClearColor(rnd.Next(255)/255f, rnd.Next(255)/255f, rnd.Next(255)/255f, 1f);
+            GL.ClearColor(rnd.Next(255) / 255f, rnd.Next(255) / 255f, rnd.Next(255) / 255f, 1f);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
             GL.Viewport(0, 0, m_viewportWidth, m_viewportHeight);
@@ -96,7 +96,7 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
-            m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

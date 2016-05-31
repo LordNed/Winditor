@@ -408,9 +408,10 @@ namespace J3DRenderer.JStudio
         {
             var nbtScale = new NBTScale();
             nbtScale.Unknown1 = stream.ReadByte();
-            Trace.Assert(stream.ReadByte() == 0xFF); // Padding
+            /*Trace.Assert(stream.ReadByte() == 0xFF); // Padding
             Trace.Assert(stream.ReadByte() == 0xFF); 
-            Trace.Assert(stream.ReadByte() == 0xFF);
+            Trace.Assert(stream.ReadByte() == 0xFF);*/
+            stream.Skip(3);
             nbtScale.Scale = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());
             return nbtScale;
         }

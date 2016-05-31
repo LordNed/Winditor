@@ -141,9 +141,8 @@ namespace WindEditor
 
         public static WLinearColor Lerp(WLinearColor a, WLinearColor b, float t)
         {
-            throw new NotImplementedException("Write a clamp function for the math library and then use this.");
-            //t = MathE.ClampNormalized(t);
-            //return new WLinearColor(a.R + (b.R - a.R) * t, a.G + (b.G - a.G) * t, a.B + (b.B - a.B) * t, a.A + (b.A - a.A) * t);
+            t = WMath.Clamp(t, 0, 1);
+            return new WLinearColor(a.R + (b.R - a.R) * t, a.G + (b.G - a.G) * t, a.B + (b.B - a.B) * t, a.A + (b.A - a.A) * t);
         }
 
         #region Static Preset WLinearColors
