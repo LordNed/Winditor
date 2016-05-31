@@ -176,11 +176,11 @@ namespace J3DRenderer.ShaderGen
                 stream.AppendFormat("uniform sampler2D Texture{0};\n", i);
             }
 
-            stream.AppendLine("layout(std140) uniform PSBlock\n{");
-            stream.AppendLine(
-                "\tvec4 color[4];\n" +
-                "\tvec4 kColor[4];\n" +
-                "};");
+            //stream.AppendLine("layout(std140) uniform PSBlock\n{");
+            //stream.AppendLine(
+            //    "\tvec4 color[4];\n" +
+            //    "\tvec4 kColor[4];\n" +
+            //    "};");
 
             // Final Output
             stream.AppendLine("// Final Output");
@@ -188,13 +188,30 @@ namespace J3DRenderer.ShaderGen
 
             // Main Function
             stream.AppendLine("void main()\n{\n");
-            stream.Append("\tvec4 c0 = color[1], c1 = color[2], c2 = color[3], prev = color[0];\n" +
+
+            // Debug override color and kColor
+            stream.AppendFormat("vec4 color[4];\n");
+            stream.AppendFormat("vec4 kColor[4];\n");
+
+            stream.AppendFormat("color[0] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[0]].R, data.TevColors[mat.TevColorIndexes[0]].G, data.TevColors[mat.TevColorIndexes[0]].B, data.TevColors[mat.TevColorIndexes[0]].A);
+            stream.AppendFormat("color[1] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[1]].R, data.TevColors[mat.TevColorIndexes[1]].G, data.TevColors[mat.TevColorIndexes[1]].B, data.TevColors[mat.TevColorIndexes[1]].A);
+            stream.AppendFormat("color[2] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[2]].R, data.TevColors[mat.TevColorIndexes[2]].G, data.TevColors[mat.TevColorIndexes[2]].B, data.TevColors[mat.TevColorIndexes[2]].A);
+            stream.AppendFormat("color[3] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[3]].R, data.TevColors[mat.TevColorIndexes[3]].G, data.TevColors[mat.TevColorIndexes[3]].B, data.TevColors[mat.TevColorIndexes[3]].A);
+
+            stream.AppendFormat("kColor[0] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[0]].R, data.TevKonstColors[mat.TevKonstColorIndexes[0]].G, data.TevKonstColors[mat.TevKonstColorIndexes[0]].B, data.TevKonstColors[mat.TevKonstColorIndexes[0]].A);
+            stream.AppendFormat("kColor[1] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[1]].R, data.TevKonstColors[mat.TevKonstColorIndexes[1]].G, data.TevKonstColors[mat.TevKonstColorIndexes[1]].B, data.TevKonstColors[mat.TevKonstColorIndexes[1]].A);
+            stream.AppendFormat("kColor[2] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[2]].R, data.TevKonstColors[mat.TevKonstColorIndexes[2]].G, data.TevKonstColors[mat.TevKonstColorIndexes[2]].B, data.TevKonstColors[mat.TevKonstColorIndexes[2]].A);
+            stream.AppendFormat("kColor[3] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[3]].R, data.TevKonstColors[mat.TevKonstColorIndexes[3]].G, data.TevKonstColors[mat.TevKonstColorIndexes[3]].B, data.TevKonstColors[mat.TevKonstColorIndexes[3]].A);
+
+
+            stream.Append("\tvec4 c0 = color[0], c1 = color[1], c2 = color[2], prev = color[3];\n" +
                         "\tvec4 rastemp = vec4(0,0,0,0), textemp = vec4(0,0,0,0), konsttemp = vec4(0,0,0,0);\n" +
                         "\tvec3 comp16 = vec3(1, 256, 0), comp24 = vec3(1, 256, 256*256);\n" + // Uhh
                         "\tfloat alphabump=0;\n" +
                         "\tvec3 tevcoord=vec3(0,0,0);\n" +
                         //"\tvec2 wrappedcoord=vec2(0,0), tempcoord=vec2(0,0);\n" +
                         "\tvec4 tevin_a = vec4(0, 0, 0, 0), tevin_b = vec4(0, 0, 0, 0), tevin_c = vec4(0, 0, 0, 0), tevin_d = vec4(0, 0, 0, 0);\n");
+
 
             // Cannot assign to input variables in GLSL so we copy them to a local instance instead.
             stream.AppendFormat("\tvec4 col0 = colors_0;\n");
