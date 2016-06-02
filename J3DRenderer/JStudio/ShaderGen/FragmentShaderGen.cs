@@ -286,7 +286,7 @@ namespace J3DRenderer.ShaderGen
             bool bHasTexCoord = (int)tevOrder.TexCoordId < data.NumTexGens[mat.NumTexGensIndex];
 
             // Build a Swap Mode for swapping texture color input/rasterized color input to the TEV Stage.
-            string[] swapModeTable = new string[4];
+            string[] rasSwapModeTable = new string[4];
             string swapColors = "rgba";
             for (int i = 0; i < 4; i++)
             {
@@ -296,7 +296,19 @@ namespace J3DRenderer.ShaderGen
                 swapTable[1] = swapColors[rasSwapTable.G];
                 swapTable[2] = swapColors[rasSwapTable.B];
                 swapTable[3] = swapColors[rasSwapTable.A];
-                swapModeTable[i] = new string(swapTable);
+                rasSwapModeTable[i] = new string(swapTable);
+            }
+
+            string[] texSwapModeTable = new string[4];
+            for (int i = 0; i < 4; i++)
+            {
+                char[] swapTable = new char[4];
+
+                swapTable[0] = swapColors[texSwapTable.R];
+                swapTable[1] = swapColors[texSwapTable.G];
+                swapTable[2] = swapColors[texSwapTable.B];
+                swapTable[3] = swapColors[texSwapTable.A];
+                texSwapModeTable[i] = new string(swapTable);
             }
 
 
@@ -311,7 +323,7 @@ namespace J3DRenderer.ShaderGen
                 tevStage.AlphaIn[2] == GXCombineAlphaInput.RasAlpha || tevStage.AlphaIn[3] == GXCombineAlphaInput.RasAlpha)
             {
                 stream.AppendFormat("\t// TEV Swap Mode\n");
-                stream.AppendFormat("\trastemp = {0}.{1};\n", m_tevRasTable[(int)tevOrder.ChannelId], swapModeTable[rasSwapTable.A]); // ToDo: No idea if this works.
+                stream.AppendFormat("\trastemp = {0}.{1};\n", m_tevRasTable[(int)tevOrder.ChannelId], rasSwapModeTable[rasSwapTable.A]); // ToDo: No idea if this works.
             }
 
             if(tevOrder.TexCoordId != GXTexCoordSlot.Null)
@@ -325,7 +337,7 @@ namespace J3DRenderer.ShaderGen
                         stream.AppendFormat("\ttevcoord.xy = vec2(0, 0);\n"); 
                 }
 
-                string texswap = swapModeTable[rasSwapTable.A]; // Again, no idea if this works.
+                string texswap = texSwapModeTable[texSwapTable.A]; // Again, no idea if this works.
 
                 stream.Append("\ttextemp = ");
                 SampleTexture(stream, "vec2(tevcoord.xy)", texswap, texmap);
@@ -446,7 +458,7 @@ namespace J3DRenderer.ShaderGen
 
             // Regular TEV stage: ((d + bias) + lerp(a,b,c)) *scale
             // lerp(a, b, c) op (d + bias) * scale
-            stream.AppendFormat("(mix(tevin_a.{0}, tevin_b.{0}, tevin_c.{0})", components); // lerp(a, b, c)
+            stream.AppendFormat("(mix(tevin_b.{0}, tevin_a.{0}, tevin_c.{0})", components); // lerp(a, b, c)
             stream.AppendFormat(" {0} ", tevOpTable[(int)op]); // "+/-" (op)
             stream.AppendFormat("(tevin_d.{0}{1})", components, tevBias[(int)bias]); // (d + bias)
             stream.AppendFormat("{0})", tevScale[(int)scale]);
