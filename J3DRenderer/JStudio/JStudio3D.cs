@@ -162,11 +162,11 @@ namespace J3DRenderer.JStudio
                 psBlock.Color = new Vector4[4];
                 psBlock.kColor = new Vector4[4];
 
-                for (int i = 0; i < 4; i++)
-                    psBlock.Color[i] = new Vector4(MAT3Tag.TevColors[material.TevColorIndexes[i]].R, MAT3Tag.TevColors[material.TevColorIndexes[i]].G, MAT3Tag.TevColors[material.TevColorIndexes[i]].B, MAT3Tag.TevColors[material.TevColorIndexes[i]].A);
+                //for (int i = 0; i < 4; i++)
+                //    psBlock.Color[i] = new Vector4(MAT3Tag.TevColors[material.TevColorIndexes[i]].R, MAT3Tag.TevColors[material.TevColorIndexes[i]].G, MAT3Tag.TevColors[material.TevColorIndexes[i]].B, MAT3Tag.TevColors[material.TevColorIndexes[i]].A);
 
-                for (int i = 0; i < 4; i++)
-                    psBlock.kColor[i] = new Vector4(MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].R, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].G, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].B, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].A);
+                //for (int i = 0; i < 4; i++)
+                //    psBlock.kColor[i] = new Vector4(MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].R, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].G, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].B, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].A);
 
                 ubi = GL.GetUniformBlockIndex(material.Shader.Program, "PSBlock");
                 GL.UniformBlockBinding(material.Shader.Program, ubi, 1);

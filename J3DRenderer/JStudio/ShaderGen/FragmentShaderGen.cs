@@ -198,10 +198,10 @@ namespace J3DRenderer.ShaderGen
             stream.AppendFormat("color[2] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[2]].R, data.TevColors[mat.TevColorIndexes[2]].G, data.TevColors[mat.TevColorIndexes[2]].B, data.TevColors[mat.TevColorIndexes[2]].A);
             stream.AppendFormat("color[3] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[3]].R, data.TevColors[mat.TevColorIndexes[3]].G, data.TevColors[mat.TevColorIndexes[3]].B, data.TevColors[mat.TevColorIndexes[3]].A);
 
-            stream.AppendFormat("kColor[0] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[0]].R, data.TevKonstColors[mat.TevKonstColorIndexes[0]].G, data.TevKonstColors[mat.TevKonstColorIndexes[0]].B, data.TevKonstColors[mat.TevKonstColorIndexes[0]].A);
-            stream.AppendFormat("kColor[1] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[1]].R, data.TevKonstColors[mat.TevKonstColorIndexes[1]].G, data.TevKonstColors[mat.TevKonstColorIndexes[1]].B, data.TevKonstColors[mat.TevKonstColorIndexes[1]].A);
-            stream.AppendFormat("kColor[2] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[2]].R, data.TevKonstColors[mat.TevKonstColorIndexes[2]].G, data.TevKonstColors[mat.TevKonstColorIndexes[2]].B, data.TevKonstColors[mat.TevKonstColorIndexes[2]].A);
-            stream.AppendFormat("kColor[3] = vec4({0},{1},{2},{3});\n", data.TevKonstColors[mat.TevKonstColorIndexes[3]].R, data.TevKonstColors[mat.TevKonstColorIndexes[3]].G, data.TevKonstColors[mat.TevKonstColorIndexes[3]].B, data.TevKonstColors[mat.TevKonstColorIndexes[3]].A);
+            stream.AppendFormat("kColor[0] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[0].R, mat.TevKonstColorIndexes[0].G, mat.TevKonstColorIndexes[0].B, mat.TevKonstColorIndexes[0].A);
+            stream.AppendFormat("kColor[1] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[1].R, mat.TevKonstColorIndexes[1].G, mat.TevKonstColorIndexes[1].B, mat.TevKonstColorIndexes[1].A);
+            stream.AppendFormat("kColor[2] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[2].R, mat.TevKonstColorIndexes[2].G, mat.TevKonstColorIndexes[2].B, mat.TevKonstColorIndexes[2].A);
+            stream.AppendFormat("kColor[3] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[3].R, mat.TevKonstColorIndexes[3].G, mat.TevKonstColorIndexes[3].B, mat.TevKonstColorIndexes[3].A);
 
 
             stream.Append("\tvec4 c0 = color[0], c1 = color[1], c2 = color[2], prev = color[3];\n" +

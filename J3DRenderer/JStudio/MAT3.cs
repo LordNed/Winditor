@@ -29,7 +29,7 @@ namespace J3DRenderer.JStudio
         public short[] TexMatrixIndexes { get; internal set; }
         public short[] PostTexMatrixIndexes { get; internal set; }
         public short[] TextureIndexes { get; internal set; }
-        public short[] TevKonstColorIndexes { get; internal set; }
+        public WLinearColor[] TevKonstColorIndexes { get; internal set; }
         public GXKonstColorSel[] KonstColorSelectorIndexes { get; internal set; }
         public GXKonstAlphaSel[] KonstAlphaSelectorIndexes { get; internal set; }
         public short[] TevOrderInfoIndexes { get; internal set; }
@@ -73,7 +73,7 @@ namespace J3DRenderer.JStudio
         public List<short> TextureRemapTable { get; protected set; }
         public List<TevOrder> TevOrderInfos { get; protected set; }
         public List<WLinearColor> TevColors { get; protected set; }
-        public List<WLinearColor> TevKonstColors { get; protected set; }
+        //public List<WLinearColor> TevKonstColors { get; protected set; }
         public List<byte> NumTevStages { get; protected set; }
         public List<TevStage> TevStageInfos { get; protected set; }
         public List<TevSwapMode> TevSwapModeInfos { get; protected set; }
@@ -160,7 +160,7 @@ namespace J3DRenderer.JStudio
             TevColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 17, ReadColorShort, 8);
 
             /* TEV KONST COLORS */
-            TevKonstColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 18, ReadColor32, 4);
+            var TevKonstColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 18, ReadColor32, 4);
 
             /* NUM TEV STAGES */
             // THIS IS A GUESS AT DATA TYPE
@@ -270,9 +270,9 @@ namespace J3DRenderer.JStudio
                 for (int i = 0; i < material.TextureIndexes.Length; i++)
                     material.TextureIndexes[i] = reader.ReadInt16();
 
-                material.TevKonstColorIndexes = new short[4];
+                material.TevKonstColorIndexes = new WLinearColor[4];
                 for (int i = 0; i < material.TevKonstColorIndexes.Length; i++)
-                    material.TevKonstColorIndexes[i] = reader.ReadInt16();
+                    material.TevKonstColorIndexes[i] = ReadEntry(reader, ReadColor32, chunkStart, offsets, 18, reader.ReadInt16(), 4);
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
                 material.KonstColorSelectorIndexes = new GXKonstColorSel[16];
@@ -335,6 +335,21 @@ namespace J3DRenderer.JStudio
 
             stream.BaseStream.Position = chunkStart + offsets[offset];
             return Collect<T>(stream, function, GetOffsetLength(offsets, offset, chunkSize) / itemSize);
+        }
+
+        // This version of the function just skips to the specific entry and loads one of them. More useful than trying to read the data into a list and then getting the entry
+        // from the list.
+        private static T ReadEntry<T>(EndianBinaryReader stream, LoadTypeFromStream<T> readFunction, long chunkStart, int[] offsets, int offset, int entryNumber, int itemSize)
+        {
+            if (offsets[offset] == 0)
+                return default(T);
+
+            long streamPos = stream.BaseStream.Position;
+            stream.BaseStream.Position = (chunkStart + offsets[offset]) + (entryNumber * itemSize);
+            T val = readFunction(stream);
+
+            stream.BaseStream.Position = streamPos;
+            return val;
         }
 
         #region Stream Decoding Functions
