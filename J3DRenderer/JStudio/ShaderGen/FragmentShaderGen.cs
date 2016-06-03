@@ -458,7 +458,8 @@ namespace J3DRenderer.ShaderGen
 
             // Regular TEV stage: ((d + bias) + lerp(a,b,c)) *scale
             // lerp(a, b, c) op (d + bias) * scale
-            stream.AppendFormat("(mix(tevin_b.{0}, tevin_a.{0}, tevin_c.{0})", components); // lerp(a, b, c)
+            //stream.AppendFormat("(mix(tevin_b.{0}, tevin_a.{0}, tevin_c.{0})", components); // lerp(a, b, c)
+            stream.AppendFormat("((tevin_a.{0} * (vec4(1,1,1,1).{0} - tevin_c.{0}) + tevin_b.{0}  * tevin_c.{0})", components);
             stream.AppendFormat(" {0} ", tevOpTable[(int)op]); // "+/-" (op)
             stream.AppendFormat("(tevin_d.{0}{1})", components, tevBias[(int)bias]); // (d + bias)
             stream.AppendFormat("{0})", tevScale[(int)scale]);
