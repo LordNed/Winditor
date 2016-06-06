@@ -381,6 +381,7 @@ namespace J3DRenderer.JStudio
                             break;
                     }
                 }
+
                 values.Add(value);
             }
 

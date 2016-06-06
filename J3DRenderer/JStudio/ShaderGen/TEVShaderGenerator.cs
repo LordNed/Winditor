@@ -8,7 +8,7 @@ namespace J3DRenderer.ShaderGen
 {
     public static class TEVShaderGenerator
     {
-        private static bool m_allowCachedOverride = false;
+        private static bool m_allowCachedOverride = true;
 
         public static Shader GenerateShader(Material fromMat, MAT3 data)
         {
@@ -18,7 +18,7 @@ namespace J3DRenderer.ShaderGen
             bool success = false;
             {
                 // Load it from the shader dump if it already exists, which allows us to hand-modify shaders.
-                string filenameHash = string.Format("ShaderDump/{0}_{1}.vert", fromMat.Name, fromMat.GetHashCode());
+                string filenameHash = string.Format("ShaderDump/{0}.vert", fromMat.Name);
                 string vertexShader = File.Exists(filenameHash) && m_allowCachedOverride ? File.ReadAllText(filenameHash) : VertexShaderGen.GenerateVertexShader(fromMat, data);
                 success = shader.CompileSource(vertexShader, ShaderType.VertexShader);
 

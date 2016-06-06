@@ -82,7 +82,7 @@ namespace J3DRenderer.JStudio
                 Texture texture = new Texture(nameTable[t], compressedTex);
                 Textures.Add(texture);
 
-                compressedTex.SaveImageToDisk("TextureDump/" + texture.Name + ".png");
+                compressedTex.SaveImageToDisk(string.Format("TextureDump/{0}_{1}.png", texture.Name, compressedTex.Format));
             }
         }
     }

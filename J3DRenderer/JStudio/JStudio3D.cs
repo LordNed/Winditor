@@ -129,11 +129,11 @@ namespace J3DRenderer.JStudio
             {
                 var light = new GXLight();
                 // Upload to the GPU
-                light.Position = i == 1 ? new Vector4(0, 500, 250, 0) : new Vector4(-250, 500, 0, 0);
+                light.Position = i == 1 ? new Vector4(250, 200, 250, 0) : new Vector4(-5000, -5000, -5000, 0);
                 light.Direction = -light.Position.Normalized();
-                light.Color = i == 1 ? new Vector4(.1f, 0, .1f, 1) : new Vector4(.1f, 0, 0, 1);
-                light.CosAtten = new Vector4(1.875f, 0, 0, 0);
-                light.DistAtten = new Vector4(1.875f, 0f, 0f, 0f);
+                light.Color = i == 1 ? new Vector4(0f, 1, 0f, 1) : new Vector4(1, 1, 1, 1);
+                light.CosAtten = new Vector4(1.075f, 0, 0, 0);
+                light.DistAtten = new Vector4(1.075f, 0f, 0f, 0f);
 
                 lights[i] = light;
             }
@@ -278,10 +278,21 @@ namespace J3DRenderer.JStudio
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
                             float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
 
-                            SkeletonJoint joint = skeletonCopy[boneIndex];
-                            Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-                            finalTransform += (jointMtx * JNT1Tag.Joints[boneIndex].InverseBindPose) * boneWeight;
+                            SkeletonJoint joint = JNT1Tag.Joints[boneIndex];
+                            //Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+                            Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
+
+                            Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
+                            Matrix4 sm2 = jointMtx;
+
+                            finalTransform = Mad(finalTransform, sm2 * sm1, boneWeight);
+                            //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
                         }
+
+                        //Matrix4 matFromEVP1 = EVP1Tag.InverseBindPose[indexFromDRW1];
+                        //matFromEVP1.Transpose();
+                        //finalTransform =  matFromEVP1 * finalTransform;
+                        finalTransform[3, 3] = 1;
 
                         Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
                         transformedVerts[i] = transformedVertPos;
@@ -303,6 +314,15 @@ namespace J3DRenderer.JStudio
             }
 
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
+        }
+
+        private Matrix4 Mad(Matrix4 r, Matrix4 m, float f)
+        {
+            for (int j = 0; j < 3; j++)
+                for (int k = 0; k < 4; k++)
+                    r[j,k] += f * m[j,k];
+
+            return r;
         }
 
         private void RenderMeshRecursive(HierarchyNode curNode)

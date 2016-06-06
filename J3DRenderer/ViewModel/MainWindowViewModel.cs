@@ -96,7 +96,7 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
-            //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
