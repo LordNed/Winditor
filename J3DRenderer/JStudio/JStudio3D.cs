@@ -278,12 +278,12 @@ namespace J3DRenderer.JStudio
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
                             float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
 
-                            SkeletonJoint joint = JNT1Tag.Joints[boneIndex];
-                            //Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-                            Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
+                            SkeletonJoint joint = skeletonCopy[boneIndex];
+                            Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+                            //Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
 
-                            Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
-                            Matrix4 sm2 = jointMtx;
+                            Matrix4 sm1 = EVP1Tag.InverseBindPose[indexFromDRW1];
+                            Matrix4 sm2 = joint.BindPose;
 
                             finalTransform = Mad(finalTransform, sm2 * sm1, boneWeight);
                             //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
