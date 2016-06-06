@@ -51,7 +51,7 @@ namespace J3DRenderer
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
             m_testAnim = new BCK();
-            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/wait02.bck"), Endian.Big));
+            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/wait01.bck"), Endian.Big));
 
 
             // Set up the Editor Tick Loop

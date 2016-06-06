@@ -273,6 +273,7 @@ namespace J3DRenderer.JStudio
                         }
 
                         Matrix4 finalTransform = Matrix4.Zero;
+                        Vector4 transformedVertPos = Vector4.Zero;
                         for (int b = 0; b < numBonesAffecting; b++)
                         {
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
@@ -282,27 +283,31 @@ namespace J3DRenderer.JStudio
                             Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
                             //Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
 
-                            Matrix4 sm1 = EVP1Tag.InverseBindPose[indexFromDRW1];
-                            Matrix4 sm2 = joint.BindPose;
+                            Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
+                            Matrix4 sm2 = jointMtx;
+                            sm1.Transpose();
 
+                            //Console.WriteLine("jScale: {0} jRot: {1} jT: {2} jMtx: {3} sm1: {4}", joint.Scale, joint.Rotation, joint.Translation, jointMtx, sm1);
                             finalTransform = Mad(finalTransform, sm2 * sm1, boneWeight);
                             //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
+
+                            transformedVertPos += Vector4.Transform(new Vector4(transformedVerts[i],1), sm2 * sm1) * boneWeight;
                         }
 
-                        //Matrix4 matFromEVP1 = EVP1Tag.InverseBindPose[indexFromDRW1];
-                        //matFromEVP1.Transpose();
-                        //finalTransform =  matFromEVP1 * finalTransform;
-                        finalTransform[3, 3] = 1;
+                        transformedVertPos.X = transformedVertPos.X / transformedVertPos.W;
+                        transformedVertPos.Y = transformedVertPos.Y / transformedVertPos.W;
+                        transformedVertPos.Z = transformedVertPos.Z / transformedVertPos.W;
+                        transformedVertPos.W = transformedVertPos.W / transformedVertPos.W;
 
-                        Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
-                        transformedVerts[i] = transformedVertPos;
+                        //Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
+                        transformedVerts[i] = transformedVertPos.Xyz;
                     }
                     else
                     {
                         // If the vertex is not weighted then we use a 1:1 movement with the bone matrix.
                         SkeletonJoint joint = skeletonCopy[indexFromDRW1];
                         Matrix4 finalTransform = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-
+                        //Matrix4 finalTransform = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
                         Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
                         transformedVerts[i] = transformedVertPos;
                     }
