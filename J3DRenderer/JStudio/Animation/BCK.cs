@@ -8,84 +8,47 @@ namespace J3DRenderer.JStudio.Animation
 {
     public class BCK
     {
-        private abstract class KeyframeData<T>
+        struct AnimIndex
         {
-            public short Unknown0;
-            public T[] Keys;
-
-            public virtual T Interpolate(float animNormalizedTime, int animLength, float modulatedTime)
-            {
-                int curKeyframe = WMath.Floor(Keys.Length * animNormalizedTime);
-                int nextKeyframe = curKeyframe + ((curKeyframe == Keys.Length - 1) ? 0 : 1);
-
-                float prevTimeInSeconds = ((curKeyframe / (float)Keys.Length) * animLength) / kAnimFramerate;
-                float nextTimeInSeconds = ((nextKeyframe / (float)Keys.Length) * animLength) / kAnimFramerate;
-
-                // We use the animNormalizedTime to figure out which two keyframes to use and then calculate 
-                // a new 0-1 value between the two to see how much we should interpolate their values.
-                float subT = (modulatedTime - prevTimeInSeconds) / (nextTimeInSeconds - prevTimeInSeconds);
-                subT = WMath.Clamp(subT, 0, 1);
-
-                //if (i == 5)
-                //{
-                //    Console.WriteLine("numJoints: {0} timeInFrames: {1} animFrame: {2} normalizedAnimTime: {3} modulatedTime: {4} numKeyframes: {5} curKeyframe: {6} nextKeyframe: {7} prevTimeInSeconds: {8}, nextTimeInSeconds: {9} t: {10}",
-                //        numJoints, timeInFrames, animFrame, normalizedAnimTime, modulatedTime, numKeyframes, curKeyframe, nextKeyframe, prevTimeInSeconds, nextTimeInSeconds, scaleXTVal);
-                //}
-
-                return Interpolate(Keys[curKeyframe], Keys[nextKeyframe], subT);
-            }
-
-            protected abstract T Interpolate(T t1, T t2, float t);
+            public ushort Count;
+            public ushort Index;
+            public ushort Unknown0;
         }
 
-        private class Vector3KeyframeData : KeyframeData<Vector3>
+        struct AnimComponent
         {
-            protected override Vector3 Interpolate(Vector3 t1, Vector3 t2, float t)
-            {
-                return Vector3.Lerp(t1, t2, t);
-            }
+            public AnimIndex Scale;
+            public AnimIndex Rotation;
+            public AnimIndex Translation;
         }
 
-        private class QuaternionKeyframeData :KeyframeData<Quaternion>
+        struct AnimatedJoint
         {
-            protected override Quaternion Interpolate(Quaternion t1, Quaternion t2, float t)
-            {
-                return Quaternion.Slerp(t1, t2, t);
-            }
+            public AnimComponent X;
+            public AnimComponent Y;
+            public AnimComponent Z;
         }
 
-        private class FloatKeyframeData : KeyframeData<float>
+        private class Key
         {
-            protected override float Interpolate(float t1, float t2, float t)
-            {
-                return t1 * (1 - t) + t2 * t;
-            }
+            public float Tangent;
+            public float Time;
+            public float Value;
         }
 
-        private class JointAnimationData
+        private class JointAnim
         {
-            public FloatKeyframeData[] TranslationData;
-            public FloatKeyframeData[] RotationData;
-            public FloatKeyframeData[] ScaleData;
+            public List<Key> ScalesX = new List<Key>();
+            public List<Key> ScalesY = new List<Key>();
+            public List<Key> ScalesZ = new List<Key>();
 
-            public JointAnimationData()
-            {
-                TranslationData = new FloatKeyframeData[3];
-                RotationData = new FloatKeyframeData[3];
-                ScaleData = new FloatKeyframeData[3];
-            }
+            public List<Key> RotationsX = new List<Key>();
+            public List<Key> RotationsY = new List<Key>();
+            public List<Key> RotationsZ = new List<Key>();
 
-            public void Interpolate(float f, int animLength, float modulatedTime, out Vector3 translation, out Quaternion rotation, out Vector3 scale)
-            {
-                translation = new Vector3(TranslationData[0].Interpolate(f, animLength, modulatedTime), TranslationData[1].Interpolate(f, animLength, modulatedTime), TranslationData[2].Interpolate(f, animLength, modulatedTime));
-                scale = new Vector3(ScaleData[0].Interpolate(f, animLength, modulatedTime), ScaleData[1].Interpolate(f, animLength, modulatedTime), ScaleData[2].Interpolate(f, animLength, modulatedTime));
-
-                // ZYX order
-                rotation =  Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(RotationData[2].Interpolate(f, animLength, modulatedTime))) *
-                            Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(RotationData[1].Interpolate(f, animLength, modulatedTime))) *
-                            Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(RotationData[0].Interpolate(f, animLength, modulatedTime)));
-
-            }
+            public List<Key> TranslationsX = new List<Key>();
+            public List<Key> TranslationsY = new List<Key>();
+            public List<Key> TranslationsZ = new List<Key>();
         }
 
         public enum LoopType
@@ -102,7 +65,7 @@ namespace J3DRenderer.JStudio.Animation
 
         private const float kAnimFramerate = 30;
 
-        private List<JointAnimationData> AnimationData;
+        private List<JointAnim> AnimationData;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -126,26 +89,48 @@ namespace J3DRenderer.JStudio.Animation
 
             int numJoints = Math.Min(pose.Length, AnimationData.Count);
 
-            // Calculate our current frame based on the time sample.
-            int timeInFrames = (int)(time * kAnimFramerate);
-            int animFrame = Flag == LoopType.Loop ? timeInFrames % AnimLength : WMath.Clamp(timeInFrames, 0, AnimLength);
-            float normalizedAnimTime = animFrame / (float)AnimLength;
-
-            float modulatedTime = time;
-            while (modulatedTime > AnimLength / kAnimFramerate)
-                modulatedTime -= AnimLength / kAnimFramerate;
+            float ftime = time % AnimLength;
 
             for(int i = 0; i < numJoints; i++)
             {
-                JointAnimationData jointData = AnimationData[i];
+                pose[i].Scale = new Vector3(GetAnimValue(AnimationData[i].ScalesX, ftime), GetAnimValue(AnimationData[i].ScalesY, ftime), GetAnimValue(AnimationData[i].ScalesZ, ftime));
 
-                Vector3 translation, scale; Quaternion rotation;
-                jointData.Interpolate(0f, AnimLength, modulatedTime, out translation, out rotation, out scale);
+                Vector3 rot = new Vector3(GetAnimValue(AnimationData[i].RotationsX, ftime), GetAnimValue(AnimationData[i].RotationsY, ftime), GetAnimValue(AnimationData[i].RotationsZ, ftime));
 
-                pose[i].Translation = translation;
-                pose[i].Rotation = rotation;
-                pose[i].Scale = scale;
+                // ZYX order
+                pose[i].Rotation = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), rot.Z) *
+                                   Quaternion.FromAxisAngle(new Vector3(0, 1, 0), rot.Y) *
+                                   Quaternion.FromAxisAngle(new Vector3(1, 0, 0), rot.X);
+
+                pose[i].Translation = new Vector3(GetAnimValue(AnimationData[i].TranslationsX, ftime), GetAnimValue(AnimationData[i].TranslationsY, ftime), GetAnimValue(AnimationData[i].TranslationsZ, ftime));
             }
+        }
+
+        private float GetAnimValue(List<Key> keys, float t)
+        {
+            if (keys.Count == 0)
+                return 0f;
+
+            if (keys.Count == 1)
+                return keys[0].Value;
+
+            int i = 1;
+            while (keys[i].Time < t)
+                i++;
+
+            float time = (t - keys[i - 1].Time) / (keys[i].Time - keys[i - 1].Time); // Scale to [0, 1]
+            return Interpolate(keys[i - 1].Value, keys[i - 1].Tangent, keys[i].Value, keys[i].Tangent, time);
+        }
+
+        private float Interpolate(float v1, float d1, float v2, float d2, float t)
+        {
+            // Perform Cubic Interpolation of the values by t
+            float a = 2 * (v1 - v2) + d1 + d2;
+            float b = -3 * v1 + 3 * v2 - 2 * d1 - d2;
+            float c = d1;
+            float d = v1;
+
+            return ((a * t + b) * t + c) * t + d;
         }
 
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
@@ -182,10 +167,8 @@ namespace J3DRenderer.JStudio.Animation
                         float[] rotationData = new float[numRotationShortEntries];
                         reader.BaseStream.Position = tagStart + rotationDataOffset;
                         for (int j = 0; j < numRotationShortEntries; j++)
-                        {
-                            short val = reader.ReadInt16();
-                            rotationData[j] = (float)Math.Pow(2f, AngleMultiplier) * WMath.RotationShortToFloat(val);
-                        }
+                            rotationData[j] = reader.ReadInt16();
+                            //Math.Pow(2f, AngleMultiplier) * WMath.RotationShortToFloat(val);
 
                         // Read array of translation/position data
                         float[] translationData = new float[numTranslateFloatEntries];
@@ -194,45 +177,33 @@ namespace J3DRenderer.JStudio.Animation
                             translationData[j] = reader.ReadSingle();
 
                         // Read the data for each joint that this animation.
-                        AnimationData = new List<JointAnimationData>();
+                        AnimationData = new List<JointAnim>();
+                        float rotScale = (float) Math.Pow(2f, AngleMultiplier) * 180 / 32768f;
+
                         reader.BaseStream.Position = tagStart + jointDataOffset;
                         for (int j = 0; j < jointEntryCount; j++)
                         {
-                            JointAnimationData jointData = new JointAnimationData();
+                            AnimatedJoint animatedJoint = ReadAnimJoint(reader);
+                            JointAnim joint = new JointAnim();
 
-                            short[,] xData = new short[3, 3];
-                            short[,] yData = new short[3, 3];
-                            short[,] zData = new short[3, 3];
+                            joint.ScalesX = ReadComp(scaleData, animatedJoint.X.Scale);
+                            joint.ScalesY = ReadComp(scaleData, animatedJoint.Y.Scale);
+                            joint.ScalesZ = ReadComp(scaleData, animatedJoint.Z.Scale);
 
-                            // X
-                            for (int k = 0; k < 3; k++)
-                            {
-                                xData[k, 0] = reader.ReadInt16(); // keyframeCount
-                                xData[k, 1] = reader.ReadInt16(); // startIndex
-                                xData[k, 2] = reader.ReadInt16(); // unknown0
-                            }
+                            joint.RotationsX = ReadComp(rotationData, animatedJoint.X.Rotation);
+                            joint.RotationsY = ReadComp(rotationData, animatedJoint.Y.Rotation);
+                            joint.RotationsZ = ReadComp(rotationData, animatedJoint.Z.Rotation);
 
-                            // Y
-                            for (int k = 0; k < 3; k++)
-                            {
-                                yData[k, 0] = reader.ReadInt16();
-                                yData[k, 1] = reader.ReadInt16();
-                                yData[k, 2] = reader.ReadInt16();
-                            }
+                            // Convert all of the rotations from compressed shorts back into -180, 180
+                            ConvertRotation(joint.RotationsX, rotScale);
+                            ConvertRotation(joint.RotationsY, rotScale);
+                            ConvertRotation(joint.RotationsZ, rotScale);
 
-                            // Z
-                            for (int k = 0; k < 3; k++)
-                            {
-                                zData[k, 0] = reader.ReadInt16();
-                                zData[k, 1] = reader.ReadInt16();
-                                zData[k, 2] = reader.ReadInt16();
-                            }
+                            joint.TranslationsX = ReadComp(translationData, animatedJoint.X.Translation);
+                            joint.TranslationsY = ReadComp(translationData, animatedJoint.Y.Translation);
+                            joint.TranslationsZ = ReadComp(translationData, animatedJoint.Z.Translation);
 
-                            jointData.ScaleData = LoadData(scaleData, 0, xData, yData, zData);
-                            jointData.RotationData = LoadData(rotationData, 1, xData, yData, zData);
-                            jointData.TranslationData = LoadData(translationData, 2, xData, yData, zData);
-
-                            AnimationData.Add(jointData);
+                            AnimationData.Add(joint);
                         }
 
                         break;
@@ -242,28 +213,51 @@ namespace J3DRenderer.JStudio.Animation
             }
         }
 
-        private static FloatKeyframeData[] LoadData(float[] dataBank, int type, short[,] xData, short[,] yData, short[,] zData)
+        private void ConvertRotation(List<Key> rots, float scale)
         {
-            FloatKeyframeData[] keyframeData = new FloatKeyframeData[3];
-            keyframeData[0] = new FloatKeyframeData();
-            keyframeData[0].Keys = new float[xData[type, 0]];
-            for (int k = 0; k < keyframeData[0].Keys.Length; k++)
-                keyframeData[0].Keys[k] = dataBank[xData[type, 1] + k]; // startIndex + 
-            keyframeData[0].Unknown0 = xData[type, 2];
+            for(int j = 0; j < rots.Count; j++)
+            {
+                rots[j].Value *= scale;
+                rots[j].Tangent *= scale;
+            }
+        }
 
-            keyframeData[1] = new FloatKeyframeData();
-            keyframeData[1].Keys = new float[yData[type, 0]];
-            for (int k = 0; k < keyframeData[1].Keys.Length; k++)
-                keyframeData[1].Keys[k] = dataBank[yData[type, 1] + k]; // startIndex + 
-            keyframeData[1].Unknown0 = yData[type, 2];
 
-            keyframeData[2] = new FloatKeyframeData();
-            keyframeData[2].Keys = new float[zData[type, 0]];
-            for (int k = 0; k < keyframeData[2].Keys.Length; k++)
-                keyframeData[2].Keys[k] = dataBank[zData[type, 1] + k]; // startIndex + 
-            keyframeData[2].Unknown0 = zData[type, 2];
+        private AnimIndex ReadAnimIndex(EndianBinaryReader stream)
+        {
+            return new AnimIndex { Count = stream.ReadUInt16(), Index = stream.ReadUInt16(), Unknown0 = stream.ReadUInt16() };
+        }
 
-            return keyframeData;
+        private AnimComponent ReadAnimComponent(EndianBinaryReader stream)
+        {
+            return new AnimComponent { Scale = ReadAnimIndex(stream), Rotation = ReadAnimIndex(stream), Translation = ReadAnimIndex(stream) };
+        }
+
+        private AnimatedJoint ReadAnimJoint(EndianBinaryReader stream)
+        {
+            return new AnimatedJoint { X = ReadAnimComponent(stream), Y = ReadAnimComponent(stream), Z = ReadAnimComponent(stream) };
+        }
+
+        private List<Key> ReadComp(float[] src, AnimIndex index)
+        {
+            List<Key> ret = new List<Key>();
+
+            if (index.Count == 1)
+            {
+                ret.Add(new Key { Time = 0f, Value = src[index.Index], Tangent = 0f });
+            }
+            else
+            {
+                for (int j = 0; j < index.Count; j++)
+                {
+                    Key key = new Key();
+                    key.Time = src[index.Index + 3 * j + 0];
+                    key.Value = src[index.Index + 3 * j + 1];
+                    key.Tangent = src[index.Index + 3 * j + 2];
+                }
+            }
+
+            return ret;
         }
     }
 }
