@@ -89,6 +89,7 @@ namespace J3DRenderer.JStudio.Animation
 
             int numJoints = Math.Min(pose.Length, AnimationData.Count);
 
+            time *= kAnimFramerate;
             float ftime = time % AnimLength;
 
             for(int i = 0; i < numJoints; i++)
