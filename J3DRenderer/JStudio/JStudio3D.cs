@@ -225,7 +225,7 @@ namespace J3DRenderer.JStudio
 
 
                     skeletonCopy[i] = joint;
-                    m_lineBatcher.DrawLine(parentJoint.Translation, joint.Translation, WLinearColor.Blue, 0, 1);
+                    //m_lineBatcher.DrawLine(parentJoint.Translation, joint.Translation, WLinearColor.Blue, 0, 1);
                 }
             }
 
@@ -283,7 +283,7 @@ namespace J3DRenderer.JStudio
                             Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
                             //Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
 
-                            Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
+                            Matrix4 sm1 = EVP1Tag.InverseBindPose[indexFromDRW1];
                             Matrix4 sm2 = jointMtx;
                             sm1.Transpose();
 
@@ -291,7 +291,7 @@ namespace J3DRenderer.JStudio
                             finalTransform = Mad(finalTransform, sm2 * sm1, boneWeight);
                             //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
 
-                            transformedVertPos += Vector4.Transform(new Vector4(transformedVerts[i],1), sm2 * sm1) * boneWeight;
+                            transformedVertPos += Vector4.Transform(new Vector4(transformedVerts[i],1), sm1) * boneWeight;
                         }
 
                         transformedVertPos.X = transformedVertPos.X / transformedVertPos.W;
