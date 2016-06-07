@@ -46,12 +46,12 @@ namespace J3DRenderer
 
             m_model = new JStudio3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/ba.bdl"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/jb.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
             m_testAnim = new BCK();
-            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/wait01.bck"), Endian.Big));
+            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/jb__comp_appearance_o.bck"), Endian.Big));
 
 
             // Set up the Editor Tick Loop
@@ -93,7 +93,7 @@ namespace J3DRenderer
 
             m_renderCamera.Tick(deltaTime);
 
-            deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
+            deltaTime = WMath.Clamp(deltaTime, 0, 20f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
             m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);

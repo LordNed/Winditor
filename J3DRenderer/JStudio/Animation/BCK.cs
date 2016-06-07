@@ -98,11 +98,13 @@ namespace J3DRenderer.JStudio.Animation
                 Vector3 rot = new Vector3(GetAnimValue(AnimationData[i].RotationsX, ftime), GetAnimValue(AnimationData[i].RotationsY, ftime), GetAnimValue(AnimationData[i].RotationsZ, ftime));
 
                 // ZYX order
-                pose[i].Rotation = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), rot.Z) *
-                                   Quaternion.FromAxisAngle(new Vector3(0, 1, 0), rot.Y) *
-                                   Quaternion.FromAxisAngle(new Vector3(1, 0, 0), rot.X);
+                pose[i].Rotation = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(rot.Z)) *
+                                   Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(rot.Y)) *
+                                   Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(rot.X));
 
-                pose[i].Translation = new Vector3(GetAnimValue(AnimationData[i].TranslationsX, ftime), GetAnimValue(AnimationData[i].TranslationsY, ftime), GetAnimValue(AnimationData[i].TranslationsZ, ftime));
+                Vector3 translation = new Vector3(GetAnimValue(AnimationData[i].TranslationsX, ftime), GetAnimValue(AnimationData[i].TranslationsY, ftime), GetAnimValue(AnimationData[i].TranslationsZ, ftime));
+
+                pose[i].Translation = translation;
             }
         }
 
@@ -178,7 +180,7 @@ namespace J3DRenderer.JStudio.Animation
 
                         // Read the data for each joint that this animation.
                         AnimationData = new List<JointAnim>();
-                        float rotScale = (float) Math.Pow(2f, AngleMultiplier) * 180 / 32768f;
+                        float rotScale = (float) Math.Pow(2f, AngleMultiplier) * (180 / 32768f);
 
                         reader.BaseStream.Position = tagStart + jointDataOffset;
                         for (int j = 0; j < jointEntryCount; j++)
@@ -254,6 +256,7 @@ namespace J3DRenderer.JStudio.Animation
                     key.Time = src[index.Index + 3 * j + 0];
                     key.Value = src[index.Index + 3 * j + 1];
                     key.Tangent = src[index.Index + 3 * j + 2];
+                    ret.Add(key);
                 }
             }
 
