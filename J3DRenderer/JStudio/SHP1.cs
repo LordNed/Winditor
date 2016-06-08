@@ -49,6 +49,7 @@ namespace J3DRenderer.JStudio
             public List<int> Indexes { get; internal set; }
             public VertexDescription VertexDescription { get; private set; }
             public List<Vector3> OverrideVertPos { get; set; }
+            public List<Vector3> OverrideNormals { get; set; }
 
             // This is a list of all Matrix Table entries for all sub-primitives. 
             public List<SkinDataTable> MatrixDataTable { get; private set; }
@@ -65,6 +66,7 @@ namespace J3DRenderer.JStudio
                 VertexDescription = new VertexDescription();
                 MatrixDataTable = new List<SkinDataTable>();
                 OverrideVertPos = new List<Vector3>();
+                OverrideNormals = new List<Vector3>();
 
                 m_glBufferIndexes = new int[15];
                 m_glIndexBuffer = GL.GenBuffer();
@@ -77,7 +79,8 @@ namespace J3DRenderer.JStudio
                 GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * Indexes.Count), Indexes.ToArray(), BufferUsageHint.StaticDraw);
 
                 if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, OverrideVertPos.Count > 0 ? OverrideVertPos.ToArray() : VertexData.Position.ToArray());
-                if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
+                if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, OverrideNormals.Count > 0 ? OverrideNormals.ToArray() : VertexData.Normal.ToArray());
+                //if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
                 if (VertexData.Binormal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Binormal, VertexData.Binormal.ToArray());
                 if (VertexData.Color0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color0, VertexData.Color0.ToArray());
                 if (VertexData.Color1.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color1, VertexData.Color1.ToArray());

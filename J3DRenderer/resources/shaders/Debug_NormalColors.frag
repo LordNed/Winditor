@@ -9,5 +9,5 @@ out vec4 PixelColor;
 
 void main()
 {
-	PixelColor = Color0;
+	PixelColor = vec4(Color0.rgb * 0.5 + 0.5, 1);
 }
