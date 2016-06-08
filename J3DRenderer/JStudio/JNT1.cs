@@ -20,8 +20,6 @@ namespace J3DRenderer.JStudio
 
         // Useful for easier traversal
         public int ParentId { get; internal set; }
-        public Matrix4 InverseBindPose { get; internal set; }
-        public Matrix4 BindPose { get; internal set; }
     }
 
     public class JNT1
@@ -101,10 +99,6 @@ namespace J3DRenderer.JStudio
 
                         Vector3 worldPos = parentJoint.Translation +  Vector3.Transform(joint.Translation, parentJoint.Rotation);
                         Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
-                        //Matrix4 bindPose = Matrix4.CreateTranslation(worldPos) * Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale);
-                        Matrix4 bindPose = Matrix4.CreateFromQuaternion(worldRot) * Matrix4.CreateScale(joint.Scale) * Matrix4.CreateTranslation(worldPos);
-                        joint.InverseBindPose = bindPose.Inverted();
-                        joint.BindPose = bindPose;
 
                         // We store away a clone of the existing joint for the purposes of not having to walk the entire chain again
                         // for each bone. This lets us store the world-position and rotation of the parent joint for multiplication above.
