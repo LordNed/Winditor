@@ -3,6 +3,7 @@ using GameFormatReader.Common;
 using System.Diagnostics;
 using OpenTK;
 using WindEditor;
+using System;
 
 namespace J3DRenderer.JStudio
 {
@@ -36,11 +37,14 @@ namespace J3DRenderer.JStudio
 
             // For each influence, an index remap?
             reader.BaseStream.Position = tagStart + indexDataOffset;
+            int numMatrices = 0;
             for(int m = 0; m < envelopeCount; m++)
             {
                 for(int j =0; j < NumBoneInfluences[m]; j++)
                 {
-                    IndexRemap.Add(reader.ReadUInt16());
+                    ushort val = reader.ReadUInt16();
+                    numMatrices = Math.Max(numMatrices, val + 1);
+                    IndexRemap.Add(val);
                 }
             }
 
@@ -57,7 +61,7 @@ namespace J3DRenderer.JStudio
             // For each envelope index, what is the Inverse Bind Pose matrix? The Inverse Bind Pose matrix will transform
             // a vertex from being in model space into local space around its bone.
             reader.BaseStream.Position = tagStart + boneMatrixOffset;
-            for(int m = 0; m < envelopeCount; m++)
+            for(int m = 0; m < numMatrices; m++)
             {
                 Matrix3x4 matrix = new Matrix3x4();
                 for (int j = 0; j < 3; j++)

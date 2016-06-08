@@ -232,6 +232,7 @@ namespace J3DRenderer.JStudio
             foreach (var shape in SHP1Tag.Shapes)
             {
                 var transformedVerts = new List<Vector3>(shape.VertexData.Position);
+                List<WLinearColor> colorOverride = new List<WLinearColor>();
 
                 for (int i = 0; i < shape.VertexData.Position.Count; i++)
                 {
@@ -272,7 +273,7 @@ namespace J3DRenderer.JStudio
                             firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
                         }
 
-                        Matrix4 finalTransform = Matrix4.Zero;
+                        //Matrix4 finalTransform = Matrix4.Zero;
                         Vector4 transformedVertPos = Vector4.Zero;
                         for (int b = 0; b < numBonesAffecting; b++)
                         {
@@ -283,15 +284,15 @@ namespace J3DRenderer.JStudio
                             Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
                             //Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
 
-                            Matrix4 sm1 = EVP1Tag.InverseBindPose[indexFromDRW1];
+                            Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
                             Matrix4 sm2 = jointMtx;
-                            sm1.Transpose();
+                            //sm1.Transpose();
 
                             //Console.WriteLine("jScale: {0} jRot: {1} jT: {2} jMtx: {3} sm1: {4}", joint.Scale, joint.Rotation, joint.Translation, jointMtx, sm1);
-                            finalTransform = Mad(finalTransform, sm2 * sm1, boneWeight);
+                            //finalTransform = Mad(finalTransform, sm1 * sm2, boneWeight);
                             //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
 
-                            transformedVertPos += Vector4.Transform(new Vector4(transformedVerts[i],1), sm1) * boneWeight;
+                            transformedVertPos += Vector4.Transform(new Vector4(transformedVerts[i],1), sm2 * sm1) * boneWeight;
                         }
 
                         transformedVertPos.X = transformedVertPos.X / transformedVertPos.W;
@@ -299,7 +300,7 @@ namespace J3DRenderer.JStudio
                         transformedVertPos.Z = transformedVertPos.Z / transformedVertPos.W;
                         transformedVertPos.W = transformedVertPos.W / transformedVertPos.W;
 
-                        //Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
+                        //transformedVertPos = Vector4.Transform(new Vector4(transformedVerts[i],1), finalTransform);
                         transformedVerts[i] = transformedVertPos.Xyz;
                     }
                     else
@@ -311,10 +312,13 @@ namespace J3DRenderer.JStudio
                         Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalTransform);
                         transformedVerts[i] = transformedVertPos;
                     }
+
+                    colorOverride.Add(isPartiallyWeighted ? WLinearColor.Black : WLinearColor.White);
                 }
 
                 // Re-upload to the GPU.
                 shape.OverrideVertPos = transformedVerts;
+                shape.VertexData.Color0 = colorOverride;
                 shape.UploadBuffersToGPU();
             }
 
