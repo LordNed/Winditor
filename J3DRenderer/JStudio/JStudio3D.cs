@@ -273,7 +273,7 @@ namespace J3DRenderer.JStudio
                             firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
                         }
 
-                        //Matrix4 finalTransform = Matrix4.Zero;
+                        Matrix4 finalTransform = Matrix4.Zero;
                         Vector4 transformedVertPos = Vector4.Zero;
                         for (int b = 0; b < numBonesAffecting; b++)
                         {
@@ -286,13 +286,13 @@ namespace J3DRenderer.JStudio
 
                             Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
                             Matrix4 sm2 = jointMtx;
-                            //sm1.Transpose();
+                            sm1.Transpose();
 
                             //Console.WriteLine("jScale: {0} jRot: {1} jT: {2} jMtx: {3} sm1: {4}", joint.Scale, joint.Rotation, joint.Translation, jointMtx, sm1);
-                            //finalTransform = Mad(finalTransform, sm1 * sm2, boneWeight);
+                            finalTransform = Mad(finalTransform, Matrix4.Mult(sm2, sm1), boneWeight);
                             //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
 
-                            transformedVertPos += Vector4.Transform(new Vector4(transformedVerts[i],1), sm2 * sm1) * boneWeight;
+                            transformedVertPos += Vector4.Multiply(Vector4.Transform(new Vector4(transformedVerts[i], 1), Matrix4.Mult(sm1,sm2)), boneWeight);
                         }
 
                         transformedVertPos.X = transformedVertPos.X / transformedVertPos.W;

@@ -46,12 +46,12 @@ namespace J3DRenderer
 
             m_model = new JStudio3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/btd.bmd"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/jb.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
             m_testAnim = new BCK();
-            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/dead.bck"), Endian.Big));
+            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/18_jb_cut12_lookwait_l.bck"), Endian.Big));
 
 
             // Set up the Editor Tick Loop
