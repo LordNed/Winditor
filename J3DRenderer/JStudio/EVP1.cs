@@ -70,7 +70,11 @@ namespace J3DRenderer.JStudio
                         matrix[j, k] = reader.ReadSingle();
                 }
 
-                InverseBindPose.Add(new Matrix4(matrix.Row0, matrix.Row1, matrix.Row2, new Vector4(0, 0, 0, 1)));
+                Matrix4 bindPoseMatrix = new Matrix4(matrix.Row0, matrix.Row1, matrix.Row2, new Vector4(0, 0, 0, 1));
+
+                // We transpose this matrix for use in OpenTK so it lines up with existing joint-matrix calculations.
+                bindPoseMatrix.Transpose();
+                InverseBindPose.Add(bindPoseMatrix);
             }
         }
     }

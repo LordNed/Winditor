@@ -212,28 +212,24 @@ namespace J3DRenderer.JStudio
             for (int i = 0; i < JNT1Tag.Joints.Count; i++)
             {
                 SkeletonJoint joint = JNT1Tag.Joints[i];
-                Matrix4 cumulativeTransform = Matrix4.Identity; // Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+                //Matrix4 cumulativeTransform = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
 
-                while (joint.ParentId >= 0)
+                //while (joint.ParentId >= 0)
+                //{
+                //    joint = JNT1Tag.Joints[joint.ParentId];
+                //    cumulativeTransform = cumulativeTransform * (Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation));
+                //}
+                Matrix4 cumulativeTransform = Matrix4.Identity;
+                while (true)
                 {
-                    cumulativeTransform = cumulativeTransform * Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+                    Matrix4 jointMatrix = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+                    cumulativeTransform *= jointMatrix;
+                    if (joint.ParentId < 0)
+                        break;
                     joint = JNT1Tag.Joints[joint.ParentId];
                 }
 
                 boneTransforms[i] = cumulativeTransform;
-                //if (joint.ParentId >= 0)
-                //{
-                //    SkeletonJoint parentJoint = skeletonCopy[joint.ParentId];
-
-                //    Vector3 worldPos = Vector3.Multiply(parentJoint.Translation + Vector3.Transform(joint.Translation, parentJoint.Rotation), parentJoint.Scale);
-                //    Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
-
-                //    joint.Translation = worldPos;
-                //    joint.Rotation = worldRot;
-
-                //    skeletonCopy[i] = joint;
-                //    m_lineBatcher.DrawLine(parentJoint.Translation, joint.Translation, WLinearColor.Blue, 0, 1);
-                //}
             }
 
             foreach (var shape in SHP1Tag.Shapes)
@@ -280,42 +276,23 @@ namespace J3DRenderer.JStudio
                             firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
                         }
 
-                        Matrix4 finalTransform = Matrix4.Zero;
                         Vector4 transformedVertPos = Vector4.Zero;
                         for (int b = 0; b < numBonesAffecting; b++)
                         {
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
                             float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
 
-                            //SkeletonJoint joint = skeletonCopy[boneIndex];
-                            //Matrix4 jointMtx = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-                            //Matrix4 jointMtx = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
-
                             Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
                             Matrix4 sm2 = boneTransforms[boneIndex];
-                            sm1.Transpose();
-
-                            //Console.WriteLine("jScale: {0} jRot: {1} jT: {2} jMtx: {3} sm1: {4}", joint.Scale, joint.Rotation, joint.Translation, jointMtx, sm1);
-                            finalTransform = Mad(finalTransform, Matrix4.Mult(sm2, sm1), boneWeight);
-                            //finalTransform += (jointMtx /** JNT1Tag.Joints[boneIndex].InverseBindPose*/) * boneWeight;
 
                             transformedVertPos += Vector4.Multiply(Vector4.Transform(new Vector4(transformedVerts[i], 1), Matrix4.Mult(sm1,sm2)), boneWeight);
                         }
 
-                        transformedVertPos.X = transformedVertPos.X / transformedVertPos.W;
-                        transformedVertPos.Y = transformedVertPos.Y / transformedVertPos.W;
-                        transformedVertPos.Z = transformedVertPos.Z / transformedVertPos.W;
-                        transformedVertPos.W = transformedVertPos.W / transformedVertPos.W;
-
-                        //transformedVertPos = Vector4.Transform(new Vector4(transformedVerts[i],1), finalTransform);
                         transformedVerts[i] = transformedVertPos.Xyz;
                     }
                     else
                     {
                         // If the vertex is not weighted then we use a 1:1 movement with the bone matrix.
-                        //SkeletonJoint joint = skeletonCopy[indexFromDRW1];
-                        //Matrix4 finalTransform = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-                        //Matrix4 finalTransform = Matrix4.CreateTranslation(joint.Translation) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateScale(joint.Scale);
                         Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], boneTransforms[indexFromDRW1]);
                         transformedVerts[i] = transformedVertPos;
                     }
@@ -325,7 +302,7 @@ namespace J3DRenderer.JStudio
 
                 // Re-upload to the GPU.
                 shape.OverrideVertPos = transformedVerts;
-                shape.VertexData.Color0 = colorOverride;
+                //shape.VertexData.Color0 = colorOverride;
                 shape.UploadBuffersToGPU();
             }
 
