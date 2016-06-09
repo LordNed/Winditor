@@ -59,7 +59,7 @@ namespace J3DRenderer.JStudio
         public BindingList<Material> MaterialList { get; protected set; }
         public List<short> MaterialRemapTable { get; protected set; }
         public List<IndirectTexture> IndirectTextures { get; protected set; }
-        public List<int> CullModes { get; protected set; }
+        public List<GXCullMode> CullModes { get; protected set; }
         public List<WLinearColor> MaterialColors { get; protected set; }
         public List<byte> NumChannelControls { get; protected set; }
         public List<ColorChannelControl> ColorChannelControls { get; protected set; }
@@ -116,7 +116,7 @@ namespace J3DRenderer.JStudio
             IndirectTextures = ReadSection<IndirectTexture>(reader, chunkStart, chunkSize, offsets, 3, ReadIndirectTexture, 312);
 
             /* CULL MODE */
-            CullModes = ReadSection<int>(reader, chunkStart, chunkSize, offsets, 4, ReadInt32, 4);
+            CullModes = ReadSection<GXCullMode>(reader, chunkStart, chunkSize, offsets, 4, ReadCullMode, 4);
 
             /* MATERIAL COLOR */
             MaterialColors = ReadSection<WLinearColor>(reader, chunkStart, chunkSize, offsets, 5, ReadColor32, 4);
@@ -369,6 +369,12 @@ namespace J3DRenderer.JStudio
             return new WLinearColor(r / 255f, g / 255f, b / 255f, a/255f);
         }
 
+        private static GXCullMode ReadCullMode(EndianBinaryReader stream)
+        {
+            return (GXCullMode)stream.ReadInt32();
+        }
+
+
         private static IndirectTexture ReadIndirectTexture(EndianBinaryReader stream)
         {
             IndirectTexture itm = new IndirectTexture();
@@ -466,8 +472,8 @@ namespace J3DRenderer.JStudio
             return new BlendMode
             {
                 Type = (GXBlendMode)stream.ReadByte(),
-                SourceFact = (GXBlendModeControl)stream.ReadByte(),
-                DestinationFact = (GXBlendModeControl)stream.ReadByte(),
+                SourceFactor = (GXBlendModeControl)stream.ReadByte(),
+                DestinationFactor = (GXBlendModeControl)stream.ReadByte(),
                 Operation = (GXLogicOp)stream.ReadByte()
             };
         }

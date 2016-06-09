@@ -66,17 +66,17 @@ namespace J3DRenderer.JStudio
         public GXBlendMode Type;
 
         /// <summary> Blending Control </summary>
-        public GXBlendModeControl SourceFact;
+        public GXBlendModeControl SourceFactor;
 
         /// <summary> Blending Control </summary>
-        public GXBlendModeControl DestinationFact;
+        public GXBlendModeControl DestinationFactor;
 
         /// <summary> What operation is used to blend them when <see cref="Type"/> is set to <see cref="GXBlendMode.Logic"/>. </summary>
         public GXLogicOp Operation; // Seems to be logic operators such as clear, and, copy, equiv, inv, invand, etc.
 
         public override string ToString()
         {
-            return string.Format("Type: {0} Control: {1} Destination Control: {2} Operation: {3}", Type, SourceFact, DestinationFact, Operation);
+            return string.Format("Type: {0} Control: {1} Destination Control: {2} Operation: {3}", Type, SourceFactor, DestinationFactor, Operation);
         }
     }
 
