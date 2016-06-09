@@ -305,8 +305,17 @@ namespace J3DRenderer.JStudio
                 shape.UploadBuffersToGPU();
             }
 
+            if (WInput.GetKeyDown(System.Windows.Input.Key.O))
+                m_shapeToDraw--;
+            if (WInput.GetKeyDown(System.Windows.Input.Key.P))
+                m_shapeToDraw++;
+
+            m_shapeToDraw = WMath.Clamp(m_shapeToDraw, 0, SHP1Tag.ShapeCount - 1);
+
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
         }
+
+        private int m_shapeToDraw = 0;
 
         private Matrix4 Mad(Matrix4 r, Matrix4 m, float f)
         {
@@ -326,6 +335,7 @@ namespace J3DRenderer.JStudio
                     break;
 
                 case HierarchyDataType.Batch:
+                    if (curNode.Value != m_shapeToDraw) break;
                     RenderBatchByIndex(curNode.Value);
                     break;
             }
