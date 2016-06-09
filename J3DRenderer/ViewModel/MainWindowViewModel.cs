@@ -46,7 +46,7 @@ namespace J3DRenderer
 
             m_model = new JStudio3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/jb.bdl"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Fairy06.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
@@ -96,7 +96,7 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
-            m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

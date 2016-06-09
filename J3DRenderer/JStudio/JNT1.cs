@@ -20,6 +20,11 @@ namespace J3DRenderer.JStudio
 
         // Useful for easier traversal
         public int ParentId { get; internal set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public class JNT1

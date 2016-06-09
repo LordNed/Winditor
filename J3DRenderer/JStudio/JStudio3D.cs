@@ -194,31 +194,12 @@ namespace J3DRenderer.JStudio
             m_viewMatrix = viewMatrix;
             m_projMatrix = projectionMatrix;
             m_modelMatrix = modelMatrix;
-            m_lineBatcher.Render(viewMatrix, projectionMatrix);
-            m_lineBatcher.Tick(1 / 60f);
 
-            //SkeletonJoint[] skeletonCopy = new SkeletonJoint[JNT1Tag.Joints.Count];
-            //for (int i = 0; i < skeletonCopy.Length; i++)
-            //{
-            //    skeletonCopy[i] = new SkeletonJoint();
-            //    skeletonCopy[i].Translation = JNT1Tag.Joints[i].Translation;
-            //    skeletonCopy[i].Rotation = JNT1Tag.Joints[i].Rotation;
-            //    skeletonCopy[i].ParentId = JNT1Tag.Joints[i].ParentId;
-            //    skeletonCopy[i].Scale = JNT1Tag.Joints[i].Scale;
-            //    skeletonCopy[i].Name = JNT1Tag.Joints[i].Name;
-            //}
 
             Matrix4[] boneTransforms = new Matrix4[JNT1Tag.Joints.Count];
             for (int i = 0; i < JNT1Tag.Joints.Count; i++)
             {
                 SkeletonJoint joint = JNT1Tag.Joints[i];
-                //Matrix4 cumulativeTransform = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
-
-                //while (joint.ParentId >= 0)
-                //{
-                //    joint = JNT1Tag.Joints[joint.ParentId];
-                //    cumulativeTransform = cumulativeTransform * (Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation));
-                //}
                 Matrix4 cumulativeTransform = Matrix4.Identity;
                 while (true)
                 {
@@ -226,11 +207,19 @@ namespace J3DRenderer.JStudio
                     cumulativeTransform *= jointMatrix;
                     if (joint.ParentId < 0)
                         break;
+
+                    Vector3 curPos = jointMatrix.ExtractTranslation();
+                    Vector3 nextPos = boneTransforms[joint.ParentId].ExtractTranslation();
+
+                    m_lineBatcher.DrawLine(curPos, nextPos, WLinearColor.Red, 1, 0);
                     joint = JNT1Tag.Joints[joint.ParentId];
                 }
 
                 boneTransforms[i] = cumulativeTransform;
             }
+
+            m_lineBatcher.Render(viewMatrix, projectionMatrix);
+            m_lineBatcher.Tick(1 / 60f);
 
             foreach (var shape in SHP1Tag.Shapes)
             {
