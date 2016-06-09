@@ -255,6 +255,8 @@ namespace J3DRenderer.JStudio
                     bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
                     ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
 
+                    Matrix4 finalMatrix = Matrix4.Zero;
+
                     if (isPartiallyWeighted)
                     {
                         ushort numBonesAffecting = EVP1Tag.NumBoneInfluences[indexFromDRW1];
@@ -266,7 +268,6 @@ namespace J3DRenderer.JStudio
                             firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
                         }
 
-                        Matrix4 finalMatrix = Matrix4.Zero;
                         for (int b = 0; b < numBonesAffecting; b++)
                         {
                             ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
@@ -275,38 +276,22 @@ namespace J3DRenderer.JStudio
                             Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
                             Matrix4 sm2 = boneTransforms[boneIndex];
 
-                            //transformedVertPos += Vector4.Multiply(Vector4.Transform(new Vector4(transformedVerts[i], 1), Matrix4.Mult(sm1,sm2)), boneWeight);
                             finalMatrix = finalMatrix + Matrix4.Mult(Matrix4.Mult(sm1, sm2), boneWeight);
                         }
-
-                        if (shape.VertexData.Normal.Count > 0)
-                        {
-                            // Inverse Transpose knocks out scaling and translation from the matrix.
-                            Matrix4 normalInverseTranspose = finalMatrix.Inverted();
-                            normalInverseTranspose.Transpose();
-
-                            Vector3 transformedNormal = Vector3.TransformNormal(shape.VertexData.Normal[i], normalInverseTranspose);// Matrix4.CreateFromQuaternion(finalMatrix.ExtractRotation()));
-                            transformedNormals.Add(transformedNormal);
-                        }
-
-                        Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalMatrix);
-                        transformedVerts[i] = transformedVertPos;
                     }
                     else
                     {
                         // If the vertex is not weighted then we use a 1:1 movement with the bone matrix.
-                        Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], boneTransforms[indexFromDRW1]);
-                        transformedVerts[i] = transformedVertPos;
+                        finalMatrix = boneTransforms[indexFromDRW1];
+                    }
 
-                        if (shape.VertexData.Normal.Count > 0)
-                        {
-                            // Inverse Transpose knocks out scaling and translation from the matrix.
-                            Matrix4 normalInverseTranspose = boneTransforms[indexFromDRW1].Inverted();
-                            normalInverseTranspose.Transpose();
+                    Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalMatrix);
+                    transformedVerts[i] = transformedVertPos;
 
-                            Vector3 transformedNormal = Vector3.TransformNormal(shape.VertexData.Normal[i], normalInverseTranspose); // Matrix4.CreateFromQuaternion(boneTransforms[indexFromDRW1].ExtractRotation()));
-                            transformedNormals.Add(transformedNormal);
-                        }
+                    if (shape.VertexData.Normal.Count > 0)
+                    {
+                        Vector3 transformedNormal = Vector3.TransformNormal(shape.VertexData.Normal[i], finalMatrix);
+                        transformedNormals.Add(transformedNormal);
                     }
 
                     colorOverride.Add(isPartiallyWeighted ? WLinearColor.Black : WLinearColor.White);
