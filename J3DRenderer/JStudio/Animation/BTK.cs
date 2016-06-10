@@ -26,7 +26,7 @@ namespace J3DRenderer.JStudio.Animation
 
         public string Magic { get; private set; }
         public string StudioType { get; private set; }
-        public LoopType Flag { get; private set; }
+        public LoopType LoopMode { get; private set; }
         public byte AngleMultiplier { get; private set; }
         public short AnimLength { get; private set; }
 
@@ -57,7 +57,7 @@ namespace J3DRenderer.JStudio.Animation
                 switch (tagName)
                 {
                     case "TTK1":
-                        Flag = (LoopType)reader.ReadByte(); // 0 = Play Once. 2 = Loop (Assumed from BCK)
+                        LoopMode = (LoopType)reader.ReadByte(); // 0 = Play Once. 2 = Loop (Assumed from BCK)
                         AngleMultiplier = reader.ReadByte(); // Multiply Angle Value by pow(2, angleMultiplier) (Assumed from BCK)
                         AnimLength = reader.ReadInt16();
                         short textureAnimEntryCount = (short)(reader.ReadInt16() / 3); // 3 for each material. BTK stores U, V, and W separately, so you need to divide by three.

@@ -136,13 +136,13 @@ namespace J3DRenderer.JStudio
         public byte Type;
         public float CenterS;
         public float CenterT;
-        public float Unknown0;
+        public float CenterW;
         public float ScaleS;
         public float ScaleT;
         public float Rotation;
         public float TranslateS;
         public float TranslateT;
-        public Matrix4 Matrix;
+        public Matrix4 Matrix; // Projection Matrix? blank63 has it as that. Use above fields to generate a new matrix then multiply by proj matrix?
     }
 
     public class TevIn

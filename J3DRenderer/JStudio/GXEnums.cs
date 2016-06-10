@@ -227,7 +227,6 @@ namespace J3DRenderer.JStudio
 
     public enum GXTexMatrix
     {
-        Identity = 60,
         TexMtx0 = 30,
         TexMtx1 = 33,
         TexMtx2 = 36,
@@ -237,7 +236,8 @@ namespace J3DRenderer.JStudio
         TexMtx6 = 48,
         TexMtx7 = 51,
         TexMtx8 = 54,
-        TexMtx9 = 57
+        TexMtx9 = 57,
+        Identity = 60,
     }
 
     public enum GXPrimitiveType

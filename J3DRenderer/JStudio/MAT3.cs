@@ -515,7 +515,7 @@ namespace J3DRenderer.JStudio
             Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
             retVal.CenterS = stream.ReadSingle();
             retVal.CenterT = stream.ReadSingle();
-            retVal.Unknown0 = stream.ReadSingle();
+            retVal.CenterW = stream.ReadSingle();
             retVal.ScaleS = stream.ReadSingle();
             retVal.ScaleT = stream.ReadSingle();
             retVal.Rotation = stream.ReadInt16() * (180 / 32768f);

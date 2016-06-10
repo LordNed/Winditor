@@ -62,7 +62,7 @@ namespace J3DRenderer.JStudio.Animation
 
         public string Magic { get; private set; }
         public string StudioType { get; private set; }
-        public LoopType Flag { get; set; }
+        public LoopType LoopMode { get; set; }
         public byte AngleMultiplier { get; private set; }
         public short AnimLength { get; private set; }
 
@@ -151,7 +151,7 @@ namespace J3DRenderer.JStudio.Animation
                 switch (tagName)
                 {
                     case "ANK1":
-                        Flag = (LoopType)reader.ReadByte(); // 0 = Play Once. 2 = Loop
+                        LoopMode = (LoopType)reader.ReadByte(); // 0 = Play Once. 2 = Loop
                         AngleMultiplier = reader.ReadByte(); // Multiply Angle Value by pow(2, angleMultiplier)
                         AnimLength = reader.ReadInt16();
                         short jointEntryCount = reader.ReadInt16();
