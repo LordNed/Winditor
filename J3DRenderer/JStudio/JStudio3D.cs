@@ -335,7 +335,7 @@ namespace J3DRenderer.JStudio
                     break;
 
                 case HierarchyDataType.Batch:
-                    if (curNode.Value != m_shapeToDraw) break;
+                    //if (curNode.Value != m_shapeToDraw) break;
                     RenderBatchByIndex(curNode.Value);
                     break;
             }
