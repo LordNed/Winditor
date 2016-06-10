@@ -94,13 +94,13 @@ namespace J3DRenderer.JStudio
         public GXColorSrc MaterialSrc;
 
         /// <summary> Light ID or IDs to associate with this channel. </summary>
-        public GXLightId LitMask;
+        public GXLightMask LitMask;
 
         /// <summary> Diffuse function to use. </summary>
-        public GXDiffuseFn DiffuseFunction;
+        public GXDiffuseFunction DiffuseFunction;
 
         /// <summary> Attenuation function to use. </summary>
-        public GXAttenuationFn AttenuationFunction;
+        public GXAttenuationFunction AttenuationFunction;
 
         /// <summary> Source for the ambient color. When set to <see cref="GXColorSrc.Register"/> the color set by GX_SetChanAmbColor is used. </summary>
         public GXColorSrc AmbientSrc;

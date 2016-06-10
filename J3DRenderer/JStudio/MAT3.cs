@@ -484,9 +484,9 @@ namespace J3DRenderer.JStudio
             {
                 LightingEnabled = stream.ReadBoolean(),
                 MaterialSrc = (GXColorSrc)stream.ReadByte(),
-                LitMask = (GXLightId)stream.ReadByte(),
-                DiffuseFunction = (GXDiffuseFn)stream.ReadByte(),
-                AttenuationFunction = (GXAttenuationFn)stream.ReadByte(),
+                LitMask = (GXLightMask)stream.ReadByte(),
+                DiffuseFunction = (GXDiffuseFunction)stream.ReadByte(),
+                AttenuationFunction = (GXAttenuationFunction)stream.ReadByte(),
                 AmbientSrc = (GXColorSrc)stream.ReadByte()
             };
 

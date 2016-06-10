@@ -153,7 +153,7 @@ namespace J3DRenderer.ShaderGen
 
                 for (int l = 0; l < 8; l++)
                 {
-                    bool isLit = channelControl.LitMask.HasFlag((GXLightId)(1 << l));
+                    bool isLit = channelControl.LitMask.HasFlag((GXLightMask)(1 << l));
                     stream.AppendFormat("// ChannelControl: {0} Light: {1} LitMask: {2}\n", i, l, isLit);
                     if (isLit)
                     {
@@ -287,19 +287,19 @@ namespace J3DRenderer.ShaderGen
         {
             switch (channelControl.AttenuationFunction)
             {
-                case GXAttenuationFn.None:
+                case GXAttenuationFunction.None:
                     stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
                     stream.AppendLine("\tattn = 1.0;");
                     stream.AppendLine("\tif(length(ldir) == 0.0)\n\t\tldir = RawNormal;");
                     break;
-                case GXAttenuationFn.Spec:
+                case GXAttenuationFunction.Spec:
                     stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
                     stream.AppendFormat("\tattn = (dot(RawNormal, ldir) >= 0.0) ? max(0.0, dot(RawNormal, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
                     stream.AppendFormat("\tcosAttn = Lights[{0}].CosAtten.xyz;\n", lightIndex);
-                    stream.AppendFormat("\tdistAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFn.None) ? "" : "normalize");
+                    stream.AppendFormat("\tdistAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFunction.None) ? "" : "normalize");
                     stream.AppendFormat("\tattn = max(0.0f, dot(cosAttn, vec3(1.0, attn, attn*attn))) / dot(distAttn, vec3(1.0, attn, attn*attn));");
                     break;
-                case GXAttenuationFn.Spot:
+                case GXAttenuationFunction.Spot:
                     stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
                     stream.AppendLine("\tdist2 = dot(ldir, ldir);");
                     stream.AppendLine("\tdist = sqrt(dist2);");
@@ -314,13 +314,13 @@ namespace J3DRenderer.ShaderGen
 
             switch (channelControl.DiffuseFunction)
             {
-                case GXDiffuseFn.None:
+                case GXDiffuseFunction.None:
                     stream.AppendFormat("\tlightAccum{1} += attn * Lights[{0}].Color;\n", lightIndex, lightAccumSwizzle);
                     break;
-                case GXDiffuseFn.Signed:
-                case GXDiffuseFn.Clamp:
+                case GXDiffuseFunction.Signed:
+                case GXDiffuseFunction.Clamp:
                     stream.AppendFormat("\tlightAccum{1} += attn * {2}dot(ldir, RawNormal)) * vec{3}(Lights[{0}].Color{1});\n",
-                        lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFn.Signed ? "max(0.0," : "(", numSwizzleComponents);
+                        lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFunction.Signed ? "max(0.0," : "(", numSwizzleComponents);
                     break;
                 default:
                     Console.WriteLine("Unsupported DiffusenFunction Value: {0}", channelControl.AttenuationFunction);

@@ -252,7 +252,7 @@ namespace J3DRenderer.JStudio
     }
 
     [Flags]
-    public enum GXLightId
+    public enum GXLightMask
     {
         Light0 = 0x001,
         Light1 = 0x002,
@@ -265,14 +265,14 @@ namespace J3DRenderer.JStudio
         None = 0x000
     }
 
-    public enum GXDiffuseFn
+    public enum GXDiffuseFunction
     {
         None = 0,
         Signed = 1,
         Clamp = 2
     }
 
-    public enum GXAttenuationFn
+    public enum GXAttenuationFunction
     {
         // No attenuation
         None = 2,
