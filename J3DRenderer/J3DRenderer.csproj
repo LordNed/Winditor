@@ -81,6 +81,7 @@
     <Compile Include="Framework\Input.cs" />
     <Compile Include="Framework\SimpleObjRenderer.cs" />
     <Compile Include="JStudio\Animation\BCK.cs" />
+    <Compile Include="JStudio\Animation\BTK.cs" />
     <Compile Include="JStudio\EVP1.cs" />
     <Compile Include="JStudio\DRW1.cs" />
     <Compile Include="JStudio\ShaderGen\FragmentShaderGen.cs" />
@@ -255,6 +256,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\18_jb_cut12_lookwait_l.bck">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Fairy06.btk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

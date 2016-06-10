@@ -26,6 +26,7 @@ namespace J3DRenderer
         private int m_viewportWidth;
         private JStudio3D m_model;
         private BCK m_testAnim;
+        private BTK m_testMaterialAnim;
         private float m_timeSinceStartup;
 
         public MainWindowViewModel()
@@ -53,6 +54,8 @@ namespace J3DRenderer
             m_testAnim = new BCK();
             m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/18_jb_cut12_lookwait_l.bck"), Endian.Big));
 
+            m_testMaterialAnim = new BTK();
+            m_testMaterialAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Fairy06.btk"), Endian.Big));
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -97,6 +100,7 @@ namespace J3DRenderer
 
             m_timeSinceStartup += deltaTime;
             //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            //m_testMaterialAnim.ApplyAnimation
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

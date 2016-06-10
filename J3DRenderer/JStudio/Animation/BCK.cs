@@ -6,6 +6,15 @@ using WindEditor;
 
 namespace J3DRenderer.JStudio.Animation
 {
+    public enum LoopType
+    {
+        Once = 0,
+        Loop = 2
+    }
+
+    /// <summary>
+    /// Represents a bone animation for the J3D model format. Bones are applied by index order.
+    /// </summary>
     public class BCK
     {
         struct AnimIndex
@@ -49,12 +58,6 @@ namespace J3DRenderer.JStudio.Animation
             public List<Key> TranslationsX = new List<Key>();
             public List<Key> TranslationsY = new List<Key>();
             public List<Key> TranslationsZ = new List<Key>();
-        }
-
-        public enum LoopType
-        {
-            Once = 0,
-            Loop = 2
         }
 
         public string Magic { get; private set; }
