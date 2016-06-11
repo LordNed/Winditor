@@ -325,8 +325,8 @@ namespace JStudio.J3D.ShaderGen
                tevStage.AlphaIn[0] == GXCombineAlphaInput.Konst || tevStage.AlphaIn[1] == GXCombineAlphaInput.Konst ||
                tevStage.AlphaIn[2] == GXCombineAlphaInput.Konst || tevStage.AlphaIn[3] == GXCombineAlphaInput.Konst)
             {
-                GXKonstColorSel kc = mat.KonstColorSelectorIndexes[stageIndex];
-                GXKonstAlphaSel ka = mat.KonstAlphaSelectorIndexes[stageIndex];
+                GXKonstColorSel kc = mat.TEVKonstColorSelectors[stageIndex];
+                GXKonstAlphaSel ka = mat.TEVKonstAlphaSelectors[stageIndex];
                 stream.AppendFormat("\t// KonstColorSel: {0} KonstAlphaSel: {1}\n", kc, ka);
                 stream.AppendFormat("\tkonsttemp = vec4({0}, {1});\n", m_tevKSelTableC[(int)kc], m_tevKSelTableA[(int)ka]);
             }

@@ -540,10 +540,6 @@ namespace JStudio.J3D
         {
             GL.CullFace(CullFaceMode.Back);
             GL.FrontFace(FrontFaceDirection.Cw);
-            GL.Enable(EnableCap.DepthTest);
-            GL.Enable(EnableCap.CullFace);
-            //GL.Enable(EnableCap.Blend);
-            //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             SHP1.Shape shape = SHP1Tag.Shapes[SHP1Tag.ShapeRemapTable[index]];
             shape.Bind();

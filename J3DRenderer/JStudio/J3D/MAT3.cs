@@ -30,8 +30,8 @@ namespace JStudio.J3D
         public short[] PostTexMatrixIndexes { get; internal set; }
         public short[] TextureIndexes { get; internal set; }
         public WLinearColor[] TevKonstColorIndexes { get; internal set; }
-        public GXKonstColorSel[] KonstColorSelectorIndexes { get; internal set; }
-        public GXKonstAlphaSel[] KonstAlphaSelectorIndexes { get; internal set; }
+        public GXKonstColorSel[] TEVKonstColorSelectors { get; internal set; }
+        public GXKonstAlphaSel[] TEVKonstAlphaSelectors { get; internal set; }
         public short[] TevOrderInfoIndexes { get; internal set; }
         public short[] TevColorIndexes { get; internal set; }
         public short[] TevStageInfoIndexes { get; internal set; }
@@ -275,14 +275,14 @@ namespace JStudio.J3D
                     material.TevKonstColorIndexes[i] = ReadEntry(reader, ReadColor32, chunkStart, offsets, 18, reader.ReadInt16(), 4);
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
-                material.KonstColorSelectorIndexes = new GXKonstColorSel[16];
-                for (int i = 0; i < material.KonstColorSelectorIndexes.Length; i++)
-                    material.KonstColorSelectorIndexes[i] = (GXKonstColorSel)reader.ReadByte();
+                material.TEVKonstColorSelectors = new GXKonstColorSel[16];
+                for (int i = 0; i < material.TEVKonstColorSelectors.Length; i++)
+                    material.TEVKonstColorSelectors[i] = (GXKonstColorSel)reader.ReadByte();
 
                 // Guessing that this one doesn't index anything else as it's just an enum value and there doesn't seem to be an offset for it in the header.
-                material.KonstAlphaSelectorIndexes = new GXKonstAlphaSel[16];
-                for (int i = 0; i < material.KonstAlphaSelectorIndexes.Length; i++)
-                    material.KonstAlphaSelectorIndexes[i] = (GXKonstAlphaSel)reader.ReadByte();
+                material.TEVKonstAlphaSelectors = new GXKonstAlphaSel[16];
+                for (int i = 0; i < material.TEVKonstAlphaSelectors.Length; i++)
+                    material.TEVKonstAlphaSelectors[i] = (GXKonstAlphaSel)reader.ReadByte();
 
                 material.TevOrderInfoIndexes = new short[16];
                 for (int i = 0; i < material.TevOrderInfoIndexes.Length; i++)
