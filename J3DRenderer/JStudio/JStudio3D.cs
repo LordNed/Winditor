@@ -376,7 +376,7 @@ namespace J3DRenderer.JStudio
                     if (idx < 0)
                         continue;
 
-                    Matrix4 matrix = MAT3Tag.TexMatrixInfos[idx].Matrix;
+                    Matrix4 matrix = MAT3Tag.TexMatrixInfos[idx].TexMtx;
                     GL.UniformMatrix4(GL.GetUniformLocation(shader.Program, string.Format("TexMtx[{0}]", i)), false, ref matrix);
                 }
             }

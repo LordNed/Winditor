@@ -143,6 +143,18 @@ namespace J3DRenderer.JStudio
         public float TranslateS;
         public float TranslateT;
         public Matrix4 Matrix; // Projection Matrix? blank63 has it as that. Use above fields to generate a new matrix then multiply by proj matrix?
+
+        public Matrix4 TexMtx
+        {
+            get
+            {
+                Matrix4 scale = Matrix4.CreateScale(new Vector3(ScaleS, ScaleT, 1));
+                Matrix4 rot = Matrix4.CreateRotationX(Rotation);
+                Matrix4 translation = Matrix4.CreateTranslation(new Vector3(CenterS, CenterT, CenterW) + new Vector3(TranslateS, TranslateT, 0));
+
+                return scale * rot * translation;
+            }
+        }
     }
 
     public class TevIn

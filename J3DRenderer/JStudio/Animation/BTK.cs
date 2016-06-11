@@ -24,11 +24,41 @@ namespace J3DRenderer.JStudio.Animation
             public AnimIndex Translation;
         }
 
+        private class Key
+        {
+            //public float Tangent;
+            public float Time;
+            public float Value;
+        }
+
+        private class MaterialAnim
+        {
+            public Vector3 Center;
+            public string Name;
+            public int TexMatrixIndex;
+
+            public List<Key> ScalesX = new List<Key>();
+            public List<Key> ScalesY = new List<Key>();
+            public List<Key> ScalesZ = new List<Key>();
+
+            public List<Key> RotationsX = new List<Key>();
+            public List<Key> RotationsY = new List<Key>();
+            public List<Key> RotationsZ = new List<Key>();
+
+            public List<Key> TranslationsX = new List<Key>();
+            public List<Key> TranslationsY = new List<Key>();
+            public List<Key> TranslationsZ = new List<Key>();
+        }
+
         public string Magic { get; private set; }
         public string StudioType { get; private set; }
         public LoopType LoopMode { get; private set; }
         public byte AngleMultiplier { get; private set; }
         public short AnimLength { get; private set; }
+
+        private const float kAnimFramerate = 30;
+
+        private List<MaterialAnim> m_animationData;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -43,6 +73,75 @@ namespace J3DRenderer.JStudio.Animation
             reader.Skip(16);
 
             LoadTagDataFromFile(reader, tagCount);
+        }
+
+        public void ApplyAnimationToMaterials(MAT3 pose, float time)
+        {
+            time *= kAnimFramerate;
+            float ftime = time % AnimLength;
+
+            for (int i = 0; i < m_animationData.Count; i++)
+            {
+                Material mat = null;
+
+                foreach (var materal in pose.MaterialList)
+                {
+                    if (materal.Name == m_animationData[i].Name)
+                    {
+                        mat = materal;
+                        break;
+                    }
+                }
+
+                if (mat == null)
+                    continue;
+
+                var texMatrix = pose.TexMatrixInfos[m_animationData[i].TexMatrixIndex];
+
+                Vector3 center = m_animationData[i].Center;
+                Vector3 scale = new Vector3(GetAnimValue(m_animationData[i].ScalesX, ftime), GetAnimValue(m_animationData[i].ScalesY, ftime), GetAnimValue(m_animationData[i].ScalesZ, ftime));
+                Vector3 rot = new Vector3(GetAnimValue(m_animationData[i].RotationsX, ftime), GetAnimValue(m_animationData[i].RotationsY, ftime), GetAnimValue(m_animationData[i].RotationsZ, ftime));
+                Vector3 translation = new Vector3(GetAnimValue(m_animationData[i].TranslationsX, ftime), GetAnimValue(m_animationData[i].TranslationsY, ftime), GetAnimValue(m_animationData[i].TranslationsZ, ftime));
+
+                texMatrix.CenterS = center.X;
+                texMatrix.CenterT = center.Y;
+                texMatrix.CenterW = center.Z;
+
+                texMatrix.ScaleS = scale.X;
+                texMatrix.ScaleT = scale.Y;
+
+                texMatrix.Rotation = rot.X; //?
+
+                texMatrix.TranslateS = translation.X;
+                texMatrix.TranslateT = translation.Y;
+            }
+        }
+
+        private float GetAnimValue(List<Key> keys, float t)
+        {
+            if (keys.Count == 0)
+                return 0f;
+
+            if (keys.Count == 1)
+                return keys[0].Value;
+
+            int i = 1;
+            while (keys[i].Time < t)
+                i++;
+
+            float time = (t - keys[i - 1].Time) / (keys[i].Time - keys[i - 1].Time); // Scale to [0, 1]
+            return Interpolate(keys[i - 1].Value, 0f, keys[i].Value, 0f, time);
+        }
+
+        private float Interpolate(float v1, float d1, float v2, float d2, float t)
+        {
+            // Perform Cubic Interpolation of the values by t
+            float a = 2 * (v1 - v2) + d1 + d2;
+            float b = -3 * v1 + 3 * v2 - 2 * d1 - d2;
+            float c = d1;
+            float d = v1;
+
+            return ((a * t + b) * t + c) * t + d;
         }
 
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
@@ -102,19 +201,19 @@ namespace J3DRenderer.JStudio.Animation
                         StringTable stringTable = StringTable.FromStream(reader);
 
                         // Texture Index table which tells us which texture index of this material to modify (?)
-                        byte[] textureIndexTable = new byte[textureAnimEntryCount];
+                        byte[] texMtxIndexTable = new byte[textureAnimEntryCount];
                         reader.BaseStream.Position = tagStart + textureIndexTableOffset;
                         for (int j = 0; j < textureAnimEntryCount; j++)
-                            textureIndexTable[j] = reader.ReadByte();
+                            texMtxIndexTable[j] = reader.ReadByte();
 
-                        // Texture Offsets
-                        Vector3[] textureOffsets = new Vector3[textureAnimEntryCount];
+                        // Texture Centers
+                        Vector3[] textureCenters = new Vector3[textureAnimEntryCount];
                         reader.BaseStream.Position = tagStart + textureCenterTableOffset;
                         for (int j = 0; j < textureAnimEntryCount; j++)
-                            textureOffsets[j] = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+                            textureCenters[j] = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
 
                         // Read the data for each joint that this animation.
-                        //AnimationData = new List<JointAnim>();
+                        m_animationData = new List<MaterialAnim>();
                         float rotScale = (float)Math.Pow(2f, AngleMultiplier) * (180 / 32768f);
 
                         reader.BaseStream.Position = tagStart + animDataOffset;
@@ -123,9 +222,42 @@ namespace J3DRenderer.JStudio.Animation
                             AnimComponent texU = ReadAnimComponent(reader);
                             AnimComponent texV = ReadAnimComponent(reader);
                             AnimComponent texW = ReadAnimComponent(reader);
+
+                            MaterialAnim anim = new MaterialAnim();
+                            anim.Name = stringTable[j];
+                            anim.TexMatrixIndex = texMtxIndexTable[j];
+                            anim.Center = textureCenters[j];
+
+                            anim.ScalesX = ReadComp(scaleData, texU.Scale);
+                            anim.ScalesY = ReadComp(scaleData, texV.Scale);
+                            anim.ScalesZ = ReadComp(scaleData, texW.Scale);
+
+                            anim.RotationsX = ReadComp(rotationData, texU.Scale);
+                            anim.RotationsY = ReadComp(rotationData, texV.Scale);
+                            anim.RotationsZ = ReadComp(rotationData, texW.Scale);
+
+                            // Convert all of the rotations from compressed shorts back into -180, 180
+                            ConvertRotation(anim.RotationsX, rotScale);
+                            ConvertRotation(anim.RotationsY, rotScale);
+                            ConvertRotation(anim.RotationsZ, rotScale);
+
+                            anim.TranslationsX = ReadComp(translationData, texU.Translation);
+                            anim.TranslationsY = ReadComp(translationData, texV.Translation);
+                            anim.TranslationsZ = ReadComp(translationData, texW.Translation);
+
+                            m_animationData.Add(anim);
                         }
                         break;
                 }
+            }
+        }
+
+        private void ConvertRotation(List<Key> rots, float scale)
+        {
+            for (int j = 0; j < rots.Count; j++)
+            {
+                rots[j].Value *= scale;
+                //rots[j].Tangent *= scale;
             }
         }
 
@@ -137,6 +269,29 @@ namespace J3DRenderer.JStudio.Animation
         private AnimComponent ReadAnimComponent(EndianBinaryReader stream)
         {
             return new AnimComponent { Scale = ReadAnimIndex(stream), Rotation = ReadAnimIndex(stream), Translation = ReadAnimIndex(stream) };
+        }
+
+        private List<Key> ReadComp(float[] src, AnimIndex index)
+        {
+            List<Key> ret = new List<Key>();
+
+            if (index.Count == 1)
+            {
+                ret.Add(new Key { Time = 0f, Value = src[index.Index] });
+            }
+            else
+            {
+                for (int j = 0; j < index.Count; j++)
+                {
+                    Key key = new Key();
+                    key.Time = src[index.Index + 4 * j + 0];
+                    key.Value = src[index.Index + 4 * j +1];
+                    //key.Tangent = src[index.Index + 3 * j + 2];
+                    ret.Add(key);
+                }
+            }
+
+            return ret;
         }
     }
 }

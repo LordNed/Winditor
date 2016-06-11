@@ -100,7 +100,7 @@ namespace J3DRenderer
 
             m_timeSinceStartup += deltaTime;
             //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
-            //m_testMaterialAnim.ApplyAnimation
+            m_testMaterialAnim.ApplyAnimationToMaterials(m_model.MAT3Tag, m_timeSinceStartup);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
