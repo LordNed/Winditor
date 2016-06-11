@@ -377,7 +377,11 @@ namespace J3DRenderer.JStudio
                         continue;
 
                     Matrix4 matrix = MAT3Tag.TexMatrixInfos[idx].TexMtx;
-                    GL.UniformMatrix4(GL.GetUniformLocation(shader.Program, string.Format("TexMtx[{0}]", i)), false, ref matrix);
+                    string matrixString = string.Format("TexMtx[{0}]", i);
+                    int matrixUniformLoc = GL.GetUniformLocation(shader.Program, matrixString);
+                    matrix.Transpose();
+
+                    GL.UniformMatrix4(matrixUniformLoc, false, ref matrix);
                 }
             }
 
