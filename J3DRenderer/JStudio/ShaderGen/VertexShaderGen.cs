@@ -176,14 +176,11 @@ namespace J3DRenderer.ShaderGen
             for (int i = 0; i < data.NumTexGens[mat.NumTexGensIndex]; i++)
             {
                 TexCoordGen texGen = data.TexGenInfos[mat.TexGenInfoIndexes[i]];
-                TexMatrix texMtx = null;
-                if (texGen.TexMatrixSource == GXTexMatrix.Identity)
+
+                TexMatrixProjection matrixProj = TexMatrixProjection.TexProj_ST;
+                if (texGen.TexMatrixSource != GXTexMatrix.Identity)
                 {
-                    texMtx = new TexMatrix(); // Hack
-                }
-                else
-                {
-                    texMtx = data.TexMatrixInfos[(((int)texGen.TexMatrixSource) - 30)/3];
+                    matrixProj = data.TexMatrixInfos[(((int)texGen.TexMatrixSource) - 30) / 3].Projection;
                 }
 
                 stream.AppendFormat("\t// TexGen: {0} Type: {1} Source: {2} TexMatrixIndex: {3}\n", i, texGen.Type, texGen.Source, texGen.TexMatrixSource);
@@ -234,7 +231,7 @@ namespace J3DRenderer.ShaderGen
                         //}
                         //else
                         {
-                            if (texMtx.Projection == TexMatrixProjection.TexProj_STQ)
+                            if (matrixProj == TexMatrixProjection.TexProj_STQ)
                                 //stream.AppendFormat("{0}.xyz = vec3(dot({1}, TexMtx[{2}]), dot({1}, TexMtx[{3}]), dot({1}, TexMtx[{4}]));\n", destCoord, texGenSource, 3 * i, 3 * i + 1, 3 * i + 2);
                                 stream.AppendFormat("{0} = ({1} * TexMtx[{2}]).xyz;\n", destCoord, texGenSource, i);
                             else

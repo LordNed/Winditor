@@ -96,7 +96,9 @@ namespace J3DRenderer.JStudio.Animation
                 if (mat == null)
                     continue;
 
-                var texMatrix = pose.TexMatrixInfos[m_animationData[i].TexMatrixIndex];
+                // Override the TexMatrix specified by the Material's Index which is specified by the animation hah.
+                var texMatrix = pose.TexMatrixInfos[mat.TexMatrixIndexes[m_animationData[i].TexMatrixIndex]];
+
 
                 Vector3 center = m_animationData[i].Center;
                 Vector3 scale = new Vector3(GetAnimValue(m_animationData[i].ScalesX, ftime), GetAnimValue(m_animationData[i].ScalesY, ftime), GetAnimValue(m_animationData[i].ScalesZ, ftime));
