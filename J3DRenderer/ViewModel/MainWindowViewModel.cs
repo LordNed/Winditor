@@ -2,10 +2,10 @@
 using OpenTK;
 using WindEditor;
 using System.IO;
-using J3DRenderer.JStudio;
 using GameFormatReader.Common;
 using System.ComponentModel;
-using J3DRenderer.JStudio.Animation;
+using JStudio.J3D;
+using JStudio.J3D.Animation;
 
 namespace J3DRenderer
 {
@@ -13,7 +13,7 @@ namespace J3DRenderer
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public JStudio3D LoadedModel { get { return m_model; } }
+        public J3D LoadedModel { get { return m_model; } }
 
 
         private GLControl m_glControl;
@@ -24,7 +24,7 @@ namespace J3DRenderer
         private SimpleObjRenderer m_stockMesh;
         private int m_viewportHeight;
         private int m_viewportWidth;
-        private JStudio3D m_model;
+        private J3D m_model;
         private BCK m_testAnim;
         private BTK m_testMaterialAnim;
         private float m_timeSinceStartup;
@@ -45,7 +45,7 @@ namespace J3DRenderer
             obj.Load("Framework/EditorCube.obj");
             m_stockMesh = new SimpleObjRenderer(obj);
 
-            m_model = new JStudio3D();
+            m_model = new J3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
             m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Fairy06.bdl"), Endian.Big));
             if (PropertyChanged != null)

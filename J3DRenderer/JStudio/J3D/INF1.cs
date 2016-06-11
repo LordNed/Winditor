@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public enum HierarchyDataType
     {

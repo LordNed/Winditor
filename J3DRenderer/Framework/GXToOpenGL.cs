@@ -1,6 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.OpenGL
 {
     public static class GXToOpenGL
     {

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:J3DRenderer"
-        xmlns:jstudio="clr-namespace:J3DRenderer.JStudio"
+        xmlns:jstudio="clr-namespace:JStudio.J3D"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded">
     <Window.DataContext>

@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using GameFormatReader.Common;
+﻿using GameFormatReader.Common;
+using System.Collections.Generic;
 using System.Diagnostics;
-using OpenTK;
-using WindEditor;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class DRW1
     {

@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using GameFormatReader.Common;
-using System.Diagnostics;
+﻿using GameFormatReader.Common;
 using OpenTK;
-using WindEditor;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class EVP1
     {
         public List<byte> NumBoneInfluences;
         public List<ushort> IndexRemap;
         public List<float> WeightList;
-        public List<Matrix4> InverseBindPose; // Definitely indexed by the Indexes section from DRW1.
+        public List<Matrix4> InverseBindPose;
 
         public void LoadEVP1FromStream(EndianBinaryReader reader, long tagStart)
         {

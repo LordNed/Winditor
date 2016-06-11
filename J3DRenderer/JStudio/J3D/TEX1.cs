@@ -1,11 +1,11 @@
 ﻿using GameFormatReader.Common;
-using System.Diagnostics;
-using System.ComponentModel;
+using JStudio.OpenGL;
 using OpenTK.Graphics.OpenGL;
+using System.ComponentModel;
+using System.Diagnostics;
 using WindEditor;
-using System.IO;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class Texture
     {

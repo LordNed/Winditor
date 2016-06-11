@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using WindEditor;
 
-namespace J3DRenderer.JStudio.Animation
+namespace JStudio.J3D.Animation
 {
     public enum LoopType
     {

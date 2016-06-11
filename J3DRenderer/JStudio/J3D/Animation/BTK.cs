@@ -3,7 +3,7 @@ using OpenTK;
 using System;
 using System.Collections.Generic;
 
-namespace J3DRenderer.JStudio.Animation
+namespace JStudio.J3D.Animation
 {
     /// <summary>
     /// The BTK format represents a material animation that changes the tex coords over time.

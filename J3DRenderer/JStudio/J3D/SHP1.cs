@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using WindEditor;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class ShapeAttribute
     {

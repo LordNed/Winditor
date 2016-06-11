@@ -1,10 +1,8 @@
-﻿using J3DRenderer.JStudio;
-using System;
-using System.IO;
+﻿using System;
 using System.Text;
 using WindEditor;
 
-namespace J3DRenderer.ShaderGen
+namespace JStudio.J3D.ShaderGen
 {
     public static class VertexShaderGen
     {

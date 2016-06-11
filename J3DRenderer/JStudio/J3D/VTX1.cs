@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using GameFormatReader.Common;
+﻿using GameFormatReader.Common;
 using OpenTK;
+using System;
+using System.Collections.Generic;
 using WindEditor;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     // This might be GXVertexAttribute
     public enum VertexArrayType

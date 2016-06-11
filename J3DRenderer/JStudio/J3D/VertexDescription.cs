@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using WindEditor;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class VertexDescription
     {

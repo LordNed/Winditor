@@ -1,16 +1,16 @@
 ﻿using GameFormatReader.Common;
+using JStudio.J3D.ShaderGen;
 using OpenTK;
-using System.ComponentModel;
 using OpenTK.Graphics.OpenGL;
-using WindEditor;
-using J3DRenderer.ShaderGen;
-using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using WindEditor;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
-    public partial class JStudio3D : INotifyPropertyChanged
+    public partial class J3D : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

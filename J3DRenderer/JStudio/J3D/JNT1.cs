@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using GameFormatReader.Common;
-using System.Diagnostics;
+﻿using GameFormatReader.Common;
 using OpenTK;
+using System.Collections.Generic;
+using System.Diagnostics;
 using WindEditor;
-using System;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class SkeletonJoint
     {

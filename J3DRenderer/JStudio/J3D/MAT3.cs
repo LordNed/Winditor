@@ -1,10 +1,10 @@
 ﻿using GameFormatReader.Common;
-using System.Diagnostics;
 using System.Collections.Generic;
-using WindEditor;
 using System.ComponentModel;
+using System.Diagnostics;
+using WindEditor;
 
-namespace J3DRenderer.JStudio
+namespace JStudio.J3D
 {
     public class Material
     {

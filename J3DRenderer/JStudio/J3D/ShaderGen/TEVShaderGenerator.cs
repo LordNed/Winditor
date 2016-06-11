@@ -1,10 +1,9 @@
-﻿using J3DRenderer.JStudio;
-using OpenTK.Graphics.OpenGL;
+﻿using OpenTK.Graphics.OpenGL;
 using System;
 using System.IO;
 using WindEditor;
 
-namespace J3DRenderer.ShaderGen
+namespace JStudio.J3D.ShaderGen
 {
     public static class TEVShaderGenerator
     {
