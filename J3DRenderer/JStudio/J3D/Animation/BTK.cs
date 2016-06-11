@@ -8,29 +8,8 @@ namespace JStudio.J3D.Animation
     /// <summary>
     /// The BTK format represents a material animation that changes the tex coords over time.
     /// </summary>
-    class BTK
+    public class BTK : BaseJ3DAnimation
     {
-        struct AnimIndex
-        {
-            public ushort Count;
-            public ushort Index;
-            public ushort Unknown0;
-        }
-
-        struct AnimComponent
-        {
-            public AnimIndex Scale;
-            public AnimIndex Rotation;
-            public AnimIndex Translation;
-        }
-
-        private class Key
-        {
-            //public float Tangent;
-            public float Time;
-            public float Value;
-        }
-
         private class MaterialAnim
         {
             public Vector3 Center;
@@ -50,21 +29,13 @@ namespace JStudio.J3D.Animation
             public List<Key> TranslationsZ = new List<Key>();
         }
 
-        public string Magic { get; private set; }
-        public string StudioType { get; private set; }
-        public LoopType LoopMode { get; private set; }
-        public byte AngleMultiplier { get; private set; }
-        public short AnimLength { get; private set; }
-
-        private const float kAnimFramerate = 30;
-
         private List<MaterialAnim> m_animationData;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
             // Read the J3D Header
             Magic = new string(reader.ReadChars(4)); // "J3D1"
-            StudioType = new string(reader.ReadChars(4)); // btk1
+            AnimType = new string(reader.ReadChars(4)); // btk1
 
             int fileSize = reader.ReadInt32();
             int tagCount = reader.ReadInt32();
@@ -78,7 +49,7 @@ namespace JStudio.J3D.Animation
         public void ApplyAnimationToMaterials(MAT3 pose, float time)
         {
             time *= kAnimFramerate;
-            float ftime = time % AnimLength;
+            float ftime = time % AnimLengthInFrames;
 
             for (int i = 0; i < m_animationData.Count; i++)
             {
@@ -119,33 +90,6 @@ namespace JStudio.J3D.Animation
             }
         }
 
-        private float GetAnimValue(List<Key> keys, float t)
-        {
-            if (keys.Count == 0)
-                return 0f;
-
-            if (keys.Count == 1)
-                return keys[0].Value;
-
-            int i = 1;
-            while (keys[i].Time < t)
-                i++;
-
-            float time = (t - keys[i - 1].Time) / (keys[i].Time - keys[i - 1].Time); // Scale to [0, 1]
-            return Interpolate(keys[i - 1].Value, 0f, keys[i].Value, 0f, time);
-        }
-
-        private float Interpolate(float v1, float d1, float v2, float d2, float t)
-        {
-            // Perform Cubic Interpolation of the values by t
-            float a = 2 * (v1 - v2) + d1 + d2;
-            float b = -3 * v1 + 3 * v2 - 2 * d1 - d2;
-            float c = d1;
-            float d = v1;
-
-            return ((a * t + b) * t + c) * t + d;
-        }
-
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
         {
             for (int i = 0; i < tagCount; i++)
@@ -159,8 +103,8 @@ namespace JStudio.J3D.Animation
                 {
                     case "TTK1":
                         LoopMode = (LoopType)reader.ReadByte(); // 0 = Play Once. 2 = Loop (Assumed from BCK)
-                        AngleMultiplier = reader.ReadByte(); // Multiply Angle Value by pow(2, angleMultiplier) (Assumed from BCK)
-                        AnimLength = reader.ReadInt16();
+                        byte angleMultiplier = reader.ReadByte(); // Multiply Angle Value by pow(2, angleMultiplier) (Assumed from BCK)
+                        AnimLengthInFrames = reader.ReadInt16();
                         short textureAnimEntryCount = (short)(reader.ReadInt16() / 3); // 3 for each material. BTK stores U, V, and W separately, so you need to divide by three.
                         short numScaleFloatEntries = reader.ReadInt16();
                         short numRotationShortEntries = reader.ReadInt16();
@@ -216,7 +160,7 @@ namespace JStudio.J3D.Animation
 
                         // Read the data for each joint that this animation.
                         m_animationData = new List<MaterialAnim>();
-                        float rotScale = (float)Math.Pow(2f, AngleMultiplier) * (180 / 32768f);
+                        float rotScale = (float)Math.Pow(2f, angleMultiplier) * (180 / 32768f);
 
                         reader.BaseStream.Position = tagStart + animDataOffset;
                         for (int j = 0; j < textureAnimEntryCount; j++)
@@ -252,48 +196,6 @@ namespace JStudio.J3D.Animation
                         break;
                 }
             }
-        }
-
-        private void ConvertRotation(List<Key> rots, float scale)
-        {
-            for (int j = 0; j < rots.Count; j++)
-            {
-                rots[j].Value *= scale;
-                //rots[j].Tangent *= scale;
-            }
-        }
-
-        private AnimIndex ReadAnimIndex(EndianBinaryReader stream)
-        {
-            return new AnimIndex { Count = stream.ReadUInt16(), Index = stream.ReadUInt16(), Unknown0 = stream.ReadUInt16() };
-        }
-
-        private AnimComponent ReadAnimComponent(EndianBinaryReader stream)
-        {
-            return new AnimComponent { Scale = ReadAnimIndex(stream), Rotation = ReadAnimIndex(stream), Translation = ReadAnimIndex(stream) };
-        }
-
-        private List<Key> ReadComp(float[] src, AnimIndex index)
-        {
-            List<Key> ret = new List<Key>();
-
-            if (index.Count == 1)
-            {
-                ret.Add(new Key { Time = 0f, Value = src[index.Index] });
-            }
-            else
-            {
-                for (int j = 0; j < index.Count; j++)
-                {
-                    Key key = new Key();
-                    key.Time = src[index.Index + 4 * j + 0];
-                    key.Value = src[index.Index + 4 * j +1];
-                    //key.Tangent = src[index.Index + 3 * j + 2];
-                    ret.Add(key);
-                }
-            }
-
-            return ret;
         }
     }
 }
