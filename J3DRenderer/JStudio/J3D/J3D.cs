@@ -147,7 +147,7 @@ namespace JStudio.J3D
             {
                 if (material.VtxDesc == null)
                 {
-                    System.Console.WriteLine("Skipping generating Shader for Unreferenced Material: {0}", material);
+                    Console.WriteLine("Skipping generating Shader for Unreferenced Material: {0}", material);
                     continue;
                 }
                 material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
@@ -208,14 +208,18 @@ namespace JStudio.J3D
                     if (joint.ParentId < 0)
                         break;
 
-                    Vector3 curPos = jointMatrix.ExtractTranslation();
-                    Vector3 nextPos = boneTransforms[joint.ParentId].ExtractTranslation();
-
-                    m_lineBatcher.DrawLine(curPos, nextPos, WLinearColor.Red, 1, 0);
                     joint = JNT1Tag.Joints[joint.ParentId];
                 }
 
                 boneTransforms[i] = cumulativeTransform;
+
+                if (JNT1Tag.Joints[i].ParentId >= 0)
+                {
+                    Vector3 curPos = cumulativeTransform.ExtractTranslation();
+                    Vector3 parentPos = boneTransforms[JNT1Tag.Joints[i].ParentId].ExtractTranslation();
+
+                    m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
+                }
             }
 
             m_lineBatcher.Render(viewMatrix, projectionMatrix);
