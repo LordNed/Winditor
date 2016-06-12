@@ -82,7 +82,11 @@ namespace JStudio.J3D.ShaderGen
             stream.AppendLine("void main()\n{");
             stream.AppendLine("\tmat4 MVP = ProjMtx * ViewMtx * ModelMtx;");
             stream.AppendLine("\tmat4 MV = ViewMtx * ModelMtx;");
-            if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Position)) stream.AppendLine("\tgl_Position = MVP * vec4(RawPosition, 1);");
+            if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Position))
+            {
+                stream.AppendLine("\tgl_Position = MVP * vec4(RawPosition, 1);");
+                stream.AppendLine("\t vec4 worldPos = ModelMtx * vec4(RawPosition, 1);");
+            }
             stream.AppendLine();
 
             // Do Color Channel Fixups
@@ -290,19 +294,19 @@ namespace JStudio.J3D.ShaderGen
             switch (channelControl.AttenuationFunction)
             {
                 case GXAttenuationFunction.None:
-                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - worldPos.xyz);\n", lightIndex);
                     stream.AppendLine("\tattn = 1.0;");
                     stream.AppendLine("\tif(length(ldir) == 0.0)\n\t\tldir = RawNormal;");
                     break;
                 case GXAttenuationFunction.Spec:
-                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - worldPos.xyz);\n", lightIndex);
                     stream.AppendFormat("\tattn = (dot(RawNormal, ldir) >= 0.0) ? max(0.0, dot(RawNormal, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
                     stream.AppendFormat("\tcosAttn = Lights[{0}].CosAtten.xyz;\n", lightIndex);
                     stream.AppendFormat("\tdistAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFunction.None) ? "" : "normalize");
                     stream.AppendFormat("\tattn = max(0.0f, dot(cosAttn, vec3(1.0, attn, attn*attn))) / dot(distAttn, vec3(1.0, attn, attn*attn));");
                     break;
                 case GXAttenuationFunction.Spot:
-                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - RawPosition.xyz);\n", lightIndex);
+                    stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - worldPos.xyz);\n", lightIndex);
                     stream.AppendLine("\tdist2 = dot(ldir, ldir);");
                     stream.AppendLine("\tdist = sqrt(dist2);");
                     stream.AppendLine("\tldir = ldir/dist;");
@@ -325,7 +329,7 @@ namespace JStudio.J3D.ShaderGen
                         lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFunction.Signed ? "max(0.0," : "(", numSwizzleComponents);
                     break;
                 default:
-                    Console.WriteLine("Unsupported DiffusenFunction Value: {0}", channelControl.AttenuationFunction);
+                    Console.WriteLine("Unsupported DiffuseFunction Value: {0}", channelControl.AttenuationFunction);
                     break;
             }
             stream.AppendLine();
