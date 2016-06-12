@@ -1,4 +1,6 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using JStudio.J3D;
+using OpenTK.Graphics.OpenGL;
+using System;
 
 namespace JStudio.OpenGL
 {
@@ -40,6 +42,106 @@ namespace JStudio.OpenGL
             }
 
             return TextureMagFilter.Nearest;
+        }
+
+        public static void SetBlendState(BlendMode blendMode)
+        {
+            if (blendMode.Type == GXBlendMode.Blend)
+            {
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(GetBlendFactorSrc(blendMode.SourceFactor), GetBlendFactorDest(blendMode.DestinationFactor));
+            }
+            else if (blendMode.Type == GXBlendMode.None)
+            {
+                GL.Disable(EnableCap.Blend);
+            }
+            else
+            {
+                // Logic, Subtract?
+            }
+        }
+
+        public static BlendingFactorSrc GetBlendFactorSrc(GXBlendModeControl sourceFactor)
+        {
+            switch (sourceFactor)
+            {
+                case GXBlendModeControl.Zero: return BlendingFactorSrc.Zero;
+                case GXBlendModeControl.One: return BlendingFactorSrc.One;
+                case GXBlendModeControl.SrcColor: return BlendingFactorSrc.SrcColor;
+                case GXBlendModeControl.InverseSrcColor: return BlendingFactorSrc.OneMinusSrcColor;
+                case GXBlendModeControl.SrcAlpha: return BlendingFactorSrc.SrcAlpha;
+                case GXBlendModeControl.InverseSrcAlpha: return BlendingFactorSrc.OneMinusSrcAlpha;
+                case GXBlendModeControl.DstAlpha: return BlendingFactorSrc.DstAlpha;
+                case GXBlendModeControl.InverseDstAlpha: return BlendingFactorSrc.OneMinusDstAlpha;
+                default:
+                    Console.WriteLine("Unsupported GXBlendModeControl: \"{0}\" in GetOpenGLBlendSrc!", sourceFactor);
+                    return BlendingFactorSrc.SrcAlpha;
+
+            }
+        }
+
+        public static BlendingFactorDest GetBlendFactorDest(GXBlendModeControl destinationFactor)
+        {
+            switch (destinationFactor)
+            {
+                case GXBlendModeControl.Zero: return BlendingFactorDest.Zero;
+                case GXBlendModeControl.One: return BlendingFactorDest.One;
+                case GXBlendModeControl.SrcColor: return BlendingFactorDest.SrcColor;
+                case GXBlendModeControl.InverseSrcColor: return BlendingFactorDest.OneMinusSrcColor;
+                case GXBlendModeControl.SrcAlpha: return BlendingFactorDest.SrcAlpha;
+                case GXBlendModeControl.InverseSrcAlpha: return BlendingFactorDest.OneMinusSrcAlpha;
+                case GXBlendModeControl.DstAlpha: return BlendingFactorDest.DstAlpha;
+                case GXBlendModeControl.InverseDstAlpha: return BlendingFactorDest.OneMinusDstAlpha;
+                default:
+                    Console.WriteLine("Unsupported GXBlendModeControl: \"{0}\" in GetOpenGLBlendDest!", destinationFactor);
+                    return BlendingFactorDest.OneMinusSrcAlpha;
+            }
+        }
+
+        public static void SetCullState(GXCullMode cullState)
+        {
+            GL.Enable(EnableCap.CullFace);
+            switch (cullState)
+            {
+                case GXCullMode.None: GL.Disable(EnableCap.CullFace); break;
+                case GXCullMode.Front: GL.CullFace(CullFaceMode.Front); break;
+                case GXCullMode.Back: GL.CullFace(CullFaceMode.Back); break;
+                case GXCullMode.All: GL.CullFace(CullFaceMode.FrontAndBack); break;
+            }
+        }
+
+        public static void SetDepthState(ZMode depthState)
+        {
+            if (depthState.Enable)
+            {
+                GL.Enable(EnableCap.DepthTest);
+                GL.DepthMask(depthState.UpdateEnable);
+                switch (depthState.Function)
+                {
+                    case GXCompareType.Never: GL.DepthFunc(DepthFunction.Never); break;
+                    case GXCompareType.Less: GL.DepthFunc(DepthFunction.Less); break;
+                    case GXCompareType.Equal: GL.DepthFunc(DepthFunction.Equal); break;
+                    case GXCompareType.LEqual: GL.DepthFunc(DepthFunction.Lequal); break;
+                    case GXCompareType.Greater: GL.DepthFunc(DepthFunction.Gequal); break;
+                    case GXCompareType.NEqual: GL.DepthFunc(DepthFunction.Notequal); break;
+                    case GXCompareType.GEqual: GL.DepthFunc(DepthFunction.Gequal); break;
+                    case GXCompareType.Always: GL.DepthFunc(DepthFunction.Always); break;
+                    default: Console.WriteLine("Unsupported GXCompareType: \"{0}\" in GetOpenGLDepthFunc!", depthState.Function); break;
+                }
+            }
+            else
+            {
+                GL.Disable(EnableCap.DepthTest);
+                GL.DepthMask(false);
+            }
+        }
+
+        public static void SetDitherEnabled(bool ditherEnabled)
+        {
+            if (ditherEnabled)
+                GL.Enable(EnableCap.Dither);
+            else
+                GL.Disable(EnableCap.Dither);
         }
     }
 }
