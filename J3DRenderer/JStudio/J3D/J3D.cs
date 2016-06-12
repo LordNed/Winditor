@@ -299,25 +299,7 @@ namespace JStudio.J3D
                 shape.UploadBuffersToGPU();
             }
 
-            if (WInput.GetKeyDown(System.Windows.Input.Key.O))
-                m_shapeToDraw--;
-            if (WInput.GetKeyDown(System.Windows.Input.Key.P))
-                m_shapeToDraw++;
-
-            m_shapeToDraw = WMath.Clamp(m_shapeToDraw, 0, SHP1Tag.ShapeCount - 1);
-
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
-        }
-
-        private int m_shapeToDraw = 0;
-
-        private Matrix4 Mad(Matrix4 r, Matrix4 m, float f)
-        {
-            for (int j = 0; j < 3; j++)
-                for (int k = 0; k < 4; k++)
-                    r[j,k] += f * m[j,k];
-
-            return r;
         }
 
         private void RenderMeshRecursive(HierarchyNode curNode)
@@ -329,7 +311,6 @@ namespace JStudio.J3D
                     break;
 
                 case HierarchyDataType.Batch:
-                    //if (curNode.Value != m_shapeToDraw) break;
                     RenderBatchByIndex(curNode.Value);
                     break;
             }
