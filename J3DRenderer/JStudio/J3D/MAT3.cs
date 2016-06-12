@@ -106,11 +106,16 @@ namespace JStudio.J3D
                 offsets[i] = reader.ReadInt32();
 
             /* MATERIAL REMAP TABLE (See start of Material loader below) */
-            MaterialRemapTable = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 1, ReadShort, 2);
+            MaterialRemapTable = new List<short>();
             int highestMaterialCount = 0;
-            foreach (var idx in MaterialRemapTable)
-                if (idx >= highestMaterialCount)
-                    highestMaterialCount = idx+1;
+
+            for(int i = 0; i < materialCount; i++)
+            {
+                var val = ReadEntry(reader, ReadShort, chunkStart, offsets, 1, i, 2);
+                if (val >= highestMaterialCount)
+                    highestMaterialCount = val+1;
+                MaterialRemapTable.Add(val);
+            }
 
             /* STRING TABLE */
             reader.BaseStream.Position = chunkStart + offsets[2];
