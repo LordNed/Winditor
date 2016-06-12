@@ -85,7 +85,7 @@ namespace JStudio.J3D
         //public List<bool> ZCompareLocInfo { get; protected set; }
         //public List<bool> DitherInfos { get; protected set; }
         //public List<NBTScale> NBTScale { get; protected set; }
-        
+
 
         /// <summary> Delegate defines a function that decodes one instance of type T.</summary>
         /// <param name="stream">The stream to decode the instance from</param>
@@ -249,28 +249,50 @@ namespace JStudio.J3D
                 for (int i = 0; i < material.AmbientColorIndexes.Length; i++)
                     material.AmbientColorIndexes[i] = ReadEntry(reader, ReadColor32, chunkStart, offsets, 8, reader.ReadInt16(), 4);
 
-                material.LightingColorIndexes = new WLinearColor[8];
-                for (int i = 0; i < material.LightingColorIndexes.Length; i++)
+                var lightColorList = new List<WLinearColor>();
+                for (int i = 0; i < 8; i++)
                 {
                     var val = reader.ReadInt16();
-                    material.LightingColorIndexes[i] = ReadEntry(reader, ReadColorShort, chunkStart, offsets, 9, val, 8);
+                    if (val >= 0)
+                        lightColorList.Add(ReadEntry(reader, ReadColorShort, chunkStart, offsets, 9, val, 8));
                 }
+                material.LightingColorIndexes = lightColorList.ToArray();
 
-                material.TexGenInfoIndexes = new TexCoordGen[8];
-                for (int i = 0; i < material.TexGenInfoIndexes.Length; i++)
-                    material.TexGenInfoIndexes[i] = ReadEntry(reader, ReadTexCoordGen, chunkStart, offsets, 11, reader.ReadInt16(), 4);
+                var texGenInfoList = new List<TexCoordGen>();
+                for (int i = 0; i < 8; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        texGenInfoList.Add(ReadEntry(reader, ReadTexCoordGen, chunkStart, offsets, 11, val, 4));
+                }
+                material.TexGenInfoIndexes = texGenInfoList.ToArray();
 
-                material.PostTexGenInfoIndexes = new TexCoordGen[8];
-                for (int i = 0; i < material.PostTexGenInfoIndexes.Length; i++)
-                    material.PostTexGenInfoIndexes[i] = ReadEntry(reader, ReadTexCoordGen, chunkStart, offsets, 12, reader.ReadInt16(), 4);
+                var postTexGenInfoList = new List<TexCoordGen>();
+                for (int i = 0; i < 8; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        postTexGenInfoList.Add(ReadEntry(reader, ReadTexCoordGen, chunkStart, offsets, 12, val, 4));
+                }
+                material.PostTexGenInfoIndexes = postTexGenInfoList.ToArray();
 
-                material.TexMatrixIndexes = new TexMatrix[10];
-                for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
-                    material.TexMatrixIndexes[i] = ReadEntry(reader, ReadTexMatrix, chunkStart, offsets, 13, reader.ReadInt16(), 100);
+                var texMatrixList = new List<TexMatrix>();
+                for (int i = 0; i < 10; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        texMatrixList.Add(ReadEntry(reader, ReadTexMatrix, chunkStart, offsets, 13, val, 100));
+                }
+                material.TexMatrixIndexes = texMatrixList.ToArray();
 
-                material.PostTexMatrixIndexes = new TexMatrix[20];
-                for (int i = 0; i < material.PostTexMatrixIndexes.Length; i++)
-                    material.PostTexMatrixIndexes[i] = ReadEntry(reader, ReadTexMatrix, chunkStart, offsets, 14, reader.ReadInt16(), 100);
+                var postTexMatrixList = new List<TexMatrix>();
+                for (int i = 0; i < 20; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        postTexMatrixList.Add(ReadEntry(reader, ReadTexMatrix, chunkStart, offsets, 14, val, 100));
+                }
+                material.PostTexMatrixIndexes = postTexMatrixList.ToArray();
 
                 material.TextureIndexes = new short[8];
                 for (int i = 0; i < material.TextureIndexes.Length; i++)
@@ -290,21 +312,39 @@ namespace JStudio.J3D
                 for (int i = 0; i < material.TEVKonstAlphaSelectors.Length; i++)
                     material.TEVKonstAlphaSelectors[i] = (GXKonstAlphaSel)reader.ReadByte();
 
-                material.TevOrderInfoIndexes = new TevOrder[16];
-                for (int i = 0; i < material.TevOrderInfoIndexes.Length; i++)
-                    material.TevOrderInfoIndexes[i] = ReadEntry(reader, ReadTevOrder, chunkStart, offsets, 16, reader.ReadInt16(), 4);
+                var tevOrderInfoList = new List<TevOrder>();
+                for (int i = 0; i < 16; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        tevOrderInfoList.Add(ReadEntry(reader, ReadTevOrder, chunkStart, offsets, 16, val, 4));
+                }
+                material.TevOrderInfoIndexes = tevOrderInfoList.ToArray();
 
                 material.TevColorIndexes = new WLinearColor[4];
                 for (int i = 0; i < material.TevColorIndexes.Length; i++)
-                    material.TevColorIndexes[i] = ReadEntry(reader, ReadColorShort, chunkStart, offsets, 17, reader.ReadInt16(), 8);
+                {
+                    var val = reader.ReadInt16();
+                    material.TevColorIndexes[i] = ReadEntry(reader, ReadColorShort, chunkStart, offsets, 17, val, 8);
+                }
 
-                material.TevStageInfoIndexes = new TevStage[16];
-                for (int i = 0; i < material.TevStageInfoIndexes.Length; i++)
-                    material.TevStageInfoIndexes[i] = ReadEntry(reader, ReadTevCombinerStage, chunkStart, offsets, 20, reader.ReadInt16(), 20);
+                var tevStageInfoList = new List<TevStage>();
+                for (int i = 0; i < 16; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        tevStageInfoList.Add(ReadEntry(reader, ReadTevCombinerStage, chunkStart, offsets, 20, val, 20));
+                }
+                material.TevStageInfoIndexes = tevStageInfoList.ToArray();
 
-                material.TevSwapModeIndexes = new TevSwapMode[16];
-                for (int i = 0; i < material.TevSwapModeIndexes.Length; i++)
-                    material.TevSwapModeIndexes[i] = ReadEntry(reader, ReadTevSwapMode, chunkStart, offsets, 21, reader.ReadInt16(), 4);
+                var tevSwapModeList = new List<TevSwapMode>();
+                for (int i = 0; i < 16; i++)
+                {
+                    var val = reader.ReadInt16();
+                    if (val >= 0)
+                        tevSwapModeList.Add(ReadEntry(reader, ReadTevSwapMode, chunkStart, offsets, 21, val, 4));
+                }
+                material.TevSwapModeIndexes = tevSwapModeList.ToArray();
 
                 material.TevSwapModeTableIndexes = new TevSwapModeTable[4];
                 for (int i = 0; i < material.TevSwapModeTableIndexes.Length; i++)
@@ -372,7 +412,7 @@ namespace JStudio.J3D
             ushort b = stream.ReadUInt16();
             ushort a = stream.ReadUInt16();
             Trace.Assert(r <= 255 && g <= 255 && b <= 255 && a <= 255);
-            return new WLinearColor(r / 255f, g / 255f, b / 255f, a/255f);
+            return new WLinearColor(r / 255f, g / 255f, b / 255f, a / 255f);
         }
 
         private static GXCullMode ReadCullMode(EndianBinaryReader stream)
