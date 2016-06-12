@@ -161,7 +161,7 @@ namespace JStudio.J3D.ShaderGen
             stream.AppendLine("in vec4 colors_0;");
             stream.AppendLine("in vec4 colors_1;");
 
-            for (int texGen = 0; texGen < data.NumTexGens[mat.NumTexGensIndex]; texGen++)
+            for (int texGen = 0; texGen < mat.NumTexGensIndex; texGen++)
                 stream.AppendLine(string.Format("in vec3 TexGen{0};", texGen));
 
             stream.AppendLine();
@@ -190,10 +190,10 @@ namespace JStudio.J3D.ShaderGen
             stream.AppendFormat("vec4 color[4];\n");
             stream.AppendFormat("vec4 kColor[4];\n");
 
-            stream.AppendFormat("color[0] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[0]].R, data.TevColors[mat.TevColorIndexes[0]].G, data.TevColors[mat.TevColorIndexes[0]].B, data.TevColors[mat.TevColorIndexes[0]].A);
-            stream.AppendFormat("color[1] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[1]].R, data.TevColors[mat.TevColorIndexes[1]].G, data.TevColors[mat.TevColorIndexes[1]].B, data.TevColors[mat.TevColorIndexes[1]].A);
-            stream.AppendFormat("color[2] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[2]].R, data.TevColors[mat.TevColorIndexes[2]].G, data.TevColors[mat.TevColorIndexes[2]].B, data.TevColors[mat.TevColorIndexes[2]].A);
-            stream.AppendFormat("color[3] = vec4({0},{1},{2},{3});\n", data.TevColors[mat.TevColorIndexes[3]].R, data.TevColors[mat.TevColorIndexes[3]].G, data.TevColors[mat.TevColorIndexes[3]].B, data.TevColors[mat.TevColorIndexes[3]].A);
+            stream.AppendFormat("color[0] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[0].R, mat.TevColorIndexes[0].G, mat.TevColorIndexes[0].B, mat.TevColorIndexes[0].A);
+            stream.AppendFormat("color[1] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[1].R, mat.TevColorIndexes[1].G, mat.TevColorIndexes[1].B, mat.TevColorIndexes[1].A);
+            stream.AppendFormat("color[2] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[2].R, mat.TevColorIndexes[2].G, mat.TevColorIndexes[2].B, mat.TevColorIndexes[2].A);
+            stream.AppendFormat("color[3] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[3].R, mat.TevColorIndexes[3].G, mat.TevColorIndexes[3].B, mat.TevColorIndexes[3].A);
 
             stream.AppendFormat("kColor[0] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[0].R, mat.TevKonstColorIndexes[0].G, mat.TevKonstColorIndexes[0].B, mat.TevKonstColorIndexes[0].A);
             stream.AppendFormat("kColor[1] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[1].R, mat.TevKonstColorIndexes[1].G, mat.TevKonstColorIndexes[1].B, mat.TevKonstColorIndexes[1].A);
@@ -217,7 +217,7 @@ namespace JStudio.J3D.ShaderGen
 
 
             // Write up to 16 TEV Stage Operations
-            for (int i = 0; i < data.NumTevStages[mat.NumTevStagesIndex]; i++)
+            for (int i = 0; i < mat.NumTevStagesIndex; i++)
                 WriteStage(stream, i, mat, data);
 
             // Alpha Compare
@@ -241,22 +241,22 @@ namespace JStudio.J3D.ShaderGen
             // scale (1, 2, 4, 0.5) is applied. Result is optionally clamped before being written to 
             // an output buffer. 
 
-            TevStage tevStage = data.TevStageInfos[mat.TevStageInfoIndexes[stageIndex]];
-            TevOrder tevOrder = data.TevOrderInfos[mat.TevOrderInfoIndexes[stageIndex]];
+            TevStage tevStage = mat.TevStageInfoIndexes[stageIndex];
+            TevOrder tevOrder = mat.TevOrderInfoIndexes[stageIndex];
             stream.AppendFormat("\t// TEV Stage {0}\n", stageIndex);
             stream.AppendFormat("\t// Unknown0: {0} ColorInA: {1} ColorInB: {2} ColorInC: {3} ColorInD: {4} ColorOp: {5} ColorBias: {6} ColorScale: {7} ColorClamp: {8} ColorRegId: {9}\n", tevStage.Unknown0, tevStage.ColorIn[0], tevStage.ColorIn[1], tevStage.ColorIn[2], tevStage.ColorIn[3], tevStage.ColorOp, tevStage.ColorBias, tevStage.ColorScale, tevStage.ColorClamp, tevStage.ColorRegId);
             stream.AppendFormat("\t// AlphaInA: {0} AlphaInB: {1} AlphaInC: {2} AlphaInD: {3} AlphaOp: {4} AlphaBias: {5} AlphaScale: {6} AlphaClamp: {7} AlphaRegId: {8} Unknown1: {9}\n", tevStage.AlphaIn[0], tevStage.AlphaIn[1], tevStage.AlphaIn[2], tevStage.AlphaIn[3], tevStage.AlphaOp, tevStage.AlphaBias, tevStage.AlphaScale, tevStage.AlphaClamp, tevStage.AlphaRegId, tevStage.Unknown1);
             stream.AppendFormat("\t// Tev Order TexCoordId: {0} TexMap: {1} ChannelId: {2}\n", tevOrder.TexCoordId, tevOrder.TexMap, tevOrder.ChannelId);
 
-            TevSwapMode swapMode = data.TevSwapModeInfos[mat.TevSwapModeIndexes[stageIndex]];
-            TevSwapModeTable rasSwapTable = data.TevSwapModeTables[swapMode.RasSel];
-            TevSwapModeTable texSwapTable = data.TevSwapModeTables[swapMode.TexSel];
+            TevSwapMode swapMode = mat.TevSwapModeIndexes[stageIndex];
+            TevSwapModeTable rasSwapTable = mat.TevSwapModeTableIndexes[swapMode.RasSel];
+            TevSwapModeTable texSwapTable = mat.TevSwapModeTableIndexes[swapMode.TexSel];
             stream.AppendFormat("\t// TEV Swap Mode: RasSel: {0} TexSel: {1}\n", swapMode.RasSel, swapMode.TexSel);
             stream.AppendFormat("\t// Ras Swap Table: R: {0} G: {1} B: {2} A: {3}\n", rasSwapTable.R, rasSwapTable.G, rasSwapTable.B, rasSwapTable.A);
             stream.AppendFormat("\t// Tex Swap Table: R: {0} G: {1} B: {2} A: {3}\n", texSwapTable.R, texSwapTable.G, texSwapTable.B, texSwapTable.A);
 
             int texcoord = (int)tevOrder.TexCoordId;
-            bool bHasTexCoord = (int)tevOrder.TexCoordId < data.NumTexGens[mat.NumTexGensIndex];
+            bool bHasTexCoord = (int)tevOrder.TexCoordId < mat.NumTexGensIndex;
 
             // Build a Swap Mode for swapping texture color input/rasterized color input to the TEV Stage.
             string[] rasSwapModeTable = new string[4];
@@ -466,7 +466,7 @@ namespace JStudio.J3D.ShaderGen
                 "alphaRef.g"
             };
 
-            AlphaCompare aCompare = data.AlphaCompares[mat.AlphaCompareIndex];
+            AlphaCompare aCompare = mat.AlphaCompareIndex;
             stream.AppendFormat("\t// Alpha Compare: Compare A: {0} Reference A: {1} Op: {2} Compare B: {3} Reference B: {4}\n", aCompare.Comp0, aCompare.Reference0, aCompare.Operation, aCompare.Comp1, aCompare.Reference1);
 
             stream.Append("\tif(!( ");

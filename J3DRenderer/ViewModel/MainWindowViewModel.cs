@@ -47,12 +47,12 @@ namespace J3DRenderer
 
             m_model = new J3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Fairy06.bdl"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/btd.bmd"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
             m_testAnim = new BCK();
-            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/18_jb_cut12_lookwait_l.bck"), Endian.Big));
+            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/dead.bck"), Endian.Big));
 
             m_testMaterialAnim = new BTK();
             m_testMaterialAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Fairy06.btk"), Endian.Big));
@@ -99,8 +99,8 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
-            //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
-            m_testMaterialAnim.ApplyAnimationToMaterials(m_model.MAT3Tag, m_timeSinceStartup);
+            m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            //m_testMaterialAnim.ApplyAnimationToMaterials(m_model.MAT3Tag, m_timeSinceStartup);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

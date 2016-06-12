@@ -347,11 +347,7 @@ namespace JStudio.J3D
             {
                 for (int i = 0; i < material.TexMatrixIndexes.Length; i++)
                 {
-                    int idx = material.TexMatrixIndexes[i];
-                    if (idx < 0)
-                        continue;
-
-                    Matrix4 matrix = MAT3Tag.TexMatrixInfos[idx].TexMtx;
+                    Matrix4 matrix = material.TexMatrixIndexes[i].TexMtx;
                     string matrixString = string.Format("TexMtx[{0}]", i);
                     int matrixUniformLoc = GL.GetUniformLocation(shader.Program, matrixString);
                     matrix.Transpose();
@@ -360,10 +356,10 @@ namespace JStudio.J3D
                 }
             }
 
-            var color0Amb = MAT3Tag.AmbientColors[material.AmbientColorIndexes[0]];
-            var color0Mat = MAT3Tag.MaterialColors[material.MaterialColorIndexes[0]];
-            var color1Amb = MAT3Tag.AmbientColors[material.AmbientColorIndexes[1]];
-            var color1Mat = MAT3Tag.MaterialColors[material.MaterialColorIndexes[1]];
+            var color0Amb = material.AmbientColorIndexes[0];
+            var color0Mat = material.MaterialColorIndexes[0];
+            var color1Amb = material.AmbientColorIndexes[1];
+            var color1Mat = material.MaterialColorIndexes[1];
 
             if (shader.UniformColor0Amb >= 0) GL.Uniform4(shader.UniformColor0Amb, color0Amb.R, color0Amb.G, color0Amb.B, color0Amb.A);
             if (shader.UniformColor0Mat >= 0) GL.Uniform4(shader.UniformColor0Mat, color0Mat.R, color0Mat.G, color0Mat.B, color0Mat.A);
@@ -375,10 +371,10 @@ namespace JStudio.J3D
 
 
             // Set the OpenGL State
-            BlendMode blendMode = MAT3Tag.BlendModeInfos[material.BlendModeIndex];
-            GXCullMode cullState = MAT3Tag.CullModes[material.CullModeIndex];
-            ZMode depthState = MAT3Tag.ZModeInfos[material.ZModeIndex];
-            bool ditherEnabled = MAT3Tag.DitherInfos[material.DitherIndex];
+            BlendMode blendMode = material.BlendModeIndex;
+            GXCullMode cullState = material.CullModeIndex;
+            ZMode depthState = material.ZModeIndex;
+            bool ditherEnabled = material.DitherIndex;
 
             SetBlendState(blendMode);
             SetCullState(cullState);
