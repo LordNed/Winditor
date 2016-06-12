@@ -262,27 +262,15 @@ namespace JStudio.J3D
                     ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
 
                     Matrix4 finalMatrix = Matrix4.Zero;
-
                     if (isPartiallyWeighted)
                     {
-                        ushort numBonesAffecting = EVP1Tag.NumBoneInfluences[indexFromDRW1];
-
-                        // We need to figure out our offset into the arrays.
-                        ushort firstBoneInfluence = 0;
-                        for (ushort e = 0; e < indexFromDRW1; e++)
+                        EVP1.Envelope envelope = EVP1Tag.Envelopes[indexFromDRW1];
+                        for (int b = 0; b < envelope.NumBones; b++)
                         {
-                            firstBoneInfluence += EVP1Tag.NumBoneInfluences[e];
-                        }
+                            Matrix4 sm1 = EVP1Tag.InverseBindPose[envelope.BoneIndexes[b]];
+                            Matrix4 sm2 = boneTransforms[envelope.BoneIndexes[b]];
 
-                        for (int b = 0; b < numBonesAffecting; b++)
-                        {
-                            ushort boneIndex = EVP1Tag.IndexRemap[firstBoneInfluence + b];
-                            float boneWeight = EVP1Tag.WeightList[firstBoneInfluence + b];
-
-                            Matrix4 sm1 = EVP1Tag.InverseBindPose[boneIndex];
-                            Matrix4 sm2 = boneTransforms[boneIndex];
-
-                            finalMatrix = finalMatrix + Matrix4.Mult(Matrix4.Mult(sm1, sm2), boneWeight);
+                            finalMatrix = finalMatrix + Matrix4.Mult(Matrix4.Mult(sm1, sm2), envelope.BoneWeights[b]);
                         }
                     }
                     else

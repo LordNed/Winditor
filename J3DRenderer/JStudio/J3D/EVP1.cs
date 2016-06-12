@@ -8,9 +8,14 @@ namespace JStudio.J3D
 {
     public class EVP1
     {
-        public List<byte> NumBoneInfluences;
-        public List<ushort> IndexRemap;
-        public List<float> WeightList;
+        public class Envelope
+        {
+            public byte NumBones;
+            public ushort[] BoneIndexes;
+            public float[] BoneWeights;
+        }
+
+        public List<Envelope> Envelopes;
         public List<Matrix4> InverseBindPose;
 
         public void LoadEVP1FromStream(EndianBinaryReader reader, long tagStart)
@@ -18,49 +23,55 @@ namespace JStudio.J3D
             ushort envelopeCount = reader.ReadUInt16();
             Trace.Assert(reader.ReadUInt16() == 0xFFFF); // Padding
 
-            uint boneInfluenceCountOffset = reader.ReadUInt32(); // envelopeCount many uint8 indicating how many bones influence an index.
-            uint indexDataOffset = reader.ReadUInt32(); // ???
-            uint weightDataOffset = reader.ReadUInt32(); // Bone Weights (as many floats here as there are ushorts at indexDataOffset
-            uint boneMatrixOffset = reader.ReadUInt32(); // Matrix Table (3x4 float array) - Skeleton Inverse Bind Pose
+            uint boneInfluenceCountOffset = reader.ReadUInt32(); // This points to an array which is envelopeCount many long bytes which specify how many bones influence that particular envelope.
+            uint boneIndexDataOffset = reader.ReadUInt32(); // For each influence of each envelope, which bone index is the envelope referring to
+            uint weightDataOffset = reader.ReadUInt32(); // For each influence of each envelope, a float indicating how much weight the envelope has.
+            uint boneMatrixOffset = reader.ReadUInt32(); // Matrix Table (3x4 float array) - Skeleton Inverse Bind Pose. You have to get the highest index from boneIndex to know how many to read.
 
-
-            NumBoneInfluences = new List<byte>();
-            IndexRemap = new List<ushort>();
-            WeightList = new List<float>();
+            byte[] numBoneInfluences = new byte[envelopeCount];
             InverseBindPose = new List<Matrix4>();
+            Envelopes = new List<Envelope>();
 
             // How many bones influence the given index
             reader.BaseStream.Position = tagStart + boneInfluenceCountOffset;
             for (int i = 0; i < envelopeCount; i++)
-                NumBoneInfluences.Add(reader.ReadByte());
+                numBoneInfluences[i] = reader.ReadByte();
 
             // For each influence, an index remap?
-            reader.BaseStream.Position = tagStart + indexDataOffset;
             int numMatrices = 0;
-            for(int m = 0; m < envelopeCount; m++)
+            reader.BaseStream.Position = tagStart + boneIndexDataOffset;
+            for (int m = 0; m < envelopeCount; m++)
             {
-                for(int j =0; j < NumBoneInfluences[m]; j++)
+                Envelope env = new Envelope();
+                env.NumBones = numBoneInfluences[m];
+                env.BoneWeights = new float[env.NumBones];
+                env.BoneIndexes = new ushort[env.NumBones];
+                Envelopes.Add(env);
+
+                for (int j = 0; j < numBoneInfluences[m]; j++)
                 {
                     ushort val = reader.ReadUInt16();
+                    env.BoneIndexes[j] = val;
                     numMatrices = Math.Max(numMatrices, val + 1);
-                    IndexRemap.Add(val);
                 }
             }
 
             // For each influence, how much does that influence have an affect.
             reader.BaseStream.Position = tagStart + weightDataOffset;
-            for(int m = 0; m < envelopeCount; m++)
+            for (int m = 0; m < envelopeCount; m++)
             {
-                for(int j = 0; j < NumBoneInfluences[m]; j++)
+                Envelope env = Envelopes[m];
+                for (int j = 0; j < numBoneInfluences[m]; j++)
                 {
-                    WeightList.Add(reader.ReadSingle());
+                    float val = reader.ReadSingle();
+                    env.BoneWeights[j] = val;
                 }
             }
 
             // For each envelope index, what is the Inverse Bind Pose matrix? The Inverse Bind Pose matrix will transform
             // a vertex from being in model space into local space around its bone.
             reader.BaseStream.Position = tagStart + boneMatrixOffset;
-            for(int m = 0; m < numMatrices; m++)
+            for (int m = 0; m < numMatrices; m++)
             {
                 Matrix3x4 matrix = new Matrix3x4();
                 for (int j = 0; j < 3; j++)
