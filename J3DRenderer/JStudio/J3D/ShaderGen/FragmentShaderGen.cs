@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using WindEditor;
 
 namespace JStudio.J3D.ShaderGen
@@ -222,7 +223,7 @@ namespace JStudio.J3D.ShaderGen
 
             // Alpha Compare
             WriteAlphaTest(stream, mat, data);
-            //WriteFog(stream, mat, data);
+            WriteFog(stream, mat, data);
 
             stream.AppendLine("\tPixelColor = prev;");
 
@@ -480,5 +481,59 @@ namespace JStudio.J3D.ShaderGen
             stream.Append("\t}\n");
         }
 
+
+        private static string[] m_tevFogFuncTable = new[]
+        {
+            "",                                                    // No Fog
+            "",                                                    // ?
+            "",                                                    // Linear
+            "",                                                    // ?
+            "\tfog = 1.0 - exp2(-8.0 * fog);\n",                   // exp
+            "\tfog = 1.0 - exp2(-8.0 * fog * fog);\n",             // exp2
+            "\tfog = exp2(-8.0 * (1.0 - fog))\n",                  // backwards exp
+            "\tfog = 1.0 - fog;\n fog = exp2(-8.0 * fog * fog);\n" // backwards exp2
+        };
+
+        private static void WriteFog(StringBuilder stream, Material mat, MAT3 data)
+        {
+            // If it's not enabled, no fog.
+            if (!mat.FogModeIndex.Enable)
+                return;
+
+            Console.WriteLine("Unsupported Material Data: Fog");
+            // Perspective
+            if(mat.FogModeIndex.Type == 0)
+            {
+                // ze = A/B9-(Zs >> B_SHF)
+                //stream.AppendFormat("\tfloat ze = (cfogf[1].x * ")
+            }
+            else
+            {
+                // Orthographic
+                // ze = a*Zs
+                //stream.Append("\tfloat ze = cfogf[1].x * float(zCoord) / 16777216.0;\n");
+            }
+
+            // x_adjust = sqrt((x-center)^2+k^2)/k
+            // ze *= x_adjust
+
+            //stream.Append("\tfloat x_adjust = (2.0 * (rawpos.x / cfogf[0].y)) - 1.0 - cfogf[0].x;\n");
+            //stream.Append("\tx_adjust = sqrt(x_adjust * x_adjust + cfogf[0].z * cfogf[0].z) / cfogf[0].z;\n");
+            //stream.Append("\t ze *= x_adjust;\n");
+
+            //stream.Append("\tfloat fog = clamp(ze - cfogf[1].z, 0.0, 1.0);\n");
+            
+            //if(mat.FogModeIndex.Type > 3)
+            //{
+            //    stream.AppendFormat("{0}", m_tevFogFuncTable[mat.FogModeIndex.Type]);
+            //}
+            //else
+            //{
+            //    if (mat.FogModeIndex.Type != 2)
+            //        Console.WriteLine("Unknown Fog Type: {0}", mat.FogModeIndex.Type);
+            //}
+
+            //stream.Append("\tprev.rgb = (prev.rgb * (1-fog) + cfogcolor.rgb * fog);\n");
+        }
     }
 }
