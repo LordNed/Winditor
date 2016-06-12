@@ -18,7 +18,7 @@ namespace JStudio.J3D
         public AABox BoundingBox { get; internal set; }
 
         // Useful for easier traversal
-        public int ParentId { get; internal set; }
+        public SkeletonJoint Parent { get; internal set; }
 
         public override string ToString()
         {
@@ -65,7 +65,7 @@ namespace JStudio.J3D
 
                 Vector3 eulerRot = new Vector3();
                 for (int e = 0; e < 3; e++)
-                    eulerRot[e] = reader.ReadInt16() * (180 / 32786f); // [-32786, 32786] to [-180, 180]
+                    eulerRot[e] = WMath.RotationShortToFloat(reader.ReadInt16());
 
                 // ZYX order
                 joint.Rotation = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(eulerRot.Z)) * 
@@ -76,55 +76,30 @@ namespace JStudio.J3D
                 joint.Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                 joint.BoundingSphereDiameter = reader.ReadSingle();
                 joint.BoundingBox = new AABox(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
-
-
-                joint.ParentId = -1;
             }
         }
 
-        public void CalculateInverseBindPose(HierarchyNode hierarchyRoot, WLineBatcher lineBatcher)
+        public void CalculateParentJointsForSkeleton(HierarchyNode hierarchyRoot)
         {
             List<SkeletonJoint> processedJoints = new List<SkeletonJoint>();
-            IterateHierarchyForSkeletonRecursive(hierarchyRoot, processedJoints, -1, lineBatcher);
+            IterateHierarchyForSkeletonRecursive(hierarchyRoot, processedJoints, -1);
         }
 
-        private void IterateHierarchyForSkeletonRecursive(HierarchyNode curNode, List<SkeletonJoint> processedJoints, int parentIndex, WLineBatcher lineBatcher)
+        private void IterateHierarchyForSkeletonRecursive(HierarchyNode curNode, List<SkeletonJoint> processedJoints, int parentIndex)
         {
             switch (curNode.Type)
             {
                 case HierarchyDataType.NewNode: parentIndex = processedJoints.Count - 1; break;
                 case HierarchyDataType.Joint:
                     SkeletonJoint joint = Joints[JointRemapTable[curNode.Value]];
-                    joint.ParentId = parentIndex;
-
-                    if (joint.ParentId >= 0)
-                    {
-                        SkeletonJoint parentJoint = processedJoints[parentIndex];
-
-                        Vector3 worldPos = parentJoint.Translation +  Vector3.Transform(joint.Translation, parentJoint.Rotation);
-                        Quaternion worldRot = (parentJoint.Rotation * joint.Rotation).Normalized(); // ToDo: Is the Normalized needed?
-
-                        // We store away a clone of the existing joint for the purposes of not having to walk the entire chain again
-                        // for each bone. This lets us store the world-position and rotation of the parent joint for multiplication above.
-                        SkeletonJoint worldJoint = new SkeletonJoint();
-                        worldJoint.Name = joint.Name;
-                        worldJoint.Translation = worldPos;
-                        worldJoint.Rotation = worldRot;
-                        processedJoints.Add(worldJoint);
-
-                        // Debug Drawing
-                        //lineBatcher.DrawLine(parentJoint.Translation, worldPos, WLinearColor.Red, 5, 300f);
-                    }
-                    else
-                    {
-                        processedJoints.Add(joint);
-                    }
-
+                    if(parentIndex >= 0)
+                        joint.Parent = processedJoints[parentIndex];
+                    processedJoints.Add(joint);
                     break;
             }
 
             foreach (var child in curNode.Children)
-                IterateHierarchyForSkeletonRecursive(child, processedJoints, parentIndex, lineBatcher);
+                IterateHierarchyForSkeletonRecursive(child, processedJoints, parentIndex);
         }
     }
 }

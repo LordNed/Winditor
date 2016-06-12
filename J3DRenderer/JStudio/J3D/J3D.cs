@@ -87,6 +87,7 @@ namespace JStudio.J3D
                     case "JNT1":
                         JNT1Tag = new JNT1();
                         JNT1Tag.LoadJNT1FromStream(reader, tagStart);
+                        JNT1Tag.CalculateParentJointsForSkeleton(INF1Tag.HierarchyRoot);
                         break;
                     // SHAPE - Face/Triangle information for model.
                     case "SHP1":
@@ -120,7 +121,6 @@ namespace JStudio.J3D
             Material dummyMat = null;
             AssignVertexAttributesToMaterialsRecursive(INF1Tag.HierarchyRoot, ref dummyMat);
 
-            JNT1Tag.CalculateInverseBindPose(INF1Tag.HierarchyRoot, m_lineBatcher);
 
 
             // Upload our Lights
@@ -199,24 +199,26 @@ namespace JStudio.J3D
             Matrix4[] boneTransforms = new Matrix4[JNT1Tag.Joints.Count];
             for (int i = 0; i < JNT1Tag.Joints.Count; i++)
             {
-                SkeletonJoint joint = JNT1Tag.Joints[i];
+                SkeletonJoint curJoint, origJoint;
+                curJoint = origJoint = JNT1Tag.Joints[i];
+
                 Matrix4 cumulativeTransform = Matrix4.Identity;
                 while (true)
                 {
-                    Matrix4 jointMatrix = Matrix4.CreateScale(joint.Scale) * Matrix4.CreateFromQuaternion(joint.Rotation) * Matrix4.CreateTranslation(joint.Translation);
+                    Matrix4 jointMatrix = Matrix4.CreateScale(curJoint.Scale) * Matrix4.CreateFromQuaternion(curJoint.Rotation) * Matrix4.CreateTranslation(curJoint.Translation);
                     cumulativeTransform *= jointMatrix;
-                    if (joint.ParentId < 0)
+                    if (curJoint.Parent == null)
                         break;
 
-                    joint = JNT1Tag.Joints[joint.ParentId];
+                    curJoint = curJoint.Parent;
                 }
 
                 boneTransforms[i] = cumulativeTransform;
 
-                if (JNT1Tag.Joints[i].ParentId >= 0)
+                if (origJoint.Parent != null)
                 {
                     Vector3 curPos = cumulativeTransform.ExtractTranslation();
-                    Vector3 parentPos = boneTransforms[JNT1Tag.Joints[i].ParentId].ExtractTranslation();
+                    Vector3 parentPos = boneTransforms[JNT1Tag.Joints.IndexOf(origJoint.Parent)].ExtractTranslation();
 
                     m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
                 }
