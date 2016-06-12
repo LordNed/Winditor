@@ -107,6 +107,10 @@ namespace JStudio.J3D
 
             /* MATERIAL REMAP TABLE (See start of Material loader below) */
             MaterialRemapTable = ReadSection<short>(reader, chunkStart, chunkSize, offsets, 1, ReadShort, 2);
+            int highestMaterialCount = 0;
+            foreach (var idx in MaterialRemapTable)
+                if (idx >= highestMaterialCount)
+                    highestMaterialCount = idx+1;
 
             /* STRING TABLE */
             reader.BaseStream.Position = chunkStart + offsets[2];
@@ -202,7 +206,7 @@ namespace JStudio.J3D
             /* NBT SCALE INFO */
             //NBTScale = ReadSection<NBTScale>(reader, chunkStart, chunkSize, offsets, 29, ReadNBTScale, 16);
 
-            for (int m = 0; m < materialCount; m++)
+            for (int m = 0; m < highestMaterialCount; m++)
             {
                 // A Material entry is 0x14c long.
                 reader.BaseStream.Position = chunkStart + offsets[0] + (m * 0x14c);
@@ -218,8 +222,8 @@ namespace JStudio.J3D
                 // To resolve this, we'll check if the flag value is zero - if so, skip creating a material for it.
 
                 byte flag = reader.ReadByte();
-                if (flag == 0)
-                    continue;
+                //if (flag == 0 || flag == 255)
+                //    continue;
 
                 // Now that we've read the contents of the material section, we can load their values into a material 
                 // class which keeps it nice and tidy and full of class references and not indexes.
