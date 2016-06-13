@@ -69,20 +69,13 @@ namespace J3DRenderer
                 DoApplicationTick();
             };
             editorTickTimer.Enabled = true;
-            //    var light = new GXLight();
-            //    // Upload to the GPU
-            //    light.Position = i == 1 ? new Vector4(250, 200, 250, 0) : new Vector4(-5000, -5000, -5000, 0);
-            //    light.Direction = -light.Position.Normalized();
-            //    light.Color = i == 1 ? new Vector4(0f, 1, 0f, 1) : new Vector4(1, 1, 1, 1);
-            //    light.CosAtten = new Vector4(1.075f, 0, 0, 0);
-            //    light.DistAtten = new Vector4(1.075f, 0f, 0f, 0f);
 
-            //    lights[i] = light;
             var lightPos = new Vector4(250, 200, 250, 0);
             m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             var secondLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             m_model.SetHardwareLight(0, m_mainLight);
             m_model.SetHardwareLight(1, secondLight);
+
         }
 
         private void DoApplicationTick()

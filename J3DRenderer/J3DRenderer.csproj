@@ -222,6 +222,7 @@
     <Content Include="resources\ba.bdl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="resources\textures\ZBtoonEX.png" />
     <Content Include="resources\wait02.bck">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

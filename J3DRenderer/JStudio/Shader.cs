@@ -172,5 +172,10 @@ namespace JStudio.OpenGL
             if (m_programAddress >= -1)
                 GL.DeleteProgram(m_programAddress);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

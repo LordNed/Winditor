@@ -150,6 +150,7 @@ namespace JStudio.J3D
                 }
                 material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
 
+                // Bind the Light Block uniform to the shader
                 GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);
                 GL.UniformBlockBinding(material.Shader.Program, material.Shader.UniformLightBlock, (int)ShaderUniformBlockIds.LightBlock);
             }
