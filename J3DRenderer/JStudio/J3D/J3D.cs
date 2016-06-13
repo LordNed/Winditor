@@ -354,6 +354,7 @@ namespace JStudio.J3D
                 if (m_textureOverrides.ContainsKey(tex.Name))
                     tex = m_textureOverrides[tex.Name];
 
+                GL.Uniform1(glTextureIndex, i); // Everything dies without this, don't forget this bit.
                 tex.Bind(i);
             }
 

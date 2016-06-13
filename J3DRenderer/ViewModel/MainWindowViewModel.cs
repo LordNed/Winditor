@@ -75,7 +75,7 @@ namespace J3DRenderer
             var secondLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             m_model.SetHardwareLight(0, m_mainLight);
             m_model.SetHardwareLight(1, secondLight);
-
+            m_model.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
         }
 
         private void DoApplicationTick()
