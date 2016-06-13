@@ -381,23 +381,12 @@ namespace JStudio.J3D
             if (shader.UniformColor1Amb >= 0) GL.Uniform4(shader.UniformColor1Amb, color1Amb.R, color1Amb.G, color1Amb.B, color1Amb.A);
             if (shader.UniformColor1Mat >= 0) GL.Uniform4(shader.UniformColor1Mat, color1Mat.R, color1Mat.G, color1Mat.B, color1Mat.A);
 
-            //int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock");
-            //GL.UniformBlockBinding(material.Shader.Program, ubi, 0);
-
-
             // Set the OpenGL State
             GXToOpenGL.SetBlendState(material.BlendModeIndex);
             GXToOpenGL.SetCullState(material.CullModeIndex);
             GXToOpenGL.SetDepthState(material.ZModeIndex);
             GXToOpenGL.SetDitherEnabled(material.DitherIndex);
         }
-
-        //private int m_lightBufferUniform;
-        private int m_psBlockUniform;
-
-
-
-
 
         private void RenderBatchByIndex(ushort index)
         {

@@ -85,7 +85,7 @@ namespace JStudio.J3D.ShaderGen
             if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Position))
             {
                 stream.AppendLine("\tgl_Position = MVP * vec4(RawPosition, 1);");
-                stream.AppendLine("\t vec4 worldPos = ModelMtx * vec4(RawPosition, 1);");
+                stream.AppendLine("\tvec4 worldPos = ModelMtx * vec4(RawPosition, 1);");
             }
             stream.AppendLine();
 
@@ -98,21 +98,6 @@ namespace JStudio.J3D.ShaderGen
                     stream.AppendFormat("\tcolors_1 = vec4(1, 1, 1, 1);\n");
             }
 
-            stream.AppendFormat("\t// Ambient Colors & Material Colors. {0} Ambient Colors, {1} Material Colors.\n", mat.AmbientColorIndexes.Length, mat.MaterialColorIndexes.Length);
-
-            // Upload Ambient Colors specified by the material
-            for (int i = 0; i < mat.AmbientColorIndexes.Length; i++)
-            {
-                var ambColor = mat.AmbientColorIndexes[i];
-                stream.AppendFormat("\tvec4 ambColor{0} = vec4({1},{2},{3},{4});\n", i, ambColor.R, ambColor.G, ambColor.B, ambColor.A);
-            }
-
-            // Upload Material Colors specified by the material
-            for (int i = 0; i < mat.MaterialColorIndexes.Length; i++)
-            {
-                var matColor = mat.MaterialColorIndexes[i];
-                stream.AppendFormat("\tvec4 matColor{0} = vec4({1},{2},{3},{4});\n", i, matColor.R, matColor.G, matColor.B, matColor.A);
-            }
             stream.AppendLine();
 
             // TEV Channel Colors.
@@ -147,18 +132,18 @@ namespace JStudio.J3D.ShaderGen
 
                 bool isAlphaChannel = i % 2 != 0;
                 string channelTarget = string.Format("colors_{0}", channel);
-                string ambColor = (channelControl.AmbientSrc == GXColorSrc.Vertex ? "RawColor" : "ambColor") + channel;
-                string matColor = (channelControl.MaterialSrc == GXColorSrc.Vertex ? "RawColor" : "matColor") + channel;
+                string ambColorSrc = string.Format("{0}{1}", (channelControl.AmbientSrc == GXColorSrc.Vertex ? "RawColor" : "COLOR"), channel + "_Amb");
+                string matColorSrc = string.Format("{0}{1}", (channelControl.MaterialSrc == GXColorSrc.Vertex ? "RawColor" : "COLOR"), channel + "_Mat");
 
-                stream.AppendFormat("\tambColor = {0};\n", ambColor);
-                stream.AppendFormat("\tmatColor = {0};\n", matColor);
+                stream.AppendFormat("\tambColor = {0};\n", ambColorSrc);
+                stream.AppendFormat("\tmatColor = {0};\n", matColorSrc);
 
                 for (int l = 0; l < 8; l++)
                 {
                     bool isLit = channelControl.LitMask.HasFlag((GXLightMask)(1 << l));
-                    stream.AppendFormat("// ChannelControl: {0} Light: {1} LitMask: {2}\n", i, l, isLit);
                     if (isLit)
                     {
+                        stream.AppendFormat("\t// ChannelControl: {0} Light: {1}\n", i, l);
                         GenerateLightVertexShader(stream, channelControl, l, swizzle, isAlphaChannel ? 1 : 3);
                     }
                 }
