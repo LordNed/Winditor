@@ -149,7 +149,7 @@ namespace JStudio
             PaletteFormat = (PaletteFormats)stream.ReadByte();
             PaletteCount = stream.ReadUInt16();
             int paletteDataOffset = stream.ReadInt32();
-            BorderColor = new WLinearColor(stream.ReadByte()/255f, stream.ReadByte()/255f, stream.ReadByte()/255f, stream.ReadByte()/255f);
+            BorderColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte() / 255f);
             MinFilter = (FilterMode)stream.ReadByte();
             MagFilter = (FilterMode)stream.ReadByte();
             short unknown2 = stream.ReadInt16();
@@ -191,6 +191,37 @@ namespace JStudio
         public byte[] GetData()
         {
             return m_rgbaImageData;
+        }
+
+        /// <summary>
+        /// This function is for debugging purposes and does not encompass encoding data.
+        /// </summary>
+        public void LoadImageFromDisk(string filePath)
+        {
+
+            using (Bitmap bitmap = new Bitmap(filePath))
+            {
+                Format = TextureFormats.RGBA32;
+                AlphaSetting = 0;
+                Width = (ushort)bitmap.Width;
+                Height = (ushort)bitmap.Height;
+                WrapS = WrapModes.ClampToEdge;
+                WrapT = WrapModes.ClampToEdge;
+                PaletteFormat = PaletteFormats.IA8;
+                PaletteCount = 0;
+                BorderColor = WLinearColor.Red;
+                MinFilter = FilterMode.Linear;
+                MagFilter = FilterMode.Linear;
+                MipMapCount = 0;
+                LodBias = 0;
+
+                byte[] data = new byte[Width * Height * 4];
+
+                BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+                Marshal.Copy(bmpData.Scan0, data, 0, data.Length);
+                bitmap.UnlockBits(bmpData);
+                m_rgbaImageData = data;
+            }
         }
 
         #region Decoding
