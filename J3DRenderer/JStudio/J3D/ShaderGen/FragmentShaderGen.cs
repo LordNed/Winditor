@@ -174,32 +174,31 @@ namespace JStudio.J3D.ShaderGen
                 stream.AppendFormat("uniform sampler2D Texture{0};\n", i);
             }
 
-            //stream.AppendLine("layout(std140) uniform PSBlock\n{");
-            //stream.AppendLine(
-            //    "\tvec4 color[4];\n" +
-            //    "\tvec4 kColor[4];\n" +
-            //    "};");
+            stream.Append(
+                "layout(std140) uniform PSBlock\n{" +
+                "\tvec4 color[4];\n" +
+                "\tvec4 kColor[4];\n};\n\n");
 
             // Final Output
             stream.AppendLine("// Final Output");
             stream.AppendLine("out vec4 PixelColor;\n\n");
 
             // Main Function
-            stream.AppendLine("void main()\n{\n");
+            stream.Append("void main()\n{\n");
 
-            // Debug override color and kColor
-            stream.AppendFormat("vec4 color[4];\n");
-            stream.AppendFormat("vec4 kColor[4];\n");
+            //// Debug override color and kColor
+            //stream.AppendFormat("vec4 color[4];\n");
+            //stream.AppendFormat("vec4 kColor[4];\n");
 
-            stream.AppendFormat("color[0] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[0].R, mat.TevColorIndexes[0].G, mat.TevColorIndexes[0].B, mat.TevColorIndexes[0].A);
-            stream.AppendFormat("color[1] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[1].R, mat.TevColorIndexes[1].G, mat.TevColorIndexes[1].B, mat.TevColorIndexes[1].A);
-            stream.AppendFormat("color[2] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[2].R, mat.TevColorIndexes[2].G, mat.TevColorIndexes[2].B, mat.TevColorIndexes[2].A);
-            stream.AppendFormat("color[3] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[3].R, mat.TevColorIndexes[3].G, mat.TevColorIndexes[3].B, mat.TevColorIndexes[3].A);
+            //stream.AppendFormat("color[0] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[0].R, mat.TevColorIndexes[0].G, mat.TevColorIndexes[0].B, mat.TevColorIndexes[0].A);
+            //stream.AppendFormat("color[1] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[1].R, mat.TevColorIndexes[1].G, mat.TevColorIndexes[1].B, mat.TevColorIndexes[1].A);
+            //stream.AppendFormat("color[2] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[2].R, mat.TevColorIndexes[2].G, mat.TevColorIndexes[2].B, mat.TevColorIndexes[2].A);
+            //stream.AppendFormat("color[3] = vec4({0},{1},{2},{3});\n", mat.TevColorIndexes[3].R, mat.TevColorIndexes[3].G, mat.TevColorIndexes[3].B, mat.TevColorIndexes[3].A);
 
-            stream.AppendFormat("kColor[0] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[0].R, mat.TevKonstColorIndexes[0].G, mat.TevKonstColorIndexes[0].B, mat.TevKonstColorIndexes[0].A);
-            stream.AppendFormat("kColor[1] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[1].R, mat.TevKonstColorIndexes[1].G, mat.TevKonstColorIndexes[1].B, mat.TevKonstColorIndexes[1].A);
-            stream.AppendFormat("kColor[2] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[2].R, mat.TevKonstColorIndexes[2].G, mat.TevKonstColorIndexes[2].B, mat.TevKonstColorIndexes[2].A);
-            stream.AppendFormat("kColor[3] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[3].R, mat.TevKonstColorIndexes[3].G, mat.TevKonstColorIndexes[3].B, mat.TevKonstColorIndexes[3].A);
+            //stream.AppendFormat("kColor[0] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[0].R, mat.TevKonstColorIndexes[0].G, mat.TevKonstColorIndexes[0].B, mat.TevKonstColorIndexes[0].A);
+            //stream.AppendFormat("kColor[1] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[1].R, mat.TevKonstColorIndexes[1].G, mat.TevKonstColorIndexes[1].B, mat.TevKonstColorIndexes[1].A);
+            //stream.AppendFormat("kColor[2] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[2].R, mat.TevKonstColorIndexes[2].G, mat.TevKonstColorIndexes[2].B, mat.TevKonstColorIndexes[2].A);
+            //stream.AppendFormat("kColor[3] = vec4({0},{1},{2},{3});\n", mat.TevKonstColorIndexes[3].R, mat.TevKonstColorIndexes[3].G, mat.TevKonstColorIndexes[3].B, mat.TevKonstColorIndexes[3].A);
 
 
             stream.Append("\tvec4 c0 = color[0], c1 = color[1], c2 = color[2], prev = color[3];\n" +

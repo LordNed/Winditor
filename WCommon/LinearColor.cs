@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace WindEditor
@@ -7,6 +8,7 @@ namespace WindEditor
     /// <summary>
     /// RGBA Color that uses 32-bit floats to represent each component.
     /// </summary>
+    [Serializable] [StructLayout(LayoutKind.Sequential)]
     public struct WLinearColor
     {
         /// <summary> Red component of the <see cref="WLinearColor"/>. </summary>
@@ -125,7 +127,7 @@ namespace WindEditor
 
         public override string ToString()
         {
-            return string.Format("RGBA({0:F3}, {1:F3}, {2:F3}, {3, F3})", R, G, B, A);
+            return string.Format("R: {0} G: {1} B: {2} A: {3}", R, G, B, A);
         }
 
         public string ToHexString()

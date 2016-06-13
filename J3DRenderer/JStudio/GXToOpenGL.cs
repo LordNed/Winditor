@@ -3,6 +3,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Runtime.InteropServices;
+using WindEditor;
 
 namespace JStudio.OpenGL
 {
@@ -30,8 +31,10 @@ namespace JStudio.OpenGL
     [Serializable] [StructLayout(LayoutKind.Sequential)]
     struct PSBlock
     {
-        public Vector4[] Color;
-        public Vector4[] kColor;
+        public WLinearColor[] Color;
+        public WLinearColor[] kColor;
+
+        public static int SizeInBytes = 16 * 4 * 2;
     }
 
     public static class GXToOpenGL

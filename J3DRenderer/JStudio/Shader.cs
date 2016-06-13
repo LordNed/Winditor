@@ -25,6 +25,7 @@ namespace JStudio.OpenGL
     public enum ShaderUniformBlockIds
     {
         LightBlock = 0,
+        PixelShaderBlock = 1,
     }
 
     public class Shader
@@ -40,11 +41,14 @@ namespace JStudio.OpenGL
         public int UniformColor1Amb { get; private set; }
         public int UniformColor1Mat { get; private set; }
         public int UniformLightBlock { get; private set; }
+        public int UniformPSBlock { get; private set; }
         public int Program { get { return m_programAddress; } }
+        public int PSBlockUBO { get { return m_psBlockAddress; } }
 
         private int m_vertexAddress = -1;
         private int m_fragmentAddress = -1;
         private int m_programAddress = -1;
+        private int m_psBlockAddress;
 
         public Shader(string name)
         {
@@ -152,6 +156,7 @@ namespace JStudio.OpenGL
             UniformColor1Amb = GL.GetUniformLocation(m_programAddress, "COLOR1_Amb");
             UniformColor1Mat = GL.GetUniformLocation(m_programAddress, "COLOR1_Mat");
             UniformLightBlock = GL.GetUniformBlockIndex(m_programAddress, "LightBlock");
+            UniformPSBlock = GL.GetUniformBlockIndex(m_programAddress, "PSBlock");
 
             // Now that we've (presumably) set both a vertex and a fragment shader and linked them to the program,
             // we're going to clean up the reference to the shaders as the Program now keeps its own reference.
@@ -159,6 +164,8 @@ namespace JStudio.OpenGL
             GL.DeleteShader(m_fragmentAddress);
             m_vertexAddress = -1;
             m_fragmentAddress = -1;
+
+            m_psBlockAddress = GL.GenBuffer();
             return true;
         }
 
@@ -168,6 +175,9 @@ namespace JStudio.OpenGL
                 GL.DeleteShader(m_vertexAddress);
             if (m_fragmentAddress >= 0)
                 GL.DeleteShader(m_fragmentAddress);
+
+            if (m_psBlockAddress >= 0)
+                GL.DeleteBuffer(m_psBlockAddress);
 
             if (m_programAddress >= -1)
                 GL.DeleteProgram(m_programAddress);
