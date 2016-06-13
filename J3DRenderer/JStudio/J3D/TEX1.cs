@@ -3,6 +3,8 @@ using JStudio.OpenGL;
 using OpenTK.Graphics.OpenGL;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using WindEditor;
 
 namespace JStudio.J3D
@@ -56,6 +58,7 @@ namespace JStudio.J3D
     public class TEX1
     {
         public BindingList<Texture> Textures;
+        private static bool m_allowTextureCache = true;
 
         public void LoadTEX1FromStream(EndianBinaryReader reader, long tagStart)
         {
@@ -77,12 +80,20 @@ namespace JStudio.J3D
                 reader.BaseStream.Position = tagStart + textureHeaderDataOffset + (t * 0x20);
 
                 BinaryTextureImage compressedTex = new BinaryTextureImage();
-                compressedTex.Load(reader, tagStart + 0x20 /* Size of TEX1 header?*/, t);
+                string tempFileName = string.Format("TextureDump/{1}_{0}.png", nameTable[t], t);
+                if(!m_allowTextureCache || !File.Exists(tempFileName))
+                {
+                    compressedTex.Load(reader, tagStart + 0x20 /* Size of TEX1 header?*/, t);
+                }
+                else
+                {
+                    compressedTex.LoadImageFromDisk(tempFileName);
+                }
 
                 Texture texture = new Texture(nameTable[t], compressedTex);
                 Textures.Add(texture);
 
-                compressedTex.SaveImageToDisk(string.Format("TextureDump/{0}_{1}.png", texture.Name, compressedTex.Format));
+                compressedTex.SaveImageToDisk(string.Format("TextureDump/{2}__{0}_{1}.png", texture.Name, compressedTex.Format, t));
             }
         }
     }

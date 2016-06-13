@@ -300,8 +300,17 @@ namespace JStudio.J3D
                 shape.UploadBuffersToGPU();
             }
 
+            if (WInput.GetKeyDown(System.Windows.Input.Key.O))
+                m_shapeIndex--;
+            if (WInput.GetKeyUp(System.Windows.Input.Key.P))
+                m_shapeIndex++;
+
+            m_shapeIndex = WMath.Clamp(m_shapeIndex, 0, SHP1Tag.ShapeCount - 1);
+
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
         }
+
+        private int m_shapeIndex;
 
         private void RenderMeshRecursive(HierarchyNode curNode)
         {
@@ -312,6 +321,7 @@ namespace JStudio.J3D
                     break;
 
                 case HierarchyDataType.Batch:
+                    //if (curNode.Value != m_shapeIndex) break;
                     RenderBatchByIndex(curNode.Value);
                     break;
             }
