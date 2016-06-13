@@ -35,6 +35,9 @@ namespace JStudio.J3D
         private Matrix4 m_modelMatrix;
         private WLineBatcher m_lineBatcher;
 
+        private GXLight[] m_hardwareLights = new GXLight[8];
+        private int m_hardwareLightBuffer;
+
         public void LoadFromStream(EndianBinaryReader reader)
         {
             m_lineBatcher = new WLineBatcher();
@@ -50,6 +53,21 @@ namespace JStudio.J3D
             reader.Skip(16);
 
             LoadTagDataFromFile(reader, tagCount);
+
+            // Rendering Stuff
+            m_hardwareLightBuffer = GL.GenBuffer();
+        }
+
+        public void SetHardwareLight(int index, GXLight light)
+        {
+            if (index < 0 || index >= 8)
+                throw new ArgumentOutOfRangeException("index", "index must be >= 0 or < 8. Maximum of 8 hardware lights supported!");
+
+            m_hardwareLights[index] = light;
+
+            // Fill the buffer with data at the chosen binding point
+            GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);
+            GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(GXLight.SizeInBytes * 8), m_hardwareLights, BufferUsageHint.DynamicDraw);
         }
 
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
@@ -122,27 +140,6 @@ namespace JStudio.J3D
             Material dummyMat = null;
             AssignVertexAttributesToMaterialsRecursive(INF1Tag.HierarchyRoot, ref dummyMat);
 
-
-
-            // Upload our Lights
-            GXLight[] lights = new GXLight[8];
-            for (int i = 0; i < lights.Length; i++)
-            {
-                var light = new GXLight();
-                // Upload to the GPU
-                light.Position = i == 1 ? new Vector4(250, 200, 250, 0) : new Vector4(-5000, -5000, -5000, 0);
-                light.Direction = -light.Position.Normalized();
-                light.Color = i == 1 ? new Vector4(0f, 1, 0f, 1) : new Vector4(1, 1, 1, 1);
-                light.CosAtten = new Vector4(1.075f, 0, 0, 0);
-                light.DistAtten = new Vector4(1.075f, 0f, 0f, 0f);
-
-                lights[i] = light;
-            }
-
-            
-
-            m_lightBufferUniform = GL.GenBuffer();
-
             // Now that the vertex attributes are assigned to the materials, generate a shader from the data.
             foreach (var material in MAT3Tag.MaterialList)
             {
@@ -152,29 +149,10 @@ namespace JStudio.J3D
                     continue;
                 }
                 material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
-                m_psBlockUniform = GL.GenBuffer();
 
-                int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock"); // Get the index of the Uniform Block in the Shader
-                GL.UniformBlockBinding(material.Shader.Program, ubi, 0); // Bind our buffer to the Uniform Block.
-                GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 0, m_lightBufferUniform);
-                GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(Marshal.SizeOf(lights[0]) * 8), lights, BufferUsageHint.DynamicDraw);
-
-                PSBlock psBlock = new PSBlock();
-                psBlock.Color = new Vector4[4];
-                psBlock.kColor = new Vector4[4];
-
-                //for (int i = 0; i < 4; i++)
-                //    psBlock.Color[i] = new Vector4(MAT3Tag.TevColors[material.TevColorIndexes[i]].R, MAT3Tag.TevColors[material.TevColorIndexes[i]].G, MAT3Tag.TevColors[material.TevColorIndexes[i]].B, MAT3Tag.TevColors[material.TevColorIndexes[i]].A);
-
-                //for (int i = 0; i < 4; i++)
-                //    psBlock.kColor[i] = new Vector4(MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].R, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].G, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].B, MAT3Tag.TevKonstColors[material.TevKonstColorIndexes[i]].A);
-
-                ubi = GL.GetUniformBlockIndex(material.Shader.Program, "PSBlock");
-                GL.UniformBlockBinding(material.Shader.Program, ubi, 1);
-                GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 1, m_psBlockUniform);
-                GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(16 * 4 * 2), ref psBlock, BufferUsageHint.DynamicDraw);   
+                GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);
+                GL.UniformBlockBinding(material.Shader.Program, material.Shader.UniformLightBlock, (int)ShaderUniformBlockIds.LightBlock);
             }
-
         }
 
         private void AssignVertexAttributesToMaterialsRecursive(HierarchyNode curNode, ref Material curMaterial)
@@ -241,9 +219,9 @@ namespace JStudio.J3D
 
                     // We need to calculate which packet data table that is.
                     int originalPacketIndex = 0;
-                    for(int p = 0; p < shape.MatrixDataTable.Count; p++)
+                    for (int p = 0; p < shape.MatrixDataTable.Count; p++)
                     {
-                        if(i >= shape.MatrixDataTable[p].FirstRelevantVertexIndex && i < shape.MatrixDataTable[p].LastRelevantVertexIndex)
+                        if (i >= shape.MatrixDataTable[p].FirstRelevantVertexIndex && i < shape.MatrixDataTable[p].LastRelevantVertexIndex)
                         {
                             originalPacketIndex = p; break;
                         }
@@ -377,8 +355,8 @@ namespace JStudio.J3D
             if (shader.UniformColor1Amb >= 0) GL.Uniform4(shader.UniformColor1Amb, color1Amb.R, color1Amb.G, color1Amb.B, color1Amb.A);
             if (shader.UniformColor1Mat >= 0) GL.Uniform4(shader.UniformColor1Mat, color1Mat.R, color1Mat.G, color1Mat.B, color1Mat.A);
 
-            int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock");
-            GL.UniformBlockBinding(material.Shader.Program, ubi, 0);
+            //int ubi = GL.GetUniformBlockIndex(material.Shader.Program, "LightBlock");
+            //GL.UniformBlockBinding(material.Shader.Program, ubi, 0);
 
 
             // Set the OpenGL State
@@ -388,26 +366,12 @@ namespace JStudio.J3D
             GXToOpenGL.SetDitherEnabled(material.DitherIndex);
         }
 
-        private int m_lightBufferUniform;
+        //private int m_lightBufferUniform;
         private int m_psBlockUniform;
 
-        [Serializable][StructLayout(LayoutKind.Sequential)]
-        struct GXLight
-        {
-            public Vector4 Position;
-            public Vector4 Direction;
-            public Vector4 Color;
-            public Vector4 CosAtten;
-            public Vector4 DistAtten;
-        }
 
-        [Serializable]
-        [StructLayout(LayoutKind.Sequential)]
-        struct PSBlock
-        {
-            public Vector4[] Color;
-            public Vector4[] kColor;
-        }
+
+
 
         private void RenderBatchByIndex(ushort index)
         {

@@ -1,9 +1,39 @@
 ﻿using JStudio.J3D;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
+using System.Runtime.InteropServices;
 
 namespace JStudio.OpenGL
 {
+    [Serializable][StructLayout(LayoutKind.Sequential)]
+    public struct GXLight
+    {
+        public Vector4 Position;
+        public Vector4 Direction;
+        public Vector4 Color;
+        public Vector4 CosAtten;
+        public Vector4 DistAtten;
+
+        public GXLight(Vector4 pos, Vector4 dir, Vector4 col, Vector4 cosAtten, Vector4 distAtten)
+        {
+            Position = pos;
+            Direction = dir;
+            Color = col;
+            CosAtten = cosAtten;
+            DistAtten = distAtten;
+        }
+
+        public static int SizeInBytes = 16 * 5;
+    }
+
+    [Serializable] [StructLayout(LayoutKind.Sequential)]
+    struct PSBlock
+    {
+        public Vector4[] Color;
+        public Vector4[] kColor;
+    }
+
     public static class GXToOpenGL
     {
         public static TextureWrapMode GetWrapMode(BinaryTextureImage.WrapModes fromMode)

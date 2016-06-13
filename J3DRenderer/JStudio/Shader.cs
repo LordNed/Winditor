@@ -1,7 +1,7 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using System;
 
-namespace WindEditor
+namespace JStudio.OpenGL
 {
     public enum ShaderAttributeIds
     {
@@ -22,6 +22,11 @@ namespace WindEditor
         PosMtxIndex = 14,
     }
 
+    public enum ShaderUniformBlockIds
+    {
+        LightBlock = 0,
+    }
+
     public class Shader
     {
         public readonly string Name;
@@ -34,6 +39,7 @@ namespace WindEditor
         public int UniformColor0Mat { get; private set; }
         public int UniformColor1Amb { get; private set; }
         public int UniformColor1Mat { get; private set; }
+        public int UniformLightBlock { get; private set; }
         public int Program { get { return m_programAddress; } }
 
         private int m_vertexAddress = -1;
@@ -145,6 +151,7 @@ namespace WindEditor
             UniformColor0Mat = GL.GetUniformLocation(m_programAddress, "COLOR0_Mat");
             UniformColor1Amb = GL.GetUniformLocation(m_programAddress, "COLOR1_Amb");
             UniformColor1Mat = GL.GetUniformLocation(m_programAddress, "COLOR1_Mat");
+            UniformLightBlock = GL.GetUniformBlockIndex(m_programAddress, "LightBlock");
 
             // Now that we've (presumably) set both a vertex and a fragment shader and linked them to the program,
             // we're going to clean up the reference to the shaders as the Program now keeps its own reference.

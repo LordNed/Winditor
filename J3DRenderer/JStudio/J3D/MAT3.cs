@@ -1,4 +1,5 @@
 ﻿using GameFormatReader.Common;
+using JStudio.OpenGL;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;

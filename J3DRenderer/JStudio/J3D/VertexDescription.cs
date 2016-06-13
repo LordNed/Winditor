@@ -1,7 +1,7 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using JStudio.OpenGL;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
-using WindEditor;
 
 namespace JStudio.J3D
 {

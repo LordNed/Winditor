@@ -1,6 +1,6 @@
-﻿using System;
+﻿using JStudio.OpenGL;
+using System;
 using System.Text;
-using WindEditor;
 
 namespace JStudio.J3D.ShaderGen
 {

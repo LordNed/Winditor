@@ -6,6 +6,8 @@ using GameFormatReader.Common;
 using System.ComponentModel;
 using JStudio.J3D;
 using JStudio.J3D.Animation;
+using JStudio.OpenGL;
+using System;
 
 namespace J3DRenderer
 {
@@ -29,6 +31,8 @@ namespace J3DRenderer
         private BTK m_testMaterialAnim;
         private float m_timeSinceStartup;
 
+        GXLight m_mainLight;
+
         public MainWindowViewModel()
         {
             m_renderCamera = new WCamera();
@@ -47,7 +51,7 @@ namespace J3DRenderer
 
             m_model = new J3D();
             //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/btd.bmd"), Endian.Big));
+            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
@@ -65,6 +69,20 @@ namespace J3DRenderer
                 DoApplicationTick();
             };
             editorTickTimer.Enabled = true;
+            //    var light = new GXLight();
+            //    // Upload to the GPU
+            //    light.Position = i == 1 ? new Vector4(250, 200, 250, 0) : new Vector4(-5000, -5000, -5000, 0);
+            //    light.Direction = -light.Position.Normalized();
+            //    light.Color = i == 1 ? new Vector4(0f, 1, 0f, 1) : new Vector4(1, 1, 1, 1);
+            //    light.CosAtten = new Vector4(1.075f, 0, 0, 0);
+            //    light.DistAtten = new Vector4(1.075f, 0f, 0f, 0f);
+
+            //    lights[i] = light;
+            var lightPos = new Vector4(250, 200, 250, 0);
+            m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+            var secondLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+            m_model.SetHardwareLight(0, m_mainLight);
+            m_model.SetHardwareLight(1, secondLight);
         }
 
         private void DoApplicationTick()
@@ -93,14 +111,23 @@ namespace J3DRenderer
 
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
             m_dtStopwatch.Restart();
-
             m_renderCamera.Tick(deltaTime);
 
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
-            m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
             //m_testMaterialAnim.ApplyAnimationToMaterials(m_model.MAT3Tag, m_timeSinceStartup);
+
+
+            // Rotate our light
+            float angleInRad = m_timeSinceStartup % WMath.DegreesToRadians(360f);
+            Quaternion lightRot = Quaternion.FromAxisAngle(Vector3.UnitY, angleInRad);
+            Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
+            m_mainLight.Position = new Vector4(newLightPos, 0);
+
+            m_model.SetHardwareLight(0, m_mainLight);
+
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

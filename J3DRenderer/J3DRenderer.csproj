@@ -68,7 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="Framework\LineBatcher.cs" />
     <Compile Include="Framework\Obj.cs" />
-    <Compile Include="Framework\Shader.cs" />
+    <Compile Include="JStudio\Shader.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,7 +88,7 @@
     <Compile Include="JStudio\J3D\ShaderGen\FragmentShaderGen.cs" />
     <Compile Include="JStudio\J3D\ShaderGen\TEVShaderGenerator.cs" />
     <Compile Include="JStudio\J3D\BinaryTextureImage.cs" />
-    <Compile Include="Framework\GXToOpenGL.cs" />
+    <Compile Include="JStudio\GXToOpenGL.cs" />
     <Compile Include="JStudio\J3D\INF1.cs" />
     <Compile Include="JStudio\J3D\J3D.cs" />
     <Compile Include="JStudio\J3D\MAT3.cs" />
