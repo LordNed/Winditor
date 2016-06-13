@@ -6,7 +6,6 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.InteropServices;
 using WindEditor;
 
 namespace JStudio.J3D
@@ -37,6 +36,7 @@ namespace JStudio.J3D
 
         private GXLight[] m_hardwareLights = new GXLight[8];
         private int m_hardwareLightBuffer;
+        private Dictionary<string, Texture> m_textureOverrides;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -56,6 +56,7 @@ namespace JStudio.J3D
 
             // Rendering Stuff
             m_hardwareLightBuffer = GL.GenBuffer();
+            m_textureOverrides = new Dictionary<string, Texture>();
         }
 
         public void SetHardwareLight(int index, GXLight light)
@@ -68,6 +69,22 @@ namespace JStudio.J3D
             // Fill the buffer with data at the chosen binding point
             GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);
             GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(GXLight.SizeInBytes * 8), m_hardwareLights, BufferUsageHint.DynamicDraw);
+        }
+
+        /// <summary>
+        /// This is used to emulate a feature used in The Legend of Zelda: The Wind Waker. In WW all characters appear to share
+        /// their Toon texture lookup image. The J3D files include a texture in their files which is a black/white checkerboard
+        /// that is a placeholder for the one the game overrides. Unfortunately, if we use the black/white checkerboard then lighting
+        /// gets broken, so this function is provided to optionally override a texture name with a specific texture, such as the
+        /// texture name "ZBtoonEX" used by WW.
+        /// </summary>
+        /// <param name="textureName">Name of the texture to override. All textures with this name will be overriden.</param>
+        /// <param name="filePath">Path to the texture to use.</param>
+        public void SetTextureOverride(string textureName, string filePath)
+        {
+            BinaryTextureImage btiData = new BinaryTextureImage();
+            btiData.LoadImageFromDisk(filePath);
+            m_textureOverrides[textureName] = new Texture(textureName, btiData);
         }
 
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
@@ -326,11 +343,18 @@ namespace JStudio.J3D
                 if (idx < 0)
                     continue;
 
-                idx = MAT3Tag.TextureRemapTable[idx];
-
                 int glTextureIndex = GL.GetUniformLocation(shader.Program, string.Format("Texture{0}", i));
-                GL.Uniform1(glTextureIndex, i);
-                TEX1Tag.Textures[idx].Bind(i);
+
+                idx = MAT3Tag.TextureRemapTable[idx];
+                Texture tex = TEX1Tag.Textures[idx];
+
+                // Before we bind the texture, we need to check if this particular texture has been overriden.
+                // This allows textures to be replaced on a per-name basis with another file. Used in cases of
+                // broken/incorrect texture included by default in models, ie: The Wind Waker toon textures.
+                if (m_textureOverrides.ContainsKey(tex.Name))
+                    tex = m_textureOverrides[tex.Name];
+
+                tex.Bind(i);
             }
 
             if (shader.UniformTexMtx >= 0)

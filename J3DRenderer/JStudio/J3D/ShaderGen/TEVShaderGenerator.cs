@@ -7,7 +7,7 @@ namespace JStudio.J3D.ShaderGen
 {
     public static class TEVShaderGenerator
     {
-        private static bool m_allowCachedOverride = false;
+        private static bool m_allowCachedOverride = true;
 
         public static Shader GenerateShader(Material fromMat, MAT3 data)
         {
