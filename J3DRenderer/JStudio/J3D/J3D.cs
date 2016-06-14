@@ -73,7 +73,6 @@ namespace JStudio.J3D
         public TEX1 TEX1Tag { get; private set; }
         public EVP1 EVP1Tag { get; private set; }
         public DRW1 DRW1Tag { get; private set; }
-        public TevColorOverride TevColorOverride { get { return m_tevColorOverrides; } }
 
         private int m_totalFileSize;
 
@@ -122,6 +121,16 @@ namespace JStudio.J3D
             // Fill the buffer with data at the chosen binding point
             GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);
             GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(GXLight.SizeInBytes * 8), m_hardwareLights, BufferUsageHint.DynamicDraw);
+        }
+
+        public void SetTevColorOverride(int index, WLinearColor overrideColor)
+        {
+            m_tevColorOverrides.SetTevColorOverride(index, overrideColor);
+        }
+
+        public void SetTevkColorOverride(int index, WLinearColor overrideColor)
+        {
+            m_tevColorOverrides.SetTevkColorOverride(index, overrideColor);
         }
 
         /// <summary>
@@ -278,9 +287,6 @@ namespace JStudio.J3D
                 }
             }
 
-            m_lineBatcher.Render(viewMatrix, projectionMatrix);
-            m_lineBatcher.Tick(1 / 60f);
-
             foreach (var shape in SHP1Tag.Shapes)
             {
                 var transformedVerts = new List<Vector3>(shape.VertexData.Position);
@@ -361,6 +367,9 @@ namespace JStudio.J3D
             m_shapeIndex = WMath.Clamp(m_shapeIndex, 0, SHP1Tag.ShapeCount - 1);
 
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
+
+            m_lineBatcher.Render(viewMatrix, projectionMatrix);
+            m_lineBatcher.Tick(1 / 60f);
         }
 
         private int m_shapeIndex;
@@ -463,6 +472,59 @@ namespace JStudio.J3D
             shape.Bind();
             shape.Draw();
             shape.Unbind();
+        }
+
+        private void DrawBoundsForJoints(bool boundingBox, bool boundingSphere)
+        {
+            Matrix4[] boneTransforms = new Matrix4[JNT1Tag.Joints.Count];
+            for (int i = 0; i < JNT1Tag.Joints.Count; i++)
+            {
+                SkeletonJoint curJoint, origJoint;
+                curJoint = origJoint = JNT1Tag.Joints[i];
+
+                Matrix4 cumulativeTransform = Matrix4.Identity;
+                while (true)
+                {
+                    Matrix4 jointMatrix = Matrix4.CreateScale(curJoint.Scale) * Matrix4.CreateFromQuaternion(curJoint.Rotation) * Matrix4.CreateTranslation(curJoint.Translation);
+                    cumulativeTransform *= jointMatrix;
+                    if (curJoint.Parent == null)
+                        break;
+
+                    curJoint = curJoint.Parent;
+                }
+
+                boneTransforms[i] = cumulativeTransform;
+                Vector3 curPos = cumulativeTransform.ExtractTranslation();
+                Quaternion curRot = cumulativeTransform.ExtractRotation();
+
+                WLinearColor jointColor = origJoint.Unknown1 == 0 ? WLinearColor.Yellow : WLinearColor.Blue;
+                if(boundingSphere)
+                {
+                    m_lineBatcher.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
+                }
+                if(boundingBox)
+                {
+                    Vector3 extents = (origJoint.BoundingBox.Max - origJoint.BoundingBox.Min)/ 2;
+                    m_lineBatcher.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
+                }
+            }
+        }
+
+        private void DrawBoundsForShapes(bool boundingBox, bool boundingSphere)
+        {
+            foreach(var shape in SHP1Tag.Shapes)
+            {
+                Vector3 center = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
+                if (boundingSphere)
+                {
+                    m_lineBatcher.DrawSphere(center, shape.BoundingSphereDiameter, 8, WLinearColor.White, 0f, 0f);
+                }
+                if (boundingBox)
+                {
+                    Vector3 extents = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
+                    m_lineBatcher.DrawBox(center, extents, Quaternion.Identity, WLinearColor.White, 0f, 0f);
+                }
+            }
         }
 
         protected void OnPropertyChanged(string propertyName)
