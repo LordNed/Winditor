@@ -378,16 +378,14 @@ namespace JStudio.J3D
             // Update the data in the PS Block
             PSBlock[] psData = new PSBlock[1];
             psData[0] = new PSBlock();
-            psData[0].Color = new WLinearColor[4];
-            psData[0].kColor = new WLinearColor[4];
-            psData[0].Color[0] = material.TevColorIndexes[0];
-            psData[0].Color[1] = material.TevColorIndexes[1];
-            psData[0].Color[2] = material.TevColorIndexes[2];
-            psData[0].Color[3] = material.TevColorIndexes[3];
-            psData[0].kColor[0] = material.TevKonstColorIndexes[0];
-            psData[0].kColor[1] = material.TevKonstColorIndexes[1];
-            psData[0].kColor[2] = material.TevKonstColorIndexes[2];
-            psData[0].kColor[3] = material.TevKonstColorIndexes[3];
+            psData[0].ColorA = material.TevColorIndexes[0];
+            psData[0].ColorB = material.TevColorIndexes[1];
+            psData[0].ColorC = material.TevColorIndexes[2];
+            psData[0].ColorD = material.TevColorIndexes[3];
+            psData[0].kColorA = material.TevKonstColorIndexes[0];
+            psData[0].kColorB = material.TevKonstColorIndexes[1];
+            psData[0].kColorC = material.TevKonstColorIndexes[2];
+            psData[0].kColorD = material.TevKonstColorIndexes[3];
 
             // Fill the buffer with data at the chosen binding point
             GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.PixelShaderBlock, shader.PSBlockUBO);

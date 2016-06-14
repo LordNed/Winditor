@@ -31,8 +31,14 @@ namespace JStudio.OpenGL
     [Serializable] [StructLayout(LayoutKind.Sequential)]
     struct PSBlock
     {
-        public WLinearColor[] Color;
-        public WLinearColor[] kColor;
+        public WLinearColor ColorA;
+        public WLinearColor ColorB;
+        public WLinearColor ColorC;
+        public WLinearColor ColorD;
+        public WLinearColor kColorA;
+        public WLinearColor kColorB;
+        public WLinearColor kColorC;
+        public WLinearColor kColorD;
 
         public static int SizeInBytes = 16 * 4 * 2;
     }
