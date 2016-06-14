@@ -10,6 +10,54 @@ using WindEditor;
 
 namespace JStudio.J3D
 {
+    public class TevColorOverride
+    {
+        private WLinearColor[] m_colors;
+        private WLinearColor[] m_kColors;
+        private bool[] m_colorsEnabled;
+        private bool[] m_kColorsEnabled;
+
+        public TevColorOverride()
+        {
+            m_colors = new WLinearColor[4];
+            m_kColors = new WLinearColor[4];
+            m_colorsEnabled = new bool[4];
+            m_kColorsEnabled = new bool[4];
+        }
+
+        public void SetTevColorOverride(int index, WLinearColor overrideColor)
+        {
+            if (index < 0 || index >= 4)
+                throw new ArgumentOutOfRangeException("index", "index must be between 0 and 3");
+
+            m_colors[index] = overrideColor;
+            m_colorsEnabled[index] = true;
+        }
+
+        public void SetTevkColorOverride(int index, WLinearColor overrideColor)
+        {
+            if (index < 0 || index >= 4)
+                throw new ArgumentOutOfRangeException("index", "index must be between 0 and 3");
+
+            m_kColors[index] = overrideColor;
+            m_kColorsEnabled[index] = true;
+        }
+
+        public PSBlock GetPSBlockForMaterial(Material srcMaterial)
+        {
+            PSBlock block = new PSBlock();
+            block.ColorA = m_colorsEnabled[0] ? m_colors[0] : srcMaterial.TevColorIndexes[0];
+            block.ColorB = m_colorsEnabled[1] ? m_colors[1] : srcMaterial.TevColorIndexes[1];
+            block.ColorC = m_colorsEnabled[2] ? m_colors[2] : srcMaterial.TevColorIndexes[2];
+            block.ColorD = m_colorsEnabled[3] ? m_colors[3] : srcMaterial.TevColorIndexes[3];
+
+            block.kColorA = m_kColorsEnabled[0] ? m_kColors[0] : srcMaterial.TevKonstColorIndexes[0];
+            block.kColorB = m_kColorsEnabled[1] ? m_kColors[1] : srcMaterial.TevKonstColorIndexes[1];
+            block.kColorC = m_kColorsEnabled[2] ? m_kColors[2] : srcMaterial.TevKonstColorIndexes[2];
+            block.kColorD = m_kColorsEnabled[3] ? m_kColors[3] : srcMaterial.TevKonstColorIndexes[3];
+            return block;
+        }
+    }
     public partial class J3D : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -25,6 +73,7 @@ namespace JStudio.J3D
         public TEX1 TEX1Tag { get; private set; }
         public EVP1 EVP1Tag { get; private set; }
         public DRW1 DRW1Tag { get; private set; }
+        public TevColorOverride TevColorOverride { get { return m_tevColorOverrides; } }
 
         private int m_totalFileSize;
 
@@ -33,9 +82,12 @@ namespace JStudio.J3D
         private Matrix4 m_projMatrix;
         private Matrix4 m_modelMatrix;
         private WLineBatcher m_lineBatcher;
+        private Material m_currentBoundMat;
 
         private GXLight[] m_hardwareLights = new GXLight[8];
+        private TevColorOverride m_tevColorOverrides;
         private int m_hardwareLightBuffer;
+
         private Dictionary<string, Texture> m_textureOverrides;
 
         public void LoadFromStream(EndianBinaryReader reader)
@@ -57,6 +109,7 @@ namespace JStudio.J3D
             // Rendering Stuff
             m_hardwareLightBuffer = GL.GenBuffer();
             m_textureOverrides = new Dictionary<string, Texture>();
+            m_tevColorOverrides = new TevColorOverride();
         }
 
         public void SetHardwareLight(int index, GXLight light)
@@ -334,6 +387,7 @@ namespace JStudio.J3D
         {
             Material material = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[index]];
             material.Bind();
+            m_currentBoundMat = material;
 
             Shader shader = material.Shader;
 
@@ -377,15 +431,7 @@ namespace JStudio.J3D
 
             // Update the data in the PS Block
             PSBlock[] psData = new PSBlock[1];
-            psData[0] = new PSBlock();
-            psData[0].ColorA = material.TevColorIndexes[0];
-            psData[0].ColorB = material.TevColorIndexes[1];
-            psData[0].ColorC = material.TevColorIndexes[2];
-            psData[0].ColorD = material.TevColorIndexes[3];
-            psData[0].kColorA = material.TevKonstColorIndexes[0];
-            psData[0].kColorB = material.TevKonstColorIndexes[1];
-            psData[0].kColorC = material.TevKonstColorIndexes[2];
-            psData[0].kColorD = material.TevKonstColorIndexes[3];
+            psData[0] = m_tevColorOverrides.GetPSBlockForMaterial(material);
 
             // Fill the buffer with data at the chosen binding point
             GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.PixelShaderBlock, shader.PSBlockUBO);

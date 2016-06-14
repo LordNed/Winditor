@@ -29,7 +29,7 @@ namespace JStudio.OpenGL
     }
 
     [Serializable] [StructLayout(LayoutKind.Sequential)]
-    struct PSBlock
+    public struct PSBlock
     {
         public WLinearColor ColorA;
         public WLinearColor ColorB;

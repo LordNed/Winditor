@@ -76,6 +76,8 @@ namespace J3DRenderer
             m_model.SetHardwareLight(0, m_mainLight);
             m_model.SetHardwareLight(1, secondLight);
             m_model.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+            m_model.TevColorOverride.SetTevkColorOverride(0, WLinearColor.Blue); // Light Color
+            m_model.TevColorOverride.SetTevColorOverride(0, WLinearColor.Red); // Ambient Color
         }
 
         private void DoApplicationTick()

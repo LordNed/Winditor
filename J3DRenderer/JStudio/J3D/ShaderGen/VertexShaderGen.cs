@@ -132,8 +132,10 @@ namespace JStudio.J3D.ShaderGen
 
                 bool isAlphaChannel = i % 2 != 0;
                 string channelTarget = string.Format("colors_{0}", channel);
-                string ambColorSrc = string.Format("{0}{1}", (channelControl.AmbientSrc == GXColorSrc.Vertex ? "RawColor" : "COLOR"), channel + "_Amb");
-                string matColorSrc = string.Format("{0}{1}", (channelControl.MaterialSrc == GXColorSrc.Vertex ? "RawColor" : "COLOR"), channel + "_Mat");
+                bool ambSrcVtx = channelControl.AmbientSrc == GXColorSrc.Vertex;
+                bool matSrcVtx = channelControl.MaterialSrc == GXColorSrc.Vertex;
+                string ambColorSrc = string.Format("{0}{1}", (ambSrcVtx ? "RawColor" : "COLOR"), channel + (ambSrcVtx ? "" : "_Amb"));
+                string matColorSrc = string.Format("{0}{1}", (matSrcVtx ? "RawColor" : "COLOR"), channel + (matSrcVtx ? "" : "_Mat"));
 
                 stream.AppendFormat("\tambColor = {0};\n", ambColorSrc);
                 stream.AppendFormat("\tmatColor = {0};\n", matColorSrc);
