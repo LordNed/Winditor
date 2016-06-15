@@ -7,7 +7,6 @@ using System.ComponentModel;
 using JStudio.J3D;
 using JStudio.J3D.Animation;
 using JStudio.OpenGL;
-using System;
 
 namespace J3DRenderer
 {
@@ -15,8 +14,7 @@ namespace J3DRenderer
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public J3D LoadedModel { get { return m_model; } }
-
+        public J3D LoadedModel { get { return m_childLink; } }
 
         private GLControl m_glControl;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
@@ -26,7 +24,8 @@ namespace J3DRenderer
         private SimpleObjRenderer m_stockMesh;
         private int m_viewportHeight;
         private int m_viewportWidth;
-        private J3D m_model;
+        private J3D m_childLink;
+        private J3D m_room;
         private BCK m_testAnim;
         private BTK m_testMaterialAnim;
         private float m_timeSinceStartup;
@@ -49,9 +48,12 @@ namespace J3DRenderer
             obj.Load("Framework/EditorCube.obj");
             m_stockMesh = new SimpleObjRenderer(obj);
 
-            m_model = new J3D();
-            //m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
-            m_model.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
+            m_childLink = new J3D();
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
+
+            //m_room = new J3D();
+            //m_room.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.bdl"), Endian.Big));
+
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
 
@@ -59,7 +61,7 @@ namespace J3DRenderer
             m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/dead.bck"), Endian.Big));
 
             m_testMaterialAnim = new BTK();
-            m_testMaterialAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Fairy06.btk"), Endian.Big));
+            m_testMaterialAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.btk"), Endian.Big));
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -73,11 +75,17 @@ namespace J3DRenderer
             var lightPos = new Vector4(250, 200, 250, 0);
             m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             var secondLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
-            m_model.SetHardwareLight(0, m_mainLight);
-            m_model.SetHardwareLight(1, secondLight);
-            m_model.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
-            m_model.TevColorOverride.SetTevkColorOverride(0, WLinearColor.Blue); // Light Color
-            m_model.TevColorOverride.SetTevColorOverride(0, WLinearColor.Red); // Ambient Color
+            m_childLink.SetHardwareLight(0, m_mainLight);
+            m_childLink.SetHardwareLight(1, secondLight);
+            m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+            //m_childLink.SetTevkColorOverride(0, WLinearColor.FromHexString("0x3F2658FF")); // Light Color
+            //m_childLink.SetTevColorOverride(0, WLinearColor.FromHexString("0x455151FF")); // Ambient Color
+
+            if(m_room != null)
+            {
+                m_room.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF")); // Light Color
+                //m_room.SetTevColorOverride(0, WLinearColor.FromHexString("0x566F7CFF")); // Ambient Color
+            }
         }
 
         private void DoApplicationTick()
@@ -111,8 +119,9 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
 
             m_timeSinceStartup += deltaTime;
-            //m_testAnim.ApplyAnimationToPose(m_model.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
-            //m_testMaterialAnim.ApplyAnimationToMaterials(m_model.MAT3Tag, m_timeSinceStartup);
+            //m_testAnim.ApplyAnimationToPose(m_childLink.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
+            if(m_room != null)
+                m_testMaterialAnim.ApplyAnimationToMaterials(m_room.MAT3Tag, m_timeSinceStartup);
 
 
             // Rotate our light
@@ -121,12 +130,14 @@ namespace J3DRenderer
             Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
             m_mainLight.Position = new Vector4(newLightPos, 0);
 
-            m_model.SetHardwareLight(0, m_mainLight);
+            //m_model.SetHardwareLight(0, m_mainLight);
 
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
-            m_model.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
+            m_childLink.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
+            if (m_room != null)
+                m_room.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
         }
 
         internal void OnViewportResized(int width, int height)

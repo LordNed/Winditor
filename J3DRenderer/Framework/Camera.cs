@@ -3,12 +3,18 @@ using System;
 
 namespace WindEditor
 {
+    public enum CameraMode
+    {
+        Flycam,
+        Orbit
+    }
+
     class WCamera
     {
         public WTransform Transform = new WTransform();
         public float MoveSpeed = 1500f;
         public float MouseSensitivity = 20f;
-
+        
         /// <summary> The far clipping plane distance. </summary>
         public float FarClipPlane
         {
@@ -52,6 +58,8 @@ namespace WindEditor
             }
         }
 
+        public CameraMode MoveType = CameraMode.Flycam;
+
         /// <summary> Current Projection Matrix of camera. </summary>
         public Matrix4 ProjectionMatrix { get { return m_projectionMatrix; } }
 
@@ -69,14 +77,56 @@ namespace WindEditor
         private float m_farClipPlane = 100000f;
         private float m_fieldOfView = 45f;
         private float m_aspectRatio = 16 / 9f;
+        private float m_orbitCameraDistance = 500f;
+        private Vector3 m_orbitPivot;
+
         private Matrix4 m_projectionMatrix;
 
 
         public void Tick(float deltaTime)
         {
+            if (WInput.GetKeyDown(System.Windows.Input.Key.OemTilde))
+                MoveType = MoveType == CameraMode.Flycam ? CameraMode.Orbit : CameraMode.Flycam;
+
             if (!WInput.GetMouseButton(1))
                 return;
 
+            if (MoveType == CameraMode.Flycam)
+                DoFlycamUpdate(deltaTime);
+            else
+                DoOrbitcamUpdate(deltaTime);
+        }
+
+        private void DoOrbitcamUpdate(float deltaTime)
+        {
+            float orbitSensitivityScale = 0.02f; // Angle Axis expects rads, but we have... pixels, so we just move it way down by a factor.
+            Quaternion deltaRot = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), -WInput.MouseDelta.Y * MouseSensitivity * deltaTime * orbitSensitivityScale) * Quaternion.FromAxisAngle(new Vector3(0, 1, 0), -WInput.MouseDelta.X * MouseSensitivity * deltaTime  * orbitSensitivityScale);
+            Transform.Rotation *= deltaRot;
+
+            Vector3 moveDir = Vector3.Zero;
+            if (WInput.GetKey(System.Windows.Input.Key.Q))
+            {
+                moveDir -= Vector3.UnitY;
+            }
+            if (WInput.GetKey(System.Windows.Input.Key.E))
+            {
+                moveDir += Vector3.UnitY;
+            }
+
+            if(moveDir.Length > 0)
+            {
+                moveDir.Normalize();
+                m_orbitPivot += moveDir * (MoveSpeed/2)* deltaTime;
+            }
+
+            m_orbitCameraDistance += -WInput.MouseScrollDelta * 50 * deltaTime;
+            m_orbitCameraDistance = WMath.Clamp(m_orbitCameraDistance, 100, 8000);
+
+            Transform.Position = m_orbitPivot + Vector3.Transform(new Vector3(0, 0, m_orbitCameraDistance), Transform.Rotation);
+        }
+
+        private void DoFlycamUpdate(float deltaTime)
+        {
             Vector3 moveDir = Vector3.Zero;
             if (WInput.GetKey(System.Windows.Input.Key.W))
             {
