@@ -26,8 +26,6 @@ namespace J3DRenderer
         private int m_viewportWidth;
         private J3D m_childLink;
         private J3D m_room;
-        private BCK m_testAnim;
-        private BTK m_testMaterialAnim;
         private float m_timeSinceStartup;
 
         GXLight m_mainLight;
@@ -56,12 +54,6 @@ namespace J3DRenderer
 
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
-
-            m_testAnim = new BCK();
-            m_testAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/dead.bck"), Endian.Big));
-
-            m_testMaterialAnim = new BTK();
-            m_testMaterialAnim.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.btk"), Endian.Big));
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -117,12 +109,7 @@ namespace J3DRenderer
             m_renderCamera.Tick(deltaTime);
 
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
-
             m_timeSinceStartup += deltaTime;
-            //m_testAnim.ApplyAnimationToPose(m_childLink.JNT1Tag.Joints.ToArray(), m_timeSinceStartup);
-            if(m_room != null)
-                m_testMaterialAnim.ApplyAnimationToMaterials(m_room.MAT3Tag, m_timeSinceStartup);
-
 
             // Rotate our light
             float angleInRad = m_timeSinceStartup % WMath.DegreesToRadians(360f);

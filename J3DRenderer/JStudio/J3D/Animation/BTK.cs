@@ -31,6 +31,8 @@ namespace JStudio.J3D.Animation
 
         private List<MaterialAnim> m_animationData;
 
+        public BTK(string name) : base(name) { }
+
         public void LoadFromStream(EndianBinaryReader reader)
         {
             // Read the J3D Header

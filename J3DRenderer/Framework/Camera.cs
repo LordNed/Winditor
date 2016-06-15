@@ -78,7 +78,7 @@ namespace WindEditor
         private float m_fieldOfView = 45f;
         private float m_aspectRatio = 16 / 9f;
         private float m_orbitCameraDistance = 500f;
-        private Vector3 m_orbitPivot;
+        private Vector3 m_orbitPivot = new Vector3(0, 50, 0);
 
         private Matrix4 m_projectionMatrix;
 
@@ -120,7 +120,7 @@ namespace WindEditor
             }
 
             m_orbitCameraDistance += -WInput.MouseScrollDelta * 50 * deltaTime;
-            m_orbitCameraDistance = WMath.Clamp(m_orbitCameraDistance, 100, 8000);
+            m_orbitCameraDistance = WMath.Clamp(m_orbitCameraDistance, 100, 10000);
 
             Transform.Position = m_orbitPivot + Vector3.Transform(new Vector3(0, 0, m_orbitCameraDistance), Transform.Rotation);
         }

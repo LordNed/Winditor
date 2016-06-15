@@ -29,6 +29,8 @@ namespace JStudio.J3D.Animation
 
         private List<JointAnim> m_animationData;
 
+        public BCK(string name) : base(name) { }
+
         public void LoadFromStream(EndianBinaryReader reader)
         {
             // Read the J3D Header

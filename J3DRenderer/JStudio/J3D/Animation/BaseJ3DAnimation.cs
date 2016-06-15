@@ -60,12 +60,48 @@ namespace JStudio.J3D.Animation
             public Key(float time, float val, float tangentIn) : this(time, val, tangentIn, tangentIn) { }
         }
 
+        public string Name { get; protected set; }
         public string Magic { get; protected set; }
         public string AnimType { get; protected set; }
         public LoopType LoopMode { get; protected set; }
         public short AnimLengthInFrames { get; protected set; }
 
         protected const float kAnimFramerate = 30f;
+        protected float m_timeSinceStartedPlaying;
+        protected bool m_isPlaying;
+
+        public BaseJ3DAnimation(string name)
+        {
+            Name = name;
+        }
+
+        public virtual void Tick(float deltaTime)
+        {
+            if(m_isPlaying)
+                m_timeSinceStartedPlaying += deltaTime;
+        }
+
+        public virtual void Start()
+        {
+            m_isPlaying = true;
+            m_timeSinceStartedPlaying = 0f;
+        }
+
+        public virtual void Stop()
+        {
+            m_isPlaying = false;
+            m_timeSinceStartedPlaying = 0f;
+        }
+
+        public virtual void Pause()
+        {
+            m_isPlaying = false;
+        }
+
+        public virtual void Resume()
+        {
+            m_isPlaying = true;
+        }
 
         protected virtual float GetAnimValue(List<Key> keys, float t)
         {

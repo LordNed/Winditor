@@ -1,4 +1,5 @@
 ﻿using GameFormatReader.Common;
+using JStudio.J3D.Animation;
 using JStudio.J3D.ShaderGen;
 using JStudio.OpenGL;
 using OpenTK;
@@ -6,6 +7,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using WindEditor;
 
 namespace JStudio.J3D
@@ -88,6 +90,8 @@ namespace JStudio.J3D
         private int m_hardwareLightBuffer;
 
         private Dictionary<string, Texture> m_textureOverrides;
+        private List<BCK> m_boneAnimations;
+        private List<BTK> m_materialAnimations;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -109,6 +113,8 @@ namespace JStudio.J3D
             m_hardwareLightBuffer = GL.GenBuffer();
             m_textureOverrides = new Dictionary<string, Texture>();
             m_tevColorOverrides = new TevColorOverride();
+            m_boneAnimations = new List<BCK>();
+            m_materialAnimations = new List<BTK>();
         }
 
         public void SetHardwareLight(int index, GXLight light)
@@ -131,6 +137,24 @@ namespace JStudio.J3D
         public void SetTevkColorOverride(int index, WLinearColor overrideColor)
         {
             m_tevColorOverrides.SetTevkColorOverride(index, overrideColor);
+        }
+
+        public void LoadBoneAnimation(string bckFile)
+        {
+            string animName = Path.GetFileNameWithoutExtension(bckFile);
+            BCK bck = new BCK(animName);
+
+            bck.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes(bckFile), Endian.Big));
+            m_boneAnimations.Add(bck);
+        }
+
+        public void LoadMaterialAnim(string btkFile)
+        {
+            string animName = Path.GetFileNameWithoutExtension(btkFile);
+            BTK btk = new BTK(animName);
+
+            btk.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes(btkFile), Endian.Big));
+            m_materialAnimations.Add(btk);
         }
 
         /// <summary>
@@ -251,8 +275,16 @@ namespace JStudio.J3D
                 AssignVertexAttributesToMaterialsRecursive(child, ref curMaterial);
         }
 
+        public void Tick(float deltaTime)
+        {
+            foreach (var boneAnim in m_boneAnimations)
+                boneAnim.Tick(deltaTime);
 
-        internal void Render(Matrix4 viewMatrix, Matrix4 projectionMatrix, Matrix4 modelMatrix)
+            foreach (var matAnim in m_materialAnimations)
+                matAnim.Tick(deltaTime);
+        }
+
+        public void Render(Matrix4 viewMatrix, Matrix4 projectionMatrix, Matrix4 modelMatrix)
         {
             m_viewMatrix = viewMatrix;
             m_projMatrix = projectionMatrix;
