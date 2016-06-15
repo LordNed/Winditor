@@ -116,13 +116,12 @@ namespace WindEditor
                 throw new ArgumentException("Not a valid hex number!", "hexString");
 
             WLinearColor outputWLinearColor = new WLinearColor();
-            byte[] bytes = BitConverter.GetBytes(WLinearColorVal);
+            byte[] bytes = BitConverter.GetBytes(WLinearColorVal); // This is in ABGR
             for (int i = 0; i < 4; i++)
-                outputWLinearColor[i] = bytes[i] / 255f;
+                outputWLinearColor[3-i] = bytes[i] / 255f;
 
             // This code is untested, comment this out once you've tested it.
-            throw new NotImplementedException();
-            //return outputWLinearColor;
+            return outputWLinearColor;
         }
 
         public override string ToString()
