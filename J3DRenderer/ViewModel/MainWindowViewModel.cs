@@ -46,14 +46,12 @@ namespace J3DRenderer
             obj.Load("Framework/EditorCube.obj");
             m_stockMesh = new SimpleObjRenderer(obj);
 
-            m_childLink = new J3D();
-            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
+
 
             //m_room = new J3D();
             //m_room.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.bdl"), Endian.Big));
 
-            if (PropertyChanged != null)
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
+
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -67,17 +65,35 @@ namespace J3DRenderer
             var lightPos = new Vector4(250, 200, 250, 0);
             m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             var secondLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
-            m_childLink.SetHardwareLight(0, m_mainLight);
-            m_childLink.SetHardwareLight(1, secondLight);
-            m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+            LoadChildLink(secondLight);
             //m_childLink.SetTevkColorOverride(0, WLinearColor.FromHexString("0x3F2658FF")); // Light Color
             //m_childLink.SetTevColorOverride(0, WLinearColor.FromHexString("0x455151FF")); // Ambient Color
 
-            if(m_room != null)
+            if (m_room != null)
             {
                 m_room.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF")); // Light Color
                 //m_room.SetTevColorOverride(0, WLinearColor.FromHexString("0x566F7CFF")); // Ambient Color
             }
+
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
+        }
+
+        private void LoadChildLink(GXLight secondLight)
+        {
+            m_childLink = new J3D();
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl/bdl/cl.bdl"), Endian.Big));
+            m_childLink.SetHardwareLight(0, m_mainLight);
+            m_childLink.SetHardwareLight(1, secondLight);
+            m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+
+            // Animations
+            foreach(var bck in Directory.GetFiles("resources/cl/bck/"))
+            {
+                m_childLink.LoadBoneAnimation(bck);
+            }
+
+            m_childLink.SetBoneAnimation("atngsha");
         }
 
         private void DoApplicationTick()
@@ -116,9 +132,7 @@ namespace J3DRenderer
             Quaternion lightRot = Quaternion.FromAxisAngle(Vector3.UnitY, angleInRad);
             Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
             m_mainLight.Position = new Vector4(newLightPos, 0);
-
-            //m_model.SetHardwareLight(0, m_mainLight);
-
+            m_childLink.SetHardwareLight(0, m_mainLight);
 
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

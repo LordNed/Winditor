@@ -92,6 +92,8 @@ namespace JStudio.J3D
         private Dictionary<string, Texture> m_textureOverrides;
         private List<BCK> m_boneAnimations;
         private List<BTK> m_materialAnimations;
+        private BCK m_currentBoneAnimation;
+        private BTK m_currentMaterialAnimation;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -155,6 +157,42 @@ namespace JStudio.J3D
 
             btk.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes(btkFile), Endian.Big));
             m_materialAnimations.Add(btk);
+        }
+
+        public void SetBoneAnimation(string animName)
+        {
+            BCK anim = m_boneAnimations.Find(x => x.Name == animName);
+            if(anim == null)
+            {
+                Console.WriteLine("Failed to play animation {0}, animation not loaded!", animName);
+            }
+
+            if (m_currentBoneAnimation != null)
+                m_currentBoneAnimation.Stop();
+
+            if(anim != null)
+            {
+                m_currentBoneAnimation = anim;
+                m_currentBoneAnimation.Start();
+            }
+        }
+
+        public void SetMaterialAnimation(string animName)
+        {
+            BTK anim = m_materialAnimations.Find(x => x.Name == animName);
+            if (anim == null)
+            {
+                Console.WriteLine("Failed to play animation {0}, animation not loaded!", animName);
+            }
+
+            if (m_currentMaterialAnimation != null)
+                m_currentMaterialAnimation.Stop();
+
+            if (anim != null)
+            {
+                m_currentMaterialAnimation = anim;
+                m_currentMaterialAnimation.Start();
+            }
         }
 
         /// <summary>
