@@ -320,6 +320,9 @@ namespace JStudio.J3D
 
             foreach (var matAnim in m_materialAnimations)
                 matAnim.Tick(deltaTime);
+
+            if (m_currentBoneAnimation != null)
+                m_currentBoneAnimation.ApplyAnimationToPose(JNT1Tag.AnimatedJoints);
         }
 
         public void Render(Matrix4 viewMatrix, Matrix4 projectionMatrix, Matrix4 modelMatrix)
@@ -328,12 +331,13 @@ namespace JStudio.J3D
             m_projMatrix = projectionMatrix;
             m_modelMatrix = modelMatrix;
 
+            IList<SkeletonJoint> boneList = (m_currentBoneAnimation != null) ? JNT1Tag.AnimatedJoints : JNT1Tag.BindJoints;
 
-            Matrix4[] boneTransforms = new Matrix4[JNT1Tag.Joints.Count];
-            for (int i = 0; i < JNT1Tag.Joints.Count; i++)
+            Matrix4[] boneTransforms = new Matrix4[boneList.Count];
+            for (int i = 0; i < boneList.Count; i++)
             {
                 SkeletonJoint curJoint, origJoint;
-                curJoint = origJoint = JNT1Tag.Joints[i];
+                curJoint = origJoint = boneList[i];
 
                 Matrix4 cumulativeTransform = Matrix4.Identity;
                 while (true)
@@ -351,7 +355,7 @@ namespace JStudio.J3D
                 if (origJoint.Parent != null)
                 {
                     Vector3 curPos = cumulativeTransform.ExtractTranslation();
-                    Vector3 parentPos = boneTransforms[JNT1Tag.Joints.IndexOf(origJoint.Parent)].ExtractTranslation();
+                    Vector3 parentPos = boneTransforms[boneList.IndexOf(origJoint.Parent)].ExtractTranslation();
 
                     m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
                 }
@@ -546,11 +550,11 @@ namespace JStudio.J3D
 
         private void DrawBoundsForJoints(bool boundingBox, bool boundingSphere)
         {
-            Matrix4[] boneTransforms = new Matrix4[JNT1Tag.Joints.Count];
-            for (int i = 0; i < JNT1Tag.Joints.Count; i++)
+            Matrix4[] boneTransforms = new Matrix4[JNT1Tag.BindJoints.Count];
+            for (int i = 0; i < JNT1Tag.BindJoints.Count; i++)
             {
                 SkeletonJoint curJoint, origJoint;
-                curJoint = origJoint = JNT1Tag.Joints[i];
+                curJoint = origJoint = JNT1Tag.BindJoints[i];
 
                 Matrix4 cumulativeTransform = Matrix4.Identity;
                 while (true)

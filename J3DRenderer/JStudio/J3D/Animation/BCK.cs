@@ -46,15 +46,14 @@ namespace JStudio.J3D.Animation
             LoadTagDataFromStream(reader, tagCount);
         }
 
-        public void ApplyAnimationToPose(SkeletonJoint[] pose, float time)
+        public void ApplyAnimationToPose(List<SkeletonJoint> pose)
         {
-            if (pose.Length != m_animationData.Count)
+            if (pose.Count != m_animationData.Count)
                 Console.WriteLine("Mis-matched number of joints in pose and number of joints in animation!");
 
-            int numJoints = Math.Min(pose.Length, m_animationData.Count);
+            int numJoints = Math.Min(pose.Count, m_animationData.Count);
 
-            time *= kAnimFramerate;
-            float ftime = time % AnimLengthInFrames;
+            float ftime = (m_timeSinceStartedPlaying * kAnimFramerate) % AnimLengthInFrames;
 
             for(int i = 0; i < numJoints; i++)
             {

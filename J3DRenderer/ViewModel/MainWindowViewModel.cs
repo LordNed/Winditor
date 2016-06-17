@@ -134,6 +134,10 @@ namespace J3DRenderer
             m_mainLight.Position = new Vector4(newLightPos, 0);
             m_childLink.SetHardwareLight(0, m_mainLight);
 
+            m_childLink.Tick(deltaTime);
+            if (m_room != null)
+                m_room.Tick(deltaTime);
+
             // Render something
             //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
             m_childLink.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);

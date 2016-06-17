@@ -24,12 +24,18 @@ namespace JStudio.J3D
         {
             return Name;
         }
+
+        public void CopyTo(ref SkeletonJoint otherJoint)
+        {
+            otherJoint = (SkeletonJoint)MemberwiseClone();
+        }
     }
 
     public class JNT1
     {
         public List<short> JointRemapTable;
-        public List<SkeletonJoint> Joints;
+        public List<SkeletonJoint> BindJoints;
+        public List<SkeletonJoint> AnimatedJoints;
 
         public void LoadJNT1FromStream(EndianBinaryReader reader, long tagStart)
         {
@@ -52,11 +58,13 @@ namespace JStudio.J3D
 
             // Joint Data
             reader.BaseStream.Position = tagStart + jointDataOffset;
-            Joints = new List<SkeletonJoint>();
+            BindJoints = new List<SkeletonJoint>(numJoints);
+            AnimatedJoints = new List<SkeletonJoint>(numJoints);
+
             for(int j = 0; j < numJoints; j++)
             {
                 SkeletonJoint joint = new SkeletonJoint();
-                Joints.Add(joint);
+                BindJoints.Add(joint);
 
                 joint.Name = nameTable[j];
                 joint.Unknown1 = reader.ReadUInt16();
@@ -76,7 +84,13 @@ namespace JStudio.J3D
                 joint.Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                 joint.BoundingSphereDiameter = reader.ReadSingle();
                 joint.BoundingBox = new AABox(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
+
+                // Copy our bind pose skeleton over to our AnimatedJoints array so they have their names/bounding boxes/etc set.
+                var animatedJoint = new SkeletonJoint();
+                joint.CopyTo(ref animatedJoint);
+                AnimatedJoints.Add(animatedJoint);
             }
+
         }
 
         public void CalculateParentJointsForSkeleton(HierarchyNode hierarchyRoot)
@@ -91,9 +105,16 @@ namespace JStudio.J3D
             {
                 case HierarchyDataType.NewNode: parentIndex = processedJoints.Count - 1; break;
                 case HierarchyDataType.Joint:
-                    SkeletonJoint joint = Joints[JointRemapTable[curNode.Value]];
-                    if(parentIndex >= 0)
+                    SkeletonJoint joint = BindJoints[JointRemapTable[curNode.Value]];
+                    SkeletonJoint animJoint = AnimatedJoints[JointRemapTable[curNode.Value]];
+
+                    if (parentIndex >= 0)
+                    {
                         joint.Parent = processedJoints[parentIndex];
+
+                        // Do a weird parent-index fixup so the animated joints point to the right table.
+                        animJoint.Parent = AnimatedJoints[BindJoints.IndexOf(joint.Parent)];
+                    }
                     processedJoints.Add(joint);
                     break;
             }
