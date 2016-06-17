@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCommon", "WCommon\WCommon.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "J3DRenderer", "J3DRenderer\J3DRenderer.csproj", "{9325A8F9-924C-4A20-982A-7142F14BF833}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchiveToolsLib", "WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj", "{B715685D-1603-4CE3-8EA1-552B01C2BA4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{9325A8F9-924C-4A20-982A-7142F14BF833}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9325A8F9-924C-4A20-982A-7142F14BF833}.Release|x86.ActiveCfg = Release|Any CPU
 		{9325A8F9-924C-4A20-982A-7142F14BF833}.Release|x86.Build.0 = Release|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Debug|x86.Build.0 = Debug|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|x86.ActiveCfg = Release|Any CPU
+		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
