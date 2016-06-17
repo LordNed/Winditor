@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using WArchiveTools;
 using WindEditor;
 
 namespace JStudio.J3D
@@ -146,7 +147,7 @@ namespace JStudio.J3D
             string animName = Path.GetFileNameWithoutExtension(bckFile);
             BCK bck = new BCK(animName);
 
-            bck.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes(bckFile), Endian.Big));
+            bck.LoadFromStream(FileUtilities.LoadFile(bckFile));
             m_boneAnimations.Add(bck);
         }
 
@@ -155,7 +156,7 @@ namespace JStudio.J3D
             string animName = Path.GetFileNameWithoutExtension(btkFile);
             BTK btk = new BTK(animName);
 
-            btk.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes(btkFile), Endian.Big));
+            btk.LoadFromStream(FileUtilities.LoadFile(btkFile));
             m_materialAnimations.Add(btk);
         }
 

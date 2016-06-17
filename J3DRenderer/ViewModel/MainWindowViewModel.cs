@@ -88,12 +88,12 @@ namespace J3DRenderer
             m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
 
             // Animations
-            foreach(var bck in Directory.GetFiles("resources/cl/bck/"))
+            foreach(var bck in Directory.GetFiles("resources/cl/bcks/"))
             {
                 m_childLink.LoadBoneAnimation(bck);
             }
 
-            m_childLink.SetBoneAnimation("atngsha");
+            m_childLink.SetBoneAnimation("boxopenlink");
         }
 
         private void DoApplicationTick()
