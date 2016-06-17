@@ -77,6 +77,14 @@ namespace JStudio.J3D
         public EVP1 EVP1Tag { get; private set; }
         public DRW1 DRW1Tag { get; private set; }
 
+        public List<BCK> BoneAnimations { get { return m_boneAnimations; } }
+        public List<BTK> MaterialAnimations { get { return m_materialAnimations; } }
+        public BCK CurrentBoneAnimation
+        {
+            get { return m_currentBoneAnimation; }
+            set { SetBoneAnimation(value.Name); }
+        }
+
         private int m_totalFileSize;
 
         // Hack
@@ -149,6 +157,8 @@ namespace JStudio.J3D
 
             bck.LoadFromStream(FileUtilities.LoadFile(bckFile));
             m_boneAnimations.Add(bck);
+
+            OnPropertyChanged("BoneAnimations");
         }
 
         public void LoadMaterialAnim(string btkFile)
@@ -158,6 +168,8 @@ namespace JStudio.J3D
 
             btk.LoadFromStream(FileUtilities.LoadFile(btkFile));
             m_materialAnimations.Add(btk);
+
+            OnPropertyChanged("MaterialAnimations");
         }
 
         public void SetBoneAnimation(string animName)
@@ -176,6 +188,8 @@ namespace JStudio.J3D
                 m_currentBoneAnimation = anim;
                 m_currentBoneAnimation.Start();
             }
+
+            OnPropertyChanged("CurrentBoneAnimation");
         }
 
         public void SetMaterialAnimation(string animName)
@@ -194,6 +208,8 @@ namespace JStudio.J3D
                 m_currentMaterialAnimation = anim;
                 m_currentMaterialAnimation.Start();
             }
+
+            OnPropertyChanged("CurrentMaterialAnimation");
         }
 
         /// <summary>

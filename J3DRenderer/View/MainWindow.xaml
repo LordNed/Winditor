@@ -10,24 +10,24 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="32"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <!-- File Menu Strip -->
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_File"/>
         </Menu>
-        
+
         <!-- Toolbar Buttons -->
         <Grid Grid.Row="1">
-            
+
         </Grid>
-        
+
         <!-- Main Application Grid -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="400" MinWidth="400"/>
             </Grid.ColumnDefinitions>
-            
+
             <!-- Left Info -->
             <Grid Grid.Column="0" DataContext="{Binding Path=LoadedModel}">
                 <ItemsControl HorizontalContentAlignment="Stretch">
@@ -99,7 +99,7 @@
                                 <Label Grid.Column="0" Grid.Row="2" Content="Vertex Count:"/>
                                 <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=VertexCount}"/>
                             </Grid>
-                            
+
                             <!-- Treeview -->
                             <TreeView Grid.Row="1" MinHeight="45" ItemsSource="{Binding Path=HierarchyRoot.Children}">
                                 <TreeView.ItemTemplate>
@@ -110,7 +110,7 @@
                             </TreeView>
                         </Grid>
                     </GroupBox>
-                    
+
                     <!-- VTX 1 Section-->
                     <GroupBox Header="VTX1 Section" HorizontalAlignment="Stretch" DataContext="{Binding Path=VTX1Tag}">
                         <ListBox ItemsSource="{Binding Path=VertexFormats}" MaxHeight="400" MinHeight="35">
@@ -151,23 +151,68 @@
                         </ListBox>
                     </GroupBox>
                 </ItemsControl>
-                
+
             </Grid>
-            
+
             <!-- Left Splitter -->
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
-            
+
             <!-- 3D Viewport -->
             <Grid Grid.Column="2">
                 <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
             </Grid>
-            
+
             <!-- Right Splitter -->
             <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch"/>
 
             <!-- Right Info -->
             <Grid Grid.Column="4">
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <GroupBox Header="Bone Animations">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Label Content="Number of loaded Animations:"/>
+                                <Label Content="{Binding Path=LoadedModel.BoneAnimations.Count}"/>
+                            </StackPanel>
+                            <ListView Grid.Row="1" ItemsSource="{Binding Path=LoadedModel.BoneAnimations}" SelectedItem="{Binding Path=LoadedModel.CurrentBoneAnimation}" HorizontalContentAlignment="Stretch">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Column="0" Content="{Binding Path=Name}"/>
+                                            <Label Grid.Column="1" Content="{Binding Path=LoopMode}"/>
+                                            <Label Grid.Column="2" Content="{Binding Path=AnimLengthInFrames}"/>
+                                            <Label Grid.Column="3" Content="{Binding Path=AnimType}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+                <GridSplitter Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
+
+                <Grid Grid.Row="2">
+
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

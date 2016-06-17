@@ -46,12 +46,8 @@ namespace J3DRenderer
             obj.Load("Framework/EditorCube.obj");
             m_stockMesh = new SimpleObjRenderer(obj);
 
-
-
             //m_room = new J3D();
             //m_room.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.bdl"), Endian.Big));
-
-
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -92,8 +88,6 @@ namespace J3DRenderer
             {
                 m_childLink.LoadBoneAnimation(bck);
             }
-
-            m_childLink.SetBoneAnimation("boxopenlink");
         }
 
         private void DoApplicationTick()
