@@ -111,9 +111,16 @@ namespace JStudio.J3D.ShaderGen
             // If the lighting channel is disabled, then the material color for that channel is passed through unmodified. The mat_src parameter specifies if the
             // material color comes from the Vertex Color, or from the Material Register. If the channel is enabled, then lighting needs to be computed for each light
             // enabled in the light_mask.
-            stream.AppendFormat("\t// {0} Channel Controller(s).\n", mat.NumChannelControlsIndex);
             stream.AppendLine("\tvec4 ambColor = vec4(1,1,1,1);\n\tvec4 matColor = vec4(1,1,1,1);\n\tvec4 lightAccum = vec4(0,0,0,0);\n\tvec4 lightFunc;");
             stream.AppendLine("\tvec3 ldir; float dist; float dist2; float attn;"); // Declaring these all anyways in case we use lighting.
+
+            if (mat.VtxDesc.AttributeIsEnabled(ShaderAttributeIds.Normal))
+                stream.AppendLine("\tvec3 _norm0 = RawNormal.xyz;");
+            else
+                stream.AppendLine("\tvec3 _norm0 = vec3(0.0, 0.0, 0.0);");
+
+
+            stream.AppendFormat("\t// {0} Channel Controller(s).\n", mat.NumChannelControlsIndex);
             for (int i = 0; i < mat.NumChannelControlsIndex; i++)
             {
                 ColorChannelControl channelControl = mat.ColorChannelControlIndexes[i];
@@ -173,7 +180,7 @@ namespace JStudio.J3D.ShaderGen
                 switch (texGen.Source)
                 {
                     case GXTexGenSrc.Position: texGenSource = "vec4(RawPosition.xyz, 1.0)"; break;
-                    case GXTexGenSrc.Normal: texGenSource = "vec4(RawNormal.xyz, 1.0)"; break;
+                    case GXTexGenSrc.Normal: texGenSource = "vec4(_norm0.xyz, 1.0)"; break;
                     case GXTexGenSrc.Color0: texGenSource = "colors_0"; break;
                     case GXTexGenSrc.Color1: texGenSource = "colors_1"; break;
                     case GXTexGenSrc.Binormal: texGenSource = "vec4(RawBinormal.xyz, 1.0)"; break;
@@ -237,7 +244,7 @@ namespace JStudio.J3D.ShaderGen
                     case GXTexGenType.Bump7:
                     // Transform the light dir into tangent space.
                     // ldir = normalize(Lights[{0}.Position.xyz - RawPosition.xyz);\n {0} = "texInfo.embosslightshift";
-                    // destCoord = TexGen{0} + float3(dot(ldir, RawNormal), dot(ldir, RawBinormal), 0.0);\n", {0} = i, {1} = "texInfo.embosssourceshift";
+                    // destCoord = TexGen{0} + float3(dot(ldir, _norm0), dot(ldir, RawBinormal), 0.0);\n", {0} = i, {1} = "texInfo.embosssourceshift";
                     default:
                         Console.WriteLine("Unsupported TexGenType: {0}", texGen.Type); break;
                 }
@@ -273,11 +280,11 @@ namespace JStudio.J3D.ShaderGen
                 case GXAttenuationFunction.None:
                     stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - worldPos.xyz);\n", lightIndex);
                     stream.AppendLine("\tattn = 1.0;");
-                    stream.AppendLine("\tif(length(ldir) == 0.0)\n\t\tldir = RawNormal;");
+                    stream.AppendLine("\tif(length(ldir) == 0.0)\n\t\tldir = _norm0;");
                     break;
                 case GXAttenuationFunction.Spec:
                     stream.AppendFormat("\tldir = normalize(Lights[{0}].Position.xyz - worldPos.xyz);\n", lightIndex);
-                    stream.AppendFormat("\tattn = (dot(RawNormal, ldir) >= 0.0) ? max(0.0, dot(RawNormal, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
+                    stream.AppendFormat("\tattn = (dot(_norm0, ldir) >= 0.0) ? max(0.0, dot(_norm0, Lights[{0}].Direction.xyz)) : 0.0;\n", lightIndex);
                     stream.AppendFormat("\tcosAttn = Lights[{0}].CosAtten.xyz;\n", lightIndex);
                     stream.AppendFormat("\tdistAttn = {1}(Lights[{0}].DistAtten.xyz);\n", lightIndex, (channelControl.DiffuseFunction == GXDiffuseFunction.None) ? "" : "normalize");
                     stream.AppendFormat("\tattn = max(0.0f, dot(cosAttn, vec3(1.0, attn, attn*attn))) / dot(distAttn, vec3(1.0, attn, attn*attn));");
@@ -302,7 +309,7 @@ namespace JStudio.J3D.ShaderGen
                     break;
                 case GXDiffuseFunction.Signed:
                 case GXDiffuseFunction.Clamp:
-                    stream.AppendFormat("\tlightAccum{1} += attn * {2}dot(ldir, RawNormal)) * vec{3}(Lights[{0}].Color{1});\n",
+                    stream.AppendFormat("\tlightAccum{1} += attn * {2}dot(ldir, _norm0)) * vec{3}(Lights[{0}].Color{1});\n",
                         lightIndex, lightAccumSwizzle, channelControl.DiffuseFunction != GXDiffuseFunction.Signed ? "max(0.0," : "(", numSwizzleComponents);
                     break;
                 default:
