@@ -7,7 +7,8 @@ using WindEditor;
 
 namespace JStudio.OpenGL
 {
-    [Serializable][StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct GXLight
     {
         public Vector4 Position;
@@ -31,16 +32,30 @@ namespace JStudio.OpenGL
     [Serializable] [StructLayout(LayoutKind.Sequential)]
     public struct PSBlock
     {
-        public WLinearColor ColorA;
-        public WLinearColor ColorB;
-        public WLinearColor ColorC;
-        public WLinearColor ColorD;
-        public WLinearColor kColorA;
-        public WLinearColor kColorB;
-        public WLinearColor kColorC;
-        public WLinearColor kColorD;
+        // Tev Default Register Colors
+        public WLinearColor Color0;
+        public WLinearColor Color1;
+        public WLinearColor Color2;
+        public WLinearColor Color3;
 
-        public static int SizeInBytes = 16 * 4 * 2;
+        // Tev Konst Colors
+        public WLinearColor kColor0;
+        public WLinearColor kColor1;
+        public WLinearColor kColor2;
+        public WLinearColor kColor3;
+
+        // Dimensions of the 8 textures uploaded.
+        public Vector4 TexDimension0;
+        public Vector4 TexDimension1;
+        public Vector4 TexDimension2;
+        public Vector4 TexDimension3;
+        public Vector4 TexDimension4;
+        public Vector4 TexDimension5;
+        public Vector4 TexDimension6;
+        public Vector4 TexDimension7;
+
+        // Color of the Fog
+        public WLinearColor FogColor;
     }
 
     public static class GXToOpenGL

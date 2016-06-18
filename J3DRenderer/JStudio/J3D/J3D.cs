@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Runtime.InteropServices;
 using WArchiveTools;
 using WindEditor;
 
@@ -46,21 +47,21 @@ namespace JStudio.J3D
             m_kColorsEnabled[index] = true;
         }
 
-        public PSBlock GetPSBlockForMaterial(Material srcMaterial)
+        public PSBlock SetPSBlockForMaterial(Material srcMaterial, ref PSBlock psBlock)
         {
-            PSBlock block = new PSBlock();
-            block.ColorA = m_colorsEnabled[0] ? m_colors[0] : srcMaterial.TevColorIndexes[0];
-            block.ColorB = m_colorsEnabled[1] ? m_colors[1] : srcMaterial.TevColorIndexes[1];
-            block.ColorC = m_colorsEnabled[2] ? m_colors[2] : srcMaterial.TevColorIndexes[2];
-            block.ColorD = m_colorsEnabled[3] ? m_colors[3] : srcMaterial.TevColorIndexes[3];
+            psBlock.Color0 = m_colorsEnabled[0] ? m_colors[0] : srcMaterial.TevColorIndexes[0];
+            psBlock.Color1 = m_colorsEnabled[1] ? m_colors[1] : srcMaterial.TevColorIndexes[1];
+            psBlock.Color2 = m_colorsEnabled[2] ? m_colors[2] : srcMaterial.TevColorIndexes[2];
+            psBlock.Color3 = m_colorsEnabled[3] ? m_colors[3] : srcMaterial.TevColorIndexes[3];
 
-            block.kColorA = m_kColorsEnabled[0] ? m_kColors[0] : srcMaterial.TevKonstColorIndexes[0];
-            block.kColorB = m_kColorsEnabled[1] ? m_kColors[1] : srcMaterial.TevKonstColorIndexes[1];
-            block.kColorC = m_kColorsEnabled[2] ? m_kColors[2] : srcMaterial.TevKonstColorIndexes[2];
-            block.kColorD = m_kColorsEnabled[3] ? m_kColors[3] : srcMaterial.TevKonstColorIndexes[3];
-            return block;
+            psBlock.kColor0 = m_kColorsEnabled[0] ? m_kColors[0] : srcMaterial.TevKonstColorIndexes[0];
+            psBlock.kColor1 = m_kColorsEnabled[1] ? m_kColors[1] : srcMaterial.TevKonstColorIndexes[1];
+            psBlock.kColor2 = m_kColorsEnabled[2] ? m_kColors[2] : srcMaterial.TevKonstColorIndexes[2];
+            psBlock.kColor3 = m_kColorsEnabled[3] ? m_kColors[3] : srcMaterial.TevKonstColorIndexes[3];
+            return psBlock;
         }
     }
+
     public partial class J3D : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -351,32 +352,7 @@ namespace JStudio.J3D
             IList<SkeletonJoint> boneList = (m_currentBoneAnimation != null) ? JNT1Tag.AnimatedJoints : JNT1Tag.BindJoints;
 
             Matrix4[] boneTransforms = new Matrix4[boneList.Count];
-            for (int i = 0; i < boneList.Count; i++)
-            {
-                SkeletonJoint curJoint, origJoint;
-                curJoint = origJoint = boneList[i];
-
-                Matrix4 cumulativeTransform = Matrix4.Identity;
-                while (true)
-                {
-                    Matrix4 jointMatrix = Matrix4.CreateScale(curJoint.Scale) * Matrix4.CreateFromQuaternion(curJoint.Rotation) * Matrix4.CreateTranslation(curJoint.Translation);
-                    cumulativeTransform *= jointMatrix;
-                    if (curJoint.Parent == null)
-                        break;
-
-                    curJoint = curJoint.Parent;
-                }
-
-                boneTransforms[i] = cumulativeTransform;
-
-                if (origJoint.Parent != null)
-                {
-                    Vector3 curPos = cumulativeTransform.ExtractTranslation();
-                    Vector3 parentPos = boneTransforms[boneList.IndexOf(origJoint.Parent)].ExtractTranslation();
-
-                    m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
-                }
-            }
+            ApplyBonePositionsToAnimationTransforms(boneList, boneTransforms);
 
             foreach (var shape in SHP1Tag.Shapes)
             {
@@ -463,6 +439,36 @@ namespace JStudio.J3D
             m_lineBatcher.Tick(1 / 60f);
         }
 
+        private void ApplyBonePositionsToAnimationTransforms(IList<SkeletonJoint> boneList, Matrix4[] boneTransforms)
+        {
+            for (int i = 0; i < boneList.Count; i++)
+            {
+                SkeletonJoint curJoint, origJoint;
+                curJoint = origJoint = boneList[i];
+
+                Matrix4 cumulativeTransform = Matrix4.Identity;
+                while (true)
+                {
+                    Matrix4 jointMatrix = Matrix4.CreateScale(curJoint.Scale) * Matrix4.CreateFromQuaternion(curJoint.Rotation) * Matrix4.CreateTranslation(curJoint.Translation);
+                    cumulativeTransform *= jointMatrix;
+                    if (curJoint.Parent == null)
+                        break;
+
+                    curJoint = curJoint.Parent;
+                }
+
+                boneTransforms[i] = cumulativeTransform;
+
+                if (origJoint.Parent != null)
+                {
+                    Vector3 curPos = cumulativeTransform.ExtractTranslation();
+                    Vector3 parentPos = boneTransforms[boneList.IndexOf(origJoint.Parent)].ExtractTranslation();
+
+                    m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
+                }
+            }
+        }
+
         private int m_shapeIndex;
 
         private void RenderMeshRecursive(HierarchyNode curNode)
@@ -498,13 +504,10 @@ namespace JStudio.J3D
             for (int i = 0; i < 8; i++)
             {
                 int idx = material.TextureIndexes[i];
-                if (idx < 0)
-                    continue;
+                if (idx < 0) continue;
 
-                int glTextureIndex = GL.GetUniformLocation(shader.Program, string.Format("Texture{0}", i));
-
-                idx = MAT3Tag.TextureRemapTable[idx];
-                Texture tex = TEX1Tag.Textures[idx];
+                //int glTextureIndex = GL.GetUniformLocation(shader.Program, string.Format("Texture[{0}]", i));
+                Texture tex = TEX1Tag.Textures[MAT3Tag.TextureRemapTable[idx]];
 
                 // Before we bind the texture, we need to check if this particular texture has been overriden.
                 // This allows textures to be replaced on a per-name basis with another file. Used in cases of
@@ -512,7 +515,7 @@ namespace JStudio.J3D
                 if (m_textureOverrides.ContainsKey(tex.Name))
                     tex = m_textureOverrides[tex.Name];
 
-                GL.Uniform1(glTextureIndex, i); // Everything dies without this, don't forget this bit.
+                GL.Uniform1(shader.UniformTextureSamplers[i], i); // Everything dies without this, don't forget this bit.
                 tex.Bind(i);
             }
 
@@ -529,14 +532,6 @@ namespace JStudio.J3D
                 }
             }
 
-            // Update the data in the PS Block
-            PSBlock[] psData = new PSBlock[1];
-            psData[0] = m_tevColorOverrides.GetPSBlockForMaterial(material);
-
-            // Fill the buffer with data at the chosen binding point
-            GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.PixelShaderBlock, shader.PSBlockUBO);
-            GL.BufferData(BufferTarget.UniformBuffer, (IntPtr)(PSBlock.SizeInBytes), psData, BufferUsageHint.DynamicDraw);
-
             var color0Amb = material.AmbientColorIndexes[0];
             var color0Mat = material.MaterialColorIndexes[0];
             var color1Amb = material.AmbientColorIndexes[1];
@@ -552,7 +547,47 @@ namespace JStudio.J3D
             GXToOpenGL.SetCullState(material.CullModeIndex);
             GXToOpenGL.SetDepthState(material.ZModeIndex);
             GXToOpenGL.SetDitherEnabled(material.DitherIndex);
+
+            // Update the data in the PS Block
+            PSBlock psData = new PSBlock();
+            m_tevColorOverrides.SetPSBlockForMaterial(material, ref psData);
+            UpdateTextureDimensionsForPSBlock(ref psData, material);
+            UpdateFogForPSBlock(ref psData, material);
+
+            // Upload the PS Block to the GPU
+            GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.PixelShaderBlock, shader.PSBlockUBO);
+            GL.BufferData<PSBlock>(BufferTarget.UniformBuffer, (IntPtr)(Marshal.SizeOf(psData)), ref psData, BufferUsageHint.DynamicDraw);
         }
+
+        private void UpdateFogForPSBlock(ref PSBlock psData, Material mat)
+        {
+            psData.FogColor = mat.FogModeIndex.Color;
+        }
+
+        private void UpdateTextureDimensionsForPSBlock(ref PSBlock psData, Material mat)
+        {
+            for(int i = 0; i < 8; i++)
+            {
+                if (mat.TextureIndexes[i] < 0)
+                    continue;
+
+                Texture texture = TEX1Tag.Textures[MAT3Tag.TextureRemapTable[i]];
+                Vector4 texDimensions = new Vector4(texture.CompressedData.Width, texture.CompressedData.Height, 0, 0);
+
+                switch(i)
+                {
+                    case 0: psData.TexDimension0 = texDimensions; break;
+                    case 1: psData.TexDimension1 = texDimensions; break;
+                    case 2: psData.TexDimension2 = texDimensions; break;
+                    case 3: psData.TexDimension3 = texDimensions; break;
+                    case 4: psData.TexDimension4 = texDimensions; break;
+                    case 5: psData.TexDimension5 = texDimensions; break;
+                    case 6: psData.TexDimension6 = texDimensions; break;
+                    case 7: psData.TexDimension7 = texDimensions; break;
+                }
+            }
+        }
+
 
         private void RenderBatchByIndex(ushort index)
         {
