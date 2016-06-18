@@ -194,12 +194,14 @@
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" Content="{Binding Path=Name}"/>
                                             <Label Grid.Column="1" Content="{Binding Path=LoopMode}"/>
-                                            <Label Grid.Column="2" Content="{Binding Path=AnimLengthInFrames}"/>
-                                            <Label Grid.Column="3" Content="{Binding Path=AnimType}"/>
+                                            <Label Grid.Column="2" Content="{Binding Path=AnimLengthInSeconds}"/>
+                                            <Label Grid.Column="3" Content="{Binding Path=BoneCount}"/>
+                                            <Label Grid.Column="4" Content="{Binding Path=AnimType}"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

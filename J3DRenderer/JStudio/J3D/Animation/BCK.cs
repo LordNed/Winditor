@@ -27,6 +27,8 @@ namespace JStudio.J3D.Animation
             public List<Key> TranslationsZ = new List<Key>();
         }
 
+        public int BoneCount { get { return m_animationData.Count; } }
+
         private List<JointAnim> m_animationData;
 
         public BCK(string name) : base(name) { }

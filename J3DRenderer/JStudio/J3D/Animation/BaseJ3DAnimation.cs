@@ -66,6 +66,8 @@ namespace JStudio.J3D.Animation
         public LoopType LoopMode { get; protected set; }
         public short AnimLengthInFrames { get; protected set; }
 
+        public string AnimLengthInSeconds { get { return string.Format("{0}s", (AnimLengthInFrames / kAnimFramerate).ToString("0.00")); } }
+
         protected const float kAnimFramerate = 30f;
         protected float m_timeSinceStartedPlaying;
         protected bool m_isPlaying;
