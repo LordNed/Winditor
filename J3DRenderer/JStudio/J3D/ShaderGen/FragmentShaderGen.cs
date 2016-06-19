@@ -451,15 +451,15 @@ namespace JStudio.J3D.ShaderGen
                 "alphaRef.g"
             };
 
-            AlphaCompare aCompare = mat.AlphaCompareIndex;
-            stream.AppendFormat("\t// Alpha Compare: Compare A: {0} Reference A: {1} Op: {2} Compare B: {3} Reference B: {4}\n", aCompare.Comp0, aCompare.Reference0, aCompare.Operation, aCompare.Comp1, aCompare.Reference1);
+            AlphaTest aTest = mat.AlphaTest;
+            stream.AppendFormat("\t// Alpha Test: Compare A: {0} Reference A: {1} Op: {2} Compare B: {3} Reference B: {4}\n", aTest.Comp0, aTest.Reference0, aTest.Operation, aTest.Comp1, aTest.Reference1);
 
             stream.Append("\tif(!( ");
-            stream.AppendFormat(m_tevAlphaFuncTable[(int)aCompare.Comp0], (aCompare.Reference0/255f)); // LHS
-            stream.AppendFormat("{0}", m_tevAlphaFuncLogicTable[(int)aCompare.Operation]); // Logic Operation
-            stream.AppendFormat(m_tevAlphaFuncTable[(int)aCompare.Comp1], (aCompare.Reference1/255f));
+            stream.AppendFormat(m_tevAlphaFuncTable[(int)aTest.Comp0], (aTest.Reference0/255f)); // LHS
+            stream.AppendFormat("{0}", m_tevAlphaFuncLogicTable[(int)aTest.Operation]); // Logic Operation
+            stream.AppendFormat(m_tevAlphaFuncTable[(int)aTest.Comp1], (aTest.Reference1/255f));
 
-            stream.Append(")) {\n");
+            stream.Append("))\n\t{\n");
             stream.Append("\t\tdiscard;\n");
             stream.Append("\t\treturn;\n");
             stream.Append("\t}\n");

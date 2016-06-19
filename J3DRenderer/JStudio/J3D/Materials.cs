@@ -369,7 +369,7 @@ namespace JStudio.J3D
     ///     alpha_pass = (alpha_src(comp0)ref0) (op) (alpha_src(comp1)ref1)
     /// where alpha_src is the alpha from the last active TEV stage.
     /// </summary>
-    public class AlphaCompare
+    public class AlphaTest
     {
         /// <summary> subfunction 0 </summary>
         public GXCompareType Comp0;
@@ -488,7 +488,7 @@ namespace JStudio.J3D
             {
                 Matrix4 scale = Matrix4.CreateScale(new Vector3(ScaleS, ScaleT, 1));
                 Matrix4 rot = Matrix4.CreateRotationX(Rotation);
-                Matrix4 translation = Matrix4.CreateTranslation(new Vector3(CenterS, CenterT, CenterW) + new Vector3(TranslateS, TranslateT, 0));
+                Matrix4 translation = Matrix4.CreateTranslation(/*new Vector3(CenterS, CenterT, CenterW) + */new Vector3(TranslateS, TranslateT, 0));
 
                 return scale * rot * translation;
             }

@@ -40,9 +40,9 @@ namespace JStudio.J3D
         public TevSwapModeTable[] TevSwapModeTableIndexes { get; internal set; }
         public short[] UnknownIndexes { get; internal set; }
         public FogInfo FogModeIndex { get; internal set; }
-        public AlphaCompare AlphaCompareIndex { get; internal set; }
+        public AlphaTest AlphaTest { get; internal set; }
         public BlendMode BlendModeIndex { get; internal set; }
-        public NBTScale UnknownIndex2 { get; internal set; } // Tentatively named NBTScale
+        public BlendMode UnknownIndex2 { get; internal set; } // Tentatively named NBTScale
 
         public void Bind()
         {
@@ -365,9 +365,10 @@ namespace JStudio.J3D
                     material.UnknownIndexes[l] = reader.ReadInt16();
 
                 material.FogModeIndex = ReadEntry(reader, ReadFogInfo, chunkStart, offsets, 23, reader.ReadInt16(), 44);
-                material.AlphaCompareIndex = ReadEntry(reader, ReadAlphaCompare, chunkStart, offsets, 24, reader.ReadInt16(), 8);
+                material.AlphaTest = ReadEntry(reader, ReadAlphaCompare, chunkStart, offsets, 24, reader.ReadInt16(), 8);
                 material.BlendModeIndex = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
-                material.UnknownIndex2 = ReadEntry(reader, ReadNBTScale, chunkStart, offsets, 29, reader.ReadInt16(), 16);
+                material.UnknownIndex2 = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
+                //material.UnknownIndex2 = ReadEntry(reader, ReadNBTScale, chunkStart, offsets, 29, reader.ReadInt16(), 16);
             }
         }
 
@@ -506,9 +507,9 @@ namespace JStudio.J3D
             return retVal;
         }
 
-        private static AlphaCompare ReadAlphaCompare(EndianBinaryReader stream)
+        private static AlphaTest ReadAlphaCompare(EndianBinaryReader stream)
         {
-            var retVal = new AlphaCompare
+            var retVal = new AlphaTest
             {
                 Comp0 = (GXCompareType)stream.ReadByte(),
                 Reference0 = stream.ReadByte(),
@@ -586,6 +587,8 @@ namespace JStudio.J3D
                     retVal.Matrix[x, y] = stream.ReadSingle();
                 }
             }
+
+            Trace.Assert(retVal.Matrix == OpenTK.Matrix4.Identity);
 
             return retVal;
         }
