@@ -414,7 +414,7 @@ namespace JStudio.J3D
 
         public override string ToString()
         {
-            return string.Format("Type: {0} Control: {1} Destination Control: {2} Operation: {3}", Type, SourceFactor, DestinationFactor, Operation);
+            return string.Format("Blend Type: {0} Src: {1} Dest: {2} Op: {3}", Type, SourceFactor, DestinationFactor, Operation);
         }
     }
 

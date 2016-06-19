@@ -7,6 +7,7 @@ using System.ComponentModel;
 using JStudio.J3D;
 using JStudio.J3D.Animation;
 using JStudio.OpenGL;
+using J3DRenderer.Framework;
 
 namespace J3DRenderer
 {
@@ -28,6 +29,9 @@ namespace J3DRenderer
         private J3D m_room;
         private float m_timeSinceStartup;
 
+        private ScreenspaceQuad m_screenQuad;
+        private Shader m_alphaVisualizationShader;
+
         GXLight m_mainLight;
 
         public MainWindowViewModel()
@@ -46,6 +50,12 @@ namespace J3DRenderer
             obj.Load("Framework/EditorCube.obj");
             m_stockMesh = new SimpleObjRenderer(obj);
 
+            m_alphaVisualizationShader = new Shader("AlphaVisualize");
+            m_alphaVisualizationShader.CompileSource(File.ReadAllText("resources/shaders/Debug_AlphaVisualizer.vert"), ShaderType.VertexShader);
+            m_alphaVisualizationShader.CompileSource(File.ReadAllText("resources/shaders/Debug_AlphaVisualizer.frag"), ShaderType.FragmentShader);
+            m_alphaVisualizationShader.LinkShader();
+
+            m_screenQuad = new ScreenspaceQuad();
             //m_room = new J3D();
             //m_room.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.bdl"), Endian.Big));
 
@@ -109,7 +119,7 @@ namespace J3DRenderer
         {
             System.Random rnd = new System.Random(m_glControl.GetHashCode());
             //GL.ClearColor(0.15f, 0.83f, 0.10f, 1f);
-            GL.ClearColor(rnd.Next(255) / 255f, rnd.Next(255) / 255f, rnd.Next(255) / 255f, 1f);
+            GL.ClearColor(rnd.Next(255) / 255f, rnd.Next(255) / 255f, rnd.Next(255) / 255f, 0);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
             GL.Viewport(0, 0, m_viewportWidth, m_viewportHeight);
@@ -133,10 +143,21 @@ namespace J3DRenderer
                 m_room.Tick(deltaTime);
 
             // Render something
-            //m_stockMesh.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
             m_childLink.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
             if (m_room != null)
                 m_room.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
+
+
+            // Debug Rendering
+            if(WInput.GetKey(System.Windows.Input.Key.I))
+            {
+                GL.Disable(EnableCap.CullFace);
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactorSrc.DstAlpha, BlendingFactorDest.Zero);
+
+                m_alphaVisualizationShader.Bind();
+                m_screenQuad.Draw();
+            }
         }
 
         internal void OnViewportResized(int width, int height)

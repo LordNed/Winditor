@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Framework\LineBatcher.cs" />
     <Compile Include="Framework\Obj.cs" />
+    <Compile Include="Framework\ScreenspaceQuad.cs" />
     <Compile Include="JStudio\Shader.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -2126,6 +2127,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\cl\btp\twind.btp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Debug_AlphaVisualizer.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Debug_AlphaVisualizer.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
