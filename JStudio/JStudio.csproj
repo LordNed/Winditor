@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JStudio</RootNamespace>
+    <AssemblyName>JStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GameFormatReader">
+      <HintPath>..\lib\GameFormatReader.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JStudio\GXToOpenGL.cs" />
+    <Compile Include="JStudio\J3D\Animation\BaseJ3DAnimation.cs" />
+    <Compile Include="JStudio\J3D\Animation\BCK.cs" />
+    <Compile Include="JStudio\J3D\Animation\BTK.cs" />
+    <Compile Include="JStudio\J3D\BinaryTextureImage.cs" />
+    <Compile Include="JStudio\J3D\DRW1.cs" />
+    <Compile Include="JStudio\J3D\EVP1.cs" />
+    <Compile Include="JStudio\J3D\INF1.cs" />
+    <Compile Include="JStudio\J3D\J3D.cs" />
+    <Compile Include="JStudio\J3D\JNT1.cs" />
+    <Compile Include="JStudio\J3D\MAT3.cs" />
+    <Compile Include="JStudio\J3D\Materials.cs" />
+    <Compile Include="JStudio\J3D\ShaderGen\FragmentShaderGen.cs" />
+    <Compile Include="JStudio\J3D\ShaderGen\TEVShaderGenerator.cs" />
+    <Compile Include="JStudio\J3D\ShaderGen\VertexShaderGen.cs" />
+    <Compile Include="JStudio\J3D\SHP1.cs" />
+    <Compile Include="JStudio\J3D\StringTable.cs" />
+    <Compile Include="JStudio\J3D\TEX1.cs" />
+    <Compile Include="JStudio\J3D\VertexDescription.cs" />
+    <Compile Include="JStudio\J3D\VTX1.cs" />
+    <Compile Include="JStudio\Shader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj">
+      <Project>{b715685d-1603-4ce3-8ea1-552b01c2ba4b}</Project>
+      <Name>ArchiveToolsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCommon\WCommon.csproj">
+      <Project>{e8af46cc-76dc-4541-a578-5067ead07087}</Project>
+      <Name>WCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -92,7 +92,6 @@ namespace JStudio.J3D
         private Matrix4 m_viewMatrix;
         private Matrix4 m_projMatrix;
         private Matrix4 m_modelMatrix;
-        private WLineBatcher m_lineBatcher;
         private Material m_currentBoundMat;
 
         private GXLight[] m_hardwareLights = new GXLight[8];
@@ -107,9 +106,6 @@ namespace JStudio.J3D
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
-            m_lineBatcher = new WLineBatcher();
-
-
             // Read the J3D Header
             Magic = new string(reader.ReadChars(4));
             StudioType = new string(reader.ReadChars(4));
@@ -426,17 +422,17 @@ namespace JStudio.J3D
                 shape.UploadBuffersToGPU();
             }
 
-            if (WInput.GetKeyDown(System.Windows.Input.Key.O))
-                m_shapeIndex--;
-            if (WInput.GetKeyUp(System.Windows.Input.Key.P))
-                m_shapeIndex++;
+            //if (WInput.GetKeyDown(System.Windows.Input.Key.O))
+            //    m_shapeIndex--;
+            //if (WInput.GetKeyUp(System.Windows.Input.Key.P))
+            //    m_shapeIndex++;
 
             m_shapeIndex = WMath.Clamp(m_shapeIndex, 0, SHP1Tag.ShapeCount - 1);
 
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
 
-            m_lineBatcher.Render(viewMatrix, projectionMatrix);
-            m_lineBatcher.Tick(1 / 60f);
+            //m_lineBatcher.Render(viewMatrix, projectionMatrix);
+            //m_lineBatcher.Tick(1 / 60f);
         }
 
         private void ApplyBonePositionsToAnimationTransforms(IList<SkeletonJoint> boneList, Matrix4[] boneTransforms)
@@ -464,7 +460,7 @@ namespace JStudio.J3D
                     Vector3 curPos = cumulativeTransform.ExtractTranslation();
                     Vector3 parentPos = boneTransforms[boneList.IndexOf(origJoint.Parent)].ExtractTranslation();
 
-                    m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
+                    //m_lineBatcher.DrawLine(curPos, parentPos, WLinearColor.Red, 1, 0);
                 }
             }
         }
@@ -548,10 +544,10 @@ namespace JStudio.J3D
             GXToOpenGL.SetDepthState(material.ZModeIndex);
             GXToOpenGL.SetDitherEnabled(material.DitherIndex);
 
-            if (WInput.GetKey(System.Windows.Input.Key.U))
-                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-            else
-                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+            //if (WInput.GetKey(System.Windows.Input.Key.U))
+            //    GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+            //else
+            //    GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
 
             // Update the data in the PS Block
@@ -632,12 +628,12 @@ namespace JStudio.J3D
                 WLinearColor jointColor = origJoint.Unknown1 == 0 ? WLinearColor.Yellow : WLinearColor.Blue;
                 if(boundingSphere)
                 {
-                    m_lineBatcher.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
+                    //m_lineBatcher.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
                 }
                 if(boundingBox)
                 {
                     Vector3 extents = (origJoint.BoundingBox.Max - origJoint.BoundingBox.Min)/ 2;
-                    m_lineBatcher.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
+                    //m_lineBatcher.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
                 }
             }
         }
@@ -649,12 +645,12 @@ namespace JStudio.J3D
                 Vector3 center = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
                 if (boundingSphere)
                 {
-                    m_lineBatcher.DrawSphere(center, shape.BoundingSphereDiameter, 8, WLinearColor.White, 0f, 0f);
+                    //m_lineBatcher.DrawSphere(center, shape.BoundingSphereDiameter, 8, WLinearColor.White, 0f, 0f);
                 }
                 if (boundingBox)
                 {
                     Vector3 extents = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
-                    m_lineBatcher.DrawBox(center, extents, Quaternion.Identity, WLinearColor.White, 0f, 0f);
+                    //m_lineBatcher.DrawBox(center, extents, Quaternion.Identity, WLinearColor.White, 0f, 0f);
                 }
             }
         }

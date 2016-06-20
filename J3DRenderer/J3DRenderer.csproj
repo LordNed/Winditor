@@ -70,7 +70,6 @@
     <Compile Include="Framework\LineBatcher.cs" />
     <Compile Include="Framework\Obj.cs" />
     <Compile Include="Framework\ScreenspaceQuad.cs" />
-    <Compile Include="JStudio\Shader.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,26 +81,6 @@
     <Compile Include="Framework\Camera.cs" />
     <Compile Include="Framework\Input.cs" />
     <Compile Include="Framework\SimpleObjRenderer.cs" />
-    <Compile Include="JStudio\J3D\Animation\BaseJ3DAnimation.cs" />
-    <Compile Include="JStudio\J3D\Animation\BCK.cs" />
-    <Compile Include="JStudio\J3D\Animation\BTK.cs" />
-    <Compile Include="JStudio\J3D\EVP1.cs" />
-    <Compile Include="JStudio\J3D\DRW1.cs" />
-    <Compile Include="JStudio\J3D\ShaderGen\FragmentShaderGen.cs" />
-    <Compile Include="JStudio\J3D\ShaderGen\TEVShaderGenerator.cs" />
-    <Compile Include="JStudio\J3D\BinaryTextureImage.cs" />
-    <Compile Include="JStudio\GXToOpenGL.cs" />
-    <Compile Include="JStudio\J3D\INF1.cs" />
-    <Compile Include="JStudio\J3D\J3D.cs" />
-    <Compile Include="JStudio\J3D\MAT3.cs" />
-    <Compile Include="JStudio\J3D\Materials.cs" />
-    <Compile Include="JStudio\J3D\JNT1.cs" />
-    <Compile Include="JStudio\J3D\SHP1.cs" />
-    <Compile Include="JStudio\J3D\StringTable.cs" />
-    <Compile Include="JStudio\J3D\TEX1.cs" />
-    <Compile Include="JStudio\J3D\VertexDescription.cs" />
-    <Compile Include="JStudio\J3D\ShaderGen\VertexShaderGen.cs" />
-    <Compile Include="JStudio\J3D\VTX1.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -2152,6 +2131,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JStudio\JStudio.csproj">
+      <Project>{b90410ae-bb67-4d7a-b4f5-7209cb357a44}</Project>
+      <Name>JStudio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj">
       <Project>{b715685d-1603-4ce3-8ea1-552b01c2ba4b}</Project>
       <Name>ArchiveToolsLib</Name>
