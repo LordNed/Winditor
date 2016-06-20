@@ -548,6 +548,12 @@ namespace JStudio.J3D
             GXToOpenGL.SetDepthState(material.ZModeIndex);
             GXToOpenGL.SetDitherEnabled(material.DitherIndex);
 
+            if (WInput.GetKey(System.Windows.Input.Key.U))
+                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+            else
+                GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+
+
             // Update the data in the PS Block
             PSBlock psData = new PSBlock();
             m_tevColorOverrides.SetPSBlockForMaterial(material, ref psData);
