@@ -133,7 +133,7 @@ namespace JStudio.J3D.ShaderGen
                     case /* Color0 */ 0: channel = "0"; swizzle = ".rgb"; break;
                     case /* Alpha0 */ 1: channel = "0"; swizzle = ".a"; break;
                     case /* Color1 */ 2: channel = "1"; swizzle = ".rgb"; break;
-                    case /* Alpha1 */ 3: channel = "1"; swizzle = ".a"; break;
+                    case /* Alpha1 */ 3: channel = "1"; swizzle = ".a"; break; // ToDo: This is wrong. There's a maximum of 2 color channels
                     default: Console.WriteLine("Unknown Color Channel Control Index: {0}", i); continue;
                 }
 
@@ -161,7 +161,18 @@ namespace JStudio.J3D.ShaderGen
                     stream.AppendLine("\tvec4 illum = clamp(ambColor + lightAccum, 0, 1);");
                 stream.AppendFormat("\tlightFunc = {0};\n", channelControl.LightingEnabled ? "illum" : "vec4(1.0, 1.0, 1.0, 1.0)");
                 stream.AppendFormat("\t{0}{1} = (matColor * lightFunc){1};\n", channelTarget, swizzle);
+
+                // Not sure if this is right, but if a single color channel is enabled then the alpha component of color_0 never gets assigned
+                // and then something tries to use it and it's empty instead of being the ambSrc/matSrc alpha.
+                if (mat.NumChannelControlsIndex == 1 || mat.NumChannelControlsIndex == 3)
+                {
+                    // ToDo: https://github.com/dolphin-emu/dolphin/blob/master/Source/Core/VideoCommon/LightingShaderGen.h#L184 looks like a better implementation
+                    stream.AppendLine("\t// Doing an unknown fixup. There's only one color channel enabled, so we never write to the alpha of the color_*, and thus it never gets initialized.");
+                    stream.AppendFormat("\t{0}.a = matColor.a;\n", channelTarget);
+                }
             }
+
+
 
             // TEV "TexGen" Texture Coordinate Generation
             // TEV can generate texture coordinates on the fly from a variety of sources. The various ways all follow the form of:
