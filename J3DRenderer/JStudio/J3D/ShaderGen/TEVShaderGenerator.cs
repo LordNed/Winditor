@@ -7,7 +7,7 @@ namespace JStudio.J3D.ShaderGen
 {
     public static class TEVShaderGenerator
     {
-        private static bool m_allowCachedOverride = false;
+        private static bool m_allowCachedOverride = true;
 
         public static Shader GenerateShader(Material fromMat, MAT3 data)
         {
@@ -18,19 +18,27 @@ namespace JStudio.J3D.ShaderGen
             {
                 // Load it from the shader dump if it already exists, which allows us to hand-modify shaders.
                 string filenameHash = string.Format("ShaderDump/{0}.vert", fromMat.Name);
-                string vertexShader = File.Exists(filenameHash) && m_allowCachedOverride ? File.ReadAllText(filenameHash) : VertexShaderGen.GenerateVertexShader(fromMat, data);
+
+                bool loadedFromDisk = File.Exists(filenameHash) && m_allowCachedOverride;
+                string vertexShader = loadedFromDisk ? File.ReadAllText(filenameHash) : VertexShaderGen.GenerateVertexShader(fromMat, data);
+                
                 success = shader.CompileSource(vertexShader, ShaderType.VertexShader);
 
-                File.WriteAllText(filenameHash, vertexShader);
+                if(!loadedFromDisk)
+                    File.WriteAllText(filenameHash, vertexShader);
             }
             if (success)
             {
                 // Load it from the shader dump if it already exists, which allows us to hand-modify shaders.
                 string filenameHash = string.Format("ShaderDump/{0}.frag", fromMat.Name);
-                string fragmentShader = File.Exists(filenameHash) && m_allowCachedOverride ? File.ReadAllText(filenameHash) : FragmentShaderGen.GenerateFragmentShader(fromMat, data);
+
+                bool loadedFromDisk = File.Exists(filenameHash) && m_allowCachedOverride;
+                string fragmentShader =  loadedFromDisk ? File.ReadAllText(filenameHash) : FragmentShaderGen.GenerateFragmentShader(fromMat, data);
+
                 success = shader.CompileSource(fragmentShader, ShaderType.FragmentShader);
 
-                File.WriteAllText(filenameHash, fragmentShader);
+                if(!loadedFromDisk)
+                    File.WriteAllText(filenameHash, fragmentShader);
             }
 
             if (success)
