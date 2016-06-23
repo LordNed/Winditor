@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using WindEditor.Collision;
+using System;
+using JStudio.J3D;
 
 namespace WindEditor
 {
@@ -14,12 +16,14 @@ namespace WindEditor
         private List<ITickableObject> m_tickableObjects;
 
         private WWorld m_world;
+        private List<J3D> m_roomModels;
 
         public WScene(WWorld world)
         {
             m_world = world;
             m_renderableObjects = new List<IRenderable>();
             m_tickableObjects = new List<ITickableObject>();
+            m_roomModels = new List<J3D>();
         }
 
         public void LoadLevel(string filePath)
@@ -38,7 +42,7 @@ namespace WindEditor
                         }
                         break;
                     case "dzr":
-                    case "dzs:":
+                    case "dzs":
                         {
                             string fileName = Path.Combine(folder, "room.dzr");
                             if (!File.Exists(fileName))
@@ -46,9 +50,54 @@ namespace WindEditor
                             LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
+                    case "bmd":
+                    case "bdl":
+                        {
+                            // Load the room model for this room.
+                            LoadRoomModel(folder);
+
+                            // Load models for the skybox in this scene if they exist.
+                            LoadSkyboxModels(folder);
+
+                            // Load our fixed list of doors, etc.
+                        }
+                        break;
                 }
             }
         }
+
+        private void LoadRoomModel(string rootFolder)
+        {
+            // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
+            // model, model1, model2, model3. 
+            string[] modelNames = new[] { "model", "model1", "model2", "model3" };
+            LoadFixedModelList(rootFolder, modelNames);
+        }
+
+        private void LoadSkyboxModels(string rootFolder)
+        {
+            // There's a fixed list of skybox models and order.
+            string[] fileNames = new[] { "vr_sky", "vr_kasumi_mae", "vr_uso_umi", "vr_back_cloud" };
+            LoadFixedModelList(rootFolder, fileNames);
+        }
+
+        private void LoadFixedModelList(string rootFolder, string[] modelNames)
+        {
+            string[] extNames = new[] { ".bmd", ".bdl" };
+            foreach (var model in modelNames)
+            {
+                foreach (var ext in extNames)
+                {
+                    string fullPath = Path.Combine(rootFolder, model, ext);
+                    if (File.Exists(fullPath))
+                    {
+                        J3D roomModel = WResourceManager.LoadResource(fullPath);
+                        m_roomModels.Add(roomModel);
+                    }
+                }
+            }
+        }
+
 
         public void UnloadLevel()
         {

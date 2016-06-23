@@ -127,6 +127,7 @@
     <Compile Include="Editor\PropertyValues\BoolPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
+    <Compile Include="Editor\ResourceManager.cs" />
     <Compile Include="Editor\Scene.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\SelectionAggregate.cs" />
@@ -214,6 +215,10 @@
     <Folder Include="resources\templates\MapEntityData\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JStudio\JStudio.csproj">
+      <Project>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</Project>
+      <Name>JStudio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCommon\WCommon.csproj">
       <Project>{e8af46cc-76dc-4541-a578-5067ead07087}</Project>
       <Name>WCommon</Name>
