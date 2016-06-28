@@ -18,10 +18,10 @@ namespace WindEditor
                 child.Tick(deltaTime);
         }
 
-        public virtual void Render()
+        public virtual void Render(WSceneView view)
         {
             foreach (var child in Children)
-                child.Render();
+                child.Render(view);
         }
 
         #region IEnumerable Interface

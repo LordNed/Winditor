@@ -417,12 +417,10 @@ namespace JStudio.J3D
 
         private static WLinearColor ReadColorShort(EndianBinaryReader stream)
         {
-            // ToDo: Are these actually just divided by 255f? Wouldn't they be divided by short.MaxValue?
             ushort r = stream.ReadUInt16();
             ushort g = stream.ReadUInt16();
             ushort b = stream.ReadUInt16();
             ushort a = stream.ReadUInt16();
-            Trace.Assert(r <= 255 && g <= 255 && b <= 255 && a <= 255);
             return new WLinearColor(r / 255f, g / 255f, b / 255f, a / 255f);
         }
 
@@ -430,7 +428,6 @@ namespace JStudio.J3D
         {
             return (GXCullMode)stream.ReadInt32();
         }
-
 
         private static IndirectTexture ReadIndirectTexture(EndianBinaryReader stream)
         {

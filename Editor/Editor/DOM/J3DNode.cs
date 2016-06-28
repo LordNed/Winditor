@@ -1,12 +1,13 @@
 ﻿using JStudio.J3D;
+using OpenTK;
 
 namespace WindEditor
 {
-    public class J3DDOMNode : WDOMNode
+    public class J3DNode : WDOMNode
     {
         private J3D m_model;
 
-        public J3DDOMNode(J3D model)
+        public J3DNode(J3D model)
         {
             m_model = model;
         }
@@ -18,11 +19,11 @@ namespace WindEditor
             m_model.Tick(deltaTime);
         }
 
-        public override void Render()
+        public override void Render(WSceneView view)
         {
-            base.Render();
+            base.Render(view);
 
-            //m_model.
+            m_model.Render(view.ViewMatrix, view.ProjMatrix, Matrix4.Identity);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace WindEditor
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
         public BindingList<WScene> SceneList { get { return m_sceneList; } }
+
         public WScene FocusedScene
         {
             get { return m_focusedScene; }

@@ -244,27 +244,29 @@ namespace WindEditor
             WMapActor closestResult = null;
             float closestDistance = float.MaxValue;
 
-            foreach (var scene in m_world.SceneList)
-            {
-                foreach (IRenderable obj in scene.RenderableObjects)
-                {
-                    WMapActor actor = obj as WMapActor;
-                    if (actor == null)
-                        continue;
+            System.Console.WriteLine("Not Supported Raycast(WRay ray)");
 
-                    AABox actorBoundingBox = actor.GetAABB();
-                    float intersectDistance;
+            //foreach (var scene in m_world.SceneList)
+            //{
+            //    foreach (IRenderable obj in scene.RenderableObjects)
+            //    {
+            //        WMapActor actor = obj as WMapActor;
+            //        if (actor == null)
+            //            continue;
 
-                    if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
-                    {
-                        if (intersectDistance < closestDistance)
-                        {
-                            closestDistance = intersectDistance;
-                            closestResult = actor;
-                        }
-                    }
-                }
-            }
+            //        AABox actorBoundingBox = actor.GetAABB();
+            //        float intersectDistance;
+
+            //        if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+            //        {
+            //            if (intersectDistance < closestDistance)
+            //            {
+            //                closestDistance = intersectDistance;
+            //                closestResult = actor;
+            //            }
+            //        }
+            //    }
+            //}
 
             return closestResult;
         }
@@ -369,14 +371,16 @@ namespace WindEditor
         private void SelectAll()
         {
             List<WMapActor> allActors = new List<WMapActor>();
-            foreach (IRenderable obj in m_world.FocusedScene.RenderableObjects)
-            {
-                WMapActor actor = obj as WMapActor;
-                if (actor == null)
-                    continue;
+            System.Console.WriteLine("Not Supported SelectAll()");
 
-                allActors.Add(actor);
-            }
+            //foreach (IRenderable obj in m_world.FocusedScene.RenderableObjects)
+            //{
+            //    WMapActor actor = obj as WMapActor;
+            //    if (actor == null)
+            //        continue;
+
+            //    allActors.Add(actor);
+            //}
 
             ModifySelection(SelectionType.Add, allActors.ToArray(), true);
         }

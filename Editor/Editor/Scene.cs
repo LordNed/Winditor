@@ -88,11 +88,11 @@ namespace WindEditor
             {
                 foreach (var ext in extNames)
                 {
-                    string fullPath = Path.Combine(rootFolder, model, ext);
+                    string fullPath = Path.Combine(rootFolder, model + ext);
                     if (File.Exists(fullPath))
                     {
                         J3D roomModel = WResourceManager.LoadResource(fullPath);
-                        J3DDOMNode modelInstance = new J3DDOMNode(roomModel);
+                        J3DNode modelInstance = new J3DNode(roomModel);
                         Children.Add(modelInstance);
                     }
                 }

@@ -12,6 +12,9 @@ namespace WindEditor
     {
         public bool IsFocused { get; set; }
 
+        public Matrix4 ViewMatrix { get { return m_viewCamera.ViewMatrix; } }
+        public Matrix4 ProjMatrix { get { return m_viewCamera.ProjectionMatrix; } }
+
         private WWorld m_world;
 
         private int m_viewWidth;
@@ -55,10 +58,7 @@ namespace WindEditor
 
             foreach(var scene in m_world.SceneList)
             {
-                foreach (var item in scene.RenderableObjects)
-                {   
-                    item.Render(viewMatrix, projMatrix);
-                }
+                scene.Render(this);
             }
 
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);
