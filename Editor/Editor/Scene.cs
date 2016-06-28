@@ -7,23 +7,23 @@ using JStudio.J3D;
 
 namespace WindEditor
 {
-    public class WScene
+    public class WScene : WDOMNode
     {
-        public List<IRenderable> RenderableObjects { get { return m_renderableObjects; } }
+        //public List<IRenderable> RenderableObjects { get { return m_renderableObjects; } }
         public string Name { get; set; }
 
-        private List<IRenderable> m_renderableObjects;
-        private List<ITickableObject> m_tickableObjects;
+        //private List<IRenderable> m_renderableObjects;
+        //private List<ITickableObject> m_tickableObjects;
 
         private WWorld m_world;
-        private List<J3D> m_roomModels;
+        //private List<J3D> m_roomModels;
 
         public WScene(WWorld world)
         {
             m_world = world;
-            m_renderableObjects = new List<IRenderable>();
-            m_tickableObjects = new List<ITickableObject>();
-            m_roomModels = new List<J3D>();
+            //m_renderableObjects = new List<IRenderable>();
+            //m_tickableObjects = new List<ITickableObject>();
+            //m_roomModels = new List<J3D>();
         }
 
         public void LoadLevel(string filePath)
@@ -92,7 +92,8 @@ namespace WindEditor
                     if (File.Exists(fullPath))
                     {
                         J3D roomModel = WResourceManager.LoadResource(fullPath);
-                        m_roomModels.Add(roomModel);
+                        J3DDOMNode modelInstance = new J3DDOMNode(roomModel);
+                        Children.Add(modelInstance);
                     }
                 }
             }
@@ -131,7 +132,7 @@ namespace WindEditor
             // This is awesome.
             if (obj is IRenderable)
             {
-                m_renderableObjects.Add(obj as IRenderable);
+                //m_renderableObjects.Add(obj as IRenderable);
             }
 
             if (obj is ITickableObject)
@@ -139,7 +140,7 @@ namespace WindEditor
                 ITickableObject tickableObj = (ITickableObject)obj;
                 tickableObj.SetWorld(m_world);
                 tickableObj.SetScene(this);
-                m_tickableObjects.Add(tickableObj);
+                //m_tickableObjects.Add(tickableObj);
             }
 
             if (obj is IUndoable)
@@ -156,21 +157,19 @@ namespace WindEditor
                 IRenderable renderable = obj as IRenderable;
                 renderable.ReleaseResources();
 
-                m_renderableObjects.Remove(renderable);
+                //m_renderableObjects.Remove(renderable);
             }
 
             if (obj is ITickableObject)
             {
-                m_tickableObjects.Remove(obj as ITickableObject);
+                //m_tickableObjects.Remove(obj as ITickableObject);
             }
         }
 
         public void ProcessTick(float deltaTime)
         {
-            foreach (var item in m_tickableObjects)
-            {
-                item.Tick(deltaTime);
-            }
+            foreach (var child in Children)
+                child.Tick(deltaTime);
         }
     }
 }

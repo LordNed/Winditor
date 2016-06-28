@@ -269,6 +269,11 @@ namespace WindEditor
             return closestResult;
         }
 
+        private void IterateMapActorRecursive(List<WMapActor> outList, WDOMNode curNode)
+        {
+
+        }
+
         private WUndoCommand CreateUndoActionForGizmo(bool isDone)
         {
             WUndoCommand undoAction = null;
