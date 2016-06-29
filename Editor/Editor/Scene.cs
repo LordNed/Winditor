@@ -38,7 +38,7 @@ namespace WindEditor
                     case "dzb":
                         {
                             string fileName = Path.Combine(folder, "room.dzb");
-                            LoadLevelCollisionFromFile(fileName);
+                            //LoadLevelCollisionFromFile(fileName);
                         }
                         break;
                     case "dzr":
@@ -117,14 +117,15 @@ namespace WindEditor
             }
 
             RegisterObject(collision);
+            Children.Add(collision);
         }
 
         private void LoadLevelEntitiesFromFile(string filePath)
         {
             ActorLoader actorLoader = new ActorLoader();
-            var loadedActors = actorLoader.LoadFromFile(filePath);
+            List<WActorNode> loadedActors = actorLoader.LoadFromFile(filePath);
             foreach (var actor in loadedActors)
-                RegisterObject(actor);
+                Children.Add(actor);
         }
 
         public void RegisterObject(object obj)

@@ -6,23 +6,6 @@ using System.IO;
 
 namespace WindEditor
 {
-    public enum MapLayer
-    {
-        Default,
-        Layer0,
-        Layer1,
-        Layer2,
-        Layer3,
-        Layer4,
-        Layer5,
-        Layer6,
-        Layer7,
-        Layer8,
-        Layer9,
-        LayerA,
-        LayerB,
-    }
-
     public enum PropertyValueType
     {
         Byte,
@@ -127,9 +110,9 @@ namespace WindEditor
             }
         }
 
-        public List<WMapActor> LoadFromFile(string fileName)
+        public List<WActorNode> LoadFromFile(string fileName)
         {
-            List<WMapActor> loadedActors = new List<WMapActor>();
+            var loadedActors = new List<WActorNode>();
 
             using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(fileName), Endian.Big))
             {
@@ -154,7 +137,7 @@ namespace WindEditor
 
                     for(int i = 0; i < chunk.ElementCount; i++)
                     {
-                        WMapActor newActor = LoadActorFromChunk(chunk.FourCC, reader, template);
+                        var newActor = LoadActorFromChunk(chunk.FourCC, reader, template);
                         newActor.Layer = chunk.Layer;
 
                         loadedActors.Add(newActor);
@@ -165,9 +148,9 @@ namespace WindEditor
             return loadedActors;
         }
 
-        private WMapActor LoadActorFromChunk(string fourCC, EndianBinaryReader reader, MapActorDescriptor template)
+        private WActorNode LoadActorFromChunk(string fourCC, EndianBinaryReader reader, MapActorDescriptor template)
         {
-            WMapActor newActor = new WMapActor();
+            var newActor = new WActorNode();
             foreach(var field in template.Fields)
             {
                 IPropertyValue propValue = null;

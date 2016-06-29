@@ -6,7 +6,7 @@ using System.IO;
 
 namespace WindEditor.Collision
 {
-    class WCollisionMesh : IRenderable
+    class WCollisionMesh : WDOMNode
     {
         private int m_vbo, m_ebo;
         private Shader m_primitiveShader;
@@ -60,16 +60,22 @@ namespace WindEditor.Collision
             m_triangleCount = triangleCount;
         }
 
-        public void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        public override void Render(WSceneView view)
         {
+            base.Render(view);
+
             GL.FrontFace(FrontFaceDirection.Ccw);
             GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.Blend);
             GL.DepthMask(true);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
+            GL.Enable(EnableCap.PolygonOffsetFill);
+            GL.PolygonOffset(-5f, 1f);
 
             Matrix4 modelMatrix = Matrix4.Identity;
+            Matrix4 viewMatrix = view.ViewMatrix;
+            Matrix4 projMatrix = view.ProjMatrix;
 
             m_primitiveShader.Bind();
             GL.UniformMatrix4(m_primitiveShader.UniformModelMtx, false, ref modelMatrix);
@@ -85,8 +91,13 @@ namespace WindEditor.Collision
 
             // Draw!
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(BeginMode.Lines, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
 
             // Disable all of our shit.
+            GL.PolygonOffset(0, 0);
+            GL.Disable(EnableCap.PolygonOffsetFill);
+
+
             GL.Disable(EnableCap.CullFace);
             GL.Disable(EnableCap.Blend);
             GL.DepthMask(false);

@@ -108,6 +108,7 @@
     <Compile Include="Editor\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
     <Compile Include="Editor\DebugDrawing.cs" />
+    <Compile Include="Editor\DOM\ActorNode.cs" />
     <Compile Include="Editor\DOM\DOMNode.cs" />
     <Compile Include="Editor\DOM\J3DNode.cs" />
     <Compile Include="Editor\Input.cs" />

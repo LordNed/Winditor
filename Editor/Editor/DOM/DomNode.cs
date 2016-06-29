@@ -6,10 +6,12 @@ namespace WindEditor
     public abstract class WDOMNode : IEnumerable<WDOMNode>
     {
         public List<WDOMNode> Children { get; private set; }
+        public WTransform Transform { get; private set; }
 
         public WDOMNode()
         {
             Children = new List<WDOMNode>();
+            Transform = new WTransform();
         }
 
         public virtual void Tick(float deltaTime)
