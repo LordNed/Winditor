@@ -838,10 +838,10 @@ namespace JStudio
                 b = (byte)((b << (8 - 4)) | b);
             }
 
-            dest[destOffset + 0] = a;
-            dest[destOffset + 1] = b;
-            dest[destOffset + 2] = g;
-            dest[destOffset + 3] = r;
+            dest[destOffset + 0] = b;
+            dest[destOffset + 1] = g;
+            dest[destOffset + 2] = r;
+            dest[destOffset + 3] = a;
         }
         #endregion
     }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "J3DRenderer", "J3DRenderer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchiveToolsLib", "WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj", "{B715685D-1603-4CE3-8EA1-552B01C2BA4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JStudio", "JStudio\JStudio.csproj", "{B90410AE-BB67-4D7A-B4F5-7209CB357A44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B715685D-1603-4CE3-8EA1-552B01C2BA4B}.Release|x86.Build.0 = Release|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Debug|x86.Build.0 = Debug|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Release|x86.ActiveCfg = Release|Any CPU
+		{B90410AE-BB67-4D7A-B4F5-7209CB357A44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
