@@ -73,9 +73,9 @@ namespace J3DRenderer
             var lightPos = new Vector4(250, 200, 250, 0);
             m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             var secondLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
-            //LoadChildLink(secondLight);
-            //m_childLink.SetTevkColorOverride(0, WLinearColor.FromHexString("0x3F2658FF")); // Light Color
-            //m_childLink.SetTevColorOverride(0, WLinearColor.FromHexString("0x455151FF")); // Ambient Color
+            LoadChildLink(secondLight);
+            m_childLink.SetTevkColorOverride(0, WLinearColor.FromHexString("0x3F2658FF")); // Light Color
+            m_childLink.SetTevColorOverride(0, WLinearColor.FromHexString("0x455151FF")); // Ambient Color
 
             if (m_room != null)
             {
@@ -83,7 +83,7 @@ namespace J3DRenderer
                 //m_room.SetTevColorOverride(0, WLinearColor.FromHexString("0x566F7CFF")); // Ambient Color
             }
 
-            m_skybox = new J3D[3];
+            m_skybox = new J3D[4];
             for (int i = 0; i < m_skybox.Length; i++)
             {
                 string[] fileNames = new[] { "vr_sky.bdl", "vr_kasumi_mae.bdl", "vr_uso_umi.bdl", "vr_back_cloud.bdl" };
@@ -118,7 +118,7 @@ namespace J3DRenderer
         private void LoadChildLink(GXLight secondLight)
         {
             m_childLink = new J3D();
-            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/zl.bdl"), Endian.Big));
             m_childLink.SetHardwareLight(0, m_mainLight);
             m_childLink.SetHardwareLight(1, secondLight);
             m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");

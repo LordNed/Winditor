@@ -672,12 +672,12 @@ namespace JStudio
                             decodedData[destIndex + 0] = (byte)(t * 0x11);
                             decodedData[destIndex + 1] = (byte)(t * 0x11);
                             decodedData[destIndex + 2] = (byte)(t * 0x11);
-                            decodedData[destIndex + 3] = 0xFF;
+                            decodedData[destIndex + 3] = (byte)(t * 0x11);
 
                             decodedData[destIndex + 4] = (byte)(t2 * 0x11);
                             decodedData[destIndex + 5] = (byte)(t2 * 0x11);
                             decodedData[destIndex + 6] = (byte)(t2 * 0x11);
-                            decodedData[destIndex + 7] = 0xFF;
+                            decodedData[destIndex + 7] = (byte)(t2 * 0x11);
                         }
                     }
                 }
@@ -712,7 +712,7 @@ namespace JStudio
                             decodedData[destIndex + 0] = data;
                             decodedData[destIndex + 1] = data;
                             decodedData[destIndex + 2] = data;
-                            decodedData[destIndex + 3] = 0xFF;
+                            decodedData[destIndex + 3] = data;
                         }
                     }
                 }
@@ -838,10 +838,10 @@ namespace JStudio
                 b = (byte)((b << (8 - 4)) | b);
             }
 
-            dest[destOffset + 0] = a;
-            dest[destOffset + 1] = b;
-            dest[destOffset + 2] = g;
-            dest[destOffset + 3] = r;
+            dest[destOffset + 0] = b;
+            dest[destOffset + 1] = g;
+            dest[destOffset + 2] = r;
+            dest[destOffset + 3] = a;
         }
         #endregion
     }
