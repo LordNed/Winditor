@@ -3,10 +3,11 @@ using System;
 
 namespace WindEditor
 {
-    class WCamera : WActor
+    class WCamera
     {
         public float MoveSpeed = 1500f;
         public float MouseSensitivity = 20f;
+        public WTransform Transform;
 
         /// <summary> The far clipping plane distance. </summary>
         public float FarClipPlane
@@ -70,8 +71,12 @@ namespace WindEditor
         private float m_aspectRatio = 16 / 9f;
         private Matrix4 m_projectionMatrix;
 
+        public WCamera()
+        {
+            Transform = new WTransform();
+        }
 
-        public override void Tick(float deltaTime)
+        public void Tick(float deltaTime)
         {
             if (!WInput.GetMouseButton(1))
                 return;

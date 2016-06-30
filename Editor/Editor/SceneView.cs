@@ -15,27 +15,46 @@ namespace WindEditor
         public Matrix4 ViewMatrix { get { return m_viewCamera.ViewMatrix; } }
         public Matrix4 ProjMatrix { get { return m_viewCamera.ProjectionMatrix; } }
 
-        private WWorld m_world;
-
         private int m_viewWidth;
         private int m_viewHeight;
         private WCamera m_viewCamera;
         private WRect m_viewportRect;
         private WViewportOrientationWidget m_orientationWidget;
-        private WLineBatcher m_lineBatcher;
 
-        public WSceneView(WWorld world, WLineBatcher lineBatcher)
+        private List<IRenderable> m_opaqueRenderList;
+        private List<IRenderable> m_transparentRenderList;
+
+
+        public WSceneView()
         {
-            m_world = world;
-            m_lineBatcher = lineBatcher;
-            m_viewportRect = new WRect(0, 0, 1f, 1f);
+            m_opaqueRenderList = new List<IRenderable>();
+            m_transparentRenderList = new List<IRenderable>();
 
+            m_viewportRect = new WRect(0, 0, 1f, 1f);
             m_viewCamera = new WCamera();
             m_orientationWidget = new WViewportOrientationWidget();
         }
 
-        public void Render()
+        public void StartFrame()
         {
+            m_opaqueRenderList.Clear();
+            m_transparentRenderList.Clear();
+        }
+
+        public void AddOpaqueMesh(IRenderable mesh)
+        {
+            m_opaqueRenderList.Add(mesh);
+        }
+
+        public void AddTransparentMesh(IRenderable mesh)
+        {
+            m_transparentRenderList.Add(mesh);
+        }
+
+        public void DrawFrame()
+        {
+            ResetGraphicsState();
+
             int x = (int)(m_viewportRect.X * m_viewWidth);
             int y = (int)(m_viewportRect.Y * m_viewHeight);
             int width = (int)(m_viewportRect.Width * m_viewWidth);
@@ -43,36 +62,39 @@ namespace WindEditor
             GL.Viewport(x, y, width, height);
             GL.Scissor(x, y, width, height);
 
-            GL.CullFace(CullFaceMode.Back);
-            GL.FrontFace(FrontFaceDirection.Ccw); // Windwaker is backwards!
-            GL.Enable(EnableCap.CullFace);
-            GL.Enable(EnableCap.ScissorTest);
-            GL.DepthMask(true);
-
             GL.ClearColor(m_viewportRect.X, m_viewportRect.Y, m_viewportRect.Width, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.StencilBufferBit | ClearBufferMask.DepthBufferBit);
 
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
 
-            foreach(var scene in m_world.SceneList)
-            {
-                scene.Render(this);
-            }
+            // Render all Opaque Geometry first.
+            foreach (var mesh in m_opaqueRenderList)
+                mesh.Draw(this);
 
-            m_lineBatcher.Render(this);
+            // Render all Transparent Geometry afterwards. ToDo: depth-sort this first.
+            foreach (var mesh in m_transparentRenderList)
+                mesh.Draw(this);
 
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);
-
-            GL.Disable(EnableCap.CullFace);
-            GL.Disable(EnableCap.ScissorTest);
-            GL.DepthMask(false);
+            ResetGraphicsState();
         }
 
         public void UpdateSceneCamera(float deltaTime)
         {
             m_viewCamera.Tick(deltaTime);
+        }
 
+        private void ResetGraphicsState()
+        {
+            GL.Viewport(0, 0, m_viewWidth, m_viewHeight);
+            GL.Scissor(0, 0, m_viewWidth, m_viewHeight);
+
+            GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.CullFace);
+            GL.Enable(EnableCap.ScissorTest);
+
+            GL.CullFace(CullFaceMode.Back);
         }
 
         private void DrawOrientationWidget(int viewportXOffset, int viewportYOffset, Matrix4 viewMatrix, Matrix4 projMatrix)
@@ -140,7 +162,7 @@ namespace WindEditor
             return viewportSpace;
         }
 
-        internal Vector3 GetCameraPos()
+        public Vector3 GetCameraPos()
         {
             return m_viewCamera.Transform.Position;
         }

@@ -1,19 +1,15 @@
 ﻿using JStudio.J3D;
 using System.IO;
+using System;
 
 namespace WindEditor
 {
-    public class WSkyboxNode : WDOMNode
+    public class WSkyboxNode : WDOMNode, IRenderable
     {
         private J3DNode m_vrSky; // Sky
         private J3DNode m_vrKasumiMae; // "Haze Before" - Horizon Gradient
         private J3DNode m_vrUsoUmi; // "False Sea" - This is the model seen underneath the edge of the sea generated around the player.
         private J3DNode m_vrBackCloud; // Cloud Layer
-
-        public WSkyboxNode()
-        {
-            System.Console.WriteLine("SkyboxNode");
-        }
 
         public override void Tick(float deltaTime)
         {
@@ -41,21 +37,6 @@ namespace WindEditor
                 m_vrBackCloud.Model.SetTevColorOverride(0, WLinearColor.FromHexString("0x8278966E"));
         }
 
-        public override void Render(WSceneView view)
-        {
-            // These need to be rendered in a fixed order to show up correctly.
-            if(m_vrSky != null)
-                m_vrSky.Render(view);
-            if(m_vrKasumiMae != null)
-                m_vrKasumiMae.Render(view);
-            if(m_vrUsoUmi != null)
-                m_vrUsoUmi.Render(view);
-            if(m_vrBackCloud != null)
-                m_vrBackCloud.Render(view);
-
-            base.Render(view);
-        }
-
         public void LoadSkyboxModelsFromFixedModelList(string rootFolder)
         {
             string[] fileNames = new[] { "vr_sky", "vr_kasumi_mae", "vr_uso_umi", "vr_back_cloud" };
@@ -81,6 +62,29 @@ namespace WindEditor
                     }
                 }
             }
+        }
+
+        #region IRenderable
+        void IRenderable.AddToRenderer(WSceneView view)
+        {
+            view.AddOpaqueMesh(this);
+        }
+
+        void IRenderable.Draw(WSceneView view)
+        {
+            DrawIfNotNull(m_vrSky, view);
+            DrawIfNotNull(m_vrKasumiMae, view);
+            DrawIfNotNull(m_vrUsoUmi, view);
+            DrawIfNotNull(m_vrBackCloud, view);
+        }
+        #endregion
+
+        private void DrawIfNotNull(IRenderable skyPart, WSceneView view)
+        {
+            if (skyPart == null)
+                return;
+
+            skyPart.Draw(view);
         }
     }
 }

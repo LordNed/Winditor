@@ -28,12 +28,13 @@ namespace WindEditor
         LayerB,
     }
 
-    public class WActorNode : WDOMNode
+    public class WActorNode : WDOMNode, IRenderable
     {
-        public List<IPropertyValue> Properties { get; }
-        public MapLayer Layer { get; set; }
-        public ActorFlags Flags { get; set; }
         public string FourCC { get; internal set; }
+        public MapLayer Layer { get; set; }
+
+        public List<IPropertyValue> Properties { get; }
+        public ActorFlags Flags { get; set; }
 
         private SimpleObjRenderer m_objRender;
 
@@ -47,15 +48,6 @@ namespace WindEditor
             m_objRender = new SimpleObjRenderer(obj);
         }
 
-        public override void Render(WSceneView view)
-        {
-            base.Render(view);
-
-            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
-
-            m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
-        }
-
         public override AABox GetBoundingBox()
         {
             AABox modelABB = m_objRender.GetAABB();
@@ -63,5 +55,18 @@ namespace WindEditor
 
             return new AABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
         }
+
+        #region IRenderable
+        void IRenderable.AddToRenderer(WSceneView view)
+        {
+            view.AddOpaqueMesh(this);
+        }
+
+        void IRenderable.Draw(WSceneView view)
+        {
+            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+            m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
+        }
+        #endregion
     }
 }

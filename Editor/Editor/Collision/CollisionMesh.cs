@@ -6,7 +6,7 @@ using System.IO;
 
 namespace WindEditor.Collision
 {
-    class WCollisionMesh : WDOMNode
+    class WCollisionMesh : WDOMNode, IRenderable
     {
         private int m_vbo, m_ebo;
         private Shader m_primitiveShader;
@@ -60,10 +60,21 @@ namespace WindEditor.Collision
             m_triangleCount = triangleCount;
         }
 
-        public override void Render(WSceneView view)
+        public void ReleaseResources()
         {
-            base.Render(view);
+            m_primitiveShader.ReleaseResources();
+            GL.DeleteBuffer(m_ebo);
+            GL.DeleteBuffer(m_vbo);
+        }
 
+        #region IRenderable
+        void IRenderable.AddToRenderer(WSceneView view)
+        {
+            view.AddTransparentMesh(this);
+        }
+
+        void IRenderable.Draw(WSceneView view)
+        {
             GL.FrontFace(FrontFaceDirection.Ccw);
             GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.Blend);
@@ -103,12 +114,6 @@ namespace WindEditor.Collision
             GL.DepthMask(false);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
         }
-
-        public void ReleaseResources()
-        {
-            m_primitiveShader.ReleaseResources();
-            GL.DeleteBuffer(m_ebo);
-            GL.DeleteBuffer(m_vbo);
-        }
+        #endregion
     }
 }

@@ -29,37 +29,35 @@ namespace WindEditor
         private WTransformGizmo m_transformGizmo;
         private BindingList<WActorNode> m_selectionList;
 
-        [Obsolete("Bring back the transform gizmo :-(")]
         public WActorEditor(WWorld world)
         {
             m_world = world;
             m_selectionList = new BindingList<WActorNode>();
             m_transformGizmo = new WTransformGizmo(m_world);
-            //m_world.RegisterInternalObject(m_transformGizmo);
-
             SelectedObjects = new SelectionAggregate(m_selectionList);
         }
 
-        public void Tick(float deltaTime)
+        public void UpdateForSceneView(WSceneView view)
         {
-            m_transformGizmo.Tick(deltaTime);
-
             // Update our Selection Gizmo first, so we can check if it is currently transforming when we check to see
             // if the user's selection has changed.
-            UpdateSelectionGizmo();
+            UpdateSelectionGizmo(view);
 
             // Check to see if they've left clicked and are changing their selection.
-            CheckForObjectSelectionChange();
+            CheckForObjectSelectionChange(view);
+
+            // Add our gizmo to the renderer this frame.
+            m_transformGizmo.AddToRenderer(view);
         }
 
-        private void CheckForObjectSelectionChange()
+        private void CheckForObjectSelectionChange(WSceneView view)
         {
             // If we have a gizmo and we're transforming it, don't check for selection change.
             if (m_transformGizmo != null && m_transformGizmo.IsTransforming)
                 return;
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
-                WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
+                WRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 WActorNode addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
@@ -68,8 +66,6 @@ namespace WindEditor
                 // Click /w Shift = Add to Selection
                 bool ctrlPressed = WInput.GetKey(System.Windows.Input.Key.LeftCtrl) || WInput.GetKey(System.Windows.Input.Key.RightCtrl);
                 bool shiftPressed = WInput.GetKey(System.Windows.Input.Key.LeftShift) || WInput.GetKey(System.Windows.Input.Key.RightShift);
-
-                Console.WriteLine("ctrl {0} shift {1}", ctrlPressed, shiftPressed);
 
                 if (!ctrlPressed & !shiftPressed)
                 {
@@ -101,7 +97,7 @@ namespace WindEditor
             }
         }
 
-        private void UpdateSelectionGizmo()
+        private void UpdateSelectionGizmo(WSceneView view)
         {
             if (!m_transformGizmo.Enabled && m_selectionList.Count > 0)
             {
@@ -120,34 +116,34 @@ namespace WindEditor
             if (!m_transformGizmo.Enabled)
                 return;
 
-            if (WInput.GetKeyDown(System.Windows.Input.Key.Q) && !WInput.GetMouseButton(1))
+            if (WInput.GetKeyDown(Key.Q) && !WInput.GetMouseButton(1))
             {
                 m_transformGizmo.SetMode(FTransformMode.None);
             }
-            if (WInput.GetKeyDown(System.Windows.Input.Key.W) && !WInput.GetMouseButton(1))
+            if (WInput.GetKeyDown(Key.W) && !WInput.GetMouseButton(1))
             {
                 m_transformGizmo.SetMode(FTransformMode.Translation);
             }
-            if (WInput.GetKeyDown(System.Windows.Input.Key.E) && !WInput.GetMouseButton(1))
+            if (WInput.GetKeyDown(Key.E) && !WInput.GetMouseButton(1))
             {
                 m_transformGizmo.SetMode(FTransformMode.Rotation);
             }
-            if (WInput.GetKeyDown(System.Windows.Input.Key.R) && !WInput.GetMouseButton(1))
+            if (WInput.GetKeyDown(Key.R) && !WInput.GetMouseButton(1))
             {
                 m_transformGizmo.SetMode(FTransformMode.Scale);
             }
 
-            if (WInput.GetKeyDown(System.Windows.Input.Key.OemOpenBrackets))
+            if (WInput.GetKeyDown(Key.OemOpenBrackets))
             {
                 m_transformGizmo.DecrementSize();
             }
 
-            if (WInput.GetKeyDown(System.Windows.Input.Key.OemCloseBrackets))
+            if (WInput.GetKeyDown(Key.OemCloseBrackets))
             {
                 m_transformGizmo.IncrementSize();
             }
 
-            if(WInput.GetKeyDown(System.Windows.Input.Key.OemTilde))
+            if(WInput.GetKeyDown(Key.OemTilde))
             {
                 if (m_transformGizmo.TransformSpace == FTransformSpace.World)
                     m_transformGizmo.SetTransformSpace(FTransformSpace.Local);
@@ -160,7 +156,7 @@ namespace WindEditor
 
             if (WInput.GetMouseButtonDown(0))
             {
-                WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
+                WRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.CheckSelectedAxes(mouseRay))
                 {                            
                     Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_transformGizmo.SelectedAxes);
@@ -184,15 +180,16 @@ namespace WindEditor
 
             if (m_transformGizmo.IsTransforming)
             {
-                WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
-                Vector3 cameraPos = m_world.GetFocusedSceneView().GetCameraPos();
-                if (m_transformGizmo.TransformFromInput(mouseRay, cameraPos))
+                WRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                if (m_transformGizmo.TransformFromInput(mouseRay, view))
                 {
                     WUndoCommand undoAction = CreateUndoActionForGizmo(false);
                     if(undoAction != null)
                         m_world.UndoStack.Push(undoAction);
                 }
             }
+
+            m_transformGizmo.UpdateForSceneView(view);
         }
 
         private void ModifySelection(SelectionType action, WActorNode actor, bool clearSelection)

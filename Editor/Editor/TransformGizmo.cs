@@ -22,17 +22,17 @@ namespace WindEditor
 
     public enum FSelectedAxes
     {
-        None,   //    = 0x0,
-        X,      //       = 0x1,
-        Y,      //       = 0x2,
-        Z,      //       = 0x4,
-        XY,     //      = X | Y,
-        XZ,     //      = X | Z,
-        YZ,     //      = Y | Z,
-        All,    //     = X | Y | Z
+        None,
+        X,   
+        Y,  
+        Z,
+        XY,
+        XZ, 
+        YZ, 
+        All,
     }
 
-    class WTransformGizmo : PrimitiveComponent
+    class WTransformGizmo : IRenderable
     {
         public FSelectedAxes SelectedAxes { get { return m_selectedAxes; } }
         public FTransformMode Mode { get { return m_mode; } }
@@ -262,8 +262,7 @@ namespace WindEditor
                 m_rotation = m_localRotation;
         }
 
-        [Obsolete("This should just be updated per scene-view that is going to be rendered.")]
-        public override void Tick(float deltaTime)
+        public void UpdateForSceneView(WSceneView view)
         {
             if (!Enabled)
                 return;
@@ -271,7 +270,7 @@ namespace WindEditor
             // Update camera distance to our camera.
             if ((!m_isTransforming) || (m_mode != FTransformMode.Translation))
             {
-                m_cameraDistance = (m_world.GetFocusedSceneView().GetCameraPos() - m_position).Length; // ToDo: This is still bad.
+                m_cameraDistance = (view.GetCameraPos() - m_position).Length;
             }
 
             WLinearColor[] gizmoColors = new[]
@@ -290,7 +289,7 @@ namespace WindEditor
             var gizmoBoxes = GetAABBBoundsForMode(m_mode);
             for (int i = 0; i < gizmoBoxes.Length; i++)
             {
-                m_world.DebugDrawBox(gizmoBoxes[i].Min + m_position, gizmoBoxes[i].Max + m_position, gizmoColors[i], 25, 0f);
+                //m_world.DebugDrawBox(gizmoBoxes[i].Min + m_position, gizmoBoxes[i].Max + m_position, gizmoColors[i], 25, 0f);
             }
 
             // Update Highlight Status of Models.
@@ -403,7 +402,7 @@ namespace WindEditor
             return true;
         }
 
-        public  bool TransformFromInput(WRay ray, Vector3 cameraPos)
+        public  bool TransformFromInput(WRay ray, WSceneView view)
         {
             if (m_mode != FTransformMode.Translation)
                 WrapCursor();
@@ -424,7 +423,7 @@ namespace WindEditor
                     else if (m_selectedAxes == FSelectedAxes.Y)      axisB = Vector3.UnitY;
                     else                                            axisB = Vector3.UnitZ;
 
-                    Vector3 dirToCamera = (m_position - cameraPos).Normalized();
+                    Vector3 dirToCamera = (m_position - view.GetCameraPos()).Normalized();
                     axisA = Vector3.Cross(axisB, dirToCamera);
                 }
                 else
@@ -453,7 +452,7 @@ namespace WindEditor
 
 
                     // Check the new location to see if it's skyrocked off into the distance due to near-plane raytracing issues.
-                    Vector3 newPosDirToCamera = (newPos - cameraPos).Normalized();
+                    Vector3 newPosDirToCamera = (newPos - view.GetCameraPos()).Normalized();
                     float dot = Math.Abs(Vector3.Dot(planeNormal, newPosDirToCamera));
 
                     //Console.WriteLine("hitPos: {0} localOffset: {1} newPos: {2}, dotResult: {3}", hitPos, localOffset, newPos, dot);
@@ -500,15 +499,14 @@ namespace WindEditor
                 else rotationAxis = Vector3.UnitZ;
 
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
-                Vector2 lineOrigin = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_hitPoint) * 2) - Vector2.One;
-                Vector2 lineEnd = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_hitPoint + m_moveDir) * 2) - Vector2.One;
+                Vector2 lineOrigin = (view.UnprojectWorldToViewport(m_hitPoint) * 2) - Vector2.One;
+                Vector2 lineEnd = (view.UnprojectWorldToViewport(m_hitPoint + m_moveDir) * 2) - Vector2.One;
 
                 lineOrigin.Y = -lineOrigin.Y;
                 lineEnd.Y = -lineEnd.Y;
 
                 Vector2 lineDir = (lineEnd - lineOrigin).Normalized();
                 float rotAmount = Vector2.Dot(lineDir, mouseCoords + m_wrapOffset - lineOrigin) * 180f;
-                //Console.WriteLine("lineDir: {0} rotAmount: {1} mc-lo: {2}", lineDir, rotAmount, (mouseCoords-lineOrigin));
 
                 if (float.IsNaN(rotAmount))
                 {
@@ -547,7 +545,7 @@ namespace WindEditor
             {
                 // Create a line in screen space.
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
-                Vector2 lineOrigin = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position) * 2) - Vector2.One;
+                Vector2 lineOrigin = (view.UnprojectWorldToViewport(m_position) * 2) - Vector2.One;
                 lineOrigin.Y = -lineOrigin.Y;
 
                 // Determine the appropriate world space directoin using the selected axes and then conver this for use with
@@ -566,7 +564,7 @@ namespace WindEditor
                     if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) worldDir = dirY;
                     else worldDir = dirZ;
 
-                    Vector2 worldPoint = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position + worldDir) * 2) - Vector2.One;
+                    Vector2 worldPoint = (view.UnprojectWorldToViewport(m_position + worldDir) * 2) - Vector2.One;
                     worldPoint.Y = -lineOrigin.Y;
 
                     lineDir = (worldPoint - lineOrigin).Normalized();
@@ -577,9 +575,9 @@ namespace WindEditor
                     Vector3 axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? dirX : dirY;
                     Vector3 axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Z) ? dirZ : dirY;
 
-                    Vector2 screenA = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position + axisA) * 2) - Vector2.One;
+                    Vector2 screenA = (view.UnprojectWorldToViewport(m_position + axisA) * 2) - Vector2.One;
                     screenA.Y = -screenA.Y;
-                    Vector2 screenB = (m_world.GetFocusedSceneView().UnprojectWorldToViewport(m_position + axisB) * 2) - Vector2.One;
+                    Vector2 screenB = (view.UnprojectWorldToViewport(m_position + axisB) * 2) - Vector2.One;
                     screenB.Y = -screenB.Y;
 
                     screenA = (screenA - lineOrigin).Normalized();
@@ -755,16 +753,12 @@ namespace WindEditor
         }
 
         #region Rendering
-        public override void ReleaseResources()
+        public void AddToRenderer(WSceneView view)
         {
-            for (int i = 0; i < m_gizmoMeshes.Length; i++)
-            {
-                for (int j = 0; j < m_gizmoMeshes[i].Length; j++)
-                    m_gizmoMeshes[i][j].ReleaseResources();
-            }
+            view.AddOpaqueMesh(this);
         }
 
-        public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        public void Draw(WSceneView view)
         {
             if (!Enabled)
                 return;
@@ -774,12 +768,12 @@ namespace WindEditor
             // Construct a model matrix for the gizmo mesh to render at.
             Matrix4 modelMatrix = Matrix4.CreateScale(m_scale) * Matrix4.CreateFromQuaternion(m_rotation) * Matrix4.CreateTranslation(m_position);
 
-            int gizmoIndex = (int)m_mode-1;
-            if(gizmoIndex >= 0)
+            int gizmoIndex = (int)m_mode - 1;
+            if (gizmoIndex >= 0)
             {
                 for (int j = 0; j < m_gizmoMeshes[gizmoIndex].Length; j++)
                 {
-                    m_gizmoMeshes[gizmoIndex][j].Render(viewMatrix, projMatrix, modelMatrix);
+                    m_gizmoMeshes[gizmoIndex][j].Render(view.ViewMatrix, view.ProjMatrix, modelMatrix);
                 }
             }
         }

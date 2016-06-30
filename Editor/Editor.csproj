@@ -103,7 +103,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Editor\Actor.cs" />
     <Compile Include="Editor\ActorEditor.cs" />
     <Compile Include="Editor\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
@@ -116,9 +115,7 @@
     <Compile Include="Editor\PropertyValues\LinearColorPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
     <Compile Include="Editor\IRenderable.cs" />
-    <Compile Include="Editor\ITickableObject.cs" />
     <Compile Include="Editor\Loaders\ActorLoader.cs" />
-    <Compile Include="Editor\Loaders\MapActor.cs" />
     <Compile Include="Editor\Obj.cs" />
     <Compile Include="Editor\PropertyValues\PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BaseValueAggregate.cs" />
@@ -142,7 +139,6 @@
     <Compile Include="Editor\Serialization\Vector2Converter.cs" />
     <Compile Include="Editor\Shader.cs" />
     <Compile Include="Editor\SimpleObjRenderer.cs" />
-    <Compile Include="Editor\StaticMeshActor.cs" />
     <Compile Include="Editor\TransformGizmo.cs" />
     <Compile Include="Editor\UndoRedo\EditPropertyValueAction.cs" />
     <Compile Include="Editor\UndoRedo\IUndoable.cs" />
@@ -155,7 +151,6 @@
     <Compile Include="Editor\ViewportOrientationWidget.cs" />
     <Compile Include="Editor\WindEditor.cs" />
     <Compile Include="Editor\LineBatcher.cs" />
-    <Compile Include="Editor\PrimitiveComponent.cs" />
     <Compile Include="Editor\World.cs" />
     <Compile Include="ViewModel\GridWidthCalculatorMultiConverter.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

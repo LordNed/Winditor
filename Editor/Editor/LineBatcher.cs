@@ -25,7 +25,7 @@ namespace WindEditor
         }
     }
 
-    public class WLineBatcher : WDOMNode
+    public class WLineBatcher : IRenderable
     {
         private List<WBatchedLine> m_batchedLines;
 
@@ -170,10 +170,8 @@ namespace WindEditor
             m_renderStateDirty = true;
         }
 
-        public override void Tick(float deltaTime)
+        public void Tick(float deltaTime)
         {
-            base.Tick(deltaTime);
-
             bool dirty = false;
             for (int lineIndex = 0; lineIndex < m_batchedLines.Count; lineIndex++)
             {
@@ -210,11 +208,9 @@ namespace WindEditor
             GL.DeleteBuffer(m_vbo);
             GL.DeleteBuffer(m_vertColors);
         }
-
-        public override void Render(WSceneView view)
+        
+        public void Draw(WSceneView view)
         {
-            base.Render(view);
-
             if (m_renderStateDirty)
             {
                 // We've changed what we want to draw since we last rendered, so we'll re-calculate the mesh and upload.
@@ -275,6 +271,11 @@ namespace WindEditor
 
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
+        }
+
+        public void AddToRenderer(WSceneView view)
+        {
+            view.AddOpaqueMesh(this);
         }
     }
 }

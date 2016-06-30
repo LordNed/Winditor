@@ -43,7 +43,7 @@ namespace WindEditor
             m_actorEditor = new WActorEditor(this);
             m_sceneList = new BindingList<WScene>();
 
-            WSceneView perspectiveView = new WSceneView(this, m_persistentLines);
+            WSceneView perspectiveView = new WSceneView();
             m_sceneViews.AddRange(new[] { perspectiveView });
         }
 
@@ -64,6 +64,10 @@ namespace WindEditor
                 {
                     scene = new WScene(this);
                     scene.LoadStage(sceneFolder);
+                }
+                else
+                {
+                    Console.WriteLine("Unknown Map Folder: {0}", sceneFolder);
                 }
 
                 m_sceneList.Add(scene);
@@ -86,7 +90,6 @@ namespace WindEditor
             UpdateSceneViews();
 
             m_persistentLines.Tick(deltaTime);
-            m_actorEditor.Tick(deltaTime);
 
             foreach(WScene scene in m_sceneList)
             {
@@ -96,7 +99,21 @@ namespace WindEditor
             foreach (WSceneView view in m_sceneViews)
             {
                 view.UpdateSceneCamera(deltaTime);
-                view.Render();
+                view.StartFrame();
+
+                // Iterate through all of the things that need to be added to the viewport
+                // and call AddToRenderer on them.
+                foreach(WScene scene in m_sceneList)
+                {
+                    foreach (var renderable in scene.GetChildrenOfType<IRenderable>())
+                        renderable.AddToRenderer(view);
+                }
+
+                // Add our Actor Editor and Persistent Lines.
+                m_actorEditor.UpdateForSceneView(view);
+                m_persistentLines.AddToRenderer(view);
+
+                view.DrawFrame();
             }
         }
 
@@ -128,7 +145,6 @@ namespace WindEditor
             }
         }
 
-        [Obsolete("This isn't really a good solution either...")]
         public WSceneView GetFocusedSceneView()
         {
             foreach (var scene in m_sceneViews)

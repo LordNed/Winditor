@@ -23,17 +23,18 @@ namespace WindEditor
                 child.Tick(deltaTime);
         }
 
-        public virtual void Render(WSceneView view)
-        {
-            foreach (var child in m_children)
-                child.Render(view);
-        }
+        //public virtual void Render(WSceneView view)
+        //{
+        //    foreach (var child in m_children)
+        //        child.Render(view);
+        //}
 
-        public virtual List<T> GetChildrenOfType<T>() where T : WDOMNode
+        public virtual List<T> GetChildrenOfType<T>() where T : class
         {
             List<T> result = new List<T>();
-            if (this.GetType() == typeof(T))
-                result.Add((T)this);
+            T testCast = this as T;
+            if(testCast != null)
+                result.Add(testCast);
 
             foreach (var child in m_children)
                 result.AddRange(child.GetChildrenOfType<T>());
