@@ -5,6 +5,8 @@ namespace WindEditor
 {
     public class J3DNode : WDOMNode
     {
+        public J3D Model { get { return m_model; } }
+
         private J3D m_model;
 
         public J3DNode(J3D model)

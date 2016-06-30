@@ -53,13 +53,12 @@ namespace WindEditor
                     case "bmd":
                     case "bdl":
                         {
+                            // Load models for the skybox in this scene if they exist.
+                            WSkyboxNode skybox = new WSkyboxNode(folder);
+                            Children.Add(skybox);
+
                             // Load the room model for this room.
                             LoadRoomModel(folder);
-
-                            // Load models for the skybox in this scene if they exist.
-                            LoadSkyboxModels(folder);
-
-                            // Load our fixed list of doors, etc.
                         }
                         break;
                 }
@@ -74,13 +73,6 @@ namespace WindEditor
             LoadFixedModelList(rootFolder, modelNames);
         }
 
-        private void LoadSkyboxModels(string rootFolder)
-        {
-            // There's a fixed list of skybox models and order.
-            string[] fileNames = new[] { "vr_sky", "vr_kasumi_mae", "vr_uso_umi", "vr_back_cloud" };
-            LoadFixedModelList(rootFolder, fileNames);
-        }
-
         private void LoadFixedModelList(string rootFolder, string[] modelNames)
         {
             string[] extNames = new[] { ".bmd", ".bdl" };
@@ -93,6 +85,9 @@ namespace WindEditor
                     {
                         J3D roomModel = WResourceManager.LoadResource(fullPath);
                         J3DNode modelInstance = new J3DNode(roomModel);
+
+                        roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0x1E3C5AFF"));
+
                         Children.Add(modelInstance);
                     }
                 }

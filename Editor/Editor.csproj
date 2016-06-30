@@ -111,6 +111,7 @@
     <Compile Include="Editor\DOM\ActorNode.cs" />
     <Compile Include="Editor\DOM\DOMNode.cs" />
     <Compile Include="Editor\DOM\J3DNode.cs" />
+    <Compile Include="Editor\DOM\SkyboxNode.cs" />
     <Compile Include="Editor\Input.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
     <Compile Include="Editor\IRenderable.cs" />
