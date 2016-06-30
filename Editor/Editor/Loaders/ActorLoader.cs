@@ -18,6 +18,7 @@ namespace WindEditor
         Vector2,
         Vector3,
         YRotation,
+        XRotation,
     }
 
     class ActorLoader
@@ -184,6 +185,9 @@ namespace WindEditor
                     case PropertyValueType.Vector3:
                         propValue = new TVector3PropertyValue(new OpenTK.Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), field.FieldName);
                         break;
+                    case PropertyValueType.XRotation:
+                        propValue = new TFloatPropertyValue(reader.ReadInt16(), field.FieldName);
+                        break;
                     case PropertyValueType.YRotation:
                         propValue = new TFloatPropertyValue(reader.ReadInt16(), field.FieldName);
                         break;
@@ -196,11 +200,17 @@ namespace WindEditor
                 {
                     newActor.Transform.Position = (OpenTK.Vector3)propValue.GetValue();
                 }
+                else if(string.Compare(field.FieldName, "X Rotation", true) == 0)
+                {
+                    float xRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
+                    OpenTK.Quaternion xAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(1, 0, 0), WMath.DegreesToRadians(xRotation));
+                    newActor.Transform.Rotation *= xAxis;
+                }
                 else if(string.Compare(field.FieldName, "Y Rotation", true) == 0)
                 {
                     float yRotation = (float)propValue.GetValue() * (180 / 32786f);
                     OpenTK.Quaternion yAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 1, 0), WMath.DegreesToRadians(yRotation));
-                    newActor.Transform.Rotation = yAxis;
+                    newActor.Transform.Rotation *= yAxis;
                 }
                 else
                 {

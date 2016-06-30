@@ -1,0 +1,13 @@
+﻿{
+	"FourCC" : "ACTR",
+	"Fields" :
+	[
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Default" : ""},
+		{"Name" : "Parameters", "Type" : "Int", "Default" : 0},
+		{"Name" : "Position", "Type" : "Vector3", "Default" : {"X" : 0, "Y" : 0, "Z": 0}},
+		{"Name" : "Rotation", "Type" : "XRotation"},
+		{"Name" : "Rotation", "Type" : "YRotation"},
+		{"Name" : "Flag To Set", "Type" : "Short", "Default" : 0},
+		{"Name" : "Enemy Number", "Type" : "Short", "Default" : 0}
+	]
+}

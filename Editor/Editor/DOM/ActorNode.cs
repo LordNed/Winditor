@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
 
 namespace WindEditor
@@ -33,9 +34,24 @@ namespace WindEditor
         public MapLayer Layer { get; set; }
         public ActorFlags Flags { get; set; }
 
+        private SimpleObjRenderer m_objRender;
+
         public WActorNode()
         {
             Properties = new List<IPropertyValue>();
+
+            var obj = new Obj();
+            obj.Load("resources/editor/EditorCube.obj");
+            m_objRender = new SimpleObjRenderer(obj);
+        }
+
+        public override void Render(WSceneView view)
+        {
+            base.Render(view);
+
+            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+
+            m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
     }
 }
