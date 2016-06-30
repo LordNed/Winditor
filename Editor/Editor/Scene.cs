@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using WindEditor.Collision;
-using System;
 using JStudio.J3D;
 
 namespace WindEditor
@@ -97,7 +96,7 @@ namespace WindEditor
                         J3D roomModel = WResourceManager.LoadResource(fullPath);
                         J3DNode modelInstance = new J3DNode(roomModel);
 
-                        roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0x1E3C5AFF"));
+                        roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF"));
 
                         Children.Add(modelInstance);
                     }

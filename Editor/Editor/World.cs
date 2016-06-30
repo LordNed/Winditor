@@ -43,7 +43,7 @@ namespace WindEditor
             m_actorEditor = new WActorEditor(this);
             m_sceneList = new BindingList<WScene>();
 
-            WSceneView perspectiveView = new WSceneView(this);
+            WSceneView perspectiveView = new WSceneView(this, m_persistentLines);
             m_sceneViews.AddRange(new[] { perspectiveView });
         }
 
@@ -78,7 +78,6 @@ namespace WindEditor
             throw new NotImplementedException();
         }
 
-        [Obsolete("Please bring back persistent lines :-(")]
         public void ProcessTick()
         {
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
@@ -94,10 +93,9 @@ namespace WindEditor
                 scene.ProcessTick(deltaTime);
             }
 
-            // Todo: Figure out how to make this work.
-            //m_persistentLines.Render();
             foreach (WSceneView view in m_sceneViews)
             {
+                view.UpdateSceneCamera(deltaTime);
                 view.Render();
             }
         }

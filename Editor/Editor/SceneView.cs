@@ -22,21 +22,20 @@ namespace WindEditor
         private WCamera m_viewCamera;
         private WRect m_viewportRect;
         private WViewportOrientationWidget m_orientationWidget;
+        private WLineBatcher m_lineBatcher;
 
-        public WSceneView(WWorld world)
+        public WSceneView(WWorld world, WLineBatcher lineBatcher)
         {
             m_world = world;
+            m_lineBatcher = lineBatcher;
             m_viewportRect = new WRect(0, 0, 1f, 1f);
 
             m_viewCamera = new WCamera();
             m_orientationWidget = new WViewportOrientationWidget();
         }
 
-        [Obsolete("Hack hack, get a real tick function in here.")]
         public void Render()
         {
-            m_viewCamera.Tick(1 / 60f);
-
             int x = (int)(m_viewportRect.X * m_viewWidth);
             int y = (int)(m_viewportRect.Y * m_viewHeight);
             int width = (int)(m_viewportRect.Width * m_viewWidth);
@@ -61,11 +60,19 @@ namespace WindEditor
                 scene.Render(this);
             }
 
+            m_lineBatcher.Render(this);
+
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);
 
             GL.Disable(EnableCap.CullFace);
             GL.Disable(EnableCap.ScissorTest);
             GL.DepthMask(false);
+        }
+
+        public void UpdateSceneCamera(float deltaTime)
+        {
+            m_viewCamera.Tick(deltaTime);
+
         }
 
         private void DrawOrientationWidget(int viewportXOffset, int viewportYOffset, Matrix4 viewMatrix, Matrix4 projMatrix)

@@ -26,7 +26,6 @@ namespace J3DRenderer
         private int m_viewportHeight;
         private int m_viewportWidth;
         private J3D m_childLink;
-        private J3D m_room;
         private float m_timeSinceStartup;
 
         private J3D[] m_skybox;
@@ -58,8 +57,6 @@ namespace J3DRenderer
             m_alphaVisualizationShader.LinkShader();
 
             m_screenQuad = new ScreenspaceQuad();
-            //m_room = new J3D();
-            //m_room.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/mDragB.bdl"), Endian.Big));
 
             // Set up the Editor Tick Loop
             System.Windows.Forms.Timer editorTickTimer = new System.Windows.Forms.Timer();
@@ -76,12 +73,6 @@ namespace J3DRenderer
             LoadChildLink(secondLight);
             m_childLink.SetTevkColorOverride(0, WLinearColor.FromHexString("0x3F2658FF")); // Light Color
             m_childLink.SetTevColorOverride(0, WLinearColor.FromHexString("0x455151FF")); // Ambient Color
-
-            if (m_room != null)
-            {
-                m_room.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF")); // Light Color
-                //m_room.SetTevColorOverride(0, WLinearColor.FromHexString("0x566F7CFF")); // Ambient Color
-            }
 
             m_skybox = new J3D[4];
             for (int i = 0; i < m_skybox.Length; i++)
@@ -182,12 +173,6 @@ namespace J3DRenderer
                 m_childLink.Tick(deltaTime);
                 m_childLink.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
             }
-            if (m_room != null)
-            {
-                m_room.Tick(deltaTime);
-                m_room.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
-            }
-
 
             // Debug Rendering
             if (WInput.GetKey(System.Windows.Input.Key.I))

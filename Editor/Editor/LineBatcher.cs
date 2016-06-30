@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using OpenTK.Graphics.OpenGL;
+using JStudio.OpenGL;
 
 namespace WindEditor
 {
@@ -24,13 +25,14 @@ namespace WindEditor
         }
     }
 
-    class WLineBatcher : PrimitiveComponent
+    public class WLineBatcher : WDOMNode
     {
         private List<WBatchedLine> m_batchedLines;
 
         private Shader m_primitiveShader;
         private int m_vbo;
         private int m_vertColors;
+        private bool m_renderStateDirty;
 
         public WLineBatcher()
         {
@@ -49,35 +51,129 @@ namespace WindEditor
         public void DrawLine(Vector3 start, Vector3 end, WLinearColor color, float thickness, float lifetime)
         {
             m_batchedLines.Add(new WBatchedLine(start, end, color, thickness, lifetime));
-
-            MarkRenderStateAsDirty();
+            m_renderStateDirty = true;
         }
 
         public void DrawBox(Vector3 min, Vector3 max, WLinearColor color, float thickness, float lifetime)
         {
-            // Base
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, min.Z), new Vector3(max.X, min.Y, min.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, max.Z), new Vector3(max.X, min.Y, max.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, min.Z), new Vector3(min.X, min.Y, max.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, min.Y, min.Z), new Vector3(max.X, min.Y, max.Z), color, thickness, lifetime));
+            Vector3 center = (max + min) / 2;
+            Vector3 extents = (max - min) / 2;
 
-            // Top
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, max.Y, max.Z), new Vector3(max.X, max.Y, max.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, max.Y, min.Z), new Vector3(min.X, max.Y, max.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, max.Y, min.Z), new Vector3(max.X, max.Y, max.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, max.Y, min.Z), new Vector3(max.X, max.Y, min.Z), color, thickness, lifetime));
+            DrawBox(center, extents, Quaternion.Identity, color, lifetime, thickness);
 
-            // Corners
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, min.Z), new Vector3(min.X, max.Y, min.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, min.Y, min.Z), new Vector3(max.X, max.Y, min.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(min.X, min.Y, max.Z), new Vector3(min.X, max.Y, max.Z), color, thickness, lifetime));
-            m_batchedLines.Add(new WBatchedLine(new Vector3(max.X, min.Y, max.Z), new Vector3(max.X, max.Y, max.Z), color, thickness, lifetime));
+            m_renderStateDirty = true;
+        }
 
-            MarkRenderStateAsDirty();
+        public void DrawBox(Vector3 center, Vector3 box, Quaternion rotation, WLinearColor color, float lifetime, float thickness)
+        {
+            List<WBatchedLine> lines = new List<WBatchedLine>();
+
+            Vector3 start = Vector3.Transform(new Vector3(box.X, box.Y, box.Z), rotation);
+            Vector3 end = Vector3.Transform(new Vector3(box.X, -box.Y, box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(box.X, -box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(-box.X, -box.Y, box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(-box.X, -box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(-box.X, box.Y, box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(-box.X, box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(box.X, box.Y, box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(box.X, box.Y, -box.Z), rotation);
+            end = Vector3.Transform(new Vector3(box.X, -box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(box.X, -box.Y, -box.Z), rotation);
+            end = Vector3.Transform(new Vector3(-box.X, -box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(-box.X, -box.Y, -box.Z), rotation);
+            end = Vector3.Transform(new Vector3(-box.X, box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(-box.X, box.Y, -box.Z), rotation);
+            end = Vector3.Transform(new Vector3(box.X, box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(box.X, box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(box.X, box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(box.X, -box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(box.X, -box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(-box.X, -box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(-box.X, -box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            start = Vector3.Transform(new Vector3(-box.X, box.Y, box.Z), rotation);
+            end = Vector3.Transform(new Vector3(-box.X, box.Y, -box.Z), rotation);
+            lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
+
+            m_batchedLines.AddRange(lines);
+            m_renderStateDirty = true;
+        }
+
+        public void DrawSphere(Vector3 center, float radius, int segments, WLinearColor color, float lifetime, float thickness)
+        {
+            segments = Math.Max(segments, 4);
+
+            Vector3 v1, v2, v3, v4;
+            float angleSeg = (float)(2f * Math.PI / (float)segments);
+            float sinY1 = 0f, cosY1 = 1f, sinY2 = 0f, cosY2 = 0f;
+            int numSegmentsY = segments;
+            float latitude = angleSeg;
+            float longitude = 0f;
+
+            List<WBatchedLine> lines = new List<WBatchedLine>(numSegmentsY * segments * 2);
+            do
+            {
+                sinY2 = (float)Math.Sin(latitude);
+                cosY2 = (float)Math.Cos(latitude);
+
+                v1 = new Vector3(sinY1, 0f, cosY1) * radius + center;
+                v3 = new Vector3(sinY2, 0f, cosY2) * radius + center;
+                longitude = angleSeg;
+
+                int numSegmentsX = segments;
+                do
+                {
+                    float sinX = (float)Math.Sin(longitude);
+                    float cosX = (float)Math.Cos(longitude);
+
+                    v2 = new Vector3((cosX * sinY1), (sinX * sinY1), cosY1) * radius + center;
+                    v4 = new Vector3((cosX * sinY2), (sinX * sinY2), cosY2) * radius + center;
+
+                    lines.Add(new WBatchedLine(v1, v2, color, thickness, lifetime));
+                    lines.Add(new WBatchedLine(v1, v3, color, thickness, lifetime));
+
+                    v1 = v2;
+                    v3 = v4;
+                    longitude += angleSeg;
+                    numSegmentsX--;
+                } while (numSegmentsX > 0);
+
+                sinY1 = sinY2;
+                cosY1 = cosY2;
+                latitude += angleSeg;
+
+                numSegmentsY--;
+            } while (numSegmentsY > 0);
+
+            m_batchedLines.AddRange(lines);
+            m_renderStateDirty = true;
         }
 
         public override void Tick(float deltaTime)
         {
+            base.Tick(deltaTime);
+
             bool dirty = false;
             for (int lineIndex = 0; lineIndex < m_batchedLines.Count; lineIndex++)
             {
@@ -99,25 +195,27 @@ namespace WindEditor
             }
 
             if (dirty)
-                MarkRenderStateAsDirty();
+                m_renderStateDirty = true;
         }
 
         public void Flush()
         {
             m_batchedLines.Clear();
-            MarkRenderStateAsDirty();
+            m_renderStateDirty = true;
         }
 
-        public override void ReleaseResources()
+        public void ReleaseResources()
         {
             m_primitiveShader.ReleaseResources();
             GL.DeleteBuffer(m_vbo);
             GL.DeleteBuffer(m_vertColors);
         }
 
-        public override void Render(Matrix4 viewMatrix, Matrix4 projMatrix)
+        public override void Render(WSceneView view)
         {
-            if (RenderStateDirty)
+            base.Render(view);
+
+            if (m_renderStateDirty)
             {
                 // We've changed what we want to draw since we last rendered, so we'll re-calculate the mesh and upload.
                 Vector3[] lineVerts = new Vector3[m_batchedLines.Count * 2];
@@ -141,18 +239,21 @@ namespace WindEditor
                 GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertColors);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * lineColors.Length), lineColors, BufferUsageHint.DynamicDraw);
 
-                RenderStateDirty = false;
+                m_renderStateDirty = false;
             }
 
             // Draw the mesh.
             GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.CullFace);
+            GL.Enable(EnableCap.DepthTest);
             GL.Disable(EnableCap.Blend);
             GL.DepthMask(true);
             //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
 
             Matrix4 modelMatrix = Matrix4.Identity;
+            Matrix4 viewMatrix = view.ViewMatrix;
+            Matrix4 projMatrix = view.ProjMatrix;
 
             m_primitiveShader.Bind();
             GL.UniformMatrix4(m_primitiveShader.UniformModelMtx, false, ref modelMatrix);
