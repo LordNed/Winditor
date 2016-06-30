@@ -184,6 +184,15 @@
     <Content Include="resources\templates\Actor.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\templates\2D Minimap - Unused Tag.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\templates\2D Minimap.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\templates\Camera Point %28v1%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="resources\ui\DeleteUser_16x.png" />
     <Resource Include="resources\ui\Paste_16x.png" />
     <Resource Include="resources\ui\Copy_16x.png" />

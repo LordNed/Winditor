@@ -17,8 +17,9 @@ namespace WindEditor
         FixedLengthString,
         Vector2,
         Vector3,
-        YRotation,
         XRotation,
+        YRotation,
+        ZRotation,
     }
 
     class ActorLoader
@@ -186,10 +187,9 @@ namespace WindEditor
                         propValue = new TVector3PropertyValue(new OpenTK.Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), field.FieldName);
                         break;
                     case PropertyValueType.XRotation:
-                        propValue = new TFloatPropertyValue(reader.ReadInt16(), field.FieldName);
-                        break;
                     case PropertyValueType.YRotation:
-                        propValue = new TFloatPropertyValue(reader.ReadInt16(), field.FieldName);
+                    case PropertyValueType.ZRotation:
+                        propValue = new TShortPropertyValue(reader.ReadInt16(), field.FieldName);
                         break;
                     default:
                         break;
@@ -208,9 +208,15 @@ namespace WindEditor
                 }
                 else if(string.Compare(field.FieldName, "Y Rotation", true) == 0)
                 {
-                    float yRotation = (float)propValue.GetValue() * (180 / 32786f);
+                    float yRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
                     OpenTK.Quaternion yAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 1, 0), WMath.DegreesToRadians(yRotation));
                     newActor.Transform.Rotation *= yAxis;
+                }
+                else if(string.Compare(field.FieldName, "Z Rotation", true) == 0)
+                {
+                    float zRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
+                    OpenTK.Quaternion zAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 0, 1), WMath.DegreesToRadians(zRotation));
+                    newActor.Transform.Rotation *= zAxis;
                 }
                 else
                 {

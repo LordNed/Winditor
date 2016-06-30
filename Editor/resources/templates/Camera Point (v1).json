@@ -1,0 +1,11 @@
+﻿{
+	"FourCC" : "AROB",
+	"Fields" :
+	[
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "X Rotation", "Type" : "XRotation"},
+		{"Name" : "Y Rotation", "Type" : "YRotation"},
+		{"Name" : "Z Rotation", "Type" : "ZRotation"},
+		{"Name" : "Padding", "Type" : "Short"},
+	]
+}
