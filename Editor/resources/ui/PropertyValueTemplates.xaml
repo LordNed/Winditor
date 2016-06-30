@@ -22,10 +22,15 @@
         <TextBox Text="{Binding Path=Value, Converter={StaticResource ShortToStringConverter}}" Padding="0" Margin="0"/>
     </DataTemplate>
 
+    <DataTemplate x:Key="IntDataTemplate">
+        <TextBox Text="{Binding Path=Value, Converter={StaticResource IntToStringConverter}}" Padding="0" Margin="0"/>
+    </DataTemplate>
+
     <vm:PropertyValueDataTemplateSelector x:Key="PropertyValueTemplateSelector"
             BooleanDataTemplate="{StaticResource BooleanDataTemplate}"
             StringDataTemplate="{StaticResource StringDataTemplate}"
             ByteDataTemplate="{StaticResource ByteDataTemplate}"
-            ShortDataTemplate="{StaticResource ShortDataTemplate}"/>
+            ShortDataTemplate="{StaticResource ShortDataTemplate}"
+            IntDataTemplate="{StaticResource IntDataTemplate}"/>
 
 </ResourceDictionary>
