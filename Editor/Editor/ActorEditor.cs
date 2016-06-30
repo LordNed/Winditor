@@ -27,13 +27,13 @@ namespace WindEditor
         }
 
         private WTransformGizmo m_transformGizmo;
-        private BindingList<WMapActor> m_selectionList;
+        private BindingList<WActorNode> m_selectionList;
 
         [Obsolete("Bring back the transform gizmo :-(")]
         public WActorEditor(WWorld world)
         {
             m_world = world;
-            m_selectionList = new BindingList<WMapActor>();
+            m_selectionList = new BindingList<WActorNode>();
             m_transformGizmo = new WTransformGizmo(m_world);
             //m_world.RegisterInternalObject(m_transformGizmo);
 
@@ -60,7 +60,7 @@ namespace WindEditor
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 WRay mouseRay = m_world.GetFocusedSceneView().ProjectScreenToWorld(WInput.MousePosition);
-                WMapActor addedActor = Raycast(mouseRay);
+                WActorNode addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
                 // Click w/o Modifiers = Clear Selection, add result to selection
@@ -195,18 +195,18 @@ namespace WindEditor
             }
         }
 
-        private void ModifySelection(SelectionType action, WMapActor actor, bool clearSelection)
+        private void ModifySelection(SelectionType action, WActorNode actor, bool clearSelection)
         {
             ModifySelection(action, new[] { actor }, clearSelection);
         }
 
-        private void ModifySelection(SelectionType action, WMapActor[] actors, bool clearSelection)
+        private void ModifySelection(SelectionType action, WActorNode[] actors, bool clearSelection)
         {
             // Cache the current selection list.
-            WMapActor[] currentSelection = new WMapActor[m_selectionList.Count];
+            WActorNode[] currentSelection = new WActorNode[m_selectionList.Count];
             m_selectionList.CopyTo(currentSelection, 0);
 
-            List<WMapActor> newSelection = new List<WMapActor>(currentSelection);
+            List<WActorNode> newSelection = new List<WActorNode>(currentSelection);
 
             // Now build us a new array depending on the action.
             if(clearSelection)
@@ -239,48 +239,39 @@ namespace WindEditor
             m_world.UndoStack.Push(selectionAction);
         }
 
-        private WMapActor Raycast(WRay ray)
+        private WActorNode Raycast(WRay ray)
         {
-            WMapActor closestResult = null;
+            WActorNode closestResult = null;
             float closestDistance = float.MaxValue;
 
-            System.Console.WriteLine("Not Supported Raycast(WRay ray)");
+            foreach (var scene in m_world.SceneList)
+            {
+                List<WActorNode> allActors = scene.GetChildrenOfType<WActorNode>();
 
-            //foreach (var scene in m_world.SceneList)
-            //{
-            //    foreach (IRenderable obj in scene.RenderableObjects)
-            //    {
-            //        WMapActor actor = obj as WMapActor;
-            //        if (actor == null)
-            //            continue;
+                foreach (WActorNode actorNode in allActors)
+                {
+                    AABox actorBoundingBox = actorNode.GetBoundingBox();
+                    float intersectDistance;
 
-            //        AABox actorBoundingBox = actor.GetAABB();
-            //        float intersectDistance;
-
-            //        if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
-            //        {
-            //            if (intersectDistance < closestDistance)
-            //            {
-            //                closestDistance = intersectDistance;
-            //                closestResult = actor;
-            //            }
-            //        }
-            //    }
-            //}
+                    if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+                    {
+                        if (intersectDistance < closestDistance)
+                        {
+                            closestDistance = intersectDistance;
+                            closestResult = actorNode;
+                        }
+                    }
+                }
+            }
 
             return closestResult;
-        }
-
-        private void IterateMapActorRecursive(List<WMapActor> outList, WDOMNode curNode)
-        {
-
         }
 
         private WUndoCommand CreateUndoActionForGizmo(bool isDone)
         {
             WUndoCommand undoAction = null;
 
-            WActor[] actors = new WActor[m_selectionList.Count];
+            WActorNode[] actors = new WActorNode[m_selectionList.Count];
             for (int i = 0; i < m_selectionList.Count; i++)
             {
                 actors[i] = m_selectionList[i];
@@ -343,11 +334,11 @@ namespace WindEditor
         {
             throw new NotImplementedException();
 
-            BindingList<WMapActor> serializedObjects = AttemptToDeserializeObjectsFromClipboard();
+            BindingList<WActorNode> serializedObjects = AttemptToDeserializeObjectsFromClipboard();
             if (serializedObjects == null)
                 return;
 
-            WMapActor[] actorRange = new WMapActor[serializedObjects.Count];
+            WActorNode[] actorRange = new WActorNode[serializedObjects.Count];
             serializedObjects.CopyTo(actorRange, 0);
 
             ModifySelection(SelectionType.Add, actorRange, true);
@@ -368,13 +359,13 @@ namespace WindEditor
                 //item.GetScene().UnregisterObject(item);
             }
 
-            ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
+            ModifySelection(SelectionType.Add, new WActorNode[] { null }, true);
             ///m_selectionList.Clear();
         }
 
         private void SelectAll()
         {
-            List<WMapActor> allActors = new List<WMapActor>();
+            List<WActorNode> allActors = new List<WActorNode>();
             System.Console.WriteLine("Not Supported SelectAll()");
             throw new NotImplementedException();
 
@@ -392,22 +383,22 @@ namespace WindEditor
 
         private void SelectNone()
         {
-            ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
+            ModifySelection(SelectionType.Add, new WActorNode[] { null }, true);
         }
 
-        private BindingList<WMapActor> AttemptToDeserializeObjectsFromClipboard()
+        private BindingList<WActorNode> AttemptToDeserializeObjectsFromClipboard()
         {
             string clipboardContents = Clipboard.GetText();
             if (string.IsNullOrEmpty(clipboardContents))
                 return null;
 
-            BindingList<WMapActor> serializedObjects = null;
+            BindingList<WActorNode> serializedObjects = null;
             try
             {
                 var jsonSettings = new JsonSerializerSettings();
                 jsonSettings.TypeNameHandling = TypeNameHandling.All;
 
-                serializedObjects = JsonConvert.DeserializeObject<BindingList<WMapActor>>(clipboardContents, jsonSettings);
+                serializedObjects = JsonConvert.DeserializeObject<BindingList<WActorNode>>(clipboardContents, jsonSettings);
             }
             catch(JsonSerializationException ex)
             {

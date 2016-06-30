@@ -53,5 +53,13 @@ namespace WindEditor
 
             m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
+
+        public override AABox GetBoundingBox()
+        {
+            AABox modelABB = m_objRender.GetAABB();
+            modelABB.ScaleBy(Transform.LocalScale);
+
+            return new AABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
+        }
     }
 }

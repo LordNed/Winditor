@@ -5,14 +5,14 @@ namespace WindEditor
 {
     class WTranslateActorAction : WUndoCommand
     {
-        private List<WActor> m_affectedActors;
+        private List<WDOMNode> m_affectedActors;
         private Vector3 m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
 
-        public WTranslateActorAction(WActor[] actors, Vector3 delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Move", parent)
+        public WTranslateActorAction(WDOMNode[] actors, Vector3 delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Move", parent)
         {
-            m_affectedActors = new List<WActor>(actors);
+            m_affectedActors = new List<WDOMNode>(actors);
             m_delta = delta;
             m_isDone = isDone;
             m_transformSpace = transformSpace;

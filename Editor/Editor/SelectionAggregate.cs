@@ -41,9 +41,9 @@ namespace WindEditor
             }
         }
 
-        private BindingList<WMapActor> m_selectionList;
+        private BindingList<WActorNode> m_selectionList;
 
-        public SelectionAggregate(BindingList<WMapActor> selectionList)
+        public SelectionAggregate(BindingList<WActorNode> selectionList)
         {
             m_selectionList = selectionList;
             selectionList.ListChanged += SelectionList_ListChanged;

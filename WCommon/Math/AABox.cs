@@ -57,8 +57,8 @@ namespace WindEditor
             oldCenter.Y *= amount.Y;
             oldCenter.Z *= amount.Z;
 
-            m_min = oldCenter + halfExtents;
-            m_max = oldCenter - halfExtents;
+            m_min = oldCenter - halfExtents;
+            m_max = oldCenter + halfExtents;
         }
 
 

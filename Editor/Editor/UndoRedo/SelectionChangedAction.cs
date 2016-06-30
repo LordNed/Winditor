@@ -4,12 +4,12 @@ namespace WindEditor
 {
     class WSelectionChangedAction : WUndoCommand
     {
-        WMapActor[] m_oldActorList;
-        WMapActor[] m_newActorList;
+        WActorNode[] m_oldActorList;
+        WActorNode[] m_newActorList;
 
-        BindingList<WMapActor> m_selectionListRef; 
+        BindingList<WActorNode> m_selectionListRef; 
 
-        public WSelectionChangedAction(WMapActor[] oldActorList, WMapActor[] newActorList, BindingList<WMapActor> selectionList)
+        public WSelectionChangedAction(WActorNode[] oldActorList, WActorNode[] newActorList, BindingList<WActorNode> selectionList)
         {
             m_oldActorList = oldActorList;
             m_newActorList = newActorList;
@@ -27,10 +27,10 @@ namespace WindEditor
 
             // Update their selected states
             for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].IsSelected = false;
+                m_oldActorList[i].Flags &= ~ActorFlags.Selected;
 
             for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].IsSelected = true;
+                m_newActorList[i].Flags &= ActorFlags.Selected;
         }
 
         public override void Undo()
@@ -43,10 +43,10 @@ namespace WindEditor
 
             // Update their selected states
             for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].IsSelected = false;
+                m_newActorList[i].Flags &= ~ActorFlags.Selected;
 
             for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].IsSelected = true;
+                m_oldActorList[i].Flags &= ActorFlags.Selected;
         }
 
     }

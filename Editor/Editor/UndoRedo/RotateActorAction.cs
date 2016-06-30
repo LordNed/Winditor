@@ -5,14 +5,14 @@ namespace WindEditor
 {
     class WRotateActorAction : WUndoCommand
     {
-        private List<WActor> m_affectedActors;
+        private List<WDOMNode> m_affectedActors;
         private Quaternion m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
 
-        public WRotateActorAction(WActor[] actors, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
+        public WRotateActorAction(WDOMNode[] actors, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
         {
-            m_affectedActors = new List<WActor>(actors);
+            m_affectedActors = new List<WDOMNode>(actors);
             m_delta = delta;
             m_isDone = isDone;
             m_transformSpace = transformSpace;

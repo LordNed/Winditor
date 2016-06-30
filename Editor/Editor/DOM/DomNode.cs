@@ -26,6 +26,23 @@ namespace WindEditor
                 child.Render(view);
         }
 
+        public virtual List<T> GetChildrenOfType<T>() where T : WDOMNode
+        {
+            List<T> result = new List<T>();
+            if (this.GetType() == typeof(T))
+                result.Add((T)this);
+
+            foreach (var child in Children)
+                result.AddRange(child.GetChildrenOfType<T>());
+
+            return result;
+        }
+
+        public virtual AABox GetBoundingBox()
+        {
+            return new AABox();
+        }
+
         #region IEnumerable Interface
         public IEnumerator<WDOMNode> GetEnumerator()
         {
