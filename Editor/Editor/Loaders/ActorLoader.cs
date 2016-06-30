@@ -20,6 +20,7 @@ namespace WindEditor
         XRotation,
         YRotation,
         ZRotation,
+        Color32,
     }
 
     class ActorLoader
@@ -191,6 +192,9 @@ namespace WindEditor
                     case PropertyValueType.ZRotation:
                         propValue = new TShortPropertyValue(reader.ReadInt16(), field.FieldName);
                         break;
+                    case PropertyValueType.Color32:
+                        propValue = new TLinearColorPropertyValue(new WLinearColor(reader.ReadByte() / 255f, reader.ReadByte() / 255f, reader.ReadByte() / 255f, reader.ReadByte() / 255f), field.FieldName);
+                        break;
                     default:
                         break;
                 }
@@ -217,6 +221,24 @@ namespace WindEditor
                     float zRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
                     OpenTK.Quaternion zAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 0, 1), WMath.DegreesToRadians(zRotation));
                     newActor.Transform.Rotation *= zAxis;
+                }
+                else if(string.Compare(field.FieldName, "X Scale", true) == 0)
+                {
+                    float xScale = (float) propValue.GetValue();
+                    var curScale = newActor.Transform.LocalScale;
+                    newActor.Transform.LocalScale = new OpenTK.Vector3(xScale, curScale.Y, curScale.Z);
+                }
+                else if (string.Compare(field.FieldName, "Y Scale", true) == 0)
+                {
+                    float yScale = (float)propValue.GetValue();
+                    var curScale = newActor.Transform.LocalScale;
+                    newActor.Transform.LocalScale = new OpenTK.Vector3(curScale.X, yScale, curScale.Z);
+                }
+                else if (string.Compare(field.FieldName, "Z Scale", true) == 0)
+                {
+                    float zScale = (float)propValue.GetValue();
+                    var curScale = newActor.Transform.LocalScale;
+                    newActor.Transform.LocalScale = new OpenTK.Vector3(curScale.X, curScale.Y, zScale);
                 }
                 else
                 {

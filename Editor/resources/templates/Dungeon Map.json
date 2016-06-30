@@ -1,0 +1,10 @@
+﻿{
+	"FourCC" : "DMAP",
+	"Fields" :
+	[
+		{"Name" : "Map Size X", "Type" : "Float"},
+		{"Name" : "Map Size Y", "Type" : "Float"},
+		{"Name" : "Map Scale Inverse", "Type" : "Float"},
+		{"Name" : "Unknown 1", "Type" : "Float"}
+	]
+}

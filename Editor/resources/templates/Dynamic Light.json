@@ -1,0 +1,9 @@
+﻿{
+	"FourCC" : "LGHT",
+	"Fields" :
+	[
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "Radius", "Type" : "Vector3"},
+		{"Name" : "Color", "Type" : "Color32"}
+	]
+}

@@ -1,0 +1,23 @@
+﻿{
+	"FourCC" : "FLOR",
+	"Fields" :
+	[
+		{"Name" : "Lower Boundary (Y Height)", "Type" : "Float"},
+		{"Name" : "Floor Number", "Type" : "Byte"},
+		{"Name" : "Included Room 0", "Type" : "Byte"},
+		{"Name" : "Included Room 1", "Type" : "Byte"},
+		{"Name" : "Included Room 2", "Type" : "Byte"},
+		{"Name" : "Included Room 3", "Type" : "Byte"},
+		{"Name" : "Included Room 4", "Type" : "Byte"},
+		{"Name" : "Included Room 5", "Type" : "Byte"},
+		{"Name" : "Included Room 6", "Type" : "Byte"},
+		{"Name" : "Included Room 7", "Type" : "Byte"},
+		{"Name" : "Included Room 8", "Type" : "Byte"},
+		{"Name" : "Included Room 9", "Type" : "Byte"},
+		{"Name" : "Included Room 10", "Type" : "Byte"},
+		{"Name" : "Included Room 11", "Type" : "Byte"},
+		{"Name" : "Included Room 12", "Type" : "Byte"},
+		{"Name" : "Included Room 13", "Type" : "Byte"},
+		{"Name" : "Included Room 14", "Type" : "Byte"},
+	]
+}
