@@ -154,7 +154,7 @@ namespace WindEditor
 
         private WActorNode LoadActorFromChunk(string fourCC, EndianBinaryReader reader, MapActorDescriptor template)
         {
-            var newActor = new WActorNode();
+            var newActor = new WActorNode(fourCC);
             foreach(var field in template.Fields)
             {
                 IPropertyValue propValue = null;

@@ -90,7 +90,7 @@ namespace WindEditor
 
             foreach(WScene scene in m_sceneList)
             {
-                scene.ProcessTick(deltaTime);
+                scene.Tick(deltaTime);
             }
 
             foreach (WSceneView view in m_sceneViews)

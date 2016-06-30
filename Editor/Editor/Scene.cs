@@ -75,7 +75,7 @@ namespace WindEditor
                         {
                             m_skybox = new WSkyboxNode();
                             m_skybox.LoadSkyboxModelsFromFixedModelList(folder);
-                            Children.Add(m_skybox);
+                            m_skybox.SetParent(this);
                         }
                         break;
                 }
@@ -98,7 +98,7 @@ namespace WindEditor
 
                         roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF"));
 
-                        Children.Add(modelInstance);
+                        modelInstance.SetParent(this);
                     }
                 }
             }
@@ -121,7 +121,7 @@ namespace WindEditor
                 collision.Load(reader);
             }
 
-            Children.Add(collision);
+            collision.SetParent(this);
         }
 
         private void LoadLevelEntitiesFromFile(string filePath)
@@ -129,13 +129,7 @@ namespace WindEditor
             ActorLoader actorLoader = new ActorLoader();
             List<WActorNode> loadedActors = actorLoader.LoadFromFile(filePath);
             foreach (var actor in loadedActors)
-                Children.Add(actor);
-        }
-
-        public void ProcessTick(float deltaTime)
-        {
-            foreach (var child in Children)
-                child.Tick(deltaTime);
+                actor.SetParent(this);
         }
     }
 }

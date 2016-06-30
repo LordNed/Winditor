@@ -13,9 +13,10 @@ namespace WindEditor
             get
             {
                 List<List<IPropertyValue>> values = new List<List<IPropertyValue>>();
+                string selectionType = null;
 
                 if(m_selectionList.Count > 0)
-                {
+                { 
                     // Copy all of the values from the first selected actor and then compare them against the rest.
                     foreach (var field in m_selectionList[0].Properties)
                     {
@@ -24,6 +25,20 @@ namespace WindEditor
 
                     foreach (var mapActor in m_selectionList)
                     {
+                        if (selectionType == null)
+                        {
+                            selectionType = mapActor.FourCC;
+                        }
+                        else
+                        {
+                            // We're trying to select two different objects, which isn't supported!
+                            if (string.Compare(mapActor.FourCC, selectionType) != 0)
+                            {
+                                values.Clear();
+                                break;
+                            }
+                        }
+
                         for (int i = 0; i < mapActor.Properties.Count; i++)
                         {
                             values[i].Add(mapActor.Properties[i]);

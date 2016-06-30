@@ -352,33 +352,21 @@ namespace WindEditor
 
         private void DeleteSelection()
         {
-            throw new NotImplementedException();
-
             foreach (var item in m_selectionList)
             {
-                //item.GetScene().UnregisterObject(item);
+                item.Parent.RemoveChild(item);
             }
 
             ModifySelection(SelectionType.Add, new WActorNode[] { null }, true);
-            ///m_selectionList.Clear();
         }
 
         private void SelectAll()
         {
-            List<WActorNode> allActors = new List<WActorNode>();
-            System.Console.WriteLine("Not Supported SelectAll()");
-            throw new NotImplementedException();
+            if (m_world.FocusedScene == null)
+                return;
 
-            //foreach (IRenderable obj in m_world.FocusedScene.RenderableObjects)
-            //{
-            //    WMapActor actor = obj as WMapActor;
-            //    if (actor == null)
-            //        continue;
-
-            //    allActors.Add(actor);
-            //}
-
-            ModifySelection(SelectionType.Add, allActors.ToArray(), true);
+            var allActorsInSelectedScene = m_world.FocusedScene.GetChildrenOfType<WActorNode>();
+            ModifySelection(SelectionType.Add, allActorsInSelectedScene.ToArray(), true);
         }
 
         private void SelectNone()

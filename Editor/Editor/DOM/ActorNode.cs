@@ -33,12 +33,14 @@ namespace WindEditor
         public List<IPropertyValue> Properties { get; }
         public MapLayer Layer { get; set; }
         public ActorFlags Flags { get; set; }
+        public string FourCC { get; internal set; }
 
         private SimpleObjRenderer m_objRender;
 
-        public WActorNode()
+        public WActorNode(string fourCC)
         {
             Properties = new List<IPropertyValue>();
+            FourCC = fourCC;
 
             var obj = new Obj();
             obj.Load("resources/editor/EditorCube.obj");
