@@ -341,6 +341,8 @@ namespace WindEditor
 
         private void PasteSelection()
         {
+            throw new NotImplementedException();
+
             BindingList<WMapActor> serializedObjects = AttemptToDeserializeObjectsFromClipboard();
             if (serializedObjects == null)
                 return;
@@ -352,16 +354,18 @@ namespace WindEditor
             //m_selectionList.Clear();
             foreach(var item in serializedObjects)
             {
-                m_world.FocusedScene.RegisterObject(item);
+                //m_world.FocusedScene.RegisterObject(item);
                 //m_selectionList.Add(item);
             }
         }
 
         private void DeleteSelection()
         {
+            throw new NotImplementedException();
+
             foreach (var item in m_selectionList)
             {
-                item.GetScene().UnregisterObject(item);
+                //item.GetScene().UnregisterObject(item);
             }
 
             ModifySelection(SelectionType.Add, new WMapActor[] { null }, true);
@@ -372,6 +376,7 @@ namespace WindEditor
         {
             List<WMapActor> allActors = new List<WMapActor>();
             System.Console.WriteLine("Not Supported SelectAll()");
+            throw new NotImplementedException();
 
             //foreach (IRenderable obj in m_world.FocusedScene.RenderableObjects)
             //{

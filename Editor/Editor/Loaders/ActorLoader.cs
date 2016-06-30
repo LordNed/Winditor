@@ -229,19 +229,19 @@ namespace WindEditor
                 }
                 else if(string.Compare(field.FieldName, "X Scale", true) == 0)
                 {
-                    float xScale = (float) propValue.GetValue();
+                    float xScale = (byte)propValue.GetValue();
                     var curScale = newActor.Transform.LocalScale;
                     newActor.Transform.LocalScale = new OpenTK.Vector3(xScale, curScale.Y, curScale.Z);
                 }
                 else if (string.Compare(field.FieldName, "Y Scale", true) == 0)
                 {
-                    float yScale = (float)propValue.GetValue();
+                    float yScale = (byte)propValue.GetValue();
                     var curScale = newActor.Transform.LocalScale;
                     newActor.Transform.LocalScale = new OpenTK.Vector3(curScale.X, yScale, curScale.Z);
                 }
                 else if (string.Compare(field.FieldName, "Z Scale", true) == 0)
                 {
-                    float zScale = (float)propValue.GetValue();
+                    float zScale = (byte)propValue.GetValue();
                     var curScale = newActor.Transform.LocalScale;
                     newActor.Transform.LocalScale = new OpenTK.Vector3(curScale.X, curScale.Y, zScale);
                 }

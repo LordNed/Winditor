@@ -9,21 +9,12 @@ namespace WindEditor
 {
     public class WScene : WDOMNode
     {
-        //public List<IRenderable> RenderableObjects { get { return m_renderableObjects; } }
         public string Name { get; set; }
-
-        //private List<IRenderable> m_renderableObjects;
-        //private List<ITickableObject> m_tickableObjects;
-
         private WWorld m_world;
-        //private List<J3D> m_roomModels;
 
         public WScene(WWorld world)
         {
             m_world = world;
-            //m_renderableObjects = new List<IRenderable>();
-            //m_tickableObjects = new List<ITickableObject>();
-            //m_roomModels = new List<J3D>();
         }
 
         public void LoadLevel(string filePath)
@@ -111,7 +102,6 @@ namespace WindEditor
                 collision.Load(reader);
             }
 
-            RegisterObject(collision);
             Children.Add(collision);
         }
 
@@ -121,45 +111,6 @@ namespace WindEditor
             List<WActorNode> loadedActors = actorLoader.LoadFromFile(filePath);
             foreach (var actor in loadedActors)
                 Children.Add(actor);
-        }
-
-        public void RegisterObject(object obj)
-        {
-            // This is awesome.
-            if (obj is IRenderable)
-            {
-                //m_renderableObjects.Add(obj as IRenderable);
-            }
-
-            if (obj is ITickableObject)
-            {
-                ITickableObject tickableObj = (ITickableObject)obj;
-                tickableObj.SetWorld(m_world);
-                tickableObj.SetScene(this);
-                //m_tickableObjects.Add(tickableObj);
-            }
-
-            if (obj is IUndoable)
-            {
-                IUndoable undoable = obj as IUndoable;
-                undoable.SetUndoStack(m_world.UndoStack);
-            }
-        }
-
-        public void UnregisterObject(object obj)
-        {
-            if (obj is IRenderable)
-            {
-                IRenderable renderable = obj as IRenderable;
-                renderable.ReleaseResources();
-
-                //m_renderableObjects.Remove(renderable);
-            }
-
-            if (obj is ITickableObject)
-            {
-                //m_tickableObjects.Remove(obj as ITickableObject);
-            }
         }
 
         public void ProcessTick(float deltaTime)
