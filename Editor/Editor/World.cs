@@ -52,8 +52,19 @@ namespace WindEditor
             //UnloadMap();
             foreach(var sceneFolder in Directory.GetDirectories(dirPath))
             {
-                WScene scene = new WScene(this);
-                scene.LoadLevel(sceneFolder);
+                string sceneName = Path.GetFileName(sceneFolder);
+                WScene scene = null;
+
+                if (sceneName.Contains("Room"))
+                {
+                    scene = new WScene(this);
+                    scene.LoadRoom(sceneFolder);
+                }
+                else if (string.Compare(sceneName, "Stage", true) == 0)
+                {
+                    scene = new WScene(this);
+                    scene.LoadStage(sceneFolder);
+                }
 
                 m_sceneList.Add(scene);
             }

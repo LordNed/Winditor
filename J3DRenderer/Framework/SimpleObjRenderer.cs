@@ -161,7 +161,7 @@ namespace WindEditor
         {
             GL.FrontFace(FrontFaceDirection.Cw);
             GL.Enable(EnableCap.DepthTest);
-            GL.Enable(EnableCap.Blend);
+            GL.Disable(EnableCap.Blend);
             GL.Disable(EnableCap.CullFace);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 

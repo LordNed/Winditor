@@ -10,12 +10,9 @@ namespace WindEditor
         private J3DNode m_vrUsoUmi; // "False Sea" - This is the model seen underneath the edge of the sea generated around the player.
         private J3DNode m_vrBackCloud; // Cloud Layer
 
-        public WSkyboxNode(string skyboxRootFolder)
+        public WSkyboxNode()
         {
-            // There's a fixed list of skybox models and order.
-            string[] fileNames = new[] { "vr_sky", "vr_kasumi_mae", "vr_uso_umi", "vr_back_cloud" };
             System.Console.WriteLine("SkyboxNode");
-            LoadFixedModelList(skyboxRootFolder, fileNames);
         }
 
         public override void Tick(float deltaTime)
@@ -59,10 +56,12 @@ namespace WindEditor
             base.Render(view);
         }
 
-        private void LoadFixedModelList(string rootFolder, string[] modelNames)
+        public void LoadSkyboxModelsFromFixedModelList(string rootFolder)
         {
+            string[] fileNames = new[] { "vr_sky", "vr_kasumi_mae", "vr_uso_umi", "vr_back_cloud" };
             string[] extNames = new[] { ".bmd", ".bdl" };
-            foreach (var model in modelNames)
+
+            foreach (var model in fileNames)
             {
                 foreach (var ext in extNames)
                 {

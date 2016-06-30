@@ -10,14 +10,16 @@ namespace WindEditor
     public class WScene : WDOMNode
     {
         public string Name { get; set; }
+
         private WWorld m_world;
+        private WSkyboxNode m_skybox;
 
         public WScene(WWorld world)
         {
             m_world = world;
         }
 
-        public void LoadLevel(string filePath)
+        public void LoadRoom(string filePath)
         {
             Name = Path.GetFileNameWithoutExtension(filePath);
 
@@ -44,25 +46,43 @@ namespace WindEditor
                     case "bmd":
                     case "bdl":
                         {
-                            // Load models for the skybox in this scene if they exist.
-                            WSkyboxNode skybox = new WSkyboxNode(folder);
-                            Children.Add(skybox);
-
-                            // Load the room model for this room.
-                            LoadRoomModel(folder);
+                            // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
+                            // model, model1, model2, model3. 
+                            string[] modelNames = new[] { "model", "model1", "model2", "model3" };
+                            LoadFixedModelList(folder, modelNames);
                         }
                         break;
                 }
             }
         }
 
-        private void LoadRoomModel(string rootFolder)
+        public void LoadStage(string sceneFolder)
         {
-            // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
-            // model, model1, model2, model3. 
-            string[] modelNames = new[] { "model", "model1", "model2", "model3" };
-            LoadFixedModelList(rootFolder, modelNames);
+            Name = Path.GetFileNameWithoutExtension(sceneFolder);
+
+            foreach (var folder in Directory.GetDirectories(sceneFolder))
+            {
+                string folderName = Path.GetFileNameWithoutExtension(folder);
+                switch (folderName.ToLower())
+                {
+                    case "dzs":
+                        {
+                            string fileName = Path.Combine(folder, "stage.dzs");
+                            LoadLevelEntitiesFromFile(fileName);
+                        }
+                        break;
+                    case "bmd":
+                    case "bdl":
+                        {
+                            m_skybox = new WSkyboxNode();
+                            m_skybox.LoadSkyboxModelsFromFixedModelList(folder);
+                            Children.Add(m_skybox);
+                        }
+                        break;
+                }
+            }
         }
+
 
         private void LoadFixedModelList(string rootFolder, string[] modelNames)
         {
