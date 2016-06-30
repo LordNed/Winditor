@@ -1,0 +1,8 @@
+﻿{
+	"FourCC" : "FILI",
+	"Fields" :
+	[
+		{"Name" : "Parameters", "Type" : "Int"},
+		{"Name" : "Skybox Y Height", "Type" : "Float"}
+	]
+}

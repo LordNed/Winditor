@@ -1,0 +1,7 @@
+﻿{
+	"FourCC" : "RTBL",
+	"Fields" :
+	[
+		{"Name" : "Offset", "Type" : "Int"}
+	]
+}

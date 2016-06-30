@@ -1,0 +1,8 @@
+﻿{
+	"FourCC" : "RPPN",
+	"Fields" :
+	[
+		{"Name" : "Unknown 1", "Type" : "Int"},
+		{"Name" : "Position", "Type" : "Vector3"},
+	]
+}

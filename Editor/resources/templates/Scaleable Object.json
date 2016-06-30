@@ -1,0 +1,20 @@
+﻿{
+	"FourCC" : "SCOB",
+	"Fields" :
+	[
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8},
+		{"Name" : "Parameter 1", "Type" : "Byte"},
+		{"Name" : "Parameter 2", "Type" : "Byte"},
+		{"Name" : "Parameter 3", "Type" : "Byte"},
+		{"Name" : "Parameter 4", "Type" : "Byte"},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "Auxiliary Parameter", "Type" : "Short"},
+		{"Name" : "Y Rotation", "Type" : "YRotation"},
+		{"Name" : "Unknown 1", "Type" : "Short"},
+		{"Name" : "Unknown 2", "Type" : "Short"},
+		{"Name" : "Scale X", "Type" : "Byte"},
+		{"Name" : "Scale Y", "Type" : "Byte"},
+		{"Name" : "Scale Z", "Type" : "Byte"},
+		{"Name" : "Padding", "Type" : "Byte"}
+	]
+}

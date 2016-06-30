@@ -1,0 +1,14 @@
+﻿{
+	"FourCC" : "TGSC",
+	"Fields" :
+	[
+		{"Name" : "Name", "Type" : "FixedLengthString" , "Length" : 8},
+		{"Name" : "Params 1", "Type" : "Int"},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "RoomLoadingParams", "Type" : "Short"},
+		{"Name" : "X Rotation", "Type" : "XRotation"},
+		{"Name" : "Y Rotation", "Type" : "YRotation"},
+		{"Name" : "Z Rotation", "Type" : "ZRotation"},
+		{"Name" : "Params 2", "Type" : "Int"}
+	]
+}

@@ -1,0 +1,8 @@
+﻿{
+	"FourCC" : "MECO",
+	"Fields" :
+	[
+		{"Name" : "Room", "Type" : "Byte"},
+		{"Name" : "Entry", "Type" : "Byte"}
+	]
+}

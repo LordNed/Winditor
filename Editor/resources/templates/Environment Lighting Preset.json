@@ -1,0 +1,14 @@
+﻿{
+	"FourCC" : "EnvR",
+	"Fields" :
+	[
+		{"Name" : "Clear Color A", "Type" : "Byte"},
+		{"Name" : "Raining Color A", "Type" : "Byte"},
+		{"Name" : "Snowing A", "Type" : "Byte"},
+		{"Name" : "Unknown A", "Type" : "Byte"},
+		{"Name" : "Clear Color B", "Type" : "Byte"},
+		{"Name" : "Raining Color B", "Type" : "Byte"},
+		{"Name" : "Snowing B", "Type" : "Byte"},
+		{"Name" : "Unknown B", "Type" : "Byte"},
+	]
+}

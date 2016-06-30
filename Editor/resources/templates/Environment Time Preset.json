@@ -1,0 +1,18 @@
+﻿{
+	"FourCC" : "Colo",
+	"Fields" :
+	[
+		{"Name" : "Dawn A", "Type" : "Byte"},
+		{"Name" : "Morning A", "Type" : "Byte"},
+		{"Name" : "Noon A", "Type" : "Byte"},
+		{"Name" : "Afternoon A", "Type" : "Byte"},
+		{"Name" : "Dusk A", "Type" : "Byte"},
+		{"Name" : "Night A", "Type" : "Byte"},
+		{"Name" : "Dawn B", "Type" : "Byte"},
+		{"Name" : "Morning B", "Type" : "Byte"},
+		{"Name" : "Noon B", "Type" : "Byte"},
+		{"Name" : "Afternoon B", "Type" : "Byte"},
+		{"Name" : "Dusk B", "Type" : "Byte"},
+		{"Name" : "Night B", "Type" : "Byte"},
+	]
+}

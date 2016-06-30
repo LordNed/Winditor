@@ -1,0 +1,18 @@
+﻿{
+	"FourCC" : "Virt",
+	"Fields" :
+	[
+		{"Name" : "Unknown 1", "Type" : "Color32"},
+		{"Name" : "Unknown 2", "Type" : "Color32"},
+		{"Name" : "Unknown 3", "Type" : "Color32"},
+		{"Name" : "Unknown 4", "Type" : "Color32"},
+		{"Name" : "Horizon Cloud Color", "Type" : "Color32"},
+		{"Name" : "Center Cloud Color", "Type" : "Color32"},
+		{"Name" : "Sky Color", "Type" : "Color24"},
+		{"Name" : "False Sea Color", "Type" : "Color24"},
+		{"Name" : "Horizon Color", "Type" : "Color24"},
+		{"Name" : "Padding 1", "Type" : "Byte"},
+		{"Name" : "Padding 2", "Type" : "Byte"},
+		{"Name" : "Padding 3", "Type" : "Byte"},
+	]
+}

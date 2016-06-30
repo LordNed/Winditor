@@ -1,0 +1,12 @@
+﻿{
+	"FourCC" : "TRES",
+	"Fields" :
+	[
+		{"Name" : "Name", "Type" : "FixedLengthString" , "Length" : 8},
+		{"Name" : "Params", "Type" : "Int"},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "Room Index", "Type" : "Short"},
+		{"Name" : "Y Rotation", "Type" : "YRotation"},
+		{"Name" : "Params 2", "Type" : "Int"},
+	]
+}

@@ -1,0 +1,22 @@
+﻿{
+	"FourCC" : "Pale",
+	"Fields" :
+	[
+		{"Name" : "Shadow Color", "Type" : "Color24"},
+		{"Name" : "Actor Ambient Color", "Type" : "Color24"},
+		{"Name" : "Room Light Color", "Type" : "Color24"},
+		{"Name" : "Room Ambient Color", "Type" : "Color24"},
+		{"Name" : "Wave Color", "Type" : "Color24"},
+		{"Name" : "Ocean Color", "Type" : "Color24"},
+		{"Name" : "Unknown White 1", "Type" : "Color24"},
+		{"Name" : "Unknown White 2", "Type" : "Color24"},
+		{"Name" : "Door Backfill", "Type" : "Color24"},
+		{"Name" : "Unknown 3", "Type" : "Color24"},
+		{"Name" : "Fog Color", "Type" : "Color24"},
+		{"Name" : "Skybox Color Index", "Type" : "Byte"},
+		{"Name" : "Padding 1", "Type" : "Byte"},
+		{"Name" : "Padding 2", "Type" : "Byte"},
+		{"Name" : "Fog Far Plane", "Type" : "Float"},
+		{"Name" : "For Near Plane", "Type" : "Float"}
+	]
+}

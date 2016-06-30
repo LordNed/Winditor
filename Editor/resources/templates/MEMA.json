@@ -1,0 +1,7 @@
+﻿{
+	"FourCC" : "MEMA",
+	"Fields" :
+	[
+		{"Name" : "Size (in bytes)", "Type" : "Int"}
+	]
+}

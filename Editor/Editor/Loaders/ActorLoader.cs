@@ -20,6 +20,7 @@ namespace WindEditor
         XRotation,
         YRotation,
         ZRotation,
+        Color24,
         Color32,
     }
 
@@ -192,10 +193,14 @@ namespace WindEditor
                     case PropertyValueType.ZRotation:
                         propValue = new TShortPropertyValue(reader.ReadInt16(), field.FieldName);
                         break;
+                    case PropertyValueType.Color24:
+                        propValue = new TLinearColorPropertyValue(new WLinearColor(reader.ReadByte() / 255f, reader.ReadByte() / 255f, reader.ReadByte() / 255f), field.FieldName);
+                        break;
                     case PropertyValueType.Color32:
                         propValue = new TLinearColorPropertyValue(new WLinearColor(reader.ReadByte() / 255f, reader.ReadByte() / 255f, reader.ReadByte() / 255f, reader.ReadByte() / 255f), field.FieldName);
                         break;
                     default:
+                        Console.WriteLine("Unsupported PropertyValueType: {0}", field.FieldType);
                         break;
                 }
 
