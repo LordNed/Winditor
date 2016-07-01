@@ -57,20 +57,22 @@ namespace WindEditor
 
                 if (sceneName.Contains("Room"))
                 {
-                    scene = new WScene(this);
-                    scene.LoadRoom(sceneFolder);
+                    scene = new WRoom(this);
                 }
                 else if (string.Compare(sceneName, "Stage", true) == 0)
                 {
-                    scene = new WScene(this);
-                    scene.LoadStage(sceneFolder);
+                    scene = new WStage(this);
                 }
                 else
                 {
                     Console.WriteLine("Unknown Map Folder: {0}", sceneFolder);
                 }
 
-                m_sceneList.Add(scene);
+                if(scene != null)
+                {
+                    scene.Load(sceneFolder);
+                    m_sceneList.Add(scene);
+                }
             }
 
             if (m_sceneList.Count > 0)

@@ -8,109 +8,48 @@ namespace WindEditor
 {
     public class WScene : WDOMNode
     {
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
-        private WWorld m_world;
-        private WSkyboxNode m_skybox;
+        protected WWorld m_world;
 
         public WScene(WWorld world)
         {
             m_world = world;
         }
 
-        public void LoadRoom(string filePath)
+        public virtual void Load(string filePath)
         {
             Name = Path.GetFileNameWithoutExtension(filePath);
-
-            foreach (var folder in Directory.GetDirectories(filePath))
-            {
-                string folderName = Path.GetFileNameWithoutExtension(folder);
-                switch (folderName.ToLower())
-                {
-                    case "dzb":
-                        {
-                            string fileName = Path.Combine(folder, "room.dzb");
-                            //LoadLevelCollisionFromFile(fileName);
-                        }
-                        break;
-                    case "dzr":
-                    case "dzs":
-                        {
-                            string fileName = Path.Combine(folder, "room.dzr");
-                            if (!File.Exists(fileName))
-                                fileName = Path.Combine(folder, "stage.dzs");
-                            LoadLevelEntitiesFromFile(fileName);
-                        }
-                        break;
-                    case "bmd":
-                    case "bdl":
-                        {
-                            // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
-                            // model, model1, model2, model3. 
-                            string[] modelNames = new[] { "model", "model1", "model2", "model3" };
-                            LoadFixedModelList(folder, modelNames);
-                        }
-                        break;
-                }
-            }
         }
 
-        public void LoadStage(string sceneFolder)
-        {
-            Name = Path.GetFileNameWithoutExtension(sceneFolder);
-
-            foreach (var folder in Directory.GetDirectories(sceneFolder))
-            {
-                string folderName = Path.GetFileNameWithoutExtension(folder);
-                switch (folderName.ToLower())
-                {
-                    case "dzs":
-                        {
-                            string fileName = Path.Combine(folder, "stage.dzs");
-                            LoadLevelEntitiesFromFile(fileName);
-                        }
-                        break;
-                    case "bmd":
-                    case "bdl":
-                        {
-                            m_skybox = new WSkyboxNode();
-                            m_skybox.LoadSkyboxModelsFromFixedModelList(folder);
-                            m_skybox.SetParent(this);
-                        }
-                        break;
-                }
-            }
-        }
-
-
-        private void LoadFixedModelList(string rootFolder, string[] modelNames)
+        protected virtual J3DNode LoadFixedModelList(string rootFolder, string modelName)
         {
             string[] extNames = new[] { ".bmd", ".bdl" };
-            foreach (var model in modelNames)
+            foreach (var ext in extNames)
             {
-                foreach (var ext in extNames)
+                string fullPath = Path.Combine(rootFolder, modelName + ext);
+                if (File.Exists(fullPath))
                 {
-                    string fullPath = Path.Combine(rootFolder, model + ext);
-                    if (File.Exists(fullPath))
-                    {
-                        J3D roomModel = WResourceManager.LoadResource(fullPath);
-                        J3DNode modelInstance = new J3DNode(roomModel);
+                    J3D j3dMesh = WResourceManager.LoadResource(fullPath);
+                    J3DNode modelInstance = new J3DNode(j3dMesh);
 
-                        roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF"));
+                    //roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF"));
 
-                        modelInstance.SetParent(this);
-                    }
+                    modelInstance.SetParent(this);
+                    return modelInstance;
                 }
             }
+
+            return null;
         }
 
 
-        public void UnloadLevel()
+        public virtual void UnloadLevel()
         {
             throw new System.NotImplementedException();
         }
 
-        private void LoadLevelCollisionFromFile(string filePath)
+        protected virtual void LoadLevelCollisionFromFile(string filePath)
         {
             if (!File.Exists(filePath))
                 return;
@@ -124,7 +63,7 @@ namespace WindEditor
             collision.SetParent(this);
         }
 
-        private void LoadLevelEntitiesFromFile(string filePath)
+        protected virtual void LoadLevelEntitiesFromFile(string filePath)
         {
             ActorLoader actorLoader = new ActorLoader();
             List<WActorNode> loadedActors = actorLoader.LoadFromFile(filePath);

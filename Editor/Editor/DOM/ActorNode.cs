@@ -43,9 +43,12 @@ namespace WindEditor
             Properties = new List<IPropertyValue>();
             FourCC = fourCC;
 
-            var obj = new Obj();
-            obj.Load("resources/editor/EditorCube.obj");
-            m_objRender = new SimpleObjRenderer(obj);
+            Obj objRef = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
+            m_objRender = new SimpleObjRenderer(objRef);
+
+            //var obj = new Obj();
+            //obj.Load("resources/editor/EditorCube.obj");
+            //m_objRender = new SimpleObjRenderer(obj);
         }
 
         public override AABox GetBoundingBox()

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace WindEditor
@@ -118,7 +119,7 @@ namespace WindEditor
         {
             var loadedActors = new List<WActorNode>();
 
-            using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(fileName), Endian.Big))
+            using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(fileName), System.Text.Encoding.ASCII, Endian.Big))
             {
                 int chunkCount = reader.ReadInt32();
 
@@ -139,13 +140,53 @@ namespace WindEditor
                         continue;
                     }
 
-                    for(int i = 0; i < chunk.ElementCount; i++)
+                    switch(chunk.FourCC)
                     {
-                        var newActor = LoadActorFromChunk(chunk.FourCC, reader, template);
-                        newActor.Layer = chunk.Layer;
+                        case "RTBL":
+                            {
+                                Console.WriteLine("file: {0} rtblCount: {1}", Path.GetDirectoryName(fileName), chunk.ElementCount);
+                                int[] rtableOffsets = new int[chunk.ElementCount];
+                                for (int i = 0; i < rtableOffsets.Length; i++)
+                                    rtableOffsets[i] = reader.ReadInt32();
 
-                        loadedActors.Add(newActor);
+                                // Jump to the RTBL entries.
+                                for(int i = 0; i < rtableOffsets.Length; i++)
+                                {
+                                    reader.BaseStream.Position = rtableOffsets[i];
+                                    byte numRooms = reader.ReadByte();
+                                    byte timePass = reader.ReadByte();
+                                    byte unknown0 = reader.ReadByte();
+                                    byte unknown1 = reader.ReadByte();
+
+                                    int tableOffset = reader.ReadInt32();
+
+                                    Console.WriteLine("numRooms: {0} timePass: {1} unknown: {2} unknown2: {3}:", numRooms, timePass, unknown0, unknown1);
+
+                                    reader.BaseStream.Position = tableOffset;
+                                    for(int j = 0; j < numRooms; j++)
+                                    {
+                                        byte val = reader.ReadByte();
+                                        byte msb = (byte)((val & 0x80) >> 7);
+                                        byte secondMsb = (byte)((val & 0x7F) >> 6);
+                                        byte roomId = (byte)(val & 0x3F);
+
+                                        Console.WriteLine("\tMSB: {0} MSB2: {1} Room: {2}", msb, secondMsb, roomId);
+                                    }
+                                }
+
+                            }
+                            break;
+                        default:
+                            for (int i = 0; i < chunk.ElementCount; i++)
+                            {
+                                var newActor = LoadActorFromChunk(chunk.FourCC, reader, template);
+                                newActor.Layer = chunk.Layer;
+
+                                loadedActors.Add(newActor);
+                            }
+                            break;
                     }
+
                 }
             }
 

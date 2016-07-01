@@ -112,6 +112,8 @@
     <Compile Include="Editor\DOM\J3DNode.cs" />
     <Compile Include="Editor\DOM\SkyboxNode.cs" />
     <Compile Include="Editor\Input.cs" />
+    <Compile Include="Editor\Maps\Room.cs" />
+    <Compile Include="Editor\Maps\Stage.cs" />
     <Compile Include="Editor\PropertyValues\LinearColorPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
     <Compile Include="Editor\IRenderable.cs" />
