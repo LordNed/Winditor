@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="LinearColor.cs" />
     <Compile Include="Math\AABox.cs" />
+    <Compile Include="Math\Frustrum.cs" />
     <Compile Include="Math\Math.cs" />
     <Compile Include="Math\Plane.cs" />
     <Compile Include="Math\Ray.cs" />
