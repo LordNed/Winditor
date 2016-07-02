@@ -22,7 +22,7 @@ namespace WindEditor
             Name = Path.GetFileNameWithoutExtension(filePath);
         }
 
-        protected virtual J3DNode LoadFixedModelList(string rootFolder, string modelName)
+        protected virtual J3D LoadModel(string rootFolder, string modelName)
         {
             string[] extNames = new[] { ".bmd", ".bdl" };
             foreach (var ext in extNames)
@@ -31,12 +31,7 @@ namespace WindEditor
                 if (File.Exists(fullPath))
                 {
                     J3D j3dMesh = WResourceManager.LoadResource(fullPath);
-                    J3DNode modelInstance = new J3DNode(j3dMesh);
-
-                    //roomModel.SetTevkColorOverride(0, WLinearColor.FromHexString("0xFF8C27FF"));
-
-                    modelInstance.SetParent(this);
-                    return modelInstance;
+                    return j3dMesh;
                 }
             }
 

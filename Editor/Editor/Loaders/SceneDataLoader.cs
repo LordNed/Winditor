@@ -1,5 +1,6 @@
 ﻿using GameFormatReader.Common;
 using Newtonsoft.Json;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -141,7 +142,6 @@ namespace WindEditor
         public List<WRoomTable> GetRoomTable()
         {
             List<WRoomTable> roomTables = new List<WRoomTable>();
-            m_reader.BaseStream.Position = 0L;
 
             int rtblIndex = m_chunkList.FindIndex(x => x.FourCC == "RTBL");
             if (rtblIndex >= 0)
@@ -185,6 +185,26 @@ namespace WindEditor
             }
 
             return roomTables;
+        }
+
+        public List<WRoomTransform> GetRoomTransformTable()
+        {
+            List<WRoomTransform> roomTransforms = new List<WRoomTransform>();
+
+            int multIndex = m_chunkList.FindIndex(x => x.FourCC == "MULT");
+            if (multIndex >= 0)
+            {
+                ChunkHeader rtbl = m_chunkList[multIndex];
+                m_reader.BaseStream.Position = rtbl.ChunkOffset;
+
+                for(int i = 0; i < rtbl.ElementCount; i++)
+                {
+                    WRoomTransform roomTransform = new WRoomTransform(new Vector2(m_reader.ReadSingle(), m_reader.ReadSingle()), WMath.RotationShortToFloat(m_reader.ReadInt16()), m_reader.ReadByte(), m_reader.ReadByte());
+                    roomTransforms.Add(roomTransform);
+                }
+            }
+
+            return roomTransforms;
         }
 
         public List<WActorNode> GetMapEntities()

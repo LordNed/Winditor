@@ -1,5 +1,9 @@
-﻿using System.ComponentModel;
+﻿using OpenTK;
+using System.ComponentModel;
 using System.IO;
+using System;
+using JStudio.J3D;
+using System.Collections.Generic;
 
 namespace WindEditor
 {
@@ -40,14 +44,34 @@ namespace WindEditor
         }
     }
 
-    public class WRoom : WScene
+    public class WRoomTransform
+    {
+        public Vector2 Translation { get; set; }
+        public float YRotation { get; set; }
+        public byte RoomNumber { get; set; }
+        public byte Unknown1 { get; set; }
+
+        public WRoomTransform(Vector2 translation, float yRot, byte roomIndex, byte unknown1)
+        {
+            Translation = translation;
+            YRotation = yRot;
+            RoomNumber = roomIndex;
+            Unknown1 = unknown1;
+        }
+    }
+
+    public class WRoom : WScene, IRenderable
     {
         public int RoomIndex { get; protected set; }
         public WRoomTable RoomTable { get; set; }
+        public WRoomTransform RoomTransform { get; set; }
+
+        private List<J3D> m_roomModels;
 
         public WRoom(WWorld world, int roomIndex):base(world)
         {
             RoomIndex = roomIndex;
+            m_roomModels = new List<J3D>();
         }
 
         public override void Load(string filePath)
@@ -69,9 +93,8 @@ namespace WindEditor
                     case "dzs":
                         {
                             string fileName = Path.Combine(folder, "room.dzr");
-                            if (!File.Exists(fileName))
-                                fileName = Path.Combine(folder, "stage.dzs");
-                            LoadLevelEntitiesFromFile(fileName);
+                            if (File.Exists(fileName))
+                                LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
                     case "bmd":
@@ -80,12 +103,52 @@ namespace WindEditor
                             // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
                             // model, model1, model2, model3. 
                             string[] modelNames = new[] { "model", "model1", "model2", "model3" };
-                            foreach(var model in modelNames)
-                                LoadFixedModelList(folder, model);
+
+                            foreach(var modelName in modelNames)
+                            {
+                                J3D mesh = LoadModel(folder, modelName);
+                                if (mesh != null)
+                                    m_roomModels.Add(mesh);
+                            }
                         }
                         break;
                 }
             }
+        }
+
+        void IRenderable.AddToRenderer(WSceneView view)
+        {
+            view.AddOpaqueMesh(this);
+        }
+
+        void IRenderable.Draw(WSceneView view)
+        {
+            Vector3 scale = Transform.LocalScale;
+            Quaternion rotation = Transform.Rotation;
+            Vector3 translation = Transform.Position;
+
+            if(RoomTransform != null)
+            {
+                rotation = Quaternion.FromAxisAngle(Vector3.UnitY, RoomTransform.YRotation);
+                translation = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+            }
+
+            Matrix4 trs = Matrix4.CreateScale(scale) * Matrix4.CreateFromQuaternion(rotation) * Matrix4.CreateTranslation(translation);
+            foreach(var mesh in m_roomModels)
+                mesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
+        }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            if (RoomTransform != null)
+                return new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+
+            return Vector3.Zero;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            return float.MaxValue;
         }
     }
 }
