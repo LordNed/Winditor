@@ -103,6 +103,7 @@ namespace JStudio.J3D
         private List<BTK> m_materialAnimations;
         private BCK m_currentBoneAnimation;
         private BTK m_currentMaterialAnimation;
+        private bool m_skinningInvalid;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -123,6 +124,9 @@ namespace JStudio.J3D
             m_tevColorOverrides = new TevColorOverride();
             m_boneAnimations = new List<BCK>();
             m_materialAnimations = new List<BTK>();
+
+            // Mark this as true when we first load so it moves non-animated pieces into the right area.
+            m_skinningInvalid = true;
         }
 
         public void SetHardwareLight(int index, GXLight light)
@@ -350,76 +354,86 @@ namespace JStudio.J3D
             Matrix4[] boneTransforms = new Matrix4[boneList.Count];
             ApplyBonePositionsToAnimationTransforms(boneList, boneTransforms);
 
-            foreach (var shape in SHP1Tag.Shapes)
+            // Assume that all bone animations constantly invalidate the skinning.
+            if (m_currentBoneAnimation != null)
+                m_skinningInvalid = true;
+
+            // We'll only transform the position and normal vertices if skinning has been invalidated.
+            if (m_skinningInvalid)
             {
-                var transformedVerts = new List<Vector3>(shape.VertexData.Position);
-                List<WLinearColor> colorOverride = new List<WLinearColor>();
-                List<Vector3> transformedNormals = new List<Vector3>();
-
-                for (int i = 0; i < shape.VertexData.Position.Count; i++)
+                foreach (var shape in SHP1Tag.Shapes)
                 {
-                    // This is relative to the vertex's original packet's matrix table.  
-                    ushort posMtxIndex = (ushort)(shape.VertexData.PositionMatrixIndexes[i]);
+                    var transformedVerts = new List<Vector3>(shape.VertexData.Position);
+                    //List<WLinearColor> colorOverride = new List<WLinearColor>();
+                    List<Vector3> transformedNormals = new List<Vector3>();
 
-                    // We need to calculate which packet data table that is.
-                    int originalPacketIndex = 0;
-                    for (int p = 0; p < shape.MatrixDataTable.Count; p++)
+                    for (int i = 0; i < shape.VertexData.Position.Count; i++)
                     {
-                        if (i >= shape.MatrixDataTable[p].FirstRelevantVertexIndex && i < shape.MatrixDataTable[p].LastRelevantVertexIndex)
+                        // This is relative to the vertex's original packet's matrix table.  
+                        ushort posMtxIndex = (ushort)(shape.VertexData.PositionMatrixIndexes[i]);
+
+                        // We need to calculate which packet data table that is.
+                        int originalPacketIndex = 0;
+                        for (int p = 0; p < shape.MatrixDataTable.Count; p++)
                         {
-                            originalPacketIndex = p; break;
+                            if (i >= shape.MatrixDataTable[p].FirstRelevantVertexIndex && i < shape.MatrixDataTable[p].LastRelevantVertexIndex)
+                            {
+                                originalPacketIndex = p; break;
+                            }
                         }
-                    }
 
-                    // Now that we know which packet this vertex belongs to, we can get the index from it.
-                    // If the Matrix Table index is 0xFFFF then it means "use previous", and we have to
-                    // continue backwards until it is no longer 0xFFFF.
-                    ushort matrixTableIndex;
-                    do
-                    {
-                        matrixTableIndex = shape.MatrixDataTable[originalPacketIndex].MatrixTable[posMtxIndex];
-                        originalPacketIndex--;
-                    } while (matrixTableIndex == 0xFFFF);
-
-                    bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
-                    ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
-
-                    Matrix4 finalMatrix = Matrix4.Zero;
-                    if (isPartiallyWeighted)
-                    {
-                        EVP1.Envelope envelope = EVP1Tag.Envelopes[indexFromDRW1];
-                        for (int b = 0; b < envelope.NumBones; b++)
+                        // Now that we know which packet this vertex belongs to, we can get the index from it.
+                        // If the Matrix Table index is 0xFFFF then it means "use previous", and we have to
+                        // continue backwards until it is no longer 0xFFFF.
+                        ushort matrixTableIndex;
+                        do
                         {
-                            Matrix4 sm1 = EVP1Tag.InverseBindPose[envelope.BoneIndexes[b]];
-                            Matrix4 sm2 = boneTransforms[envelope.BoneIndexes[b]];
+                            matrixTableIndex = shape.MatrixDataTable[originalPacketIndex].MatrixTable[posMtxIndex];
+                            originalPacketIndex--;
+                        } while (matrixTableIndex == 0xFFFF);
 
-                            finalMatrix = finalMatrix + Matrix4.Mult(Matrix4.Mult(sm1, sm2), envelope.BoneWeights[b]);
+                        bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
+                        ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
+
+                        Matrix4 finalMatrix = Matrix4.Zero;
+                        if (isPartiallyWeighted)
+                        {
+                            EVP1.Envelope envelope = EVP1Tag.Envelopes[indexFromDRW1];
+                            for (int b = 0; b < envelope.NumBones; b++)
+                            {
+                                Matrix4 sm1 = EVP1Tag.InverseBindPose[envelope.BoneIndexes[b]];
+                                Matrix4 sm2 = boneTransforms[envelope.BoneIndexes[b]];
+
+                                finalMatrix = finalMatrix + Matrix4.Mult(Matrix4.Mult(sm1, sm2), envelope.BoneWeights[b]);
+                            }
                         }
-                    }
-                    else
-                    {
-                        // If the vertex is not weighted then we use a 1:1 movement with the bone matrix.
-                        finalMatrix = boneTransforms[indexFromDRW1];
+                        else
+                        {
+                            // If the vertex is not weighted then we use a 1:1 movement with the bone matrix.
+                            finalMatrix = boneTransforms[indexFromDRW1];
+                        }
+
+                        Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalMatrix);
+                        transformedVerts[i] = transformedVertPos;
+
+                        if (shape.VertexData.Normal.Count > 0)
+                        {
+                            Vector3 transformedNormal = Vector3.TransformNormal(shape.VertexData.Normal[i], finalMatrix);
+                            transformedNormals.Add(transformedNormal);
+                        }
+
+                        //colorOverride.Add(isPartiallyWeighted ? WLinearColor.Black : WLinearColor.White);
                     }
 
-                    Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalMatrix);
-                    transformedVerts[i] = transformedVertPos;
-
-                    if (shape.VertexData.Normal.Count > 0)
-                    {
-                        Vector3 transformedNormal = Vector3.TransformNormal(shape.VertexData.Normal[i], finalMatrix);
-                        transformedNormals.Add(transformedNormal);
-                    }
-
-                    colorOverride.Add(isPartiallyWeighted ? WLinearColor.Black : WLinearColor.White);
+                    // Re-upload to the GPU.
+                    shape.OverrideVertPos = transformedVerts;
+                    //shape.VertexData.Color0 = colorOverride;
+                    if (transformedNormals.Count > 0)
+                        shape.OverrideNormals = transformedNormals;
+                    shape.UploadBuffersToGPU(true);
                 }
 
-                // Re-upload to the GPU.
-                shape.OverrideVertPos = transformedVerts;
-                //shape.VertexData.Color0 = colorOverride;
-                if (transformedNormals.Count > 0)
-                    shape.OverrideNormals = transformedNormals;
-                shape.UploadBuffersToGPU();
+                m_skinningInvalid = false;
             }
 
             //if (WInput.GetKeyDown(System.Windows.Input.Key.O))

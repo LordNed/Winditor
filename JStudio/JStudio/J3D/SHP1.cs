@@ -73,15 +73,19 @@ namespace JStudio.J3D
                 m_glIndexBuffer = GL.GenBuffer();
             }
 
-            public void UploadBuffersToGPU()
+            public void UploadBuffersToGPU(bool onlyOverrides)
             {
+                if(onlyOverrides)
+                {
+                    if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, OverrideVertPos.Count > 0 ? OverrideVertPos.ToArray() : VertexData.Position.ToArray());
+                    if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, OverrideNormals.Count > 0 ? OverrideNormals.ToArray() : VertexData.Normal.ToArray());
+                    return;
+                }
+
                 // Upload the Indexes
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);
                 GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * Indexes.Count), Indexes.ToArray(), BufferUsageHint.StaticDraw);
 
-                if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, OverrideVertPos.Count > 0 ? OverrideVertPos.ToArray() : VertexData.Position.ToArray());
-                if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, OverrideNormals.Count > 0 ? OverrideNormals.ToArray() : VertexData.Normal.ToArray());
-                //if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
                 if (VertexData.Binormal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Binormal, VertexData.Binormal.ToArray());
                 if (VertexData.Color0.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color0, VertexData.Color0.ToArray());
                 if (VertexData.Color1.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Color1, VertexData.Color1.ToArray());
@@ -353,7 +357,7 @@ namespace JStudio.J3D
                     matrixData.LastRelevantVertexIndex = shape.VertexData.Position.Count;
                 }
 
-                shape.UploadBuffersToGPU();
+                shape.UploadBuffersToGPU(false);
             }
         }
 
