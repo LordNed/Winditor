@@ -752,13 +752,13 @@ namespace WindEditor
             }
         }
 
-        #region Rendering
-        public void AddToRenderer(WSceneView view)
+        #region IRenderable
+        void IRenderable.AddToRenderer(WSceneView view)
         {
             view.AddOpaqueMesh(this);
         }
 
-        public void Draw(WSceneView view)
+        void IRenderable.Draw(WSceneView view)
         {
             if (!Enabled)
                 return;
@@ -776,6 +776,22 @@ namespace WindEditor
                     m_gizmoMeshes[gizmoIndex][j].Render(view.ViewMatrix, view.ProjMatrix, modelMatrix);
                 }
             }
+        }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            return m_position;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            Vector3 lScale = m_scale;
+            float largestMax = lScale[0];
+            for (int i = 1; i < 3; i++)
+                if (lScale[i] > largestMax)
+                    largestMax = lScale[i];
+
+            return largestMax * 25f; // Undersize it for now.
         }
         #endregion
     }

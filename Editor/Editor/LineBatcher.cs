@@ -277,5 +277,15 @@ namespace WindEditor
         {
             view.AddOpaqueMesh(this);
         }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            return Vector3.Zero;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            return float.MaxValue;
+        }
     }
 }

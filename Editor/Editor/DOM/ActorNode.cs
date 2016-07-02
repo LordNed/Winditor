@@ -70,6 +70,22 @@ namespace WindEditor
             Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
             m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            return Transform.Position;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            Vector3 lScale = Transform.LocalScale;
+            float largestMax = lScale[0];
+            for (int i = 1; i < 3; i++)
+                if (lScale[i] > largestMax)
+                    largestMax = lScale[i];
+
+            return largestMax * 5f; // Undersize it for now.
+        }
         #endregion
     }
 }

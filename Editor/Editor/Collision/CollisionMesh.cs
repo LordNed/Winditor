@@ -12,6 +12,8 @@ namespace WindEditor.Collision
         private Shader m_primitiveShader;
         private int m_triangleCount;
 
+        private AABox m_aaBox;
+
         public WCollisionMesh()
         {
             m_primitiveShader = new Shader("UnselectedCollision");
@@ -30,10 +32,23 @@ namespace WindEditor.Collision
             Vector3[] meshVerts = new Vector3[vertexCount];
             stream.BaseStream.Position = vertexOffset;
 
+            Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
             for(int i = 0; i < vertexCount; i++)
             {
                 meshVerts[i] = new Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());
+
+                if (meshVerts[i].X < min.X) min.X = meshVerts[i].X;
+                if (meshVerts[i].Y < min.Y) min.Y = meshVerts[i].Y;
+                if (meshVerts[i].Z < min.Z) min.Z = meshVerts[i].Z;
+
+                if (meshVerts[i].X > max.X) max.X = meshVerts[i].X;
+                if (meshVerts[i].Y > max.Y) max.Y = meshVerts[i].Y;
+                if (meshVerts[i].Z > max.Z) max.Z = meshVerts[i].Z;
             }
+
+            m_aaBox = new AABox(min, max);
 
             int[] triangleIndexes = new int[triangleCount * 3];
             stream.BaseStream.Position = triangleOffset;
@@ -113,6 +128,16 @@ namespace WindEditor.Collision
             GL.Disable(EnableCap.Blend);
             GL.DepthMask(false);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
+        }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            return m_aaBox.Center;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            return m_aaBox.Max.Length; // ToDo: This isn't correct.
         }
         #endregion
     }

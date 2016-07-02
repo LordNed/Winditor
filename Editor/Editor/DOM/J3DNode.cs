@@ -33,6 +33,16 @@ namespace WindEditor
             Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
             m_model.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            return Transform.Position;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            return m_model.JNT1Tag.BindJoints[0].BoundingSphereDiameter;
+        }
         #endregion
     }
 }

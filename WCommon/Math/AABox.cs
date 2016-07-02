@@ -29,6 +29,22 @@ namespace WindEditor
                 point.Z >= Min.Z && point.Z <= Max.Z;
         }
 
+        public Vector3[] GetVertices()
+        {
+            Vector3[] corners = new Vector3[8];
+
+            corners[0] = Min;
+            corners[1] = new Vector3(Min.X, Min.Y, Max.Z);
+            corners[2] = new Vector3(Min.X, Max.Y, Min.Z);
+            corners[3] = new Vector3(Min.X, Max.Y, Max.Z);
+            corners[4] = new Vector3(Max.X, Min.Y, Min.Z);
+            corners[5] = new Vector3(Max.X, Min.Y, Max.Z);
+            corners[6] = new Vector3(Max.X, Max.Y, Min.Z);
+            corners[7] = Max;
+
+            return corners;
+        }
+
         /// <summary>
         /// Scales the <see cref="AABox"/> by the specified amount in each direction. This function changes
         /// the center of the <see cref="AABox"/>.

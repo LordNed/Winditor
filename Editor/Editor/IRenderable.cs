@@ -6,5 +6,7 @@ namespace WindEditor
     {
         void AddToRenderer(WSceneView view);
         void Draw(WSceneView view);
+        Vector3 GetPosition();
+        float GetBoundingRadius();
     }
 }

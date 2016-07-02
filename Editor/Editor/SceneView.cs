@@ -24,7 +24,6 @@ namespace WindEditor
         private List<IRenderable> m_opaqueRenderList;
         private List<IRenderable> m_transparentRenderList;
 
-
         public WSceneView()
         {
             m_opaqueRenderList = new List<IRenderable>();
@@ -67,10 +66,29 @@ namespace WindEditor
 
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
+            Matrix4 translation = Matrix4.CreateTranslation(new Vector3(2, 4, 8));
+            WFrustum frustum = new WFrustum(viewMatrix * projMatrix);
+
+            List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
+            FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
 
             // Render all Opaque Geometry first.
-            foreach (var mesh in m_opaqueRenderList)
+            foreach (var mesh in renderablesInFrustum)
+            {
+                // This is terrible...
+                if(mesh is WLineBatcher)
+                {
+                    WLineBatcher batcher = mesh as WLineBatcher;
+                    for (int i = 0; i < 6; i++)
+                    {
+                        WPlane plane = frustum.m_planes[i];
+                        batcher.DrawLine(Vector3.Zero, plane.Normal * plane.Distance, WLinearColor.White, 0, 0);
+                    }
+                }
+
+
                 mesh.Draw(this);
+            }
 
             // Render all Transparent Geometry afterwards. ToDo: depth-sort this first.
             foreach (var mesh in m_transparentRenderList)
@@ -78,6 +96,19 @@ namespace WindEditor
 
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);
             ResetGraphicsState();
+        }
+
+        private void FrustumCullList(WFrustum frustum, List<IRenderable> sourceList, List<IRenderable> outputList)
+        {
+            for(int i = 0; i < sourceList.Count; i++)
+            {
+                Halfspace contains = frustum.ContainsSphere(sourceList[i].GetPosition(), sourceList[i].GetBoundingRadius());
+
+                if(contains != Halfspace.Negative)
+                {
+                    outputList.Add(sourceList[i]);
+                }
+            }
         }
 
         public void UpdateSceneCamera(float deltaTime)

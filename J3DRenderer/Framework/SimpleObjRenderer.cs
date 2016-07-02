@@ -160,10 +160,11 @@ namespace WindEditor
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
             GL.FrontFace(FrontFaceDirection.Cw);
+            GL.CullFace(CullFaceMode.FrontAndBack);
+
             GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.CullFace);
             GL.Disable(EnableCap.Blend);
-            GL.Disable(EnableCap.CullFace);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             Shader curShader = Highlighted ? m_highlightedShader : m_unhighlightedShader;
             curShader.Bind();
@@ -204,7 +205,7 @@ namespace WindEditor
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_indexVBO);
 
             // Draw!
-            GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(BeginMode.Triangles, m_triangleCount/3, DrawElementsType.UnsignedInt, 0);
 
             // Disable all of our shit.
             GL.Disable(EnableCap.Blend);

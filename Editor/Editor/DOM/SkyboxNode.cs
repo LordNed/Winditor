@@ -1,6 +1,7 @@
 ﻿using JStudio.J3D;
 using System.IO;
 using System;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -76,6 +77,16 @@ namespace WindEditor
             DrawIfNotNull(m_vrKasumiMae, view);
             DrawIfNotNull(m_vrUsoUmi, view);
             DrawIfNotNull(m_vrBackCloud, view);
+        }
+
+        Vector3 IRenderable.GetPosition()
+        {
+            return Transform.Position;
+        }
+
+        float IRenderable.GetBoundingRadius()
+        {
+            return float.MaxValue;
         }
         #endregion
 

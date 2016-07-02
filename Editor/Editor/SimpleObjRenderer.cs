@@ -159,9 +159,10 @@ namespace WindEditor
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
             GL.FrontFace(FrontFaceDirection.Cw);
+            GL.CullFace(CullFaceMode.Front);
+            GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Blend);
-            GL.Disable(EnableCap.CullFace);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             Shader curShader = Highlighted ? m_highlightedShader : m_unhighlightedShader;

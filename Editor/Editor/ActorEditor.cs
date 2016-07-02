@@ -47,7 +47,7 @@ namespace WindEditor
             CheckForObjectSelectionChange(view);
 
             // Add our gizmo to the renderer this frame.
-            m_transformGizmo.AddToRenderer(view);
+            ((IRenderable)m_transformGizmo).AddToRenderer(view);
         }
 
         private void CheckForObjectSelectionChange(WSceneView view)

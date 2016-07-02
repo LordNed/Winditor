@@ -3,6 +3,13 @@ using OpenTK;
 
 namespace WindEditor
 {
+    public enum Halfspace
+    {
+        Negative = -1,  // Entirely behind the Normal
+        Intersect = 0,  // Intersects the Plane
+        Positive = 1    // Entirely above the Normal
+    }
+
     public struct WPlane
     {
         public Vector3 Normal;
@@ -20,6 +27,19 @@ namespace WindEditor
             Distance = -Vector3.Dot(normal, pointOnPlane);
         }
 
+        /// <summary>
+        /// Normalize the plane so that the <see cref="Normal"/> becomes a unit vector. This modifies
+        /// the plane equation as the <see cref="Distance"/> will also change while normalizing.
+        /// </summary>
+        public void Normalize()
+        {
+            float magnitude = (float)Math.Sqrt(Normal.X * Normal.X * +Normal.Y * Normal.Y + Normal.Z * Normal.Z);
+            Normal.X /= magnitude;
+            Normal.Y /= magnitude;
+            Normal.Z /= magnitude;
+            Distance /= magnitude;
+        }
+
         public bool RayIntersectsPlane(WRay ray, out float intersectDist)
         {
             float a = Vector3.Dot(ray.Direction, Normal);
@@ -32,6 +52,15 @@ namespace WindEditor
             }
             intersectDist = num / a;
             return intersectDist > 0f;
+        }
+
+        public Halfspace SideOfPlane(Vector3 point)
+        {
+            float d = Normal.X * point.X + Normal.Y * point.Y + Normal.Z * point.Z + Distance;
+            if (d < 0) return Halfspace.Negative;
+            if (d > 0) return Halfspace.Positive;
+
+            return Halfspace.Intersect;
         }
 
         public override string ToString()
