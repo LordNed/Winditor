@@ -67,20 +67,7 @@ namespace WindEditor
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
 
-
-            // This is stupid
-            Vector3[] frustumPoints = new Vector3[8];
-            frustumPoints[0] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 0)).Xyz; // Upper Left (Near)
-            frustumPoints[1] = UnProject(projMatrix, viewMatrix, new Vector3(1, 0, 0)).Xyz; // Upper Right (Near)
-            frustumPoints[2] = UnProject(projMatrix, viewMatrix, new Vector3(0, 1, 0)).Xyz; // Bottom Left (Near)
-            frustumPoints[3] = UnProject(projMatrix, viewMatrix, new Vector3(1, 1, 0)).Xyz; // Bottom Right (Near)
-
-            frustumPoints[4] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 1)).Xyz; // Upper Left (Far)
-            frustumPoints[5] = UnProject(projMatrix, viewMatrix, new Vector3(1, 0, 1)).Xyz; // Upper Right (Far)
-            frustumPoints[6] = UnProject(projMatrix, viewMatrix, new Vector3(0, 1, 1)).Xyz; // Bottom Left (Far)
-            frustumPoints[7] = UnProject(projMatrix, viewMatrix, new Vector3(1, 1, 1)).Xyz; // Bottom Right (Far)
-
-            WFrustum frustum = new WFrustum(frustumPoints);
+            WFrustum frustum = new WFrustum(ref viewMatrix, ref projMatrix);
 
             List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
             FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
@@ -169,14 +156,11 @@ namespace WindEditor
             mousePosition.X -= viewportDimensions.X;
             mousePosition.Y -= viewportDimensions.Y;
 
-
             Vector3 mouseViewportA = new Vector3(mousePosition.X/viewportDimensions.Width, mousePosition.Y/viewportDimensions.Height, 0f);
             Vector3 mouseViewportB = new Vector3(mousePosition.X/viewportDimensions.Width, mousePosition.Y/viewportDimensions.Height, 1f);
 
-            //Vector2 screenSize = new Vector2(viewportDimensions.Width, viewportDimensions.Height);
-
-            Vector4 nearUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportA);
-            Vector4 farUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportB);
+            Vector4 nearUnproj = WFrustum.UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportA);
+            Vector4 farUnproj = WFrustum.UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportB);
 
             Vector3 dir = farUnproj.Xyz - nearUnproj.Xyz;
             dir.Normalize();
@@ -211,32 +195,6 @@ namespace WindEditor
             newRect.Height = m_viewportRect.Height * m_viewHeight;
 
             return newRect;
-        }
-
-        private Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 viewportPoint)
-        {
-            Vector4 clip = new Vector4();
-
-            // Convert from Viewport Space ([0,1]) to Clip Space ([-1, 1])
-            clip.X = (2.0f * viewportPoint.X) - 1;
-            clip.Y = -((2.0f * viewportPoint.Y)-1);
-            clip.Z = viewportPoint.Z;
-            clip.W = 1.0f;
-
-            Matrix4 viewInv = Matrix4.Invert(view);
-            Matrix4 projInv = Matrix4.Invert(projection);
-
-            Vector4.Transform(ref clip, ref projInv, out clip);
-            Vector4.Transform(ref clip, ref viewInv, out clip);
-
-            if (clip.W > float.Epsilon || clip.W < float.Epsilon)
-            {
-                clip.X /= clip.W;
-                clip.Y /= clip.W;
-                clip.Z /= clip.W;
-            }
-
-            return clip;
         }
     }
 }

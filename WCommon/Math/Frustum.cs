@@ -9,6 +9,22 @@ namespace WindEditor
     {
         public WPlane[] m_planes;
 
+        public WFrustum(ref Matrix4 viewMatrix,ref Matrix4 projMatrix)
+        {
+            Vector3[] frustumPoints = new Vector3[8];
+            frustumPoints[0] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 0)).Xyz; // Upper Left (Near)
+            frustumPoints[1] = UnProject(projMatrix, viewMatrix, new Vector3(1, 0, 0)).Xyz; // Upper Right (Near)
+            frustumPoints[2] = UnProject(projMatrix, viewMatrix, new Vector3(0, 1, 0)).Xyz; // Bottom Left (Near)
+            frustumPoints[3] = UnProject(projMatrix, viewMatrix, new Vector3(1, 1, 0)).Xyz; // Bottom Right (Near)
+
+            frustumPoints[4] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 1)).Xyz; // Upper Left (Far)
+            frustumPoints[5] = UnProject(projMatrix, viewMatrix, new Vector3(1, 0, 1)).Xyz; // Upper Right (Far)
+            frustumPoints[6] = UnProject(projMatrix, viewMatrix, new Vector3(0, 1, 1)).Xyz; // Bottom Left (Far)
+            frustumPoints[7] = UnProject(projMatrix, viewMatrix, new Vector3(1, 1, 1)).Xyz; // Bottom Right (Far)
+
+            PlanesFromPoints(frustumPoints);
+        }
+
         public WFrustum(WPlane[] cameraPlanes)
         {
             if (cameraPlanes.Length != 6)
@@ -19,17 +35,23 @@ namespace WindEditor
 
         public WFrustum(Vector3[] frustumPoints)
         {
-            if (frustumPoints.Length != 8)
-                throw new ArgumentException("A frustum must be built from the 8 corners of the frustum!", "frustumPoints");
+            PlanesFromPoints(frustumPoints);
+        }
+
+        private void PlanesFromPoints(Vector3[] points)
+        {
+            if (points.Length != 8)
+                throw new ArgumentException("A frustum must be built from the 8 corners of the frustum!", "points");
 
             // Construct planes out of the given points.
             m_planes = new WPlane[6];
-            m_planes[0] = new WPlane(frustumPoints[0], frustumPoints[2], frustumPoints[4]); // Left
-            m_planes[1] = new WPlane(frustumPoints[5], frustumPoints[7], frustumPoints[1]); // Right
-            m_planes[2] = new WPlane(frustumPoints[4], frustumPoints[1], frustumPoints[0]); // Top
-            m_planes[3] = new WPlane(frustumPoints[3], frustumPoints[7], frustumPoints[2]); // Down
-            m_planes[4] = new WPlane(frustumPoints[1], frustumPoints[3], frustumPoints[0]); // Near
-            m_planes[5] = new WPlane(frustumPoints[7], frustumPoints[5], frustumPoints[4]); // Far
+            m_planes[0] = new WPlane(points[0], points[2], points[4]); // Left
+            m_planes[1] = new WPlane(points[5], points[7], points[1]); // Right
+            m_planes[2] = new WPlane(points[4], points[1], points[0]); // Top
+            m_planes[3] = new WPlane(points[3], points[7], points[2]); // Down
+            m_planes[4] = new WPlane(points[1], points[3], points[0]); // Near
+            m_planes[5] = new WPlane(points[7], points[5], points[4]); // Far
+
         }
 
         /// <summary>
@@ -106,6 +128,32 @@ namespace WindEditor
 
             // Otherwise, they're partially in.
             return Halfspace.Intersect;
+        }
+
+        public static Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 viewportPoint)
+        {
+            Vector4 clip = new Vector4();
+
+            // Convert from Viewport Space ([0,1]) to Clip Space ([-1, 1])
+            clip.X = (2.0f * viewportPoint.X) - 1;
+            clip.Y = -((2.0f * viewportPoint.Y) - 1);
+            clip.Z = viewportPoint.Z;
+            clip.W = 1.0f;
+
+            Matrix4 viewInv = Matrix4.Invert(view);
+            Matrix4 projInv = Matrix4.Invert(projection);
+
+            Vector4.Transform(ref clip, ref projInv, out clip);
+            Vector4.Transform(ref clip, ref viewInv, out clip);
+
+            if (clip.W > float.Epsilon || clip.W < float.Epsilon)
+            {
+                clip.X /= clip.W;
+                clip.Y /= clip.W;
+                clip.Z /= clip.W;
+            }
+
+            return clip;
         }
     }
 }
