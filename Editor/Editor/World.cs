@@ -55,6 +55,8 @@ namespace WindEditor
             List<string> sortedScenes = new List<string>(Directory.GetDirectories(dirPath));
             sortedScenes.Sort();
 
+            WStage stage = null;
+
             foreach (var sceneFolder in sortedScenes)
             {
                 string sceneName = Path.GetFileName(sceneFolder);
@@ -68,10 +70,13 @@ namespace WindEditor
                     if (int.TryParse(roomNumberStr, out roomNumber))
                         scene = new WRoom(this, roomNumber);
                     else
-                        Console.WriteLine("Unknown Room Number for Room: \"{0}\", Skipping!", sceneName);  
+                        Console.WriteLine("Unknown Room Number for Room: \"{0}\", Skipping!", sceneName);
                 }
                 else if (string.Compare(sceneName, "Stage", true) == 0)
-                    scene = new WStage(this);
+                {
+                    stage = new WStage(this);
+                    scene = stage;
+                }
                 else
                     Console.WriteLine("Unknown Map Folder: {0}", sceneFolder);
 
@@ -80,6 +85,16 @@ namespace WindEditor
                     m_sceneList.Add(scene);
                     scene.Load(sceneFolder);
                 }
+            }
+
+            // Now that we've loaded all of the data, we'll do some post processing.
+            if(stage != null)
+            {
+                List<WRoom> allRooms = new List<WRoom>();
+                foreach (var scene in m_sceneList)
+                    if (scene is WRoom) allRooms.Add((WRoom)scene);
+
+                stage.PostLoadProcessing(dirPath, allRooms);
             }
 
             if (m_sceneList.Count > 0)

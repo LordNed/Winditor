@@ -3,19 +3,24 @@ using System.IO;
 
 namespace WindEditor
 {
-    public class RoomTable
+    public class WRoomTable
     {
         public struct AdjacentRoom
         {
-            public bool LoadRoom { get; set; } // Start Visible?
+            public bool LoadRoom { get; set; }
             public bool Unknown1 { get; set; } // No idea. Always set for the first room but not the others.
             public byte RoomIndex { get; set; }
 
-            public AdjacentRoom(bool unknown0, bool unknown1, byte roomIndex)
+            public AdjacentRoom(bool loadRoom, bool unknown1, byte roomIndex)
             {
-                LoadRoom = unknown0;
+                LoadRoom = loadRoom;
                 Unknown1 = unknown1;
                 RoomIndex = roomIndex;
+            }
+
+            public override string ToString()
+            {
+                return string.Format("LoadRoom: {0} Unknown1: {1} RoomIndex: {2}", LoadRoom, Unknown1, RoomIndex);
             }
         }
 
@@ -23,11 +28,22 @@ namespace WindEditor
         public byte ReverbAmount { get; set; }
         public byte TimePass { get; set; }
         public byte Unknown1 { get; set; }
+
+        public WRoomTable()
+        {
+            AdjacentRooms = new BindingList<AdjacentRoom>();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Reverb Amount: {0} TimePass: {1} Unknown1: {2} Adjacent Room Count: {3}", ReverbAmount, TimePass, Unknown1, AdjacentRooms.Count);
+        }
     }
 
     public class WRoom : WScene
     {
         public int RoomIndex { get; protected set; }
+        public WRoomTable RoomTable { get; set; }
 
         public WRoom(WWorld world, int roomIndex):base(world)
         {

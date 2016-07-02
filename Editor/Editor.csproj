@@ -117,7 +117,7 @@
     <Compile Include="Editor\PropertyValues\LinearColorPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
     <Compile Include="Editor\IRenderable.cs" />
-    <Compile Include="Editor\Loaders\ActorLoader.cs" />
+    <Compile Include="Editor\Loaders\SceneDataLoader.cs" />
     <Compile Include="Editor\Obj.cs" />
     <Compile Include="Editor\PropertyValues\PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BaseValueAggregate.cs" />

@@ -65,8 +65,8 @@ namespace WindEditor
 
         protected virtual void LoadLevelEntitiesFromFile(string filePath)
         {
-            ActorLoader actorLoader = new ActorLoader();
-            List<WActorNode> loadedActors = actorLoader.LoadFromFile(filePath);
+            SceneDataLoader actorLoader = new SceneDataLoader(filePath);
+            List<WActorNode> loadedActors = actorLoader.GetMapEntities();
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
         }
