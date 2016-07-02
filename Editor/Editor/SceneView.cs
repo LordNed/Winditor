@@ -66,7 +66,6 @@ namespace WindEditor
 
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
-
            
 
             // This is stupid
@@ -94,17 +93,17 @@ namespace WindEditor
 
             // Construct planes out of them...
             WPlane[] frustPlanes = new WPlane[6];
-            frustPlanes[0] = new WPlane(frustrumPoints[2], frustrumPoints[0], frustrumPoints[4] ); // Left
-            frustPlanes[1] = new WPlane(frustrumPoints[7], frustrumPoints[5], frustrumPoints[1] ); // Right
-            frustPlanes[2] = new WPlane(frustrumPoints[1], frustrumPoints[4], frustrumPoints[0] ); // Up
-            frustPlanes[3] = new WPlane(frustrumPoints[7], frustrumPoints[3], frustrumPoints[2] ); // Down
+            frustPlanes[0] = new WPlane(frustrumPoints[0], frustrumPoints[2], frustrumPoints[4] ); // Left
+            frustPlanes[1] = new WPlane(frustrumPoints[5], frustrumPoints[7], frustrumPoints[1] ); // Right
+            frustPlanes[2] = new WPlane(frustrumPoints[4], frustrumPoints[1], frustrumPoints[0] ); // Top
+            frustPlanes[3] = new WPlane(frustrumPoints[3], frustrumPoints[7], frustrumPoints[2]); // Down
             frustPlanes[4] = new WPlane(frustrumPoints[1], frustrumPoints[3], frustrumPoints[0] ); // Near
             frustPlanes[5] = new WPlane(frustrumPoints[7], frustrumPoints[5], frustrumPoints[4] ); // Far
-
 
             WFrustum frustum = new WFrustum(frustPlanes);
 
             List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
+
             FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
 
             // Render all Opaque Geometry first.
@@ -144,7 +143,7 @@ namespace WindEditor
             {
                 Halfspace contains = frustum.ContainsSphere(sourceList[i].GetPosition(), sourceList[i].GetBoundingRadius());
 
-                if(contains == Halfspace.Negative)
+                if(contains != Halfspace.Negative)
                 {
                     outputList.Add(sourceList[i]);
                 }

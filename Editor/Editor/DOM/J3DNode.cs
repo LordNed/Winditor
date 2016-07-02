@@ -1,5 +1,4 @@
-﻿using System;
-using JStudio.J3D;
+﻿using JStudio.J3D;
 using OpenTK;
 
 namespace WindEditor
@@ -41,7 +40,7 @@ namespace WindEditor
 
         float IRenderable.GetBoundingRadius()
         {
-            return m_model.JNT1Tag.BindJoints[0].BoundingSphereDiameter;
+            return float.MaxValue;
         }
         #endregion
     }
