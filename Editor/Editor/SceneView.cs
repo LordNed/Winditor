@@ -66,66 +66,28 @@ namespace WindEditor
 
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
-           
+
 
             // This is stupid
-            Vector3[] frustrumPoints = new Vector3[8];
-            WRect viewportDimensions = GetViewportDimensions();
+            Vector3[] frustumPoints = new Vector3[8];
+            frustumPoints[0] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 0)).Xyz; // Upper Left (Near)
+            frustumPoints[1] = UnProject(projMatrix, viewMatrix, new Vector3(1, 0, 0)).Xyz; // Upper Right (Near)
+            frustumPoints[2] = UnProject(projMatrix, viewMatrix, new Vector3(0, 1, 0)).Xyz; // Bottom Left (Near)
+            frustumPoints[3] = UnProject(projMatrix, viewMatrix, new Vector3(1, 1, 0)).Xyz; // Bottom Right (Near)
 
-            // Near UL
-            frustrumPoints[0] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-            // Near UR
-            frustrumPoints[1] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, 0, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-            // Near BL
-            frustrumPoints[2] = UnProject(projMatrix, viewMatrix, new Vector3(0, viewportDimensions.Height, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-            // Near BR
-            frustrumPoints[3] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, viewportDimensions.Height, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            frustumPoints[4] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 1)).Xyz; // Upper Left (Far)
+            frustumPoints[5] = UnProject(projMatrix, viewMatrix, new Vector3(1, 0, 1)).Xyz; // Upper Right (Far)
+            frustumPoints[6] = UnProject(projMatrix, viewMatrix, new Vector3(0, 1, 1)).Xyz; // Bottom Left (Far)
+            frustumPoints[7] = UnProject(projMatrix, viewMatrix, new Vector3(1, 1, 1)).Xyz; // Bottom Right (Far)
 
-            // Far UL
-            frustrumPoints[4] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-            // Far UR
-            frustrumPoints[5] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, 0, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-            // Far BL
-            frustrumPoints[6] = UnProject(projMatrix, viewMatrix, new Vector3(0, viewportDimensions.Height, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-            // Far BR
-            frustrumPoints[7] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, viewportDimensions.Height, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
-
-
-            // Construct planes out of them...
-            WPlane[] frustPlanes = new WPlane[6];
-            frustPlanes[0] = new WPlane(frustrumPoints[0], frustrumPoints[2], frustrumPoints[4] ); // Left
-            frustPlanes[1] = new WPlane(frustrumPoints[5], frustrumPoints[7], frustrumPoints[1] ); // Right
-            frustPlanes[2] = new WPlane(frustrumPoints[4], frustrumPoints[1], frustrumPoints[0] ); // Top
-            frustPlanes[3] = new WPlane(frustrumPoints[3], frustrumPoints[7], frustrumPoints[2]); // Down
-            frustPlanes[4] = new WPlane(frustrumPoints[1], frustrumPoints[3], frustrumPoints[0] ); // Near
-            frustPlanes[5] = new WPlane(frustrumPoints[7], frustrumPoints[5], frustrumPoints[4] ); // Far
-
-            WFrustum frustum = new WFrustum(frustPlanes);
+            WFrustum frustum = new WFrustum(frustumPoints);
 
             List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
-
             FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
 
             // Render all Opaque Geometry first.
             foreach (var mesh in renderablesInFrustum)
             {
-                // This is terrible...
-                if(mesh is WLineBatcher)
-                {
-                    WLineBatcher batcher = mesh as WLineBatcher;
-                    for(int i = 0; i < frustrumPoints.Length; i++)
-                    {
-                        //batcher.DrawLine(Vector3.Zero, frustrumPoints[i], i < 4 ? WLinearColor.White : WLinearColor.Red, 0, 0);
-                    }
-                    for (int i = 0; i < 6; i++)
-                    {
-                        //WPlane plane = frustum.m_planes[i];
-                        WPlane plane = frustPlanes[i];
-                        batcher.DrawLine(Vector3.Zero, plane.Normal * plane.Distance, WLinearColor.White, 0, 0);
-                    }
-                }
-
-
                 mesh.Draw(this);
             }
 
@@ -139,11 +101,11 @@ namespace WindEditor
 
         private void FrustumCullList(WFrustum frustum, List<IRenderable> sourceList, List<IRenderable> outputList)
         {
-            for(int i = 0; i < sourceList.Count; i++)
+            for (int i = 0; i < sourceList.Count; i++)
             {
                 Halfspace contains = frustum.ContainsSphere(sourceList[i].GetPosition(), sourceList[i].GetBoundingRadius());
 
-                if(contains != Halfspace.Negative)
+                if (contains != Halfspace.Negative)
                 {
                     outputList.Add(sourceList[i]);
                 }
@@ -183,7 +145,7 @@ namespace WindEditor
 
         private void GetViewAndProjMatrixForView(out Matrix4 viewMatrix, out Matrix4 projMatrix)
         {
-            viewMatrix = Matrix4.LookAt(m_viewCamera.Transform.Position, m_viewCamera.Transform.Position - m_viewCamera.Transform.Forward,  Vector3.UnitY);
+            viewMatrix = Matrix4.LookAt(m_viewCamera.Transform.Position, m_viewCamera.Transform.Position - m_viewCamera.Transform.Forward, Vector3.UnitY);
             projMatrix = m_viewCamera.ProjectionMatrix;
         }
 
@@ -208,13 +170,13 @@ namespace WindEditor
             mousePosition.Y -= viewportDimensions.Y;
 
 
-            Vector3 mousePosA = new Vector3(mousePosition.X, mousePosition.Y, 0f);
-            Vector3 mousePosB = new Vector3(mousePosition.X, mousePosition.Y, 1f);
+            Vector3 mouseViewportA = new Vector3(mousePosition.X/viewportDimensions.Width, mousePosition.Y/viewportDimensions.Height, 0f);
+            Vector3 mouseViewportB = new Vector3(mousePosition.X/viewportDimensions.Width, mousePosition.Y/viewportDimensions.Height, 1f);
 
-            Vector2 screenSize = new Vector2(viewportDimensions.Width, viewportDimensions.Height);
+            //Vector2 screenSize = new Vector2(viewportDimensions.Width, viewportDimensions.Height);
 
-            Vector4 nearUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mousePosA, screenSize);
-            Vector4 farUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mousePosB, screenSize);
+            Vector4 nearUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportA);
+            Vector4 farUnproj = UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportB);
 
             Vector3 dir = farUnproj.Xyz - nearUnproj.Xyz;
             dir.Normalize();
@@ -251,29 +213,30 @@ namespace WindEditor
             return newRect;
         }
 
-        private Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 mousePos, Vector2 screenSize)
+        private Vector4 UnProject(Matrix4 projection, Matrix4 view, Vector3 viewportPoint)
         {
-            Vector4 vec = new Vector4();
+            Vector4 clip = new Vector4();
 
-            vec.X = 2.0f * mousePos.X / screenSize.X - 1;
-            vec.Y = -(2.0f * mousePos.Y / screenSize.Y - 1);
-            vec.Z = mousePos.Z;
-            vec.W = 1.0f;
+            // Convert from Viewport Space ([0,1]) to Clip Space ([-1, 1])
+            clip.X = (2.0f * viewportPoint.X) - 1;
+            clip.Y = -((2.0f * viewportPoint.Y)-1);
+            clip.Z = viewportPoint.Z;
+            clip.W = 1.0f;
 
             Matrix4 viewInv = Matrix4.Invert(view);
             Matrix4 projInv = Matrix4.Invert(projection);
 
-            Vector4.Transform(ref vec, ref projInv, out vec);
-            Vector4.Transform(ref vec, ref viewInv, out vec);
+            Vector4.Transform(ref clip, ref projInv, out clip);
+            Vector4.Transform(ref clip, ref viewInv, out clip);
 
-            if (vec.W > float.Epsilon || vec.W < float.Epsilon)
+            if (clip.W > float.Epsilon || clip.W < float.Epsilon)
             {
-                vec.X /= vec.W;
-                vec.Y /= vec.W;
-                vec.Z /= vec.W;
+                clip.X /= clip.W;
+                clip.Y /= clip.W;
+                clip.Z /= clip.W;
             }
 
-            return vec;
+            return clip;
         }
     }
 }

@@ -17,70 +17,19 @@ namespace WindEditor
             m_planes = cameraPlanes;
         }
 
-        public WFrustum(Matrix4 fromMatrix)
+        public WFrustum(Vector3[] frustumPoints)
         {
-            m_planes = ExtractPlanes(ref fromMatrix, true);
-        }
+            if (frustumPoints.Length != 8)
+                throw new ArgumentException("A frustum must be built from the 8 corners of the frustum!", "frustumPoints");
 
-        /// <summary>
-        /// Extract an array of 6 <see cref="WPlane"/>s representing the supplied camera matrix. 
-        /// The planes are always in Left/Right/Top/Bottom/Near/Far order, and can optionally be
-        /// normalized.
-        /// 
-        /// Note: The resulting planes will have normals that point to the inside of the viewing
-        /// frustum. If it is desired that they point to the outside then the code must be modified
-        /// to negate the coefficients X, Y, Z, and d of each plane equation.
-        /// </summary>
-        /// <param name="mvpMatrix">Camera matrix to extract planes from.</param>
-        /// <param name="normalize">Optionally normalize the resulting planes.</param>
-        /// <returns>Array of planes representing the supplied matrix.</returns>
-        public static WPlane[] ExtractPlanes(ref Matrix4 mvpMatrix, bool normalize = true)
-        {
-            WPlane[] planes = new WPlane[6];
-
-            // Left Clipping Plane
-            planes[0].Normal.X = mvpMatrix.M41 + mvpMatrix.M11;
-            planes[0].Normal.Y = mvpMatrix.M42 + mvpMatrix.M12;
-            planes[0].Normal.Z = mvpMatrix.M43 + mvpMatrix.M13;
-            planes[0].Distance = mvpMatrix.M44 + mvpMatrix.M14;
-
-            // Right Clipping Plane
-            planes[1].Normal.X = mvpMatrix.M41 - mvpMatrix.M11;
-            planes[1].Normal.Y = mvpMatrix.M42 - mvpMatrix.M12;
-            planes[1].Normal.Z = mvpMatrix.M43 - mvpMatrix.M13;
-            planes[1].Distance = mvpMatrix.M44 - mvpMatrix.M14;
-
-            // Top Clipping Plane
-            planes[2].Normal.X = mvpMatrix.M41 - mvpMatrix.M21;
-            planes[2].Normal.Y = mvpMatrix.M42 - mvpMatrix.M22;
-            planes[2].Normal.Z = mvpMatrix.M43 - mvpMatrix.M23;
-            planes[2].Distance = mvpMatrix.M44 - mvpMatrix.M24;
-
-            // Bottom Clipping Plane
-            planes[3].Normal.X = mvpMatrix.M41 + mvpMatrix.M21;
-            planes[3].Normal.Y = mvpMatrix.M42 + mvpMatrix.M22;
-            planes[3].Normal.Z = mvpMatrix.M43 + mvpMatrix.M23;
-            planes[3].Distance = mvpMatrix.M44 + mvpMatrix.M24;
-
-            // Near Clipping Plane
-            planes[4].Normal.X = mvpMatrix.M41 + mvpMatrix.M31;
-            planes[4].Normal.Y = mvpMatrix.M42 + mvpMatrix.M32;
-            planes[4].Normal.Z = mvpMatrix.M43 + mvpMatrix.M33;
-            planes[4].Distance = mvpMatrix.M44 + mvpMatrix.M34;
-
-            // Far Clipping Plane
-            planes[5].Normal.X = mvpMatrix.M41 - mvpMatrix.M31;
-            planes[5].Normal.Y = mvpMatrix.M42 - mvpMatrix.M32;
-            planes[5].Normal.Z = mvpMatrix.M43 - mvpMatrix.M33;
-            planes[5].Distance = mvpMatrix.M44 - mvpMatrix.M34;
-
-            if (normalize)
-            {
-                for (int i = 0; i < 6; i++)
-                    planes[i].Normalize();
-            }
-
-            return planes;
+            // Construct planes out of the given points.
+            m_planes = new WPlane[6];
+            m_planes[0] = new WPlane(frustumPoints[0], frustumPoints[2], frustumPoints[4]); // Left
+            m_planes[1] = new WPlane(frustumPoints[5], frustumPoints[7], frustumPoints[1]); // Right
+            m_planes[2] = new WPlane(frustumPoints[4], frustumPoints[1], frustumPoints[0]); // Top
+            m_planes[3] = new WPlane(frustumPoints[3], frustumPoints[7], frustumPoints[2]); // Down
+            m_planes[4] = new WPlane(frustumPoints[1], frustumPoints[3], frustumPoints[0]); // Near
+            m_planes[5] = new WPlane(frustumPoints[7], frustumPoints[5], frustumPoints[4]); // Far
         }
 
         /// <summary>
