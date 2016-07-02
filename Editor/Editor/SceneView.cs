@@ -66,8 +66,43 @@ namespace WindEditor
 
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
-            Matrix4 translation = Matrix4.CreateTranslation(new Vector3(2, 4, 8));
-            WFrustum frustum = new WFrustum(viewMatrix * projMatrix);
+
+           
+
+            // This is stupid
+            Vector3[] frustrumPoints = new Vector3[8];
+            WRect viewportDimensions = GetViewportDimensions();
+
+            // Near UL
+            frustrumPoints[0] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            // Near UR
+            frustrumPoints[1] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, 0, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            // Near BL
+            frustrumPoints[2] = UnProject(projMatrix, viewMatrix, new Vector3(0, viewportDimensions.Height, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            // Near BR
+            frustrumPoints[3] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, viewportDimensions.Height, 0), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+
+            // Far UL
+            frustrumPoints[4] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            // Far UR
+            frustrumPoints[5] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, 0, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            // Far BL
+            frustrumPoints[6] = UnProject(projMatrix, viewMatrix, new Vector3(0, viewportDimensions.Height, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+            // Far BR
+            frustrumPoints[7] = UnProject(projMatrix, viewMatrix, new Vector3(viewportDimensions.Width, viewportDimensions.Height, 1), new Vector2(viewportDimensions.Width, viewportDimensions.Height)).Xyz;
+
+
+            // Construct planes out of them...
+            WPlane[] frustPlanes = new WPlane[6];
+            frustPlanes[0] = new WPlane(frustrumPoints[2], frustrumPoints[0], frustrumPoints[4] ); // Left
+            frustPlanes[1] = new WPlane(frustrumPoints[7], frustrumPoints[5], frustrumPoints[1] ); // Right
+            frustPlanes[2] = new WPlane(frustrumPoints[1], frustrumPoints[4], frustrumPoints[0] ); // Up
+            frustPlanes[3] = new WPlane(frustrumPoints[7], frustrumPoints[3], frustrumPoints[2] ); // Down
+            frustPlanes[4] = new WPlane(frustrumPoints[1], frustrumPoints[3], frustrumPoints[0] ); // Near
+            frustPlanes[5] = new WPlane(frustrumPoints[7], frustrumPoints[5], frustrumPoints[4] ); // Far
+
+
+            WFrustum frustum = new WFrustum(frustPlanes);
 
             List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
             FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
@@ -79,9 +114,14 @@ namespace WindEditor
                 if(mesh is WLineBatcher)
                 {
                     WLineBatcher batcher = mesh as WLineBatcher;
+                    for(int i = 0; i < frustrumPoints.Length; i++)
+                    {
+                        //batcher.DrawLine(Vector3.Zero, frustrumPoints[i], i < 4 ? WLinearColor.White : WLinearColor.Red, 0, 0);
+                    }
                     for (int i = 0; i < 6; i++)
                     {
-                        WPlane plane = frustum.m_planes[i];
+                        //WPlane plane = frustum.m_planes[i];
+                        WPlane plane = frustPlanes[i];
                         batcher.DrawLine(Vector3.Zero, plane.Normal * plane.Distance, WLinearColor.White, 0, 0);
                     }
                 }
@@ -104,7 +144,7 @@ namespace WindEditor
             {
                 Halfspace contains = frustum.ContainsSphere(sourceList[i].GetPosition(), sourceList[i].GetBoundingRadius());
 
-                if(contains != Halfspace.Negative)
+                if(contains == Halfspace.Negative)
                 {
                     outputList.Add(sourceList[i]);
                 }

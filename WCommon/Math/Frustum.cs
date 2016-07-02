@@ -19,7 +19,7 @@ namespace WindEditor
 
         public WFrustum(Matrix4 fromMatrix)
         {
-            m_planes = ExtractPlanes(ref fromMatrix, false);
+            m_planes = ExtractPlanes(ref fromMatrix, true);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace WindEditor
             planes[5].Normal.Z = mvpMatrix.M43 - mvpMatrix.M33;
             planes[5].Distance = mvpMatrix.M44 - mvpMatrix.M34;
 
-            if(normalize)
+            if (normalize)
             {
                 for (int i = 0; i < 6; i++)
                     planes[i].Normalize();
@@ -101,7 +101,7 @@ namespace WindEditor
 
             float distFromPlane;
 
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 // Distance from the sphere to this plane.
                 distFromPlane = Vector3.Dot(m_planes[i].Normal, center) + m_planes[i].Distance;
@@ -127,15 +127,15 @@ namespace WindEditor
             // Test all 8 corners of the AABox against the 6 planes of the frustum. If all
             // points are behind 1 specific plane, then we're fully out. If all points are in
             // then the AABox is fully within the frustum.
-            for(int p = 0; p < 6; p++)
+            for (int p = 0; p < 6; p++)
             {
                 int inCount = 8;
                 int ptIn = 1;
 
-                for(int j = 0; j < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     // Test the point against the planes
-                    if(m_planes[p].SideOfPlane(corners[j]) == Halfspace.Negative)
+                    if (m_planes[p].SideOfPlane(corners[j]) == Halfspace.Negative)
                     {
                         ptIn = 0;
                         inCount--;

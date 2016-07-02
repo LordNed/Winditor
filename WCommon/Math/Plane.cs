@@ -27,6 +27,15 @@ namespace WindEditor
             Distance = -Vector3.Dot(normal, pointOnPlane);
         }
 
+        public WPlane(Vector3 p1, Vector3 p2, Vector3 p3)
+        {
+            Vector3 d12 = p2 - p1;
+            Vector3 d13 = p3 - p1;
+            Vector3 normal = Vector3.Cross(d12, d13);
+            Normal = normal.Normalized();
+            Distance = -Vector3.Dot(Normal, p1);
+        }
+
         /// <summary>
         /// Normalize the plane so that the <see cref="Normal"/> becomes a unit vector. This modifies
         /// the plane equation as the <see cref="Distance"/> will also change while normalizing.

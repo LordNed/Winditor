@@ -7,21 +7,21 @@ namespace WindEditor
     {
         public struct AdjacentRoom
         {
-            public bool Unknown0 { get; set; } // Start Visible?
+            public bool LoadRoom { get; set; } // Start Visible?
             public bool Unknown1 { get; set; } // No idea. Always set for the first room but not the others.
             public byte RoomIndex { get; set; }
 
             public AdjacentRoom(bool unknown0, bool unknown1, byte roomIndex)
             {
-                Unknown0 = unknown0;
+                LoadRoom = unknown0;
                 Unknown1 = unknown1;
                 RoomIndex = roomIndex;
             }
         }
 
         public BindingList<AdjacentRoom> AdjacentRooms { get; set; }
+        public byte ReverbAmount { get; set; }
         public byte TimePass { get; set; }
-        public byte Unknown0 { get; set; }
         public byte Unknown1 { get; set; }
     }
 
