@@ -50,28 +50,35 @@ namespace WindEditor
         public void LoadMapFromDirectory(string dirPath)
         {
             //UnloadMap();
-            foreach(var sceneFolder in Directory.GetDirectories(dirPath))
+
+            // Sort them alphabetically so we always load the Stage last.
+            List<string> sortedScenes = new List<string>(Directory.GetDirectories(dirPath));
+            sortedScenes.Sort();
+
+            foreach (var sceneFolder in sortedScenes)
             {
                 string sceneName = Path.GetFileName(sceneFolder);
                 WScene scene = null;
 
-                if (sceneName.Contains("Room"))
+                if (sceneName.StartsWith("Room"))
                 {
-                    scene = new WRoom(this);
+                    string roomNumberStr = sceneName.Substring(4);
+                    int roomNumber;
+
+                    if (int.TryParse(roomNumberStr, out roomNumber))
+                        scene = new WRoom(this, roomNumber);
+                    else
+                        Console.WriteLine("Unknown Room Number for Room: \"{0}\", Skipping!", sceneName);  
                 }
                 else if (string.Compare(sceneName, "Stage", true) == 0)
-                {
                     scene = new WStage(this);
-                }
                 else
-                {
                     Console.WriteLine("Unknown Map Folder: {0}", sceneFolder);
-                }
 
-                if(scene != null)
+                if (scene != null)
                 {
-                    scene.Load(sceneFolder);
                     m_sceneList.Add(scene);
+                    scene.Load(sceneFolder);
                 }
             }
 
@@ -93,7 +100,7 @@ namespace WindEditor
 
             m_persistentLines.Tick(deltaTime);
 
-            foreach(WScene scene in m_sceneList)
+            foreach (WScene scene in m_sceneList)
             {
                 scene.Tick(deltaTime);
             }
@@ -105,7 +112,7 @@ namespace WindEditor
 
                 // Iterate through all of the things that need to be added to the viewport
                 // and call AddToRenderer on them.
-                foreach(WScene scene in m_sceneList)
+                foreach (WScene scene in m_sceneList)
                 {
                     foreach (var renderable in scene.GetChildrenOfType<IRenderable>())
                         renderable.AddToRenderer(view);
@@ -121,7 +128,7 @@ namespace WindEditor
 
         public void OnViewportResized(int width, int height)
         {
-            foreach(WSceneView view in m_sceneViews)
+            foreach (WSceneView view in m_sceneViews)
             {
                 view.SetViewportSize(width, height);
             }
@@ -130,14 +137,14 @@ namespace WindEditor
         private void UpdateSceneViews()
         {
             // If they've clicked, check which view is in focus.
-            if(WInput.GetMouseButtonDown(0) || WInput.GetMouseButtonDown(1) || WInput.GetMouseButtonDown(2))
+            if (WInput.GetMouseButtonDown(0) || WInput.GetMouseButtonDown(1) || WInput.GetMouseButtonDown(2))
             {
                 WSceneView focusedScene = GetFocusedSceneView();
                 foreach (var scene in m_sceneViews)
                 {
                     scene.IsFocused = false;
                     WRect viewport = scene.GetViewportDimensions();
-                    if(viewport.Contains(WInput.MousePosition.X, WInput.MousePosition.Y))
+                    if (viewport.Contains(WInput.MousePosition.X, WInput.MousePosition.Y))
                     {
                         focusedScene = scene;
                     }

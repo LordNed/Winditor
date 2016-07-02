@@ -23,7 +23,8 @@ namespace WindEditor
                     case "dzs":
                         {
                             string fileName = Path.Combine(folder, "stage.dzs");
-                            LoadLevelEntitiesFromFile(fileName);
+                            if(File.Exists(fileName))
+                                LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
                     case "bmd":
@@ -36,6 +37,11 @@ namespace WindEditor
                         break;
                 }
             }
+        }
+
+        protected override void LoadLevelEntitiesFromFile(string filePath)
+        {
+            base.LoadLevelEntitiesFromFile(filePath);
         }
     }
 }

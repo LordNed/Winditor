@@ -27,9 +27,11 @@ namespace WindEditor
 
     public class WRoom : WScene
     {
-        public WRoom(WWorld world):base(world)
-        {
+        public int RoomIndex { get; protected set; }
 
+        public WRoom(WWorld world, int roomIndex):base(world)
+        {
+            RoomIndex = roomIndex;
         }
 
         public override void Load(string filePath)
