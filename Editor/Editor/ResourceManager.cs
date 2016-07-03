@@ -24,7 +24,10 @@ namespace WindEditor
             if (existRef == null)
             {
                 J3D j3d = new J3D();
-                j3d.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big));
+                using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big))
+                {
+                    j3d.LoadFromStream(reader);
+                }
                 existRef = new TSharedRef<J3D>();
                 existRef.FilePath = filePath;
                 existRef.Asset = j3d;

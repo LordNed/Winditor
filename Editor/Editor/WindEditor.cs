@@ -60,7 +60,8 @@ namespace WindEditor
         public void OnApplicationShutdown()
         {
             foreach (WWorld world in m_editorWorlds)
-                world.UnloadMap();
+                world.ShutdownWorld();
+
             App.Current.Shutdown();
         }
 

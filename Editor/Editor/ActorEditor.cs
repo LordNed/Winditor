@@ -238,10 +238,13 @@ namespace WindEditor
 
         private WActorNode Raycast(WRay ray)
         {
+            if (m_world.Map == null)
+                return null;
+
             WActorNode closestResult = null;
             float closestDistance = float.MaxValue;
 
-            foreach (var scene in m_world.SceneList)
+            foreach (var scene in m_world.Map.SceneList)
             {
                 List<WActorNode> allActors = scene.GetChildrenOfType<WActorNode>();
 
@@ -359,10 +362,10 @@ namespace WindEditor
 
         private void SelectAll()
         {
-            if (m_world.FocusedScene == null)
+            if (m_world.Map == null || m_world.Map.FocusedScene == null)
                 return;
 
-            var allActorsInSelectedScene = m_world.FocusedScene.GetChildrenOfType<WActorNode>();
+            var allActorsInSelectedScene = m_world.Map.FocusedScene.GetChildrenOfType<WActorNode>();
             ModifySelection(SelectionType.Add, allActorsInSelectedScene.ToArray(), true);
         }
 
