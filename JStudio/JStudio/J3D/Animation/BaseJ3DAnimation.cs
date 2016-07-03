@@ -164,10 +164,6 @@ namespace JStudio.J3D.Animation
             {
                 ret.Add(new Key(0f, src[index.Index], 0f, 0f));
             }
-            else if(src.Length == 1)
-            {
-                ret.Add(new Key(0f, src[0], 0f, 0f));
-            }
             else
             {
                 for (int j = 0; j < index.Count; j++)

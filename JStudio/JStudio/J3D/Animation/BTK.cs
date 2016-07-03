@@ -179,9 +179,9 @@ namespace JStudio.J3D.Animation
                             anim.ScalesY = ReadComp(scaleData, texV.Scale);
                             anim.ScalesZ = ReadComp(scaleData, texW.Scale);
 
-                            anim.RotationsX = ReadComp(rotationData, texU.Scale);
-                            anim.RotationsY = ReadComp(rotationData, texV.Scale);
-                            anim.RotationsZ = ReadComp(rotationData, texW.Scale);
+                            anim.RotationsX = ReadComp(rotationData, texU.Rotation);
+                            anim.RotationsY = ReadComp(rotationData, texV.Rotation);
+                            anim.RotationsZ = ReadComp(rotationData, texW.Rotation);
 
                             // Convert all of the rotations from compressed shorts back into -180, 180
                             ConvertRotation(anim.RotationsX, rotScale);
