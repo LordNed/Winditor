@@ -285,6 +285,18 @@
     <Content Include="resources\templates\Environment Time Preset.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\shaders\Debug_NormalColors.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Debug_LightColors.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Debug_LightColors.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Debug_NormalColors.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="resources\ui\DeleteUser_16x.png" />
     <Resource Include="resources\ui\Paste_16x.png" />
     <Resource Include="resources\ui\Copy_16x.png" />

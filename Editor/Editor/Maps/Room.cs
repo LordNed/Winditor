@@ -60,9 +60,12 @@ namespace WindEditor
         }
     }
 
+
+
     public class WRoom : WScene, IRenderable
     {
         public int RoomIndex { get; protected set; }
+        public int MemoryAllocation { get; set; }
         public WRoomTable RoomTable { get; set; }
         public WRoomTransform RoomTransform { get; set; }
 

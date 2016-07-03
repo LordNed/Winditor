@@ -73,6 +73,18 @@ namespace WindEditor
                     if (room != null)
                         room.RoomTransform = multTable[i];
                 }
+
+                // Load Room Memory Allocation info. How much extra memory do these rooms allocate?
+                var allocTable = sceneData.GetRoomMemAllocTable();
+                if (mapRooms.Count != allocTable.Count)
+                    Console.WriteLine("WStage: Mismatched number of entries in Meco Table ({0}) and number of loaded rooms ({1})!", allocTable.Count, mapRooms.Count);
+
+                for(int i = 0; i < allocTable.Count; i++)
+                {
+                    WRoom room = mapRooms.Find(x => allocTable[i].RoomIndex == x.RoomIndex);
+                    if (room != null)
+                        room.MemoryAllocation = allocTable[i].MemorySize;
+                }
             }
         }
     }

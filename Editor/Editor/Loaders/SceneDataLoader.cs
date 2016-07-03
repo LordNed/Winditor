@@ -84,6 +84,23 @@ namespace WindEditor
                 }
             }
         }
+
+        public struct MemoryAlloc
+        {
+            public byte RoomIndex;
+            public int MemorySize;
+
+            public MemoryAlloc(byte roomIndex, int memorySize)
+            {
+                RoomIndex = roomIndex;
+                MemorySize = memorySize;
+            }
+
+            public override string ToString()
+            {
+                return string.Format("Room Index: {0} Size: {1} bytes", RoomIndex, MemorySize);
+            }
+        }
 #pragma warning disable 0649
         public class MapActorDescriptor
         {
@@ -167,7 +184,7 @@ namespace WindEditor
                     roomTable.Unknown1 = m_reader.ReadByte();
 
                     int tableOffset = m_reader.ReadInt32();
-                    //Console.WriteLine("numRooms: {0} timePass: {1} unknown: {2} unknown2: {3}:", numRooms, timePass, unknown0, unknown1);
+                    Console.WriteLine("i: {4} numRooms: {0} reverbAmount: {1} TimePass: {2} unknown1: {3}:", numRooms, roomTable.ReverbAmount, roomTable.TimePass, roomTable.Unknown1, i);
 
                     m_reader.BaseStream.Position = tableOffset;
                     for (int j = 0; j < numRooms; j++)
@@ -179,7 +196,7 @@ namespace WindEditor
                         byte roomId = (byte)(val & 0x3F);
 
                         roomTable.AdjacentRooms.Add(new WRoomTable.AdjacentRoom(loadRoom, unknownBit, roomId));
-                        //Console.WriteLine("\tMSB: {0} MSB2: {1} Room: {2}", msb, secondMsb, roomId);
+                        Console.WriteLine("\tLoad Room: {0} Unknown Bit: {1} Room: {2}", loadRoom, unknownBit, roomId);
                     }
                 }
             }
@@ -207,6 +224,33 @@ namespace WindEditor
             return roomTransforms;
         }
 
+        public List<MemoryAlloc> GetRoomMemAllocTable()
+        {
+            List<MemoryAlloc> memAllocTable = new List<MemoryAlloc>();
+
+            int mecoIndex = m_chunkList.FindIndex(x => x.FourCC == "MECO");
+            int memaIndex = m_chunkList.FindIndex(x => x.FourCC == "MEMA");
+            if(mecoIndex >= 0 && memaIndex >= 0)
+            {
+                ChunkHeader meco = m_chunkList[mecoIndex];
+                ChunkHeader mema = m_chunkList[memaIndex];
+
+                int[] memaEntries = new int[mema.ElementCount];
+                m_reader.BaseStream.Position = mema.ChunkOffset;
+                for (int i = 0; i < mema.ElementCount; i++)
+                    memaEntries[i] = m_reader.ReadInt32();
+
+                m_reader.BaseStream.Position = meco.ChunkOffset;
+                for(int i = 0; i < meco.ElementCount; i++)
+                {
+                    MemoryAlloc memAlloc = new MemoryAlloc(m_reader.ReadByte(), memaEntries[m_reader.ReadByte()]);
+                    memAllocTable.Add(memAlloc);
+                }
+            }
+
+            return memAllocTable;
+        }
+
         public List<WActorNode> GetMapEntities()
         {
             var loadedActors = new List<WActorNode>();
@@ -224,6 +268,8 @@ namespace WindEditor
                 {
                     // Don't turn these into map actors, as they will be handled elsewhere.
                     case "RTBL":
+                    case "MECO":
+                    case "MEMA":
                         break;
                     default:
                         for (int i = 0; i < chunk.ElementCount; i++)
