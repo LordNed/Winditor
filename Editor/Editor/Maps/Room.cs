@@ -66,7 +66,6 @@ namespace WindEditor
     {
         public int RoomIndex { get; protected set; }
         public int MemoryAllocation { get; set; }
-        public WRoomTable RoomTable { get; set; }
         public WRoomTransform RoomTransform { get; set; }
 
         private List<J3D> m_roomModels;

@@ -267,7 +267,7 @@ namespace WindEditor
                 switch (chunk.FourCC)
                 {
                     // Don't turn these into map actors, as they will be handled elsewhere.
-                    case "RTBL":
+                    //case "RTBL":
                     case "MECO":
                     case "MEMA":
                         break;

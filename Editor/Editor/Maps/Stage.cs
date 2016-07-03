@@ -47,19 +47,6 @@ namespace WindEditor
             if(File.Exists(dzsFilePath))
             {
                 SceneDataLoader sceneData = new SceneDataLoader(dzsFilePath);
-
-                // Load the Room Table, which stores adjacency information for each room.
-                var roomTable = sceneData.GetRoomTable();
-                if(mapRooms.Count != roomTable.Count)
-                    Console.WriteLine("WStage: Mismatched number of entries in roomTable ({0}) and number of loaded rooms ({1})!", roomTable.Count, mapRooms.Count);
-
-                for(int i = 0; i < roomTable.Count; i++)
-                {
-                    WRoom room = mapRooms.Find(x => x.RoomIndex == i);
-                    if (room != null)
-                        room.RoomTable = roomTable[i];
-                }
-
                 // Load Room Translation info. Wind Waker stores collision and entities in world-space coordinates,
                 // but models all of their rooms around 0,0,0. To solve this, there is a chunk labeled "MULT" which stores
                 // the room model's translation and rotation.
