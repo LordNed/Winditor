@@ -1,5 +1,4 @@
-﻿#version 130
-#version 130
+﻿#version 140
 
 // Input Data
 in vec2 Tex0;

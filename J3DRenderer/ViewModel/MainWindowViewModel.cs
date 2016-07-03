@@ -75,7 +75,7 @@ namespace J3DRenderer
             m_childLink.SetTevColorOverride(0, WLinearColor.FromHexString("0x455151FF")); // Ambient Color
 
             m_skybox = new J3D[4];
-            for (int i = 0; i < m_skybox.Length; i++)
+            for (int i = 500; i < m_skybox.Length; i++)
             {
                 string[] fileNames = new[] { "vr_sky.bdl", "vr_kasumi_mae.bdl", "vr_uso_umi.bdl", "vr_back_cloud.bdl" };
 
@@ -109,7 +109,7 @@ namespace J3DRenderer
         private void LoadChildLink(GXLight secondLight)
         {
             m_childLink = new J3D();
-            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/zl.bdl"), Endian.Big));
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/model_normalstest.bmd"), Endian.Big));
             m_childLink.SetHardwareLight(0, m_mainLight);
             m_childLink.SetHardwareLight(1, secondLight);
             m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");

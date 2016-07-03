@@ -7,7 +7,7 @@ namespace JStudio.J3D.ShaderGen
 {
     public static class TEVShaderGenerator
     {
-        private static bool m_allowCachedOverride = true;
+        private static bool m_allowCachedOverride = false;
 
         public static Shader GenerateShader(Material fromMat, MAT3 data)
         {
@@ -52,7 +52,7 @@ namespace JStudio.J3D.ShaderGen
                 shader.ReleaseResources();
 
                 // Generate a Fallback Shader for rendering
-                shader = new Shader("UnlitTexture");
+                shader = new Shader("Debug_NormalColors");
                 shader.CompileSource(File.ReadAllText("resources/shaders/Debug_NormalColors.vert"), ShaderType.VertexShader);
                 shader.CompileSource(File.ReadAllText("resources/shaders/Debug_NormalColors.frag"), ShaderType.FragmentShader);
                 shader.LinkShader();
