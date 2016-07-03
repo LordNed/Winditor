@@ -14,12 +14,12 @@ namespace JStudio.J3D
             m_enabledAttributes = new List<ShaderAttributeIds>();
         }
 
-        internal bool AttributeIsEnabled(ShaderAttributeIds attribute)
+        public bool AttributeIsEnabled(ShaderAttributeIds attribute)
         {
             return m_enabledAttributes.Contains(attribute);
         }
 
-        internal int GetAttributeSize(ShaderAttributeIds attribute)
+        public int GetAttributeSize(ShaderAttributeIds attribute)
         {
             switch (attribute)
             {
@@ -37,7 +37,7 @@ namespace JStudio.J3D
             }
         }
 
-        internal VertexAttribPointerType GetAttributePointerType(ShaderAttributeIds attribute)
+        public VertexAttribPointerType GetAttributePointerType(ShaderAttributeIds attribute)
         {
             switch (attribute)
             {
@@ -64,7 +64,7 @@ namespace JStudio.J3D
             }
         }
 
-        internal int GetStride(ShaderAttributeIds attribute)
+        public int GetStride(ShaderAttributeIds attribute)
         {
             switch (attribute)
             {
@@ -92,7 +92,7 @@ namespace JStudio.J3D
             }
         }
 
-        internal void EnableAttribute(ShaderAttributeIds attribute)
+        public void EnableAttribute(ShaderAttributeIds attribute)
         {
             m_enabledAttributes.Add(attribute);
         }

@@ -48,10 +48,9 @@ namespace JStudio.J3D.Animation
             LoadTagDataFromFile(reader, tagCount);
         }
 
-        public void ApplyAnimationToMaterials(MAT3 pose, float time)
-        {
-            time *= kAnimFramerate;
-            float ftime = time % AnimLengthInFrames;
+        public void ApplyAnimationToMaterials(MAT3 pose)
+        { 
+            float ftime = (m_timeSinceStartedPlaying * kAnimFramerate) % AnimLengthInFrames;
 
             for (int i = 0; i < m_animationData.Count; i++)
             {

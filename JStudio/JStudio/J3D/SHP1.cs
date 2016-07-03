@@ -81,6 +81,11 @@ namespace JStudio.J3D
                     if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, OverrideNormals.Count > 0 ? OverrideNormals.ToArray() : VertexData.Normal.ToArray());
                     return;
                 }
+                else
+                {
+                    if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, VertexData.Position.ToArray());
+                    if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
+                }
 
                 // Upload the Indexes
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);

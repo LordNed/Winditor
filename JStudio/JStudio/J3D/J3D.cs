@@ -345,6 +345,9 @@ namespace JStudio.J3D
 
             if (m_currentBoneAnimation != null)
                 m_currentBoneAnimation.ApplyAnimationToPose(JNT1Tag.AnimatedJoints);
+
+            if (m_currentMaterialAnimation != null)
+                m_currentMaterialAnimation.ApplyAnimationToMaterials(MAT3Tag);
         }
 
         public void Render(Matrix4 viewMatrix, Matrix4 projectionMatrix, Matrix4 modelMatrix)
