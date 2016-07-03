@@ -53,8 +53,8 @@ namespace JStudio.J3D.ShaderGen
 
                 // Generate a Fallback Shader for rendering
                 shader = new Shader("UnlitTexture");
-                shader.CompileSource(File.ReadAllText("resources/shaders/Debug_LightColors.vert"), ShaderType.VertexShader);
-                shader.CompileSource(File.ReadAllText("resources/shaders/Debug_LightColors.frag"), ShaderType.FragmentShader);
+                shader.CompileSource(File.ReadAllText("resources/shaders/Debug_NormalColors.vert"), ShaderType.VertexShader);
+                shader.CompileSource(File.ReadAllText("resources/shaders/Debug_NormalColors.frag"), ShaderType.FragmentShader);
                 shader.LinkShader();
 
                 return shader;

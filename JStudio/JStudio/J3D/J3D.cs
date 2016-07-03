@@ -156,7 +156,9 @@ namespace JStudio.J3D
             string animName = Path.GetFileNameWithoutExtension(bckFile);
             BCK bck = new BCK(animName);
 
-            bck.LoadFromStream(FileUtilities.LoadFile(bckFile));
+            using (var reader = FileUtilities.LoadFile(bckFile))
+                bck.LoadFromStream(reader);
+
             m_boneAnimations.Add(bck);
 
             OnPropertyChanged("BoneAnimations");
@@ -167,7 +169,9 @@ namespace JStudio.J3D
             string animName = Path.GetFileNameWithoutExtension(btkFile);
             BTK btk = new BTK(animName);
 
-            btk.LoadFromStream(FileUtilities.LoadFile(btkFile));
+            using (var reader = FileUtilities.LoadFile(btkFile))
+                btk.LoadFromStream(reader);
+
             m_materialAnimations.Add(btk);
 
             OnPropertyChanged("MaterialAnimations");

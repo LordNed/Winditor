@@ -80,6 +80,8 @@ namespace WindEditor
         {
             base.Load(filePath);
 
+            LoadRoomModels(filePath);
+
             foreach (var folder in Directory.GetDirectories(filePath))
             {
                 string folderName = Path.GetFileNameWithoutExtension(folder);
@@ -99,23 +101,51 @@ namespace WindEditor
                                 LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
-                    case "bmd":
-                    case "bdl":
-                        {
-                            // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
-                            // model, model1, model2, model3. 
-                            string[] modelNames = new[] { "model", "model1", "model2", "model3" };
+                    //case "bmd":
+                    //case "bdl":
+                    //    {
+                    //        // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
+                    //        // model, model1, model2, model3. 
+                    //        string[] modelNames = new[] { "model", "model1", "model2", "model3" };
 
-                            foreach(var modelName in modelNames)
-                            {
-                                J3D mesh = LoadModel(folder, modelName);
-                                if (mesh != null)
-                                    m_roomModels.Add(mesh);
-                            }
-                        }
-                        break;
+                    //        foreach(var modelName in modelNames)
+                    //        {
+                    //            J3D mesh = LoadModel(folder, modelName);
+                    //            if (mesh != null)
+                    //                m_roomModels.Add(mesh);
+                    //        }
+                    //    }
+                    //    break;
                 }
             }
+        }
+
+        private void LoadRoomModels(string filePath)
+        {
+            // Search the bmd and bdl folders for valid model names. Then search for a matching brk and btk for those models.
+            string[] modelNames = new[] { "model", "model1", "model2", "model3" };
+            string[] folderNames = new[] { "bmd", "bdl" };
+            bool[] validModels = new bool[modelNames.Length];
+
+            foreach(var subFolder in folderNames)
+            {
+                string folderPath = Path.Combine(filePath, subFolder);
+                foreach (var modelName in modelNames)
+                {
+                    J3D mesh = LoadModel(folderPath, modelName);
+                    if (mesh != null)
+                        m_roomModels.Add(mesh);
+                }
+            }
+
+        }
+
+        public override void Tick(float deltaTime)
+        {
+            base.Tick(deltaTime);
+
+            foreach (var model in m_roomModels)
+                model.Tick(deltaTime);
         }
 
         void IRenderable.AddToRenderer(WSceneView view)

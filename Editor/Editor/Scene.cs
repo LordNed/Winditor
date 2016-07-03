@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using WindEditor.Collision;
 using JStudio.J3D;
+using JStudio.J3D.Animation;
 
 namespace WindEditor
 {
@@ -31,6 +32,17 @@ namespace WindEditor
                 if (File.Exists(fullPath))
                 {
                     J3D j3dMesh = WResourceManager.LoadResource(fullPath);
+
+                    // Now that we've loaded a j3dMesh, we're going to try loading btk anims too.
+                    string btkFolder = rootFolder + "\\..\\btk\\";
+                    string btkFile = btkFolder + modelName + ".btk";
+
+                    if(File.Exists(btkFile))
+                    {
+                        j3dMesh.LoadMaterialAnim(btkFile);
+                        j3dMesh.SetMaterialAnimation(modelName);
+                    }
+
                     return j3dMesh;
                 }
             }
