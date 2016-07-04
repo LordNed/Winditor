@@ -1,0 +1,19 @@
+﻿<Window x:Class="WindEditor.View.OptionsMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEditor.View"
+        xmlns:vm="clr-namespace:WindEditor.ViewModel"
+        mc:Ignorable="d"
+        Title="OptionsMenu" Height="300" Width="300">
+    <Window.DataContext>
+        <vm:OptionsMenuViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <TextBox TextWrapping="Wrap" Text="{Binding Path=RootDirectory}"  Margin="10,10,45,229"/>
+        <Button Content="..." Width="Auto" Height="Auto" Margin="252,10,10,229" Command="{Binding Path=OpenRootDirectoryCommand}"/>
+        <Button Content="Ok" Margin="226,229,10,10" Command="{Binding Path=AcceptSettingsCommand}"/>
+        <Button Content="Cancel" Margin="152,229,71,10" Command="{Binding Path=CancelSettingsCommand}"/>
+    </Grid>
+</Window>

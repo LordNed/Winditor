@@ -137,7 +137,6 @@ namespace WindEditor
                         m_roomModels.Add(mesh);
                 }
             }
-
         }
 
         public override void Tick(float deltaTime)

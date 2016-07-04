@@ -68,6 +68,8 @@
                 <Separator/>
                 <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}"/>
                 <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}"/>
+                <Separator/>
+                <MenuItem Header="Set Data Root..." Command="{Binding Path=WindEditor.SetDataRootCommand}"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">

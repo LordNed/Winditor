@@ -22,5 +22,17 @@ namespace WindEditor.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RootDirectory {
+            get {
+                return ((string)(this["RootDirectory"]));
+            }
+            set {
+                this["RootDirectory"] = value;
+            }
+        }
     }
 }
