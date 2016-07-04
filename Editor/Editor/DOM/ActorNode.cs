@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using JStudio.J3D;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 
@@ -37,23 +38,37 @@ namespace WindEditor
         public ActorFlags Flags { get; set; }
 
         private SimpleObjRenderer m_objRender;
+        private J3D m_actorMesh;
 
         public WActorNode(string fourCC)
         {
             Properties = new List<IPropertyValue>();
             FourCC = fourCC;
+        }
 
-            Obj objRef = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
-            m_objRender = new SimpleObjRenderer(objRef);
+        public void PostFinishedLoad()
+        {
+            if (FourCC == "ACTR" || FourCC == "SCOB")
+            {
+                IPropertyValue propVal = Properties.Find(x => x.Name == "Name");
+                if (propVal != null)
+                {
+                    TStringPropertyValue stringProperty = (TStringPropertyValue)propVal;
+                    m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
+                }
 
-            //var obj = new Obj();
-            //obj.Load("resources/editor/EditorCube.obj");
-            //m_objRender = new SimpleObjRenderer(obj);
+            }
+
+            if (m_actorMesh == null)
+            {
+                Obj objRef = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
+                m_objRender = new SimpleObjRenderer(objRef);
+            }
         }
 
         public override AABox GetBoundingBox()
         {
-            AABox modelABB = m_objRender.GetAABB();
+            AABox modelABB = m_objRender != null ? m_objRender.GetAABB() : new AABox(-Vector3.One * 50, Vector3.One * 50);
             modelABB.ScaleBy(Transform.LocalScale);
 
             return new AABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
@@ -68,7 +83,11 @@ namespace WindEditor
         void IRenderable.Draw(WSceneView view)
         {
             Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
-            m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
+
+            if (m_actorMesh != null)
+                m_actorMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
+            else
+                m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
 
         Vector3 IRenderable.GetPosition()

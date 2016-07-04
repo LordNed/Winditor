@@ -452,8 +452,14 @@ namespace JStudio.J3D
 
             RenderMeshRecursive(INF1Tag.HierarchyRoot);
 
-            //m_lineBatcher.Render(viewMatrix, projectionMatrix);
-            //m_lineBatcher.Tick(1 / 60f);
+            // We're going to restore some semblance of state after rendering ourselves, as models often modify weird and arbitrary GX values.
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.Enable(EnableCap.CullFace);
+            GL.CullFace(CullFaceMode.Back);
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthMask(true);
+            GL.Enable(EnableCap.Dither);
         }
 
         private void ApplyBonePositionsToAnimationTransforms(IList<SkeletonJoint> boneList, Matrix4[] boneTransforms)

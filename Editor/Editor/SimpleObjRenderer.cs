@@ -165,6 +165,7 @@ namespace WindEditor
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.DepthMask(true);
 
             Shader curShader = Highlighted ? m_highlightedShader : m_unhighlightedShader;
             curShader.Bind();

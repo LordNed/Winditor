@@ -1,0 +1,650 @@
+﻿[
+ {
+   "Archive Name": "Aana",
+   "Actor Name": "Pitfall",
+   "English Name": "Hole in the ground. Triggers an exit.",
+   "Main Model": "bdl/aana",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Ac",
+   "Actor Name": "Ac1",
+   "English Name": "Adult Komali. \"ac\" is the body, while \"acarm\" are his arms.",
+   "Main Model": "bdlm/ac.bdl",
+   "Secondary Models": "bdl/acarm.bdl",
+   "Wait Animations": "bcks/ac_wait01 (body), bcks/acarm_wait01 (arms)"
+ },
+ {
+   "Archive Name": "Adnno",
+   "Actor Name": "",
+   "English Name": "",
+   "Main Model": "bdl/adnno.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Agb",
+   "Actor Name": "",
+   "English Name": "The Tingle Tuner cursor that appears in-game.",
+   "Main Model": "bdlm/agbcursor.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Ah",
+   "Actor Name": "Ah",
+   "English Name": "Old Man Ho-Ho",
+   "Main Model": "bdlm/ah.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/ah_wait01.bck"
+ },
+ {
+   "Archive Name": "Aisi",
+   "Actor Name": "",
+   "English Name": "",
+   "Main Model": "bdlm/aisi.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Aj",
+   "Actor Name": "Aj1",
+   "English Name": "Sturgeon",
+   "Main Model": "bdlm/aj.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Ajav",
+   "Actor Name": "Ajav",
+   "English Name": "Jabun's bombable barrier. Models: ajava-ajavf",
+   "Main Model": "bdl/ajava.bdl",
+   "Secondary Models": "bdl/ajavf.bdl",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "AjavW",
+   "Actor Name": "AjavW",
+   "English Name": "Water in Jabun's cave (Stage/Pjavdou)",
+   "Main Model": "bdlm/ajavw.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "btk/ajavw.btk"
+ },
+ {
+   "Archive Name": "Akabe",
+   "Actor Name": "Akabe",
+   "English Name": "Wall collision mesh as an object.",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "AkabeD",
+   "Actor Name": "",
+   "English Name": "Collision mesh as an object. (D)",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "AkabeK",
+   "Actor Name": "",
+   "English Name": "Collision mesh as an object. (K)",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Always",
+   "Actor Name": "N/A",
+   "English Name": "Resources that the game must always have in memory.",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Am",
+   "Actor Name": "amos",
+   "English Name": "Armos Knight",
+   "Main Model": "bdl/am.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Am2",
+   "Actor Name": "amos2",
+   "English Name": "Armos Statue",
+   "Main Model": "bdl/am2.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait.bck, btk/am2.btk"
+ },
+ {
+   "Archive Name": "Apzl",
+   "Actor Name": "Apzl",
+   "English Name": "Sliding Puzzle",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Ashut",
+   "Actor Name": "Ashut",
+   "English Name": "Iron Bars",
+   "Main Model": "bdl/ashut.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Astop",
+   "Actor Name": "Astop",
+   "English Name": "Floor collision mesh as an object.",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Atdoor",
+   "Actor Name": "ATdoor",
+   "English Name": "Forsaken Fortress cell door",
+   "Main Model": "bdl/sdoor01.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc0",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc1",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc2",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc3",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc4",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc5",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc6",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auc",
+   "Actor Name": "Auc7",
+   "English Name": "Character models for the participants in the Auction on Windfall Island.",
+   "Main Model": "bdl/ub.bdl",
+   "Secondary Models": "bdlm/ub01_head.bdl (head)",
+   "Wait Animations": "ub_wait01.bck"
+ },
+ {
+   "Archive Name": "Auction",
+   "Actor Name": "N/A (There is an Auction actor, but we can't use this archive for displaying it)",
+   "English Name": "Screen layout for Windfall Island Auction.",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Auzu",
+   "Actor Name": "Auzu",
+   "English Name": "Whirlpool",
+   "Main Model": "bdlm/auzu.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "btk/auzu.btk"
+ },
+ {
+   "Archive Name": "Aygr",
+   "Actor Name": "Aygr",
+   "English Name": "Lookout Platform. \"aygr\" (platform), \"aygrh\" (ladder)",
+   "Main Model": "bdl/aygr.bdl",
+   "Secondary Models": "bdl/aygrh.bdl (ladder)",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Ayush",
+   "Actor Name": "Ayush",
+   "English Name": "Ghost Ship",
+   "Main Model": "bdlm/ayush.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "btk/ayush.btk"
+ },
+ {
+   "Archive Name": "Ba",
+   "Actor Name": "Ba1",
+   "English Name": "Grandma!",
+   "Main Model": "bdlm/ba.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bb",
+   "Actor Name": "Bb",
+   "English Name": "Kargaroc",
+   "Main Model": "bdlm/bb.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait.bck"
+ },
+ {
+   "Archive Name": "Bdk",
+   "Actor Name": "Bdk",
+   "English Name": "Helmaroc King",
+   "Main Model": "bdl/dk.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait1.bck"
+ },
+ {
+   "Archive Name": "Bdkobj",
+   "Actor Name": "Bdkobj",
+   "English Name": "Objects used in Helmaroc King fight.",
+   "Main Model": "bdl/s_tblock.bdl",
+   "Secondary Models": "Others",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bgn",
+   "Actor Name": "Bgn",
+   "English Name": "Puppet Ganon",
+   "Main Model": "bdlm/bgn_head1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "bigelf",
+   "Actor Name": "BigElf",
+   "English Name": "Great Fairy",
+   "Main Model": "bdlm/dy.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bin",
+   "Actor Name": "N/A",
+   "English Name": "Empty bottle",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bita",
+   "Actor Name": "Bita",
+   "English Name": "Wooden platform",
+   "Main Model": "bdlm/mbit1.bdl",
+   "Secondary Models": "bdlm/mbit2",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj1",
+   "English Name": "Olivio (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj1_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj2",
+   "English Name": "Aldo (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj2_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj3",
+   "English Name": "Oakin (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj3_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj4",
+   "English Name": "Drona (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj4_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj5",
+   "English Name": "Irch (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj5_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj6",
+   "English Name": "Rown (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj6_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj7",
+   "English Name": "Hollo (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj7_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj8",
+   "English Name": "Elma (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj8_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bj",
+   "Actor Name": "Bj9",
+   "English Name": "Linder (Korok)",
+   "Main Model": "bdlm/bj.bdl",
+   "Secondary Models": "bdl/bj9_face.bdl (face)",
+   "Wait Animations": "bcks/wait01.bck"
+ },
+ {
+   "Archive Name": "Bk",
+   "Actor Name": "Bk",
+   "English Name": "Bokoblin",
+   "Main Model": "bdlm/bk.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/bk_wait.bck"
+ },
+ {
+   "Archive Name": "Bl",
+   "Actor Name": "bable",
+   "English Name": "Bubble",
+   "Main Model": "bdlm/bl.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bm",
+   "Actor Name": "Bm1",
+   "English Name": "Quill (Rito)",
+   "Main Model": "bdlm/bm.bdl",
+   "Secondary Models": "bdlm/bmhead01.bdl (head), bdlm/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmhead01_wait01.bck (head), bcks/bmarm_wait01.bck"
+ },
+ {
+   "Archive Name": "Bm",
+   "Actor Name": "Bm2",
+   "English Name": "(Rito)",
+   "Main Model": "bdlm/bm.bdl",
+   "Secondary Models": "bdlm/bmhead02.bdl (head), bdlm/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmhead01_wait01.bck (head), bcks/bmarm_wait01.bck"
+ },
+ {
+   "Archive Name": "Bm",
+   "Actor Name": "Bm3",
+   "English Name": "(Rito)",
+   "Main Model": "bdlm/bm.bdl",
+   "Secondary Models": "bdlm/bmhead03.bdl (head), bdlm/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmhead01_wait01.bck (head), bcks/bmarm_wait01.bck"
+ },
+ {
+   "Archive Name": "Bm",
+   "Actor Name": "Bm4",
+   "English Name": "(Rito)",
+   "Main Model": "bdlm/bm.bdl",
+   "Secondary Models": "bdlm/bmhead04.bdl (head), bdlm/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmhead01_wait01.bck (head), bcks/bmarm_wait01.bck"
+ },
+ {
+   "Archive Name": "Bm",
+   "Actor Name": "Bm5",
+   "English Name": "(Rito)",
+   "Main Model": "bdlm/bm.bdl",
+   "Secondary Models": "bdlm/bmhead05.bdl (head), bdlm/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmhead01_wait01.bck (head), bcks/bmarm_wait01.bck"
+ },
+ {
+   "Archive Name": "Bm2",
+   "Actor Name": "N/A",
+   "English Name": "Quill (Rito)",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bmcon1",
+   "Actor Name": "Bmcon1",
+   "English Name": "Willi",
+   "Main Model": "bdl/bm.bdl",
+   "Secondary Models": "bdlm/bmhead08.bdl (head), bdl/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmarm_wait01.bck (arms)"
+ },
+ {
+   "Archive Name": "Bmcon1",
+   "Actor Name": "Bmcon2",
+   "English Name": "Obli",
+   "Main Model": "bdl/bm.bdl",
+   "Secondary Models": "bdlm/bmhead10.bdl (head), bdl/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmarm_wait01.bck (arms)"
+ },
+ {
+   "Archive Name": "Bmd",
+   "Actor Name": "Bkm",
+   "English Name": "Kalle Demos",
+   "Main Model": "bmdm/bkm.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bmdfoot",
+   "Actor Name": "N/A",
+   "English Name": "Kalle Demos' Main Tentacles",
+   "Main Model": "bmdm/asi.bmd",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bmdhand",
+   "Actor Name": "N/A",
+   "English Name": "Kalle Demos' Claws",
+   "Main Model": "bmdm/bkm_fook.bmd",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bms",
+   "Actor Name": "Bms1",
+   "English Name": "Bomb-Master Cannon (Windfall Island Bomb Shop owner)",
+   "Main Model": "bdlm/by_head.bdl",
+   "Secondary Models": "bdl/by1.bdl (body)",
+   "Wait Animations": "bcks/by1_wait01.bck"
+ },
+ {
+   "Archive Name": "Bms",
+   "Actor Name": "Bms2",
+   "English Name": "Bomb-Master Cannon (Windfall Island Bomb Shop owner)",
+   "Main Model": "bdlm/by_head.bdl",
+   "Secondary Models": "bdl/by2.bdl (body)",
+   "Wait Animations": "bcks/by2_wait00.bck"
+ },
+ {
+   "Archive Name": "Bmsw",
+   "Actor Name": "Bmsw",
+   "English Name": "Koboli (Dragon Roost Island Mail Sorting Game)",
+   "Main Model": "bdlm/bm.bdl",
+   "Secondary Models": "bdlm/bmhead11.bdl (head), bdlm/bmarm.bdl (arms)",
+   "Wait Animations": "bcks/bm_wait01.bck (body), bcks/bmarm_wait01.bck (arms)"
+ },
+ {
+   "Archive Name": "Bo",
+   "Actor Name": "bbaba",
+   "English Name": "Boko Baba",
+   "Main Model": "bdlm/bo_sita1.bdl",
+   "Secondary Models": "bo_ue1.bdl (head)",
+   "Wait Animations": "bcks/waitl1.bck (head)"
+ },
+ {
+   "Archive Name": "Boko",
+   "Actor Name": "",
+   "English Name": "Boko Stick",
+   "Main Model": "bdlc/boko.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bomb_00",
+   "Actor Name": "N/A",
+   "English Name": "Bomb Item Get Model",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bomber",
+   "Actor Name": "Canon",
+   "English Name": "Barrel Shooting Game Canon",
+   "Main Model": "bdl\\vcank.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Boom",
+   "Actor Name": "N/A",
+   "English Name": "Boomerang Item Get Model",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bpw",
+   "Actor Name": "big_pow",
+   "English Name": "Jalhalla",
+   "Main Model": "bdlm/bpw.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait1.bck"
+ },
+ {
+   "Archive Name": "Bridge",
+   "Actor Name": "bridge",
+   "English Name": "Bridges",
+   "Main Model": "",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bs",
+   "Actor Name": "Bs1",
+   "English Name": "Beedle",
+   "Main Model": "bdlm/bs.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bs_wait01.bck"
+ },
+ {
+   "Archive Name": "Bs",
+   "Actor Name": "Bs2",
+   "English Name": "Beedle with Helmet",
+   "Main Model": "bdlm/bs.bdl",
+   "Secondary Models": "bdlm/bs_met.bdl (helmet)",
+   "Wait Animations": "bs_wait01.bck"
+ },
+ {
+   "Archive Name": "Bst",
+   "Actor Name": "Bst",
+   "English Name": "Gohdan",
+   "Main Model": "bdlm/bst.bdl",
+   "Secondary Models": "Multiple, exact models depend on object's params. bdlm/bst.bdl (head) and bdlm/mune.bdl (headrest) can serve as defaults for now.",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Btd",
+   "Actor Name": "Btd",
+   "English Name": "Gohma",
+   "Main Model": "bmdm/btd.bmd",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait1.bck"
+ },
+ {
+   "Archive Name": "Btsw",
+   "Actor Name": "Btsw2",
+   "English Name": "Baito (Dragon Roost Island Mail Sorting Game)",
+   "Main Model": "bdlm/bn.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/bn_wait01.bck"
+ },
+ {
+   "Archive Name": "BVkumo",
+   "Actor Name": "Ocloud",
+   "English Name": "Swirling stormclouds",
+   "Main Model": "bdlm/bvkumo.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "btk/bvkumo.btk"
+ },
+ {
+   "Archive Name": "BVkumo",
+   "Actor Name": "Rcloud",
+   "English Name": "Swirling stormclouds",
+   "Main Model": "bdlm/bvkumo.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "btk/bvkumo.btk"
+ },
+ {
+   "Archive Name": "Bwd",
+   "Actor Name": "Bwd",
+   "English Name": "Molgera",
+   "Main Model": "bdlm/bwd.bdl",
+   "Secondary Models": "Multiple",
+   "Wait Animations": "bwd_wait.bck"
+ },
+ {
+   "Archive Name": "Bwdg",
+   "Actor Name": "N/A",
+   "English Name": "Molgera's Arena Settings",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Bwds",
+   "Actor Name": "N/A",
+   "English Name": "Molgera's children",
+   "Main Model": "N/A",
+   "Secondary Models": "",
+   "Wait Animations": "N/A"
+ }
+]

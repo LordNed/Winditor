@@ -386,6 +386,7 @@ namespace WindEditor
                 }
             }
 
+            newActor.PostFinishedLoad();
             return newActor;
         }
     }
