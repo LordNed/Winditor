@@ -48,7 +48,7 @@ namespace WindEditor
 
         public void PostFinishedLoad()
         {
-            if (FourCC == "ACTR" || FourCC == "SCOB")
+            if (FourCC == "ACTR" || FourCC == "SCOB" || FourCC == "TGOB")
             {
                 IPropertyValue propVal = Properties.Find(x => x.Name == "Name");
                 if (propVal != null)
