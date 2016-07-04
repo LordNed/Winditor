@@ -160,7 +160,7 @@ namespace WindEditor
 
             if(RoomTransform != null)
             {
-                rotation = Quaternion.FromAxisAngle(Vector3.UnitY, RoomTransform.YRotation);
+                rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(RoomTransform.YRotation));
                 translation = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
             }
 
