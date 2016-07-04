@@ -75,17 +75,14 @@ namespace JStudio.J3D
 
             public void UploadBuffersToGPU(bool onlyOverrides)
             {
-                if(onlyOverrides)
-                {
-                    if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, OverrideVertPos.Count > 0 ? OverrideVertPos.ToArray() : VertexData.Position.ToArray());
-                    if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, OverrideNormals.Count > 0 ? OverrideNormals.ToArray() : VertexData.Normal.ToArray());
+                List<Vector3> vertPos = OverrideVertPos.Count > 0 ? OverrideVertPos : VertexData.Position;
+                List<Vector3> vertNormal = OverrideNormals.Count > 0 ? OverrideNormals : VertexData.Normal;
+
+                if (vertPos.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, vertPos.ToArray());
+                if (vertNormal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, vertNormal.ToArray());
+
+                if (onlyOverrides)
                     return;
-                }
-                else
-                {
-                    if (VertexData.Position.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Position, VertexData.Position.ToArray());
-                    if (VertexData.Normal.Count > 0) UpdateAttributeAndBuffers(ShaderAttributeIds.Normal, VertexData.Normal.ToArray());
-                }
 
                 // Upload the Indexes
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glIndexBuffer);
