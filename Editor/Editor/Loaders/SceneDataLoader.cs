@@ -290,6 +290,7 @@ namespace WindEditor
         private WActorNode LoadActorFromChunk(string fourCC, MapActorDescriptor template)
         {
             var newActor = new WActorNode(fourCC);
+            List<IPropertyValue> actorProperties = new List<IPropertyValue>();
             foreach (var field in template.Fields)
             {
                 IPropertyValue propValue = null;
@@ -339,53 +340,53 @@ namespace WindEditor
                         break;
                 }
 
-                // Post Fixup...
-                if (string.Compare(field.FieldName, "Position", true) == 0)
-                {
-                    newActor.Transform.Position = (OpenTK.Vector3)propValue.GetValue();
-                }
-                else if (string.Compare(field.FieldName, "X Rotation", true) == 0)
-                {
-                    float xRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
-                    OpenTK.Quaternion xAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(1, 0, 0), WMath.DegreesToRadians(xRotation));
-                    newActor.Transform.Rotation *= xAxis;
-                }
-                else if (string.Compare(field.FieldName, "Y Rotation", true) == 0)
-                {
-                    float yRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
-                    OpenTK.Quaternion yAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 1, 0), WMath.DegreesToRadians(yRotation));
-                    newActor.Transform.Rotation *= yAxis;
-                }
-                else if (string.Compare(field.FieldName, "Z Rotation", true) == 0)
-                {
-                    float zRotation = WMath.RotationShortToFloat((short)propValue.GetValue());
-                    OpenTK.Quaternion zAxis = OpenTK.Quaternion.FromAxisAngle(new OpenTK.Vector3(0, 0, 1), WMath.DegreesToRadians(zRotation));
-                    newActor.Transform.Rotation *= zAxis;
-                }
-                else if (string.Compare(field.FieldName, "X Scale", true) == 0)
-                {
-                    float xScale = (byte)propValue.GetValue();
-                    var curScale = newActor.Transform.LocalScale;
-                    newActor.Transform.LocalScale = new OpenTK.Vector3(xScale, curScale.Y, curScale.Z);
-                }
-                else if (string.Compare(field.FieldName, "Y Scale", true) == 0)
-                {
-                    float yScale = (byte)propValue.GetValue();
-                    var curScale = newActor.Transform.LocalScale;
-                    newActor.Transform.LocalScale = new OpenTK.Vector3(curScale.X, yScale, curScale.Z);
-                }
-                else if (string.Compare(field.FieldName, "Z Scale", true) == 0)
-                {
-                    float zScale = (byte)propValue.GetValue();
-                    var curScale = newActor.Transform.LocalScale;
-                    newActor.Transform.LocalScale = new OpenTK.Vector3(curScale.X, curScale.Y, zScale);
-                }
-                else
-                {
-                    newActor.Properties.Add(propValue);
-                }
+                actorProperties.Add(propValue);
             }
 
+            // Now that we have loaded all properties out of it, we need to post-process them.
+            IPropertyValue positionProperty = actorProperties.Find(x => x.Name == "Position");
+            IPropertyValue xRotProperty = actorProperties.Find(x => x.Name == "X Rotation");
+            IPropertyValue yRotProperty = actorProperties.Find(x => x.Name == "Y Rotation");
+            IPropertyValue zRotProperty = actorProperties.Find(x => x.Name == "Z Rotation");
+            IPropertyValue xScaleProperty = actorProperties.Find(x => x.Name == "X Scale");
+            IPropertyValue yScaleProperty = actorProperties.Find(x => x.Name == "Y Scale");
+            IPropertyValue zScaleProperty = actorProperties.Find(x => x.Name == "Z Scale");
+
+            // Remove these properties from the actor so they don't get added to the UI.
+            actorProperties.Remove(positionProperty);
+            actorProperties.Remove(xRotProperty);
+            actorProperties.Remove(yRotProperty);
+            actorProperties.Remove(zRotProperty);
+            actorProperties.Remove(xScaleProperty);
+            actorProperties.Remove(yScaleProperty);
+            actorProperties.Remove(zScaleProperty);
+
+            if (positionProperty != null)
+                newActor.Transform.Position = (Vector3)positionProperty.GetValue();
+
+            float xRot = 0, yRot = 0, zRot = 0;
+            if (xRotProperty != null)
+                xRot = WMath.RotationShortToFloat((short)xRotProperty.GetValue());
+            if (yRotProperty != null)
+                yRot = WMath.RotationShortToFloat((short)yRotProperty.GetValue());
+            if (zRotProperty != null)
+                zRot = WMath.RotationShortToFloat((short)zRotProperty.GetValue());
+
+            // Build rotation with ZYX order.
+            Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));
+            Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));
+            Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));
+            newActor.Transform.Rotation = zRotQ * yRotQ * xRotQ;
+
+            float xScale = 1, yScale = 1, zScale = 1;
+            if (xScaleProperty != null)
+                xScale = (byte)xScaleProperty.GetValue();
+            if (yScaleProperty != null)
+               yScale = (byte)yScaleProperty.GetValue();
+            if (zScaleProperty != null)
+                zScale = (byte)zScaleProperty.GetValue();
+
+            newActor.Properties.AddRange(actorProperties);
             newActor.PostFinishedLoad();
             return newActor;
         }
