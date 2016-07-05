@@ -104,6 +104,22 @@
    "Wait Animations": "N/A"
  },
  {
+   "Archive Name": "Always",
+   "Actor Name": "kotubo",
+   "English Name": "Pot",
+   "Main Model": "bdl/obm_kotubo1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Always",
+   "Actor Name": "ootubo",
+   "English Name": "",
+   "Main Model": "",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
    "Archive Name": "Am",
    "Actor Name": "amos",
    "English Name": "Armos Knight",
@@ -1657,7 +1673,7 @@
  },
  {
    "Archive Name": "Gbdoor",
-   "Actor Name": "",
+   "Actor Name": "KGBdor",
    "English Name": "Door from Puppet Ganon Fight",
    "Main Model": "bdl/v_gbdfu.bdl",
    "Secondary Models": "Multiple",
@@ -1737,7 +1753,7 @@
  },
  {
    "Archive Name": "Gmjwp",
-   "Actor Name": "",
+   "Actor Name": "Warpgn",
    "English Name": "Evil-Looking Warp Column",
    "Main Model": "bdlm/gmjwp00.bdl",
    "Secondary Models": "",
@@ -1809,7 +1825,7 @@
  },
  {
    "Archive Name": "Gryw00",
-   "Actor Name": "",
+   "Actor Name": "Gryw00",
    "English Name": "Dragon Roost Cavern Water Fountain. Looks like Gmtw above.",
    "Main Model": "bdlm/gryw00.bdl",
    "Secondary Models": "",
@@ -1913,7 +1929,23 @@
  },
  {
    "Archive Name": "Hdai1",
-   "Actor Name": "Hdai1/Hdai2/Hdai3",
+   "Actor Name": "Hdai1",
+   "English Name": "Circular Tower of the Gods Platform",
+   "Main Model": "bdlm/hdai1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Hdai1",
+   "Actor Name": "Hdai1",
+   "English Name": "Circular Tower of the Gods Platform",
+   "Main Model": "bdlm/hdai1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Hdai1",
+   "Actor Name": "Hdai1",
    "English Name": "Circular Tower of the Gods Platform",
    "Main Model": "bdlm/hdai1.bdl",
    "Secondary Models": "",
@@ -2057,10 +2089,18 @@
  },
  {
    "Archive Name": "Hlift",
-   "Actor Name": "Hlift/Hliftb",
+   "Actor Name": "Hlift",
    "English Name": "Retractable Platform",
    "Main Model": "bdl/hlift.bdl",
-   "Secondary Models": "bdl/hliftb.bdl|bdl/hliftc.bdl",
+   "Secondary Models": "bdl/hliftc.bdl (base)",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Hlift",
+   "Actor Name": "Hliftb",
+   "English Name": "Retractable Platform",
+   "Main Model": "bdl/hliftb.bdl",
+   "Secondary Models": "bdl/hliftc.bdl (base)",
    "Wait Animations": ""
  },
  {
@@ -2217,7 +2257,7 @@
  },
  {
    "Archive Name": "Htobi1",
-   "Actor Name": "",
+   "Actor Name": "Htobi1",
    "English Name": "Tower of the Gods Face Panel",
    "Main Model": "",
    "Secondary Models": "",
@@ -2225,7 +2265,7 @@
  },
  {
    "Archive Name": "Htobi2",
-   "Actor Name": "",
+   "Actor Name": "Htobi2",
    "English Name": "Small Stone Wind Temple Barriers",
    "Main Model": "",
    "Secondary Models": "",
@@ -2233,7 +2273,7 @@
  },
  {
    "Archive Name": "Htobi3",
-   "Actor Name": "",
+   "Actor Name": "Htobi3",
    "English Name": "Small Rectangular Wind Temple Barrier",
    "Main Model": "",
    "Secondary Models": "",
@@ -2257,33 +2297,73 @@
  },
  {
    "Archive Name": "Humi",
-   "Actor Name": "",
+   "Actor Name": "Humi0z",
    "English Name": "Tower of the Gods - Water",
-   "Main Model": "",
+   "Main Model": "bdlm/humi0.bdl",
+   "Secondary Models": "bdlm/hnure0.bdl (Foam on walls)",
+   "Wait Animations": "btk/humi0.btk"
+ },
+ {
+   "Archive Name": "Humi",
+   "Actor Name": "Humi2z",
+   "English Name": "Tower of the Gods - Water",
+   "Main Model": "bdlm/humi2.bdl",
+   "Secondary Models": "bdlm/hnure2.bdl (Foam on walls)",
+   "Wait Animations": "btk/humi2.btk"
+ },
+ {
+   "Archive Name": "Humi",
+   "Actor Name": "Humi3z",
+   "English Name": "Tower of the Gods - Water",
+   "Main Model": "bdlm/humi3.bdl",
+   "Secondary Models": "bdlm/hnure3.bdl (Foam on walls)",
+   "Wait Animations": "btk/humi3.btk"
+ },
+ {
+   "Archive Name": "Humi",
+   "Actor Name": "Humi4z",
+   "English Name": "Tower of the Gods - Water",
+   "Main Model": "bdlm/humi4.bdl",
+   "Secondary Models": "bdlm/hnure4.bdl (Foam on walls)",
+   "Wait Animations": "btk/humi4.btk"
+ },
+ {
+   "Archive Name": "Humi",
+   "Actor Name": "Humi5z",
+   "English Name": "Tower of the Gods - Water",
+   "Main Model": "bdlm/humi5.bdl",
+   "Secondary Models": "bdlm/hnure5.bdl (Foam on walls)",
+   "Wait Animations": "btk/humi5.btk"
+ },
+ {
+   "Archive Name": "Hys",
+   "Actor Name": "Hys",
+   "English Name": "Eye Switch",
+   "Main Model": "bdlm/hys.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Hys",
-   "Actor Name": "",
-   "English Name": "Eye Switch",
-   "Main Model": "",
+   "Actor Name": "Hys2",
+   "English Name": "Eye Switch 2",
+   "Main Model": "bdlm/hys.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Hyuf1",
-   "Actor Name": "",
+   "Actor Name": "Hyuf1",
    "English Name": "Tower of the Gods Eye Switch Platform",
-   "Main Model": "",
+   "Main Model": "bdlm/hyuf1.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Hyuf2",
-   "Actor Name": "",
+   "Actor Name": "Hyuf2",
    "English Name": "Tower of the Gods Eye Switch Platform (Early)",
-   "Main Model": "",
+   "Main Model": "bdlm/hyuf2.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2377,81 +2457,97 @@
  },
  {
    "Archive Name": "Kaisen",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "GBoard",
+   "English Name": "Japanese processor for Salvatore's game on Windfall",
+   "Main Model": "bdl/akbod.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kaisen_e",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "GBoard",
+   "English Name": "Western processor for Salvatore's game on Windfall",
+   "Main Model": "bdl/akbod.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kaizokusen",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Pirates",
+   "English Name": "Tetra's pirate ship.",
+   "Main Model": "bdl/oba_kaizoku_a.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kaji",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "The helm of Tetra's ship.",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kamome",
-   "Actor Name": "",
+   "Actor Name": "Kamome",
    "English Name": "Seagull",
-   "Main Model": "",
+   "Main Model": "bdl/ka.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kanat",
-   "Actor Name": "",
+   "Actor Name": "Kanat",
    "English Name": "Horizontal Vine Barrier",
-   "Main Model": "",
+   "Main Model": "bdl/kanat.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kanban",
-   "Actor Name": "",
+   "Actor Name": "Kanban",
    "English Name": "Sign",
-   "Main Model": "",
+   "Main Model": "bdl/kanban.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kantera",
    "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "English Name": "Fancy lantern.",
+   "Main Model": "bmdm/mk_kantera.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kb",
-   "Actor Name": "",
+   "Actor Name": "Pig",
    "English Name": "Pigs!",
-   "Main Model": "",
+   "Main Model": "bdlm/pg.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kbota_00",
-   "Actor Name": "",
+   "Actor Name": "Kbota_A",
    "English Name": "Floor Switch",
-   "Main Model": "",
+   "Main Model": "bdl/kbota_00.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Kbota_00",
+   "Actor Name": "Kbota_B",
+   "English Name": "Floor Switch",
+   "Main Model": "bdl/kbota_00.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Kbota_00",
+   "Actor Name": "KbotaC",
+   "English Name": "Floor Switch",
+   "Main Model": "bdl/kbota_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2473,19 +2569,27 @@
  },
  {
    "Archive Name": "Kf",
-   "Actor Name": "",
+   "Actor Name": "Kf1",
    "English Name": "Mila's Father (Rich)",
-   "Main Model": "",
+   "Main Model": "bdlm/kf.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kg",
-   "Actor Name": "",
-   "English Name": "Salvatore",
-   "Main Model": "",
+   "Actor Name": "Kg1",
+   "English Name": "Salvatore (Sinking Squids minigame)",
+   "Main Model": "bdlm/kg.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/kg_wait01.bck"
+ },
+ {
+   "Archive Name": "Kg",
+   "Actor Name": "Kg2",
+   "English Name": "Salvatore (Barrel Shoot minigame)",
+   "Main Model": "bdlm/kg.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/kg_wait01.bck"
  },
  {
    "Archive Name": "Khasi_00",
@@ -2497,83 +2601,107 @@
  },
  {
    "Archive Name": "Ki",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "keeth",
+   "English Name": "Keese",
+   "Main Model": "bdlm/ki.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bck/wait1.bck"
+ },
+ {
+   "Archive Name": "Ki",
+   "Actor Name": "Fkeeth",
+   "English Name": "Fire Keese",
+   "Main Model": "bdlm/fk.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait1.bck"
  },
  {
    "Archive Name": "Kiri",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "BROKEN",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "kita",
-   "Actor Name": "",
+   "Actor Name": "Kita",
    "English Name": "Flower Platform",
-   "Main Model": "",
+   "Main Model": "bdl/vhlif_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kk",
-   "Actor Name": "",
+   "Actor Name": "Kk1",
    "English Name": "Mila (Poor)",
-   "Main Model": "",
+   "Main Model": "bdlm/kk.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/kk_wait01.bck"
+ },
+ {
+   "Archive Name": "Kkiba_00",
+   "Actor Name": "Kkiba",
+   "English Name": "Wooden Crate",
+   "Main Model": "bdl/kkiba_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kkiba_00",
-   "Actor Name": "",
+   "Actor Name": "KkibaB",
    "English Name": "Wooden Crate",
-   "Main Model": "",
+   "Main Model": "bdl/kkiba_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Klft",
-   "Actor Name": "",
+   "Actor Name": "Klft",
    "English Name": "Forbbiden Woods Lift",
-   "Main Model": "",
-   "Secondary Models": "",
+   "Main Model": "bdlm/lift_00.bdl",
+   "Secondary Models": "bdlm/vpbot_00.bdl (controller)",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Km",
-   "Actor Name": "",
+   "Actor Name": "Km1",
    "English Name": "Mila (Rich)",
-   "Main Model": "",
+   "Main Model": "bdlm/km.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/km_wait01.bck"
+ },
+ {
+   "Archive Name": "Kmi00x",
+   "Actor Name": "Kmi00",
+   "English Name": "Nut",
+   "Main Model": "bdlm/kmi_00x.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kmi00x",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Kmi02",
+   "English Name": "Nut",
+   "Main Model": "bdlm/kmi_00x.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kmtub_00",
-   "Actor Name": "",
+   "Actor Name": "Kmtub",
    "English Name": "Water Jug",
-   "Main Model": "",
+   "Main Model": "bdl/kmtub_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kn",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "kani",
+   "English Name": "Crab!",
+   "Main Model": "bdl/kn.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bck/wait01.bck"
  },
  {
    "Archive Name": "Knob",
@@ -2593,27 +2721,35 @@
  },
  {
    "Archive Name": "Ko",
-   "Actor Name": "",
-   "English Name": "Zill & Joel",
-   "Main Model": "",
-   "Secondary Models": "",
-   "Wait Animations": ""
+   "Actor Name": "Ko1",
+   "English Name": "Zill",
+   "Main Model": "bdlm/ko.bdl",
+   "Secondary Models": "bdlm/kohead01.bdl",
+   "Wait Animations": "bcks/ko_wait01.bck"
+ },
+ {
+   "Archive Name": "Ko",
+   "Actor Name": "Ko2",
+   "English Name": "Joel",
+   "Main Model": "bdlm/ko.bdl",
+   "Secondary Models": "bdlm/kohead02.bdl",
+   "Wait Animations": "bcks/ko_wait01.bck"
  },
  {
    "Archive Name": "Kokiie",
-   "Actor Name": "",
+   "Actor Name": "Kokiie",
    "English Name": "Kokiri House (kindan/room5)",
-   "Main Model": "",
+   "Main Model": "bdl/koki_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kp",
-   "Actor Name": "",
+   "Actor Name": "Kp1",
    "English Name": "Rich Maggie",
-   "Main Model": "",
+   "Main Model": "bdlm/kp.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/wait01.bck"
  },
  {
    "Archive Name": "Krock_01",
@@ -2625,41 +2761,49 @@
  },
  {
    "Archive Name": "Kryu",
-   "Actor Name": "",
+   "Actor Name": "Kryu00",
    "English Name": "Two-Tiered Tree Platform",
-   "Main Model": "",
+   "Main Model": "bdl/ryu_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ks",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
-   "Secondary Models": "",
+   "Actor Name": "kuro_s",
+   "English Name": "Morth",
+   "Main Model": "bdlm/ks_eye.bdl",
+   "Secondary Models": "bdlm/ks_body.bdl",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Ks",
+   "Actor Name": "kuro_t",
+   "English Name": "Morth",
+   "Main Model": "bdlm/ks_eye.bdl",
+   "Secondary Models": "bdlm/ks_body.bdl",
    "Wait Animations": ""
  },
  {
    "Archive Name": "KsakuCo",
    "Actor Name": "",
-   "English Name": "Light Wooden Fence",
+   "English Name": "Light Wooden Fence Collision",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ksaku_00",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Ksaku",
+   "English Name": "Light Wooden Fence",
+   "Main Model": "bdl/ksaku_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Kt",
-   "Actor Name": "",
+   "Actor Name": "kt",
    "English Name": "Bird (Unused)",
-   "Main Model": "",
+   "Main Model": "bmd/kt.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3345,9 +3489,9 @@
  },
  {
    "Archive Name": "Oyashi",
-   "Actor Name": "",
+   "Actor Name": "Oyashi",
    "English Name": "Palm Tree",
-   "Main Model": "",
+   "Main Model": "bdl/oyashi.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
