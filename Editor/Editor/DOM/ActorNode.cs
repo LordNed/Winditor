@@ -31,10 +31,10 @@ namespace WindEditor
 
     public class WActorNode : WDOMNode, IRenderable
     {
-        public string FourCC { get; internal set; }
+        public string FourCC { get; protected set; }
         public MapLayer Layer { get; set; }
 
-        public List<IPropertyValue> Properties { get; }
+        public List<IPropertyValue> Properties { get; protected set; }
         public ActorFlags Flags { get; set; }
 
         private SimpleObjRenderer m_objRender;
