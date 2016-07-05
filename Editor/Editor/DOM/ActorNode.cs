@@ -68,7 +68,7 @@ namespace WindEditor
 
         public override AABox GetBoundingBox()
         {
-            AABox modelABB = m_objRender != null ? m_objRender.GetAABB() : new AABox(-Vector3.One * 50, Vector3.One * 50);
+            AABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMesh.BoundingBox;
             modelABB.ScaleBy(Transform.LocalScale);
 
             return new AABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
@@ -92,7 +92,11 @@ namespace WindEditor
 
         Vector3 IRenderable.GetPosition()
         {
-            return Transform.Position;
+            Vector3 modelOffset = Vector3.Zero;
+            if (m_actorMesh != null)
+                modelOffset += m_actorMesh.BoundingBox.Center;
+
+            return Transform.Position + modelOffset;
         }
 
         float IRenderable.GetBoundingRadius()
@@ -103,7 +107,10 @@ namespace WindEditor
                 if (lScale[i] > largestMax)
                     largestMax = lScale[i];
 
-            return largestMax * 5f; // Undersize it for now.
+            float boundingSphere = 86f; // Default Editor Cube
+            if (m_actorMesh != null)
+                boundingSphere = m_actorMesh.BoundingSphere.Radius;
+            return largestMax * boundingSphere;
         }
         #endregion
     }

@@ -61,6 +61,7 @@
     <Compile Include="Math\Plane.cs" />
     <Compile Include="Math\Ray.cs" />
     <Compile Include="Math\Rect.cs" />
+    <Compile Include="Math\Sphere.cs" />
     <Compile Include="Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

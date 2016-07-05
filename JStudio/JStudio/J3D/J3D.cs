@@ -69,6 +69,9 @@ namespace JStudio.J3D
         public string Magic { get; protected set; }
         public string StudioType { get; protected set; }
         public string TotalFileSize { get { return string.Format("{0} bytes", m_totalFileSize); } }
+        public AABox BoundingBox { get; protected set; }
+        public WSphere BoundingSphere { get; protected set; }
+
         public INF1 INF1Tag { get; protected set; }
         public VTX1 VTX1Tag { get; protected set; }
         public MAT3 MAT3Tag { get; protected set; }
@@ -180,7 +183,7 @@ namespace JStudio.J3D
         public void SetBoneAnimation(string animName)
         {
             BCK anim = m_boneAnimations.Find(x => x.Name == animName);
-            if(anim == null)
+            if (anim == null)
             {
                 Console.WriteLine("Failed to play animation {0}, animation not loaded!", animName);
             }
@@ -188,7 +191,7 @@ namespace JStudio.J3D
             if (m_currentBoneAnimation != null)
                 m_currentBoneAnimation.Stop();
 
-            if(anim != null)
+            if (anim != null)
             {
                 m_currentBoneAnimation = anim;
                 m_currentBoneAnimation.Start();
@@ -321,6 +324,34 @@ namespace JStudio.J3D
                 GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.PixelShaderBlock, material.Shader.PSBlockUBO);
                 GL.UniformBlockBinding(material.Shader.Program, material.Shader.UniformPSBlock, (int)ShaderUniformBlockIds.PixelShaderBlock);
             }
+
+            // Iterate through the shapes and calculate a bounding box which encompasses all of them.
+            Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+            foreach (var shape in SHP1Tag.Shapes)
+            {
+                Vector3 sMin = shape.BoundingBox.Min;
+                Vector3 sMax = shape.BoundingBox.Max;
+
+                if (sMin.X < min.X)
+                    min.X = sMin.X;
+                if (sMax.X > max.X)
+                    max.X = sMax.X;
+
+                if (sMin.Y < min.Y)
+                    min.Y = sMin.Y;
+                if (sMax.Y > max.Y)
+                    max.Y = sMax.Y;
+
+                if (sMin.Z < min.Z)
+                    min.Z = sMin.Z;
+                if (sMax.Z > max.Z)
+                    max.Z = sMax.Z;
+            }
+
+            BoundingBox = new AABox(min, max);
+            BoundingSphere = new WSphere(BoundingBox.Center, BoundingBox.Max.Length);
         }
 
         private void AssignVertexAttributesToMaterialsRecursive(HierarchyNode curNode, ref Material curMaterial)
@@ -595,7 +626,7 @@ namespace JStudio.J3D
 
         private void UpdateTextureDimensionsForPSBlock(ref PSBlock psData, Material mat)
         {
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if (mat.TextureIndexes[i] < 0)
                     continue;
@@ -603,7 +634,7 @@ namespace JStudio.J3D
                 Texture texture = TEX1Tag.Textures[MAT3Tag.TextureRemapTable[i]];
                 Vector4 texDimensions = new Vector4(texture.CompressedData.Width, texture.CompressedData.Height, 0, 0);
 
-                switch(i)
+                switch (i)
                 {
                     case 0: psData.TexDimension0 = texDimensions; break;
                     case 1: psData.TexDimension1 = texDimensions; break;
@@ -653,13 +684,13 @@ namespace JStudio.J3D
                 Quaternion curRot = cumulativeTransform.ExtractRotation();
 
                 WLinearColor jointColor = origJoint.Unknown1 == 0 ? WLinearColor.Yellow : WLinearColor.Blue;
-                if(boundingSphere)
+                if (boundingSphere)
                 {
                     //m_lineBatcher.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
                 }
-                if(boundingBox)
+                if (boundingBox)
                 {
-                    Vector3 extents = (origJoint.BoundingBox.Max - origJoint.BoundingBox.Min)/ 2;
+                    Vector3 extents = (origJoint.BoundingBox.Max - origJoint.BoundingBox.Min) / 2;
                     //m_lineBatcher.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
                 }
             }
@@ -667,7 +698,7 @@ namespace JStudio.J3D
 
         private void DrawBoundsForShapes(bool boundingBox, bool boundingSphere)
         {
-            foreach(var shape in SHP1Tag.Shapes)
+            foreach (var shape in SHP1Tag.Shapes)
             {
                 Vector3 center = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
                 if (boundingSphere)

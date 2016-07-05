@@ -101,21 +101,6 @@ namespace WindEditor
                                 LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
-                    //case "bmd":
-                    //case "bdl":
-                    //    {
-                    //        // Wind Waker has a fixed list of models that it can load from the bmd/bdl folder of a given room:
-                    //        // model, model1, model2, model3. 
-                    //        string[] modelNames = new[] { "model", "model1", "model2", "model3" };
-
-                    //        foreach(var modelName in modelNames)
-                    //        {
-                    //            J3D mesh = LoadModel(folder, modelName);
-                    //            if (mesh != null)
-                    //                m_roomModels.Add(mesh);
-                    //        }
-                    //    }
-                    //    break;
                 }
             }
         }
@@ -171,14 +156,22 @@ namespace WindEditor
 
         Vector3 IRenderable.GetPosition()
         {
-            if (RoomTransform != null)
-                return new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+            Vector3 roomOffset = Vector3.Zero;
 
-            return Vector3.Zero;
+            if (RoomTransform != null)
+                roomOffset = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+
+            if (m_roomModels.Count > 0)
+                roomOffset += m_roomModels[0].BoundingSphere.Center;
+
+            return roomOffset;
         }
 
         float IRenderable.GetBoundingRadius()
         {
+            if (m_roomModels.Count > 0)
+                return m_roomModels[0].BoundingSphere.Radius;
+
             return float.MaxValue;
         }
     }
