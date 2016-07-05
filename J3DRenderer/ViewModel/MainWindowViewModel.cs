@@ -8,6 +8,9 @@ using JStudio.J3D;
 using JStudio.J3D.Animation;
 using JStudio.OpenGL;
 using J3DRenderer.Framework;
+using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace J3DRenderer
 {
@@ -32,6 +35,7 @@ namespace J3DRenderer
 
         private ScreenspaceQuad m_screenQuad;
         private Shader m_alphaVisualizationShader;
+        private bool m_shouldTakeScreenCap;
 
         GXLight m_mainLight;
 
@@ -152,6 +156,9 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
             m_timeSinceStartup += deltaTime;
 
+            if (WInput.GetKeyDown(System.Windows.Input.Key.Y))
+                m_shouldTakeScreenCap = true;
+
             // Rotate our light
             float angleInRad = m_timeSinceStartup % WMath.DegreesToRadians(360f);
             Quaternion lightRot = Quaternion.FromAxisAngle(Vector3.UnitY, angleInRad);
@@ -183,6 +190,41 @@ namespace J3DRenderer
 
                 m_alphaVisualizationShader.Bind();
                 m_screenQuad.Draw();
+            }
+
+
+            if(m_shouldTakeScreenCap)
+            {
+                CaptureScreenshotToDisk();
+                m_shouldTakeScreenCap = false;
+            }
+        }
+
+        private void CaptureScreenshotToDisk()
+        {
+            // Set the pxiel storage mode for the subsequent call to GL.ReadPixels(...)
+            GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
+
+            byte[] pixelData = new byte[m_viewportWidth * m_viewportHeight * 3]; // RGB
+            GL.ReadPixels(0, 0, m_viewportWidth, m_viewportHeight, PixelFormat.Bgr, PixelType.UnsignedByte, pixelData);
+
+            using (Bitmap bmp = new Bitmap(m_viewportWidth, m_viewportHeight))
+            {
+
+                Rectangle rect = new Rectangle(0, 0, m_viewportWidth, m_viewportHeight);
+                System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+                //Lock the bitmap for writing, copy the bits and then unlock for saving.
+                IntPtr ptr = bmpData.Scan0;
+                //byte[] imageData = pixel;
+                Marshal.Copy(pixelData, 0, ptr, pixelData.Length);
+                bmp.UnlockBits(bmpData);
+                bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+                // Bitmaps will throw an exception if the output folder doesn't exist so...
+                string outputName = string.Format("ScreenshotDump/{0:yyyy-MM-dd_hh-mm-ss-tt}.png", DateTime.UtcNow);
+                Directory.CreateDirectory(Path.GetDirectoryName(outputName));
+                bmp.Save(outputName);
             }
         }
 
