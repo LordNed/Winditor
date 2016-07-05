@@ -33,7 +33,7 @@ namespace J3DRenderer
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ColorFormat cF = new ColorFormat(8, 8, 8, 8);
-            GraphicsMode gm = new GraphicsMode(cF, 24, 8, 1);
+            GraphicsMode gm = new GraphicsMode(cF, 24, 0, 0);
             glControlHost.Child = new GLControl(gm);
             glControlHost.SizeChanged += GlControlHost_SizeChanged;
             glControlHost.PreviewKeyDown += GlControlHost_PreviewKeyDown;

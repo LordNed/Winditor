@@ -36,6 +36,7 @@ namespace J3DRenderer
         private ScreenspaceQuad m_screenQuad;
         private Shader m_alphaVisualizationShader;
         private bool m_shouldTakeScreenCap;
+        private WFrameBuffer m_frameBuffer;
 
         GXLight m_mainLight;
 
@@ -50,6 +51,7 @@ namespace J3DRenderer
         internal void OnMainEditorWindowLoaded(GLControl child)
         {
             m_glControl = child;
+            m_frameBuffer = new WFrameBuffer(m_glControl.Width, m_glControl.Height);
 
             Obj obj = new Obj();
             obj.Load("Framework/EditorCube.obj");
@@ -113,7 +115,7 @@ namespace J3DRenderer
         private void LoadChildLink(GXLight secondLight)
         {
             m_childLink = new J3D();
-            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/model_normalstest.bmd"), Endian.Big));
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
             m_childLink.SetHardwareLight(0, m_mainLight);
             m_childLink.SetHardwareLight(1, secondLight);
             m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
@@ -145,6 +147,9 @@ namespace J3DRenderer
             System.Random rnd = new System.Random(m_glControl.GetHashCode());
             //GL.ClearColor(0.15f, 0.83f, 0.10f, 1f);
             GL.ClearColor(rnd.Next(255) / 255f, rnd.Next(255) / 255f, rnd.Next(255) / 255f, 1);
+
+            m_frameBuffer.Bind();
+            GL.Disable(EnableCap.Multisample);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
             GL.Viewport(0, 0, m_viewportWidth, m_viewportHeight);
@@ -192,25 +197,25 @@ namespace J3DRenderer
                 m_screenQuad.Draw();
             }
 
-
             if(m_shouldTakeScreenCap)
             {
                 CaptureScreenshotToDisk();
                 m_shouldTakeScreenCap = false;
             }
+
+            m_frameBuffer.BlitToBackbuffer();
+            //GL.BlitFramebuffer(0, 0, m_viewportWidth, m_viewportHeight, 0, 0, m_viewportWidth, m_viewportHeight, ClearBufferMask.co)
+
+            //GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, 0);
+            //GL.Clear(ClearBufferMask.ColorBufferBit);
         }
 
         private void CaptureScreenshotToDisk()
         {
-            // Set the pxiel storage mode for the subsequent call to GL.ReadPixels(...)
-            GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
-
-            byte[] pixelData = new byte[m_viewportWidth * m_viewportHeight * 3]; // RGB
-            GL.ReadPixels(0, 0, m_viewportWidth, m_viewportHeight, PixelFormat.Bgr, PixelType.UnsignedByte, pixelData);
+            byte[] pixelData = m_frameBuffer.ReadPixels(0, 0, m_viewportWidth, m_viewportHeight);
 
             using (Bitmap bmp = new Bitmap(m_viewportWidth, m_viewportHeight))
             {
-
                 Rectangle rect = new Rectangle(0, 0, m_viewportWidth, m_viewportHeight);
                 System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
@@ -233,6 +238,7 @@ namespace J3DRenderer
             m_viewportWidth = width;
             m_viewportHeight = height;
             m_renderCamera.AspectRatio = width / (float)height;
+            m_frameBuffer.ResizeBuffer(width, height);
         }
     }
 }

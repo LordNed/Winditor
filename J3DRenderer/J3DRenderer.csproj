@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Framework\FrameBuffer.cs" />
     <Compile Include="Framework\LineBatcher.cs" />
     <Compile Include="Framework\Obj.cs" />
     <Compile Include="Framework\ScreenspaceQuad.cs" />
