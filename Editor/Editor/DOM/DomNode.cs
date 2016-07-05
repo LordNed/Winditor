@@ -42,9 +42,9 @@ namespace WindEditor
             return result;
         }
 
-        public virtual AABox GetBoundingBox()
+        public virtual FAABox GetBoundingBox()
         {
-            return new AABox();
+            return new FAABox();
         }
 
         public virtual void SetParent(WDOMNode parent)

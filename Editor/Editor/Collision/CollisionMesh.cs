@@ -13,7 +13,7 @@ namespace WindEditor.Collision
         private Shader m_primitiveShader;
         private int m_triangleCount;
 
-        private AABox m_aaBox;
+        private FAABox m_aaBox;
 
         public WCollisionMesh()
         {
@@ -49,7 +49,7 @@ namespace WindEditor.Collision
                 if (meshVerts[i].Z > max.Z) max.Z = meshVerts[i].Z;
             }
 
-            m_aaBox = new AABox(min, max);
+            m_aaBox = new FAABox(min, max);
 
             int[] triangleIndexes = new int[triangleCount * 3];
             stream.BaseStream.Position = triangleOffset;

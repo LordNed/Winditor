@@ -17,7 +17,7 @@ namespace WindEditor
         private int m_viewWidth;
         private int m_viewHeight;
         private WCamera m_viewCamera;
-        private WRect m_viewportRect;
+        private FRect m_viewportRect;
         private WViewportOrientationWidget m_orientationWidget;
 
         private List<IRenderable> m_opaqueRenderList;
@@ -28,7 +28,7 @@ namespace WindEditor
             m_opaqueRenderList = new List<IRenderable>();
             m_transparentRenderList = new List<IRenderable>();
 
-            m_viewportRect = new WRect(0, 0, 1f, 1f);
+            m_viewportRect = new FRect(0, 0, 1f, 1f);
             m_viewCamera = new WCamera();
             m_orientationWidget = new WViewportOrientationWidget();
         }
@@ -66,7 +66,7 @@ namespace WindEditor
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
 
-            WFrustum frustum = new WFrustum(ref viewMatrix, ref projMatrix);
+            FFrustum frustum = new FFrustum(ref viewMatrix, ref projMatrix);
 
             List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
             FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
@@ -85,7 +85,7 @@ namespace WindEditor
             ResetGraphicsState();
         }
 
-        private void FrustumCullList(WFrustum frustum, List<IRenderable> sourceList, List<IRenderable> outputList)
+        private void FrustumCullList(FFrustum frustum, List<IRenderable> sourceList, List<IRenderable> outputList)
         {
             for (int i = 0; i < sourceList.Count; i++)
             {
@@ -135,7 +135,7 @@ namespace WindEditor
             projMatrix = m_viewCamera.ProjectionMatrix;
         }
 
-        internal void SetViewRect(WRect rect)
+        internal void SetViewRect(FRect rect)
         {
             m_viewportRect = rect;
         }
@@ -149,22 +149,22 @@ namespace WindEditor
             m_viewCamera.AspectRatio = (m_viewportRect.Width * width) / (m_viewportRect.Height * height);
         }
 
-        public WRay ProjectScreenToWorld(Vector2 mousePosition)
+        public FRay ProjectScreenToWorld(Vector2 mousePosition)
         {
-            WRect viewportDimensions = GetViewportDimensions();
+            FRect viewportDimensions = GetViewportDimensions();
             mousePosition.X -= viewportDimensions.X;
             mousePosition.Y -= viewportDimensions.Y;
 
             Vector3 mouseViewportA = new Vector3(mousePosition.X/viewportDimensions.Width, mousePosition.Y/viewportDimensions.Height, 0f);
             Vector3 mouseViewportB = new Vector3(mousePosition.X/viewportDimensions.Width, mousePosition.Y/viewportDimensions.Height, 1f);
 
-            Vector4 nearUnproj = WFrustum.UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportA);
-            Vector4 farUnproj = WFrustum.UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportB);
+            Vector4 nearUnproj = FFrustum.UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportA);
+            Vector4 farUnproj = FFrustum.UnProject(m_viewCamera.ProjectionMatrix, m_viewCamera.ViewMatrix, mouseViewportB);
 
             Vector3 dir = farUnproj.Xyz - nearUnproj.Xyz;
             dir.Normalize();
 
-            return new WRay(nearUnproj.Xyz, dir);
+            return new FRay(nearUnproj.Xyz, dir);
         }
 
         public Vector2 UnprojectWorldToViewport(Vector3 worldLocation)
@@ -185,9 +185,9 @@ namespace WindEditor
         /// <summary>
         /// Returns the position of the viewport in screenspace pixel coordinates.
         /// </summary>
-        public WRect GetViewportDimensions()
+        public FRect GetViewportDimensions()
         {
-            WRect newRect = new WRect();
+            FRect newRect = new FRect();
             newRect.X = m_viewportRect.X * m_viewWidth;
             newRect.Y = m_viewportRect.Y * m_viewHeight;
             newRect.Width = m_viewportRect.Width * m_viewWidth;

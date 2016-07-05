@@ -5,11 +5,11 @@ using System;
 // AABB vs Frustrum & Sphere vs Frustrum: http://www.flipcode.com/archives/Frustum_Culling.shtml
 namespace WindEditor
 {
-    public class WFrustum
+    public class FFrustum
     {
-        public WPlane[] m_planes;
+        public FPlane[] m_planes;
 
-        public WFrustum(ref Matrix4 viewMatrix,ref Matrix4 projMatrix)
+        public FFrustum(ref Matrix4 viewMatrix,ref Matrix4 projMatrix)
         {
             Vector3[] frustumPoints = new Vector3[8];
             frustumPoints[0] = UnProject(projMatrix, viewMatrix, new Vector3(0, 0, 0)).Xyz; // Upper Left (Near)
@@ -25,7 +25,7 @@ namespace WindEditor
             PlanesFromPoints(frustumPoints);
         }
 
-        public WFrustum(WPlane[] cameraPlanes)
+        public FFrustum(FPlane[] cameraPlanes)
         {
             if (cameraPlanes.Length != 6)
                 throw new ArgumentException("A frustum must be built from 6 planes!", "cameraPlanes");
@@ -33,7 +33,7 @@ namespace WindEditor
             m_planes = cameraPlanes;
         }
 
-        public WFrustum(Vector3[] frustumPoints)
+        public FFrustum(Vector3[] frustumPoints)
         {
             PlanesFromPoints(frustumPoints);
         }
@@ -44,13 +44,13 @@ namespace WindEditor
                 throw new ArgumentException("A frustum must be built from the 8 corners of the frustum!", "points");
 
             // Construct planes out of the given points.
-            m_planes = new WPlane[6];
-            m_planes[0] = new WPlane(points[0], points[2], points[4]); // Left
-            m_planes[1] = new WPlane(points[5], points[7], points[1]); // Right
-            m_planes[2] = new WPlane(points[4], points[1], points[0]); // Top
-            m_planes[3] = new WPlane(points[3], points[7], points[2]); // Down
-            m_planes[4] = new WPlane(points[1], points[3], points[0]); // Near
-            m_planes[5] = new WPlane(points[7], points[5], points[4]); // Far
+            m_planes = new FPlane[6];
+            m_planes[0] = new FPlane(points[0], points[2], points[4]); // Left
+            m_planes[1] = new FPlane(points[5], points[7], points[1]); // Right
+            m_planes[2] = new FPlane(points[4], points[1], points[0]); // Top
+            m_planes[3] = new FPlane(points[3], points[7], points[2]); // Down
+            m_planes[4] = new FPlane(points[1], points[3], points[0]); // Near
+            m_planes[5] = new FPlane(points[7], points[5], points[4]); // Far
 
         }
 
@@ -90,7 +90,7 @@ namespace WindEditor
             return Halfspace.Positive;
         }
 
-        public Halfspace ContainsAAB(AABox box)
+        public Halfspace ContainsAAB(FAABox box)
         {
             Vector3[] corners = box.GetVertices();
             int totalPointsIn = 0;

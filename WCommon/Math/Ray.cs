@@ -2,12 +2,12 @@
 
 namespace WindEditor
 {
-    public struct WRay
+    public struct FRay
     {
         public Vector3 Origin;
         public Vector3 Direction;
 
-        public WRay(Vector3 origin, Vector3 direction)
+        public FRay(Vector3 origin, Vector3 direction)
         {
             Origin = origin;
             Direction = direction;

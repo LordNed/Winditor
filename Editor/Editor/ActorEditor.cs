@@ -57,7 +57,7 @@ namespace WindEditor
                 return;
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
-                WRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 WActorNode addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
@@ -156,7 +156,7 @@ namespace WindEditor
 
             if (WInput.GetMouseButtonDown(0))
             {
-                WRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.CheckSelectedAxes(mouseRay))
                 {                            
                     Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_transformGizmo.SelectedAxes);
@@ -180,7 +180,7 @@ namespace WindEditor
 
             if (m_transformGizmo.IsTransforming)
             {
-                WRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.TransformFromInput(mouseRay, view))
                 {
                     WUndoCommand undoAction = CreateUndoActionForGizmo(false);
@@ -236,7 +236,7 @@ namespace WindEditor
             m_world.UndoStack.Push(selectionAction);
         }
 
-        private WActorNode Raycast(WRay ray)
+        private WActorNode Raycast(FRay ray)
         {
             if (m_world.Map == null)
                 return null;
@@ -250,7 +250,7 @@ namespace WindEditor
 
                 foreach (WActorNode actorNode in allActors)
                 {
-                    AABox actorBoundingBox = actorNode.GetBoundingBox();
+                    FAABox actorBoundingBox = actorNode.GetBoundingBox();
                     float intersectDistance;
 
                     if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))

@@ -69,8 +69,8 @@ namespace JStudio.J3D
         public string Magic { get; protected set; }
         public string StudioType { get; protected set; }
         public string TotalFileSize { get { return string.Format("{0} bytes", m_totalFileSize); } }
-        public AABox BoundingBox { get; protected set; }
-        public WSphere BoundingSphere { get; protected set; }
+        public FAABox BoundingBox { get; protected set; }
+        public FSphere BoundingSphere { get; protected set; }
 
         public INF1 INF1Tag { get; protected set; }
         public VTX1 VTX1Tag { get; protected set; }
@@ -350,8 +350,8 @@ namespace JStudio.J3D
                     max.Z = sMax.Z;
             }
 
-            BoundingBox = new AABox(min, max);
-            BoundingSphere = new WSphere(BoundingBox.Center, BoundingBox.Max.Length);
+            BoundingBox = new FAABox(min, max);
+            BoundingSphere = new FSphere(BoundingBox.Center, BoundingBox.Max.Length);
         }
 
         private void AssignVertexAttributesToMaterialsRecursive(HierarchyNode curNode, ref Material curMaterial)

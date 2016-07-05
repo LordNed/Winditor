@@ -28,7 +28,7 @@ namespace WindEditor
         private Shader m_highlightedShader;
         private int m_triangleCount;
 
-        private AABox m_boundingBox;
+        private FAABox m_boundingBox;
 
         public SimpleObjRenderer(Obj file)
         {
@@ -84,7 +84,7 @@ namespace WindEditor
             texcoords = file.TexCoords.Count > 0 ? new Vector2[uniqueVerts.Count] : null;
             normals = file.Normals.Count > 0 ? new Vector3[uniqueVerts.Count] : null;
 
-            m_boundingBox = new AABox();
+            m_boundingBox = new FAABox();
             for (int i = 0; i < uniqueVerts.Count; i++)
             {
                 positions[i] = uniqueVerts[i].Position;
@@ -141,7 +141,7 @@ namespace WindEditor
             }
         }
 
-        public AABox GetAABB()
+        public FAABox GetAABB()
         {
             return m_boundingBox;
         }

@@ -15,7 +15,7 @@ namespace JStudio.J3D
         public Quaternion Rotation { get; internal set; }
         public Vector3 Translation { get; internal set; }
         public float BoundingSphereDiameter { get; internal set; }
-        public AABox BoundingBox { get; internal set; }
+        public FAABox BoundingBox { get; internal set; }
 
         // Useful for easier traversal
         public SkeletonJoint Parent { get; internal set; }
@@ -83,7 +83,7 @@ namespace JStudio.J3D
                 Trace.Assert(reader.ReadUInt16() == 0xFFFF); // Padding
                 joint.Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                 joint.BoundingSphereDiameter = reader.ReadSingle();
-                joint.BoundingBox = new AABox(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
+                joint.BoundingBox = new FAABox(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()), new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
 
                 // Copy our bind pose skeleton over to our AnimatedJoints array so they have their names/bounding boxes/etc set.
                 var animatedJoint = new SkeletonJoint();

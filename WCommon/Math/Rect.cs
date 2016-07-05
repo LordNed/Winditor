@@ -1,13 +1,10 @@
-﻿using System;
-using OpenTK;
-
-namespace WindEditor
+﻿namespace WindEditor
 {
-    public struct WRect
+    public struct FRect
     {
         public float X, Y, Width, Height;
 
-        public WRect(float x, float y, float width, float height)
+        public FRect(float x, float y, float width, float height)
         {
             X = x;
             Y = y;

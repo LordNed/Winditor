@@ -10,24 +10,24 @@ namespace WindEditor
         Positive = 1    // Entirely above the Normal
     }
 
-    public struct WPlane
+    public struct FPlane
     {
         public Vector3 Normal;
         public float Distance;
 
-        public WPlane(Vector3 normal, float distance)
+        public FPlane(Vector3 normal, float distance)
         {
             Normal = normal;
             Distance = distance;
         }
 
-        public WPlane(Vector3 normal, Vector3 pointOnPlane)
+        public FPlane(Vector3 normal, Vector3 pointOnPlane)
         {
             Normal = normal.Normalized();
             Distance = -Vector3.Dot(normal, pointOnPlane);
         }
 
-        public WPlane(Vector3 p1, Vector3 p2, Vector3 p3)
+        public FPlane(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             Vector3 d12 = p2 - p1;
             Vector3 d13 = p3 - p1;
@@ -49,7 +49,7 @@ namespace WindEditor
             Distance /= magnitude;
         }
 
-        public bool RayIntersectsPlane(WRay ray, out float intersectDist)
+        public bool RayIntersectsPlane(FRay ray, out float intersectDist)
         {
             float a = Vector3.Dot(ray.Direction, Normal);
             float num = -Vector3.Dot(ray.Origin, Normal) - Distance;

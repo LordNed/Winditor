@@ -44,7 +44,7 @@ namespace JStudio.J3D
             }
 
             public float BoundingSphereDiameter { get; set; }
-            public AABox BoundingBox { get; set; }
+            public FAABox BoundingBox { get; set; }
             public List<ShapeAttribute> Attributes { get; internal set; }
             public MeshVertexHolder VertexData { get; internal set; }
             public List<int> Indexes { get; internal set; }
@@ -222,7 +222,7 @@ namespace JStudio.J3D
 
                 Shape shape = new Shape();
                 shape.BoundingSphereDiameter = boundingSphereDiameter;
-                shape.BoundingBox = new AABox(bboxMin, bboxMax);
+                shape.BoundingBox = new FAABox(bboxMin, bboxMax);
                 shape.Attributes = attributes;
                 Shapes.Add(shape);
 

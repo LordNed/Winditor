@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace WindEditor
 {
-    public struct AABox
+    public struct FAABox
     {
         public Vector3 Min { get { return m_min; } }
         public Vector3 Max { get { return m_max; } }
@@ -12,7 +12,7 @@ namespace WindEditor
         private Vector3 m_min;
         private Vector3 m_max;
 
-        public AABox(Vector3 min, Vector3 max)
+        public FAABox(Vector3 min, Vector3 max)
         {
             Debug.Assert(min.X <= max.X);
             Debug.Assert(min.Y <= max.Y);
@@ -46,8 +46,8 @@ namespace WindEditor
         }
 
         /// <summary>
-        /// Scales the <see cref="AABox"/> by the specified amount in each direction. This function changes
-        /// the center of the <see cref="AABox"/>.
+        /// Scales the <see cref="FAABox"/> by the specified amount in each direction. This function changes
+        /// the center of the <see cref="FAABox"/>.
         /// </summary>
         /// <param name="amount">Amount to uniformly scale the X, Y and Z axes by.</param>
         public void ScaleBy(float amount)
@@ -56,8 +56,8 @@ namespace WindEditor
         }
 
         /// <summary>
-        /// Scales the <see cref="AABox"/> by the specified amount in each direction. This function changes
-        /// the center of the <see cref="AABox"/>.
+        /// Scales the <see cref="FAABox"/> by the specified amount in each direction. This function changes
+        /// the center of the <see cref="FAABox"/>.
         /// </summary>
         /// <param name="amount">Amounts to scale the min/max by on their X, Y, and Z axes.</param>
         public void ScaleBy(Vector3 amount)

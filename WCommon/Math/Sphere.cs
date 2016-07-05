@@ -3,12 +3,12 @@ using System;
 
 namespace WindEditor
 {
-    public struct WSphere
+    public struct FSphere
     {
         public Vector3 Center;
         public float Radius;
 
-        public WSphere(Vector3 center, float radius)
+        public FSphere(Vector3 center, float radius)
         {
             if (radius < 0)
                 throw new ArgumentException("Sphere must have a non-negative radius.", "radius");

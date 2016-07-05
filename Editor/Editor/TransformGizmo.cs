@@ -102,7 +102,7 @@ namespace WindEditor
         private Vector3 m_totalScale = Vector3.One;
 
         // Transform Helpers
-        private WPlane m_translationPlane;
+        private FPlane m_translationPlane;
         private Vector3 m_translateOffset;
         private float m_rotateOffset;
         private float m_scaleOffset;
@@ -319,11 +319,11 @@ namespace WindEditor
             //}
         }
 
-        public bool CheckSelectedAxes(WRay ray)
+        public bool CheckSelectedAxes(FRay ray)
         {
             // Convert the ray into local space so we can use axis-aligned checks, this solves the checking problem
             // when the gizmo is rotated due to being in Local mode.
-            WRay localRay = new WRay();
+            FRay localRay = new FRay();
             localRay.Direction = Vector3.Transform(ray.Direction, m_rotation.Inverted());
             localRay.Origin = Vector3.Transform(ray.Origin - m_position, m_rotation.Inverted());
 
@@ -332,7 +332,7 @@ namespace WindEditor
 
             if (m_mode == FTransformMode.Translation)
             {
-                AABox[] translationAABB = GetAABBBoundsForMode(FTransformMode.Translation);
+                FAABox[] translationAABB = GetAABBBoundsForMode(FTransformMode.Translation);
                 for (int i = 0; i < translationAABB.Length; i++)
                 {
                     float intersectDist;
@@ -345,7 +345,7 @@ namespace WindEditor
             else if (m_mode == FTransformMode.Rotation)
             {
                 // We'll use a combination of AABB and Distance checks to give us the quarter-circles we need.
-                AABox[] rotationAABB = GetAABBBoundsForMode(FTransformMode.Rotation);
+                FAABox[] rotationAABB = GetAABBBoundsForMode(FTransformMode.Rotation);
 
                 float screenScale = 0f;
                 for (int i = 0; i < 3; i++) screenScale += m_scale[i];
@@ -370,7 +370,7 @@ namespace WindEditor
             }
             else if (m_mode == FTransformMode.Scale)
             {
-                AABox[] scaleAABB = GetAABBBoundsForMode(FTransformMode.Scale);
+                FAABox[] scaleAABB = GetAABBBoundsForMode(FTransformMode.Scale);
                 for (int i = 0; i < scaleAABB.Length; i++)
                 {
                     float intersectDist;
@@ -402,7 +402,7 @@ namespace WindEditor
             return true;
         }
 
-        public  bool TransformFromInput(WRay ray, WSceneView view)
+        public  bool TransformFromInput(FRay ray, WSceneView view)
         {
             if (m_mode != FTransformMode.Translation)
                 WrapCursor();
@@ -433,7 +433,7 @@ namespace WindEditor
                 }
 
                 Vector3 planeNormal = Vector3.Cross(axisA, axisB).Normalized();
-                m_translationPlane = new WPlane(planeNormal, m_position);
+                m_translationPlane = new FPlane(planeNormal, m_position);
 
                 float intersectDist;
                 if (m_translationPlane.RayIntersectsPlane(ray, out intersectDist))
@@ -645,7 +645,7 @@ namespace WindEditor
             return false;
         }
 
-        private AABox[] GetAABBBoundsForMode(FTransformMode mode)
+        private FAABox[] GetAABBBoundsForMode(FTransformMode mode)
         {
             switch (mode)
             {
@@ -656,17 +656,17 @@ namespace WindEditor
                     var translationAABB = new[]
                     {
                         // X Axis
-                        new AABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
+                        new FAABox(new Vector3(0, -boxHalfWidth, -boxHalfWidth), new Vector3(boxLength, boxHalfWidth, boxHalfWidth)),
                         // Y Axis
-                        new AABox(new Vector3(-boxHalfWidth, 0, -boxHalfWidth), new Vector3(boxHalfWidth, boxLength, boxHalfWidth)),
+                        new FAABox(new Vector3(-boxHalfWidth, 0, -boxHalfWidth), new Vector3(boxHalfWidth, boxLength, boxHalfWidth)),
                         // Z Axis
-                        new AABox(new Vector3(-boxHalfWidth, -boxHalfWidth, 0), new Vector3(boxHalfWidth, boxHalfWidth, boxLength)),
+                        new FAABox(new Vector3(-boxHalfWidth, -boxHalfWidth, 0), new Vector3(boxHalfWidth, boxHalfWidth, boxLength)),
                         // XY Axes
-                        new AABox(new Vector3(0, 0, -2), new Vector3(boxHalfWidth*6, boxHalfWidth*6, 2)),
+                        new FAABox(new Vector3(0, 0, -2), new Vector3(boxHalfWidth*6, boxHalfWidth*6, 2)),
                         // YZ Axes
-                        new AABox(new Vector3(0, -2, 0), new Vector3(boxHalfWidth*6, 2, boxHalfWidth*6)),
+                        new FAABox(new Vector3(0, -2, 0), new Vector3(boxHalfWidth*6, 2, boxHalfWidth*6)),
                         // XZ Axes
-                        new AABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
+                        new FAABox(new Vector3(-2, 0, 0), new Vector3(2, boxHalfWidth*6, boxHalfWidth*6)),
                     };
                     for (int i = 0; i < translationAABB.Length; i++)
                         translationAABB[i].ScaleBy(m_scale);
@@ -678,11 +678,11 @@ namespace WindEditor
                     var rotationAABB = new[]
                     {
                          // Y Axis (XZ Plane)
-                        new AABox(new Vector3(-2, 0, 0), new Vector3(2, radius, radius)),
+                        new FAABox(new Vector3(-2, 0, 0), new Vector3(2, radius, radius)),
                         // Z Axis (XY Plane)
-                        new AABox(new Vector3(0, -2, 0), new Vector3(radius, 2, radius)),
+                        new FAABox(new Vector3(0, -2, 0), new Vector3(radius, 2, radius)),
                         // X Axis (YZ Plane)
-                        new AABox(new Vector3(0, 0, -2), new Vector3(radius, radius, 2)),
+                        new FAABox(new Vector3(0, 0, -2), new Vector3(radius, radius, 2)),
                     };
 
                     for (int i = 0; i < rotationAABB.Length; i++)
@@ -697,19 +697,19 @@ namespace WindEditor
                     var scaleAABB = new[]
                     {
                         // X Axis
-                        new AABox(new Vector3(0, -scaleHalfWidth, -scaleHalfWidth), new Vector3(scaleLength, scaleHalfWidth, scaleHalfWidth)),
+                        new FAABox(new Vector3(0, -scaleHalfWidth, -scaleHalfWidth), new Vector3(scaleLength, scaleHalfWidth, scaleHalfWidth)),
                         // Y Axis
-                        new AABox(new Vector3(-scaleHalfWidth, 0, -scaleHalfWidth), new Vector3(scaleHalfWidth, scaleLength, scaleHalfWidth)),
+                        new FAABox(new Vector3(-scaleHalfWidth, 0, -scaleHalfWidth), new Vector3(scaleHalfWidth, scaleLength, scaleHalfWidth)),
                         // Z Axis
-                        new AABox(new Vector3(-scaleHalfWidth, -scaleHalfWidth, 0), new Vector3(scaleHalfWidth, scaleHalfWidth, scaleLength)),
+                        new FAABox(new Vector3(-scaleHalfWidth, -scaleHalfWidth, 0), new Vector3(scaleHalfWidth, scaleHalfWidth, scaleLength)),
                         // YX Axes
-                        new AABox(new Vector3(0, 0, -2), new Vector3(scaleCornerSize, scaleCornerSize, 2)),
+                        new FAABox(new Vector3(0, 0, -2), new Vector3(scaleCornerSize, scaleCornerSize, 2)),
                         // YZ Axes
-                        new AABox(new Vector3(0, -2, 0), new Vector3(scaleCornerSize, 2, scaleCornerSize)),
+                        new FAABox(new Vector3(0, -2, 0), new Vector3(scaleCornerSize, 2, scaleCornerSize)),
                         // XZ Axes
-                        new AABox(new Vector3(-2, 0, 0), new Vector3(2, scaleCornerSize, scaleCornerSize)),
+                        new FAABox(new Vector3(-2, 0, 0), new Vector3(2, scaleCornerSize, scaleCornerSize)),
                         // Center
-                        new AABox(new Vector3(-7, -7, -7), new Vector3(7, 7, 7))
+                        new FAABox(new Vector3(-7, -7, -7), new Vector3(7, 7, 7))
                   };
 
                     for (int i = 0; i < scaleAABB.Length; i++)
@@ -717,7 +717,7 @@ namespace WindEditor
                     return scaleAABB;
             }
 
-            return new AABox[0];
+            return new FAABox[0];
         }
 
         private void WrapCursor()

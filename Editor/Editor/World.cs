@@ -78,7 +78,7 @@ namespace WindEditor
                 foreach (var scene in m_sceneViews)
                 {
                     scene.IsFocused = false;
-                    WRect viewport = scene.GetViewportDimensions();
+                    FRect viewport = scene.GetViewportDimensions();
                     if (viewport.Contains(WInput.MousePosition.X, WInput.MousePosition.Y))
                     {
                         focusedScene = scene;

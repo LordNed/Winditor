@@ -66,12 +66,12 @@ namespace WindEditor
             }
         }
 
-        public override AABox GetBoundingBox()
+        public override FAABox GetBoundingBox()
         {
-            AABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMesh.BoundingBox;
+            FAABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMesh.BoundingBox;
             modelABB.ScaleBy(Transform.LocalScale);
 
-            return new AABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
+            return new FAABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
         }
 
         #region IRenderable
