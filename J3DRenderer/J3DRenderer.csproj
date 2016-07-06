@@ -90,6 +90,7 @@
     <Compile Include="Framework\FrameBuffer.cs" />
     <Compile Include="Framework\LineBatcher.cs" />
     <Compile Include="Framework\Obj.cs" />
+    <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ScreenspaceQuad.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

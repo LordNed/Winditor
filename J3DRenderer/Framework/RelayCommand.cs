@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace WindEditor.ViewModel
+namespace WindEditor
 {
     /// <summary>
     /// Implements the ICommand interface
@@ -57,5 +57,4 @@ namespace WindEditor.ViewModel
 
         #endregion // ICommand Members
     }
-
 }

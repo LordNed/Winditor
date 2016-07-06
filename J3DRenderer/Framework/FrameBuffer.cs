@@ -29,25 +29,24 @@ namespace WindEditor
             ResizeBuffer(width, height);
 
             // Bind our Render Buffer to the FBO we created earlier.
-            GLErrorCheck();
             GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, RenderbufferTarget.Renderbuffer, m_rgbRenderBufferIndex);
             GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
             GLErrorCheck();
 
-            // ?
-            //GL.DrawBuffer(DrawBufferMode.ColorAttachment0);
-            GLErrorCheck();
-
-            var fbStatus = GL.CheckFramebufferStatus(FramebufferTarget.Framebuffer);
-            if (fbStatus != FramebufferErrorCode.FramebufferComplete)
-                Console.WriteLine("Initializing Framebuffer Failed: {0}", fbStatus);
+            GLFrameBufferErrorCheck(FramebufferTarget.Framebuffer);
             GLErrorCheck();
         }
 
         public void Bind()
         {
-            GLErrorCheck();
+            ClearGLError();
+
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, m_frameBufferIndex);
+            GLErrorCheck();
+
+            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, RenderbufferTarget.Renderbuffer, m_rgbRenderBufferIndex);
+            GLErrorCheck();
+            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
             GLErrorCheck();
         }
 
@@ -66,7 +65,7 @@ namespace WindEditor
             GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
             GLErrorCheck();
 
-            GL.ReadPixels(x, y, width, height, PixelFormat.Rgba, PixelType.UnsignedByte, buf);
+            GL.ReadPixels(x, y, width, height, PixelFormat.Bgra, PixelType.UnsignedByte, buf);
             GLErrorCheck();
             return buf;
         }
@@ -79,10 +78,6 @@ namespace WindEditor
             int maxDims;
             GL.GetInteger(GetPName.MaxRenderbufferSize, out maxDims);
             GLErrorCheck();
-
-            // ToDo: 
-            // GL.GetRenderbufferParameter(RenderbufferTarget.) Get the RenderbufferParameters after constructing the renderbuffer.
-
 
             if (maxDims < newWidth)
                 throw new ArgumentException(string.Format("Exceeds max renderbuffer size for this GPU (\"{0}\")!", maxDims), "newWidth");
@@ -118,21 +113,19 @@ namespace WindEditor
             m_frameBufferHeight = newHeight;
         }
 
-        public void BlitToBackbuffer()
+        public void BlitToBackbuffer(int backbufferWidth, int backbufferHeight)
         {
             ClearGLError();
 
             GL.BindFramebuffer(FramebufferTarget.ReadFramebuffer, m_frameBufferIndex);
+            GLFrameBufferErrorCheck(FramebufferTarget.ReadFramebuffer);
             GLErrorCheck();
 
             GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, 0);
             GLErrorCheck();
 
-            //GL.ReadBuffer(ReadBufferMode.ColorAttachment0);
-            //GL.DrawBuffer(DrawBufferMode.ColorAttachment0);
-
             ClearGLError();
-            GL.BlitFramebuffer(0, 0, m_frameBufferWidth, m_frameBufferHeight, 0, 0, m_frameBufferWidth, m_frameBufferHeight, ClearBufferMask.ColorBufferBit, BlitFramebufferFilter.Nearest);
+            GL.BlitFramebuffer(0, 0, m_frameBufferWidth, m_frameBufferHeight, 0, 0, backbufferWidth, backbufferHeight, ClearBufferMask.ColorBufferBit, BlitFramebufferFilter.Linear);
             GLErrorCheck();
         }
 
@@ -141,6 +134,13 @@ namespace WindEditor
             var error = GL.GetError();
             if (error != ErrorCode.NoError)
                 Console.WriteLine("GL Error: {0}", error);
+        }
+
+        private static void GLFrameBufferErrorCheck(FramebufferTarget target)
+        {
+            var fbStatus = GL.CheckFramebufferStatus(target);
+            if (fbStatus != FramebufferErrorCode.FramebufferComplete)
+                Console.WriteLine("Framebuffer Status Failed: {0}", fbStatus);
         }
 
         private static void ClearGLError()

@@ -11,6 +11,8 @@ using J3DRenderer.Framework;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Input;
+using System.Windows;
 
 namespace J3DRenderer
 {
@@ -46,6 +48,7 @@ namespace J3DRenderer
             m_renderCamera.Transform.Position = new Vector3(500, 75, 500);
             m_renderCamera.Transform.Rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(45f));
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
+            Application.Current.MainWindow.Closing += OnMainWindowClosing;
         }
 
         internal void OnMainEditorWindowLoaded(GLControl child)
@@ -158,7 +161,7 @@ namespace J3DRenderer
             GL.Disable(EnableCap.Multisample);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
-            GL.Viewport(0, 0, m_viewportWidth, m_viewportHeight);
+            GL.Viewport(0, 0, m_frameBuffer.Width, m_frameBuffer.Height);
 
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
             m_dtStopwatch.Restart();
@@ -209,7 +212,7 @@ namespace J3DRenderer
                 m_shouldTakeScreenCap = false;
             }
 
-            m_frameBuffer.BlitToBackbuffer();
+            m_frameBuffer.BlitToBackbuffer(m_viewportWidth, m_viewportHeight);
             //GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
             //GL.BlitFramebuffer(0, 0, m_viewportWidth, m_viewportHeight, 0, 0, m_viewportWidth, m_viewportHeight, ClearBufferMask.co)
 
@@ -219,12 +222,12 @@ namespace J3DRenderer
 
         private void CaptureScreenshotToDisk()
         {
-            byte[] pixelData = m_frameBuffer.ReadPixels(0, 0, m_viewportWidth, m_viewportHeight);
+            byte[] pixelData = m_frameBuffer.ReadPixels(0, 0, m_frameBuffer.Width, m_frameBuffer.Height);
 
-            using (Bitmap bmp = new Bitmap(m_viewportWidth, m_viewportHeight))
+            using (Bitmap bmp = new Bitmap(m_frameBuffer.Width, m_frameBuffer.Height))
             {
-                Rectangle rect = new Rectangle(0, 0, m_viewportWidth, m_viewportHeight);
-                System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                Rectangle rect = new Rectangle(0, 0, m_frameBuffer.Width, m_frameBuffer.Height);
+                System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format32bppRgb);
 
                 //Lock the bitmap for writing, copy the bits and then unlock for saving.
                 IntPtr ptr = bmpData.Scan0;
@@ -245,7 +248,13 @@ namespace J3DRenderer
             m_viewportWidth = width;
             m_viewportHeight = height;
             m_renderCamera.AspectRatio = width / (float)height;
-            m_frameBuffer.ResizeBuffer(width, height);
+            m_frameBuffer.ResizeBuffer(width*16, height*16);
+        }
+
+        private void OnMainWindowClosing(object sender, CancelEventArgs e)
+        {
+            if (m_frameBuffer != null)
+                m_frameBuffer.Dispose();
         }
     }
 }

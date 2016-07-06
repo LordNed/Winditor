@@ -187,7 +187,6 @@
     <Compile Include="Editor\RelayCommand.cs" />
     <Compile Include="ViewModel\PropertyValueConverters.cs" />
     <Compile Include="ViewModel\PropertyValueDataTemplateSelector.cs" />
-    <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
