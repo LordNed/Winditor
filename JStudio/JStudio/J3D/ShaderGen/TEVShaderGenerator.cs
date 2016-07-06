@@ -49,7 +49,7 @@ namespace JStudio.J3D.ShaderGen
             if (!success)
             {
                 Console.WriteLine("Failed to generate shader for material: {0}", fromMat.Name);
-                shader.ReleaseResources();
+                shader.Dispose();
 
                 // Generate a Fallback Shader for rendering
                 shader = new Shader("Debug_NormalColors");

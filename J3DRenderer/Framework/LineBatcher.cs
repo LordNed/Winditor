@@ -204,7 +204,7 @@ namespace WindEditor
 
         public void ReleaseResources()
         {
-            m_primitiveShader.ReleaseResources();
+            m_primitiveShader.Dispose();
             GL.DeleteBuffer(m_vbo);
             GL.DeleteBuffer(m_vertColors);
         }

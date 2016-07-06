@@ -1,20 +1,23 @@
 ﻿using GameFormatReader.Common;
 using JStudio.OpenGL;
 using OpenTK.Graphics.OpenGL;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using WindEditor;
 
 namespace JStudio.J3D
 {
-    public class Texture
+    public class Texture : IDisposable
     {
         public string Name { get; protected set; }
         public BinaryTextureImage CompressedData { get; protected set; }
 
         private int m_glTextureIndex;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false;
 
         public Texture(string name, BinaryTextureImage compressedData)
         {
@@ -53,6 +56,39 @@ namespace JStudio.J3D
         {
             return Name;
         }
+
+        #region IDisposable Support
+        ~Texture()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool manualDispose)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (manualDispose)
+                {
+                    // TODO: dispose managed state (managed objects).
+                }
+
+                GL.DeleteTexture(m_glTextureIndex);
+
+                // Set large fields to null.
+                CompressedData = null;
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 
     public class TEX1

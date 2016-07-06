@@ -62,7 +62,7 @@ namespace JStudio.J3D
         }
     }
 
-    public partial class J3D : INotifyPropertyChanged
+    public partial class J3D : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -107,6 +107,9 @@ namespace JStudio.J3D
         private BCK m_currentBoneAnimation;
         private BTK m_currentMaterialAnimation;
         private bool m_skinningInvalid;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false;
 
         public void LoadFromStream(EndianBinaryReader reader)
         {
@@ -402,8 +405,8 @@ namespace JStudio.J3D
                 foreach (var shape in SHP1Tag.Shapes)
                 {
                     var transformedVerts = new List<Vector3>(shape.VertexData.Position);
+                    var transformedNormals = new List<Vector3>(shape.VertexData.Normal.Count);
                     //List<WLinearColor> colorOverride = new List<WLinearColor>();
-                    List<Vector3> transformedNormals = new List<Vector3>();
 
                     for (int i = 0; i < shape.VertexData.Position.Count; i++)
                     {
@@ -451,8 +454,7 @@ namespace JStudio.J3D
                             finalMatrix = boneTransforms[indexFromDRW1];
                         }
 
-                        Vector3 transformedVertPos = Vector3.Transform(transformedVerts[i], finalMatrix);
-                        transformedVerts[i] = transformedVertPos;
+                        transformedVerts.Add(Vector3.Transform(shape.VertexData.Position[i], finalMatrix));
 
                         if (shape.VertexData.Normal.Count > 0)
                         {
@@ -718,5 +720,61 @@ namespace JStudio.J3D
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #region IDisposable Support
+        ~J3D()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool manualDispose)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (manualDispose)
+                {
+                    // Dispose managed state (managed objects).
+                    foreach (var texture in TEX1Tag.Textures)
+                        texture.Dispose();
+
+                    foreach (var shape in SHP1Tag.Shapes)
+                        shape.Dispose();
+
+                    foreach (var kvp in m_textureOverrides)
+                        kvp.Value.Dispose();
+
+                    foreach (var material in MAT3Tag.MaterialList)
+                        material.Shader.Dispose();
+                }
+
+                GL.DeleteBuffer(m_hardwareLightBuffer);
+
+                // Null out our large managed arrays since we keep a lot of data in them.
+                INF1Tag = null;
+                VTX1Tag = null;
+                MAT3Tag = null;
+                SHP1Tag = null;
+                JNT1Tag = null;
+                TEX1Tag = null;
+                EVP1Tag = null;
+                DRW1Tag = null;
+
+                m_boneAnimations = null;
+                m_materialAnimations = null;
+                m_tevColorOverrides = null;
+                m_textureOverrides = null;
+
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

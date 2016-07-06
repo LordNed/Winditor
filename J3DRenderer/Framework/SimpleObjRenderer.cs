@@ -153,8 +153,8 @@ namespace WindEditor
             GL.DeleteTexture(m_textureVBO);
             if (m_texcoordVBO >= 0) GL.DeleteBuffer(m_texcoordVBO);
             if (m_normalVBO >= 0) GL.DeleteBuffer(m_normalVBO);
-            m_unhighlightedShader.ReleaseResources();
-            m_highlightedShader.ReleaseResources();
+            m_unhighlightedShader.Dispose();
+            m_highlightedShader.Dispose();
         }
 
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)

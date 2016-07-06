@@ -198,7 +198,6 @@ namespace JStudio
         /// </summary>
         public void LoadImageFromDisk(string filePath)
         {
-
             using (Bitmap bitmap = new Bitmap(filePath))
             {
                 Format = TextureFormats.RGBA32;

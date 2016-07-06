@@ -28,7 +28,7 @@ namespace JStudio.OpenGL
         PixelShaderBlock = 1,
     }
 
-    public class Shader
+    public class Shader : IDisposable
     {
         public readonly string Name;
         public int UniformModelMtx { get; private set; }
@@ -51,6 +51,9 @@ namespace JStudio.OpenGL
         private int m_fragmentAddress = -1;
         private int m_programAddress = -1;
         private int m_psBlockAddress;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false; 
 
         public Shader(string name)
         {
@@ -102,7 +105,6 @@ namespace JStudio.OpenGL
 
             return true;
         }
-
 
         public bool LinkShader()
         {
@@ -175,23 +177,51 @@ namespace JStudio.OpenGL
             return true;
         }
 
-        public void ReleaseResources()
-        {
-            if (m_vertexAddress >= 0)
-                GL.DeleteShader(m_vertexAddress);
-            if (m_fragmentAddress >= 0)
-                GL.DeleteShader(m_fragmentAddress);
-
-            if (m_psBlockAddress >= 0)
-                GL.DeleteBuffer(m_psBlockAddress);
-
-            if (m_programAddress >= -1)
-                GL.DeleteProgram(m_programAddress);
-        }
-
         public override string ToString()
         {
             return Name;
         }
+
+        #region IDisposable Support
+        ~Shader()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects).
+                }
+
+                // Free unmanaged resources
+                if (m_vertexAddress >= 0)
+                    GL.DeleteShader(m_vertexAddress);
+                if (m_fragmentAddress >= 0)
+                    GL.DeleteShader(m_fragmentAddress);
+
+                if (m_psBlockAddress >= 0)
+                    GL.DeleteBuffer(m_psBlockAddress);
+
+                if (m_programAddress >= -1)
+                    GL.DeleteProgram(m_programAddress);
+                
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

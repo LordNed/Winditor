@@ -9,12 +9,12 @@ using WindEditor;
 
 namespace JStudio.J3D
 {
-    public class ShapeAttribute
+    public class ShapeVertexAttribute
     {
         public VertexArrayType ArrayType;
         public VertexDataType DataType;
 
-        public ShapeAttribute(VertexArrayType arrayType, VertexDataType dataType)
+        public ShapeVertexAttribute(VertexArrayType arrayType, VertexDataType dataType)
         {
             ArrayType = arrayType;
             DataType = dataType;
@@ -28,7 +28,7 @@ namespace JStudio.J3D
 
     public class SHP1
     {
-        public class Shape
+        public class Shape : IDisposable
         {
             public class SkinDataTable
             {
@@ -45,7 +45,7 @@ namespace JStudio.J3D
 
             public float BoundingSphereDiameter { get; set; }
             public FAABox BoundingBox { get; set; }
-            public List<ShapeAttribute> Attributes { get; internal set; }
+            public List<ShapeVertexAttribute> Attributes { get; internal set; }
             public MeshVertexHolder VertexData { get; internal set; }
             public List<int> Indexes { get; internal set; }
             public VertexDescription VertexDescription { get; private set; }
@@ -54,14 +54,16 @@ namespace JStudio.J3D
 
             // This is a list of all Matrix Table entries for all sub-primitives. 
             public List<SkinDataTable> MatrixDataTable { get; private set; }
-            //public List<ushort> MatrixTable { get; private set; }
 
             public int[] m_glBufferIndexes;
             public int m_glIndexBuffer;
 
+            // To detect redundant calls
+            private bool m_hasBeenDisposed = false; 
+
             public Shape()
             {
-                Attributes = new List<ShapeAttribute>();
+                Attributes = new List<ShapeVertexAttribute>();
                 VertexData = new MeshVertexHolder();
                 Indexes = new List<int>();
                 VertexDescription = new VertexDescription();
@@ -70,6 +72,9 @@ namespace JStudio.J3D
                 OverrideNormals = new List<Vector3>();
 
                 m_glBufferIndexes = new int[15];
+                for (int i = 0; i < m_glBufferIndexes.Length; i++)
+                    m_glBufferIndexes[i] = -1;
+
                 m_glIndexBuffer = GL.GenBuffer();
             }
 
@@ -146,6 +151,49 @@ namespace JStudio.J3D
                 int stride = VertexDescription.GetStride(attribute);
                 GL.BufferData<T>(BufferTarget.ArrayBuffer, (IntPtr)(data.Length * stride), data, BufferUsageHint.StaticDraw);
             }
+
+            #region IDisposable Support
+            ~Shape()
+            {
+                // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+                Dispose(false);
+            }
+
+            protected virtual void Dispose(bool manualDispose)
+            {
+                if (!m_hasBeenDisposed)
+                {
+                    if (manualDispose)
+                    {
+                        // TODO: dispose managed state (managed objects).
+                    }
+
+                    GL.DeleteBuffer(m_glIndexBuffer);
+                    for (int i = 0; i < m_glBufferIndexes.Length; i++)
+                        if (m_glBufferIndexes[i] >= 0)
+                            GL.DeleteBuffer(m_glBufferIndexes[i]);
+
+                    // Set large fields to null.
+                    Attributes = null;
+                    VertexData = null;
+                    Indexes = null;
+                    VertexDescription = null;
+                    MatrixDataTable = null;
+                    OverrideVertPos = null;
+                    OverrideNormals = null;
+
+                    m_hasBeenDisposed = true;
+                }
+            }
+
+            // This code added to correctly implement the disposable pattern.
+            public void Dispose()
+            {
+                // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+            #endregion
         }
 
         public short ShapeCount { get; private set; }
@@ -210,10 +258,10 @@ namespace JStudio.J3D
 
                 // Determine which Attributes this particular shape uses.
                 reader.BaseStream.Position = tagStart + attributeOffset + batchAttributeOffset;
-                List<ShapeAttribute> attributes = new List<ShapeAttribute>();
+                List<ShapeVertexAttribute> attributes = new List<ShapeVertexAttribute>();
                 do
                 {
-                    ShapeAttribute attribute = new ShapeAttribute((VertexArrayType)reader.ReadInt32(), (VertexDataType)reader.ReadInt32());
+                    ShapeVertexAttribute attribute = new ShapeVertexAttribute((VertexArrayType)reader.ReadInt32(), (VertexDataType)reader.ReadInt32());
                     if (attribute.ArrayType == VertexArrayType.NullAttr) 
                         break;
 
@@ -274,7 +322,7 @@ namespace JStudio.J3D
 
                             // Each vertex has an index for each ShapeAttribute specified by the Shape that we belong to. So we'll loop through
                             // each index and load it appropriately (as vertices can have different data sizes).
-                            foreach (ShapeAttribute curAttribute in attributes)
+                            foreach (ShapeVertexAttribute curAttribute in attributes)
                             {
                                 int index = 0;
                                 uint numBytesRead = 0;
