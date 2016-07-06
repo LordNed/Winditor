@@ -404,7 +404,7 @@ namespace JStudio.J3D
             {
                 foreach (var shape in SHP1Tag.Shapes)
                 {
-                    var transformedVerts = new List<Vector3>(shape.VertexData.Position);
+                    var transformedPositions = new List<Vector3>(shape.VertexData.Position.Count);
                     var transformedNormals = new List<Vector3>(shape.VertexData.Normal.Count);
                     //List<WLinearColor> colorOverride = new List<WLinearColor>();
 
@@ -454,7 +454,7 @@ namespace JStudio.J3D
                             finalMatrix = boneTransforms[indexFromDRW1];
                         }
 
-                        transformedVerts.Add(Vector3.Transform(shape.VertexData.Position[i], finalMatrix));
+                        transformedPositions.Add(Vector3.Transform(shape.VertexData.Position[i], finalMatrix));
 
                         if (shape.VertexData.Normal.Count > 0)
                         {
@@ -466,7 +466,7 @@ namespace JStudio.J3D
                     }
 
                     // Re-upload to the GPU.
-                    shape.OverrideVertPos = transformedVerts;
+                    shape.OverrideVertPos = transformedPositions;
                     //shape.VertexData.Color0 = colorOverride;
                     if (transformedNormals.Count > 0)
                         shape.OverrideNormals = transformedNormals;
