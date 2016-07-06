@@ -136,6 +136,14 @@
    "Wait Animations": ""
  },
  {
+   "Archive Name": "Always",
+   "Actor Name": "koisi1",
+   "English Name": "Small rock",
+   "Main Model": "bdl/obm_koisi1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
    "Archive Name": "Am",
    "Actor Name": "amos",
    "English Name": "Armos Knight",
@@ -793,7 +801,7 @@
  },
  {
    "Archive Name": "Deku",
-   "Actor Name": "N/A",
+   "Actor Name": "itemDek",
    "English Name": "Deku Leaf Item Get Model.",
    "Main Model": "bdlm/vlfdm.bdl",
    "Secondary Models": "N/A",
@@ -1872,6 +1880,14 @@
    "Wait Animations": "bck/swim1.bck"
  },
  {
+   "Archive Name": "gy",
+   "Actor Name": "GyCtrlB",
+   "English Name": "Gyorg",
+   "Main Model": "bmd/gy.bmd",
+   "Secondary Models": "",
+   "Wait Animations": "bck/swim1.bck"
+ },
+ {
    "Archive Name": "Hami1",
    "Actor Name": "Hami1",
    "English Name": "Small Square Wind Temple Barrier",
@@ -1907,6 +1923,14 @@
    "Archive Name": "Hbox2",
    "Actor Name": "Hbox2",
    "English Name": "Heavy Pushblock (Tower of the Gods)",
+   "Main Model": "bdl/hbox2.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Hbox2",
+   "Actor Name": "Hbox2S",
+   "English Name": "Small Pushblock (Tower of the Gods)",
    "Main Model": "bdl/hbox2.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -2010,6 +2034,14 @@
  {
    "Archive Name": "Hhbot",
    "Actor Name": "Hhbot1",
+   "English Name": "Iron Boots Switch",
+   "Main Model": "bdl/hhbot2.bdl",
+   "Secondary Models": "bdl/hhbot1.bdl",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Hhbot",
+   "Actor Name": "Hhbot1N",
    "English Name": "Iron Boots Switch",
    "Main Model": "bdl/hhbot2.bdl",
    "Secondary Models": "bdl/hhbot1.bdl",
@@ -2634,7 +2666,7 @@
  {
    "Archive Name": "Kiri",
    "Actor Name": "",
-   "English Name": "BROKEN",
+   "English Name": "BROKEN (Model of a cloud)",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -2722,7 +2754,7 @@
  {
    "Archive Name": "Knob",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "A whole bunch of doors",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -2873,7 +2905,7 @@
  },
  {
    "Archive Name": "Kyjim",
-   "Actor Name": "magrock",
+   "Actor Name": "Magrock",
    "English Name": "Platforms made out of solidified lava.",
    "Main Model": "bdlm/kyjim_00.bdl",
    "Secondary Models": "",
@@ -3353,17 +3385,33 @@
  },
  {
    "Archive Name": "Mtest",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Mcube",
+   "English Name": "Scalable test cube.",
+   "Main Model": "bmdc/mcube.bmd",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mtest",
+   "Actor Name": "Mcube10",
+   "English Name": "Scalable test cube.",
+   "Main Model": "bmdc/mcube.bmd",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mtest",
+   "Actor Name": "Mcyln",
+   "English Name": "Scalable test cube.",
+   "Main Model": "bmdc/mcyln.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mtoge",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "SMtoge",
+   "English Name": "Spikes",
+   "Main Model": "bmd/s_mtoge.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
