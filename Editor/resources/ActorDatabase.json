@@ -1,4 +1,4 @@
-﻿[
+[
  {
    "Archive Name": "Aana",
    "Actor Name": "Pitfall",
@@ -115,7 +115,23 @@
    "Archive Name": "Always",
    "Actor Name": "ootubo",
    "English Name": "",
-   "Main Model": "",
+   "Main Model": "bdl/obm_ootubo1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Always",
+   "Actor Name": "ootubo1",
+   "English Name": "",
+   "Main Model": "bdl/obm_ootubo1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Always",
+   "Actor Name": "SW_HIT0",
+   "English Name": "Crystal Switch",
+   "Main Model": "bdlm/obm_syougekisw.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -1427,7 +1443,7 @@
    "Archive Name": "Fganon",
    "Actor Name": "Fganon",
    "English Name": "Phantom Ganon",
-   "Main Model": "bdl/bpg.bdl",
+   "Main Model": "bdlm/bpg.bdl",
    "Secondary Models": "",
    "Wait Animations": "bck/wait1.bck"
  },
@@ -1649,7 +1665,7 @@
  },
  {
    "Archive Name": "frLt",
-   "Actor Name": "",
+   "Actor Name": "Yfrlt00",
    "English Name": "Flat Light Shaft / Flat Waterfall (?)",
    "Main Model": "bdlm/yfrlt00.bdl",
    "Secondary Models": "",
@@ -1809,7 +1825,7 @@
  },
  {
    "Archive Name": "Gp",
-   "Actor Name": "Gp",
+   "Actor Name": "Gp1",
    "English Name": "Rich Maggie's Father",
    "Main Model": "bdlm/gp.bdl",
    "Secondary Models": "",
@@ -2259,7 +2275,7 @@
    "Archive Name": "Htobi1",
    "Actor Name": "Htobi1",
    "English Name": "Tower of the Gods Face Panel",
-   "Main Model": "",
+   "Main Model": "bdl/htobi1.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2267,7 +2283,7 @@
    "Archive Name": "Htobi2",
    "Actor Name": "Htobi2",
    "English Name": "Small Stone Wind Temple Barriers",
-   "Main Model": "",
+   "Main Model": "bdl/htobi2.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2275,7 +2291,7 @@
    "Archive Name": "Htobi3",
    "Actor Name": "Htobi3",
    "English Name": "Small Rectangular Wind Temple Barrier",
-   "Main Model": "",
+   "Main Model": "bdl/htobi3.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2713,9 +2729,9 @@
  },
  {
    "Archive Name": "Knsak_00",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Dsaku",
+   "English Name": "Strong breakable fence.",
+   "Main Model": "bdl/knsak_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2849,7 +2865,7 @@
  },
  {
    "Archive Name": "Kwood_00",
-   "Actor Name": "branch",
+   "Actor Name": "Branch",
    "English Name": "The branch that Tetra is stuck on in the forest on Outset.",
    "Main Model": "bmdc/ws.bmd",
    "Secondary Models": "",
@@ -3097,17 +3113,49 @@
  },
  {
    "Archive Name": "MhmrSW",
-   "Actor Name": "",
+   "Actor Name": "MhmrSW0",
    "English Name": "Skull Hammer Switch",
-   "Main Model": "",
+   "Main Model": "bdl/mhmrsw.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mhsg",
-   "Actor Name": "",
+   "Actor Name": "Mhsg4h",
    "English Name": "Ladder",
-   "Main Model": "",
+   "Main Model": "bdl/mhsg4h.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mhsg",
+   "Actor Name": "Mhsg6",
+   "English Name": "Ladder",
+   "Main Model": "bdl/mhsg6.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mhsg",
+   "Actor Name": "Mhsg9",
+   "English Name": "Ladder",
+   "Main Model": "bdl/mhsg9.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mhsg",
+   "Actor Name": "Mhsg12",
+   "English Name": "Ladder",
+   "Main Model": "bdl/mhsg12.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mhsg",
+   "Actor Name": "Mhsg15",
+   "English Name": "Ladder",
+   "Main Model": "bdl/mhsg15.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3121,59 +3169,99 @@
  },
  {
    "Archive Name": "Mkanoke",
-   "Actor Name": "",
+   "Actor Name": "MKanoke",
    "English Name": "Stone Coffin",
-   "Main Model": "",
+   "Main Model": "bdl/moke1.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mkanoke",
+   "Actor Name": "MKanok2",
+   "English Name": "Stone Coffin",
+   "Main Model": "bdl/moke2.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mkdan",
-   "Actor Name": "",
+   "Actor Name": "Mkdan1",
    "English Name": "Falling Step",
-   "Main Model": "",
+   "Main Model": "bdl/mkdan1.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "MkieB",
-   "Actor Name": "",
+   "Actor Name": "MkieBA",
    "English Name": "Light Crumble Statue",
-   "Main Model": "",
+   "Main Model": "bdlm/ylsmf00.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "MkieB",
+   "Actor Name": "MkieBAB",
+   "English Name": "Light Crumble Statue",
+   "Main Model": "bdlm/ylsmf00.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "MkieB",
+   "Actor Name": "MkieBB",
+   "English Name": "Light Crumble Statue",
+   "Main Model": "bdlm/ylsmf00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "MkieK",
-   "Actor Name": "",
+   "Actor Name": "MkieK",
    "English Name": "Light Crumble Wall",
-   "Main Model": "",
+   "Main Model": "bdlm/ylsmk00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "MknjD",
-   "Actor Name": "",
+   "Actor Name": "MknjD",
    "English Name": "Sage Stone",
-   "Main Model": "",
+   "Main Model": "bdl/mknjd.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mmirror",
-   "Actor Name": "",
+   "Actor Name": "Mmrr",
    "English Name": "Light-Reflecting Mirror",
-   "Main Model": "",
+   "Main Model": "bdlm/mmrr.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mmirror",
+   "Actor Name": "MsuSW",
+   "English Name": "Light-Reflecting Mirror",
+   "Main Model": "bdlm/msusw.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mmirror",
+   "Actor Name": "MsuSWB",
+   "English Name": "Light-Reflecting Mirror",
+   "Main Model": "bdlm/msusw.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mn",
-   "Actor Name": "",
+   "Actor Name": "Mn",
    "English Name": "Manny",
-   "Main Model": "",
+   "Main Model": "bdlm/mn.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/mn_wait01.bck"
  },
  {
    "Archive Name": "Mo2",
@@ -3193,33 +3281,49 @@
  },
  {
    "Archive Name": "Mozo",
-   "Actor Name": "",
+   "Actor Name": "moZOU",
    "English Name": "Moblin Statue",
-   "Main Model": "",
+   "Main Model": "bdlm/moz.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "MpwrB",
-   "Actor Name": "",
+   "Actor Name": "MpwrB",
    "English Name": "Power Bracelet Pushblock",
-   "Main Model": "",
+   "Main Model": "bdl/mpwrb.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Msdan",
-   "Actor Name": "",
+   "Actor Name": "Msdan",
    "English Name": "Activateable Stairs",
-   "Main Model": "",
+   "Main Model": "bdl/msdan.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mshokki",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "MKoppu",
+   "English Name": "Breakable Cup",
+   "Main Model": "bdl/koppu.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mshokki",
+   "Actor Name": "MOsara",
+   "English Name": "Breakable Plate",
+   "Main Model": "bdl/osara.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Mshokki",
+   "Actor Name": "MPot",
+   "English Name": "Breakable Pitcher",
+   "Main Model": "bdl/pot.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3233,19 +3337,19 @@
  },
  {
    "Archive Name": "Msw",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Mswing",
+   "English Name": "Wooden Platform Chained to the Cieling",
+   "Main Model": "bdl/mswng.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Mt",
-   "Actor Name": "",
-   "English Name": "Carlov",
-   "Main Model": "",
+   "Actor Name": "magtail",
+   "English Name": "Magtail",
+   "Main Model": "bdlm/mg_head.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bck/wait1.bck"
  },
  {
    "Archive Name": "Mtest",
@@ -3265,17 +3369,17 @@
  },
  {
    "Archive Name": "MtoriSU",
-   "Actor Name": "",
+   "Actor Name": "MtoriSU",
    "English Name": "Kargaroc Nest",
-   "Main Model": "",
+   "Main Model": "bdl/mtorisu.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "MtryB",
-   "Actor Name": "",
+   "Actor Name": "MtryB",
    "English Name": "Triangular Prism Block",
-   "Main Model": "",
+   "Main Model": "bdl/mtryb.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3305,9 +3409,9 @@
  },
  {
    "Archive Name": "Niten",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Mt",
+   "English Name": "Carlov",
+   "Main Model": "bdlm/mt.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3321,81 +3425,97 @@
  },
  {
    "Archive Name": "Nz",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "nezumi",
+   "English Name": "Rat",
+   "Main Model": "bdlm/nz.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Nzg",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "nezuana",
+   "English Name": "Rat Nest",
+   "Main Model": "bdl/kana_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ob",
-   "Actor Name": "",
+   "Actor Name": "Ob1",
    "English Name": "Rose",
-   "Main Model": "",
+   "Main Model": "bdl/ob.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/wait.bck"
  },
  {
    "Archive Name": "Odokuro",
-   "Actor Name": "",
+   "Actor Name": "Odokuro",
    "English Name": "Skull",
-   "Main Model": "",
+   "Main Model": "bdl/odokuro.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ohatch",
-   "Actor Name": "",
+   "Actor Name": "Ohatch",
    "English Name": "Hatch",
-   "Main Model": "",
+   "Main Model": "bdl/ohatch.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ojtree",
-   "Actor Name": "",
+   "Actor Name": "Ojtree",
    "English Name": "Baba Bud Stem",
-   "Main Model": "",
+   "Main Model": "bdl/ojtree.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Okioke",
-   "Actor Name": "",
+   "Actor Name": "Okioke",
    "English Name": "Wooden Bucket",
-   "Main Model": "",
+   "Main Model": "bdl/okioke.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Okmono",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Ostool",
+   "English Name": "Wooden Stool",
+   "Main Model": "bdl/ostool.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Okmono",
+   "Actor Name": "Otble",
+   "English Name": "Wooden Table",
+   "Main Model": "bdl/otable.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Okmono",
+   "Actor Name": "OtbleL",
+   "English Name": "Wooden Table L",
+   "Main Model": "bdl/otablel.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Olift",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Olift",
+   "English Name": "Deku Tree's Root",
+   "Main Model": "bdl/olift.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Opaper",
-   "Actor Name": "",
+   "Actor Name": "Paper",
    "English Name": "Parchment",
-   "Main Model": "",
+   "Main Model": "bdl/opaper.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3433,49 +3553,81 @@
  },
  {
    "Archive Name": "Oq",
-   "Actor Name": "",
-   "English Name": "Octorok",
-   "Main Model": "",
+   "Actor Name": "Oq",
+   "English Name": "Island Octorok",
+   "Main Model": "bmdm/oq.bmd",
+   "Secondary Models": "",
+   "Wait Animations": "bck/nom_wait.bck"
+ },
+ {
+   "Archive Name": "Oq",
+   "Actor Name": "Oqw",
+   "English Name": "Sea Octorok",
+   "Main Model": "bmdm/red_oq.bmd",
+   "Secondary Models": "",
+   "Wait Animations": "bck/umi_new_wait.bck"
+ },
+ {
+   "Archive Name": "Os",
+   "Actor Name": "Os",
+   "English Name": "Servant of the Tower",
+   "Main Model": "bdlm/os.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Os",
-   "Actor Name": "",
+   "Actor Name": "Os1",
    "English Name": "Servant of the Tower",
-   "Main Model": "",
+   "Main Model": "bdlm/os.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Os",
+   "Actor Name": "Os2",
+   "English Name": "Servant of the Tower",
+   "Main Model": "bdlm/os.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Oship",
-   "Actor Name": "",
+   "Actor Name": "Oship",
    "English Name": "Warship",
-   "Main Model": "",
+   "Main Model": "bdl/vbtsp.bdl",
+   "Secondary Models": "bdl/vbtst.bdl (gold)",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Osiblk",
+   "Actor Name": "osiBLK0",
+   "English Name": "Pushblock",
+   "Main Model": "bdl/obm_osihikiblk1.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Osiblk",
-   "Actor Name": "",
+   "Actor Name": "osiBLK1",
    "English Name": "Pushblock",
-   "Main Model": "",
+   "Main Model": "bdl/obm_osihikiblk2.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ospbox",
-   "Actor Name": "",
+   "Actor Name": "Ospbox",
    "English Name": "Wooden Box with Black Frame",
-   "Main Model": "",
+   "Main Model": "bdl/ospbox.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Otana",
-   "Actor Name": "",
+   "Actor Name": "Otana",
    "English Name": "Shelf",
-   "Main Model": "",
+   "Main Model": "bdl/otana.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3497,33 +3649,65 @@
  },
  {
    "Archive Name": "P1",
-   "Actor Name": "",
-   "English Name": "Gonzo, Senza, & Nudge",
-   "Main Model": "",
-   "Secondary Models": "",
-   "Wait Animations": ""
+   "Actor Name": "P1a",
+   "English Name": "Gonzo",
+   "Main Model": "bdl/p1.bdl",
+   "Secondary Models": "bdlm/p1a_head.bdl",
+   "Wait Animations": "bcks/wait.bck"
+ },
+ {
+   "Archive Name": "P1",
+   "Actor Name": "P1b",
+   "English Name": "Senza",
+   "Main Model": "bdl/p1.bdl",
+   "Secondary Models": "bdlm/p1b_head.bdl",
+   "Wait Animations": "bcks/wait.bck"
+ },
+ {
+   "Archive Name": "P1",
+   "Actor Name": "P1c",
+   "English Name": "Nudge",
+   "Main Model": "bdl/p1.bdl",
+   "Secondary Models": "bdlm/p1c_head.bdl",
+   "Wait Animations": "bcks/wait.bck"
  },
  {
    "Archive Name": "P2",
-   "Actor Name": "",
-   "English Name": "Zuko, Niko, & Mako",
-   "Main Model": "",
-   "Secondary Models": "",
-   "Wait Animations": ""
+   "Actor Name": "P2a",
+   "English Name": "Zuko",
+   "Main Model": "bdl/p2.bdl",
+   "Secondary Models": "bdlm/p2head01.bdl",
+   "Wait Animations": "bcks/p2_wait01.bck"
+ },
+ {
+   "Archive Name": "P2",
+   "Actor Name": "P2b",
+   "English Name": "Niko",
+   "Main Model": "bdl/p2.bdl",
+   "Secondary Models": "bdlm/p2head02.bdl",
+   "Wait Animations": "bcks/p2_wait01.bck"
+ },
+ {
+   "Archive Name": "P2",
+   "Actor Name": "P2c",
+   "English Name": "Mako",
+   "Main Model": "bdl/p2.bdl",
+   "Secondary Models": "bdlm/p2head03.bdl",
+   "Wait Animations": "bcks/p2_wait01.bck"
  },
  {
    "Archive Name": "Pbco",
-   "Actor Name": "",
+   "Actor Name": "Pbco",
    "English Name": "Small Shelf",
-   "Main Model": "",
+   "Main Model": "bdl/pbc2.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Pbka",
-   "Actor Name": "",
+   "Actor Name": "Pbka",
    "English Name": "Ceiling Fan",
-   "Main Model": "",
+   "Main Model": "bdl/pbka.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3537,51 +3721,51 @@
  },
  {
    "Archive Name": "Pfall",
-   "Actor Name": "",
-   "English Name": "Grotto Entrance",
-   "Main Model": "",
+   "Actor Name": "Nzfall",
+   "English Name": "Crawling Hole Trap",
+   "Main Model": "bdl/nz.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/nz_wait.bck"
  },
  {
    "Archive Name": "Pgsw",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "Phantom Ganon's Sword",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ph",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
-   "Secondary Models": "",
+   "Actor Name": "p_hat",
+   "English Name": "Peahat",
+   "Main Model": "bdlm/phb.bdl",
+   "Secondary Models": "bdlm/php.bdl (spinners)",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Piwa",
-   "Actor Name": "",
+   "Actor Name": "Piwa",
    "English Name": "Engraved Stone",
-   "Main Model": "",
+   "Main Model": "bdl/piwa.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Plant",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Plant",
+   "English Name": "Potted plant",
+   "Main Model": "bdl/yrmwd.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Pm",
-   "Actor Name": "",
+   "Actor Name": "Pm1",
    "English Name": "Poor Maggie",
-   "Main Model": "",
+   "Main Model": "bdlm/pm.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bck/wait01.bck"
  },
  {
    "Archive Name": "PName",
@@ -3593,113 +3777,169 @@
  },
  {
    "Archive Name": "Po",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Po",
+   "English Name": "Lorenzo",
+   "Main Model": "bdlm/po.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ppos",
-   "Actor Name": "",
+   "Actor Name": "Ppos",
    "English Name": "Fancy Flyer",
-   "Main Model": "",
+   "Main Model": "bdl/ppos.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Pspl",
    "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "English Name": "Auction Item Spotlights",
+   "Main Model": "bdl/pspl.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Pt",
-   "Actor Name": "",
+   "Actor Name": "Puti",
    "English Name": "Miniblin",
-   "Main Model": "",
+   "Main Model": "bdlm/pt.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bck/wait.bck"
+ },
+ {
+   "Archive Name": "Ptc",
+   "Actor Name": "Ptco",
+   "English Name": "Beetel's Ship Curtains",
+   "Main Model": "bdl/ptco.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ptc",
-   "Actor Name": "",
-   "English Name": "Shop Ship - (xxx)",
-   "Main Model": "",
+   "Actor Name": "Ptcu",
+   "English Name": "Beetel's Ship Curtains",
+   "Main Model": "bdl/ptcu.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ptubo",
-   "Actor Name": "",
+   "Actor Name": "Ptubo",
    "English Name": "Fancy Vase",
-   "Main Model": "",
+   "Main Model": "bdl/ptubo.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Pw",
-   "Actor Name": "",
+   "Actor Name": "pow",
    "English Name": "Poe",
-   "Main Model": "",
+   "Main Model": "bdlm/pw.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bck/wait1.bck"
  },
  {
    "Archive Name": "Pz",
-   "Actor Name": "",
+   "Actor Name": "p_zelda",
    "English Name": "Princess Zelda",
-   "Main Model": "",
+   "Main Model": "bdlm/pz.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/wait01.bck"
  },
  {
    "Archive Name": "Qdghd",
-   "Actor Name": "",
+   "Actor Name": "Qdghd",
    "English Name": "Frozen Ice Ring Island Dragon Head",
-   "Main Model": "",
+   "Main Model": "bdl/qdghd.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Qtkhd",
-   "Actor Name": "",
+   "Actor Name": "Qtkhd",
    "English Name": "Tingle's Head Effigy",
-   "Main Model": "",
+   "Main Model": "bdl/qtkhd.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Rd",
-   "Actor Name": "",
+   "Actor Name": "Rdead1",
    "English Name": "Redead",
-   "Main Model": "",
+   "Main Model": "bdlm/rd.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/walk.bck"
+ },
+ {
+   "Archive Name": "Rd",
+   "Actor Name": "rdead1",
+   "English Name": "Redead",
+   "Main Model": "bdlm/rd.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/walk.bck"
+ },
+ {
+   "Archive Name": "Rd",
+   "Actor Name": "Rdead2",
+   "English Name": "Redead",
+   "Main Model": "bdlm/rd.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/walk.bck"
  },
  {
    "Archive Name": "Rflw",
-   "Actor Name": "",
+   "Actor Name": "Rflw",
    "English Name": "Flower Vase",
-   "Main Model": "",
+   "Main Model": "bdl/phana.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ro",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "RotenA",
+   "English Name": "Goron Merchant A",
+   "Main Model": "bdlm/ro.bdl",
+   "Secondary Models": "bdl/ro_hat.bdl",
+   "Wait Animations": "bcks/ro_wait01.bck"
+ },
+ {
+   "Archive Name": "Ro",
+   "Actor Name": "RotenB",
+   "English Name": "Goron Merchant B",
+   "Main Model": "bdlm/ro.bdl",
+   "Secondary Models": "bdl/ro_hat2.bdl",
+   "Wait Animations": "bcks/ro_wait01.bck"
+ },
+ {
+   "Archive Name": "Ro",
+   "Actor Name": "RotenC",
+   "English Name": "Goron Merchant C",
+   "Main Model": "bdlm/ro.bdl",
+   "Secondary Models": "bdl/ro_hat3.bdl",
+   "Wait Animations": "bcks/ro_wait01.bck"
+ },
+ {
+   "Archive Name": "Roten",
+   "Actor Name": "Roten2",
+   "English Name": "Additional Stall for Zunari's Shop",
+   "Main Model": "bdl/roten02.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Roten",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Roten3",
+   "English Name": "Additional Stall for Zunari's Shop",
+   "Main Model": "bdl/roten03.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Roten",
+   "Actor Name": "Roten4",
+   "English Name": "Additional Stall for Zunari's Shop",
+   "Main Model": "bdl/roten04.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3713,11 +3953,11 @@
  },
  {
    "Archive Name": "Rsh",
-   "Actor Name": "",
+   "Actor Name": "Rsh1",
    "English Name": "Zunari",
-   "Main Model": "",
+   "Main Model": "bdlm/rs.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bck/rs_wait01.bck"
  },
  {
    "Archive Name": "Sa",
@@ -3801,25 +4041,25 @@
  },
  {
    "Archive Name": "Sarace",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Sarace",
+   "English Name": "Boat Race Official",
+   "Main Model": "bdl/sa.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Search",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Search",
+   "English Name": "Bokoblin Search Light",
+   "Main Model": "bdl/s_search.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Sh",
    "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "English Name": "Seahat",
+   "Main Model": "bmdm/shb.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3834,7 +4074,7 @@
  {
    "Archive Name": "Shinju_d",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "Din's Pearl",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -3842,7 +4082,7 @@
  {
    "Archive Name": "Shinju_f",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "Farore's Pearl",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -3850,48 +4090,56 @@
  {
    "Archive Name": "Shinju_n",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "Nayru's Peal",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ship",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Ship",
+   "English Name": "King of Red Lions",
+   "Main Model": "bdl/fn_body.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Shmrgrd",
-   "Actor Name": "",
-   "English Name": "King of Red Lions",
-   "Main Model": "",
+   "Actor Name": "Shmrgrd",
+   "English Name": "Spiked Skull Hammer Barrier",
+   "Main Model": "bdl/shmrgrd.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Sitem",
-   "Actor Name": "",
-   "English Name": "Spiked Skull Hammer Barrier",
-   "Main Model": "",
+   "Actor Name": "Sitem",
+   "English Name": "Item on a Vine",
+   "Main Model": "bdl/kmi_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Sk",
-   "Actor Name": "",
-   "English Name": "Vine Holding Destructible Object",
-   "Main Model": "",
+   "Actor Name": "Turu",
+   "English Name": "Spiked Vine",
+   "Main Model": "bdl/turu_00.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Sk2",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Turu2",
+   "English Name": "Vine Platorm (Up/Down)",
+   "Main Model": "bdlm/ksylf_00.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Sk2",
+   "Actor Name": "Turu3",
+   "English Name": "Vine Platorm (Left/Right)",
+   "Main Model": "bdlm/ksylf_01.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3913,88 +4161,112 @@
  },
  {
    "Archive Name": "So",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "NpcSo",
+   "English Name": "Fishman!",
+   "Main Model": "bdlm/so.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/so_wait01.bck"
  },
  {
    "Archive Name": "Spear",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "Moblin Spear",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ss",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Ss",
+   "English Name": "Eye-Vine Blocker",
+   "Main Model": "bdl/sw.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Ssk",
-   "Actor Name": "",
-   "English Name": "Eye-Vine Blocker",
-   "Main Model": "",
+   "Actor Name": "s_turu",
+   "English Name": "Spikey Vine Fence",
+   "Main Model": "bdl/turu_02.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Sss",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Sss",
+   "English Name": "Dexivine",
+   "Main Model": "bmd/sss_hand.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "St",
-   "Actor Name": "",
-   "English Name": "Dexivine",
-   "Main Model": "",
+   "Actor Name": "Stal",
+   "English Name": "Stalfos",
+   "Main Model": "bdlm/headb.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "StpTetu",
    "Actor Name": "",
-   "English Name": "Stalfos",
+   "English Name": "",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Sv",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "Sv0",
+   "English Name": "Salvage Corps Guy",
+   "Main Model": "bdl/sv.bdl",
    "Secondary Models": "",
-   "Wait Animations": ""
+   "Wait Animations": "bcks/sv_wait01.bck"
+ },
+ {
+   "Archive Name": "Sv",
+   "Actor Name": "Sv1",
+   "English Name": "Salvage Corps Guy",
+   "Main Model": "bdl/sv.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/sv_wait01.bck"
+ },
+ {
+   "Archive Name": "Sv",
+   "Actor Name": "Sv2",
+   "English Name": "Salvage Corps Guy",
+   "Main Model": "bdl/sv.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/sv_wait01.bck"
+ },
+ {
+   "Archive Name": "Sv",
+   "Actor Name": "Sv3",
+   "English Name": "Salvage Corps Guy",
+   "Main Model": "bdl/sv.bdl",
+   "Secondary Models": "",
+   "Wait Animations": "bcks/sv_wait01.bck"
  },
  {
    "Archive Name": "Swtdoor",
-   "Actor Name": "",
-   "English Name": "",
-   "Main Model": "",
+   "Actor Name": "SWTdoor",
+   "English Name": "Door to cells in Forsaken Fortress Tower?",
+   "Main Model": "bmd/swtdoor.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Syan",
-   "Actor Name": "",
-   "English Name": "Forsaken Fortress Cell Door",
-   "Main Model": "",
+   "Actor Name": "SYAN",
+   "English Name": "Chandelier",
+   "Main Model": "bdl/syan.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "System",
-   "Actor Name": "",
-   "English Name": "Chandelier",
+   "Actor Name": "N/A",
+   "English Name": "Toon shading textures",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -4362,6 +4634,14 @@
  {
    "Archive Name": "VbakH",
    "Actor Name": "BFlower",
+   "English Name": "Bomb Flower",
+   "Main Model": "bdlm/vbakm.bdl",
+   "Secondary Models": "bdlm/vbakh.bdl (stem)",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "VbakH",
+   "Actor Name": "VbakH",
    "English Name": "Bomb Flower",
    "Main Model": "bdlm/vbakm.bdl",
    "Secondary Models": "bdlm/vbakh.bdl (stem)",
@@ -5267,8 +5547,8 @@
    "Archive Name": "Yfire_00",
    "Actor Name": "Yfire00",
    "English Name": "Magma Jet",
-   "Main Model": "bmdm/yfirb_00.bmd",
-   "Secondary Models": "bmdm/yfire_00.bmd",
+   "Main Model": "bmdm/yfire_00.bmd",
+   "Secondary Models": "bmdm/yfirb_00.bmd",
    "Wait Animations": "btk/yfirb_00.btk"
  },
  {
