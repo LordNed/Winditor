@@ -11,7 +11,7 @@ namespace BulkDataProcessingScripts
             Archive arc = new Archive();
             using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big))
             {
-                arc.ReadFile(reader);
+                var arcFolders = arc.ReadFile(reader);
             }
         }
     }
