@@ -1,5 +1,7 @@
 ﻿using OpenTK;
 using System.ComponentModel;
+using System.Windows.Input;
+using System;
 
 namespace WindEditor.ViewModel
 {
@@ -8,13 +10,16 @@ namespace WindEditor.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         public WWindEditor WindEditor { get { return m_editor; } }
+        public ICommand SetDataRootCommand { get { return new RelayCommand(x => OnUserSetDataRoot()); } }
+        public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnUserRequestApplicationExit()); } }
 
         private WWindEditor m_editor;
         private GLControl m_glControl;
-
+        private bool m_editorIsShuttingDown;
 
         public MainWindowViewModel()
         {
+            App.Current.MainWindow.Closing += OnMainWindowClosed;
         }
 
         internal void OnMainEditorWindowLoaded(GLControl glControl)
@@ -37,6 +42,9 @@ namespace WindEditor.ViewModel
 
         private void DoApplicationTick()
         {
+            if (m_editorIsShuttingDown)
+                return;
+
             // Poll the mouse at a high resolution
             System.Drawing.Point mousePos = m_glControl.PointToClient(System.Windows.Forms.Cursor.Position);
 
@@ -48,6 +56,30 @@ namespace WindEditor.ViewModel
             WInput.Internal_UpdateInputState();
 
             m_glControl.SwapBuffers();
+        }
+
+        private void OnUserSetDataRoot()
+        {
+            // Violate dat MVVM.
+            WindEditor.View.OptionsMenu optionsMenu = new View.OptionsMenu();
+            optionsMenu.Show();
+        }
+
+        private void OnUserRequestApplicationExit()
+        {
+            // This attempts to close the application, which invokes the normal
+            // window close events.
+            App.Current.MainWindow.Close();
+        }
+
+        private void OnMainWindowClosed(object sender, CancelEventArgs e)
+        {
+            /*if(someChangesExist)
+                if(UserWantsToSave)
+                    e.Cancel = true;*/
+
+            m_editorIsShuttingDown = true;
+            m_editor.Shutdown();
         }
     }
 }

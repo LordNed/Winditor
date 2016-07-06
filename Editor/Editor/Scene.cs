@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using WindEditor.Collision;
 using JStudio.J3D;
-using JStudio.J3D.Animation;
 
 namespace WindEditor
 {

@@ -31,7 +31,9 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Open..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
                 <Separator/>
-                <MenuItem Header="_Exit" Command="{Binding Path=WindEditor.ExitApplicationCommand}"/>
+                <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
+                <Separator/>
+                <MenuItem Header="E_xit" Command="{Binding Path=ExitApplicationCommand}"/>
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Undo" InputGestureText="Ctrl + Z" Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" >
@@ -69,7 +71,7 @@
                 <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}"/>
                 <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}"/>
                 <Separator/>
-                <MenuItem Header="Set Data Root..." Command="{Binding Path=WindEditor.SetDataRootCommand}"/>
+                <MenuItem Header="Set Data Root..." Command="{Binding Path=SetDataRootCommand}"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">

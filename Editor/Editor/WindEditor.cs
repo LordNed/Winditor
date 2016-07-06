@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using System;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.ComponentModel;
 
 namespace WindEditor
 {
@@ -10,8 +11,7 @@ namespace WindEditor
     {
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
         public ICommand OpenProjectCommand { get { return new RelayCommand(x => OnApplicationRequestOpenProject()); } }
-        public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnApplicationShutdown()); } }
-        public ICommand SetDataRootCommand { get { return new RelayCommand(x => OnUserSetDataRoot()); } }
+        public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
 
         private List<WWorld> m_editorWorlds = new List<WWorld>();
 
@@ -56,12 +56,9 @@ namespace WindEditor
             }
         }
 
-        public void OnApplicationShutdown()
+        public void OnApplicationRequestCloseProject()
         {
-            foreach (WWorld world in m_editorWorlds)
-                world.ShutdownWorld();
-
-            App.Current.Shutdown();
+            MainWorld.UnloadMap();
         }
 
         public void ProcessTick()
@@ -72,12 +69,10 @@ namespace WindEditor
             GL.Flush();
         }
 
-        private void OnUserSetDataRoot()
+        public void Shutdown()
         {
-            // Violate dat MVVM.
-            WindEditor.View.OptionsMenu optionsMenu = new View.OptionsMenu();
-            optionsMenu.Show();
+            foreach (WWorld world in m_editorWorlds)
+                world.ShutdownWorld();
         }
-
     }
 }
