@@ -24,14 +24,8 @@ namespace WindEditor
 
             // Generate a Framebuffer Object (FBO) on the GPU
             GL.GenFramebuffers(1, out m_frameBufferIndex);
-            GL.BindFramebuffer(FramebufferTarget.Framebuffer, m_frameBufferIndex);
 
             ResizeBuffer(width, height);
-
-            // Bind our Render Buffer to the FBO we created earlier.
-            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, RenderbufferTarget.Renderbuffer, m_rgbRenderBufferIndex);
-            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
-            GLErrorCheck();
 
             GLFrameBufferErrorCheck(FramebufferTarget.Framebuffer);
             GLErrorCheck();
@@ -100,13 +94,15 @@ namespace WindEditor
             GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.Rgba8, newWidth, newHeight);
             GLErrorCheck();
 
+            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
+            GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.DepthComponent24, newWidth, newHeight);
+            GLErrorCheck();
+
+            Bind();
+
             // Tell OpenGL which color attachments we'll use of this framebuffer for rendering.
             DrawBuffersEnum[] attachments = new[] { DrawBuffersEnum.ColorAttachment0 };
             GL.DrawBuffers(attachments.Length, attachments);
-            GLErrorCheck();
-
-            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
-            GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.DepthComponent24, newWidth, newHeight);
             GLErrorCheck();
 
             m_frameBufferWidth = newWidth;
