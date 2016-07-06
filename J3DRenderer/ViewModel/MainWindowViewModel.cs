@@ -108,6 +108,12 @@ namespace J3DRenderer
 
             }
 
+            int[] prms = new int[20];
+            GL.GetFramebufferParameter(FramebufferTarget.Framebuffer, FramebufferDefaultParameter.FramebufferDefaultWidth, prms);
+
+            GL.GetFramebufferParameter(FramebufferTarget.Framebuffer, FramebufferDefaultParameter.FramebufferDefaultHeight, prms);
+            GL.GetFramebufferParameter(FramebufferTarget.Framebuffer, FramebufferDefaultParameter.FramebufferDefaultSamples, prms);
+
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
         }
@@ -204,6 +210,7 @@ namespace J3DRenderer
             }
 
             m_frameBuffer.BlitToBackbuffer();
+            //GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
             //GL.BlitFramebuffer(0, 0, m_viewportWidth, m_viewportHeight, 0, 0, m_viewportWidth, m_viewportHeight, ClearBufferMask.co)
 
             //GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, 0);
@@ -217,7 +224,7 @@ namespace J3DRenderer
             using (Bitmap bmp = new Bitmap(m_viewportWidth, m_viewportHeight))
             {
                 Rectangle rect = new Rectangle(0, 0, m_viewportWidth, m_viewportHeight);
-                System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadWrite, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
                 //Lock the bitmap for writing, copy the bits and then unlock for saving.
                 IntPtr ptr = bmpData.Scan0;

@@ -1,9 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindEditor
 {
@@ -24,20 +20,22 @@ namespace WindEditor
 
         public WFrameBuffer(int width, int height)
         {
+            ClearGLError();
+
             // Generate a Framebuffer Object (FBO) on the GPU
             GL.GenFramebuffers(1, out m_frameBufferIndex);
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, m_frameBufferIndex);
 
             ResizeBuffer(width, height);
 
             // Bind our Render Buffer to the FBO we created earlier.
             GLErrorCheck();
-            GL.BindFramebuffer(FramebufferTarget.Framebuffer, m_frameBufferIndex);
             GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, RenderbufferTarget.Renderbuffer, m_rgbRenderBufferIndex);
             GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
             GLErrorCheck();
 
             // ?
-            GL.DrawBuffer(DrawBufferMode.ColorAttachment0);
+            //GL.DrawBuffer(DrawBufferMode.ColorAttachment0);
             GLErrorCheck();
 
             var fbStatus = GL.CheckFramebufferStatus(FramebufferTarget.Framebuffer);
@@ -57,11 +55,10 @@ namespace WindEditor
         {
             if (x < 0 || y < 0 || (x + width) > m_frameBufferWidth || (y + height) > m_frameBufferHeight)
                 throw new ArgumentOutOfRangeException("x, y, width, height", "Specified rectangle is out of range.");
+            ClearGLError();
 
-            GL.GetError();
             byte[] buf = new byte[width * height * 4];
             GLErrorCheck();
-
 
             GL.ReadBuffer(ReadBufferMode.ColorAttachment0);
             GLErrorCheck();
@@ -76,10 +73,16 @@ namespace WindEditor
 
         public void ResizeBuffer(int newWidth, int newHeight)
         {
+            ClearGLError();
+
             Console.WriteLine("WFrameBuffer: Resizing to {0}x{1}", newWidth, newHeight);
             int maxDims;
             GL.GetInteger(GetPName.MaxRenderbufferSize, out maxDims);
             GLErrorCheck();
+
+            // ToDo: 
+            // GL.GetRenderbufferParameter(RenderbufferTarget.) Get the RenderbufferParameters after constructing the renderbuffer.
+
 
             if (maxDims < newWidth)
                 throw new ArgumentException(string.Format("Exceeds max renderbuffer size for this GPU (\"{0}\")!", maxDims), "newWidth");
@@ -95,14 +98,20 @@ namespace WindEditor
             // Generate a RenderBuffer Object 
             GL.GenRenderbuffers(1, out m_rgbRenderBufferIndex);
             GL.GenRenderbuffers(1, out m_depthRenderBufferIndex);
+            GLErrorCheck();
 
             // Allocate memory on the GPU to represent our Renderbuffers.
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, m_rgbRenderBufferIndex);
             GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.Rgba8, newWidth, newHeight);
             GLErrorCheck();
 
+            // Tell OpenGL which color attachments we'll use of this framebuffer for rendering.
+            DrawBuffersEnum[] attachments = new[] { DrawBuffersEnum.ColorAttachment0 };
+            GL.DrawBuffers(attachments.Length, attachments);
+            GLErrorCheck();
+
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, m_depthRenderBufferIndex);
-            GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.Depth24Stencil8, newWidth, newHeight);
+            GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.DepthComponent24, newWidth, newHeight);
             GLErrorCheck();
 
             m_frameBufferWidth = newWidth;
@@ -111,16 +120,36 @@ namespace WindEditor
 
         public void BlitToBackbuffer()
         {
-            GL.GetError();
+            ClearGLError();
+
+            GL.BindFramebuffer(FramebufferTarget.ReadFramebuffer, m_frameBufferIndex);
+            GLErrorCheck();
+
+            GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, 0);
+            GLErrorCheck();
 
             //GL.ReadBuffer(ReadBufferMode.ColorAttachment0);
-            GLErrorCheck();
+            //GL.DrawBuffer(DrawBufferMode.ColorAttachment0);
 
-            //GL.DrawBuffer(DrawBufferMode.Back);
+            ClearGLError();
+            GL.BlitFramebuffer(0, 0, m_frameBufferWidth, m_frameBufferHeight, 0, 0, m_frameBufferWidth, m_frameBufferHeight, ClearBufferMask.ColorBufferBit, BlitFramebufferFilter.Nearest);
             GLErrorCheck();
+        }
 
-            //GL.BlitFramebuffer(0, 0, m_frameBufferWidth, m_frameBufferHeight, 0, 0, m_frameBufferWidth, m_frameBufferHeight, ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit, BlitFramebufferFilter.Linear);
-            GLErrorCheck();
+        private static void GLErrorCheck()
+        {
+            var error = GL.GetError();
+            if (error != ErrorCode.NoError)
+                Console.WriteLine("GL Error: {0}", error);
+        }
+
+        private static void ClearGLError()
+        {
+            ErrorCode error;
+            do
+            {
+                error = GL.GetError();
+            } while (error != ErrorCode.NoError);
         }
 
         #region IDisposable Support
@@ -155,11 +184,5 @@ namespace WindEditor
         }
         #endregion
 
-        private static void GLErrorCheck()
-        {
-            var error = GL.GetError();
-            if (error != ErrorCode.NoError)
-                Console.WriteLine("GL Error: {0}", error);
-        }
     }
 }

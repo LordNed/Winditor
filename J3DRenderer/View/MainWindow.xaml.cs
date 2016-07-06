@@ -34,7 +34,8 @@ namespace J3DRenderer
         {
             ColorFormat cF = new ColorFormat(8, 8, 8, 8);
             GraphicsMode gm = new GraphicsMode(cF, 24, 0, 0);
-            glControlHost.Child = new GLControl(gm);
+            var glControl = new GLControl(gm);
+            glControlHost.Child = glControl;
             glControlHost.SizeChanged += GlControlHost_SizeChanged;
             glControlHost.PreviewKeyDown += GlControlHost_PreviewKeyDown;
             glControlHost.PreviewKeyUp += GlControlHost_PreviewKeyUp;
