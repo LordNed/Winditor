@@ -60,7 +60,7 @@ namespace JStudio.J3D
         public BindingList<Texture> Textures;
         private static bool m_allowTextureCache = true;
 
-        public void LoadTEX1FromStream(EndianBinaryReader reader, long tagStart)
+        public void LoadTEX1FromStream(EndianBinaryReader reader, long tagStart, bool dumpTextures)
         {
             ushort numTextures = reader.ReadUInt16();
             Trace.Assert(reader.ReadUInt16() == 0xFFFF); // Padding
@@ -93,7 +93,8 @@ namespace JStudio.J3D
                 Texture texture = new Texture(nameTable[t], compressedTex);
                 Textures.Add(texture);
 
-                compressedTex.SaveImageToDisk(string.Format("TextureDump/{2}__{0}_{1}_{3}.png", texture.Name, compressedTex.Format, t, compressedTex.PaletteFormat));
+                if(dumpTextures)
+                    compressedTex.SaveImageToDisk(string.Format("TextureDump/{2}__{0}_{1}_{3}.png", texture.Name, compressedTex.Format, t, compressedTex.PaletteFormat));
             }
         }
     }

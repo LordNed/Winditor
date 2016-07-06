@@ -20,15 +20,40 @@ namespace WindEditor.ViewModel
             }
         }
 
+        public bool DumpLoadedShaders
+        {
+            get { return m_dumpLoadedShaders; }
+            set
+            {
+                m_dumpLoadedShaders = value;
+                OnPropertyChanged("DumpLoadedShader");
+            }
+        }
+
+        public bool DumpLoadedTextures
+        {
+            get { return m_dumpLoadedTextures; }
+            set
+            {
+                m_dumpLoadedTextures = value;
+                OnPropertyChanged("DumpLoadedTextures");
+            }
+        }
+
         public ICommand OpenRootDirectoryCommand { get { return new RelayCommand(x => OnUserRequestOpenRootDirectory()); } }
         public ICommand AcceptSettingsCommand { get { return new RelayCommand(x => OnUserAcceptSettings()); } }
         public ICommand CancelSettingsCommand { get { return new RelayCommand(x => OnUserCancelSettings()); } }
-        
+       
+
         private string m_rootDirectory;
+        private bool m_dumpLoadedTextures;
+        private bool m_dumpLoadedShaders;
 
         public OptionsMenuViewModel()
         {
             RootDirectory = Properties.Settings.Default.RootDirectory;
+            DumpLoadedShaders = Properties.Settings.Default.DumpShadersToDisk;
+            DumpLoadedTextures = Properties.Settings.Default.DumpTexturesToDisk;
         }
 
         private void OnUserRequestOpenRootDirectory()
@@ -54,7 +79,10 @@ namespace WindEditor.ViewModel
         private void OnUserAcceptSettings()
         {
             Properties.Settings.Default.RootDirectory = RootDirectory;
+            Properties.Settings.Default.DumpShadersToDisk = DumpLoadedShaders;
+            Properties.Settings.Default.DumpTexturesToDisk = DumpLoadedTextures;
             Properties.Settings.Default.Save();
+
             CloseOptionsMenuWindow();
         }
 

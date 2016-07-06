@@ -34,5 +34,29 @@ namespace WindEditor.Properties {
                 this["RootDirectory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DumpTexturesToDisk {
+            get {
+                return ((bool)(this["DumpTexturesToDisk"]));
+            }
+            set {
+                this["DumpTexturesToDisk"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DumpShadersToDisk {
+            get {
+                return ((bool)(this["DumpShadersToDisk"]));
+            }
+            set {
+                this["DumpShadersToDisk"] = value;
+            }
+        }
     }
 }

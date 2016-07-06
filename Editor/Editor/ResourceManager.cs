@@ -104,7 +104,7 @@ namespace WindEditor
 
             J3D j3d = new J3D();
             using (EndianBinaryReader reader = new EndianBinaryReader(j3dData, Endian.Big))
-                j3d.LoadFromStream(reader);
+                j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
 
             existRef = new TSharedRef<J3D>();
             existRef.FilePath = actorName;
@@ -121,9 +121,8 @@ namespace WindEditor
             {
                 J3D j3d = new J3D();
                 using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big))
-                {
-                    j3d.LoadFromStream(reader);
-                }
+                    j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
+
                 existRef = new TSharedRef<J3D>();
                 existRef.FilePath = filePath;
                 existRef.Asset = j3d;

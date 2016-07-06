@@ -108,7 +108,7 @@ namespace JStudio.J3D
         private BTK m_currentMaterialAnimation;
         private bool m_skinningInvalid;
 
-        public void LoadFromStream(EndianBinaryReader reader)
+        public void LoadFromStream(EndianBinaryReader reader, bool dumpTextures = false, bool dumpShaders = false)
         {
             // Read the J3D Header
             Magic = new string(reader.ReadChars(4));
@@ -119,7 +119,7 @@ namespace JStudio.J3D
             // Skip over an unused tag ("SVR3") which is consistent in all models.
             reader.Skip(16);
 
-            LoadTagDataFromFile(reader, tagCount);
+            LoadTagDataFromFile(reader, tagCount, dumpTextures, dumpShaders);
 
             // Rendering Stuff
             m_hardwareLightBuffer = GL.GenBuffer();
@@ -236,7 +236,7 @@ namespace JStudio.J3D
             m_textureOverrides[textureName] = new Texture(textureName, btiData);
         }
 
-        private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
+        private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount, bool dumpTextures, bool dumpShaders)
         {
             for (int i = 0; i < tagCount; i++)
             {
@@ -287,7 +287,7 @@ namespace JStudio.J3D
                     // TEXTURES - Stores binary texture images.
                     case "TEX1":
                         TEX1Tag = new TEX1();
-                        TEX1Tag.LoadTEX1FromStream(reader, tagStart);
+                        TEX1Tag.LoadTEX1FromStream(reader, tagStart, dumpTextures);
                         break;
                     // MODEL - Seems to be bypass commands for Materials and invokes GX registers directly.
                     case "MDL3":
@@ -314,7 +314,7 @@ namespace JStudio.J3D
                     Console.WriteLine("Skipping generating Shader for Unreferenced Material: {0}", material);
                     continue;
                 }
-                material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
+                material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag, dumpShaders);
 
                 // Bind the Light Block uniform to the shader
                 GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);

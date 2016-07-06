@@ -9,7 +9,7 @@ namespace JStudio.J3D.ShaderGen
     {
         private static bool m_allowCachedOverride = false;
 
-        public static Shader GenerateShader(Material fromMat, MAT3 data)
+        public static Shader GenerateShader(Material fromMat, MAT3 data, bool dumpShaders)
         {
             Directory.CreateDirectory("ShaderDump");
 
@@ -24,7 +24,7 @@ namespace JStudio.J3D.ShaderGen
                 
                 success = shader.CompileSource(vertexShader, ShaderType.VertexShader);
 
-                if(!loadedFromDisk)
+                if(!loadedFromDisk && dumpShaders)
                     File.WriteAllText(filenameHash, vertexShader);
             }
             if (success)
@@ -37,7 +37,7 @@ namespace JStudio.J3D.ShaderGen
 
                 success = shader.CompileSource(fragmentShader, ShaderType.FragmentShader);
 
-                if(!loadedFromDisk)
+                if(!loadedFromDisk && dumpShaders)
                     File.WriteAllText(filenameHash, fragmentShader);
             }
 
