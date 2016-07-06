@@ -631,7 +631,7 @@ namespace JStudio.J3D
                 if (mat.TextureIndexes[i] < 0)
                     continue;
 
-                Texture texture = TEX1Tag.Textures[MAT3Tag.TextureRemapTable[i]];
+                Texture texture = TEX1Tag.Textures[MAT3Tag.TextureRemapTable[mat.TextureIndexes[i]]];
                 Vector4 texDimensions = new Vector4(texture.CompressedData.Width, texture.CompressedData.Height, 0, 0);
 
                 switch (i)
