@@ -78,6 +78,9 @@ namespace WindEditor
             if(maxDims < newHeight)
                 throw new ArgumentException(string.Format("Exceeds max renderbuffer size for this GPU (\"{0}\")!", maxDims), "newHeight");
 
+            if (newWidth < 4) newWidth = 4;
+            if (newHeight < 4) newHeight = 4;
+
             if (m_rgbRenderBufferIndex > 0)
                 GL.DeleteRenderbuffers(1, ref m_rgbRenderBufferIndex);
 

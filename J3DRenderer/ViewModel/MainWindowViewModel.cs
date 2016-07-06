@@ -27,7 +27,6 @@ namespace J3DRenderer
 
         // Rendering
         private WCamera m_renderCamera;
-        private SimpleObjRenderer m_stockMesh;
         private int m_viewportHeight;
         private int m_viewportWidth;
         private J3D m_childLink;
@@ -55,10 +54,6 @@ namespace J3DRenderer
         {
             m_glControl = child;
             m_frameBuffer = new WFrameBuffer(m_glControl.Width, m_glControl.Height);
-
-            Obj obj = new Obj();
-            obj.Load("Framework/EditorCube.obj");
-            m_stockMesh = new SimpleObjRenderer(obj);
 
             m_alphaVisualizationShader = new Shader("AlphaVisualize");
             m_alphaVisualizationShader.CompileSource(File.ReadAllText("resources/shaders/Debug_AlphaVisualizer.vert"), ShaderType.VertexShader);
@@ -107,15 +102,7 @@ namespace J3DRenderer
                     m_skybox[i].SetTevColorOverride(0, WLinearColor.FromHexString("0x8278966E")); // vr_back_cloud
                     //m_skybox[i].SetTevkColorOverride(0, WLinearColor.FromHexString("0xFFFFFF00")); // vr_back_cloud
                 }
-
-
             }
-
-            int[] prms = new int[20];
-            GL.GetFramebufferParameter(FramebufferTarget.Framebuffer, FramebufferDefaultParameter.FramebufferDefaultWidth, prms);
-
-            GL.GetFramebufferParameter(FramebufferTarget.Framebuffer, FramebufferDefaultParameter.FramebufferDefaultHeight, prms);
-            GL.GetFramebufferParameter(FramebufferTarget.Framebuffer, FramebufferDefaultParameter.FramebufferDefaultSamples, prms);
 
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
@@ -170,8 +157,14 @@ namespace J3DRenderer
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
             m_timeSinceStartup += deltaTime;
 
-            if (WInput.GetKeyDown(System.Windows.Input.Key.Y))
+            if (WInput.GetKeyDown(Key.Y))
                 m_shouldTakeScreenCap = true;
+
+            if(WInput.GetKeyDown(Key.T))
+            {
+                m_childLink.Dispose();
+                m_childLink = null;
+            }
 
             // Rotate our light
             float angleInRad = m_timeSinceStartup % WMath.DegreesToRadians(360f);
@@ -196,7 +189,7 @@ namespace J3DRenderer
             }
 
             // Debug Rendering
-            if (WInput.GetKey(System.Windows.Input.Key.I))
+            if (WInput.GetKey(Key.I))
             {
                 GL.Disable(EnableCap.CullFace);
                 GL.Enable(EnableCap.Blend);
@@ -213,11 +206,6 @@ namespace J3DRenderer
             }
 
             m_frameBuffer.BlitToBackbuffer(m_viewportWidth, m_viewportHeight);
-            //GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
-            //GL.BlitFramebuffer(0, 0, m_viewportWidth, m_viewportHeight, 0, 0, m_viewportWidth, m_viewportHeight, ClearBufferMask.co)
-
-            //GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, 0);
-            //GL.Clear(ClearBufferMask.ColorBufferBit);
         }
 
         private void CaptureScreenshotToDisk()
@@ -255,6 +243,12 @@ namespace J3DRenderer
         {
             if (m_frameBuffer != null)
                 m_frameBuffer.Dispose();
+
+            if (m_alphaVisualizationShader != null)
+                m_alphaVisualizationShader.Dispose();
+
+            if (m_childLink != null)
+                m_childLink.Dispose();
         }
     }
 }
