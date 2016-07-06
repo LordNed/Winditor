@@ -11,7 +11,7 @@ namespace WindEditor
 {
     public class WActorEditor
     {
-        public SelectionAggregate SelectedObjects { get; protected set; }
+        public WEditorSelectionAggregate SelectedObjects { get; protected set; }
         public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => AttemptToDeserializeObjectsFromClipboard() != null); } }
@@ -34,7 +34,7 @@ namespace WindEditor
             m_world = world;
             m_selectionList = new BindingList<WActorNode>();
             m_transformGizmo = new WTransformGizmo(m_world);
-            SelectedObjects = new SelectionAggregate(m_selectionList);
+            SelectedObjects = new WEditorSelectionAggregate(m_selectionList);
         }
 
         public void UpdateForSceneView(WSceneView view)

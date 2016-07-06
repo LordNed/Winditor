@@ -25,7 +25,7 @@ namespace WindEditor
         }
     }
 
-    public class WLineBatcher : IRenderable
+    public class WLineBatcher : IRenderable, IDisposable
     {
         private List<WBatchedLine> m_batchedLines;
 
@@ -33,6 +33,10 @@ namespace WindEditor
         private int m_vbo;
         private int m_vertColors;
         private bool m_renderStateDirty;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false; 
+
 
         public WLineBatcher()
         {
@@ -117,6 +121,12 @@ namespace WindEditor
             lines.Add(new WBatchedLine(center + start, center + end, color, thickness, lifetime));
 
             m_batchedLines.AddRange(lines);
+            m_renderStateDirty = true;
+        }
+
+        public void Clear()
+        {
+            m_batchedLines.Clear();
             m_renderStateDirty = true;
         }
 
@@ -287,5 +297,43 @@ namespace WindEditor
         {
             return float.MaxValue;
         }
+
+        #region IDisposable Support
+        ~WLineBatcher()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool manualDispose)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (manualDispose)
+                {
+                    // Dispose managed state (managed objects).
+                    m_primitiveShader.ReleaseResources();
+                }
+
+                // Free unmanaged resources (unmanaged objects) and override a finalizer below.
+                GL.DeleteBuffer(m_vbo);
+                GL.DeleteBuffer(m_vertColors);
+
+                // Set large fields to null.
+                m_batchedLines.Clear();
+                m_batchedLines = null;
+
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

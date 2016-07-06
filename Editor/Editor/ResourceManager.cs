@@ -54,7 +54,7 @@ namespace WindEditor
             string jsonData = File.ReadAllText("resources/ActorDatabase.json");
 
             WActorDescriptor[] allDescriptors = JsonConvert.DeserializeObject<WActorDescriptor[]>(jsonData);
-            foreach(var descriptor in allDescriptors)
+            foreach (var descriptor in allDescriptors)
             {
                 if (string.IsNullOrEmpty(descriptor.ActorName))
                     continue;
@@ -93,7 +93,7 @@ namespace WindEditor
             VirtualFilesystemDirectory archive = ArchiveUtilities.LoadArchive(archivePath);
             VirtualFilesystemFile archiveFile = archive.GetFileAtPath(descriptor.ModelPath);
 
-            if(archiveFile == null)
+            if (archiveFile == null)
             {
                 Console.WriteLine("LoadActorByName failed because the specified path \"{0}\" does not exist in archive \"{1}\"!", descriptor.ModelPath, descriptor.ArchiveName);
                 return null;
@@ -151,6 +151,17 @@ namespace WindEditor
 
             existRef.ReferenceCount++;
             return existRef.Asset;
+        }
+
+        public static void UnloadAllResources()
+        {
+            foreach (var j3d in m_j3dList)
+                //j3d.Asset.Dispose();
+
+                foreach (var obj in m_objList)
+                    //obj.Asset.Dispose();
+
+                    m_actorDescriptors.Clear();
         }
     }
 }

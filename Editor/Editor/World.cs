@@ -105,9 +105,30 @@ namespace WindEditor
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
         }
 
+        public void UnloadMap()
+        {
+            // Clear our Undo/Redo Stack
+            m_undoStack.Clear();
+
+            // Clear our array of currently selected objects as well.
+            m_actorEditor.SelectedObjects.Clear();
+
+            // Clear persistent lines from the last map as well.
+            m_persistentLines.Clear();
+
+            m_currentMap = null;
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
+        }
+
         public void ShutdownWorld()
         {
             System.Console.WriteLine("Shutdown World");
+
+            // Unload any loaded resources and free all associated memory.
+            WResourceManager.UnloadAllResources();
+
+
+            m_persistentLines.Dispose();
         }
     }
 }

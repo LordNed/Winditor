@@ -11,6 +11,7 @@ namespace WindEditor
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
         public ICommand OpenProjectCommand { get { return new RelayCommand(x => OnApplicationRequestOpenProject()); } }
         public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnApplicationShutdown()); } }
+        public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
         public ICommand SetDataRootCommand { get { return new RelayCommand(x => OnUserSetDataRoot()); } }
 
         private List<WWorld> m_editorWorlds = new List<WWorld>();
@@ -56,6 +57,11 @@ namespace WindEditor
             }
         }
 
+        public void OnApplicationRequestCloseProject()
+        {
+            MainWorld.UnloadMap();
+        }
+
         public void OnApplicationShutdown()
         {
             foreach (WWorld world in m_editorWorlds)
@@ -78,6 +84,5 @@ namespace WindEditor
             WindEditor.View.OptionsMenu optionsMenu = new View.OptionsMenu();
             optionsMenu.Show();
         }
-
     }
 }
