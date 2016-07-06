@@ -248,7 +248,7 @@ namespace J3DRenderer
             m_viewportWidth = width;
             m_viewportHeight = height;
             m_renderCamera.AspectRatio = width / (float)height;
-            m_frameBuffer.ResizeBuffer(width*16, height*16);
+            m_frameBuffer.ResizeBuffer(width/4, height/4);
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e)
