@@ -40,6 +40,11 @@ namespace WindEditor
             return rotation * (180 / 32768f);
         }
 
+        public static short RotationFloatToShort(float rotation)
+        {
+            return (short)(rotation * 32768f * 180f);
+        }
+
         public static bool RayIntersectsAABB(FRay ray, Vector3 aabbMin, Vector3 aabbMax, out float intersectionDistance)
         {
             Vector3 t_1 = new Vector3(), t_2 = new Vector3();

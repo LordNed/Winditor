@@ -11,10 +11,10 @@ namespace WindEditor
     public enum PropertyValueType
     {
         Byte,
+        Bool,
         Short,
         Int,
         Float,
-        Bool,
         String,
         FixedLengthString,
         Vector2,
@@ -26,65 +26,141 @@ namespace WindEditor
         Color32,
     }
 
-    class SceneDataLoader
+    struct ChunkHeader
     {
-        struct ChunkHeader
+        /// <summary> FourCC Tag of the Chunk </summary>
+        public string FourCC;
+        /// <summary> How many elements of this type exist. </summary>
+        public int ElementCount;
+        /// <summary> Offset from the start of the file to the chunk data. </summary>
+        public int ChunkOffset;
+
+        /// <summary>
+        // Used to fix up ACTR, TRES, and SCOB which can support up to 12 layers (+base)
+        // this is resolved at chunk load time and then stored in the chunk and passed
+        // to the entities being created.
+        /// </summary>
+        public MapLayer Layer;
+
+        public override string ToString()
         {
-            /// <summary> FourCC Tag of the Chunk </summary>
-            public string FourCC;
-            /// <summary> How many elements of this type exist. </summary>
-            public int ElementCount;
-            /// <summary> Offset from the start of the file to the chunk data. </summary>
-            public int ChunkOffset;
+            return string.Format("[{0}] #{1}", FourCC, ElementCount);
+        }
 
-            /// <summary>
-            // Used to fix up ACTR, TRES, and SCOB which can support up to 12 layers (+base)
-            // this is resolved at chunk load time and then stored in the chunk and passed
-            // to the entities being created.
-            /// </summary>
-            public MapLayer Layer;
+        public ChunkHeader(string fourCC, int elementCount, int chunkOffset)
+        {
+            // ACTR, SCOB, and TRES support multiple layers in the form of the first three letters of
+            // the entity type, and then [0-9, A, B] as the last one.
+            FourCC = fourCC;
+            Layer = MapLayer.Default;
+            ElementCount = elementCount;
+            ChunkOffset = chunkOffset;
 
-            public override string ToString()
+            if (FourCC.StartsWith("ACT") || FourCC.StartsWith("SCO") || FourCC.StartsWith("TRE"))
             {
-                return string.Format("[{0}] #{1}", FourCC, ElementCount);
-            }
-
-            public ChunkHeader(string fourCC, int elementCount, int chunkOffset)
-            {
-                // ACTR, SCOB, and TRES support multiple layers in the form of the first three letters of
-                // the entity type, and then [0-9, A, B] as the last one.
-                FourCC = fourCC;
-                Layer = MapLayer.Default;
-                ElementCount = elementCount;
-                ChunkOffset = chunkOffset;
-
-                if (FourCC.StartsWith("ACT") || FourCC.StartsWith("SCO") || FourCC.StartsWith("TRE"))
+                char lastChar = FourCC[3];
+                switch (lastChar)
                 {
-                    char lastChar = FourCC[3];
-                    switch (lastChar)
-                    {
-                        case '1': Layer = MapLayer.Layer1; break;
-                        case '2': Layer = MapLayer.Layer2; break;
-                        case '3': Layer = MapLayer.Layer3; break;
-                        case '4': Layer = MapLayer.Layer4; break;
-                        case '5': Layer = MapLayer.Layer5; break;
-                        case '6': Layer = MapLayer.Layer6; break;
-                        case '7': Layer = MapLayer.Layer7; break;
-                        case '8': Layer = MapLayer.Layer8; break;
-                        case '9': Layer = MapLayer.Layer9; break;
-                        case 'a': Layer = MapLayer.LayerA; break;
-                        case 'b': Layer = MapLayer.LayerB; break;
-                        case '0': Layer = MapLayer.Layer0; break;
-                    }
-
-                    // Fix up their FourCC names.
-                    if (FourCC.StartsWith("ACT")) FourCC = "ACTR";
-                    if (FourCC.StartsWith("TRE")) FourCC = "TRES";
-                    if (FourCC.StartsWith("SCO")) FourCC = "SCOB";
+                    case '0': Layer = MapLayer.Layer0; break;
+                    case '1': Layer = MapLayer.Layer1; break;
+                    case '2': Layer = MapLayer.Layer2; break;
+                    case '3': Layer = MapLayer.Layer3; break;
+                    case '4': Layer = MapLayer.Layer4; break;
+                    case '5': Layer = MapLayer.Layer5; break;
+                    case '6': Layer = MapLayer.Layer6; break;
+                    case '7': Layer = MapLayer.Layer7; break;
+                    case '8': Layer = MapLayer.Layer8; break;
+                    case '9': Layer = MapLayer.Layer9; break;
+                    case 'a': Layer = MapLayer.LayerA; break;
+                    case 'b': Layer = MapLayer.LayerB; break;
                 }
+
+                // Fix up their FourCC names.
+                if (FourCC.StartsWith("ACT")) FourCC = "ACTR";
+                if (FourCC.StartsWith("TRE")) FourCC = "TRES";
+                if (FourCC.StartsWith("SCO")) FourCC = "SCOB";
             }
         }
 
+        public ChunkHeader(string fourCC, MapLayer layer = MapLayer.Default)
+        {
+            FourCC = fourCC;
+            if(FourCC.StartsWith("ACT") || FourCC.StartsWith("SCO") || FourCC.StartsWith("TRE"))
+            {
+                string firstThree = FourCC.Substring(0, 3);
+                switch (layer)
+                {
+                    default:
+                    case MapLayer.Default: FourCC = fourCC; break;
+                    case MapLayer.Layer0: FourCC = firstThree + '0'; break;
+                    case MapLayer.Layer1: FourCC = firstThree + '1'; break;
+                    case MapLayer.Layer2: FourCC = firstThree + '2'; break;
+                    case MapLayer.Layer3: FourCC = firstThree + '3'; break;
+                    case MapLayer.Layer4: FourCC = firstThree + '4'; break;
+                    case MapLayer.Layer5: FourCC = firstThree + '5'; break;
+                    case MapLayer.Layer6: FourCC = firstThree + '6'; break;
+                    case MapLayer.Layer7: FourCC = firstThree + '7'; break;
+                    case MapLayer.Layer8: FourCC = firstThree + '8'; break;
+                    case MapLayer.Layer9: FourCC = firstThree + '9'; break;
+                    case MapLayer.LayerA: FourCC = firstThree + 'a'; break;
+                    case MapLayer.LayerB: FourCC = firstThree + 'b'; break;
+                }
+            }
+
+            Layer = layer;
+            ChunkOffset = 0;
+            ElementCount = 0;
+        }
+
+        public static string LayerToFourCC(string fourCC, MapLayer layer)
+        {
+            if (fourCC.StartsWith("ACT") || fourCC.StartsWith("SCO") || fourCC.StartsWith("TRE"))
+            {
+                string firstThree = fourCC.Substring(0, 3);
+                switch (layer)
+                {
+                    default:
+                    case MapLayer.Default: break;
+                    case MapLayer.Layer0: fourCC = firstThree + '0'; break;
+                    case MapLayer.Layer1: fourCC = firstThree + '1'; break;
+                    case MapLayer.Layer2: fourCC = firstThree + '2'; break;
+                    case MapLayer.Layer3: fourCC = firstThree + '3'; break;
+                    case MapLayer.Layer4: fourCC = firstThree + '4'; break;
+                    case MapLayer.Layer5: fourCC = firstThree + '5'; break;
+                    case MapLayer.Layer6: fourCC = firstThree + '6'; break;
+                    case MapLayer.Layer7: fourCC = firstThree + '7'; break;
+                    case MapLayer.Layer8: fourCC = firstThree + '8'; break;
+                    case MapLayer.Layer9: fourCC = firstThree + '9'; break;
+                    case MapLayer.LayerA: fourCC = firstThree + 'a'; break;
+                    case MapLayer.LayerB: fourCC = firstThree + 'b'; break;
+                }
+            }
+
+            return fourCC;
+        }
+    }
+
+#pragma warning disable 0649
+    public class MapActorDescriptor
+    {
+        public string FourCC;
+        public List<DataDescriptorField> Fields;
+    }
+
+    public class DataDescriptorField
+    {
+        [JsonProperty("Name")]
+        public string FieldName;
+
+        [JsonProperty("Type")]
+        public PropertyValueType FieldType;
+
+        public uint Length;
+    }
+#pragma warning restore 0649
+
+    class SceneDataLoader
+    {
         public struct MemoryAlloc
         {
             public byte RoomIndex;
@@ -101,24 +177,6 @@ namespace WindEditor
                 return string.Format("Room Index: {0} Size: {1} bytes", RoomIndex, MemorySize);
             }
         }
-#pragma warning disable 0649
-        public class MapActorDescriptor
-        {
-            public string FourCC;
-            public List<DataDescriptorField> Fields;
-        }
-
-        public class DataDescriptorField
-        {
-            [JsonProperty("Name")]
-            public string FieldName;
-
-            [JsonProperty("Type")]
-            public PropertyValueType FieldType;
-
-            public uint Length;
-        }
-#pragma warning restore 0649
 
         private static List<MapActorDescriptor> m_sActorDescriptors;
 
@@ -297,11 +355,11 @@ namespace WindEditor
 
                 switch (field.FieldType)
                 {
-                    case PropertyValueType.Bool:
-                        propValue = new TBoolPropertyValue(m_reader.ReadBoolean(), field.FieldName);
-                        break;
                     case PropertyValueType.Byte:
                         propValue = new TBytePropertyValue(m_reader.ReadByte(), field.FieldName);
+                        break;
+                    case PropertyValueType.Bool:
+                        propValue = new TBoolPropertyValue(m_reader.ReadBoolean(), field.FieldName);
                         break;
                     case PropertyValueType.Short:
                         propValue = new TShortPropertyValue(m_reader.ReadInt16(), field.FieldName);

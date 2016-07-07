@@ -4,6 +4,7 @@ using System.IO;
 using System;
 using JStudio.J3D;
 using System.Collections.Generic;
+using GameFormatReader.Common;
 
 namespace WindEditor
 {
@@ -99,6 +100,12 @@ namespace WindEditor
                             string fileName = Path.Combine(folder, "room.dzr");
                             if (File.Exists(fileName))
                                 LoadLevelEntitiesFromFile(fileName);
+
+                            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(fileName + "_2.dzr", FileMode.Create), Endian.Big))
+                            {
+                                SceneDataExporter exporter = new SceneDataExporter();
+                                exporter.ExportToStream(writer, this);
+                            }
                         }
                         break;
                 }
