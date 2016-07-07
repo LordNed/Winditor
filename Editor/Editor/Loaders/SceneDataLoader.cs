@@ -50,37 +50,43 @@ namespace WindEditor
 
         public ChunkHeader(string fourCC, int elementCount, int chunkOffset)
         {
-            // ACTR, SCOB, and TRES support multiple layers in the form of the first three letters of
-            // the entity type, and then [0-9, A, B] as the last one.
-            FourCC = fourCC;
             Layer = MapLayer.Default;
+            FourCC = fourCC;
             ElementCount = elementCount;
             ChunkOffset = chunkOffset;
+        }
 
-            if (FourCC.StartsWith("ACT") || FourCC.StartsWith("SCO") || FourCC.StartsWith("TRE"))
+        // ACTR, SCOB, and TRES support multiple layers in the form of the first three letters of
+        // the entity type, and then [0-9, A, B] as the last one.
+        public static MapLayer FourCCToLayer(ref string fourCC)
+        {
+            MapLayer layer = MapLayer.Default;
+            if (fourCC.StartsWith("ACT") || fourCC.StartsWith("SCO") || fourCC.StartsWith("TRE"))
             {
-                char lastChar = FourCC[3];
+                char lastChar = fourCC[3];
                 switch (lastChar)
                 {
-                    case '0': Layer = MapLayer.Layer0; break;
-                    case '1': Layer = MapLayer.Layer1; break;
-                    case '2': Layer = MapLayer.Layer2; break;
-                    case '3': Layer = MapLayer.Layer3; break;
-                    case '4': Layer = MapLayer.Layer4; break;
-                    case '5': Layer = MapLayer.Layer5; break;
-                    case '6': Layer = MapLayer.Layer6; break;
-                    case '7': Layer = MapLayer.Layer7; break;
-                    case '8': Layer = MapLayer.Layer8; break;
-                    case '9': Layer = MapLayer.Layer9; break;
-                    case 'a': Layer = MapLayer.LayerA; break;
-                    case 'b': Layer = MapLayer.LayerB; break;
+                    case '0': layer = MapLayer.Layer0; break;
+                    case '1': layer = MapLayer.Layer1; break;
+                    case '2': layer = MapLayer.Layer2; break;
+                    case '3': layer = MapLayer.Layer3; break;
+                    case '4': layer = MapLayer.Layer4; break;
+                    case '5': layer = MapLayer.Layer5; break;
+                    case '6': layer = MapLayer.Layer6; break;
+                    case '7': layer = MapLayer.Layer7; break;
+                    case '8': layer = MapLayer.Layer8; break;
+                    case '9': layer = MapLayer.Layer9; break;
+                    case 'a': layer = MapLayer.LayerA; break;
+                    case 'b': layer = MapLayer.LayerB; break;
                 }
 
                 // Fix up their FourCC names.
-                if (FourCC.StartsWith("ACT")) FourCC = "ACTR";
-                if (FourCC.StartsWith("TRE")) FourCC = "TRES";
-                if (FourCC.StartsWith("SCO")) FourCC = "SCOB";
+                if (fourCC.StartsWith("ACT")) fourCC = "ACTR";
+                if (fourCC.StartsWith("TRE")) fourCC = "TRES";
+                if (fourCC.StartsWith("SCO")) fourCC = "SCOB";
             }
+
+            return layer;
         }
 
         public static string LayerToFourCC(string fourCC, MapLayer layer)
@@ -173,7 +179,11 @@ namespace WindEditor
 
             for (int i = 0; i < chunkCount; i++)
             {
-                ChunkHeader chunk = new ChunkHeader(m_reader.ReadString(4), m_reader.ReadInt32(), m_reader.ReadInt32());
+                string fourCC = m_reader.ReadString(4);
+                MapLayer layer = ChunkHeader.FourCCToLayer(ref fourCC);
+                ChunkHeader chunk = new ChunkHeader(fourCC, m_reader.ReadInt32(), m_reader.ReadInt32());
+                chunk.Layer = layer;
+
                 m_chunkList.Add(chunk);
             }
 
