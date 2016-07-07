@@ -170,7 +170,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -213,7 +213,20 @@
                 <GridSplitter Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
                 <Grid Grid.Row="2">
-
+                    <GroupBox Header="High Resolution Screenshot" DataContext="{Binding Path=HighResScreenshot}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TextBlock Padding="2" Text="The slider below sets the multiplier for the resolution of the current viewport. High multipliers may not be supported on all graphics cards, and may cause the application to crash. Screenshots are saved next to the application directory." TextWrapping="wrap"/>
+                            <Separator/>
+                            <DockPanel HorizontalAlignment="Stretch">
+                                <Label DockPanel.Dock="Left" Content="Screenshot Size Multiplier"/>
+                                <TextBox DockPanel.Dock="Right" Text="{Binding Path=ResolutionMultiplier}" Padding="2" Margin="2"/>
+                                <Slider DockPanel.Dock="Right" Value="{Binding Path=ResolutionMultiplier}" Minimum="1" Maximum="8" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="TopLeft" HorizontalAlignment="Stretch"/>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Stretch">
+                                <Button DockPanel.Dock="Right" Content="Screenshot" Command="{Binding Path=OnUserRequestScreenshot}"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
                 </Grid>
             </Grid>
         </Grid>

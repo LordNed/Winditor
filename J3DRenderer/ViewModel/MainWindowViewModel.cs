@@ -5,7 +5,6 @@ using System.IO;
 using GameFormatReader.Common;
 using System.ComponentModel;
 using JStudio.J3D;
-using JStudio.J3D.Animation;
 using JStudio.OpenGL;
 using J3DRenderer.Framework;
 using System;
@@ -21,6 +20,7 @@ namespace J3DRenderer
         public event PropertyChangedEventHandler PropertyChanged;
 
         public J3D LoadedModel { get { return m_childLink; } }
+        public HighresScreenshotViewModel HighResScreenshot { get { return m_highresScreenshot; } }
 
         private GLControl m_glControl;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
@@ -36,8 +36,8 @@ namespace J3DRenderer
 
         private ScreenspaceQuad m_screenQuad;
         private Shader m_alphaVisualizationShader;
-        private bool m_shouldTakeScreenCap;
         private WFrameBuffer m_frameBuffer;
+        private HighresScreenshotViewModel m_highresScreenshot;
 
         GXLight m_mainLight;
 
@@ -46,6 +46,7 @@ namespace J3DRenderer
             m_renderCamera = new WCamera();
             m_renderCamera.Transform.Position = new Vector3(500, 75, 500);
             m_renderCamera.Transform.Rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(45f));
+            m_highresScreenshot = new HighresScreenshotViewModel();
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             Application.Current.MainWindow.Closing += OnMainWindowClosing;
         }
@@ -144,6 +145,16 @@ namespace J3DRenderer
             //GL.ClearColor(0.15f, 0.83f, 0.10f, 1f);
             GL.ClearColor(rnd.Next(255) / 255f, rnd.Next(255) / 255f, rnd.Next(255) / 255f, 1);
 
+            // If the user has requested a higher resolution screenshot, we're going to resize the backbuffer if required.
+            if(m_highresScreenshot.UserRequestedScreenshot)
+            {
+                int scaledWidth = (int)(m_viewportWidth * m_highresScreenshot.ResolutionMultiplier);
+                int scaledHeight = (int)(m_viewportHeight * m_highresScreenshot.ResolutionMultiplier);
+
+                if (scaledWidth != m_frameBuffer.Width || scaledHeight != m_frameBuffer.Height)
+                    m_frameBuffer.ResizeBuffer(scaledWidth, scaledHeight);
+            }
+
             m_frameBuffer.Bind();
             GL.Disable(EnableCap.Multisample);
 
@@ -156,9 +167,6 @@ namespace J3DRenderer
 
             deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
             m_timeSinceStartup += deltaTime;
-
-            if (WInput.GetKeyDown(Key.Y))
-                m_shouldTakeScreenCap = true;
 
             if(WInput.GetKeyDown(Key.T))
             {
@@ -199,13 +207,20 @@ namespace J3DRenderer
                 m_screenQuad.Draw();
             }
 
-            if(m_shouldTakeScreenCap)
+            // Blit the framebuffer to the backbuffer so it shows up on screen.
+            m_frameBuffer.BlitToBackbuffer(m_viewportWidth, m_viewportHeight);
+
+            // Now that we've rendered to the framebuffer, if they've requested a screenshot, write that to disk.
+            if (m_highresScreenshot.UserRequestedScreenshot)
             {
                 CaptureScreenshotToDisk();
-                m_shouldTakeScreenCap = false;
-            }
 
-            m_frameBuffer.BlitToBackbuffer(m_viewportWidth, m_viewportHeight);
+                // Resize the buffer back down if required.
+                if (m_frameBuffer.Width != m_viewportWidth || m_frameBuffer.Height != m_viewportHeight)
+                    m_frameBuffer.ResizeBuffer(m_viewportWidth, m_viewportHeight);
+
+                m_highresScreenshot.UserRequestedScreenshot = false;
+            }
         }
 
         private void CaptureScreenshotToDisk()
