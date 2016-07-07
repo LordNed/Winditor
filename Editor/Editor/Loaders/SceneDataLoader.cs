@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace WindEditor
 {
@@ -80,36 +81,6 @@ namespace WindEditor
                 if (FourCC.StartsWith("TRE")) FourCC = "TRES";
                 if (FourCC.StartsWith("SCO")) FourCC = "SCOB";
             }
-        }
-
-        public ChunkHeader(string fourCC, MapLayer layer = MapLayer.Default)
-        {
-            FourCC = fourCC;
-            if(FourCC.StartsWith("ACT") || FourCC.StartsWith("SCO") || FourCC.StartsWith("TRE"))
-            {
-                string firstThree = FourCC.Substring(0, 3);
-                switch (layer)
-                {
-                    default:
-                    case MapLayer.Default: FourCC = fourCC; break;
-                    case MapLayer.Layer0: FourCC = firstThree + '0'; break;
-                    case MapLayer.Layer1: FourCC = firstThree + '1'; break;
-                    case MapLayer.Layer2: FourCC = firstThree + '2'; break;
-                    case MapLayer.Layer3: FourCC = firstThree + '3'; break;
-                    case MapLayer.Layer4: FourCC = firstThree + '4'; break;
-                    case MapLayer.Layer5: FourCC = firstThree + '5'; break;
-                    case MapLayer.Layer6: FourCC = firstThree + '6'; break;
-                    case MapLayer.Layer7: FourCC = firstThree + '7'; break;
-                    case MapLayer.Layer8: FourCC = firstThree + '8'; break;
-                    case MapLayer.Layer9: FourCC = firstThree + '9'; break;
-                    case MapLayer.LayerA: FourCC = firstThree + 'a'; break;
-                    case MapLayer.LayerB: FourCC = firstThree + 'b'; break;
-                }
-            }
-
-            Layer = layer;
-            ChunkOffset = 0;
-            ElementCount = 0;
         }
 
         public static string LayerToFourCC(string fourCC, MapLayer layer)
@@ -205,6 +176,9 @@ namespace WindEditor
                 ChunkHeader chunk = new ChunkHeader(m_reader.ReadString(4), m_reader.ReadInt32(), m_reader.ReadInt32());
                 m_chunkList.Add(chunk);
             }
+
+            var sortedList = m_chunkList.OrderBy(x => x.ChunkOffset);
+            m_chunkList = new List<ChunkHeader>(sortedList);
         }
 
         ~SceneDataLoader()
