@@ -99,6 +99,8 @@ namespace WindEditor
 
             // Seek to the end of the file for good measure.
             writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            Pad32(writer);
         }
 
         private void WriteActorToChunk(WActorNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
@@ -194,6 +196,20 @@ namespace WindEditor
                         Console.WriteLine("Unsupported PropertyValueType: {0}", field.FieldType);
                         break;
                 }
+            }
+        }
+
+        private void Pad32(EndianBinaryWriter writer)
+        {
+            // Pad up to a 32 byte alignment
+            // Formula: (x + (n-1)) & ~(n-1)
+            long nextAligned = (writer.BaseStream.Length + 0x1F) & ~0x1F;
+
+            long delta = nextAligned - writer.BaseStream.Length;
+            writer.BaseStream.Position = writer.BaseStream.Length;
+            for (int i = 0; i < delta; i++)
+            {
+                writer.Write((byte)0xFF);
             }
         }
     }

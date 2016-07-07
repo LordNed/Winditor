@@ -3,7 +3,7 @@
    "Archive Name": "Aana",
    "Actor Name": "Pitfall",
    "English Name": "Hole in the ground. Triggers an exit.",
-   "Main Model": "bdl/aana",
+   "Main Model": "bdl/aana.bdl",
    "Secondary Models": "",
    "Wait Animations": "N/A"
  },
@@ -106,23 +106,15 @@
  {
    "Archive Name": "Always",
    "Actor Name": "kotubo",
-   "English Name": "Pot",
+   "English Name": "A small blue pot.",
    "Main Model": "bdl/obm_kotubo1.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
  {
    "Archive Name": "Always",
-   "Actor Name": "ootubo",
-   "English Name": "",
-   "Main Model": "bdl/obm_ootubo1.bdl",
-   "Secondary Models": "",
-   "Wait Animations": ""
- },
- {
-   "Archive Name": "Always",
    "Actor Name": "ootubo1",
-   "English Name": "",
+   "English Name": "A large purple pot.",
    "Main Model": "bdl/obm_ootubo1.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -1977,7 +1969,7 @@
  },
  {
    "Archive Name": "Hdai1",
-   "Actor Name": "Hdai1",
+   "Actor Name": "Hdai2",
    "English Name": "Circular Tower of the Gods Platform",
    "Main Model": "bdlm/hdai1.bdl",
    "Secondary Models": "",
@@ -1985,7 +1977,7 @@
  },
  {
    "Archive Name": "Hdai1",
-   "Actor Name": "Hdai1",
+   "Actor Name": "Hdai3",
    "English Name": "Circular Tower of the Gods Platform",
    "Main Model": "bdlm/hdai1.bdl",
    "Secondary Models": "",
@@ -2857,9 +2849,17 @@
  },
  {
    "Archive Name": "Ktaru_00",
-   "Actor Name": "Ktaru",
+   "Actor Name": "",
    "English Name": "Barrels that float on the ocean and damage Link if he runs into them.",
-   "Main Model": "bdlm/ktaru03.bdl",
+   "Main Model": "bdlm/ktaru_01.bdl",
+   "Secondary Models": "",
+   "Wait Animations": ""
+ },
+ {
+   "Archive Name": "Ktaru_01",
+   "Actor Name": "Ktaru",
+   "English Name": "Breakable wooden barrel that sometimes contains items. And Link.",
+   "Main Model": "bdl/ktaru_01.bdl",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -2915,7 +2915,7 @@
    "Archive Name": "Lamp",
    "Actor Name": "Lamp",
    "English Name": "Lamp. Duplicate of Himo3?",
-   "Main Model": "",
+   "Main Model": "bmd/lamp_00.bmd",
    "Secondary Models": "",
    "Wait Animations": ""
  },
@@ -3442,7 +3442,7 @@
  {
    "Archive Name": "Nata",
    "Actor Name": "",
-   "English Name": "Collision Cube",
+   "English Name": "Bokoblin Scimitar",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -3450,7 +3450,7 @@
  {
    "Archive Name": "NBOX",
    "Actor Name": "",
-   "English Name": "",
+   "English Name": "Collision Cube",
    "Main Model": "",
    "Secondary Models": "",
    "Wait Animations": ""
@@ -4881,7 +4881,7 @@
  },
  {
    "Archive Name": "VgnFD",
-   "Actor Name": "",
+   "Actor Name": "VgnFD",
    "English Name": "Ganon's Tower - 4-Boss Door",
    "Main Model": "bdlm/vgnfd5.bdl",
    "Secondary Models": "",
