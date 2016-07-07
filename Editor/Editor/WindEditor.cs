@@ -46,14 +46,16 @@ namespace WindEditor
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 // Just assume the folder paths are valid now.
-                var folderPath = ofd.FileName;
-
-                // ToDo: Close all of the additional worlds as well.
-                //foreach (WWorld world in m_editorWorlds)
-                    //world.UnloadMap();
-
-                MainWorld.LoadMapFromDirectory(folderPath);
+                LoadProject(ofd.FileName);
             }
+        }
+
+        public void LoadProject(string folderPath)
+        {
+            if (MainWorld.Map != null)
+                MainWorld.UnloadMap();
+
+            MainWorld.LoadMapFromDirectory(folderPath);
         }
 
         public void OnApplicationRequestCloseProject()
