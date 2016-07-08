@@ -256,7 +256,7 @@ namespace WindEditor
                 ChunkHeader rtbl = m_chunkList[multIndex];
                 m_reader.BaseStream.Position = rtbl.ChunkOffset;
 
-                for(int i = 0; i < rtbl.ElementCount; i++)
+                for (int i = 0; i < rtbl.ElementCount; i++)
                 {
                     WRoomTransform roomTransform = new WRoomTransform(new Vector2(m_reader.ReadSingle(), m_reader.ReadSingle()), WMath.RotationShortToFloat(m_reader.ReadInt16()), m_reader.ReadByte(), m_reader.ReadByte());
                     roomTransforms.Add(roomTransform);
@@ -272,7 +272,7 @@ namespace WindEditor
 
             int mecoIndex = m_chunkList.FindIndex(x => x.FourCC == "MECO");
             int memaIndex = m_chunkList.FindIndex(x => x.FourCC == "MEMA");
-            if(mecoIndex >= 0 && memaIndex >= 0)
+            if (mecoIndex >= 0 && memaIndex >= 0)
             {
                 ChunkHeader meco = m_chunkList[mecoIndex];
                 ChunkHeader mema = m_chunkList[memaIndex];
@@ -283,7 +283,7 @@ namespace WindEditor
                     memaEntries[i] = m_reader.ReadInt32();
 
                 m_reader.BaseStream.Position = meco.ChunkOffset;
-                for(int i = 0; i < meco.ElementCount; i++)
+                for (int i = 0; i < meco.ElementCount; i++)
                 {
                     MemoryAlloc memAlloc = new MemoryAlloc(m_reader.ReadByte(), memaEntries[m_reader.ReadByte()]);
                     memAllocTable.Add(memAlloc);
@@ -422,13 +422,13 @@ namespace WindEditor
 
             float xScale = 1, yScale = 1, zScale = 1;
             if (xScaleProperty != null)
-                xScale = (byte)xScaleProperty.GetValue();
+                xScale = ((byte)xScaleProperty.GetValue()) / 10f;
             if (yScaleProperty != null)
-               yScale = (byte)yScaleProperty.GetValue();
+                yScale = ((byte)yScaleProperty.GetValue()) / 10f;
             if (zScaleProperty != null)
-                zScale = (byte)zScaleProperty.GetValue();
+                zScale = ((byte)zScaleProperty.GetValue()) / 10f;
 
-            newActor.Transform.LocalScale = new Vector3(xScale/10f, yScale/10f, zScale/10f);
+            newActor.Transform.LocalScale = new Vector3(xScale, yScale, zScale);
 
             newActor.Properties.AddRange(actorProperties);
             newActor.PostFinishedLoad();
