@@ -112,6 +112,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
+    <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
     <Compile Include="View\OptionsMenu.xaml.cs">
       <DependentUpon>OptionsMenu.xaml</DependentUpon>

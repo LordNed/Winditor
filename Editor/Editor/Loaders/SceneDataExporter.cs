@@ -150,17 +150,17 @@ namespace WindEditor
                 else if (field.FieldName == "X Scale")
                 {
                     float xScale = actor.Transform.LocalScale.X;
-                    propValue = new TBytePropertyValue((byte)xScale, "X Scale");
+                    propValue = new TBytePropertyValue((byte)(xScale * 10), "X Scale");
                 }
                 else if (field.FieldName == "Y Scale")
                 {
                     float yScale = actor.Transform.LocalScale.Y;
-                    propValue = new TBytePropertyValue((byte)yScale, "Y Scale");
+                    propValue = new TBytePropertyValue((byte)(yScale * 10), "Y Scale");
                 }
                 else if (field.FieldName == "Z Scale")
                 {
                     float zScale = actor.Transform.LocalScale.Z;
-                    propValue = new TBytePropertyValue((byte)zScale, "Z Scale");
+                    propValue = new TBytePropertyValue((byte)(zScale * 10), "Z Scale");
                 }
 
                 switch (field.FieldType)

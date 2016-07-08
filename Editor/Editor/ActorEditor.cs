@@ -286,6 +286,8 @@ namespace WindEditor
                     undoAction = new WRotateActorAction(actors, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Scale:
+                    undoAction = new WScaleActorAction(actors, m_transformGizmo.DeltaScale, isDone);
+                    Console.WriteLine(m_transformGizmo.DeltaScale);
                     break;
                 default:
                     break;

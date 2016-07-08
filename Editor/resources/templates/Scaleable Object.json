@@ -12,9 +12,9 @@
 		{"Name" : "Y Rotation", "Type" : "YRotation"},
 		{"Name" : "Unknown 1", "Type" : "Short"},
 		{"Name" : "Unknown 2", "Type" : "Short"},
-		{"Name" : "Scale X", "Type" : "Byte"},
-		{"Name" : "Scale Y", "Type" : "Byte"},
-		{"Name" : "Scale Z", "Type" : "Byte"},
+		{"Name" : "X Scale", "Type" : "Byte"},
+		{"Name" : "Y Scale", "Type" : "Byte"},
+		{"Name" : "Z Scale", "Type" : "Byte"},
 		{"Name" : "Padding", "Type" : "Byte"}
 	]
 }

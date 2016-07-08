@@ -428,6 +428,8 @@ namespace WindEditor
             if (zScaleProperty != null)
                 zScale = (byte)zScaleProperty.GetValue();
 
+            newActor.Transform.LocalScale = new Vector3(xScale/10f, yScale/10f, zScale/10f);
+
             newActor.Properties.AddRange(actorProperties);
             newActor.PostFinishedLoad();
             return newActor;
