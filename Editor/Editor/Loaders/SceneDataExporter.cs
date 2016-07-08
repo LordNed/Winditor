@@ -103,6 +103,25 @@ namespace WindEditor
             Pad32(writer);
         }
 
+        // Gets X angle in radians from a quaternion
+        private float PitchFromQuat(Quaternion q)
+        {
+            return (float)Math.Atan((2f * (q.Y * q.Z + q.W * q.X)) / (q.W * q.W - q.X * q.X - q.Y * q.Y + q.Z * q.Z)); 
+        }
+
+        // Gets Y angle in radians from a quaternion
+        // Appears to be broken?
+        private float YawFromQuat(Quaternion q)
+        {
+            return (float)Math.Asin(WMath.Clamp((-2f) * (q.X * q.Z - q.W * q.Y), -1f, 1f));
+        }
+
+        // Gets Z angle in radians from a quaternion
+        private float RollFromQuat(Quaternion q)
+        {
+            return (float)Math.Atan((2f * (q.X * q.Y + q.W * q.Z)) / (q.W * q.W + q.X * q.X - q.Y * q.Y - q.Z * q.Z));
+        }
+
         private void WriteActorToChunk(WActorNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
         {
             foreach(var field in template.Fields)
@@ -112,19 +131,19 @@ namespace WindEditor
                     propValue = new TVector3PropertyValue(actor.Transform.Position, "Position");
                 else if(field.FieldName == "X Rotation")
                 {
-                    float xRot = actor.Transform.Rotation.X;
+                    float xRot = WMath.RadiansToDegrees(PitchFromQuat(actor.Transform.Rotation));
                     short xRotShort = WMath.RotationFloatToShort(xRot);
                     propValue = new TShortPropertyValue(xRotShort, "X Rotation");
                 }
                 else if (field.FieldName == "Y Rotation")
                 {
-                    float yRot = actor.Transform.Rotation.Y;
+                    float yRot = WMath.RadiansToDegrees(YawFromQuat(actor.Transform.Rotation));
                     short yRotShort = WMath.RotationFloatToShort(yRot);
                     propValue = new TShortPropertyValue(yRotShort, "Y Rotation");
                 }
                 else if (field.FieldName == "Z Rotation")
                 {
-                    float zRot = actor.Transform.Rotation.Z;
+                    float zRot = WMath.RadiansToDegrees(RollFromQuat(actor.Transform.Rotation));
                     short zRotShort = WMath.RotationFloatToShort(zRot);
                     propValue = new TShortPropertyValue(zRotShort, "Z Rotation");
                 }
