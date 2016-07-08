@@ -713,6 +713,60 @@ namespace JStudio.J3D
             }
         }
 
+        public bool Raycast(FRay ray, out float hitDistance, bool returnFirstHit = false)
+        {
+            // Raycast against the bounding box of the entire mesh first to see if we can save ourself a bunch of time.
+            bool hitsAABB = WMath.RayIntersectsAABB(ray, BoundingBox.Min, BoundingBox.Max, out hitDistance);
+
+            if (!hitsAABB)
+                return false;
+
+            // Okay, they've intersected with our big bounding box, so now we'll trace against individual mesh bounding box.
+            // However, if they've applied skinning data to the meshes then these bounding boxes are no longer valid, so this
+            // optimization step only counts if they're not applying any skinning.
+            bool canSkipShapeTriangles = m_currentBoneAnimation == null;
+            bool rayDidHit = false;
+            foreach (var shape in SHP1Tag.Shapes)
+            {
+                if (canSkipShapeTriangles)
+                {
+                    hitsAABB = WMath.RayIntersectsAABB(ray, shape.BoundingBox.Min, shape.BoundingBox.Max, out hitDistance);
+
+                    // If we didn't intersect with this shape, just go onto the next one.
+                    if (!hitsAABB)
+                        continue;
+                }
+
+                // We either intersected with this shape's AABB or they have skinning data applied (and thus we can't skip it),
+                // thus, we're going to test against every (skinned!) triangle in this shape.
+                bool hitTriangle = false;
+                var vertexList = shape.OverrideVertPos.Count > 0 ? shape.OverrideVertPos : shape.VertexData.Position;
+
+                for (int i = 0; i < shape.Indexes.Count; i += 3)
+                {
+                    float triHitDist;
+                    hitTriangle = WMath.RayIntersectsTriangle(ray, vertexList[shape.Indexes[i]], vertexList[shape.Indexes[i + 1]], vertexList[shape.Indexes[i + 2]], out triHitDist);
+
+                    // If we hit this triangle and we're OK to just return the first hit on the model, then we can early out.
+                    if (rayDidHit && returnFirstHit)
+                    {
+                        hitDistance = triHitDist;
+                        return true;
+                    }
+
+                    // Otherwise, we need to test to see if this hit is closer than the previous hit.
+                    if (hitTriangle)
+                    {
+                        if (triHitDist < hitDistance)
+                            hitDistance = triHitDist;
+                        rayDidHit = true;
+                    }
+                }
+            }
+
+            return rayDidHit;
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

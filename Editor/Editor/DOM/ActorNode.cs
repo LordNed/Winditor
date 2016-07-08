@@ -74,6 +74,14 @@ namespace WindEditor
             return new FAABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
         }
 
+        public bool Raycast(FRay ray, out float closestDistance)
+        {
+            if (m_actorMesh != null)
+                return m_actorMesh.Raycast(ray, out closestDistance, true);
+            else
+                return WMath.RayIntersectsAABB(ray, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+        }
+
         #region IRenderable
         void IRenderable.AddToRenderer(WSceneView view)
         {

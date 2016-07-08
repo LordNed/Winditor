@@ -250,10 +250,8 @@ namespace WindEditor
 
                 foreach (WActorNode actorNode in allActors)
                 {
-                    FAABox actorBoundingBox = actorNode.GetBoundingBox();
                     float intersectDistance;
-
-                    if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+                    if(actorNode.Raycast(ray, out intersectDistance))
                     {
                         if (intersectDistance < closestDistance)
                         {
