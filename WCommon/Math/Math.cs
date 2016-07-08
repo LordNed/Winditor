@@ -45,11 +45,23 @@ namespace WindEditor
             return (short)(rotation * (32768f / 180f));
         }
 
-        public static FRay TransformRay(FRay ray, Vector3 position, Quaternion rotation)
+        public static FRay TransformRay(FRay ray, Vector3 position, Vector3 scale, Quaternion rotation)
         {
             FRay localRay = new FRay();
             localRay.Direction = Vector3.Transform(ray.Direction, rotation);
             localRay.Origin = Vector3.Transform(ray.Origin - position, rotation);
+
+            // We need to divide the origin and the direction by the scale. If you skip dividing the direction by the
+            // scale, then it doesn't work on non-uniformly scaled objects.
+            localRay.Origin.X /= scale.X;
+            localRay.Origin.Y /= scale.Y;
+            localRay.Origin.Z /= scale.Z;
+
+            localRay.Direction.X /= scale.X;
+            localRay.Direction.Y /= scale.Y;
+            localRay.Direction.Z /= scale.Z;
+            localRay.Direction.Normalize();
+
             return localRay;
         }
 
