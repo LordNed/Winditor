@@ -70,7 +70,7 @@ namespace WindEditor
             base.Tick(deltaTime);
 
             var bbox = GetBoundingBox();
-            m_world.DebugDrawBox(bbox.Min, bbox.Max, (Flags & ActorFlags.Selected) == ActorFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+            m_world.DebugDrawBox(bbox.Center, (bbox.Max-bbox.Min)/2, Transform.Rotation, (Flags & ActorFlags.Selected) == ActorFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
         }
 
         public override FAABox GetBoundingBox()

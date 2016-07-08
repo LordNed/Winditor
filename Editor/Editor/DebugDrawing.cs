@@ -14,5 +14,10 @@ namespace WindEditor
         {
             m_persistentLines.DrawBox(min, max, color, thickness, lifetime);
         }
+
+        public void DebugDrawBox(Vector3 center, Vector3 extents, Quaternion rotation, WLinearColor color, float thickness, float lifetime)
+        {
+            m_persistentLines.DrawBox(center, extents, rotation, color, lifetime, thickness);
+        }
     }
 }
