@@ -30,7 +30,7 @@ namespace WindEditor
                 m_oldActorList[i].Flags &= ~ActorFlags.Selected;
 
             for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].Flags &= ActorFlags.Selected;
+                m_newActorList[i].Flags |= ActorFlags.Selected;
         }
 
         public override void Undo()
@@ -46,7 +46,7 @@ namespace WindEditor
                 m_newActorList[i].Flags &= ~ActorFlags.Selected;
 
             for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].Flags &= ActorFlags.Selected;
+                m_oldActorList[i].Flags |= ActorFlags.Selected;
         }
 
     }

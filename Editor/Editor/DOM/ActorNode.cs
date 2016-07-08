@@ -56,7 +56,6 @@ namespace WindEditor
                     TStringPropertyValue stringProperty = (TStringPropertyValue)propVal;
                     m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
                 }
-
             }
 
             if (m_actorMesh == null)
@@ -84,10 +83,24 @@ namespace WindEditor
 
         public bool Raycast(FRay ray, out float closestDistance)
         {
+            // Convert the ray to local space of this node since all of our
+            // raycasts are local.
+            FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.Rotation.Inverted());
+
+            // Is this valid?
+            Vector3 rayPos = localRay.Origin;
+            Vector3 localScale = Transform.LocalScale;
+            rayPos.X /= localScale.X;
+            rayPos.Y /= localScale.Y;
+            rayPos.Z /= localScale.Z;
+            localRay.Origin = rayPos;
+
             if (m_actorMesh != null)
-                return m_actorMesh.Raycast(ray, out closestDistance, true);
+                return m_actorMesh.Raycast(localRay, out closestDistance, true);
             else
-                return WMath.RayIntersectsAABB(ray, Transform.Position + m_objRender.GetAABB().Min, Transform.Position + m_objRender.GetAABB().Max, out closestDistance);
+            {
+                return WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+            }
         }
 
         #region IRenderable

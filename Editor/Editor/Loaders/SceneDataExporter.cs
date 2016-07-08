@@ -97,10 +97,11 @@ namespace WindEditor
                 writer.Write(header.ChunkOffset);   // Offset from start of file.
             }
 
-            // Seek to the end of the file for good measure.
+            // Seek to the end of the file, and then pad us to 32-byte alignment.
             writer.BaseStream.Seek(0, SeekOrigin.End);
-
-            Pad32(writer);
+            int delta = WMath.Pad32Delta(writer.BaseStream.Position);
+            for (int i = 0; i < delta; i++)
+                writer.Write(0xFF);
         }
 
         // Gets X angle in radians from a quaternion
@@ -215,20 +216,6 @@ namespace WindEditor
                         Console.WriteLine("Unsupported PropertyValueType: {0}", field.FieldType);
                         break;
                 }
-            }
-        }
-
-        private void Pad32(EndianBinaryWriter writer)
-        {
-            // Pad up to a 32 byte alignment
-            // Formula: (x + (n-1)) & ~(n-1)
-            long nextAligned = (writer.BaseStream.Length + 0x1F) & ~0x1F;
-
-            long delta = nextAligned - writer.BaseStream.Length;
-            writer.BaseStream.Position = writer.BaseStream.Length;
-            for (int i = 0; i < delta; i++)
-            {
-                writer.Write((byte)0xFF);
             }
         }
     }

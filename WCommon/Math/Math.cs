@@ -45,6 +45,30 @@ namespace WindEditor
             return (short)(rotation * (32768f / 180f));
         }
 
+        public static FRay TransformRay(FRay ray, Vector3 position, Quaternion rotation)
+        {
+            FRay localRay = new FRay();
+            localRay.Direction = Vector3.Transform(ray.Direction, rotation);
+            localRay.Origin = Vector3.Transform(ray.Origin - position, rotation);
+            return localRay;
+        }
+
+        /// <summary>
+        /// Calculate the number of bytes required to pad the specified
+        /// number up to the next 32 byte alignment.
+        /// </summary>
+        /// <param name="inPos">Position in memory stream that you're currently at.</param>
+        /// <returns>The delta required to get to the next 32 byte alignment.</returns>
+        public static int Pad32Delta(long inPos)
+        {
+            // Pad up to a 32 byte alignment
+            // Formula: (x + (n-1)) & ~(n-1)
+            long nextAligned = (inPos + 0x1F) & ~0x1F;
+
+            long delta = nextAligned - inPos;
+            return (int)delta;
+        }
+
         public static bool RayIntersectsAABB(FRay ray, Vector3 aabbMin, Vector3 aabbMax, out float intersectionDistance)
         {
             Vector3 t_1 = new Vector3(), t_2 = new Vector3();
