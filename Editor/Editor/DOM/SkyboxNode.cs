@@ -1,6 +1,5 @@
 ﻿using JStudio.J3D;
 using System.IO;
-using System;
 using OpenTK;
 
 namespace WindEditor
@@ -11,6 +10,11 @@ namespace WindEditor
         private J3DNode m_vrKasumiMae; // "Haze Before" - Horizon Gradient
         private J3DNode m_vrUsoUmi; // "False Sea" - This is the model seen underneath the edge of the sea generated around the player.
         private J3DNode m_vrBackCloud; // Cloud Layer
+
+        public WSkyboxNode(WWorld world) : base(world)
+        {
+
+        }
 
         public override void Tick(float deltaTime)
         {
@@ -26,15 +30,15 @@ namespace WindEditor
             }
 
             // Horizon Color
-            if(m_vrKasumiMae != null)
+            if (m_vrKasumiMae != null)
                 m_vrKasumiMae.Model.SetTevColorOverride(0, WLinearColor.FromHexString("0x325a82FF"));
 
             // False Sea Color
-            if(m_vrUsoUmi != null)
+            if (m_vrUsoUmi != null)
                 m_vrUsoUmi.Model.SetTevkColorOverride(0, WLinearColor.FromHexString("0x0A0A3CFF"));
 
             // Cloud Color
-            if(m_vrBackCloud != null)
+            if (m_vrBackCloud != null)
                 m_vrBackCloud.Model.SetTevColorOverride(0, WLinearColor.FromHexString("0x8278966E"));
         }
 
@@ -51,9 +55,9 @@ namespace WindEditor
                     if (File.Exists(fullPath))
                     {
                         J3D j3dModel = WResourceManager.LoadResource(fullPath);
-                        J3DNode modelNode = new J3DNode(j3dModel);
+                        J3DNode modelNode = new J3DNode(j3dModel, m_world);
 
-                        switch(model)
+                        switch (model)
                         {
                             case "vr_sky": m_vrSky = modelNode; break;
                             case "vr_kasumi_mae": m_vrKasumiMae = modelNode; break;

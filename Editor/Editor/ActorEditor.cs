@@ -58,6 +58,7 @@ namespace WindEditor
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                Console.WriteLine("mousePos: {0} mouseRay: {1}", WInput.MousePosition, mouseRay);
                 WActorNode addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
@@ -251,7 +252,17 @@ namespace WindEditor
                 foreach (WActorNode actorNode in allActors)
                 {
                     float intersectDistance;
-                    if(actorNode.Raycast(ray, out intersectDistance))
+                    bool hitActor = actorNode.Raycast(ray, out intersectDistance);
+                    if (hitActor)
+                    {
+                        string name = actorNode.FourCC;
+                        IPropertyValue val = actorNode.Properties.Find(x => x.Name == "Name");
+                        if (val != null)
+                            name = (string)val.GetValue();
+                        Console.WriteLine("Checking Actor: {0} Distance: {1}", name, intersectDistance);
+                    }
+
+                    if (hitActor)
                     {
                         if (intersectDistance < closestDistance)
                         {

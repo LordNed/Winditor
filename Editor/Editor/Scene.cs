@@ -10,11 +10,8 @@ namespace WindEditor
     {
         public string Name { get; protected set; }
 
-        protected WWorld m_world;
-
-        public WScene(WWorld world)
+        public WScene(WWorld world) : base(world)
         {
-            m_world = world;
         }
 
         public virtual void Load(string filePath)
@@ -36,7 +33,7 @@ namespace WindEditor
                     string btkFolder = rootFolder + "\\..\\btk\\";
                     string btkFile = btkFolder + modelName + ".btk";
 
-                    if(File.Exists(btkFile))
+                    if (File.Exists(btkFile))
                     {
                         j3dMesh.LoadMaterialAnim(btkFile);
                         j3dMesh.SetMaterialAnimation(modelName);
@@ -60,7 +57,7 @@ namespace WindEditor
             if (!File.Exists(filePath))
                 return;
 
-            var collision = new WCollisionMesh();
+            var collision = new WCollisionMesh(m_world);
             using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(filePath), Endian.Big))
             {
                 collision.Load(reader);
@@ -71,7 +68,7 @@ namespace WindEditor
 
         protected virtual void LoadLevelEntitiesFromFile(string filePath)
         {
-            SceneDataLoader actorLoader = new SceneDataLoader(filePath);
+            SceneDataLoader actorLoader = new SceneDataLoader(filePath, m_world);
             List<WActorNode> loadedActors = actorLoader.GetMapEntities();
             foreach (var actor in loadedActors)
                 actor.SetParent(this);

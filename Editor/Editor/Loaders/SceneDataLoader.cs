@@ -159,9 +159,12 @@ namespace WindEditor
 
         private List<ChunkHeader> m_chunkList;
         private EndianBinaryReader m_reader;
+        private WWorld m_world;
 
-        public SceneDataLoader(string fileName)
+        public SceneDataLoader(string fileName, WWorld world)
         {
+            m_world = world;
+
             if (m_sActorDescriptors == null)
             {
                 // Load the Actor Descriptors from disk.
@@ -331,7 +334,7 @@ namespace WindEditor
 
         private WActorNode LoadActorFromChunk(string fourCC, MapActorDescriptor template)
         {
-            var newActor = new WActorNode(fourCC);
+            var newActor = new WActorNode(fourCC, m_world);
             List<IPropertyValue> actorProperties = new List<IPropertyValue>();
             foreach (var field in template.Fields)
             {

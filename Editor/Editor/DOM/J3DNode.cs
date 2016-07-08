@@ -9,7 +9,7 @@ namespace WindEditor
 
         private J3D m_model;
 
-        public J3DNode(J3D model)
+        public J3DNode(J3D model, WWorld world) : base(world)
         {
             m_model = model;
         }

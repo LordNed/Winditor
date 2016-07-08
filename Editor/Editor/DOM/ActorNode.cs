@@ -40,7 +40,7 @@ namespace WindEditor
         private SimpleObjRenderer m_objRender;
         private J3D m_actorMesh;
 
-        public WActorNode(string fourCC)
+        public WActorNode(string fourCC, WWorld world) :base(world)
         {
             Properties = new List<IPropertyValue>();
             FourCC = fourCC;
@@ -66,6 +66,14 @@ namespace WindEditor
             }
         }
 
+        public override void Tick(float deltaTime)
+        {
+            base.Tick(deltaTime);
+
+            var bbox = GetBoundingBox();
+            m_world.DebugDrawBox(bbox.Min, bbox.Max, (Flags & ActorFlags.Selected) == ActorFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+        }
+
         public override FAABox GetBoundingBox()
         {
             FAABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMesh.BoundingBox;
@@ -79,7 +87,7 @@ namespace WindEditor
             if (m_actorMesh != null)
                 return m_actorMesh.Raycast(ray, out closestDistance, true);
             else
-                return WMath.RayIntersectsAABB(ray, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+                return WMath.RayIntersectsAABB(ray, Transform.Position + m_objRender.GetAABB().Min, Transform.Position + m_objRender.GetAABB().Max, out closestDistance);
         }
 
         #region IRenderable
