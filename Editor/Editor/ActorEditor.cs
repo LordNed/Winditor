@@ -58,7 +58,6 @@ namespace WindEditor
             if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
             {
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
-                Console.WriteLine("mousePos: {0} mouseRay: {1}", WInput.MousePosition, mouseRay);
                 WActorNode addedActor = Raycast(mouseRay);
 
                 // Check the behaviour of this click to determine appropriate selection modification behaviour.
@@ -160,7 +159,6 @@ namespace WindEditor
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.CheckSelectedAxes(mouseRay))
                 {                            
-                    Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_transformGizmo.SelectedAxes);
                     m_transformGizmo.StartTransform();
                 }
             }
@@ -255,16 +253,7 @@ namespace WindEditor
                     bool hitActor = actorNode.Raycast(ray, out intersectDistance);
                     if (hitActor)
                     {
-                        string name = actorNode.FourCC;
-                        IPropertyValue val = actorNode.Properties.Find(x => x.Name == "Name");
-                        if (val != null)
-                            name = (string)val.GetValue();
-                        Console.WriteLine("Checking Actor: {0} Distance: {1}", name, intersectDistance);
-                    }
-
-                    if (hitActor)
-                    {
-                        if (intersectDistance < closestDistance)
+                        if (intersectDistance >= 0 && intersectDistance < closestDistance)
                         {
                             closestDistance = intersectDistance;
                             closestResult = actorNode;
