@@ -15,7 +15,7 @@ namespace WindEditor.Collision
 
         private FAABox m_aaBox;
 
-        public WCollisionMesh()
+        public WCollisionMesh(WWorld world) : base(world)
         {
             m_primitiveShader = new Shader("UnselectedCollision");
             m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnselectedCollision.vert"), ShaderType.VertexShader);
@@ -36,7 +36,7 @@ namespace WindEditor.Collision
             Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
             Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
 
-            for(int i = 0; i < vertexCount; i++)
+            for (int i = 0; i < vertexCount; i++)
             {
                 meshVerts[i] = new Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());
 
@@ -59,7 +59,7 @@ namespace WindEditor.Collision
                 triangleIndexes[(i * 3) + 0] = stream.ReadUInt16();
                 triangleIndexes[(i * 3) + 1] = stream.ReadUInt16();
                 triangleIndexes[(i * 3) + 2] = stream.ReadUInt16();
-                stream.Skip(4); 
+                stream.Skip(4);
             }
 
             GL.GenBuffers(1, out m_vbo);

@@ -10,7 +10,8 @@ namespace BulkDataProcessingScripts
     {
         static void Main(string[] args)
         {
-            new ArchiveResourceToCSV(@"E:\New_Data_Drive\WindwakerModding\new_object_extract\res\extracted_archives\Object");
+            //new ArchiveResourceToCSV(@"E:\New_Data_Drive\WindwakerModding\new_object_extract\res\extracted_archives\Object");
+            new ArcExtractorDebugging(@"E:\New_Data_Drive\WindwakerModding\root\res\Object\ff.arc");
         }
     }
 }

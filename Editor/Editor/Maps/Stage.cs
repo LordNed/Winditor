@@ -32,7 +32,7 @@ namespace WindEditor
                     case "bmd":
                     case "bdl":
                         {
-                            m_skybox = new WSkyboxNode();
+                            m_skybox = new WSkyboxNode(m_world);
                             m_skybox.LoadSkyboxModelsFromFixedModelList(folder);
                             m_skybox.SetParent(this);
                         }
@@ -46,7 +46,7 @@ namespace WindEditor
             string dzsFilePath = Path.Combine(mapDirectory, "Stage/dzs/stage.dzs");
             if(File.Exists(dzsFilePath))
             {
-                SceneDataLoader sceneData = new SceneDataLoader(dzsFilePath);
+                SceneDataLoader sceneData = new SceneDataLoader(dzsFilePath, m_world);
                 // Load Room Translation info. Wind Waker stores collision and entities in world-space coordinates,
                 // but models all of their rooms around 0,0,0. To solve this, there is a chunk labeled "MULT" which stores
                 // the room model's translation and rotation.

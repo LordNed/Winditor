@@ -75,7 +75,8 @@ namespace WindEditor
             for (int i = 0; i < 6; i++)
             {
                 // Distance from the sphere to this plane.
-                distFromPlane = Vector3.Dot(m_planes[i].Normal, center) + m_planes[i].Distance;
+                Vector3.Dot(ref m_planes[i].Normal, ref center, out distFromPlane);
+                distFromPlane += m_planes[i].Distance;
 
                 // If the distance is < -radius, then we're outside this plane.
                 if (distFromPlane < -radius)

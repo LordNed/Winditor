@@ -30,7 +30,6 @@ namespace WindEditor
         /// <summary> The name of this map ("sea", "GanonM", etc.) Maximum of 8 characters. </summary>
         private string m_mapName;
 
-
         private WWorld m_world;
         private BindingList<WScene> m_sceneList;
         private WScene m_focusedScene;
@@ -117,11 +116,6 @@ namespace WindEditor
                 foreach (var renderable in scene.GetChildrenOfType<IRenderable>())
                     renderable.AddToRenderer(view);
             }
-        }
-
-        public void UnloadMap()
-        {
-            throw new NotImplementedException();
         }
 
         protected void OnPropertyChanged(string propertyName)

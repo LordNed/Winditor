@@ -11,7 +11,7 @@ namespace WindEditor
 {
     public class WActorEditor
     {
-        public SelectionAggregate SelectedObjects { get; protected set; }
+        public WEditorSelectionAggregate SelectedObjects { get; protected set; }
         public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => AttemptToDeserializeObjectsFromClipboard() != null); } }
@@ -34,7 +34,7 @@ namespace WindEditor
             m_world = world;
             m_selectionList = new BindingList<WActorNode>();
             m_transformGizmo = new WTransformGizmo(m_world);
-            SelectedObjects = new SelectionAggregate(m_selectionList);
+            SelectedObjects = new WEditorSelectionAggregate(m_selectionList);
         }
 
         public void UpdateForSceneView(WSceneView view)
@@ -159,7 +159,6 @@ namespace WindEditor
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 if (m_transformGizmo.CheckSelectedAxes(mouseRay))
                 {                            
-                    Console.WriteLine("TranslationGizmo clicked. Selected Axes: {0}", m_transformGizmo.SelectedAxes);
                     m_transformGizmo.StartTransform();
                 }
             }
@@ -250,12 +249,11 @@ namespace WindEditor
 
                 foreach (WActorNode actorNode in allActors)
                 {
-                    FAABox actorBoundingBox = actorNode.GetBoundingBox();
                     float intersectDistance;
-
-                    if (WMath.RayIntersectsAABB(ray, actorBoundingBox.Min, actorBoundingBox.Max, out intersectDistance))
+                    bool hitActor = actorNode.Raycast(ray, out intersectDistance);
+                    if (hitActor)
                     {
-                        if (intersectDistance < closestDistance)
+                        if (intersectDistance >= 0 && intersectDistance < closestDistance)
                         {
                             closestDistance = intersectDistance;
                             closestResult = actorNode;
@@ -286,6 +284,8 @@ namespace WindEditor
                     undoAction = new WRotateActorAction(actors, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Scale:
+                    undoAction = new WScaleActorAction(actors, m_transformGizmo.DeltaScale, isDone);
+                    Console.WriteLine(m_transformGizmo.DeltaScale);
                     break;
                 default:
                     break;

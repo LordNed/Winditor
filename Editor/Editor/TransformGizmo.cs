@@ -49,6 +49,8 @@ namespace WindEditor
         public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
         /// <summary> The amount of rotation this frame the Gizmo has experienced in local space. </summary>
         public Quaternion DeltaRotation { get { return m_deltaRotation; } }
+        /// <summary> The amount of scale this frame the Gizmo ha experienced in local space. </summary>
+        public Vector3 DeltaScale { get { return m_deltaScale; } }
 
         struct AxisDistanceResult
         {

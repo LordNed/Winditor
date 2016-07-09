@@ -3,6 +3,7 @@ using OpenTK;
 using OpenTK.Graphics;
 using System.Windows;
 using System.Windows.Forms.Integration;
+using System.IO;
 
 namespace WindEditor
 {
@@ -33,6 +34,22 @@ namespace WindEditor
 
             m_viewModel = (MainWindowViewModel)DataContext;
             m_viewModel.OnMainEditorWindowLoaded((GLControl)glControlHost.Child);
+        }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.FileDrop, true))
+            {
+                string[] droppedFilePaths = e.Data.GetData(DataFormats.FileDrop, true) as string[];
+                if(droppedFilePaths.Length > 0)
+                {
+                    // Only check the first thing dropped in, we except them to drag/drop a map in, not a set of scenes.
+                    if(Directory.Exists(droppedFilePaths[0]))
+                    {
+                        m_viewModel.WindEditor.LoadProject(droppedFilePaths[0]);
+                    }
+                }
+            }
         }
 
         private void GlControlHost_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)

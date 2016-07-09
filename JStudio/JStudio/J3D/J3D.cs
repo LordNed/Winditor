@@ -65,7 +65,7 @@ namespace JStudio.J3D
         // To detect redundant calls
         private bool m_hasBeenDisposed = false;
 
-        public void LoadFromStream(EndianBinaryReader reader)
+        public void LoadFromStream(EndianBinaryReader reader, bool dumpTextures = false, bool dumpShaders = false)
         {
             // Read the J3D Header
             Magic = new string(reader.ReadChars(4));
@@ -76,7 +76,7 @@ namespace JStudio.J3D
             // Skip over an unused tag ("SVR3") which is consistent in all models.
             reader.Skip(16);
 
-            LoadTagDataFromFile(reader, tagCount);
+            LoadTagDataFromFile(reader, tagCount, dumpTextures, dumpShaders);
 
             // Rendering Stuff
             m_hardwareLightBuffer = GL.GenBuffer();
@@ -193,7 +193,7 @@ namespace JStudio.J3D
             m_textureOverrides[textureName] = new Texture(textureName, btiData);
         }
 
-        private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount)
+        private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount, bool dumpTextures, bool dumpShaders)
         {
             for (int i = 0; i < tagCount; i++)
             {
@@ -244,7 +244,7 @@ namespace JStudio.J3D
                     // TEXTURES - Stores binary texture images.
                     case "TEX1":
                         TEX1Tag = new TEX1();
-                        TEX1Tag.LoadTEX1FromStream(reader, tagStart);
+                        TEX1Tag.LoadTEX1FromStream(reader, tagStart, dumpTextures);
                         break;
                     // MODEL - Seems to be bypass commands for Materials and invokes GX registers directly.
                     case "MDL3":
@@ -271,7 +271,7 @@ namespace JStudio.J3D
                     Console.WriteLine("Skipping generating Shader for Unreferenced Material: {0}", material);
                     continue;
                 }
-                material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag);
+                material.Shader = TEVShaderGenerator.GenerateShader(material, MAT3Tag, dumpShaders);
 
                 // Bind the Light Block uniform to the shader
                 GL.BindBufferBase(BufferRangeTarget.UniformBuffer, (int)ShaderUniformBlockIds.LightBlock, m_hardwareLightBuffer);
@@ -667,6 +667,60 @@ namespace JStudio.J3D
                     //m_lineBatcher.DrawBox(center, extents, Quaternion.Identity, WLinearColor.White, 0f, 0f);
                 }
             }
+        }
+
+        public bool Raycast(FRay ray, out float hitDistance, bool returnFirstHit = false)
+        {
+            // Raycast against the bounding box of the entire mesh first to see if we can save ourself a bunch of time.
+            bool hitsAABB = WMath.RayIntersectsAABB(ray, BoundingBox.Min, BoundingBox.Max, out hitDistance);
+
+            if (!hitsAABB)
+                return false;
+
+            // Okay, they've intersected with our big bounding box, so now we'll trace against individual mesh bounding box.
+            // However, if they've applied skinning data to the meshes then these bounding boxes are no longer valid, so this
+            // optimization step only counts if they're not applying any skinning.
+            bool canSkipShapeTriangles = m_currentBoneAnimation == null;
+            bool rayDidHit = false;
+            foreach (var shape in SHP1Tag.Shapes)
+            {
+                if (canSkipShapeTriangles)
+                {
+                    hitsAABB = WMath.RayIntersectsAABB(ray, shape.BoundingBox.Min, shape.BoundingBox.Max, out hitDistance);
+
+                    // If we didn't intersect with this shape, just go onto the next one.
+                    if (!hitsAABB)
+                        continue;
+                }
+
+                // We either intersected with this shape's AABB or they have skinning data applied (and thus we can't skip it),
+                // thus, we're going to test against every (skinned!) triangle in this shape.
+                bool hitTriangle = false;
+                var vertexList = shape.OverrideVertPos.Count > 0 ? shape.OverrideVertPos : shape.VertexData.Position;
+
+                for (int i = 0; i < shape.Indexes.Count; i += 3)
+                {
+                    float triHitDist;
+                    hitTriangle = WMath.RayIntersectsTriangle(ray, vertexList[shape.Indexes[i]], vertexList[shape.Indexes[i + 1]], vertexList[shape.Indexes[i + 2]], true, out triHitDist);
+
+                    // If we hit this triangle and we're OK to just return the first hit on the model, then we can early out.
+                    if (hitTriangle && returnFirstHit)
+                    {
+                        hitDistance = triHitDist;
+                        return true;
+                    }
+
+                    // Otherwise, we need to test to see if this hit is closer than the previous hit.
+                    if (hitTriangle)
+                    {
+                        if (triHitDist < hitDistance)
+                            hitDistance = triHitDist;
+                        rayDidHit = true;
+                    }
+                }
+            }
+
+            return rayDidHit;
         }
 
         protected void OnPropertyChanged(string propertyName)

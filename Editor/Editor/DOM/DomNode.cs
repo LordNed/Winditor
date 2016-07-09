@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace WindEditor
@@ -10,9 +9,12 @@ namespace WindEditor
         public WTransform Transform { get; private set; }
 
         protected List<WDOMNode> m_children;
+        protected WWorld m_world;
 
-        public WDOMNode()
+        public WDOMNode(WWorld world)
         {
+            m_world = world;
+
             m_children = new List<WDOMNode>();
             Transform = new WTransform();
         }

@@ -115,6 +115,17 @@ namespace WindEditor
                 m_undoStack.Push(command);
         }
 
+        /// <summary>
+        /// Calling this function clears both the undo and redo stack. This should be
+        /// used when a map is closed so that we free all references to objects in that
+        /// map.
+        /// </summary>
+        public void Clear()
+        {
+            m_undoStack.Clear();
+            m_redoStack.Clear();
+        }
+
         public void SetUndoLimit(int limit)
         {
             if (limit < 0)

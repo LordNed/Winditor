@@ -576,6 +576,8 @@ namespace JStudio.J3D
             Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
             retVal.TranslateS = stream.ReadSingle();
             retVal.TranslateT = stream.ReadSingle();
+
+            // We know this isn't always an Identity Matrix in the case of some advanced effects, but msot of the time it is identity.
             retVal.Matrix = new OpenTK.Matrix4();
             for (int y = 0; y < 4; y++)
             {
@@ -585,7 +587,7 @@ namespace JStudio.J3D
                 }
             }
 
-            Trace.Assert(retVal.Matrix == OpenTK.Matrix4.Identity);
+            //Trace.Assert(retVal.Matrix == OpenTK.Matrix4.Identity);
 
             return retVal;
         }
