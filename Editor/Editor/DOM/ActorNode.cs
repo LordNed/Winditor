@@ -39,6 +39,7 @@ namespace WindEditor
 
         private SimpleObjRenderer m_objRender;
         private J3D m_actorMesh;
+        private IPropertyValue m_namePropertyValueCache;
 
         public WActorNode(string fourCC, WWorld world) :base(world)
         {
@@ -48,15 +49,17 @@ namespace WindEditor
 
         public void PostFinishedLoad()
         {
+            m_namePropertyValueCache = Properties.Find(x => x.Name == "Name");
+
             if (FourCC == "ACTR" || FourCC == "SCOB" || FourCC == "TGOB")
             {
-                IPropertyValue propVal = Properties.Find(x => x.Name == "Name");
-                if (propVal != null)
+                if (m_namePropertyValueCache != null)
                 {
-                    TStringPropertyValue stringProperty = (TStringPropertyValue)propVal;
+                    TStringPropertyValue stringProperty = (TStringPropertyValue)m_namePropertyValueCache;
                     m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
                 }
             }
+
 
             if (m_actorMesh == null)
             {
@@ -130,5 +133,13 @@ namespace WindEditor
             return largestMax * boundingSphere;
         }
         #endregion
+
+        public override string ToString()
+        {
+            if (m_namePropertyValueCache != null)
+                return string.Format("[{0}] {1}", FourCC, (string)m_namePropertyValueCache.GetValue());
+
+            return FourCC;
+        }
     }
 }

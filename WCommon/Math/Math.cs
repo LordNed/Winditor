@@ -132,7 +132,7 @@ namespace WindEditor
             return true;
         }
 
-        public static bool RayIntersectsTriangle(FRay ray, Vector3 v1, Vector3 v2, Vector3 v3, out float intersectionDistance)
+        public static bool RayIntersectsTriangle(FRay ray, Vector3 v1, Vector3 v2, Vector3 v3, bool oneSided, out float intersectionDistance)
         {
             intersectionDistance = float.MinValue;
 
@@ -141,10 +141,25 @@ namespace WindEditor
             Vector3 e2 = v3 - v1;
 
             // Begin calculating determinant - also used to calculate 'u' parameter
-            Vector3 p = Vector3.Cross(ray.Direction, e2);
+            Vector3 p;
+            Vector3.Cross(ref ray.Direction, ref e2, out p);
 
             // If determinant is near zero, ray lies in plane of triangle/ray is parallel to plane of triangle.
             float det = Vector3.Dot(e1, p);
+
+            if (oneSided)
+            {
+                Vector3 n;
+                Vector3.Cross(ref e2, ref e1, out n);
+                n.NormalizeFast();
+
+                float dirToTri;
+                Vector3.Dot(ref ray.Direction, ref n, out dirToTri);
+
+                // Back-facing surface, early out.
+                if (dirToTri > 0)
+                    return false;
+            }
 
             // No Collision
             if (det > -float.Epsilon && det < float.Epsilon)
@@ -153,26 +168,35 @@ namespace WindEditor
             float inv_det = 1f / det;
 
             // Calculate distance from V1 to ray origin
-            Vector3 t = ray.Origin - v1;
+            Vector3 t;
+            Vector3.Subtract(ref ray.Origin, ref v1, out t);
 
             // Calculate 'u' parameter and test bound
-            float u = Vector3.Dot(t, p) * inv_det;
+            float u;
+            Vector3.Dot(ref t, ref p, out u);
+            u *= inv_det;
 
             // No Collision - Intersection lies outside of the triangle.
             if (u < 0f || u > 1f)
                 return false;
 
             // Prepare to test v parameter
-            Vector3 q = Vector3.Cross(t, e1);
+            Vector3 q;
+            Vector3.Cross(ref t, ref e1, out q);
 
             // Calculate 'v' parameter and test bound
-            float v = Vector3.Dot(ray.Direction, q) * inv_det;
+            float v;
+            Vector3.Dot(ref ray.Direction, ref q, out v);
+            v *= inv_det;
 
             // No Collision - Intersection lies outside of the triangle.
             if (v < 0f || u + v > 1f)
                 return false;
 
-            float dist = Vector3.Dot(e2, q) * inv_det;
+            float dist;
+            Vector3.Dot(ref e2, ref q, out dist);
+            dist *= inv_det;
+
             if (dist > float.Epsilon)
             {
                 intersectionDistance = dist;

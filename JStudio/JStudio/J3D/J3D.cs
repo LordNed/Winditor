@@ -745,10 +745,10 @@ namespace JStudio.J3D
                 for (int i = 0; i < shape.Indexes.Count; i += 3)
                 {
                     float triHitDist;
-                    hitTriangle = WMath.RayIntersectsTriangle(ray, vertexList[shape.Indexes[i]], vertexList[shape.Indexes[i + 1]], vertexList[shape.Indexes[i + 2]], out triHitDist);
+                    hitTriangle = WMath.RayIntersectsTriangle(ray, vertexList[shape.Indexes[i]], vertexList[shape.Indexes[i + 1]], vertexList[shape.Indexes[i + 2]], true, out triHitDist);
 
                     // If we hit this triangle and we're OK to just return the first hit on the model, then we can early out.
-                    if (rayDidHit && returnFirstHit)
+                    if (hitTriangle && returnFirstHit)
                     {
                         hitDistance = triHitDist;
                         return true;
