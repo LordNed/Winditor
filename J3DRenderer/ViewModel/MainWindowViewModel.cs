@@ -84,7 +84,7 @@ namespace J3DRenderer
             {
                 string[] fileNames = new[] { "vr_sky.bdl", "vr_kasumi_mae.bdl", "vr_uso_umi.bdl", "vr_back_cloud.bdl" };
 
-                m_skybox[i] = new J3D();
+                m_skybox[i] = new J3D(fileNames[i]);
                 m_skybox[i].LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/skybox/" + fileNames[i]), Endian.Big));
 
                 if (i == 0)
@@ -111,7 +111,7 @@ namespace J3DRenderer
 
         private void LoadChildLink(GXLight secondLight)
         {
-            m_childLink = new J3D();
+            m_childLink = new J3D("cl");
             m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
             m_childLink.SetHardwareLight(0, m_mainLight);
             m_childLink.SetHardwareLight(1, secondLight);

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using WArchiveTools;
 using WArchiveTools.FileSystem;
 
@@ -102,7 +103,7 @@ namespace WindEditor
             // Now that we finally have the file, we can try to load a J3D from it.
             byte[] j3dData = archiveFile.Data;
 
-            J3D j3d = new J3D();
+            J3D j3d = new J3D(archiveFile.Name);
             using (EndianBinaryReader reader = new EndianBinaryReader(j3dData, Endian.Big))
                 j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
 
@@ -110,6 +111,8 @@ namespace WindEditor
             existRef.FilePath = actorName;
             existRef.Asset = j3d;
             existRef.ReferenceCount++;
+
+            m_j3dList.Add(existRef);
 
             return j3d;
         }
@@ -119,7 +122,7 @@ namespace WindEditor
             var existRef = m_j3dList.Find(x => string.Compare(x.FilePath, filePath, StringComparison.InvariantCultureIgnoreCase) == 0);
             if (existRef == null)
             {
-                J3D j3d = new J3D();
+                J3D j3d = new J3D(Path.GetFileNameWithoutExtension(filePath));
                 using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big))
                     j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
 
@@ -151,6 +154,21 @@ namespace WindEditor
 
             existRef.ReferenceCount++;
             return existRef.Asset;
+        }
+
+        public static void DumpResourceStatistics()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("objList:");
+            for (int i = 0; i < m_objList.Count; i++)
+                sb.AppendFormat("\t{0} [{1}]\n", m_objList[i].FilePath, m_objList[i].ReferenceCount);
+
+            sb.AppendLine();
+            sb.AppendLine("j3dList:");
+            for (int i = 0; i < m_j3dList.Count; i++)
+                sb.AppendFormat("\t{0} [{1}]\n", m_j3dList[i].FilePath, m_j3dList[i].ReferenceCount);
+
+            Console.WriteLine(sb.ToString());
         }
 
         public static void UnloadAllResources()

@@ -21,6 +21,7 @@ namespace JStudio.J3D
         public string Magic { get; protected set; }
         public string StudioType { get; protected set; }
         public string TotalFileSize { get { return string.Format("{0} bytes", m_totalFileSize); } }
+        public string Name { get; protected set; }
         public FAABox BoundingBox { get; protected set; }
         public FSphere BoundingSphere { get; protected set; }
 
@@ -64,6 +65,11 @@ namespace JStudio.J3D
 
         // To detect redundant calls
         private bool m_hasBeenDisposed = false;
+
+        public J3D(string name)
+        {
+            Name = name;
+        }
 
         public void LoadFromStream(EndianBinaryReader reader, bool dumpTextures = false, bool dumpShaders = false)
         {
@@ -753,7 +759,8 @@ namespace JStudio.J3D
                         kvp.Value.Dispose();
 
                     foreach (var material in MAT3Tag.MaterialList)
-                        material.Shader.Dispose();
+                        if(material.Shader != null)
+                            material.Shader.Dispose();
                 }
 
                 GL.DeleteBuffer(m_hardwareLightBuffer);
