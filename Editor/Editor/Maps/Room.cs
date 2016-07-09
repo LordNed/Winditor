@@ -81,7 +81,7 @@ namespace WindEditor
         {
             base.Load(filePath);
 
-            //LoadRoomModels(filePath);
+            LoadRoomModels(filePath);
 
             foreach (var folder in Directory.GetDirectories(filePath))
             {
