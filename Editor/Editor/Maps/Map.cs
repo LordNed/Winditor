@@ -9,7 +9,7 @@ namespace WindEditor
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string FocusedSceneLabel { get { return FocusedScene == null ? "" : FocusedScene is WStage ? "Stage" : string.Format("Room {0}", FocusedScene.Name); } }
+        public string FocusedSceneLabel { get { return FocusedScene == null ? "" : FocusedScene is WStage ? "Stage" : FocusedScene.Name; } }
 
         public WScene FocusedScene
         {
