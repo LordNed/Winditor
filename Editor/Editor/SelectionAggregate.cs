@@ -7,6 +7,54 @@ namespace WindEditor
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string FourCC
+        {
+            get
+            {
+                string fourCC = string.Empty;
+                if (m_selectionList.Count > 0)
+                    fourCC = m_selectionList[0].FourCC;
+
+                for(int i = 0; i < m_selectionList.Count; i++)
+                {
+                    if(m_selectionList[i].FourCC != fourCC)
+                    {
+                        fourCC = "--";
+                        break;
+                    }
+                }
+
+                return fourCC;
+            }
+        }
+
+        public MapLayer? Layer
+        {
+            get
+            {
+                MapLayer layer = MapLayer.Default;
+                if (m_selectionList.Count > 0)
+                    layer = m_selectionList[0].Layer;
+
+                for (int i = 0; i < m_selectionList.Count; i++)
+                {
+                    if (m_selectionList[i].Layer != layer)
+                    {
+                        return null;
+                    }
+                }
+
+                return layer;
+            }
+            set
+            {
+                if (value == null)
+                    return;
+
+                for (int i = 0; i < m_selectionList.Count; i++)
+                    m_selectionList[i].Layer = (MapLayer)value;
+            }
+        }
         public BindingList<IPropertyValueAggregate> Values
         {
             get
@@ -23,6 +71,7 @@ namespace WindEditor
             }
         }
 
+
         private BindingList<WActorNode> m_selectionList;
 
         public WEditorSelectionAggregate(BindingList<WActorNode> selectionList)
@@ -35,6 +84,8 @@ namespace WindEditor
         {
             m_selectionList.Clear();
             OnPropertyChanged("Values");
+            OnPropertyChanged("FourCC");
+            OnPropertyChanged("Layer");
         }
 
         private void SelectionList_ListChanged(object sender, ListChangedEventArgs e)
@@ -42,6 +93,8 @@ namespace WindEditor
             if(e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.Reset)
             {
                 OnPropertyChanged("Values");
+                OnPropertyChanged("FourCC");
+                OnPropertyChanged("Layer");
             }
         }
 

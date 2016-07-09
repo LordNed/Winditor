@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindEditor"
+        xmlns:wpf="clr-namespace:WindEditor.WPF;assembly=WCommon"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="890" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
@@ -103,7 +104,7 @@
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
-                                
+
                             </Grid>
                         </Grid>
                         <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
@@ -120,31 +121,41 @@
                     </Grid>
                 </Grid>
 
-                <GroupBox Grid.Column="1" Header="GroupBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
-                    <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                <Setter Property="Padding" Value="0"/>
-                                <Setter Property="Margin" Value="0"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="80"/>
-                                <GridViewColumn Header="Value" CellTemplateSelector="{StaticResource PropertyValueTemplateSelector}">
-                                    <!-- We need to use a custom converter and some binding magic to force the Value column to take up all of the remaining space.-->
-                                    <GridViewColumn.Width>
-                                        <MultiBinding Converter="{StaticResource LastColumnMaximizerConverter}">
-                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ListView}"/>
-                                            <Binding Path="View.Columns" RelativeSource="{RelativeSource AncestorType=ListView}"/>
-                                        </MultiBinding>
-                                    </GridViewColumn.Width>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
+                <DockPanel Grid.Column="1" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <Label DockPanel.Dock="Left" Content="FourCC:"/>
+                        <Label DockPanel.Dock="Right" HorizontalContentAlignment="Right" Content="{Binding Path=SelectedObjects.FourCC}"/>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <Label DockPanel.Dock="Left" Content="Layer:"/>
+                        <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
+                    </DockPanel>
+                    <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="Padding" Value="0"/>
+                                    <Setter Property="Margin" Value="0"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="80"/>
+                                    <GridViewColumn Header="Value" CellTemplateSelector="{StaticResource PropertyValueTemplateSelector}">
+                                        <!-- We need to use a custom converter and some binding magic to force the Value column to take up all of the remaining space.-->
+                                        <GridViewColumn.Width>
+                                            <MultiBinding Converter="{StaticResource LastColumnMaximizerConverter}">
+                                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ListView}"/>
+                                                <Binding Path="View.Columns" RelativeSource="{RelativeSource AncestorType=ListView}"/>
+                                            </MultiBinding>
+                                        </GridViewColumn.Width>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+                </DockPanel>
             </Grid>
         </Grid>
     </Grid>
