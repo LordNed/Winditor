@@ -32,17 +32,19 @@ namespace JStudio.J3D
         {
             public class SkinDataTable
             {
+                public int Unknown0 { get; private set; }
                 public int FirstRelevantVertexIndex;
                 public int LastRelevantVertexIndex;
                 public List<ushort> MatrixTable { get; private set; }
 
-                public SkinDataTable(int firstVertexIndex)
+                public SkinDataTable(int unknown0)
                 {
-                    FirstRelevantVertexIndex = firstVertexIndex;
+                    Unknown0 = unknown0;
                     MatrixTable = new List<ushort>();
                 }
             }
 
+            public byte MatrixType { get; set; }
             public float BoundingSphereDiameter { get; set; }
             public FAABox BoundingBox { get; set; }
             public List<ShapeVertexAttribute> Attributes { get; internal set; }
@@ -238,8 +240,8 @@ namespace JStudio.J3D
 
                 reader.BaseStream.Position = tagStart + shapeOffset + (0x28 * s) /* 0x28 is the size of one Shape entry*/;
                 long shapeStart = reader.BaseStream.Position;
-
-                byte matrixType = reader.ReadByte();
+                Shape shape = new Shape();
+                shape.MatrixType = reader.ReadByte();
                 Trace.Assert(reader.ReadByte() == 0xFF); // Padding
 
                 // Number of Packets (of data) contained in this Shape
@@ -268,7 +270,6 @@ namespace JStudio.J3D
                     attributes.Add(attribute);
                 } while (true);
 
-                Shape shape = new Shape();
                 shape.BoundingSphereDiameter = boundingSphereDiameter;
                 shape.BoundingBox = new FAABox(bboxMin, bboxMax);
                 shape.Attributes = attributes;
