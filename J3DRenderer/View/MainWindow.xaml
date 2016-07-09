@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:J3DRenderer"
         xmlns:jstudio="clr-namespace:JStudio.J3D;assembly=JStudio"
+        xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded">
     <Window.DataContext>
@@ -171,6 +172,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -211,8 +213,29 @@
                 </Grid>
 
                 <GridSplitter Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
-
                 <Grid Grid.Row="2">
+                    <GroupBox Header="TEV Color Overrides">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TextBlock Padding="2" Text="TEV supports two forms of color overrides. The first override is the default values of the TEV Registers. These can be sampled in a material, and are overwritten by each TEV stage. The second override is the TEV Constants which cannot be changed during the TEV stages." TextWrapping="wrap"/>
+                            <TextBlock Padding="2" Text="Various materials may/may not be configured to sample 0 or more of the various overrides." TextWrapping="wrap"/>
+                            <Separator/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox x:Name="Color0" Grid.Row="0" Grid.Column="0" IsChecked="True" Content="Override Color 0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="0" Grid.Column="1" IsEnabled="{Binding ElementName=Color0, Path=IsChecked}" DockPanel.Dock="Right" ColorMode="ColorCanvas" ShowAdvancedButton="False" MinWidth="80" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+                <Grid Grid.Row="3">
                     <GroupBox Header="High Resolution Screenshot" DataContext="{Binding Path=HighResScreenshot}">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <TextBlock Padding="2" Text="The slider below sets the multiplier for the resolution of the current viewport. High multipliers may not be supported on all graphics cards, and may cause the application to crash. Screenshots are saved next to the application directory." TextWrapping="wrap"/>
