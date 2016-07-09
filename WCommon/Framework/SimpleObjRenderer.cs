@@ -7,7 +7,7 @@ using JStudio.OpenGL;
 
 namespace WindEditor
 {
-    public class SimpleObjRenderer
+    public class SimpleObjRenderer : IDisposable
     {
         struct UniqueVertex
         {
@@ -29,6 +29,10 @@ namespace WindEditor
         private int m_triangleCount;
 
         private FAABox m_boundingBox;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false;
+
 
         public SimpleObjRenderer(Obj file)
         {
@@ -90,7 +94,7 @@ namespace WindEditor
                 positions[i] = uniqueVerts[i].Position;
                 m_boundingBox.Encapsulate(positions[i]);
 
-                if (texcoords != null) texcoords[i] = new Vector2(uniqueVerts[i].TexCoord.X, 1-uniqueVerts[i].TexCoord.Y);
+                if (texcoords != null) texcoords[i] = new Vector2(uniqueVerts[i].TexCoord.X, 1 - uniqueVerts[i].TexCoord.Y);
                 if (normals != null) normals[i] = uniqueVerts[i].Normal;
             }
 
@@ -146,17 +150,6 @@ namespace WindEditor
             return m_boundingBox;
         }
 
-        public void ReleaseResources()
-        {
-            GL.DeleteBuffer(m_vertexVBO);
-            GL.DeleteBuffer(m_indexVBO);
-            GL.DeleteTexture(m_textureVBO);
-            if (m_texcoordVBO >= 0) GL.DeleteBuffer(m_texcoordVBO);
-            if (m_normalVBO >= 0) GL.DeleteBuffer(m_normalVBO);
-            m_unhighlightedShader.Dispose();
-            m_highlightedShader.Dispose();
-        }
-
         public void Render(Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
             GL.FrontFace(FrontFaceDirection.Cw);
@@ -205,7 +198,7 @@ namespace WindEditor
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_indexVBO);
 
             // Draw!
-            GL.DrawElements(BeginMode.Triangles, m_triangleCount/3, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(BeginMode.Triangles, m_triangleCount / 3, DrawElementsType.UnsignedInt, 0);
 
             // Disable all of our shit.
             GL.Disable(EnableCap.Blend);
@@ -216,5 +209,45 @@ namespace WindEditor
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Normal);
             GL.BindTexture(TextureTarget.Texture2D, -1);
         }
+
+        #region IDisposable Support
+        ~SimpleObjRenderer()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool manualDispose)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (manualDispose)
+                {
+                    // Dispose managed state (managed objects).
+                    m_unhighlightedShader.Dispose();
+                    m_highlightedShader.Dispose();
+                }
+
+                // Free unmanaged resources (unmanaged objects) and override a finalizer below.
+                GL.DeleteBuffer(m_vertexVBO);
+                GL.DeleteBuffer(m_indexVBO);
+                GL.DeleteBuffer(m_normalVBO);
+                GL.DeleteBuffer(m_texcoordVBO);
+                GL.DeleteTexture(m_textureVBO);
+
+                // Set large fields to null.
+
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

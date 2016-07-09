@@ -113,7 +113,6 @@
     </ApplicationDefinition>
     <Compile Include="Framework\FrameBuffer.cs" />
     <Compile Include="Framework\LineBatcher.cs" />
-    <Compile Include="Framework\Obj.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ScreenspaceQuad.cs" />
     <Page Include="View\MainWindow.xaml">
@@ -126,7 +125,6 @@
     </Compile>
     <Compile Include="Framework\Camera.cs" />
     <Compile Include="Framework\Input.cs" />
-    <Compile Include="Framework\SimpleObjRenderer.cs" />
     <Compile Include="ViewModel\HighresScreenshotViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

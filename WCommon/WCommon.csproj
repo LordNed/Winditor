@@ -54,8 +54,11 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Framework\Obj.cs" />
+    <Compile Include="Framework\Shader.cs" />
     <Compile Include="LinearColor.cs" />
     <Compile Include="Math\AABox.cs" />
     <Compile Include="Math\Frustum.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Math\Ray.cs" />
     <Compile Include="Math\Rect.cs" />
     <Compile Include="Math\Sphere.cs" />
+    <Compile Include="Framework\SimpleObjRenderer.cs" />
     <Compile Include="Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WPF\LinearToSystemColorConverter.cs" />

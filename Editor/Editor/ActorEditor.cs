@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,8 +63,8 @@ namespace WindEditor
                 // Click w/o Modifiers = Clear Selection, add result to selection
                 // Click /w Ctrl = Toggle Selection State
                 // Click /w Shift = Add to Selection
-                bool ctrlPressed = WInput.GetKey(System.Windows.Input.Key.LeftCtrl) || WInput.GetKey(System.Windows.Input.Key.RightCtrl);
-                bool shiftPressed = WInput.GetKey(System.Windows.Input.Key.LeftShift) || WInput.GetKey(System.Windows.Input.Key.RightShift);
+                bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
+                bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
 
                 if (!ctrlPressed & !shiftPressed)
                 {

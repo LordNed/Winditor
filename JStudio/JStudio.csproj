@@ -83,7 +83,6 @@
     <Compile Include="JStudio\J3D\TEX1.cs" />
     <Compile Include="JStudio\J3D\VertexDescription.cs" />
     <Compile Include="JStudio\J3D\VTX1.cs" />
-    <Compile Include="JStudio\Shader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

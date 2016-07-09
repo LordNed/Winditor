@@ -32,7 +32,7 @@ namespace WindEditor
         All,
     }
 
-    class WTransformGizmo : IRenderable
+    class WTransformGizmo : IRenderable, IDisposable
     {
         public FSelectedAxes SelectedAxes { get { return m_selectedAxes; } }
         public FTransformMode Mode { get { return m_mode; } }
@@ -115,6 +115,10 @@ namespace WindEditor
         // hack...
         private SimpleObjRenderer[][] m_gizmoMeshes;
         private WWorld m_world;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false; 
+
 
         public WTransformGizmo(WWorld parentWorld)
         {
@@ -794,6 +798,44 @@ namespace WindEditor
                     largestMax = lScale[i];
 
             return largestMax * 25f; // Undersize it for now.
+        }
+        #endregion
+
+        #region IDisposable Support
+        ~WTransformGizmo()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool manualDispose)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (manualDispose)
+                {
+                    // Dispose managed state (managed objects).'
+                    for(int i = 0; i < m_gizmoMeshes.Length; i++)
+                    {
+                        for (int j = 0; j < m_gizmoMeshes[i].Length; j++)
+                            m_gizmoMeshes[i][j].Dispose();
+                    }
+                }
+
+                // Free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // Set large fields to null.
+                m_gizmoMeshes = null;
+
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
         #endregion
     }

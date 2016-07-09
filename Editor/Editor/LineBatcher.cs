@@ -312,7 +312,7 @@ namespace WindEditor
                 if (manualDispose)
                 {
                     // Dispose managed state (managed objects).
-                    m_primitiveShader.ReleaseResources();
+                    m_primitiveShader.Dispose();
                 }
 
                 // Free unmanaged resources (unmanaged objects) and override a finalizer below.
