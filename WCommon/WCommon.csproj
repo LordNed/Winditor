@@ -51,6 +51,8 @@
     <Reference Include="OpenTK">
       <HintPath>..\lib\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +66,7 @@
     <Compile Include="Math\Sphere.cs" />
     <Compile Include="Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WPF\LinearToSystemColorConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

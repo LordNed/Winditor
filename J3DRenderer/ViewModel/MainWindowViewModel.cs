@@ -112,7 +112,7 @@ namespace J3DRenderer
         private void LoadChildLink(GXLight secondLight)
         {
             m_childLink = new J3D();
-            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big));
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/map.bmd"), Endian.Big));
             m_childLink.SetHardwareLight(0, m_mainLight);
             m_childLink.SetHardwareLight(1, secondLight);
             m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
@@ -251,7 +251,7 @@ namespace J3DRenderer
             m_viewportWidth = width;
             m_viewportHeight = height;
             m_renderCamera.AspectRatio = width / (float)height;
-            m_frameBuffer.ResizeBuffer(width/4, height/4);
+            m_frameBuffer.ResizeBuffer(width, height);
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e)

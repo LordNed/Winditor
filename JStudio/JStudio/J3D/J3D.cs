@@ -14,54 +14,6 @@ using WindEditor;
 
 namespace JStudio.J3D
 {
-    public class TevColorOverride
-    {
-        private WLinearColor[] m_colors;
-        private WLinearColor[] m_kColors;
-        private bool[] m_colorsEnabled;
-        private bool[] m_kColorsEnabled;
-
-        public TevColorOverride()
-        {
-            m_colors = new WLinearColor[4];
-            m_kColors = new WLinearColor[4];
-            m_colorsEnabled = new bool[4];
-            m_kColorsEnabled = new bool[4];
-        }
-
-        public void SetTevColorOverride(int index, WLinearColor overrideColor)
-        {
-            if (index < 0 || index >= 4)
-                throw new ArgumentOutOfRangeException("index", "index must be between 0 and 3");
-
-            m_colors[index] = overrideColor;
-            m_colorsEnabled[index] = true;
-        }
-
-        public void SetTevkColorOverride(int index, WLinearColor overrideColor)
-        {
-            if (index < 0 || index >= 4)
-                throw new ArgumentOutOfRangeException("index", "index must be between 0 and 3");
-
-            m_kColors[index] = overrideColor;
-            m_kColorsEnabled[index] = true;
-        }
-
-        public PSBlock SetPSBlockForMaterial(Material srcMaterial, ref PSBlock psBlock)
-        {
-            psBlock.Color0 = m_colorsEnabled[0] ? m_colors[0] : srcMaterial.TevColorIndexes[0];
-            psBlock.Color1 = m_colorsEnabled[1] ? m_colors[1] : srcMaterial.TevColorIndexes[1];
-            psBlock.Color2 = m_colorsEnabled[2] ? m_colors[2] : srcMaterial.TevColorIndexes[2];
-            psBlock.Color3 = m_colorsEnabled[3] ? m_colors[3] : srcMaterial.TevColorIndexes[3];
-
-            psBlock.kColor0 = m_kColorsEnabled[0] ? m_kColors[0] : srcMaterial.TevKonstColorIndexes[0];
-            psBlock.kColor1 = m_kColorsEnabled[1] ? m_kColors[1] : srcMaterial.TevKonstColorIndexes[1];
-            psBlock.kColor2 = m_kColorsEnabled[2] ? m_kColors[2] : srcMaterial.TevKonstColorIndexes[2];
-            psBlock.kColor3 = m_kColorsEnabled[3] ? m_kColors[3] : srcMaterial.TevKonstColorIndexes[3];
-            return psBlock;
-        }
-    }
-
     public partial class J3D : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -71,6 +23,8 @@ namespace JStudio.J3D
         public string TotalFileSize { get { return string.Format("{0} bytes", m_totalFileSize); } }
         public FAABox BoundingBox { get; protected set; }
         public FSphere BoundingSphere { get; protected set; }
+
+        public TevColorOverride TevColorOverrides { get { return m_tevColorOverrides; } }
 
         public INF1 INF1Tag { get; protected set; }
         public VTX1 VTX1Tag { get; protected set; }

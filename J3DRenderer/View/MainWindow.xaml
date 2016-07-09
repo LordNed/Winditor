@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:J3DRenderer"
+        xmlns:wcommon="clr-namespace:WindEditor.WPF;assembly=WCommon"
         xmlns:jstudio="clr-namespace:JStudio.J3D;assembly=JStudio"
         xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
@@ -11,6 +12,10 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <wcommon:LinearToSystemColorConverter x:Key="LinearToSystemColorConverter"/>
+    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -214,23 +219,61 @@
 
                 <GridSplitter Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 <Grid Grid.Row="2">
-                    <GroupBox Header="TEV Color Overrides">
+                    <GroupBox Header="TEV Color Overrides" DataContext="{Binding Path=LoadedModel.TevColorOverrides}">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <TextBlock Padding="2" Text="TEV supports two forms of color overrides. The first override is the default values of the TEV Registers. These can be sampled in a material, and are overwritten by each TEV stage. The second override is the TEV Constants which cannot be changed during the TEV stages." TextWrapping="wrap"/>
                             <TextBlock Padding="2" Text="Various materials may/may not be configured to sample 0 or more of the various overrides." TextWrapping="wrap"/>
                             <Separator/>
+                            <!-- TEV Register Colors-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <CheckBox x:Name="Color0" Grid.Row="0" Grid.Column="0" IsChecked="True" Content="Override Color 0"/>
-                                <wpfToolkit:ColorPicker Grid.Row="0" Grid.Column="1" IsEnabled="{Binding ElementName=Color0, Path=IsChecked}" DockPanel.Dock="Right" ColorMode="ColorCanvas" ShowAdvancedButton="False" MinWidth="80" HorizontalAlignment="Right"/>
+                                <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{Binding Path=ColorsEnabled[0]}" Content="Color 0" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Path=ColorsEnabled[0]}" SelectedColor="{Binding Path=Colors[0], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+
+                                <CheckBox Grid.Row="0" Grid.Column="2" IsChecked="{Binding Path=ColorsEnabled[1]}" Content="Color 1" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="0" Grid.Column="3" IsEnabled="{Binding Path=ColorsEnabled[1]}" SelectedColor="{Binding Path=Colors[1], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+
+                                <CheckBox Grid.Row="1" Grid.Column="0" IsChecked="{Binding Path=ColorsEnabled[2]}" Content="Color 2" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="1" Grid.Column="1" IsEnabled="{Binding Path=ColorsEnabled[2]}" SelectedColor="{Binding Path=Colors[2], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+
+                                <CheckBox Grid.Row="1" Grid.Column="2" IsChecked="{Binding Path=ColorsEnabled[3]}" Content="Color 3" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="1" Grid.Column="3" IsEnabled="{Binding Path=ColorsEnabled[3]}" SelectedColor="{Binding Path=Colors[3], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+                            </Grid>
+                            <Separator/>
+                            <!-- TEV Const Colors -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{Binding Path=ConstColorsEnabled[0]}" Content="kColor 0" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="0" Grid.Column="1" IsEnabled="{Binding Path=ConstColorsEnabled[0]}" SelectedColor="{Binding Path=ConstColors[0], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+
+                                <CheckBox Grid.Row="0" Grid.Column="2" IsChecked="{Binding Path=ConstColorsEnabled[1]}" Content="kColor 1" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="0" Grid.Column="3" IsEnabled="{Binding Path=ConstColorsEnabled[1]}" SelectedColor="{Binding Path=ConstColors[1], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+
+                                <CheckBox Grid.Row="1" Grid.Column="0" IsChecked="{Binding Path=ConstColorsEnabled[2]}" Content="kColor 2" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="1" Grid.Column="1" IsEnabled="{Binding Path=ConstColorsEnabled[2]}" SelectedColor="{Binding Path=ConstColors[2], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
+
+                                <CheckBox Grid.Row="1" Grid.Column="2" IsChecked="{Binding Path=ConstColorsEnabled[3]}" Content="kColor 3" Margin="3,3,0,0"/>
+                                <wpfToolkit:ColorPicker Grid.Row="1" Grid.Column="3" IsEnabled="{Binding Path=ConstColorsEnabled[3]}" SelectedColor="{Binding Path=ConstColors[3], Converter={StaticResource LinearToSystemColorConverter}}" ColorMode="ColorCanvas" ShowAdvancedButton="False" HorizontalAlignment="Stretch"/>
                             </Grid>
                         </StackPanel>
                     </GroupBox>

@@ -79,6 +79,7 @@
     <Compile Include="JStudio\J3D\ShaderGen\VertexShaderGen.cs" />
     <Compile Include="JStudio\J3D\SHP1.cs" />
     <Compile Include="JStudio\J3D\StringTable.cs" />
+    <Compile Include="JStudio\J3D\TevColorOverrides.cs" />
     <Compile Include="JStudio\J3D\TEX1.cs" />
     <Compile Include="JStudio\J3D\VertexDescription.cs" />
     <Compile Include="JStudio\J3D\VTX1.cs" />
