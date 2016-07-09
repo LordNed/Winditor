@@ -155,6 +155,8 @@ namespace WindEditor
 
         public static void UnloadAllResources()
         {
+            Console.WriteLine("ResourceManager::UnloadAllResources()");
+
             foreach (var j3d in m_j3dList)
                 j3d.Asset.Dispose();
 

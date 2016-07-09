@@ -70,9 +70,6 @@ namespace WindEditor
         public override void Tick(float deltaTime)
         {
             base.Tick(deltaTime);
-
-            var bbox = GetBoundingBox();
-            m_world.DebugDrawBox(bbox.Center, (bbox.Max-bbox.Min)/2, Transform.Rotation, (Flags & ActorFlags.Selected) == ActorFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
         }
 
         public override FAABox GetBoundingBox()
@@ -101,6 +98,9 @@ namespace WindEditor
 
         void IRenderable.Draw(WSceneView view)
         {
+            var bbox = GetBoundingBox();
+            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & ActorFlags.Selected) == ActorFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+
             Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 
             if (m_actorMesh != null)
