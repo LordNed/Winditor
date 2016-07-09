@@ -38,14 +38,14 @@ namespace WindEditor
         }
 
         private static List<TSharedRef<J3D>> m_j3dList = new List<TSharedRef<J3D>>();
-        private static List<TSharedRef<Obj>> m_objList = new List<TSharedRef<Obj>>();
+        private static List<TSharedRef<SimpleObjRenderer>> m_objList = new List<TSharedRef<SimpleObjRenderer>>();
 
         private static Dictionary<string, WActorDescriptor> m_actorDescriptors;
 
         static WResourceManager()
         {
             m_j3dList = new List<TSharedRef<J3D>>();
-            m_objList = new List<TSharedRef<Obj>>();
+            m_objList = new List<TSharedRef<SimpleObjRenderer>>();
 
             // We're going to laod the actor descriptors from the json data, and then store them in a 
             // dictionary which is looked up by the Actor Name. This should give us a quick lookup time.
@@ -134,7 +134,7 @@ namespace WindEditor
             return existRef.Asset;
         }
 
-        public static Obj LoadObjResource(string filePath)
+        public static SimpleObjRenderer LoadObjResource(string filePath)
         {
             var existRef = m_objList.Find(x => string.Compare(x.FilePath, filePath, StringComparison.InvariantCultureIgnoreCase) == 0);
             if (existRef == null)
@@ -142,9 +142,9 @@ namespace WindEditor
                 Obj obj = new Obj();
                 obj.Load(filePath);
 
-                existRef = new TSharedRef<Obj>();
+                existRef = new TSharedRef<SimpleObjRenderer>();
                 existRef.FilePath = filePath;
-                existRef.Asset = obj;
+                existRef.Asset = new SimpleObjRenderer(obj);
 
                 m_objList.Add(existRef);
             }
@@ -156,12 +156,12 @@ namespace WindEditor
         public static void UnloadAllResources()
         {
             foreach (var j3d in m_j3dList)
-                //j3d.Asset.Dispose();
+                j3d.Asset.Dispose();
 
-                foreach (var obj in m_objList)
-                    //obj.Asset.Dispose();
+            foreach (var obj in m_objList)
+                obj.Asset.Dispose();
 
-                    m_actorDescriptors.Clear();
+            m_actorDescriptors.Clear();
         }
     }
 }

@@ -63,8 +63,7 @@ namespace WindEditor
 
             if (m_actorMesh == null)
             {
-                Obj objRef = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
-                m_objRender = new SimpleObjRenderer(objRef);
+                m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
             }
         }
 

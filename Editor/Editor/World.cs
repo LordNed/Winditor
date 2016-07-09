@@ -10,8 +10,8 @@ namespace WindEditor
         public WMap Map { get { return m_currentMap; } }
         public WUndoStack UndoStack { get { return m_undoStack; } }
         public WActorEditor ActorEditor { get { return m_actorEditor; } }
-        private List<WSceneView> m_sceneViews = new List<WSceneView>();
 
+        private List<WSceneView> m_sceneViews;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
         private WActorEditor m_actorEditor;
@@ -24,6 +24,8 @@ namespace WindEditor
             m_persistentLines = new WLineBatcher();
             m_undoStack = new WUndoStack();
             m_actorEditor = new WActorEditor(this);
+
+            m_sceneViews = new List<WSceneView>();
 
             WSceneView perspectiveView = new WSceneView();
             m_sceneViews.AddRange(new[] { perspectiveView });
@@ -127,6 +129,10 @@ namespace WindEditor
             // Unload any loaded resources and free all associated memory.
             WResourceManager.UnloadAllResources();
 
+            foreach (var view in m_sceneViews)
+                view.Dispose();
+
+            m_actorEditor.Dispose();
 
             m_persistentLines.Dispose();
         }

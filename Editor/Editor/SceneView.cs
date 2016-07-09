@@ -1,5 +1,6 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 
 namespace WindEditor
@@ -7,7 +8,7 @@ namespace WindEditor
     /// <summary>
     /// A scene view represents a particular viewport into a given <see cref="WWorld"/>. This allows us to have multiple views into a single world.
     /// </summary>
-    public class WSceneView
+    public class WSceneView : IDisposable
     {
         public bool IsFocused { get; set; }
 
@@ -22,6 +23,9 @@ namespace WindEditor
 
         private List<IRenderable> m_opaqueRenderList;
         private List<IRenderable> m_transparentRenderList;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false;
 
         public WSceneView()
         {
@@ -195,5 +199,38 @@ namespace WindEditor
 
             return newRect;
         }
+
+        #region IDisposable Support
+        ~WSceneView()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed state (managed objects).
+                    m_orientationWidget.Dispose();
+                }
+
+                // Free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // Set large fields to null.
+
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

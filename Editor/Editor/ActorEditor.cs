@@ -8,7 +8,7 @@ using WindEditor.Serialization;
 
 namespace WindEditor
 {
-    public class WActorEditor
+    public class WActorEditor : IDisposable
     {
         public WEditorSelectionAggregate SelectedObjects { get; protected set; }
         public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => m_selectionList.Count > 0); } }
@@ -27,6 +27,10 @@ namespace WindEditor
 
         private WTransformGizmo m_transformGizmo;
         private BindingList<WActorNode> m_selectionList;
+
+        // To detect redundant calls
+        private bool m_hasBeenDisposed = false;
+
 
         public WActorEditor(WWorld world)
         {
@@ -395,5 +399,38 @@ namespace WindEditor
 
             return serializedObjects;
         }
+
+        #region IDisposable Support
+        ~WActorEditor()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool manualDispose)
+        {
+            if (!m_hasBeenDisposed)
+            {
+                if (manualDispose)
+                {
+                    // Dispose managed state (managed objects).
+                    m_transformGizmo.Dispose();
+                }
+
+                // Free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // Set large fields to null.
+
+                m_hasBeenDisposed = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
