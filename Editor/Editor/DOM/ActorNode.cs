@@ -47,6 +47,22 @@ namespace WindEditor
             FourCC = fourCC;
         }
 
+        public bool TryGetValue<T>(string propertyName, out T value)
+        {
+            IPropertyValue prop = Properties.Find(x => x.Name == propertyName);
+            if(prop != null)
+            {
+                try
+                {
+                    value = (T)prop.GetValue();
+                    return true;
+                }
+                catch(Exception /*ex*/) { }
+            }
+
+            value = default(T);
+            return false;
+        }
         public void PostFinishedLoad()
         {
             m_namePropertyValueCache = Properties.Find(x => x.Name == "Name");

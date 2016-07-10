@@ -72,6 +72,9 @@ namespace WindEditor
                     if (room != null)
                         room.MemoryAllocation = allocTable[i].MemorySize;
                 }
+
+                // Extract our EnvR data.
+                var envrData = sceneData.GetLightingData();
             }
         }
     }
