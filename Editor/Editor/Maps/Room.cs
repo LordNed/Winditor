@@ -68,6 +68,7 @@ namespace WindEditor
         public int RoomIndex { get; protected set; }
         public int MemoryAllocation { get; set; }
         public WRoomTransform RoomTransform { get; set; }
+        public EnvironmentLighting EnvironmentLighting { get; set; }
 
         private List<J3D> m_roomModels;
 

@@ -8,7 +8,7 @@ namespace WindEditor
     {
         private WSkyboxNode m_skybox;
 
-        public WStage(WWorld world):base(world)
+        public WStage(WWorld world) : base(world)
         {
 
         }
@@ -25,7 +25,7 @@ namespace WindEditor
                     case "dzs":
                         {
                             string fileName = Path.Combine(folder, "stage.dzs");
-                            if(File.Exists(fileName))
+                            if (File.Exists(fileName))
                                 LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
@@ -44,7 +44,7 @@ namespace WindEditor
         public void PostLoadProcessing(string mapDirectory, List<WRoom> mapRooms)
         {
             string dzsFilePath = Path.Combine(mapDirectory, "Stage/dzs/stage.dzs");
-            if(File.Exists(dzsFilePath))
+            if (File.Exists(dzsFilePath))
             {
                 SceneDataLoader sceneData = new SceneDataLoader(dzsFilePath, m_world);
                 // Load Room Translation info. Wind Waker stores collision and entities in world-space coordinates,
@@ -54,7 +54,7 @@ namespace WindEditor
                 if (mapRooms.Count != multTable.Count)
                     Console.WriteLine("WStage: Mismatched number of entries in Mult Table ({0}) and number of loaded rooms ({1})!", multTable.Count, mapRooms.Count);
 
-                for(int i = 0; i < multTable.Count; i++)
+                for (int i = 0; i < multTable.Count; i++)
                 {
                     WRoom room = mapRooms.Find(x => x.RoomIndex == multTable[i].RoomNumber);
                     if (room != null)
@@ -66,7 +66,7 @@ namespace WindEditor
                 if (mapRooms.Count != allocTable.Count)
                     Console.WriteLine("WStage: Mismatched number of entries in Meco Table ({0}) and number of loaded rooms ({1})!", allocTable.Count, mapRooms.Count);
 
-                for(int i = 0; i < allocTable.Count; i++)
+                for (int i = 0; i < allocTable.Count; i++)
                 {
                     WRoom room = mapRooms.Find(x => allocTable[i].RoomIndex == x.RoomIndex);
                     if (room != null)
@@ -75,6 +75,17 @@ namespace WindEditor
 
                 // Extract our EnvR data.
                 var envrData = sceneData.GetLightingData();
+
+                // This doesn't always match up, as sea has 52 EnvR entries but only 50 rooms, but meh.
+                if (mapRooms.Count != envrData.Count)
+                    Console.WriteLine("WStage: Mismatched number of entries in Envr ({0}) and number of loaded rooms ({1})!", envrData.Count, mapRooms.Count);
+
+                for (int i = 0; i < envrData.Count; i++)
+                {
+                    WRoom room = mapRooms.Find(x => x.RoomIndex == i);
+                    if (room != null)
+                        room.EnvironmentLighting = envrData[i];
+                }
             }
         }
     }
