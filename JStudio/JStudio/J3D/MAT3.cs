@@ -17,7 +17,7 @@ namespace JStudio.J3D
         public GXCullMode CullModeIndex { get; internal set; }
         public byte NumChannelControlsIndex { get; internal set; }
         public byte NumTexGensIndex { get; internal set; }
-        public byte NumTevStagesIndex { get; internal set; }
+        public byte NumTevStages { get; internal set; }
         public bool ZCompLocIndex { get; internal set; }
         public ZMode ZModeIndex { get; internal set; }
         public bool DitherIndex { get; internal set; }
@@ -241,7 +241,7 @@ namespace JStudio.J3D
                 material.CullModeIndex = ReadEntry(reader, ReadCullMode, chunkStart, offsets, 4, reader.ReadByte(), 4);
                 material.NumChannelControlsIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 6, reader.ReadByte(), 1);
                 material.NumTexGensIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 10, reader.ReadByte(), 1);
-                material.NumTevStagesIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 19, reader.ReadByte(), 1);
+                material.NumTevStages = ReadEntry(reader, ReadByte, chunkStart, offsets, 19, reader.ReadByte(), 1);
                 material.ZCompLocIndex = ReadEntry(reader, ReadBool, chunkStart, offsets, 27, reader.ReadByte(), 1);
                 material.ZModeIndex = ReadEntry(reader, ReadZMode, chunkStart, offsets, 26, reader.ReadByte(), 4);
                 material.DitherIndex = ReadEntry(reader, ReadBool, chunkStart, offsets, 28, reader.ReadByte(), 1);

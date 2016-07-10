@@ -22,8 +22,8 @@ namespace JStudio.J3D
 
         public TevColorOverride()
         {
-            m_colors = new ObservableCollection<WLinearColor>(new[] { WLinearColor.White, WLinearColor.White, WLinearColor.White });
-            m_kColors = new ObservableCollection<WLinearColor>(new[] { WLinearColor.White, WLinearColor.White, WLinearColor.White });
+            m_colors = new ObservableCollection<WLinearColor>(new[] { WLinearColor.White, WLinearColor.White, WLinearColor.White, WLinearColor.White });
+            m_kColors = new ObservableCollection<WLinearColor>(new[] { WLinearColor.White, WLinearColor.White, WLinearColor.White, WLinearColor.White });
             m_colorsEnabled = new ObservableCollection<bool>(new[] { false, false, false, false });
             m_kColorsEnabled = new ObservableCollection<bool>(new[] { false, false, false, false });
         }
