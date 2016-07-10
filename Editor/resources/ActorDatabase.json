@@ -769,9 +769,25 @@
  },
  {
    "Archive Name": "Dalways",
-   "Actor Name": "N/A",
+   "Actor Name": "takara",
    "English Name": "Contains resources that are always loaded for dungeons.",
-   "Main Model": "N/A",
+   "Main Model": "bdli/boxa.bdl",
+   "Secondary Models": "N/A",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Dalways",
+   "Actor Name": "takara2",
+   "English Name": "Contains resources that are always loaded for dungeons.",
+   "Main Model": "bdli/boxb.bdl",
+   "Secondary Models": "N/A",
+   "Wait Animations": "N/A"
+ },
+ {
+   "Archive Name": "Dalways",
+   "Actor Name": "takara3",
+   "English Name": "Contains resources that are always loaded for dungeons.",
+   "Main Model": "bdli/boxc.bdl",
    "Secondary Models": "N/A",
    "Wait Animations": "N/A"
  },
