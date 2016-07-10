@@ -42,7 +42,7 @@ namespace JStudio.J3D
         public FogInfo FogModeIndex { get; internal set; }
         public AlphaTest AlphaTest { get; internal set; }
         public BlendMode BlendModeIndex { get; internal set; }
-        public BlendMode UnknownIndex2 { get; internal set; } // Tentatively named NBTScale
+        public NBTScale UnknownIndex2 { get; internal set; } // Tentatively named NBTScale
 
         public void Bind()
         {
@@ -367,8 +367,8 @@ namespace JStudio.J3D
                 material.FogModeIndex = ReadEntry(reader, ReadFogInfo, chunkStart, offsets, 23, reader.ReadInt16(), 44);
                 material.AlphaTest = ReadEntry(reader, ReadAlphaCompare, chunkStart, offsets, 24, reader.ReadInt16(), 8);
                 material.BlendModeIndex = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
-                material.UnknownIndex2 = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
-                //material.UnknownIndex2 = ReadEntry(reader, ReadNBTScale, chunkStart, offsets, 29, reader.ReadInt16(), 16);
+                //material.UnknownIndex2 = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
+                material.UnknownIndex2 = ReadEntry(reader, ReadNBTScale, chunkStart, offsets, 29, reader.ReadInt16(), 16);
             }
         }
 
@@ -434,8 +434,7 @@ namespace JStudio.J3D
             IndirectTexture itm = new IndirectTexture();
             itm.HasLookup = stream.ReadBoolean();
             itm.IndTexStageNum = stream.ReadByte();
-            ushort val = stream.ReadUInt16();
-            //Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
+            itm.Unknown0 = stream.ReadUInt16();
             itm.Unknown1 = stream.ReadByte();
             itm.Unknown2 = stream.ReadByte();
 
