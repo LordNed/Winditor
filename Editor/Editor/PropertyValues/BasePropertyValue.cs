@@ -9,9 +9,8 @@ namespace WindEditor
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public abstract T Value { get; set; }
-
         public string Name { get { return m_name; } }
+        public abstract T Value { get; set; }
 
         protected WUndoStack m_undoStack;
 

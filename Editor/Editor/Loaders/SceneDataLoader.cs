@@ -385,6 +385,7 @@ namespace WindEditor
                         break;
                 }
 
+                propValue.SetUndoStack(m_world.UndoStack);
                 actorProperties.Add(propValue);
             }
 
