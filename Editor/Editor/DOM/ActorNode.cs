@@ -55,11 +55,25 @@ namespace WindEditor
             {
                 if (m_namePropertyValueCache != null)
                 {
-                    TStringPropertyValue stringProperty = (TStringPropertyValue)m_namePropertyValueCache;
-                    m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
+                    m_namePropertyValueCache.PropertyChanged += OnActorNamePropertyChanged;
                 }
             }
 
+            UpdateActorMeshFromNameProperty();
+        }
+
+        private void OnActorNamePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            UpdateActorMeshFromNameProperty();
+        }
+
+        private void UpdateActorMeshFromNameProperty()
+        {
+            TStringPropertyValue stringProperty = m_namePropertyValueCache as TStringPropertyValue;
+            if(stringProperty != null)
+            {
+                m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
+            }
 
             if (m_actorMesh == null)
             {
