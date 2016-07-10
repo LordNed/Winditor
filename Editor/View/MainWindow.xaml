@@ -89,23 +89,20 @@
                             <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
                         <Grid Grid.Column="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="5"/>
-                                    <RowDefinition Height="Auto" MinHeight="135"/>
-                                </Grid.RowDefinitions>
-                                <ListBox Grid.Row="2" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}">
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Top">
+                                    <Label Content="Time of Day"/>
+                                    <Slider TickPlacement="BottomRight" TickFrequency="1" Minimum="0" Maximum="23" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
+                                </StackPanel>
+                                <ListBox DockPanel.Dock="Bottom" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Label Content="{Binding Path=Name}"/>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
-
-                            </Grid>
+                            </DockPanel>
                         </Grid>
                         <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
                         <Grid Grid.Column="2">

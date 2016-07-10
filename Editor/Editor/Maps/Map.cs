@@ -24,6 +24,16 @@ namespace WindEditor
 
         public BindingList<WScene> SceneList { get { return m_sceneList; } }
 
+        public float TimeOfDay
+        {
+            get { return m_timeOfDay; }
+            set
+            {
+                m_timeOfDay = WMath.Clamp(value, 0, 23);
+                OnPropertyChanged("TimeOfDay");
+            }
+        }
+
         /// <summary> The folder in which this map has been loaded from. </summary>
         private string m_savePath;
 
@@ -33,11 +43,15 @@ namespace WindEditor
         private WWorld m_world;
         private BindingList<WScene> m_sceneList;
         private WScene m_focusedScene;
+        private float m_timeOfDay;
 
         public WMap(WWorld parentWorld)
         {
             m_world = parentWorld;
             m_sceneList = new BindingList<WScene>();
+
+            // Set us to mid-day lighting by default.
+            TimeOfDay = 12f;
         }
 
         public void LoadFromDirectory(string filePath)
@@ -105,6 +119,7 @@ namespace WindEditor
         {
             foreach (WScene scene in m_sceneList)
             {
+                scene.SetTimeOfDay(TimeOfDay);
                 scene.Tick(deltaTime);
             }
         }

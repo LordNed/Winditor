@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using WindEditor.Collision;
 using JStudio.J3D;
+using System;
 
 namespace WindEditor
 {
@@ -69,9 +70,16 @@ namespace WindEditor
         protected virtual void LoadLevelEntitiesFromFile(string filePath)
         {
             SceneDataLoader actorLoader = new SceneDataLoader(filePath, m_world);
+
+            Console.WriteLine(Path.GetFileName(filePath));
             List<WActorNode> loadedActors = actorLoader.GetMapEntities();
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
+        }
+
+        public virtual void SetTimeOfDay(float timeOfDay)
+        {
+            
         }
     }
 }

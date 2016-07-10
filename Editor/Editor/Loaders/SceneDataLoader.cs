@@ -326,6 +326,21 @@ namespace WindEditor
                         }
                         break;
                 }
+            }
+
+            var dict = new Dictionary<string, List<WActorNode>>();
+            foreach(var actor in loadedActors)
+            {
+                if (!dict.ContainsKey(actor.FourCC))
+                    dict[actor.FourCC] = new List<WActorNode>();
+                dict[actor.FourCC].Add(actor);
+            }
+
+            string[] nodes = new[] { "EnvR", "Pale", "Virt", "Colo" };
+            foreach(var node in nodes)
+            {
+                if (dict.ContainsKey(node))
+                    Console.WriteLine("{0} Count: {1}", node, dict[node].Count);
 
             }
 
