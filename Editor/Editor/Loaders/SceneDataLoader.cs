@@ -551,6 +551,7 @@ namespace WindEditor
                     Shadow = shadow,
                     ActorAmbient = actorAmbient,
                     RoomLight = roomLight,
+                    RoomAmbient = roomAmbient,
                     WaveColor = wave,
                     OceanColor = ocean,
                     UnknownWhite1 = unknown1,
@@ -596,20 +597,20 @@ namespace WindEditor
             }
 
             var envrList = new List<EnvironmentLighting>();
-            foreach (var colo in dict["EnvR"])
+            foreach (var envr in dict["EnvR"])
             {
                 byte[] setA = new byte[4];
                 byte[] setB = new byte[4];
 
-                colo.TryGetValue("Clear Color A", out setA[0]);
-                colo.TryGetValue("Raining Color A", out setA[1]);
-                colo.TryGetValue("Snowing A", out setA[2]);
-                colo.TryGetValue("Unknown A", out setA[3]);
+                envr.TryGetValue("Clear Color A", out setA[0]);
+                envr.TryGetValue("Raining Color A", out setA[1]);
+                envr.TryGetValue("Snowing A", out setA[2]);
+                envr.TryGetValue("Unknown A", out setA[3]);
 
-                colo.TryGetValue("Clear Color B", out setB[0]);
-                colo.TryGetValue("Raining Color B", out setB[1]);
-                colo.TryGetValue("Snowing B", out setB[2]);
-                colo.TryGetValue("Unknown B", out setB[3]);
+                envr.TryGetValue("Clear Color B", out setB[0]);
+                envr.TryGetValue("Raining Color B", out setB[1]);
+                envr.TryGetValue("Snowing B", out setB[2]);
+                envr.TryGetValue("Unknown B", out setB[3]);
 
                 EnvironmentLighting envrPreset = new EnvironmentLighting();
                 for (int i = 0; i < 4; i++)

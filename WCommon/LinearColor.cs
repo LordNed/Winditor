@@ -126,7 +126,7 @@ namespace WindEditor
 
         public override string ToString()
         {
-            return string.Format("R: {0} G: {1} B: {2} A: {3}", R, G, B, A);
+            return string.Format("R: {0} G: {1} B: {2} A: {3}", (byte)(R*255f), (byte)(G*255f), (byte)(B*255f), (byte)(A*255f));
         }
 
         public string ToHexString()
@@ -143,7 +143,7 @@ namespace WindEditor
         public static WLinearColor Lerp(WLinearColor a, WLinearColor b, float t)
         {
             t = WMath.Clamp(t, 0, 1);
-            return new WLinearColor(a.R + (b.R - a.R) * t, a.G + (b.G - a.G) * t, a.B + (b.B - a.B) * t, a.A + (b.A - a.A) * t);
+            return new WLinearColor((1 - t) * a.R + t * b.R, (1 - t) * a.G + t * b.G, (1 - t) * a.B + t * b.B, (1 - t) * a.A + t * b.A);
         }
 
         #region Static Preset WLinearColors

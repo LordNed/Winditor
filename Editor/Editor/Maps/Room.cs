@@ -149,8 +149,27 @@ namespace WindEditor
                 var curLight = EnvironmentLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
                 foreach (var model in m_roomModels)
                 {
-                    model.SetTevColorOverride(0, curLight.RoomAmbient);
-                    model.SetTevkColorOverride(0, curLight.RoomLight);
+                    if(model.Name == "model")
+                    {
+                    model.SetTevColorOverride(0, curLight.RoomLight);
+                    model.SetTevkColorOverride(0, curLight.RoomAmbient);
+                    }
+                    else if(model.Name == "model1")
+                    {
+                        model.SetTevColorOverride(0, curLight.WaveColor);
+                        model.SetTevkColorOverride(0, curLight.OceanColor);
+                    }
+                    else if(model.Name == "model3")
+                    {
+                        model.SetTevColorOverride(0, curLight.Doorway);
+                    }
+                }
+
+                var childActors = GetChildrenOfType<WActorNode>();
+                foreach(var child in childActors)
+                {
+                    child.ColorOverrides.SetTevColorOverride(0, curLight.Shadow);
+                    child.ColorOverrides.SetTevkColorOverride(0, curLight.ActorAmbient);
                 }
             }
 

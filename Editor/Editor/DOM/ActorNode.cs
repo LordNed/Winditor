@@ -37,6 +37,8 @@ namespace WindEditor
         public List<IPropertyValue> Properties { get; protected set; }
         public ActorFlags Flags { get; set; }
 
+        public TevColorOverride ColorOverrides { get; protected set; }
+
         private SimpleObjRenderer m_objRender;
         private J3D m_actorMesh;
         private IPropertyValue m_namePropertyValueCache;
@@ -45,6 +47,7 @@ namespace WindEditor
         {
             Properties = new List<IPropertyValue>();
             FourCC = fourCC;
+            ColorOverrides = new TevColorOverride();
         }
 
         public bool TryGetValue<T>(string propertyName, out T value)
@@ -63,6 +66,7 @@ namespace WindEditor
             value = default(T);
             return false;
         }
+
         public void PostFinishedLoad()
         {
             m_namePropertyValueCache = Properties.Find(x => x.Name == "Name");
@@ -89,6 +93,12 @@ namespace WindEditor
             if(stringProperty != null)
             {
                 m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
+                if(m_actorMesh != null)
+                {
+                    m_actorMesh.SetHardwareLight(0, new JStudio.OpenGL.GXLight(Vector4.Zero, Vector4.UnitX, new Vector4(1, 1, 1, 1), new Vector4(1.875f, 0, 0, 0), new Vector4(1.875f, 0, 0, 0)));
+                    m_actorMesh.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+                    m_actorMesh.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
+                }
             }
 
             if (m_actorMesh == null)
@@ -134,7 +144,18 @@ namespace WindEditor
             Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 
             if (m_actorMesh != null)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if(ColorOverrides.ColorsEnabled[i])
+                        m_actorMesh.SetTevColorOverride(i, ColorOverrides.Colors[i]);
+
+                    if (ColorOverrides.ConstColorsEnabled[i])
+                        m_actorMesh.SetTevkColorOverride(i, ColorOverrides.ConstColors[i]);
+                }
+
                 m_actorMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
+            }
             else
                 m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }

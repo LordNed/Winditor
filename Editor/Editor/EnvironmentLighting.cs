@@ -29,7 +29,7 @@ namespace WindEditor
             int upperIndex = (int)(scaledT + 1f);
             float newT = scaledT - (int)scaledT;
 
-            Console.WriteLine("t: {0} scaledT: {1} lIndex: {2} uIndex: {3} newT: {4}", t, scaledT, lowerIndex, upperIndex, newT);
+            //Console.WriteLine("t: {0} scaledT: {1} lIndex: {2} uIndex: {3} newT: {4}", t, scaledT, lowerIndex, upperIndex, newT);
 
             if (upperIndex == palette.Length)
                 upperIndex = lowerIndex;

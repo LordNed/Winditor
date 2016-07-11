@@ -80,12 +80,15 @@ namespace WindEditor
                 if (mapRooms.Count != envrData.Count)
                     Console.WriteLine("WStage: Mismatched number of entries in Envr ({0}) and number of loaded rooms ({1})!", envrData.Count, mapRooms.Count);
 
-                for (int i = 0; i < envrData.Count; i++)
-                {
-                    WRoom room = mapRooms.Find(x => x.RoomIndex == i);
-                    if (room != null)
-                        room.EnvironmentLighting = envrData[i];
-                }
+                if (envrData.Count > 0)
+                    foreach (var room in mapRooms)
+                        room.EnvironmentLighting = envrData[0];
+                //for (int i = 0; i < envrData.Count; i++)
+                //{
+                //    WRoom room = mapRooms.Find(x => x.RoomIndex == i);
+                //    if (room != null)
+                //        room.EnvironmentLighting = envrData[i];
+                //}
             }
         }
     }
