@@ -212,10 +212,14 @@ namespace WindEditor
 
         float IRenderable.GetBoundingRadius()
         {
-            if (m_roomModels.Count > 0)
-                return m_roomModels[0].BoundingSphere.Radius;
+            float largestRadius = 0f;
+            for(int i = 0; i < m_roomModels.Count; i++)
+            {
+                if (m_roomModels[i].BoundingSphere.Radius > largestRadius)
+                    largestRadius = m_roomModels[i].BoundingSphere.Radius;
+            }
 
-            return float.MaxValue;
+            return largestRadius;
         }
     }
 }

@@ -24,6 +24,8 @@ namespace WindEditor
         private List<IRenderable> m_opaqueRenderList;
         private List<IRenderable> m_transparentRenderList;
 
+        private List<IRenderable> m_renderablesInFrustum;
+
         // To detect redundant calls
         private bool m_hasBeenDisposed = false;
 
@@ -31,6 +33,7 @@ namespace WindEditor
         {
             m_opaqueRenderList = new List<IRenderable>();
             m_transparentRenderList = new List<IRenderable>();
+            m_renderablesInFrustum = new List<IRenderable>();
 
             m_viewportRect = new FRect(0, 0, 1f, 1f);
             m_viewCamera = new WCamera();
@@ -69,20 +72,24 @@ namespace WindEditor
 
             Matrix4 viewMatrix, projMatrix;
             GetViewAndProjMatrixForView(out viewMatrix, out projMatrix);
-
             FFrustum frustum = new FFrustum(ref viewMatrix, ref projMatrix);
 
-            List<IRenderable> renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList.Count);
-            FrustumCullList(frustum, m_opaqueRenderList, renderablesInFrustum);
+            // Resize our list if needed.
+            m_renderablesInFrustum.Clear();
+            m_renderablesInFrustum.Capacity = Math.Max(m_opaqueRenderList.Count, m_transparentRenderList.Count);
+
+            FrustumCullList(frustum, m_opaqueRenderList, m_renderablesInFrustum);
 
             // Render all Opaque Geometry first.
-            foreach (var mesh in renderablesInFrustum)
-            {
+            foreach (var mesh in m_renderablesInFrustum)
                 mesh.Draw(this);
-            }
+
+            // Now cull us against translucent geometry.
+            m_renderablesInFrustum.Clear();
+            FrustumCullList(frustum, m_transparentRenderList, m_renderablesInFrustum);
 
             // Render all Transparent Geometry afterwards. ToDo: depth-sort this first.
-            foreach (var mesh in m_transparentRenderList)
+            foreach (var mesh in m_renderablesInFrustum)
                 mesh.Draw(this);
 
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);
