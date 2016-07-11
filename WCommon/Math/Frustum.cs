@@ -47,7 +47,7 @@ namespace WindEditor
             m_planes = new FPlane[6];
             m_planes[0] = new FPlane(points[0], points[2], points[4]); // Left
             m_planes[1] = new FPlane(points[5], points[7], points[1]); // Right
-            m_planes[2] = new FPlane(points[4], points[1], points[0]); // Top
+            m_planes[2] = new FPlane(points[0], points[4], points[1]); // Top
             m_planes[3] = new FPlane(points[3], points[7], points[2]); // Down
             m_planes[4] = new FPlane(points[1], points[3], points[0]); // Near
             m_planes[5] = new FPlane(points[7], points[5], points[4]); // Far
