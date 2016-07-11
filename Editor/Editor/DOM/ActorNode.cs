@@ -98,10 +98,27 @@ namespace WindEditor
         {
             // Convert the ray to local space of this node since all of our raycasts are local.
             FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
+            bool bHit = false;
             if (m_actorMesh != null)
-                return m_actorMesh.Raycast(localRay, out closestDistance, true);
+            {
+                bHit = m_actorMesh.Raycast(localRay, out closestDistance, true);
+            }
             else
-                return WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+            {
+                bHit = WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+            }
+
+            if (bHit)
+            {
+                // Convert the hit point back to world space...
+                Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
+                localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation);
+
+                // Now get the distance from the original ray origin and the new worldspace hit point.
+                closestDistance = (localHitPoint - ray.Origin).Length;
+            }
+
+            return bHit;
         }
 
         #region IRenderable
