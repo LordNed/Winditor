@@ -112,7 +112,7 @@ namespace J3DRenderer
         private void LoadChildLink(GXLight secondLight)
         {
             m_childLink = new J3D("cl");
-            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/cl.bdl"), Endian.Big), false, true);
+            m_childLink.LoadFromStream(new EndianBinaryReader(File.ReadAllBytes("resources/Windfall.bdl"), Endian.Big), false, true);
             m_childLink.SetHardwareLight(0, m_mainLight);
             m_childLink.SetHardwareLight(1, secondLight);
             m_childLink.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");

@@ -590,8 +590,8 @@ namespace WindEditor
                 for (int i = 0; i < 6; i++)
                     timePreset.TimePresetA[i] = paleList[setA[i]];
 
-                for (int i = 0; i < 6; i++)
-                    timePreset.TimePresetB[i] = paleList[setB[i]];
+                //for (int i = 0; i < 6; i++)
+                    //timePreset.TimePresetB[i] = paleList[setB[i]];
                 coloList.Add(timePreset);
             }
 

@@ -29,7 +29,7 @@ namespace WindEditor
             get { return m_timeOfDay; }
             set
             {
-                m_timeOfDay = WMath.Clamp(value, 0, 23);
+                m_timeOfDay = WMath.Clamp(value, 0, 1);
                 OnPropertyChanged("TimeOfDay");
             }
         }
@@ -51,7 +51,7 @@ namespace WindEditor
             m_sceneList = new BindingList<WScene>();
 
             // Set us to mid-day lighting by default.
-            TimeOfDay = 12f;
+            TimeOfDay = 0.5f;
         }
 
         public void LoadFromDirectory(string filePath)

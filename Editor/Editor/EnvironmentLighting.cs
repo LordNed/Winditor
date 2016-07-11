@@ -20,27 +20,35 @@ namespace WindEditor
 
         public LightingPalette Lerp(float t, bool presetA = true)
         {
+            LightingPalette[] palette = presetA ? TimePresetA : TimePresetB;
+
             // Generate a new LightingPalette which is the interpolated values of things.
             t = WMath.Clamp(t, 0, 1);
-            int lowerIndex = (int)Math.Floor(t * 6f);
-            int upperIndex = (int)Math.Floor(t * 6f) + 1;
+            float scaledT = t * (palette.Length - 1);
+            int lowerIndex = (int)scaledT;
+            int upperIndex = (int)(scaledT + 1f);
+            float newT = scaledT - (int)scaledT;
 
-            LightingPalette[] palette = presetA ? TimePresetA : TimePresetB;
+            Console.WriteLine("t: {0} scaledT: {1} lIndex: {2} uIndex: {3} newT: {4}", t, scaledT, lowerIndex, upperIndex, newT);
+
+            if (upperIndex == palette.Length)
+                upperIndex = lowerIndex;
+
             LightingPalette interpPalette = new LightingPalette();
-            interpPalette.Shadow = WLinearColor.Lerp(palette[lowerIndex].Shadow, palette[upperIndex].Shadow, t);
-            interpPalette.ActorAmbient = WLinearColor.Lerp(palette[lowerIndex].ActorAmbient, palette[upperIndex].ActorAmbient, t);
-            interpPalette.RoomLight = WLinearColor.Lerp(palette[lowerIndex].RoomLight, palette[upperIndex].RoomLight, t);
-            interpPalette.RoomAmbient = WLinearColor.Lerp(palette[lowerIndex].RoomAmbient, palette[upperIndex].RoomAmbient, t);
-            interpPalette.WaveColor = WLinearColor.Lerp(palette[lowerIndex].WaveColor, palette[upperIndex].WaveColor, t);
-            interpPalette.OceanColor = WLinearColor.Lerp(palette[lowerIndex].OceanColor, palette[upperIndex].OceanColor, t);
-            interpPalette.UnknownWhite1 = WLinearColor.Lerp(palette[lowerIndex].UnknownWhite1, palette[upperIndex].UnknownWhite1, t);
-            interpPalette.UnknownWhite2 = WLinearColor.Lerp(palette[lowerIndex].UnknownWhite2, palette[upperIndex].UnknownWhite2, t);
-            interpPalette.Doorway = WLinearColor.Lerp(palette[lowerIndex].Doorway, palette[upperIndex].Doorway, t);
-            interpPalette.UnknownColor3 = WLinearColor.Lerp(palette[lowerIndex].UnknownColor3, palette[upperIndex].UnknownColor3, t);
-            interpPalette.Skybox = LightingSkyboxColors.Lerp(palette[lowerIndex].Skybox, palette[upperIndex].Skybox, t);
-            interpPalette.Fog = WLinearColor.Lerp(palette[lowerIndex].Fog, palette[upperIndex].Fog, t);
-            interpPalette.FogNearPlane = WMath.Lerp(palette[lowerIndex].FogNearPlane, palette[upperIndex].FogNearPlane, t);
-            interpPalette.FogFarPlane = WMath.Lerp(palette[lowerIndex].FogFarPlane, palette[upperIndex].FogFarPlane, t);
+            interpPalette.Shadow = WLinearColor.Lerp(palette[lowerIndex].Shadow, palette[upperIndex].Shadow, newT);
+            interpPalette.ActorAmbient = WLinearColor.Lerp(palette[lowerIndex].ActorAmbient, palette[upperIndex].ActorAmbient, newT);
+            interpPalette.RoomLight = WLinearColor.Lerp(palette[lowerIndex].RoomLight, palette[upperIndex].RoomLight, newT);
+            interpPalette.RoomAmbient = WLinearColor.Lerp(palette[lowerIndex].RoomAmbient, palette[upperIndex].RoomAmbient, newT);
+            interpPalette.WaveColor = WLinearColor.Lerp(palette[lowerIndex].WaveColor, palette[upperIndex].WaveColor, newT);
+            interpPalette.OceanColor = WLinearColor.Lerp(palette[lowerIndex].OceanColor, palette[upperIndex].OceanColor, newT);
+            interpPalette.UnknownWhite1 = WLinearColor.Lerp(palette[lowerIndex].UnknownWhite1, palette[upperIndex].UnknownWhite1, newT);
+            interpPalette.UnknownWhite2 = WLinearColor.Lerp(palette[lowerIndex].UnknownWhite2, palette[upperIndex].UnknownWhite2, newT);
+            interpPalette.Doorway = WLinearColor.Lerp(palette[lowerIndex].Doorway, palette[upperIndex].Doorway, newT);
+            interpPalette.UnknownColor3 = WLinearColor.Lerp(palette[lowerIndex].UnknownColor3, palette[upperIndex].UnknownColor3, newT);
+            interpPalette.Skybox = LightingSkyboxColors.Lerp(palette[lowerIndex].Skybox, palette[upperIndex].Skybox, newT);
+            interpPalette.Fog = WLinearColor.Lerp(palette[lowerIndex].Fog, palette[upperIndex].Fog, newT);
+            interpPalette.FogNearPlane = WMath.Lerp(palette[lowerIndex].FogNearPlane, palette[upperIndex].FogNearPlane, newT);
+            interpPalette.FogFarPlane = WMath.Lerp(palette[lowerIndex].FogFarPlane, palette[upperIndex].FogFarPlane, newT);
 
             return interpPalette;
         }

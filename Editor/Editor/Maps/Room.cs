@@ -140,6 +140,22 @@ namespace WindEditor
                 model.Tick(deltaTime);
         }
 
+        public override void SetTimeOfDay(float timeOfDay)
+        {
+            base.SetTimeOfDay(timeOfDay);
+
+            if(EnvironmentLighting != null)
+            {
+                var curLight = EnvironmentLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+                foreach (var model in m_roomModels)
+                {
+                    model.SetTevColorOverride(0, curLight.RoomAmbient);
+                    model.SetTevkColorOverride(0, curLight.RoomLight);
+                }
+            }
+
+        }
+
         void IRenderable.AddToRenderer(WSceneView view)
         {
             view.AddOpaqueMesh(this);
