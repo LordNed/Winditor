@@ -58,6 +58,7 @@
     <Reference Include="System.Xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Framework\Obj.cs" />
     <Compile Include="Framework\Shader.cs" />
     <Compile Include="LinearColor.cs" />
