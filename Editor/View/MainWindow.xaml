@@ -89,34 +89,29 @@
                             <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
                         <Grid Grid.Column="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="5"/>
-                                    <RowDefinition Height="Auto" MinHeight="135"/>
-                                </Grid.RowDefinitions>
-                                <ListBox Grid.Row="2" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}">
+                            <DockPanel>
+                                <ListBox DockPanel.Dock="Bottom" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Label Content="{Binding Path=Name}"/>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
-
-                            </Grid>
+                            </DockPanel>
                         </Grid>
                         <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
                         <Grid Grid.Column="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="18"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
-                            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}"  Padding="0"/>
-                            </StackPanel>
+                            <DockPanel Grid.Row="1" Margin="0,2">
+                                <Label Content="Time of Day" Margin="0,0,5,0" Padding="2" DockPanel.Dock="Left"/>
+                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}" Padding="0" DockPanel.Dock="Right"/>
+                                <Slider TickPlacement="None" IsMoveToPointEnabled="True" Minimum="0" Maximum="1" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
+                            </DockPanel>
                         </Grid>
                     </Grid>
                 </Grid>

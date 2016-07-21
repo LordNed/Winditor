@@ -196,6 +196,9 @@ namespace JStudio.J3D
         {
             BinaryTextureImage btiData = new BinaryTextureImage();
             btiData.LoadImageFromDisk(filePath);
+            if (m_textureOverrides.ContainsKey(textureName))
+                m_textureOverrides[textureName].Dispose();
+
             m_textureOverrides[textureName] = new Texture(textureName, btiData);
         }
 

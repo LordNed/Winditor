@@ -523,6 +523,11 @@ namespace JStudio.J3D
         public GXTexCoordSlot TexCoordId;
         public byte TexMap;
         public GXColorChannelId ChannelId;
+
+        public override string ToString()
+        {
+            return string.Format("TexCoord: {0} TexMap: {1} ColorChan: {2}", TexCoordId, TexMap, ChannelId);
+        }
     }
 
     public class TevIndirect
@@ -641,6 +646,8 @@ namespace JStudio.J3D
 
         /// <summary> The number of indirect texturing stages to use </summary>
         public byte IndTexStageNum;
+
+        public ushort Unknown0;
 
         /// <summary> Unknown value 1. Related to TevOrders. </summary>
         public byte Unknown1;

@@ -17,7 +17,7 @@ namespace JStudio.J3D
         public GXCullMode CullModeIndex { get; internal set; }
         public byte NumChannelControlsIndex { get; internal set; }
         public byte NumTexGensIndex { get; internal set; }
-        public byte NumTevStagesIndex { get; internal set; }
+        public byte NumTevStages { get; internal set; }
         public bool ZCompLocIndex { get; internal set; }
         public ZMode ZModeIndex { get; internal set; }
         public bool DitherIndex { get; internal set; }
@@ -42,7 +42,7 @@ namespace JStudio.J3D
         public FogInfo FogModeIndex { get; internal set; }
         public AlphaTest AlphaTest { get; internal set; }
         public BlendMode BlendModeIndex { get; internal set; }
-        public BlendMode UnknownIndex2 { get; internal set; } // Tentatively named NBTScale
+        public NBTScale UnknownIndex2 { get; internal set; } // Tentatively named NBTScale
 
         public void Bind()
         {
@@ -241,7 +241,7 @@ namespace JStudio.J3D
                 material.CullModeIndex = ReadEntry(reader, ReadCullMode, chunkStart, offsets, 4, reader.ReadByte(), 4);
                 material.NumChannelControlsIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 6, reader.ReadByte(), 1);
                 material.NumTexGensIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 10, reader.ReadByte(), 1);
-                material.NumTevStagesIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 19, reader.ReadByte(), 1);
+                material.NumTevStages = ReadEntry(reader, ReadByte, chunkStart, offsets, 19, reader.ReadByte(), 1);
                 material.ZCompLocIndex = ReadEntry(reader, ReadBool, chunkStart, offsets, 27, reader.ReadByte(), 1);
                 material.ZModeIndex = ReadEntry(reader, ReadZMode, chunkStart, offsets, 26, reader.ReadByte(), 4);
                 material.DitherIndex = ReadEntry(reader, ReadBool, chunkStart, offsets, 28, reader.ReadByte(), 1);
@@ -367,8 +367,8 @@ namespace JStudio.J3D
                 material.FogModeIndex = ReadEntry(reader, ReadFogInfo, chunkStart, offsets, 23, reader.ReadInt16(), 44);
                 material.AlphaTest = ReadEntry(reader, ReadAlphaCompare, chunkStart, offsets, 24, reader.ReadInt16(), 8);
                 material.BlendModeIndex = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
-                material.UnknownIndex2 = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
-                //material.UnknownIndex2 = ReadEntry(reader, ReadNBTScale, chunkStart, offsets, 29, reader.ReadInt16(), 16);
+                //material.UnknownIndex2 = ReadEntry(reader, ReadBlendMode, chunkStart, offsets, 25, reader.ReadInt16(), 4);
+                material.UnknownIndex2 = ReadEntry(reader, ReadNBTScale, chunkStart, offsets, 29, reader.ReadInt16(), 16);
             }
         }
 
@@ -434,8 +434,7 @@ namespace JStudio.J3D
             IndirectTexture itm = new IndirectTexture();
             itm.HasLookup = stream.ReadBoolean();
             itm.IndTexStageNum = stream.ReadByte();
-            ushort val = stream.ReadUInt16();
-            //Trace.Assert(stream.ReadUInt16() == 0xFFFF); // Padding
+            itm.Unknown0 = stream.ReadUInt16();
             itm.Unknown1 = stream.ReadByte();
             itm.Unknown2 = stream.ReadByte();
 

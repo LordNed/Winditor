@@ -201,101 +201,6 @@ namespace WindEditor
             m_reader = null;
         }
 
-        public List<WRoomTable> GetRoomTable()
-        {
-            List<WRoomTable> roomTables = new List<WRoomTable>();
-
-            int rtblIndex = m_chunkList.FindIndex(x => x.FourCC == "RTBL");
-            if (rtblIndex >= 0)
-            {
-                ChunkHeader rtbl = m_chunkList[rtblIndex];
-                m_reader.BaseStream.Position = rtbl.ChunkOffset;
-
-                int[] rtableOffsets = new int[rtbl.ElementCount];
-                for (int i = 0; i < rtableOffsets.Length; i++)
-                    rtableOffsets[i] = m_reader.ReadInt32();
-
-                // Jump to the RTBL entries.
-                for (int i = 0; i < rtableOffsets.Length; i++)
-                {
-                    m_reader.BaseStream.Position = rtableOffsets[i];
-
-                    WRoomTable roomTable = new WRoomTable();
-                    roomTables.Add(roomTable);
-
-                    byte numRooms = m_reader.ReadByte();
-                    roomTable.ReverbAmount = m_reader.ReadByte();
-                    roomTable.TimePass = m_reader.ReadByte();
-                    roomTable.Unknown1 = m_reader.ReadByte();
-
-                    int tableOffset = m_reader.ReadInt32();
-                    Console.WriteLine("i: {4} numRooms: {0} reverbAmount: {1} TimePass: {2} unknown1: {3}:", numRooms, roomTable.ReverbAmount, roomTable.TimePass, roomTable.Unknown1, i);
-
-                    m_reader.BaseStream.Position = tableOffset;
-                    for (int j = 0; j < numRooms; j++)
-                    {
-                        byte val = m_reader.ReadByte();
-
-                        bool loadRoom = ((val & 0x80) >> 7) == 1;
-                        bool unknownBit = ((val & 0x7F) >> 6) == 1;
-                        byte roomId = (byte)(val & 0x3F);
-
-                        roomTable.AdjacentRooms.Add(new WRoomTable.AdjacentRoom(loadRoom, unknownBit, roomId));
-                        Console.WriteLine("\tLoad Room: {0} Unknown Bit: {1} Room: {2}", loadRoom, unknownBit, roomId);
-                    }
-                }
-            }
-
-            return roomTables;
-        }
-
-        public List<WRoomTransform> GetRoomTransformTable()
-        {
-            List<WRoomTransform> roomTransforms = new List<WRoomTransform>();
-
-            int multIndex = m_chunkList.FindIndex(x => x.FourCC == "MULT");
-            if (multIndex >= 0)
-            {
-                ChunkHeader rtbl = m_chunkList[multIndex];
-                m_reader.BaseStream.Position = rtbl.ChunkOffset;
-
-                for (int i = 0; i < rtbl.ElementCount; i++)
-                {
-                    WRoomTransform roomTransform = new WRoomTransform(new Vector2(m_reader.ReadSingle(), m_reader.ReadSingle()), WMath.RotationShortToFloat(m_reader.ReadInt16()), m_reader.ReadByte(), m_reader.ReadByte());
-                    roomTransforms.Add(roomTransform);
-                }
-            }
-
-            return roomTransforms;
-        }
-
-        public List<MemoryAlloc> GetRoomMemAllocTable()
-        {
-            List<MemoryAlloc> memAllocTable = new List<MemoryAlloc>();
-
-            int mecoIndex = m_chunkList.FindIndex(x => x.FourCC == "MECO");
-            int memaIndex = m_chunkList.FindIndex(x => x.FourCC == "MEMA");
-            if (mecoIndex >= 0 && memaIndex >= 0)
-            {
-                ChunkHeader meco = m_chunkList[mecoIndex];
-                ChunkHeader mema = m_chunkList[memaIndex];
-
-                int[] memaEntries = new int[mema.ElementCount];
-                m_reader.BaseStream.Position = mema.ChunkOffset;
-                for (int i = 0; i < mema.ElementCount; i++)
-                    memaEntries[i] = m_reader.ReadInt32();
-
-                m_reader.BaseStream.Position = meco.ChunkOffset;
-                for (int i = 0; i < meco.ElementCount; i++)
-                {
-                    MemoryAlloc memAlloc = new MemoryAlloc(m_reader.ReadByte(), memaEntries[m_reader.ReadByte()]);
-                    memAllocTable.Add(memAlloc);
-                }
-            }
-
-            return memAllocTable;
-        }
-
         public List<WActorNode> GetMapEntities()
         {
             var loadedActors = new List<WActorNode>();
@@ -326,6 +231,21 @@ namespace WindEditor
                         }
                         break;
                 }
+            }
+
+            var dict = new Dictionary<string, List<WActorNode>>();
+            foreach(var actor in loadedActors)
+            {
+                if (!dict.ContainsKey(actor.FourCC))
+                    dict[actor.FourCC] = new List<WActorNode>();
+                dict[actor.FourCC].Add(actor);
+            }
+
+            string[] nodes = new[] { "EnvR", "Pale", "Virt", "Colo" };
+            foreach(var node in nodes)
+            {
+                if (dict.ContainsKey(node))
+                    Console.WriteLine("{0} Count: {1}", node, dict[node].Count);
 
             }
 
@@ -437,6 +357,271 @@ namespace WindEditor
             newActor.Properties.AddRange(actorProperties);
             newActor.PostFinishedLoad();
             return newActor;
+        }
+
+        public List<WRoomTable> GetRoomTable()
+        {
+            List<WRoomTable> roomTables = new List<WRoomTable>();
+
+            int rtblIndex = m_chunkList.FindIndex(x => x.FourCC == "RTBL");
+            if (rtblIndex >= 0)
+            {
+                ChunkHeader rtbl = m_chunkList[rtblIndex];
+                m_reader.BaseStream.Position = rtbl.ChunkOffset;
+
+                int[] rtableOffsets = new int[rtbl.ElementCount];
+                for (int i = 0; i < rtableOffsets.Length; i++)
+                    rtableOffsets[i] = m_reader.ReadInt32();
+
+                // Jump to the RTBL entries.
+                for (int i = 0; i < rtableOffsets.Length; i++)
+                {
+                    m_reader.BaseStream.Position = rtableOffsets[i];
+
+                    WRoomTable roomTable = new WRoomTable();
+                    roomTables.Add(roomTable);
+
+                    byte numRooms = m_reader.ReadByte();
+                    roomTable.ReverbAmount = m_reader.ReadByte();
+                    roomTable.TimePass = m_reader.ReadByte();
+                    roomTable.Unknown1 = m_reader.ReadByte();
+
+                    int tableOffset = m_reader.ReadInt32();
+                    Console.WriteLine("i: {4} numRooms: {0} reverbAmount: {1} TimePass: {2} unknown1: {3}:", numRooms, roomTable.ReverbAmount, roomTable.TimePass, roomTable.Unknown1, i);
+
+                    m_reader.BaseStream.Position = tableOffset;
+                    for (int j = 0; j < numRooms; j++)
+                    {
+                        byte val = m_reader.ReadByte();
+
+                        bool loadRoom = ((val & 0x80) >> 7) == 1;
+                        bool unknownBit = ((val & 0x7F) >> 6) == 1;
+                        byte roomId = (byte)(val & 0x3F);
+
+                        roomTable.AdjacentRooms.Add(new WRoomTable.AdjacentRoom(loadRoom, unknownBit, roomId));
+                        Console.WriteLine("\tLoad Room: {0} Unknown Bit: {1} Room: {2}", loadRoom, unknownBit, roomId);
+                    }
+                }
+            }
+
+            return roomTables;
+        }
+
+        public List<WRoomTransform> GetRoomTransformTable()
+        {
+            List<WRoomTransform> roomTransforms = new List<WRoomTransform>();
+
+            int multIndex = m_chunkList.FindIndex(x => x.FourCC == "MULT");
+            if (multIndex >= 0)
+            {
+                ChunkHeader rtbl = m_chunkList[multIndex];
+                m_reader.BaseStream.Position = rtbl.ChunkOffset;
+
+                for (int i = 0; i < rtbl.ElementCount; i++)
+                {
+                    WRoomTransform roomTransform = new WRoomTransform(new Vector2(m_reader.ReadSingle(), m_reader.ReadSingle()), WMath.RotationShortToFloat(m_reader.ReadInt16()), m_reader.ReadByte(), m_reader.ReadByte());
+                    roomTransforms.Add(roomTransform);
+                }
+            }
+
+            return roomTransforms;
+        }
+
+        public List<MemoryAlloc> GetRoomMemAllocTable()
+        {
+            List<MemoryAlloc> memAllocTable = new List<MemoryAlloc>();
+
+            int mecoIndex = m_chunkList.FindIndex(x => x.FourCC == "MECO");
+            int memaIndex = m_chunkList.FindIndex(x => x.FourCC == "MEMA");
+            if (mecoIndex >= 0 && memaIndex >= 0)
+            {
+                ChunkHeader meco = m_chunkList[mecoIndex];
+                ChunkHeader mema = m_chunkList[memaIndex];
+
+                int[] memaEntries = new int[mema.ElementCount];
+                m_reader.BaseStream.Position = mema.ChunkOffset;
+                for (int i = 0; i < mema.ElementCount; i++)
+                    memaEntries[i] = m_reader.ReadInt32();
+
+                m_reader.BaseStream.Position = meco.ChunkOffset;
+                for (int i = 0; i < meco.ElementCount; i++)
+                {
+                    MemoryAlloc memAlloc = new MemoryAlloc(m_reader.ReadByte(), memaEntries[m_reader.ReadByte()]);
+                    memAllocTable.Add(memAlloc);
+                }
+            }
+
+            return memAllocTable;
+        }
+
+        public List<EnvironmentLighting> GetLightingData()
+        {
+            // Bah...
+            var loadedActors = new List<WActorNode>();
+            foreach (var chunk in m_chunkList)
+            {
+                m_reader.BaseStream.Position = chunk.ChunkOffset;
+                MapActorDescriptor template = m_sActorDescriptors.Find(x => x.FourCC == chunk.FourCC);
+                if (template == null)
+                {
+                    Console.WriteLine("Unsupported FourCC: {0}", chunk.FourCC);
+                    continue;
+                }
+
+                switch (chunk.FourCC)
+                {
+                    // We're only going to re-load the lighting-based actors...
+                    case "EnvR":
+                    case "Colo":
+                    case "Pale":
+                    case "Virt":
+                        for (int i = 0; i < chunk.ElementCount; i++)
+                        {
+                            var newActor = LoadActorFromChunk(chunk.FourCC, template);
+                            newActor.Layer = chunk.Layer;
+
+                            loadedActors.Add(newActor);
+                        }
+                        break;
+                }
+            }
+
+            var dict = new Dictionary<string, List<WActorNode>>();
+            foreach (var actor in loadedActors)
+            {
+                if (!dict.ContainsKey(actor.FourCC))
+                    dict[actor.FourCC] = new List<WActorNode>();
+                dict[actor.FourCC].Add(actor);
+            }
+
+            // Load Skybox Lighting Data
+            var virtList = new List<LightingSkyboxColors>();
+            foreach(var virt in dict["Virt"])
+            {
+                WLinearColor unknown1, unknown2, unknown3, unknown4, horizonCloud, centerCloud, sky, falseSea, horizon;
+
+                virt.TryGetValue("Unknown 1", out unknown1);
+                virt.TryGetValue("Unknown 2", out unknown2);
+                virt.TryGetValue("Unknown 3", out unknown3);
+                virt.TryGetValue("Unknown 4", out unknown4);
+                virt.TryGetValue("Horizon Cloud Color", out horizonCloud);
+                virt.TryGetValue("Center Cloud Color", out centerCloud);
+                virt.TryGetValue("Sky Color", out sky);
+                virt.TryGetValue("False Sea Color", out falseSea);
+                virt.TryGetValue("Horizon Color", out horizon);
+
+                LightingSkyboxColors virtEntry = new LightingSkyboxColors
+                {
+                    Unknown1 = unknown1,
+                    Unknown2 = unknown2,
+                    Unknown3 = unknown3,
+                    Unknown4 = unknown4,
+                    HorizonCloud = horizonCloud,
+                    CenterCloud = centerCloud,
+                    Sky = sky,
+                    FalseSea = falseSea,
+                    Horizon = horizon
+                };
+
+                virtList.Add(virtEntry);
+            }
+
+            var paleList = new List<LightingPalette>();
+            foreach(var pale in dict["Pale"])
+            {
+                WLinearColor shadow, actorAmbient, roomLight, roomAmbient, wave, ocean, unknown1, unknown2, doorway, unknown3, fog;
+                byte virtIndex; float fogFarPlane, fogNearPlane;
+                pale.TryGetValue("Shadow Color", out shadow);
+                pale.TryGetValue("Actor Ambient Color", out actorAmbient);
+                pale.TryGetValue("Room Light Color", out roomLight);
+                pale.TryGetValue("Room Ambient Color", out roomAmbient);
+                pale.TryGetValue("Wave Color", out wave);
+                pale.TryGetValue("Ocean Color", out ocean);
+                pale.TryGetValue("Unknown White 1", out unknown1);
+                pale.TryGetValue("Unknown White 2", out unknown2);
+                pale.TryGetValue("Door Backfill", out doorway);
+                pale.TryGetValue("Unknown 3", out unknown3);
+                pale.TryGetValue("Fog Color", out fog);
+                pale.TryGetValue("Skybox Color Index", out virtIndex);
+                pale.TryGetValue("Fog Far Plane", out fogFarPlane);
+                pale.TryGetValue("Fog Near Plane", out fogNearPlane);
+
+                LightingPalette lightPalette = new LightingPalette
+                {
+                    Shadow = shadow,
+                    ActorAmbient = actorAmbient,
+                    RoomLight = roomLight,
+                    RoomAmbient = roomAmbient,
+                    WaveColor = wave,
+                    OceanColor = ocean,
+                    UnknownWhite1 = unknown1,
+                    UnknownWhite2 = unknown2,
+                    Doorway = doorway,
+                    UnknownColor3 = unknown3,
+                    Skybox = virtList[virtIndex],
+                    Fog = fog,
+                    FogNearPlane = fogNearPlane,
+                    FogFarPlane = fogFarPlane,
+                };
+
+                paleList.Add(lightPalette);
+            }
+
+            var coloList = new List<LightingTimePreset>();
+            foreach(var colo in dict["Colo"])
+            {
+                byte[] setA = new byte[6];
+                byte[] setB = new byte[6];
+
+                colo.TryGetValue("Dawn A", out setA[0]);
+                colo.TryGetValue("Morning A", out setA[1]);
+                colo.TryGetValue("Noon A", out setA[2]);
+                colo.TryGetValue("Afternoon A", out setA[3]);
+                colo.TryGetValue("Dusk A", out setA[4]);
+                colo.TryGetValue("Night A", out setA[5]);
+
+                colo.TryGetValue("Dawn B", out setB[0]);
+                colo.TryGetValue("Morning B", out setB[1]);
+                colo.TryGetValue("Noon B", out setB[2]);
+                colo.TryGetValue("Afternoon B", out setB[3]);
+                colo.TryGetValue("Dusk B", out setB[4]);
+                colo.TryGetValue("Night B", out setB[5]);
+
+                LightingTimePreset timePreset = new LightingTimePreset();
+                for (int i = 0; i < 6; i++)
+                    timePreset.TimePresetA[i] = paleList[setA[i]];
+
+                //for (int i = 0; i < 6; i++)
+                    //timePreset.TimePresetB[i] = paleList[setB[i]];
+                coloList.Add(timePreset);
+            }
+
+            var envrList = new List<EnvironmentLighting>();
+            foreach (var envr in dict["EnvR"])
+            {
+                byte[] setA = new byte[4];
+                byte[] setB = new byte[4];
+
+                envr.TryGetValue("Clear Color A", out setA[0]);
+                envr.TryGetValue("Raining Color A", out setA[1]);
+                envr.TryGetValue("Snowing A", out setA[2]);
+                envr.TryGetValue("Unknown A", out setA[3]);
+
+                envr.TryGetValue("Clear Color B", out setB[0]);
+                envr.TryGetValue("Raining Color B", out setB[1]);
+                envr.TryGetValue("Snowing B", out setB[2]);
+                envr.TryGetValue("Unknown B", out setB[3]);
+
+                EnvironmentLighting envrPreset = new EnvironmentLighting();
+                for (int i = 0; i < 4; i++)
+                    envrPreset.WeatherA[i] = coloList[setA[i]];
+
+                for (int i = 0; i < 4; i++)
+                    envrPreset.WeatherB[i] = coloList[setB[i]];
+                envrList.Add(envrPreset);
+            }
+
+            return envrList;
         }
     }
 }

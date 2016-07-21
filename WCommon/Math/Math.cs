@@ -25,6 +25,11 @@ namespace WindEditor
             return value;
         }
 
+        public static float Lerp(float a, float b, float t)
+        {
+            return (1 - t) * a + t * b;
+        }
+
         public static float DegreesToRadians(float degrees)
         {
             return degrees * (float)(Math.PI / 180.0);

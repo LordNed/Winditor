@@ -202,7 +202,7 @@ namespace JStudio.J3D.ShaderGen
 
 
             // Write up to 16 TEV Stage Operations
-            for (int i = 0; i < mat.NumTevStagesIndex; i++)
+            for (int i = 0; i < mat.NumTevStages; i++)
                 WriteStage(stream, i, mat, data);
 
             // Alpha Compare
