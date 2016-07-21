@@ -105,16 +105,13 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="18"/>
                             </Grid.RowDefinitions>
                             <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
-                            <StackPanel Grid.Row="1">
-                                <Label Content="Time of Day"/>
-                                <Slider TickPlacement="BottomRight" TickFrequency="0.2" Minimum="0" Maximum="1" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal">
-                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}"  Padding="0"/>
-                            </StackPanel>
+                            <DockPanel Grid.Row="1" Margin="0,2">
+                                <Label Content="Time of Day" Margin="0,0,5,0" Padding="2" DockPanel.Dock="Left"/>
+                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}" Padding="0" DockPanel.Dock="Right"/>
+                                <Slider TickPlacement="None" IsMoveToPointEnabled="True" Minimum="0" Maximum="1" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
+                            </DockPanel>
                         </Grid>
                     </Grid>
                 </Grid>
