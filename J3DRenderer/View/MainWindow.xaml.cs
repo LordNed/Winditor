@@ -101,5 +101,17 @@ namespace J3DRenderer
 
             return btn;
         }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.FileDrop, true))
+            {
+                string[] droppedFilePaths = e.Data.GetData(DataFormats.FileDrop, true) as string[];
+                if(droppedFilePaths.Length > 0)
+                {
+                    m_viewModel.OnFilesDropped(droppedFilePaths);
+                }
+            }
+        }
     }
 }
