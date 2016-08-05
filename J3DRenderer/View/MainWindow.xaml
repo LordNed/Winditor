@@ -172,7 +172,7 @@
             <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch"/>
 
             <!-- Right Info -->
-            <Grid Grid.Column="4">
+            <Grid Grid.Column="4" IsEnabled="{Binding Path=HasLoadedModel}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5"/>

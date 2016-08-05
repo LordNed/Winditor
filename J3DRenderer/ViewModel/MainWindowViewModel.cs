@@ -20,6 +20,7 @@ namespace J3DRenderer
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public bool HasLoadedModel { get { return m_loadedModels.Count > 0; } }
         public J3D LoadedModel { get { return m_loadedModels.Count > 0 ? m_loadedModels[0] : null; } }
         public HighresScreenshotViewModel HighResScreenshot { get { return m_highresScreenshot; } }
 
@@ -115,14 +116,17 @@ namespace J3DRenderer
 
 
             if (PropertyChanged != null)
+            {
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("HasLoadedModel"));
+            }
 
-            //// Animations
-            //foreach (var bck in Directory.GetFiles("resources/cl/bcks/"))
-            //{
-            //    m_childLink.LoadBoneAnimation(bck);
-            //}
-        }
+                //// Animations
+                //foreach (var bck in Directory.GetFiles("resources/cl/bcks/"))
+                //{
+                //    m_childLink.LoadBoneAnimation(bck);
+                //}
+            }
 
         private void DoApplicationTick()
         {
