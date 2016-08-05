@@ -67,8 +67,7 @@ namespace WindEditor.ViewModel
 
         private void OnUserRequestApplicationExit()
         {
-            // This attempts to close the application, which invokes the normal
-            // window close events.
+            // This attempts to close the application, which invokes the normal window close events.
             App.Current.MainWindow.Close();
         }
 

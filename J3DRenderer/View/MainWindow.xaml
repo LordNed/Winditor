@@ -8,7 +8,7 @@
         xmlns:jstudio="clr-namespace:JStudio.J3D;assembly=JStudio"
         xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
+        Title="J3D Model Viewer" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -26,7 +26,27 @@
 
         <!-- File Menu Strip -->
         <Menu IsMainMenu="True" Grid.Row="0">
-            <MenuItem Header="_File"/>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Command="{Binding Path=OpenModelCommand}"/>
+                <MenuItem Header="Open _Additive" Command="{Binding Path=OpenModelAdditiveCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
+                <MenuItem Header="_Load Animation" Command="{Binding Path=LoadAnimationCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
+                <MenuItem Header="_Close" Command="{Binding Path=CloseModelCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
+                <Separator/>
+                <MenuItem Header="_Exit" Command="{Binding Path=ExitApplicationCommand}"/>
+            </MenuItem>
+
+            <MenuItem Header="_View">
+                <MenuItem Header="Show _Pivot" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowPivot}"/>
+                <MenuItem Header="Show _Grid" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowGrid}"/>
+                <Separator/>
+                <MenuItem Header="Show _Bounds" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBounds}"/>
+                <MenuItem Header="Show B_ones" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBones}"/>
+            </MenuItem>
+
+            <MenuItem Header="_Help">
+                <MenuItem Header="_Wiki" Command="{Binding Path=ShowWikiCommand}"/>
+                <MenuItem Header="_About" Command="{Binding Path=ShowAboutCommand}"/>
+            </MenuItem>
         </Menu>
 
         <!-- Toolbar Buttons -->

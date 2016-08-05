@@ -130,6 +130,12 @@ namespace JStudio.J3D
             OnPropertyChanged("BoneAnimations");
         }
 
+        public void UnloadBoneAnimations()
+        {
+            m_boneAnimations.Clear();
+            OnPropertyChanged("BoneAnimations");
+        }
+
         public void LoadMaterialAnim(string btkFile)
         {
             string animName = Path.GetFileNameWithoutExtension(btkFile);

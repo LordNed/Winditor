@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Input;
 using System.Windows;
 using System.Collections.Generic;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace J3DRenderer
 {
@@ -21,37 +22,48 @@ namespace J3DRenderer
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool HasLoadedModel { get { return m_loadedModels.Count > 0; } }
-        public J3D LoadedModel { get { return m_loadedModels.Count > 0 ? m_loadedModels[0] : null; } }
+        public J3D MainModel { get { return m_loadedModels.Count > 0 ? m_loadedModels[0] : null; } }
+
+        public ModelRenderOptionsViewModel ViewOptions { get { return m_modelRenderOptions; } }
         public HighresScreenshotViewModel HighResScreenshot { get { return m_highresScreenshot; } }
 
-        private GLControl m_glControl;
-        private System.Diagnostics.Stopwatch m_dtStopwatch;
+        #region Commands
+        public ICommand OpenModelCommand { get { return new RelayCommand(x => OnUserRequestLoadAsset(true)); } }
+        public ICommand OpenModelAdditiveCommand { get { return new RelayCommand(x => OnUserRequestLoadAsset(false)); } }
+        public ICommand LoadAnimationCommand { get { return new RelayCommand(x => OnUserRequestLoadAsset(false)); } }
+        public ICommand CloseModelCommand { get { return new RelayCommand(x => OnUserRequestCloseModel()); } }
+        public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnUserRequestApplicationExit()); } }
+        #endregion
 
         // Rendering
         private WCamera m_renderCamera;
         private int m_viewportHeight;
         private int m_viewportWidth;
         private float m_timeSinceStartup;
-
-        private J3D[] m_skybox;
+        private GLControl m_glControl;
+        private System.Diagnostics.Stopwatch m_dtStopwatch;
 
         private ScreenspaceQuad m_screenQuad;
         private Shader m_alphaVisualizationShader;
         private WFrameBuffer m_frameBuffer;
-        private HighresScreenshotViewModel m_highresScreenshot;
 
         private List<J3D> m_loadedModels;
 
         GXLight m_mainLight;
         GXLight m_secondaryLight;
 
+        private HighresScreenshotViewModel m_highresScreenshot;
+        private ModelRenderOptionsViewModel m_modelRenderOptions;
+
         public MainWindowViewModel()
         {
+            m_highresScreenshot = new HighresScreenshotViewModel();
+            m_modelRenderOptions = new ModelRenderOptionsViewModel();
+
             m_renderCamera = new WCamera();
             m_loadedModels = new List<J3D>();
             m_renderCamera.Transform.Position = new Vector3(500, 75, 500);
             m_renderCamera.Transform.Rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(45f));
-            m_highresScreenshot = new HighresScreenshotViewModel();
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             Application.Current.MainWindow.Closing += OnMainWindowClosing;
         }
@@ -86,23 +98,60 @@ namespace J3DRenderer
         {
             // Only check the first one for now...
             if (droppedFilePaths.Length > 0)
-                LoadModelFromFilepath(droppedFilePaths[0], true);
+                LoadAssetFromFilepath(droppedFilePaths[0], true);
         }
 
-        private void LoadModelFromFilepath(string filePath, bool unloadExisting)
+        private void OnUserRequestLoadAsset(bool unloadExisting)
         {
-            if (unloadExisting)
-            {
-                foreach (var model in m_loadedModels)
-                    model.Dispose();
-                m_loadedModels.Clear();
-            }
+            var ofd = new CommonOpenFileDialog();
+            ofd.Title = "Choose File...";
+            ofd.IsFolderPicker = false;
+            ofd.AddToMostRecentlyUsedList = false;
+            ofd.AllowNonFileSystemItems = false;
+            ofd.EnsureFileExists = true;
+            ofd.EnsurePathExists = true;
+            ofd.EnsureReadOnly = false;
+            ofd.EnsureValidNames = true;
+            ofd.Multiselect = false;
+            ofd.ShowPlacesList = true;
+            ofd.Filters.Add(new CommonFileDialogFilter("Supported Files (*.bmd, *.bdl, *.bck)", "*.bmd,*.bdl,*.bck"));
+            ofd.Filters.Add(new CommonFileDialogFilter("All Files (*.*)", "*.*"));
 
+            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                LoadAssetFromFilepath(ofd.FileName, unloadExisting);
+            }
+        }
+
+        private void OnUserRequestCloseModel()
+        {
+            foreach (var j3d in m_loadedModels)
+                j3d.Dispose();
+            m_loadedModels.Clear();
+        }
+
+        private void OnUserRequestApplicationExit()
+        {
+            // This attempts to close the application, which invokes the normal window close events.
+            App.Current.MainWindow.Close();
+        }
+
+        private void LoadAssetFromFilepath(string filePath, bool unloadExisting)
+        {
             if (!File.Exists(filePath))
                 Console.WriteLine("Cannot load: \"{0}\", not a file!", filePath);
 
-            if (string.Compare(Path.GetExtension(filePath), ".bdl", true) == 0 || string.Compare(Path.GetExtension(filePath), ".bmd", true) == 0)
+            string fileExtension = Path.GetExtension(filePath);
+
+            if (string.Compare(fileExtension, ".bdl", true) == 0 || string.Compare(fileExtension, ".bmd", true) == 0)
             {
+                if (unloadExisting)
+                {
+                    foreach (var model in m_loadedModels)
+                        model.Dispose();
+                    m_loadedModels.Clear();
+                }
+
                 var newModel = new J3D(Path.GetFileNameWithoutExtension(filePath));
                 using (EndianBinaryReader reader = new EndianBinaryReader(new FileStream(filePath, FileMode.Open, FileAccess.Read), Endian.Big))
                     newModel.LoadFromStream(reader);
@@ -113,20 +162,22 @@ namespace J3DRenderer
                 newModel.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
                 m_loadedModels.Add(newModel);
             }
-
+            else if (string.Compare(fileExtension, ".bck", true) == 0)
+            {
+                if (MainModel != null)
+                {
+                    if (unloadExisting)
+                        MainModel.UnloadBoneAnimations();
+                    MainModel.LoadBoneAnimation(filePath);
+                }
+            }
 
             if (PropertyChanged != null)
             {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("LoadedModel"));
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("MainModel"));
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("HasLoadedModel"));
             }
-
-                //// Animations
-                //foreach (var bck in Directory.GetFiles("resources/cl/bcks/"))
-                //{
-                //    m_childLink.LoadBoneAnimation(bck);
-                //}
-            }
+        }
 
         private void DoApplicationTick()
         {
@@ -175,15 +226,6 @@ namespace J3DRenderer
             Quaternion lightRot = Quaternion.FromAxisAngle(Vector3.UnitY, angleInRad);
             Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
             m_mainLight.Position = new Vector4(newLightPos, 0);
-
-            // Render something
-            //for (int i = 0; i < m_skybox.Length; i++)
-            //{
-            //    if (m_skybox[i] == null)
-            //        continue;
-
-            //    m_skybox[i].Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
-            //}
 
             foreach (var j3d in m_loadedModels)
             {
@@ -257,6 +299,9 @@ namespace J3DRenderer
 
             if (m_alphaVisualizationShader != null)
                 m_alphaVisualizationShader.Dispose();
+
+            if (m_modelRenderOptions != null)
+                m_modelRenderOptions.SaveSettings();
 
             foreach (var j3d in m_loadedModels)
                 j3d.Dispose();
