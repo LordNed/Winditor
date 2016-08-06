@@ -54,6 +54,7 @@ namespace J3DRenderer
 
         private HighresScreenshotViewModel m_highresScreenshot;
         private ModelRenderOptionsViewModel m_modelRenderOptions;
+        private WLineBatcher m_lineBatcher;
 
         public MainWindowViewModel()
         {
@@ -72,6 +73,7 @@ namespace J3DRenderer
         {
             m_glControl = child;
             m_frameBuffer = new WFrameBuffer(m_glControl.Width, m_glControl.Height);
+            m_lineBatcher = new WLineBatcher();
 
             m_alphaVisualizationShader = new Shader("AlphaVisualize");
             m_alphaVisualizationShader.CompileSource(File.ReadAllText("resources/shaders/Debug_AlphaVisualizer.vert"), ShaderType.VertexShader);
@@ -210,6 +212,23 @@ namespace J3DRenderer
                     m_frameBuffer.ResizeBuffer(scaledWidth, scaledHeight);
             }
 
+            RenderFrame();
+
+            // Now that we've rendered to the framebuffer, if they've requested a screenshot, write that to disk.
+            if (m_highresScreenshot.UserRequestedScreenshot)
+            {
+                CaptureScreenshotToDisk();
+
+                // Resize the buffer back down if required.
+                if (m_frameBuffer.Width != m_viewportWidth || m_frameBuffer.Height != m_viewportHeight)
+                    m_frameBuffer.ResizeBuffer(m_viewportWidth, m_viewportHeight);
+
+                m_highresScreenshot.UserRequestedScreenshot = false;
+            }
+        }
+
+        private void RenderFrame()
+        {
             m_frameBuffer.Bind();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
             GL.Viewport(0, 0, m_frameBuffer.Width, m_frameBuffer.Height);
@@ -217,8 +236,9 @@ namespace J3DRenderer
             float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
             m_dtStopwatch.Restart();
             m_renderCamera.Tick(deltaTime);
+            m_lineBatcher.Tick(deltaTime);
 
-            deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quater second max because debugging
+            deltaTime = WMath.Clamp(deltaTime, 0, 0.25f); // quarter second max because debugging
             m_timeSinceStartup += deltaTime;
 
             // Rotate our light
@@ -227,6 +247,21 @@ namespace J3DRenderer
             Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
             m_mainLight.Position = new Vector4(newLightPos, 0);
 
+
+            if(m_modelRenderOptions.ShowPivot)
+            {
+                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(50, 0, 0), WLinearColor.Red, 0, 0);
+                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 50, 0), WLinearColor.Green, 0, 0);
+                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 0, 50), WLinearColor.Blue, 0, 0);
+            }
+
+            if(m_modelRenderOptions.ShowGrid)
+            {
+                DrawFixedGrid();
+            }
+
+
+            m_lineBatcher.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix);
             foreach (var j3d in m_loadedModels)
             {
                 j3d.SetHardwareLight(0, m_mainLight);
@@ -247,18 +282,6 @@ namespace J3DRenderer
 
             // Blit the framebuffer to the backbuffer so it shows up on screen.
             m_frameBuffer.BlitToBackbuffer(m_viewportWidth, m_viewportHeight);
-
-            // Now that we've rendered to the framebuffer, if they've requested a screenshot, write that to disk.
-            if (m_highresScreenshot.UserRequestedScreenshot)
-            {
-                CaptureScreenshotToDisk();
-
-                // Resize the buffer back down if required.
-                if (m_frameBuffer.Width != m_viewportWidth || m_frameBuffer.Height != m_viewportHeight)
-                    m_frameBuffer.ResizeBuffer(m_viewportWidth, m_viewportHeight);
-
-                m_highresScreenshot.UserRequestedScreenshot = false;
-            }
         }
 
         private void CaptureScreenshotToDisk()
@@ -305,6 +328,60 @@ namespace J3DRenderer
 
             foreach (var j3d in m_loadedModels)
                 j3d.Dispose();
+
+            m_lineBatcher.ReleaseResources();
+        }
+
+        private void DrawFixedGrid()
+        {
+            int numCellsToDraw = 64;
+
+            int rangeInCells = numCellsToDraw / 2;
+            int majorLineInterval = numCellsToDraw / 8;
+
+            int numLines = numCellsToDraw + 1;
+            int axesIndex = numCellsToDraw / 2;
+
+            float perspectiveGridSize = 1048575;
+
+            for (int lineIndex = 0; lineIndex < numLines; lineIndex++)
+            {
+                bool isMajorLine = ((lineIndex - rangeInCells) % majorLineInterval) == 0;
+
+                Vector3 a = new Vector3(), b = new Vector3();
+                a.X = (perspectiveGridSize / 4f) * (-1f + 2f * lineIndex / numCellsToDraw);
+                b.X = a.X;
+
+                a.Y = b.Y = 0;
+
+                a.Z = (perspectiveGridSize / 4f);
+                b.Z = -(perspectiveGridSize / 4f);
+
+                WLinearColor lineColor;
+                float lineThickness = 0;
+
+                if(lineIndex == axesIndex)
+                {
+                    lineColor = new WLinearColor(70/255f, 70/255f, 70/255f);
+                    lineThickness = 0f;
+                }
+                else if (isMajorLine)
+                {
+                    lineColor = new WLinearColor(40 / 255f, 40 / 255f, 40 / 255f);
+                }
+                else
+                {
+                    lineColor = new WLinearColor(20 / 255f, 20 / 255f, 20 / 255f);
+                }
+
+                m_lineBatcher.DrawLine(a, b, lineColor, lineThickness, 0f);
+
+                a.Z = a.X;
+                b.Z = b.X;
+                a.X = (perspectiveGridSize / 4f);
+                b.X = -(perspectiveGridSize / 4f);
+                m_lineBatcher.DrawLine(a, b, lineColor, lineThickness, 0f);
+            }
         }
     }
 }
