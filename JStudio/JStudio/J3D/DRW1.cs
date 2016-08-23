@@ -6,8 +6,8 @@ namespace JStudio.J3D
 {
     public class DRW1
     {
-        public List<bool> IsWeighted;
-        public List<ushort> Indexes;
+        public List<bool> IsPartiallyWeighted;
+        public List<ushort> TransformIndexTable;
 
         public void LoadDRW1FromStream(EndianBinaryReader reader, long tagStart)
         {
@@ -17,16 +17,16 @@ namespace JStudio.J3D
             uint isWeightedOffset = reader.ReadUInt32();
             uint indexOffset = reader.ReadUInt32();
 
-            IsWeighted = new List<bool>();
-            Indexes = new List<ushort>();
+            IsPartiallyWeighted = new List<bool>();
+            TransformIndexTable = new List<ushort>();
 
             reader.BaseStream.Position = tagStart + isWeightedOffset;
             for (int k = 0; k < sectionCount; k++)
-                IsWeighted.Add(reader.ReadBoolean());
+                IsPartiallyWeighted.Add(reader.ReadBoolean());
 
             reader.BaseStream.Position = tagStart + indexOffset;
             for (int k = 0; k < sectionCount; k++)
-                Indexes.Add(reader.ReadUInt16());
+                TransformIndexTable.Add(reader.ReadUInt16());
         }
     }
 }

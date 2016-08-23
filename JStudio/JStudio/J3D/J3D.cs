@@ -402,8 +402,8 @@ namespace JStudio.J3D
                             originalPacketIndex--;
                         } while (matrixTableIndex == 0xFFFF);
 
-                        bool isPartiallyWeighted = DRW1Tag.IsWeighted[matrixTableIndex];
-                        ushort indexFromDRW1 = DRW1Tag.Indexes[matrixTableIndex];
+                        bool isPartiallyWeighted = DRW1Tag.IsPartiallyWeighted[matrixTableIndex];
+                        ushort indexFromDRW1 = DRW1Tag.TransformIndexTable[matrixTableIndex];
 
                         Matrix4 finalMatrix = Matrix4.Zero;
                         if (isPartiallyWeighted)
