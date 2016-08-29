@@ -342,7 +342,7 @@ namespace J3DRenderer
             int numLines = numCellsToDraw + 1;
             int axesIndex = numCellsToDraw / 2;
 
-            float perspectiveGridSize = 1048575;
+            float perspectiveGridSize = 400000;
 
             for (int lineIndex = 0; lineIndex < numLines; lineIndex++)
             {
