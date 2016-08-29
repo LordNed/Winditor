@@ -156,7 +156,7 @@ namespace J3DRenderer
 
                 var newModel = new J3D(Path.GetFileNameWithoutExtension(filePath));
                 using (EndianBinaryReader reader = new EndianBinaryReader(new FileStream(filePath, FileMode.Open, FileAccess.Read), Endian.Big))
-                    newModel.LoadFromStream(reader);
+                    newModel.LoadFromStream(reader, true, true);
 
                 newModel.SetHardwareLight(0, m_mainLight);
                 newModel.SetHardwareLight(1, m_secondaryLight);
