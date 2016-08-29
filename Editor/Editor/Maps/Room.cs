@@ -101,12 +101,6 @@ namespace WindEditor
                             string fileName = Path.Combine(folder, "room.dzr");
                             if (File.Exists(fileName))
                                 LoadLevelEntitiesFromFile(fileName);
-
-                            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(fileName + "_2.dzr", FileMode.Create), Endian.Big))
-                            {
-                                SceneDataExporter exporter = new SceneDataExporter();
-                                exporter.ExportToStream(writer, this);
-                            }
                         }
                         break;
                 }
@@ -220,6 +214,20 @@ namespace WindEditor
             }
 
             return largestRadius;
+        }
+
+        public override void SaveEntitiesToDirectory(string directory)
+        {
+            string dzrDirectory = string.Format("{0}/dzr", directory);
+            if (!Directory.Exists(dzrDirectory))
+                Directory.CreateDirectory(dzrDirectory);
+
+            string filePath = string.Format("{0}/room.dzr", dzrDirectory);
+            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+            {
+                SceneDataExporter exporter = new SceneDataExporter();
+                exporter.ExportToStream(writer, this);
+            }
         }
     }
 }

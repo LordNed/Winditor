@@ -12,6 +12,8 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.SaveProjectCommand}" Key="S" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.SaveProjectAsCommand}" Key="S" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
@@ -31,6 +33,8 @@
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
+                <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.SaveProjectCommand}"/>
+                <MenuItem Header="_Save As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
                 <Separator/>
                 <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
                 <Separator/>

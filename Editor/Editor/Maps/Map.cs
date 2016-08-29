@@ -10,6 +10,7 @@ namespace WindEditor
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string FocusedSceneLabel { get { return FocusedScene == null ? "" : FocusedScene is WStage ? "Stage" : FocusedScene.Name; } }
+        public string SavePath { get { return m_savePath; } }
 
         public WScene FocusedScene
         {
@@ -113,6 +114,16 @@ namespace WindEditor
 
             if (m_sceneList.Count > 0)
                 FocusedScene = m_sceneList[m_sceneList.Count - 1];
+        }
+
+        public void SaveToDirectory(string savePath)
+        {
+            foreach(WScene scene in m_sceneList)
+            {
+                string sceneName = scene is WStage ? "Stage" : scene.Name;
+                string folderPath = string.Format("{0}/{1}", savePath, sceneName);
+                scene.SaveToDirectory(folderPath);
+            }
         }
 
         public void Tick(float deltaTime)

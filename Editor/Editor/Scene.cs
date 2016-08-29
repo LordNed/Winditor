@@ -7,7 +7,7 @@ using System;
 
 namespace WindEditor
 {
-    public class WScene : WDOMNode
+    public abstract class WScene : WDOMNode
     {
         public string Name { get; protected set; }
 
@@ -81,5 +81,22 @@ namespace WindEditor
         {
             
         }
+
+        public virtual void SaveToDirectory(string directory)
+        {
+            if(!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            Console.WriteLine("Saving {0} to {1}...", Name, directory);
+
+            Console.WriteLine("Writing DZR/DZS File...");
+            SaveEntitiesToDirectory(directory);
+            Console.WriteLine("Finished saving DZR/DZS File.");
+
+
+            Console.WriteLine("Finished Saving {0}.", Name);
+        }
+
+        public abstract void SaveEntitiesToDirectory(string directory);
     }
 }

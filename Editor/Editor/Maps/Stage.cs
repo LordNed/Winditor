@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameFormatReader.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -89,6 +90,20 @@ namespace WindEditor
                 //    if (room != null)
                 //        room.EnvironmentLighting = envrData[i];
                 //}
+            }
+        }
+
+        public override void SaveEntitiesToDirectory(string directory)
+        {
+            string dzsDirectory = string.Format("{0}/dzs", directory);
+            if (!Directory.Exists(dzsDirectory))
+                Directory.CreateDirectory(dzsDirectory);
+
+            string filePath = string.Format("{0}/stage.dzs", dzsDirectory);
+            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+            {
+                SceneDataExporter exporter = new SceneDataExporter();
+                exporter.ExportToStream(writer, this);
             }
         }
     }

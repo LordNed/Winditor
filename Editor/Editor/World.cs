@@ -107,6 +107,16 @@ namespace WindEditor
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
         }
 
+        public void SaveMapToDirectory(string directory)
+        {
+            if (m_currentMap != null)
+            {
+                if (string.IsNullOrEmpty(directory))
+                    directory = m_currentMap.SavePath;
+                m_currentMap.SaveToDirectory(directory);
+            }
+        }
+
         public void UnloadMap()
         {
             // Clear our Undo/Redo Stack
