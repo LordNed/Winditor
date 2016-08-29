@@ -239,7 +239,7 @@
 
                 <GridSplitter Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 <Grid Grid.Row="2">
-                    <GroupBox Header="TEV Color Overrides" DataContext="{Binding Path=LoadedModel.TevColorOverrides}">
+                    <GroupBox Header="TEV Color Overrides" DataContext="{Binding Path=MainModel.TevColorOverrides}">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <TextBlock Padding="2" Text="TEV supports two forms of color overrides. The first override is the default values of the TEV Registers. These can be sampled in a material, and are overwritten by each TEV stage. The second override is the TEV Constants which cannot be changed during the TEV stages." TextWrapping="wrap"/>
                             <TextBlock Padding="2" Text="Various materials may/may not be configured to sample 0 or more of the various overrides." TextWrapping="wrap"/>

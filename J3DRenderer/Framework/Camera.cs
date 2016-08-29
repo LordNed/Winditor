@@ -74,7 +74,7 @@ namespace WindEditor
         }
 
         private float m_nearClipPlane = 10f;
-        private float m_farClipPlane = 100000f;
+        private float m_farClipPlane = 500000f;
         private float m_fieldOfView = 45f;
         private float m_aspectRatio = 16 / 9f;
         private float m_orbitCameraDistance = 500f;
