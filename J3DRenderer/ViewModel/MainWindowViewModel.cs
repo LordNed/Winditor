@@ -247,26 +247,23 @@ namespace J3DRenderer
             Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
             m_mainLight.Position = new Vector4(newLightPos, 0);
 
-
-            if(m_modelRenderOptions.ShowPivot)
-            {
-                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(50, 0, 0), WLinearColor.Red, 0, 0);
-                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 50, 0), WLinearColor.Green, 0, 0);
-                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 0, 50), WLinearColor.Blue, 0, 0);
-            }
-
-            if(m_modelRenderOptions.ShowGrid)
+            if (m_modelRenderOptions.ShowGrid)
             {
                 DrawFixedGrid();
             }
 
-
-            m_lineBatcher.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix);
             foreach (var j3d in m_loadedModels)
             {
                 j3d.SetHardwareLight(0, m_mainLight);
                 j3d.Tick(deltaTime);
                 j3d.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix, Matrix4.Identity);
+            }
+
+            if (m_modelRenderOptions.ShowPivot)
+            {
+                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(50, 0, 0), WLinearColor.Red, 0, 0);
+                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 50, 0), WLinearColor.Green, 0, 0);
+                m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 0, 50), WLinearColor.Blue, 0, 0);
             }
 
             // Debug Rendering
@@ -281,6 +278,7 @@ namespace J3DRenderer
             }
 
             // Blit the framebuffer to the backbuffer so it shows up on screen.
+            m_lineBatcher.Render(m_renderCamera.ViewMatrix, m_renderCamera.ProjectionMatrix);
             m_frameBuffer.BlitToBackbuffer(m_viewportWidth, m_viewportHeight);
         }
 
