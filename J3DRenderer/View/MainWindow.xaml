@@ -65,7 +65,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- Left Info -->
-            <Grid Grid.Column="0" DataContext="{Binding Path=LoadedModel}">
+            <Grid Grid.Column="0" DataContext="{Binding Path=MainModel}">
                 <ItemsControl HorizontalContentAlignment="Stretch">
                     <GroupBox Header="Header">
                         <Grid>
@@ -210,9 +210,9 @@
 
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
                                 <Label Content="Number of loaded Animations:"/>
-                                <Label Content="{Binding Path=LoadedModel.BoneAnimations.Count}"/>
+                                <Label Content="{Binding Path=MainModel.BoneAnimations.Count}"/>
                             </StackPanel>
-                            <ListView Grid.Row="1" ItemsSource="{Binding Path=LoadedModel.BoneAnimations}" SelectedItem="{Binding Path=LoadedModel.CurrentBoneAnimation}" HorizontalContentAlignment="Stretch">
+                            <ListView Grid.Row="1" ItemsSource="{Binding Path=MainModel.BoneAnimations}" SelectedItem="{Binding Path=MainModel.CurrentBoneAnimation}" HorizontalContentAlignment="Stretch">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
