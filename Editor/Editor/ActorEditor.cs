@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using WindEditor.Serialization;
@@ -17,6 +18,7 @@ namespace WindEditor
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => m_selectionList.Count > 0); } }
         public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => m_selectionList.Count > 0); } }
+        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity(EntityFourCC as string)); } }
 
         private WWorld m_world;
         private enum SelectionType
@@ -38,6 +40,98 @@ namespace WindEditor
             m_selectionList = new BindingList<WActorNode>();
             m_transformGizmo = new WTransformGizmo(m_world);
             SelectedObjects = new WEditorSelectionAggregate(m_selectionList);
+        }
+
+        public void CreateEntity(string fourCC)
+        {
+            if (m_world.Map == null || m_world.Map.FocusedScene == null)
+                return;
+
+            var actorDescriptors = new List<MapActorDescriptor>();
+            foreach (var file in Directory.GetFiles("resources/templates/"))
+            {
+                MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
+                actorDescriptors.Add(descriptor);
+            }
+
+            MapActorDescriptor entityDescriptor = actorDescriptors.Find(x => string.Compare(x.FourCC, fourCC, true) == 0);
+            if(entityDescriptor == null)
+            {
+                Console.WriteLine("Attempted to spawn unsupported FourCC: {0}", fourCC);
+                return;
+            }
+
+            List<IPropertyValue> actorProperties = new List<IPropertyValue>();
+            foreach(var field in entityDescriptor.Fields)
+            {
+                switch(field.FieldName)
+                {
+                    case "Position":
+                    case "X Rotation":
+                    case "Y Rotation":
+                    case "Z Rotation":
+                    case "X Scale":
+                    case "Y Scale":
+                    case "Z Scale":
+                        continue;
+                }
+
+                IPropertyValue propValue = null;
+                switch (field.FieldType)
+                {
+                    case PropertyValueType.Byte:
+                        propValue = new TBytePropertyValue(0, field.FieldName);
+                        break;
+                    case PropertyValueType.Bool:
+                        propValue = new TBoolPropertyValue(false, field.FieldName);
+                        break;
+                    case PropertyValueType.Short:
+                        propValue = new TShortPropertyValue(0, field.FieldName);
+                        break;
+                    case PropertyValueType.Int:
+                        propValue = new TIntPropertyValue(0, field.FieldName);
+                        break;
+                    case PropertyValueType.Float:
+                        propValue = new TFloatPropertyValue(0f, field.FieldName);
+                        break;
+                    case PropertyValueType.FixedLengthString:
+                    case PropertyValueType.String:
+                        propValue = new TStringPropertyValue("", field.FieldName);
+                        break;
+                    case PropertyValueType.Vector2:
+                        propValue = new TVector2PropertyValue(new OpenTK.Vector2(0f, 0f), field.FieldName);
+                        break;
+                    case PropertyValueType.Vector3:
+                        propValue = new TVector3PropertyValue(new OpenTK.Vector3(0f, 0f, 0f), field.FieldName);
+                        break;
+                    case PropertyValueType.XRotation:
+                    case PropertyValueType.YRotation:
+                    case PropertyValueType.ZRotation:
+                        propValue = new TShortPropertyValue(0, field.FieldName);
+                        break;
+                    case PropertyValueType.Color24:
+                        propValue = new TLinearColorPropertyValue(new WLinearColor(1f, 1f, 1f), field.FieldName);
+                        break;
+                    case PropertyValueType.Color32:
+                        propValue = new TLinearColorPropertyValue(new WLinearColor(1f, 1f, 1f, 1f), field.FieldName);
+                        break;
+                    default:
+                        Console.WriteLine("Unsupported PropertyValueType: {0}", field.FieldType);
+                        break;
+                }
+
+                propValue.SetUndoStack(m_world.UndoStack);
+                actorProperties.Add(propValue);
+            }
+
+            var newActor = new WActorNode(fourCC, m_world);
+            newActor.Transform.Position = new OpenTK.Vector3(0, 200, 0);
+
+            newActor.SetParent(m_world.Map.FocusedScene);
+            newActor.Properties.AddRange(actorProperties);
+            newActor.PostFinishedLoad();
+
+            ModifySelection(SelectionType.Add, newActor, true);
         }
 
         public void UpdateForSceneView(WSceneView view)

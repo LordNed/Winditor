@@ -74,6 +74,15 @@
                 <Separator/>
                 <MenuItem Header="Set Data Root..." Command="{Binding Path=SetDataRootCommand}"/>
             </MenuItem>
+            <MenuItem Header="Create">
+                <MenuItem Header="Actor" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="ACTR"/>
+                <Separator/>
+                <MenuItem Header="Player Spawn" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="PLYR"/>
+                <MenuItem Header="Ship Spawn" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="SHIP"/>
+                <Separator/>
+                <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="TRES"/>
+                <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="SCLS"/>
+            </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
             <Grid>

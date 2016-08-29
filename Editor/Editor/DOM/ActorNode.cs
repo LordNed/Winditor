@@ -71,7 +71,7 @@ namespace WindEditor
         {
             m_namePropertyValueCache = Properties.Find(x => x.Name == "Name");
 
-            if (FourCC == "ACTR" || FourCC == "SCOB" || FourCC == "TGOB")
+            if (FourCC == "ACTR" || FourCC == "SCOB" || FourCC == "TGOB" || FourCC == "PLYR" || FourCC == "SHIP")
             {
                 if (m_namePropertyValueCache != null)
                 {
@@ -96,8 +96,11 @@ namespace WindEditor
                 if(m_actorMesh != null)
                 {
                     m_actorMesh.SetHardwareLight(0, new JStudio.OpenGL.GXLight(Vector4.Zero, Vector4.UnitX, new Vector4(1, 1, 1, 1), new Vector4(1.875f, 0, 0, 0), new Vector4(1.875f, 0, 0, 0)));
+                    m_actorMesh.SetHardwareLight(1, new JStudio.OpenGL.GXLight(Vector4.Zero, Vector4.UnitX, new Vector4(1, 1, 1, 1), new Vector4(1.875f, 0, 0, 0), new Vector4(1.875f, 0, 0, 0)));
                     m_actorMesh.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
                     m_actorMesh.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
+
+                    m_objRender = null;
                 }
             }
 
