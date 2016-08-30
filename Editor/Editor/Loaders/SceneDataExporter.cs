@@ -104,27 +104,11 @@ namespace WindEditor
                 writer.Write(0xFF);
         }
 
-        // Gets X angle in radians from a quaternion
-        private float PitchFromQuat(Quaternion q)
-        {
-            return (float)Math.Atan((2f * (q.Y * q.Z + q.W * q.X)) / (q.W * q.W - q.X * q.X - q.Y * q.Y + q.Z * q.Z)); 
-        }
-
-        // Gets Y angle in radians from a quaternion
-        // Appears to be broken?
-        private float YawFromQuat(Quaternion q)
-        {
-            return (float)Math.Asin(WMath.Clamp((-2f) * (q.X * q.Z - q.W * q.Y), -1f, 1f));
-        }
-
-        // Gets Z angle in radians from a quaternion
-        private float RollFromQuat(Quaternion q)
-        {
-            return (float)Math.Atan((2f * (q.X * q.Y + q.W * q.Z)) / (q.W * q.W + q.X * q.X - q.Y * q.Y - q.Z * q.Z));
-        }
-
         private void WriteActorToChunk(WActorNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
         {
+            // Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = actor.Transform.Rotation.ToEulerAngles();
+
             foreach(var field in template.Fields)
             {
                 IPropertyValue propValue = actor.Properties.Find(x => x.Name == field.FieldName);
@@ -132,20 +116,17 @@ namespace WindEditor
                     propValue = new TVector3PropertyValue(actor.Transform.Position, "Position");
                 else if(field.FieldName == "X Rotation")
                 {
-                    float xRot = WMath.RadiansToDegrees(PitchFromQuat(actor.Transform.Rotation));
-                    short xRotShort = WMath.RotationFloatToShort(xRot);
+                    short xRotShort = WMath.RotationFloatToShort(eulerRot.X);
                     propValue = new TShortPropertyValue(xRotShort, "X Rotation");
                 }
                 else if (field.FieldName == "Y Rotation")
                 {
-                    float yRot = WMath.RadiansToDegrees(YawFromQuat(actor.Transform.Rotation));
-                    short yRotShort = WMath.RotationFloatToShort(yRot);
+                    short yRotShort = WMath.RotationFloatToShort(eulerRot.Y);
                     propValue = new TShortPropertyValue(yRotShort, "Y Rotation");
                 }
                 else if (field.FieldName == "Z Rotation")
                 {
-                    float zRot = WMath.RadiansToDegrees(RollFromQuat(actor.Transform.Rotation));
-                    short zRotShort = WMath.RotationFloatToShort(zRot);
+                    short zRotShort = WMath.RotationFloatToShort(eulerRot.Z);
                     propValue = new TShortPropertyValue(zRotShort, "Z Rotation");
                 }
                 else if (field.FieldName == "X Scale")
