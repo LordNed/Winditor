@@ -9,10 +9,12 @@ namespace WindEditor
         private Vector3 m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
+        private WActorEditor m_actorEditor;
 
-        public WTranslateActorAction(WDOMNode[] actors, Vector3 delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Move", parent)
+        public WTranslateActorAction(WDOMNode[] actors, WActorEditor actorEditor, Vector3 delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Move", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
+            m_actorEditor = actorEditor;
             m_delta = delta;
             m_isDone = isDone;
             m_transformSpace = transformSpace;
@@ -64,6 +66,8 @@ namespace WindEditor
 
                 m_affectedActors[i].Transform.Position += transformedDelta;
             }
+
+            m_actorEditor.UpdateGizmoTransform();
         }
 
         public override void Undo()
@@ -82,6 +86,8 @@ namespace WindEditor
                 }
                 m_affectedActors[i].Transform.Position -= transformedDelta;
             }
+
+            m_actorEditor.UpdateGizmoTransform();
         }
     }
 }

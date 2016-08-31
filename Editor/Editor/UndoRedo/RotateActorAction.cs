@@ -9,10 +9,12 @@ namespace WindEditor
         private Quaternion m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
+        private WActorEditor m_actorEditor;
 
-        public WRotateActorAction(WDOMNode[] actors, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
+        public WRotateActorAction(WDOMNode[] actors, WActorEditor actorEditor, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
+            m_actorEditor = actorEditor;
             m_delta = delta;
             m_isDone = isDone;
             m_transformSpace = transformSpace;
@@ -62,6 +64,8 @@ namespace WindEditor
                     m_affectedActors[i].Transform.Rotation = m_delta * m_affectedActors[i].Transform.Rotation;
                 }
             }
+
+            m_actorEditor.UpdateGizmoTransform();
         }
 
         public override void Undo()
@@ -78,6 +82,8 @@ namespace WindEditor
                     m_affectedActors[i].Transform.Rotation = Quaternion.Invert(m_delta) * m_affectedActors[i].Transform.Rotation;
                 }
             }
+
+            m_actorEditor.UpdateGizmoTransform();
         }
     }
 }

@@ -42,6 +42,15 @@ namespace WindEditor
             SelectedObjects = new WEditorSelectionAggregate(m_selectionList);
         }
 
+        public void UpdateGizmoTransform()
+        {
+            if(m_selectionList.Count > 0)
+            {
+                m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
+                m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
+            }
+        }
+
         public void CreateEntity(string fourCC)
         {
             if (m_world.Map == null || m_world.Map.FocusedScene == null)
@@ -247,8 +256,7 @@ namespace WindEditor
                 else
                     m_transformGizmo.SetTransformSpace(FTransformSpace.World);
 
-                m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
-                m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
+                UpdateGizmoTransform();
             }
 
             if (WInput.GetMouseButtonDown(0))
@@ -328,7 +336,7 @@ namespace WindEditor
                 }
             }
 
-            WSelectionChangedAction selectionAction = new WSelectionChangedAction(currentSelection, newSelection.ToArray(), m_selectionList);
+            WSelectionChangedAction selectionAction = new WSelectionChangedAction(this, currentSelection, newSelection.ToArray(), m_selectionList);
             m_world.UndoStack.Push(selectionAction);
         }
 
@@ -375,13 +383,13 @@ namespace WindEditor
             switch (m_transformGizmo.Mode)
             {
                 case FTransformMode.Translation:
-                    undoAction = new WTranslateActorAction(actors, m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
+                    undoAction = new WTranslateActorAction(actors, this, m_transformGizmo.DeltaTranslation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Rotation:
-                    undoAction = new WRotateActorAction(actors, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
+                    undoAction = new WRotateActorAction(actors, this, m_transformGizmo.DeltaRotation, m_transformGizmo.TransformSpace, isDone);
                     break;
                 case FTransformMode.Scale:
-                    undoAction = new WScaleActorAction(actors, m_transformGizmo.DeltaScale, isDone);
+                    undoAction = new WScaleActorAction(actors, this, m_transformGizmo.DeltaScale, isDone);
                     Console.WriteLine(m_transformGizmo.DeltaScale);
                     break;
                 default:

@@ -8,10 +8,13 @@ namespace WindEditor
         private List<WDOMNode> m_affectedActors;
         private Vector3 m_delta;
         private bool m_isDone;
+        private WActorEditor m_actorEditor;
 
-        public WScaleActorAction(WDOMNode[] actors, Vector3 delta, bool isDone, WUndoCommand parent = null) : base("Scale", parent)
+
+        public WScaleActorAction(WDOMNode[] actors, WActorEditor actorEditor, Vector3 delta, bool isDone, WUndoCommand parent = null) : base("Scale", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
+            m_actorEditor = actorEditor;
             m_delta = delta;
             m_isDone = isDone;
         }
@@ -59,6 +62,8 @@ namespace WindEditor
                 localScale.Z *= m_delta.Z;
                 m_affectedActors[i].Transform.LocalScale = localScale;
             }
+
+            m_actorEditor.UpdateGizmoTransform();
         }
 
         public override void Undo()
@@ -72,6 +77,8 @@ namespace WindEditor
                 localScale.Z /= m_delta.Z;
                 m_affectedActors[i].Transform.LocalScale = localScale;
             }
+
+            m_actorEditor.UpdateGizmoTransform();
         }
     }
 }

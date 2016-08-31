@@ -7,10 +7,12 @@ namespace WindEditor
         WActorNode[] m_oldActorList;
         WActorNode[] m_newActorList;
 
-        BindingList<WActorNode> m_selectionListRef; 
+        BindingList<WActorNode> m_selectionListRef;
+        private WActorEditor m_actorEditor;
 
-        public WSelectionChangedAction(WActorNode[] oldActorList, WActorNode[] newActorList, BindingList<WActorNode> selectionList)
+        public WSelectionChangedAction(WActorEditor actorEditor, WActorNode[] oldActorList, WActorNode[] newActorList, BindingList<WActorNode> selectionList)
         {
+            m_actorEditor = actorEditor;
             m_oldActorList = oldActorList;
             m_newActorList = newActorList;
             m_selectionListRef = selectionList;
@@ -31,6 +33,8 @@ namespace WindEditor
 
             for (int i = 0; i < m_newActorList.Length; i++)
                 m_newActorList[i].Flags |= ActorFlags.Selected;
+
+            m_actorEditor.UpdateGizmoTransform();
         }
 
         public override void Undo()
@@ -47,7 +51,8 @@ namespace WindEditor
 
             for (int i = 0; i < m_oldActorList.Length; i++)
                 m_oldActorList[i].Flags |= ActorFlags.Selected;
-        }
 
+            m_actorEditor.UpdateGizmoTransform();
+        }
     }
 }
