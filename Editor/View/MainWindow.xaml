@@ -24,6 +24,24 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <TextBlock Text="{Binding Path=Name}" Foreground="Black"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SelectedTemplate">
+            <TextBlock Text="{Binding Path=Name}" Foreground="Red"/>
+        </DataTemplate>
+
+        <Style TargetType="{x:Type ListBoxItem}" x:Key="ContainerStyle">
+            <Setter Property="ContentTemplate" Value="{StaticResource ItemTemplate}"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="ContentTemplate" Value="{StaticResource SelectedTemplate}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -104,12 +122,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <DockPanel>
-                                <ListBox DockPanel.Dock="Bottom" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{Binding Path=Name}"/>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
+                                <ListBox DockPanel.Dock="Bottom" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}">
+                                    
                                 </ListBox>
                             </DockPanel>
                         </Grid>
@@ -122,7 +136,7 @@
                             <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
                             <DockPanel Grid.Row="1" Margin="0,2">
                                 <Label Content="Time of Day" Margin="0,0,5,0" Padding="2" DockPanel.Dock="Left"/>
-                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}" Padding="0" DockPanel.Dock="Right"/>
+                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}" Padding="0" DockPanel.Dock="Right" Foreground="Red"/>
                                 <Slider TickPlacement="None" IsMoveToPointEnabled="True" Minimum="0" Maximum="1" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
                             </DockPanel>
                         </Grid>
