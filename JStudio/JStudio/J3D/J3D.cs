@@ -57,6 +57,7 @@ namespace JStudio.J3D
         private int m_hardwareLightBuffer;
 
         private Dictionary<string, Texture> m_textureOverrides;
+        private Dictionary<string, bool> m_colorWriteOverrides;
         private List<BCK> m_boneAnimations;
         private List<BTK> m_materialAnimations;
         private BCK m_currentBoneAnimation;
@@ -87,6 +88,7 @@ namespace JStudio.J3D
             // Rendering Stuff
             m_hardwareLightBuffer = GL.GenBuffer();
             m_textureOverrides = new Dictionary<string, Texture>();
+            m_colorWriteOverrides = new Dictionary<string, bool>();
             m_tevColorOverrides = new TevColorOverride();
             m_boneAnimations = new List<BCK>();
             m_materialAnimations = new List<BTK>();
@@ -206,6 +208,22 @@ namespace JStudio.J3D
                 m_textureOverrides[textureName].Dispose();
 
             m_textureOverrides[textureName] = new Texture(textureName, btiData);
+        }
+
+        /// <summary>
+        /// This is used to emulate a feature used in The Legend of Zelda: The Wind Waker. In WW Link and Tetra's eye/eyebrows are
+        /// made from three material/mesh layers. The first layer writes to the alpha buffer a black and white image. The second layer
+        /// is the one you actually see in game, and the third layer writes to the alpha buffer - but inverted from what the first layer 
+        /// did. This lets them use the alpha buffer as a mask for the second layer. However, there's no support in the bmd/bdl formats to
+        /// selectively disable color writes, which are required to keep the first and third layers from being visible. To solve this in
+        /// Wind Waker, they apparently modify the bmd/bdl models as they're being sent to the GX - using Link and Tetra's models as rooms
+        /// (which do not have the player code rendering them) and their eyes show up incorrectly.
+        /// </summary>
+        /// <param name="materialName">The name of the model's material that you want to enable/disable color writes for.</param>
+        /// <param name="writesToColorBuffer">Whether or not this material should write to the color buffer.</param>
+        public void SetColorWriteOverride(string materialName, bool writesToColorBuffer)
+        {
+            m_colorWriteOverrides[materialName] = writesToColorBuffer;
         }
 
         private void LoadTagDataFromFile(EndianBinaryReader reader, int tagCount, bool dumpTextures, bool dumpShaders)
@@ -520,6 +538,11 @@ namespace JStudio.J3D
             material.Bind();
             m_currentBoundMat = material;
 
+            // While the game collapses duplicate materials via the material index remap table,
+            // the actual original names are preserved with their original indexes through the
+            // string table.
+            string materialName = MAT3Tag.MaterialNameTable[index];
+
             Shader shader = material.Shader;
 
             GL.UniformMatrix4(shader.UniformModelMtx, false, ref m_modelMatrix);
@@ -573,6 +596,18 @@ namespace JStudio.J3D
             GXToOpenGL.SetDepthState(material.ZModeIndex);
             GXToOpenGL.SetDitherEnabled(material.DitherIndex);
 
+            // Check to see if we've overriden the material's ability to write to the color channel. This is used
+            // to add support for bmd/bdl models who have this setting changed through game-code since the bmd/bdl
+            // format does not appear to otherwise specify.
+            if(m_colorWriteOverrides.ContainsKey(materialName))
+            {
+                bool enabled = m_colorWriteOverrides[materialName];
+                GL.ColorMask(enabled, enabled, enabled, true);
+            }
+            else
+            {
+                GL.ColorMask(true, true, true, true);
+            }
             //if (WInput.GetKey(System.Windows.Input.Key.U))
             //    GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
             //else

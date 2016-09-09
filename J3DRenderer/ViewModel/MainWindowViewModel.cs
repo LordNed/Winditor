@@ -160,8 +160,19 @@ namespace J3DRenderer
 
                 newModel.SetHardwareLight(0, m_mainLight);
                 newModel.SetHardwareLight(1, m_secondaryLight);
+
+                // Apply patches for Wind Waker by default, since they don't seem to break anything else.
                 newModel.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
                 newModel.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
+                newModel.SetColorWriteOverride("eyeLdamA", false);
+                newModel.SetColorWriteOverride("eyeLdamB", false);
+                newModel.SetColorWriteOverride("mayuLdamA", false);
+                newModel.SetColorWriteOverride("mayuLdamB", false);
+                newModel.SetColorWriteOverride("eyeRdamA", false);
+                newModel.SetColorWriteOverride("eyeRdamB", false);
+                newModel.SetColorWriteOverride("mayuRdamA", false);
+                newModel.SetColorWriteOverride("mayuRdamB", false);
+
                 m_loadedModels.Add(newModel);
             }
             else if (string.Compare(fileExtension, ".bck", true) == 0)

@@ -59,6 +59,7 @@ namespace JStudio.J3D
     {
         public BindingList<Material> MaterialList { get; protected set; }
         public List<short> MaterialRemapTable { get; protected set; }
+        public StringTable MaterialNameTable { get; protected set; }
         //public List<IndirectTexture> IndirectTextures { get; protected set; }
         //public List<GXCullMode> CullModes { get; protected set; }
         //public List<WLinearColor> MaterialColors { get; protected set; }
@@ -120,7 +121,7 @@ namespace JStudio.J3D
 
             /* STRING TABLE */
             reader.BaseStream.Position = chunkStart + offsets[2];
-            StringTable nameTable = StringTable.FromStream(reader);
+            MaterialNameTable = StringTable.FromStream(reader);
 
             // Unknowns:
             // Indirect Textures don't have an index from the Material
@@ -217,26 +218,17 @@ namespace JStudio.J3D
                 // A Material entry is 0x14c long.
                 reader.BaseStream.Position = chunkStart + offsets[0] + (m * 0x14c);
 
-                // The first byte of a material is some form of flag. Values found so far are 1, 4 and 0. 1 is the most common.
+                // The first byte of a material is some form of flag. Values found so far are 1, 4. 1 is the most common.
                 // bmdview2 documentation says that means "draw on way down" while 4 means "draw on way up" (of INF1 heirarchy)
-                // However, none of the documentation seems to mention type 0 - if the value is 0, it seems to be some junk/EOF
-                // marker for the material section. On some files (not all) there will be say, 12 materials, but the highest index
-                // in the material remap table only goes up to 10 (so the 11th material) and the 12th will never be referenced. However
-                // if we read it like we do here with a for loop, we'll hit that one and try to parse all the indexes and it'll just all
-                // around kind of explode.
-                //
-                // To resolve this, we'll check if the flag value is zero - if so, skip creating a material for it.
-
+                // Realistically, this just seems to imply some sort of draw order.
                 byte flag = reader.ReadByte();
-                //if (flag == 0 || flag == 255)
-                //    continue;
 
                 // Now that we've read the contents of the material section, we can load their values into a material 
                 // class which keeps it nice and tidy and full of class references and not indexes.
                 Material material = new Material();
                 MaterialList.Add(material);
 
-                material.Name = nameTable[m];
+                material.Name = MaterialNameTable[m];
                 material.Flag = flag;
                 material.CullModeIndex = ReadEntry(reader, ReadCullMode, chunkStart, offsets, 4, reader.ReadByte(), 4);
                 material.NumChannelControlsIndex = ReadEntry(reader, ReadByte, chunkStart, offsets, 6, reader.ReadByte(), 1);
