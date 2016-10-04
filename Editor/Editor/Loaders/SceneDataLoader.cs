@@ -496,129 +496,137 @@ namespace WindEditor
 
             // Load Skybox Lighting Data
             var virtList = new List<LightingSkyboxColors>();
-            foreach(var virt in dict["Virt"])
-            {
-                WLinearColor unknown1, unknown2, unknown3, unknown4, horizonCloud, centerCloud, sky, falseSea, horizon;
-
-                virt.TryGetValue("Unknown 1", out unknown1);
-                virt.TryGetValue("Unknown 2", out unknown2);
-                virt.TryGetValue("Unknown 3", out unknown3);
-                virt.TryGetValue("Unknown 4", out unknown4);
-                virt.TryGetValue("Horizon Cloud Color", out horizonCloud);
-                virt.TryGetValue("Center Cloud Color", out centerCloud);
-                virt.TryGetValue("Sky Color", out sky);
-                virt.TryGetValue("False Sea Color", out falseSea);
-                virt.TryGetValue("Horizon Color", out horizon);
-
-                LightingSkyboxColors virtEntry = new LightingSkyboxColors
-                {
-                    Unknown1 = unknown1,
-                    Unknown2 = unknown2,
-                    Unknown3 = unknown3,
-                    Unknown4 = unknown4,
-                    HorizonCloud = horizonCloud,
-                    CenterCloud = centerCloud,
-                    Sky = sky,
-                    FalseSea = falseSea,
-                    Horizon = horizon
-                };
-
-                virtList.Add(virtEntry);
-            }
-
             var paleList = new List<LightingPalette>();
-            foreach(var pale in dict["Pale"])
-            {
-                WLinearColor shadow, actorAmbient, roomLight, roomAmbient, wave, ocean, unknown1, unknown2, doorway, unknown3, fog;
-                byte virtIndex; float fogFarPlane, fogNearPlane;
-                pale.TryGetValue("Shadow Color", out shadow);
-                pale.TryGetValue("Actor Ambient Color", out actorAmbient);
-                pale.TryGetValue("Room Light Color", out roomLight);
-                pale.TryGetValue("Room Ambient Color", out roomAmbient);
-                pale.TryGetValue("Wave Color", out wave);
-                pale.TryGetValue("Ocean Color", out ocean);
-                pale.TryGetValue("Unknown White 1", out unknown1);
-                pale.TryGetValue("Unknown White 2", out unknown2);
-                pale.TryGetValue("Door Backfill", out doorway);
-                pale.TryGetValue("Unknown 3", out unknown3);
-                pale.TryGetValue("Fog Color", out fog);
-                pale.TryGetValue("Skybox Color Index", out virtIndex);
-                pale.TryGetValue("Fog Far Plane", out fogFarPlane);
-                pale.TryGetValue("Fog Near Plane", out fogNearPlane);
-
-                LightingPalette lightPalette = new LightingPalette
-                {
-                    Shadow = shadow,
-                    ActorAmbient = actorAmbient,
-                    RoomLight = roomLight,
-                    RoomAmbient = roomAmbient,
-                    WaveColor = wave,
-                    OceanColor = ocean,
-                    UnknownWhite1 = unknown1,
-                    UnknownWhite2 = unknown2,
-                    Doorway = doorway,
-                    UnknownColor3 = unknown3,
-                    Skybox = virtList[virtIndex],
-                    Fog = fog,
-                    FogNearPlane = fogNearPlane,
-                    FogFarPlane = fogFarPlane,
-                };
-
-                paleList.Add(lightPalette);
-            }
-
             var coloList = new List<LightingTimePreset>();
-            foreach(var colo in dict["Colo"])
+
+            if (dict.ContainsKey("virt") && dict.ContainsKey("pale") && dict.ContainsKey("Colo"))
             {
-                byte[] setA = new byte[6];
-                byte[] setB = new byte[6];
+                foreach (var virt in dict["Virt"])
+                {
+                    WLinearColor unknown1, unknown2, unknown3, unknown4, horizonCloud, centerCloud, sky, falseSea, horizon;
 
-                colo.TryGetValue("Dawn A", out setA[0]);
-                colo.TryGetValue("Morning A", out setA[1]);
-                colo.TryGetValue("Noon A", out setA[2]);
-                colo.TryGetValue("Afternoon A", out setA[3]);
-                colo.TryGetValue("Dusk A", out setA[4]);
-                colo.TryGetValue("Night A", out setA[5]);
+                    virt.TryGetValue("Unknown 1", out unknown1);
+                    virt.TryGetValue("Unknown 2", out unknown2);
+                    virt.TryGetValue("Unknown 3", out unknown3);
+                    virt.TryGetValue("Unknown 4", out unknown4);
+                    virt.TryGetValue("Horizon Cloud Color", out horizonCloud);
+                    virt.TryGetValue("Center Cloud Color", out centerCloud);
+                    virt.TryGetValue("Sky Color", out sky);
+                    virt.TryGetValue("False Sea Color", out falseSea);
+                    virt.TryGetValue("Horizon Color", out horizon);
 
-                colo.TryGetValue("Dawn B", out setB[0]);
-                colo.TryGetValue("Morning B", out setB[1]);
-                colo.TryGetValue("Noon B", out setB[2]);
-                colo.TryGetValue("Afternoon B", out setB[3]);
-                colo.TryGetValue("Dusk B", out setB[4]);
-                colo.TryGetValue("Night B", out setB[5]);
+                    LightingSkyboxColors virtEntry = new LightingSkyboxColors
+                    {
+                        Unknown1 = unknown1,
+                        Unknown2 = unknown2,
+                        Unknown3 = unknown3,
+                        Unknown4 = unknown4,
+                        HorizonCloud = horizonCloud,
+                        CenterCloud = centerCloud,
+                        Sky = sky,
+                        FalseSea = falseSea,
+                        Horizon = horizon
+                    };
 
-                LightingTimePreset timePreset = new LightingTimePreset();
-                for (int i = 0; i < 6; i++)
-                    timePreset.TimePresetA[i] = paleList[setA[i]];
+                    virtList.Add(virtEntry);
+                }
 
-                //for (int i = 0; i < 6; i++)
+                foreach (var pale in dict["Pale"])
+                {
+                    WLinearColor shadow, actorAmbient, roomLight, roomAmbient, wave, ocean, unknown1, unknown2, doorway, unknown3, fog;
+                    byte virtIndex; float fogFarPlane, fogNearPlane;
+                    pale.TryGetValue("Shadow Color", out shadow);
+                    pale.TryGetValue("Actor Ambient Color", out actorAmbient);
+                    pale.TryGetValue("Room Light Color", out roomLight);
+                    pale.TryGetValue("Room Ambient Color", out roomAmbient);
+                    pale.TryGetValue("Wave Color", out wave);
+                    pale.TryGetValue("Ocean Color", out ocean);
+                    pale.TryGetValue("Unknown White 1", out unknown1);
+                    pale.TryGetValue("Unknown White 2", out unknown2);
+                    pale.TryGetValue("Door Backfill", out doorway);
+                    pale.TryGetValue("Unknown 3", out unknown3);
+                    pale.TryGetValue("Fog Color", out fog);
+                    pale.TryGetValue("Skybox Color Index", out virtIndex);
+                    pale.TryGetValue("Fog Far Plane", out fogFarPlane);
+                    pale.TryGetValue("Fog Near Plane", out fogNearPlane);
+
+                    LightingPalette lightPalette = new LightingPalette
+                    {
+                        Shadow = shadow,
+                        ActorAmbient = actorAmbient,
+                        RoomLight = roomLight,
+                        RoomAmbient = roomAmbient,
+                        WaveColor = wave,
+                        OceanColor = ocean,
+                        UnknownWhite1 = unknown1,
+                        UnknownWhite2 = unknown2,
+                        Doorway = doorway,
+                        UnknownColor3 = unknown3,
+                        Skybox = virtList[virtIndex],
+                        Fog = fog,
+                        FogNearPlane = fogNearPlane,
+                        FogFarPlane = fogFarPlane,
+                    };
+
+                    paleList.Add(lightPalette);
+                }
+
+                foreach (var colo in dict["Colo"])
+                {
+                    byte[] setA = new byte[6];
+                    byte[] setB = new byte[6];
+
+                    colo.TryGetValue("Dawn A", out setA[0]);
+                    colo.TryGetValue("Morning A", out setA[1]);
+                    colo.TryGetValue("Noon A", out setA[2]);
+                    colo.TryGetValue("Afternoon A", out setA[3]);
+                    colo.TryGetValue("Dusk A", out setA[4]);
+                    colo.TryGetValue("Night A", out setA[5]);
+
+                    colo.TryGetValue("Dawn B", out setB[0]);
+                    colo.TryGetValue("Morning B", out setB[1]);
+                    colo.TryGetValue("Noon B", out setB[2]);
+                    colo.TryGetValue("Afternoon B", out setB[3]);
+                    colo.TryGetValue("Dusk B", out setB[4]);
+                    colo.TryGetValue("Night B", out setB[5]);
+
+                    LightingTimePreset timePreset = new LightingTimePreset();
+                    for (int i = 0; i < 6; i++)
+                        timePreset.TimePresetA[i] = paleList[setA[i]];
+
+                    //for (int i = 0; i < 6; i++)
                     //timePreset.TimePresetB[i] = paleList[setB[i]];
-                coloList.Add(timePreset);
+                    coloList.Add(timePreset);
+                }
             }
+            
 
             var envrList = new List<EnvironmentLighting>();
-            foreach (var envr in dict["EnvR"])
+            if(paleList.Count > 0 && coloList.Count > 0)
             {
-                byte[] setA = new byte[4];
-                byte[] setB = new byte[4];
+                foreach (var envr in dict["EnvR"])
+                {
+                    byte[] setA = new byte[4];
+                    byte[] setB = new byte[4];
 
-                envr.TryGetValue("Clear Color A", out setA[0]);
-                envr.TryGetValue("Raining Color A", out setA[1]);
-                envr.TryGetValue("Snowing A", out setA[2]);
-                envr.TryGetValue("Unknown A", out setA[3]);
+                    envr.TryGetValue("Clear Color A", out setA[0]);
+                    envr.TryGetValue("Raining Color A", out setA[1]);
+                    envr.TryGetValue("Snowing A", out setA[2]);
+                    envr.TryGetValue("Unknown A", out setA[3]);
 
-                envr.TryGetValue("Clear Color B", out setB[0]);
-                envr.TryGetValue("Raining Color B", out setB[1]);
-                envr.TryGetValue("Snowing B", out setB[2]);
-                envr.TryGetValue("Unknown B", out setB[3]);
+                    envr.TryGetValue("Clear Color B", out setB[0]);
+                    envr.TryGetValue("Raining Color B", out setB[1]);
+                    envr.TryGetValue("Snowing B", out setB[2]);
+                    envr.TryGetValue("Unknown B", out setB[3]);
 
-                EnvironmentLighting envrPreset = new EnvironmentLighting();
-                for (int i = 0; i < 4; i++)
-                    envrPreset.WeatherA[i] = coloList[setA[i]];
+                    EnvironmentLighting envrPreset = new EnvironmentLighting();
+                    for (int i = 0; i < 4; i++)
+                        envrPreset.WeatherA[i] = coloList[setA[i]];
 
-                for (int i = 0; i < 4; i++)
-                    envrPreset.WeatherB[i] = coloList[setB[i]];
-                envrList.Add(envrPreset);
+                    for (int i = 0; i < 4; i++)
+                        envrPreset.WeatherB[i] = coloList[setB[i]];
+                    envrList.Add(envrPreset);
+                }
             }
 
             return envrList;

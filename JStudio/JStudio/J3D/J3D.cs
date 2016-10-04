@@ -534,14 +534,14 @@ namespace JStudio.J3D
 
         private void BindMaterialByIndex(ushort index)
         {
-            Material material = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[index]];
-            material.Bind();
-            m_currentBoundMat = material;
-
             // While the game collapses duplicate materials via the material index remap table,
             // the actual original names are preserved with their original indexes through the
             // string table.
             string materialName = MAT3Tag.MaterialNameTable[index];
+
+            Material material = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[index]];
+            material.Bind();
+            m_currentBoundMat = material;
 
             Shader shader = material.Shader;
 
