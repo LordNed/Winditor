@@ -476,7 +476,7 @@ namespace JStudio.J3D
 
             m_shapeIndex = WMath.Clamp(m_shapeIndex, 0, SHP1Tag.ShapeCount - 1);
 
-            RenderMeshRecursive(INF1Tag.HierarchyRoot);
+            RenderMeshRecursive(INF1Tag.HierarchyRoot, false, 0);
 
             // We're going to restore some semblance of state after rendering ourselves, as models often modify weird and arbitrary GX values.
             GL.Enable(EnableCap.Blend);
@@ -520,22 +520,38 @@ namespace JStudio.J3D
 
         private int m_shapeIndex;
 
-        private void RenderMeshRecursive(HierarchyNode curNode)
+        private void RenderMeshRecursive(HierarchyNode curNode, bool onUp, ushort materialIndex)
         {
             switch (curNode.Type)
             {
                 case HierarchyDataType.Material:
-                    BindMaterialByIndex(curNode.Value);
+                    materialIndex = curNode.Value;
+
+                    // Supposedly if the flag is equal to four it means render it after you have rendered your children.
+                    Material material = MAT3Tag.MaterialList[MAT3Tag.MaterialRemapTable[curNode.Value]];
+                    onUp = material.Flag == 4;
                     break;
 
                 case HierarchyDataType.Batch:
                     //if (curNode.Value != m_shapeIndex) break;
-                    RenderBatchByIndex(curNode.Value);
+                    if (!onUp)
+                    {
+                        BindMaterialByIndex(materialIndex);
+                        RenderBatchByIndex(curNode.Value);
+                    }
                     break;
             }
 
-            foreach (var child in curNode.Children)
-                RenderMeshRecursive(child);
+            // Render Children
+            for (int i = 0; i < curNode.Children.Count; i++)
+                RenderMeshRecursive(curNode.Children[i], onUp, materialIndex);
+
+            // If we didn't render children on the way down before, render them now on the way up.
+            if (curNode.Type == HierarchyDataType.Batch && onUp)
+            {
+                BindMaterialByIndex(materialIndex);
+                RenderBatchByIndex(curNode.Value);
+            }
         }
 
         private void BindMaterialByIndex(ushort index)
