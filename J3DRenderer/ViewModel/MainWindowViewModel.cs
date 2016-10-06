@@ -116,7 +116,7 @@ namespace J3DRenderer
             ofd.EnsureValidNames = true;
             ofd.Multiselect = false;
             ofd.ShowPlacesList = true;
-            ofd.Filters.Add(new CommonFileDialogFilter("Supported Files (*.bmd, *.bdl, *.bck)", "*.bmd,*.bdl,*.bck"));
+            ofd.Filters.Add(new CommonFileDialogFilter("Supported Files (*.bmd, *.bdl, *.bck, *.btk)", "*.bmd,*.bdl,*.bck, *.btk"));
             ofd.Filters.Add(new CommonFileDialogFilter("All Files (*.*)", "*.*"));
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
@@ -182,6 +182,18 @@ namespace J3DRenderer
                     if (unloadExisting)
                         MainModel.UnloadBoneAnimations();
                     MainModel.LoadBoneAnimation(filePath);
+                }
+            }
+            else if(string.Compare(fileExtension, ".btk", true) == 0)
+            {
+                if(MainModel != null)
+                {
+                    if (unloadExisting)
+                        MainModel.UnloadMaterialAnimations();
+                    MainModel.LoadMaterialAnim(filePath);
+
+                    // Since there's no way to play animations with the UI, manually start it.
+                    MainModel.SetMaterialAnimation(Path.GetFileNameWithoutExtension(filePath));
                 }
             }
 
