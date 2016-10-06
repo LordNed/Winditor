@@ -105,7 +105,7 @@ namespace JStudio.J3D.Animation
             m_isPlaying = true;
         }
 
-        protected virtual float GetAnimValue(List<Key> keys, float t)
+        protected virtual float GetAnimValue(List<Key> keys, float frameTime)
         {
             if (keys.Count == 0)
                 return 0f;
@@ -114,11 +114,16 @@ namespace JStudio.J3D.Animation
                 return keys[0].Value;
 
             int i = 1;
-            while (keys[i].Time < t)
-                i++;
+            // The game can have a final keyframe which is not at the end of the animation (time wise),
+            // so we just hold on the last frame if this is the case.
+            while(keys[i].Time < frameTime && ++i < keys.Count)
+            {
+            }
 
-            float time = (t - keys[i - 1].Time) / (keys[i].Time - keys[i - 1].Time); // Scale to [0, 1]
-            return CubicInterpolation(keys[i - 1], keys[i], time);
+            Key keyA = keys[i - 1];
+            Key keyB = keys[i];
+            float t = (frameTime - keyA.Time) / (keyB.Time - keyA.Time); // Scale to [0, 1]
+            return CubicInterpolation(keyA, keyB, t);
         }
 
         protected virtual float CubicInterpolation(Key key1, Key key2, float t)
