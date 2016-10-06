@@ -98,13 +98,11 @@ namespace JStudio.J3D
                 switch (curNode.Type)
                 {
                     case HierarchyDataType.NewNode:
-                        // Increase the depth of the hierarchy by creating a new node and then processing all of the next nodes as its children.
-                        // This function is recursive and will return the integer value of how many nodes it processed, this allows us to skip
-                        // the list forward that many now that they've been handled.
-                        newNode = new HierarchyNode(HierarchyDataType.NewNode, curNode.Value);
-
-                        i += BuildSceneGraphFromInfoNodes(ref newNode, allNodes, i + 1);
-                        parent.Children.Add(newNode);
+                        // Increase the depth of the hierarchy by getting the latest child we have added to the mesh, and then processing the next
+                        // nodes as its children. This function is recursive and will return the integer value of how many nodes it processed, this 
+                        // allows us to skip the list forward that many now that they've been handled.
+                        HierarchyNode latestChild = parent.Children[parent.Children.Count - 1];
+                        i += BuildSceneGraphFromInfoNodes(ref latestChild, allNodes, i + 1);
                         break;
 
                     case HierarchyDataType.EndNode:
