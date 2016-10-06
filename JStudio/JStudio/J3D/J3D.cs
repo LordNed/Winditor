@@ -151,6 +151,12 @@ namespace JStudio.J3D
             OnPropertyChanged("MaterialAnimations");
         }
 
+        public void UnloadMaterialAnimations()
+        {
+            m_materialAnimations.Clear();
+            OnPropertyChanged("MateiralAnimations");
+        }
+
         public void SetBoneAnimation(string animName)
         {
             BCK anim = m_boneAnimations.Find(x => x.Name == animName);
