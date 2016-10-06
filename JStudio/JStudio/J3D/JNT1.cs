@@ -103,7 +103,6 @@ namespace JStudio.J3D
         {
             switch (curNode.Type)
             {
-                case HierarchyDataType.NewNode: parentIndex = processedJoints.Count - 1; break;
                 case HierarchyDataType.Joint:
                     SkeletonJoint joint = BindJoints[JointRemapTable[curNode.Value]];
                     SkeletonJoint animJoint = AnimatedJoints[JointRemapTable[curNode.Value]];
@@ -119,6 +118,7 @@ namespace JStudio.J3D
                     break;
             }
 
+            parentIndex = processedJoints.Count - 1;
             foreach (var child in curNode.Children)
                 IterateHierarchyForSkeletonRecursive(child, processedJoints, parentIndex);
         }
