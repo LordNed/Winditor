@@ -40,7 +40,7 @@ namespace WindEditor
             m_indexVBO = GL.GenBuffer();
             m_texcoordVBO = file.TexCoords.Count > 0 ? GL.GenBuffer() : -1;
             m_normalVBO = file.Normals.Count > 0 ? GL.GenBuffer() : -1;
-            m_textureVBO = file.Material.Diffuse != null ? GL.GenTexture() : -1;
+            m_textureVBO = file.Material.DiffuseTexture != null ? GL.GenTexture() : -1;
 
             m_unhighlightedShader = new Shader("UnlitTexture");
             m_unhighlightedShader.CompileSource(File.ReadAllText("resources/shaders/UnlitTexture.vert"), ShaderType.VertexShader);
@@ -139,9 +139,9 @@ namespace WindEditor
                 };
                 //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, 2, 2, 0, PixelFormat.Rgb, PixelType.Float, pixels);
 
-                System.Drawing.Imaging.BitmapData bmpData = mat.Diffuse.LockBits(new System.Drawing.Rectangle(0, 0, mat.Diffuse.Width, mat.Diffuse.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, mat.Diffuse.Width, mat.Diffuse.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bmpData.Scan0);
-                mat.Diffuse.UnlockBits(bmpData);
+                System.Drawing.Imaging.BitmapData bmpData = mat.DiffuseTexture.LockBits(new System.Drawing.Rectangle(0, 0, mat.DiffuseTexture.Width, mat.DiffuseTexture.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, mat.DiffuseTexture.Width, mat.DiffuseTexture.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, bmpData.Scan0);
+                mat.DiffuseTexture.UnlockBits(bmpData);
             }
         }
 
