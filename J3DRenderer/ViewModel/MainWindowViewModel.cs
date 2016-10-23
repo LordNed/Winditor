@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows;
 using System.Collections.Generic;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Collections;
 
 namespace J3DRenderer
 {
@@ -58,6 +59,10 @@ namespace J3DRenderer
 
         public MainWindowViewModel()
         {
+            // Override the Current Directory with one we calculate ourself. This solves the problem of assigning the application as the
+            // default application for a filetype and it having its CurrentDirectory be System32.
+            Environment.CurrentDirectory = ApplicationExtensions.GetBasePath();
+
             m_highresScreenshot = new HighresScreenshotViewModel();
             m_modelRenderOptions = new ModelRenderOptionsViewModel();
 
@@ -94,6 +99,13 @@ namespace J3DRenderer
             var lightPos = new Vector4(250, 200, 250, 0);
             m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
             m_secondaryLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+
+            // Check to see if there's any file on the command line argument now that we've initialized, incase they opened via double clicking on a file.
+            string[] cmdArgs = Environment.GetCommandLineArgs();
+            for (int i = 1; i < cmdArgs.Length; i++)
+            {
+                LoadAssetFromFilepath(cmdArgs[i], false);
+            }
         }
 
         public void OnFilesDropped(string[] droppedFilePaths)
