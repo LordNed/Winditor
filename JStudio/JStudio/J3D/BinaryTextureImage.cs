@@ -171,21 +171,27 @@ namespace JStudio
 
         public void SaveImageToDisk(string outputFile)
         {
-            using (Bitmap bmp = new Bitmap(Width, Height))
+            using (Bitmap bmp = CreateBitmap())
             {
-                Rectangle rect = new Rectangle(0, 0, Width, Height);
-                BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
-
-                //Lock the bitmap for writing, copy the bits and then unlock for saving.
-                IntPtr ptr = bmpData.Scan0;
-                byte[] imageData = m_rgbaImageData;
-                Marshal.Copy(imageData, 0, ptr, imageData.Length);
-                bmp.UnlockBits(bmpData);
-
                 // Bitmaps will throw an exception if the output folder doesn't exist so...
                 Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
                 bmp.Save(outputFile);
             }
+        }
+
+        public Bitmap CreateBitmap()
+        {
+            Bitmap bmp = new Bitmap(Width, Height);
+            Rectangle rect = new Rectangle(0, 0, Width, Height);
+            BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+
+            //Lock the bitmap for writing, copy the bits and then unlock for saving.
+            IntPtr ptr = bmpData.Scan0;
+            byte[] imageData = m_rgbaImageData;
+            Marshal.Copy(imageData, 0, ptr, imageData.Length);
+            bmp.UnlockBits(bmpData);
+
+            return bmp;
         }
 
         public byte[] GetData()
