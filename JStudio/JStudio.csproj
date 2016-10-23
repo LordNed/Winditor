@@ -62,6 +62,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Framework\ObjExporter.cs" />
     <Compile Include="JStudio\GXToOpenGL.cs" />
     <Compile Include="JStudio\J3D\Animation\BaseJ3DAnimation.cs" />
     <Compile Include="JStudio\J3D\Animation\BCK.cs" />
