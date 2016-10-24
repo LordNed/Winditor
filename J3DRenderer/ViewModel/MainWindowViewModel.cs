@@ -15,6 +15,7 @@ using System.Windows;
 using System.Collections.Generic;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Collections;
+using JStudio.Framework;
 
 namespace J3DRenderer
 {
@@ -34,6 +35,7 @@ namespace J3DRenderer
         public ICommand LoadAnimationCommand { get { return new RelayCommand(x => OnUserRequestLoadAsset(false)); } }
         public ICommand CloseModelCommand { get { return new RelayCommand(x => OnUserRequestCloseModel()); } }
         public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnUserRequestApplicationExit()); } }
+        public ICommand ExportMeshesToObjCommand { get { return new RelayCommand(x => OnUserRequestExportMeshes()); } }
         #endregion
 
         // Rendering
@@ -414,6 +416,38 @@ namespace J3DRenderer
                 a.X = (perspectiveGridSize / 4f);
                 b.X = -(perspectiveGridSize / 4f);
                 m_lineBatcher.DrawLine(a, b, lineColor, lineThickness, 0f);
+            }
+        }
+
+        private void OnUserRequestExportMeshes()
+        {
+            var sfd = new CommonSaveFileDialog();
+            sfd.Title = "Save File...";
+            sfd.AddToMostRecentlyUsedList = false;
+            //sfd.EnsureFileExists = true;
+            //sfd.EnsurePathExists = true;
+            sfd.EnsureReadOnly = false;
+            sfd.EnsureValidNames = true;
+            sfd.ShowPlacesList = true;
+            sfd.Filters.Add(new CommonFileDialogFilter("Obj Files", "*.obj"));
+            sfd.Filters.Add(new CommonFileDialogFilter("All Files", "*.*"));
+
+            if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                string directoryName = Path.GetDirectoryName(sfd.FileName);
+                Directory.CreateDirectory(directoryName);
+
+                for(int i = 0; i < m_loadedModels.Count; i++)
+                {
+                    string exportName = Path.GetFileName(sfd.FileName);
+
+                    // If they have more than one model currently loaded, export each obj 
+                    if (m_loadedModels.Count > 1)
+                        exportName += string.Format("_{0}.obj", i.ToString("00"));
+
+                    string exportPath = Path.Combine(directoryName, exportName);
+                    ObjExporter.Export(m_loadedModels[i], exportPath);
+                }
             }
         }
     }

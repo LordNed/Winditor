@@ -9,6 +9,10 @@
         xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="J3D Model Viewer" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=OpenModelCommand}" Key="O" Modifiers="Ctrl"/>
+    </Window.InputBindings>
+    
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -27,10 +31,14 @@
         <!-- File Menu Strip -->
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open" Command="{Binding Path=OpenModelCommand}"/>
+                <MenuItem Header="_Open" Command="{Binding Path=OpenModelCommand}" InputGestureText="Ctrl + O"/>
                 <MenuItem Header="Open _Additive" Command="{Binding Path=OpenModelAdditiveCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
                 <MenuItem Header="_Load Animation" Command="{Binding Path=LoadAnimationCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
                 <MenuItem Header="_Close" Command="{Binding Path=CloseModelCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
+                <Separator/>
+                <MenuItem Header="_Export...">
+                    <MenuItem Header="Export Mesh(es) to .obj" Command="{Binding Path=ExportMeshesToObjCommand}" IsEnabled="{Binding Path=HasLoadedModel}"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="_Exit" Command="{Binding Path=ExitApplicationCommand}"/>
             </MenuItem>

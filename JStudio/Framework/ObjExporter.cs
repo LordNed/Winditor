@@ -16,8 +16,8 @@ namespace JStudio.Framework
             Obj outputObj = new Obj();
             List<Obj.Object> objObjects = new List<Obj.Object>();
 
-            
-            foreach(var shape in file.SHP1Tag.Shapes)
+
+            foreach (var shape in file.SHP1Tag.Shapes)
             {
                 // We can read the Position/UV/Normal data off of the shapes here, but we don't know which
                 // material they belong to yet unless we iterate through the J3D's scene graph.
@@ -26,7 +26,7 @@ namespace JStudio.Framework
                 objShape.Normals.AddRange(shape.VertexData.Normal);
                 objShape.TexCoords.AddRange(shape.VertexData.Tex0);
 
-                for(int i = 0; i < shape.VertexData.Color0.Count;i++)
+                for (int i = 0; i < shape.VertexData.Color0.Count; i++)
                 {
                     WLinearColor col = shape.VertexData.Color0[i];
                     objShape.Colors.Add(new Vector4(col.R, col.G, col.B, col.A));
@@ -39,7 +39,7 @@ namespace JStudio.Framework
             // Create a material for each material in the J3D file.
             Obj.MaterialLibrary objMaterialLibrary = new Obj.MaterialLibrary(file.Name);
 
-            foreach(var mat in file.MAT3Tag.MaterialList)
+            foreach (var mat in file.MAT3Tag.MaterialList)
             {
                 Obj.ObjMaterial objMaterial = new Obj.ObjMaterial(mat.Name);
 
@@ -62,8 +62,32 @@ namespace JStudio.Framework
                 objMaterialLibrary.Materials.Add(objMaterial);
             }
 
-            // Now we have to do a custom iteration through the SceneGraph of the J3D file to assign
-            // Materials to Objects.
+            // Now we have to do a custom iteration through the SceneGraph of the J3D file to assign Materials to Objects.
+            Obj.ObjMaterial dummyMat = null;
+            AssignMaterialsToMeshBatchesRecursive(file, objMaterialLibrary, objObjects, file.INF1Tag.HierarchyRoot, ref dummyMat);
+
+            // Write the created OBJ file out to disk.
+
+            // Free the bitmaps we allocated as part of creating the materials.
+            foreach(var mat in objMaterialLibrary.Materials)
+            {
+                mat.AmbientTexture.Dispose();
+            }
+        }
+
+        private static void AssignMaterialsToMeshBatchesRecursive(J3D.J3D file, Obj.MaterialLibrary matLibrary, IList<Obj.Object> objObjects, HierarchyNode curNode, ref Obj.ObjMaterial curMaterial)
+        {
+            switch (curNode.Type)
+            {
+                case HierarchyDataType.Material: curMaterial = matLibrary.Materials[file.MAT3Tag.MaterialRemapTable[curNode.Value]]; break;
+                case HierarchyDataType.Batch:
+                    Obj.Object obj = objObjects[file.SHP1Tag.ShapeRemapTable[curNode.Value]];
+                    obj.Material = curMaterial;
+                    break;
+            }
+
+            foreach (var child in curNode.Children)
+                AssignMaterialsToMeshBatchesRecursive(file, matLibrary, objObjects, child, ref curMaterial);
         }
     }
 }
