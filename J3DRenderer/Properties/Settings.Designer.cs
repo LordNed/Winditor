@@ -50,12 +50,24 @@ namespace J3DRenderer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ShowBounds {
+        public bool ShowBoundingBox {
             get {
-                return ((bool)(this["ShowBounds"]));
+                return ((bool)(this["ShowBoundingBox"]));
             }
             set {
-                this["ShowBounds"] = value;
+                this["ShowBoundingBox"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowBoundingSphere {
+            get {
+                return ((bool)(this["ShowBoundingSphere"]));
+            }
+            set {
+                this["ShowBoundingSphere"] = value;
             }
         }
         

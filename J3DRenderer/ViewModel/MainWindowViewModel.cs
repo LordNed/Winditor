@@ -303,6 +303,24 @@ namespace J3DRenderer
                 m_lineBatcher.DrawLine(Vector3.Zero, new Vector3(0, 0, 50), WLinearColor.Blue, 0, 0);
             }
 
+            if(m_modelRenderOptions.ShowBoundingBox)
+            {
+                foreach (var j3d in m_loadedModels)
+                    j3d.DrawBoundsForShapes(true, false, m_lineBatcher);
+            }
+
+            if (m_modelRenderOptions.ShowBoundingSphere)
+            {
+                foreach (var j3d in m_loadedModels)
+                    j3d.DrawBoundsForShapes(false, true, m_lineBatcher);
+            }
+
+            if (m_modelRenderOptions.ShowBones)
+            {
+                foreach (var j3d in m_loadedModels)
+                    j3d.DrawBones(m_lineBatcher);
+            }
+
             // Debug Rendering
             if (WInput.GetKey(Key.I))
             {

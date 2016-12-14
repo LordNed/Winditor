@@ -672,7 +672,7 @@ namespace JStudio.J3D
             shape.Unbind();
         }
 
-        private void DrawBoundsForJoints(bool boundingBox, bool boundingSphere)
+        public void DrawBoundsForJoints(bool boundingBox, bool boundingSphere, IDebugLineDrawer lineDrawer)
         {
             Matrix4[] boneTransforms = new Matrix4[JNT1Tag.BindJoints.Count];
             for (int i = 0; i < JNT1Tag.BindJoints.Count; i++)
@@ -698,31 +698,35 @@ namespace JStudio.J3D
                 WLinearColor jointColor = origJoint.Unknown1 == 0 ? WLinearColor.Yellow : WLinearColor.Blue;
                 if (boundingSphere)
                 {
-                    //m_lineBatcher.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
+                    lineDrawer.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
                 }
                 if (boundingBox)
                 {
                     Vector3 extents = (origJoint.BoundingBox.Max - origJoint.BoundingBox.Min) / 2;
-                    //m_lineBatcher.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
+                    lineDrawer.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
                 }
             }
         }
 
-        private void DrawBoundsForShapes(bool boundingBox, bool boundingSphere)
+        public void DrawBoundsForShapes(bool boundingBox, bool boundingSphere, IDebugLineDrawer lineDrawer)
         {
             foreach (var shape in SHP1Tag.Shapes)
             {
-                Vector3 center = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
                 if (boundingSphere)
                 {
-                    //m_lineBatcher.DrawSphere(center, shape.BoundingSphereDiameter, 8, WLinearColor.White, 0f, 0f);
+                    lineDrawer.DrawSphere(shape.BoundingBox.Center, shape.BoundingSphereDiameter/2f, 16, WLinearColor.White, 0f, 0f);
                 }
                 if (boundingBox)
                 {
                     Vector3 extents = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
-                    //m_lineBatcher.DrawBox(center, extents, Quaternion.Identity, WLinearColor.White, 0f, 0f);
+                    lineDrawer.DrawBox(shape.BoundingBox.Center, extents, Quaternion.Identity, WLinearColor.Green, 0f, 0f);
                 }
             }
+        }
+
+        public void DrawBones(IDebugLineDrawer lineDrawer)
+        {
+
         }
 
         public bool Raycast(FRay ray, out float hitDistance, bool returnFirstHit = false)

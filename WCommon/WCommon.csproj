@@ -61,6 +61,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\QuaternionExtensions.cs" />
     <Compile Include="Framework\ApplicationExtensions.cs" />
+    <Compile Include="Framework\IDebugLineDrawer.cs" />
     <Compile Include="Framework\Obj.cs" />
     <Compile Include="Framework\Shader.cs" />
     <Compile Include="LinearColor.cs" />

@@ -47,7 +47,8 @@
                 <MenuItem Header="Show _Pivot" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowPivot}"/>
                 <MenuItem Header="Show _Grid" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowGrid}"/>
                 <Separator/>
-                <MenuItem Header="Show _Bounds" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBounds}"/>
+                <MenuItem Header="Show Bounds (_Box)" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBoundingBox}"/>
+                <MenuItem Header="Show Bounds (_Sphere)" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBoundingSphere}"/>
                 <MenuItem Header="Show B_ones" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBones}"/>
             </MenuItem>
 

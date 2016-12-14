@@ -25,7 +25,7 @@ namespace WindEditor
         }
     }
 
-    public class WLineBatcher 
+    public class WLineBatcher : IDebugLineDrawer
     {
         private List<WBatchedLine> m_batchedLines;
 

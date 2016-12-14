@@ -26,13 +26,23 @@ namespace J3DRenderer
             }
         }
 
-        public bool ShowBounds
+        public bool ShowBoundingBox
         {
-            get { return m_showBounds; }
+            get { return m_showBoundingBox; }
             set
             {
-                m_showBounds = value;
-                OnPropertyChanged("ShowBounds");
+                m_showBoundingBox = value;
+                OnPropertyChanged("ShowBoundingBox");
+            }
+        }
+
+        public bool ShowBoundingSphere
+        {
+            get { return m_showBoundingSphere; }
+            set
+            {
+                m_showBoundingSphere = value;
+                OnPropertyChanged("ShowBoundingSphere");
             }
         }
 
@@ -48,14 +58,16 @@ namespace J3DRenderer
 
         private bool m_showPivot;
         private bool m_showGrid;
-        private bool m_showBounds;
+        private bool m_showBoundingBox;
+        private bool m_showBoundingSphere;
         private bool m_showBones;
 
         public ModelRenderOptionsViewModel()
         {
             ShowPivot = Properties.Settings.Default.ShowPivot;
             ShowGrid = Properties.Settings.Default.ShowGrid;
-            ShowBounds = Properties.Settings.Default.ShowBounds;
+            ShowBoundingBox = Properties.Settings.Default.ShowBoundingBox;
+            ShowBoundingSphere = Properties.Settings.Default.ShowBoundingSphere;
             ShowBones = Properties.Settings.Default.ShowBones;
         }
 
@@ -63,7 +75,8 @@ namespace J3DRenderer
         {
             Properties.Settings.Default.ShowPivot = ShowPivot;
             Properties.Settings.Default.ShowGrid = ShowGrid;
-            Properties.Settings.Default.ShowBounds = ShowBounds;
+            Properties.Settings.Default.ShowBoundingBox = ShowBoundingBox;
+            Properties.Settings.Default.ShowBoundingSphere = ShowBoundingSphere;
             Properties.Settings.Default.ShowBones = ShowBones;
             Properties.Settings.Default.Save();
         }

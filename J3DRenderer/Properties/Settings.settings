@@ -8,7 +8,10 @@
     <Setting Name="ShowGrid" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ShowBounds" Type="System.Boolean" Scope="User">
+    <Setting Name="ShowBoundingBox" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowBoundingSphere" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ShowBones" Type="System.Boolean" Scope="User">
