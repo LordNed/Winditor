@@ -50,6 +50,8 @@
                 <MenuItem Header="Show Bounds (_Box)" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBoundingBox}"/>
                 <MenuItem Header="Show Bounds (_Sphere)" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBoundingSphere}"/>
                 <MenuItem Header="Show B_ones" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBones}"/>
+                <MenuItem Header="Show Bone Bounds (Box)" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBoneBoundingBox}"/>
+                <MenuItem Header="Show Bone Bounds (Sphere)" IsCheckable="True" IsChecked="{Binding Path=ViewOptions.ShowBoneBoundingSphere}"/>
             </MenuItem>
 
             <MenuItem Header="_Help">

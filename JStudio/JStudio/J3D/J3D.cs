@@ -698,11 +698,20 @@ namespace JStudio.J3D
                 WLinearColor jointColor = origJoint.Unknown1 == 0 ? WLinearColor.Yellow : WLinearColor.Blue;
                 if (boundingSphere)
                 {
-                    lineDrawer.DrawSphere(curPos, origJoint.BoundingSphereDiameter, 8, jointColor, 0f, 0f);
+                    // Many bones have no radius, simply skip them to avoid adding them to the line renderer.
+                    if (origJoint.BoundingSphereDiameter == 0f)
+                        continue;
+
+                    lineDrawer.DrawSphere(curPos, origJoint.BoundingSphereDiameter/2, 12, jointColor, 0f, 0f);
                 }
                 if (boundingBox)
                 {
                     Vector3 extents = (origJoint.BoundingBox.Max - origJoint.BoundingBox.Min) / 2;
+
+                    // Many bones have no extents, simply skip them to avoid adding them to the line renderer.
+                    if (extents.LengthSquared == 0f)
+                        continue;
+
                     lineDrawer.DrawBox(curPos, extents, curRot, jointColor, 0f, 0f);
                 }
             }
@@ -714,19 +723,44 @@ namespace JStudio.J3D
             {
                 if (boundingSphere)
                 {
-                    lineDrawer.DrawSphere(shape.BoundingBox.Center, shape.BoundingSphereDiameter/2f, 16, WLinearColor.White, 0f, 0f);
+                    lineDrawer.DrawSphere(shape.BoundingBox.Center, shape.BoundingSphereDiameter/2f, 12, WLinearColor.White, 0f, 0f);
                 }
                 if (boundingBox)
                 {
-                    Vector3 extents = (shape.BoundingBox.Max - shape.BoundingBox.Min) / 2;
-                    lineDrawer.DrawBox(shape.BoundingBox.Center, extents, Quaternion.Identity, WLinearColor.Green, 0f, 0f);
+                    lineDrawer.DrawBox(shape.BoundingBox.Min, shape.BoundingBox.Max, WLinearColor.Green, 0f, 0f);
                 }
             }
         }
 
         public void DrawBones(IDebugLineDrawer lineDrawer)
         {
+            Matrix4[] boneTransforms = new Matrix4[JNT1Tag.BindJoints.Count];
+            Vector3 lastPos = Vector3.Zero;
 
+            for (int i = 0; i < JNT1Tag.BindJoints.Count; i++)
+            {
+                SkeletonJoint curJoint, origJoint;
+                curJoint = origJoint = JNT1Tag.BindJoints[i];
+
+                Matrix4 cumulativeTransform = Matrix4.Identity;
+                while (true)
+                {
+                    Matrix4 jointMatrix = Matrix4.CreateScale(curJoint.Scale) * Matrix4.CreateFromQuaternion(curJoint.Rotation) * Matrix4.CreateTranslation(curJoint.Translation);
+                    cumulativeTransform *= jointMatrix;
+                    if (curJoint.Parent == null)
+                        break;
+
+                    curJoint = curJoint.Parent;
+                }
+
+                boneTransforms[i] = cumulativeTransform;
+                Vector3 curPos = cumulativeTransform.ExtractTranslation();
+                Quaternion curRot = cumulativeTransform.ExtractRotation();
+
+                WLinearColor jointColor = origJoint.Unknown1 == 0 ? WLinearColor.Yellow : WLinearColor.Blue;
+                lineDrawer.DrawLine(lastPos, curPos, jointColor, 0f, 0f);
+                lastPos = curPos;
+            }
         }
 
         public bool Raycast(FRay ray, out float hitDistance, bool returnFirstHit = false)

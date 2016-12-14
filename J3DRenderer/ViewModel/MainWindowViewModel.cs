@@ -315,7 +315,19 @@ namespace J3DRenderer
                     j3d.DrawBoundsForShapes(false, true, m_lineBatcher);
             }
 
-            if (m_modelRenderOptions.ShowBones)
+            if (m_modelRenderOptions.ShowBoneBoundingBox)
+            {
+                foreach (var j3d in m_loadedModels)
+                    j3d.DrawBoundsForJoints(true, false, m_lineBatcher);
+            }
+
+            if (m_modelRenderOptions.ShowBoneBoundingSphere)
+            {
+                foreach (var j3d in m_loadedModels)
+                    j3d.DrawBoundsForJoints(false, true, m_lineBatcher);
+            }
+
+            if(m_modelRenderOptions.ShowBones)
             {
                 foreach (var j3d in m_loadedModels)
                     j3d.DrawBones(m_lineBatcher);

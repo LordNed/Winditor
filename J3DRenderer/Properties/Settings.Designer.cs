@@ -82,5 +82,29 @@ namespace J3DRenderer.Properties {
                 this["ShowBones"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowBoneBoundingBox {
+            get {
+                return ((bool)(this["ShowBoneBoundingBox"]));
+            }
+            set {
+                this["ShowBoneBoundingBox"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowBoneBoundingSphere {
+            get {
+                return ((bool)(this["ShowBoneBoundingSphere"]));
+            }
+            set {
+                this["ShowBoneBoundingSphere"] = value;
+            }
+        }
     }
 }

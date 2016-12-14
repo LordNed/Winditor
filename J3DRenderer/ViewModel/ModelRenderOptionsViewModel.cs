@@ -46,6 +46,26 @@ namespace J3DRenderer
             }
         }
 
+        public bool ShowBoneBoundingBox
+        {
+            get { return m_showBoneBoundingBox; }
+            set
+            {
+                m_showBoneBoundingBox = value;
+                OnPropertyChanged("ShowBoneBoundingBox");
+            }
+        }
+
+        public bool ShowBoneBoundingSphere
+        {
+            get { return m_showBoneBoundingSphere; }
+            set
+            {
+                m_showBoneBoundingSphere = value;
+                OnPropertyChanged("ShowBoneBoundingSphere");
+            }
+        }
+
         public bool ShowBones
         {
             get { return m_showBones; }
@@ -60,6 +80,8 @@ namespace J3DRenderer
         private bool m_showGrid;
         private bool m_showBoundingBox;
         private bool m_showBoundingSphere;
+        private bool m_showBoneBoundingBox;
+        private bool m_showBoneBoundingSphere;
         private bool m_showBones;
 
         public ModelRenderOptionsViewModel()
@@ -68,6 +90,8 @@ namespace J3DRenderer
             ShowGrid = Properties.Settings.Default.ShowGrid;
             ShowBoundingBox = Properties.Settings.Default.ShowBoundingBox;
             ShowBoundingSphere = Properties.Settings.Default.ShowBoundingSphere;
+            ShowBoneBoundingBox = Properties.Settings.Default.ShowBoneBoundingBox;
+            ShowBoneBoundingSphere = Properties.Settings.Default.ShowBoneBoundingSphere;
             ShowBones = Properties.Settings.Default.ShowBones;
         }
 
@@ -77,6 +101,8 @@ namespace J3DRenderer
             Properties.Settings.Default.ShowGrid = ShowGrid;
             Properties.Settings.Default.ShowBoundingBox = ShowBoundingBox;
             Properties.Settings.Default.ShowBoundingSphere = ShowBoundingSphere;
+            Properties.Settings.Default.ShowBoneBoundingBox = ShowBoneBoundingBox;
+            Properties.Settings.Default.ShowBoneBoundingSphere = ShowBoneBoundingSphere;
             Properties.Settings.Default.ShowBones = ShowBones;
             Properties.Settings.Default.Save();
         }
