@@ -8,7 +8,7 @@
         xmlns:jstudio="clr-namespace:JStudio.J3D;assembly=JStudio"
         xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="J3D Model Viewer" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
+        Title="J3D Model Viewer" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop" Icon="/J3DRenderer;component/application_icon.ico">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=OpenModelCommand}" Key="O" Modifiers="Ctrl"/>
     </Window.InputBindings>
