@@ -184,7 +184,7 @@ namespace WindEditor
                 if (line.RemainingLifetime <= 0f)
                 {
                     // Remove the line from the array and deincrement to avoid skipping a line.
-                    m_batchedLines.RemoveAt(lineIndex--);
+                    m_batchedLines.RemoveSwap(lineIndex--);
                     dirty = true;
                     continue;
                 }
