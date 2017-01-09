@@ -673,9 +673,14 @@ namespace JStudio.J3D
             retVal.NearZ = stream.ReadSingle();
             retVal.FarZ = stream.ReadSingle();
             retVal.Color = ReadColor32(stream);
-            retVal.Table = new ushort[10];
-            for (int i = 0; i < retVal.Table.Length; i++)
-                retVal.Table[i] = stream.ReadUInt16();
+            retVal.RangeAdjustmentTable = new float[10];
+            for (int i = 0; i < retVal.RangeAdjustmentTable.Length; i++)
+            {
+                ushort inVal = stream.ReadUInt16();
+                float finalVal = (float)inVal / 256;
+
+                retVal.RangeAdjustmentTable[i] = finalVal;
+            }
 
             return retVal;
         }

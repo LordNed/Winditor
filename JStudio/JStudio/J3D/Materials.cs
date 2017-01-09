@@ -636,7 +636,13 @@ namespace JStudio.J3D
         public float NearZ;
         public float FarZ;
         public WLinearColor Color;
-        public ushort[] Table; // 10 of these.
+        /// <summary>
+        /// Fog effects become distorted as the camera's view tends toward either side of the viewport.
+        /// These fixed-point u4.8 shorts adjust for this distortion, applying symmetrically from the 
+        /// Center x-coordinate defined above to the edge of the camera's view.
+        /// By the way, u4.8 fixed point ints can range from 0 to just about 16.
+        /// </summary>
+        public float[] RangeAdjustmentTable;
     }
 
     public class IndirectTexture
