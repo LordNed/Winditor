@@ -55,19 +55,19 @@ namespace WindEditor
             TimeOfDay = 0.5f;
         }
 
-        public void LoadFromDirectory(string filePath)
+        public void LoadFromDirectory(string inPath, string sourcePath)
         {
-            if (!Directory.Exists(filePath))
+            if (!Directory.Exists(inPath))
                 throw new ArgumentException("Cannot load map from non-existant directory", "filePath");
 
 
-            m_mapName = Path.GetFileName(filePath);
-            m_savePath = Path.GetDirectoryName(filePath);
+            m_mapName = Path.GetFileName(inPath);
+            m_savePath = Path.GetFullPath(sourcePath);
 
             Console.WriteLine("Loading map {0}...", m_mapName);
             
             // Sort them alphabetically so we always load the Stage last.
-            List<string> sortedScenes = new List<string>(Directory.GetDirectories(filePath));
+            List<string> sortedScenes = new List<string>(Directory.GetDirectories(inPath));
             sortedScenes.Sort();
 
             WStage stage = null;
@@ -77,7 +77,7 @@ namespace WindEditor
                 string sceneName = Path.GetFileName(sceneFolder);
                 WScene scene = null;
 
-                if (sceneName.StartsWith("Room"))
+                if (sceneName.ToLower().StartsWith("room")) //
                 {
                     string roomNumberStr = sceneName.Substring(4);
                     int roomNumber;
@@ -109,7 +109,7 @@ namespace WindEditor
                 foreach (var scene in m_sceneList)
                     if (scene is WRoom) allRooms.Add((WRoom)scene);
 
-                stage.PostLoadProcessing(filePath, allRooms);
+                stage.PostLoadProcessing(inPath, allRooms);
             }
 
             if (m_sceneList.Count > 0)
