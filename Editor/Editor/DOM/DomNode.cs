@@ -25,6 +25,12 @@ namespace WindEditor
                 child.Tick(deltaTime);
         }
 
+        public virtual void SetTimeOfDay(float timeOfDay)
+        {
+            foreach (var child in m_children)
+                child.SetTimeOfDay(timeOfDay);
+        }
+
         //public virtual void Render(WSceneView view)
         //{
         //    foreach (var child in m_children)

@@ -75,11 +75,7 @@ namespace WindEditor
             List<WActorNode> loadedActors = actorLoader.GetMapEntities();
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
-        }
 
-        public virtual void SetTimeOfDay(float timeOfDay)
-        {
-            
         }
 
         public virtual void SaveToDirectory(string directory)

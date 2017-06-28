@@ -95,8 +95,19 @@ namespace WindEditor
                 m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
                 if(m_actorMesh != null)
                 {
-                    m_actorMesh.SetHardwareLight(0, new JStudio.OpenGL.GXLight(Vector4.Zero, Vector4.UnitX, new Vector4(1, 1, 1, 1), new Vector4(1.875f, 0, 0, 0), new Vector4(1.875f, 0, 0, 0)));
-                    m_actorMesh.SetHardwareLight(1, new JStudio.OpenGL.GXLight(Vector4.Zero, Vector4.UnitX, new Vector4(1, 1, 1, 1), new Vector4(1.875f, 0, 0, 0), new Vector4(1.875f, 0, 0, 0)));
+                    // Create and set up some initial lighting options so character's aren't drawn super brightly
+                    // until we support actually loading room environment lighting and apply it (see below).
+                    var lightPos = new Vector4(250, 200, 250, 0);
+                    var mainLight = new JStudio.OpenGL.GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+                    var secondaryLight = new JStudio.OpenGL.GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+
+                    Quaternion lightRot = Quaternion.FromAxisAngle(Vector3.UnitY, (float)Math.PI/2f);
+                    Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
+
+                    secondaryLight.Position = new Vector4(newLightPos, 0);
+
+                    m_actorMesh.SetHardwareLight(0, mainLight);
+                    m_actorMesh.SetHardwareLight(1, secondaryLight);
                     m_actorMesh.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
                     m_actorMesh.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
 
@@ -113,6 +124,25 @@ namespace WindEditor
         public override void Tick(float deltaTime)
         {
             base.Tick(deltaTime);
+        }
+
+        public override void SetTimeOfDay(float timeOfDay)
+        {
+            base.SetTimeOfDay(timeOfDay);
+
+            WRoom room = Parent as WRoom;
+            if (room != null)
+            {
+                var envLighting = room.EnvironmentLighting;
+                if (envLighting != null)
+                {
+                    var curLight = envLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+
+                    // ToDo: Once Room Lighting works again, it can be applied per-frame to actors here if you
+                    // override m_actorMesh.SetHardwareLight for main and secondary lighting based on what is in the
+                    // actual environment lighting.
+                }
+            }
         }
 
         public override FAABox GetBoundingBox()
