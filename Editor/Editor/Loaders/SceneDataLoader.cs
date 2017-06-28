@@ -499,7 +499,7 @@ namespace WindEditor
             var paleList = new List<LightingPalette>();
             var coloList = new List<LightingTimePreset>();
 
-            if (dict.ContainsKey("virt") && dict.ContainsKey("pale") && dict.ContainsKey("Colo"))
+            if (dict.ContainsKey("Virt") && dict.ContainsKey("Pale") && dict.ContainsKey("Colo"))
             {
                 foreach (var virt in dict["Virt"])
                 {

@@ -52,7 +52,10 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Open..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
                 <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.SaveProjectCommand}"/>
-                <MenuItem Header="_Save As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
+                <MenuItem Header="Save _As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
+                <Separator/>
+                <MenuItem Header="_Export" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.ExportProjectCommand}"/>
+                <MenuItem Header="E_xport As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.ExportProjectAsCommand}"/>
                 <Separator/>
                 <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
                 <Separator/>

@@ -1,6 +1,8 @@
 ﻿using GameFormatReader.Common;
 using JStudio.J3D;
+using JStudio.OpenGL;
 using Newtonsoft.Json;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,6 +44,8 @@ namespace WindEditor
         private static List<TSharedRef<SimpleObjRenderer>> m_objList = new List<TSharedRef<SimpleObjRenderer>>();
 
         private static Dictionary<string, WActorDescriptor> m_actorDescriptors;
+        private static GXLight m_mainLight;
+        private static GXLight m_secondaryLight;
 
         static WResourceManager()
         {
@@ -53,6 +57,11 @@ namespace WindEditor
             m_actorDescriptors = new Dictionary<string, WActorDescriptor>();
 
             string jsonData = File.ReadAllText("resources/ActorDatabase.json");
+
+            var lightPos = new Vector4(250, 200, 250, 0);
+            m_mainLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+            m_secondaryLight = new GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
+            //m_secondaryLight.Position = new Vector4(CalculateLightPosition((float)Math.PI / 2f), 0);
 
             WActorDescriptor[] allDescriptors = JsonConvert.DeserializeObject<WActorDescriptor[]>(jsonData);
             foreach (var descriptor in allDescriptors)
@@ -107,6 +116,21 @@ namespace WindEditor
             using (EndianBinaryReader reader = new EndianBinaryReader(j3dData, Endian.Big))
                 j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
 
+            j3d.SetHardwareLight(0, m_mainLight);
+            j3d.SetHardwareLight(1, m_secondaryLight);
+
+            // Apply patches for Wind Waker by default, since they don't seem to break anything else.
+            j3d.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+            j3d.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
+            j3d.SetColorWriteOverride("eyeLdamA", false);
+            j3d.SetColorWriteOverride("eyeLdamB", false);
+            j3d.SetColorWriteOverride("mayuLdamA", false);
+            j3d.SetColorWriteOverride("mayuLdamB", false);
+            j3d.SetColorWriteOverride("eyeRdamA", false);
+            j3d.SetColorWriteOverride("eyeRdamB", false);
+            j3d.SetColorWriteOverride("mayuRdamA", false);
+            j3d.SetColorWriteOverride("mayuRdamB", false);
+
             existRef = new TSharedRef<J3D>();
             existRef.FilePath = actorName;
             existRef.Asset = j3d;
@@ -125,6 +149,21 @@ namespace WindEditor
                 J3D j3d = new J3D(Path.GetFileNameWithoutExtension(filePath));
                 using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big))
                     j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
+
+                j3d.SetHardwareLight(0, m_mainLight);
+                j3d.SetHardwareLight(1, m_secondaryLight);
+
+                // Apply patches for Wind Waker by default, since they don't seem to break anything else.
+                j3d.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+                j3d.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
+                j3d.SetColorWriteOverride("eyeLdamA", false);
+                j3d.SetColorWriteOverride("eyeLdamB", false);
+                j3d.SetColorWriteOverride("mayuLdamA", false);
+                j3d.SetColorWriteOverride("mayuLdamB", false);
+                j3d.SetColorWriteOverride("eyeRdamA", false);
+                j3d.SetColorWriteOverride("eyeRdamB", false);
+                j3d.SetColorWriteOverride("mayuRdamA", false);
+                j3d.SetColorWriteOverride("mayuRdamB", false);
 
                 existRef = new TSharedRef<J3D>();
                 existRef.FilePath = filePath;

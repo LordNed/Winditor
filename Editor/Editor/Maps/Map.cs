@@ -10,7 +10,8 @@ namespace WindEditor
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string FocusedSceneLabel { get { return FocusedScene == null ? "" : FocusedScene is WStage ? "Stage" : FocusedScene.Name; } }
-        public string SavePath { get { return m_savePath; } }
+        public string MapName { get { return m_mapName; } }
+        public string SavePath { get { return m_savePath; } set { m_savePath = value; } }
 
         public WScene FocusedScene
         {
