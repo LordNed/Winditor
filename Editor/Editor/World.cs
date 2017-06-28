@@ -100,10 +100,10 @@ namespace WindEditor
             return m_sceneViews[0];
         }
 
-        public void LoadMapFromDirectory(string folderPath)
+        public void LoadMapFromDirectory(string folderPath, string sourcePath)
         {
             m_currentMap = new WMap(this);
-            m_currentMap.LoadFromDirectory(folderPath);
+            m_currentMap.LoadFromDirectory(folderPath, sourcePath);
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
         }
 

@@ -46,7 +46,7 @@ namespace WindEditor
                     // Only check the first thing dropped in, we except them to drag/drop a map in, not a set of scenes.
                     if(Directory.Exists(droppedFilePaths[0]))
                     {
-                        m_viewModel.WindEditor.LoadProject(droppedFilePaths[0]);
+                        m_viewModel.WindEditor.LoadProject(droppedFilePaths[0], droppedFilePaths[0]);
                     }
                 }
             }
