@@ -182,16 +182,16 @@ namespace WindEditor
                         writer.Write((short)propValue.GetValue()); break;
                     case PropertyValueType.Color24:
                         WLinearColor color24 = (WLinearColor)propValue.GetValue();
-                        writer.Write((byte)color24.R);
-                        writer.Write((byte)color24.G);
-                        writer.Write((byte)color24.B);
+                        writer.Write((byte)(color24.R * 255));
+                        writer.Write((byte)(color24.G * 255));
+                        writer.Write((byte)(color24.B * 255));
                         break;
                     case PropertyValueType.Color32:
                         WLinearColor color32 = (WLinearColor)propValue.GetValue();
-                        writer.Write((byte)color32.R);
-                        writer.Write((byte)color32.G);
-                        writer.Write((byte)color32.B);
-                        writer.Write((byte)color32.A);
+                        writer.Write((byte)(color32.R * 255));
+                        writer.Write((byte)(color32.G * 255));
+                        writer.Write((byte)(color32.B * 255));
+                        writer.Write((byte)(color32.A * 255));
                         break;
                     default:
                         Console.WriteLine("Unsupported PropertyValueType: {0}", field.FieldType);
