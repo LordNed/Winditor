@@ -38,6 +38,17 @@ namespace WindEditor.ViewModel
                 DoApplicationTick();
             };
             editorTickTimer.Enabled = true;
+
+            // Check the command line arguments to see if they've passed a folder, if so we'll try to open that.
+            // This allows debugging through Visual Studio to open a map automatically.
+            var cliArguments = Environment.GetCommandLineArgs();
+            if(cliArguments.Length > 1)
+            {
+                if(System.IO.Directory.Exists(cliArguments[1]))
+                {
+                    m_editor.LoadProject(cliArguments[1], cliArguments[1]);
+                }
+            }
         }
 
         private void DoApplicationTick()
