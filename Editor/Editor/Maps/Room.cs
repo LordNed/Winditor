@@ -72,10 +72,14 @@ namespace WindEditor
 
         private List<J3D> m_roomModels;
 
+        private ActorDOMGroup m_actorDOMGroup;
+
         public WRoom(WWorld world, int roomIndex):base(world)
         {
             RoomIndex = roomIndex;
             m_roomModels = new List<J3D>();
+            m_actorDOMGroup = new ActorDOMGroup(world);
+            m_actorDOMGroup.SetParent(this);
         }
 
         public override void Load(string filePath)
@@ -104,6 +108,14 @@ namespace WindEditor
                         }
                         break;
                 }
+            }
+        }
+        public virtual void PostLoadProcessing()
+        {
+            foreach(var child in GetChildrenOfType<WActorNode>())
+            {
+                if(child.FourCC == "ACTR")
+                    child.SetParent(m_actorDOMGroup);
             }
         }
 

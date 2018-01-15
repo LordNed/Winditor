@@ -111,6 +111,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Editor\DOM\ActorDOMGroup.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />

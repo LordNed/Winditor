@@ -134,9 +134,13 @@
 
                                 <!-- Object List -->
                                 <GroupBox Header="Object List" Grid.Row="0">
-                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                        <TreeView/>
-                                    </ScrollViewer>
+                                    <TreeView ItemsSource="{Binding Path=WindEditor.MainWorld.Map.FocusedScene.Children}">
+                                        <TreeView.Resources>
+                                            <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
+                                                <TextBlock Text="{Binding .}"/>
+                                            </HierarchicalDataTemplate>
+                                        </TreeView.Resources>
+                                    </TreeView>
                                 </GroupBox>
                                 
                                 <!-- Resize Splitter -->
@@ -144,9 +148,7 @@
 
                                 <!-- Scene List-->
                                 <GroupBox Header="Scene List" Grid.Row="2" MinHeight="80">
-                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                        <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}"/>
-                                    </ScrollViewer>
+                                    <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}"/>
                                 </GroupBox>
                             </Grid>
                         </Grid>

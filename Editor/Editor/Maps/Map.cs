@@ -111,6 +111,8 @@ namespace WindEditor
                     if (scene is WRoom) allRooms.Add((WRoom)scene);
 
                 stage.PostLoadProcessing(inPath, allRooms);
+                foreach (var room in allRooms)
+                    room.PostLoadProcessing();
             }
 
             if (m_sceneList.Count > 0)

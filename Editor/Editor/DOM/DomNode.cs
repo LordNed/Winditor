@@ -7,6 +7,7 @@ namespace WindEditor
     {
         public WDOMNode Parent { get; private set; }
         public WTransform Transform { get; private set; }
+        public List<WDOMNode> Children { get { return m_children; } }
 
         protected List<WDOMNode> m_children;
         protected WWorld m_world;
@@ -55,12 +56,15 @@ namespace WindEditor
             return new FAABox();
         }
 
-        public virtual void SetParent(WDOMNode parent)
+        public virtual void SetParent(WDOMNode newParent)
         {
-            if(parent != null)
+            if (Parent != null)
+                Parent.RemoveChild(this);
+
+            if(newParent != null)
             {
-                parent.m_children.Add(this);
-                Parent = parent;
+                newParent.m_children.Add(this);
+                Parent = newParent;
             }
         }
 
