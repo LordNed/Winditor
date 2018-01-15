@@ -45,7 +45,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Menu IsMainMenu="True" Grid.Row="0">
@@ -124,11 +124,31 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <DockPanel>
-                                <ListBox DockPanel.Dock="Bottom" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}">
-                                    
-                                </ListBox>
-                            </DockPanel>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <!-- Splitter -->
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Object List -->
+                                <GroupBox Header="Object List" Grid.Row="0">
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                        <TreeView/>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                
+                                <!-- Resize Splitter -->
+                                <GridSplitter Height="5" Grid.Row="1" HorizontalAlignment="Stretch"/>
+
+                                <!-- Scene List-->
+                                <GroupBox Header="Scene List" Grid.Row="2" MinHeight="80">
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                        <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}"/>
+                                    </ScrollViewer>
+                                </GroupBox>
+                            </Grid>
                         </Grid>
                         <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
                         <Grid Grid.Column="2">
