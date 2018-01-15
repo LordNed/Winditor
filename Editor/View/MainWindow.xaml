@@ -7,7 +7,7 @@
         xmlns:wpf="clr-namespace:WindEditor.WPF;assembly=WCommon"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="890" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
+        Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
