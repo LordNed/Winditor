@@ -109,66 +109,75 @@
                 <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="SCLS"/>
             </MenuItem>
         </Menu>
+        
+        <!-- Main Application Body -->
         <Grid Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="248"/>
+                    <!-- Left Pane -->
+                    <ColumnDefinition MinWidth="200" Width="200"/>
+                    <!-- Main Viewport -->
+                    <ColumnDefinition Width="*" MinWidth="200"/>
+                    <!-- Right Pane -->
+                    <ColumnDefinition Width="250"/>
                 </Grid.ColumnDefinitions>
 
+
+                <!-- Left Pane -->
                 <Grid Grid.Column="0">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="5"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <!-- Splitter -->
-                                    <RowDefinition Height="5"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <!-- Object List-->
+                        <RowDefinition Height="2*"/>
+                        <!-- Scene List -->
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                                <!-- Object List -->
-                                <GroupBox Header="Object List" Grid.Row="0">
-                                    <TreeView ItemsSource="{Binding Path=WindEditor.MainWorld.Map.FocusedScene.Children}">
-                                        <TreeView.Resources>
-                                            <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
-                                                <TextBlock Text="{Binding .}"/>
-                                            </HierarchicalDataTemplate>
-                                        </TreeView.Resources>
-                                    </TreeView>
-                                </GroupBox>
-                                
-                                <!-- Resize Splitter -->
-                                <GridSplitter Height="5" Grid.Row="1" HorizontalAlignment="Stretch"/>
+                    <!-- Object List -->
+                    <GroupBox Header="Object List" Grid.Row="0">
+                        <TreeView ItemsSource="{Binding Path=WindEditor.MainWorld.Map.FocusedScene.Children}">
+                            <TreeView.Resources>
+                                <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
+                                    <TextBlock Text="{Binding .}"/>
+                                </HierarchicalDataTemplate>
+                            </TreeView.Resources>
+                        </TreeView>
+                    </GroupBox>
 
-                                <!-- Scene List-->
-                                <GroupBox Header="Scene List" Grid.Row="2" MinHeight="80">
-                                    <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}"/>
-                                </GroupBox>
-                            </Grid>
-                        </Grid>
-                        <GridSplitter Grid.Column="1" HorizontalContentAlignment="Stretch"/>
-                        <Grid Grid.Column="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
-                            <DockPanel Grid.Row="1" Margin="0,2">
-                                <Label Content="Time of Day" Margin="0,0,5,0" Padding="2" DockPanel.Dock="Left"/>
-                                <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}" Padding="0" DockPanel.Dock="Right" Foreground="Red"/>
-                                <Slider TickPlacement="None" IsMoveToPointEnabled="True" Minimum="0" Maximum="1" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
-                            </DockPanel>
-                        </Grid>
-                    </Grid>
+                    <!-- Resize Splitter -->
+                    <GridSplitter Height="5" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+
+                    <!-- Scene List-->
+                    <GroupBox Header="Scene List" Grid.Row="1" MinHeight="80" Margin="0,5,0,0">
+                        <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}"/>
+                    </GroupBox>
                 </Grid>
 
-                <DockPanel Grid.Column="1" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
+                <!-- Left Splitter -->
+                <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+
+                <!-- Main Viewport -->
+                <Grid Grid.Column="1" Margin="5,0,5,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 3D Viewport -->
+                    <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
+                    
+                    <!-- Viewport Controls -->
+                    <DockPanel Grid.Row="1">
+                        <Label Content="Time of Day" Margin="0,0,5,0" Padding="2" DockPanel.Dock="Left"/>
+                        <Label Content="{Binding Path=WindEditor.MainWorld.Map.FocusedSceneLabel}" Padding="0" DockPanel.Dock="Right" Foreground="Red"/>
+                        <Slider TickPlacement="None" IsMoveToPointEnabled="True" Minimum="0" Maximum="1" Value="{Binding Path=WindEditor.MainWorld.Map.TimeOfDay}"/>
+                    </DockPanel>
+                </Grid>
+
+                <!-- Right Splitter -->
+                <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+
+                <!-- Right Pane -->
+                <DockPanel Grid.Column="2" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
                     <DockPanel DockPanel.Dock="Bottom">
                         <Label DockPanel.Dock="Left" Content="FourCC:"/>
                         <Label DockPanel.Dock="Right" HorizontalContentAlignment="Right" Content="{Binding Path=SelectedObjects.FourCC}"/>
