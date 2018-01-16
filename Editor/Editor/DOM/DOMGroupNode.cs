@@ -12,13 +12,43 @@
 
         public override string ToString()
         {
-			switch (m_fourCC.ToUpperInvariant())
+			switch (m_fourCC)
 			{
+                case "Actors":
+                    return "Actors";
+                case "Treasure Chests":
+                    return "Treasure Chests";
+                case "Scaleable Objects":
+                    return "Scaleable Objects";
 				case "2DMA":
 					return "Minimap";
 				case "ACTR":
-					return "Actors";
-				case "AROB":
+					return "Default Layer";
+                case "ACT0":
+                    return "Layer 0";
+                case "ACT1":
+                    return "Layer 1";
+                case "ACT2":
+                    return "Layer 2";
+                case "ACT3":
+                    return "Layer 3";
+                case "ACT4":
+                    return "Layer 4";
+                case "ACT5":
+                    return "Layer 5";
+                case "ACT6":
+                    return "Layer 6";
+                case "ACT7":
+                    return "Layer 7";
+                case "ACT8":
+                    return "Layer 8";
+                case "ACT9":
+                    return "Layer 9";
+                case "ACTa":
+                    return "Layer 10";
+                case "ACTb":
+                    return "Layer 11";
+                case "AROB":
 					return "Camera POIs";
 				case "RARO":
 					return "Camera POIs (Events)";
@@ -26,13 +56,13 @@
 					return "Camera Behavior (CAMR)";
 				case "RCAM":
 					return "Camera Behavior (RCAM)";
-				case "ENVR":
+				case "EnvR":
 					return "Environment Lighting";
-				case "COLO":
+				case "Colo":
 					return "EnvLighting ToD Colors";
-				case "PALE":
+				case "Pale":
 					return "EnvLighting Palette";
-				case "VIRT":
+				case "Virt":
 					return "Skybox Colors";
 				case "DMAP":
 					return "Dungeon Map";
@@ -69,8 +99,32 @@
 				case "SCLS":
 					return "Exit List";
 				case "SCOB":
-					return "Scaleable Actors";
-				case "PLYR":
+					return "Default Layer";
+                case "SCO0":
+                    return "Layer 0";
+                case "SCO1":
+                    return "Layer 1";
+                case "SCO2":
+                    return "Layer 2";
+                case "SCO3":
+                    return "Layer 3";
+                case "SCO4":
+                    return "Layer 4";
+                case "SCO5":
+                    return "Layer 5";
+                case "SCO6":
+                    return "Layer 6";
+                case "SCO7":
+                    return "Layer 7";
+                case "SCO8":
+                    return "Layer 8";
+                case "SCO9":
+                    return "Layer 9";
+                case "SCOa":
+                    return "Layer 10";
+                case "SCOb":
+                    return "Layer 11";
+                case "PLYR":
 					return "Player Spawns";
 				case "SHIP":
 					return "Ship Spawns";
@@ -79,11 +133,39 @@
 				case "STAG":
 					return "Stage Settings";
 				case "TRES":
-					return "Treasure Chests";
-				case "LGTV":
+					return "Default Layer";
+                case "TRE0":
+                    return "Layer 0";
+                case "TRE1":
+                    return "Layer 1";
+                case "TRE2":
+                    return "Layer 2";
+                case "TRE3":
+                    return "Layer 3";
+                case "TRE4":
+                    return "Layer 4";
+                case "TRE5":
+                    return "Layer 5";
+                case "TRE6":
+                    return "Layer 6";
+                case "TRE7":
+                    return "Layer 7";
+                case "TRE8":
+                    return "Layer 8";
+                case "TRE9":
+                    return "Layer 9";
+                case "TREa":
+                    return "Layer 10";
+                case "TREb":
+                    return "Layer 11";
+                case "LGTV":
 					return "Shadow Cast Origin";
+                case "TGSC":
+                    return "TGSC";
+                case "TGOB":
+                    return "TGOB";
 				default:
-					return $"Unsupported FourCC ({m_fourCC})";
+					return $"Unsupported FourCC ({ m_fourCC })";
 			}
         }
     }
