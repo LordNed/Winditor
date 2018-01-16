@@ -11,8 +11,11 @@ namespace WindEditor
     {
         public string Name { get; protected set; }
 
-        public WScene(WWorld world) : base(world)
+		private Dictionary<string, DOMGroupNode> m_fourCCGroups;
+
+		public WScene(WWorld world) : base(world)
         {
+			m_fourCCGroups = new Dictionary<string, DOMGroupNode>();
         }
 
         public virtual void Load(string filePath)
@@ -76,7 +79,17 @@ namespace WindEditor
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
 
-        }
+			foreach (var child in GetChildrenOfType<WActorNode>())
+			{
+				if (!m_fourCCGroups.ContainsKey(child.FourCC))
+				{
+					m_fourCCGroups[child.FourCC] = new DOMGroupNode(child.FourCC, m_world);
+					m_fourCCGroups[child.FourCC].SetParent(this);
+				}
+
+				child.SetParent(m_fourCCGroups[child.FourCC]);
+			}
+		}
 
         public virtual void SaveToDirectory(string directory)
         {

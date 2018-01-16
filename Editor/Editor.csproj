@@ -111,7 +111,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Editor\DOM\ActorDOMGroup.cs" />
+    <Compile Include="Editor\DOM\DOMGroupNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
@@ -164,7 +164,7 @@
     <Compile Include="Editor\PropertyValues\IPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
     <Compile Include="Editor\ResourceManager.cs" />
-    <Compile Include="Editor\Scene.cs" />
+    <Compile Include="Editor\Maps\Scene.cs" />
     <Compile Include="Editor\SceneView.cs" />
     <Compile Include="Editor\SelectionAggregate.cs" />
     <Compile Include="Editor\Serialization\IgnorableSerializerContractResolver.cs" />
