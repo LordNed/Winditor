@@ -1,16 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace WindEditor
 {
-    public abstract class WDOMNode : IEnumerable<WDOMNode>
+    public abstract class WDOMNode : IEnumerable<WDOMNode>, INotifyPropertyChanged
     {
         public WDOMNode Parent { get; private set; }
         public WTransform Transform { get; private set; }
         public List<WDOMNode> Children { get { return m_children; } }
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public bool IsVisible
+        {
+            get { return m_isVisible; }
+            set
+            {
+                if (value != m_isVisible)
+                {
+                    m_isVisible = value;
+                    OnPropertyChanged("IsVisible");
+                }
+            }
+        }
 
         protected List<WDOMNode> m_children;
         protected WWorld m_world;
+
+        private bool m_isVisible;
 
         public WDOMNode(WWorld world)
         {
@@ -72,6 +88,11 @@ namespace WindEditor
         {
             m_children.Remove(item);
             item.Parent = null;
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #region IEnumerable Interface

@@ -7,6 +7,7 @@
         public DOMGroupNode(string FourCC, WWorld world) : base(world)
         {
 			m_fourCC = FourCC;
+            IsVisible = true;
         }
 
         public override string ToString()
@@ -62,7 +63,7 @@
 				case "PPNT":
 					return "Path Waypoints (PPNT)";
 				case "RPPN":
-					return "Path Waypoitns (RPPN)";
+					return "Path Waypoints (RPPN)";
 				case "RTBL":
 					return "Adjacent Loaded Rooms";
 				case "SCLS":
