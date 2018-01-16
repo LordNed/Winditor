@@ -11,11 +11,11 @@ namespace WindEditor
     {
         public string Name { get; protected set; }
 
-		private Dictionary<string, DOMGroupNode> m_fourCCGroups;
+        private Dictionary<string, DOMGroupNode> m_fourCCGroups;
 
-		public WScene(WWorld world) : base(world)
+        public WScene(WWorld world) : base(world)
         {
-			m_fourCCGroups = new Dictionary<string, DOMGroupNode>();
+            m_fourCCGroups = new Dictionary<string, DOMGroupNode>();
         }
 
         public virtual void Load(string filePath)
@@ -79,16 +79,16 @@ namespace WindEditor
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
 
-			foreach (var child in GetChildrenOfType<WActorNode>())
-			{
-				if (!m_fourCCGroups.ContainsKey(child.FourCC))
-				{
-					m_fourCCGroups[child.FourCC] = new DOMGroupNode(child.FourCC, m_world);
-				}
+            foreach (var child in GetChildrenOfType<WActorNode>())
+            {
+                if (!m_fourCCGroups.ContainsKey(child.FourCC))
+                {
+                    m_fourCCGroups[child.FourCC] = new DOMGroupNode(child.FourCC, m_world);
+                }
 
-				child.SetParent(m_fourCCGroups[child.FourCC]);
+                child.SetParent(m_fourCCGroups[child.FourCC]);
                 child.IsVisible = true;
-			}
+            }
 
             List<KeyValuePair<string, string>> dispFourCCs = new List<KeyValuePair<string, string>>();
             foreach (var item in m_fourCCGroups)
@@ -115,11 +115,11 @@ namespace WindEditor
             {
                 m_fourCCGroups[keyVal.Value].SetParent(this);
             }
-       }
+        }
 
         public virtual void SaveToDirectory(string directory)
         {
-            if(!Directory.Exists(directory))
+            if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
 
             Console.WriteLine("Saving {0} to {1}...", Name, directory);
