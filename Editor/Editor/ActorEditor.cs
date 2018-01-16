@@ -322,6 +322,7 @@ namespace WindEditor
                     if(actors[i] != null)
                     {
                         newSelection.Add(actors[i]);
+                        actors[i].Flags |= ActorFlags.Selected;
                     }
                 }
             }
@@ -332,6 +333,7 @@ namespace WindEditor
                     if(actors[i] != null)
                     {
                         newSelection.Remove(actors[i]);
+                        actors[i].Flags &= ~ActorFlags.Selected; 
                     }
                 }
             }

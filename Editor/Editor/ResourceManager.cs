@@ -1,5 +1,6 @@
 ﻿using GameFormatReader.Common;
 using JStudio.J3D;
+using JStudio.J3D.Animation;
 using JStudio.OpenGL;
 using Newtonsoft.Json;
 using OpenTK;
@@ -28,6 +29,15 @@ namespace WindEditor
 
         [JsonProperty("Secondary Models")]
         public string SecondaryModelPaths;
+
+        [JsonProperty("Wait Animation Archive")]
+        public string WaitAnimationArchive;
+
+        [JsonProperty("Wait Animation")]
+        public string WaitAnimation;
+
+        [JsonProperty("Texture Animation")]
+        public string TextureAnimation;
     }
 
 
@@ -139,6 +149,60 @@ namespace WindEditor
             m_j3dList.Add(existRef);
 
             return j3d;
+        }
+
+        public static BCK LoadAnimationByName(string actorName)
+        {
+            // Check to see if we have an Actor Descriptor for this actor.
+            if (!m_actorDescriptors.ContainsKey(actorName))
+                return null;
+
+            WActorDescriptor descriptor = m_actorDescriptors[actorName];
+
+            // Check to see that this actor descriptor specifies a model path.
+            if (string.IsNullOrEmpty(descriptor.ModelPath) || string.IsNullOrEmpty(descriptor.ArchiveName))
+                return null;
+
+            string archivePath = "";
+
+            if (descriptor.WaitAnimationArchive != null)
+            {
+                archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "res/Object/", descriptor.WaitAnimationArchive);
+            }
+            else
+                archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "res/Object/", descriptor.ArchiveName + ".arc");
+
+            // Check to see that the archive exists
+            if (!File.Exists(archivePath))
+                return null;
+
+            // Finally, open the archive so we can look insdie of it to see if it exists.
+            VirtualFilesystemDirectory archive = ArchiveUtilities.LoadArchive(archivePath);
+            VirtualFilesystemFile archiveFile = archive.GetFileAtPath(descriptor.WaitAnimation);
+
+            if (archiveFile == null)
+            {
+                Console.WriteLine("LoadAnimationByName failed because the specified path \"{0}\" does not exist in archive \"{1}\"!", descriptor.WaitAnimation, descriptor.ArchiveName);
+                return null;
+            }
+
+            byte[] bckData = archiveFile.Data;
+
+            if (bckData[0] == 'Y')
+            {
+                using (EndianBinaryReader reader = new EndianBinaryReader(bckData, Endian.Big))
+                {
+                    MemoryStream decodedAnim = WArchiveTools.Compression.Yaz0.Decode(reader);
+                    decodedAnim.Position = 0;
+                    bckData = decodedAnim.ToArray();
+                }
+            }
+
+            BCK anim = new BCK(archiveFile.Name);
+            using (EndianBinaryReader reader = new EndianBinaryReader(bckData, Endian.Big))
+                anim.LoadFromStream(reader);
+
+            return anim;
         }
 
         public static J3D LoadResource(string filePath)

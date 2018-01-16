@@ -1,4 +1,5 @@
 ﻿using JStudio.J3D;
+using JStudio.J3D.Animation;
 using OpenTK;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace WindEditor
     {
         None = 0,
         Selected = 1,
+        HiddenInDom = 2,
     }
 
     public enum MapLayer
@@ -41,6 +43,7 @@ namespace WindEditor
 
         private SimpleObjRenderer m_objRender;
         private J3D m_actorMesh;
+        private BCK m_actorWaitAnim;
         private IPropertyValue m_namePropertyValueCache;
 
         public WActorNode(string fourCC, WWorld world) :base(world)
@@ -93,6 +96,8 @@ namespace WindEditor
             if(stringProperty != null)
             {
                 m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
+                m_actorWaitAnim = WResourceManager.LoadAnimationByName((string)stringProperty.GetValue());
+                
                 if(m_actorMesh != null)
                 {
                     // Create and set up some initial lighting options so character's aren't drawn super brightly
@@ -111,6 +116,13 @@ namespace WindEditor
                     m_actorMesh.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
                     m_actorMesh.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
 
+                    if (m_actorWaitAnim != null)
+                    {
+                        m_actorMesh.BoneAnimations.Add(m_actorWaitAnim);
+                        m_actorMesh.CurrentBoneAnimation = m_actorWaitAnim;
+                        m_actorMesh.Tick(0);
+                    }
+
                     m_objRender = null;
                 }
             }
@@ -124,6 +136,10 @@ namespace WindEditor
         public override void Tick(float deltaTime)
         {
             base.Tick(deltaTime);
+            Console.WriteLine(deltaTime);
+
+            if (m_actorMesh != null && Flags.HasFlag(ActorFlags.Selected))
+                m_actorMesh.Tick(deltaTime / 2.0f);
         }
 
         public override void SetTimeOfDay(float timeOfDay)
