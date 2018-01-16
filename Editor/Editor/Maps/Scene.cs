@@ -84,12 +84,38 @@ namespace WindEditor
 				if (!m_fourCCGroups.ContainsKey(child.FourCC))
 				{
 					m_fourCCGroups[child.FourCC] = new DOMGroupNode(child.FourCC, m_world);
-					m_fourCCGroups[child.FourCC].SetParent(this);
 				}
 
 				child.SetParent(m_fourCCGroups[child.FourCC]);
+                child.IsVisible = true;
 			}
-		}
+
+            List<KeyValuePair<string, string>> dispFourCCs = new List<KeyValuePair<string, string>>();
+            foreach (var item in m_fourCCGroups)
+            {
+                dispFourCCs.Add(new KeyValuePair<string, string>(item.Value.ToString(), item.Key));
+            }
+
+            // Sort the FourCCs alphabetically by their ToString() value
+            for (int i = 0; i < dispFourCCs.Count; i++)
+            {
+                for (int j = i; j < dispFourCCs.Count; j++)
+                {
+                    if (dispFourCCs[i].Key.CompareTo(dispFourCCs[j].Key) > 0)
+                    {
+                        KeyValuePair<string, string> temp = dispFourCCs[i];
+                        dispFourCCs[i] = dispFourCCs[j];
+                        dispFourCCs[j] = temp;
+                    }
+                }
+            }
+
+            // Add entities to the DOM in the sorted order
+            foreach (KeyValuePair<string, string> keyVal in dispFourCCs)
+            {
+                m_fourCCGroups[keyVal.Value].SetParent(this);
+            }
+       }
 
         public virtual void SaveToDirectory(string directory)
         {
