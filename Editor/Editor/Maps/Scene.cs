@@ -23,6 +23,28 @@ namespace WindEditor
                                        "SCLS", "RPAT", "PATH", "RPPN", "PPNT", "RARO", "STAG", "EVNT", "FILI", "LGHT", "LGTV", "LBNK", "MECO",
                                        "MEMA", "MULT", "RTBL", "PLYR", "SHIP", "SOND", "2DMA", "CAMR", "RCAM", "EnvR", "Colo", "Pale", "Virt",
                                        "DMAP", "FLOR", "DOOR", "TGDR", "TGSC", "AROB", "TGOB" };
+
+            foreach (string str in m_fourCCs)
+            {
+                if (!str.Contains("ACT") && !str.Contains("SCO") && !str.Contains("TRE"))
+                    m_fourCCGroups[str] = new DOMGroupNode(str, m_world);
+            }
+
+            m_fourCCGroups["Actors"] = new DOMGroupNode("Actors", m_world);
+            m_fourCCGroups["Actors"].Children.Add(new DOMGroupNode("ACTR", m_world));
+
+            m_fourCCGroups["Scaleable Objects"] = new DOMGroupNode("Scaleable Objects", m_world);
+            m_fourCCGroups["Scaleable Objects"].Children.Add(new DOMGroupNode("SCOB", m_world));
+
+            m_fourCCGroups["Treasure Chests"] = new DOMGroupNode("Treasure Chests", m_world);
+            m_fourCCGroups["Treasure Chests"].Children.Add(new DOMGroupNode("TRES", m_world));
+
+            for (int i = 0; i < 12; i++)
+            {
+                m_fourCCGroups["Actors"].Children.Add(new DOMGroupNode($"ACT{ i.ToString("x") }", m_world));
+                m_fourCCGroups["Scaleable Objects"].Children.Add(new DOMGroupNode($"SCO{ i.ToString("x") }", m_world));
+                m_fourCCGroups["Treasure Chests"].Children.Add(new DOMGroupNode($"TRE{ i.ToString("x") }", m_world));
+            }
         }
 
         public virtual void Load(string filePath)
@@ -85,28 +107,6 @@ namespace WindEditor
             List<WActorNode> loadedActors = actorLoader.GetMapEntities();
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
-
-            foreach (string str in m_fourCCs)
-            {
-                if (!str.Contains("ACT") && !str.Contains("SCO") && !str.Contains("TRE"))
-                    m_fourCCGroups[str] = new DOMGroupNode(str, m_world);
-            }
-
-            m_fourCCGroups["Actors"] = new DOMGroupNode("Actors", m_world);
-            m_fourCCGroups["Actors"].Children.Add(new DOMGroupNode("ACTR", m_world));
-
-            m_fourCCGroups["Scaleable Objects"] = new DOMGroupNode("Scaleable Objects", m_world);
-            m_fourCCGroups["Scaleable Objects"].Children.Add(new DOMGroupNode("SCOB", m_world));
-
-            m_fourCCGroups["Treasure Chests"] = new DOMGroupNode("Treasure Chests", m_world);
-            m_fourCCGroups["Treasure Chests"].Children.Add(new DOMGroupNode("TRES", m_world));
-
-            for (int i = 0; i < 12; i++)
-            {
-                m_fourCCGroups["Actors"].Children.Add(new DOMGroupNode($"ACT{ i.ToString("x") }", m_world));
-                m_fourCCGroups["Scaleable Objects"].Children.Add(new DOMGroupNode($"SCO{ i.ToString("x") }", m_world));
-                m_fourCCGroups["Treasure Chests"].Children.Add(new DOMGroupNode($"TRE{ i.ToString("x") }", m_world));
-            }
 
             foreach (var child in GetChildrenOfType<WActorNode>())
             {
