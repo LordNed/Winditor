@@ -205,6 +205,53 @@ namespace WindEditor
             return anim;
         }
 
+        public static BTK LoadTextureAnimByName(string actorName)
+        {
+            // Check to see if we have an Actor Descriptor for this actor.
+            if (!m_actorDescriptors.ContainsKey(actorName))
+                return null;
+
+            WActorDescriptor descriptor = m_actorDescriptors[actorName];
+
+            // Check to see that this actor descriptor specifies a model path.
+            if (string.IsNullOrEmpty(descriptor.TextureAnimation) || string.IsNullOrEmpty(descriptor.ArchiveName))
+                return null;
+
+            string archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "res/Object/", descriptor.ArchiveName + ".arc");
+
+            // Check to see that the archive exists
+            if (!File.Exists(archivePath))
+                return null;
+
+            // Finally, open the archive so we can look insdie of it to see if it exists.
+            VirtualFilesystemDirectory archive = ArchiveUtilities.LoadArchive(archivePath);
+            VirtualFilesystemFile archiveFile = archive.GetFileAtPath(descriptor.TextureAnimation);
+
+            if (archiveFile == null)
+            {
+                Console.WriteLine("LoadTextureAnimationByName failed because the specified path \"{0}\" does not exist in archive \"{1}\"!", descriptor.WaitAnimation, descriptor.ArchiveName);
+                return null;
+            }
+
+            byte[] btkData = archiveFile.Data;
+
+            if (btkData[0] == 'Y')
+            {
+                using (EndianBinaryReader reader = new EndianBinaryReader(btkData, Endian.Big))
+                {
+                    MemoryStream decodedAnim = WArchiveTools.Compression.Yaz0.Decode(reader);
+                    decodedAnim.Position = 0;
+                    btkData = decodedAnim.ToArray();
+                }
+            }
+
+            BTK anim = new BTK(archiveFile.Name);
+            using (EndianBinaryReader reader = new EndianBinaryReader(btkData, Endian.Big))
+                anim.LoadFromStream(reader);
+
+            return anim;
+        }
+
         public static J3D LoadResource(string filePath)
         {
             var existRef = m_j3dList.Find(x => string.Compare(x.FilePath, filePath, StringComparison.InvariantCultureIgnoreCase) == 0);

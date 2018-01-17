@@ -44,6 +44,7 @@ namespace WindEditor
         private SimpleObjRenderer m_objRender;
         private J3D m_actorMesh;
         private BCK m_actorWaitAnim;
+        private BTK m_actorTexAnim;
         private IPropertyValue m_namePropertyValueCache;
 
         public WActorNode(string fourCC, WWorld world) :base(world)
@@ -97,7 +98,8 @@ namespace WindEditor
             {
                 m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
                 m_actorWaitAnim = WResourceManager.LoadAnimationByName((string)stringProperty.GetValue());
-                
+                m_actorTexAnim = WResourceManager.LoadTextureAnimByName((string)stringProperty.GetValue());
+
                 if(m_actorMesh != null)
                 {
                     // Create and set up some initial lighting options so character's aren't drawn super brightly
@@ -120,9 +122,15 @@ namespace WindEditor
                     {
                         m_actorMesh.BoneAnimations.Add(m_actorWaitAnim);
                         m_actorMesh.CurrentBoneAnimation = m_actorWaitAnim;
-                        m_actorMesh.Tick(0);
                     }
 
+                    if (m_actorTexAnim != null)
+                    {
+                        m_actorMesh.MaterialAnimations.Add(m_actorTexAnim);
+                        m_actorMesh.CurrentMaterialAnimation = m_actorTexAnim;
+                    }
+
+                    m_actorMesh.Tick(0);
                     m_objRender = null;
                 }
             }
