@@ -107,15 +107,21 @@ namespace WindEditor
 
             // Check to see that the archive exists
             if (!File.Exists(archivePath))
-                return null;
+            {
+                // The descriptor's archive isn't in the game's Object folder, so we'll try to find it in the editor's included resources instead
+                archivePath = Path.Combine(WindEditor.ApplicationExtensions.GetBasePath(), descriptor.ArchiveName);
 
-            // Finally, open the archive so we can look insdie of it to see if it exists.
+                if (!File.Exists(archivePath))
+                    return null;
+            }
+
+            // Finally, open the archive so we can look inside of it to see if it exists.
             VirtualFilesystemDirectory archive = ArchiveUtilities.LoadArchive(archivePath);
             VirtualFilesystemFile archiveFile = archive.GetFileAtPath(descriptor.ModelPath);
 
             if (archiveFile == null)
             {
-                Console.WriteLine("LoadActorByName failed because the specified path \"{0}\" does not exist in archive \"{1}\"!", descriptor.ModelPath, descriptor.ArchiveName);
+                Console.WriteLine("LoadActorByName failed because the specified path \"{0}\" does not exist in archive \"{1}\"!", descriptor.WaitAnimation, descriptor.ArchiveName);
                 return null;
             }
 
@@ -160,11 +166,13 @@ namespace WindEditor
             WActorDescriptor descriptor = m_actorDescriptors[actorName];
 
             // Check to see that this actor descriptor specifies a model path.
-            if (string.IsNullOrEmpty(descriptor.ModelPath) || string.IsNullOrEmpty(descriptor.ArchiveName))
+            if (string.IsNullOrEmpty(descriptor.WaitAnimation) || string.IsNullOrEmpty(descriptor.ArchiveName))
                 return null;
 
             string archivePath = "";
 
+            // Link's animations are in a separate archive (LkAnm.arc) from his models (Link.arc), so we make sure to use the descriptor's
+            // WaitAnimationArchive field to get the right archive if the field has a value.
             if (descriptor.WaitAnimationArchive != null)
             {
                 archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "res/Object/", descriptor.WaitAnimationArchive);
@@ -174,9 +182,15 @@ namespace WindEditor
 
             // Check to see that the archive exists
             if (!File.Exists(archivePath))
-                return null;
+            {
+                // The descriptor's archive isn't in the game's Object folder, so we'll try to find it in the editor's included resources instead
+                archivePath = Path.Combine(WindEditor.ApplicationExtensions.GetBasePath(), descriptor.ArchiveName);
 
-            // Finally, open the archive so we can look insdie of it to see if it exists.
+                if (!File.Exists(archivePath))
+                    return null;
+            }
+
+            // Finally, open the archive so we can look inside of it to see if it exists.
             VirtualFilesystemDirectory archive = ArchiveUtilities.LoadArchive(archivePath);
             VirtualFilesystemFile archiveFile = archive.GetFileAtPath(descriptor.WaitAnimation);
 
@@ -188,8 +202,10 @@ namespace WindEditor
 
             byte[] bckData = archiveFile.Data;
 
+            // Check if the file is YAZ0 compressed. Link's animations are, some others might be too.
             if (bckData[0] == 'Y')
             {
+                // Decompress the file data
                 using (EndianBinaryReader reader = new EndianBinaryReader(bckData, Endian.Big))
                 {
                     MemoryStream decodedAnim = WArchiveTools.Compression.Yaz0.Decode(reader);
@@ -221,9 +237,15 @@ namespace WindEditor
 
             // Check to see that the archive exists
             if (!File.Exists(archivePath))
-                return null;
+            {
+                // The descriptor's archive isn't in the game's Object folder, so we'll try to find it in the editor's included resources instead
+                archivePath = Path.Combine(WindEditor.ApplicationExtensions.GetBasePath(), descriptor.ArchiveName);
 
-            // Finally, open the archive so we can look insdie of it to see if it exists.
+                if (!File.Exists(archivePath))
+                    return null;
+            }
+
+            // Finally, open the archive so we can look inside of it to see if it exists.
             VirtualFilesystemDirectory archive = ArchiveUtilities.LoadArchive(archivePath);
             VirtualFilesystemFile archiveFile = archive.GetFileAtPath(descriptor.TextureAnimation);
 
@@ -235,8 +257,10 @@ namespace WindEditor
 
             byte[] btkData = archiveFile.Data;
 
+            // Some BTKs could be YAZ0 compressed, so we'll just do a safety check
             if (btkData[0] == 'Y')
             {
+                // Decompress file data
                 using (EndianBinaryReader reader = new EndianBinaryReader(btkData, Endian.Big))
                 {
                     MemoryStream decodedAnim = WArchiveTools.Compression.Yaz0.Decode(reader);

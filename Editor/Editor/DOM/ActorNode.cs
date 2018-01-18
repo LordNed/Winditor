@@ -118,13 +118,13 @@ namespace WindEditor
                     m_actorMesh.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
                     m_actorMesh.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
 
-                    if (m_actorWaitAnim != null)
+                    if (m_actorWaitAnim != null && m_actorMesh.BoneAnimations.Count == 0)
                     {
                         m_actorMesh.BoneAnimations.Add(m_actorWaitAnim);
                         m_actorMesh.CurrentBoneAnimation = m_actorWaitAnim;
                     }
 
-                    if (m_actorTexAnim != null)
+                    if (m_actorTexAnim != null && m_actorMesh.MaterialAnimations.Count == 0)
                     {
                         m_actorMesh.MaterialAnimations.Add(m_actorTexAnim);
                         m_actorMesh.CurrentMaterialAnimation = m_actorTexAnim;
