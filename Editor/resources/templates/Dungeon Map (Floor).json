@@ -2,7 +2,7 @@
 	"FourCC" : "FLOR",
 	"Fields" :
 	[
-		{"Name" : "Lower Boundary (Y Height)", "Type" : "Float"},
+		{"Name" : "Lower Boundary YHeight", "Type" : "Float"},
 		{"Name" : "Floor Number", "Type" : "Byte"},
 		{"Name" : "Included Room 0", "Type" : "Byte"},
 		{"Name" : "Included Room 1", "Type" : "Byte"},

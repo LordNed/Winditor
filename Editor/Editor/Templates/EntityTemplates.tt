@@ -1,8 +1,11 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="Newtonsoft.Json"#>
+<#@ assembly name="$(TargetPath)"#>
 <#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="WindEditor" #>
 <#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 
 <#
@@ -10,12 +13,79 @@
 var ProjectDirPath = Host.ResolveAssemblyReference("$(ProjectDir)");
 var TemplatePath = ProjectDirPath + "resources/templates/";
 
+#>
+namespace WindEditor
+{
+<#
+
+// We sometimes have duplicate templates to handle loading from the file, so we'll not generate duplicate classes.
+List<string> usedClassNames = new List<string>();
 foreach (var file in Directory.GetFiles(TemplatePath))
 {
+    MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
+	string className = "E" + descriptor.FourCC;
 #>
-	// <#=file#>
+		public partial class <#= className #> : WDOMNode
+		{
+			public readonly string FourCC;
+
+			// Auto-Generated Properties from Templates
+<#
+			foreach(var field in descriptor.Fields)
+			{
+				string fieldName = field.FieldName.Replace(" ", "");
+				string fieldType = PropertyValueToOutput(field.FieldType);
+#>
+				<#= fieldType #> <#= fieldName #>;
+<#
+			}
+#>
+
+			// Constructor
+			public <#= className #>(string fourCC, WWorld world) :base(world)
+			{
+				FourCC = fourCC;
+			}
+		}
 <#
 }
-// Foo
-// var data = JsonConvert.DeserializeObject<string>(File.ReadAllText("yes"));
+#>
+
+} // namespace WindEditor
+
+<#+
+string PropertyValueToOutput(PropertyValueType type)
+{
+	return "byte";
+switch(type)
+	{
+case PropertyValueType.Byte:
+		return "byte";
+		case PropertyValueType.Bool:
+		return "bool";
+		case PropertyValueType.Short:
+		return "short";
+		case PropertyValueType.Int:
+		return "int";
+		case PropertyValueType.Float:
+		return "float";
+		case PropertyValueType.String:
+		return "string";
+		case PropertyValueType.FixedLengthString:
+		return "string[]";
+		case PropertyValueType.Vector2:
+		return "Vector2f";
+		case PropertyValueType.Vector3:
+		return "Vector3f";
+		case PropertyValueType.XRotation:
+		case PropertyValueType.YRotation:
+		case PropertyValueType.ZRotation:
+		return "float /*single axis rotation */";
+		case PropertyValueType.Color24:
+		case PropertyValueType.Color32:
+		return "WColor";
+		default:
+		return "Unknown Enum to String Type";
+	}
+}
 #>
