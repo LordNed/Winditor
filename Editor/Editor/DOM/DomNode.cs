@@ -14,13 +14,41 @@ namespace WindEditor
         Visible = 4,
     }
 
+    public class SelectEventArgs : EventArgs
+    {
+        private WDOMNode m_selection;
+        private bool m_wasSelected;
+
+        public WDOMNode Selection
+        {
+            get { return m_selection; }
+            set { m_selection = value; }
+        }
+
+        public bool WasSelected
+        {
+            get { return m_wasSelected; }
+            set { m_wasSelected = value; }
+        }
+
+        public SelectEventArgs(WDOMNode selected, bool wasSelected)
+        {
+            Selection = selected;
+            WasSelected = wasSelected;
+        }
+    }
+
     public abstract class WDOMNode : IEnumerable<WDOMNode>, INotifyPropertyChanged
     {
         public WDOMNode Parent { get; private set; }
         public WTransform Transform { get; private set; }
         public List<WDOMNode> Children { get { return m_children; } }
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public NodeFlags Flags { get; set; }
+
+        public delegate void SelectedChangedEventHandler(object sender, SelectEventArgs e);
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public event SelectedChangedEventHandler SelectedChanged;
 
         public bool IsSelected
         {
@@ -30,9 +58,15 @@ namespace WindEditor
                 if (value != Flags.HasFlag(NodeFlags.Selected))
                 {
                     if (value)
+                    {
                         Flags |= NodeFlags.Selected;
+                        OnSelectedChanged(new SelectEventArgs(this, true));
+                    }
                     else
+                    {
                         Flags &= ~NodeFlags.Selected;
+                        OnSelectedChanged(new SelectEventArgs(this, false));
+                    }
 
                     OnPropertyChanged("IsSelected");
                 }
@@ -141,6 +175,12 @@ namespace WindEditor
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void OnSelectedChanged(SelectEventArgs e)
+        {
+            if (SelectedChanged != null)
+                SelectedChanged(this, e);
         }
 
         #region IEnumerable Interface
