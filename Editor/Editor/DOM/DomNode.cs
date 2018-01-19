@@ -58,16 +58,11 @@ namespace WindEditor
                 if (value != Flags.HasFlag(NodeFlags.Selected))
                 {
                     if (value)
-                    {
                         Flags |= NodeFlags.Selected;
-                        OnSelectedChanged(new SelectEventArgs(this, true));
-                    }
                     else
-                    {
                         Flags &= ~NodeFlags.Selected;
-                        OnSelectedChanged(new SelectEventArgs(this, false));
-                    }
 
+                    OnSelectedChanged(new SelectEventArgs(this, value));
                     OnPropertyChanged("IsSelected");
                 }
             }
