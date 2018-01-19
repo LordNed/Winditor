@@ -139,14 +139,27 @@
                                 <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
                                     <TextBlock Text="{Binding .}"/>
                                 </HierarchicalDataTemplate>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                      Color="Transparent" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                      Color="Black" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                      Color="Transparent" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                      Color="Black" />
                             </TreeView.Resources>
                             <TreeView.ItemContainerStyle>
                                 <Style TargetType="{x:Type TreeViewItem}">
                                     <Setter Property="Visibility" Value="Visible" />
+                                    <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}"/>
+                                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Path=IsVisible}" Value="False">
                                             <Setter Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Foreground" Value="{x:Static SystemColors.HighlightBrush}"/>
+                                        </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </TreeView.ItemContainerStyle>

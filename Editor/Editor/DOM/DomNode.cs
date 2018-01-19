@@ -1,23 +1,73 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace WindEditor
 {
+    [Flags]
+    public enum NodeFlags
+    {
+        None = 0,
+        Selected = 1,
+        Expanded = 2,
+        Visible = 4,
+    }
+
     public abstract class WDOMNode : IEnumerable<WDOMNode>, INotifyPropertyChanged
     {
         public WDOMNode Parent { get; private set; }
         public WTransform Transform { get; private set; }
         public List<WDOMNode> Children { get { return m_children; } }
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        public bool IsVisible
+        public NodeFlags Flags { get; set; }
+
+        public bool IsSelected
         {
-            get { return m_isVisible; }
+            get { return Flags.HasFlag(NodeFlags.Selected); }
             set
             {
-                if (value != m_isVisible)
+                if (value != Flags.HasFlag(NodeFlags.Selected))
                 {
-                    m_isVisible = value;
+                    if (value)
+                        Flags |= NodeFlags.Selected;
+                    else
+                        Flags &= ~NodeFlags.Selected;
+
+                    OnPropertyChanged("IsSelected");
+                }
+            }
+        }
+
+        public bool IsExpanded
+        {
+            get { return Flags.HasFlag(NodeFlags.Expanded); }
+            set
+            {
+                if (value != Flags.HasFlag(NodeFlags.Expanded))
+                {
+                    if (value)
+                        Flags |= NodeFlags.Expanded;
+                    else
+                        Flags &= ~NodeFlags.Expanded;
+
+                    OnPropertyChanged("IsExpanded");
+                }
+            }
+        }
+
+        public bool IsVisible
+        {
+            get { return Flags.HasFlag(NodeFlags.Visible); }
+            set
+            {
+                if (value != Flags.HasFlag(NodeFlags.Visible))
+                {
+                    if (value)
+                        Flags |= NodeFlags.Visible;
+                    else
+                        Flags &= ~NodeFlags.Visible;
+
                     OnPropertyChanged("IsVisible");
                 }
             }
@@ -25,8 +75,6 @@ namespace WindEditor
 
         protected List<WDOMNode> m_children;
         protected WWorld m_world;
-
-        private bool m_isVisible;
 
         public WDOMNode(WWorld world)
         {

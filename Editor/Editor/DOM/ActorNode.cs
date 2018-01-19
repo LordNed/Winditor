@@ -5,13 +5,6 @@ using System.Collections.Generic;
 
 namespace WindEditor
 {
-    [Flags]
-    public enum ActorFlags
-    {
-        None = 0,
-        Selected = 1,
-    }
-
     public enum MapLayer
     {
         Default,
@@ -35,7 +28,6 @@ namespace WindEditor
         public MapLayer Layer { get; set; }
 
         public List<IPropertyValue> Properties { get; protected set; }
-        public ActorFlags Flags { get; set; }
 
         public TevColorOverride ColorOverrides { get; protected set; }
 
@@ -189,7 +181,7 @@ namespace WindEditor
         void IRenderable.Draw(WSceneView view)
         {
             var bbox = GetBoundingBox();
-            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & ActorFlags.Selected) == ActorFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
 
             Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 

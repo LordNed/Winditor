@@ -140,7 +140,8 @@ namespace WindEditor
             newActor.Properties.AddRange(actorProperties);
             newActor.PostFinishedLoad();
 
-            ModifySelection(SelectionType.Add, newActor, true);
+            ClearSelection();
+            ModifySelection(SelectionType.Add, newActor);
         }
 
         public void UpdateForSceneView(WSceneView view)
@@ -175,23 +176,26 @@ namespace WindEditor
 
                 if (!ctrlPressed & !shiftPressed)
                 {
-                    ModifySelection(SelectionType.Add, addedActor, true);
+                    ClearSelection();
+
+                    if (addedActor != null)
+                        ModifySelection(SelectionType.Add, addedActor);
                     //m_selectionList.Clear();
                     //if (addedActor != null) m_selectionList.Add(addedActor);
                 }
                 else if (addedActor != null && (ctrlPressed && !shiftPressed))
                 {
                     if (m_selectionList.Contains(addedActor))
-                        ModifySelection(SelectionType.Remove, addedActor, false);
+                        ModifySelection(SelectionType.Remove, addedActor);
                     //m_selectionList.Remove(addedActor);
                     else
-                        ModifySelection(SelectionType.Add, addedActor, false);
+                        ModifySelection(SelectionType.Add, addedActor);
                         //m_selectionList.Add(addedActor);
                 }
                 else if (addedActor != null && shiftPressed)
                 {
                     if (!m_selectionList.Contains(addedActor))
-                        ModifySelection(SelectionType.Add, addedActor, false);
+                        ModifySelection(SelectionType.Add, addedActor);
                         //m_selectionList.Add(addedActor);
                 }
 
@@ -296,24 +300,18 @@ namespace WindEditor
             m_transformGizmo.UpdateForSceneView(view);
         }
 
-        private void ModifySelection(SelectionType action, WActorNode actor, bool clearSelection)
+        private void ModifySelection(SelectionType action, WActorNode actor)
         {
-            ModifySelection(action, new[] { actor }, clearSelection);
+            ModifySelection(action, new[] { actor });
         }
 
-        private void ModifySelection(SelectionType action, WActorNode[] actors, bool clearSelection)
+        private void ModifySelection(SelectionType action, WActorNode[] actors)
         {
             // Cache the current selection list.
             WActorNode[] currentSelection = new WActorNode[m_selectionList.Count];
             m_selectionList.CopyTo(currentSelection, 0);
 
             List<WActorNode> newSelection = new List<WActorNode>(currentSelection);
-
-            // Now build us a new array depending on the action.
-            if(clearSelection)
-            {
-                newSelection.Clear();
-            }
 
             if (action == SelectionType.Add)
             {
@@ -322,6 +320,14 @@ namespace WindEditor
                     if(actors[i] != null)
                     {
                         newSelection.Add(actors[i]);
+                        actors[i].IsSelected = true;
+
+                        var currentNode = actors[i].Parent;
+                        while (currentNode != null)
+                        {
+                            currentNode.IsExpanded = true;
+                            currentNode = currentNode.Parent;
+                        }
                     }
                 }
             }
@@ -332,12 +338,23 @@ namespace WindEditor
                     if(actors[i] != null)
                     {
                         newSelection.Remove(actors[i]);
+                        actors[i].IsSelected = false;
                     }
                 }
             }
 
             WSelectionChangedAction selectionAction = new WSelectionChangedAction(this, currentSelection, newSelection.ToArray(), m_selectionList);
             m_world.UndoStack.Push(selectionAction);
+        }
+
+        private void ClearSelection()
+        {
+            foreach (WActorNode node in m_selectionList)
+            {
+                node.IsSelected = false;
+            }
+
+            m_selectionList.Clear();
         }
 
         private WActorNode Raycast(FRay ray)
@@ -446,7 +463,7 @@ namespace WindEditor
             WActorNode[] actorRange = new WActorNode[serializedObjects.Count];
             serializedObjects.CopyTo(actorRange, 0);
 
-            ModifySelection(SelectionType.Add, actorRange, true);
+            ModifySelection(SelectionType.Add, actorRange);
             //m_selectionList.Clear();
             foreach(var item in serializedObjects)
             {
@@ -462,7 +479,7 @@ namespace WindEditor
                 item.Parent.RemoveChild(item);
             }
 
-            ModifySelection(SelectionType.Add, new WActorNode[] { null }, true);
+            ModifySelection(SelectionType.Add, new WActorNode[] { null });
         }
 
         private void SelectAll()
@@ -471,12 +488,13 @@ namespace WindEditor
                 return;
 
             var allActorsInSelectedScene = m_world.Map.FocusedScene.GetChildrenOfType<WActorNode>();
-            ModifySelection(SelectionType.Add, allActorsInSelectedScene.ToArray(), true);
+            ModifySelection(SelectionType.Add, allActorsInSelectedScene.ToArray());
         }
 
         private void SelectNone()
         {
-            ModifySelection(SelectionType.Add, new WActorNode[] { null }, true);
+            ClearSelection();
+            ModifySelection(SelectionType.Add, new WActorNode[] { null });
         }
 
         private BindingList<WActorNode> AttemptToDeserializeObjectsFromClipboard()
