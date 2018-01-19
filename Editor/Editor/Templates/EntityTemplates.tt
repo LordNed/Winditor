@@ -23,9 +23,21 @@ namespace WindEditor
 {
 	public abstract class SerializableDOMNode : WDOMNode
 	{
+		public MapLayer Layer;
+		//public WTransform Transform { get; private set; }
+
 		public SerializableDOMNode(WWorld world) : base(world)
-		{}
-	
+		{
+			// Transform = new WTransform();
+			OnConstruction();
+		}
+
+		// Called by the constructor, override this if you want to put things in your own constructor in a partial class.
+		public virtual void OnConstruction() {}
+
+		// This is called after the data is loaded out of the disk. Use this if you need to post-process the loaded data.
+		public virtual void PostLoad() {}
+
 		public virtual void Load(EndianBinaryReader stream) {}
 		public virtual void Save(EndianBinaryWriter stream) {}
 	}
@@ -47,8 +59,13 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 
 		// Auto-Generated Properties from Templates
 <#
+		// We skip these fields as they're pulled out in the load function and we don't want duplicate properties.
+		var skippedFields = new List<string>(new []{"Position", "XRotation", "YRotation", "ZRotation", "XScale", "YScale", "ZScale"});
 		foreach(var field in descriptor.Fields)
 		{
+			if(skippedFields.Contains(field.FieldName.Replace(" ", "")))
+				continue; 
+
 			string fieldName = field.FieldName.Replace(" ", "");
 			string fieldType = PropertyValueToOutput(field.FieldType);
 #>
@@ -69,9 +86,51 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			foreach(var field in descriptor.Fields)
 			{
 				string fieldName = field.FieldName.Replace(" ", "");
-				string readFunction = GetReadFunction(field.FieldType, field.Length);
+				string loadFunction = string.Empty;
+
+				if(fieldName == "Position") 
+				{
+					loadFunction = "Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());";
+				}
+				else if (fieldName == "XRotation")
+				{
+					loadFunction =  "float xRot = WMath.RotationShortToFloat(stream.ReadInt16());" + 
+									"Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));" +
+									"Transform.Rotation = Transform.Rotation * xRotQ;";
+				}
+				else if (fieldName == "YRotation")
+				{
+					loadFunction =  "float yRot = WMath.RotationShortToFloat(stream.ReadInt16());" +
+									"Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));" +
+									"Transform.Rotation = Transform.Rotation * yRotQ;";
+				}
+				else if(fieldName == "ZRotation")
+				{
+					loadFunction =  "float zRot = WMath.RotationShortToFloat(stream.ReadInt16());" +
+									"Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));" +
+									"Transform.Rotation = Transform.Rotation * zRotQ;";
+				}
+				else if(fieldName == "XScale")
+				{
+					loadFunction = "float xScale = stream.ReadByte() / 10f;" +
+									"Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z);";
+				}
+				else if(fieldName == "YScale")
+				{
+					loadFunction = "float yScale = stream.ReadByte() / 10f;" +
+									"Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z);";
+				}
+				else if(fieldName == "ZScale")
+				{
+					loadFunction = "float zScale = stream.ReadByte() / 10f;" +
+									"Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale);";
+				}
+				else
+				{
+					loadFunction = string.Format("{0} = {1}", fieldName, GetReadFunction(field.FieldType, field.Length));
+				}
 #>
-			<#= fieldName#> = <#= readFunction #>
+			<#= loadFunction#>
 <#
 
 			}
@@ -137,7 +196,7 @@ string GetReadFunction(PropertyValueType type, uint Length = 0)
 		case PropertyValueType.String:
 			return "stream.ReadString();";
 		case PropertyValueType.FixedLengthString:
-			return Length == 0 ? "stream.ReadStringUntil('\0');" : $"stream.ReadString({Length});";
+			return Length == 0 ? "stream.ReadStringUntil('\0');" : string.Format("stream.ReadString({0});", Length);
 		case PropertyValueType.Vector2:
 		return "new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle());";
 			case PropertyValueType.Vector3:

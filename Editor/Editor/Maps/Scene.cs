@@ -104,7 +104,7 @@ namespace WindEditor
             SceneDataLoader actorLoader = new SceneDataLoader(filePath, m_world);
 
             Console.WriteLine(Path.GetFileName(filePath));
-            List<WActorNode> loadedActors = actorLoader.GetMapEntities();
+            List<WDOMNode> loadedActors = actorLoader.GetMapEntities();
             foreach (var actor in loadedActors)
                 actor.SetParent(this);
 
