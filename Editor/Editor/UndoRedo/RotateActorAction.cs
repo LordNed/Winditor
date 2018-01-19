@@ -11,7 +11,7 @@ namespace WindEditor
         private FTransformSpace m_transformSpace;
         private WActorEditor m_actorEditor;
 
-        public WRotateActorAction(WDOMNode[] actors, WActorEditor actorEditor, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
+        public WRotateActorAction(IEnumerable<WDOMNode> actors, WActorEditor actorEditor, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
             m_actorEditor = actorEditor;

@@ -11,7 +11,7 @@ namespace WindEditor
         private WActorEditor m_actorEditor;
 
 
-        public WScaleActorAction(WDOMNode[] actors, WActorEditor actorEditor, Vector3 delta, bool isDone, WUndoCommand parent = null) : base("Scale", parent)
+        public WScaleActorAction(IEnumerable<WDOMNode> actors, WActorEditor actorEditor, Vector3 delta, bool isDone, WUndoCommand parent = null) : base("Scale", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
             m_actorEditor = actorEditor;

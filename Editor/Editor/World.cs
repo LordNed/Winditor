@@ -123,7 +123,7 @@ namespace WindEditor
             m_undoStack.Clear();
 
             // Clear our array of currently selected objects as well.
-            m_actorEditor.SelectedObjects.Clear();
+            m_actorEditor.EditorSelection.ClearSelection();
 
             // Clear persistent lines from the last map as well.
             m_persistentLines.Clear();

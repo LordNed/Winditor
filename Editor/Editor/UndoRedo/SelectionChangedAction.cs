@@ -1,58 +1,52 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
 
 namespace WindEditor
 {
     class WSelectionChangedAction : WUndoCommand
     {
-        WActorNode[] m_oldActorList;
-        WActorNode[] m_newActorList;
+		private readonly WDOMNode[] m_removedEntity;
+		private readonly WDOMNode[] m_addedEntity;
+		private readonly Selection m_selection;
 
-        BindingList<WActorNode> m_selectionListRef;
-        private WActorEditor m_actorEditor;
-
-        public WSelectionChangedAction(WActorEditor actorEditor, WActorNode[] oldActorList, WActorNode[] newActorList, BindingList<WActorNode> selectionList)
-        {
-            m_actorEditor = actorEditor;
-            m_oldActorList = oldActorList;
-            m_newActorList = newActorList;
-            m_selectionListRef = selectionList;
-        }
+		public WSelectionChangedAction(Selection parentSelection, WDOMNode[] removedActors, WDOMNode[] addedActors)
+		{
+			this.m_selection = parentSelection;
+			m_removedEntity = removedActors != null ? removedActors : new WDOMNode[0];
+			m_addedEntity = addedActors != null ? addedActors : new WDOMNode[0];
+		}
 
         public override void Redo()
         {
             base.Redo();
 
-            // ToDo: This raises a lot of events which kind of blasts the UI with events.
-            m_selectionListRef.Clear();
-            for (int i = 0; i < m_newActorList.Length; i++)
-                m_selectionListRef.Add(m_newActorList[i]);
+			foreach(var entity in m_removedEntity)
+			{
+				m_selection.SelectedObjects.Remove(entity);
+				entity.IsSelected = false;
+			}
 
-            // Update their selected states
-            for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].Flags &= ~NodeFlags.Selected;
-
-            for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].Flags |= NodeFlags.Selected;
-
-            m_actorEditor.UpdateGizmoTransform();
-        }
+			foreach(var entity in m_addedEntity)
+			{
+				m_selection.SelectedObjects.Add(entity);
+				entity.IsSelected = true;
+			}
+		}
 
         public override void Undo()
         {
             base.Undo();
 
-            m_selectionListRef.Clear();
-            for (int i = 0; i < m_oldActorList.Length; i++)
-                m_selectionListRef.Add(m_oldActorList[i]);
+			foreach (var entity in m_addedEntity)
+			{
+				m_selection.SelectedObjects.Remove(entity);
+				entity.IsSelected = false;
+			}
 
-            // Update their selected states
-            for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].Flags &= ~NodeFlags.Selected;
-
-            for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].Flags |= NodeFlags.Selected;
-
-            m_actorEditor.UpdateGizmoTransform();
+			foreach (var entity in m_removedEntity)
+			{
+				m_selection.SelectedObjects.Add(entity);
+				entity.IsSelected = true;
+			}
         }
     }
 }

@@ -124,6 +124,7 @@
     <Compile Include="Editor\Entities\Actor.cs" />
     <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
+    <Compile Include="Editor\Selection.cs" />
     <Compile Include="Editor\Templates\EntityTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
