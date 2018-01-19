@@ -122,6 +122,7 @@ namespace WindEditor
     {
         public string FourCC;
 		public string ClassName;
+		public string ParentClassOverride;
         public List<DataDescriptorField> Fields;
     }
 

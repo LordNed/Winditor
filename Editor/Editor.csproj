@@ -112,6 +112,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
+    <Compile Include="Editor\Entities\Door_DOOR.cs" />
+    <Compile Include="Editor\Entities\MapEvent.cs" />
+    <Compile Include="Editor\Entities\SpawnPoint.cs" />
+    <Compile Include="Editor\Entities\ScaleableObject.cs" />
+    <Compile Include="Editor\Entities\SoundEffect.cs" />
+    <Compile Include="Editor\Entities\Door_TGDR.cs" />
+    <Compile Include="Editor\Entities\TagObject.cs" />
+    <Compile Include="Editor\Entities\TagScaleableObject.cs" />
+    <Compile Include="Editor\Entities\TreasureChest.cs" />
+    <Compile Include="Editor\Entities\Actor.cs" />
+    <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Templates\EntityTemplates.cs">
       <AutoGen>True</AutoGen>

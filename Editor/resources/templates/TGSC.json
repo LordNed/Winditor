@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "TagScaleableObject",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TGSC",
 	"Fields" :
 	[

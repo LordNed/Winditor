@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "TreasureChest",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TRES",
 	"Fields" :
 	[

@@ -23,12 +23,12 @@ namespace WindEditor
 {
 	public abstract class SerializableDOMNode : WDOMNode
 	{
+		public readonly string FourCC;
 		public MapLayer Layer;
-		//public WTransform Transform { get; private set; }
 
-		public SerializableDOMNode(WWorld world) : base(world)
+		public SerializableDOMNode(string fourCC, WWorld world) : base(world)
 		{
-			// Transform = new WTransform();
+			FourCC = fourCC;
 			OnConstruction();
 		}
 
@@ -42,6 +42,13 @@ namespace WindEditor
 		public virtual void Save(EndianBinaryWriter stream) {}
 	}
 
+	public partial class VisibleDOMNode : SerializableDOMNode
+	{
+		public VisibleDOMNode(string fourCC, WWorld world) : base(fourCC, world)
+		{
+		}
+	}
+	 
 
 <#
 
@@ -51,12 +58,11 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 {
     MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
 	string className = descriptor.ClassName;
+	string parentClassName = string.IsNullOrEmpty(descriptor.ParentClassOverride) ? "SerializableDOMNode" : descriptor.ParentClassOverride;
 #>
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class <#= className #> : SerializableDOMNode
+	public partial class <#= className #> : <#= parentClassName #>
 	{
-		public readonly string FourCC;
-
 		// Auto-Generated Properties from Templates
 <#
 		// We skip these fields as they're pulled out in the load function and we don't want duplicate properties.
@@ -75,9 +81,8 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 #>
 
 		// Constructor
-		public <#= className #>(string fourCC, WWorld world) : base(world)
+		public <#= className #>(string fourCC, WWorld world) : base(fourCC, world)
 		{
-			FourCC = fourCC;
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -183,7 +188,7 @@ string GetReadFunction(PropertyValueType type, uint Length = 0)
 {
 	switch(type)
 	{
-		case PropertyValueType.Byte:
+		case PropertyValueType.Byte: 
 			return "stream.ReadByte();";
 		case PropertyValueType.Bool:
 			return "stream.ReadBoolean();";
@@ -194,9 +199,9 @@ string GetReadFunction(PropertyValueType type, uint Length = 0)
 		case PropertyValueType.Float:
 			return "stream.ReadSingle();";
 		case PropertyValueType.String:
-			return "stream.ReadString();";
+			return "stream.ReadString().Trim(new[] { '\0' });";
 		case PropertyValueType.FixedLengthString:
-			return Length == 0 ? "stream.ReadStringUntil('\0');" : string.Format("stream.ReadString({0});", Length);
+			return Length == 0 ? "stream.ReadStringUntil('\0').Trim(new[] { '\0' });" : string.Format("stream.ReadString({0}).Trim(new[] {{ '\0' }});", Length);
 		case PropertyValueType.Vector2:
 		return "new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle());";
 			case PropertyValueType.Vector3:

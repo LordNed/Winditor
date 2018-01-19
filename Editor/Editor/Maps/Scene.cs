@@ -105,30 +105,21 @@ namespace WindEditor
 
             Console.WriteLine(Path.GetFileName(filePath));
             List<WDOMNode> loadedActors = actorLoader.GetMapEntities();
-            foreach (var actor in loadedActors)
-                actor.SetParent(this);
 
-            foreach (var child in GetChildrenOfType<WActorNode>())
-            {
-                if (child.FourCC.Contains("ACT"))
-                {
-                    child.SetParent(m_fourCCGroups["Actors"].Children[(int)child.Layer]);
-                }
-                else if (child.FourCC.Contains("SCO"))
-                {
-                    child.SetParent(m_fourCCGroups["Scaleable Objects"].Children[(int)child.Layer]);
-                }
-                else if (child.FourCC.Contains("TRE"))
-                {
-                    child.SetParent(m_fourCCGroups["Treasure Chests"].Children[(int)child.Layer]);
-                }
-                else
-                {
-                    child.SetParent(m_fourCCGroups[child.FourCC]);
-                }
-
-                child.IsVisible = true;
-            }
+			foreach(var child in loadedActors)
+			{
+				var fourCCEntity = (SerializableDOMNode)child;
+				
+				if(child is Actor)
+					child.SetParent(m_fourCCGroups["Actors"].Children[(int)fourCCEntity.Layer]);
+				else if (child is ScaleableObject)
+					child.SetParent(m_fourCCGroups["Scaleable Objects"].Children[(int)fourCCEntity.Layer]);
+				else if (child is TreasureChest)
+					child.SetParent(m_fourCCGroups["Treasure Chests"].Children[(int)fourCCEntity.Layer]);
+				else
+					child.SetParent(m_fourCCGroups[fourCCEntity.FourCC]);
+				child.IsVisible = true;
+			}
 
             List<KeyValuePair<string, string>> dispFourCCs = new List<KeyValuePair<string, string>>();
             foreach (var item in m_fourCCGroups)

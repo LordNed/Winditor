@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "LightSource",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "LGHT",
 	"Fields" :
 	[

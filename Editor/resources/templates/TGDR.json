@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "Door_TGDR",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TGDR",
 	"Fields" :
 	[

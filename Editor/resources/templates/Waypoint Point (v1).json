@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "PathPoint_v1",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "PPNT",
 	"Fields" :
 	[

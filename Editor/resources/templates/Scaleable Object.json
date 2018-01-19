@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "ScaleableObject",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "SCOB",
 	"Fields" :
 	[

@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "LightVector",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "LGTV",
 	"Fields" :
 	[

@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "SoundEffect",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "SOND",
 	"Fields" :
 	[

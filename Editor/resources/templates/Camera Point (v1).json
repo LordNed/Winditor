@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "CameraViewpoint_v1",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "AROB",
 	"Fields" :
 	[

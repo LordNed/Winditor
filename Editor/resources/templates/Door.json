@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "Door_DOOR",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "DOOR",
 	"Fields" :
 	[

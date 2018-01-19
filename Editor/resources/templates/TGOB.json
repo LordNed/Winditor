@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "TagObject",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TGOB",
 	"Fields" :
 	[

@@ -1,5 +1,6 @@
 ﻿{
 	"ClassName" : "SpawnPoint",
+	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "PLYR",
 	"Fields" :
 	[
