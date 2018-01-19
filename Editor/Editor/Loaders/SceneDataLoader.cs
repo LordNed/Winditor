@@ -121,6 +121,7 @@ namespace WindEditor
     public class MapActorDescriptor
     {
         public string FourCC;
+		public string ClassName;
         public List<DataDescriptorField> Fields;
     }
 
