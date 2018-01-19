@@ -1,11 +1,13 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="Newtonsoft.Json"#>
+// <#@ assembly name="$(ProjectDir)/../WCommon/lib/GameFormatReader.dll"#>
 <#@ assembly name="$(TargetPath)"#>
 <#@ import namespace="Newtonsoft.Json" #>
 <#@ import namespace="WindEditor" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="GameFormatReader.Common" #>
 <#@ output extension=".cs" #>
 
 <#
@@ -14,8 +16,21 @@ var ProjectDirPath = Host.ResolveAssemblyReference("$(ProjectDir)");
 var TemplatePath = ProjectDirPath + "resources/templates/";
 
 #>
+using GameFormatReader.Common;
+using OpenTK;
+
 namespace WindEditor
 {
+	public abstract class SerializableDOMNode : WDOMNode
+	{
+		public SerializableDOMNode(WWorld world) : base(world)
+		{}
+	
+		public virtual void Load(EndianBinaryReader stream) {}
+		public virtual void Save(EndianBinaryWriter stream) {}
+	}
+
+
 <#
 
 // We sometimes have duplicate templates to handle loading from the file, so we'll not generate duplicate classes.
@@ -23,30 +38,47 @@ List<string> usedClassNames = new List<string>();
 foreach (var file in Directory.GetFiles(TemplatePath))
 {
     MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
-	string className = "E" + descriptor.FourCC;
+	string className = descriptor.ClassName;
 #>
-		public partial class <#= className #> : WDOMNode
-		{
-			public readonly string FourCC;
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class <#= className #> : SerializableDOMNode
+	{
+		public readonly string FourCC;
 
-			// Auto-Generated Properties from Templates
+		// Auto-Generated Properties from Templates
+<#
+		foreach(var field in descriptor.Fields)
+		{
+			string fieldName = field.FieldName.Replace(" ", "");
+			string fieldType = PropertyValueToOutput(field.FieldType);
+#>
+		public <#= fieldType #> <#= fieldName #>;
+<#
+		}
+#>
+
+		// Constructor
+		public <#= className #>(string fourCC, WWorld world) : base(world)
+		{
+			FourCC = fourCC;
+		}
+
+		override public void Load(EndianBinaryReader stream)
+		{
 <#
 			foreach(var field in descriptor.Fields)
 			{
 				string fieldName = field.FieldName.Replace(" ", "");
-				string fieldType = PropertyValueToOutput(field.FieldType);
+				string readFunction = GetReadFunction(field.FieldType, field.Length);
 #>
-				<#= fieldType #> <#= fieldName #>;
+			<#= fieldName#> = <#= readFunction #>
 <#
+
 			}
 #>
-
-			// Constructor
-			public <#= className #>(string fourCC, WWorld world) :base(world)
-			{
-				FourCC = fourCC;
-			}
 		}
+	}
+
 <#
 }
 #>
@@ -56,36 +88,70 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 <#+
 string PropertyValueToOutput(PropertyValueType type)
 {
-	return "byte";
-switch(type)
+	switch(type)
 	{
-case PropertyValueType.Byte:
-		return "byte";
+		case PropertyValueType.Byte:
+			return "byte";
 		case PropertyValueType.Bool:
-		return "bool";
+			return "bool";
 		case PropertyValueType.Short:
-		return "short";
+			return "short";
 		case PropertyValueType.Int:
-		return "int";
+			return "int";
 		case PropertyValueType.Float:
-		return "float";
+			return "float";
 		case PropertyValueType.String:
-		return "string";
+			return "string";
 		case PropertyValueType.FixedLengthString:
-		return "string[]";
+			return "string";
 		case PropertyValueType.Vector2:
-		return "Vector2f";
+			return "Vector2";
 		case PropertyValueType.Vector3:
-		return "Vector3f";
+			return "Vector3";
 		case PropertyValueType.XRotation:
 		case PropertyValueType.YRotation:
 		case PropertyValueType.ZRotation:
-		return "float /*single axis rotation */";
+			return "float /*single axis rotation */";
 		case PropertyValueType.Color24:
 		case PropertyValueType.Color32:
-		return "WColor";
+			return "WLinearColor";
 		default:
-		return "Unknown Enum to String Type";
+			return "Unknown Enum to String Type";
+	}
+}
+
+string GetReadFunction(PropertyValueType type, uint Length = 0)
+{
+	switch(type)
+	{
+		case PropertyValueType.Byte:
+			return "stream.ReadByte();";
+		case PropertyValueType.Bool:
+			return "stream.ReadBoolean();";
+		case PropertyValueType.Short:
+			return "stream.ReadInt16();";
+		case PropertyValueType.Int:
+			return "stream.ReadInt32();";
+		case PropertyValueType.Float:
+			return "stream.ReadSingle();";
+		case PropertyValueType.String:
+			return "stream.ReadString();";
+		case PropertyValueType.FixedLengthString:
+			return Length == 0 ? "stream.ReadStringUntil('\0');" : $"stream.ReadString({Length});";
+		case PropertyValueType.Vector2:
+		return "new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle());";
+			case PropertyValueType.Vector3:
+		return "new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());";
+		case PropertyValueType.XRotation:
+		case PropertyValueType.YRotation:
+		case PropertyValueType.ZRotation:
+			return "stream.ReadInt16();";
+		case PropertyValueType.Color24:
+			return "new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f);";
+		case PropertyValueType.Color32:
+			return "new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f, stream.ReadByte()/255f);";
+		default:
+			return "Unknown Enum to String Type";
 	}
 }
 #>
