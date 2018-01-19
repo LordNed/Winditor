@@ -113,6 +113,11 @@
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
+    <Compile Include="Editor\Templates\EntityTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityTemplates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
@@ -208,6 +213,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Editor\Templates\EntityTemplates.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityTemplates.cs</LastGenOutput>
+    </Content>
     <Content Include="resources\templates\Actor.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -708,6 +717,9 @@
       <Project>{e8af46cc-76dc-4541-a578-5067ead07087}</Project>
       <Name>WCommon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

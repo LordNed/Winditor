@@ -1,0 +1,21 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="Newtonsoft.Json"#>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="System.IO" #>
+<#@ output extension=".cs" #>
+
+<#
+
+var ProjectDirPath = Host.ResolveAssemblyReference("$(ProjectDir)");
+var TemplatePath = ProjectDirPath + "resources/templates/";
+
+foreach (var file in Directory.GetFiles(TemplatePath))
+{
+#>
+	// <#=file#>
+<#
+}
+// Foo
+// var data = JsonConvert.DeserializeObject<string>(File.ReadAllText("yes"));
+#>
