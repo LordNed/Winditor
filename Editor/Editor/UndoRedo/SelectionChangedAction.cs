@@ -29,10 +29,10 @@ namespace WindEditor
 
             // Update their selected states
             for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].Flags &= ~ActorFlags.Selected;
+                m_oldActorList[i].Flags &= ~NodeFlags.Selected;
 
             for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].Flags |= ActorFlags.Selected;
+                m_newActorList[i].Flags |= NodeFlags.Selected;
 
             m_actorEditor.UpdateGizmoTransform();
         }
@@ -47,10 +47,10 @@ namespace WindEditor
 
             // Update their selected states
             for (int i = 0; i < m_newActorList.Length; i++)
-                m_newActorList[i].Flags &= ~ActorFlags.Selected;
+                m_newActorList[i].Flags &= ~NodeFlags.Selected;
 
             for (int i = 0; i < m_oldActorList.Length; i++)
-                m_oldActorList[i].Flags |= ActorFlags.Selected;
+                m_oldActorList[i].Flags |= NodeFlags.Selected;
 
             m_actorEditor.UpdateGizmoTransform();
         }
