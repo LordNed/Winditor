@@ -134,6 +134,9 @@ namespace WindEditor
         [JsonProperty("Type")]
         public PropertyValueType FieldType;
 
+		[JsonProperty("Hidden")]
+		public bool Hidden;
+
         public uint Length;
     }
 #pragma warning restore 0649

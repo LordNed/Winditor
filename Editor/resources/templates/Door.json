@@ -14,6 +14,6 @@
 		{"Name" : "Scale X", "Type" : "Byte"},
 		{"Name" : "Scale Y", "Type" : "Byte"},
 		{"Name" : "Scale Z", "Type" : "Byte"},
-		{"Name" : "Padding", "Type" : "Byte"}
+		{"Name" : "Padding", "Type" : "Byte", "Hidden" : "True"}
 	]
 }

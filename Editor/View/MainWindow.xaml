@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WindEditor"
         xmlns:wpf="clr-namespace:WindEditor.WPF;assembly=WCommon"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
+        xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
     <Window.InputBindings>
@@ -119,7 +120,7 @@
                     <!-- Main Viewport -->
                     <ColumnDefinition Width="*" MinWidth="200"/>
                     <!-- Right Pane -->
-                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="350"/>
                 </Grid.ColumnDefinitions>
 
 
@@ -202,37 +203,11 @@
                 <!-- Right Pane -->
                 <DockPanel Grid.Column="2" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
                     <DockPanel DockPanel.Dock="Bottom">
-                        <Label DockPanel.Dock="Left" Content="FourCC:"/>
-                        <Label DockPanel.Dock="Right" HorizontalContentAlignment="Right" Content="{Binding Path=SelectedObjects.FourCC}"/>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Bottom">
                         <Label DockPanel.Dock="Left" Content="Layer:"/>
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
                     </DockPanel>
-                    <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListView  ItemsSource="{Binding Path=SelectedObjects.Values}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Padding" Value="0"/>
-                                    <Setter Property="Margin" Value="0"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="80"/>
-                                    <GridViewColumn Header="Value" CellTemplateSelector="{StaticResource PropertyValueTemplateSelector}">
-                                        <!-- We need to use a custom converter and some binding magic to force the Value column to take up all of the remaining space.-->
-                                        <GridViewColumn.Width>
-                                            <MultiBinding Converter="{StaticResource LastColumnMaximizerConverter}">
-                                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ListView}"/>
-                                                <Binding Path="View.Columns" RelativeSource="{RelativeSource AncestorType=ListView}"/>
-                                            </MultiBinding>
-                                        </GridViewColumn.Width>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                    <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="{Binding Path=EditorSelection.SingleObjectSelected}">
+                        <xceed:PropertyGrid SelectedObject="{Binding Path=EditorSelection.PrimarySelectedObject}"/>
                     </GroupBox>
                 </DockPanel>
             </Grid>

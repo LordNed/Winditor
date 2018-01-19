@@ -169,7 +169,7 @@ namespace WindEditor
 
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected void OnSelectedChanged(SelectEventArgs e)

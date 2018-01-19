@@ -13,6 +13,7 @@ namespace WindEditor
 		// Shit that's actually type safe
 		public Action OnSelectionChanged;
 
+		public WDOMNode PrimarySelectedObject { get { if (SelectedObjects.Count == 1) return SelectedObjects[0]; return null; } }
 		public List<WDOMNode> SelectedObjects { get; protected set; }
 		public bool SingleObjectSelected { get { return SelectedObjects.Count == 1; } }
 
@@ -66,6 +67,7 @@ namespace WindEditor
 			{
 				PropertyChanged.Invoke(this, new PropertyChangedEventArgs("SelectedObjects"));
 				PropertyChanged.Invoke(this, new PropertyChangedEventArgs("SingleObjectSelected"));
+				PropertyChanged.Invoke(this, new PropertyChangedEventArgs("PrimarySelectedObject"));
 			}
 
 			if (OnSelectionChanged != null)
