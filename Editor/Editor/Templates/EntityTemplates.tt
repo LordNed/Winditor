@@ -20,6 +20,7 @@ using GameFormatReader.Common;
 using OpenTK;
 using System.ComponentModel;
 using System.Diagnostics;
+using System;
 
 namespace WindEditor
 {
@@ -188,10 +189,10 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		}
 
 		override public void Save(EndianBinaryWriter stream)
-{
+		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ));
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 <#			foreach(var field in descriptor.Fields)
 			{
@@ -309,9 +310,9 @@ string GetReadFunction(PropertyValueType type, uint Length = 0)
 		case PropertyValueType.Float:
 			return "stream.ReadSingle();";
 		case PropertyValueType.String:
-			return "stream.ReadString().Trim(new[] { '\\0' });";
+			return "stream.ReadString().Trim(new[] { '\\0' });"; 
 		case PropertyValueType.FixedLengthString:
-			return Length == 0 ? "stream.ReadStringUntil('\\0').Trim(new[] { '\\0' });" : string.Format("stream.ReadString({0}).Trim(new[] {{ '\0' }});", Length);
+			return Length == 0 ? "stream.ReadStringUntil('\\0').Trim(new[] { '\\0' });" : string.Format("stream.ReadString({0}).Trim(new[] {{ '\\0' }});", Length);
 		case PropertyValueType.Vector2:
 		return "new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle());";
 			case PropertyValueType.Vector3:
