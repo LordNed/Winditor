@@ -355,9 +355,9 @@ string GetSaveFunction(PropertyValueType type, string varName, uint Length = 0)
 		case PropertyValueType.ZRotation:
 			return string.Format("stream.Write((short){0});", varName);
 		case PropertyValueType.Color24:
-			return string.Format("stream.Write((byte){0}.R*255); stream.Write((byte){0}.G*255); stream.Write((byte){0}.B*255);", varName);
+			return string.Format("stream.Write((byte)({0}.R*255)); stream.Write((byte)({0}.G*255)); stream.Write((byte)({0}.B*255));", varName);
 		case PropertyValueType.Color32:
-			return string.Format("stream.Write((byte){0}.R*255); stream.Write((byte){0}.G*255); stream.Write((byte){0}.B*255); stream.Write((byte){0}.A*255);", varName);
+			return string.Format("stream.Write((byte)({0}.R*255)); stream.Write((byte)({0}.G*255)); stream.Write((byte)({0}.B*255)); stream.Write((byte)({0}.A*255));", varName);
 		default:
 			return "Unknown Enum to String Type";
 	}

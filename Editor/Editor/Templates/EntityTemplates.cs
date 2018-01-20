@@ -1323,7 +1323,7 @@ namespace WindEditor
 			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
-			stream.Write((byte)Color.R*255); stream.Write((byte)Color.G*255); stream.Write((byte)Color.B*255); stream.Write((byte)Color.A*255);
+			stream.Write((byte)(Color.R*255)); stream.Write((byte)(Color.G*255)); stream.Write((byte)(Color.B*255)); stream.Write((byte)(Color.A*255));
 		}
 	}
 
@@ -1712,17 +1712,17 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.Write((byte)ShadowColor.R*255); stream.Write((byte)ShadowColor.G*255); stream.Write((byte)ShadowColor.B*255);
-			stream.Write((byte)ActorAmbientColor.R*255); stream.Write((byte)ActorAmbientColor.G*255); stream.Write((byte)ActorAmbientColor.B*255);
-			stream.Write((byte)RoomLightColor.R*255); stream.Write((byte)RoomLightColor.G*255); stream.Write((byte)RoomLightColor.B*255);
-			stream.Write((byte)RoomAmbientColor.R*255); stream.Write((byte)RoomAmbientColor.G*255); stream.Write((byte)RoomAmbientColor.B*255);
-			stream.Write((byte)WaveColor.R*255); stream.Write((byte)WaveColor.G*255); stream.Write((byte)WaveColor.B*255);
-			stream.Write((byte)OceanColor.R*255); stream.Write((byte)OceanColor.G*255); stream.Write((byte)OceanColor.B*255);
-			stream.Write((byte)UnknownWhite1.R*255); stream.Write((byte)UnknownWhite1.G*255); stream.Write((byte)UnknownWhite1.B*255);
-			stream.Write((byte)UnknownWhite2.R*255); stream.Write((byte)UnknownWhite2.G*255); stream.Write((byte)UnknownWhite2.B*255);
-			stream.Write((byte)DoorBackfill.R*255); stream.Write((byte)DoorBackfill.G*255); stream.Write((byte)DoorBackfill.B*255);
-			stream.Write((byte)Unknown3.R*255); stream.Write((byte)Unknown3.G*255); stream.Write((byte)Unknown3.B*255);
-			stream.Write((byte)FogColor.R*255); stream.Write((byte)FogColor.G*255); stream.Write((byte)FogColor.B*255);
+			stream.Write((byte)(ShadowColor.R*255)); stream.Write((byte)(ShadowColor.G*255)); stream.Write((byte)(ShadowColor.B*255));
+			stream.Write((byte)(ActorAmbientColor.R*255)); stream.Write((byte)(ActorAmbientColor.G*255)); stream.Write((byte)(ActorAmbientColor.B*255));
+			stream.Write((byte)(RoomLightColor.R*255)); stream.Write((byte)(RoomLightColor.G*255)); stream.Write((byte)(RoomLightColor.B*255));
+			stream.Write((byte)(RoomAmbientColor.R*255)); stream.Write((byte)(RoomAmbientColor.G*255)); stream.Write((byte)(RoomAmbientColor.B*255));
+			stream.Write((byte)(WaveColor.R*255)); stream.Write((byte)(WaveColor.G*255)); stream.Write((byte)(WaveColor.B*255));
+			stream.Write((byte)(OceanColor.R*255)); stream.Write((byte)(OceanColor.G*255)); stream.Write((byte)(OceanColor.B*255));
+			stream.Write((byte)(UnknownWhite1.R*255)); stream.Write((byte)(UnknownWhite1.G*255)); stream.Write((byte)(UnknownWhite1.B*255));
+			stream.Write((byte)(UnknownWhite2.R*255)); stream.Write((byte)(UnknownWhite2.G*255)); stream.Write((byte)(UnknownWhite2.B*255));
+			stream.Write((byte)(DoorBackfill.R*255)); stream.Write((byte)(DoorBackfill.G*255)); stream.Write((byte)(DoorBackfill.B*255));
+			stream.Write((byte)(Unknown3.R*255)); stream.Write((byte)(Unknown3.G*255)); stream.Write((byte)(Unknown3.B*255));
+			stream.Write((byte)(FogColor.R*255)); stream.Write((byte)(FogColor.G*255)); stream.Write((byte)(FogColor.B*255));
 			stream.Write((byte)SkyboxColorIndex);
 			stream.Write((byte)0); // Padding
 			stream.Write((byte)0); // Padding
@@ -1918,15 +1918,15 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.Write((byte)Unknown1.R*255); stream.Write((byte)Unknown1.G*255); stream.Write((byte)Unknown1.B*255); stream.Write((byte)Unknown1.A*255);
-			stream.Write((byte)Unknown2.R*255); stream.Write((byte)Unknown2.G*255); stream.Write((byte)Unknown2.B*255); stream.Write((byte)Unknown2.A*255);
-			stream.Write((byte)Unknown3.R*255); stream.Write((byte)Unknown3.G*255); stream.Write((byte)Unknown3.B*255); stream.Write((byte)Unknown3.A*255);
-			stream.Write((byte)Unknown4.R*255); stream.Write((byte)Unknown4.G*255); stream.Write((byte)Unknown4.B*255); stream.Write((byte)Unknown4.A*255);
-			stream.Write((byte)HorizonCloudColor.R*255); stream.Write((byte)HorizonCloudColor.G*255); stream.Write((byte)HorizonCloudColor.B*255); stream.Write((byte)HorizonCloudColor.A*255);
-			stream.Write((byte)CenterCloudColor.R*255); stream.Write((byte)CenterCloudColor.G*255); stream.Write((byte)CenterCloudColor.B*255); stream.Write((byte)CenterCloudColor.A*255);
-			stream.Write((byte)SkyColor.R*255); stream.Write((byte)SkyColor.G*255); stream.Write((byte)SkyColor.B*255);
-			stream.Write((byte)FalseSeaColor.R*255); stream.Write((byte)FalseSeaColor.G*255); stream.Write((byte)FalseSeaColor.B*255);
-			stream.Write((byte)HorizonColor.R*255); stream.Write((byte)HorizonColor.G*255); stream.Write((byte)HorizonColor.B*255);
+			stream.Write((byte)(Unknown1.R*255)); stream.Write((byte)(Unknown1.G*255)); stream.Write((byte)(Unknown1.B*255)); stream.Write((byte)(Unknown1.A*255));
+			stream.Write((byte)(Unknown2.R*255)); stream.Write((byte)(Unknown2.G*255)); stream.Write((byte)(Unknown2.B*255)); stream.Write((byte)(Unknown2.A*255));
+			stream.Write((byte)(Unknown3.R*255)); stream.Write((byte)(Unknown3.G*255)); stream.Write((byte)(Unknown3.B*255)); stream.Write((byte)(Unknown3.A*255));
+			stream.Write((byte)(Unknown4.R*255)); stream.Write((byte)(Unknown4.G*255)); stream.Write((byte)(Unknown4.B*255)); stream.Write((byte)(Unknown4.A*255));
+			stream.Write((byte)(HorizonCloudColor.R*255)); stream.Write((byte)(HorizonCloudColor.G*255)); stream.Write((byte)(HorizonCloudColor.B*255)); stream.Write((byte)(HorizonCloudColor.A*255));
+			stream.Write((byte)(CenterCloudColor.R*255)); stream.Write((byte)(CenterCloudColor.G*255)); stream.Write((byte)(CenterCloudColor.B*255)); stream.Write((byte)(CenterCloudColor.A*255));
+			stream.Write((byte)(SkyColor.R*255)); stream.Write((byte)(SkyColor.G*255)); stream.Write((byte)(SkyColor.B*255));
+			stream.Write((byte)(FalseSeaColor.R*255)); stream.Write((byte)(FalseSeaColor.G*255)); stream.Write((byte)(FalseSeaColor.B*255));
+			stream.Write((byte)(HorizonColor.R*255)); stream.Write((byte)(HorizonColor.G*255)); stream.Write((byte)(HorizonColor.B*255));
 			stream.Write((byte)0); // Padding
 			stream.Write((byte)0); // Padding
 			stream.Write((byte)0); // Padding
@@ -2491,7 +2491,7 @@ namespace WindEditor
 			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
-			stream.Write((byte)Color.R*255); stream.Write((byte)Color.G*255); stream.Write((byte)Color.B*255); stream.Write((byte)Color.A*255);
+			stream.Write((byte)(Color.R*255)); stream.Write((byte)(Color.G*255)); stream.Write((byte)(Color.B*255)); stream.Write((byte)(Color.A*255));
 		}
 	}
 
@@ -2730,6 +2730,7 @@ namespace WindEditor
 {
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)EventIndex);
 			stream.Write((byte)Unknown1);
