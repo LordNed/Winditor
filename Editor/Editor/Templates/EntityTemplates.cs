@@ -3440,6 +3440,126 @@ namespace WindEditor
 		}
 				
 
+		private int m_Unknown5;
+		public int Unknown5
+		{ 
+			get { return m_Unknown5; }
+			set
+			{
+				m_Unknown5 = value;
+				OnPropertyChanged("Unknown5");
+			}
+		}
+				
+
+		private byte m_Unknown6;
+		public byte Unknown6
+		{ 
+			get { return m_Unknown6; }
+			set
+			{
+				m_Unknown6 = value;
+				OnPropertyChanged("Unknown6");
+			}
+		}
+				
+
+		private byte m_Unknown7;
+		public byte Unknown7
+		{ 
+			get { return m_Unknown7; }
+			set
+			{
+				m_Unknown7 = value;
+				OnPropertyChanged("Unknown7");
+			}
+		}
+				
+
+		private byte m_Unknown8;
+		public byte Unknown8
+		{ 
+			get { return m_Unknown8; }
+			set
+			{
+				m_Unknown8 = value;
+				OnPropertyChanged("Unknown8");
+			}
+		}
+				
+
+		private byte m_Unknown9;
+		public byte Unknown9
+		{ 
+			get { return m_Unknown9; }
+			set
+			{
+				m_Unknown9 = value;
+				OnPropertyChanged("Unknown9");
+			}
+		}
+				
+
+		private int m_Unknown10;
+		public int Unknown10
+		{ 
+			get { return m_Unknown10; }
+			set
+			{
+				m_Unknown10 = value;
+				OnPropertyChanged("Unknown10");
+			}
+		}
+				
+
+		private byte m_Unknown11;
+		public byte Unknown11
+		{ 
+			get { return m_Unknown11; }
+			set
+			{
+				m_Unknown11 = value;
+				OnPropertyChanged("Unknown11");
+			}
+		}
+				
+
+		private byte m_Unknown12;
+		public byte Unknown12
+		{ 
+			get { return m_Unknown12; }
+			set
+			{
+				m_Unknown12 = value;
+				OnPropertyChanged("Unknown12");
+			}
+		}
+				
+
+		private byte m_Unknown13;
+		public byte Unknown13
+		{ 
+			get { return m_Unknown13; }
+			set
+			{
+				m_Unknown13 = value;
+				OnPropertyChanged("Unknown13");
+			}
+		}
+				
+
+		private byte m_Unknown14;
+		public byte Unknown14
+		{ 
+			get { return m_Unknown14; }
+			set
+			{
+				m_Unknown14 = value;
+				OnPropertyChanged("Unknown14");
+			}
+		}
+				
+
 
 		// Constructor
 		public StageProperties(string fourCC, WWorld world) : base(fourCC, world)
@@ -3454,6 +3574,16 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Draw Range", TargetProperties = new string[] { "Unk_DrawRange"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 8", TargetProperties = new string[] { "Unknown8"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 9", TargetProperties = new string[] { "Unknown9"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 10", TargetProperties = new string[] { "Unknown10"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 11", TargetProperties = new string[] { "Unknown11"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 12", TargetProperties = new string[] { "Unknown12"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 13", TargetProperties = new string[] { "Unknown13"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 14", TargetProperties = new string[] { "Unknown14"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3468,6 +3598,16 @@ namespace WindEditor
 			m_Unknown3 = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadByte(); 
 			m_Unk_DrawRange = stream.ReadInt16(); 
+			m_Unknown5 = stream.ReadInt32(); 
+			m_Unknown6 = stream.ReadByte(); 
+			m_Unknown7 = stream.ReadByte(); 
+			m_Unknown8 = stream.ReadByte(); 
+			m_Unknown9 = stream.ReadByte(); 
+			m_Unknown10 = stream.ReadInt32(); 
+			m_Unknown11 = stream.ReadByte(); 
+			m_Unknown12 = stream.ReadByte(); 
+			m_Unknown13 = stream.ReadByte(); 
+			m_Unknown14 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -3486,6 +3626,16 @@ namespace WindEditor
 			stream.Write((byte)Unknown3);
 			stream.Write((byte)Unknown4);
 			stream.Write((short)Unk_DrawRange);
+			stream.Write((int)Unknown5);
+			stream.Write((byte)Unknown6);
+			stream.Write((byte)Unknown7);
+			stream.Write((byte)Unknown8);
+			stream.Write((byte)Unknown9);
+			stream.Write((int)Unknown10);
+			stream.Write((byte)Unknown11);
+			stream.Write((byte)Unknown12);
+			stream.Write((byte)Unknown13);
+			stream.Write((byte)Unknown14);
 		}
 	}
 
