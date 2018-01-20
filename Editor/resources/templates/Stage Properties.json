@@ -13,5 +13,15 @@
 		{"Name" : "Unknown 3", "Type" : "Byte"},
 		{"Name" : "Unknown 4", "Type" : "Byte"},
 		{"Name" : "Unk_Draw Range", "Type" : "Short"},
-	]
+    {"Name" : "Unknown 5", "Type" : "Int"},
+	  {"Name" : "Unknown 6", "Type" : "Byte"},
+		{"Name" : "Unknown 7", "Type" : "Byte"},
+		{"Name" : "Unknown 8", "Type" : "Byte"},
+		{"Name" : "Unknown 9", "Type" : "Byte"},
+	  {"Name" : "Unknown 10", "Type" : "Int"},
+	  {"Name" : "Unknown 11", "Type" : "Byte"},
+	  {"Name" : "Unknown 12", "Type" : "Byte"},
+		{"Name" : "Unknown 13", "Type" : "Byte"},
+		{"Name" : "Unknown 14", "Type" : "Byte"},
+  ]
 }
