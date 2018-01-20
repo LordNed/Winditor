@@ -343,9 +343,9 @@ string GetSaveFunction(PropertyValueType type, string varName, uint Length = 0)
 		case PropertyValueType.Float:
 			return string.Format("stream.Write((float){0});", varName);
 		case PropertyValueType.String:
-			return string.Format("stream.Write({0}.ToCharArray() + '\0');", varName);
+			return string.Format("stream.Write({0}.ToCharArray() + '\\0');", varName);
 		case PropertyValueType.FixedLengthString:
-			return string.Format("stream.WriteFixedString({0}, {1});", varName, Length);
+			return string.Format("stream.Write({0}.PadRight({1}, '\\0').ToCharArray());", varName, Length);
 		case PropertyValueType.Vector2:
 		return string.Format("stream.Write((float){0}.X); stream.Write((float){0}.Y);", varName);
 			case PropertyValueType.Vector3:

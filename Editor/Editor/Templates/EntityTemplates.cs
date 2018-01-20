@@ -489,7 +489,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
@@ -658,7 +658,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(CameraType, 16);
+			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((short)CameraPointIndex);
 			stream.Write((byte)0); // Padding
 			stream.Write((byte)0); // Padding
@@ -755,7 +755,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(CameraType, 16);
+			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((byte)CameraPointIndex);
 			stream.Write((byte)0); // Padding
 			stream.Write((byte)0); // Padding
@@ -900,7 +900,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((short)AuxiliaryParameters);
@@ -2295,7 +2295,7 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
 			stream.Write((byte)Unknown1);
-			stream.WriteFixedString(Name, 15);
+			stream.Write(Name.PadRight(15, '\0').ToCharArray());
 			stream.Write((byte)Unknown2);
 			stream.Write((byte)Unknown3);
 			stream.Write((byte)Unknown4);
@@ -2396,7 +2396,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(MapName, 8);
+			stream.Write(MapName.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)SpawnIndex);
 			stream.Write((byte)RoomIndex);
 			stream.Write((byte)FadeOutType);
@@ -2730,8 +2730,7 @@ namespace WindEditor
 {
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)EventIndex);
 			stream.Write((byte)Unknown1);
 			stream.Write((byte)SpawnType);
@@ -3043,7 +3042,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)Parameter1);
 			stream.Write((byte)Parameter2);
 			stream.Write((byte)Parameter3);
@@ -3275,7 +3274,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((byte)Unknown1);
 			stream.Write((byte)Unknown2);
@@ -3596,7 +3595,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Params);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((short)RoomLoadingParams);
@@ -3677,7 +3676,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
@@ -3766,7 +3765,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Params1);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((short)RoomLoadingParams);
@@ -3854,7 +3853,7 @@ namespace WindEditor
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			
-			stream.WriteFixedString(Name, 8);
+			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Params);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((short)RoomIndex);
