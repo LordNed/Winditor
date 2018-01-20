@@ -15,9 +15,10 @@ namespace WindEditor
 			base.OnConstruction();
 
 			ColorOverrides = new TevColorOverride();
+            PropertyChanged += VisibleDOMNode_PropertyChanged;
 		}
 
-		public override void PostLoad()
+        public override void PostLoad()
 		{
 			base.PostLoad();
 
@@ -84,8 +85,14 @@ namespace WindEditor
 			return bHit;
 		}
 
-		#region IRenderable
-		void IRenderable.AddToRenderer(WSceneView view)
+        private void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Name")
+                PostLoad();
+        }
+
+        #region IRenderable
+        void IRenderable.AddToRenderer(WSceneView view)
 		{
 			view.AddOpaqueMesh(this);
 		}
