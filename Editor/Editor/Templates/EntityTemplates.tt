@@ -104,23 +104,23 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		// Constructor
 		public <#= className #>(string fourCC, WWorld world) : base(fourCC, world)
 		{
-		<# 
+<# 
 			foreach(var field in descriptor.Fields)
 			{
 			   if(!field.Hidden && !skippedFields.Contains(field.FieldName.Replace(" ", "")))
 			   {
 				   string propertyFieldName = field.FieldName.Replace(" ", ""); 
-		#>	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "<#=field.FieldName#>", TargetProperties = new string[] { "<#=propertyFieldName#>"} });
+#>			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "<#=field.FieldName#>", TargetProperties = new string[] { "<#=propertyFieldName#>"} });
 <#
    
 				}
 			}
 #>
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
-<#
-			foreach(var field in descriptor.Fields)
+<#			foreach(var field in descriptor.Fields)
 			{
 				string fieldName = field.FieldName.Replace(" ", "");
 				string loadFunction = string.Empty;
@@ -179,8 +179,72 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 						}
 					}
 				}
-#>
+				#>
 			<#= loadFunction#> <#=assertFunction#>
+<#
+
+			}
+#>
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+<#			foreach(var field in descriptor.Fields)
+			{
+				string fieldName = field.FieldName.Replace(" ", "");
+				string saveFunction = string.Empty;
+
+				if(fieldName == "Position") 
+				{
+					saveFunction = "stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);";
+				}
+				else if (fieldName == "XRotation")
+				{
+					saveFunction =  "stream.Write(WMath.RotationFloatToShort(eulerRot.X));";
+				}
+				else if (fieldName == "YRotation")
+				{
+					saveFunction =  "stream.Write(WMath.RotationFloatToShort(eulerRot.Y));";
+				}
+				else if(fieldName == "ZRotation")
+				{
+					saveFunction =  "stream.Write(WMath.RotationFloatToShort(eulerRot.Z));";
+				}
+				else if(fieldName == "XScale")
+				{
+					saveFunction = "stream.Write((byte)Transform.LocalScale.X * 10);";
+				}
+				else if(fieldName == "YScale")
+				{
+					saveFunction = "stream.Write((byte)Transform.LocalScale.Y * 10);";
+				}
+				else if(fieldName == "ZScale")
+				{
+					saveFunction = "stream.Write((byte)Transform.LocalScale.Z * 10);";
+				}
+				else if(fieldName.StartsWith("Padding"))
+				{
+					switch(field.FieldType)
+					{
+						case PropertyValueType.Byte:
+							// Some of the padding fields are 0x00, so we write zero instead of 0xFF.
+							saveFunction = string.Format("stream.Write((byte)0); // Padding"); break;
+						case PropertyValueType.Short:
+							// Some of the padding fields are 0x00, so we write zero instead of 0xFF.
+							saveFunction = string.Format("stream.Write((short)0); // Padding"); break;
+						case PropertyValueType.Int:
+							// Some of the padding fields are 0x00, so we write zero instead of 0xFF.
+							saveFunction = string.Format("stream.Write((int)0); // Padding"); break;
+					}
+				}
+				else
+				{
+					saveFunction = GetSaveFunction(field.FieldType, fieldName, field.Length);
+				}#>
+			<#= saveFunction#>
 <#
 
 			}
@@ -259,6 +323,41 @@ string GetReadFunction(PropertyValueType type, uint Length = 0)
 			return "new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f);";
 		case PropertyValueType.Color32:
 			return "new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f, stream.ReadByte()/255f);";
+		default:
+			return "Unknown Enum to String Type";
+	}
+}
+
+string GetSaveFunction(PropertyValueType type, string varName, uint Length = 0)
+{
+	switch(type)
+	{
+		case PropertyValueType.Byte: 
+			return string.Format("stream.Write((byte){0});", varName);
+		case PropertyValueType.Bool:
+			return string.Format("stream.Write((bool){0});", varName);
+		case PropertyValueType.Short:
+			return string.Format("stream.Write((short){0});", varName);
+		case PropertyValueType.Int:
+			return string.Format("stream.Write((int){0});", varName);
+		case PropertyValueType.Float:
+			return string.Format("stream.Write((float){0});", varName);
+		case PropertyValueType.String:
+			return string.Format("stream.Write({0}.ToCharArray() + '\0');", varName);
+		case PropertyValueType.FixedLengthString:
+			return string.Format("stream.WriteFixedString({0}, {1});", varName, Length);
+		case PropertyValueType.Vector2:
+		return string.Format("stream.Write((float){0}.X); stream.Write((float){0}.Y);", varName);
+			case PropertyValueType.Vector3:
+		return string.Format("stream.Write((float){0}.X); stream.Write((float){0}.Y); stream.Write((float){0}.Z);", varName);
+		case PropertyValueType.XRotation:
+		case PropertyValueType.YRotation:
+		case PropertyValueType.ZRotation:
+			return string.Format("stream.Write((short){0});", varName);
+		case PropertyValueType.Color24:
+			return string.Format("stream.Write((byte){0}.R*255); stream.Write((byte){0}.G*255); stream.Write((byte){0}.B*255);", varName);
+		case PropertyValueType.Color32:
+			return string.Format("stream.Write((byte){0}.R*255); stream.Write((byte){0}.G*255); stream.Write((byte){0}.B*255); stream.Write((byte){0}.A*255);", varName);
 		default:
 			return "Unknown Enum to String Type";
 	}

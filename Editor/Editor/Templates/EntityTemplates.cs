@@ -178,17 +178,18 @@ namespace WindEditor
 		public MinimapSettings_Unused(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Image Scale", TargetProperties = new string[] { "FullMapImageScale"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Space Scale", TargetProperties = new string[] { "FullMapSpaceScale"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Translation", TargetProperties = new string[] { "FullMapTranslation"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 1", TargetProperties = new string[] { "ZoomedMapScrolling1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 2", TargetProperties = new string[] { "ZoomedMapScrolling2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Translation", TargetProperties = new string[] { "ZoomedMapTranslation"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scale", TargetProperties = new string[] { "ZoomedMapScale"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Space Scale", TargetProperties = new string[] { "FullMapSpaceScale"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Translation", TargetProperties = new string[] { "FullMapTranslation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 1", TargetProperties = new string[] { "ZoomedMapScrolling1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 2", TargetProperties = new string[] { "ZoomedMapScrolling2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Translation", TargetProperties = new string[] { "ZoomedMapTranslation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scale", TargetProperties = new string[] { "ZoomedMapScale"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_FullMapImageScale = new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle()); 
@@ -202,6 +203,24 @@ namespace WindEditor
 			m_MapImageIndex = stream.ReadByte(); 
 			m_Unknown2 = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)FullMapImageScale.X); stream.Write((float)FullMapImageScale.Y);
+			stream.Write((float)FullMapSpaceScale.X); stream.Write((float)FullMapSpaceScale.Y);
+			stream.Write((float)FullMapTranslation.X); stream.Write((float)FullMapTranslation.Y);
+			stream.Write((float)ZoomedMapScrolling1.X); stream.Write((float)ZoomedMapScrolling1.Y);
+			stream.Write((float)ZoomedMapScrolling2.X); stream.Write((float)ZoomedMapScrolling2.Y);
+			stream.Write((float)ZoomedMapTranslation.X); stream.Write((float)ZoomedMapTranslation.Y);
+			stream.Write((float)ZoomedMapScale);
+			stream.Write((byte)Unknown);
+			stream.Write((byte)MapImageIndex);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -346,17 +365,18 @@ namespace WindEditor
 		public MinimapSettings(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Image Scale", TargetProperties = new string[] { "FullMapImageScale"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Space Scale", TargetProperties = new string[] { "FullMapSpaceScale"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Translation", TargetProperties = new string[] { "FullMapTranslation"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 1", TargetProperties = new string[] { "ZoomedMapScrolling1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 2", TargetProperties = new string[] { "ZoomedMapScrolling2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Translation", TargetProperties = new string[] { "ZoomedMapTranslation"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scale", TargetProperties = new string[] { "ZoomedMapScale"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Space Scale", TargetProperties = new string[] { "FullMapSpaceScale"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Translation", TargetProperties = new string[] { "FullMapTranslation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 1", TargetProperties = new string[] { "ZoomedMapScrolling1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scrolling 2", TargetProperties = new string[] { "ZoomedMapScrolling2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Translation", TargetProperties = new string[] { "ZoomedMapTranslation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scale", TargetProperties = new string[] { "ZoomedMapScale"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_FullMapImageScale = new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle()); 
@@ -370,6 +390,24 @@ namespace WindEditor
 			m_MapImageIndex = stream.ReadByte(); 
 			m_Unknown2 = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)FullMapImageScale.X); stream.Write((float)FullMapImageScale.Y);
+			stream.Write((float)FullMapSpaceScale.X); stream.Write((float)FullMapSpaceScale.Y);
+			stream.Write((float)FullMapTranslation.X); stream.Write((float)FullMapTranslation.Y);
+			stream.Write((float)ZoomedMapScrolling1.X); stream.Write((float)ZoomedMapScrolling1.Y);
+			stream.Write((float)ZoomedMapScrolling2.X); stream.Write((float)ZoomedMapScrolling2.Y);
+			stream.Write((float)ZoomedMapTranslation.X); stream.Write((float)ZoomedMapTranslation.Y);
+			stream.Write((float)ZoomedMapScale);
+			stream.Write((byte)Unknown);
+			stream.Write((byte)MapImageIndex);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -430,10 +468,11 @@ namespace WindEditor
 		public Actor(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Flag To Set", TargetProperties = new string[] { "FlagToSet"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Flag To Set", TargetProperties = new string[] { "FlagToSet"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -443,6 +482,20 @@ namespace WindEditor
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_FlagToSet = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((int)Parameters);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((short)FlagToSet);
+			stream.Write((short)EnemyNumber);
 		}
 	}
 
@@ -457,7 +510,8 @@ namespace WindEditor
 		// Constructor
 		public CameraViewpoint_v1(string fourCC, WWorld world) : base(fourCC, world)
 		{
-				}
+		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
@@ -465,6 +519,18 @@ namespace WindEditor
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
 			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Z));
+			stream.Write((short)0); // Padding
 		}
 	}
 
@@ -479,7 +545,8 @@ namespace WindEditor
 		// Constructor
 		public CameraViewpoint_v2(string fourCC, WWorld world) : base(fourCC, world)
 		{
-				}
+		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
@@ -487,6 +554,18 @@ namespace WindEditor
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
 			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Z));
+			stream.Write((short)0); // Padding
 		}
 	}
 
@@ -559,11 +638,12 @@ namespace WindEditor
 		public CameraType_v1(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Type", TargetProperties = new string[] { "CameraType"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_CameraType = stream.ReadString(16).Trim(new[] { ' ' }); 
@@ -571,6 +651,18 @@ namespace WindEditor
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(CameraType, 16);
+			stream.Write((short)CameraPointIndex);
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -643,11 +735,12 @@ namespace WindEditor
 		public CameraType_v2(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Type", TargetProperties = new string[] { "CameraType"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_CameraType = stream.ReadString(16).Trim(new[] { ' ' }); 
@@ -655,6 +748,18 @@ namespace WindEditor
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(CameraType, 16);
+			stream.Write((byte)CameraPointIndex);
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -766,14 +871,15 @@ namespace WindEditor
 		public Door_DOOR(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameters", TargetProperties = new string[] { "AuxiliaryParameters"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Z", TargetProperties = new string[] { "ScaleZ"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameters", TargetProperties = new string[] { "AuxiliaryParameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Z", TargetProperties = new string[] { "ScaleZ"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -787,6 +893,24 @@ namespace WindEditor
 			m_ScaleY = stream.ReadByte(); 
 			m_ScaleZ = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((int)Parameters);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)AuxiliaryParameters);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((short)Unknown1);
+			stream.Write((short)Unknown2);
+			stream.Write((byte)ScaleX);
+			stream.Write((byte)ScaleY);
+			stream.Write((byte)ScaleZ);
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -1003,23 +1127,24 @@ namespace WindEditor
 		public DungeonFloorSettings(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Lower Boundary YHeight", TargetProperties = new string[] { "LowerBoundaryYHeight"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Floor Number", TargetProperties = new string[] { "FloorNumber"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 0", TargetProperties = new string[] { "IncludedRoom0"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 1", TargetProperties = new string[] { "IncludedRoom1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 2", TargetProperties = new string[] { "IncludedRoom2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 3", TargetProperties = new string[] { "IncludedRoom3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 4", TargetProperties = new string[] { "IncludedRoom4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 5", TargetProperties = new string[] { "IncludedRoom5"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 6", TargetProperties = new string[] { "IncludedRoom6"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 7", TargetProperties = new string[] { "IncludedRoom7"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 8", TargetProperties = new string[] { "IncludedRoom8"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 9", TargetProperties = new string[] { "IncludedRoom9"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 10", TargetProperties = new string[] { "IncludedRoom10"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 11", TargetProperties = new string[] { "IncludedRoom11"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 12", TargetProperties = new string[] { "IncludedRoom12"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 13", TargetProperties = new string[] { "IncludedRoom13"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 14", TargetProperties = new string[] { "IncludedRoom14"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Floor Number", TargetProperties = new string[] { "FloorNumber"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 0", TargetProperties = new string[] { "IncludedRoom0"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 1", TargetProperties = new string[] { "IncludedRoom1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 2", TargetProperties = new string[] { "IncludedRoom2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 3", TargetProperties = new string[] { "IncludedRoom3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 4", TargetProperties = new string[] { "IncludedRoom4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 5", TargetProperties = new string[] { "IncludedRoom5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 6", TargetProperties = new string[] { "IncludedRoom6"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 7", TargetProperties = new string[] { "IncludedRoom7"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 8", TargetProperties = new string[] { "IncludedRoom8"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 9", TargetProperties = new string[] { "IncludedRoom9"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 10", TargetProperties = new string[] { "IncludedRoom10"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 11", TargetProperties = new string[] { "IncludedRoom11"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 12", TargetProperties = new string[] { "IncludedRoom12"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 13", TargetProperties = new string[] { "IncludedRoom13"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 14", TargetProperties = new string[] { "IncludedRoom14"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_LowerBoundaryYHeight = stream.ReadSingle(); 
@@ -1039,6 +1164,30 @@ namespace WindEditor
 			m_IncludedRoom12 = stream.ReadByte(); 
 			m_IncludedRoom13 = stream.ReadByte(); 
 			m_IncludedRoom14 = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)LowerBoundaryYHeight);
+			stream.Write((byte)FloorNumber);
+			stream.Write((byte)IncludedRoom0);
+			stream.Write((byte)IncludedRoom1);
+			stream.Write((byte)IncludedRoom2);
+			stream.Write((byte)IncludedRoom3);
+			stream.Write((byte)IncludedRoom4);
+			stream.Write((byte)IncludedRoom5);
+			stream.Write((byte)IncludedRoom6);
+			stream.Write((byte)IncludedRoom7);
+			stream.Write((byte)IncludedRoom8);
+			stream.Write((byte)IncludedRoom9);
+			stream.Write((byte)IncludedRoom10);
+			stream.Write((byte)IncludedRoom11);
+			stream.Write((byte)IncludedRoom12);
+			stream.Write((byte)IncludedRoom13);
+			stream.Write((byte)IncludedRoom14);
 		}
 	}
 
@@ -1099,16 +1248,28 @@ namespace WindEditor
 		public DungeonMapSettings(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size X", TargetProperties = new string[] { "MapSizeX"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size Y", TargetProperties = new string[] { "MapSizeY"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Scale Inverse", TargetProperties = new string[] { "MapScaleInverse"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size Y", TargetProperties = new string[] { "MapSizeY"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Scale Inverse", TargetProperties = new string[] { "MapScaleInverse"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_MapSizeX = stream.ReadSingle(); 
 			m_MapSizeY = stream.ReadSingle(); 
 			m_MapScaleInverse = stream.ReadSingle(); 
 			m_Unknown1 = stream.ReadSingle(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)MapSizeX);
+			stream.Write((float)MapSizeY);
+			stream.Write((float)MapScaleInverse);
+			stream.Write((float)Unknown1);
 		}
 	}
 
@@ -1145,13 +1306,24 @@ namespace WindEditor
 		public LightSource(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_Radius = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_Color = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f, stream.ReadByte()/255f); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
+			stream.Write((byte)Color.R*255); stream.Write((byte)Color.G*255); stream.Write((byte)Color.B*255); stream.Write((byte)Color.A*255);
 		}
 	}
 
@@ -1260,14 +1432,15 @@ namespace WindEditor
 		public EnvironmentLightingConditions(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear Color A", TargetProperties = new string[] { "ClearColorA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color A", TargetProperties = new string[] { "RainingColorA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing A", TargetProperties = new string[] { "SnowingA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown A", TargetProperties = new string[] { "UnknownA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear Color B", TargetProperties = new string[] { "ClearColorB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color B", TargetProperties = new string[] { "RainingColorB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing B", TargetProperties = new string[] { "SnowingB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown B", TargetProperties = new string[] { "UnknownB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color A", TargetProperties = new string[] { "RainingColorA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing A", TargetProperties = new string[] { "SnowingA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown A", TargetProperties = new string[] { "UnknownA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear Color B", TargetProperties = new string[] { "ClearColorB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color B", TargetProperties = new string[] { "RainingColorB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing B", TargetProperties = new string[] { "SnowingB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown B", TargetProperties = new string[] { "UnknownB"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_ClearColorA = stream.ReadByte(); 
@@ -1278,6 +1451,21 @@ namespace WindEditor
 			m_RainingColorB = stream.ReadByte(); 
 			m_SnowingB = stream.ReadByte(); 
 			m_UnknownB = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)ClearColorA);
+			stream.Write((byte)RainingColorA);
+			stream.Write((byte)SnowingA);
+			stream.Write((byte)UnknownA);
+			stream.Write((byte)ClearColorB);
+			stream.Write((byte)RainingColorB);
+			stream.Write((byte)SnowingB);
+			stream.Write((byte)UnknownB);
 		}
 	}
 
@@ -1482,22 +1670,23 @@ namespace WindEditor
 		public EnvironmentLightingColors(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Shadow Color", TargetProperties = new string[] { "ShadowColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Actor Ambient Color", TargetProperties = new string[] { "ActorAmbientColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Light Color", TargetProperties = new string[] { "RoomLightColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Ambient Color", TargetProperties = new string[] { "RoomAmbientColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Color", TargetProperties = new string[] { "WaveColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ocean Color", TargetProperties = new string[] { "OceanColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown White 1", TargetProperties = new string[] { "UnknownWhite1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown White 2", TargetProperties = new string[] { "UnknownWhite2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Door Backfill", TargetProperties = new string[] { "DoorBackfill"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Color", TargetProperties = new string[] { "FogColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Color Index", TargetProperties = new string[] { "SkyboxColorIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Far Plane", TargetProperties = new string[] { "FogFarPlane"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "For Near Plane", TargetProperties = new string[] { "ForNearPlane"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Actor Ambient Color", TargetProperties = new string[] { "ActorAmbientColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Light Color", TargetProperties = new string[] { "RoomLightColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Ambient Color", TargetProperties = new string[] { "RoomAmbientColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Color", TargetProperties = new string[] { "WaveColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ocean Color", TargetProperties = new string[] { "OceanColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown White 1", TargetProperties = new string[] { "UnknownWhite1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown White 2", TargetProperties = new string[] { "UnknownWhite2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Door Backfill", TargetProperties = new string[] { "DoorBackfill"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Color", TargetProperties = new string[] { "FogColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Color Index", TargetProperties = new string[] { "SkyboxColorIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Far Plane", TargetProperties = new string[] { "FogFarPlane"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "For Near Plane", TargetProperties = new string[] { "ForNearPlane"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_ShadowColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
@@ -1516,6 +1705,29 @@ namespace WindEditor
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_FogFarPlane = stream.ReadSingle(); 
 			m_ForNearPlane = stream.ReadSingle(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)ShadowColor.R*255); stream.Write((byte)ShadowColor.G*255); stream.Write((byte)ShadowColor.B*255);
+			stream.Write((byte)ActorAmbientColor.R*255); stream.Write((byte)ActorAmbientColor.G*255); stream.Write((byte)ActorAmbientColor.B*255);
+			stream.Write((byte)RoomLightColor.R*255); stream.Write((byte)RoomLightColor.G*255); stream.Write((byte)RoomLightColor.B*255);
+			stream.Write((byte)RoomAmbientColor.R*255); stream.Write((byte)RoomAmbientColor.G*255); stream.Write((byte)RoomAmbientColor.B*255);
+			stream.Write((byte)WaveColor.R*255); stream.Write((byte)WaveColor.G*255); stream.Write((byte)WaveColor.B*255);
+			stream.Write((byte)OceanColor.R*255); stream.Write((byte)OceanColor.G*255); stream.Write((byte)OceanColor.B*255);
+			stream.Write((byte)UnknownWhite1.R*255); stream.Write((byte)UnknownWhite1.G*255); stream.Write((byte)UnknownWhite1.B*255);
+			stream.Write((byte)UnknownWhite2.R*255); stream.Write((byte)UnknownWhite2.G*255); stream.Write((byte)UnknownWhite2.B*255);
+			stream.Write((byte)DoorBackfill.R*255); stream.Write((byte)DoorBackfill.G*255); stream.Write((byte)DoorBackfill.B*255);
+			stream.Write((byte)Unknown3.R*255); stream.Write((byte)Unknown3.G*255); stream.Write((byte)Unknown3.B*255);
+			stream.Write((byte)FogColor.R*255); stream.Write((byte)FogColor.G*255); stream.Write((byte)FogColor.B*255);
+			stream.Write((byte)SkyboxColorIndex);
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
+			stream.Write((float)FogFarPlane);
+			stream.Write((float)ForNearPlane);
 		}
 	}
 
@@ -1672,18 +1884,19 @@ namespace WindEditor
 		public EnvironmentLightingSkyboxColors(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Horizon Cloud Color", TargetProperties = new string[] { "HorizonCloudColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Center Cloud Color", TargetProperties = new string[] { "CenterCloudColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Sky Color", TargetProperties = new string[] { "SkyColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "False Sea Color", TargetProperties = new string[] { "FalseSeaColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Horizon Color", TargetProperties = new string[] { "HorizonColor"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Horizon Cloud Color", TargetProperties = new string[] { "HorizonCloudColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Center Cloud Color", TargetProperties = new string[] { "CenterCloudColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Sky Color", TargetProperties = new string[] { "SkyColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "False Sea Color", TargetProperties = new string[] { "FalseSeaColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Horizon Color", TargetProperties = new string[] { "HorizonColor"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Unknown1 = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f, stream.ReadByte()/255f); 
@@ -1698,6 +1911,25 @@ namespace WindEditor
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)Unknown1.R*255); stream.Write((byte)Unknown1.G*255); stream.Write((byte)Unknown1.B*255); stream.Write((byte)Unknown1.A*255);
+			stream.Write((byte)Unknown2.R*255); stream.Write((byte)Unknown2.G*255); stream.Write((byte)Unknown2.B*255); stream.Write((byte)Unknown2.A*255);
+			stream.Write((byte)Unknown3.R*255); stream.Write((byte)Unknown3.G*255); stream.Write((byte)Unknown3.B*255); stream.Write((byte)Unknown3.A*255);
+			stream.Write((byte)Unknown4.R*255); stream.Write((byte)Unknown4.G*255); stream.Write((byte)Unknown4.B*255); stream.Write((byte)Unknown4.A*255);
+			stream.Write((byte)HorizonCloudColor.R*255); stream.Write((byte)HorizonCloudColor.G*255); stream.Write((byte)HorizonCloudColor.B*255); stream.Write((byte)HorizonCloudColor.A*255);
+			stream.Write((byte)CenterCloudColor.R*255); stream.Write((byte)CenterCloudColor.G*255); stream.Write((byte)CenterCloudColor.B*255); stream.Write((byte)CenterCloudColor.A*255);
+			stream.Write((byte)SkyColor.R*255); stream.Write((byte)SkyColor.G*255); stream.Write((byte)SkyColor.B*255);
+			stream.Write((byte)FalseSeaColor.R*255); stream.Write((byte)FalseSeaColor.G*255); stream.Write((byte)FalseSeaColor.B*255);
+			stream.Write((byte)HorizonColor.R*255); stream.Write((byte)HorizonColor.G*255); stream.Write((byte)HorizonColor.B*255);
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -1854,18 +2086,19 @@ namespace WindEditor
 		public EnvironmentLightingTimesOfDay(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dawn A", TargetProperties = new string[] { "DawnA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning A", TargetProperties = new string[] { "MorningA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Noon A", TargetProperties = new string[] { "NoonA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Afternoon A", TargetProperties = new string[] { "AfternoonA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dusk A", TargetProperties = new string[] { "DuskA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Night A", TargetProperties = new string[] { "NightA"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dawn B", TargetProperties = new string[] { "DawnB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning B", TargetProperties = new string[] { "MorningB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Noon B", TargetProperties = new string[] { "NoonB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Afternoon B", TargetProperties = new string[] { "AfternoonB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dusk B", TargetProperties = new string[] { "DuskB"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Night B", TargetProperties = new string[] { "NightB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning A", TargetProperties = new string[] { "MorningA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Noon A", TargetProperties = new string[] { "NoonA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Afternoon A", TargetProperties = new string[] { "AfternoonA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dusk A", TargetProperties = new string[] { "DuskA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Night A", TargetProperties = new string[] { "NightA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dawn B", TargetProperties = new string[] { "DawnB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning B", TargetProperties = new string[] { "MorningB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Noon B", TargetProperties = new string[] { "NoonB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Afternoon B", TargetProperties = new string[] { "AfternoonB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dusk B", TargetProperties = new string[] { "DuskB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Night B", TargetProperties = new string[] { "NightB"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_DawnA = stream.ReadByte(); 
@@ -1880,6 +2113,25 @@ namespace WindEditor
 			m_AfternoonB = stream.ReadByte(); 
 			m_DuskB = stream.ReadByte(); 
 			m_NightB = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)DawnA);
+			stream.Write((byte)MorningA);
+			stream.Write((byte)NoonA);
+			stream.Write((byte)AfternoonA);
+			stream.Write((byte)DuskA);
+			stream.Write((byte)NightA);
+			stream.Write((byte)DawnB);
+			stream.Write((byte)MorningB);
+			stream.Write((byte)NoonB);
+			stream.Write((byte)AfternoonB);
+			stream.Write((byte)DuskB);
+			stream.Write((byte)NightB);
 		}
 	}
 
@@ -2012,16 +2264,17 @@ namespace WindEditor
 		public MapEvent(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Number", TargetProperties = new string[] { "RoomNumber"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Number", TargetProperties = new string[] { "RoomNumber"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Unknown1 = stream.ReadByte(); 
@@ -2034,6 +2287,23 @@ namespace WindEditor
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)Unknown1);
+			stream.WriteFixedString(Name, 15);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)Unknown4);
+			stream.Write((byte)Unknown5);
+			stream.Write((byte)RoomNumber);
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -2106,11 +2376,12 @@ namespace WindEditor
 		public ExitData(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Name", TargetProperties = new string[] { "MapName"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fade Out Type", TargetProperties = new string[] { "FadeOutType"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fade Out Type", TargetProperties = new string[] { "FadeOutType"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_MapName = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -2118,6 +2389,18 @@ namespace WindEditor
 			m_RoomIndex = stream.ReadByte(); 
 			m_FadeOutType = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(MapName, 8);
+			stream.Write((byte)SpawnIndex);
+			stream.Write((byte)RoomIndex);
+			stream.Write((byte)FadeOutType);
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -2143,9 +2426,18 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Unknown = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)Unknown);
 		}
 	}
 
@@ -2182,13 +2474,24 @@ namespace WindEditor
 		public LightVector(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_Radius = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_Color = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f, stream.ReadByte()/255f); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
+			stream.Write((byte)Color.R*255); stream.Write((byte)Color.G*255); stream.Write((byte)Color.B*255); stream.Write((byte)Color.A*255);
 		}
 	}
 
@@ -2225,12 +2528,22 @@ namespace WindEditor
 		public MemoryCO(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Entry", TargetProperties = new string[] { "Entry"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Entry", TargetProperties = new string[] { "Entry"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Room = stream.ReadByte(); 
 			m_Entry = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((byte)Room);
+			stream.Write((byte)Entry);
 		}
 	}
 
@@ -2256,9 +2569,18 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "SizeInBytes", TargetProperties = new string[] { "SizeInBytes"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_SizeInBytes = stream.ReadInt32(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((int)SizeInBytes);
 		}
 	}
 
@@ -2379,15 +2701,16 @@ namespace WindEditor
 		public SpawnPoint(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Event Index", TargetProperties = new string[] { "EventIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Type", TargetProperties = new string[] { "SpawnType"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Event Index", TargetProperties = new string[] { "EventIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Type", TargetProperties = new string[] { "SpawnType"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -2401,6 +2724,24 @@ namespace WindEditor
 			m_Unknown3 = stream.ReadByte(); 
 			m_SpawnIndex = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadInt16(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((byte)EventIndex);
+			stream.Write((byte)Unknown1);
+			stream.Write((byte)SpawnType);
+			stream.Write((byte)Room);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)Unknown2);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)SpawnIndex);
+			stream.Write((short)Unknown4);
 		}
 	}
 
@@ -2437,12 +2778,22 @@ namespace WindEditor
 		public RoomProperties(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Y Height", TargetProperties = new string[] { "SkyboxYHeight"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Y Height", TargetProperties = new string[] { "SkyboxYHeight"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Parameters = stream.ReadInt32(); 
 			m_SkyboxYHeight = stream.ReadSingle(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((int)Parameters);
+			stream.Write((float)SkyboxYHeight);
 		}
 	}
 
@@ -2491,15 +2842,27 @@ namespace WindEditor
 		public RoomModelTranslation(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Translation", TargetProperties = new string[] { "Translation"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Height Addition", TargetProperties = new string[] { "WaveHeightAddition"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Height Addition", TargetProperties = new string[] { "WaveHeightAddition"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Translation = new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle()); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_Room = stream.ReadByte(); 
 			m_WaveHeightAddition = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)Translation.X); stream.Write((float)Translation.Y);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((byte)Room);
+			stream.Write((byte)WaveHeightAddition);
 		}
 	}
 
@@ -2525,9 +2888,18 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Offset", TargetProperties = new string[] { "Offset"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Offset = stream.ReadInt32(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((int)Offset);
 		}
 	}
 
@@ -2639,14 +3011,15 @@ namespace WindEditor
 		public ScaleableObject(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 1", TargetProperties = new string[] { "Parameter1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 2", TargetProperties = new string[] { "Parameter2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 3", TargetProperties = new string[] { "Parameter3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 4", TargetProperties = new string[] { "Parameter4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameter", TargetProperties = new string[] { "AuxiliaryParameter"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 1", TargetProperties = new string[] { "Parameter1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 2", TargetProperties = new string[] { "Parameter2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 3", TargetProperties = new string[] { "Parameter3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 4", TargetProperties = new string[] { "Parameter4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameter", TargetProperties = new string[] { "AuxiliaryParameter"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -2663,6 +3036,27 @@ namespace WindEditor
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((byte)Parameter1);
+			stream.Write((byte)Parameter2);
+			stream.Write((byte)Parameter3);
+			stream.Write((byte)Parameter4);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)AuxiliaryParameter);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((short)Unknown1);
+			stream.Write((short)Unknown2);
+			stream.Write((byte)Transform.LocalScale.X * 10);
+			stream.Write((byte)Transform.LocalScale.Y * 10);
+			stream.Write((byte)Transform.LocalScale.Z * 10);
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -2711,15 +3105,27 @@ namespace WindEditor
 		public ShipSpawnPoint(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Rotation", TargetProperties = new string[] { "Rotation"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_Rotation = stream.ReadInt16(); 
 			m_ShipId = stream.ReadByte(); 
 			m_Unknown1 = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)Rotation);
+			stream.Write((byte)ShipId);
+			stream.Write((byte)Unknown1);
 		}
 	}
 
@@ -2840,15 +3246,16 @@ namespace WindEditor
 		public SoundEffect(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Sound ID", TargetProperties = new string[] { "SoundID"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Index", TargetProperties = new string[] { "PathIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Sound ID", TargetProperties = new string[] { "SoundID"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Index", TargetProperties = new string[] { "PathIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -2861,6 +3268,23 @@ namespace WindEditor
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((byte)Unknown1);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)SoundID);
+			stream.Write((byte)PathIndex);
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -2993,16 +3417,17 @@ namespace WindEditor
 		public StageProperties(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Min", TargetProperties = new string[] { "ZDepthMin"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Max", TargetProperties = new string[] { "ZDepthMax"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Stage ID", TargetProperties = new string[] { "StageID"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Particle Bank", TargetProperties = new string[] { "Unk_ParticleBank"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Property Index", TargetProperties = new string[] { "Unk_PropertyIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Draw Range", TargetProperties = new string[] { "Unk_DrawRange"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Max", TargetProperties = new string[] { "ZDepthMax"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Stage ID", TargetProperties = new string[] { "StageID"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Particle Bank", TargetProperties = new string[] { "Unk_ParticleBank"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Property Index", TargetProperties = new string[] { "Unk_PropertyIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Draw Range", TargetProperties = new string[] { "Unk_DrawRange"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_ZDepthMin = stream.ReadSingle(); 
@@ -3015,6 +3440,23 @@ namespace WindEditor
 			m_Unknown3 = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadByte(); 
 			m_Unk_DrawRange = stream.ReadInt16(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((float)ZDepthMin);
+			stream.Write((float)ZDepthMax);
+			stream.Write((short)StageID);
+			stream.Write((short)Unk_ParticleBank);
+			stream.Write((short)Unk_PropertyIndex);
+			stream.Write((byte)Unknown1);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)Unknown4);
+			stream.Write((short)Unk_DrawRange);
 		}
 	}
 
@@ -3123,14 +3565,15 @@ namespace WindEditor
 		public Door_TGDR(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "RoomLoadingParams", TargetProperties = new string[] { "RoomLoadingParams"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Arg 1", TargetProperties = new string[] { "Arg1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "ShipId", TargetProperties = new string[] { "ShipId"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "RoomLoadingParams", TargetProperties = new string[] { "RoomLoadingParams"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Arg 1", TargetProperties = new string[] { "Arg1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "ShipId", TargetProperties = new string[] { "ShipId"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -3146,6 +3589,26 @@ namespace WindEditor
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Unknown4 = stream.ReadByte(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((int)Params);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)RoomLoadingParams);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((byte)Arg1);
+			stream.Write((byte)ShipId);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)Transform.LocalScale.X * 10);
+			stream.Write((byte)Transform.LocalScale.Y * 10);
+			stream.Write((byte)Transform.LocalScale.Z * 10);
+			stream.Write((byte)Unknown4);
 		}
 	}
 
@@ -3194,9 +3657,10 @@ namespace WindEditor
 		public TagObject(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -3206,6 +3670,20 @@ namespace WindEditor
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
 			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((int)Parameters);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Z));
+			stream.Write((short)0); // Padding
 		}
 	}
 
@@ -3266,10 +3744,11 @@ namespace WindEditor
 		public TagScaleableObject(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 1", TargetProperties = new string[] { "Params1"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "RoomLoadingParams", TargetProperties = new string[] { "RoomLoadingParams"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 2", TargetProperties = new string[] { "Params2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 1", TargetProperties = new string[] { "Params1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "RoomLoadingParams", TargetProperties = new string[] { "RoomLoadingParams"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 2", TargetProperties = new string[] { "Params2"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -3280,6 +3759,21 @@ namespace WindEditor
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
 			m_Params2 = stream.ReadInt32(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((int)Params1);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)RoomLoadingParams);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.X));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Z));
+			stream.Write((int)Params2);
 		}
 	}
 
@@ -3340,10 +3834,11 @@ namespace WindEditor
 		public TreasureChest(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 2", TargetProperties = new string[] { "Params2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 2", TargetProperties = new string[] { "Params2"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { ' ' }); 
@@ -3352,6 +3847,19 @@ namespace WindEditor
 			m_RoomIndex = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_Params2 = stream.ReadInt32(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.WriteFixedString(Name, 8);
+			stream.Write((int)Params);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			stream.Write((short)RoomIndex);
+			stream.Write(WMath.RotationFloatToShort(eulerRot.Y));
+			stream.Write((int)Params2);
 		}
 	}
 
@@ -3436,12 +3944,13 @@ namespace WindEditor
 		public Path_v1(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Number of Points", TargetProperties = new string[] { "NumberofPoints"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "First Entry Offset", TargetProperties = new string[] { "FirstEntryOffset"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "First Entry Offset", TargetProperties = new string[] { "FirstEntryOffset"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_NumberofPoints = stream.ReadInt16(); 
@@ -3450,6 +3959,19 @@ namespace WindEditor
 			m_PathLoops = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadInt16(); 
 			m_FirstEntryOffset = stream.ReadInt32(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((short)NumberofPoints);
+			stream.Write((short)NextPathIndex);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)PathLoops);
+			stream.Write((short)Unknown4);
+			stream.Write((int)FirstEntryOffset);
 		}
 	}
 
@@ -3534,12 +4056,13 @@ namespace WindEditor
 		public Path_v2(string fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Number of Points", TargetProperties = new string[] { "NumberofPoints"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-	VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "First Entry Offset", TargetProperties = new string[] { "FirstEntryOffset"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "First Entry Offset", TargetProperties = new string[] { "FirstEntryOffset"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_NumberofPoints = stream.ReadInt16(); 
@@ -3548,6 +4071,19 @@ namespace WindEditor
 			m_PathLoops = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadInt16(); 
 			m_FirstEntryOffset = stream.ReadInt32(); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((short)NumberofPoints);
+			stream.Write((short)NextPathIndex);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)PathLoops);
+			stream.Write((short)Unknown4);
+			stream.Write((int)FirstEntryOffset);
 		}
 	}
 
@@ -3573,10 +4109,20 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Unknown1 = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((int)Unknown1);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 		}
 	}
 
@@ -3602,10 +4148,20 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
+
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Unknown1 = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
+		}
+
+		override public void Save(EndianBinaryWriter stream)
+{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			
+			stream.Write((int)Unknown1);
+			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 		}
 	}
 
