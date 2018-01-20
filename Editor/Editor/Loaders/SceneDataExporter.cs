@@ -28,16 +28,16 @@ namespace WindEditor
         public void ExportToStream(EndianBinaryWriter writer, WScene scene)
         {
             // Build a dictionary which lists unique FourCC's and a list of all relevant actors.
-            var actorCategories = new Dictionary<string, List<WActorNode>>();
+            var actorCategories = new Dictionary<string, List<SerializableDOMNode>>();
             foreach(var child in scene)
             {
-                WActorNode actor = child as WActorNode;
+                var actor = child as SerializableDOMNode;
                 if(actor != null)
                 {
                     string fixedFourCC = ChunkHeader.LayerToFourCC(actor.FourCC, actor.Layer);
 
                     if (!actorCategories.ContainsKey(fixedFourCC))
-                        actorCategories[fixedFourCC] = new List<WActorNode>();
+                        actorCategories[fixedFourCC] = new List<SerializableDOMNode>();
 
                     actorCategories[fixedFourCC].Add(actor);
                 }
@@ -66,7 +66,7 @@ namespace WindEditor
             }
 
             // For each chunk, write the data for that chunk. Before writing the data, get the current offset and update the header.
-            List<WActorNode>[] dictionaryData = new List<WActorNode>[actorCategories.Count];
+            List<SerializableDOMNode>[] dictionaryData = new List<SerializableDOMNode>[actorCategories.Count];
             actorCategories.Values.CopyTo(dictionaryData, 0);
 
             for(int i = 0; i < chunkHeaders.Count; i++)
@@ -74,7 +74,7 @@ namespace WindEditor
                 ChunkHeader header = chunkHeaders[i];
                 chunkHeaders[i] = new ChunkHeader(header.FourCC, header.ElementCount, (int)(writer.BaseStream.Position - chunkStart));
 
-                List<WActorNode> actors = dictionaryData[i];
+                List<SerializableDOMNode> actors = dictionaryData[i];
                 foreach (var actor in actors)
                 {
                     MapActorDescriptor template = m_sActorDescriptors.Find(x => x.FourCC == actor.FourCC);
@@ -84,7 +84,8 @@ namespace WindEditor
                         continue;
                     }
 
-                    WriteActorToChunk(actor, template, writer);
+                    actor.Save(writer);
+                    //WriteActorToChunk(actor, template, writer);
                 }
             }
 
@@ -104,7 +105,7 @@ namespace WindEditor
                 writer.Write(0xFF);
         }
 
-        private void WriteActorToChunk(WActorNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
+        /*private void WriteActorToChunk(SerializableDOMNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
         {
             // Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = actor.Transform.Rotation.ToEulerAngles();
@@ -198,6 +199,6 @@ namespace WindEditor
                         break;
                 }
             }
-        }
+        }*/
     }
 }
