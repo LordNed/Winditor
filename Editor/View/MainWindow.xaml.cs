@@ -4,6 +4,7 @@ using OpenTK.Graphics;
 using System.Windows;
 using System.Windows.Forms.Integration;
 using System.IO;
+using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace WindEditor
 {
@@ -106,5 +107,30 @@ namespace WindEditor
 
             return btn;
         }
-    }
+
+		/// <summary>
+		/// We can't use PropertyBinding on the PropertyDefinitions, but we can get a callback when the object changes
+		/// and then get the properties off of them manually, insert them, and then forcibly update it again... :D
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void PropertyGrid_SelectedObjectChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+		{
+			PropertyGrid grid = sender as PropertyGrid;
+			if(grid != null)
+			{
+				grid.PropertyDefinitions.Clear();
+				WDOMNode node = grid.SelectedObject as WDOMNode;
+				if(node != null)
+				{
+					foreach(var property in node.VisibleProperties)
+					{
+						grid.PropertyDefinitions.Add(property);
+					}
+
+					grid.Update();
+				}
+			}
+		}
+	}
 }

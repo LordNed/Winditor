@@ -207,7 +207,7 @@
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
                     </DockPanel>
                     <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="{Binding Path=EditorSelection.SingleObjectSelected}">
-                        <xceed:PropertyGrid SelectedObject="{Binding Path=EditorSelection.PrimarySelectedObject}"/>
+                        <xceed:PropertyGrid SelectedObject="{Binding Path=EditorSelection.PrimarySelectedObject}" AutoGenerateProperties="False" SelectedObjectChanged="PropertyGrid_SelectedObjectChanged"/>
                     </GroupBox>
                 </DockPanel>
             </Grid>

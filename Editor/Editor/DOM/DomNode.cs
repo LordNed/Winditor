@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace WindEditor
 {
@@ -40,7 +41,10 @@ namespace WindEditor
 
     public abstract class WDOMNode : IEnumerable<WDOMNode>, INotifyPropertyChanged
     {
-        public WDOMNode Parent { get; private set; }
+		/* This is a list of the properties we want to show up in the UI */
+		public List<PropertyDefinition> VisibleProperties { get; protected set; }
+
+		public WDOMNode Parent { get; private set; }
         public WTransform Transform { get; private set; }
         public List<WDOMNode> Children { get { return m_children; } }
         public NodeFlags Flags { get; set; }
@@ -111,6 +115,7 @@ namespace WindEditor
 
             m_children = new List<WDOMNode>();
             Transform = new WTransform();
+			VisibleProperties = new List<PropertyDefinition>();
         }
 
         public virtual void Tick(float deltaTime)
