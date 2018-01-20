@@ -54,9 +54,10 @@ namespace WindEditor
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 List<string> files = new List<string>(Directory.GetFiles(ofd.FileName));
+                List<string> dirs = new List<string>(Directory.GetDirectories(ofd.FileName));
 
-                // There were no files in the directory, so we'll assume the map is already extracted
-                if (files.Count == 0)
+                // There are directories here, so we will assume they are from already unpacked data.
+                if (dirs.Count != 0)
                 {
                     // Just assume the folder paths are valid now.
                     LoadProject(ofd.FileName, ofd.FileName);
@@ -73,6 +74,9 @@ namespace WindEditor
                     foreach (var arc in files)
                     {
                         VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
+                        if (archiveRoot == null)
+                            continue;
+
                         string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
 
                         if (!Directory.Exists(tempArcPath))
