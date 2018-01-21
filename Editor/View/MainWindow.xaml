@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindEditor"
         xmlns:wpf="clr-namespace:WindEditor.WPF;assembly=WCommon"
+        xmlns:wp="clr-namespace:WindEditor;assembly=WCommon"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=Xceed.Wpf.Toolkit"
+        xmlns:sc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
     <Window.InputBindings>
@@ -26,6 +28,7 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <wpf:LinearToSystemColorConverter x:Key="LinearColorConverter"/>
         <DataTemplate x:Key="ItemTemplate">
             <TextBlock Text="{Binding Path=Name}" Foreground="Black"/>
         </DataTemplate>
@@ -207,7 +210,17 @@
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
                     </DockPanel>
                     <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="{Binding Path=EditorSelection.SingleObjectSelected}">
-                        <xceed:PropertyGrid SelectedObject="{Binding Path=EditorSelection.PrimarySelectedObject}" AutoGenerateProperties="False" SelectedObjectChanged="PropertyGrid_SelectedObjectChanged"/>
+                        <xceed:PropertyGrid SelectedObject="{Binding Path=EditorSelection.PrimarySelectedObject}" AutoGenerateProperties="False" SelectedObjectChanged="PropertyGrid_SelectedObjectChanged">
+                            <xceed:PropertyGrid.EditorDefinitions>
+                                <xceed:EditorTemplateDefinition TargetProperties="{x:Type wp:WLinearColor}">
+                                    <xceed:EditorTemplateDefinition.EditingTemplate>
+                                        <DataTemplate>
+                                            <sc:ColorPicker SelectedColor="{Binding Value, Converter={StaticResource LinearColorConverter}}" />
+                                        </DataTemplate>
+                                    </xceed:EditorTemplateDefinition.EditingTemplate>
+                                </xceed:EditorTemplateDefinition>
+                            </xceed:PropertyGrid.EditorDefinitions>
+                        </xceed:PropertyGrid>
                     </GroupBox>
                 </DockPanel>
             </Grid>
