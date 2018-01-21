@@ -311,7 +311,7 @@ namespace WindEditor
 
         private void SelectNone()
         {
-			throw new System.NotImplementedException();
+			//throw new System.NotImplementedException();
             //ClearSelection();
             //ModifySelection(SelectionType.Add, new WActorNode[] { null });
         }

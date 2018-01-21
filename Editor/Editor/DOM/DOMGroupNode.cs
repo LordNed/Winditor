@@ -1,10 +1,10 @@
 ﻿namespace WindEditor
 {
-    public class DOMGroupNode : WDOMNode
+    public class WDOMGroupNode : WDOMNode
     {
 		private string m_fourCC;
 
-        public DOMGroupNode(string FourCC, WWorld world) : base(world)
+        public WDOMGroupNode(string FourCC, WWorld world) : base(world)
         {
 			m_fourCC = FourCC;
             IsVisible = true;

@@ -12,11 +12,11 @@ namespace WindEditor
         public string Name { get; protected set; }
 
         private string[] m_fourCCs;
-        private Dictionary<string, List<SerializableDOMNode>> m_fourCCGroups;
+        private Dictionary<string, WDOMGroupNode> m_fourCCGroups;
 
         public WScene(WWorld world) : base(world)
         {
-            m_fourCCGroups = new Dictionary<string, List<SerializableDOMNode>>();
+            m_fourCCGroups = new Dictionary<string, WDOMGroupNode>();
             m_fourCCs = new string[] { "ACTR", "ACT0", "ACT1", "ACT2", "ACT3", "ACT4", "ACT5", "ACT6", "ACT7", "ACT8", "ACT9", "ACTa", "ACTb",
                                        "SCOB", "SCO0", "SCO1", "SCO2", "SCO3", "SCO4", "SCO5", "SCO6", "SCO7", "SCO8", "SCO9", "SCOa", "SCOb",
                                        "TRES", "TRE0", "TRE1", "TRE2", "TRE3", "TRE4", "TRE5", "TRE6", "TRE7", "TRE8", "TRE9", "TREa", "TREb",
@@ -26,25 +26,35 @@ namespace WindEditor
 
             foreach (string str in m_fourCCs)
             {
-                m_fourCCGroups[str] = new List<SerializableDOMNode>();
+                if (!str.Contains("ACT") && !str.Contains("SCO") && !str.Contains("TRE"))
+                {
+                    m_fourCCGroups[str] = new WDOMGroupNode(str, m_world);
+                }
             }
 
-            /*
-            m_fourCCGroups["Actors"] = new WDOMNode("Actors", m_world);
-            m_fourCCGroups["Actors"].Children.Add(new DOMGroupNode("ACTR", m_world));
+            m_fourCCGroups["Actors"] = new WDOMGroupNode("Actors", m_world);
+            WDOMGroupNode actrDefault = new WDOMGroupNode("ACTR", m_world);
+            actrDefault.SetParent(m_fourCCGroups["Actors"]);
 
-            m_fourCCGroups["Scaleable Objects"] = new DOMGroupNode("Scaleable Objects", m_world);
-            m_fourCCGroups["Scaleable Objects"].Children.Add(new DOMGroupNode("SCOB", m_world));
+            m_fourCCGroups["Scaleable Objects"] = new WDOMGroupNode("Scaleable Objects", m_world);
+            WDOMGroupNode scobDefault = new WDOMGroupNode("SCOB", m_world);
+            scobDefault.SetParent(m_fourCCGroups["Scaleable Objects"]);
 
-            m_fourCCGroups["Treasure Chests"] = new DOMGroupNode("Treasure Chests", m_world);
-            m_fourCCGroups["Treasure Chests"].Children.Add(new DOMGroupNode("TRES", m_world));
+            m_fourCCGroups["Treasure Chests"] = new WDOMGroupNode("Treasure Chests", m_world);
+            WDOMGroupNode tresDefault = new WDOMGroupNode("TRES", m_world);
+            tresDefault.SetParent(m_fourCCGroups["Treasure Chests"]);
 
             for (int i = 0; i < 12; i++)
             {
-                m_fourCCGroups["Actors"].Children.Add(new DOMGroupNode($"ACT{ i.ToString("x") }", m_world));
-                m_fourCCGroups["Scaleable Objects"].Children.Add(new DOMGroupNode($"SCO{ i.ToString("x") }", m_world));
-                m_fourCCGroups["Treasure Chests"].Children.Add(new DOMGroupNode($"TRE{ i.ToString("x") }", m_world));
-            }*/
+                WDOMGroupNode actX = new WDOMGroupNode($"ACT{ i.ToString("x") }", m_world);
+                actX.SetParent(m_fourCCGroups["Actors"]);
+
+                WDOMGroupNode scoX = new WDOMGroupNode($"SCO{ i.ToString("x") }", m_world);
+                scoX.SetParent(m_fourCCGroups["Scaleable Objects"]);
+
+                WDOMGroupNode treX = new WDOMGroupNode($"TRE{ i.ToString("x") }", m_world);
+                treX.SetParent(m_fourCCGroups["Treasure Chests"]);
+            }
         }
 
         public virtual void Load(string filePath)
@@ -110,18 +120,17 @@ namespace WindEditor
 			{
 				var fourCCEntity = (SerializableDOMNode)child;
 
-                /*
 				if(child is Actor)
-					child.SetParent(m_fourCCGroups["Actors"].Children[(int)fourCCEntity.Layer]);
+                    child.SetParent(m_fourCCGroups["Actors"].Children[(int)fourCCEntity.Layer]);
 				else if (child is ScaleableObject)
 					child.SetParent(m_fourCCGroups["Scaleable Objects"].Children[(int)fourCCEntity.Layer]);
 				else if (child is TreasureChest)
 					child.SetParent(m_fourCCGroups["Treasure Chests"].Children[(int)fourCCEntity.Layer]);
 				else
-					child.SetParent(m_fourCCGroups[fourCCEntity.FourCC]);*/
+					child.SetParent(m_fourCCGroups[fourCCEntity.FourCC]);
 
-                m_fourCCGroups[fourCCEntity.FourCC].Add(fourCCEntity);
-                child.SetParent(this);
+                //m_fourCCGroups[fourCCEntity.FourCC].Children.Add(fourCCEntity);
+                //child.SetParent(m_fourCCGroups[fourCCEntity.FourCC]);
 				child.IsVisible = true;
 			}
 
@@ -146,10 +155,10 @@ namespace WindEditor
             }
 
             // Add entities to the DOM in the sorted order
-            /*foreach (KeyValuePair<string, string> keyVal in dispFourCCs)
+            foreach (KeyValuePair<string, string> keyVal in dispFourCCs)
             {
                 m_fourCCGroups[keyVal.Value].SetParent(this);
-            }*/
+            }
         }
 
         public virtual void SaveToDirectory(string directory)
