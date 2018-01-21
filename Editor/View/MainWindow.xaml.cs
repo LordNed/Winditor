@@ -132,5 +132,19 @@ namespace WindEditor
 				}
 			}
 		}
-	}
+
+        private bool m_ignoreSelectionChange;
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (m_ignoreSelectionChange || e.NewValue == null)
+                return;
+
+            var selection = m_viewModel.WindEditor.MainWorld.ActorEditor.EditorSelection;
+
+            m_ignoreSelectionChange = true;
+            selection.ClearSelection();
+            selection.AddToSelection(e.NewValue as WDOMNode);
+            m_ignoreSelectionChange = false;
+        }
+    }
 }
