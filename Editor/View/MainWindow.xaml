@@ -138,7 +138,7 @@
 
                     <!-- Object List -->
                     <GroupBox Header="Object List" Grid.Row="0">
-                        <TreeView ItemsSource="{Binding Path=WindEditor.MainWorld.Map.FocusedScene.Children}" SelectedItemChanged="TreeView_SelectedItemChanged">
+                        <TreeView ItemsSource="{Binding Path=WindEditor.MainWorld.Map.FocusedScene.Children}" SelectedItemChanged="TreeView_SelectedItemChanged" PreviewMouseRightButtonDown="TreeView_PreviewMouseRightButtonDown">
                             <TreeView.Resources>
                                 <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
                                     <TextBlock Text="{Binding .}"/>
@@ -152,6 +152,11 @@
                                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
                       Color="Black" />
                             </TreeView.Resources>
+                            <TreeView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Add Object" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}"/>
+                                </ContextMenu>
+                            </TreeView.ContextMenu>
                             <TreeView.ItemContainerStyle>
                                 <Style TargetType="{x:Type TreeViewItem}">
                                     <Setter Property="Visibility" Value="Visible" />
