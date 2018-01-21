@@ -3,7 +3,7 @@ using System;
 
 namespace WindEditor
 {
-    class WCamera
+    public class WCamera
     {
         public float MoveSpeed = 1500f;
         public float MouseSensitivity = 20f;
@@ -66,7 +66,7 @@ namespace WindEditor
         }
 
         private float m_nearClipPlane = 10f;
-        private float m_farClipPlane = 1000000f;
+        private float m_farClipPlane = 100000000f;
         private float m_fieldOfView = 45f;
         private float m_aspectRatio = 16 / 9f;
         private Matrix4 m_projectionMatrix;

@@ -14,6 +14,7 @@ namespace WindEditor
 
         public Matrix4 ViewMatrix { get { return m_viewCamera.ViewMatrix; } }
         public Matrix4 ProjMatrix { get { return m_viewCamera.ProjectionMatrix; } }
+        public WCamera ViewCamera { get { return m_viewCamera; } }
 
         private int m_viewWidth;
         private int m_viewHeight;
@@ -79,10 +80,23 @@ namespace WindEditor
             m_renderablesInFrustum.Capacity = Math.Max(m_opaqueRenderList.Count, m_transparentRenderList.Count);
 
             FrustumCullList(frustum, m_opaqueRenderList, m_renderablesInFrustum);
+            //m_renderablesInFrustum = new List<IRenderable>(m_opaqueRenderList);
+
+            foreach (var mesh in m_renderablesInFrustum)
+            {
+                if (mesh.GetType() == typeof(WSkyboxNode))
+                {
+                    mesh.Draw(this);
+                    break;
+                }
+            }
 
             // Render all Opaque Geometry first.
             foreach (var mesh in m_renderablesInFrustum)
-                mesh.Draw(this);
+            {
+                if (mesh.GetType() != typeof(WSkyboxNode))
+                    mesh.Draw(this);
+            }
 
             // Now cull us against translucent geometry.
             m_renderablesInFrustum.Clear();

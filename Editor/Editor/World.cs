@@ -49,6 +49,22 @@ namespace WindEditor
             foreach (WSceneView view in m_sceneViews)
             {
                 view.UpdateSceneCamera(deltaTime);
+
+                if (Map != null)
+                {
+                    if (Map.FocusedScene != null)
+                    {
+                        foreach (WDOMNode node in Map.FocusedScene.Children)
+                        {
+                            if (node.GetType() == typeof(WSkyboxNode))
+                            {
+                                var sky = node as WSkyboxNode;
+                                sky.UpdatePosition(view.ViewCamera.Transform.Position);
+                            }
+                        }
+                    }
+                }
+
                 view.StartFrame();
 
                 // Iterate through all of the things that need to be added to the viewport and call AddToRenderer on them.

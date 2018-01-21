@@ -42,6 +42,30 @@ namespace WindEditor
                 m_vrBackCloud.Model.SetTevColorOverride(0, WLinearColor.FromHexString("0x8278966E"));
         }
 
+        public void UpdatePosition(Vector3 camPosition)
+        {
+            if (m_vrSky != null)
+            {
+                m_vrSky.Transform.Position = camPosition;
+                m_vrSky.Transform.LocalScale = new Vector3(1000, 1000, 1000);
+            }
+            if (m_vrKasumiMae != null)
+            {
+                m_vrKasumiMae.Transform.Position = camPosition;
+                m_vrKasumiMae.Transform.LocalScale = new Vector3(1000, 1000, 1000);
+            }
+            if (m_vrUsoUmi != null)
+            {
+                m_vrUsoUmi.Transform.Position = camPosition;
+                m_vrUsoUmi.Transform.LocalScale = new Vector3(1000, 1000, 1000);
+            }
+            if (m_vrBackCloud != null)
+            {
+                m_vrBackCloud.Transform.Position = camPosition;
+                m_vrBackCloud.Transform.LocalScale = new Vector3(1000, 1000, 1000);
+            }
+        }
+
         public void LoadSkyboxModelsFromFixedModelList(string rootFolder)
         {
             string[] fileNames = new[] { "vr_sky", "vr_kasumi_mae", "vr_uso_umi", "vr_back_cloud" };

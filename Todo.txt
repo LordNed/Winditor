@@ -1,4 +1,4 @@
- 1) Tree View selecting objects again (<_<;) 
+ (Done) 1) Tree View selecting objects again (<_<;) 
  2) making our custom color class work with the default xceed color picker 
  3) Object Index Fixup. Post-load objects need a reliable way of getting the correct index and turning that back into an object poiter. Then we just track it as object pointers during the editor usage (see next point) and turn it back into an index on save. 
  4) Custom Object Editor field, where clicking on it just selects the object it points to. 
