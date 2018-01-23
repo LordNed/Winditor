@@ -26,12 +26,12 @@ namespace WindEditor
 {
 	public abstract class SerializableDOMNode : WDOMNode
 	{
-		public readonly string FourCC;
+		public readonly FourCC FourCC;
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
 
 		private MapLayer m_layer;
 
-		public SerializableDOMNode(string fourCC, WWorld world) : base(world)
+		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
 		{
 			FourCC = fourCC;
 			OnConstruction();
@@ -49,7 +49,7 @@ namespace WindEditor
 
 	public partial class VisibleDOMNode : SerializableDOMNode
 	{
-		public VisibleDOMNode(string fourCC, WWorld world) : base(fourCC, world)
+		public VisibleDOMNode(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 		}
 	}
@@ -103,7 +103,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 #>
 
 		// Constructor
-		public <#= className #>(string fourCC, WWorld world) : base(fourCC, world)
+		public <#= className #>(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 <# 
 			foreach(var field in descriptor.Fields)

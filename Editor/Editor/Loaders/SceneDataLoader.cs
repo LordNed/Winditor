@@ -1,5 +1,6 @@
 ﻿using GameFormatReader.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using OpenTK;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace WindEditor
     struct ChunkHeader
     {
         /// <summary> FourCC Tag of the Chunk </summary>
-        public string FourCC;
+        public FourCC FourCC;
         /// <summary> How many elements of this type exist. </summary>
         public int ElementCount;
         /// <summary> Offset from the start of the file to the chunk data. </summary>
@@ -48,7 +49,7 @@ namespace WindEditor
             return string.Format("[{0}] #{1}", FourCC, ElementCount);
         }
 
-        public ChunkHeader(string fourCC, int elementCount, int chunkOffset)
+        public ChunkHeader(FourCC fourCC, int elementCount, int chunkOffset)
         {
             Layer = MapLayer.Default;
             FourCC = fourCC;
@@ -120,7 +121,7 @@ namespace WindEditor
 #pragma warning disable 0649
     public class MapActorDescriptor
     {
-        public string FourCC;
+        public FourCC FourCC;
 		public string ClassName;
 		public string ParentClassOverride;
         public List<DataDescriptorField> Fields;
@@ -189,7 +190,9 @@ namespace WindEditor
             {
                 string fourCC = m_reader.ReadString(4);
                 MapLayer layer = ChunkHeader.FourCCToLayer(ref fourCC);
-                ChunkHeader chunk = new ChunkHeader(fourCC, m_reader.ReadInt32(), m_reader.ReadInt32());
+
+                FourCC enumFourCC = FourCCConversion.GetEnumFromString(fourCC);
+                ChunkHeader chunk = new ChunkHeader(enumFourCC, m_reader.ReadInt32(), m_reader.ReadInt32());
                 chunk.Layer = layer;
 
                 m_chunkList.Add(chunk);
@@ -223,8 +226,8 @@ namespace WindEditor
                 {
                     // Don't turn these into map actors, as they will be handled elsewhere.
                     //case "RTBL":
-                    case "MECO":
-                    case "MEMA":
+                    case FourCC.MECO:
+                    case FourCC.MEMA:
                         break;
                     default:
                         for (int i = 0; i < chunk.ElementCount; i++)
@@ -264,7 +267,7 @@ namespace WindEditor
         {
             List<WRoomTable> roomTables = new List<WRoomTable>();
 
-            int rtblIndex = m_chunkList.FindIndex(x => x.FourCC == "RTBL");
+            int rtblIndex = m_chunkList.FindIndex(x => x.FourCC == FourCC.RTBL);
             if (rtblIndex >= 0)
             {
                 ChunkHeader rtbl = m_chunkList[rtblIndex];
@@ -312,7 +315,7 @@ namespace WindEditor
         {
             List<WRoomTransform> roomTransforms = new List<WRoomTransform>();
 
-            int multIndex = m_chunkList.FindIndex(x => x.FourCC == "MULT");
+            int multIndex = m_chunkList.FindIndex(x => x.FourCC == FourCC.MULT);
             if (multIndex >= 0)
             {
                 ChunkHeader rtbl = m_chunkList[multIndex];
@@ -332,8 +335,8 @@ namespace WindEditor
         {
             List<MemoryAlloc> memAllocTable = new List<MemoryAlloc>();
 
-            int mecoIndex = m_chunkList.FindIndex(x => x.FourCC == "MECO");
-            int memaIndex = m_chunkList.FindIndex(x => x.FourCC == "MEMA");
+            int mecoIndex = m_chunkList.FindIndex(x => x.FourCC == FourCC.MECO);
+            int memaIndex = m_chunkList.FindIndex(x => x.FourCC == FourCC.MEMA);
             if (mecoIndex >= 0 && memaIndex >= 0)
             {
                 ChunkHeader meco = m_chunkList[mecoIndex];

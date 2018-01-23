@@ -9,12 +9,12 @@ namespace WindEditor
 {
 	public abstract class SerializableDOMNode : WDOMNode
 	{
-		public readonly string FourCC;
+		public readonly FourCC FourCC;
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
 
 		private MapLayer m_layer;
 
-		public SerializableDOMNode(string fourCC, WWorld world) : base(world)
+		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
 		{
 			FourCC = fourCC;
 			OnConstruction();
@@ -32,7 +32,7 @@ namespace WindEditor
 
 	public partial class VisibleDOMNode : SerializableDOMNode
 	{
-		public VisibleDOMNode(string fourCC, WWorld world) : base(fourCC, world)
+		public VisibleDOMNode(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 		}
 	}
@@ -176,7 +176,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public MinimapSettings_Unused(string fourCC, WWorld world) : base(fourCC, world)
+		public MinimapSettings_Unused(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Image Scale", TargetProperties = new string[] { "FullMapImageScale"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Space Scale", TargetProperties = new string[] { "FullMapSpaceScale"} });
@@ -364,7 +364,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public MinimapSettings(string fourCC, WWorld world) : base(fourCC, world)
+		public MinimapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Image Scale", TargetProperties = new string[] { "FullMapImageScale"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Full Map Space Scale", TargetProperties = new string[] { "FullMapSpaceScale"} });
@@ -468,7 +468,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public Actor(string fourCC, WWorld world) : base(fourCC, world)
+		public Actor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
@@ -512,7 +512,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public CameraViewpoint_v1(string fourCC, WWorld world) : base(fourCC, world)
+		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 		}
 
@@ -548,7 +548,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public CameraViewpoint_v2(string fourCC, WWorld world) : base(fourCC, world)
+		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 		}
 
@@ -641,7 +641,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public CameraType_v1(string fourCC, WWorld world) : base(fourCC, world)
+		public CameraType_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Type", TargetProperties = new string[] { "CameraType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
@@ -739,7 +739,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public CameraType_v2(string fourCC, WWorld world) : base(fourCC, world)
+		public CameraType_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Type", TargetProperties = new string[] { "CameraType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
@@ -876,7 +876,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public Door_DOOR(string fourCC, WWorld world) : base(fourCC, world)
+		public Door_DOOR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
@@ -1133,7 +1133,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public DungeonFloorSettings(string fourCC, WWorld world) : base(fourCC, world)
+		public DungeonFloorSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Lower Boundary YHeight", TargetProperties = new string[] { "LowerBoundaryYHeight"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Floor Number", TargetProperties = new string[] { "FloorNumber"} });
@@ -1255,7 +1255,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public DungeonMapSettings(string fourCC, WWorld world) : base(fourCC, world)
+		public DungeonMapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size X", TargetProperties = new string[] { "MapSizeX"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size Y", TargetProperties = new string[] { "MapSizeY"} });
@@ -1314,7 +1314,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public LightSource(string fourCC, WWorld world) : base(fourCC, world)
+		public LightSource(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
@@ -1441,7 +1441,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public EnvironmentLightingConditions(string fourCC, WWorld world) : base(fourCC, world)
+		public EnvironmentLightingConditions(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear Color A", TargetProperties = new string[] { "ClearColorA"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color A", TargetProperties = new string[] { "RainingColorA"} });
@@ -1680,7 +1680,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public EnvironmentLightingColors(string fourCC, WWorld world) : base(fourCC, world)
+		public EnvironmentLightingColors(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Shadow Color", TargetProperties = new string[] { "ShadowColor"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Actor Ambient Color", TargetProperties = new string[] { "ActorAmbientColor"} });
@@ -1895,7 +1895,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public EnvironmentLightingSkyboxColors(string fourCC, WWorld world) : base(fourCC, world)
+		public EnvironmentLightingSkyboxColors(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
@@ -2098,7 +2098,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public EnvironmentLightingTimesOfDay(string fourCC, WWorld world) : base(fourCC, world)
+		public EnvironmentLightingTimesOfDay(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dawn A", TargetProperties = new string[] { "DawnA"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning A", TargetProperties = new string[] { "MorningA"} });
@@ -2277,7 +2277,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public MapEvent(string fourCC, WWorld world) : base(fourCC, world)
+		public MapEvent(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
@@ -2390,7 +2390,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public ExitData(string fourCC, WWorld world) : base(fourCC, world)
+		public ExitData(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Name", TargetProperties = new string[] { "MapName"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
@@ -2440,7 +2440,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public CutsceneIndexBank(string fourCC, WWorld world) : base(fourCC, world)
+		public CutsceneIndexBank(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 		}
@@ -2490,7 +2490,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public LightVector(string fourCC, WWorld world) : base(fourCC, world)
+		public LightVector(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
@@ -2545,7 +2545,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public MemoryCO(string fourCC, WWorld world) : base(fourCC, world)
+		public MemoryCO(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Entry", TargetProperties = new string[] { "Entry"} });
@@ -2586,7 +2586,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public RoomMemoryManagement(string fourCC, WWorld world) : base(fourCC, world)
+		public RoomMemoryManagement(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "SizeInBytes", TargetProperties = new string[] { "SizeInBytes"} });
 		}
@@ -2720,7 +2720,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public SpawnPoint(string fourCC, WWorld world) : base(fourCC, world)
+		public SpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Event Index", TargetProperties = new string[] { "EventIndex"} });
@@ -2798,7 +2798,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public RoomProperties(string fourCC, WWorld world) : base(fourCC, world)
+		public RoomProperties(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Y Height", TargetProperties = new string[] { "SkyboxYHeight"} });
@@ -2863,7 +2863,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public RoomModelTranslation(string fourCC, WWorld world) : base(fourCC, world)
+		public RoomModelTranslation(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Translation", TargetProperties = new string[] { "Translation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
@@ -2909,7 +2909,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public RoomTable(string fourCC, WWorld world) : base(fourCC, world)
+		public RoomTable(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Offset", TargetProperties = new string[] { "Offset"} });
 		}
@@ -3034,7 +3034,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public ScaleableObject(string fourCC, WWorld world) : base(fourCC, world)
+		public ScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 1", TargetProperties = new string[] { "Parameter1"} });
@@ -3129,7 +3129,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public ShipSpawnPoint(string fourCC, WWorld world) : base(fourCC, world)
+		public ShipSpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Rotation", TargetProperties = new string[] { "Rotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
@@ -3271,7 +3271,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public SoundEffect(string fourCC, WWorld world) : base(fourCC, world)
+		public SoundEffect(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
@@ -3563,7 +3563,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public StageProperties(string fourCC, WWorld world) : base(fourCC, world)
+		public StageProperties(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Min", TargetProperties = new string[] { "ZDepthMin"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Max", TargetProperties = new string[] { "ZDepthMax"} });
@@ -3742,7 +3742,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public Door_TGDR(string fourCC, WWorld world) : base(fourCC, world)
+		public Door_TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
@@ -3835,7 +3835,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public TagObject(string fourCC, WWorld world) : base(fourCC, world)
+		public TagObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
@@ -3923,7 +3923,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public TagScaleableObject(string fourCC, WWorld world) : base(fourCC, world)
+		public TagScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 1", TargetProperties = new string[] { "Params1"} });
@@ -4014,7 +4014,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public TreasureChest(string fourCC, WWorld world) : base(fourCC, world)
+		public TreasureChest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
@@ -4125,7 +4125,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public Path_v1(string fourCC, WWorld world) : base(fourCC, world)
+		public Path_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Number of Points", TargetProperties = new string[] { "NumberofPoints"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
@@ -4238,7 +4238,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public Path_v2(string fourCC, WWorld world) : base(fourCC, world)
+		public Path_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Number of Points", TargetProperties = new string[] { "NumberofPoints"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
@@ -4291,7 +4291,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public PathPoint_v1(string fourCC, WWorld world) : base(fourCC, world)
+		public PathPoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
@@ -4331,7 +4331,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public PathPoint_v2(string fourCC, WWorld world) : base(fourCC, world)
+		public PathPoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}

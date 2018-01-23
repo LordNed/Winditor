@@ -11,28 +11,58 @@ namespace WindEditor
     {
         public string Name { get; protected set; }
 
-        private string[] m_fourCCs;
-        private Dictionary<string, WDOMGroupNode> m_fourCCGroups;
+        private Dictionary<FourCC, WDOMNode> m_fourCCGroups;
 
         public WScene(WWorld world) : base(world)
         {
-            m_fourCCGroups = new Dictionary<string, WDOMGroupNode>();
-            m_fourCCs = new string[] { "ACTR", "ACT0", "ACT1", "ACT2", "ACT3", "ACT4", "ACT5", "ACT6", "ACT7", "ACT8", "ACT9", "ACTa", "ACTb",
-                                       "SCOB", "SCO0", "SCO1", "SCO2", "SCO3", "SCO4", "SCO5", "SCO6", "SCO7", "SCO8", "SCO9", "SCOa", "SCOb",
-                                       "TRES", "TRE0", "TRE1", "TRE2", "TRE3", "TRE4", "TRE5", "TRE6", "TRE7", "TRE8", "TRE9", "TREa", "TREb",
-                                       "SCLS", "RPAT", "PATH", "RPPN", "PPNT", "RARO", "STAG", "EVNT", "FILI", "LGHT", "LGTV", "LBNK", "MECO",
-                                       "MEMA", "MULT", "RTBL", "PLYR", "SHIP", "SOND", "2DMA", "CAMR", "RCAM", "EnvR", "Colo", "Pale", "Virt",
-                                       "DMAP", "FLOR", "DOOR", "TGDR", "TGSC", "AROB", "TGOB" };
+            m_fourCCGroups = new Dictionary<FourCC, WDOMNode>();
 
-            foreach (string str in m_fourCCs)
+            // We're going to iterate through the enum values to create DOM nodes for them.
+            // We're skipping all of the actors, scaleable objects, and treasure chests though, because they're special.
+            foreach (FourCC f in Enum.GetValues(typeof(FourCC)))
             {
-                if (!str.Contains("ACT") && !str.Contains("SCO") && !str.Contains("TRE"))
+                // Skip Actors/Scaleable Objects/Treasure Chests
+                if (f.ToString().Contains("ACT") || f.ToString().Contains("SCO") || f.ToString().Contains("TRE") || f == FourCC.NONE)
                 {
-                    m_fourCCGroups[str] = new WDOMGroupNode(str, m_world);
+                    continue;
                 }
+
+                m_fourCCGroups[f] = new WDOMGroupNode(f, m_world);
             }
 
-            m_fourCCGroups["Actors"] = new WDOMGroupNode("Actors", m_world);
+            // To handle the fact that actors/scaleable/treasure chests have layers, we're going to create DOM nodes using
+            // the default layer's FourCC (ACTR/SCOB/TRES). This DOM node won't interact directly with the entities, rather
+            // it will be the parent node of the nodes that do. WDOMGroupNode.ToString() is overridden to return a more general
+            // description of them ("Actors", etc) instead of the FourCC's FourCCConversion.GetDescriptionFromEnum() value.
+            m_fourCCGroups[FourCC.ACTR] = new WDOMGroupNode(FourCC.ACTR, m_world);
+            m_fourCCGroups[FourCC.SCOB] = new WDOMGroupNode(FourCC.SCOB, m_world);
+            m_fourCCGroups[FourCC.TRES] = new WDOMGroupNode(FourCC.TRES, m_world);
+
+            // Now we add the default layer for each object type. WDOMLayeredGroupNode directly interacts with the entities.
+            WDOMLayeredGroupNode actrDefLayer = new WDOMLayeredGroupNode(FourCC.ACTR, MapLayer.Default, m_world);
+            actrDefLayer.SetParent(m_fourCCGroups[FourCC.ACTR]);
+
+            WDOMLayeredGroupNode scobDefLayer = new WDOMLayeredGroupNode(FourCC.SCOB, MapLayer.Default, m_world);
+            scobDefLayer.SetParent(m_fourCCGroups[FourCC.SCOB]);
+
+            WDOMLayeredGroupNode tresDefLayer = new WDOMLayeredGroupNode(FourCC.TRES, MapLayer.Default, m_world);
+            tresDefLayer.SetParent(m_fourCCGroups[FourCC.TRES]);
+
+            // Now we add layers 0 to 11 for each object type.
+            // Note that we do (i + 1) for the MapLayer cast in order to skip the Default enum value.
+            for (int i = 0; i < 12; i++)
+            {
+                WDOMLayeredGroupNode actrLayer = new WDOMLayeredGroupNode(FourCCConversion.GetEnumFromString($"ACT{ i.ToString("x") }"), (MapLayer)i + 1, m_world);
+                actrLayer.SetParent(m_fourCCGroups[FourCC.ACTR]);
+
+                WDOMLayeredGroupNode scobLayer = new WDOMLayeredGroupNode(FourCCConversion.GetEnumFromString($"SCO{ i.ToString("x") }"), (MapLayer)i + 1, m_world);
+                scobLayer.SetParent(m_fourCCGroups[FourCC.SCOB]);
+
+                WDOMLayeredGroupNode tresLayer = new WDOMLayeredGroupNode(FourCCConversion.GetEnumFromString($"TRE{ i.ToString("x") }"), (MapLayer)i + 1, m_world);
+                tresLayer.SetParent(m_fourCCGroups[FourCC.TRES]);
+            }
+
+            /*m_fourCCGroups["Actors"] = new WDOMGroupNode("Actors", m_world);
             WDOMGroupNode actrDefault = new WDOMGroupNode("ACTR", m_world);
             actrDefault.SetParent(m_fourCCGroups["Actors"]);
 
@@ -54,7 +84,7 @@ namespace WindEditor
 
                 WDOMGroupNode treX = new WDOMGroupNode($"TRE{ i.ToString("x") }", m_world);
                 treX.SetParent(m_fourCCGroups["Treasure Chests"]);
-            }
+            }*/
         }
 
         public virtual void Load(string filePath)
@@ -121,11 +151,11 @@ namespace WindEditor
 				var fourCCEntity = (SerializableDOMNode)child;
 
 				if(child is Actor)
-                    child.SetParent(m_fourCCGroups["Actors"].Children[(int)fourCCEntity.Layer]);
+                    child.SetParent(m_fourCCGroups[FourCC.ACTR].Children[(int)fourCCEntity.Layer]);
 				else if (child is ScaleableObject)
-					child.SetParent(m_fourCCGroups["Scaleable Objects"].Children[(int)fourCCEntity.Layer]);
+					child.SetParent(m_fourCCGroups[FourCC.SCOB].Children[(int)fourCCEntity.Layer]);
 				else if (child is TreasureChest)
-					child.SetParent(m_fourCCGroups["Treasure Chests"].Children[(int)fourCCEntity.Layer]);
+					child.SetParent(m_fourCCGroups[FourCC.TRES].Children[(int)fourCCEntity.Layer]);
 				else
 					child.SetParent(m_fourCCGroups[fourCCEntity.FourCC]);
 
@@ -134,10 +164,10 @@ namespace WindEditor
 				child.IsVisible = true;
 			}
 
-            List<KeyValuePair<string, string>> dispFourCCs = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, FourCC>> dispFourCCs = new List<KeyValuePair<string, FourCC>>();
             foreach (var item in m_fourCCGroups)
             {
-                dispFourCCs.Add(new KeyValuePair<string, string>(item.Value.ToString(), item.Key));
+                dispFourCCs.Add(new KeyValuePair<string, FourCC>(item.Value.ToString(), item.Key));
             }
 
             // Sort the FourCCs alphabetically by their ToString() value
@@ -147,7 +177,7 @@ namespace WindEditor
                 {
                     if (dispFourCCs[i].Key.CompareTo(dispFourCCs[j].Key) > 0)
                     {
-                        KeyValuePair<string, string> temp = dispFourCCs[i];
+                        KeyValuePair<string, FourCC> temp = dispFourCCs[i];
                         dispFourCCs[i] = dispFourCCs[j];
                         dispFourCCs[j] = temp;
                     }
@@ -155,7 +185,7 @@ namespace WindEditor
             }
 
             // Add entities to the DOM in the sorted order
-            foreach (KeyValuePair<string, string> keyVal in dispFourCCs)
+            foreach (KeyValuePair<string, FourCC> keyVal in dispFourCCs)
             {
                 m_fourCCGroups[keyVal.Value].SetParent(this);
             }

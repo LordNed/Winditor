@@ -28,18 +28,40 @@ namespace WindEditor
         public void ExportToStream(EndianBinaryWriter writer, WScene scene)
         {
             // Build a dictionary which lists unique FourCC's and a list of all relevant actors.
-            var actorCategories = new Dictionary<string, List<SerializableDOMNode>>();
+            var actorCategories = new Dictionary<FourCC, List<SerializableDOMNode>>();
             foreach(var child in scene)
             {
-                var actor = child as SerializableDOMNode;
-                if(actor != null)
+                var groupNode = child as WDOMGroupNode;
+                if (groupNode == null)
+                    continue;
+
+                // If this is an ACTR, SCOB, or TRES group node, we have to dig into it to get the layers.
+                if (groupNode.FourCC == FourCC.ACTR || groupNode.FourCC == FourCC.SCOB || groupNode.FourCC == FourCC.TRES)
                 {
-                    string fixedFourCC = ChunkHeader.LayerToFourCC(actor.FourCC, actor.Layer);
+                    foreach (var layer in groupNode.Children)
+                    {
+                        foreach (var obj in layer.Children)
+                        {
+                            var actor = obj as SerializableDOMNode;
 
-                    if (!actorCategories.ContainsKey(fixedFourCC))
-                        actorCategories[fixedFourCC] = new List<SerializableDOMNode>();
+                            if (actor != null)
+                            {
+                                AddObjectToDictionary(actor, actorCategories);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var obj in groupNode.Children)
+                    {
+                        var actor = obj as SerializableDOMNode;
 
-                    actorCategories[fixedFourCC].Add(actor);
+                        if (actor != null)
+                        {
+                            AddObjectToDictionary(actor, actorCategories);
+                        }
+                    }
                 }
             }
 
@@ -93,7 +115,7 @@ namespace WindEditor
             writer.BaseStream.Position = chunkStart + 0x4; // 0x4 is the offset to the Chunk Headers
             foreach (var header in chunkHeaders)
             {
-                writer.WriteFixedString(header.FourCC, 4); // FourCC
+                writer.WriteFixedString(FourCCConversion.GetStringFromEnum(header.FourCC), 4); // FourCC
                 writer.Write(header.ElementCount); // Number of Entries
                 writer.Write(header.ChunkOffset);   // Offset from start of file.
             }
@@ -103,6 +125,18 @@ namespace WindEditor
             int delta = WMath.Pad32Delta(writer.BaseStream.Position);
             for (int i = 0; i < delta; i++)
                 writer.Write(0xFF);
+        }
+
+        public void AddObjectToDictionary(SerializableDOMNode actor, Dictionary<FourCC, List<SerializableDOMNode>> actorCategories)
+        {
+            string rawFourCC = FourCCConversion.GetStringFromEnum(actor.FourCC);
+            string fixedFourCC = ChunkHeader.LayerToFourCC(rawFourCC, actor.Layer);
+            FourCC fixedFourCCEnum = FourCCConversion.GetEnumFromString(fixedFourCC);
+
+            if (!actorCategories.ContainsKey(fixedFourCCEnum))
+                actorCategories[fixedFourCCEnum] = new List<SerializableDOMNode>();
+
+            actorCategories[fixedFourCCEnum].Add(actor);
         }
 
         /*private void WriteActorToChunk(SerializableDOMNode actor, MapActorDescriptor template, EndianBinaryWriter writer)

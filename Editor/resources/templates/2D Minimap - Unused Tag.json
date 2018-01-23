@@ -1,6 +1,6 @@
 ﻿{
 	"ClassName" : "MinimapSettings_Unused",
-	"FourCC" : "2Dma",
+	"FourCC" : "ma2D",
 	"Fields" :
 	[
 		{"Name" : "Full Map Image Scale", "Type" : "Vector2"},

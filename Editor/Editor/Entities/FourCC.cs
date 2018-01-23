@@ -8,11 +8,6 @@ namespace WindEditor
 {
     public enum FourCC
     {
-        // These are editor-only.
-        ACTH, // FourCC for the top-level node containing the actor layers
-        SCOH, // FourCC for the top-level node containing the scaleable object layers
-        TREH, // FourCC for the top-level node containing the treasure chest layers
-
         ACTR,
         ACT0,
         ACT1,
@@ -126,13 +121,6 @@ namespace WindEditor
         {
             switch (fourcc)
             {
-                case FourCC.ACTH:
-                    return "Actors";
-                case FourCC.TREH:
-                    return "Treasure Chests";
-                case FourCC.SCOH:
-                    return "Scaleable Objects";
-
                 case FourCC.MA2D:
                     return "Minimap";
                 case FourCC.ACTR:
