@@ -184,7 +184,16 @@
 
                     <!-- Scene List-->
                     <GroupBox Header="Scene List" Grid.Row="1" MinHeight="80" Margin="0,5,0,0">
-                        <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}"/>
+                        <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsRendered}" VerticalAlignment="Center" IsEnabled="{Binding Converter={StaticResource VisibleNodeToBoolConverter}}"/>
+                                        <TextBlock Text="{Binding .}" Margin="2,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </GroupBox>
                 </Grid>
 

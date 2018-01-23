@@ -11,7 +11,7 @@ namespace WindEditor
 
         public WStage(WWorld world) : base(world)
         {
-
+            IsRendered = true;
         }
 
         public override void Load(string filePath)
@@ -105,6 +105,11 @@ namespace WindEditor
                 SceneDataExporter exporter = new SceneDataExporter();
                 exporter.ExportToStream(writer, this);
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

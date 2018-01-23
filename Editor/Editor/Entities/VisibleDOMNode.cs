@@ -72,6 +72,8 @@ namespace WindEditor
             }
             else if (value is WDOMLayeredGroupNode)
                 return true;
+            else if (value is WRoom || value is WStage)
+                return true;
             else
                 return false;
         }

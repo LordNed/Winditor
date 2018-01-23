@@ -171,6 +171,11 @@ namespace WindEditor
 
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         void IRenderable.AddToRenderer(WSceneView view)
         {
             view.AddOpaqueMesh(this);
