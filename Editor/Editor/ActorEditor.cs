@@ -103,10 +103,16 @@ namespace WindEditor
                 {
 					EditorSelection.ClearSelection();
 					if (addedActor != null)
-						EditorSelection.AddToSelection(addedActor);
+                    {
+                        if (!addedActor.IsRendered)
+                            return;
+                        EditorSelection.AddToSelection(addedActor);
+                    }
                 }
                 else if (addedActor != null && (ctrlPressed && !shiftPressed))
                 {
+                    if (!addedActor.IsRendered)
+                        return;
 					if (addedActor.IsSelected)
 						EditorSelection.RemoveFromSelection(addedActor);
 					else
@@ -114,7 +120,9 @@ namespace WindEditor
                 }
                 else if (addedActor != null && shiftPressed)
                 {
-					if(!EditorSelection.SelectedObjects.Contains(addedActor))
+                    if (!addedActor.IsRendered)
+                        return;
+                    if (!EditorSelection.SelectedObjects.Contains(addedActor))
 						EditorSelection.AddToSelection(addedActor);
                 }
 
