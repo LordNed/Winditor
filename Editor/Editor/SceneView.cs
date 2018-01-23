@@ -94,7 +94,13 @@ namespace WindEditor
             // Render all Opaque Geometry first.
             foreach (var mesh in m_renderablesInFrustum)
             {
-                if (mesh.GetType() != typeof(WSkyboxNode))
+                if (mesh is WDOMNode)
+                {
+                    WDOMNode node = (WDOMNode)mesh;
+                    if (mesh.GetType() != typeof(WSkyboxNode) && node.IsRendered)
+                        mesh.Draw(this);
+                }
+                else
                     mesh.Draw(this);
             }
 
@@ -104,7 +110,16 @@ namespace WindEditor
 
             // Render all Transparent Geometry afterwards. ToDo: depth-sort this first.
             foreach (var mesh in m_renderablesInFrustum)
-                mesh.Draw(this);
+            {
+                if (mesh is WDOMNode)
+                {
+                    WDOMNode node = (WDOMNode)mesh;
+                    if (node.IsRendered)
+                        mesh.Draw(this);
+                }
+                else
+                    mesh.Draw(this);
+            }
 
             DrawOrientationWidget(x, y, viewMatrix, projMatrix);
             ResetGraphicsState();

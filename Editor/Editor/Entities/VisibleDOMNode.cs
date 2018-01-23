@@ -1,10 +1,91 @@
 ﻿using JStudio.J3D;
 using OpenTK;
 using System;
+using System.Windows.Data;
+using System.Globalization;
 
 namespace WindEditor
 {
-	public partial class VisibleDOMNode : IRenderable
+    public class NodeTypeToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is SerializableDOMNode)
+            {
+                SerializableDOMNode srlNode = value as SerializableDOMNode;
+
+                if (srlNode.FourCC.ToString().Contains("ACT") ||
+                    srlNode.FourCC.ToString().Contains("SCO") || srlNode.FourCC.ToString().Contains("TRE"))
+                    return true;
+
+                switch (srlNode.FourCC)
+                {
+                    case FourCC.CAMR:
+                    case FourCC.DOOR:
+                    case FourCC.TGDR:
+                    case FourCC.TGOB:
+                    case FourCC.TGSC:
+                    case FourCC.RPPN:
+                    case FourCC.PPNT:
+                    case FourCC.PLYR:
+                    case FourCC.RARO:
+                    case FourCC.RCAM:
+                    case FourCC.SOND:
+                    case FourCC.SHIP:
+                    case FourCC.LGTV:
+                    case FourCC.LGHT:
+                    case FourCC.AROB:
+                        return true;
+                }
+
+                return false;
+            }
+            else if (value is SerializableDOMNode || value is WDOMGroupNode)
+            {
+                WDOMGroupNode grpNode = value as WDOMGroupNode;
+
+                if (grpNode.FourCC.ToString().Contains("ACT") ||
+                    grpNode.FourCC.ToString().Contains("SCO") || grpNode.FourCC.ToString().Contains("TRE"))
+                    return true;
+
+                switch (grpNode.FourCC)
+                {
+                    case FourCC.CAMR:
+                    case FourCC.DOOR:
+                    case FourCC.TGDR:
+                    case FourCC.TGOB:
+                    case FourCC.TGSC:
+                    case FourCC.RPPN:
+                    case FourCC.PPNT:
+                    case FourCC.PLYR:
+                    case FourCC.RARO:
+                    case FourCC.RCAM:
+                    case FourCC.SOND:
+                    case FourCC.SHIP:
+                    case FourCC.LGTV:
+                    case FourCC.LGHT:
+                    case FourCC.AROB:
+                        return true;
+                }
+
+                return false;
+            }
+            else if (value is WDOMLayeredGroupNode)
+                return true;
+            else
+                return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if ((bool)value == true)
+                return typeof(VisibleDOMNode);
+            else
+                return typeof(WDOMNode);
+        }
+    }
+
+    public partial class VisibleDOMNode : IRenderable
 	{
 		private SimpleObjRenderer m_objRender;
 		private J3D m_actorMesh;
@@ -16,7 +97,24 @@ namespace WindEditor
 
 			ColorOverrides = new TevColorOverride();
             PropertyChanged += VisibleDOMNode_PropertyChanged;
+            IsRendered = true;
 		}
+
+        public override void SetParent(WDOMNode newParent)
+        {
+            base.SetParent(newParent);
+
+            if (IsRendered == true)
+            {
+                WDOMNode parent = Parent;
+
+                while (parent != null)
+                {
+                    parent.IsRendered = true;
+                    parent = parent.Parent;
+                }
+            }
+        }
 
         public override void PostLoad()
 		{

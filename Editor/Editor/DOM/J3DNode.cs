@@ -12,6 +12,7 @@ namespace WindEditor
         public J3DNode(J3D model, WWorld world) : base(world)
         {
             m_model = model;
+            IsRendered = true;
         }
 
         public override void Tick(float deltaTime)

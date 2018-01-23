@@ -13,6 +13,7 @@ namespace WindEditor
         Selected = 1,
         Expanded = 2,
         Visible = 4,
+        Rendered = 8,
     }
 
     public class SelectEventArgs : EventArgs
@@ -39,6 +40,21 @@ namespace WindEditor
         }
     }
 
+    public class RenderedEventArgs : EventArgs
+    {
+        private bool m_Rendered;
+        public bool IsRendered
+        {
+            get { return m_Rendered; }
+            set { m_Rendered = value; }
+        }
+
+        public RenderedEventArgs(bool isRendered)
+        {
+            IsRendered = isRendered;
+        }
+    }
+
     public abstract class WDOMNode : IEnumerable<WDOMNode>, INotifyPropertyChanged
     {
 		/* This is a list of the properties we want to show up in the UI */
@@ -50,9 +66,11 @@ namespace WindEditor
         public NodeFlags Flags { get; set; }
 
         public delegate void SelectedChangedEventHandler(object sender, SelectEventArgs e);
+        public delegate void RenderedChangedEventHandler(object sender, RenderedEventArgs e);
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public event SelectedChangedEventHandler SelectedChanged;
+        public event RenderedChangedEventHandler RenderedChanged;
 
         public bool IsSelected
         {
@@ -102,6 +120,28 @@ namespace WindEditor
                         Flags &= ~NodeFlags.Visible;
 
                     OnPropertyChanged("IsVisible");
+                }
+            }
+        }
+
+        public bool IsRendered
+        {
+            get { return Flags.HasFlag(NodeFlags.Rendered); }
+            set
+            {
+                if (value != Flags.HasFlag(NodeFlags.Rendered))
+                {
+                    if (value)
+                        Flags |= NodeFlags.Rendered;
+                    else
+                        Flags &= ~NodeFlags.Rendered;
+
+                    foreach (var node in Children)
+                    {
+                        node.IsRendered = value;
+                    }
+
+                    OnPropertyChanged("IsRendered");
                 }
             }
         }

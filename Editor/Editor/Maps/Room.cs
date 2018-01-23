@@ -77,6 +77,7 @@ namespace WindEditor
         {
             RoomIndex = roomIndex;
             m_roomModels = new List<J3D>();
+            IsRendered = true;
         }
 
         public override void Load(string filePath)
