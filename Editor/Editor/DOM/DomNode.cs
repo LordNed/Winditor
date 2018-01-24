@@ -159,6 +159,8 @@ namespace WindEditor
             m_children = new ObservableCollection<WDOMNode>();
             Transform = new WTransform();
 			VisibleProperties = new List<PropertyDefinition>();
+
+            IsVisible = true;
         }
 
         public virtual void Tick(float deltaTime)
@@ -206,16 +208,7 @@ namespace WindEditor
             {
                 newParent.m_children.Add(this);
                 Parent = newParent;
-                CascadeNodeUpdate();
             }
-        }
-
-        public virtual void CascadeNodeUpdate()
-        {
-            OnPropertyChanged("Children");
-
-            if (Parent != null)
-                Parent.CascadeNodeUpdate();
         }
 
         public virtual void RemoveChild(WDOMNode item)

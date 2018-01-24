@@ -13,7 +13,7 @@ namespace WindEditor
 
         public WSkyboxNode(WWorld world) : base(world)
         {
-
+            IsVisible = false;
         }
 
         public override void Tick(float deltaTime)
