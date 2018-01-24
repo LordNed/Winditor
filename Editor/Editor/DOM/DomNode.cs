@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xceed.Wpf.Toolkit.PropertyGrid;
+using System.Collections.ObjectModel;
 
 namespace WindEditor
 {
@@ -62,7 +63,7 @@ namespace WindEditor
 
 		public WDOMNode Parent { get; private set; }
         public WTransform Transform { get; private set; }
-        public List<WDOMNode> Children { get { return m_children; } }
+        public ObservableCollection<WDOMNode> Children { get { return m_children; } }
         public NodeFlags Flags { get; set; }
 
         public delegate void SelectedChangedEventHandler(object sender, SelectEventArgs e);
@@ -146,14 +147,14 @@ namespace WindEditor
             }
         }
 
-        protected List<WDOMNode> m_children;
+        protected ObservableCollection<WDOMNode> m_children;
         protected WWorld m_world;
 
         public WDOMNode(WWorld world)
         {
             m_world = world;
 
-            m_children = new List<WDOMNode>();
+            m_children = new ObservableCollection<WDOMNode>();
             Transform = new WTransform();
 			VisibleProperties = new List<PropertyDefinition>();
         }
@@ -203,7 +204,16 @@ namespace WindEditor
             {
                 newParent.m_children.Add(this);
                 Parent = newParent;
+                CascadeNodeUpdate();
             }
+        }
+
+        public virtual void CascadeNodeUpdate()
+        {
+            OnPropertyChanged("Children");
+
+            if (Parent != null)
+                Parent.CascadeNodeUpdate();
         }
 
         public virtual void RemoveChild(WDOMNode item)

@@ -50,7 +50,6 @@ namespace WindEditor
 
                 switch (grpNode.FourCC)
                 {
-                    case FourCC.CAMR:
                     case FourCC.DOOR:
                     case FourCC.TGDR:
                     case FourCC.TGOB:
@@ -59,7 +58,6 @@ namespace WindEditor
                     case FourCC.PPNT:
                     case FourCC.PLYR:
                     case FourCC.RARO:
-                    case FourCC.RCAM:
                     case FourCC.SOND:
                     case FourCC.SHIP:
                     case FourCC.LGTV:

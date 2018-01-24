@@ -83,6 +83,9 @@ namespace WindEditor
                 return existRef.Asset;
             }
 
+            if (actorName == null)
+                return null;
+
             // Check to see if we have an Actor Descriptor for this actor.
             if (!m_actorDescriptors.ContainsKey(actorName))
                 return null;

@@ -18,7 +18,7 @@ namespace WindEditor
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
-        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity(EntityFourCC as string)); } }
+        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity()); } }
 
         private WWorld m_world;
         private WTransformGizmo m_transformGizmo;
@@ -62,9 +62,31 @@ namespace WindEditor
 			m_transformGizmo.SetLocalRotation(localRotation);
         }
 
-        public void CreateEntity(string fourCC)
+        public void CreateEntity()
         {
-			throw new System.NotImplementedException();
+            if (!EditorSelection.SingleObjectSelected)
+                return;
+
+            WDOMNode selected = EditorSelection.PrimarySelectedObject;
+
+            if (selected is SerializableDOMNode)
+            {
+                SerializableDOMNode origNode = selected as SerializableDOMNode;
+                Type selType = selected.GetType();
+                SerializableDOMNode newNode = (SerializableDOMNode)Activator.CreateInstance(selType, origNode.FourCC, m_world);
+                newNode.PostLoad();
+                newNode.SetParent(selected.Parent);
+            }
+            else if (selected is WDOMLayeredGroupNode)
+            {
+
+            }
+            else if (selected is WDOMGroupNode)
+            {
+
+            }
+            else
+                return;
 
 			// ToDo: This can spawn specific classes the same way that the actor loader does.
         }
