@@ -147,6 +147,8 @@ namespace WindEditor
             }
         }
 
+		public virtual string Name { get { return ToString(); } set { } }
+
         protected ObservableCollection<WDOMNode> m_children;
         protected WWorld m_world;
 

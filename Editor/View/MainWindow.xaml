@@ -144,7 +144,7 @@
                                 <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
                                     <StackPanel Orientation="Horizontal">
                                         <CheckBox IsChecked="{Binding IsRendered}" VerticalAlignment="Center" IsEnabled="{Binding Converter={StaticResource VisibleNodeToBoolConverter}}"/>
-                                        <TextBlock Text="{Binding .}" Margin="2,0"/>
+                                        <TextBlock Text="{Binding Name}" Margin="2,0"/>
                                     </StackPanel>
                                 </HierarchicalDataTemplate>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"

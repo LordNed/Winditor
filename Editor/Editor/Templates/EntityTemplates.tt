@@ -80,6 +80,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			string fieldName = field.FieldName.Replace(" ", "");
 			string fieldType = PropertyValueToOutput(field.FieldType);
 			string privateFieldName = "m_" + fieldName;
+			string overrideName = field.FieldName == "Name" ? "override" : "";
 			
 #>
 		private <#=fieldType#> <#=privateFieldName#>;
@@ -87,7 +88,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		if(!field.Hidden)
 		{
 #>
-		public <#= fieldType #> <#= fieldName #>
+		<#= overrideName #> public <#= fieldType #> <#= fieldName #>
 		{ 
 			get { return <#=privateFieldName#>; }
 			set

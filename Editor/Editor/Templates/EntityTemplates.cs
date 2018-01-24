@@ -43,7 +43,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private Vector2 m_FullMapImageScale;
-		public Vector2 FullMapImageScale
+		 public Vector2 FullMapImageScale
 		{ 
 			get { return m_FullMapImageScale; }
 			set
@@ -55,7 +55,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_FullMapSpaceScale;
-		public Vector2 FullMapSpaceScale
+		 public Vector2 FullMapSpaceScale
 		{ 
 			get { return m_FullMapSpaceScale; }
 			set
@@ -67,7 +67,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_FullMapTranslation;
-		public Vector2 FullMapTranslation
+		 public Vector2 FullMapTranslation
 		{ 
 			get { return m_FullMapTranslation; }
 			set
@@ -79,7 +79,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_ZoomedMapScrolling1;
-		public Vector2 ZoomedMapScrolling1
+		 public Vector2 ZoomedMapScrolling1
 		{ 
 			get { return m_ZoomedMapScrolling1; }
 			set
@@ -91,7 +91,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_ZoomedMapScrolling2;
-		public Vector2 ZoomedMapScrolling2
+		 public Vector2 ZoomedMapScrolling2
 		{ 
 			get { return m_ZoomedMapScrolling2; }
 			set
@@ -103,7 +103,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_ZoomedMapTranslation;
-		public Vector2 ZoomedMapTranslation
+		 public Vector2 ZoomedMapTranslation
 		{ 
 			get { return m_ZoomedMapTranslation; }
 			set
@@ -115,7 +115,7 @@ namespace WindEditor
 				
 
 		private float m_ZoomedMapScale;
-		public float ZoomedMapScale
+		 public float ZoomedMapScale
 		{ 
 			get { return m_ZoomedMapScale; }
 			set
@@ -127,7 +127,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown;
-		public byte Unknown
+		 public byte Unknown
 		{ 
 			get { return m_Unknown; }
 			set
@@ -139,7 +139,7 @@ namespace WindEditor
 				
 
 		private byte m_MapImageIndex;
-		public byte MapImageIndex
+		 public byte MapImageIndex
 		{ 
 			get { return m_MapImageIndex; }
 			set
@@ -151,7 +151,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -163,7 +163,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding;
-		public byte Padding
+		 public byte Padding
 		{ 
 			get { return m_Padding; }
 			set
@@ -231,7 +231,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private Vector2 m_FullMapImageScale;
-		public Vector2 FullMapImageScale
+		 public Vector2 FullMapImageScale
 		{ 
 			get { return m_FullMapImageScale; }
 			set
@@ -243,7 +243,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_FullMapSpaceScale;
-		public Vector2 FullMapSpaceScale
+		 public Vector2 FullMapSpaceScale
 		{ 
 			get { return m_FullMapSpaceScale; }
 			set
@@ -255,7 +255,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_FullMapTranslation;
-		public Vector2 FullMapTranslation
+		 public Vector2 FullMapTranslation
 		{ 
 			get { return m_FullMapTranslation; }
 			set
@@ -267,7 +267,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_ZoomedMapScrolling1;
-		public Vector2 ZoomedMapScrolling1
+		 public Vector2 ZoomedMapScrolling1
 		{ 
 			get { return m_ZoomedMapScrolling1; }
 			set
@@ -279,7 +279,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_ZoomedMapScrolling2;
-		public Vector2 ZoomedMapScrolling2
+		 public Vector2 ZoomedMapScrolling2
 		{ 
 			get { return m_ZoomedMapScrolling2; }
 			set
@@ -291,7 +291,7 @@ namespace WindEditor
 				
 
 		private Vector2 m_ZoomedMapTranslation;
-		public Vector2 ZoomedMapTranslation
+		 public Vector2 ZoomedMapTranslation
 		{ 
 			get { return m_ZoomedMapTranslation; }
 			set
@@ -303,7 +303,7 @@ namespace WindEditor
 				
 
 		private float m_ZoomedMapScale;
-		public float ZoomedMapScale
+		 public float ZoomedMapScale
 		{ 
 			get { return m_ZoomedMapScale; }
 			set
@@ -315,7 +315,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown;
-		public byte Unknown
+		 public byte Unknown
 		{ 
 			get { return m_Unknown; }
 			set
@@ -327,7 +327,7 @@ namespace WindEditor
 				
 
 		private byte m_MapImageIndex;
-		public byte MapImageIndex
+		 public byte MapImageIndex
 		{ 
 			get { return m_MapImageIndex; }
 			set
@@ -339,7 +339,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -351,7 +351,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding;
-		public byte Padding
+		 public byte Padding
 		{ 
 			get { return m_Padding; }
 			set
@@ -419,7 +419,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -431,7 +431,7 @@ namespace WindEditor
 				
 
 		private int m_Parameters;
-		public int Parameters
+		 public int Parameters
 		{ 
 			get { return m_Parameters; }
 			set
@@ -443,7 +443,7 @@ namespace WindEditor
 				
 
 		private short m_FlagToSet;
-		public short FlagToSet
+		 public short FlagToSet
 		{ 
 			get { return m_FlagToSet; }
 			set
@@ -455,7 +455,7 @@ namespace WindEditor
 				
 
 		private short m_EnemyNumber;
-		public short EnemyNumber
+		 public short EnemyNumber
 		{ 
 			get { return m_EnemyNumber; }
 			set
@@ -580,7 +580,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_CameraType;
-		public string CameraType
+		 public string CameraType
 		{ 
 			get { return m_CameraType; }
 			set
@@ -592,7 +592,7 @@ namespace WindEditor
 				
 
 		private short m_CameraPointIndex;
-		public short CameraPointIndex
+		 public short CameraPointIndex
 		{ 
 			get { return m_CameraPointIndex; }
 			set
@@ -604,7 +604,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding1;
-		public byte Padding1
+		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
 			set
@@ -616,7 +616,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding2;
-		public byte Padding2
+		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
 			set
@@ -628,7 +628,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding3;
-		public byte Padding3
+		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
 			set
@@ -678,7 +678,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_CameraType;
-		public string CameraType
+		 public string CameraType
 		{ 
 			get { return m_CameraType; }
 			set
@@ -690,7 +690,7 @@ namespace WindEditor
 				
 
 		private byte m_CameraPointIndex;
-		public byte CameraPointIndex
+		 public byte CameraPointIndex
 		{ 
 			get { return m_CameraPointIndex; }
 			set
@@ -702,7 +702,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding1;
-		public byte Padding1
+		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
 			set
@@ -714,7 +714,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding2;
-		public byte Padding2
+		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
 			set
@@ -726,7 +726,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding3;
-		public byte Padding3
+		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
 			set
@@ -776,7 +776,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -788,7 +788,7 @@ namespace WindEditor
 				
 
 		private int m_Parameters;
-		public int Parameters
+		 public int Parameters
 		{ 
 			get { return m_Parameters; }
 			set
@@ -800,7 +800,7 @@ namespace WindEditor
 				
 
 		private short m_AuxiliaryParameters;
-		public short AuxiliaryParameters
+		 public short AuxiliaryParameters
 		{ 
 			get { return m_AuxiliaryParameters; }
 			set
@@ -812,7 +812,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown1;
-		public short Unknown1
+		 public short Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -824,7 +824,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown2;
-		public short Unknown2
+		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -836,7 +836,7 @@ namespace WindEditor
 				
 
 		private byte m_ScaleX;
-		public byte ScaleX
+		 public byte ScaleX
 		{ 
 			get { return m_ScaleX; }
 			set
@@ -848,7 +848,7 @@ namespace WindEditor
 				
 
 		private byte m_ScaleY;
-		public byte ScaleY
+		 public byte ScaleY
 		{ 
 			get { return m_ScaleY; }
 			set
@@ -860,7 +860,7 @@ namespace WindEditor
 				
 
 		private byte m_ScaleZ;
-		public byte ScaleZ
+		 public byte ScaleZ
 		{ 
 			get { return m_ScaleZ; }
 			set
@@ -928,7 +928,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private float m_LowerBoundaryYHeight;
-		public float LowerBoundaryYHeight
+		 public float LowerBoundaryYHeight
 		{ 
 			get { return m_LowerBoundaryYHeight; }
 			set
@@ -940,7 +940,7 @@ namespace WindEditor
 				
 
 		private byte m_FloorNumber;
-		public byte FloorNumber
+		 public byte FloorNumber
 		{ 
 			get { return m_FloorNumber; }
 			set
@@ -952,7 +952,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom0;
-		public byte IncludedRoom0
+		 public byte IncludedRoom0
 		{ 
 			get { return m_IncludedRoom0; }
 			set
@@ -964,7 +964,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom1;
-		public byte IncludedRoom1
+		 public byte IncludedRoom1
 		{ 
 			get { return m_IncludedRoom1; }
 			set
@@ -976,7 +976,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom2;
-		public byte IncludedRoom2
+		 public byte IncludedRoom2
 		{ 
 			get { return m_IncludedRoom2; }
 			set
@@ -988,7 +988,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom3;
-		public byte IncludedRoom3
+		 public byte IncludedRoom3
 		{ 
 			get { return m_IncludedRoom3; }
 			set
@@ -1000,7 +1000,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom4;
-		public byte IncludedRoom4
+		 public byte IncludedRoom4
 		{ 
 			get { return m_IncludedRoom4; }
 			set
@@ -1012,7 +1012,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom5;
-		public byte IncludedRoom5
+		 public byte IncludedRoom5
 		{ 
 			get { return m_IncludedRoom5; }
 			set
@@ -1024,7 +1024,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom6;
-		public byte IncludedRoom6
+		 public byte IncludedRoom6
 		{ 
 			get { return m_IncludedRoom6; }
 			set
@@ -1036,7 +1036,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom7;
-		public byte IncludedRoom7
+		 public byte IncludedRoom7
 		{ 
 			get { return m_IncludedRoom7; }
 			set
@@ -1048,7 +1048,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom8;
-		public byte IncludedRoom8
+		 public byte IncludedRoom8
 		{ 
 			get { return m_IncludedRoom8; }
 			set
@@ -1060,7 +1060,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom9;
-		public byte IncludedRoom9
+		 public byte IncludedRoom9
 		{ 
 			get { return m_IncludedRoom9; }
 			set
@@ -1072,7 +1072,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom10;
-		public byte IncludedRoom10
+		 public byte IncludedRoom10
 		{ 
 			get { return m_IncludedRoom10; }
 			set
@@ -1084,7 +1084,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom11;
-		public byte IncludedRoom11
+		 public byte IncludedRoom11
 		{ 
 			get { return m_IncludedRoom11; }
 			set
@@ -1096,7 +1096,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom12;
-		public byte IncludedRoom12
+		 public byte IncludedRoom12
 		{ 
 			get { return m_IncludedRoom12; }
 			set
@@ -1108,7 +1108,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom13;
-		public byte IncludedRoom13
+		 public byte IncludedRoom13
 		{ 
 			get { return m_IncludedRoom13; }
 			set
@@ -1120,7 +1120,7 @@ namespace WindEditor
 				
 
 		private byte m_IncludedRoom14;
-		public byte IncludedRoom14
+		 public byte IncludedRoom14
 		{ 
 			get { return m_IncludedRoom14; }
 			set
@@ -1206,7 +1206,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private float m_MapSizeX;
-		public float MapSizeX
+		 public float MapSizeX
 		{ 
 			get { return m_MapSizeX; }
 			set
@@ -1218,7 +1218,7 @@ namespace WindEditor
 				
 
 		private float m_MapSizeY;
-		public float MapSizeY
+		 public float MapSizeY
 		{ 
 			get { return m_MapSizeY; }
 			set
@@ -1230,7 +1230,7 @@ namespace WindEditor
 				
 
 		private float m_MapScaleInverse;
-		public float MapScaleInverse
+		 public float MapScaleInverse
 		{ 
 			get { return m_MapScaleInverse; }
 			set
@@ -1242,7 +1242,7 @@ namespace WindEditor
 				
 
 		private float m_Unknown1;
-		public float Unknown1
+		 public float Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -1289,7 +1289,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private Vector3 m_Radius;
-		public Vector3 Radius
+		 public Vector3 Radius
 		{ 
 			get { return m_Radius; }
 			set
@@ -1301,7 +1301,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_Color;
-		public WLinearColor Color
+		 public WLinearColor Color
 		{ 
 			get { return m_Color; }
 			set
@@ -1344,7 +1344,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_ClearColorA;
-		public byte ClearColorA
+		 public byte ClearColorA
 		{ 
 			get { return m_ClearColorA; }
 			set
@@ -1356,7 +1356,7 @@ namespace WindEditor
 				
 
 		private byte m_RainingColorA;
-		public byte RainingColorA
+		 public byte RainingColorA
 		{ 
 			get { return m_RainingColorA; }
 			set
@@ -1368,7 +1368,7 @@ namespace WindEditor
 				
 
 		private byte m_SnowingA;
-		public byte SnowingA
+		 public byte SnowingA
 		{ 
 			get { return m_SnowingA; }
 			set
@@ -1380,7 +1380,7 @@ namespace WindEditor
 				
 
 		private byte m_UnknownA;
-		public byte UnknownA
+		 public byte UnknownA
 		{ 
 			get { return m_UnknownA; }
 			set
@@ -1392,7 +1392,7 @@ namespace WindEditor
 				
 
 		private byte m_ClearColorB;
-		public byte ClearColorB
+		 public byte ClearColorB
 		{ 
 			get { return m_ClearColorB; }
 			set
@@ -1404,7 +1404,7 @@ namespace WindEditor
 				
 
 		private byte m_RainingColorB;
-		public byte RainingColorB
+		 public byte RainingColorB
 		{ 
 			get { return m_RainingColorB; }
 			set
@@ -1416,7 +1416,7 @@ namespace WindEditor
 				
 
 		private byte m_SnowingB;
-		public byte SnowingB
+		 public byte SnowingB
 		{ 
 			get { return m_SnowingB; }
 			set
@@ -1428,7 +1428,7 @@ namespace WindEditor
 				
 
 		private byte m_UnknownB;
-		public byte UnknownB
+		 public byte UnknownB
 		{ 
 			get { return m_UnknownB; }
 			set
@@ -1487,7 +1487,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private WLinearColor m_ShadowColor;
-		public WLinearColor ShadowColor
+		 public WLinearColor ShadowColor
 		{ 
 			get { return m_ShadowColor; }
 			set
@@ -1499,7 +1499,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_ActorAmbientColor;
-		public WLinearColor ActorAmbientColor
+		 public WLinearColor ActorAmbientColor
 		{ 
 			get { return m_ActorAmbientColor; }
 			set
@@ -1511,7 +1511,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_RoomLightColor;
-		public WLinearColor RoomLightColor
+		 public WLinearColor RoomLightColor
 		{ 
 			get { return m_RoomLightColor; }
 			set
@@ -1523,7 +1523,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_RoomAmbientColor;
-		public WLinearColor RoomAmbientColor
+		 public WLinearColor RoomAmbientColor
 		{ 
 			get { return m_RoomAmbientColor; }
 			set
@@ -1535,7 +1535,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_WaveColor;
-		public WLinearColor WaveColor
+		 public WLinearColor WaveColor
 		{ 
 			get { return m_WaveColor; }
 			set
@@ -1547,7 +1547,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_OceanColor;
-		public WLinearColor OceanColor
+		 public WLinearColor OceanColor
 		{ 
 			get { return m_OceanColor; }
 			set
@@ -1559,7 +1559,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_UnknownWhite1;
-		public WLinearColor UnknownWhite1
+		 public WLinearColor UnknownWhite1
 		{ 
 			get { return m_UnknownWhite1; }
 			set
@@ -1571,7 +1571,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_UnknownWhite2;
-		public WLinearColor UnknownWhite2
+		 public WLinearColor UnknownWhite2
 		{ 
 			get { return m_UnknownWhite2; }
 			set
@@ -1583,7 +1583,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_DoorBackfill;
-		public WLinearColor DoorBackfill
+		 public WLinearColor DoorBackfill
 		{ 
 			get { return m_DoorBackfill; }
 			set
@@ -1595,7 +1595,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_Unknown3;
-		public WLinearColor Unknown3
+		 public WLinearColor Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -1607,7 +1607,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_FogColor;
-		public WLinearColor FogColor
+		 public WLinearColor FogColor
 		{ 
 			get { return m_FogColor; }
 			set
@@ -1619,7 +1619,7 @@ namespace WindEditor
 				
 
 		private byte m_SkyboxColorIndex;
-		public byte SkyboxColorIndex
+		 public byte SkyboxColorIndex
 		{ 
 			get { return m_SkyboxColorIndex; }
 			set
@@ -1631,7 +1631,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding1;
-		public byte Padding1
+		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
 			set
@@ -1643,7 +1643,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding2;
-		public byte Padding2
+		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
 			set
@@ -1655,7 +1655,7 @@ namespace WindEditor
 				
 
 		private float m_FogFarPlane;
-		public float FogFarPlane
+		 public float FogFarPlane
 		{ 
 			get { return m_FogFarPlane; }
 			set
@@ -1667,7 +1667,7 @@ namespace WindEditor
 				
 
 		private float m_ForNearPlane;
-		public float ForNearPlane
+		 public float ForNearPlane
 		{ 
 			get { return m_ForNearPlane; }
 			set
@@ -1750,7 +1750,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private WLinearColor m_Unknown1;
-		public WLinearColor Unknown1
+		 public WLinearColor Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -1762,7 +1762,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_Unknown2;
-		public WLinearColor Unknown2
+		 public WLinearColor Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -1774,7 +1774,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_Unknown3;
-		public WLinearColor Unknown3
+		 public WLinearColor Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -1786,7 +1786,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_Unknown4;
-		public WLinearColor Unknown4
+		 public WLinearColor Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -1798,7 +1798,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_HorizonCloudColor;
-		public WLinearColor HorizonCloudColor
+		 public WLinearColor HorizonCloudColor
 		{ 
 			get { return m_HorizonCloudColor; }
 			set
@@ -1810,7 +1810,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_CenterCloudColor;
-		public WLinearColor CenterCloudColor
+		 public WLinearColor CenterCloudColor
 		{ 
 			get { return m_CenterCloudColor; }
 			set
@@ -1822,7 +1822,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_SkyColor;
-		public WLinearColor SkyColor
+		 public WLinearColor SkyColor
 		{ 
 			get { return m_SkyColor; }
 			set
@@ -1834,7 +1834,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_FalseSeaColor;
-		public WLinearColor FalseSeaColor
+		 public WLinearColor FalseSeaColor
 		{ 
 			get { return m_FalseSeaColor; }
 			set
@@ -1846,7 +1846,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_HorizonColor;
-		public WLinearColor HorizonColor
+		 public WLinearColor HorizonColor
 		{ 
 			get { return m_HorizonColor; }
 			set
@@ -1858,7 +1858,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding1;
-		public byte Padding1
+		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
 			set
@@ -1870,7 +1870,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding2;
-		public byte Padding2
+		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
 			set
@@ -1882,7 +1882,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding3;
-		public byte Padding3
+		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
 			set
@@ -1953,7 +1953,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_DawnA;
-		public byte DawnA
+		 public byte DawnA
 		{ 
 			get { return m_DawnA; }
 			set
@@ -1965,7 +1965,7 @@ namespace WindEditor
 				
 
 		private byte m_MorningA;
-		public byte MorningA
+		 public byte MorningA
 		{ 
 			get { return m_MorningA; }
 			set
@@ -1977,7 +1977,7 @@ namespace WindEditor
 				
 
 		private byte m_NoonA;
-		public byte NoonA
+		 public byte NoonA
 		{ 
 			get { return m_NoonA; }
 			set
@@ -1989,7 +1989,7 @@ namespace WindEditor
 				
 
 		private byte m_AfternoonA;
-		public byte AfternoonA
+		 public byte AfternoonA
 		{ 
 			get { return m_AfternoonA; }
 			set
@@ -2001,7 +2001,7 @@ namespace WindEditor
 				
 
 		private byte m_DuskA;
-		public byte DuskA
+		 public byte DuskA
 		{ 
 			get { return m_DuskA; }
 			set
@@ -2013,7 +2013,7 @@ namespace WindEditor
 				
 
 		private byte m_NightA;
-		public byte NightA
+		 public byte NightA
 		{ 
 			get { return m_NightA; }
 			set
@@ -2025,7 +2025,7 @@ namespace WindEditor
 				
 
 		private byte m_DawnB;
-		public byte DawnB
+		 public byte DawnB
 		{ 
 			get { return m_DawnB; }
 			set
@@ -2037,7 +2037,7 @@ namespace WindEditor
 				
 
 		private byte m_MorningB;
-		public byte MorningB
+		 public byte MorningB
 		{ 
 			get { return m_MorningB; }
 			set
@@ -2049,7 +2049,7 @@ namespace WindEditor
 				
 
 		private byte m_NoonB;
-		public byte NoonB
+		 public byte NoonB
 		{ 
 			get { return m_NoonB; }
 			set
@@ -2061,7 +2061,7 @@ namespace WindEditor
 				
 
 		private byte m_AfternoonB;
-		public byte AfternoonB
+		 public byte AfternoonB
 		{ 
 			get { return m_AfternoonB; }
 			set
@@ -2073,7 +2073,7 @@ namespace WindEditor
 				
 
 		private byte m_DuskB;
-		public byte DuskB
+		 public byte DuskB
 		{ 
 			get { return m_DuskB; }
 			set
@@ -2085,7 +2085,7 @@ namespace WindEditor
 				
 
 		private byte m_NightB;
-		public byte NightB
+		 public byte NightB
 		{ 
 			get { return m_NightB; }
 			set
@@ -2156,7 +2156,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_Unknown1;
-		public byte Unknown1
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -2168,7 +2168,7 @@ namespace WindEditor
 				
 
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -2180,7 +2180,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -2192,7 +2192,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown3;
-		public byte Unknown3
+		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -2204,7 +2204,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown4;
-		public byte Unknown4
+		 public byte Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -2216,7 +2216,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown5;
-		public byte Unknown5
+		 public byte Unknown5
 		{ 
 			get { return m_Unknown5; }
 			set
@@ -2228,7 +2228,7 @@ namespace WindEditor
 				
 
 		private byte m_RoomNumber;
-		public byte RoomNumber
+		 public byte RoomNumber
 		{ 
 			get { return m_RoomNumber; }
 			set
@@ -2240,7 +2240,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding1;
-		public byte Padding1
+		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
 			set
@@ -2252,7 +2252,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding2;
-		public byte Padding2
+		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
 			set
@@ -2264,7 +2264,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding3;
-		public byte Padding3
+		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
 			set
@@ -2329,7 +2329,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_MapName;
-		public string MapName
+		 public string MapName
 		{ 
 			get { return m_MapName; }
 			set
@@ -2341,7 +2341,7 @@ namespace WindEditor
 				
 
 		private byte m_SpawnIndex;
-		public byte SpawnIndex
+		 public byte SpawnIndex
 		{ 
 			get { return m_SpawnIndex; }
 			set
@@ -2353,7 +2353,7 @@ namespace WindEditor
 				
 
 		private byte m_RoomIndex;
-		public byte RoomIndex
+		 public byte RoomIndex
 		{ 
 			get { return m_RoomIndex; }
 			set
@@ -2365,7 +2365,7 @@ namespace WindEditor
 				
 
 		private byte m_FadeOutType;
-		public byte FadeOutType
+		 public byte FadeOutType
 		{ 
 			get { return m_FadeOutType; }
 			set
@@ -2377,7 +2377,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding;
-		public byte Padding
+		 public byte Padding
 		{ 
 			get { return m_Padding; }
 			set
@@ -2427,7 +2427,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_Unknown;
-		public byte Unknown
+		 public byte Unknown
 		{ 
 			get { return m_Unknown; }
 			set
@@ -2465,7 +2465,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private Vector3 m_Radius;
-		public Vector3 Radius
+		 public Vector3 Radius
 		{ 
 			get { return m_Radius; }
 			set
@@ -2477,7 +2477,7 @@ namespace WindEditor
 				
 
 		private WLinearColor m_Color;
-		public WLinearColor Color
+		 public WLinearColor Color
 		{ 
 			get { return m_Color; }
 			set
@@ -2520,7 +2520,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_Room;
-		public byte Room
+		 public byte Room
 		{ 
 			get { return m_Room; }
 			set
@@ -2532,7 +2532,7 @@ namespace WindEditor
 				
 
 		private byte m_Entry;
-		public byte Entry
+		 public byte Entry
 		{ 
 			get { return m_Entry; }
 			set
@@ -2573,7 +2573,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private int m_SizeInBytes;
-		public int SizeInBytes
+		 public int SizeInBytes
 		{ 
 			get { return m_SizeInBytes; }
 			set
@@ -2611,7 +2611,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -2623,7 +2623,7 @@ namespace WindEditor
 				
 
 		private byte m_EventIndex;
-		public byte EventIndex
+		 public byte EventIndex
 		{ 
 			get { return m_EventIndex; }
 			set
@@ -2635,7 +2635,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown1;
-		public byte Unknown1
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -2647,7 +2647,7 @@ namespace WindEditor
 				
 
 		private byte m_SpawnType;
-		public byte SpawnType
+		 public byte SpawnType
 		{ 
 			get { return m_SpawnType; }
 			set
@@ -2659,7 +2659,7 @@ namespace WindEditor
 				
 
 		private byte m_Room;
-		public byte Room
+		 public byte Room
 		{ 
 			get { return m_Room; }
 			set
@@ -2671,7 +2671,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown2;
-		public short Unknown2
+		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -2683,7 +2683,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown3;
-		public byte Unknown3
+		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -2695,7 +2695,7 @@ namespace WindEditor
 				
 
 		private byte m_SpawnIndex;
-		public byte SpawnIndex
+		 public byte SpawnIndex
 		{ 
 			get { return m_SpawnIndex; }
 			set
@@ -2707,7 +2707,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown4;
-		public short Unknown4
+		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -2773,7 +2773,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private int m_Parameters;
-		public int Parameters
+		 public int Parameters
 		{ 
 			get { return m_Parameters; }
 			set
@@ -2785,7 +2785,7 @@ namespace WindEditor
 				
 
 		private float m_SkyboxYHeight;
-		public float SkyboxYHeight
+		 public float SkyboxYHeight
 		{ 
 			get { return m_SkyboxYHeight; }
 			set
@@ -2826,7 +2826,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private Vector2 m_Translation;
-		public Vector2 Translation
+		 public Vector2 Translation
 		{ 
 			get { return m_Translation; }
 			set
@@ -2838,7 +2838,7 @@ namespace WindEditor
 				
 
 		private byte m_Room;
-		public byte Room
+		 public byte Room
 		{ 
 			get { return m_Room; }
 			set
@@ -2850,7 +2850,7 @@ namespace WindEditor
 				
 
 		private byte m_WaveHeightAddition;
-		public byte WaveHeightAddition
+		 public byte WaveHeightAddition
 		{ 
 			get { return m_WaveHeightAddition; }
 			set
@@ -2896,7 +2896,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private int m_Offset;
-		public int Offset
+		 public int Offset
 		{ 
 			get { return m_Offset; }
 			set
@@ -2934,7 +2934,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -2946,7 +2946,7 @@ namespace WindEditor
 				
 
 		private byte m_Parameter1;
-		public byte Parameter1
+		 public byte Parameter1
 		{ 
 			get { return m_Parameter1; }
 			set
@@ -2958,7 +2958,7 @@ namespace WindEditor
 				
 
 		private byte m_Parameter2;
-		public byte Parameter2
+		 public byte Parameter2
 		{ 
 			get { return m_Parameter2; }
 			set
@@ -2970,7 +2970,7 @@ namespace WindEditor
 				
 
 		private byte m_Parameter3;
-		public byte Parameter3
+		 public byte Parameter3
 		{ 
 			get { return m_Parameter3; }
 			set
@@ -2982,7 +2982,7 @@ namespace WindEditor
 				
 
 		private byte m_Parameter4;
-		public byte Parameter4
+		 public byte Parameter4
 		{ 
 			get { return m_Parameter4; }
 			set
@@ -2994,7 +2994,7 @@ namespace WindEditor
 				
 
 		private short m_AuxiliaryParameter;
-		public short AuxiliaryParameter
+		 public short AuxiliaryParameter
 		{ 
 			get { return m_AuxiliaryParameter; }
 			set
@@ -3006,7 +3006,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown1;
-		public short Unknown1
+		 public short Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -3018,7 +3018,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown2;
-		public short Unknown2
+		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -3092,7 +3092,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private float /*single axis rotation */ m_Rotation;
-		public float /*single axis rotation */ Rotation
+		 public float /*single axis rotation */ Rotation
 		{ 
 			get { return m_Rotation; }
 			set
@@ -3104,7 +3104,7 @@ namespace WindEditor
 				
 
 		private byte m_ShipId;
-		public byte ShipId
+		 public byte ShipId
 		{ 
 			get { return m_ShipId; }
 			set
@@ -3116,7 +3116,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown1;
-		public byte Unknown1
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -3162,7 +3162,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -3174,7 +3174,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown1;
-		public byte Unknown1
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -3186,7 +3186,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -3198,7 +3198,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown3;
-		public byte Unknown3
+		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -3210,7 +3210,7 @@ namespace WindEditor
 				
 
 		private byte m_SoundID;
-		public byte SoundID
+		 public byte SoundID
 		{ 
 			get { return m_SoundID; }
 			set
@@ -3222,7 +3222,7 @@ namespace WindEditor
 				
 
 		private byte m_PathIndex;
-		public byte PathIndex
+		 public byte PathIndex
 		{ 
 			get { return m_PathIndex; }
 			set
@@ -3234,7 +3234,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding1;
-		public byte Padding1
+		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
 			set
@@ -3246,7 +3246,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding2;
-		public byte Padding2
+		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
 			set
@@ -3258,7 +3258,7 @@ namespace WindEditor
 				
 
 		private byte m_Padding3;
-		public byte Padding3
+		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
 			set
@@ -3322,7 +3322,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private float m_ZDepthMin;
-		public float ZDepthMin
+		 public float ZDepthMin
 		{ 
 			get { return m_ZDepthMin; }
 			set
@@ -3334,7 +3334,7 @@ namespace WindEditor
 				
 
 		private float m_ZDepthMax;
-		public float ZDepthMax
+		 public float ZDepthMax
 		{ 
 			get { return m_ZDepthMax; }
 			set
@@ -3346,7 +3346,7 @@ namespace WindEditor
 				
 
 		private short m_StageID;
-		public short StageID
+		 public short StageID
 		{ 
 			get { return m_StageID; }
 			set
@@ -3358,7 +3358,7 @@ namespace WindEditor
 				
 
 		private short m_Unk_ParticleBank;
-		public short Unk_ParticleBank
+		 public short Unk_ParticleBank
 		{ 
 			get { return m_Unk_ParticleBank; }
 			set
@@ -3370,7 +3370,7 @@ namespace WindEditor
 				
 
 		private short m_Unk_PropertyIndex;
-		public short Unk_PropertyIndex
+		 public short Unk_PropertyIndex
 		{ 
 			get { return m_Unk_PropertyIndex; }
 			set
@@ -3382,7 +3382,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown1;
-		public byte Unknown1
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -3394,7 +3394,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -3406,7 +3406,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown3;
-		public byte Unknown3
+		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -3418,7 +3418,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown4;
-		public byte Unknown4
+		 public byte Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -3430,7 +3430,7 @@ namespace WindEditor
 				
 
 		private short m_Unk_DrawRange;
-		public short Unk_DrawRange
+		 public short Unk_DrawRange
 		{ 
 			get { return m_Unk_DrawRange; }
 			set
@@ -3442,7 +3442,7 @@ namespace WindEditor
 				
 
 		private int m_Unknown5;
-		public int Unknown5
+		 public int Unknown5
 		{ 
 			get { return m_Unknown5; }
 			set
@@ -3454,7 +3454,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown6;
-		public byte Unknown6
+		 public byte Unknown6
 		{ 
 			get { return m_Unknown6; }
 			set
@@ -3466,7 +3466,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown7;
-		public byte Unknown7
+		 public byte Unknown7
 		{ 
 			get { return m_Unknown7; }
 			set
@@ -3478,7 +3478,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown8;
-		public byte Unknown8
+		 public byte Unknown8
 		{ 
 			get { return m_Unknown8; }
 			set
@@ -3490,7 +3490,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown9;
-		public byte Unknown9
+		 public byte Unknown9
 		{ 
 			get { return m_Unknown9; }
 			set
@@ -3502,7 +3502,7 @@ namespace WindEditor
 				
 
 		private int m_Unknown10;
-		public int Unknown10
+		 public int Unknown10
 		{ 
 			get { return m_Unknown10; }
 			set
@@ -3514,7 +3514,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown11;
-		public byte Unknown11
+		 public byte Unknown11
 		{ 
 			get { return m_Unknown11; }
 			set
@@ -3526,7 +3526,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown12;
-		public byte Unknown12
+		 public byte Unknown12
 		{ 
 			get { return m_Unknown12; }
 			set
@@ -3538,7 +3538,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown13;
-		public byte Unknown13
+		 public byte Unknown13
 		{ 
 			get { return m_Unknown13; }
 			set
@@ -3550,7 +3550,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown14;
-		public byte Unknown14
+		 public byte Unknown14
 		{ 
 			get { return m_Unknown14; }
 			set
@@ -3645,7 +3645,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -3657,7 +3657,7 @@ namespace WindEditor
 				
 
 		private int m_Params;
-		public int Params
+		 public int Params
 		{ 
 			get { return m_Params; }
 			set
@@ -3669,7 +3669,7 @@ namespace WindEditor
 				
 
 		private short m_RoomLoadingParams;
-		public short RoomLoadingParams
+		 public short RoomLoadingParams
 		{ 
 			get { return m_RoomLoadingParams; }
 			set
@@ -3681,7 +3681,7 @@ namespace WindEditor
 				
 
 		private byte m_Arg1;
-		public byte Arg1
+		 public byte Arg1
 		{ 
 			get { return m_Arg1; }
 			set
@@ -3693,7 +3693,7 @@ namespace WindEditor
 				
 
 		private byte m_ShipId;
-		public byte ShipId
+		 public byte ShipId
 		{ 
 			get { return m_ShipId; }
 			set
@@ -3705,7 +3705,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -3717,7 +3717,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown3;
-		public byte Unknown3
+		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
 			set
@@ -3729,7 +3729,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown4;
-		public byte Unknown4
+		 public byte Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -3798,7 +3798,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -3810,7 +3810,7 @@ namespace WindEditor
 				
 
 		private int m_Parameters;
-		public int Parameters
+		 public int Parameters
 		{ 
 			get { return m_Parameters; }
 			set
@@ -3822,7 +3822,7 @@ namespace WindEditor
 				
 
 		private short m_Padding;
-		public short Padding
+		 public short Padding
 		{ 
 			get { return m_Padding; }
 			set
@@ -3874,7 +3874,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -3886,7 +3886,7 @@ namespace WindEditor
 				
 
 		private int m_Params1;
-		public int Params1
+		 public int Params1
 		{ 
 			get { return m_Params1; }
 			set
@@ -3898,7 +3898,7 @@ namespace WindEditor
 				
 
 		private short m_RoomLoadingParams;
-		public short RoomLoadingParams
+		 public short RoomLoadingParams
 		{ 
 			get { return m_RoomLoadingParams; }
 			set
@@ -3910,7 +3910,7 @@ namespace WindEditor
 				
 
 		private int m_Params2;
-		public int Params2
+		 public int Params2
 		{ 
 			get { return m_Params2; }
 			set
@@ -3965,7 +3965,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
-		public string Name
+		override public string Name
 		{ 
 			get { return m_Name; }
 			set
@@ -3977,7 +3977,7 @@ namespace WindEditor
 				
 
 		private int m_Params;
-		public int Params
+		 public int Params
 		{ 
 			get { return m_Params; }
 			set
@@ -3989,7 +3989,7 @@ namespace WindEditor
 				
 
 		private short m_RoomIndex;
-		public short RoomIndex
+		 public short RoomIndex
 		{ 
 			get { return m_RoomIndex; }
 			set
@@ -4001,7 +4001,7 @@ namespace WindEditor
 				
 
 		private int m_Params2;
-		public int Params2
+		 public int Params2
 		{ 
 			get { return m_Params2; }
 			set
@@ -4052,7 +4052,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private short m_NumberofPoints;
-		public short NumberofPoints
+		 public short NumberofPoints
 		{ 
 			get { return m_NumberofPoints; }
 			set
@@ -4064,7 +4064,7 @@ namespace WindEditor
 				
 
 		private short m_NextPathIndex;
-		public short NextPathIndex
+		 public short NextPathIndex
 		{ 
 			get { return m_NextPathIndex; }
 			set
@@ -4076,7 +4076,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -4088,7 +4088,7 @@ namespace WindEditor
 				
 
 		private byte m_PathLoops;
-		public byte PathLoops
+		 public byte PathLoops
 		{ 
 			get { return m_PathLoops; }
 			set
@@ -4100,7 +4100,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown4;
-		public short Unknown4
+		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -4112,7 +4112,7 @@ namespace WindEditor
 				
 
 		private int m_FirstEntryOffset;
-		public int FirstEntryOffset
+		 public int FirstEntryOffset
 		{ 
 			get { return m_FirstEntryOffset; }
 			set
@@ -4165,7 +4165,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private short m_NumberofPoints;
-		public short NumberofPoints
+		 public short NumberofPoints
 		{ 
 			get { return m_NumberofPoints; }
 			set
@@ -4177,7 +4177,7 @@ namespace WindEditor
 				
 
 		private short m_NextPathIndex;
-		public short NextPathIndex
+		 public short NextPathIndex
 		{ 
 			get { return m_NextPathIndex; }
 			set
@@ -4189,7 +4189,7 @@ namespace WindEditor
 				
 
 		private byte m_Unknown2;
-		public byte Unknown2
+		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
 			set
@@ -4201,7 +4201,7 @@ namespace WindEditor
 				
 
 		private byte m_PathLoops;
-		public byte PathLoops
+		 public byte PathLoops
 		{ 
 			get { return m_PathLoops; }
 			set
@@ -4213,7 +4213,7 @@ namespace WindEditor
 				
 
 		private short m_Unknown4;
-		public short Unknown4
+		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
 			set
@@ -4225,7 +4225,7 @@ namespace WindEditor
 				
 
 		private int m_FirstEntryOffset;
-		public int FirstEntryOffset
+		 public int FirstEntryOffset
 		{ 
 			get { return m_FirstEntryOffset; }
 			set
@@ -4278,7 +4278,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private int m_Unknown1;
-		public int Unknown1
+		 public int Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -4318,7 +4318,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private int m_Unknown1;
-		public int Unknown1
+		 public int Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set

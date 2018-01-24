@@ -9,7 +9,7 @@ namespace WindEditor
 {
     public abstract class WScene : WDOMNode
     {
-        public string Name { get; protected set; }
+        override public string Name { get; set; }
 
         private Dictionary<FourCC, WDOMNode> m_fourCCGroups;
 
