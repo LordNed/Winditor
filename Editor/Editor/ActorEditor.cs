@@ -68,25 +68,62 @@ namespace WindEditor
                 return;
 
             WDOMNode selected = EditorSelection.PrimarySelectedObject;
+            SerializableDOMNode newNode = null;
 
             if (selected is SerializableDOMNode)
             {
                 SerializableDOMNode origNode = selected as SerializableDOMNode;
                 Type selType = selected.GetType();
-                SerializableDOMNode newNode = (SerializableDOMNode)Activator.CreateInstance(selType, origNode.FourCC, m_world);
+                newNode = (SerializableDOMNode)Activator.CreateInstance(selType, origNode.FourCC, m_world);
                 newNode.PostLoad();
                 newNode.SetParent(selected.Parent);
+
+                if (origNode.Parent is WDOMLayeredGroupNode)
+                {
+                    newNode.Layer = origNode.Layer;
+                }
             }
             else if (selected is WDOMLayeredGroupNode)
             {
+                WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
+                Type newObjType = null;
 
+                if (lyrNode.FourCC >= FourCC.ACTR && lyrNode.FourCC <= FourCC.ACTb)
+                    newObjType = typeof(Actor);
+                else if (lyrNode.FourCC >= FourCC.SCOB && lyrNode.FourCC <= FourCC.SCOb)
+                    newObjType = typeof(ScaleableObject);
+                else if (lyrNode.FourCC >= FourCC.TRES && lyrNode.FourCC <= FourCC.TREb)
+                    newObjType = typeof(TreasureChest);
+
+                string unlayedFourCC = lyrNode.FourCC.ToString();
+                MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
+                FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
+
+                newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, enumVal, m_world);
+                newNode.Layer = layer;
+                newNode.PostLoad();
+                newNode.SetParent(lyrNode);
             }
             else if (selected is WDOMGroupNode)
             {
+                WDOMGroupNode grpNode = selected as WDOMGroupNode;
 
+                if (grpNode.FourCC == FourCC.ACTR || grpNode.FourCC == FourCC.SCOB || grpNode.FourCC == FourCC.TRES)
+                    return;
+
+                Type newObjType = FourCCConversion.GetTypeFromEnum(grpNode.FourCC);
+                newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, grpNode.FourCC, m_world);
+                newNode.PostLoad();
+                newNode.SetParent(grpNode);
             }
             else
                 return;
+
+            if (newNode != null)
+            {
+                EditorSelection.ClearSelection();
+                EditorSelection.AddToSelection(newNode);
+            }
 
 			// ToDo: This can spawn specific classes the same way that the actor loader does.
         }

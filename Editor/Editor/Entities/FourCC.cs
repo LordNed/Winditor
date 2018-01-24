@@ -269,5 +269,16 @@ namespace WindEditor
                     return $"Unsupported FourCC ({ fourcc })";
             }
         }
+
+        public static Type GetTypeFromEnum(FourCC value)
+        {
+            switch (value)
+            {
+                case FourCC.SCLS:
+                    return typeof(ExitData);
+            }
+
+            return null;
+        }
     }
 }
