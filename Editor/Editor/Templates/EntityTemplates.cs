@@ -26,6 +26,9 @@ namespace WindEditor
 		// This is called after the data is loaded out of the disk. Use this if you need to post-process the loaded data.
 		public virtual void PostLoad() {}
 
+		// This is called before writing data to the disk. Use this if you need to pre-process the data to be saved.
+		public virtual void PreSave() {}
+
 		public virtual void Load(EndianBinaryReader stream) {}
 		public virtual void Save(EndianBinaryWriter stream) {}
 	}
