@@ -7,6 +7,7 @@ using WArchiveTools.FileSystem;
 using System;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace WindEditor
 {
@@ -27,7 +28,14 @@ namespace WindEditor
         {
             // Add the default Editor World.
             m_editorWorlds.Add(new WWorld());
-        }
+
+			// Load our global data
+			foreach (var file in Directory.GetFiles("resources/templates/"))
+			{
+				MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
+				Globals.ActorDescriptors.Add(descriptor);
+			}
+		}
 
         internal void OnViewportResized(int width, int height)
         {

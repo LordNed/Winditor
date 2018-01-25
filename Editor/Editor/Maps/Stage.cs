@@ -75,15 +75,15 @@ namespace WindEditor
                 }
 
                 // Extract our EnvR data.
-                var envrData = sceneData.GetLightingData();
-
-                // This doesn't always match up, as sea has 52 EnvR entries but only 50 rooms, but meh.
-                if (mapRooms.Count != envrData.Count)
-                    Console.WriteLine("WStage: Mismatched number of entries in Envr ({0}) and number of loaded rooms ({1})!", envrData.Count, mapRooms.Count);
-
-                if (envrData.Count > 0)
-                    foreach (var room in mapRooms)
-                        room.EnvironmentLighting = envrData[0];
+                // var envrData = sceneData.GetLightingData();
+				// 
+                // // This doesn't always match up, as sea has 52 EnvR entries but only 50 rooms, but meh.
+                // if (mapRooms.Count != envrData.Count)
+                //     Console.WriteLine("WStage: Mismatched number of entries in Envr ({0}) and number of loaded rooms ({1})!", envrData.Count, mapRooms.Count);
+				// 
+                // if (envrData.Count > 0)
+                //     foreach (var room in mapRooms)
+                //         room.EnvironmentLighting = envrData[0];
                 //for (int i = 0; i < envrData.Count; i++)
                 //{
                 //    WRoom room = mapRooms.Find(x => x.RoomIndex == i);

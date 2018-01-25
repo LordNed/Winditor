@@ -9,20 +9,8 @@ namespace WindEditor
 {
     public class SceneDataExporter
     {
-        private static List<MapActorDescriptor> m_sActorDescriptors;
-
         public SceneDataExporter()
         {
-            if (m_sActorDescriptors == null)
-            {
-                // Load the Actor Descriptors from disk.
-                m_sActorDescriptors = new List<MapActorDescriptor>();
-                foreach (var file in Directory.GetFiles("resources/templates/"))
-                {
-                    MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
-                    m_sActorDescriptors.Add(descriptor);
-                }
-            }
         }
 
         public void ExportToStream(EndianBinaryWriter writer, WScene scene)
@@ -99,7 +87,7 @@ namespace WindEditor
                 List<SerializableDOMNode> actors = dictionaryData[i];
                 foreach (var actor in actors)
                 {
-                    MapActorDescriptor template = m_sActorDescriptors.Find(x => x.FourCC == actor.FourCC);
+                    MapActorDescriptor template = Globals.ActorDescriptors.Find(x => x.FourCC == actor.FourCC);
                     if (template == null)
                     {
                         Console.WriteLine("Unsupported FourCC (\"{0}\") for exporting!", actor.FourCC);
