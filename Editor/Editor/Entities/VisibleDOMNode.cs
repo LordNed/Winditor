@@ -183,19 +183,19 @@ namespace WindEditor
 			return bHit;
 		}
 
-        private void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        protected virtual void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Name")
                 PostLoad();
         }
 
-        #region IRenderable
-        void IRenderable.AddToRenderer(WSceneView view)
+		#region IRenderable
+		virtual public void AddToRenderer(WSceneView view)
 		{
 			view.AddOpaqueMesh(this);
 		}
 
-		void IRenderable.Draw(WSceneView view)
+		virtual public void Draw(WSceneView view)
 		{
 			var bbox = GetBoundingBox();
 			m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
@@ -219,7 +219,7 @@ namespace WindEditor
 				m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
 		}
 
-		Vector3 IRenderable.GetPosition()
+		virtual public Vector3 GetPosition()
 		{
 			Vector3 modelOffset = Vector3.Zero;
 			if (m_actorMesh != null)
@@ -228,7 +228,7 @@ namespace WindEditor
 			return Transform.Position + modelOffset;
 		}
 
-		float IRenderable.GetBoundingRadius()
+		virtual public float GetBoundingRadius()
 		{
 			Vector3 lScale = Transform.LocalScale;
 			float largestMax = lScale[0];
