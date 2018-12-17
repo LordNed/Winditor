@@ -10,7 +10,7 @@
         xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=Xceed.Wpf.Toolkit"
         xmlns:sc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
+        Title="MainWindo" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
