@@ -75,22 +75,104 @@ namespace WindEditor
                 }
 
                 // Extract our EnvR data.
-                // var envrData = sceneData.GetLightingData();
-				// 
-                // // This doesn't always match up, as sea has 52 EnvR entries but only 50 rooms, but meh.
-                // if (mapRooms.Count != envrData.Count)
-                //     Console.WriteLine("WStage: Mismatched number of entries in Envr ({0}) and number of loaded rooms ({1})!", envrData.Count, mapRooms.Count);
-				// 
-                // if (envrData.Count > 0)
-                //     foreach (var room in mapRooms)
-                //         room.EnvironmentLighting = envrData[0];
-                //for (int i = 0; i < envrData.Count; i++)
-                //{
-                //    WRoom room = mapRooms.Find(x => x.RoomIndex == i);
-                //    if (room != null)
-                //        room.EnvironmentLighting = envrData[i];
-                //}
+                var envrData = GetLightingData();
+				
+                // This doesn't always match up, as sea has 52 EnvR entries but only 50 rooms, but meh.
+                if (mapRooms.Count != envrData.Count)
+                {
+                    Console.WriteLine("WStage: Mismatched number of entries in Envr ({0}) and number of loaded rooms ({1})!",
+                        envrData.Count, mapRooms.Count);
+                }
+				
+                if (envrData.Count > 0)
+                {
+                    foreach (var room in mapRooms)
+                    {
+                        room.EnvironmentLighting = envrData[0];
+                    }
+                }
+
+                for (int i = 0; i < envrData.Count; i++)
+                {
+                    WRoom room = mapRooms.Find(x => x.RoomIndex == i);
+                    if (room != null)
+                        room.EnvironmentLighting = envrData[i];
+                }
             }
+        }
+
+        private List<EnvironmentLighting> GetLightingData()
+        {
+            List<EnvironmentLighting> lights = new List<EnvironmentLighting>();
+            List<LightingTimePreset> times = new List<LightingTimePreset>();
+            List<LightingPalette> palettes = new List<LightingPalette>();
+            List<LightingSkyboxColors> skyboxes = new List<LightingSkyboxColors>();
+
+            if (!m_fourCCGroups.ContainsKey(FourCC.EnvR) ||
+                !m_fourCCGroups.ContainsKey(FourCC.Colo) ||
+                !m_fourCCGroups.ContainsKey(FourCC.Virt) ||
+                !m_fourCCGroups.ContainsKey(FourCC.Pale))
+                return lights;
+
+            foreach (var virt in m_fourCCGroups[FourCC.Virt].Children)
+            {
+                EnvironmentLightingSkyboxColors skybox = (EnvironmentLightingSkyboxColors)virt;
+                LightingSkyboxColors skycolors = new LightingSkyboxColors(skybox);
+
+                skyboxes.Add(skycolors);
+            }
+
+            foreach (var pale in m_fourCCGroups[FourCC.Pale].Children)
+            {
+                EnvironmentLightingColors colors = (EnvironmentLightingColors)pale;
+                LightingPalette palette = new LightingPalette(colors);
+
+                palette.Skybox = skyboxes[colors.SkyboxColorIndex];
+
+                palettes.Add(palette);
+            }
+
+            foreach (var colo in m_fourCCGroups[FourCC.Colo].Children)
+            {
+                EnvironmentLightingTimesOfDay daytimes = (EnvironmentLightingTimesOfDay)colo;
+                LightingTimePreset preset = new LightingTimePreset();
+
+                preset.TimePresetA[0] = palettes[daytimes.DawnA];
+                preset.TimePresetA[1] = palettes[daytimes.MorningA];
+                preset.TimePresetA[2] = palettes[daytimes.NoonA];
+                preset.TimePresetA[3] = palettes[daytimes.AfternoonA];
+                preset.TimePresetA[4] = palettes[daytimes.DuskA];
+                preset.TimePresetA[5] = palettes[daytimes.NightA];
+
+                preset.TimePresetB[0] = palettes[daytimes.DawnB];
+                preset.TimePresetB[1] = palettes[daytimes.MorningB];
+                preset.TimePresetB[2] = palettes[daytimes.NoonB];
+                preset.TimePresetB[3] = palettes[daytimes.AfternoonB];
+                preset.TimePresetB[4] = palettes[daytimes.DuskB];
+                preset.TimePresetB[5] = palettes[daytimes.NightB];
+
+                times.Add(preset);
+            }
+
+            foreach (var envr in m_fourCCGroups[FourCC.EnvR].Children)
+            {
+                EnvironmentLightingConditions condition = (EnvironmentLightingConditions)envr;
+                EnvironmentLighting env = new EnvironmentLighting();
+
+                env.WeatherA[0] = times[condition.ClearColorA];
+                env.WeatherA[1] = times[condition.RainingColorA];
+                env.WeatherA[2] = times[condition.SnowingA];
+                env.WeatherA[3] = times[condition.UnknownA];
+
+                env.WeatherB[0] = times[condition.ClearColorB];
+                env.WeatherB[1] = times[condition.RainingColorB];
+                env.WeatherB[2] = times[condition.SnowingB];
+                env.WeatherB[3] = times[condition.UnknownB];
+
+                lights.Add(env);
+            }
+
+            return lights;
         }
 
         public override void SaveEntitiesToDirectory(string directory)

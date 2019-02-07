@@ -76,6 +76,25 @@ namespace WindEditor
         public WLinearColor Fog { get; set; }
         public float FogNearPlane { get; set; }
         public float FogFarPlane { get; set; }
+
+        public LightingPalette()
+        {
+
+        }
+
+        public LightingPalette(EnvironmentLightingColors data)
+        {
+            Shadow = data.ShadowColor;
+            ActorAmbient = data.ActorAmbientColor;
+            RoomLight = data.RoomLightColor;
+            RoomAmbient = data.RoomAmbientColor;
+            WaveColor = data.WaveColor;
+            OceanColor = data.OceanColor;
+            UnknownWhite1 = data.UnknownWhite1;
+            UnknownWhite2 = data.UnknownWhite2;
+            Doorway = data.DoorBackfill;
+            UnknownColor3 = data.Unknown3;
+        }
     }
 
     /// <summary>
@@ -93,6 +112,25 @@ namespace WindEditor
         public WLinearColor Sky { get; set; }
         public WLinearColor FalseSea { get; set; }
         public WLinearColor Horizon { get; set; }
+
+        public LightingSkyboxColors()
+        {
+
+        }
+
+        public LightingSkyboxColors(EnvironmentLightingSkyboxColors data)
+        {
+            HorizonCloud = data.HorizonCloudColor;
+            CenterCloud = data.CenterCloudColor;
+            Sky = data.SkyColor;
+            FalseSea = data.FalseSeaColor;
+            Horizon = data.HorizonColor;
+
+            Unknown1 = data.Unknown1;
+            Unknown2 = data.Unknown2;
+            Unknown3 = data.Unknown3;
+            Unknown4 = data.Unknown4;
+        }
 
         public static LightingSkyboxColors Lerp(LightingSkyboxColors a, LightingSkyboxColors b, float t)
         {

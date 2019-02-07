@@ -11,7 +11,7 @@ namespace WindEditor
     {
         override public string Name { get; set; }
 
-        private Dictionary<FourCC, WDOMNode> m_fourCCGroups;
+        protected Dictionary<FourCC, WDOMNode> m_fourCCGroups;
 
         public WScene(WWorld world) : base(world)
         {
