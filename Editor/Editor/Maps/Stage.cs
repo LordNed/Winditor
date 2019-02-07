@@ -127,7 +127,10 @@ namespace WindEditor
                 EnvironmentLightingColors colors = (EnvironmentLightingColors)pale;
                 LightingPalette palette = new LightingPalette(colors);
 
-                palette.Skybox = skyboxes[colors.SkyboxColorIndex];
+                if (colors.SkyboxColorIndex < skyboxes.Count)
+                    palette.Skybox = skyboxes[colors.SkyboxColorIndex];
+                else
+                    palette.Skybox = new LightingSkyboxColors();
 
                 palettes.Add(palette);
             }
@@ -144,12 +147,12 @@ namespace WindEditor
                 preset.TimePresetA[4] = palettes[daytimes.DuskA];
                 preset.TimePresetA[5] = palettes[daytimes.NightA];
 
-                preset.TimePresetB[0] = palettes[daytimes.DawnB];
-                preset.TimePresetB[1] = palettes[daytimes.MorningB];
-                preset.TimePresetB[2] = palettes[daytimes.NoonB];
-                preset.TimePresetB[3] = palettes[daytimes.AfternoonB];
-                preset.TimePresetB[4] = palettes[daytimes.DuskB];
-                preset.TimePresetB[5] = palettes[daytimes.NightB];
+                preset.TimePresetB[0] = palettes[0];//daytimes.DawnB];
+                preset.TimePresetB[1] = palettes[0]; //palettes[daytimes.MorningB];
+                preset.TimePresetB[2] = palettes[0]; //palettes[daytimes.NoonB];
+                preset.TimePresetB[3] = palettes[0]; //palettes[daytimes.AfternoonB];
+                preset.TimePresetB[4] = palettes[0]; //palettes[daytimes.DuskB];
+                preset.TimePresetB[5] = palettes[0]; //palettes[daytimes.NightB];
 
                 times.Add(preset);
             }
@@ -160,7 +163,7 @@ namespace WindEditor
                 EnvironmentLighting env = new EnvironmentLighting();
 
                 env.WeatherA[0] = times[condition.ClearColorA];
-                env.WeatherA[1] = times[condition.RainingColorA];
+                env.WeatherA[1] = times[condition.RainingColorA < times.Count ? condition.RainingColorA : 0];
                 env.WeatherA[2] = times[condition.SnowingA];
                 env.WeatherA[3] = times[condition.UnknownA];
 
@@ -173,6 +176,32 @@ namespace WindEditor
             }
 
             return lights;
+        }
+
+        public override void SetTimeOfDay(float timeOfDay)
+        {
+            base.SetTimeOfDay(timeOfDay);
+
+            if (m_skybox == null)
+                return;
+
+            WRoom first_room = null;
+
+            foreach (var node in m_world.Map.SceneList)
+            {
+                if (node is WRoom)
+                {
+                    first_room = (WRoom)node;
+                    break;
+                }
+            }
+
+            if (first_room == null || first_room.EnvironmentLighting == null)
+                return;
+
+            var curLight = first_room.EnvironmentLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+
+            m_skybox.SetColors(curLight.Skybox);
         }
 
         public override void SaveEntitiesToDirectory(string directory)
