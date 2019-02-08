@@ -8,8 +8,8 @@
              mc:Ignorable="d">
     <Grid>
         <Rectangle Fill="#FFF4F4F5" Stroke="Black"/>
-        <Expander Header="{Binding CategoryName}">
-            <ItemsControl ItemsSource="{Binding PropertyRows}">
+        <Expander Header="{Binding Path=CategoryName}">
+            <ItemsControl ItemsSource="{Binding Path=PropertyRows}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local:WDetailSingleRow DataContext="{Binding}"/>

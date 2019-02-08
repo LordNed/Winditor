@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindEditor.View"
-             mc:Ignorable="d" Height="19.829" Width="88.014">
+             mc:Ignorable="d">
     <Grid Margin="0,0,0,0">
         <DockPanel Name="LabelDock" Margin="0,0,46,0">
-            <TextBlock Text="{Binding Path=PropertyName}" Margin="0,0,0,0"/>
+            <TextBlock Text="{Binding Path=PropertyName}"/>
         </DockPanel>
         <DockPanel x:Name="PropertyDock" Margin="42,0,0,0">
             <ContentControl x:Name="PropertyComponent" Content="{Binding Path=PropertyControl}"/>

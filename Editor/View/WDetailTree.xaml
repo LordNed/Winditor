@@ -12,15 +12,15 @@
     </UserControl.DataContext>
     <Grid>
         <DockPanel LastChildFill="True">
-            <TreeView x:Name="WDetailTreeView" ItemsSource="{Binding Path=Categories}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Value}">
-                        <DockPanel LastChildFill="True">
+            <StackPanel Orientation="Vertical" x:Name="WDetailTreeView">
+                <ItemsControl ItemsSource="{Binding Path=Categories}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
                             <local:WDetailCategoryRow DataContext="{Binding Path=Value}"/>
-                        </DockPanel>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </UserControl>
