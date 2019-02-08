@@ -96,11 +96,13 @@
       <HintPath>..\lib\OpenTK.GLControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -141,10 +143,41 @@
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
+    <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
+    <Compile Include="ViewModel\WDetailSingleRowViewModel.cs" />
+    <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
     <Compile Include="View\OptionsMenu.xaml.cs">
       <DependentUpon>OptionsMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WDetailCategoryRow.xaml.cs">
+      <DependentUpon>WDetailCategoryRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WDetailSingleRow.xaml.cs">
+      <DependentUpon>WDetailSingleRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WDetailsView.xaml.cs">
+      <DependentUpon>WDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WDetailTree.xaml.cs">
+      <DependentUpon>WDetailTree.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\OptionsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WDetailCategoryRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WDetailSingleRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WDetailTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

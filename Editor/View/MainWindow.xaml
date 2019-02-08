@@ -9,6 +9,7 @@
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=Xceed.Wpf.Toolkit"
         xmlns:sc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:wview="clr-namespace:WindEditor.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop">
     <Window.InputBindings>
@@ -227,18 +228,8 @@
                         <Label DockPanel.Dock="Left" Content="Layer:"/>
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
                     </DockPanel>
-                    <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="{Binding Path=EditorSelection.SingleObjectSelected}">
-                        <xceed:PropertyGrid SelectedObject="{Binding Path=EditorSelection.PrimarySelectedObject}" AutoGenerateProperties="False" SelectedObjectChanged="PropertyGrid_SelectedObjectChanged">
-                            <xceed:PropertyGrid.EditorDefinitions>
-                                <xceed:EditorTemplateDefinition TargetProperties="{x:Type wp:WLinearColor}">
-                                    <xceed:EditorTemplateDefinition.EditingTemplate>
-                                        <DataTemplate>
-                                            <sc:ColorPicker SelectedColor="{Binding Value, Converter={StaticResource LinearColorConverter}}" />
-                                        </DataTemplate>
-                                    </xceed:EditorTemplateDefinition.EditingTemplate>
-                                </xceed:EditorTemplateDefinition>
-                            </xceed:PropertyGrid.EditorDefinitions>
-                        </xceed:PropertyGrid>
+                    <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <wview:WDetailsView/>
                     </GroupBox>
                 </DockPanel>
             </Grid>
