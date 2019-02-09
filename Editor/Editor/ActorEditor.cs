@@ -60,6 +60,8 @@ namespace WindEditor
 		{
 			// This will get invoked when an Undo happens which allows the gizmo to fix itself.
 			UpdateGizmoTransform();
+
+            DetailsViewModel.ReflectObject(new SpawnPoint(FourCC.PLYR, null));
         }
 
         public void UpdateGizmoTransform()

@@ -124,21 +124,28 @@ namespace WindEditor
         public FourCC FourCC;
 		public string ClassName;
 		public string ParentClassOverride;
-        public List<DataDescriptorField> Fields;
+        public DataDescriptorField[] Fields;
     }
 
     public class DataDescriptorField
     {
         [JsonProperty("Name")]
-        public string FieldName;
+        public string FieldName { get; set; }
 
         [JsonProperty("Type")]
-        public PropertyValueType FieldType;
+        public PropertyValueType FieldType { get; set; }
 
 		[JsonProperty("Hidden")]
-		public bool Hidden;
+		public bool Hidden { get; set; }
 
         public uint Length;
+
+        [JsonConstructor]
+        public DataDescriptorField(string Name, PropertyValueType Type, bool Hidden)
+        {
+            FieldName = Name;
+            FieldType = Type;
+        }
     }
 #pragma warning restore 0649
 

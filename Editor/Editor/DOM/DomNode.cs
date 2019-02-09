@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using System.Collections.ObjectModel;
+using WindEditor.ViewModel;
 
 namespace WindEditor
 {
@@ -62,6 +63,7 @@ namespace WindEditor
 		public List<PropertyDefinition> VisibleProperties { get; protected set; }
 
 		public WDOMNode Parent { get; private set; }
+        [WProperty("Transform", "Transform")]
         public WTransform Transform { get; private set; }
         public ObservableCollection<WDOMNode> Children { get { return m_children; } }
         public NodeFlags Flags { get; set; }
