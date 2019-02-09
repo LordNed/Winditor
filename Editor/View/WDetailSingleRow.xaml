@@ -6,10 +6,16 @@
              xmlns:local="clr-namespace:WindEditor.View"
              mc:Ignorable="d">
     <Grid Margin="0,0,0,0">
-        <DockPanel Name="LabelDock" Margin="0,0,46,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding Path=GridColumnWidth_0}"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="{Binding Path=GridColumnWidth_2}"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Name="LabelDock" Margin="0,0,46,0" Grid.Column="0">
             <TextBlock Text="{Binding Path=PropertyName}"/>
         </DockPanel>
-        <DockPanel x:Name="PropertyDock" Margin="42,0,0,0">
+        <GridSplitter Grid.Column="1" Height="Auto" Width="Auto" BorderBrush="DarkSlateGray" HorizontalAlignment="Stretch"/>
+        <DockPanel x:Name="PropertyDock" Margin="42,0,0,0" Grid.Column="2">
             <ContentControl x:Name="PropertyComponent" Content="{Binding Path=PropertyControl}"/>
         </DockPanel>
     </Grid>

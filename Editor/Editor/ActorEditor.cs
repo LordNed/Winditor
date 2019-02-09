@@ -6,12 +6,16 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using WindEditor.Serialization;
+using WindEditor.ViewModel;
 
 namespace WindEditor
 {
-    public class WActorEditor : IDisposable
+    public class WActorEditor : IDisposable, INotifyPropertyChanged
     {
-		public Selection EditorSelection { get; protected set; }
+        // WPF
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Selection EditorSelection { get; protected set; }
         public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => false ); } }
@@ -20,6 +24,20 @@ namespace WindEditor
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity()); } }
 
+        public WDetailsViewViewModel DetailsViewModel
+        {
+            get { return m_DetailsViewModel; }
+            set
+            {
+                if (value != m_DetailsViewModel)
+                {
+                    m_DetailsViewModel = value;
+                    OnPropertyChanged("DetailsViewModel");
+                }
+            }
+        }
+
+        private WDetailsViewViewModel m_DetailsViewModel;
         private WWorld m_world;
         private WTransformGizmo m_transformGizmo;
 
@@ -34,13 +52,15 @@ namespace WindEditor
 
 			EditorSelection = new Selection(m_world, this);
 			EditorSelection.OnSelectionChanged += OnSelectionChanged;
+
+            DetailsViewModel = new WDetailsViewViewModel();
         }
 
 		private void OnSelectionChanged()
 		{
 			// This will get invoked when an Undo happens which allows the gizmo to fix itself.
 			UpdateGizmoTransform();
-		}
+        }
 
         public void UpdateGizmoTransform()
         {
@@ -411,6 +431,14 @@ namespace WindEditor
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+        #endregion
+
+        #region INotifyPropertyChanged Support
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

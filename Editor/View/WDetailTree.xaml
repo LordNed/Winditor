@@ -7,16 +7,13 @@
              xmlns:vm="clr-namespace:WindEditor.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="200">
-    <UserControl.DataContext>
-        <vm:WDetailsViewViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <DockPanel LastChildFill="True">
             <StackPanel Orientation="Vertical" x:Name="WDetailTreeView">
-                <ItemsControl ItemsSource="{Binding Path=Categories}">
+                <ItemsControl ItemsSource="{Binding Categories}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <local:WDetailCategoryRow DataContext="{Binding Path=Value}"/>
+                            <local:WDetailCategoryRow DataContext="{Binding Value}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

@@ -25,7 +25,6 @@ namespace WindEditor.View
         // WPF
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Dictionary<string, WDetailsCategoryRowViewModel> m_Categories;
         public WDetailTree()
         {
             InitializeComponent();

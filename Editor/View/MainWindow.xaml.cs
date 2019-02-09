@@ -7,6 +7,11 @@ using System.IO;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Reflection;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace WindEditor
 {
@@ -58,6 +63,7 @@ namespace WindEditor
         private void GlControlHost_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             WInput.SetMouseState(WinFormToWPFMouseButton(e), false);
+            object test = Details;
         }
 
         private void GlControlHost_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
