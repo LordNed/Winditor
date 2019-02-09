@@ -2924,7 +2924,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Spawn Properties", "Name")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -2938,7 +2938,7 @@ namespace WindEditor
 
 		private byte m_EventIndex;
 
-		[WProperty("test", "Event Index")]
+		[WProperty("Spawn Properties", "Event Index")]
 		 public byte EventIndex
 		{ 
 			get { return m_EventIndex; }
@@ -2952,7 +2952,7 @@ namespace WindEditor
 
 		private byte m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Unknowns", "Unknown 1")]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -2966,7 +2966,7 @@ namespace WindEditor
 
 		private byte m_SpawnType;
 
-		[WProperty("test", "Spawn Type")]
+		[WProperty("Spawn Properties", "Spawn Type")]
 		 public byte SpawnType
 		{ 
 			get { return m_SpawnType; }
@@ -2980,7 +2980,7 @@ namespace WindEditor
 
 		private byte m_Room;
 
-		[WProperty("test", "Room")]
+		[WProperty("Spawn Properties", "Room")]
 		 public byte Room
 		{ 
 			get { return m_Room; }
@@ -2994,7 +2994,7 @@ namespace WindEditor
 
 		private short m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Unknowns", "Unknown 2")]
 		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -3008,7 +3008,7 @@ namespace WindEditor
 
 		private byte m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Unknowns", "Unknown 3")]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -3022,7 +3022,7 @@ namespace WindEditor
 
 		private byte m_SpawnIndex;
 
-		[WProperty("test", "Spawn Index")]
+		[WProperty("Spawn Properties", "Spawn Index")]
 		 public byte SpawnIndex
 		{ 
 			get { return m_SpawnIndex; }
@@ -3036,7 +3036,7 @@ namespace WindEditor
 
 		private short m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Unknowns", "Unknown 4")]
 		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }

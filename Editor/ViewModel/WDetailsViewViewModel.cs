@@ -27,36 +27,8 @@ namespace WindEditor.ViewModel
             }
         }
 
-        public int GridColumnWidth_0
-        {
-            get { return m_GridColumnWidth_0; }
-            set
-            {
-                if (value != m_GridColumnWidth_0)
-                {
-                    m_GridColumnWidth_0 = value;
-                    OnPropertyChanged("GridColumnWidth_0");
-                }
-            }
-        }
-
-        public int GridColumnWidth_2
-        {
-            get { return m_GridColumnWidth_2; }
-            set
-            {
-                if (value != m_GridColumnWidth_2)
-                {
-                    m_GridColumnWidth_2 = value;
-                    OnPropertyChanged("GridColumnWidth_2");
-                }
-            }
-        }
-
         private Dictionary<string, WDetailsCategoryRowViewModel> m_Categories;
         private Dictionary<string, IPropertyTypeCustomization> m_TypeCustomizations;
-        private int m_GridColumnWidth_0;
-        private int m_GridColumnWidth_2;
 
         public WDetailsViewViewModel()
         {
@@ -65,6 +37,9 @@ namespace WindEditor.ViewModel
 
             m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
             m_TypeCustomizations.Add(typeof(string).Name, new StringTypeCustomization());
+            m_TypeCustomizations.Add(typeof(int).Name, new IntegerTypeCustomization());
+            m_TypeCustomizations.Add(typeof(byte).Name, new ByteTypeCustomization());
+            m_TypeCustomizations.Add(typeof(short).Name, new ShortTypeCustomization());
         }
 
         public void ReflectObject(object obj)
