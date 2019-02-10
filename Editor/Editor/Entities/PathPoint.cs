@@ -36,7 +36,7 @@ namespace WindEditor
 			float baseBB = base.GetBoundingRadius();
 			if(NextNode != null)
 			{
-				baseBB += (Transform.Position - NextNode.Transform.Position).Length;
+				baseBB += (Transform.Position.BackingVector - NextNode.Transform.Position.BackingVector).Length;
 			}
 
 			return baseBB;

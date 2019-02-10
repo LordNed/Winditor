@@ -5,18 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindEditor.View"
              mc:Ignorable="d">
-    <Grid Margin="0,0,0,0">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" MinWidth="10" MaxWidth="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Name="LabelDock" Margin="0,0,46,0" Grid.Column="0">
-            <TextBlock Text="{Binding Path=PropertyName}"/>
+        <DockPanel Name="LabelDock" Grid.Column="0" LastChildFill="True">
+            <Grid>
+                <Label Content="{Binding Path=PropertyName}"/>
+            </Grid>
         </DockPanel>
-        <GridSplitter Grid.Column="1" Height="Auto" Width="Auto" BorderBrush="DarkSlateGray" HorizontalAlignment="Stretch"/>
-        <DockPanel x:Name="PropertyDock" Margin="42,0,0,0" Grid.Column="2">
-            <ContentControl x:Name="PropertyComponent" Content="{Binding Path=PropertyControl}"/>
+        <GridSplitter Grid.Column="1" BorderBrush="DarkSlateGray" Background="Gray" Width="2"/>
+        <DockPanel x:Name="PropertyDock" Grid.Column="2" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="2,0,0,0">
+            <Grid>
+                <ContentControl x:Name="PropertyComponent" Content="{Binding Path=PropertyControl}"/>
+            </Grid>
         </DockPanel>
     </Grid>
 </UserControl>

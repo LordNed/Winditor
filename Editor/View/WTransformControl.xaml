@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="WindEditor.View.WTransformControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WindEditor.View"
+             xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             mc:Ignorable="d" >
+    <Grid>
+        <DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="80*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="X" Grid.Column="0" TextAlignment="Center" Foreground="White" Background="Red"/>
+                <TextBlock Text="Y" Grid.Column="2" TextAlignment="Center" Foreground="White" Background="Green"/>
+                <TextBlock Text="Z" Grid.Column="4" TextAlignment="Center" Foreground="White" Background="Blue"/>
+                <xceed:SingleUpDown x:Name="XUpDown" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                <xceed:SingleUpDown x:Name="YUpDown" Grid.Column="3" HorizontalAlignment="Stretch"/>
+                <xceed:SingleUpDown x:Name="ZUpDown" Grid.Column="5" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -178,6 +178,9 @@
     <Compile Include="View\WDetailTree.xaml.cs">
       <DependentUpon>WDetailTree.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WTransformControl.xaml.cs">
+      <DependentUpon>WTransformControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\OptionsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WDetailTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WTransformControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
