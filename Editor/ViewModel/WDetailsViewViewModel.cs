@@ -35,11 +35,13 @@ namespace WindEditor.ViewModel
             m_Categories = new Dictionary<string, WDetailsCategoryRowViewModel>();
             m_TypeCustomizations = new Dictionary<string, IPropertyTypeCustomization>();
 
-            m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
             m_TypeCustomizations.Add(typeof(string).Name, new StringTypeCustomization());
             m_TypeCustomizations.Add(typeof(int).Name, new IntegerTypeCustomization());
             m_TypeCustomizations.Add(typeof(byte).Name, new ByteTypeCustomization());
             m_TypeCustomizations.Add(typeof(short).Name, new ShortTypeCustomization());
+            m_TypeCustomizations.Add(typeof(float).Name, new SingleTypeCustomization());
+            m_TypeCustomizations.Add(typeof(WLinearColor).Name, new LinearColorTypeCustomization());
+            m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
         }
 
         public void ReflectObject(object obj)

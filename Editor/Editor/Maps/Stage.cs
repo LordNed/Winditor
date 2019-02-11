@@ -199,7 +199,9 @@ namespace WindEditor
             if (first_room == null || first_room.EnvironmentLighting == null)
                 return;
 
-            var curLight = first_room.EnvironmentLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+            var envrData = GetLightingData();
+
+            var curLight = envrData[0].Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
 
             m_skybox.SetColors(curLight.Skybox);
         }

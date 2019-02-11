@@ -148,7 +148,9 @@
     <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IPropertyTypeCustomization.cs" />
+    <Compile Include="Editor\Property Customization\LinearColorTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\ShortTypeCustomization.cs" />
+    <Compile Include="Editor\Property Customization\SingleTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\StringTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\WTransformTypeCustomization.cs" />
     <Compile Include="Editor\Selection.cs" />

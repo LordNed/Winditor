@@ -217,6 +217,7 @@ namespace WindEditor
 
         public void OnApplicationRequestCloseProject()
         {
+            MainWorld.ActorEditor.DetailsViewModel.Categories = new Dictionary<string, ViewModel.WDetailsCategoryRowViewModel>();
             MainWorld.UnloadMap();
         }
 
