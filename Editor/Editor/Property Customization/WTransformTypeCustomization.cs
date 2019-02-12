@@ -18,7 +18,7 @@ namespace WindEditor.Editor
             throw new NotImplementedException();
         }
 
-        List<WDetailSingleRowViewModel> IPropertyTypeCustomization.CustomizeHeader(PropertyInfo property, string display_name, object source)
+        List<WDetailSingleRowViewModel> IPropertyTypeCustomization.CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
         {
             WTransformControl pos_ctrl = new WTransformControl();
             WTransformControl scale_ctrl = new WTransformControl();
@@ -26,11 +26,14 @@ namespace WindEditor.Editor
 
             WTransform transform = property.GetValue(source) as WTransform;
 
-            Binding pos_bind = new Binding("X");
-            pos_bind.Source = transform.Position;
-            pos_bind.Mode = BindingMode.TwoWay;
-            pos_bind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            pos_ctrl.XUpDown.SetBinding(SingleUpDown.ValueProperty, pos_bind);
+            Binding pos_bind = new Binding("Position")
+            {
+                Source = transform,
+                Mode = BindingMode.TwoWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            };
+
+            pos_ctrl.SetBinding(WTransformControl.Vector3Property, pos_bind);
 
             WDetailSingleRowViewModel pos_row = new WDetailSingleRowViewModel("Position");
             pos_row.PropertyControl = pos_ctrl;

@@ -48,7 +48,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private Vector2 m_FullMapImageScale;
 
-		[WProperty("test", "Full Map Image Scale")]
+		[WProperty("Misc.", "Full Map Image Scale", false)]
 		 public Vector2 FullMapImageScale
 		{ 
 			get { return m_FullMapImageScale; }
@@ -62,7 +62,7 @@ namespace WindEditor
 
 		private Vector2 m_FullMapSpaceScale;
 
-		[WProperty("test", "Full Map Space Scale")]
+		[WProperty("Misc.", "Full Map Space Scale", false)]
 		 public Vector2 FullMapSpaceScale
 		{ 
 			get { return m_FullMapSpaceScale; }
@@ -76,7 +76,7 @@ namespace WindEditor
 
 		private Vector2 m_FullMapTranslation;
 
-		[WProperty("test", "Full Map Translation")]
+		[WProperty("Misc.", "Full Map Translation", false)]
 		 public Vector2 FullMapTranslation
 		{ 
 			get { return m_FullMapTranslation; }
@@ -90,7 +90,7 @@ namespace WindEditor
 
 		private Vector2 m_ZoomedMapScrolling1;
 
-		[WProperty("test", "Zoomed Map Scrolling 1")]
+		[WProperty("Misc.", "Zoomed Map Scrolling 1", false)]
 		 public Vector2 ZoomedMapScrolling1
 		{ 
 			get { return m_ZoomedMapScrolling1; }
@@ -104,7 +104,7 @@ namespace WindEditor
 
 		private Vector2 m_ZoomedMapScrolling2;
 
-		[WProperty("test", "Zoomed Map Scrolling 2")]
+		[WProperty("Misc.", "Zoomed Map Scrolling 2", false)]
 		 public Vector2 ZoomedMapScrolling2
 		{ 
 			get { return m_ZoomedMapScrolling2; }
@@ -118,7 +118,7 @@ namespace WindEditor
 
 		private Vector2 m_ZoomedMapTranslation;
 
-		[WProperty("test", "Zoomed Map Translation")]
+		[WProperty("Misc.", "Zoomed Map Translation", false)]
 		 public Vector2 ZoomedMapTranslation
 		{ 
 			get { return m_ZoomedMapTranslation; }
@@ -132,7 +132,7 @@ namespace WindEditor
 
 		private float m_ZoomedMapScale;
 
-		[WProperty("test", "Zoomed Map Scale")]
+		[WProperty("Misc.", "Zoomed Map Scale", false)]
 		 public float ZoomedMapScale
 		{ 
 			get { return m_ZoomedMapScale; }
@@ -146,7 +146,7 @@ namespace WindEditor
 
 		private byte m_Unknown;
 
-		[WProperty("test", "Unknown")]
+		[WProperty("Misc.", "Unknown", false)]
 		 public byte Unknown
 		{ 
 			get { return m_Unknown; }
@@ -160,7 +160,7 @@ namespace WindEditor
 
 		private byte m_MapImageIndex;
 
-		[WProperty("test", "Map Image Index")]
+		[WProperty("Misc.", "Map Image Index", false)]
 		 public byte MapImageIndex
 		{ 
 			get { return m_MapImageIndex; }
@@ -174,7 +174,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -188,7 +188,7 @@ namespace WindEditor
 
 		private byte m_Padding;
 
-		[WProperty("test", "Padding")]
+		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
 		{ 
 			get { return m_Padding; }
@@ -258,7 +258,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private Vector2 m_FullMapImageScale;
 
-		[WProperty("test", "Full Map Image Scale")]
+		[WProperty("Misc.", "Full Map Image Scale", false)]
 		 public Vector2 FullMapImageScale
 		{ 
 			get { return m_FullMapImageScale; }
@@ -272,7 +272,7 @@ namespace WindEditor
 
 		private Vector2 m_FullMapSpaceScale;
 
-		[WProperty("test", "Full Map Space Scale")]
+		[WProperty("Misc.", "Full Map Space Scale", false)]
 		 public Vector2 FullMapSpaceScale
 		{ 
 			get { return m_FullMapSpaceScale; }
@@ -286,7 +286,7 @@ namespace WindEditor
 
 		private Vector2 m_FullMapTranslation;
 
-		[WProperty("test", "Full Map Translation")]
+		[WProperty("Misc.", "Full Map Translation", false)]
 		 public Vector2 FullMapTranslation
 		{ 
 			get { return m_FullMapTranslation; }
@@ -300,7 +300,7 @@ namespace WindEditor
 
 		private Vector2 m_ZoomedMapScrolling1;
 
-		[WProperty("test", "Zoomed Map Scrolling 1")]
+		[WProperty("Misc.", "Zoomed Map Scrolling 1", false)]
 		 public Vector2 ZoomedMapScrolling1
 		{ 
 			get { return m_ZoomedMapScrolling1; }
@@ -314,7 +314,7 @@ namespace WindEditor
 
 		private Vector2 m_ZoomedMapScrolling2;
 
-		[WProperty("test", "Zoomed Map Scrolling 2")]
+		[WProperty("Misc.", "Zoomed Map Scrolling 2", false)]
 		 public Vector2 ZoomedMapScrolling2
 		{ 
 			get { return m_ZoomedMapScrolling2; }
@@ -328,7 +328,7 @@ namespace WindEditor
 
 		private Vector2 m_ZoomedMapTranslation;
 
-		[WProperty("test", "Zoomed Map Translation")]
+		[WProperty("Misc.", "Zoomed Map Translation", false)]
 		 public Vector2 ZoomedMapTranslation
 		{ 
 			get { return m_ZoomedMapTranslation; }
@@ -342,7 +342,7 @@ namespace WindEditor
 
 		private float m_ZoomedMapScale;
 
-		[WProperty("test", "Zoomed Map Scale")]
+		[WProperty("Misc.", "Zoomed Map Scale", false)]
 		 public float ZoomedMapScale
 		{ 
 			get { return m_ZoomedMapScale; }
@@ -356,7 +356,7 @@ namespace WindEditor
 
 		private byte m_Unknown;
 
-		[WProperty("test", "Unknown")]
+		[WProperty("Misc.", "Unknown", false)]
 		 public byte Unknown
 		{ 
 			get { return m_Unknown; }
@@ -370,7 +370,7 @@ namespace WindEditor
 
 		private byte m_MapImageIndex;
 
-		[WProperty("test", "Map Image Index")]
+		[WProperty("Misc.", "Map Image Index", false)]
 		 public byte MapImageIndex
 		{ 
 			get { return m_MapImageIndex; }
@@ -384,7 +384,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -398,7 +398,7 @@ namespace WindEditor
 
 		private byte m_Padding;
 
-		[WProperty("test", "Padding")]
+		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
 		{ 
 			get { return m_Padding; }
@@ -468,7 +468,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -482,7 +482,7 @@ namespace WindEditor
 
 		private int m_Parameters;
 
-		[WProperty("test", "Parameters")]
+		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
 		{ 
 			get { return m_Parameters; }
@@ -496,7 +496,7 @@ namespace WindEditor
 
 		private short m_FlagToSet;
 
-		[WProperty("test", "Flag To Set")]
+		[WProperty("Misc.", "Flag To Set", false)]
 		 public short FlagToSet
 		{ 
 			get { return m_FlagToSet; }
@@ -510,7 +510,7 @@ namespace WindEditor
 
 		private short m_EnemyNumber;
 
-		[WProperty("test", "Enemy Number")]
+		[WProperty("Misc.", "Enemy Number", false)]
 		 public short EnemyNumber
 		{ 
 			get { return m_EnemyNumber; }
@@ -564,24 +564,12 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private short m_Padding;
-
-		[WProperty("test", "Padding")]
-		 public short Padding
-		{ 
-			get { return m_Padding; }
-			set
-			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
-			}
-		}
 				
 
 
 		// Constructor
 		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -612,24 +600,12 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private short m_Padding;
-
-		[WProperty("test", "Padding")]
-		 public short Padding
-		{ 
-			get { return m_Padding; }
-			set
-			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
-			}
-		}
 				
 
 
 		// Constructor
 		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -661,7 +637,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_CameraType;
 
-		[WProperty("test", "Camera Type")]
+		[WProperty("Misc.", "Camera Type", false)]
 		 public string CameraType
 		{ 
 			get { return m_CameraType; }
@@ -675,7 +651,7 @@ namespace WindEditor
 
 		private short m_CameraPointIndex;
 
-		[WProperty("test", "Camera Point Index")]
+		[WProperty("Misc.", "Camera Point Index", false)]
 		 public short CameraPointIndex
 		{ 
 			get { return m_CameraPointIndex; }
@@ -689,7 +665,7 @@ namespace WindEditor
 
 		private byte m_Padding1;
 
-		[WProperty("test", "Padding 1")]
+		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -703,7 +679,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("test", "Padding 2")]
+		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -717,7 +693,7 @@ namespace WindEditor
 
 		private byte m_Padding3;
 
-		[WProperty("test", "Padding 3")]
+		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
@@ -769,7 +745,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_CameraType;
 
-		[WProperty("test", "Camera Type")]
+		[WProperty("Misc.", "Camera Type", false)]
 		 public string CameraType
 		{ 
 			get { return m_CameraType; }
@@ -783,7 +759,7 @@ namespace WindEditor
 
 		private byte m_CameraPointIndex;
 
-		[WProperty("test", "Camera Point Index")]
+		[WProperty("Misc.", "Camera Point Index", false)]
 		 public byte CameraPointIndex
 		{ 
 			get { return m_CameraPointIndex; }
@@ -797,7 +773,7 @@ namespace WindEditor
 
 		private byte m_Padding1;
 
-		[WProperty("test", "Padding 1")]
+		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -811,7 +787,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("test", "Padding 2")]
+		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -825,7 +801,7 @@ namespace WindEditor
 
 		private byte m_Padding3;
 
-		[WProperty("test", "Padding 3")]
+		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
@@ -877,7 +853,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -891,7 +867,7 @@ namespace WindEditor
 
 		private int m_Parameters;
 
-		[WProperty("test", "Parameters")]
+		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
 		{ 
 			get { return m_Parameters; }
@@ -905,7 +881,7 @@ namespace WindEditor
 
 		private short m_AuxiliaryParameters;
 
-		[WProperty("test", "Auxiliary Parameters")]
+		[WProperty("Misc.", "Auxiliary Parameters", false)]
 		 public short AuxiliaryParameters
 		{ 
 			get { return m_AuxiliaryParameters; }
@@ -919,7 +895,7 @@ namespace WindEditor
 
 		private short m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public short Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -933,7 +909,7 @@ namespace WindEditor
 
 		private short m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -947,7 +923,7 @@ namespace WindEditor
 
 		private byte m_ScaleX;
 
-		[WProperty("test", "Scale X")]
+		[WProperty("Misc.", "Scale X", false)]
 		 public byte ScaleX
 		{ 
 			get { return m_ScaleX; }
@@ -961,7 +937,7 @@ namespace WindEditor
 
 		private byte m_ScaleY;
 
-		[WProperty("test", "Scale Y")]
+		[WProperty("Misc.", "Scale Y", false)]
 		 public byte ScaleY
 		{ 
 			get { return m_ScaleY; }
@@ -975,7 +951,7 @@ namespace WindEditor
 
 		private byte m_ScaleZ;
 
-		[WProperty("test", "Scale Z")]
+		[WProperty("Misc.", "Scale Z", false)]
 		 public byte ScaleZ
 		{ 
 			get { return m_ScaleZ; }
@@ -988,17 +964,6 @@ namespace WindEditor
 				
 
 		private byte m_Padding;
-
-		[WProperty("test", "Padding")]
-		 public byte Padding
-		{ 
-			get { return m_Padding; }
-			set
-			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
-			}
-		}
 				
 
 
@@ -1013,7 +978,6 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Z", TargetProperties = new string[] { "ScaleZ"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1057,7 +1021,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private float m_LowerBoundaryYHeight;
 
-		[WProperty("test", "Lower Boundary YHeight")]
+		[WProperty("Misc.", "Lower Boundary YHeight", false)]
 		 public float LowerBoundaryYHeight
 		{ 
 			get { return m_LowerBoundaryYHeight; }
@@ -1071,7 +1035,7 @@ namespace WindEditor
 
 		private byte m_FloorNumber;
 
-		[WProperty("test", "Floor Number")]
+		[WProperty("Misc.", "Floor Number", false)]
 		 public byte FloorNumber
 		{ 
 			get { return m_FloorNumber; }
@@ -1085,7 +1049,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom0;
 
-		[WProperty("test", "Included Room 0")]
+		[WProperty("Misc.", "Included Room 0", false)]
 		 public byte IncludedRoom0
 		{ 
 			get { return m_IncludedRoom0; }
@@ -1099,7 +1063,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom1;
 
-		[WProperty("test", "Included Room 1")]
+		[WProperty("Misc.", "Included Room 1", false)]
 		 public byte IncludedRoom1
 		{ 
 			get { return m_IncludedRoom1; }
@@ -1113,7 +1077,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom2;
 
-		[WProperty("test", "Included Room 2")]
+		[WProperty("Misc.", "Included Room 2", false)]
 		 public byte IncludedRoom2
 		{ 
 			get { return m_IncludedRoom2; }
@@ -1127,7 +1091,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom3;
 
-		[WProperty("test", "Included Room 3")]
+		[WProperty("Misc.", "Included Room 3", false)]
 		 public byte IncludedRoom3
 		{ 
 			get { return m_IncludedRoom3; }
@@ -1141,7 +1105,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom4;
 
-		[WProperty("test", "Included Room 4")]
+		[WProperty("Misc.", "Included Room 4", false)]
 		 public byte IncludedRoom4
 		{ 
 			get { return m_IncludedRoom4; }
@@ -1155,7 +1119,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom5;
 
-		[WProperty("test", "Included Room 5")]
+		[WProperty("Misc.", "Included Room 5", false)]
 		 public byte IncludedRoom5
 		{ 
 			get { return m_IncludedRoom5; }
@@ -1169,7 +1133,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom6;
 
-		[WProperty("test", "Included Room 6")]
+		[WProperty("Misc.", "Included Room 6", false)]
 		 public byte IncludedRoom6
 		{ 
 			get { return m_IncludedRoom6; }
@@ -1183,7 +1147,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom7;
 
-		[WProperty("test", "Included Room 7")]
+		[WProperty("Misc.", "Included Room 7", false)]
 		 public byte IncludedRoom7
 		{ 
 			get { return m_IncludedRoom7; }
@@ -1197,7 +1161,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom8;
 
-		[WProperty("test", "Included Room 8")]
+		[WProperty("Misc.", "Included Room 8", false)]
 		 public byte IncludedRoom8
 		{ 
 			get { return m_IncludedRoom8; }
@@ -1211,7 +1175,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom9;
 
-		[WProperty("test", "Included Room 9")]
+		[WProperty("Misc.", "Included Room 9", false)]
 		 public byte IncludedRoom9
 		{ 
 			get { return m_IncludedRoom9; }
@@ -1225,7 +1189,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom10;
 
-		[WProperty("test", "Included Room 10")]
+		[WProperty("Misc.", "Included Room 10", false)]
 		 public byte IncludedRoom10
 		{ 
 			get { return m_IncludedRoom10; }
@@ -1239,7 +1203,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom11;
 
-		[WProperty("test", "Included Room 11")]
+		[WProperty("Misc.", "Included Room 11", false)]
 		 public byte IncludedRoom11
 		{ 
 			get { return m_IncludedRoom11; }
@@ -1253,7 +1217,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom12;
 
-		[WProperty("test", "Included Room 12")]
+		[WProperty("Misc.", "Included Room 12", false)]
 		 public byte IncludedRoom12
 		{ 
 			get { return m_IncludedRoom12; }
@@ -1267,7 +1231,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom13;
 
-		[WProperty("test", "Included Room 13")]
+		[WProperty("Misc.", "Included Room 13", false)]
 		 public byte IncludedRoom13
 		{ 
 			get { return m_IncludedRoom13; }
@@ -1281,7 +1245,7 @@ namespace WindEditor
 
 		private byte m_IncludedRoom14;
 
-		[WProperty("test", "Included Room 14")]
+		[WProperty("Misc.", "Included Room 14", false)]
 		 public byte IncludedRoom14
 		{ 
 			get { return m_IncludedRoom14; }
@@ -1369,7 +1333,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private float m_MapSizeX;
 
-		[WProperty("test", "Map Size X")]
+		[WProperty("Misc.", "Map Size X", false)]
 		 public float MapSizeX
 		{ 
 			get { return m_MapSizeX; }
@@ -1383,7 +1347,7 @@ namespace WindEditor
 
 		private float m_MapSizeY;
 
-		[WProperty("test", "Map Size Y")]
+		[WProperty("Misc.", "Map Size Y", false)]
 		 public float MapSizeY
 		{ 
 			get { return m_MapSizeY; }
@@ -1397,7 +1361,7 @@ namespace WindEditor
 
 		private float m_MapScaleInverse;
 
-		[WProperty("test", "Map Scale Inverse")]
+		[WProperty("Misc.", "Map Scale Inverse", false)]
 		 public float MapScaleInverse
 		{ 
 			get { return m_MapScaleInverse; }
@@ -1411,7 +1375,7 @@ namespace WindEditor
 
 		private float m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public float Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -1460,7 +1424,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private Vector3 m_Radius;
 
-		[WProperty("test", "Radius")]
+		[WProperty("Misc.", "Radius", false)]
 		 public Vector3 Radius
 		{ 
 			get { return m_Radius; }
@@ -1474,7 +1438,7 @@ namespace WindEditor
 
 		private WLinearColor m_Color;
 
-		[WProperty("test", "Color")]
+		[WProperty("Misc.", "Color", false)]
 		 public WLinearColor Color
 		{ 
 			get { return m_Color; }
@@ -1517,37 +1481,37 @@ namespace WindEditor
 	public partial class EnvironmentLightingConditions : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_ClearColorA;
+		private byte m_ClearA;
 
-		[WProperty("test", "Clear Color A")]
-		 public byte ClearColorA
+		[WProperty("Clear", "Clear A", true)]
+		 public byte ClearA
 		{ 
-			get { return m_ClearColorA; }
+			get { return m_ClearA; }
 			set
 			{
-				m_ClearColorA = value;
-				OnPropertyChanged("ClearColorA");
+				m_ClearA = value;
+				OnPropertyChanged("ClearA");
 			}
 		}
 				
 
-		private byte m_RainingColorA;
+		private byte m_RainingA;
 
-		[WProperty("test", "Raining Color A")]
-		 public byte RainingColorA
+		[WProperty("Raining", "Raining A", true)]
+		 public byte RainingA
 		{ 
-			get { return m_RainingColorA; }
+			get { return m_RainingA; }
 			set
 			{
-				m_RainingColorA = value;
-				OnPropertyChanged("RainingColorA");
+				m_RainingA = value;
+				OnPropertyChanged("RainingA");
 			}
 		}
 				
 
 		private byte m_SnowingA;
 
-		[WProperty("test", "Snowing A")]
+		[WProperty("Snowing", "Snowing A", true)]
 		 public byte SnowingA
 		{ 
 			get { return m_SnowingA; }
@@ -1561,7 +1525,7 @@ namespace WindEditor
 
 		private byte m_UnknownA;
 
-		[WProperty("test", "Unknown A")]
+		[WProperty("Unknown", "Unknown A", true)]
 		 public byte UnknownA
 		{ 
 			get { return m_UnknownA; }
@@ -1573,37 +1537,37 @@ namespace WindEditor
 		}
 				
 
-		private byte m_ClearColorB;
+		private byte m_ClearB;
 
-		[WProperty("test", "Clear Color B")]
-		 public byte ClearColorB
+		[WProperty("Clear", "Clear B", true)]
+		 public byte ClearB
 		{ 
-			get { return m_ClearColorB; }
+			get { return m_ClearB; }
 			set
 			{
-				m_ClearColorB = value;
-				OnPropertyChanged("ClearColorB");
+				m_ClearB = value;
+				OnPropertyChanged("ClearB");
 			}
 		}
 				
 
-		private byte m_RainingColorB;
+		private byte m_RainingB;
 
-		[WProperty("test", "Raining Color B")]
-		 public byte RainingColorB
+		[WProperty("Raining", "Raining B", true)]
+		 public byte RainingB
 		{ 
-			get { return m_RainingColorB; }
+			get { return m_RainingB; }
 			set
 			{
-				m_RainingColorB = value;
-				OnPropertyChanged("RainingColorB");
+				m_RainingB = value;
+				OnPropertyChanged("RainingB");
 			}
 		}
 				
 
 		private byte m_SnowingB;
 
-		[WProperty("test", "Snowing B")]
+		[WProperty("Snowing", "Snowing B", true)]
 		 public byte SnowingB
 		{ 
 			get { return m_SnowingB; }
@@ -1617,7 +1581,7 @@ namespace WindEditor
 
 		private byte m_UnknownB;
 
-		[WProperty("test", "Unknown B")]
+		[WProperty("Unknown", "Unknown B", true)]
 		 public byte UnknownB
 		{ 
 			get { return m_UnknownB; }
@@ -1633,24 +1597,24 @@ namespace WindEditor
 		// Constructor
 		public EnvironmentLightingConditions(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear Color A", TargetProperties = new string[] { "ClearColorA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color A", TargetProperties = new string[] { "RainingColorA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear A", TargetProperties = new string[] { "ClearA"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining A", TargetProperties = new string[] { "RainingA"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing A", TargetProperties = new string[] { "SnowingA"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown A", TargetProperties = new string[] { "UnknownA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear Color B", TargetProperties = new string[] { "ClearColorB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining Color B", TargetProperties = new string[] { "RainingColorB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear B", TargetProperties = new string[] { "ClearB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining B", TargetProperties = new string[] { "RainingB"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing B", TargetProperties = new string[] { "SnowingB"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown B", TargetProperties = new string[] { "UnknownB"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
-			m_ClearColorA = stream.ReadByte(); 
-			m_RainingColorA = stream.ReadByte(); 
+			m_ClearA = stream.ReadByte(); 
+			m_RainingA = stream.ReadByte(); 
 			m_SnowingA = stream.ReadByte(); 
 			m_UnknownA = stream.ReadByte(); 
-			m_ClearColorB = stream.ReadByte(); 
-			m_RainingColorB = stream.ReadByte(); 
+			m_ClearB = stream.ReadByte(); 
+			m_RainingB = stream.ReadByte(); 
 			m_SnowingB = stream.ReadByte(); 
 			m_UnknownB = stream.ReadByte(); 
 		}
@@ -1661,12 +1625,12 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((byte)ClearColorA);
-			stream.Write((byte)RainingColorA);
+			stream.Write((byte)ClearA);
+			stream.Write((byte)RainingA);
 			stream.Write((byte)SnowingA);
 			stream.Write((byte)UnknownA);
-			stream.Write((byte)ClearColorB);
-			stream.Write((byte)RainingColorB);
+			stream.Write((byte)ClearB);
+			stream.Write((byte)RainingB);
 			stream.Write((byte)SnowingB);
 			stream.Write((byte)UnknownB);
 		}
@@ -1678,7 +1642,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private WLinearColor m_ShadowColor;
 
-		[WProperty("test", "Shadow Color")]
+		[WProperty("Misc.", "Shadow Color", false)]
 		 public WLinearColor ShadowColor
 		{ 
 			get { return m_ShadowColor; }
@@ -1692,7 +1656,7 @@ namespace WindEditor
 
 		private WLinearColor m_ActorAmbientColor;
 
-		[WProperty("test", "Actor Ambient Color")]
+		[WProperty("Misc.", "Actor Ambient Color", false)]
 		 public WLinearColor ActorAmbientColor
 		{ 
 			get { return m_ActorAmbientColor; }
@@ -1706,7 +1670,7 @@ namespace WindEditor
 
 		private WLinearColor m_RoomLightColor;
 
-		[WProperty("test", "Room Light Color")]
+		[WProperty("Misc.", "Room Light Color", false)]
 		 public WLinearColor RoomLightColor
 		{ 
 			get { return m_RoomLightColor; }
@@ -1720,7 +1684,7 @@ namespace WindEditor
 
 		private WLinearColor m_RoomAmbientColor;
 
-		[WProperty("test", "Room Ambient Color")]
+		[WProperty("Misc.", "Room Ambient Color", false)]
 		 public WLinearColor RoomAmbientColor
 		{ 
 			get { return m_RoomAmbientColor; }
@@ -1734,7 +1698,7 @@ namespace WindEditor
 
 		private WLinearColor m_WaveColor;
 
-		[WProperty("test", "Wave Color")]
+		[WProperty("Misc.", "Wave Color", false)]
 		 public WLinearColor WaveColor
 		{ 
 			get { return m_WaveColor; }
@@ -1748,7 +1712,7 @@ namespace WindEditor
 
 		private WLinearColor m_OceanColor;
 
-		[WProperty("test", "Ocean Color")]
+		[WProperty("Misc.", "Ocean Color", false)]
 		 public WLinearColor OceanColor
 		{ 
 			get { return m_OceanColor; }
@@ -1762,7 +1726,7 @@ namespace WindEditor
 
 		private WLinearColor m_UnknownWhite1;
 
-		[WProperty("test", "Unknown White 1")]
+		[WProperty("Misc.", "Unknown White 1", false)]
 		 public WLinearColor UnknownWhite1
 		{ 
 			get { return m_UnknownWhite1; }
@@ -1776,7 +1740,7 @@ namespace WindEditor
 
 		private WLinearColor m_UnknownWhite2;
 
-		[WProperty("test", "Unknown White 2")]
+		[WProperty("Misc.", "Unknown White 2", false)]
 		 public WLinearColor UnknownWhite2
 		{ 
 			get { return m_UnknownWhite2; }
@@ -1790,7 +1754,7 @@ namespace WindEditor
 
 		private WLinearColor m_DoorBackfill;
 
-		[WProperty("test", "Door Backfill")]
+		[WProperty("Misc.", "Door Backfill", false)]
 		 public WLinearColor DoorBackfill
 		{ 
 			get { return m_DoorBackfill; }
@@ -1804,7 +1768,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Misc.", "Unknown 3", false)]
 		 public WLinearColor Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -1818,7 +1782,7 @@ namespace WindEditor
 
 		private WLinearColor m_FogColor;
 
-		[WProperty("test", "Fog Color")]
+		[WProperty("Misc.", "Fog Color", false)]
 		 public WLinearColor FogColor
 		{ 
 			get { return m_FogColor; }
@@ -1832,7 +1796,7 @@ namespace WindEditor
 
 		private byte m_SkyboxColorIndex;
 
-		[WProperty("test", "Skybox Color Index")]
+		[WProperty("Misc.", "Skybox Color Index", false)]
 		 public byte SkyboxColorIndex
 		{ 
 			get { return m_SkyboxColorIndex; }
@@ -1846,7 +1810,7 @@ namespace WindEditor
 
 		private byte m_Padding1;
 
-		[WProperty("test", "Padding 1")]
+		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -1860,7 +1824,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("test", "Padding 2")]
+		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -1874,7 +1838,7 @@ namespace WindEditor
 
 		private float m_FogFarPlane;
 
-		[WProperty("test", "Fog Far Plane")]
+		[WProperty("Misc.", "Fog Far Plane", false)]
 		 public float FogFarPlane
 		{ 
 			get { return m_FogFarPlane; }
@@ -1888,7 +1852,7 @@ namespace WindEditor
 
 		private float m_ForNearPlane;
 
-		[WProperty("test", "For Near Plane")]
+		[WProperty("Misc.", "For Near Plane", false)]
 		 public float ForNearPlane
 		{ 
 			get { return m_ForNearPlane; }
@@ -1973,7 +1937,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private WLinearColor m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public WLinearColor Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -1987,7 +1951,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public WLinearColor Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -2001,7 +1965,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Misc.", "Unknown 3", false)]
 		 public WLinearColor Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -2015,7 +1979,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Misc.", "Unknown 4", false)]
 		 public WLinearColor Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -2029,7 +1993,7 @@ namespace WindEditor
 
 		private WLinearColor m_HorizonCloudColor;
 
-		[WProperty("test", "Horizon Cloud Color")]
+		[WProperty("Misc.", "Horizon Cloud Color", false)]
 		 public WLinearColor HorizonCloudColor
 		{ 
 			get { return m_HorizonCloudColor; }
@@ -2043,7 +2007,7 @@ namespace WindEditor
 
 		private WLinearColor m_CenterCloudColor;
 
-		[WProperty("test", "Center Cloud Color")]
+		[WProperty("Misc.", "Center Cloud Color", false)]
 		 public WLinearColor CenterCloudColor
 		{ 
 			get { return m_CenterCloudColor; }
@@ -2057,7 +2021,7 @@ namespace WindEditor
 
 		private WLinearColor m_SkyColor;
 
-		[WProperty("test", "Sky Color")]
+		[WProperty("Misc.", "Sky Color", false)]
 		 public WLinearColor SkyColor
 		{ 
 			get { return m_SkyColor; }
@@ -2071,7 +2035,7 @@ namespace WindEditor
 
 		private WLinearColor m_FalseSeaColor;
 
-		[WProperty("test", "False Sea Color")]
+		[WProperty("Misc.", "False Sea Color", false)]
 		 public WLinearColor FalseSeaColor
 		{ 
 			get { return m_FalseSeaColor; }
@@ -2085,7 +2049,7 @@ namespace WindEditor
 
 		private WLinearColor m_HorizonColor;
 
-		[WProperty("test", "Horizon Color")]
+		[WProperty("Misc.", "Horizon Color", false)]
 		 public WLinearColor HorizonColor
 		{ 
 			get { return m_HorizonColor; }
@@ -2099,7 +2063,7 @@ namespace WindEditor
 
 		private byte m_Padding1;
 
-		[WProperty("test", "Padding 1")]
+		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -2113,7 +2077,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("test", "Padding 2")]
+		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -2127,7 +2091,7 @@ namespace WindEditor
 
 		private byte m_Padding3;
 
-		[WProperty("test", "Padding 3")]
+		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
@@ -2200,7 +2164,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private byte m_DawnA;
 
-		[WProperty("test", "Dawn A")]
+		[WProperty("Misc.", "Dawn A", false)]
 		 public byte DawnA
 		{ 
 			get { return m_DawnA; }
@@ -2214,7 +2178,7 @@ namespace WindEditor
 
 		private byte m_MorningA;
 
-		[WProperty("test", "Morning A")]
+		[WProperty("Misc.", "Morning A", false)]
 		 public byte MorningA
 		{ 
 			get { return m_MorningA; }
@@ -2228,7 +2192,7 @@ namespace WindEditor
 
 		private byte m_NoonA;
 
-		[WProperty("test", "Noon A")]
+		[WProperty("Misc.", "Noon A", false)]
 		 public byte NoonA
 		{ 
 			get { return m_NoonA; }
@@ -2242,7 +2206,7 @@ namespace WindEditor
 
 		private byte m_AfternoonA;
 
-		[WProperty("test", "Afternoon A")]
+		[WProperty("Misc.", "Afternoon A", false)]
 		 public byte AfternoonA
 		{ 
 			get { return m_AfternoonA; }
@@ -2256,7 +2220,7 @@ namespace WindEditor
 
 		private byte m_DuskA;
 
-		[WProperty("test", "Dusk A")]
+		[WProperty("Misc.", "Dusk A", false)]
 		 public byte DuskA
 		{ 
 			get { return m_DuskA; }
@@ -2270,7 +2234,7 @@ namespace WindEditor
 
 		private byte m_NightA;
 
-		[WProperty("test", "Night A")]
+		[WProperty("Misc.", "Night A", false)]
 		 public byte NightA
 		{ 
 			get { return m_NightA; }
@@ -2284,7 +2248,7 @@ namespace WindEditor
 
 		private byte m_DawnB;
 
-		[WProperty("test", "Dawn B")]
+		[WProperty("Misc.", "Dawn B", false)]
 		 public byte DawnB
 		{ 
 			get { return m_DawnB; }
@@ -2298,7 +2262,7 @@ namespace WindEditor
 
 		private byte m_MorningB;
 
-		[WProperty("test", "Morning B")]
+		[WProperty("Misc.", "Morning B", false)]
 		 public byte MorningB
 		{ 
 			get { return m_MorningB; }
@@ -2312,7 +2276,7 @@ namespace WindEditor
 
 		private byte m_NoonB;
 
-		[WProperty("test", "Noon B")]
+		[WProperty("Misc.", "Noon B", false)]
 		 public byte NoonB
 		{ 
 			get { return m_NoonB; }
@@ -2326,7 +2290,7 @@ namespace WindEditor
 
 		private byte m_AfternoonB;
 
-		[WProperty("test", "Afternoon B")]
+		[WProperty("Misc.", "Afternoon B", false)]
 		 public byte AfternoonB
 		{ 
 			get { return m_AfternoonB; }
@@ -2340,7 +2304,7 @@ namespace WindEditor
 
 		private byte m_DuskB;
 
-		[WProperty("test", "Dusk B")]
+		[WProperty("Misc.", "Dusk B", false)]
 		 public byte DuskB
 		{ 
 			get { return m_DuskB; }
@@ -2354,7 +2318,7 @@ namespace WindEditor
 
 		private byte m_NightB;
 
-		[WProperty("test", "Night B")]
+		[WProperty("Misc.", "Night B", false)]
 		 public byte NightB
 		{ 
 			get { return m_NightB; }
@@ -2427,7 +2391,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private byte m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -2441,7 +2405,7 @@ namespace WindEditor
 
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -2455,7 +2419,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -2469,7 +2433,7 @@ namespace WindEditor
 
 		private byte m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -2483,7 +2447,7 @@ namespace WindEditor
 
 		private byte m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Misc.", "Unknown 4", false)]
 		 public byte Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -2497,7 +2461,7 @@ namespace WindEditor
 
 		private byte m_Unknown5;
 
-		[WProperty("test", "Unknown 5")]
+		[WProperty("Misc.", "Unknown 5", false)]
 		 public byte Unknown5
 		{ 
 			get { return m_Unknown5; }
@@ -2511,7 +2475,7 @@ namespace WindEditor
 
 		private byte m_RoomNumber;
 
-		[WProperty("test", "Room Number")]
+		[WProperty("Misc.", "Room Number", false)]
 		 public byte RoomNumber
 		{ 
 			get { return m_RoomNumber; }
@@ -2525,7 +2489,7 @@ namespace WindEditor
 
 		private byte m_Padding1;
 
-		[WProperty("test", "Padding 1")]
+		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -2539,7 +2503,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("test", "Padding 2")]
+		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -2553,7 +2517,7 @@ namespace WindEditor
 
 		private byte m_Padding3;
 
-		[WProperty("test", "Padding 3")]
+		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
@@ -2620,7 +2584,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_MapName;
 
-		[WProperty("test", "Map Name")]
+		[WProperty("Misc.", "Map Name", false)]
 		 public string MapName
 		{ 
 			get { return m_MapName; }
@@ -2634,7 +2598,7 @@ namespace WindEditor
 
 		private byte m_SpawnIndex;
 
-		[WProperty("test", "Spawn Index")]
+		[WProperty("Misc.", "Spawn Index", false)]
 		 public byte SpawnIndex
 		{ 
 			get { return m_SpawnIndex; }
@@ -2648,7 +2612,7 @@ namespace WindEditor
 
 		private byte m_RoomIndex;
 
-		[WProperty("test", "Room Index")]
+		[WProperty("Misc.", "Room Index", false)]
 		 public byte RoomIndex
 		{ 
 			get { return m_RoomIndex; }
@@ -2662,7 +2626,7 @@ namespace WindEditor
 
 		private byte m_FadeOutType;
 
-		[WProperty("test", "Fade Out Type")]
+		[WProperty("Misc.", "Fade Out Type", false)]
 		 public byte FadeOutType
 		{ 
 			get { return m_FadeOutType; }
@@ -2676,7 +2640,7 @@ namespace WindEditor
 
 		private byte m_Padding;
 
-		[WProperty("test", "Padding")]
+		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
 		{ 
 			get { return m_Padding; }
@@ -2728,7 +2692,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private byte m_Unknown;
 
-		[WProperty("test", "Unknown")]
+		[WProperty("Misc.", "Unknown", false)]
 		 public byte Unknown
 		{ 
 			get { return m_Unknown; }
@@ -2768,7 +2732,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private Vector3 m_Radius;
 
-		[WProperty("test", "Radius")]
+		[WProperty("Misc.", "Radius", false)]
 		 public Vector3 Radius
 		{ 
 			get { return m_Radius; }
@@ -2782,7 +2746,7 @@ namespace WindEditor
 
 		private WLinearColor m_Color;
 
-		[WProperty("test", "Color")]
+		[WProperty("Misc.", "Color", false)]
 		 public WLinearColor Color
 		{ 
 			get { return m_Color; }
@@ -2827,7 +2791,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private byte m_Room;
 
-		[WProperty("test", "Room")]
+		[WProperty("Misc.", "Room", false)]
 		 public byte Room
 		{ 
 			get { return m_Room; }
@@ -2841,7 +2805,7 @@ namespace WindEditor
 
 		private byte m_Entry;
 
-		[WProperty("test", "Entry")]
+		[WProperty("Misc.", "Entry", false)]
 		 public byte Entry
 		{ 
 			get { return m_Entry; }
@@ -2884,7 +2848,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private int m_SizeInBytes;
 
-		[WProperty("test", "SizeInBytes")]
+		[WProperty("Misc.", "SizeInBytes", false)]
 		 public int SizeInBytes
 		{ 
 			get { return m_SizeInBytes; }
@@ -2924,7 +2888,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("Spawn Properties", "Name")]
+		[WProperty("Spawn Properties", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -2938,7 +2902,7 @@ namespace WindEditor
 
 		private byte m_EventIndex;
 
-		[WProperty("Spawn Properties", "Event Index")]
+		[WProperty("Spawn Properties", "Event Index", true)]
 		 public byte EventIndex
 		{ 
 			get { return m_EventIndex; }
@@ -2952,7 +2916,7 @@ namespace WindEditor
 
 		private byte m_Unknown1;
 
-		[WProperty("Unknowns", "Unknown 1")]
+		[WProperty("Unknowns", "Unknown 1", false)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -2966,7 +2930,7 @@ namespace WindEditor
 
 		private byte m_SpawnType;
 
-		[WProperty("Spawn Properties", "Spawn Type")]
+		[WProperty("Spawn Properties", "Spawn Type", true)]
 		 public byte SpawnType
 		{ 
 			get { return m_SpawnType; }
@@ -2980,7 +2944,7 @@ namespace WindEditor
 
 		private byte m_Room;
 
-		[WProperty("Spawn Properties", "Room")]
+		[WProperty("Spawn Properties", "Room", true)]
 		 public byte Room
 		{ 
 			get { return m_Room; }
@@ -2994,7 +2958,7 @@ namespace WindEditor
 
 		private short m_Unknown2;
 
-		[WProperty("Unknowns", "Unknown 2")]
+		[WProperty("Unknowns", "Unknown 2", false)]
 		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -3008,7 +2972,7 @@ namespace WindEditor
 
 		private byte m_Unknown3;
 
-		[WProperty("Unknowns", "Unknown 3")]
+		[WProperty("Unknowns", "Unknown 3", false)]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -3022,7 +2986,7 @@ namespace WindEditor
 
 		private byte m_SpawnIndex;
 
-		[WProperty("Spawn Properties", "Spawn Index")]
+		[WProperty("Spawn Properties", "Spawn Index", true)]
 		 public byte SpawnIndex
 		{ 
 			get { return m_SpawnIndex; }
@@ -3036,7 +3000,7 @@ namespace WindEditor
 
 		private short m_Unknown4;
 
-		[WProperty("Unknowns", "Unknown 4")]
+		[WProperty("Unknowns", "Unknown 4", false)]
 		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -3104,7 +3068,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private int m_Parameters;
 
-		[WProperty("test", "Parameters")]
+		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
 		{ 
 			get { return m_Parameters; }
@@ -3118,7 +3082,7 @@ namespace WindEditor
 
 		private float m_SkyboxYHeight;
 
-		[WProperty("test", "Skybox Y Height")]
+		[WProperty("Misc.", "Skybox Y Height", false)]
 		 public float SkyboxYHeight
 		{ 
 			get { return m_SkyboxYHeight; }
@@ -3161,7 +3125,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private Vector2 m_Translation;
 
-		[WProperty("test", "Translation")]
+		[WProperty("Misc.", "Translation", false)]
 		 public Vector2 Translation
 		{ 
 			get { return m_Translation; }
@@ -3175,7 +3139,7 @@ namespace WindEditor
 
 		private byte m_Room;
 
-		[WProperty("test", "Room")]
+		[WProperty("Misc.", "Room", false)]
 		 public byte Room
 		{ 
 			get { return m_Room; }
@@ -3189,7 +3153,7 @@ namespace WindEditor
 
 		private byte m_WaveHeightAddition;
 
-		[WProperty("test", "Wave Height Addition")]
+		[WProperty("Misc.", "Wave Height Addition", false)]
 		 public byte WaveHeightAddition
 		{ 
 			get { return m_WaveHeightAddition; }
@@ -3237,7 +3201,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private int m_Offset;
 
-		[WProperty("test", "Offset")]
+		[WProperty("Misc.", "Offset", false)]
 		 public int Offset
 		{ 
 			get { return m_Offset; }
@@ -3277,7 +3241,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -3291,7 +3255,7 @@ namespace WindEditor
 
 		private byte m_Parameter1;
 
-		[WProperty("test", "Parameter 1")]
+		[WProperty("Misc.", "Parameter 1", false)]
 		 public byte Parameter1
 		{ 
 			get { return m_Parameter1; }
@@ -3305,7 +3269,7 @@ namespace WindEditor
 
 		private byte m_Parameter2;
 
-		[WProperty("test", "Parameter 2")]
+		[WProperty("Misc.", "Parameter 2", false)]
 		 public byte Parameter2
 		{ 
 			get { return m_Parameter2; }
@@ -3319,7 +3283,7 @@ namespace WindEditor
 
 		private byte m_Parameter3;
 
-		[WProperty("test", "Parameter 3")]
+		[WProperty("Misc.", "Parameter 3", false)]
 		 public byte Parameter3
 		{ 
 			get { return m_Parameter3; }
@@ -3333,7 +3297,7 @@ namespace WindEditor
 
 		private byte m_Parameter4;
 
-		[WProperty("test", "Parameter 4")]
+		[WProperty("Misc.", "Parameter 4", false)]
 		 public byte Parameter4
 		{ 
 			get { return m_Parameter4; }
@@ -3347,7 +3311,7 @@ namespace WindEditor
 
 		private short m_AuxiliaryParameter;
 
-		[WProperty("test", "Auxiliary Parameter")]
+		[WProperty("Misc.", "Auxiliary Parameter", false)]
 		 public short AuxiliaryParameter
 		{ 
 			get { return m_AuxiliaryParameter; }
@@ -3361,7 +3325,7 @@ namespace WindEditor
 
 		private short m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public short Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -3375,7 +3339,7 @@ namespace WindEditor
 
 		private short m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -3388,17 +3352,6 @@ namespace WindEditor
 				
 
 		private byte m_Padding;
-
-		[WProperty("test", "Padding")]
-		 public byte Padding
-		{ 
-			get { return m_Padding; }
-			set
-			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
-			}
-		}
 				
 
 
@@ -3413,7 +3366,6 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameter", TargetProperties = new string[] { "AuxiliaryParameter"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3463,7 +3415,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private float /*single axis rotation */ m_Rotation;
 
-		[WProperty("test", "Rotation")]
+		[WProperty("Misc.", "Rotation", false)]
 		 public float /*single axis rotation */ Rotation
 		{ 
 			get { return m_Rotation; }
@@ -3477,7 +3429,7 @@ namespace WindEditor
 
 		private byte m_ShipId;
 
-		[WProperty("test", "Ship Id")]
+		[WProperty("Misc.", "Ship Id", false)]
 		 public byte ShipId
 		{ 
 			get { return m_ShipId; }
@@ -3491,7 +3443,7 @@ namespace WindEditor
 
 		private byte m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -3539,7 +3491,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -3553,7 +3505,7 @@ namespace WindEditor
 
 		private byte m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -3567,7 +3519,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -3581,7 +3533,7 @@ namespace WindEditor
 
 		private byte m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -3595,7 +3547,7 @@ namespace WindEditor
 
 		private byte m_SoundID;
 
-		[WProperty("test", "Sound ID")]
+		[WProperty("Misc.", "Sound ID", false)]
 		 public byte SoundID
 		{ 
 			get { return m_SoundID; }
@@ -3609,7 +3561,7 @@ namespace WindEditor
 
 		private byte m_PathIndex;
 
-		[WProperty("test", "Path Index")]
+		[WProperty("Misc.", "Path Index", false)]
 		 public byte PathIndex
 		{ 
 			get { return m_PathIndex; }
@@ -3623,7 +3575,7 @@ namespace WindEditor
 
 		private byte m_Padding1;
 
-		[WProperty("test", "Padding 1")]
+		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -3637,7 +3589,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("test", "Padding 2")]
+		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -3651,7 +3603,7 @@ namespace WindEditor
 
 		private byte m_Padding3;
 
-		[WProperty("test", "Padding 3")]
+		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
 		{ 
 			get { return m_Padding3; }
@@ -3717,7 +3669,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private float m_ZDepthMin;
 
-		[WProperty("test", "Z Depth Min")]
+		[WProperty("Misc.", "Z Depth Min", false)]
 		 public float ZDepthMin
 		{ 
 			get { return m_ZDepthMin; }
@@ -3731,7 +3683,7 @@ namespace WindEditor
 
 		private float m_ZDepthMax;
 
-		[WProperty("test", "Z Depth Max")]
+		[WProperty("Misc.", "Z Depth Max", false)]
 		 public float ZDepthMax
 		{ 
 			get { return m_ZDepthMax; }
@@ -3745,7 +3697,7 @@ namespace WindEditor
 
 		private short m_StageID;
 
-		[WProperty("test", "Stage ID")]
+		[WProperty("Misc.", "Stage ID", false)]
 		 public short StageID
 		{ 
 			get { return m_StageID; }
@@ -3759,7 +3711,7 @@ namespace WindEditor
 
 		private short m_Unk_ParticleBank;
 
-		[WProperty("test", "Unk_Particle Bank")]
+		[WProperty("Misc.", "Unk_Particle Bank", false)]
 		 public short Unk_ParticleBank
 		{ 
 			get { return m_Unk_ParticleBank; }
@@ -3773,7 +3725,7 @@ namespace WindEditor
 
 		private short m_Unk_PropertyIndex;
 
-		[WProperty("test", "Unk_Property Index")]
+		[WProperty("Misc.", "Unk_Property Index", false)]
 		 public short Unk_PropertyIndex
 		{ 
 			get { return m_Unk_PropertyIndex; }
@@ -3787,7 +3739,7 @@ namespace WindEditor
 
 		private byte m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -3801,7 +3753,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -3815,7 +3767,7 @@ namespace WindEditor
 
 		private byte m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -3829,7 +3781,7 @@ namespace WindEditor
 
 		private byte m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Misc.", "Unknown 4", false)]
 		 public byte Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -3843,7 +3795,7 @@ namespace WindEditor
 
 		private short m_Unk_DrawRange;
 
-		[WProperty("test", "Unk_Draw Range")]
+		[WProperty("Misc.", "Unk_Draw Range", false)]
 		 public short Unk_DrawRange
 		{ 
 			get { return m_Unk_DrawRange; }
@@ -3857,7 +3809,7 @@ namespace WindEditor
 
 		private int m_Unknown5;
 
-		[WProperty("test", "Unknown 5")]
+		[WProperty("Misc.", "Unknown 5", false)]
 		 public int Unknown5
 		{ 
 			get { return m_Unknown5; }
@@ -3871,7 +3823,7 @@ namespace WindEditor
 
 		private byte m_Unknown6;
 
-		[WProperty("test", "Unknown 6")]
+		[WProperty("Misc.", "Unknown 6", false)]
 		 public byte Unknown6
 		{ 
 			get { return m_Unknown6; }
@@ -3885,7 +3837,7 @@ namespace WindEditor
 
 		private byte m_Unknown7;
 
-		[WProperty("test", "Unknown 7")]
+		[WProperty("Misc.", "Unknown 7", false)]
 		 public byte Unknown7
 		{ 
 			get { return m_Unknown7; }
@@ -3899,7 +3851,7 @@ namespace WindEditor
 
 		private byte m_Unknown8;
 
-		[WProperty("test", "Unknown 8")]
+		[WProperty("Misc.", "Unknown 8", false)]
 		 public byte Unknown8
 		{ 
 			get { return m_Unknown8; }
@@ -3913,7 +3865,7 @@ namespace WindEditor
 
 		private byte m_Unknown9;
 
-		[WProperty("test", "Unknown 9")]
+		[WProperty("Misc.", "Unknown 9", false)]
 		 public byte Unknown9
 		{ 
 			get { return m_Unknown9; }
@@ -3927,7 +3879,7 @@ namespace WindEditor
 
 		private int m_Unknown10;
 
-		[WProperty("test", "Unknown 10")]
+		[WProperty("Misc.", "Unknown 10", false)]
 		 public int Unknown10
 		{ 
 			get { return m_Unknown10; }
@@ -3941,7 +3893,7 @@ namespace WindEditor
 
 		private byte m_Unknown11;
 
-		[WProperty("test", "Unknown 11")]
+		[WProperty("Misc.", "Unknown 11", false)]
 		 public byte Unknown11
 		{ 
 			get { return m_Unknown11; }
@@ -3955,7 +3907,7 @@ namespace WindEditor
 
 		private byte m_Unknown12;
 
-		[WProperty("test", "Unknown 12")]
+		[WProperty("Misc.", "Unknown 12", false)]
 		 public byte Unknown12
 		{ 
 			get { return m_Unknown12; }
@@ -3969,7 +3921,7 @@ namespace WindEditor
 
 		private byte m_Unknown13;
 
-		[WProperty("test", "Unknown 13")]
+		[WProperty("Misc.", "Unknown 13", false)]
 		 public byte Unknown13
 		{ 
 			get { return m_Unknown13; }
@@ -3983,7 +3935,7 @@ namespace WindEditor
 
 		private byte m_Unknown14;
 
-		[WProperty("test", "Unknown 14")]
+		[WProperty("Misc.", "Unknown 14", false)]
 		 public byte Unknown14
 		{ 
 			get { return m_Unknown14; }
@@ -4080,7 +4032,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -4094,7 +4046,7 @@ namespace WindEditor
 
 		private int m_Params;
 
-		[WProperty("test", "Params")]
+		[WProperty("Misc.", "Params", false)]
 		 public int Params
 		{ 
 			get { return m_Params; }
@@ -4108,7 +4060,7 @@ namespace WindEditor
 
 		private short m_RoomLoadingParams;
 
-		[WProperty("test", "RoomLoadingParams")]
+		[WProperty("Misc.", "RoomLoadingParams", false)]
 		 public short RoomLoadingParams
 		{ 
 			get { return m_RoomLoadingParams; }
@@ -4122,7 +4074,7 @@ namespace WindEditor
 
 		private byte m_Arg1;
 
-		[WProperty("test", "Arg 1")]
+		[WProperty("Misc.", "Arg 1", false)]
 		 public byte Arg1
 		{ 
 			get { return m_Arg1; }
@@ -4136,7 +4088,7 @@ namespace WindEditor
 
 		private byte m_ShipId;
 
-		[WProperty("test", "ShipId")]
+		[WProperty("Misc.", "ShipId", false)]
 		 public byte ShipId
 		{ 
 			get { return m_ShipId; }
@@ -4150,7 +4102,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -4164,7 +4116,7 @@ namespace WindEditor
 
 		private byte m_Unknown3;
 
-		[WProperty("test", "Unknown 3")]
+		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -4178,7 +4130,7 @@ namespace WindEditor
 
 		private byte m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Misc.", "Unknown 4", false)]
 		 public byte Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -4249,7 +4201,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -4263,7 +4215,7 @@ namespace WindEditor
 
 		private int m_Parameters;
 
-		[WProperty("test", "Parameters")]
+		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
 		{ 
 			get { return m_Parameters; }
@@ -4277,7 +4229,7 @@ namespace WindEditor
 
 		private short m_Padding;
 
-		[WProperty("test", "Padding")]
+		[WProperty("Misc.", "Padding", false)]
 		 public short Padding
 		{ 
 			get { return m_Padding; }
@@ -4331,7 +4283,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -4345,7 +4297,7 @@ namespace WindEditor
 
 		private int m_Params1;
 
-		[WProperty("test", "Params 1")]
+		[WProperty("Misc.", "Params 1", false)]
 		 public int Params1
 		{ 
 			get { return m_Params1; }
@@ -4359,7 +4311,7 @@ namespace WindEditor
 
 		private short m_RoomLoadingParams;
 
-		[WProperty("test", "RoomLoadingParams")]
+		[WProperty("Misc.", "RoomLoadingParams", false)]
 		 public short RoomLoadingParams
 		{ 
 			get { return m_RoomLoadingParams; }
@@ -4373,7 +4325,7 @@ namespace WindEditor
 
 		private int m_Params2;
 
-		[WProperty("test", "Params 2")]
+		[WProperty("Misc.", "Params 2", false)]
 		 public int Params2
 		{ 
 			get { return m_Params2; }
@@ -4430,7 +4382,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private string m_Name;
 
-		[WProperty("test", "Name")]
+		[WProperty("Misc.", "Name", false)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -4444,7 +4396,7 @@ namespace WindEditor
 
 		private int m_Params;
 
-		[WProperty("test", "Params")]
+		[WProperty("Misc.", "Params", false)]
 		 public int Params
 		{ 
 			get { return m_Params; }
@@ -4458,7 +4410,7 @@ namespace WindEditor
 
 		private short m_RoomIndex;
 
-		[WProperty("test", "Room Index")]
+		[WProperty("Misc.", "Room Index", false)]
 		 public short RoomIndex
 		{ 
 			get { return m_RoomIndex; }
@@ -4472,7 +4424,7 @@ namespace WindEditor
 
 		private int m_Params2;
 
-		[WProperty("test", "Params 2")]
+		[WProperty("Misc.", "Params 2", false)]
 		 public int Params2
 		{ 
 			get { return m_Params2; }
@@ -4524,50 +4476,17 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		private short m_NumberofPoints;
-
-		[WProperty("test", "Number of Points")]
-		 public short NumberofPoints
-		{ 
-			get { return m_NumberofPoints; }
-			set
-			{
-				m_NumberofPoints = value;
-				OnPropertyChanged("NumberofPoints");
-			}
-		}
 				
 
 		private short m_NextPathIndex;
-
-		[WProperty("test", "Next Path Index")]
-		 public short NextPathIndex
-		{ 
-			get { return m_NextPathIndex; }
-			set
-			{
-				m_NextPathIndex = value;
-				OnPropertyChanged("NextPathIndex");
-			}
-		}
 				
 
-		private byte m_Unknown2;
-
-		[WProperty("test", "Unknown 2")]
-		 public byte Unknown2
-		{ 
-			get { return m_Unknown2; }
-			set
-			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
-			}
-		}
+		private int m_FirstEntryOffset;
 				
 
 		private byte m_PathLoops;
 
-		[WProperty("test", "Path Loops")]
+		[WProperty("Path Properties", "Path Loops", false)]
 		 public byte PathLoops
 		{ 
 			get { return m_PathLoops; }
@@ -4581,7 +4500,7 @@ namespace WindEditor
 
 		private short m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Unknowns", "Unknown 4", false)]
 		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -4593,16 +4512,16 @@ namespace WindEditor
 		}
 				
 
-		private int m_FirstEntryOffset;
+		private byte m_Unknown2;
 
-		[WProperty("test", "First Entry Offset")]
-		 public int FirstEntryOffset
+		[WProperty("Unknowns", "Unknown 2", false)]
+		 public byte Unknown2
 		{ 
-			get { return m_FirstEntryOffset; }
+			get { return m_Unknown2; }
 			set
 			{
-				m_FirstEntryOffset = value;
-				OnPropertyChanged("FirstEntryOffset");
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
 			}
 		}
 				
@@ -4611,22 +4530,19 @@ namespace WindEditor
 		// Constructor
 		public Path_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Number of Points", TargetProperties = new string[] { "NumberofPoints"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "First Entry Offset", TargetProperties = new string[] { "FirstEntryOffset"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_NumberofPoints = stream.ReadInt16(); 
 			m_NextPathIndex = stream.ReadInt16(); 
-			m_Unknown2 = stream.ReadByte(); 
+			m_FirstEntryOffset = stream.ReadInt32(); 
 			m_PathLoops = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadInt16(); 
-			m_FirstEntryOffset = stream.ReadInt32(); 
+			m_Unknown2 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -4635,12 +4551,12 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((short)NumberofPoints);
-			stream.Write((short)NextPathIndex);
-			stream.Write((byte)Unknown2);
+			stream.Write((short)m_NumberofPoints);
+			stream.Write((short)m_NextPathIndex);
+			stream.Write((int)m_FirstEntryOffset);
 			stream.Write((byte)PathLoops);
 			stream.Write((short)Unknown4);
-			stream.Write((int)FirstEntryOffset);
+			stream.Write((byte)Unknown2);
 		}
 	}
 
@@ -4650,7 +4566,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private short m_NumberofPoints;
 
-		[WProperty("test", "Number of Points")]
+		[WProperty("Misc.", "Number of Points", false)]
 		 public short NumberofPoints
 		{ 
 			get { return m_NumberofPoints; }
@@ -4664,7 +4580,7 @@ namespace WindEditor
 
 		private short m_NextPathIndex;
 
-		[WProperty("test", "Next Path Index")]
+		[WProperty("Misc.", "Next Path Index", false)]
 		 public short NextPathIndex
 		{ 
 			get { return m_NextPathIndex; }
@@ -4678,7 +4594,7 @@ namespace WindEditor
 
 		private byte m_Unknown2;
 
-		[WProperty("test", "Unknown 2")]
+		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -4692,7 +4608,7 @@ namespace WindEditor
 
 		private byte m_PathLoops;
 
-		[WProperty("test", "Path Loops")]
+		[WProperty("Misc.", "Path Loops", false)]
 		 public byte PathLoops
 		{ 
 			get { return m_PathLoops; }
@@ -4706,7 +4622,7 @@ namespace WindEditor
 
 		private short m_Unknown4;
 
-		[WProperty("test", "Unknown 4")]
+		[WProperty("Misc.", "Unknown 4", false)]
 		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -4720,7 +4636,7 @@ namespace WindEditor
 
 		private int m_FirstEntryOffset;
 
-		[WProperty("test", "First Entry Offset")]
+		[WProperty("Misc.", "First Entry Offset", false)]
 		 public int FirstEntryOffset
 		{ 
 			get { return m_FirstEntryOffset; }
@@ -4775,7 +4691,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private int m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public int Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -4817,7 +4733,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private int m_Unknown1;
 
-		[WProperty("test", "Unknown 1")]
+		[WProperty("Misc.", "Unknown 1", false)]
 		 public int Unknown1
 		{ 
 			get { return m_Unknown1; }

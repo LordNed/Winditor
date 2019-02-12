@@ -17,11 +17,12 @@ namespace WindEditor.Editor
             throw new NotImplementedException();
         }
 
-        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, object source)
+        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
         {
             WDetailSingleRowViewModel short_row = new WDetailSingleRowViewModel(display_name);
 
             ShortUpDown shortupdown = new ShortUpDown();
+            shortupdown.IsEnabled = is_editable;
 
             Binding tbind = new Binding(property.Name);
             tbind.Source = source;

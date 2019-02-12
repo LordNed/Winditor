@@ -58,6 +58,8 @@ namespace WindEditor.ViewModel
 
                 string category_name = (string)custom_attributes[0].ConstructorArguments[0].Value;
                 string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
+                bool is_editable = (bool)custom_attributes[0].ConstructorArguments[2].Value;
+
                 string type_name = p.PropertyType.Name;
 
                 if (!new_details.ContainsKey(category_name))
@@ -65,7 +67,7 @@ namespace WindEditor.ViewModel
 
                 if (m_TypeCustomizations.ContainsKey(type_name))
                 {
-                    List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[type_name].CustomizeHeader(p, property_name, obj);
+                    List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[type_name].CustomizeHeader(p, property_name, is_editable, obj);
 
                     // Saw online that adding multiple things to a binding list can be slow,
                     // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
@@ -99,11 +101,13 @@ namespace WindEditor.ViewModel
     {
         private string Category;
         private string DisplayName;
+        private bool IsEditable;
 
-        public WProperty(string category, string name)
+        public WProperty(string category, string name, bool editable)
         {
             Category = category;
             DisplayName = name;
+            IsEditable = editable;
         }
     }
 }

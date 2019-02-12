@@ -162,13 +162,13 @@ namespace WindEditor
                 EnvironmentLightingConditions condition = (EnvironmentLightingConditions)envr;
                 EnvironmentLighting env = new EnvironmentLighting();
 
-                env.WeatherA[0] = times[condition.ClearColorA];
-                env.WeatherA[1] = times[condition.RainingColorA < times.Count ? condition.RainingColorA : 0];
+                env.WeatherA[0] = times[condition.ClearA];
+                env.WeatherA[1] = times[condition.RainingA < times.Count ? condition.RainingA : 0];
                 env.WeatherA[2] = times[condition.SnowingA];
                 env.WeatherA[3] = times[condition.UnknownA];
 
-                env.WeatherB[0] = times[condition.ClearColorB];
-                env.WeatherB[1] = times[condition.RainingColorB];
+                env.WeatherB[0] = times[condition.ClearB];
+                env.WeatherB[1] = times[condition.RainingB];
                 env.WeatherB[2] = times[condition.SnowingB];
                 env.WeatherB[3] = times[condition.UnknownB];
 

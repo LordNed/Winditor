@@ -63,7 +63,7 @@ namespace WindEditor
 		public List<PropertyDefinition> VisibleProperties { get; protected set; }
 
 		public WDOMNode Parent { get; private set; }
-        [WProperty("Transform", "Transform")]
+        [WProperty("Transform", "Transform", true)]
         public WTransform Transform { get; private set; }
         public ObservableCollection<WDOMNode> Children { get { return m_children; } }
         public NodeFlags Flags { get; set; }
@@ -163,6 +163,7 @@ namespace WindEditor
 			VisibleProperties = new List<PropertyDefinition>();
 
             IsVisible = true;
+            m_IsDestroyed = false;
         }
 
         public virtual void Tick(float deltaTime)
@@ -219,6 +220,29 @@ namespace WindEditor
             item.Parent = null;
         }
 
+        public virtual void Destroy()
+        {
+            m_IsDestroyed = true;
+        }
+
+        public static bool operator ==(WDOMNode node1, WDOMNode node2)
+        {
+            bool AIsValid = !ReferenceEquals(node1, null) ? !node1.m_IsDestroyed : false;
+            bool BIsValid = !ReferenceEquals(node2, null) ? !node2.m_IsDestroyed : false;
+
+            if (AIsValid && BIsValid)
+            {
+                return ReferenceEquals(node1, node2);
+            }
+
+            return AIsValid == BIsValid;
+        }
+
+        public static bool operator !=(WDOMNode node1, WDOMNode node2)
+        {
+            return !(node1 == node2);
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -229,6 +253,8 @@ namespace WindEditor
             if (SelectedChanged != null)
                 SelectedChanged(this, e);
         }
+
+        private bool m_IsDestroyed;
 
         #region IEnumerable Interface
         public IEnumerator<WDOMNode> GetEnumerator()

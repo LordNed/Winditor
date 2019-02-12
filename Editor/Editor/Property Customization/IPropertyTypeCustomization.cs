@@ -16,7 +16,7 @@ namespace WindEditor.Editor
         /// <param name="property">The property to create property rows for</param>
         /// <param name="source">The object containing the property</param>
         /// <returns>A list of property rows to be added to the details panel</returns>
-        List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, object source);
+        List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source);
 
         void CustomizeChildren();
     }

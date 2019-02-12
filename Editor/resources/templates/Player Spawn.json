@@ -4,16 +4,74 @@
 	"FourCC" : "PLYR",
 	"Fields" :
 	[
-		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8},
-		{"Name" : "Event Index", "Type" : "Byte"},
-		{"Name" : "Unknown 1", "Type" : "Byte"},
-		{"Name" : "Spawn Type", "Type" : "Byte", "EnumType" : "SpawnRoomEntranceTypes"},
-		{"Name" : "Room", "Type" : "Byte", "ReferenceType" : "Room"},
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Unknown 2", "Type" : "Short"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Unknown 3", "Type" : "Byte"},
-		{"Name" : "Spawn Index", "Type" : "Byte"},
-		{"Name" : "Unknown 4", "Type" : "Short"}
+    {
+      "Name": "Name",
+      "Type": "FixedLengthString",
+      "Length": 8,
+      "Category": "Spawn Properties",
+      "Editable": false
+    },
+    {
+      "Name": "Event Index",
+      "Type": "Byte",
+      "Category": "Spawn Properties",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Byte",
+      "Category": "Unknowns",
+      "Editable": false
+    },
+    {
+      "Name": "Spawn Type",
+      "Type": "Byte",
+      "EnumType": "SpawnRoomEntranceTypes",
+      "Category": "Spawn Properties",
+      "Editable": true
+    },
+    {
+      "Name": "Room",
+      "Type": "Byte",
+      "ReferenceType": "Room",
+      "Category": "Spawn Properties",
+      "Editable": true
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3",
+      "Category": "Spawn Properties",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 2",
+      "Type": "Short",
+      "Category": "Unknowns",
+      "Editable": "False"
+    },
+    {
+      "Name": "Y Rotation",
+      "Type": "YRotation",
+      "Category": "Spawn Properties",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 3",
+      "Type": "Byte",
+      "Category": "Unknowns",
+      "Editable": "False"
+    },
+    {
+      "Name": "Spawn Index",
+      "Type": "Byte",
+      "Category": "Spawn Properties",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 4",
+      "Type": "Short",
+      "Category": "Unknowns",
+      "Editable": "False"
+    }
 	]
 }

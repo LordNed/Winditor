@@ -1,13 +1,37 @@
 ﻿{
 	"ClassName" : "Path_v1",
 	"FourCC" : "PATH",
-	"Fields" :
-	[
-		{"Name" : "Number of Points", "Type" : "Short"},
-		{"Name" : "Next Path Index", "Type" : "Short", "Description" : "If not 0xFF, specifies the next path. Appears paths can be made of multiple non-connected PATH segments."},
-		{"Name" : "Unknown 2", "Type" : "Byte"},
-		{"Name" : "Path Loops", "Type" : "Byte"},
-		{"Name" : "Unknown 4", "Type" : "Short"},
-		{"Name" : "First Entry Offset", "Type" : "Int"},
-	]
+  "Fields": [
+    {
+      "Name": "Number of Points",
+      "Type": "Short",
+      "Hidden": true
+    },
+    {
+      "Name": "Next Path Index",
+      "Type": "Short",
+      "Description": "If not 0xFF, specifies the next path. Appears paths can be made of multiple non-connected PATH segments.",
+      "Hidden": true
+    },
+    {
+      "Name": "First Entry Offset",
+      "Type": "Int",
+      "Hidden": true
+    },
+    {
+      "Name": "Path Loops",
+      "Type": "Byte",
+      "Category": "Path Properties"
+    },
+    {
+      "Name": "Unknown 4",
+      "Type": "Short",
+      "Category": "Unknowns"
+    },
+    {
+      "Name": "Unknown 2",
+      "Type": "Byte",
+      "Category": "Unknowns"
+    }
+  ]
 }

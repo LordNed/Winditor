@@ -18,11 +18,12 @@ namespace WindEditor.Editor
             throw new NotImplementedException();
         }
 
-        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, object source)
+        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
         {
             WDetailSingleRowViewModel color_row = new WDetailSingleRowViewModel(display_name);
 
             ColorPicker colorpicker = new ColorPicker();
+            colorpicker.IsEnabled = is_editable;
 
             Binding tbind = new Binding(property.Name)
             {

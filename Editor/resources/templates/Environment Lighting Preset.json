@@ -3,13 +3,53 @@
 	"FourCC" : "EnvR",
 	"Fields" :
 	[
-		{"Name" : "Clear Color A", "Type" : "Byte"},
-		{"Name" : "Raining Color A", "Type" : "Byte"},
-		{"Name" : "Snowing A", "Type" : "Byte"},
-		{"Name" : "Unknown A", "Type" : "Byte"},
-		{"Name" : "Clear Color B", "Type" : "Byte"},
-		{"Name" : "Raining Color B", "Type" : "Byte"},
-		{"Name" : "Snowing B", "Type" : "Byte"},
-		{"Name" : "Unknown B", "Type" : "Byte"},
+    { 
+      "Name": "Clear A",
+      "Type": "Byte",
+      "Category": "Clear",
+      "Editable": true
+    },
+    {
+      "Name": "Raining A",
+      "Type": "Byte",
+      "Category": "Raining",
+      "Editable": true
+    },
+    {
+      "Name": "Snowing A",
+      "Type": "Byte",
+      "Category": "Snowing",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown A",
+      "Type": "Byte",
+      "Category": "Unknown",
+      "Editable": true
+    },
+    {
+      "Name": "Clear B",
+      "Type": "Byte",
+      "Category": "Clear",
+      "Editable": true
+    },
+    {
+      "Name": "Raining B",
+      "Type": "Byte",
+      "Category": "Raining",
+      "Editable": true
+    },
+    {
+      "Name": "Snowing B",
+      "Type": "Byte",
+      "Category": "Snowing",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown B",
+      "Type": "Byte",
+      "Category": "Unknown",
+      "Editable": true
+    }
 	]
 }

@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindEditor.View"
              xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-             mc:Ignorable="d" >
+             mc:Ignorable="d"
+             x:Name="_this">
     <Grid>
         <DockPanel>
             <Grid>
@@ -20,9 +21,9 @@
                 <TextBlock Text="X" Grid.Column="0" TextAlignment="Center" Foreground="White" Background="Red"/>
                 <TextBlock Text="Y" Grid.Column="2" TextAlignment="Center" Foreground="White" Background="Green"/>
                 <TextBlock Text="Z" Grid.Column="4" TextAlignment="Center" Foreground="White" Background="Blue"/>
-                <xceed:SingleUpDown x:Name="XUpDown" Grid.Column="1" HorizontalAlignment="Stretch"/>
-                <xceed:SingleUpDown x:Name="YUpDown" Grid.Column="3" HorizontalAlignment="Stretch"/>
-                <xceed:SingleUpDown x:Name="ZUpDown" Grid.Column="5" HorizontalAlignment="Stretch"/>
+                <xceed:SingleUpDown x:Name="XUpDown" Value="{Binding ElementName=_this, Path=BackingVector.X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                <xceed:SingleUpDown x:Name="YUpDown" Value="{Binding ElementName=_this, Path=BackingVector.Y}" Grid.Column="3" HorizontalAlignment="Stretch"/>
+                <xceed:SingleUpDown x:Name="ZUpDown" Value="{Binding ElementName=_this, Path=BackingVector.Z}" Grid.Column="5" HorizontalAlignment="Stretch"/>
             </Grid>
         </DockPanel>
     </Grid>

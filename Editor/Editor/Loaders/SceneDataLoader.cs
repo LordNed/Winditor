@@ -138,13 +138,22 @@ namespace WindEditor
 		[JsonProperty("Hidden")]
 		public bool Hidden { get; set; }
 
+        [JsonProperty("Category")]
+        public string CategoryName { get; set; }
+
+        [JsonProperty("Editable")]
+        public bool IsEditable { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
-        public DataDescriptorField(string Name, PropertyValueType Type, bool Hidden)
+        public DataDescriptorField(string Name, PropertyValueType Type, bool IsHidden, string Category, bool Editable)
         {
             FieldName = Name;
             FieldType = Type;
+            CategoryName = Category;
+            Hidden = IsHidden;
+            IsEditable = Editable;
         }
     }
 #pragma warning restore 0649
