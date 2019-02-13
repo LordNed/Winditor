@@ -4,7 +4,7 @@
 	"FourCC" : "PPNT",
 	"Fields" :
 	[
-		{"Name" : "Unknown 1", "Type" : "Int"},
-		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "Unknown 1", "Type" : "Int", "Category": "Unknowns", "Editable": true},
+		{"Name" : "Position", "Type" : "Vector3"}
 	]
 }

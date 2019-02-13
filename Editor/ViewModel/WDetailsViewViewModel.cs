@@ -42,6 +42,7 @@ namespace WindEditor.ViewModel
             m_TypeCustomizations.Add(typeof(float).Name, new SingleTypeCustomization());
             m_TypeCustomizations.Add(typeof(WLinearColor).Name, new LinearColorTypeCustomization());
             m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
+            m_TypeCustomizations.Add(typeof(WDOMNode).Name, new WDOMNodeTypeCustomization());
         }
 
         public void ReflectObject(object obj)
@@ -60,6 +61,12 @@ namespace WindEditor.ViewModel
                 string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
                 bool is_editable = (bool)custom_attributes[0].ConstructorArguments[2].Value;
 
+                Type base_type = p.PropertyType;
+                while (base_type.BaseType != typeof(object))
+                {
+                    base_type = base_type.BaseType;
+                }
+
                 string type_name = p.PropertyType.Name;
 
                 if (!new_details.ContainsKey(category_name))
@@ -68,6 +75,22 @@ namespace WindEditor.ViewModel
                 if (m_TypeCustomizations.ContainsKey(type_name))
                 {
                     List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[type_name].CustomizeHeader(p, property_name, is_editable, obj);
+
+                    // Saw online that adding multiple things to a binding list can be slow,
+                    // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
+                    new_details[category_name].PropertyRows.RaiseListChangedEvents = false;
+
+                    foreach (var row in property_rows)
+                    {
+                        new_details[category_name].PropertyRows.Add(row);
+                    }
+
+                    new_details[category_name].PropertyRows.RaiseListChangedEvents = true;
+                    new_details[category_name].PropertyRows.ResetBindings();
+                }
+                else if (base_type.Name == typeof(WDOMNode).Name)
+                {
+                    List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
 
                     // Saw online that adding multiple things to a binding list can be slow,
                     // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.

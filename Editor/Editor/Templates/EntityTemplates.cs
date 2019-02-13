@@ -4481,7 +4481,18 @@ namespace WindEditor
 		private short m_NextPathIndex;
 				
 
-		private int m_FirstEntryOffset;
+		private byte m_Unknown2;
+
+		[WProperty("Unknowns", "Unknown 2", false)]
+		 public byte Unknown2
+		{ 
+			get { return m_Unknown2; }
+			set
+			{
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
+			}
+		}
 				
 
 		private byte m_PathLoops;
@@ -4512,37 +4523,26 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
-
-		[WProperty("Unknowns", "Unknown 2", false)]
-		 public byte Unknown2
-		{ 
-			get { return m_Unknown2; }
-			set
-			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
-			}
-		}
+		private int m_FirstEntryOffset;
 				
 
 
 		// Constructor
 		public Path_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_NumberofPoints = stream.ReadInt16(); 
 			m_NextPathIndex = stream.ReadInt16(); 
-			m_FirstEntryOffset = stream.ReadInt32(); 
+			m_Unknown2 = stream.ReadByte(); 
 			m_PathLoops = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadInt16(); 
-			m_Unknown2 = stream.ReadByte(); 
+			m_FirstEntryOffset = stream.ReadInt32(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -4553,10 +4553,10 @@ namespace WindEditor
 
 			stream.Write((short)m_NumberofPoints);
 			stream.Write((short)m_NextPathIndex);
-			stream.Write((int)m_FirstEntryOffset);
+			stream.Write((byte)Unknown2);
 			stream.Write((byte)PathLoops);
 			stream.Write((short)Unknown4);
-			stream.Write((byte)Unknown2);
+			stream.Write((int)m_FirstEntryOffset);
 		}
 	}
 
@@ -4691,7 +4691,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		private int m_Unknown1;
 
-		[WProperty("Misc.", "Unknown 1", false)]
+		[WProperty("Unknowns", "Unknown 1", true)]
 		 public int Unknown1
 		{ 
 			get { return m_Unknown1; }

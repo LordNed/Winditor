@@ -14,9 +14,9 @@
       "Hidden": true
     },
     {
-      "Name": "First Entry Offset",
-      "Type": "Int",
-      "Hidden": true
+      "Name": "Unknown 2",
+      "Type": "Byte",
+      "Category": "Unknowns"
     },
     {
       "Name": "Path Loops",
@@ -29,9 +29,9 @@
       "Category": "Unknowns"
     },
     {
-      "Name": "Unknown 2",
-      "Type": "Byte",
-      "Category": "Unknowns"
+      "Name": "First Entry Offset",
+      "Type": "Int",
+      "Hidden": true
     }
   ]
 }

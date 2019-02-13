@@ -253,16 +253,39 @@ namespace WindEditor
             //         dict[actor.FourCC] = new List<WDOMNode>();
             //     dict[actor.FourCC].Add(actor);
             // }
-			// 
+            // 
             // string[] nodes = new[] { "EnvR", "Pale", "Virt", "Colo" };
             // foreach(var node in nodes)
             // {
             //     if (dict.ContainsKey(node))
             //         Console.WriteLine("{0} Count: {1}", node, dict[node].Count);
-			// 
+            // 
             // }
 
+            AssignPaths(loadedActors);
+
             return loadedActors;
+        }
+
+        public void AssignPaths(List<WDOMNode> loaded_actors)
+        {
+            List<WDOMNode> v1_paths = loaded_actors.FindAll(x => x.GetType() == typeof(Path_v1));
+            List<WDOMNode> v1_points = loaded_actors.FindAll(x => x.GetType() == typeof(PathPoint_v1));
+
+            foreach (WDOMNode path_v1 in v1_paths)
+            {
+                Path_v1 cur_path = (Path_v1)path_v1;
+                cur_path.SetNodes(v1_points);
+            }
+
+            List<WDOMNode> v2_paths = loaded_actors.FindAll(x => x.GetType() == typeof(Path_v2));
+            List<WDOMNode> v2_points = loaded_actors.FindAll(x => x.GetType() == typeof(PathPoint_v2));
+
+            foreach (WDOMNode path_v2 in v2_paths)
+            {
+                Path_v2 cur_path = (Path_v2)path_v2;
+                cur_path.SetNodes(v2_points);
+            }
         }
 
         public List<WRoomTable> GetRoomTable()
