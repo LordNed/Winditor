@@ -5,11 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindEditor.View"
              mc:Ignorable="d"
-             x:Name="_this" Height="50" Width="200">
+             x:Name="_this" Height="20" Width="256.667">
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid>
-                <Button Content="Actor Reference" Click="Button_Click"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="actor_combo" Grid.Column="0" SelectedItem="{Binding ElementName=_this, Path=ActorReference}"/>
+                <Button x:Name="Replace_Button" Grid.Column="1" Margin="10,0">
+                    <Image Source="..\resources\textures\ZBtoonEX.png"/>
+                </Button>
+                <Button x:Name="Remove_Button" Grid.Column="2" Margin="0,0,20,0">
+                    <Image Source="..\resources\textures\ZBtoonEX.png"/>
+                </Button>
             </Grid>
         </DockPanel>
     </Grid>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace WindEditor.View
 {
@@ -34,9 +36,34 @@ namespace WindEditor.View
             InitializeComponent();
         }
 
+        public void FillComboBox()
+        {
+            BindingExpression binding = GetBindingExpression(ActorReferenceProperty);
+            Type field_type = binding.ResolvedSource.GetType().GetProperty(binding.ResolvedSourcePropertyName).PropertyType;
+
+            WDOMNode source_object = binding.ResolvedSource as WDOMNode;
+            WDOMNode cur_object = source_object;
+
+            while (cur_object.Parent != null)
+            {
+                cur_object = cur_object.Parent;
+            }
+
+            List<WDOMNode> ba = cur_object.GetChildrenOfType(field_type);
+            ba.Remove(source_object);
+
+            actor_combo.ItemsSource = ba;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ActorReference.Destroy();
+            BindingExpression test = GetBindingExpression(ActorReferenceProperty);
+
+            PropertyInfo ta = test.ResolvedSource.GetType().GetProperty(test.ResolvedSourcePropertyName);
+
+            Type blahg = ta.PropertyType;
+
+            ActorReference = null;
         }
     }
 }

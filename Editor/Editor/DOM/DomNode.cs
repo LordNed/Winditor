@@ -197,6 +197,18 @@ namespace WindEditor
             return result;
         }
 
+        public virtual List<WDOMNode> GetChildrenOfType(Type t)
+        {
+            List<WDOMNode> result = new List<WDOMNode>();
+            if (GetType() == t)
+                result.Add(this);
+
+            foreach (var child in m_children)
+                result.AddRange(child.GetChildrenOfType(t));
+
+            return result;
+        }
+
         public virtual FAABox GetBoundingBox()
         {
             return new FAABox();

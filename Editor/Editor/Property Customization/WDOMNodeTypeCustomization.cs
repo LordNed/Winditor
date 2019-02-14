@@ -16,6 +16,9 @@ namespace WindEditor.Editor
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null)
+                return null;
+
             Type base_type = value.GetType();
             while (base_type.BaseType != null)
             {
@@ -32,7 +35,7 @@ namespace WindEditor.Editor
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.GetType() == targetType)
+            if (value != null && value.GetType() == targetType)
             {
                 return value;
             }
@@ -66,6 +69,7 @@ namespace WindEditor.Editor
             ref_ctrl.SetBinding(WActorReferenceControl.ActorReferenceProperty, tbind);
 
             ref_row.PropertyControl = ref_ctrl;
+            ref_ctrl.FillComboBox();
 
             return new List<WDetailSingleRowViewModel>() { ref_row };
         }
