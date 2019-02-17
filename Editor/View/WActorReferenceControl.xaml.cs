@@ -50,19 +50,30 @@ namespace WindEditor.View
             }
 
             List<WDOMNode> ba = cur_object.GetChildrenOfType(field_type);
-            ba.Remove(source_object);
+
+            if (source_object.GetType() == field_type)
+            {
+                ba.Remove(source_object);
+            }
 
             actor_combo.ItemsSource = ba;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
-            BindingExpression test = GetBindingExpression(ActorReferenceProperty);
+            if (ActorReference == null)
+            {
+                return;
+            }
 
-            PropertyInfo ta = test.ResolvedSource.GetType().GetProperty(test.ResolvedSourcePropertyName);
+            Selection s = ActorReference.World.ActorEditor.EditorSelection;
 
-            Type blahg = ta.PropertyType;
+            s.ClearSelection();
+            s.AddToSelection(ActorReference);
+        }
 
+        private void Remove_Button_Click(object sender, RoutedEventArgs e)
+        {
             ActorReference = null;
         }
     }

@@ -164,6 +164,7 @@
     </Compile>
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
+    <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailSingleRowViewModel.cs" />
@@ -306,6 +307,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
+    <Resource Include="resources\icons\magnifier.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\icons\cancel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="resources\templates\Actor.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

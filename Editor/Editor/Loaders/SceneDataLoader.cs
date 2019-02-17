@@ -275,6 +275,7 @@ namespace WindEditor
             foreach (WDOMNode path_v1 in v1_paths)
             {
                 Path_v1 cur_path = (Path_v1)path_v1;
+                cur_path.Name = $"path_{ v1_paths.IndexOf(cur_path) }";
                 cur_path.SetNodes(v1_points);
             }
 
@@ -284,6 +285,7 @@ namespace WindEditor
             foreach (WDOMNode path_v2 in v2_paths)
             {
                 Path_v2 cur_path = (Path_v2)path_v2;
+                cur_path.Name = $"path_{ v2_paths.IndexOf(cur_path) }";
                 cur_path.SetNodes(v2_points);
             }
         }

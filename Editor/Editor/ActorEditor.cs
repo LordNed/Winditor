@@ -378,13 +378,14 @@ namespace WindEditor
 
         private void DeleteSelection()
         {
-			throw new System.NotImplementedException();
-            // foreach (var item in m_selectionList)
-            // {
-            //     item.Parent.RemoveChild(item);
-            // }
-			// 
-            // ModifySelection(SelectionType.Add, new WActorNode[] { null });
+            WDOMNode[] objs_to_destroy = EditorSelection.SelectedObjects.ToArray();
+
+            foreach (var obj in objs_to_destroy)
+            {
+                obj.Destroy();
+            }
+
+            EditorSelection.ClearSelection();
         }
 
         private void SelectAll()

@@ -10,7 +10,20 @@ namespace WindEditor
 {
 	public partial class Path_v1
 	{
-        [WProperty("Path Properties", "First Point", false)]
+        [WProperty("Path", "Name", true)]
+        override public string Name
+        {
+            get { return m_Name; }
+            set
+            {
+                m_Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string m_Name;
+
+        [WProperty("Path Properties", "First Point", true)]
         public PathPoint_v1 FirstNode
         {
             get { return m_FirstNode; }
@@ -26,20 +39,17 @@ namespace WindEditor
 
         private PathPoint_v1 m_FirstNode;
 
-		public override void PostLoad()
-		{
-			base.PostLoad();
-
-			// ToDo: Get the index of our first node, into the array of passed in entities.
-			// assign that as our FirstNode, and then recursively walk the children assigning their next node,
-			// etc. until we hit a end-of-path node. 
-		}
+        public override string ToString()
+        {
+            return Name;
+        }
 
         public void SetNodes(List<WDOMNode> points)
         {
             int first_index = m_FirstEntryOffset / 16;
 
             FirstNode = (PathPoint_v1)points[first_index];
+            FirstNode.Name = Name + $"_{0}";
 
             PathPoint_v1 cur_node = FirstNode;
 
@@ -47,6 +57,7 @@ namespace WindEditor
             {
                 int next_index = first_index + i;
                 cur_node.NextNode = (PathPoint_v1)points[next_index];
+                cur_node.NextNode.Name = Name + $"_{i}";
                 cur_node = cur_node.NextNode;
             }
         }

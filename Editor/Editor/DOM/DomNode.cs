@@ -151,6 +151,11 @@ namespace WindEditor
 
 		public virtual string Name { get { return ToString(); } set { } }
 
+        public WWorld World
+        {
+            get { return m_world; }
+        }
+
         protected ObservableCollection<WDOMNode> m_children;
         protected WWorld m_world;
 
@@ -235,6 +240,7 @@ namespace WindEditor
         public virtual void Destroy()
         {
             m_IsDestroyed = true;
+            Parent.RemoveChild(this);
         }
 
         public static bool operator ==(WDOMNode node1, WDOMNode node2)

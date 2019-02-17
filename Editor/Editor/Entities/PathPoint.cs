@@ -10,7 +10,20 @@ namespace WindEditor
 {
     public partial class PathPoint_v1
 	{
-        [WProperty("Path Point Properties", "Next Point", true)]
+        [WProperty("Path Point", "Name", true)]
+        override public string Name
+        {
+            get { return m_Name; }
+            set
+            {
+                m_Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string m_Name;
+
+        [WProperty("Path Point", "Next Point", true)]
 		public PathPoint_v1 NextNode
         {
             get { return m_NextNode; }
@@ -25,6 +38,11 @@ namespace WindEditor
         }
 
         private PathPoint_v1 m_NextNode;
+
+        public override string ToString()
+        {
+            return Name;
+        }
 
         override protected void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {

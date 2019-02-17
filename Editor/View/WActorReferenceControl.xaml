@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindEditor.View"
+             xmlns:vm="clr-namespace:WindEditor.ViewModel"
              mc:Ignorable="d"
-             x:Name="_this" Height="20" Width="256.667">
+             x:Name="_this" Height="26" Width="256.667">
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid>
@@ -14,12 +15,15 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="actor_combo" Grid.Column="0" SelectedItem="{Binding ElementName=_this, Path=ActorReference}"/>
-                <Button x:Name="Replace_Button" Grid.Column="1" Margin="10,0">
-                    <Image Source="..\resources\textures\ZBtoonEX.png"/>
+                <Grid.Resources>
+                    <vm:NullToBoolConverter x:Key="nullBullConverter" />
+                </Grid.Resources>
+                <ComboBox x:Name="actor_combo" Grid.Column="0" SelectedItem="{Binding ElementName=_this, Path=ActorReference}" ToolTip="Select new reference in current level" VerticalAlignment="Center"/>
+                <Button x:Name="Replace_Button" Click="Select_Button_Click" Grid.Column="1" Margin="10,2" ToolTip="Select referenced object in viewport" VerticalAlignment="Center" IsEnabled="{Binding ElementName=_this, Path=ActorReference, Converter={StaticResource nullBullConverter}}" Height="22">
+                    <Image Source="..\resources\icons\magnifier.png"/>
                 </Button>
-                <Button x:Name="Remove_Button" Grid.Column="2" Margin="0,0,20,0">
-                    <Image Source="..\resources\textures\ZBtoonEX.png"/>
+                <Button x:Name="Remove_Button" Click="Remove_Button_Click" Grid.Column="2" Margin="0,2,20,2" ToolTip="Clear reference to object" VerticalAlignment="Center" IsEnabled="{Binding ElementName=_this, Path=ActorReference, Converter={StaticResource nullBullConverter}}" Height="22">
+                    <Image Source="..\resources\icons\cancel.png"/>
                 </Button>
             </Grid>
         </DockPanel>
