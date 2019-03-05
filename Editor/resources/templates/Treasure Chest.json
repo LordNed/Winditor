@@ -2,13 +2,35 @@
 	"ClassName" : "TreasureChest",
 	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TRES",
-	"Fields" :
-	[
-		{"Name" : "Name", "Type" : "FixedLengthString" , "Length" : 8},
-		{"Name" : "Params", "Type" : "Int"},
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Room Index", "Type" : "Short"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Params 2", "Type" : "Int"},
-	]
+  "Fields": [
+    {
+      "Name": "Name",
+      "Type": "FixedLengthString",
+      "Length": 8
+    },
+    {
+      "Name": "Parameters",
+      "Type": "Int"
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Aux Parameters 1",
+      "Type": "Short"
+    },
+    {
+      "Name": "Y Rotation",
+      "Type": "YRotation"
+    },
+    {
+      "Name": "Aux Parameters 2",
+      "Type": "Short"
+    },
+    {
+      "Name": "Padding",
+      "Type": "Short"
+    }
+  ]
 }

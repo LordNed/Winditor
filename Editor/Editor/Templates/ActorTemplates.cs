@@ -24,10 +24,8 @@ namespace WindEditor
 				OnPropertyChanged("Pattern");
 			}
 		}
-				
 
 		private int m_Type;
-				
 
 		private int m_ItemDrop;
 
@@ -41,8 +39,6 @@ namespace WindEditor
 				OnPropertyChanged("ItemDrop");
 			}
 		}
-				
-
 
 		// Constructor
 		public Foliage(FourCC fourCC, WWorld world) : base(fourCC, world)
@@ -50,18 +46,8 @@ namespace WindEditor
 			
 		}
 
-		// Copy constructor for Actor conversions
-		public Foliage(Actor src) : base(src.FourCC, src.World)
-		{
-			Parameters = src.Parameters;
-			Name = src.Name;
-			EnemyNumber = src.EnemyNumber;
-		}
-
 		public void GetPropertiesFromParameters()
 		{
-			base.PostLoad();
-
 			Pattern = (Parameters & 15) >> 0;
 			m_Type = (Parameters & 48) >> 4;
 			ItemDrop = (Parameters & 4032) >> 6;

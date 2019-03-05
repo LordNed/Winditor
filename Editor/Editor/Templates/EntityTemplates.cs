@@ -4409,44 +4409,58 @@ namespace WindEditor
 		}
 				
 
-		private int m_Params;
+		private int m_Parameters;
 
-		[WProperty("Misc.", "Params", false)]
-		 public int Params
+		[WProperty("Misc.", "Parameters", false)]
+		 public int Parameters
 		{ 
-			get { return m_Params; }
+			get { return m_Parameters; }
 			set
 			{
-				m_Params = value;
-				OnPropertyChanged("Params");
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
 			}
 		}
 				
 
-		private short m_RoomIndex;
+		private short m_AuxParameters1;
 
-		[WProperty("Misc.", "Room Index", false)]
-		 public short RoomIndex
+		[WProperty("Misc.", "Aux Parameters 1", false)]
+		 public short AuxParameters1
 		{ 
-			get { return m_RoomIndex; }
+			get { return m_AuxParameters1; }
 			set
 			{
-				m_RoomIndex = value;
-				OnPropertyChanged("RoomIndex");
+				m_AuxParameters1 = value;
+				OnPropertyChanged("AuxParameters1");
 			}
 		}
 				
 
-		private int m_Params2;
+		private short m_AuxParameters2;
 
-		[WProperty("Misc.", "Params 2", false)]
-		 public int Params2
+		[WProperty("Misc.", "Aux Parameters 2", false)]
+		 public short AuxParameters2
 		{ 
-			get { return m_Params2; }
+			get { return m_AuxParameters2; }
 			set
 			{
-				m_Params2 = value;
-				OnPropertyChanged("Params2");
+				m_AuxParameters2 = value;
+				OnPropertyChanged("AuxParameters2");
+			}
+		}
+				
+
+		private short m_Padding;
+
+		[WProperty("Misc.", "Padding", false)]
+		 public short Padding
+		{ 
+			get { return m_Padding; }
+			set
+			{
+				m_Padding = value;
+				OnPropertyChanged("Padding");
 			}
 		}
 				
@@ -4456,19 +4470,21 @@ namespace WindEditor
 		public TreasureChest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 2", TargetProperties = new string[] { "Params2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Aux Parameters 1", TargetProperties = new string[] { "AuxParameters1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Aux Parameters 2", TargetProperties = new string[] { "AuxParameters2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
-			m_Params = stream.ReadInt32(); 
+			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_RoomIndex = stream.ReadInt16(); 
+			m_AuxParameters1 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_Params2 = stream.ReadInt32(); 
+			m_AuxParameters2 = stream.ReadInt16(); 
+			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -4478,11 +4494,12 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Params);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)RoomIndex);
+			stream.Write((short)AuxParameters1);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((int)Params2);
+			stream.Write((short)AuxParameters2);
+			stream.Write((short)0); // Padding
 		}
 	}
 
