@@ -87,7 +87,7 @@ namespace WindEditor
 
     public partial class VisibleDOMNode : IRenderable
 	{
-		private SimpleObjRenderer m_objRender;
+		protected SimpleObjRenderer m_objRender;
 		private J3D m_actorMesh;
 		public TevColorOverride ColorOverrides { get; protected set; }
 

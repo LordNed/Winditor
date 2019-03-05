@@ -10,5 +10,19 @@ namespace WindEditor
 		{
 			return Name;
 		}
-	}
+
+        public override void PostLoad()
+        {
+            base.PostLoad();
+
+            if (Name == "pflower" || Name.StartsWith("pflwr"))
+            {
+                m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/pflower_pink.obj");
+            }
+            else if (Name == "flower" || Name.StartsWith("flwr"))
+            {
+                m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/flower.obj");
+            }
+        }
+    }
 }

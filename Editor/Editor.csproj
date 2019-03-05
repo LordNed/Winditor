@@ -157,6 +157,11 @@
     <Compile Include="Editor\Property Customization\WDOMNodeTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\WTransformTypeCustomization.cs" />
     <Compile Include="Editor\Selection.cs" />
+    <Compile Include="Editor\Templates\ActorTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActorTemplates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Templates\EntityTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -303,16 +308,48 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Editor\Templates\ActorTemplates.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ActorTemplates.cs</LastGenOutput>
+    </Content>
     <Content Include="Editor\Templates\EntityTemplates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
+    <Content Include="resources\models\flowers\flower.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\flower.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\pflower_oasis.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\pflower_oasis.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\pflower_pink.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\pflower_pink.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="resources\templates\MapEntityData\foliage.json" />
     <Resource Include="resources\icons\magnifier.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="resources\icons\cancel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="resources\models\flowers\l_Txo_ob_flower_pink_64x64TEX_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\l_Txo_ob_flower_white_64x64TEX_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\flowers\l_Txq_bessou_hanaTEX_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\templates\Actor.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -797,9 +834,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="resources\templates\MapEntityData\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\JStudio\JStudio.csproj">
       <Project>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</Project>

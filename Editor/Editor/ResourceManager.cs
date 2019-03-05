@@ -28,6 +28,9 @@ namespace WindEditor
 
         [JsonProperty("Secondary Models")]
         public string SecondaryModelPaths;
+
+        [JsonProperty("ActorClassType")]
+        public string ActorClassType;
     }
 
 
@@ -196,6 +199,23 @@ namespace WindEditor
 
             existRef.ReferenceCount++;
             return existRef.Asset;
+        }
+
+        public static Type GetTypeByName(string name)
+        {
+            if (!m_actorDescriptors.ContainsKey(name))
+            {
+                return typeof(Actor);
+            }
+
+            WActorDescriptor desc = m_actorDescriptors[name];
+
+            if (desc.ActorClassType == null)
+            {
+                return typeof(Actor);
+            }
+
+            return Type.GetType($"WindEditor.{ desc.ActorClassType }");
         }
 
         public static void DumpResourceStatistics()

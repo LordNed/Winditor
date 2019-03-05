@@ -1,0 +1,27 @@
+{
+	"ClassName" : "Foliage",
+	"ParentClassOverride" : "Actor",
+	"Fields": 
+	[
+		{
+			"Name" : "Pattern",
+			"Mask" : 0xF, 
+			"Shift" : 0,
+			"Hidden": false,
+			"Category" : "Foliage" },
+		{ 
+			"Name" : "Type",
+			"Mask" : 0x30,
+			"Shift" : 4,
+			"Hidden": false,
+			"Category" : "Foliage"
+		},
+		{
+			"Name" : "Item Drop",
+			"Mask" : 0xFC0,
+			"Shift": 6,
+			"Hidden": false,
+			"Category": "Foliage"
+		}
+	]
+}

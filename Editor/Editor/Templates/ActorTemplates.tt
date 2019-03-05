@@ -1,0 +1,125 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="Newtonsoft.Json"#>
+// <#@ assembly name="$(ProjectDir)/../WCommon/lib/GameFormatReader.dll"#>
+<#@ assembly name="$(TargetPath)"#>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="WindEditor" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="GameFormatReader.Common" #>
+<#@ output extension=".cs" #>
+
+<#
+
+var ProjectDirPath = Host.ResolveAssemblyReference("$(ProjectDir)");
+var TemplatePath = ProjectDirPath + "resources/templates/MapEntityData";
+
+#>
+using GameFormatReader.Common;
+using OpenTK;
+using System.ComponentModel;
+using System.Diagnostics;
+using System;
+using WindEditor.ViewModel;
+
+namespace WindEditor
+{
+<#
+
+// We sometimes have duplicate templates to handle loading from the file, so we'll not generate duplicate classes.
+List<string> usedClassNames = new List<string>();
+foreach (var file in Directory.GetFiles(TemplatePath))
+{
+    ActorBitfieldDescriptor descriptor = JsonConvert.DeserializeObject<ActorBitfieldDescriptor>(File.ReadAllText(file));
+	string className = descriptor.ClassName;
+	string parentClassName = string.IsNullOrEmpty(descriptor.ParentClassOverride) ? "Actor" : descriptor.ParentClassOverride;
+#>
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class <#= className #> : <#= parentClassName #>
+	{
+		// Auto-Generated Properties from Templates
+<#
+		// We skip these fields as they're pulled out in the load function and we don't want duplicate properties.
+		var skippedFields = new List<string>(new []{"Position", "XRotation", "YRotation", "ZRotation", "XScale", "YScale", "ZScale"});
+		foreach(var field in descriptor.Fields)
+		{
+			if(skippedFields.Contains(field.FieldName.Replace(" ", "")))
+				continue; 
+
+			string fieldName = field.FieldName.Replace(" ", "");
+			string privateFieldName = "m_" + fieldName;
+			string overrideName = field.FieldName == "Name" ? "override" : "";
+			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
+
+			
+#>
+		private int <#=privateFieldName#>;
+<#		 // We hide padding and other fields that the user doesn't need to see/change.
+		if(!field.IsHidden)
+		{
+#>
+
+		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true)]
+		<#= overrideName #> public int <#= fieldName #>
+		{ 
+			get { return <#=privateFieldName#>; }
+			set
+			{
+				<#=privateFieldName#> = value;
+				OnPropertyChanged("<#=fieldName#>");
+			}
+		}
+<#		}#>				
+
+<#
+		}
+#>
+
+		// Constructor
+		public <#= className #>(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+
+		// Copy constructor for Actor conversions
+		public <#= className #>(Actor src) : base(src.FourCC, src.World)
+		{
+			Parameters = src.Parameters;
+			Name = src.Name;
+			FlagToSet = src.FlagToSet;
+			EnemyNumber = src.EnemyNumber;
+		}
+
+		override public void PostLoad()
+		{
+			base.PostLoad();
+
+<#
+			foreach(var field in descriptor.Fields)
+			{
+#>
+			<#= field.FieldName.Replace(" ", "") #> = (Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
+<#
+			}
+#>
+		}
+
+		override public void PreSave()
+		{
+			Parameters = 0;
+<#
+			foreach(var field in descriptor.Fields)
+			{
+#>
+			Parameters |= (<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
+<#
+			}
+#>
+		}
+	}
+<#
+}
+#>
+
+} // namespace WindEditor
