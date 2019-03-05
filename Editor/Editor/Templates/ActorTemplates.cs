@@ -27,17 +27,6 @@ namespace WindEditor
 				
 
 		private int m_Type;
-
-		[WProperty("Foliage", "Type", true)]
-		 public int Type
-		{ 
-			get { return m_Type; }
-			set
-			{
-				m_Type = value;
-				OnPropertyChanged("Type");
-			}
-		}
 				
 
 		private int m_ItemDrop;
@@ -66,24 +55,23 @@ namespace WindEditor
 		{
 			Parameters = src.Parameters;
 			Name = src.Name;
-			FlagToSet = src.FlagToSet;
 			EnemyNumber = src.EnemyNumber;
 		}
 
-		override public void PostLoad()
+		public void GetPropertiesFromParameters()
 		{
 			base.PostLoad();
 
 			Pattern = (Parameters & 15) >> 0;
-			Type = (Parameters & 48) >> 4;
+			m_Type = (Parameters & 48) >> 4;
 			ItemDrop = (Parameters & 4032) >> 6;
 		}
 
-		override public void PreSave()
+		public void SetParametersWithProperties()
 		{
 			Parameters = 0;
 			Parameters |= (Pattern & 15) << 0;
-			Parameters |= (Type & 48) << 4;
+			Parameters |= (m_Type & 48) << 4;
 			Parameters |= (ItemDrop & 4032) << 6;
 		}
 	}

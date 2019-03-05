@@ -88,6 +88,23 @@ namespace WindEditor.ViewModel
                     new_details[category_name].PropertyRows.RaiseListChangedEvents = true;
                     new_details[category_name].PropertyRows.ResetBindings();
                 }
+                else if (p.PropertyType.IsEnum)
+                {
+                    EnumTypeCustomization enu = new EnumTypeCustomization();
+                    List<WDetailSingleRowViewModel> property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
+
+                    // Saw online that adding multiple things to a binding list can be slow,
+                    // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
+                    new_details[category_name].PropertyRows.RaiseListChangedEvents = false;
+
+                    foreach (var row in property_rows)
+                    {
+                        new_details[category_name].PropertyRows.Add(row);
+                    }
+
+                    new_details[category_name].PropertyRows.RaiseListChangedEvents = true;
+                    new_details[category_name].PropertyRows.ResetBindings();
+                }
                 else if (base_type.Name == typeof(WDOMNode).Name)
                 {
                     List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);

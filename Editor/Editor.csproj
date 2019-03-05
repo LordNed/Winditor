@@ -128,7 +128,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
+    <Compile Include="Editor\Entities\Actors\Foliage.cs" />
     <Compile Include="Editor\Entities\Door_DOOR.cs" />
+    <Compile Include="Editor\Entities\Enums.cs" />
     <Compile Include="Editor\Entities\ExitData.cs" />
     <Compile Include="Editor\Entities\FourCC.cs" />
     <Compile Include="Editor\Entities\MapEvent.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Globals.cs" />
     <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
+    <Compile Include="Editor\Property Customization\EnumTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IPropertyTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\LinearColorTypeCustomization.cs" />

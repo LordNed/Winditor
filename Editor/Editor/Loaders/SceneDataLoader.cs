@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace WindEditor
 {
@@ -156,6 +157,43 @@ namespace WindEditor
             IsEditable = Editable;
         }
     }
+
+    public class ActorDataDescriptor
+    {
+        public string ClassName;
+        public string ParentClassOverride;
+        public ActorBitfieldDescriptor[] Fields;
+    }
+
+    public class ActorBitfieldDescriptor
+    {
+        [JsonProperty("Name")]
+        public string FieldName { get; set; }
+
+        [JsonProperty("Mask")]
+        public int BitMask { get; set; }
+
+        [JsonProperty("Shift")]
+        public int BitShift { get; set; }
+
+        [JsonProperty("Category")]
+        public string CategoryName { get; set; }
+
+        [JsonProperty("Hidden")]
+        public bool IsHidden { get; set; }
+
+        public uint Length;
+
+        [JsonConstructor]
+        public ActorBitfieldDescriptor(string Name, int Mask, int Shift, string Category, bool Hidden)
+        {
+            FieldName = Name;
+            BitMask = Mask;
+            BitShift = Shift;
+            CategoryName = Category;
+            IsHidden = Hidden;
+        }
+    }
 #pragma warning restore 0649
 
     class SceneDataLoader
@@ -230,6 +268,34 @@ namespace WindEditor
                     //case "RTBL":
                     case FourCC.MECO:
                     case FourCC.MEMA:
+                        break;
+                    case FourCC.ACTR:
+                    case FourCC.ACT0:
+                    case FourCC.ACT1:
+                    case FourCC.ACT2:
+                    case FourCC.ACT3:
+                    case FourCC.ACT4:
+                    case FourCC.ACT5:
+                    case FourCC.ACT6:
+                    case FourCC.ACT7:
+                    case FourCC.ACT8:
+                    case FourCC.ACT9:
+                    case FourCC.ACTa:
+                    case FourCC.ACTb:
+                        for (int i = 0; i < chunk.ElementCount; i++)
+                        {
+                            // We need to read the entity name so we can load the right derived class for it
+                            string entity_name = Encoding.ASCII.GetString(m_reader.PeekReadBytes(8)).Trim('\0');
+
+                            Type actorType = WResourceManager.GetTypeByName(entity_name);
+                            SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
+
+                            entity.Load(m_reader);
+                            entity.PostLoad();
+                            entity.Layer = chunk.Layer;
+
+                            loadedActors.Add(entity);
+                        }
                         break;
                     default:
                         for (int i = 0; i < chunk.ElementCount; i++)

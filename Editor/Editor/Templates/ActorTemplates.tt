@@ -31,7 +31,7 @@ namespace WindEditor
 List<string> usedClassNames = new List<string>();
 foreach (var file in Directory.GetFiles(TemplatePath))
 {
-    ActorBitfieldDescriptor descriptor = JsonConvert.DeserializeObject<ActorBitfieldDescriptor>(File.ReadAllText(file));
+    ActorDataDescriptor descriptor = JsonConvert.DeserializeObject<ActorDataDescriptor>(File.ReadAllText(file));
 	string className = descriptor.ClassName;
 	string parentClassName = string.IsNullOrEmpty(descriptor.ParentClassOverride) ? "Actor" : descriptor.ParentClassOverride;
 #>
@@ -87,11 +87,10 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		{
 			Parameters = src.Parameters;
 			Name = src.Name;
-			FlagToSet = src.FlagToSet;
 			EnemyNumber = src.EnemyNumber;
 		}
 
-		override public void PostLoad()
+		public void GetPropertiesFromParameters()
 		{
 			base.PostLoad();
 
@@ -105,7 +104,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 #>
 		}
 
-		override public void PreSave()
+		public void SetParametersWithProperties()
 		{
 			Parameters = 0;
 <#

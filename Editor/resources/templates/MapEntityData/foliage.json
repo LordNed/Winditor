@@ -13,7 +13,7 @@
 			"Name" : "Type",
 			"Mask" : 0x30,
 			"Shift" : 4,
-			"Hidden": false,
+			"Hidden": true,
 			"Category" : "Foliage"
 		},
 		{

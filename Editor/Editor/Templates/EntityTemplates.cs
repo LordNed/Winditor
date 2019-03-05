@@ -494,16 +494,30 @@ namespace WindEditor
 		}
 				
 
-		private short m_FlagToSet;
+		private short m_AuxillaryParameters1;
 
-		[WProperty("Misc.", "Flag To Set", false)]
-		 public short FlagToSet
+		[WProperty("Misc.", "Auxillary Parameters 1", false)]
+		 public short AuxillaryParameters1
 		{ 
-			get { return m_FlagToSet; }
+			get { return m_AuxillaryParameters1; }
 			set
 			{
-				m_FlagToSet = value;
-				OnPropertyChanged("FlagToSet");
+				m_AuxillaryParameters1 = value;
+				OnPropertyChanged("AuxillaryParameters1");
+			}
+		}
+				
+
+		private short m_AuxillaryParameters2;
+
+		[WProperty("Misc.", "Auxillary Parameters 2", false)]
+		 public short AuxillaryParameters2
+		{ 
+			get { return m_AuxillaryParameters2; }
+			set
+			{
+				m_AuxillaryParameters2 = value;
+				OnPropertyChanged("AuxillaryParameters2");
 			}
 		}
 				
@@ -528,7 +542,8 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Flag To Set", TargetProperties = new string[] { "FlagToSet"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 1", TargetProperties = new string[] { "AuxillaryParameters1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 2", TargetProperties = new string[] { "AuxillaryParameters2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
@@ -537,9 +552,9 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
+			m_AuxillaryParameters1 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_FlagToSet = stream.ReadInt16(); 
+			m_AuxillaryParameters2 = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
@@ -552,9 +567,9 @@ namespace WindEditor
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write(WMath.RotationFloatToShort(originalRot.X));
+			stream.Write((short)AuxillaryParameters1);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)FlagToSet);
+			stream.Write((short)AuxillaryParameters2);
 			stream.Write((short)EnemyNumber);
 		}
 	}
