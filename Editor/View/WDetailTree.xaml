@@ -7,9 +7,9 @@
              xmlns:vm="clr-namespace:WindEditor.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="200">
-    <Grid>
+    <Grid Grid.IsSharedSizeScope="True">
         <DockPanel LastChildFill="True">
-            <StackPanel Orientation="Vertical" x:Name="WDetailTreeView">
+            <StackPanel Orientation="Vertical" x:Name="WDetailTreeView" >
                 <ItemsControl ItemsSource="{Binding Categories}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>

@@ -94,6 +94,8 @@ namespace WindEditor
                         continue;
                     }
 
+                    actor.PreSave();
+
                     actor.Save(writer);
                     //WriteActorToChunk(actor, template, writer);
                 }

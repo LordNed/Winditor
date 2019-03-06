@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace WindEditor.ViewModel
         // WPF
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Dictionary<string, WDetailsCategoryRowViewModel> Categories
+        public OrderedDictionary Categories
         {
             get { return m_Categories; }
             set
@@ -27,12 +28,12 @@ namespace WindEditor.ViewModel
             }
         }
 
-        private Dictionary<string, WDetailsCategoryRowViewModel> m_Categories;
+        private OrderedDictionary m_Categories;
         private Dictionary<string, IPropertyTypeCustomization> m_TypeCustomizations;
 
         public WDetailsViewViewModel()
         {
-            m_Categories = new Dictionary<string, WDetailsCategoryRowViewModel>();
+            m_Categories = new OrderedDictionary();
             m_TypeCustomizations = new Dictionary<string, IPropertyTypeCustomization>();
 
             m_TypeCustomizations.Add(typeof(string).Name, new StringTypeCustomization());
@@ -47,7 +48,7 @@ namespace WindEditor.ViewModel
 
         public void ReflectObject(object obj)
         {
-            Dictionary<string, WDetailsCategoryRowViewModel> new_details = new Dictionary<string, WDetailsCategoryRowViewModel>();
+            OrderedDictionary new_details = new OrderedDictionary();
 
             PropertyInfo[] obj_properties = obj.GetType().GetProperties();
 
@@ -69,8 +70,17 @@ namespace WindEditor.ViewModel
 
                 string type_name = p.PropertyType.Name;
 
-                if (!new_details.ContainsKey(category_name))
-                    new_details.Add(category_name, new WDetailsCategoryRowViewModel(category_name));
+                if (!new_details.Contains(category_name))
+                {
+                    if (category_name == "Transform")
+                    {
+                        new_details.Insert(0, category_name, new WDetailsCategoryRowViewModel(category_name));
+                    }
+                    else
+                        new_details.Add(category_name, new WDetailsCategoryRowViewModel(category_name));
+                }
+
+                WDetailsCategoryRowViewModel current_category = (WDetailsCategoryRowViewModel)new_details[category_name];
 
                 if (m_TypeCustomizations.ContainsKey(type_name))
                 {
@@ -78,15 +88,15 @@ namespace WindEditor.ViewModel
 
                     // Saw online that adding multiple things to a binding list can be slow,
                     // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
-                    new_details[category_name].PropertyRows.RaiseListChangedEvents = false;
+                    current_category.PropertyRows.RaiseListChangedEvents = false;
 
                     foreach (var row in property_rows)
                     {
-                        new_details[category_name].PropertyRows.Add(row);
+                        current_category.PropertyRows.Add(row);
                     }
 
-                    new_details[category_name].PropertyRows.RaiseListChangedEvents = true;
-                    new_details[category_name].PropertyRows.ResetBindings();
+                    current_category.PropertyRows.RaiseListChangedEvents = true;
+                    current_category.PropertyRows.ResetBindings();
                 }
                 else if (p.PropertyType.IsEnum)
                 {
@@ -95,15 +105,15 @@ namespace WindEditor.ViewModel
 
                     // Saw online that adding multiple things to a binding list can be slow,
                     // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
-                    new_details[category_name].PropertyRows.RaiseListChangedEvents = false;
+                    current_category.PropertyRows.RaiseListChangedEvents = false;
 
                     foreach (var row in property_rows)
                     {
-                        new_details[category_name].PropertyRows.Add(row);
+                        current_category.PropertyRows.Add(row);
                     }
 
-                    new_details[category_name].PropertyRows.RaiseListChangedEvents = true;
-                    new_details[category_name].PropertyRows.ResetBindings();
+                    current_category.PropertyRows.RaiseListChangedEvents = true;
+                    current_category.PropertyRows.ResetBindings();
                 }
                 else if (base_type.Name == typeof(WDOMNode).Name)
                 {
@@ -111,19 +121,19 @@ namespace WindEditor.ViewModel
 
                     // Saw online that adding multiple things to a binding list can be slow,
                     // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
-                    new_details[category_name].PropertyRows.RaiseListChangedEvents = false;
+                    current_category.PropertyRows.RaiseListChangedEvents = false;
 
                     foreach (var row in property_rows)
                     {
-                        new_details[category_name].PropertyRows.Add(row);
+                        current_category.PropertyRows.Add(row);
                     }
 
-                    new_details[category_name].PropertyRows.RaiseListChangedEvents = true;
-                    new_details[category_name].PropertyRows.ResetBindings();
+                    current_category.PropertyRows.RaiseListChangedEvents = true;
+                    current_category.PropertyRows.ResetBindings();
                 }
                 else
                 {
-                    new_details[category_name].PropertyRows.Add(new WDetailSingleRowViewModel(property_name));
+                    current_category.PropertyRows.Add(new WDetailSingleRowViewModel(property_name));
                 }
             }
 

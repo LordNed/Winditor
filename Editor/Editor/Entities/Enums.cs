@@ -16,33 +16,21 @@ namespace WindEditor
 
     public enum ChestType
     {
-        A,
-        B,
-        C,
-        D,
-        E,
-        F,
-        G,
-        H,
-        I,
-        J,
-        K,
-        L,
-        M,
-        N,
-        O,
-        P
+        Light_wood,
+        Dark_wood,
+        Metal,
+        Big_Key
     }
 
     public enum ChestBehavior
     {
         Normal,
-        Unk1,
+        Spawn_when_a_switch_is_set,
         Spawn_when_all_enemies_are_defeated,
-        Unk2,
+        Visible_but_unopenable_until_a_switch_is_set,
         Transparent_until_a_switch_is_set,
-        Attach_to_actor_below,
-        Unk3,
+        Apply_gravity,
+        Spawn_when_a_Wind_Waker_song_is_played,
         Unk4,
         Unk5
     }
@@ -144,14 +132,14 @@ namespace WindEditor
         Wind_Gods_Aria = 113,
         Song_of_Passing = 114,
         Sail = 120,
-        Deciphered_Triforce_Chart_1 = 121,
-        Deciphered_Triforce_Chart_2 = 122,
-        Deciphered_Triforce_Chart_3 = 123,
-        Deciphered_Triforce_Chart_4 = 124,
-        Deciphered_Triforce_Chart_5 = 125,
-        Deciphered_Triforce_Chart_6 = 126,
-        Deciphered_Triforce_Chart_7 = 127,
-        Deciphered_Triforce_Chart_8 = 128,
+        Deciphered_Triforce_Chart_8 = 121,
+        Deciphered_Triforce_Chart_7 = 122,
+        Deciphered_Triforce_Chart_6 = 123,
+        Deciphered_Triforce_Chart_5 = 124,
+        Deciphered_Triforce_Chart_4 = 125,
+        Deciphered_Triforce_Chart_3 = 126,
+        Deciphered_Triforce_Chart_2 = 127,
+        Deciphered_Triforce_Chart_1 = 128,
         Bait = 130,
         Hyoi_Pear = 131,
         Town_Flower = 140,

@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Windows.Input;
 using System.IO;
 using WArchiveTools;
@@ -217,7 +218,7 @@ namespace WindEditor
 
         public void OnApplicationRequestCloseProject()
         {
-            MainWorld.ActorEditor.DetailsViewModel.Categories = new Dictionary<string, ViewModel.WDetailsCategoryRowViewModel>();
+            MainWorld.ActorEditor.DetailsViewModel.Categories = new OrderedDictionary();
             MainWorld.UnloadMap();
         }
 

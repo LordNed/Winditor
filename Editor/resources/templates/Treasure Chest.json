@@ -6,11 +6,13 @@
     {
       "Name": "Name",
       "Type": "FixedLengthString",
-      "Length": 8
+      "Length": 8,
+      "Category":  "Treasure Chest"
     },
     {
       "Name": "Parameters",
-      "Type": "Int"
+      "Type": "Int",
+      "Hidden":  true
     },
     {
       "Name": "Position",
@@ -18,7 +20,8 @@
     },
     {
       "Name": "Aux Parameters 1",
-      "Type": "Short"
+      "Type": "Short",
+      "Hidden":  true
     },
     {
       "Name": "Y Rotation",
@@ -26,11 +29,13 @@
     },
     {
       "Name": "Aux Parameters 2",
-      "Type": "Short"
+      "Type": "Short",
+      "Hidden": true
     },
     {
       "Name": "Padding",
-      "Type": "Short"
+      "Type": "Short",
+      "Hidden":  true
     }
   ]
 }

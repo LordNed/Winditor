@@ -30,7 +30,7 @@ namespace WindEditor
 
         private byte m_SpawnSwitchId;
 
-        [WProperty("Treasure Chest", "Spawn Switch ID", true)]
+        [WProperty("Flags", "Spawn Switch ID", true)]
         public byte SpawnSwitchId
         {
             get { return m_SpawnSwitchId; }
@@ -46,7 +46,7 @@ namespace WindEditor
 
         private byte m_OpenFlagId;
 
-        [WProperty("Treasure Chest", "Open Flag ID", false)]
+        [WProperty("Flags", "Open Flag ID", false)]
         public byte OpenFlagId
         {
             get { return m_OpenFlagId; }
@@ -94,7 +94,7 @@ namespace WindEditor
 
         private byte m_OpenSwitchId;
 
-        [WProperty("Treasure Chest", "Open Switch ID", true)]
+        [WProperty("Flags", "Open Switch ID", true)]
         public byte OpenSwitchId
         {
             get { return m_OpenSwitchId; }
@@ -128,15 +128,42 @@ namespace WindEditor
         {
             base.PostLoad();
 
-            Type = (ChestType)((Parameters & 0xF00000) >> 20);
-            SpawnSwitchId = (byte)((Parameters & 0xFF000) >> 12);
-            OpenFlagId = (byte)((Parameters & 0xF80) >> 7);
-            Behavior = (ChestBehavior)((Parameters & 0x7F));
+            Type = (ChestType)((m_Parameters & 0xF00000) >> 20);
+            SpawnSwitchId = (byte)((m_Parameters & 0xFF000) >> 12);
+            OpenFlagId = (byte)((m_Parameters & 0xF80) >> 7);
+            Behavior = (ChestBehavior)((m_Parameters & 0x7F));
 
-            RoomNumber = (byte)(AuxParameters1 & 0x3F);
+            RoomNumber = (byte)(m_AuxParameters1 & 0x3F);
 
-            OpenSwitchId = (byte)(AuxParameters2 & 0xFF);
-            Item = (ItemID)((AuxParameters2 & 0xFF00) >> 8);
+            OpenSwitchId = (byte)(m_AuxParameters2 & 0xFF);
+            Item = (ItemID)((m_AuxParameters2 & 0xFF00) >> 8);
+
+            // Some unused rooms have chest types that don't exist any more.
+            // We'll force these to be the default.
+            if ((int)Type > 4)
+            {
+                Type = ChestType.Light_wood;
+            }
+        }
+
+        public override void PreSave()
+        {
+            base.PreSave();
+
+            m_Parameters = 0;
+            m_AuxParameters1 = 0;
+            m_AuxParameters2 = 0;
+
+            m_Parameters |= 0xFF << 24;
+            m_Parameters |= ((int)Type & 0xF) << 20;
+            m_Parameters |= (SpawnSwitchId & 0xFF) << 12;
+            m_Parameters |= (OpenFlagId & 0x1F) << 7;
+            m_Parameters |= ((int)Behavior & 0x7F);
+
+            m_AuxParameters1 |= (short)(RoomNumber & 0x3F);
+
+            m_AuxParameters2 |= (short)(OpenSwitchId & 0xFF);
+            m_AuxParameters2 |= (short)(((int)Item & 0xFF) << 8);
         }
     }
 }

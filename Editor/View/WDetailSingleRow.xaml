@@ -7,8 +7,8 @@
              mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto" MinWidth="10" MaxWidth="200"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="Auto" MinWidth="10" MaxWidth="200" SharedSizeGroup="B"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <DockPanel Name="LabelDock" Grid.Column="0" LastChildFill="True">
