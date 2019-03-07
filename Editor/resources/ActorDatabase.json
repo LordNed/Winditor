@@ -5835,5 +5835,41 @@
     "Secondary Models": "",
     "Wait Animations": "",
     "ActorClassType": "Foliage"
+  },
+  {
+    "Archive Name": "Dalways",
+    "Actor Name": "light_wood_chest",
+    "English Name": "A chest made of light-colored wood.",
+    "Main Model": "bdli/boxa.bdl",
+    "Secondary Models": "",
+    "Wait Animations": "",
+    "ActorClassType": "TreasureChest"
+  },
+  {
+    "Archive Name": "Dalways",
+    "Actor Name": "dark_wood_chest",
+    "English Name": "A chest made of dark-colored wood.",
+    "Main Model": "bdli/boxb.bdl",
+    "Secondary Models": "",
+    "Wait Animations": "",
+    "ActorClassType": "TreasureChest"
+  },
+  {
+    "Archive Name": "Dalways",
+    "Actor Name": "metal_chest",
+    "English Name": "A chest made of metal.",
+    "Main Model": "bdli/boxc.bdl",
+    "Secondary Models": "",
+    "Wait Animations": "",
+    "ActorClassType": "TreasureChest"
+  },
+  {
+    "Archive Name": "Dalways",
+    "Actor Name": "big_key_chest",
+    "English Name": "A chest made of ornateness.",
+    "Main Model": "bdlm/boxd.bdl",
+    "Secondary Models": "",
+    "Wait Animations": "",
+    "ActorClassType": "TreasureChest"
   }
 ]

@@ -161,7 +161,7 @@ namespace WindEditor
                     }
                 }
 
-                var childActors = GetChildrenOfType<WActorNode>();
+                var childActors = GetChildrenOfType<VisibleDOMNode>();
                 foreach(var child in childActors)
                 {
                     child.ColorOverrides.SetTevColorOverride(0, curLight.Shadow);

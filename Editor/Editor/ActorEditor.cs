@@ -206,7 +206,7 @@ namespace WindEditor
 
         private void UpdateSelectionGizmo(WSceneView view)
         {
-            if (!m_transformGizmo.Enabled && EditorSelection.SelectedObjects.Count > 0)
+            if (!m_transformGizmo.Enabled && EditorSelection.SelectedObjects.Count > 0 && EditorSelection.PrimarySelectedObject is VisibleDOMNode)
             {
                 // Show the Transform Gizmo.
                 m_transformGizmo.Enabled = true;
@@ -214,7 +214,7 @@ namespace WindEditor
                 // m_transformGizmo.SetPosition(m_selectionList[0].Transform.Position);
                 // m_transformGizmo.SetLocalRotation(m_selectionList[0].Transform.Rotation);
             }
-            else if (m_transformGizmo.Enabled && EditorSelection.SelectedObjects.Count == 0)
+            else if (m_transformGizmo.Enabled && EditorSelection.SelectedObjects.Count == 0 || !(EditorSelection.PrimarySelectedObject is VisibleDOMNode))
             {
                 // Hide the Transform Gizmo.
                 m_transformGizmo.Enabled = false;

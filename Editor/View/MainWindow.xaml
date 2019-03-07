@@ -228,7 +228,7 @@
                         <Label DockPanel.Dock="Left" Content="Layer:"/>
                         <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
                     </DockPanel>
-                    <GroupBox DockPanel.Dock="Top" Header="Object Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <GroupBox DockPanel.Dock="Top" Header="Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <wview:WDetailsView x:Name="Details" DataContext="{Binding Path=DetailsViewModel}"/>
                     </GroupBox>
                 </DockPanel>

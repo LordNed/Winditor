@@ -31,8 +31,8 @@ namespace WindEditor
         Transparent_until_a_switch_is_set,
         Apply_gravity,
         Spawn_when_a_Wind_Waker_song_is_played,
-        Unk4,
-        Unk5
+        Uses_extra_open_flag,
+        Uses_extra_open_flag_and_spawns_when_a_switch_is_set
     }
 
     public enum ItemID

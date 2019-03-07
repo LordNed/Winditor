@@ -50,6 +50,7 @@ namespace WindEditor.ViewModel
         {
             OrderedDictionary new_details = new OrderedDictionary();
 
+            HideCategoriesAttribute hidden_categories = (HideCategoriesAttribute)obj.GetType().GetCustomAttribute(typeof(HideCategoriesAttribute));
             PropertyInfo[] obj_properties = obj.GetType().GetProperties();
 
             foreach (PropertyInfo p in obj_properties)
@@ -70,7 +71,7 @@ namespace WindEditor.ViewModel
 
                 string type_name = p.PropertyType.Name;
 
-                if (!new_details.Contains(category_name))
+                if (!new_details.Contains(category_name) && !hidden_categories.CategoryHidden(category_name))
                 {
                     if (category_name == "Transform")
                     {
@@ -80,7 +81,12 @@ namespace WindEditor.ViewModel
                         new_details.Add(category_name, new WDetailsCategoryRowViewModel(category_name));
                 }
 
-                WDetailsCategoryRowViewModel current_category = (WDetailsCategoryRowViewModel)new_details[category_name];
+                WDetailsCategoryRowViewModel current_category = null;
+
+                if (new_details.Contains(category_name))
+                    current_category = (WDetailsCategoryRowViewModel)new_details[category_name];
+                else
+                    continue;
 
                 if (m_TypeCustomizations.ContainsKey(type_name))
                 {
@@ -158,6 +164,26 @@ namespace WindEditor.ViewModel
             Category = category;
             DisplayName = name;
             IsEditable = editable;
+        }
+    }
+
+    public class HideCategoriesAttribute : System.Attribute
+    {
+        private string[] HiddenCategories;
+
+        public HideCategoriesAttribute()
+        {
+            HiddenCategories = new string[1];
+        }
+
+        public HideCategoriesAttribute(string[] categories)
+        {
+            HiddenCategories = categories;
+        }
+
+        public bool CategoryHidden(string cat)
+        {
+            return HiddenCategories.Contains(cat);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace WindEditor
                 {
                     m_Type = value;
                     OnPropertyChanged("Type");
+                    UpdateModel();
                 }
             }
         }
@@ -144,6 +145,8 @@ namespace WindEditor
             {
                 Type = ChestType.Light_wood;
             }
+
+            UpdateModel();
         }
 
         public override void PreSave()
@@ -164,6 +167,40 @@ namespace WindEditor
 
             m_AuxParameters2 |= (short)(OpenSwitchId & 0xFF);
             m_AuxParameters2 |= (short)(((int)Item & 0xFF) << 8);
+        }
+
+        private void UpdateModel()
+        {
+            switch(Type)
+            {
+                case ChestType.Big_Key:
+                    m_actorMesh = WResourceManager.LoadActorByName("big_key_chest");
+                    break;
+                case ChestType.Light_wood:
+                    m_actorMesh = WResourceManager.LoadActorByName("light_wood_chest");
+                    m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxa.brk");
+                    m_actorMesh.SetRegisterAnimation("boxa");
+
+                    m_actorMesh.CurrentRegisterAnimation.Tick(20);
+                    m_actorMesh.CurrentRegisterAnimation.Pause();
+                    break;
+                case ChestType.Metal:
+                    m_actorMesh = WResourceManager.LoadActorByName("metal_chest");
+                    m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxc.brk");
+                    m_actorMesh.SetRegisterAnimation("boxc");
+
+                    m_actorMesh.CurrentRegisterAnimation.Tick(20);
+                    m_actorMesh.CurrentRegisterAnimation.Pause();
+                    break;
+                case ChestType.Dark_wood:
+                    m_actorMesh = WResourceManager.LoadActorByName("dark_wood_chest");
+                    m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxb.brk");
+                    m_actorMesh.SetRegisterAnimation("boxb");
+
+                    m_actorMesh.CurrentRegisterAnimation.Tick(Convert.ToSingle(m_actorMesh.CurrentRegisterAnimation.AnimLengthInFrames / 60));
+                    m_actorMesh.CurrentRegisterAnimation.Pause();
+                    break;
+            }
         }
     }
 }

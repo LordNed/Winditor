@@ -3,6 +3,7 @@ using OpenTK;
 using System;
 using System.Windows.Data;
 using System.Globalization;
+using WindEditor.ViewModel;
 
 namespace WindEditor
 {
@@ -85,10 +86,11 @@ namespace WindEditor
         }
     }
 
+    [HideCategoriesAttribute()]
     public partial class VisibleDOMNode : IRenderable
 	{
 		protected SimpleObjRenderer m_objRender;
-		private J3D m_actorMesh;
+		protected J3D m_actorMesh;
 		public TevColorOverride ColorOverrides { get; protected set; }
 
 		public override void OnConstruction()
@@ -213,6 +215,7 @@ namespace WindEditor
 						m_actorMesh.SetTevkColorOverride(i, ColorOverrides.ConstColors[i]);
 				}
 
+                m_actorMesh.Tick(1/60);
 				m_actorMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
 			}
 			else

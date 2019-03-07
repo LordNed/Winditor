@@ -8,7 +8,8 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
-	public abstract class SerializableDOMNode : WDOMNode
+    [HideCategoriesAttribute(new string[]{"Transform"})]
+    public abstract class SerializableDOMNode : WDOMNode
 	{
 		public readonly FourCC FourCC;
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
