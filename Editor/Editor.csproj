@@ -149,6 +149,7 @@
     <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Globals.cs" />
+    <Compile Include="Editor\Property Customization\Attributes.cs" />
     <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\EnumTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />

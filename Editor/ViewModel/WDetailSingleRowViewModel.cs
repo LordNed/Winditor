@@ -25,6 +25,19 @@ namespace WindEditor.ViewModel
             }
         }
 
+        public string PropertyToolTip
+        {
+            get { return m_PropertyToolTip; }
+            set
+            {
+                if (value != m_PropertyToolTip)
+                {
+                    m_PropertyToolTip = value;
+                    OnPropertyChanged("PropertyToolTip");
+                }
+            }
+        }
+
         public object PropertyControl
         {
             get { return m_PropertyControl; }
@@ -39,6 +52,7 @@ namespace WindEditor.ViewModel
         }
 
         private string m_PropertyName;
+        private string m_PropertyToolTip;
         private object m_PropertyControl;
 
         public WDetailSingleRowViewModel()

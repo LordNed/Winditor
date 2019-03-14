@@ -14,7 +14,7 @@ namespace WindEditor
 
         private ChestType m_Type;
 
-        [WProperty("Treasure Chest", "Type", true)]
+        [WProperty("Treasure Chest", "Type", true, "The model used to display the chest.")]
         public ChestType Type
         {
             get { return m_Type; }
@@ -31,7 +31,7 @@ namespace WindEditor
 
         private byte m_SpawnSwitchId;
 
-        [WProperty("Flags", "Spawn Switch ID", true)]
+        [WProperty("Flags", "Spawn Switch ID", true, "The switch ID that causes the chest to spawn when set.")]
         public byte SpawnSwitchId
         {
             get { return m_SpawnSwitchId; }
@@ -63,7 +63,7 @@ namespace WindEditor
 
         private ChestBehavior m_Behavior;
 
-        [WProperty("Treasure Chest", "Behavior", true)]
+        [WProperty("Treasure Chest", "Behavior", true, "The way the chest acts when created.")]
         public ChestBehavior Behavior
         {
             get { return m_Behavior; }
@@ -111,7 +111,7 @@ namespace WindEditor
 
         private ItemID m_Item;
 
-        [WProperty("Treasure Chest", "Item", true)]
+        [WProperty("Treasure Chest", "Item", true, "The item given to the player when the chest is opened.")]
         public ItemID Item
         {
             get { return m_Item; }
@@ -197,7 +197,7 @@ namespace WindEditor
                     m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxb.brk");
                     m_actorMesh.SetRegisterAnimation("boxb");
 
-                    m_actorMesh.CurrentRegisterAnimation.Tick(Convert.ToSingle(m_actorMesh.CurrentRegisterAnimation.AnimLengthInFrames / 60));
+                    m_actorMesh.CurrentRegisterAnimation.Tick(20);
                     m_actorMesh.CurrentRegisterAnimation.Pause();
                     break;
             }

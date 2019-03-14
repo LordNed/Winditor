@@ -55,24 +55,28 @@ namespace WindEditor.ViewModel
 
             foreach (PropertyInfo p in obj_properties)
             {
+                // We want to ignore all properties that are not marked with the WProperty attribute.
                 CustomAttributeData[] custom_attributes = p.CustomAttributes.ToArray();
                 if (custom_attributes.Length == 0 || custom_attributes[0].AttributeType.Name != "WProperty")
                     continue;
 
+                // Grab our custom attribute data for use
                 string category_name = (string)custom_attributes[0].ConstructorArguments[0].Value;
                 string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
-                bool is_editable = (bool)custom_attributes[0].ConstructorArguments[2].Value;
+                bool is_editable     =   (bool)custom_attributes[0].ConstructorArguments[2].Value;
+                string tool_tip      = (string)custom_attributes[0].ConstructorArguments[3].Value;
 
+                // Get the base type for possible use later
                 Type base_type = p.PropertyType;
                 while (base_type.BaseType != typeof(object))
                 {
                     base_type = base_type.BaseType;
                 }
 
-                string type_name = p.PropertyType.Name;
-
+                // Only add the category to the view if it's not blacklisted by the HideCategories attribute.
                 if (!new_details.Contains(category_name) && !hidden_categories.CategoryHidden(category_name))
                 {
+                    // Also, we want to force the Transform category to the top of the list.
                     if (category_name == "Transform")
                     {
                         new_details.Insert(0, category_name, new WDetailsCategoryRowViewModel(category_name));
@@ -87,60 +91,49 @@ namespace WindEditor.ViewModel
                     current_category = (WDetailsCategoryRowViewModel)new_details[category_name];
                 else
                     continue;
+                
+                /* This is where we generate the control for the details view. */
 
-                if (m_TypeCustomizations.ContainsKey(type_name))
+                List<WDetailSingleRowViewModel> property_rows = new List<WDetailSingleRowViewModel>();
+
+                // We first check if the type of the property has a customization registered.
+                // If it is, we just grab the customization and generate a control with it.
+                if (m_TypeCustomizations.ContainsKey(p.PropertyType.Name))
                 {
-                    List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[type_name].CustomizeHeader(p, property_name, is_editable, obj);
-
-                    // Saw online that adding multiple things to a binding list can be slow,
-                    // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
-                    current_category.PropertyRows.RaiseListChangedEvents = false;
-
-                    foreach (var row in property_rows)
-                    {
-                        current_category.PropertyRows.Add(row);
-                    }
-
-                    current_category.PropertyRows.RaiseListChangedEvents = true;
-                    current_category.PropertyRows.ResetBindings();
+                    property_rows = m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, obj);
                 }
+                // If there is no customization registered, and the type is an enum, we
+                // use EnumTypeCustomization to generate a control.
                 else if (p.PropertyType.IsEnum)
                 {
                     EnumTypeCustomization enu = new EnumTypeCustomization();
-                    List<WDetailSingleRowViewModel> property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
-
-                    // Saw online that adding multiple things to a binding list can be slow,
-                    // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
-                    current_category.PropertyRows.RaiseListChangedEvents = false;
-
-                    foreach (var row in property_rows)
-                    {
-                        current_category.PropertyRows.Add(row);
-                    }
-
-                    current_category.PropertyRows.RaiseListChangedEvents = true;
-                    current_category.PropertyRows.ResetBindings();
+                    property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
                 }
+                // Failing the prior checks, we see if the base type of the property is WDOMNode,
+                // in which case we just use the WDOMNode customization to generate a control.
                 else if (base_type.Name == typeof(WDOMNode).Name)
                 {
-                    List<WDetailSingleRowViewModel> property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
-
-                    // Saw online that adding multiple things to a binding list can be slow,
-                    // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
-                    current_category.PropertyRows.RaiseListChangedEvents = false;
-
-                    foreach (var row in property_rows)
-                    {
-                        current_category.PropertyRows.Add(row);
-                    }
-
-                    current_category.PropertyRows.RaiseListChangedEvents = true;
-                    current_category.PropertyRows.ResetBindings();
+                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
                 }
+                // If the property type is completely unknown or unsupported, we create an empty row with
+                // just the property's name.
                 else
                 {
-                    current_category.PropertyRows.Add(new WDetailSingleRowViewModel(property_name));
+                    property_rows.Add(new WDetailSingleRowViewModel(property_name));
                 }
+
+                // Saw online that adding multiple things to a binding list can be slow,
+                // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
+                current_category.PropertyRows.RaiseListChangedEvents = false;
+
+                foreach (var row in property_rows)
+                {
+                    current_category.PropertyRows.Add(row);
+                    row.PropertyToolTip = tool_tip;
+                }
+
+                current_category.PropertyRows.RaiseListChangedEvents = true;
+                current_category.PropertyRows.ResetBindings();
             }
 
             Categories = new_details;
@@ -150,40 +143,6 @@ namespace WindEditor.ViewModel
         {
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class WProperty : System.Attribute
-    {
-        private string Category;
-        private string DisplayName;
-        private bool IsEditable;
-
-        public WProperty(string category, string name, bool editable)
-        {
-            Category = category;
-            DisplayName = name;
-            IsEditable = editable;
-        }
-    }
-
-    public class HideCategoriesAttribute : System.Attribute
-    {
-        private string[] HiddenCategories;
-
-        public HideCategoriesAttribute()
-        {
-            HiddenCategories = new string[1];
-        }
-
-        public HideCategoriesAttribute(string[] categories)
-        {
-            HiddenCategories = categories;
-        }
-
-        public bool CategoryHidden(string cat)
-        {
-            return HiddenCategories.Contains(cat);
         }
     }
 }
