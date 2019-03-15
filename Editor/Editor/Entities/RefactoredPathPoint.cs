@@ -50,6 +50,13 @@ namespace WindEditor
             //    PostLoad();
         }
 
+        public override void PostLoad()
+        {
+            base.PostLoad();
+
+            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorSphere.obj");
+        }
+
         #region IRenderable
         override public void AddToRenderer(WSceneView view)
         {

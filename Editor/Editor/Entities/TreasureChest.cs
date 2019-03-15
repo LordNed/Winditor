@@ -127,8 +127,6 @@ namespace WindEditor
 
         public override void PostLoad()
         {
-            base.PostLoad();
-
             Type = (ChestType)((m_Parameters & 0xF00000) >> 20);
             SpawnSwitchId = (byte)((m_Parameters & 0xFF000) >> 12);
             OpenFlagId = (byte)((m_Parameters & 0xF80) >> 7);

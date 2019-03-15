@@ -50,8 +50,13 @@ namespace WindEditor
             //    PostLoad();
         }
 
-		#region IRenderable
-		override public void AddToRenderer(WSceneView view)
+        public override void PostLoad()
+        {
+            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorSphere.obj");
+        }
+
+        #region IRenderable
+        override public void AddToRenderer(WSceneView view)
 		{
 			view.AddOpaqueMesh(this);
 		}

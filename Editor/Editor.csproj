@@ -320,6 +320,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
+    <Content Include="resources\editor\T_DevCheckersBlue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\models\flowers\flower.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -339,6 +342,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\ActorResourceDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorSphere.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorSphere.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\templates\MapEntityData\foliage.json" />
