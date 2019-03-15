@@ -338,6 +338,9 @@
     <Content Include="resources\models\flowers\pflower_pink.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\ActorResourceDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\templates\MapEntityData\foliage.json" />
     <Resource Include="resources\icons\magnifier.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

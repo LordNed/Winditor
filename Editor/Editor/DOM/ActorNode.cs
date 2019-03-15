@@ -84,7 +84,7 @@ namespace WindEditor
             TStringPropertyValue stringProperty = m_namePropertyValueCache as TStringPropertyValue;
             if(stringProperty != null)
             {
-                m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
+                //m_actorMesh = WResourceManager.LoadActorByName((string)stringProperty.GetValue());
                 if(m_actorMesh != null)
                 {
                     // Create and set up some initial lighting options so character's aren't drawn super brightly

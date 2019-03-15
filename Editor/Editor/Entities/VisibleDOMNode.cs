@@ -1,9 +1,9 @@
 ﻿using JStudio.J3D;
 using OpenTK;
 using System;
+using System.Collections.Generic;
 using System.Windows.Data;
 using System.Globalization;
-using WindEditor.ViewModel;
 
 namespace WindEditor
 {
@@ -90,7 +90,7 @@ namespace WindEditor
     public partial class VisibleDOMNode : IRenderable
 	{
 		protected SimpleObjRenderer m_objRender;
-		protected J3D m_actorMesh;
+        protected List<J3D> m_actorMeshes;
 		public TevColorOverride ColorOverrides { get; protected set; }
 
 		public override void OnConstruction()
@@ -98,6 +98,7 @@ namespace WindEditor
 			base.OnConstruction();
 
 			ColorOverrides = new TevColorOverride();
+            m_actorMeshes = new List<J3D>();
             PropertyChanged += VisibleDOMNode_PropertyChanged;
             IsRendered = true;
 		}
@@ -122,37 +123,12 @@ namespace WindEditor
 		{
 			base.PostLoad();
 
-			m_actorMesh = WResourceManager.LoadActorByName(ToString());
-			if (m_actorMesh != null)
-			{
-				// Create and set up some initial lighting options so character's aren't drawn super brightly
-				// until we support actually loading room environment lighting and apply it (see below).
-				var lightPos = new Vector4(250, 200, 250, 0);
-				var mainLight = new JStudio.OpenGL.GXLight(lightPos, -lightPos.Normalized(), new Vector4(1, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
-				var secondaryLight = new JStudio.OpenGL.GXLight(lightPos, -lightPos.Normalized(), new Vector4(0, 0, 1, 1), new Vector4(1.075f, 0, 0, 0), new Vector4(1.075f, 0, 0, 0));
-
-				Quaternion lightRot = Quaternion.FromAxisAngle(Vector3.UnitY, (float)Math.PI / 2f);
-				Vector3 newLightPos = Vector3.Transform(new Vector3(-500, 0, 0), lightRot) + new Vector3(0, 50, 0);
-
-				secondaryLight.Position = new Vector4(newLightPos, 0);
-
-				m_actorMesh.SetHardwareLight(0, mainLight);
-				m_actorMesh.SetHardwareLight(1, secondaryLight);
-				m_actorMesh.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
-				m_actorMesh.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
-
-				m_objRender = null;
-			}
-
-			if (m_actorMesh == null)
-			{
-				m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
-			}
-		}
+            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
+        }
 
 		public override FAABox GetBoundingBox()
 		{
-			FAABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMesh.BoundingBox;
+			FAABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMeshes[0].BoundingBox;
 			modelABB.ScaleBy(Transform.LocalScale);
 
 			return new FAABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
@@ -162,10 +138,18 @@ namespace WindEditor
 		{
 			// Convert the ray to local space of this node since all of our raycasts are local.
 			FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
+            closestDistance = float.MaxValue;
 			bool bHit = false;
-			if (m_actorMesh != null)
+
+			if (m_actorMeshes.Count > 0)
 			{
-				bHit = m_actorMesh.Raycast(localRay, out closestDistance, true);
+                foreach (var actor_mesh in m_actorMeshes)
+                {
+                    bHit = actor_mesh.Raycast(localRay, out closestDistance, true);
+
+                    if (bHit)
+                        break;
+                }
 			}
 			else
 			{
@@ -204,19 +188,24 @@ namespace WindEditor
 
 			Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 
-			if (m_actorMesh != null)
+			if (m_actorMeshes.Count > 0)
 			{
-				for (int i = 0; i < 4; i++)
-				{
-					if (ColorOverrides.ColorsEnabled[i])
-						m_actorMesh.SetTevColorOverride(i, ColorOverrides.Colors[i]);
+                foreach (var actor_mesh in m_actorMeshes)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (ColorOverrides.ColorsEnabled[i])
+                            actor_mesh.SetTevColorOverride(i, ColorOverrides.Colors[i]);
 
-					if (ColorOverrides.ConstColorsEnabled[i])
-						m_actorMesh.SetTevkColorOverride(i, ColorOverrides.ConstColors[i]);
-				}
+                        if (ColorOverrides.ConstColorsEnabled[i])
+                            actor_mesh.SetTevkColorOverride(i, ColorOverrides.ConstColors[i]);
+                    }
 
-                m_actorMesh.Tick(1/60);
-				m_actorMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
+                    if (IsSelected)
+                        actor_mesh.Tick(1 / (float)60);
+
+                    actor_mesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
+                }
 			}
 			else
 				m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
@@ -225,8 +214,8 @@ namespace WindEditor
 		virtual public Vector3 GetPosition()
 		{
 			Vector3 modelOffset = Vector3.Zero;
-			if (m_actorMesh != null)
-				modelOffset += m_actorMesh.BoundingBox.Center;
+			if (m_actorMeshes.Count > 0)
+				modelOffset += m_actorMeshes[0].BoundingBox.Center;
 
 			return Transform.Position + modelOffset;
 		}
@@ -240,8 +229,8 @@ namespace WindEditor
 					largestMax = lScale[i];
 
 			float boundingSphere = 86f; // Default Editor Cube
-			if (m_actorMesh != null)
-				boundingSphere = m_actorMesh.BoundingSphere.Radius;
+			if (m_actorMeshes.Count > 0)
+				boundingSphere = m_actorMeshes[0].BoundingSphere.Radius;
 			return largestMax * boundingSphere;
 		}
 		#endregion

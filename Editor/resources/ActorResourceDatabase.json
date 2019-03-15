@@ -1,0 +1,105 @@
+[
+  {
+    "Name": "Light Wood Chest",
+    "Archive": "Dalways",
+    "Models": [
+      {
+        "Path": "bdli/boxa.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/boxa.brk",
+            "Paused on Load": true,
+            "Start Time": 6.9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Dark Wood Chest",
+    "Archive": "Dalways",
+    "Models": [
+      {
+        "Path": "bdli/boxb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/boxb.brk",
+            "Paused on Load": true,
+            "Start Time": 6.9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Metal Chest",
+    "Archive": "Dalways",
+    "Models": [
+      {
+        "Path": "bdli/boxc.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/boxc.brk",
+            "Paused on Load": true,
+            "Start Time": 6.9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Big Key Chest",
+    "Archive": "Dalways",
+    "Models": [
+      {
+        "Path": "bdlm/boxd.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Link",
+    "Archive": "Link",
+    "Models": [
+      {
+        "Path": "bdl/cl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Archive": "LkAnm",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  }
+]

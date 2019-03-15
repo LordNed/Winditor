@@ -10,5 +10,13 @@ namespace WindEditor
 		{
 			return Name;
 		}
-	}
+
+        public override void PostLoad()
+        {
+            base.PostLoad();
+
+            m_actorMeshes = WResourceManager.LoadActorResource("Link");
+            m_objRender.Dispose();
+        }
+    }
 }

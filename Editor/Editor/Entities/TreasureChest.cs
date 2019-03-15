@@ -174,31 +174,16 @@ namespace WindEditor
             switch(Type)
             {
                 case ChestType.Big_Key:
-                    m_actorMesh = WResourceManager.LoadActorByName("big_key_chest");
+                    m_actorMeshes = WResourceManager.LoadActorResource("Big Key Chest");
                     break;
                 case ChestType.Light_wood:
-                    m_actorMesh = WResourceManager.LoadActorByName("light_wood_chest");
-                    m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxa.brk");
-                    m_actorMesh.SetRegisterAnimation("boxa");
-
-                    m_actorMesh.CurrentRegisterAnimation.Tick(20);
-                    m_actorMesh.CurrentRegisterAnimation.Pause();
+                    m_actorMeshes = WResourceManager.LoadActorResource("Light Wood Chest");
                     break;
                 case ChestType.Metal:
-                    m_actorMesh = WResourceManager.LoadActorByName("metal_chest");
-                    m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxc.brk");
-                    m_actorMesh.SetRegisterAnimation("boxc");
-
-                    m_actorMesh.CurrentRegisterAnimation.Tick(20);
-                    m_actorMesh.CurrentRegisterAnimation.Pause();
+                    m_actorMeshes = WResourceManager.LoadActorResource("Metal Chest");
                     break;
                 case ChestType.Dark_wood:
-                    m_actorMesh = WResourceManager.LoadActorByName("dark_wood_chest");
-                    m_actorMesh.LoadRegisterAnim(@"D:\SZS Tools\dalways\brk\boxb.brk");
-                    m_actorMesh.SetRegisterAnimation("boxb");
-
-                    m_actorMesh.CurrentRegisterAnimation.Tick(20);
-                    m_actorMesh.CurrentRegisterAnimation.Pause();
+                    m_actorMeshes = WResourceManager.LoadActorResource("Dark Wood Chest");
                     break;
             }
         }
