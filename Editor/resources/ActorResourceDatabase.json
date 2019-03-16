@@ -277,5 +277,149 @@
         ]
       }
     ]
+  },
+  {
+    "Name": "Large Bombable Rock",
+    "Archive": "Ebrock",
+    "Models": [
+      {
+        "Path": "bdl/ebrock.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Large Bombable Rock 2",
+    "Archive": "Eskban",
+    "Models": [
+      {
+        "Path": "bdl/eskban.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Bombable Rock",
+    "Archive": "Ebrock",
+    "Models": [
+      {
+        "Path": "bdl/ebrock2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Headstone",
+    "Archive": "Ekao",
+    "Models": [
+      {
+        "Path": "bdl/ekao.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Medli",
+    "Archive": "Md",
+    "Models": [
+      {
+        "Path": "bdlm/md.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/md_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Gohdan Head",
+    "Archive": "Bst",
+    "Models": [
+      {
+        "Path": "bdlm/bst.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdlm/mune.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Gohdan Left Hand",
+    "Archive": "Bst",
+    "Models": [
+      {
+        "Path": "bdlm/lhand.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdlm/udel.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Gohdan Right Hand",
+    "Archive": "Bst",
+    "Models": [
+      {
+        "Path": "bdlm/rhand.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdlm/uder.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
   }
 ]

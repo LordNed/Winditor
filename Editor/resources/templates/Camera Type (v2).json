@@ -6,7 +6,7 @@
 		{"Name" : "Camera Type", "Type" : "FixedLengthString" , "Length" : 16},
 		{"Name" : "Camera Point Index", "Type" : "Byte"},
 		{"Name" : "Padding 1", "Type" : "Byte"},
-		{"Name" : "Unknown 2", "Type" : "Byte"},
+		{"Name" : "Unknown 1", "Type" : "Byte"},
 		{"Name" : "Padding 3", "Type" : "Byte"}
 	]
 }

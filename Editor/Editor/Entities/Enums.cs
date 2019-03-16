@@ -58,6 +58,13 @@ namespace WindEditor
         Pink_Flower
     }
 
+    public enum GohdanComponent
+    {
+        Head,
+        Left_Hand,
+        Right_Hand
+    }
+
     public enum ItemID
     {
         Heart = 0,

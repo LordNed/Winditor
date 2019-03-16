@@ -131,6 +131,29 @@ namespace WindEditor
 		}
 	}
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class Gohdan : Actor
+	{
+		// Auto-Generated Properties from Templates
+		private int m_Component;
+
+		// Constructor
+		public Gohdan(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+
+		public void GetPropertiesFromParameters()
+		{
+			m_Component = (int)(Parameters & 15) >> 0;
+		}
+
+		public void SetParametersWithProperties()
+		{
+			Parameters = 0;
+			Parameters |= (int)(m_Component & 15) << 0;
+		}
+	}
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class Kargaroc : Actor
 	{
 		// Auto-Generated Properties from Templates
@@ -150,11 +173,139 @@ namespace WindEditor
 		}
 	}
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class LargeRock : Actor
+	{
+		// Auto-Generated Properties from Templates
+		private int m_Unk1;
+
+		[WProperty("Rock", "Unk1", true)]
+		 public int Unk1
+		{ 
+			get { return m_Unk1; }
+			set
+			{
+				m_Unk1 = value;
+				OnPropertyChanged("Unk1");
+			}
+		}
+
+		private int m_Unk2;
+
+		[WProperty("Rock", "Unk2", true)]
+		 public int Unk2
+		{ 
+			get { return m_Unk2; }
+			set
+			{
+				m_Unk2 = value;
+				OnPropertyChanged("Unk2");
+			}
+		}
+
+		private int m_SwitchID;
+
+		[WProperty("Rock", "Switch ID", true)]
+		 public int SwitchID
+		{ 
+			get { return m_SwitchID; }
+			set
+			{
+				m_SwitchID = value;
+				OnPropertyChanged("SwitchID");
+			}
+		}
+
+		private int m_Unk4;
+
+		[WProperty("Rock", "Unk4", true)]
+		 public int Unk4
+		{ 
+			get { return m_Unk4; }
+			set
+			{
+				m_Unk4 = value;
+				OnPropertyChanged("Unk4");
+			}
+		}
+
+		private int m_Unk5;
+
+		[WProperty("Rock", "Unk5", true)]
+		 public int Unk5
+		{ 
+			get { return m_Unk5; }
+			set
+			{
+				m_Unk5 = value;
+				OnPropertyChanged("Unk5");
+			}
+		}
+
+		private int m_Unk6;
+
+		[WProperty("Rock", "Unk6", true)]
+		 public int Unk6
+		{ 
+			get { return m_Unk6; }
+			set
+			{
+				m_Unk6 = value;
+				OnPropertyChanged("Unk6");
+			}
+		}
+
+		// Constructor
+		public LargeRock(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+
+		public void GetPropertiesFromParameters()
+		{
+			Unk1 = (int)(Parameters & 63) >> 0;
+			Unk2 = (int)(Parameters & 192) >> 6;
+			SwitchID = (int)(Parameters & 65280) >> 8;
+			Unk4 = (int)(Parameters & 8323072) >> 16;
+			Unk5 = (int)(Parameters & 117440512) >> 24;
+			Unk6 = (int)(Parameters & 1879048192) >> 28;
+		}
+
+		public void SetParametersWithProperties()
+		{
+			Parameters = 0;
+			Parameters |= (int)(Unk1 & 63) << 0;
+			Parameters |= (int)(Unk2 & 192) << 6;
+			Parameters |= (int)(SwitchID & 65280) << 8;
+			Parameters |= (int)(Unk4 & 8323072) << 16;
+			Parameters |= (int)(Unk5 & 117440512) << 24;
+			Parameters |= (int)(Unk6 & 1879048192) << 28;
+		}
+	}
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class LargeTree : Actor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
 		public LargeTree(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+
+		public void GetPropertiesFromParameters()
+		{
+		}
+
+		public void SetParametersWithProperties()
+		{
+			Parameters = 0;
+		}
+	}
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class Medli : Actor
+	{
+		// Auto-Generated Properties from Templates
+		// Constructor
+		public Medli(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
 		}

@@ -614,12 +614,9 @@
     "Wait Animations": "bs_wait01.bck"
   },
   {
-    "Archive Name": "Bst",
     "Actor Name": "Bst",
     "English Name": "Gohdan",
-    "Main Model": "bdlm/bst.bdl",
-    "Secondary Models": "Multiple, exact models depend on object's params. bdlm/bst.bdl (head) and bdlm/mune.bdl (headrest) can serve as defaults for now.",
-    "Wait Animations": "N/A"
+    "ActorClassType": "Gohdan"
   },
   {
     "Archive Name": "Btd",
@@ -1342,20 +1339,14 @@
     "Wait Animations": ""
   },
   {
-    "Archive Name": "Ebrock",
     "Actor Name": "Ebrock",
     "English Name": "Bombable Rock (Large)",
-    "Main Model": "bdl/ebrock.bdl",
-    "Secondary Models": "",
-    "Wait Animations": ""
+    "ActorClassType": "LargeRock"
   },
   {
-    "Archive Name": "Ebrock",
     "Actor Name": "Ebrock2",
     "English Name": "Bombable Rock (Small)",
-    "Main Model": "bdl/ebrock2.bdl",
-    "Secondary Models": "",
-    "Wait Animations": ""
+    "ActorClassType": "LargeRock"
   },
   {
     "Archive Name": "Ecube",
@@ -1366,12 +1357,9 @@
     "Wait Animations": ""
   },
   {
-    "Archive Name": "Ekao",
     "Actor Name": "Ekao",
     "English Name": "Stone Head Block",
-    "Main Model": "bdl/ekao.bdl",
-    "Secondary Models": "",
-    "Wait Animations": ""
+    "ActorClassType": "LargeRock"
   },
   {
     "Archive Name": "Ekskz",
@@ -1422,12 +1410,9 @@
     "Wait Animations": ""
   },
   {
-    "Archive Name": "Eskban",
     "Actor Name": "Eskban",
     "English Name": "Large Bombable Rock",
-    "Main Model": "bdl/eskban.bdl",
-    "Secondary Models": "",
-    "Wait Animations": ""
+    "ActorClassType": "LargeRock"
   },
   {
     "Archive Name": "Fa",
@@ -3083,12 +3068,9 @@
     "Wait Animations": ""
   },
   {
-    "Archive Name": "Md",
     "Actor Name": "Md1",
     "English Name": "Medli",
-    "Main Model": "bdlm/md.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "bcks/md_wait01.bck"
+    "ActorClassType": "Medli"
   },
   {
     "Archive Name": "Mdoor",

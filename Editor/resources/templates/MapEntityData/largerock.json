@@ -1,0 +1,48 @@
+﻿{
+  "ClassName": "LargeRock",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unk1",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Rock"
+    },
+    {
+      "Name": "Unk2",
+      "Mask": 192,
+      "Shift": 6,
+      "Hidden": false,
+      "Category": "Rock"
+    },
+    {
+      "Name": "Switch ID",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "Rock"
+    },
+    {
+      "Name": "Unk4",
+      "Mask": 8323072,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "Rock"
+    },
+    {
+      "Name": "Unk5",
+      "Mask": 117440512,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "Rock"
+    },
+    {
+      "Name": "Unk6",
+      "Mask": 1879048192,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "Rock"
+    }
+  ]
+}

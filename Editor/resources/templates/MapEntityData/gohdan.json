@@ -1,0 +1,13 @@
+﻿{
+    "ClassName": "Gohdan",
+    "ParentClassOverride": "Actor",
+    "Fields": [
+      {
+        "Name": "Component",
+        "Mask": 15,
+        "Shift": 0,
+        "Hidden": true,
+        "Category": "Gohdan"
+      }
+    ]
+}

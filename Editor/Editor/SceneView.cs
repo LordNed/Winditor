@@ -27,6 +27,8 @@ namespace WindEditor
 
         private List<IRenderable> m_renderablesInFrustum;
 
+        private static float MaxDist = 100000f;
+
         // To detect redundant calls
         private bool m_hasBeenDisposed = false;
 
@@ -98,7 +100,12 @@ namespace WindEditor
                 {
                     WDOMNode node = (WDOMNode)mesh;
                     if (mesh.GetType() != typeof(WSkyboxNode) && node.IsRendered)
-                        mesh.Draw(this);
+                    {
+                        float dist = (mesh.GetPosition() - GetCameraPos()).Length;
+
+                        if (dist < MaxDist || mesh.GetType() == typeof(J3DNode))
+                            mesh.Draw(this);
+                    }
                 }
                 else
                     mesh.Draw(this);
