@@ -89,13 +89,13 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				if (field.IsHidden)
 				{
 #>
-			m_<#= field.FieldName.Replace(" ", "") #> = (Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
+			m_<#= field.FieldName.Replace(" ", "") #> = (int)(Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
 <#
 				}
 				else
 				{
 #>
-			<#= field.FieldName.Replace(" ", "") #> = (Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
+			<#= field.FieldName.Replace(" ", "") #> = (int)(Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
 <#				}
 			}
 #>
@@ -110,13 +110,13 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				if (field.IsHidden)
 				{
 #>
-			Parameters |= (m_<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
+			Parameters |= (int)(m_<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
 <#
 				}
 				else
 				{
 #>
-			Parameters |= (<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
+			Parameters |= (int)(<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
 <#
 				}
 

@@ -171,10 +171,10 @@ namespace WindEditor
         public string FieldName { get; set; }
 
         [JsonProperty("Mask")]
-        public int BitMask { get; set; }
+        public uint BitMask { get; set; }
 
         [JsonProperty("Shift")]
-        public int BitShift { get; set; }
+        public uint BitShift { get; set; }
 
         [JsonProperty("Category")]
         public string CategoryName { get; set; }
@@ -185,7 +185,7 @@ namespace WindEditor
         public uint Length;
 
         [JsonConstructor]
-        public ActorBitfieldDescriptor(string Name, int Mask, int Shift, string Category, bool Hidden)
+        public ActorBitfieldDescriptor(string Name, uint Mask, uint Shift, string Category, bool Hidden)
         {
             FieldName = Name;
             BitMask = Mask;

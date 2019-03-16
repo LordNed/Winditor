@@ -8,7 +8,8 @@
 			"Mask" : 0xF, 
 			"Shift" : 0,
 			"Hidden": false,
-			"Category" : "Foliage" },
+      "Category": "Foliage"
+		},
 		{ 
 			"Name" : "Type",
 			"Mask" : 0x30,

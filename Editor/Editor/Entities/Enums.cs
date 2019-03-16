@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public enum FoliageType
+    public enum BokoblinHeldItem
     {
-        Grass,
-        Tree,
-        White_Flower,
-        Pink_Flower
+        Unlit_Torch,
+        Machete_1,
+        Lit_Torch,
+        Machete_2
+    }
+
+    public enum BokoblinType
+    {
+        Wandering,
+        Unknown_1,
+        Unknown_2,
+        Hiding_in_a_Pot,
+        Guarding,
+        Being_Carried_by_a_Kargaroc,
+        Search_Light_Operator,
+        Jumping,
+        Guarding_and_Yawning = 10,
+        Pink_Bokoblin_with_Telescope,
+        Debug = 15
     }
 
     public enum ChestType
@@ -33,6 +48,14 @@ namespace WindEditor
         Spawn_when_a_Wind_Waker_song_is_played,
         Uses_extra_open_flag,
         Uses_extra_open_flag_and_spawns_when_a_switch_is_set
+    }
+
+    public enum FoliageType
+    {
+        Grass,
+        Tree,
+        White_Flower,
+        Pink_Flower
     }
 
     public enum ItemID

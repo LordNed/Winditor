@@ -293,7 +293,8 @@
     "English Name": "Kargaroc",
     "Main Model": "bdlm/bb.bdl",
     "Secondary Models": "",
-    "Wait Animations": "bck/wait.bck"
+    "Wait Animations": "bck/wait.bck",
+    "ActorClassType":  "Kargaroc"
   },
   {
     "Archive Name": "Bdk",
@@ -416,12 +417,9 @@
     "Wait Animations": "bcks/wait01.bck"
   },
   {
-    "Archive Name": "Bk",
     "Actor Name": "Bk",
     "English Name": "Bokoblin",
-    "Main Model": "bdlm/bk.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "bck/bk_wait.bck"
+    "ActorClassType": "Bokoblin"
   },
   {
     "Archive Name": "Bl",
@@ -3048,12 +3046,9 @@
     "Wait Animations": ""
   },
   {
-    "Archive Name": "Lwood",
     "Actor Name": "lwood",
     "English Name": "Large Tree",
-    "Main Model": "bdl/alwd.bdl",
-    "Secondary Models": "",
-    "Wait Animations": ""
+    "ActorClassType": "LargeTree"
   },
   {
     "Archive Name": "Magma",
@@ -3904,12 +3899,9 @@
     "Wait Animations": "bck/wait1.bck"
   },
   {
-    "Archive Name": "Pz",
     "Actor Name": "p_zelda",
     "English Name": "Princess Zelda",
-    "Main Model": "bdlm/pz.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "bcks/wait01.bck"
+    "ActorClassType":  "Zelda"
   },
   {
     "Archive Name": "Qdghd",
@@ -5776,100 +5768,38 @@
     "Wait Animations": "bcks/zk_wait01.bck"
   },
   {
-    "Archive Name": "Zl",
     "Actor Name": "Zl1",
     "English Name": "Tetra",
-    "Main Model": "bdlm/zl.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "bcks/wait.bck"
+    "ActorClassType": "Tetra"
   },
   {
-    "Archive Name": "Zl2",
     "Actor Name": "",
     "English Name": "Tetra, again! Probably for cutscenes.",
-    "Main Model": "bdlm/zl.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "bcks/wait.bck"
+    "ActorClassType": "Tetra"
   },
   {
-    "Archive Name": "",
     "Actor Name": "flower",
     "English Name": "A single solitary white flower.",
-    "Main Model": "",
-    "Secondary Models": "",
-    "Wait Animations": "",
     "ActorClassType": "Foliage"
   },
   {
-    "Archive Name": "",
     "Actor Name": "flwr7",
     "English Name": "7 white flowers!",
-    "Main Model": "",
-    "Secondary Models": "",
-    "Wait Animations": "",
     "ActorClassType": "Foliage"
   },
   {
-    "Archive Name": "",
     "Actor Name": "flwr17",
     "English Name": "17 white flowers!!!",
-    "Main Model": "",
-    "Secondary Models": "",
-    "Wait Animations": "",
     "ActorClassType": "Foliage"
   },
   {
-    "Archive Name": "",
     "Actor Name": "pflower",
     "English Name": "A single pink flower. Or a marigold, on Link's Oasis.",
-    "Main Model": "",
-    "Secondary Models": "",
-    "Wait Animations": "",
     "ActorClassType": "Foliage"
   },
   {
-    "Archive Name": "",
     "Actor Name": "pflwrx7",
     "English Name": "7 pink flowers, or marigolds on Link's Oasis.",
-    "Main Model": "",
-    "Secondary Models": "",
-    "Wait Animations": "",
     "ActorClassType": "Foliage"
-  },
-  {
-    "Archive Name": "Dalways",
-    "Actor Name": "light_wood_chest",
-    "English Name": "A chest made of light-colored wood.",
-    "Main Model": "bdli/boxa.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "",
-    "ActorClassType": "TreasureChest"
-  },
-  {
-    "Archive Name": "Dalways",
-    "Actor Name": "dark_wood_chest",
-    "English Name": "A chest made of dark-colored wood.",
-    "Main Model": "bdli/boxb.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "",
-    "ActorClassType": "TreasureChest"
-  },
-  {
-    "Archive Name": "Dalways",
-    "Actor Name": "metal_chest",
-    "English Name": "A chest made of metal.",
-    "Main Model": "bdli/boxc.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "",
-    "ActorClassType": "TreasureChest"
-  },
-  {
-    "Archive Name": "Dalways",
-    "Actor Name": "big_key_chest",
-    "English Name": "A chest made of ornateness.",
-    "Main Model": "bdlm/boxd.bdl",
-    "Secondary Models": "",
-    "Wait Animations": "",
-    "ActorClassType": "TreasureChest"
   }
 ]

@@ -152,7 +152,7 @@ namespace WindEditor
             {
                 string arc_and_file_path = Path.Combine(res.ArchiveName, model.Path);
 
-                var existRef = m_j3dList.Find(x => string.Compare(x.FilePath, arc_and_file_path, StringComparison.InvariantCultureIgnoreCase) == 0);
+                TSharedRef<J3D> existRef = null;//m_j3dList.Find(x => string.Compare(x.FilePath, arc_and_file_path, StringComparison.InvariantCultureIgnoreCase) == 0);
                 if (existRef != null)
                 {
                     existRef.ReferenceCount++;
@@ -309,6 +309,11 @@ namespace WindEditor
 
                         j3d.ExternalMaterials.Add(loaded_bmt);
                         j3d.SetExternalMaterial(anim_file.Name);
+
+                        // a hack to get bmts working
+                        Material dummyMat = null;
+                        j3d.AssignVertexAttributesToMaterialsRecursive(j3d.INF1Tag.HierarchyRoot, ref dummyMat, loaded_bmt.MAT3);
+                        j3d.GenerateShadersForMaterials(loaded_bmt.MAT3);
                         break;
                     default:
                         break;

@@ -1,0 +1,55 @@
+﻿{
+  "ClassName": "Bokoblin",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Type",
+      "Mask": 15,
+      "Shift": 0,
+      "Hidden": true,
+      "Category": "Bokoblin"
+    },
+    {
+      "Name": "SwitchSpawnsBokoblin",
+      "Mask": 16,
+      "Shift": 5,
+      "Hidden": true,
+      "Category": "Bokoblin"
+    },
+    {
+      "Name": "IsMiniboss",
+      "Mask": 32,
+      "Shift": 5,
+      "Hidden": true,
+      "Category": "Bokoblin"
+    },
+    {
+      "Name": "HeldItemId",
+      "Mask": 192,
+      "Shift": 6,
+      "Hidden": true,
+      "Category": "Bokoblin"
+    },
+    {
+      "Name": "Alert Range",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "Bokoblin"
+    },
+    {
+      "Name": "Path Index",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": true,
+      "Category": "Bokoblin"
+    },
+    {
+      "Name": "Switch ID",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "Bokoblin"
+    }
+  ]
+}

@@ -41,6 +41,7 @@ namespace WindEditor.ViewModel
             m_TypeCustomizations.Add(typeof(byte).Name, new ByteTypeCustomization());
             m_TypeCustomizations.Add(typeof(short).Name, new ShortTypeCustomization());
             m_TypeCustomizations.Add(typeof(float).Name, new SingleTypeCustomization());
+            m_TypeCustomizations.Add(typeof(bool).Name, new BooleanTypeCustomization());
             m_TypeCustomizations.Add(typeof(WLinearColor).Name, new LinearColorTypeCustomization());
             m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
             m_TypeCustomizations.Add(typeof(WDOMNode).Name, new WDOMNodeTypeCustomization());

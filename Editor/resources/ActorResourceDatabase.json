@@ -101,5 +101,181 @@
         ]
       }
     ]
+  },
+  {
+    "Name": "Large Tree",
+    "Archive": "Lwood",
+    "Models": [
+      {
+        "Path": "bdl/alwd.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Tetra",
+    "Archive": "Zl",
+    "Models": [
+      {
+        "Path": "bdlm/zl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Zelda",
+    "Archive": "Pz",
+    "Models": [
+      {
+        "Path": "bdlm/pz.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Flying Kargaroc",
+    "Archive": "Bb",
+    "Models": [
+      {
+        "Path": "bdlm/bb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fly01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sitting Kargaroc",
+    "Archive": "Bb",
+    "Models": [
+      {
+        "Path": "bdlm/bb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Blue Bokoblin",
+    "Archive": "Bk",
+    "Models": [
+      {
+        "Path": "bdlm/bk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/bk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Pink Bokoblin",
+    "Archive": "Bk",
+    "Models": [
+      {
+        "Path": "bdlm/bk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/bk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pink.bmt"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Green Bokoblin",
+    "Archive": "Bk",
+    "Models": [
+      {
+        "Path": "bdlm/bk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/bk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/green.bmt"
+          }
+        ]
+      }
+    ]
   }
 ]

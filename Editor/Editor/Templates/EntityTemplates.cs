@@ -481,7 +481,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_Parameters;
+		protected int m_Parameters;
 
 		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters

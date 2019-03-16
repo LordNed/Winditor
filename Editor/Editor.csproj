@@ -128,7 +128,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
+    <Compile Include="Editor\Entities\Actors\Bokoblin.cs" />
     <Compile Include="Editor\Entities\Actors\Foliage.cs" />
+    <Compile Include="Editor\Entities\Actors\Kargaroc.cs" />
+    <Compile Include="Editor\Entities\Actors\LargeTree.cs" />
+    <Compile Include="Editor\Entities\Actors\Tetra.cs" />
+    <Compile Include="Editor\Entities\Actors\Zelda.cs" />
     <Compile Include="Editor\Entities\Door_DOOR.cs" />
     <Compile Include="Editor\Entities\Enums.cs" />
     <Compile Include="Editor\Entities\ExitData.cs" />
@@ -150,6 +155,7 @@
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Globals.cs" />
     <Compile Include="Editor\Property Customization\Attributes.cs" />
+    <Compile Include="Editor\Property Customization\BooleanTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\EnumTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
@@ -173,6 +179,7 @@
     </Compile>
     <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
+    <None Include="resources\templates\MapEntityData\bokoblin.json" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
@@ -351,6 +358,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\templates\MapEntityData\foliage.json" />
+    <None Include="resources\templates\MapEntityData\kargaroc.json" />
+    <None Include="resources\templates\MapEntityData\large_tree.json" />
+    <None Include="resources\templates\MapEntityData\tetra.json" />
+    <None Include="resources\templates\MapEntityData\zelda.json" />
     <Resource Include="resources\icons\magnifier.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
