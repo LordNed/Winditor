@@ -8,8 +8,7 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
-    [HideCategoriesAttribute(new string[]{"Transform"})]
-    public abstract class SerializableDOMNode : WDOMNode
+	public abstract class SerializableDOMNode : WDOMNode
 	{
 		public readonly FourCC FourCC;
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
@@ -481,7 +480,7 @@ namespace WindEditor
 		}
 				
 
-		protected int m_Parameters;
+		private int m_Parameters;
 
 		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
@@ -801,16 +800,16 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding2;
+		private byte m_Unknown2;
 
-		[WProperty("Misc.", "Padding 2", false)]
-		 public byte Padding2
+		[WProperty("Misc.", "Unknown 2", false)]
+		 public byte Unknown2
 		{ 
-			get { return m_Padding2; }
+			get { return m_Unknown2; }
 			set
 			{
-				m_Padding2 = value;
-				OnPropertyChanged("Padding2");
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
 			}
 		}
 				
@@ -836,7 +835,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Type", TargetProperties = new string[] { "CameraType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
 		}
 
@@ -845,7 +844,7 @@ namespace WindEditor
 			m_CameraType = stream.ReadString(16).Trim(new[] { '\0' }); 
 			m_CameraPointIndex = stream.ReadByte(); 
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
-			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
+			m_Unknown2 = stream.ReadByte(); 
 			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
 		}
 
@@ -858,7 +857,7 @@ namespace WindEditor
 			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((byte)CameraPointIndex);
 			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown2);
 			stream.Write((byte)0); // Padding
 		}
 	}

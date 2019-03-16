@@ -8,6 +8,6 @@
 		{"Name" : "X Rotation", "Type" : "XRotation"},
 		{"Name" : "Y Rotation", "Type" : "YRotation"},
 		{"Name" : "Z Rotation", "Type" : "ZRotation"},
-		{"Name" : "Padding", "Type" : "Short", "Hidden" : "True"},
+		{"Name" : "Padding", "Type" : "Short", "Hidden" : "True"}
 	]
 }
