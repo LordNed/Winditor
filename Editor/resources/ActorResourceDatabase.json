@@ -939,5 +939,191 @@
         ]
       }
     ]
+  },
+  {
+    "Name": "Nut Generator",
+    "Archive": "VigaH",
+    "Models": [
+      {
+        "Path": "bdl/vigah.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Nut",
+    "Archive": "Kmi00x",
+    "Models": [
+      {
+        "Path": "bdlm/kmi_00x.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Wooden Gate",
+    "Archive": "Mdoor",
+    "Models": [
+      {
+        "Path": "bdl/mori1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Metal Gate",
+    "Archive": "Mdoor",
+    "Models": [
+      {
+        "Path": "bdl/mori2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Hammer Switch",
+    "Archive": "MhmrSW",
+    "Models": [
+      {
+        "Path": "bdl/mhmrsw.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Button Switch",
+    "Archive": "Kbota_00",
+    "Models": [
+      {
+        "Path": "bdl/kbota_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Withered Bomb Flower",
+    "Archive": "VbakH",
+    "Models": [
+      {
+        "Path": "bdlm/vbakh.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vbahx.brk",
+            "Paused on Load": true,
+            "Start Time": 0.0
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/vbakm.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vbamx.brk",
+            "Paused on Load": true,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bomb Flower",
+    "Archive": "VbakH",
+    "Models": [
+      {
+        "Path": "bdlm/vbakh.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdlm/vbakm.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/vbamx.bck",
+            "Paused on Load": true,
+            "Start Time": 1.29
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vbamx.brk",
+            "Paused on Load": true,
+            "Start Time": 1.12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Octorock Wind Statue",
+    "Archive": "Ekskz",
+    "Models": [
+      {
+        "Path": "bdl/ekskz.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Big Elephant Statue",
+    "Archive": "MkieB",
+    "Models": [
+      {
+        "Path": "bdl/mkieb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
   }
 ]

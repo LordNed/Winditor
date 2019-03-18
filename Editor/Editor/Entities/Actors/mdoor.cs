@@ -11,7 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+            m_actorMeshes = WResourceManager.LoadActorResource("Wooden Gate");
 		}
 
 		public override void PreSave()

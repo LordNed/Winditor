@@ -29,6 +29,12 @@ namespace WindEditor
         Debug = 15
     }
 
+    public enum BombFlowerType
+    {
+        Ripe,
+        Withered
+    }
+
     public enum ChestType
     {
         Light_wood,

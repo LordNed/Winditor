@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Flower Type",
       "ValueSource": "Parameters",
       "Mask": 240,
       "Shift": 4,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "bflower"
     },
     {

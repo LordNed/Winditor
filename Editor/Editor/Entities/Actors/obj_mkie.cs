@@ -11,8 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
-		}
+            m_actorMeshes = WResourceManager.LoadActorResource("Big Elephant Statue");
+        }
 
 		public override void PreSave()
 		{

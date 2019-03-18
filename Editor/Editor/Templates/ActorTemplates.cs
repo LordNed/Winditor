@@ -749,14 +749,13 @@ namespace WindEditor
 	public partial class bflower : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bflower", "Unknown_1", true)]
-		public int Unknown_1
+		public int FlowerType
 		{ 
 			get { return (int)(Parameters & 240) >> 4; }
 			set
 			{
 				Parameters = (int)(Parameters & ~240 | (value << 4 & 240));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("FlowerType");
 			}
 		}
 

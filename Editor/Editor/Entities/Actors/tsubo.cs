@@ -11,7 +11,15 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+			switch(Name)
+            {
+                case "Kmi00":
+                    m_actorMeshes = WResourceManager.LoadActorResource("Nut");
+                    break;
+                default:
+                    base.PostLoad();
+                    break;
+            }
 		}
 
 		public override void PreSave()
