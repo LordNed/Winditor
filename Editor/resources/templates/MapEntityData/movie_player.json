@@ -1,0 +1,5 @@
+{
+  "ClassName": "movie_player",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

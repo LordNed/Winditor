@@ -1,0 +1,5 @@
+{
+  "ClassName": "wbird",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

@@ -48,82 +48,51 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				continue; 
 
 			string fieldName = field.FieldName.Replace(" ", "");
+			string valueSource = String.IsNullOrEmpty(field.ValueSource) ? "Parameters" : field.ValueSource;
 			string privateFieldName = "m_" + fieldName;
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
 
 			
 #>
-		private int <#=privateFieldName#>;
 <#		 // We hide padding and other fields that the user doesn't need to see/change.
 		if(!field.IsHidden)
 		{
 #>
-
 		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true)]
-		<#= overrideName #> public int <#= fieldName #>
+<# 
+		}
+#>
+		<#= overrideName #>public int <#= fieldName #>
 		{ 
-			get { return <#=privateFieldName#>; }
+			get { return (int)(<#= valueSource #> & <#= field.BitMask #>) >> <#= field.BitShift #>; }
 			set
 			{
-				<#=privateFieldName#> = value;
+<#
+				if (valueSource.Contains("Auxillary"))
+				{
+#>
+				<#= valueSource #> = (short)(<#= valueSource #> & ~<#= field.BitMask #> | (value << <#= field.BitShift #> & <#= field.BitMask #>));
+<#				}
+				else
+				{
+#>
+				<#= valueSource #> = (int)(<#= valueSource #> & ~<#= field.BitMask #> | (value << <#= field.BitShift #> & <#= field.BitMask #>));
+<#
+				}
+#>
 				OnPropertyChanged("<#=fieldName#>");
 			}
 		}
-<#		}#>
 
-<#
-		}
-#>
+<#		}#>
 		// Constructor
 		public <#= className #>(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
 		}
-
-		public void GetPropertiesFromParameters()
-		{
-<#
-			foreach(var field in descriptor.Fields)
-			{
-				if (field.IsHidden)
-				{
-#>
-			m_<#= field.FieldName.Replace(" ", "") #> = (int)(Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
-<#
-				}
-				else
-				{
-#>
-			<#= field.FieldName.Replace(" ", "") #> = (int)(Parameters & <#= field.BitMask #>) >> <#= field.BitShift #>;
-<#				}
-			}
-#>
-		}
-
-		public void SetParametersWithProperties()
-		{
-			Parameters = 0;
-<#
-			foreach(var field in descriptor.Fields)
-			{
-				if (field.IsHidden)
-				{
-#>
-			Parameters |= (int)(m_<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
-<#
-				}
-				else
-				{
-#>
-			Parameters |= (int)(<#= field.FieldName.Replace(" ", "") #> & <#= field.BitMask #>) << <#= field.BitShift #>;
-<#
-				}
-
-			}
-#>
-		}
 	}
+
 <#
 }
 #>

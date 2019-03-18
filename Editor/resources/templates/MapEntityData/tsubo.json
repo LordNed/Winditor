@@ -1,0 +1,62 @@
+{
+  "ClassName": "tsubo",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "tsubo"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 16128,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "tsubo"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 49152,
+      "Shift": 14,
+      "Hidden": false,
+      "Category": "tsubo"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 8323072,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "tsubo"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 251658240,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "tsubo"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 1879048192,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "tsubo"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "Parameters",
+      "Mask": 2147483648,
+      "Shift": 31,
+      "Hidden": false,
+      "Category": "tsubo"
+    }
+  ]
+}

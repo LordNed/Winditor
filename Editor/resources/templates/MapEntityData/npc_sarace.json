@@ -1,0 +1,5 @@
+{
+  "ClassName": "npc_sarace",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

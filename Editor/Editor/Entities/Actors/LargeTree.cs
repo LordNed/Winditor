@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class LargeTree
+    public partial class lwood
     {
         public override void PostLoad()
         {

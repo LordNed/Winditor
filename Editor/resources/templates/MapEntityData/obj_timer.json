@@ -1,0 +1,22 @@
+{
+  "ClassName": "obj_timer",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_timer"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_timer"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "ClassName": "wind_tag",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 2031616,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 6291456,
+      "Shift": 21,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 8388608,
+      "Shift": 23,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 15,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "wind_tag"
+    },
+    {
+      "Name": "Unknown_8",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 240,
+      "Shift": 4,
+      "Hidden": false,
+      "Category": "wind_tag"
+    }
+  ]
+}

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class Medli
+    public partial class npc_md
     {
         public override void PostLoad()
         {
-            GetPropertiesFromParameters();
-
             m_actorMeshes = WResourceManager.LoadActorResource("Medli");
         }
     }

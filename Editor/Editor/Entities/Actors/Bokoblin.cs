@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class Bokoblin
+    public partial class bk
     {
         [WProperty("Bokoblin", "Type", true, "The behavior of the Bokoblin when it spawns.")]
         public BokoblinType Type
         {
-            get { return (BokoblinType)m_Type; }
+            get { return (BokoblinType)Unknown_1; }
             set
             {
-                if ((int)value != m_Type)
+                if ((int)value != Unknown_1)
                 {
-                    m_Type = (int)value;
+                    Unknown_1 = (int)value;
                     OnPropertyChanged("Type");
 
                     UpdateModel();
@@ -27,14 +27,14 @@ namespace WindEditor
         [WProperty("Bokoblin", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.")]
         public bool SwitchSpawnsBokoblin
         {
-            get { return Convert.ToBoolean(m_SwitchSpawnsBokoblin); }
+            get { return Convert.ToBoolean(Unknown_2); }
             set
             {
                 int bool_as_int = Convert.ToInt32(value);
 
-                if (bool_as_int != m_SwitchSpawnsBokoblin)
+                if (bool_as_int != Unknown_2)
                 {
-                    m_SwitchSpawnsBokoblin = bool_as_int;
+                    Unknown_2 = bool_as_int;
                     OnPropertyChanged("SwitchSpawnsBokoblin");
                 }
             }
@@ -43,14 +43,14 @@ namespace WindEditor
         [WProperty("Bokoblin", "Is Green", true, "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.")]
         public bool IsMiniboss
         {
-            get { return Convert.ToBoolean(m_IsMiniboss); }
+            get { return Convert.ToBoolean(Unknown_3); }
             set
             {
                 int bool_as_int = Convert.ToInt32(value);
 
-                if (bool_as_int != m_IsMiniboss)
+                if (bool_as_int != Unknown_3)
                 {
-                    m_IsMiniboss = bool_as_int;
+                    Unknown_3 = bool_as_int;
                     OnPropertyChanged("IsMiniboss");
 
                     UpdateModel();
@@ -61,12 +61,12 @@ namespace WindEditor
         [WProperty("Bokoblin", "Weapon", true, "The weapon that the Bokoblin is holding when it spawns.")]
         public BokoblinHeldItem Weapon
         {
-            get { return (BokoblinHeldItem)m_HeldItemId; }
+            get { return (BokoblinHeldItem)Unknown_4; }
             set
             {
-                if ((int)value != m_HeldItemId)
+                if ((int)value != Unknown_4)
                 {
-                    m_HeldItemId = (int)value;
+                    Unknown_4 = (int)value;
                     OnPropertyChanged("Weapon");
                 }
             }
@@ -90,8 +90,6 @@ namespace WindEditor
 
         public override void PostLoad()
         {
-            GetPropertiesFromParameters();
-
             UpdateModel();
         }
 

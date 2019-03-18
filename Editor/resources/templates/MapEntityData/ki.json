@@ -1,0 +1,46 @@
+{
+  "ClassName": "ki",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "ki"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 32512,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "ki"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 32768,
+      "Shift": 15,
+      "Hidden": false,
+      "Category": "ki"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "ki"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "ki"
+    }
+  ]
+}

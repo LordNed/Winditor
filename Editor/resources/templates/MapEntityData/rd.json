@@ -1,0 +1,38 @@
+{
+  "ClassName": "rd",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 1,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "rd"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 254,
+      "Shift": 1,
+      "Hidden": false,
+      "Category": "rd"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "rd"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "rd"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "ClassName": "hmlif",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 983040,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 3145728,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 130023424,
+      "Shift": 22,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 2013265920,
+      "Shift": 27,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "Parameters",
+      "Mask": 2147483648,
+      "Shift": 31,
+      "Hidden": false,
+      "Category": "hmlif"
+    },
+    {
+      "Name": "Unknown_8",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "hmlif"
+    }
+  ]
+}

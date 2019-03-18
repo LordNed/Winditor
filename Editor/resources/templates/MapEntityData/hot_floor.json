@@ -1,0 +1,22 @@
+{
+  "ClassName": "hot_floor",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 1,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "hot_floor"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 2,
+      "Shift": 1,
+      "Hidden": false,
+      "Category": "hot_floor"
+    }
+  ]
+}

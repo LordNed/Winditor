@@ -1,0 +1,54 @@
+{
+  "ClassName": "obj_movebox",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_movebox"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_movebox"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 8323072,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_movebox"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 251658240,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "obj_movebox"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 1073741824,
+      "Shift": 30,
+      "Hidden": false,
+      "Category": "obj_movebox"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 2147483648,
+      "Shift": 31,
+      "Hidden": false,
+      "Category": "obj_movebox"
+    }
+  ]
+}

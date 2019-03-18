@@ -1,0 +1,22 @@
+{
+  "ClassName": "obj_ospbox",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_ospbox"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 1792,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_ospbox"
+    }
+  ]
+}

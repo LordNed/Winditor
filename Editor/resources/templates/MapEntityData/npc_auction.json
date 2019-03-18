@@ -1,0 +1,5 @@
+{
+  "ClassName": "npc_auction",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

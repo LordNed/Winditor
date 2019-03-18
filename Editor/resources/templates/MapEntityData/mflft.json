@@ -1,0 +1,22 @@
+{
+  "ClassName": "mflft",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "mflft"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "mflft"
+    }
+  ]
+}

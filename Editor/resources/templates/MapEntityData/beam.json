@@ -1,0 +1,70 @@
+{
+  "ClassName": "beam",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 251658240,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 268435456,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 805306368,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "Parameters",
+      "Mask": 3221225472,
+      "Shift": 30,
+      "Hidden": false,
+      "Category": "beam"
+    },
+    {
+      "Name": "Unknown_8",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "beam"
+    }
+  ]
+}

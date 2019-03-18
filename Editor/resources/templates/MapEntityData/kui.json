@@ -1,0 +1,30 @@
+{
+  "ClassName": "kui",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 240,
+      "Shift": 4,
+      "Hidden": false,
+      "Category": "kui"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "kui"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "kui"
+    }
+  ]
+}

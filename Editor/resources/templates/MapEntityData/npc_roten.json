@@ -1,0 +1,22 @@
+{
+  "ClassName": "npc_roten",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "npc_roten"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "npc_roten"
+    }
+  ]
+}

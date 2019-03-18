@@ -1,0 +1,54 @@
+{
+  "ClassName": "obj_flame",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_flame"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 7936,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_flame"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 24576,
+      "Shift": 13,
+      "Hidden": false,
+      "Category": "obj_flame"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_flame"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 805306368,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "obj_flame"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 2147483648,
+      "Shift": 31,
+      "Hidden": false,
+      "Category": "obj_flame"
+    }
+  ]
+}

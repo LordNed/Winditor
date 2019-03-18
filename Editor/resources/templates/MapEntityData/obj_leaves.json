@@ -1,0 +1,30 @@
+{
+  "ClassName": "obj_leaves",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_leaves"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 8128,
+      "Shift": 6,
+      "Hidden": false,
+      "Category": "obj_leaves"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 2088960,
+      "Shift": 13,
+      "Hidden": false,
+      "Category": "obj_leaves"
+    }
+  ]
+}

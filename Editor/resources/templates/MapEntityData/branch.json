@@ -1,0 +1,5 @@
+{
+  "ClassName": "branch",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

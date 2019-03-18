@@ -1,0 +1,14 @@
+{
+  "ClassName": "bst",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Component Type",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": true,
+      "Category": "bst"
+    }
+  ]
+}

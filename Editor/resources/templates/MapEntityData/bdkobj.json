@@ -1,0 +1,22 @@
+{
+  "ClassName": "bdkobj",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 15,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "bdkobj"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "bdkobj"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "ClassName": "obj_homensmoke",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 1,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_homensmoke"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 2,
+      "Shift": 1,
+      "Hidden": false,
+      "Category": "obj_homensmoke"
+    }
+  ]
+}

@@ -421,5 +421,523 @@
         }
       }
     ]
+  },
+  {
+    "Name": "Deku Leaf Pickup",
+    "Archive": "Deku",
+    "Models": [
+      {
+        "Path": "bdlm/vlfdm.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/vlfdk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Great Deku Tree",
+    "Archive": "De",
+    "Models": [
+      {
+        "Path": "bdl/de.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Great Deku Tree Lily Pad",
+    "Archive": "Olift",
+    "Models": [
+      {
+        "Path": "bdl/olift.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Baba Bud Stalk",
+    "Archive": "Ojtree",
+    "Models": [
+      {
+        "Path": "bdl/ojtree.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Baba Bud",
+    "Archive": "Jbo",
+    "Models": [
+      {
+        "Path": "bmdm/jh.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Spiked Tentacle",
+    "Archive": "Ssk",
+    "Models": [
+      {
+        "Path": "bdl/turu_02.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/ktana_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Forest Water Platform",
+    "Archive": "Kryu",
+    "Models": [
+      {
+        "Path": "bdl/ryu_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Transparent Bubbling Spring",
+    "Archive": "Ygush00",
+    "Models": [
+      {
+        "Path": "bdlm/ygstp00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/ygstp00.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/ygstp00.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Boko Baba",
+    "Archive": "Bo",
+    "Models": [
+      {
+        "Path": "bdlm/bo_ue1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 5.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait_l1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/bo_sita1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Strong Wooden Barrier",
+    "Archive": "Knsak_00",
+    "Models": [
+      {
+        "Path": "bdl/knsak_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Green Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Blue Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.025
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Yellow Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.075
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Red Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Purple Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.125
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Magenta Rupee?",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Orange Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.175
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Silver Rupee",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vlupl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0.05
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Heart Pickup",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/vhrtl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Key",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/vkeyl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Knights Crest",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/vbell.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Joy Pendant",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/vhapl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Boko Baba Seed",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/vbokl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Golden Feather",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vhanl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Skull Necklace",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/vdokl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Green Chu Blob",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vchul.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Blue Chu Blob",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vchul.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vchul.brk",
+            "Paused on Load": true,
+            "Start Time": 0.06
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Red Chu Blob",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vchul.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vchul.brk",
+            "Paused on Load": true,
+            "Start Time": 0.09
+          }
+        ]
+      }
+    ]
   }
 ]

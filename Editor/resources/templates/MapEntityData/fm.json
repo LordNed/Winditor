@@ -1,0 +1,78 @@
+{
+  "ClassName": "fm",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 768,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 3072,
+      "Shift": 10,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 251658240,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_8",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "fm"
+    },
+    {
+      "Name": "Unknown_9",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "fm"
+    }
+  ]
+}

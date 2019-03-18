@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class Kargaroc
+    public partial class bb
     {
         public override void PostLoad()
         {

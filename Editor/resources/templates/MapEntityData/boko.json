@@ -1,0 +1,30 @@
+{
+  "ClassName": "boko",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 1073741823,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "boko"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 4294967295,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "boko"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "boko"
+    }
+  ]
+}

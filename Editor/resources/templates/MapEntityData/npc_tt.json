@@ -1,0 +1,5 @@
+{
+  "ClassName": "npc_tt",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

@@ -1,0 +1,14 @@
+﻿{
+  "ClassName": "item",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Item Pickup"
+    }
+  ]
+}

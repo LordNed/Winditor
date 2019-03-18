@@ -1,0 +1,54 @@
+{
+  "ClassName": "obj_barrel2",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_barrel2"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 256,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_barrel2"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 1024,
+      "Shift": 10,
+      "Hidden": false,
+      "Category": "obj_barrel2"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 8323072,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_barrel2"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 50331648,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "obj_barrel2"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 268435456,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "obj_barrel2"
+    }
+  ]
+}

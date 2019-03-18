@@ -1,0 +1,30 @@
+{
+  "ClassName": "obj_quake",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_quake"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 1792,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_quake"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 14336,
+      "Shift": 11,
+      "Hidden": false,
+      "Category": "obj_quake"
+    }
+  ]
+}

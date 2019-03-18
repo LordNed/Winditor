@@ -1,0 +1,5 @@
+{
+  "ClassName": "auction",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

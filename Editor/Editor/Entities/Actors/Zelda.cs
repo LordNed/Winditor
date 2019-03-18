@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class Zelda
+    public partial class pz
     {
         public override void PostLoad()
         {

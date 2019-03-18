@@ -1,0 +1,30 @@
+{
+  "ClassName": "npc_p2",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 3,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "npc_p2"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 1020,
+      "Shift": 2,
+      "Hidden": false,
+      "Category": "npc_p2"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 261120,
+      "Shift": 10,
+      "Hidden": false,
+      "Category": "npc_p2"
+    }
+  ]
+}

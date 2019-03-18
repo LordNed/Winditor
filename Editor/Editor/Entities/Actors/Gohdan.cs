@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class Gohdan
+    public partial class bst
     {
         [WProperty("Gohdan", "Component ID", true)]
         public GohdanComponent ComponentID
         {
-            get { return (GohdanComponent)m_Component; }
+            get { return (GohdanComponent)ComponentType; }
             set
             {
-                if ((int)value != m_Component)
+                if ((int)value != ComponentType)
                 {
-                    m_Component = (int)value;
+                    ComponentType = (int)value;
                     OnPropertyChanged("ComponentID");
 
                     UpdateModel();
@@ -42,8 +42,6 @@ namespace WindEditor
 
         public override void PostLoad()
         {
-            GetPropertiesFromParameters();
-
             UpdateModel();
         }
     }

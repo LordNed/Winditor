@@ -7,17 +7,17 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
-    public partial class Foliage
+    public partial class grass
     {
         [WProperty("Foliage", "Type", true)]
         public FoliageType Type
         {
-            get { return (FoliageType)m_Type; }
+            get { return (FoliageType)Unknown_2; }
             set
             {
-                if ((int)value != m_Type)
+                if ((int)value != Unknown_2)
                 {
-                    m_Type = (int)value;
+                    Unknown_2 = (int)value;
                     OnPropertyChanged("Type");
 
                     UpdateModel();
@@ -27,18 +27,12 @@ namespace WindEditor
 
         public override void PostLoad()
         {
-            base.PostLoad();
-
-            GetPropertiesFromParameters();
-
             UpdateModel();
         }
 
         public override void PreSave()
         {
-            base.PreSave();
 
-            SetParametersWithProperties();
         }
 
         private void UpdateModel()

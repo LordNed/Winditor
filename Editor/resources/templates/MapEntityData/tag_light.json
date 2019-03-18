@@ -1,0 +1,62 @@
+{
+  "ClassName": "tag_light",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 3,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "tag_light"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 768,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "tag_light"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 1020,
+      "Shift": 2,
+      "Hidden": false,
+      "Category": "tag_light"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 15360,
+      "Shift": 10,
+      "Hidden": false,
+      "Category": "tag_light"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 49152,
+      "Shift": 14,
+      "Hidden": false,
+      "Category": "tag_light"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "tag_light"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "tag_light"
+    }
+  ]
+}

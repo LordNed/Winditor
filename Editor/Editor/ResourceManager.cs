@@ -177,6 +177,7 @@ namespace WindEditor
                 existRef.ReferenceCount++;
 
                 m_j3dList.Add(existRef);
+                loaded_model.Tick(1/ (float)60);
 
                 models.Add(loaded_model);
             }

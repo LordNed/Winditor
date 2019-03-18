@@ -1,0 +1,22 @@
+{
+  "ClassName": "obj_swheavy",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_swheavy"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 117440512,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "obj_swheavy"
+    }
+  ]
+}

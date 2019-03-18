@@ -1,0 +1,30 @@
+{
+  "ClassName": "obj_buoyflag",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 3,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_buoyflag"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 256,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_buoyflag"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 2147483648,
+      "Shift": 31,
+      "Hidden": false,
+      "Category": "obj_buoyflag"
+    }
+  ]
+}

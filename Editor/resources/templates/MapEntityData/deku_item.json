@@ -1,0 +1,14 @@
+{
+  "ClassName": "deku_item",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Item Pickup Flag",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Deku Leaf Pickup"
+    }
+  ]
+}

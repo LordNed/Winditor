@@ -1,0 +1,62 @@
+{
+  "ClassName": "tag_hint",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "tag_hint"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 192,
+      "Shift": 6,
+      "Hidden": false,
+      "Category": "tag_hint"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "tag_hint"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "tag_hint"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 4278190080,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "tag_hint"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "tag_hint"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "tag_hint"
+    }
+  ]
+}

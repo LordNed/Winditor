@@ -1,0 +1,22 @@
+{
+  "ClassName": "obj_shelf",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 1,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_shelf"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_shelf"
+    }
+  ]
+}

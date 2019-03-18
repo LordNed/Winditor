@@ -1,0 +1,46 @@
+{
+  "ClassName": "obj_mkie",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_mkie"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 256,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_mkie"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 4096,
+      "Shift": 12,
+      "Hidden": false,
+      "Category": "obj_mkie"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 8192,
+      "Shift": 13,
+      "Hidden": false,
+      "Category": "obj_mkie"
+    },
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "Parameters",
+      "Mask": 16711680,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_mkie"
+    }
+  ]
+}

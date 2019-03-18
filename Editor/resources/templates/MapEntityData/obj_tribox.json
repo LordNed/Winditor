@@ -1,0 +1,22 @@
+{
+  "ClassName": "obj_tribox",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_tribox"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 65536,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_tribox"
+    }
+  ]
+}

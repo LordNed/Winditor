@@ -1,0 +1,30 @@
+{
+  "ClassName": "race_item",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "race_item"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 32512,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "race_item"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 491520,
+      "Shift": 15,
+      "Hidden": false,
+      "Category": "race_item"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "ClassName": "mgameboard",
+  "ParentClassOverride": "Actor",
+  "Fields": []
+}

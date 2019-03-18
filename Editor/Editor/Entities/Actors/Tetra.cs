@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public partial class Tetra
+    public partial class npc_zl1
     {
         public override void PostLoad()
         {

@@ -1,0 +1,22 @@
+{
+  "ClassName": "npc_kamome",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "npc_kamome"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "npc_kamome"
+    }
+  ]
+}

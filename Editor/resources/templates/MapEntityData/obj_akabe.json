@@ -1,0 +1,38 @@
+{
+  "ClassName": "obj_akabe",
+  "ParentClassOverride": "Actor",
+  "Fields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_akabe"
+    },
+    {
+      "Name": "Unknown_2",
+      "ValueSource": "Parameters",
+      "Mask": 768,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_akabe"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
+      "Mask": 4096,
+      "Shift": 12,
+      "Hidden": false,
+      "Category": "obj_akabe"
+    },
+    {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 983040,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "obj_akabe"
+    }
+  ]
+}
