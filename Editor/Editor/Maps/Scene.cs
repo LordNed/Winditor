@@ -4,12 +4,14 @@ using System.IO;
 using WindEditor.Collision;
 using JStudio.J3D;
 using System;
+using WArchiveTools.FileSystem;
 
 namespace WindEditor
 {
     public abstract class WScene : WDOMNode
     {
         override public string Name { get; set; }
+        public VirtualFilesystemDirectory SourceDirectory { get; set; }
 
         protected Dictionary<FourCC, WDOMNode> m_fourCCGroups;
 
@@ -188,6 +190,15 @@ namespace WindEditor
             foreach (KeyValuePair<string, FourCC> keyVal in dispFourCCs)
             {
                 m_fourCCGroups[keyVal.Value].SetParent(this);
+            }
+
+            foreach (var child in loadedActors)
+            {
+                if (child is SerializableDOMNode)
+                {
+                    SerializableDOMNode child_as_vis = child as SerializableDOMNode;
+                    child_as_vis.PostLoad();
+                }
             }
         }
 

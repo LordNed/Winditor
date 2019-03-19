@@ -56,6 +56,15 @@ namespace WindEditor
         Uses_extra_open_flag_and_spawns_when_a_switch_is_set
     }
 
+    public enum DoorType
+    {
+        Normal,
+        Boss,
+        Barred,
+        Unknown,
+        Locked
+    }
+
     public enum FoliageType
     {
         Grass,

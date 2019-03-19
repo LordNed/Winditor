@@ -1,21 +1,65 @@
 ﻿{
-	"ClassName" : "Door_TGDR",
+	"ClassName" : "TGDR",
 	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TGDR",
-	"Fields" :
-	[
-		{"Name" : "Name", "Type" : "FixedLengthString" , "Length" : 8},
-		{"Name" : "Params", "Type" : "Int"},
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "RoomLoadingParams", "Type" : "Short"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Arg 1", "Type" : "Byte"},
-		{"Name" : "ShipId", "Type" : "Byte"},
-		{"Name" : "Unknown 2", "Type" : "Byte"},
-		{"Name" : "Unknown 3", "Type" : "Byte"},
-		{"Name" : "X Scale", "Type" : "Byte"},
-		{"Name" : "Y Scale", "Type" : "Byte"},
-		{"Name" : "Z Scale", "Type" : "Byte"},
-		{"Name" : "Unknown 4", "Type" : "Byte"}
-	]
+  "Fields": [
+    {
+      "Name": "Name",
+      "Type": "FixedLengthString",
+      "Length": 8,
+      "Default": ""
+    },
+    {
+      "Name": "Parameters",
+      "Type": "Int",
+      "Default": 0
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3",
+      "Default": {
+        "X": 0,
+        "Y": 0,
+        "Z": 0
+      }
+    },
+    {
+      "Name": "Auxillary Parameters 1",
+      "Type": "Short"
+    },
+    {
+      "Name": "Y Rotation",
+      "Type": "YRotation"
+    },
+    {
+      "Name": "Auxillary Parameters 2",
+      "Type": "Short",
+      "Default": 0
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Short",
+      "Default": 0
+    },
+    {
+      "Name": "X Scale",
+      "Type": "Byte",
+      "Default": 1
+    },
+    {
+      "Name": "Y Scale",
+      "Type": "Byte",
+      "Default": 1
+    },
+    {
+      "Name": "Z Scale",
+      "Type": "Byte",
+      "Default": 1
+    },
+    {
+      "Name": "Padding",
+      "Type": "Byte",
+      "Default": -1
+    }
+  ]
 }

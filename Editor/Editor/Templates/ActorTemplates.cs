@@ -1712,9 +1712,97 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class door10 : Actor
+	public partial class door10 : TGDR
 	{
 		// Auto-Generated Properties from Templates
+		[WProperty("Door", "Switch Bit", true)]
+		public int SwitchBit
+		{ 
+			get { return (int)(Parameters & 255) >> 0; }
+			set
+			{
+				Parameters = (int)(Parameters & ~255 | (value << 0 & 255));
+				OnPropertyChanged("SwitchBit");
+			}
+		}
+
+		[WProperty("Door", "Type", true)]
+		public int Type
+		{ 
+			get { return (int)(Parameters & 3840) >> 8; }
+			set
+			{
+				Parameters = (int)(Parameters & ~3840 | (value << 8 & 3840));
+				OnPropertyChanged("Type");
+			}
+		}
+
+		[WProperty("Door", "Event ID", true)]
+		public int EventID
+		{ 
+			get { return (int)(Parameters & 1044480) >> 12; }
+			set
+			{
+				Parameters = (int)(Parameters & ~1044480 | (value << 12 & 1044480));
+				OnPropertyChanged("EventID");
+			}
+		}
+
+		[WProperty("Door", "Switch Bit 2", true)]
+		public int SwitchBit2
+		{ 
+			get { return (int)(Parameters & 267386880) >> 20; }
+			set
+			{
+				Parameters = (int)(Parameters & ~267386880 | (value << 20 & 267386880));
+				OnPropertyChanged("SwitchBit2");
+			}
+		}
+
+		[WProperty("Door", "From Room Number", true)]
+		public int FromRoomNumber
+		{ 
+			get { return (int)(AuxillaryParameters1 & 63) >> 0; }
+			set
+			{
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~63 | (value << 0 & 63));
+				OnPropertyChanged("FromRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "To Room Number", true)]
+		public int ToRoomNumber
+		{ 
+			get { return (int)(AuxillaryParameters1 & 4032) >> 6; }
+			set
+			{
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~4032 | (value << 6 & 4032));
+				OnPropertyChanged("ToRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "Ship ID", true)]
+		public int ShipID
+		{ 
+			get { return (int)(AuxillaryParameters2 & 63) >> 0; }
+			set
+			{
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~63 | (value << 0 & 63));
+				OnPropertyChanged("ShipID");
+			}
+		}
+
+		[WProperty("Door", "Arg 1", true)]
+		public int Arg1
+		{ 
+			get { return (int)(AuxillaryParameters2 & 65280) >> 8; }
+			set
+			{
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~65280 | (value << 8 & 65280));
+				OnPropertyChanged("Arg1");
+			}
+		}
+
 		// Constructor
 		public door10(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1723,9 +1811,97 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class door12 : Actor
+	public partial class door12 : TGDR
 	{
 		// Auto-Generated Properties from Templates
+		[WProperty("Door", "Switch Bit", true)]
+		public int SwitchBit
+		{ 
+			get { return (int)(Parameters & 255) >> 0; }
+			set
+			{
+				Parameters = (int)(Parameters & ~255 | (value << 0 & 255));
+				OnPropertyChanged("SwitchBit");
+			}
+		}
+
+		[WProperty("Door", "Type", true)]
+		public int Type
+		{ 
+			get { return (int)(Parameters & 3840) >> 8; }
+			set
+			{
+				Parameters = (int)(Parameters & ~3840 | (value << 8 & 3840));
+				OnPropertyChanged("Type");
+			}
+		}
+
+		[WProperty("Door", "Event ID", true)]
+		public int EventID
+		{ 
+			get { return (int)(Parameters & 1044480) >> 12; }
+			set
+			{
+				Parameters = (int)(Parameters & ~1044480 | (value << 12 & 1044480));
+				OnPropertyChanged("EventID");
+			}
+		}
+
+		[WProperty("Door", "Switch Bit 2", true)]
+		public int SwitchBit2
+		{ 
+			get { return (int)(Parameters & 267386880) >> 20; }
+			set
+			{
+				Parameters = (int)(Parameters & ~267386880 | (value << 20 & 267386880));
+				OnPropertyChanged("SwitchBit2");
+			}
+		}
+
+		[WProperty("Door", "From Room Number", true)]
+		public int FromRoomNumber
+		{ 
+			get { return (int)(AuxillaryParameters1 & 63) >> 0; }
+			set
+			{
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~63 | (value << 0 & 63));
+				OnPropertyChanged("FromRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "To Room Number", true)]
+		public int ToRoomNumber
+		{ 
+			get { return (int)(AuxillaryParameters1 & 4032) >> 6; }
+			set
+			{
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~4032 | (value << 6 & 4032));
+				OnPropertyChanged("ToRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "Ship ID", true)]
+		public int ShipID
+		{ 
+			get { return (int)(AuxillaryParameters2 & 63) >> 0; }
+			set
+			{
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~63 | (value << 0 & 63));
+				OnPropertyChanged("ShipID");
+			}
+		}
+
+		[WProperty("Door", "Arg 1", true)]
+		public int Arg1
+		{ 
+			get { return (int)(AuxillaryParameters2 & 65280) >> 8; }
+			set
+			{
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~65280 | (value << 8 & 65280));
+				OnPropertyChanged("Arg1");
+			}
+		}
+
 		// Constructor
 		public door12(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{

@@ -941,6 +941,20 @@
     ]
   },
   {
+    "Name": "Heart Container",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vhutl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Nut Generator",
     "Archive": "VigaH",
     "Models": [
@@ -1118,6 +1132,68 @@
     "Models": [
       {
         "Path": "bdl/mkieb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Tower of the Gods Boss Warp",
+    "Archive": "Ysbwp00",
+    "Models": [
+      {
+        "Path": "bdlm/ysbwp00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/ysbwp00.bck",
+            "Paused on Load": true,
+            "Start Time": 3.96
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/ysbwp00.btk",
+            "Paused on Load": true,
+            "Start Time": 0.42
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/ysbwp00.brk",
+            "Paused on Load": true,
+            "Start Time": 3.96
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Boss Key Lock",
+    "Archive": "Key",
+    "Models": [
+      {
+        "Path": "bdlm/vlocb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Key Lock",
+    "Archive": "Key",
+    "Models": [
+      {
+        "Path": "bdlm/vlocn.bdl",
         "Offset": {
           "X": 0.0,
           "Y": 0.0,

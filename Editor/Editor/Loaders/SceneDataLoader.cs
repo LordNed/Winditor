@@ -286,6 +286,7 @@ namespace WindEditor
                     case FourCC.ACT9:
                     case FourCC.ACTa:
                     case FourCC.ACTb:
+                    case FourCC.TGDR:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {
                             // We need to read the entity name so we can load the right derived class for it
@@ -295,7 +296,6 @@ namespace WindEditor
                             SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
 
                             entity.Load(m_reader);
-                            entity.PostLoad();
                             entity.Layer = chunk.Layer;
 
                             loadedActors.Add(entity);
@@ -307,7 +307,6 @@ namespace WindEditor
 							Type actorType = Type.GetType($"WindEditor.{template.ClassName}");
 							SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
 							entity.Load(m_reader);
-							entity.PostLoad();
 							entity.Layer = chunk.Layer;
 
                             loadedActors.Add(entity);

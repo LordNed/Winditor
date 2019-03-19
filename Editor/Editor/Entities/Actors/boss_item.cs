@@ -11,8 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
-		}
+            m_actorMeshes = WResourceManager.LoadActorResource("Heart Container");
+        }
 
 		public override void PreSave()
 		{

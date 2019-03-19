@@ -4,7 +4,7 @@ using System;
 
 namespace WindEditor
 {
-	public partial class Door_TGDR
+	public partial class TGDR
 	{
 		public override string ToString()
 		{

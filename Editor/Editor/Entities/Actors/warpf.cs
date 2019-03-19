@@ -11,8 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
-		}
+            m_actorMeshes = WResourceManager.LoadActorResource("Tower of the Gods Boss Warp");
+        }
 
 		public override void PreSave()
 		{

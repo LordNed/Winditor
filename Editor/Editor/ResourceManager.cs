@@ -197,6 +197,27 @@ namespace WindEditor
             return models;
         }
 
+        public static J3D LoadModelFromVFS(VirtualFilesystemDirectory fs, string path)
+        {
+            TSharedRef<J3D> existRef = null;//m_j3dList.Find(x => string.Compare(x.FilePath, arc_and_file_path, StringComparison.InvariantCultureIgnoreCase) == 0);
+
+            J3D model = new J3D(path);
+
+            VirtualFilesystemFile file = fs.GetFileAtPath(path);
+
+            using (EndianBinaryReader reader = new EndianBinaryReader(file.Data, Endian.Big))
+                model.LoadFromStream(reader);
+
+            existRef = new TSharedRef<J3D>();
+            existRef.FilePath = fs.Name + '/' + path;
+            existRef.Asset = model;
+            existRef.ReferenceCount++;
+
+            m_j3dList.Add(existRef);
+
+            return model;
+        }
+
         private static J3D LoadModelFromResource(WActorResource.ModelResource res, string archive)
         {
             J3D j3d = null;

@@ -1,5 +1,70 @@
 {
   "ClassName": "door12",
-  "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParentClassOverride": "TGDR",
+  "Fields": [
+    {
+      "Name": "Switch Bit",
+      "ValueSource": "Parameters",
+      "Mask": 255,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 3840,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "Event ID",
+      "ValueSource": "Parameters",
+      "Mask": 1044480,
+      "Shift": 12,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "Switch Bit 2",
+      "ValueSource": "Parameters",
+      "Mask": 267386880,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "From Room Number",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "To Room Number",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 4032,
+      "Shift": 6,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "Ship ID",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 63,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Door"
+    },
+    {
+      "Name": "Arg 1",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 65280,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "Door"
+    }
+  ]
 }

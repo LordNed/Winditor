@@ -4042,7 +4042,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class Door_TGDR : VisibleDOMNode
+	public partial class TGDR : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
 		private string m_Name;
@@ -4059,133 +4059,101 @@ namespace WindEditor
 		}
 				
 
-		private int m_Params;
+		private int m_Parameters;
 
-		[WProperty("Misc.", "Params", false)]
-		 public int Params
+		[WProperty("Misc.", "Parameters", false)]
+		 public int Parameters
 		{ 
-			get { return m_Params; }
+			get { return m_Parameters; }
 			set
 			{
-				m_Params = value;
-				OnPropertyChanged("Params");
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
 			}
 		}
 				
 
-		private short m_RoomLoadingParams;
+		private short m_AuxillaryParameters1;
 
-		[WProperty("Misc.", "RoomLoadingParams", false)]
-		 public short RoomLoadingParams
+		[WProperty("Misc.", "Auxillary Parameters 1", false)]
+		 public short AuxillaryParameters1
 		{ 
-			get { return m_RoomLoadingParams; }
+			get { return m_AuxillaryParameters1; }
 			set
 			{
-				m_RoomLoadingParams = value;
-				OnPropertyChanged("RoomLoadingParams");
+				m_AuxillaryParameters1 = value;
+				OnPropertyChanged("AuxillaryParameters1");
 			}
 		}
 				
 
-		private byte m_Arg1;
+		private short m_AuxillaryParameters2;
 
-		[WProperty("Misc.", "Arg 1", false)]
-		 public byte Arg1
+		[WProperty("Misc.", "Auxillary Parameters 2", false)]
+		 public short AuxillaryParameters2
 		{ 
-			get { return m_Arg1; }
+			get { return m_AuxillaryParameters2; }
 			set
 			{
-				m_Arg1 = value;
-				OnPropertyChanged("Arg1");
+				m_AuxillaryParameters2 = value;
+				OnPropertyChanged("AuxillaryParameters2");
 			}
 		}
 				
 
-		private byte m_ShipId;
+		private short m_Unknown1;
 
-		[WProperty("Misc.", "ShipId", false)]
-		 public byte ShipId
+		[WProperty("Misc.", "Unknown 1", false)]
+		 public short Unknown1
 		{ 
-			get { return m_ShipId; }
+			get { return m_Unknown1; }
 			set
 			{
-				m_ShipId = value;
-				OnPropertyChanged("ShipId");
+				m_Unknown1 = value;
+				OnPropertyChanged("Unknown1");
 			}
 		}
 				
 
-		private byte m_Unknown2;
+		private byte m_Padding;
 
-		[WProperty("Misc.", "Unknown 2", false)]
-		 public byte Unknown2
+		[WProperty("Misc.", "Padding", false)]
+		 public byte Padding
 		{ 
-			get { return m_Unknown2; }
+			get { return m_Padding; }
 			set
 			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
-			}
-		}
-				
-
-		private byte m_Unknown3;
-
-		[WProperty("Misc.", "Unknown 3", false)]
-		 public byte Unknown3
-		{ 
-			get { return m_Unknown3; }
-			set
-			{
-				m_Unknown3 = value;
-				OnPropertyChanged("Unknown3");
-			}
-		}
-				
-
-		private byte m_Unknown4;
-
-		[WProperty("Misc.", "Unknown 4", false)]
-		 public byte Unknown4
-		{ 
-			get { return m_Unknown4; }
-			set
-			{
-				m_Unknown4 = value;
-				OnPropertyChanged("Unknown4");
+				m_Padding = value;
+				OnPropertyChanged("Padding");
 			}
 		}
 				
 
 
 		// Constructor
-		public Door_TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params", TargetProperties = new string[] { "Params"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "RoomLoadingParams", TargetProperties = new string[] { "RoomLoadingParams"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Arg 1", TargetProperties = new string[] { "Arg1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "ShipId", TargetProperties = new string[] { "ShipId"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 1", TargetProperties = new string[] { "AuxillaryParameters1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 2", TargetProperties = new string[] { "AuxillaryParameters2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
-			m_Params = stream.ReadInt32(); 
+			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_RoomLoadingParams = stream.ReadInt16(); 
+			m_AuxillaryParameters1 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_Arg1 = stream.ReadByte(); 
-			m_ShipId = stream.ReadByte(); 
-			m_Unknown2 = stream.ReadByte(); 
-			m_Unknown3 = stream.ReadByte(); 
+			m_AuxillaryParameters2 = stream.ReadInt16(); 
+			m_Unknown1 = stream.ReadInt16(); 
 			float xScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z); 
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
-			m_Unknown4 = stream.ReadByte(); 
+			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -4195,18 +4163,16 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Params);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)RoomLoadingParams);
+			stream.Write((short)AuxillaryParameters1);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((byte)Arg1);
-			stream.Write((byte)ShipId);
-			stream.Write((byte)Unknown2);
-			stream.Write((byte)Unknown3);
+			stream.Write((short)AuxillaryParameters2);
+			stream.Write((short)Unknown1);
 			stream.Write((byte)(Transform.LocalScale.X * 10));
 			stream.Write((byte)(Transform.LocalScale.Y * 10));
 			stream.Write((byte)(Transform.LocalScale.Z * 10));
-			stream.Write((byte)Unknown4);
+			stream.Write((byte)0); // Padding
 		}
 	}
 

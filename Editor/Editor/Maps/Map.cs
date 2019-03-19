@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using WArchiveTools.FileSystem;
 
 namespace WindEditor
 {
@@ -61,7 +62,6 @@ namespace WindEditor
             if (!Directory.Exists(inPath))
                 throw new ArgumentException("Cannot load map from non-existant directory", "filePath");
 
-
             m_mapName = Path.GetFileName(inPath);
             m_savePath = Path.GetFullPath(sourcePath);
 
@@ -76,6 +76,10 @@ namespace WindEditor
             foreach (var sceneFolder in sortedScenes)
             {
                 string sceneName = Path.GetFileName(sceneFolder);
+
+                VirtualFilesystemDirectory src_dir = new VirtualFilesystemDirectory(sceneFolder);
+                src_dir.ImportFromDisk(sceneFolder);
+
                 WScene scene = null;
 
                 if (sceneName.ToLower().StartsWith("room")) //
@@ -84,7 +88,10 @@ namespace WindEditor
                     int roomNumber;
 
                     if (int.TryParse(roomNumberStr, out roomNumber))
+                    {
                         scene = new WRoom(m_world, roomNumber);
+                        scene.SourceDirectory = src_dir;
+                    }
                     else
                         Console.WriteLine("Unknown Room Number for Room: \"{0}\", Skipping!", sceneName);
                 }
@@ -92,6 +99,7 @@ namespace WindEditor
                 {
                     stage = new WStage(m_world);
                     scene = stage;
+                    scene.SourceDirectory = src_dir;
                 }
                 else
                     Console.WriteLine("Unknown Map Folder: {0}", sceneFolder);
