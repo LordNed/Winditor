@@ -2,6 +2,7 @@
 
 // Input Data
 in vec2 Tex0;
+in vec4 ColorTint;
 
 // Final Output
 out vec4 PixelColor;

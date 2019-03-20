@@ -109,7 +109,7 @@ namespace WindEditor
 
             if (m_actorMesh == null)
             {
-                m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
+                m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new Vector4(1, 1, 1, 1));
             }
         }
 

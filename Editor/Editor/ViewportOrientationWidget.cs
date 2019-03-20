@@ -19,7 +19,7 @@ namespace WindEditor
             {
                     Obj obj = new Obj();
                     obj.Load("resources/editor/" + meshNames[i] + ".obj");
-                    m_gizmoMeshes[i] = new SimpleObjRenderer(obj);
+                    m_gizmoMeshes[i] = new SimpleObjRenderer(obj, new OpenTK.Vector4(1, 1, 1, 1));
             }
         }
 

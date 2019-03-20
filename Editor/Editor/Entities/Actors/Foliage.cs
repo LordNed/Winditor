@@ -40,14 +40,14 @@ namespace WindEditor
             switch (Type)
             {
                 case FoliageType.White_Flower:
-                    m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/flower.obj");
+                    m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/flower.obj", new OpenTK.Vector4(1, 1, 1, 1));
                     break;
                 case FoliageType.Pink_Flower:
-                    m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/pflower_pink.obj");
+                    m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/pflower_pink.obj", new OpenTK.Vector4(1, 1, 1, 1));
                     break;
                 case FoliageType.Grass:
                 case FoliageType.Tree:
-                    m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/pflower_pink.obj");
+                    m_objRender = WResourceManager.LoadObjResource("resources/models/flowers/pflower_pink.obj", new OpenTK.Vector4(1, 1, 1, 1));
                     break;
             }
         }

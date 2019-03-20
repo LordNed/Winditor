@@ -273,6 +273,36 @@ namespace WindEditor
                     case FourCC.MECO:
                     case FourCC.MEMA:
                         break;
+                    case FourCC.SCOB:
+                    case FourCC.SCO0:
+                    case FourCC.SCO1:
+                    case FourCC.SCO2:
+                    case FourCC.SCO3:
+                    case FourCC.SCO4:
+                    case FourCC.SCO5:
+                    case FourCC.SCO6:
+                    case FourCC.SCO7:
+                    case FourCC.SCO8:
+                    case FourCC.SCO9:
+                    case FourCC.SCOa:
+                    case FourCC.SCOb:
+                        for (int i = 0; i < chunk.ElementCount; i++)
+                        {
+                            // We need to read the entity name so we can load the right derived class for it
+                            string entity_name = Encoding.ASCII.GetString(m_reader.PeekReadBytes(8)).Trim('\0');
+
+                            Type actorType = WResourceManager.GetTypeByName(entity_name);
+                            SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
+
+                            entity.Load(m_reader);
+                            entity.Layer = chunk.Layer;
+
+                            entity.Transform.LocalScale = new Vector3(m_reader.ReadByte() / 10f, m_reader.ReadByte() / 10f, m_reader.ReadByte() / 10f);
+                            int padding = m_reader.ReadByte();
+
+                            loadedActors.Add(entity);
+                        }
+                        break;
                     case FourCC.ACTR:
                     case FourCC.ACT0:
                     case FourCC.ACT1:

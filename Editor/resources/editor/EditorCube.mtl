@@ -12,5 +12,5 @@ newmtl Material__25
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka T_DevCheckersOrange.png
-	map_Kd T_DevCheckersOrange.png
+	map_Ka T_DevCheckersOrange_trans.png
+	map_Kd T_DevCheckersOrange_trans.png

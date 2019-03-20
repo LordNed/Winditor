@@ -381,9 +381,10 @@ namespace WindEditor
             return existRef.Asset;
         }
 
-        public static SimpleObjRenderer LoadObjResource(string filePath)
+        public static SimpleObjRenderer LoadObjResource(string filePath, Vector4 tint_color, bool enable_blending = false)
         {
-            var existRef = m_objList.Find(x => string.Compare(x.FilePath, filePath, StringComparison.InvariantCultureIgnoreCase) == 0);
+            var existRef = m_objList.Find(x => string.Compare(x.FilePath, filePath, StringComparison.InvariantCultureIgnoreCase) == 0 &&
+                                               x.Asset.BlendingEnabled == enable_blending && x.Asset.TintColor == tint_color);
             if (existRef == null)
             {
                 Obj obj = new Obj();
@@ -391,7 +392,7 @@ namespace WindEditor
 
                 existRef = new TSharedRef<SimpleObjRenderer>();
                 existRef.FilePath = filePath;
-                existRef.Asset = new SimpleObjRenderer(obj);
+                existRef.Asset = new SimpleObjRenderer(obj, tint_color, enable_blending);
 
                 m_objList.Add(existRef);
             }

@@ -123,7 +123,7 @@ namespace WindEditor
 		{
 			base.PostLoad();
 
-            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj");
+            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1, 1, 1, 1));
         }
 
 		public override FAABox GetBoundingBox()
