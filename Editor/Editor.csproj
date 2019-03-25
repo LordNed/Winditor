@@ -94,6 +94,9 @@
     <Reference Include="OpenTK.GLControl">
       <HintPath>..\lib\OpenTK.GLControl.dll</HintPath>
     </Reference>
+    <Reference Include="SharpYaml, Version=1.6.5.0, Culture=neutral, PublicKeyToken=1ced8108e942bc02, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpYaml.1.6.5\lib\net45\SharpYaml.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -568,6 +571,7 @@
     <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Globals.cs" />
+    <Compile Include="Editor\Patching\Patch.cs" />
     <Compile Include="Editor\PlaytestManager.cs" />
     <Compile Include="Editor\Property Customization\Attributes.cs" />
     <Compile Include="Editor\Property Customization\BooleanTypeCustomization.cs" />
@@ -1221,6 +1225,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\models\flowers\l_Txq_bessou_hanaTEX_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\patches\room_playtest.asm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\patches\room_playtest_diff.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\templates\Actor.json">

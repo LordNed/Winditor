@@ -31,6 +31,8 @@ namespace WindEditor
         private void StartPlaytest(WMap map)
         {
             Console.WriteLine($"Stage name: { map.MapName }, Room Name: { map.FocusedSceneLabel }");
+            Patch p = new Patch(@"resources/patches/room_playtest_diff.txt");
+            p.ApplyToFile(@"D:\SZS Tools\Root Pure\&&systemdata\patch_test.dol");
 
             /*string dol_path = Path.Combine(Directory.GetCurrentDirectory(), "dolphin", "Dolphin.exe");
             m_DolphinInstance = Process.Start(Path.Combine(Directory.GetCurrentDirectory(), "dolphin", "Dolphin.exe"));
