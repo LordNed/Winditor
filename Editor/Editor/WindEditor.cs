@@ -21,6 +21,9 @@ namespace WindEditor
         public ICommand ExportProjectCommand { get { return new RelayCommand(x => OnApplicationRequestExportProject(), x => MainWorld.Map != null); } }
         public ICommand ExportProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestExportAsProject(), x => MainWorld.Map != null); } }
         public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
+        public ICommand StartPlaytestCommand { get { return new RelayCommand(x => OnApplicationRequestPlaytest(), x => MainWorld.Map != null); } }
+
+        public PlaytestManager Playtester { get; set; }
 
         private List<WWorld> m_editorWorlds = new List<WWorld>();
         private string m_sourceDataPath;
@@ -29,6 +32,8 @@ namespace WindEditor
         {
             // Add the default Editor World.
             m_editorWorlds.Add(new WWorld());
+
+            Playtester = new PlaytestManager();
 
 			// Load our global data
 			foreach (var file in Directory.GetFiles("resources/templates/"))
@@ -234,6 +239,11 @@ namespace WindEditor
         {
             foreach (WWorld world in m_editorWorlds)
                 world.ShutdownWorld();
+        }
+
+        public void OnApplicationRequestPlaytest()
+        {
+            Playtester.RequestStartPlaytest(MainWorld.Map);
         }
     }
 }

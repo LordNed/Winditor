@@ -568,6 +568,7 @@
     <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
     <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Globals.cs" />
+    <Compile Include="Editor\PlaytestManager.cs" />
     <Compile Include="Editor\Property Customization\Attributes.cs" />
     <Compile Include="Editor\Property Customization\BooleanTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
@@ -732,6 +733,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="dolphin\portable.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Editor\Templates\ActorTemplates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ActorTemplates.cs</LastGenOutput>
