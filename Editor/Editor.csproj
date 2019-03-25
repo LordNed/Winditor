@@ -546,8 +546,12 @@
     <Compile Include="Editor\Entities\Actors\Zelda.cs" />
     <Compile Include="Editor\Entities\Door_DOOR.cs" />
     <Compile Include="Editor\Entities\Enums.cs" />
+    <Compile Include="Editor\Entities\Lighting\EnvironmentLightingPalette.cs" />
+    <Compile Include="Editor\Entities\Lighting\EnvironmentLightingConditions.cs" />
     <Compile Include="Editor\Entities\ExitData.cs" />
     <Compile Include="Editor\Entities\FourCC.cs" />
+    <Compile Include="Editor\Entities\Lighting\EnvironmentLightingSkyboxPalette.cs" />
+    <Compile Include="Editor\Entities\Lighting\EnvironmentLightingTimesOfDay.cs" />
     <Compile Include="Editor\Entities\MapEvent.cs" />
     <Compile Include="Editor\Entities\Path.cs" />
     <Compile Include="Editor\Entities\RefactoredPath.cs" />
@@ -776,6 +780,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\editor\EditorCylinder.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorSphere_Trigger.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorSphere_Trigger.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />

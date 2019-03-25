@@ -75,7 +75,7 @@ namespace WindEditor
                 }
 
                 // Extract our EnvR data.
-                var envrData = GetLightingData();
+                var envrData = GetChildrenOfType<EnvironmentLightingConditions>();
 				
                 // This doesn't always match up, as sea has 52 EnvR entries but only 50 rooms, but meh.
                 if (mapRooms.Count != envrData.Count)
@@ -101,83 +101,6 @@ namespace WindEditor
             }
         }
 
-        private List<EnvironmentLighting> GetLightingData()
-        {
-            List<EnvironmentLighting> lights = new List<EnvironmentLighting>();
-            List<LightingTimePreset> times = new List<LightingTimePreset>();
-            List<LightingPalette> palettes = new List<LightingPalette>();
-            List<LightingSkyboxColors> skyboxes = new List<LightingSkyboxColors>();
-
-            if (!m_fourCCGroups.ContainsKey(FourCC.EnvR) ||
-                !m_fourCCGroups.ContainsKey(FourCC.Colo) ||
-                !m_fourCCGroups.ContainsKey(FourCC.Virt) ||
-                !m_fourCCGroups.ContainsKey(FourCC.Pale))
-                return lights;
-
-            foreach (var virt in m_fourCCGroups[FourCC.Virt].Children)
-            {
-                EnvironmentLightingSkyboxColors skybox = (EnvironmentLightingSkyboxColors)virt;
-                LightingSkyboxColors skycolors = new LightingSkyboxColors(skybox);
-
-                skyboxes.Add(skycolors);
-            }
-
-            foreach (var pale in m_fourCCGroups[FourCC.Pale].Children)
-            {
-                EnvironmentLightingColors colors = (EnvironmentLightingColors)pale;
-                LightingPalette palette = new LightingPalette(colors);
-
-                if (colors.SkyboxColorIndex < skyboxes.Count)
-                    palette.Skybox = skyboxes[colors.SkyboxColorIndex];
-                else
-                    palette.Skybox = new LightingSkyboxColors();
-
-                palettes.Add(palette);
-            }
-
-            foreach (var colo in m_fourCCGroups[FourCC.Colo].Children)
-            {
-                EnvironmentLightingTimesOfDay daytimes = (EnvironmentLightingTimesOfDay)colo;
-                LightingTimePreset preset = new LightingTimePreset();
-
-                preset.TimePresetA[0] = palettes[daytimes.DawnA];
-                preset.TimePresetA[1] = palettes[daytimes.MorningA];
-                preset.TimePresetA[2] = palettes[daytimes.NoonA];
-                preset.TimePresetA[3] = palettes[daytimes.AfternoonA];
-                preset.TimePresetA[4] = palettes[daytimes.DuskA];
-                preset.TimePresetA[5] = palettes[daytimes.NightA];
-
-                preset.TimePresetB[0] = palettes[0];//daytimes.DawnB];
-                preset.TimePresetB[1] = palettes[0]; //palettes[daytimes.MorningB];
-                preset.TimePresetB[2] = palettes[0]; //palettes[daytimes.NoonB];
-                preset.TimePresetB[3] = palettes[0]; //palettes[daytimes.AfternoonB];
-                preset.TimePresetB[4] = palettes[0]; //palettes[daytimes.DuskB];
-                preset.TimePresetB[5] = palettes[0]; //palettes[daytimes.NightB];
-
-                times.Add(preset);
-            }
-
-            foreach (var envr in m_fourCCGroups[FourCC.EnvR].Children)
-            {
-                EnvironmentLightingConditions condition = (EnvironmentLightingConditions)envr;
-                EnvironmentLighting env = new EnvironmentLighting();
-
-                env.WeatherA[0] = times[condition.ClearA];
-                env.WeatherA[1] = times[condition.RainingA < times.Count ? condition.RainingA : 0];
-                env.WeatherA[2] = times[condition.SnowingA];
-                env.WeatherA[3] = times[condition.UnknownA];
-
-                env.WeatherB[0] = times[condition.ClearB];
-                env.WeatherB[1] = times[condition.RainingB];
-                env.WeatherB[2] = times[condition.SnowingB];
-                env.WeatherB[3] = times[condition.UnknownB];
-
-                lights.Add(env);
-            }
-
-            return lights;
-        }
-
         public override void SetTimeOfDay(float timeOfDay)
         {
             base.SetTimeOfDay(timeOfDay);
@@ -199,11 +122,11 @@ namespace WindEditor
             if (first_room == null || first_room.EnvironmentLighting == null)
                 return;
 
-            var envrData = GetLightingData();
+            var envrData = GetChildrenOfType<EnvironmentLightingConditions>();
 
-            var curLight = envrData[0].Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+            var curLight = envrData[0].Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
 
-            m_skybox.SetColors(curLight.Skybox);
+            m_skybox.SetColors(curLight.SkyboxPalette);
         }
 
         public override void SaveEntitiesToDirectory(string directory)

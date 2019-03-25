@@ -11,15 +11,15 @@ namespace WindEditor
         private J3DNode m_vrUsoUmi; // "False Sea" - This is the model seen underneath the edge of the sea generated around the player.
         private J3DNode m_vrBackCloud; // Cloud Layer
 
-        private LightingSkyboxColors m_colors;
+        private EnvironmentLightingSkyboxPalette m_colors;
 
         public WSkyboxNode(WWorld world) : base(world)
         {
             IsVisible = false;
-            m_colors = new LightingSkyboxColors();
+            m_colors = new EnvironmentLightingSkyboxPalette();
         }
 
-        public void SetColors(LightingSkyboxColors col)
+        public void SetColors(EnvironmentLightingSkyboxPalette col)
         {
             m_colors = col;
         }
@@ -32,22 +32,22 @@ namespace WindEditor
             if (m_vrSky != null)
             {
                 // Background
-                m_vrSky.Model.SetTevkColorOverride(0, m_colors.Sky);
+                m_vrSky.Model.SetTevkColorOverride(0, m_colors.SkyColor);
                 // Floor
-                m_vrSky.Model.SetTevColorOverride(0, m_colors.CenterCloud);
+                m_vrSky.Model.SetTevColorOverride(0, m_colors.CenterCloudColor);
             }
 
             // Horizon Color
             if (m_vrKasumiMae != null)
-                m_vrKasumiMae.Model.SetTevColorOverride(0, m_colors.Horizon);
+                m_vrKasumiMae.Model.SetTevColorOverride(0, m_colors.HorizonColor);
 
             // False Sea Color
             if (m_vrUsoUmi != null)
-                m_vrUsoUmi.Model.SetTevkColorOverride(0, m_colors.FalseSea);
+                m_vrUsoUmi.Model.SetTevkColorOverride(0, m_colors.FalseSeaColor);
 
             // Cloud Color
             if (m_vrBackCloud != null)
-                m_vrBackCloud.Model.SetTevColorOverride(0, m_colors.HorizonCloud);
+                m_vrBackCloud.Model.SetTevColorOverride(0, m_colors.HorizonCloudColor);
         }
 
         public void UpdatePosition(Vector3 camPosition)

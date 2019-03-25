@@ -286,6 +286,7 @@ namespace WindEditor
                     case FourCC.SCO9:
                     case FourCC.SCOa:
                     case FourCC.SCOb:
+                    case FourCC.TGSC:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {
                             // We need to read the entity name so we can load the right derived class for it
@@ -316,6 +317,7 @@ namespace WindEditor
                     case FourCC.ACT9:
                     case FourCC.ACTa:
                     case FourCC.ACTb:
+                    case FourCC.TGOB:
                     case FourCC.TGDR:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {

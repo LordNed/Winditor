@@ -1,19 +1,55 @@
 ﻿{
-	"ClassName" : "EnvironmentLightingSkyboxColors",
+	"ClassName" : "EnvironmentLightingSkyboxPalette",
 	"FourCC" : "Virt",
 	"Fields" :
 	[
-		{"Name" : "Unknown 1", "Type" : "Color32"},
-		{"Name" : "Unknown 2", "Type" : "Color32"},
-		{"Name" : "Unknown 3", "Type" : "Color32"},
-		{"Name" : "Unknown 4", "Type" : "Color32"},
-		{"Name" : "Horizon Cloud Color", "Type" : "Color32"},
-		{"Name" : "Center Cloud Color", "Type" : "Color32"},
-		{"Name" : "Sky Color", "Type" : "Color24"},
-		{"Name" : "False Sea Color", "Type" : "Color24"},
-		{"Name" : "Horizon Color", "Type" : "Color24"},
+    {
+      "Name": "Unknown 1",
+      "Type": "Color32",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 2",
+      "Type": "Color32",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 3",
+      "Type": "Color32",
+      "Editable": true
+    },
+    {
+      "Name": "Unknown 4",
+      "Type": "Color32",
+      "Editable": true
+    },
+    {
+      "Name": "Horizon Cloud Color",
+      "Type": "Color32",
+      "Editable": true
+    },
+    {
+      "Name": "Center Cloud Color",
+      "Type": "Color32",
+      "Editable": true
+    },
+    {
+      "Name": "Sky Color",
+      "Type": "Color24",
+      "Editable": true
+    },
+    {
+      "Name": "False Sea Color",
+      "Type": "Color24",
+      "Editable": true
+    },
+    {
+      "Name": "Horizon Color",
+      "Type": "Color24",
+      "Editable": true
+    },
 		{"Name" : "Padding 1", "Type" : "Byte"},
 		{"Name" : "Padding 2", "Type" : "Byte"},
-		{"Name" : "Padding 3", "Type" : "Byte"},
+		{"Name" : "Padding 3", "Type" : "Byte"}
 	]
 }

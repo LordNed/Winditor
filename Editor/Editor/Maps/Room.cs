@@ -68,7 +68,7 @@ namespace WindEditor
         public int RoomIndex { get; protected set; }
         public int MemoryAllocation { get; set; }
         public WRoomTransform RoomTransform { get; set; }
-        public EnvironmentLighting EnvironmentLighting { get; set; }
+        public EnvironmentLightingConditions EnvironmentLighting { get; set; }
 
         private List<J3D> m_roomModels;
 
@@ -142,13 +142,13 @@ namespace WindEditor
 
             if(EnvironmentLighting != null)
             {
-                var curLight = EnvironmentLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+                var curLight = EnvironmentLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
                 foreach (var model in m_roomModels)
                 {
                     if(model.Name == "model")
                     {
-                    model.SetTevColorOverride(0, curLight.RoomLight);
-                    model.SetTevkColorOverride(0, curLight.RoomAmbient);
+                    model.SetTevColorOverride(0, curLight.RoomLightColor);
+                    model.SetTevkColorOverride(0, curLight.RoomAmbientColor);
                     }
                     else if(model.Name == "model1")
                     {
@@ -157,15 +157,15 @@ namespace WindEditor
                     }
                     else if(model.Name == "model3")
                     {
-                        model.SetTevColorOverride(0, curLight.Doorway);
+                        model.SetTevColorOverride(0, curLight.DoorBackfill);
                     }
                 }
 
                 var childActors = GetChildrenOfType<VisibleDOMNode>();
                 foreach(var child in childActors)
                 {
-                    child.ColorOverrides.SetTevColorOverride(0, curLight.Shadow);
-                    child.ColorOverrides.SetTevkColorOverride(0, curLight.ActorAmbient);
+                    child.ColorOverrides.SetTevColorOverride(0, curLight.ShadowColor);
+                    child.ColorOverrides.SetTevkColorOverride(0, curLight.ActorAmbientColor);
                 }
             }
 

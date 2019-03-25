@@ -1496,114 +1496,70 @@ namespace WindEditor
 	public partial class EnvironmentLightingConditions : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_ClearA;
+		private byte m_ClearIndex;
+				
 
-		[WProperty("Clear", "Clear A", true)]
-		 public byte ClearA
+		private byte m_RainingIndex;
+				
+
+		private byte m_SnowingIndex;
+				
+
+		private byte m_ForestParticlesIndex;
+				
+
+		private byte m_Unknown1;
+
+		[WProperty("Unknowns", "Unknown 1", true)]
+		 public byte Unknown1
 		{ 
-			get { return m_ClearA; }
+			get { return m_Unknown1; }
 			set
 			{
-				m_ClearA = value;
-				OnPropertyChanged("ClearA");
+				m_Unknown1 = value;
+				OnPropertyChanged("Unknown1");
 			}
 		}
 				
 
-		private byte m_RainingA;
+		private byte m_Unknown2;
 
-		[WProperty("Raining", "Raining A", true)]
-		 public byte RainingA
+		[WProperty("Unknowns", "Unknown 2", true)]
+		 public byte Unknown2
 		{ 
-			get { return m_RainingA; }
+			get { return m_Unknown2; }
 			set
 			{
-				m_RainingA = value;
-				OnPropertyChanged("RainingA");
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
 			}
 		}
 				
 
-		private byte m_SnowingA;
+		private byte m_Unknown3;
 
-		[WProperty("Snowing", "Snowing A", true)]
-		 public byte SnowingA
+		[WProperty("Unknowns", "Unknown 3", true)]
+		 public byte Unknown3
 		{ 
-			get { return m_SnowingA; }
+			get { return m_Unknown3; }
 			set
 			{
-				m_SnowingA = value;
-				OnPropertyChanged("SnowingA");
+				m_Unknown3 = value;
+				OnPropertyChanged("Unknown3");
 			}
 		}
 				
 
-		private byte m_UnknownA;
+		private byte m_Unknown4;
 
-		[WProperty("Unknown", "Unknown A", true)]
-		 public byte UnknownA
+		[WProperty("Unknowns", "Unknown 4", true)]
+		 public byte Unknown4
 		{ 
-			get { return m_UnknownA; }
+			get { return m_Unknown4; }
 			set
 			{
-				m_UnknownA = value;
-				OnPropertyChanged("UnknownA");
-			}
-		}
-				
-
-		private byte m_ClearB;
-
-		[WProperty("Clear", "Clear B", true)]
-		 public byte ClearB
-		{ 
-			get { return m_ClearB; }
-			set
-			{
-				m_ClearB = value;
-				OnPropertyChanged("ClearB");
-			}
-		}
-				
-
-		private byte m_RainingB;
-
-		[WProperty("Raining", "Raining B", true)]
-		 public byte RainingB
-		{ 
-			get { return m_RainingB; }
-			set
-			{
-				m_RainingB = value;
-				OnPropertyChanged("RainingB");
-			}
-		}
-				
-
-		private byte m_SnowingB;
-
-		[WProperty("Snowing", "Snowing B", true)]
-		 public byte SnowingB
-		{ 
-			get { return m_SnowingB; }
-			set
-			{
-				m_SnowingB = value;
-				OnPropertyChanged("SnowingB");
-			}
-		}
-				
-
-		private byte m_UnknownB;
-
-		[WProperty("Unknown", "Unknown B", true)]
-		 public byte UnknownB
-		{ 
-			get { return m_UnknownB; }
-			set
-			{
-				m_UnknownB = value;
-				OnPropertyChanged("UnknownB");
+				m_Unknown4 = value;
+				OnPropertyChanged("Unknown4");
 			}
 		}
 				
@@ -1612,26 +1568,22 @@ namespace WindEditor
 		// Constructor
 		public EnvironmentLightingConditions(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear A", TargetProperties = new string[] { "ClearA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining A", TargetProperties = new string[] { "RainingA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing A", TargetProperties = new string[] { "SnowingA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown A", TargetProperties = new string[] { "UnknownA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Clear B", TargetProperties = new string[] { "ClearB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Raining B", TargetProperties = new string[] { "RainingB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Snowing B", TargetProperties = new string[] { "SnowingB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown B", TargetProperties = new string[] { "UnknownB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
-			m_ClearA = stream.ReadByte(); 
-			m_RainingA = stream.ReadByte(); 
-			m_SnowingA = stream.ReadByte(); 
-			m_UnknownA = stream.ReadByte(); 
-			m_ClearB = stream.ReadByte(); 
-			m_RainingB = stream.ReadByte(); 
-			m_SnowingB = stream.ReadByte(); 
-			m_UnknownB = stream.ReadByte(); 
+			m_ClearIndex = stream.ReadByte(); 
+			m_RainingIndex = stream.ReadByte(); 
+			m_SnowingIndex = stream.ReadByte(); 
+			m_ForestParticlesIndex = stream.ReadByte(); 
+			m_Unknown1 = stream.ReadByte(); 
+			m_Unknown2 = stream.ReadByte(); 
+			m_Unknown3 = stream.ReadByte(); 
+			m_Unknown4 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -1640,24 +1592,24 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((byte)ClearA);
-			stream.Write((byte)RainingA);
-			stream.Write((byte)SnowingA);
-			stream.Write((byte)UnknownA);
-			stream.Write((byte)ClearB);
-			stream.Write((byte)RainingB);
-			stream.Write((byte)SnowingB);
-			stream.Write((byte)UnknownB);
+			stream.Write((byte)m_ClearIndex);
+			stream.Write((byte)m_RainingIndex);
+			stream.Write((byte)m_SnowingIndex);
+			stream.Write((byte)m_ForestParticlesIndex);
+			stream.Write((byte)Unknown1);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)Unknown4);
 		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class EnvironmentLightingColors : SerializableDOMNode
+	public partial class EnvironmentLightingPalette : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
 		private WLinearColor m_ShadowColor;
 
-		[WProperty("Misc.", "Shadow Color", false)]
+		[WProperty("Misc.", "Shadow Color", true)]
 		 public WLinearColor ShadowColor
 		{ 
 			get { return m_ShadowColor; }
@@ -1671,7 +1623,7 @@ namespace WindEditor
 
 		private WLinearColor m_ActorAmbientColor;
 
-		[WProperty("Misc.", "Actor Ambient Color", false)]
+		[WProperty("Misc.", "Actor Ambient Color", true)]
 		 public WLinearColor ActorAmbientColor
 		{ 
 			get { return m_ActorAmbientColor; }
@@ -1685,7 +1637,7 @@ namespace WindEditor
 
 		private WLinearColor m_RoomLightColor;
 
-		[WProperty("Misc.", "Room Light Color", false)]
+		[WProperty("Misc.", "Room Light Color", true)]
 		 public WLinearColor RoomLightColor
 		{ 
 			get { return m_RoomLightColor; }
@@ -1699,7 +1651,7 @@ namespace WindEditor
 
 		private WLinearColor m_RoomAmbientColor;
 
-		[WProperty("Misc.", "Room Ambient Color", false)]
+		[WProperty("Misc.", "Room Ambient Color", true)]
 		 public WLinearColor RoomAmbientColor
 		{ 
 			get { return m_RoomAmbientColor; }
@@ -1713,7 +1665,7 @@ namespace WindEditor
 
 		private WLinearColor m_WaveColor;
 
-		[WProperty("Misc.", "Wave Color", false)]
+		[WProperty("Misc.", "Wave Color", true)]
 		 public WLinearColor WaveColor
 		{ 
 			get { return m_WaveColor; }
@@ -1727,7 +1679,7 @@ namespace WindEditor
 
 		private WLinearColor m_OceanColor;
 
-		[WProperty("Misc.", "Ocean Color", false)]
+		[WProperty("Misc.", "Ocean Color", true)]
 		 public WLinearColor OceanColor
 		{ 
 			get { return m_OceanColor; }
@@ -1741,7 +1693,7 @@ namespace WindEditor
 
 		private WLinearColor m_UnknownWhite1;
 
-		[WProperty("Misc.", "Unknown White 1", false)]
+		[WProperty("Misc.", "Unknown White 1", true)]
 		 public WLinearColor UnknownWhite1
 		{ 
 			get { return m_UnknownWhite1; }
@@ -1755,7 +1707,7 @@ namespace WindEditor
 
 		private WLinearColor m_UnknownWhite2;
 
-		[WProperty("Misc.", "Unknown White 2", false)]
+		[WProperty("Misc.", "Unknown White 2", true)]
 		 public WLinearColor UnknownWhite2
 		{ 
 			get { return m_UnknownWhite2; }
@@ -1769,7 +1721,7 @@ namespace WindEditor
 
 		private WLinearColor m_DoorBackfill;
 
-		[WProperty("Misc.", "Door Backfill", false)]
+		[WProperty("Misc.", "Door Backfill", true)]
 		 public WLinearColor DoorBackfill
 		{ 
 			get { return m_DoorBackfill; }
@@ -1783,7 +1735,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown3;
 
-		[WProperty("Misc.", "Unknown 3", false)]
+		[WProperty("Misc.", "Unknown 3", true)]
 		 public WLinearColor Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -1797,7 +1749,7 @@ namespace WindEditor
 
 		private WLinearColor m_FogColor;
 
-		[WProperty("Misc.", "Fog Color", false)]
+		[WProperty("Misc.", "Fog Color", true)]
 		 public WLinearColor FogColor
 		{ 
 			get { return m_FogColor; }
@@ -1809,23 +1761,12 @@ namespace WindEditor
 		}
 				
 
-		private byte m_SkyboxColorIndex;
-
-		[WProperty("Misc.", "Skybox Color Index", false)]
-		 public byte SkyboxColorIndex
-		{ 
-			get { return m_SkyboxColorIndex; }
-			set
-			{
-				m_SkyboxColorIndex = value;
-				OnPropertyChanged("SkyboxColorIndex");
-			}
-		}
+		private byte m_SkyboxPaletteIndex;
 				
 
 		private byte m_Padding1;
 
-		[WProperty("Misc.", "Padding 1", false)]
+		[WProperty("Misc.", "Padding 1", true)]
 		 public byte Padding1
 		{ 
 			get { return m_Padding1; }
@@ -1839,7 +1780,7 @@ namespace WindEditor
 
 		private byte m_Padding2;
 
-		[WProperty("Misc.", "Padding 2", false)]
+		[WProperty("Misc.", "Padding 2", true)]
 		 public byte Padding2
 		{ 
 			get { return m_Padding2; }
@@ -1853,7 +1794,7 @@ namespace WindEditor
 
 		private float m_FogFarPlane;
 
-		[WProperty("Misc.", "Fog Far Plane", false)]
+		[WProperty("Misc.", "Fog Far Plane", true)]
 		 public float FogFarPlane
 		{ 
 			get { return m_FogFarPlane; }
@@ -1865,23 +1806,23 @@ namespace WindEditor
 		}
 				
 
-		private float m_ForNearPlane;
+		private float m_FogNearPlane;
 
-		[WProperty("Misc.", "For Near Plane", false)]
-		 public float ForNearPlane
+		[WProperty("Misc.", "Fog Near Plane", true)]
+		 public float FogNearPlane
 		{ 
-			get { return m_ForNearPlane; }
+			get { return m_FogNearPlane; }
 			set
 			{
-				m_ForNearPlane = value;
-				OnPropertyChanged("ForNearPlane");
+				m_FogNearPlane = value;
+				OnPropertyChanged("FogNearPlane");
 			}
 		}
 				
 
 
 		// Constructor
-		public EnvironmentLightingColors(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public EnvironmentLightingPalette(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Shadow Color", TargetProperties = new string[] { "ShadowColor"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Actor Ambient Color", TargetProperties = new string[] { "ActorAmbientColor"} });
@@ -1894,11 +1835,10 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Door Backfill", TargetProperties = new string[] { "DoorBackfill"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Color", TargetProperties = new string[] { "FogColor"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Color Index", TargetProperties = new string[] { "SkyboxColorIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Far Plane", TargetProperties = new string[] { "FogFarPlane"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "For Near Plane", TargetProperties = new string[] { "ForNearPlane"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Near Plane", TargetProperties = new string[] { "FogNearPlane"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1914,11 +1854,11 @@ namespace WindEditor
 			m_DoorBackfill = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
 			m_Unknown3 = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
 			m_FogColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
-			m_SkyboxColorIndex = stream.ReadByte(); 
+			m_SkyboxPaletteIndex = stream.ReadByte(); 
 			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
 			m_FogFarPlane = stream.ReadSingle(); 
-			m_ForNearPlane = stream.ReadSingle(); 
+			m_FogNearPlane = stream.ReadSingle(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -1938,21 +1878,21 @@ namespace WindEditor
 			stream.Write((byte)(DoorBackfill.R*255)); stream.Write((byte)(DoorBackfill.G*255)); stream.Write((byte)(DoorBackfill.B*255));
 			stream.Write((byte)(Unknown3.R*255)); stream.Write((byte)(Unknown3.G*255)); stream.Write((byte)(Unknown3.B*255));
 			stream.Write((byte)(FogColor.R*255)); stream.Write((byte)(FogColor.G*255)); stream.Write((byte)(FogColor.B*255));
-			stream.Write((byte)SkyboxColorIndex);
+			stream.Write((byte)m_SkyboxPaletteIndex);
 			stream.Write((byte)0); // Padding
 			stream.Write((byte)0); // Padding
 			stream.Write((float)FogFarPlane);
-			stream.Write((float)ForNearPlane);
+			stream.Write((float)FogNearPlane);
 		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class EnvironmentLightingSkyboxColors : SerializableDOMNode
+	public partial class EnvironmentLightingSkyboxPalette : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
 		private WLinearColor m_Unknown1;
 
-		[WProperty("Misc.", "Unknown 1", false)]
+		[WProperty("Misc.", "Unknown 1", true)]
 		 public WLinearColor Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -1966,7 +1906,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown2;
 
-		[WProperty("Misc.", "Unknown 2", false)]
+		[WProperty("Misc.", "Unknown 2", true)]
 		 public WLinearColor Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -1980,7 +1920,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown3;
 
-		[WProperty("Misc.", "Unknown 3", false)]
+		[WProperty("Misc.", "Unknown 3", true)]
 		 public WLinearColor Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -1994,7 +1934,7 @@ namespace WindEditor
 
 		private WLinearColor m_Unknown4;
 
-		[WProperty("Misc.", "Unknown 4", false)]
+		[WProperty("Misc.", "Unknown 4", true)]
 		 public WLinearColor Unknown4
 		{ 
 			get { return m_Unknown4; }
@@ -2008,7 +1948,7 @@ namespace WindEditor
 
 		private WLinearColor m_HorizonCloudColor;
 
-		[WProperty("Misc.", "Horizon Cloud Color", false)]
+		[WProperty("Misc.", "Horizon Cloud Color", true)]
 		 public WLinearColor HorizonCloudColor
 		{ 
 			get { return m_HorizonCloudColor; }
@@ -2022,7 +1962,7 @@ namespace WindEditor
 
 		private WLinearColor m_CenterCloudColor;
 
-		[WProperty("Misc.", "Center Cloud Color", false)]
+		[WProperty("Misc.", "Center Cloud Color", true)]
 		 public WLinearColor CenterCloudColor
 		{ 
 			get { return m_CenterCloudColor; }
@@ -2036,7 +1976,7 @@ namespace WindEditor
 
 		private WLinearColor m_SkyColor;
 
-		[WProperty("Misc.", "Sky Color", false)]
+		[WProperty("Misc.", "Sky Color", true)]
 		 public WLinearColor SkyColor
 		{ 
 			get { return m_SkyColor; }
@@ -2050,7 +1990,7 @@ namespace WindEditor
 
 		private WLinearColor m_FalseSeaColor;
 
-		[WProperty("Misc.", "False Sea Color", false)]
+		[WProperty("Misc.", "False Sea Color", true)]
 		 public WLinearColor FalseSeaColor
 		{ 
 			get { return m_FalseSeaColor; }
@@ -2064,7 +2004,7 @@ namespace WindEditor
 
 		private WLinearColor m_HorizonColor;
 
-		[WProperty("Misc.", "Horizon Color", false)]
+		[WProperty("Misc.", "Horizon Color", true)]
 		 public WLinearColor HorizonColor
 		{ 
 			get { return m_HorizonColor; }
@@ -2120,7 +2060,7 @@ namespace WindEditor
 
 
 		// Constructor
-		public EnvironmentLightingSkyboxColors(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public EnvironmentLightingSkyboxPalette(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
@@ -2177,170 +2117,37 @@ namespace WindEditor
 	public partial class EnvironmentLightingTimesOfDay : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_DawnA;
-
-		[WProperty("Misc.", "Dawn A", false)]
-		 public byte DawnA
-		{ 
-			get { return m_DawnA; }
-			set
-			{
-				m_DawnA = value;
-				OnPropertyChanged("DawnA");
-			}
-		}
+		private byte m_DawnIndex;
 				
 
-		private byte m_MorningA;
-
-		[WProperty("Misc.", "Morning A", false)]
-		 public byte MorningA
-		{ 
-			get { return m_MorningA; }
-			set
-			{
-				m_MorningA = value;
-				OnPropertyChanged("MorningA");
-			}
-		}
+		private byte m_MorningIndex;
 				
 
-		private byte m_NoonA;
-
-		[WProperty("Misc.", "Noon A", false)]
-		 public byte NoonA
-		{ 
-			get { return m_NoonA; }
-			set
-			{
-				m_NoonA = value;
-				OnPropertyChanged("NoonA");
-			}
-		}
+		private byte m_NoonIndex;
 				
 
-		private byte m_AfternoonA;
-
-		[WProperty("Misc.", "Afternoon A", false)]
-		 public byte AfternoonA
-		{ 
-			get { return m_AfternoonA; }
-			set
-			{
-				m_AfternoonA = value;
-				OnPropertyChanged("AfternoonA");
-			}
-		}
+		private byte m_AfternoonIndex;
 				
 
-		private byte m_DuskA;
-
-		[WProperty("Misc.", "Dusk A", false)]
-		 public byte DuskA
-		{ 
-			get { return m_DuskA; }
-			set
-			{
-				m_DuskA = value;
-				OnPropertyChanged("DuskA");
-			}
-		}
+		private byte m_DuskIndex;
 				
 
-		private byte m_NightA;
-
-		[WProperty("Misc.", "Night A", false)]
-		 public byte NightA
-		{ 
-			get { return m_NightA; }
-			set
-			{
-				m_NightA = value;
-				OnPropertyChanged("NightA");
-			}
-		}
+		private byte m_NightIndex;
 				
 
-		private byte m_DawnB;
-
-		[WProperty("Misc.", "Dawn B", false)]
-		 public byte DawnB
-		{ 
-			get { return m_DawnB; }
-			set
-			{
-				m_DawnB = value;
-				OnPropertyChanged("DawnB");
-			}
-		}
+		private short m_Unknown1;
 				
 
-		private byte m_MorningB;
+		private float m_Unknown2;
 
-		[WProperty("Misc.", "Morning B", false)]
-		 public byte MorningB
+		[WProperty("Misc.", "Unknown 2", false)]
+		 public float Unknown2
 		{ 
-			get { return m_MorningB; }
+			get { return m_Unknown2; }
 			set
 			{
-				m_MorningB = value;
-				OnPropertyChanged("MorningB");
-			}
-		}
-				
-
-		private byte m_NoonB;
-
-		[WProperty("Misc.", "Noon B", false)]
-		 public byte NoonB
-		{ 
-			get { return m_NoonB; }
-			set
-			{
-				m_NoonB = value;
-				OnPropertyChanged("NoonB");
-			}
-		}
-				
-
-		private byte m_AfternoonB;
-
-		[WProperty("Misc.", "Afternoon B", false)]
-		 public byte AfternoonB
-		{ 
-			get { return m_AfternoonB; }
-			set
-			{
-				m_AfternoonB = value;
-				OnPropertyChanged("AfternoonB");
-			}
-		}
-				
-
-		private byte m_DuskB;
-
-		[WProperty("Misc.", "Dusk B", false)]
-		 public byte DuskB
-		{ 
-			get { return m_DuskB; }
-			set
-			{
-				m_DuskB = value;
-				OnPropertyChanged("DuskB");
-			}
-		}
-				
-
-		private byte m_NightB;
-
-		[WProperty("Misc.", "Night B", false)]
-		 public byte NightB
-		{ 
-			get { return m_NightB; }
-			set
-			{
-				m_NightB = value;
-				OnPropertyChanged("NightB");
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
 			}
 		}
 				
@@ -2349,34 +2156,19 @@ namespace WindEditor
 		// Constructor
 		public EnvironmentLightingTimesOfDay(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dawn A", TargetProperties = new string[] { "DawnA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning A", TargetProperties = new string[] { "MorningA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Noon A", TargetProperties = new string[] { "NoonA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Afternoon A", TargetProperties = new string[] { "AfternoonA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dusk A", TargetProperties = new string[] { "DuskA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Night A", TargetProperties = new string[] { "NightA"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dawn B", TargetProperties = new string[] { "DawnB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Morning B", TargetProperties = new string[] { "MorningB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Noon B", TargetProperties = new string[] { "NoonB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Afternoon B", TargetProperties = new string[] { "AfternoonB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Dusk B", TargetProperties = new string[] { "DuskB"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Night B", TargetProperties = new string[] { "NightB"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
-			m_DawnA = stream.ReadByte(); 
-			m_MorningA = stream.ReadByte(); 
-			m_NoonA = stream.ReadByte(); 
-			m_AfternoonA = stream.ReadByte(); 
-			m_DuskA = stream.ReadByte(); 
-			m_NightA = stream.ReadByte(); 
-			m_DawnB = stream.ReadByte(); 
-			m_MorningB = stream.ReadByte(); 
-			m_NoonB = stream.ReadByte(); 
-			m_AfternoonB = stream.ReadByte(); 
-			m_DuskB = stream.ReadByte(); 
-			m_NightB = stream.ReadByte(); 
+			m_DawnIndex = stream.ReadByte(); 
+			m_MorningIndex = stream.ReadByte(); 
+			m_NoonIndex = stream.ReadByte(); 
+			m_AfternoonIndex = stream.ReadByte(); 
+			m_DuskIndex = stream.ReadByte(); 
+			m_NightIndex = stream.ReadByte(); 
+			m_Unknown1 = stream.ReadInt16(); 
+			m_Unknown2 = stream.ReadSingle(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -2385,18 +2177,14 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((byte)DawnA);
-			stream.Write((byte)MorningA);
-			stream.Write((byte)NoonA);
-			stream.Write((byte)AfternoonA);
-			stream.Write((byte)DuskA);
-			stream.Write((byte)NightA);
-			stream.Write((byte)DawnB);
-			stream.Write((byte)MorningB);
-			stream.Write((byte)NoonB);
-			stream.Write((byte)AfternoonB);
-			stream.Write((byte)DuskB);
-			stream.Write((byte)NightB);
+			stream.Write((byte)m_DawnIndex);
+			stream.Write((byte)m_MorningIndex);
+			stream.Write((byte)m_NoonIndex);
+			stream.Write((byte)m_AfternoonIndex);
+			stream.Write((byte)m_DuskIndex);
+			stream.Write((byte)m_NightIndex);
+			stream.Write((short)m_Unknown1);
+			stream.Write((float)Unknown2);
 		}
 	}
 

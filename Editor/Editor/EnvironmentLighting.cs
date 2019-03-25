@@ -82,7 +82,7 @@ namespace WindEditor
 
         }
 
-        public LightingPalette(EnvironmentLightingColors data)
+        public LightingPalette(EnvironmentLightingPalette data)
         {
             Shadow = data.ShadowColor;
             ActorAmbient = data.ActorAmbientColor;
@@ -118,7 +118,7 @@ namespace WindEditor
 
         }
 
-        public LightingSkyboxColors(EnvironmentLightingSkyboxColors data)
+        public LightingSkyboxColors(EnvironmentLightingSkyboxPalette data)
         {
             HorizonCloud = data.HorizonCloudColor;
             CenterCloud = data.CenterCloudColor;
@@ -153,7 +153,7 @@ namespace WindEditor
     /// <summary>
     /// Represents the "EnvR" chunk in map data which contains lighting data for various environmental conditions.
     /// </summary>
-    public class EnvironmentLighting
+    /*public class EnvironmentLighting
     {
         public enum WeatherPreset
         {
@@ -177,5 +177,5 @@ namespace WindEditor
             LightingTimePreset[] timePreset = presetA ? WeatherA : WeatherB;
             return timePreset[(int)weather].Lerp(t, presetA);
         }
-    }
+    }*/
 }

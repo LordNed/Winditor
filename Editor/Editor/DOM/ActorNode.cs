@@ -128,7 +128,7 @@ namespace WindEditor
                 var envLighting = room.EnvironmentLighting;
                 if (envLighting != null)
                 {
-                    var curLight = envLighting.Lerp(EnvironmentLighting.WeatherPreset.Default, true, timeOfDay);
+                    var curLight = envLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
 
                     // ToDo: Once Room Lighting works again, it can be applied per-frame to actors here if you
                     // override m_actorMesh.SetHardwareLight for main and secondary lighting based on what is in the

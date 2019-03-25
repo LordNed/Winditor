@@ -4,51 +4,47 @@
 	"Fields" :
 	[
     { 
-      "Name": "Clear A",
+      "Name": "Clear Index",
       "Type": "Byte",
-      "Category": "Clear",
+      "Hidden": true
+    },
+    {
+      "Name": "Raining Index",
+      "Type": "Byte",
+      "Hidden": true
+    },
+    {
+      "Name": "Snowing Index",
+      "Type": "Byte",
+      "Hidden": true
+    },
+    {
+      "Name": "Forest Particles Index",
+      "Type": "Byte",
+      "Hidden": true
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Byte",
+      "Category": "Unknowns",
       "Editable": true
     },
     {
-      "Name": "Raining A",
+      "Name": "Unknown 2",
       "Type": "Byte",
-      "Category": "Raining",
+      "Category": "Unknowns",
       "Editable": true
     },
     {
-      "Name": "Snowing A",
+      "Name": "Unknown 3",
       "Type": "Byte",
-      "Category": "Snowing",
+      "Category": "Unknowns",
       "Editable": true
     },
     {
-      "Name": "Unknown A",
+      "Name": "Unknown 4",
       "Type": "Byte",
-      "Category": "Unknown",
-      "Editable": true
-    },
-    {
-      "Name": "Clear B",
-      "Type": "Byte",
-      "Category": "Clear",
-      "Editable": true
-    },
-    {
-      "Name": "Raining B",
-      "Type": "Byte",
-      "Category": "Raining",
-      "Editable": true
-    },
-    {
-      "Name": "Snowing B",
-      "Type": "Byte",
-      "Category": "Snowing",
-      "Editable": true
-    },
-    {
-      "Name": "Unknown B",
-      "Type": "Byte",
-      "Category": "Unknown",
+      "Category": "Unknowns",
       "Editable": true
     }
 	]

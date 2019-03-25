@@ -261,7 +261,7 @@ namespace WindEditor
             return !(node1 == node2);
         }
 
-        protected void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
