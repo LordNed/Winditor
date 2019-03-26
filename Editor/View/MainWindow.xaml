@@ -24,6 +24,7 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}" Key="Delete"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}" Key="D" Modifiers="Shift"/>
+        <KeyBinding Command="{Binding Path=WindEditor.StartPlaytestCommand}" Key="P" Modifiers="Ctrl"/>
     </Window.InputBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -89,7 +90,7 @@
                         <Image Source="../resources/ui/copy_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Paste" InputGestureText="Ctrl + V" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}">
+                <MenuItem Header="Paste" InputGestureText="Ctrl + V" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}">
                     <MenuItem.Icon>
                         <Image Source="../resources/ui/paste_16x.png"/>
                     </MenuItem.Icon>
@@ -114,7 +115,24 @@
                 <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="TRES"/>
                 <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="SCLS"/>
             </MenuItem>
-            <MenuItem Header="Play" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
+            <MenuItem Header="_Play" InputGestureText="Ctrl + P" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
+            <MenuItem Header="v" Width="15" HorizontalAlignment="Left" HorizontalContentAlignment="Left">
+                <Label Content="Active Layer" HorizontalAlignment="Left" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Header="Default Only"/>
+                <MenuItem Header="Layer 0"/>
+                <MenuItem Header="Layer 1"/>
+                <MenuItem Header="Layer 2"/>
+                <MenuItem Header="Layer 3"/>
+                <MenuItem Header="Layer 4"/>
+                <MenuItem Header="Layer 5"/>
+                <MenuItem Header="Layer 6"/>
+                <MenuItem Header="Layer 7"/>
+                <MenuItem Header="Layer 8"/>
+                <MenuItem Header="Layer 9"/>
+                <MenuItem Header="Layer A"/>
+                <MenuItem Header="Layer B"/>
+            </MenuItem>
         </Menu>
         
         <!-- Main Application Body -->

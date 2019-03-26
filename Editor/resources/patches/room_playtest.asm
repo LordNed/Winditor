@@ -31,13 +31,22 @@
   lis r3, 0x803B39A0@ha
   addi r3, r3, 0x803B39A0@l
   bl restore__15mDoMemCd_Ctrl_cFv
-
+  
   ; Load a specific save file
   li r3, 0 ; This arg isn't read, doesn't matter what we put in it
   lis r4, 0x803B39A0@ha
   addi r4, r4, 0x803B39A0@l
   li r5, 0 ; Save file 0
   bl card_to_memory__10dSv_info_cFPci
+  
+  lis r3, 0x803C4C08@ha
+  addi r3, r3, 0x803C4C08@l
+  lha r4, 0 (r3) ; Read max HP
+  cmpwi r4, 0
+  bne dvdWaitDraw_after_save_init
+  ; If max HP is zero this must be an uninitialized save file, so initialize it to avoid the player dying on load.
+  bl init__10dSv_info_cFv
+  dvdWaitDraw_after_save_init:
   
   ; Change the game state to ingame after the boot up logos are done being shown
   mr r3, r31

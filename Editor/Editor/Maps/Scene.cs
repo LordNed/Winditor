@@ -218,5 +218,10 @@ namespace WindEditor
         }
 
         public abstract void SaveEntitiesToDirectory(string directory);
+
+        public virtual VirtualFilesystemDirectory ExportToVFS()
+        {
+            return null;
+        }
     }
 }

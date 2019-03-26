@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using WArchiveTools.FileSystem;
 
 namespace WindEditor
 {
@@ -141,6 +142,29 @@ namespace WindEditor
                 SceneDataExporter exporter = new SceneDataExporter();
                 exporter.ExportToStream(writer, this);
             }
+        }
+
+        public override VirtualFilesystemDirectory ExportToVFS()
+        {
+            VirtualFilesystemDirectory new_dir = SourceDirectory;
+            new_dir.Name = Name;
+
+            VirtualFilesystemFile dzs_file = SourceDirectory.GetFileAtPath("dzs/stage.dzs");
+
+            using (MemoryStream mem = new MemoryStream())
+            {
+                using (EndianBinaryWriter writer = new EndianBinaryWriter(mem, Endian.Big))
+                {
+                    SceneDataExporter exporter = new SceneDataExporter();
+                    exporter.ExportToStream(writer, this);
+
+                    writer.Flush();
+
+                    dzs_file.Data = mem.ToArray();
+                }
+            }
+
+            return new_dir;
         }
 
         public override string ToString()

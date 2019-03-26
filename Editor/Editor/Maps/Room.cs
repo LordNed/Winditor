@@ -5,6 +5,7 @@ using System;
 using JStudio.J3D;
 using System.Collections.Generic;
 using GameFormatReader.Common;
+using WArchiveTools.FileSystem;
 
 namespace WindEditor
 {
@@ -235,6 +236,29 @@ namespace WindEditor
                 SceneDataExporter exporter = new SceneDataExporter();
                 exporter.ExportToStream(writer, this);
             }
+        }
+
+        public override VirtualFilesystemDirectory ExportToVFS()
+        {
+            VirtualFilesystemDirectory new_dir = SourceDirectory;
+            new_dir.Name = Name;
+
+            VirtualFilesystemFile dzr_file = SourceDirectory.GetFileAtPath("dzr/room.dzr");
+
+            using (MemoryStream mem = new MemoryStream())
+            {
+                using (EndianBinaryWriter writer = new EndianBinaryWriter(mem, Endian.Big))
+                {
+                    SceneDataExporter exporter = new SceneDataExporter();
+                    exporter.ExportToStream(writer, this);
+
+                    writer.Flush();
+
+                    dzr_file.Data = mem.ToArray();
+                }
+            }
+
+            return new_dir;
         }
     }
 }

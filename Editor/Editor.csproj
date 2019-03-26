@@ -796,6 +796,9 @@
     <Content Include="resources\editor\EditorSphere_Trigger.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\patches\test_room_diff.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />
     <None Include="resources\templates\MapEntityData\agbsw0.json" />
     <None Include="resources\templates\MapEntityData\alldie.json" />

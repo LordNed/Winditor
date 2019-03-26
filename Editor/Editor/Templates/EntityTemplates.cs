@@ -11,6 +11,7 @@ namespace WindEditor
 	public abstract class SerializableDOMNode : WDOMNode
 	{
 		public readonly FourCC FourCC;
+        [WProperty("Map Layer", "Layer", true, "The layer on which this object resides.")]
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
 
 		private MapLayer m_layer;

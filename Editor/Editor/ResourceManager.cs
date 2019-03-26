@@ -225,7 +225,7 @@ namespace WindEditor
             if (string.IsNullOrEmpty(res.Path) || string.IsNullOrEmpty(archive))
                 return null;
 
-            string archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "res/Object/", archive + ".arc");
+            string archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res/Object/", archive + ".arc");
 
             if (!File.Exists(archivePath))
                 return null;
@@ -255,7 +255,7 @@ namespace WindEditor
 
                 if (!string.IsNullOrEmpty(anim.ArchiveName))
                 {
-                    string anim_arc_path = Path.Combine(Properties.Settings.Default.RootDirectory, "res/Object/", anim.ArchiveName + ".arc");
+                    string anim_arc_path = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res/Object/", anim.ArchiveName + ".arc");
 
                     if (!File.Exists(anim_arc_path))
                         return null;

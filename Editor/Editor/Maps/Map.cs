@@ -135,6 +135,17 @@ namespace WindEditor
             }
         }
 
+        public void ExportToDirectory(string savePath)
+        {
+            foreach (WScene scn in m_sceneList)
+            {
+                string path = Path.Combine(savePath, scn.Name + ".arc");
+                VirtualFilesystemDirectory dir = scn.ExportToVFS();
+
+                WArchiveTools.ArchiveUtilities.WriteArchive(path, dir);
+            }
+        }
+
         public void Tick(float deltaTime)
         {
             foreach (WScene scene in m_sceneList)

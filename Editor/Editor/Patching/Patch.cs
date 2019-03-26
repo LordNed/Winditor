@@ -5,45 +5,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using GameFormatReader.Common;
-using SharpYaml.Serialization;
 
 namespace WindEditor
 {
+    public struct FilePatch
+    {
+        public string FileName;
+        public List<Patchlet> Patchlets { get; set; }
+    }
+
+    public struct Patchlet
+    {
+        public long Offset;
+        public List<byte> Data { get; set; }
+
+        public Patchlet(long offset, List<byte> data)
+        {
+            Offset = offset;
+            Data = data;
+        }
+    }
+
     public class Patch
     {
-        public List<string> PatchedFileNames { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public List<FilePatch> Files { get; set; }
 
-        private Dictionary<long, byte[]> m_PatchContents;
-
-        public Patch(string file_name)
+        public void Apply(string working_dir)
         {
-            PatchedFileNames = new List<string>();
-            m_PatchContents = new Dictionary<long, byte[]>();
-
-            var test = new Serializer();
-            var what = test.Deserialize<Dictionary<string, Dictionary<long, byte[]>>>(new StringReader(File.ReadAllText(file_name)));
-
-            foreach (var entry in what)
+            foreach (FilePatch p in Files)
             {
-                PatchedFileNames.Add(entry.Key);
-                
-                foreach (var address in entry.Value)
+                string file_name = Path.Combine(working_dir, p.FileName);
+                if (!File.Exists(file_name))
                 {
-                    m_PatchContents.Add(address.Key, address.Value);
+                    Console.WriteLine("Could not apply patch \"{}\" to file \"{}\"! The file does not exist!");
+                    continue;
                 }
-            }
-        }
 
-        public void ApplyToFile(string file_name)
-        {
-            using (FileStream str = new FileStream(file_name, FileMode.Open, FileAccess.Write))
-            {
-                EndianBinaryWriter writer = new EndianBinaryWriter(str, Endian.Big);
-
-                foreach (long offset in m_PatchContents.Keys)
+                using (FileStream strm = new FileStream(file_name, FileMode.Open, FileAccess.Write))
                 {
-                    writer.BaseStream.Seek((offset - 0x800056E0) + 0x2620, SeekOrigin.Begin);
-                    writer.Write(m_PatchContents[offset].ToArray());
+                    EndianBinaryWriter writer = new EndianBinaryWriter(strm, Endian.Big);
+
+                    foreach (Patchlet plet in p.Patchlets)
+                    {
+                        writer.BaseStream.Seek((plet.Offset - 0x800056E0) + 0x2620, SeekOrigin.Begin);
+                        writer.Write(plet.Data.ToArray());
+                    }
+
+                    strm.Flush();
                 }
             }
         }

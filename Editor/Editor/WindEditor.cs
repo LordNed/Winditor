@@ -165,12 +165,12 @@ namespace WindEditor
 
         public void OnApplicationRequestExportProject()
         {
-            GetUserPath();
+            MainWorld.Map.ExportToDirectory(GetUserPath());
         }
 
         public void OnApplicationRequestExportAsProject()
         {
-
+            MainWorld.Map.ExportToDirectory(GetUserPath());
         }
 
         private void CopyTempDataToPermanentDir(string sourceDir, string destDir)

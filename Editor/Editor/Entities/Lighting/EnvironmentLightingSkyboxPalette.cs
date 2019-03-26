@@ -16,6 +16,9 @@ namespace WindEditor
 
         public static EnvironmentLightingSkyboxPalette Lerp(EnvironmentLightingSkyboxPalette palette_a, EnvironmentLightingSkyboxPalette palette_b, float t)
         {
+            if (palette_a == null || palette_b == null)
+                return new EnvironmentLightingSkyboxPalette();
+
             EnvironmentLightingSkyboxPalette interpSkybox = new EnvironmentLightingSkyboxPalette();
             interpSkybox.Unknown1 = WLinearColor.Lerp(palette_a.Unknown1, palette_b.Unknown1, t);
             interpSkybox.Unknown2 = WLinearColor.Lerp(palette_a.Unknown2, palette_b.Unknown2, t);
