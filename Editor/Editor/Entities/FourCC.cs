@@ -196,7 +196,7 @@ namespace WindEditor
                 case FourCC.RPPN:
                     return "Path Waypoints (RPPN)";
                 case FourCC.RTBL:
-                    return "Adjacent Loaded Rooms";
+                    return "Room Table";
                 case FourCC.SCLS:
                     return "Exit List";
                 case FourCC.SCOB:

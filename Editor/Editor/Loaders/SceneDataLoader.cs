@@ -333,6 +333,21 @@ namespace WindEditor
                             loadedActors.Add(entity);
                         }
                         break;
+                    case FourCC.RTBL:
+                        for (int i = 0; i < chunk.ElementCount; i++)
+                        {
+                            int entry_offset = m_reader.ReadInt32();
+
+                            int next_offset = (int)m_reader.BaseStream.Position;
+                            m_reader.BaseStream.Seek(entry_offset, SeekOrigin.Begin);
+
+                            RoomTableEntryNode rtbl_entry = new RoomTableEntryNode(chunk.FourCC, m_world, m_reader);
+                            loadedActors.Add(rtbl_entry);
+
+                            m_reader.BaseStream.Seek(next_offset, SeekOrigin.Begin);
+                        }
+
+                        break;
                     default:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {

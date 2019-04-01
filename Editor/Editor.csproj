@@ -559,6 +559,7 @@
     <Compile Include="Editor\Entities\Path.cs" />
     <Compile Include="Editor\Entities\RefactoredPath.cs" />
     <Compile Include="Editor\Entities\RefactoredPathPoint.cs" />
+    <Compile Include="Editor\Entities\RoomTable.cs" />
     <Compile Include="Editor\Entities\SpawnPoint.cs" />
     <Compile Include="Editor\Entities\ScaleableObject.cs" />
     <Compile Include="Editor\Entities\SoundEffect.cs" />

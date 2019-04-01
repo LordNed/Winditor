@@ -152,12 +152,15 @@ namespace WindEditor
 			{
 				var fourCCEntity = (SerializableDOMNode)child;
 
-				if(child is Actor)
+				if(fourCCEntity.FourCC >= FourCC.ACTR && fourCCEntity.FourCC <= FourCC.ACTb)
                     child.SetParent(m_fourCCGroups[FourCC.ACTR].Children[(int)fourCCEntity.Layer]);
-				else if (child is ScaleableObject)
+
+				else if (fourCCEntity.FourCC >= FourCC.SCOB && fourCCEntity.FourCC <= FourCC.SCOb)
 					child.SetParent(m_fourCCGroups[FourCC.SCOB].Children[(int)fourCCEntity.Layer]);
-				else if (child is TreasureChest)
+
+				else if (fourCCEntity.FourCC >= FourCC.TRES && fourCCEntity.FourCC <= FourCC.TREb)
 					child.SetParent(m_fourCCGroups[FourCC.TRES].Children[(int)fourCCEntity.Layer]);
+
 				else
 					child.SetParent(m_fourCCGroups[fourCCEntity.FourCC]);
 

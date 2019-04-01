@@ -85,6 +85,13 @@ namespace WindEditor
                 chunkHeaders[i] = new ChunkHeader(header.FourCC, header.ElementCount, (int)(writer.BaseStream.Position - chunkStart));
 
                 List<SerializableDOMNode> actors = dictionaryData[i];
+
+                if (header.FourCC == FourCC.RTBL)
+                {
+                    SaveRoomTable(actors, writer);
+                    continue;
+                }
+
                 foreach (var actor in actors)
                 {
                     MapActorDescriptor template = Globals.ActorDescriptors.Find(x => x.FourCC == actor.FourCC);
@@ -112,9 +119,10 @@ namespace WindEditor
 
             // Seek to the end of the file, and then pad us to 32-byte alignment.
             writer.BaseStream.Seek(0, SeekOrigin.End);
-            int delta = WMath.Pad32Delta(writer.BaseStream.Position);
+
+            int delta = WMath.Pad16Delta(writer.BaseStream.Position);
             for (int i = 0; i < delta; i++)
-                writer.Write(0xFF);
+                writer.Write((byte)0xFF);
         }
 
         public void AddObjectToDictionary(SerializableDOMNode actor, Dictionary<FourCC, List<SerializableDOMNode>> actorCategories)
@@ -127,6 +135,42 @@ namespace WindEditor
                 actorCategories[fixedFourCCEnum] = new List<SerializableDOMNode>();
 
             actorCategories[fixedFourCCEnum].Add(actor);
+        }
+
+        private void SaveRoomTable(List<SerializableDOMNode> entries, EndianBinaryWriter writer)
+        {
+            int base_offset = (int)writer.BaseStream.Position;
+
+            foreach (var entry in entries)
+            {
+                writer.Write((int)0); // Placeholders for entry offsets
+            }
+
+            writer.Seek(base_offset, SeekOrigin.Begin);
+
+            int first_entry_offset = (int)writer.BaseStream.Length;
+
+            foreach (var entry in entries)
+            {
+                writer.Write((int)writer.BaseStream.Length);
+                writer.Seek(0, SeekOrigin.End);
+
+                entry.Save(writer);
+
+                base_offset += 4;
+
+                writer.Seek(base_offset, SeekOrigin.Begin);
+            }
+
+            writer.Seek(first_entry_offset, SeekOrigin.Begin);
+
+            foreach (var entry in entries)
+            {
+                RoomTableEntryNode node = entry as RoomTableEntryNode;
+                node.WriteLoadedRoomTable(writer);
+            }
+
+            writer.Seek(0, SeekOrigin.End);
         }
 
         /*private void WriteActorToChunk(SerializableDOMNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
