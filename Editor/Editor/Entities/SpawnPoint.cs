@@ -13,6 +13,9 @@ namespace WindEditor
 
         public override void PostLoad()
         {
+            if (string.IsNullOrEmpty(Name))
+                Name = "Link";
+
             m_actorMeshes = WResourceManager.LoadActorResource("Link");
         }
     }

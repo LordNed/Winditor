@@ -136,6 +136,7 @@
                 <MenuItem Header="Layer A"/>
                 <MenuItem Header="Layer B"/>
             </MenuItem>
+            <MenuItem Name="ToolsMenu" Header="_Tools"/>
         </Menu>
         
         <!-- Main Application Body -->

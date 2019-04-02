@@ -276,6 +276,8 @@ namespace WindEditor
             {
                 case FourCC.SCLS:
                     return typeof(ExitData);
+                case FourCC.PLYR:
+                    return typeof(SpawnPoint);
             }
 
             return null;

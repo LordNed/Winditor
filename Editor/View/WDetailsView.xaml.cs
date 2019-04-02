@@ -23,6 +23,12 @@ namespace WindEditor.View
         public WDetailsView()
         {
             InitializeComponent();
+            DataContextChanged += WDetailsView_DataContextChanged;
+        }
+
+        private void WDetailsView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
         }
     }
 }

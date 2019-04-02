@@ -9,6 +9,10 @@ using System;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using WindEditor.Editors;
+using System.Windows.Controls;
+using System.Reflection;
+using WindEditor.ViewModel;
 
 namespace WindEditor
 {
@@ -28,12 +32,16 @@ namespace WindEditor
         private List<WWorld> m_editorWorlds = new List<WWorld>();
         private string m_sourceDataPath;
 
+        private List<IEditor> m_RegisteredEditors;
+
         public WWindEditor()
         {
             // Add the default Editor World.
             m_editorWorlds.Add(new WWorld());
 
             Playtester = new PlaytestManager();
+
+            m_RegisteredEditors = new List<IEditor>();
 
 			// Load our global data
 			foreach (var file in Directory.GetFiles("resources/templates/"))
@@ -244,6 +252,35 @@ namespace WindEditor
         public void OnApplicationRequestPlaytest()
         {
             Playtester.RequestStartPlaytest(MainWorld.Map);
+        }
+
+        public void InitEditorModules(WDetailsViewViewModel details_view_model)
+        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+
+            List<string> classlist = new List<string>();
+
+            foreach (Type type in asm.GetTypes())
+            {
+                if (type.Namespace == "WindEditor.Editors" && type.GetInterface("IEditor") != null)
+                {
+                    IEditor new_editor = (IEditor)Activator.CreateInstance(type);
+                    new_editor.InitModule(details_view_model);
+                    m_RegisteredEditors.Add(new_editor);
+                }
+            }
+        }
+
+        public List<MenuItem> GetRegisteredEditorMenus()
+        {
+            List<MenuItem> items = new List<MenuItem>();
+
+            foreach (IEditor e in m_RegisteredEditors)
+            {
+                items.Add(e.GetMenuItem());
+            }
+
+            return items;
         }
     }
 }

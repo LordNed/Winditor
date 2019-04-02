@@ -131,6 +131,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
+    <Compile Include="Editor\Editors\IEditor.cs" />
+    <Compile Include="Editor\Editors\TextEditor.cs" />
     <Compile Include="Editor\Entities\Actors\acorn_leaf.cs" />
     <Compile Include="Editor\Entities\Actors\agbsw0.cs" />
     <Compile Include="Editor\Entities\Actors\alldie.cs" />
@@ -581,6 +583,7 @@
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IPropertyTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\LinearColorTypeCustomization.cs" />
+    <Compile Include="Editor\Property Customization\MessageReferenceTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\ShortTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\SingleTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\StringTypeCustomization.cs" />

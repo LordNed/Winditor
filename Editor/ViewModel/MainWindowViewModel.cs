@@ -17,6 +17,7 @@ namespace WindEditor.ViewModel
         private GLControl m_glControl;
         private bool m_editorIsShuttingDown;
 
+
         public MainWindowViewModel()
         {
             App.Current.MainWindow.Closing += OnMainWindowClosed;

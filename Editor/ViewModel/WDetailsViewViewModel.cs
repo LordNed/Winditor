@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using WindEditor.Editor;
 
@@ -12,8 +10,8 @@ namespace WindEditor.ViewModel
 {
     public class WDetailsViewViewModel : INotifyPropertyChanged
     {
-        // WPF
-        public event PropertyChangedEventHandler PropertyChanged;
+        private OrderedDictionary m_Categories;
+        private Dictionary<string, IPropertyTypeCustomization> m_TypeCustomizations;
 
         public OrderedDictionary Categories
         {
@@ -28,14 +26,29 @@ namespace WindEditor.ViewModel
             }
         }
 
-        private OrderedDictionary m_Categories;
-        private Dictionary<string, IPropertyTypeCustomization> m_TypeCustomizations;
+        public Dictionary<string, IPropertyTypeCustomization> TypeCustomizations
+        {
+            get { return m_TypeCustomizations; }
+            set
+            {
+                if (value != m_TypeCustomizations)
+                {
+                    m_TypeCustomizations = value;
+                    OnPropertyChanged("TypeCustomizations");
+                }
+            }
+        }
 
         public WDetailsViewViewModel()
         {
             m_Categories = new OrderedDictionary();
             m_TypeCustomizations = new Dictionary<string, IPropertyTypeCustomization>();
 
+            RegisterDefaultCustomizations();
+        }
+
+        private void RegisterDefaultCustomizations()
+        {
             m_TypeCustomizations.Add(typeof(string).Name, new StringTypeCustomization());
             m_TypeCustomizations.Add(typeof(int).Name, new IntegerTypeCustomization());
             m_TypeCustomizations.Add(typeof(byte).Name, new ByteTypeCustomization());
@@ -139,6 +152,9 @@ namespace WindEditor.ViewModel
 
             Categories = new_details;
         }
+
+        // WPF
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
