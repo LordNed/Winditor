@@ -7,7 +7,6 @@
              xmlns:vm="clr-namespace:WindEditor.ViewModel"
              mc:Ignorable="d">
     <Grid>
-        <Rectangle Fill="#FFF4F4F5" Stroke="Black"/>
         <Expander Header="{Binding Path=CategoryName}" IsExpanded="True">
             <ItemsControl ItemsSource="{Binding Path=PropertyRows}">
                 <ItemsControl.ItemTemplate>

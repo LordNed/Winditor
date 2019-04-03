@@ -133,6 +133,11 @@
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
     <Compile Include="Editor\Editors\IEditor.cs" />
     <Compile Include="Editor\Editors\TextEditor.cs" />
+    <Compile Include="Editor\Editors\TextEditor\Message.cs" />
+    <Compile Include="Editor\Editors\TextEditor\TextEditorEnums.cs" />
+    <Compile Include="Editor\Editors\TextEditor\TextEditorWindow.xaml.cs">
+      <DependentUpon>TextEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Entities\Actors\acorn_leaf.cs" />
     <Compile Include="Editor\Entities\Actors\agbsw0.cs" />
     <Compile Include="Editor\Entities\Actors\alldie.cs" />
@@ -628,6 +633,10 @@
     <Compile Include="View\WTransformControl.xaml.cs">
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Editor\Editors\TextEditor\TextEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\OptionsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

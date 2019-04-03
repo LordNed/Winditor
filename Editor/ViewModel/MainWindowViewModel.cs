@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using System;
+using System.Windows;
 
 namespace WindEditor.ViewModel
 {
@@ -11,7 +12,6 @@ namespace WindEditor.ViewModel
 
         public WWindEditor WindEditor { get { return m_editor; } }
         public ICommand SetDataRootCommand { get { return new RelayCommand(x => OnUserSetDataRoot()); } }
-        public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnUserRequestApplicationExit()); } }
 
         private WWindEditor m_editor;
         private GLControl m_glControl;
@@ -77,20 +77,23 @@ namespace WindEditor.ViewModel
             optionsMenu.Show();
         }
 
-        private void OnUserRequestApplicationExit()
-        {
-            // This attempts to close the application, which invokes the normal window close events.
-            App.Current.MainWindow.Close();
-        }
-
         private void OnMainWindowClosed(object sender, CancelEventArgs e)
         {
             /*if(someChangesExist)
                 if(UserWantsToSave)
                     e.Cancel = true;*/
 
+            MessageBoxResult res = MessageBox.Show("test", "App", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (res == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             m_editorIsShuttingDown = true;
             m_editor.Shutdown();
+
+            Application.Current.Shutdown();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace WindEditor.Editors
     public interface IEditor
     {
         MenuItem GetMenuItem();
-        void InitModule(WDetailsViewViewModel details_vioew_model);
+
+        void InitModule(WDetailsViewViewModel details_view_model);
+        bool RequestCloseModule();
     }
 }
