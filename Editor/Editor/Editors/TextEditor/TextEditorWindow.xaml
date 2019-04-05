@@ -6,8 +6,17 @@
         xmlns:local="clr-namespace:WindEditor.Editors.Text"
         xmlns:sc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:wv="clr-namespace:WindEditor.View"
+        xmlns:wvm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="Text Editor" Height="556" Width="748">
+        Title="Text Editor" Height="650" Width="904">
+    <Window.Resources>
+        <wvm:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=SaveMessageDataCommand}" Key="S" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=SaveMessageDataAsCommand}" Key="S" Modifiers="Ctrl+Shift"/>
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="44*"/>
@@ -17,17 +26,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="44*"/>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="63*"/>
+            <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
         <DockPanel VerticalAlignment="Top" Height="20" Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Save" Command="{Binding OnRequestSaveFile}"/>
-                    <MenuItem Header="Save _As..." Command="{Binding OnRequestSaveFileAs}"/>
+                    <MenuItem InputGestureText="Ctrl + P" Header="_Save" Command="{Binding SaveMessageDataCommand}"/>
+                    <MenuItem Header="Save _As..." Command="{Binding SaveMessageDataAsCommand}"/>
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="Add Message" Command="{Binding OnRequestAddMessage}"/>
-                    <MenuItem Header="Delete Selected Message" Command="{Binding OnRequestRemoveMessage}"/>
                 </MenuItem>
                 <MenuItem Header="Help">
                 </MenuItem>
@@ -35,14 +43,8 @@
         </DockPanel>
         <DockPanel LastChildFill="true" Margin="0,20,0,5" Grid.RowSpan="3">
             <Grid>
-                <sc:WatermarkTextBox x:Name="SearchTextBox" Watermark="Type to search..." Margin="5,10,0,0" TextWrapping="Wrap" Text="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsDataLoaded}" Height="24" VerticalAlignment="Top"/>
+                <sc:WatermarkTextBox x:Name="SearchTextBox" Watermark="Type to search..." Margin="5,10,0,0" TextWrapping="Wrap" Text="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
                 <ListView x:Name="TextListView" Grid.Column="0" Margin="5,39,0,0" ItemsSource="{Binding Messages, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMessage, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True">
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Add message" Command="{Binding OnRequestAddMessage}"/>
-                            <MenuItem Header="Delete message" Command="{Binding OnRequestRemoveMessage}"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
                             <GridViewColumn Header="Index" Width="45" DisplayMemberBinding="{Binding Index}"/>
@@ -62,7 +64,23 @@
         <GridSplitter Grid.Row="1" Grid.Column="1" Height="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="6,4,0,4" Grid.ColumnSpan="2"/>
         <DockPanel LastChildFill="True" Margin="0,0,5,5" Grid.Column="2" Grid.Row="2">
             <Grid>
-                <TextBox TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding SelectedMessage.Text, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="2"/>
+                <TextBox Name="MainTextBox" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="{Binding SelectedMessage, Converter={StaticResource NullToBoolConverter}}" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="2">
+                    <TextBox.Text>
+                        <Binding Path="SelectedMessage.Text" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:MessageTextValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Canvas Name="ErrorPopup" Visibility="{Binding ElementName=MainTextBox, Path=(Validation.HasError), Mode=OneWay, Converter={StaticResource BoolToVis}}" Margin="-1,-18,1,269">
+                    <Border BorderThickness="1" BorderBrush="Red" Background="White" Visibility="{Binding ElementName=MainTextBox, Path=(Validation.HasError), Mode=OneWay}">
+                        <TextBlock Name="MyPopupTextBox" Foreground="Red"
+                                   Text="{Binding ElementName=MainTextBox, Path=(Validation.Errors)[0].ErrorContent, 
+                                   UpdateSourceTrigger=PropertyChanged, Mode=OneWay, NotifyOnValidationError=True, 
+                                   NotifyOnSourceUpdated=True, ValidatesOnExceptions=True}"/>
+                    </Border>
+                </Canvas>
             </Grid>
         </DockPanel>
     </Grid>

@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WindEditor.ViewModel;
-using WindEditor.Editors;
+using WindEditor.Editor;
 
-namespace WindEditor.Editor
+namespace WindEditor.Editors.Text
 {
     class MessageReferenceTypeCustomization : IPropertyTypeCustomization
     {

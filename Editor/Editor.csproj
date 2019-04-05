@@ -134,6 +134,7 @@
     <Compile Include="Editor\Editors\IEditor.cs" />
     <Compile Include="Editor\Editors\TextEditor.cs" />
     <Compile Include="Editor\Editors\TextEditor\Message.cs" />
+    <Compile Include="Editor\Editors\TextEditor\MessageTextValidationRule.cs" />
     <Compile Include="Editor\Editors\TextEditor\TextEditorEnums.cs" />
     <Compile Include="Editor\Editors\TextEditor\TextEditorWindow.xaml.cs">
       <DependentUpon>TextEditorWindow.xaml</DependentUpon>
@@ -588,7 +589,7 @@
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IPropertyTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\LinearColorTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\MessageReferenceTypeCustomization.cs" />
+    <Compile Include="Editor\Editors\TextEditor\MessageReferenceTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\ShortTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\SingleTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\StringTypeCustomization.cs" />

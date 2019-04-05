@@ -64,6 +64,12 @@ namespace WindEditor.ViewModel
         {
             OrderedDictionary new_details = new OrderedDictionary();
 
+            if (obj == null)
+            {
+                Categories = new_details;
+                return;
+            }
+
             HideCategoriesAttribute hidden_categories = (HideCategoriesAttribute)obj.GetType().GetCustomAttribute(typeof(HideCategoriesAttribute));
             PropertyInfo[] obj_properties = obj.GetType().GetProperties();
 
