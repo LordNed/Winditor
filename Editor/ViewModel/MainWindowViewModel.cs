@@ -83,12 +83,12 @@ namespace WindEditor.ViewModel
                 if(UserWantsToSave)
                     e.Cancel = true;*/
 
-            MessageBoxResult res = MessageBox.Show("test", "App", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            /*MessageBoxResult res = MessageBox.Show("test", "App", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (res == MessageBoxResult.No)
             {
                 e.Cancel = true;
                 return;
-            }
+            }*/
 
             m_editorIsShuttingDown = true;
             m_editor.Shutdown();

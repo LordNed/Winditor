@@ -203,6 +203,11 @@ namespace WindEditor.Editors.Text
         private byte m_InitialAnimation;
         private ushort m_LineCount;
 
+        public Message()
+        {
+            LineCount = 1;
+        }
+
         public Message(EndianBinaryReader reader, int text_bank_offset, Encoding text_encoding)
         {
             uint text_data_offset = reader.ReadUInt32();

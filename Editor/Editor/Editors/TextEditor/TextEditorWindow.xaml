@@ -8,7 +8,7 @@
         xmlns:wv="clr-namespace:WindEditor.View"
         xmlns:wvm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="Text Editor" Height="650" Width="904">
+        Title="{Binding WindowTitle}" Height="650" Width="904">
     <Window.Resources>
         <wvm:NullToBoolConverter x:Key="NullToBoolConverter"/>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -35,7 +35,7 @@
                     <MenuItem Header="Save _As..." Command="{Binding SaveMessageDataAsCommand}"/>
                 </MenuItem>
                 <MenuItem Header="_Edit">
-                    <MenuItem Header="Add Message" Command="{Binding OnRequestAddMessage}"/>
+                    <MenuItem Header="Add Message" Command="{Binding AddMessageCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Help">
                 </MenuItem>
@@ -64,7 +64,7 @@
         <GridSplitter Grid.Row="1" Grid.Column="1" Height="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="6,4,0,4" Grid.ColumnSpan="2"/>
         <DockPanel LastChildFill="True" Margin="0,0,5,5" Grid.Column="2" Grid.Row="2">
             <Grid>
-                <TextBox Name="MainTextBox" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="{Binding SelectedMessage, Converter={StaticResource NullToBoolConverter}}" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="2">
+                <TextBox Name="MainTextBox" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="{Binding SelectedMessage, Converter={StaticResource NullToBoolConverter}}" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderThickness="2" KeyUp="MainTextBox_KeyUp">
                     <TextBox.Text>
                         <Binding Path="SelectedMessage.Text" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -73,6 +73,16 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
+                <Popup Name="TagSuggestionPopup" Placement="Bottom" StaysOpen="False" IsOpen="False" HorizontalAlignment="Left">
+                    <Grid Width="Auto" Height="Auto">
+                        <ListBox x:Name="TagListView"
+                                  SelectedIndex="0"
+                                  IsTextSearchEnabled="True"
+                                  MaxHeight="150"
+                                  KeyDown="TagListView_KeyDown"
+                                  MouseDoubleClick="TagListView_MouseLeftButtonDown"/>
+                    </Grid>
+                </Popup>
                 <Canvas Name="ErrorPopup" Visibility="{Binding ElementName=MainTextBox, Path=(Validation.HasError), Mode=OneWay, Converter={StaticResource BoolToVis}}" Margin="-1,-18,1,269">
                     <Border BorderThickness="1" BorderBrush="Red" Background="White" Visibility="{Binding ElementName=MainTextBox, Path=(Validation.HasError), Mode=OneWay}">
                         <TextBlock Name="MyPopupTextBox" Foreground="Red"

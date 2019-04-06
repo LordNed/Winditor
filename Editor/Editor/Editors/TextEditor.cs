@@ -1,19 +1,18 @@
-﻿using System;
+﻿using GameFormatReader.Common;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
-using WindEditor.ViewModel;
-using WindEditor.Editor;
+using System.Windows.Data;
+using System.Windows.Input;
 using WArchiveTools;
 using WArchiveTools.FileSystem;
-using System.IO;
-using GameFormatReader.Common;
 using WindEditor.Editors.Text;
-using System.Windows.Input;
-using System.Windows.Data;
+using WindEditor.ViewModel;
 
 namespace WindEditor.Editors
 {
@@ -31,8 +30,8 @@ namespace WindEditor.Editors
             return new MenuItem()
             {
                 Header = "Text Editor",
-                ToolTip = "Edits text :)",
-                Command = OpenEditorCommand
+                ToolTip = "Editor for the game's main text bank.",
+                Command = OpenEditorCommand,
             };
         }
 
@@ -57,9 +56,11 @@ namespace WindEditor.Editors
         }
         #endregion
 
-        public ICommand OpenEditorCommand { get { return new RelayCommand(x => OnRequestOpenTextEditor()); } }
+        public ICommand OpenEditorCommand { get { return new RelayCommand(x => OnRequestOpenTextEditor(),
+            x => !string.IsNullOrEmpty(Properties.Settings.Default.RootDirectory)); } }
         public ICommand SaveMessageDataCommand { get { return new RelayCommand(x => OnRequestSaveMessageData()); } }
         public ICommand SaveMessageDataAsCommand { get { return new RelayCommand(x => OnRequestSaveMessageDataAs()); } }
+        public ICommand AddMessageCommand { get { return new RelayCommand(x => OnRequestAddMessage()); } }
 
         public List<Message> Messages
         {
@@ -81,6 +82,11 @@ namespace WindEditor.Editors
             {
                 if (value != m_SelectedMessage)
                 {
+                    if (m_SelectedMessage != null)
+                    {
+                        m_SelectedMessage.PropertyChanged -= OnSelectedMessagePropertyChanged;
+                    }
+
                     m_SelectedMessage = value;
                     OnPropertyChanged("SelectedMessage");
 
@@ -88,6 +94,8 @@ namespace WindEditor.Editors
                     {
                         m_DetailsModel.ReflectObject(m_SelectedMessage);
                     }
+
+                    m_SelectedMessage.PropertyChanged += OnSelectedMessagePropertyChanged;
                 }
             }
         }
@@ -110,9 +118,25 @@ namespace WindEditor.Editors
             }
         }
 
+        public string WindowTitle
+        {
+            get { return m_IsDataDirty ? m_WindowTitle + "*" : m_WindowTitle; }
+            set
+            {
+                if (value != m_WindowTitle)
+                {
+                    m_WindowTitle = value;
+                    OnPropertyChanged("WindowTitle");
+                }
+            }
+        }
+
         public TextEncoding OriginalEncoding
         {
-            get { return m_OriginalEncoding; }
+            get
+            {
+                return m_OriginalEncoding;
+            }
             set
             {
                 if (value != m_OriginalEncoding)
@@ -128,12 +152,16 @@ namespace WindEditor.Editors
 
         private List<Message> m_Messages;
         private Message m_SelectedMessage;
-        private string m_SearchFilter;
         private VirtualFilesystemDirectory m_MessageArchive;
+
+        private string m_SearchFilter;
+        private string m_WindowTitle;
 
         private TextEncoding m_OriginalEncoding;
 
-        public void OnRequestOpenTextEditor(int default_message = 0)
+        private bool m_IsDataDirty;
+
+        public void OnRequestOpenTextEditor()
         {
             if (m_EditorWindow != null && m_EditorWindow.IsVisible == true)
             {
@@ -141,19 +169,88 @@ namespace WindEditor.Editors
                 return;
             }
 
-            LoadMessageArchive();
+            if (!TryLoadMessageArchive())
+            {
+                MessageBox.Show($"The file \"{ Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc") }\" " +
+                    $"could not be found. The text editor cannot be opened.\n\n" +
+                    $"Please check that the Root Directory in your settings includes this file.",
+                    "Archive Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                return;
+            }
+
+            WindowTitle = "Text Editor - " + Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc");
 
             m_EditorWindow = new TextEditorWindow();
             m_EditorWindow.DataContext = this;
             m_DetailsModel = (WDetailsViewViewModel)m_EditorWindow.DetailsPanel.DataContext;
 
-            SelectedMessage = Messages[default_message];
+            SelectedMessage = Messages[0];
             m_EditorWindow.Show();
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(m_EditorWindow.TextListView.ItemsSource);
             view.Filter = FilterMessages;
 
             SearchFilter = "";
+        }
+
+        private void OnRequestSaveMessageData()
+        {
+            SaveMessageArchive(Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc"));
+        }
+
+        private void OnRequestSaveMessageDataAs()
+        {
+
+        }
+
+        private void OnRequestAddMessage()
+        {
+            ushort highest_msg_id = GetHighestID();
+
+            // There are many empty message entries in the vanilla file.
+            // We will first try to find a message with an ID of 0.
+            Message new_message = Messages.Find(x => x.MessageID == 0);
+
+            // If we find a message with a MessageID of 0, we will give it a valid
+            // ID and focus it for the user.
+            if (new_message != null)
+            {
+                new_message.MessageID = (ushort)(highest_msg_id + 1);
+                new_message.LineCount = 1;
+            }
+            // If the user has used up all the blank messages, we have no
+            // choice but to add a completely new message to the file.
+            else
+            {
+                new_message = new Message();
+                new_message.MessageID = (ushort)(highest_msg_id + 1);
+                new_message.Index = Messages.Count;
+
+                Messages.Add(new_message);
+                OnPropertyChanged("Messages");
+            }
+
+            // This allows us to update the UI to show the new MessageID even if the new message
+            // is on-screen when ScrollIntoView() is called.
+            ICollectionView view = CollectionViewSource.GetDefaultView(m_EditorWindow.TextListView.ItemsSource);
+            view.Refresh();
+
+            m_EditorWindow.TextListView.SelectedItem = new_message;
+            m_EditorWindow.TextListView.ScrollIntoView(new_message);
+        }
+
+        private ushort GetHighestID()
+        {
+            ushort highest_id = 0;
+
+            foreach (Message mes in Messages)
+            {
+                if (highest_id < mes.MessageID)
+                    highest_id = mes.MessageID;
+            }
+
+            return highest_id;
         }
 
         private bool FilterMessages(object item)
@@ -195,19 +292,14 @@ namespace WindEditor.Editors
             }
         }
 
-        private void OnRequestSaveMessageData()
-        {
-            SaveMessageArchive(Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc"));
-        }
-
-        private void OnRequestSaveMessageDataAs()
-        {
-
-        }
-
-        private void LoadMessageArchive()
+        private bool TryLoadMessageArchive()
         {
             string bmgres_path = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc");
+
+            if (!File.Exists(bmgres_path))
+            {
+                return false;
+            }
 
             m_MessageArchive = ArchiveUtilities.LoadArchive(bmgres_path);
 
@@ -218,6 +310,8 @@ namespace WindEditor.Editors
                 EndianBinaryReader reader = new EndianBinaryReader(strm, Endian.Big);
                 LoadMessageData(reader);
             }
+
+            return true;
         }
 
         private void LoadMessageData(EndianBinaryReader reader)
@@ -344,6 +438,15 @@ namespace WindEditor.Editors
 
                 text_bank.Data = new_bmg_strm.ToArray();
             }
+
+            m_IsDataDirty = false;
+            OnPropertyChanged("WindowTitle");
+        }
+
+        private void OnSelectedMessagePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            m_IsDataDirty = true;
+            OnPropertyChanged("WindowTitle");
         }
     }
 }
