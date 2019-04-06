@@ -58,6 +58,7 @@ namespace WindEditor.ViewModel
             m_TypeCustomizations.Add(typeof(WLinearColor).Name, new LinearColorTypeCustomization());
             m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
             m_TypeCustomizations.Add(typeof(WDOMNode).Name, new WDOMNodeTypeCustomization());
+            m_TypeCustomizations.Add(typeof(FileReference).Name, new FileReferenceTypeCustomization());
         }
 
         public void ReflectObject(object obj)

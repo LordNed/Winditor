@@ -74,7 +74,7 @@ namespace WindEditor.ViewModel
         {
             // Violate dat MVVM.
             WindEditor.View.OptionsMenu optionsMenu = new View.OptionsMenu();
-            optionsMenu.Show();
+            optionsMenu.ShowDialog();
         }
 
         private void OnMainWindowClosed(object sender, CancelEventArgs e)

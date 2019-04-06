@@ -586,6 +586,7 @@
     <Compile Include="Editor\Property Customization\BooleanTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\EnumTypeCustomization.cs" />
+    <Compile Include="Editor\Property Customization\FileReferenceTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\IPropertyTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\LinearColorTypeCustomization.cs" />
@@ -596,6 +597,7 @@
     <Compile Include="Editor\Property Customization\WDOMNodeTypeCustomization.cs" />
     <Compile Include="Editor\Property Customization\WTransformTypeCustomization.cs" />
     <Compile Include="Editor\Selection.cs" />
+    <Compile Include="Editor\SettingsManager.cs" />
     <Compile Include="Editor\Templates\ActorTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -613,6 +615,9 @@
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailSingleRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
+    <Compile Include="View\FileReferenceControl.xaml.cs">
+      <DependentUpon>FileReferenceControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OptionsMenu.xaml.cs">
       <DependentUpon>OptionsMenu.xaml</DependentUpon>
     </Compile>
@@ -635,6 +640,10 @@
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Editor\Editors\TextEditor\TextEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FileReferenceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

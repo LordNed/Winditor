@@ -19,7 +19,7 @@
         <GridSplitter Grid.Column="1" BorderBrush="DarkSlateGray" Background="Gray" Width="2"/>
         <DockPanel x:Name="PropertyDock" Grid.Column="2" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="2,0,0,0">
             <Grid>
-                <ContentControl x:Name="PropertyComponent" Content="{Binding Path=PropertyControl}"/>
+                <ContentControl x:Name="PropertyComponent" Content="{Binding Path=PropertyControl}" HorizontalAlignment="Stretch"/>
             </Grid>
         </DockPanel>
     </Grid>

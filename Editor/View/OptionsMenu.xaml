@@ -6,20 +6,16 @@
         xmlns:local="clr-namespace:WindEditor.View"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="OptionsMenu" Height="300" Width="300">
+        Title="Options" Height="350" Width="366.667" Loaded="Window_Loaded">
     <Window.DataContext>
         <vm:OptionsMenuViewModel/>
     </Window.DataContext>
     <Grid>
-        <TextBox TextWrapping="Wrap" Text="{Binding Path=RootDirectory}"  Margin="10,10,45,229"/>
-        <Button Content="..." Width="Auto" Height="Auto" Margin="252,10,10,229" Command="{Binding Path=OpenRootDirectoryCommand}"/>
-        <Button Content="Ok" Margin="226,229,10,10" Command="{Binding Path=AcceptSettingsCommand}"/>
-        <Button Content="Cancel" Margin="152,229,71,10" Command="{Binding Path=CancelSettingsCommand}"/>
-
-        <Label Content="Dump Loaded Textures to Disk?" Margin="10,40,45,198"/>
-        <CheckBox IsChecked="{Binding Path=DumpLoadedTextures}" Margin="252,45,10,203" HorizontalAlignment="Center"/>
-
-        <Label Content="Dump Generated Shaders to Disk?" Margin="10,71,45,167"/>
-        <CheckBox IsChecked="{Binding Path=DumpLoadedShaders}" Margin="252,76,10,172" HorizontalAlignment="Center"/>
+        <GroupBox Header="Settings" Margin="3,0,3,47">
+            <local:WDetailsView x:Name="SettingsDetails"/>
+        </GroupBox>
+        <Button Command="{Binding AcceptSettingsCommand}" Margin="0,0,128,7" HorizontalAlignment="Right"
+                Width="100" Height="32" VerticalAlignment="Bottom">Save</Button>
+        <Button Command="{Binding CancelSettingsCommand}" Margin="0,0,10,7" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100">Cancel</Button>
     </Grid>
 </Window>

@@ -8,57 +8,41 @@ namespace WindEditor.ViewModel
 {
     class OptionsMenuViewModel : INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged Interface
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string RootDirectory
+        protected void OnPropertyChanged(string propertyName)
         {
-            get { return m_rootDirectory; }
-            set
-            {
-                m_rootDirectory = value;
-                OnPropertyChanged("RootDirectory");
-            }
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
 
-        public bool DumpLoadedShaders
+        public WSettingsContainer Settings
         {
-            get { return m_dumpLoadedShaders; }
+            get { return m_Settings; }
             set
             {
-                m_dumpLoadedShaders = value;
-                OnPropertyChanged("DumpLoadedShader");
-            }
-        }
-
-        public bool DumpLoadedTextures
-        {
-            get { return m_dumpLoadedTextures; }
-            set
-            {
-                m_dumpLoadedTextures = value;
-                OnPropertyChanged("DumpLoadedTextures");
+                m_Settings = value;
+                OnPropertyChanged("Settings");
             }
         }
 
         public ICommand OpenRootDirectoryCommand { get { return new RelayCommand(x => OnUserRequestOpenRootDirectory()); } }
         public ICommand AcceptSettingsCommand { get { return new RelayCommand(x => OnUserAcceptSettings()); } }
         public ICommand CancelSettingsCommand { get { return new RelayCommand(x => OnUserCancelSettings()); } }
-       
 
-        private string m_rootDirectory;
-        private bool m_dumpLoadedTextures;
-        private bool m_dumpLoadedShaders;
+
+        private WSettingsContainer m_Settings;
 
         public OptionsMenuViewModel()
         {
-            RootDirectory = Properties.Settings.Default.RootDirectory;
-            DumpLoadedShaders = Properties.Settings.Default.DumpShadersToDisk;
-            DumpLoadedTextures = Properties.Settings.Default.DumpTexturesToDisk;
+            Settings = WSettingsManager.GetSettings();
         }
 
         private void OnUserRequestOpenRootDirectory()
         {
-            var ofd = new CommonOpenFileDialog();
+            /*var ofd = new CommonOpenFileDialog();
             ofd.Title = "Choose Directory";
             ofd.IsFolderPicker = true;
             ofd.AddToMostRecentlyUsedList = false;
@@ -73,15 +57,12 @@ namespace WindEditor.ViewModel
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 RootDirectory = ofd.FileName;
-            }
+            }*/
         }
 
         private void OnUserAcceptSettings()
         {
-            Properties.Settings.Default.RootDirectory = RootDirectory;
-            Properties.Settings.Default.DumpShadersToDisk = DumpLoadedShaders;
-            Properties.Settings.Default.DumpTexturesToDisk = DumpLoadedTextures;
-            Properties.Settings.Default.Save();
+            WSettingsManager.SaveSettings();
 
             CloseOptionsMenuWindow();
         }
@@ -96,15 +77,9 @@ namespace WindEditor.ViewModel
             foreach (Window window in App.Current.Windows)
             {
                 // This is an ugly hack.
-                if (window.Title == "OptionsMenu")
+                if (window.Title == "Options")
                     window.Close();
             }
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

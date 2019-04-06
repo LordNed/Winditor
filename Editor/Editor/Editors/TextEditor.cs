@@ -57,7 +57,7 @@ namespace WindEditor.Editors
         #endregion
 
         public ICommand OpenEditorCommand { get { return new RelayCommand(x => OnRequestOpenTextEditor(),
-            x => !string.IsNullOrEmpty(Properties.Settings.Default.RootDirectory)); } }
+            x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
         public ICommand SaveMessageDataCommand { get { return new RelayCommand(x => OnRequestSaveMessageData()); } }
         public ICommand SaveMessageDataAsCommand { get { return new RelayCommand(x => OnRequestSaveMessageDataAs()); } }
         public ICommand AddMessageCommand { get { return new RelayCommand(x => OnRequestAddMessage()); } }
@@ -95,7 +95,10 @@ namespace WindEditor.Editors
                         m_DetailsModel.ReflectObject(m_SelectedMessage);
                     }
 
-                    m_SelectedMessage.PropertyChanged += OnSelectedMessagePropertyChanged;
+                    if (m_SelectedMessage != null)
+                    {
+                        m_SelectedMessage.PropertyChanged += OnSelectedMessagePropertyChanged;
+                    }
                 }
             }
         }
@@ -171,7 +174,8 @@ namespace WindEditor.Editors
 
             if (!TryLoadMessageArchive())
             {
-                MessageBox.Show($"The file \"{ Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc") }\" " +
+                MessageBox.Show($"The file " +
+                    $"\"{ Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc") }\" " +
                     $"could not be found. The text editor cannot be opened.\n\n" +
                     $"Please check that the Root Directory in your settings includes this file.",
                     "Archive Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -179,7 +183,7 @@ namespace WindEditor.Editors
                 return;
             }
 
-            WindowTitle = "Text Editor - " + Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc");
+            WindowTitle = "Text Editor - " + Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc");
 
             m_EditorWindow = new TextEditorWindow();
             m_EditorWindow.DataContext = this;
@@ -196,7 +200,7 @@ namespace WindEditor.Editors
 
         private void OnRequestSaveMessageData()
         {
-            SaveMessageArchive(Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc"));
+            SaveMessageArchive(Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc"));
         }
 
         private void OnRequestSaveMessageDataAs()
@@ -294,7 +298,7 @@ namespace WindEditor.Editors
 
         private bool TryLoadMessageArchive()
         {
-            string bmgres_path = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "Msg", "bmgres.arc");
+            string bmgres_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc");
 
             if (!File.Exists(bmgres_path))
             {
