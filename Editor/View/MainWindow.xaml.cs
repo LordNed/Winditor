@@ -44,7 +44,12 @@ namespace WindEditor
             m_viewModel.OnMainEditorWindowLoaded((GLControl)glControlHost.Child);
 
             m_viewModel.WindEditor.InitEditorModules(m_viewModel.WindEditor.MainWorld.ActorEditor.DetailsViewModel);
-            ToolsMenu.ItemsSource = m_viewModel.WindEditor.GetRegisteredEditorMenus();
+            List<Control> tools_items = new List<Control>(m_viewModel.WindEditor.GetRegisteredEditorMenus());
+
+            tools_items.Add(new Separator());
+            tools_items.Add(new MenuItem() { Header = "Options", Command = m_viewModel.SetDataRootCommand });
+
+            ToolsMenu.ItemsSource = tools_items;
         }
 
         private void Window_Drop(object sender, DragEventArgs e)

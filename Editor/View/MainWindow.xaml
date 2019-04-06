@@ -103,8 +103,6 @@
                 <Separator/>
                 <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}"/>
                 <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}"/>
-                <Separator/>
-                <MenuItem Header="Set Data Root..." Command="{Binding Path=SetDataRootCommand}"/>
             </MenuItem>
             <MenuItem Header="Create">
                 <MenuItem Header="Actor" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="ACTR"/>
