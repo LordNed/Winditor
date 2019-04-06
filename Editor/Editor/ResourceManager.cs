@@ -225,7 +225,7 @@ namespace WindEditor
             if (string.IsNullOrEmpty(res.Path) || string.IsNullOrEmpty(archive))
                 return null;
 
-            string archivePath = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res/Object/", archive + ".arc");
+            string archivePath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res/Object/", archive + ".arc");
 
             if (!File.Exists(archivePath))
                 return null;
@@ -243,7 +243,7 @@ namespace WindEditor
 
             j3d = new J3D(archiveFile.Name);
             using (EndianBinaryReader reader = new EndianBinaryReader(j3dData, Endian.Big))
-                j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
+                j3d.LoadFromStream(reader, WSettingsManager.GetSettings().DumpTextures, WSettingsManager.GetSettings().DumpShaders);
 
             // If there are no animations specified, we can stop here and return the model
             if (res.Animations == null)
@@ -255,7 +255,7 @@ namespace WindEditor
 
                 if (!string.IsNullOrEmpty(anim.ArchiveName))
                 {
-                    string anim_arc_path = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res/Object/", anim.ArchiveName + ".arc");
+                    string anim_arc_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res/Object/", anim.ArchiveName + ".arc");
 
                     if (!File.Exists(anim_arc_path))
                         return null;
@@ -353,7 +353,7 @@ namespace WindEditor
             {
                 J3D j3d = new J3D(Path.GetFileNameWithoutExtension(filePath));
                 using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(filePath), Endian.Big))
-                    j3d.LoadFromStream(reader, Properties.Settings.Default.DumpTexturesToDisk, Properties.Settings.Default.DumpShadersToDisk);
+                    j3d.LoadFromStream(reader, WSettingsManager.GetSettings().DumpTextures, WSettingsManager.GetSettings().DumpShaders);
 
                 j3d.SetHardwareLight(0, m_mainLight);
                 j3d.SetHardwareLight(1, m_secondaryLight);

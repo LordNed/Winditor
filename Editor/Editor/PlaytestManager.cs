@@ -37,10 +37,10 @@ namespace WindEditor
         {
             Console.WriteLine($"Stage name: { map.MapName }, Room Name: { map.FocusedSceneLabel }");
 
-            string map_path = Path.Combine(Properties.Settings.Default.RootDirectory, "files", "res", "stage", map.MapName);
+            string map_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", map.MapName);
             map.ExportToDirectory(map_path);
 
-            string dol_dir = Path.Combine(Properties.Settings.Default.RootDirectory, "sys");
+            string dol_dir = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "sys");
             m_DolPath = Path.Combine(dol_dir, "main.dol");
             m_BackupDolPath = Path.Combine(dol_dir, "main_backup.dol");
 
@@ -71,7 +71,7 @@ namespace WindEditor
 
             File.Copy(m_DolPath, m_BackupDolPath);
 
-            p.Apply(Properties.Settings.Default.RootDirectory);
+            p.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
 
             m_DolphinInstance = Process.Start(m_DolphinStartInfo);
 
