@@ -49,7 +49,8 @@ namespace WindEditor.View
             ofd.Multiselect = false;
             ofd.ShowPlacesList = true;
 
-            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            if (ofd.ShowDialog(window) == CommonFileDialogResult.Ok)
             {
                 WSettingsManager.GetSettings().RootDirectory.FilePath = ofd.FileName;
             }
