@@ -249,8 +249,24 @@ namespace WindEditor
                 world.ShutdownWorld();
         }
 
+        public bool TryCloseEditors()
+        {
+            foreach (IEditor i in m_RegisteredEditors)
+            {
+                if (!i.RequestCloseModule())
+                    return false;
+            }
+
+            return true;
+        }
+
         public void OnApplicationRequestPlaytest()
         {
+            if (!TryCloseEditors())
+            {
+                return;
+            }
+
             Playtester.RequestStartPlaytest(MainWorld.Map);
         }
 

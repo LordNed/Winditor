@@ -182,7 +182,7 @@ namespace WindEditor
                 models.Add(loaded_model);
             }
 
-            if (name == "Link" || name == "Tetra" || name == "Zelda")
+            if (models.Count > 0 && (name == "Link" || name == "Tetra" || name == "Zelda"))
             {
                 models[0].SetColorWriteOverride("eyeLdamA", false);
                 models[0].SetColorWriteOverride("eyeLdamB", false);

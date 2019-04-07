@@ -90,6 +90,12 @@ namespace WindEditor.ViewModel
                 return;
             }*/
 
+            if (!WindEditor.TryCloseEditors())
+            {
+                e.Cancel = true;
+                return;
+            }
+
             m_editorIsShuttingDown = true;
             m_editor.Shutdown();
 

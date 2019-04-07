@@ -206,6 +206,7 @@ namespace WindEditor.Editors.Text
         public Message()
         {
             LineCount = 1;
+            m_ItemImage = ItemID.No_item;
         }
 
         public Message(EndianBinaryReader reader, int text_bank_offset, Encoding text_encoding)

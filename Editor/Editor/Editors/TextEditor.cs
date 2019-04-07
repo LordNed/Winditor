@@ -42,7 +42,23 @@ namespace WindEditor.Editors
 
         public bool RequestCloseModule()
         {
-            return true;
+            if (!m_IsDataDirty)
+                return true;
+
+            MessageBoxResult result = MessageBox.Show("You have unsaved changes to the text data. Save them?", "Unsaved Text Changes", MessageBoxButton.YesNoCancel);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    OnRequestSaveMessageData();
+                    return true;
+                case MessageBoxResult.No:
+                    return true;
+                case MessageBoxResult.Cancel:
+                    return false;
+                default:
+                    return true;
+            }
         }
         #endregion
 
@@ -172,15 +188,18 @@ namespace WindEditor.Editors
                 return;
             }
 
-            if (!TryLoadMessageArchive())
+            if (Messages == null)
             {
-                MessageBox.Show($"The file " +
-                    $"\"{ Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc") }\" " +
-                    $"could not be found. The text editor cannot be opened.\n\n" +
-                    $"Please check that the Root Directory in your settings includes this file.",
-                    "Archive Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (!TryLoadMessageArchive())
+                {
+                    MessageBox.Show($"The file " +
+                        $"\"{ Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc") }\" " +
+                        $"could not be found. The text editor cannot be opened.\n\n" +
+                        $"Please check that the Root Directory in your settings includes this file.",
+                        "Archive Not Found", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                return;
+                    return;
+                }
             }
 
             WindowTitle = "Text Editor - " + Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc");
@@ -222,6 +241,7 @@ namespace WindEditor.Editors
             {
                 new_message.MessageID = (ushort)(highest_msg_id + 1);
                 new_message.LineCount = 1;
+                new_message.ItemImage = ItemID.No_item;
             }
             // If the user has used up all the blank messages, we have no
             // choice but to add a completely new message to the file.

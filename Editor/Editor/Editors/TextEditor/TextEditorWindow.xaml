@@ -31,7 +31,7 @@
         <DockPanel VerticalAlignment="Top" Height="20" Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem InputGestureText="Ctrl + P" Header="_Save" Command="{Binding SaveMessageDataCommand}"/>
+                    <MenuItem InputGestureText="Ctrl + S" Header="_Save" Command="{Binding SaveMessageDataCommand}"/>
                     <MenuItem Header="Save _As..." Command="{Binding SaveMessageDataAsCommand}"/>
                 </MenuItem>
                 <MenuItem Header="_Edit">
