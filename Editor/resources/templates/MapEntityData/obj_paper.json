@@ -3,19 +3,19 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "MessageID",
       "ValueSource": "Parameters",
       "Mask": 65535,
       "Shift": 0,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "obj_paper"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 983040,
       "Shift": 16,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "obj_paper"
     }
   ]

@@ -28,6 +28,7 @@ namespace WindEditor
         public ICommand StartPlaytestCommand { get { return new RelayCommand(x => OnApplicationRequestPlaytest(), x => MainWorld.Map != null); } }
 
         public PlaytestManager Playtester { get; set; }
+        public MapLayer ActiveLayer { get; set; }
 
         private List<WWorld> m_editorWorlds = new List<WWorld>();
         private string m_sourceDataPath;
@@ -137,6 +138,10 @@ namespace WindEditor
         private void CreateFileFromArc(VirtualFilesystemFile file, string rootPath)
         {
             string filePath = $"{rootPath}\\{file.NameWithExtension}";
+            if (!Directory.Exists(rootPath))
+            {
+                Directory.CreateDirectory(rootPath);
+            }
 
             using (FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {
@@ -267,7 +272,7 @@ namespace WindEditor
                 return;
             }
 
-            Playtester.RequestStartPlaytest(MainWorld.Map);
+            Playtester.RequestStartPlaytest(MainWorld.Map, ActiveLayer);
         }
 
         public void InitEditorModules(WDetailsViewViewModel details_view_model)

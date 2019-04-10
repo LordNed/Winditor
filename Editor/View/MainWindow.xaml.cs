@@ -181,5 +181,138 @@ namespace WindEditor
 
             return source as TreeViewItem;
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = e.OriginalSource as MenuItem;
+            if (menuItem.IsChecked)
+            {
+                foreach (var item in MenuItemExtensions.ElementToGroupNames)
+                {
+                    if (item.Key != menuItem && item.Value == MenuItemExtensions.GetGroupName(menuItem))
+                    {
+                        item.Key.IsChecked = false;
+                    }
+                }
+            }
+            else // it's not possible for the user to deselect an item
+            {
+                menuItem.IsChecked = true;
+            }
+
+            switch (menuItem.Name)
+            {
+                case "default":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Default;
+                    break;
+                case "layer_0":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer0;
+                    break;
+                case "layer_1":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer1;
+                    break;
+                case "layer_2":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer2;
+                    break;
+                case "layer_3":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer3;
+                    break;
+                case "layer_4":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer4;
+                    break;
+                case "layer_5":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer5;
+                    break;
+                case "layer_6":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer6;
+                    break;
+                case "layer_7":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer7;
+                    break;
+                case "layer_8":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer8;
+                    break;
+                case "layer_9":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.Layer9;
+                    break;
+                case "layer_a":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.LayerA;
+                    break;
+                case "layer_b":
+                    m_viewModel.WindEditor.ActiveLayer = MapLayer.LayerB;
+                    break;
+            }
+        }
+    }
+
+    public class MenuItemExtensions : DependencyObject
+    {
+        public static Dictionary<MenuItem, String> ElementToGroupNames = new Dictionary<MenuItem, String>();
+
+        public static readonly DependencyProperty GroupNameProperty =
+            DependencyProperty.RegisterAttached("GroupName",
+                                         typeof(String),
+                                         typeof(MenuItemExtensions),
+                                         new PropertyMetadata(String.Empty, OnGroupNameChanged));
+
+        public static void SetGroupName(MenuItem element, String value)
+        {
+            element.SetValue(GroupNameProperty, value);
+        }
+
+        public static String GetGroupName(MenuItem element)
+        {
+            return element.GetValue(GroupNameProperty).ToString();
+        }
+
+        private static void OnGroupNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //Add an entry to the group name collection
+            var menuItem = d as MenuItem;
+
+            if (menuItem != null)
+            {
+                String newGroupName = e.NewValue.ToString();
+                String oldGroupName = e.OldValue.ToString();
+                if (String.IsNullOrEmpty(newGroupName))
+                {
+                    //Removing the toggle button from grouping
+                    RemoveCheckboxFromGrouping(menuItem);
+                }
+                else
+                {
+                    //Switching to a new group
+                    if (newGroupName != oldGroupName)
+                    {
+                        if (!String.IsNullOrEmpty(oldGroupName))
+                        {
+                            //Remove the old group mapping
+                            RemoveCheckboxFromGrouping(menuItem);
+                        }
+                        ElementToGroupNames.Add(menuItem, e.NewValue.ToString());
+                        menuItem.Checked += MenuItemChecked;
+                    }
+                }
+            }
+        }
+
+        private static void RemoveCheckboxFromGrouping(MenuItem checkBox)
+        {
+            ElementToGroupNames.Remove(checkBox);
+            checkBox.Checked -= MenuItemChecked;
+        }
+
+
+        static void MenuItemChecked(object sender, RoutedEventArgs e)
+        {
+            var menuItem = e.OriginalSource as MenuItem;
+            foreach (var item in ElementToGroupNames)
+            {
+                if (item.Key != menuItem && item.Value == GetGroupName(menuItem))
+                {
+                    item.Key.IsChecked = false;
+                }
+            }
+        }
     }
 }

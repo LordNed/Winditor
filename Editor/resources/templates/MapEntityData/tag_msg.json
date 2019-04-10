@@ -35,11 +35,11 @@
       "Category": "tag_msg"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "MessageID",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 65535,
       "Shift": 0,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "tag_msg"
     },
     {

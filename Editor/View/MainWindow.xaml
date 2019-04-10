@@ -118,21 +118,23 @@
                 <MenuItem.Header>
                     <TextBlock Text="v" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3.75,0,0,0"/>
                 </MenuItem.Header>
-                <Label Content="Active Layer" HorizontalAlignment="Left" IsEnabled="False"/>
+                <MenuItem Header="Active layer">
+                    <MenuItem x:Name="default" Header="Default Only" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click" IsChecked="True"/>
+                    <MenuItem x:Name="layer_0" Header="Layer 0" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_1" Header="Layer 1" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_2" Header="Layer 2" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_3" Header="Layer 3" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_4" Header="Layer 4" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_5" Header="Layer 5" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_6" Header="Layer 6" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_7" Header="Layer 7" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_8" Header="Layer 8" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_9" Header="Layer 9" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_a" Header="Layer A" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                    <MenuItem x:Name="layer_b" Header="Layer B" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
+                </MenuItem>
                 <Separator/>
-                <MenuItem Header="Default Only"/>
-                <MenuItem Header="Layer 0"/>
-                <MenuItem Header="Layer 1"/>
-                <MenuItem Header="Layer 2"/>
-                <MenuItem Header="Layer 3"/>
-                <MenuItem Header="Layer 4"/>
-                <MenuItem Header="Layer 5"/>
-                <MenuItem Header="Layer 6"/>
-                <MenuItem Header="Layer 7"/>
-                <MenuItem Header="Layer 8"/>
-                <MenuItem Header="Layer 9"/>
-                <MenuItem Header="Layer A"/>
-                <MenuItem Header="Layer B"/>
+                <MenuItem Header="Inventory Settings"/>
             </MenuItem>
             <MenuItem Name="ToolsMenu" Header="_Tools"/>
         </Menu>

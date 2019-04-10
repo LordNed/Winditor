@@ -22,7 +22,7 @@ namespace WindEditor
             m_DolphinInstance = null;
         }
 
-        public void RequestStartPlaytest(WMap map)
+        public void RequestStartPlaytest(WMap map, MapLayer active_layer)
         {
             if (m_DolphinInstance != null)
             {
@@ -30,10 +30,10 @@ namespace WindEditor
                 m_DolphinInstance.WaitForExit();
             }
 
-            StartPlaytest(map);
+            StartPlaytest(map, active_layer);
         }
 
-        private void StartPlaytest(WMap map)
+        private void StartPlaytest(WMap map, MapLayer active_layer)
         {
             Console.WriteLine($"Stage name: { map.MapName }, Room Name: { map.FocusedSceneLabel }");
 
@@ -56,7 +56,7 @@ namespace WindEditor
             p.Files[0].Patchlets.Add(new Patchlet(2149765112, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
             p.Files[0].Patchlets.Add(new Patchlet(2147824099, new List<byte>(new byte[] { spawn_id })));
             p.Files[0].Patchlets.Add(new Patchlet(2147824103, new List<byte>(new byte[] { room_no })));
-            p.Files[0].Patchlets.Add(new Patchlet(2147824107, new List<byte>(new byte[] { 255 })));
+            p.Files[0].Patchlets.Add(new Patchlet(2147824107, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
 
             if (!File.Exists(m_DolPath))
             {

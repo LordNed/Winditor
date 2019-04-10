@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "MessageID",
       "ValueSource": "Parameters",
       "Mask": 65535,
       "Shift": 0,

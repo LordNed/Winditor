@@ -16,10 +16,37 @@ using WindEditor.ViewModel;
 
 namespace WindEditor.Editors
 {
-    public struct MessageReference
+    public class MessageReference : INotifyPropertyChanged
     {
-        public uint MessageID;
-        public uint MessageIndex;
+        private ushort m_MessageID;
+
+        public ushort MessageID
+        {
+            get { return m_MessageID; }
+            set
+            {
+                if (value != m_MessageID)
+                {
+                    m_MessageID = value;
+                    OnPropertyChanged("MessageID");
+                }
+            }
+        }
+
+        public MessageReference(ushort id)
+        {
+            MessageID = id;
+        }
+
+        #region INotifyPropertyChanged Interface
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 
     public class TextEditor : IEditor, INotifyPropertyChanged
@@ -471,6 +498,23 @@ namespace WindEditor.Editors
         {
             m_IsDataDirty = true;
             OnPropertyChanged("WindowTitle");
+        }
+
+        public void OnUserRequestOpenReference(ushort id)
+        {
+            OnRequestOpenTextEditor();
+
+            Message requested_message = Messages.Find(x => x.MessageID == id);
+
+            if (requested_message != null)
+            {
+                m_EditorWindow.TextListView.SelectedItem = requested_message;
+                m_EditorWindow.TextListView.ScrollIntoView(requested_message);
+            }
+            else
+            {
+
+            }
         }
     }
 }

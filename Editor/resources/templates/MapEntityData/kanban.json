@@ -9,6 +9,14 @@
       "Shift": 20,
       "Hidden": false,
       "Category": "kanban"
+    },
+    {
+      "Name": "MessageID",
+      "ValueSource": "Parameters",
+      "Mask": 65535,
+      "Shift": 0,
+      "Hidden": true,
+      "Category": "kanban"
     }
   ]
 }

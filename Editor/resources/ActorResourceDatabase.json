@@ -1201,5 +1201,61 @@
         }
       }
     ]
-  }
+  },
+  {
+    "Name": "Simple Papers",
+    "Archive": "Opaper",
+    "Models": [
+      {
+        "Path": "bdl/opaper.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Ornate Papers",
+    "Archive": "Ppos",
+    "Models": [
+      {
+        "Path": "bdl/ppos.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Stone Tablet",
+    "Archive": "Piwa",
+    "Models": [
+      {
+        "Path": "bdl/piwa.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Sign",
+    "Archive": "Kanban",
+    "Models": [
+      {
+        "Path": "bdl/kanban.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
 ]

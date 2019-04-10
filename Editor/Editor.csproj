@@ -139,6 +139,9 @@
     <Compile Include="Editor\Editors\TextEditor\TextEditorWindow.xaml.cs">
       <DependentUpon>TextEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\Editors\TextEditor\TextReferenceControl.xaml.cs">
+      <DependentUpon>TextReferenceControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Entities\Actors\acorn_leaf.cs" />
     <Compile Include="Editor\Entities\Actors\agbsw0.cs" />
     <Compile Include="Editor\Entities\Actors\alldie.cs" />
@@ -640,6 +643,10 @@
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Editor\Editors\TextEditor\TextEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Editors\TextEditor\TextReferenceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

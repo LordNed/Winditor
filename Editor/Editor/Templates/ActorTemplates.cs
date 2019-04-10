@@ -3112,6 +3112,16 @@ namespace WindEditor
 			}
 		}
 
+		public int MessageID
+		{ 
+			get { return (int)(Parameters & 65535) >> 0; }
+			set
+			{
+				Parameters = (int)(Parameters & ~65535 | (value << 0 & 65535));
+				OnPropertyChanged("MessageID");
+			}
+		}
+
 		// Constructor
 		public kanban(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8832,25 +8842,23 @@ namespace WindEditor
 	public partial class obj_paper : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_paper", "Unknown_1", true)]
-		public int Unknown_1
+		public int MessageID
 		{ 
 			get { return (int)(Parameters & 65535) >> 0; }
 			set
 			{
 				Parameters = (int)(Parameters & ~65535 | (value << 0 & 65535));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("MessageID");
 			}
 		}
 
-		[WProperty("obj_paper", "Unknown_2", true)]
-		public int Unknown_2
+		public int Type
 		{ 
 			get { return (int)(Parameters & 983040) >> 16; }
 			set
 			{
 				Parameters = (int)(Parameters & ~983040 | (value << 16 & 983040));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Type");
 			}
 		}
 
@@ -12088,14 +12096,13 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_6", true)]
-		public int Unknown_6
+		public int MessageID
 		{ 
 			get { return (int)(AuxillaryParameters1 & 65535) >> 0; }
 			set
 			{
 				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~65535 | (value << 0 & 65535));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("MessageID");
 			}
 		}
 
@@ -12341,14 +12348,14 @@ namespace WindEditor
 	public partial class tag_md_cb : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_md_cb", "Unknown_1", true)]
-		public int Unknown_1
+		[WProperty("tag_md_cb", "MessageID", true)]
+		public int MessageID
 		{ 
 			get { return (int)(Parameters & 65535) >> 0; }
 			set
 			{
 				Parameters = (int)(Parameters & ~65535 | (value << 0 & 65535));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("MessageID");
 			}
 		}
 
@@ -12484,14 +12491,13 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_5", true)]
-		public int Unknown_5
+		public int MessageID
 		{ 
 			get { return (int)(AuxillaryParameters1 & 65535) >> 0; }
 			set
 			{
 				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~65535 | (value << 0 & 65535));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("MessageID");
 			}
 		}
 

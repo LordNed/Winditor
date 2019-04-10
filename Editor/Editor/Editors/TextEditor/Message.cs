@@ -346,6 +346,14 @@ namespace WindEditor.Editors.Text
                     {
                         continue;
                     }
+                    else if (raw_text_data[i] == '\n')
+                    {
+                        processed_text_data.Add(0xA);
+                    }
+                    else if (raw_text_data[i] == '\r')
+                    {
+                        continue;
+                    }
                     else
                     {
                         processed_text_data.Add(raw_text_data[i]);
