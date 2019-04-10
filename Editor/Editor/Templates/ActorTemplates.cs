@@ -1946,18 +1946,17 @@ namespace WindEditor
 	public partial class ep : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ep", "Unknown_1", true)]
-		public int Unknown_1
+		public int Type
 		{ 
 			get { return (int)(Parameters & 63) >> 0; }
 			set
 			{
 				Parameters = (int)(Parameters & ~63 | (value << 0 & 63));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("ep", "Unknown_2", true)]
+		[WProperty("Unknowns", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
 			get { return (int)(Parameters & 64) >> 6; }
@@ -1968,18 +1967,17 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ep", "Unknown_3", true)]
-		public int Unknown_3
+		public int IsWooden
 		{ 
 			get { return (int)(Parameters & 128) >> 7; }
 			set
 			{
 				Parameters = (int)(Parameters & ~128 | (value << 7 & 128));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("IsWooden");
 			}
 		}
 
-		[WProperty("ep", "Unknown_4", true)]
+		[WProperty("Unknowns", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
 			get { return (int)(Parameters & 65280) >> 8; }
@@ -1990,7 +1988,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ep", "Unknown_5", true)]
+		[WProperty("Unknowns", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
 			get { return (int)(Parameters & 16711680) >> 16; }
@@ -2001,14 +1999,13 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ep", "Unknown_6", true)]
-		public int Unknown_6
+		public int OnSwitch
 		{ 
 			get { return (int)(Parameters & 4278190080) >> 24; }
 			set
 			{
 				Parameters = (int)(Parameters & ~4278190080 | (value << 24 & 4278190080));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("OnSwitch");
 			}
 		}
 

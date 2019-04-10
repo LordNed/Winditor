@@ -8,3 +8,6 @@
 [submodule "WCommon"]
 	path = WCommon
 	url = https://github.com/LordNed/WCommon.git
+[submodule "wpftoolkit"]
+	path = wpftoolkit
+	url = https://github.com/Sage-of-Mirrors/wpftoolkit.git

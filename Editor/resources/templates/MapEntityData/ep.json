@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 63,
       "Shift": 0,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "ep"
     },
     {
@@ -16,15 +16,16 @@
       "Mask": 64,
       "Shift": 6,
       "Hidden": false,
-      "Category": "ep"
+      "Category": "Unknowns"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Is Wooden",
       "ValueSource": "Parameters",
       "Mask": 128,
       "Shift": 7,
-      "Hidden": false,
-      "Category": "ep"
+      "Hidden": true,
+      "Category": "Torch",
+      "ToolTip":  "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold."
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +33,7 @@
       "Mask": 65280,
       "Shift": 8,
       "Hidden": false,
-      "Category": "ep"
+      "Category": "Unknowns"
     },
     {
       "Name": "Unknown_5",
@@ -40,15 +41,16 @@
       "Mask": 16711680,
       "Shift": 16,
       "Hidden": false,
-      "Category": "ep"
+      "Category": "Unknowns"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "On Switch",
       "ValueSource": "Parameters",
       "Mask": 4278190080,
       "Shift": 24,
-      "Hidden": false,
-      "Category": "ep"
+      "Hidden": true,
+      "Category": "Torch",
+      "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default."
     }
   ]
 }
