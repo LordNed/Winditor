@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace WindEditor.Editors.Text
+namespace WindEditor.Minitors.Text
 {
     public class MessageTextValidationRule : ValidationRule
     {

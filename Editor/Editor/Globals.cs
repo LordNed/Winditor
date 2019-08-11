@@ -5,6 +5,5 @@ namespace WindEditor
 	public static class Globals
 	{
 		public static List<MapActorDescriptor> ActorDescriptors = new List<MapActorDescriptor>();
-
 	}
 }

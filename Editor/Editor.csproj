@@ -116,15 +116,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
-    <Compile Include="Editor\Editors\IEditor.cs" />
-    <Compile Include="Editor\Editors\TextEditor.cs" />
-    <Compile Include="Editor\Editors\TextEditor\Message.cs" />
-    <Compile Include="Editor\Editors\TextEditor\MessageTextValidationRule.cs" />
-    <Compile Include="Editor\Editors\TextEditor\TextEditorEnums.cs" />
-    <Compile Include="Editor\Editors\TextEditor\TextEditorWindow.xaml.cs">
-      <DependentUpon>TextEditorWindow.xaml</DependentUpon>
+    <Compile Include="Editor\Minitors\IMinitor.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\MessageTextValidationRule.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\TextMinitorEnums.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml.cs">
+      <DependentUpon>TextMinitorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Editor\Editors\TextEditor\TextReferenceControl.xaml.cs">
+    <Compile Include="Editor\Minitors\TextMinitor\TextReferenceControl.xaml.cs">
       <DependentUpon>TextReferenceControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\Entities\Actors\acorn_leaf.cs" />
@@ -566,28 +566,27 @@
     <Compile Include="Editor\Entities\Actor.cs" />
     <Compile Include="Editor\Entities\PathPoint.cs" />
     <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
-    <Compile Include="Editor\EnvironmentLighting.cs" />
     <Compile Include="Editor\Globals.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />
-    <Compile Include="Editor\PlaytestManager.cs" />
-    <Compile Include="Editor\Property Customization\Attributes.cs" />
-    <Compile Include="Editor\Property Customization\BooleanTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\ByteTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\EnumTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\FileReferenceTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\IntegerTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\IPropertyTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\LinearColorTypeCustomization.cs" />
-    <Compile Include="Editor\Editors\TextEditor\MessageReferenceTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\ShortTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\SingleTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\StringTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\UIntegerTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\UShortTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\WDOMNodeTypeCustomization.cs" />
-    <Compile Include="Editor\Property Customization\WTransformTypeCustomization.cs" />
-    <Compile Include="Editor\Selection.cs" />
-    <Compile Include="Editor\SettingsManager.cs" />
+    <Compile Include="Editor\Managers\PlaytestManager.cs" />
+    <Compile Include="Editor\PropertyCustomization\Attributes.cs" />
+    <Compile Include="Editor\PropertyCustomization\BooleanTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\ByteTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\EnumTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\FileReferenceTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\IntegerTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\IPropertyTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\LinearColorTypeCustomization.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\MessageReferenceTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\ShortTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\SingleTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\StringTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\UIntegerTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\UShortTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\WDOMNodeTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\WTransformTypeCustomization.cs" />
+    <Compile Include="Editor\UI\Selection.cs" />
+    <Compile Include="Editor\Managers\SettingsManager.cs" />
     <Compile Include="Editor\Templates\ActorTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -598,7 +597,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Editor\Loaders\SceneDataExporter.cs" />
+    <Compile Include="Editor\SceneLoaders\SceneDataExporter.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
@@ -629,11 +628,11 @@
     <Compile Include="View\WTransformControl.xaml.cs">
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Editor\Editors\TextEditor\TextEditorWindow.xaml">
+    <Page Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Editor\Editors\TextEditor\TextReferenceControl.xaml">
+    <Page Include="Editor\Minitors\TextMinitor\TextReferenceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -681,22 +680,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Editor\ActorEditor.cs" />
-    <Compile Include="Editor\Camera.cs" />
+    <Compile Include="Editor\Editors\ActorEditor.cs" />
+    <Compile Include="Editor\Rendering\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
-    <Compile Include="Editor\DebugDrawing.cs" />
+    <Compile Include="Editor\Rendering\DebugDrawing.cs" />
     <Compile Include="Editor\DOM\ActorNode.cs" />
     <Compile Include="Editor\DOM\DOMNode.cs" />
     <Compile Include="Editor\DOM\J3DNode.cs" />
     <Compile Include="Editor\DOM\SkyboxNode.cs" />
-    <Compile Include="Editor\Input.cs" />
+    <Compile Include="Editor\UI\Input.cs" />
     <Compile Include="Editor\Maps\Map.cs" />
     <Compile Include="Editor\Maps\Room.cs" />
     <Compile Include="Editor\Maps\Stage.cs" />
     <Compile Include="Editor\PropertyValues\LinearColorPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValueAggregate.cs" />
-    <Compile Include="Editor\IRenderable.cs" />
-    <Compile Include="Editor\Loaders\SceneDataLoader.cs" />
+    <Compile Include="Editor\Rendering\IRenderable.cs" />
+    <Compile Include="Editor\SceneLoaders\SceneDataLoader.cs" />
     <Compile Include="Editor\PropertyValues\PropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BaseValueAggregate.cs" />
     <Compile Include="Editor\PropertyValues\IntPropertyValue.cs" />
@@ -709,15 +708,15 @@
     <Compile Include="Editor\PropertyValues\BoolPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\IPropertyValue.cs" />
     <Compile Include="Editor\PropertyValues\BasePropertyValue.cs" />
-    <Compile Include="Editor\ResourceManager.cs" />
+    <Compile Include="Editor\Managers\ResourceManager.cs" />
     <Compile Include="Editor\Maps\Scene.cs" />
-    <Compile Include="Editor\SceneView.cs" />
-    <Compile Include="Editor\SelectionAggregate.cs" />
+    <Compile Include="Editor\Rendering\SceneView.cs" />
+    <Compile Include="Editor\UI\SelectionAggregate.cs" />
     <Compile Include="Editor\Serialization\IgnorableSerializerContractResolver.cs" />
     <Compile Include="Editor\Serialization\QuaternionConverter.cs" />
     <Compile Include="Editor\Serialization\Vector3Converter.cs" />
     <Compile Include="Editor\Serialization\Vector2Converter.cs" />
-    <Compile Include="Editor\TransformGizmo.cs" />
+    <Compile Include="Editor\UI\TransformGizmo.cs" />
     <Compile Include="Editor\UndoRedo\EditPropertyValueAction.cs" />
     <Compile Include="Editor\UndoRedo\IUndoable.cs" />
     <Compile Include="Editor\UndoRedo\LimitedSizeStack.cs" />
@@ -726,13 +725,13 @@
     <Compile Include="Editor\UndoRedo\TranslateActorAction.cs" />
     <Compile Include="Editor\UndoRedo\UndoCommand.cs" />
     <Compile Include="Editor\UndoRedo\UndoStack.cs" />
-    <Compile Include="Editor\ViewportOrientationWidget.cs" />
-    <Compile Include="Editor\WindEditor.cs" />
-    <Compile Include="Editor\LineBatcher.cs" />
-    <Compile Include="Editor\World.cs" />
-    <Compile Include="ViewModel\GridWidthCalculatorMultiConverter.cs" />
+    <Compile Include="Editor\Rendering\ViewportOrientationWidget.cs" />
+    <Compile Include="Editor\Editors\WindEditor.cs" />
+    <Compile Include="Editor\Rendering\LineBatcher.cs" />
+    <Compile Include="Editor\Maps\World.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="Editor\RelayCommand.cs" />
+    <Compile Include="ViewModel\GridWidthCalculatorMulticonverter.cs" />
+    <Compile Include="Editor\UI\RelayCommand.cs" />
     <Compile Include="ViewModel\PropertyValueConverters.cs" />
     <Compile Include="ViewModel\PropertyValueDataTemplateSelector.cs" />
     <Compile Include="View\MainWindow.xaml.cs">

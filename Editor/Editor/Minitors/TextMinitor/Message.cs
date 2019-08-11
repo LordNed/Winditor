@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using GameFormatReader.Common;
 
-namespace WindEditor.Editors.Text
+namespace WindEditor.Minitors.Text
 {
     [HideCategories(new string[] { })]
     public class Message

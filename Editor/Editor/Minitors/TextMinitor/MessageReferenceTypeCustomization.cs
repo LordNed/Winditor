@@ -9,13 +9,13 @@ using System.Windows.Data;
 using WindEditor.ViewModel;
 using WindEditor.Editor;
 
-namespace WindEditor.Editors.Text
+namespace WindEditor.Minitors.Text
 {
     class MessageReferenceTypeCustomization : IPropertyTypeCustomization
     {
-        private TextEditor m_TextEditorRef;
+        private TextMinitor m_TextEditorRef;
 
-        public MessageReferenceTypeCustomization(TextEditor editor_ref)
+        public MessageReferenceTypeCustomization(TextMinitor editor_ref)
         {
             m_TextEditorRef = editor_ref;
         }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WindEditor.Editors.Text
+namespace WindEditor.Minitors.Text
 {
     /// <summary>
     /// Interaction logic for TextReferenceControl.xaml

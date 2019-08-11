@@ -43,7 +43,7 @@ namespace WindEditor
             m_viewModel = (MainWindowViewModel)DataContext;
             m_viewModel.OnMainEditorWindowLoaded((GLControl)glControlHost.Child);
 
-            m_viewModel.WindEditor.InitEditorModules(m_viewModel.WindEditor.MainWorld.ActorEditor.DetailsViewModel);
+            m_viewModel.WindEditor.InitMinitorModules(m_viewModel.WindEditor.MainWorld.ActorEditor.DetailsViewModel);
             List<Control> tools_items = new List<Control>(m_viewModel.WindEditor.GetRegisteredEditorMenus());
 
             tools_items.Add(new Separator());

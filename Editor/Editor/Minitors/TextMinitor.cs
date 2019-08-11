@@ -11,10 +11,10 @@ using System.Windows.Data;
 using System.Windows.Input;
 using WArchiveTools;
 using WArchiveTools.FileSystem;
-using WindEditor.Editors.Text;
+using WindEditor.Minitors.Text;
 using WindEditor.ViewModel;
 
-namespace WindEditor.Editors
+namespace WindEditor.Minitors
 {
     public class MessageReference : INotifyPropertyChanged
     {
@@ -49,16 +49,16 @@ namespace WindEditor.Editors
         #endregion
     }
 
-    public class TextEditor : IEditor, INotifyPropertyChanged
+    public class TextMinitor : IMinitor, INotifyPropertyChanged
     {
-        #region IEditor Interface
+        #region IMinitor Interface
         public MenuItem GetMenuItem()
         {
             return new MenuItem()
             {
                 Header = "Text Editor",
                 ToolTip = "Editor for the game's main text bank.",
-                Command = OpenEditorCommand,
+                Command = OpenMinitorCommand,
             };
         }
 
@@ -99,7 +99,7 @@ namespace WindEditor.Editors
         }
         #endregion
 
-        public ICommand OpenEditorCommand { get { return new RelayCommand(x => OnRequestOpenTextEditor(),
+        public ICommand OpenMinitorCommand { get { return new RelayCommand(x => OnRequestOpenTextEditor(),
             x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
         public ICommand SaveMessageDataCommand { get { return new RelayCommand(x => OnRequestSaveMessageData()); } }
         public ICommand SaveMessageDataAsCommand { get { return new RelayCommand(x => OnRequestSaveMessageDataAs()); } }
@@ -156,9 +156,9 @@ namespace WindEditor.Editors
                     m_SearchFilter = value;
                     OnPropertyChanged("SearchFilter");
 
-                    if (m_EditorWindow != null)
+                    if (m_MinitorWindow != null)
                     {
-                        CollectionViewSource.GetDefaultView(m_EditorWindow.TextListView.ItemsSource).Refresh();
+                        CollectionViewSource.GetDefaultView(m_MinitorWindow.TextListView.ItemsSource).Refresh();
                     }
                 }
             }
@@ -193,7 +193,7 @@ namespace WindEditor.Editors
             }
         }
 
-        private TextEditorWindow m_EditorWindow;
+        private TextMinitorWindow m_MinitorWindow;
         private WDetailsViewViewModel m_DetailsModel;
 
         private List<Message> m_Messages;
@@ -209,9 +209,9 @@ namespace WindEditor.Editors
 
         public void OnRequestOpenTextEditor()
         {
-            if (m_EditorWindow != null && m_EditorWindow.IsVisible == true)
+            if (m_MinitorWindow != null && m_MinitorWindow.IsVisible == true)
             {
-                m_EditorWindow.Focus();
+                m_MinitorWindow.Focus();
                 return;
             }
 
@@ -231,14 +231,14 @@ namespace WindEditor.Editors
 
             WindowTitle = "Text Editor - " + Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Msg", "bmgres.arc");
 
-            m_EditorWindow = new TextEditorWindow();
-            m_EditorWindow.DataContext = this;
-            m_DetailsModel = (WDetailsViewViewModel)m_EditorWindow.DetailsPanel.DataContext;
+            m_MinitorWindow = new TextMinitorWindow();
+            m_MinitorWindow.DataContext = this;
+            m_DetailsModel = (WDetailsViewViewModel)m_MinitorWindow.DetailsPanel.DataContext;
 
             SelectedMessage = Messages[0];
-            m_EditorWindow.Show();
+            m_MinitorWindow.Show();
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(m_EditorWindow.TextListView.ItemsSource);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(m_MinitorWindow.TextListView.ItemsSource);
             view.Filter = FilterMessages;
 
             SearchFilter = "";
@@ -284,11 +284,11 @@ namespace WindEditor.Editors
 
             // This allows us to update the UI to show the new MessageID even if the new message
             // is on-screen when ScrollIntoView() is called.
-            ICollectionView view = CollectionViewSource.GetDefaultView(m_EditorWindow.TextListView.ItemsSource);
+            ICollectionView view = CollectionViewSource.GetDefaultView(m_MinitorWindow.TextListView.ItemsSource);
             view.Refresh();
 
-            m_EditorWindow.TextListView.SelectedItem = new_message;
-            m_EditorWindow.TextListView.ScrollIntoView(new_message);
+            m_MinitorWindow.TextListView.SelectedItem = new_message;
+            m_MinitorWindow.TextListView.ScrollIntoView(new_message);
         }
 
         private ushort GetHighestID()
@@ -508,8 +508,8 @@ namespace WindEditor.Editors
 
             if (requested_message != null)
             {
-                m_EditorWindow.TextListView.SelectedItem = requested_message;
-                m_EditorWindow.TextListView.ScrollIntoView(requested_message);
+                m_MinitorWindow.TextListView.SelectedItem = requested_message;
+                m_MinitorWindow.TextListView.ScrollIntoView(requested_message);
             }
             else
             {

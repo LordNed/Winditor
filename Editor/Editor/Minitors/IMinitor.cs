@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using WindEditor.ViewModel;
 
-namespace WindEditor.Editors
+namespace WindEditor.Minitors
 {
-    public interface IEditor
+    public interface IMinitor
     {
         MenuItem GetMenuItem();
 

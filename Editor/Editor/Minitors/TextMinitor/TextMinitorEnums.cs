@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindEditor.Editors.Text
+namespace WindEditor.Minitors.Text
 {
     public enum TextEncoding
     {

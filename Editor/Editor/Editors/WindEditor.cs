@@ -9,7 +9,7 @@ using System;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.ComponentModel;
 using Newtonsoft.Json;
-using WindEditor.Editors;
+using WindEditor.Minitors;
 using System.Windows.Controls;
 using System.Reflection;
 using WindEditor.ViewModel;
@@ -33,7 +33,7 @@ namespace WindEditor
         private List<WWorld> m_editorWorlds = new List<WWorld>();
         private string m_sourceDataPath;
 
-        private List<IEditor> m_RegisteredEditors;
+        private List<IMinitor> m_RegisteredMinitors;
 
         public WWindEditor()
         {
@@ -42,7 +42,7 @@ namespace WindEditor
 
             Playtester = new PlaytestManager();
 
-            m_RegisteredEditors = new List<IEditor>();
+            m_RegisteredMinitors = new List<IMinitor>();
 
 			// Load our global data
 			foreach (var file in Directory.GetFiles("resources/templates/"))
@@ -254,9 +254,9 @@ namespace WindEditor
                 world.ShutdownWorld();
         }
 
-        public bool TryCloseEditors()
+        public bool TryCloseMinitors()
         {
-            foreach (IEditor i in m_RegisteredEditors)
+            foreach (IMinitor i in m_RegisteredMinitors)
             {
                 if (!i.RequestCloseModule())
                     return false;
@@ -267,7 +267,7 @@ namespace WindEditor
 
         public void OnApplicationRequestPlaytest()
         {
-            if (!TryCloseEditors())
+            if (!TryCloseMinitors())
             {
                 return;
             }
@@ -275,7 +275,7 @@ namespace WindEditor
             Playtester.RequestStartPlaytest(MainWorld.Map, ActiveLayer);
         }
 
-        public void InitEditorModules(WDetailsViewViewModel details_view_model)
+        public void InitMinitorModules(WDetailsViewViewModel details_view_model)
         {
             Assembly asm = Assembly.GetExecutingAssembly();
 
@@ -283,11 +283,11 @@ namespace WindEditor
 
             foreach (Type type in asm.GetTypes())
             {
-                if (type.Namespace == "WindEditor.Editors" && type.GetInterface("IEditor") != null)
+                if (type.Namespace == "WindEditor.Minitors" && type.GetInterface("IMinitor") != null)
                 {
-                    IEditor new_editor = (IEditor)Activator.CreateInstance(type);
+                    IMinitor new_editor = (IMinitor)Activator.CreateInstance(type);
                     new_editor.InitModule(details_view_model);
-                    m_RegisteredEditors.Add(new_editor);
+                    m_RegisteredMinitors.Add(new_editor);
                 }
             }
         }
@@ -296,7 +296,7 @@ namespace WindEditor
         {
             List<MenuItem> items = new List<MenuItem>();
 
-            foreach (IEditor e in m_RegisteredEditors)
+            foreach (IMinitor e in m_RegisteredMinitors)
             {
                 items.Add(e.GetMenuItem());
             }

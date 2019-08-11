@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WindEditor.Editors.Text
+namespace WindEditor.Minitors.Text
 {
     /// <summary>
     /// Interaction logic for TextEditorWindow.xaml
     /// </summary>
-    public partial class TextEditorWindow : Window
+    public partial class TextMinitorWindow : Window
     {
-        public TextEditorWindow()
+        public TextMinitorWindow()
         {
             InitializeComponent();
 

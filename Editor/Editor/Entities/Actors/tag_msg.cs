@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindEditor.ViewModel;
-using WindEditor.Editors;
+using WindEditor.Minitors;
 
 namespace WindEditor
 {

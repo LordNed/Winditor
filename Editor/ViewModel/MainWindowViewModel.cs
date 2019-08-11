@@ -90,7 +90,7 @@ namespace WindEditor.ViewModel
                 return;
             }*/
 
-            if (!WindEditor.TryCloseEditors())
+            if (!WindEditor.TryCloseMinitors())
             {
                 e.Cancel = true;
                 return;

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WindEditor.ViewModel;
 using OpenTK;
-using WindEditor.Editors;
+using WindEditor.Minitors;
 
 namespace WindEditor
 {
