@@ -116,6 +116,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
+    <Compile Include="Editor\Editors\EditorBase.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
@@ -604,6 +605,9 @@
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailSingleRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
+    <Compile Include="View\ActorEditorControl.xaml.cs">
+      <DependentUpon>ActorEditorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FileReferenceControl.xaml.cs">
       <DependentUpon>FileReferenceControl.xaml</DependentUpon>
     </Compile>
@@ -633,6 +637,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\Minitors\TextMinitor\TextReferenceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActorEditorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
