@@ -39,7 +39,7 @@ namespace WindEditor.Editor.Modes
                 }
             }
         }
-        public Selection EditorSelection { get; protected set; }
+        public Selection EditorSelection { get; set; }
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
 

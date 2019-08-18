@@ -71,7 +71,6 @@ namespace WindEditor
         private void GlControlHost_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             WInput.SetMouseState(WinFormToWPFMouseButton(e), false);
-            object test = Details;
         }
 
         private void GlControlHost_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)

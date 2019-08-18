@@ -246,14 +246,8 @@
                 <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
 
                 <!-- Right Pane -->
-                <DockPanel Grid.Column="2" DataContext="{Binding Path=WindEditor.MainWorld.ActorEditor}">
-                    <DockPanel DockPanel.Dock="Bottom">
-                        <Label DockPanel.Dock="Left" Content="Layer:"/>
-                        <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Source={wpf:EnumBindingSource {x:Type local:MapLayer}}}" Margin="80,0,0,0" SelectedItem="{Binding Path=SelectedObjects.Layer}"/>
-                    </DockPanel>
-                    <GroupBox DockPanel.Dock="Top" Header="Properties" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <wview:WDetailsView x:Name="Details" DataContext="{Binding Path=DetailsViewModel}"/>
-                    </GroupBox>
+                <DockPanel Grid.Column="2" DataContext="{Binding Path=WindEditor.MainWorld.CurrentMode}">
+                    <ContentPresenter Content="{Binding Path=ModeControlsDock}"/>
                 </DockPanel>
             </Grid>
         </Grid>

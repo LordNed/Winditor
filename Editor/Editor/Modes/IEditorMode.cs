@@ -17,6 +17,7 @@ namespace WindEditor.Editor.Modes
     public interface IEditorMode : IDisposable, INotifyPropertyChanged
     {
         DockPanel ModeControlsDock { get; set; }
+        Selection EditorSelection { get; set; }
 
         event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
         void BroadcastUndoEventGenerated(WUndoCommand command);

@@ -19,7 +19,7 @@ namespace WindEditor
 		public bool SingleObjectSelected { get { return SelectedObjects.Count == 1; } }
 
 		private readonly IEditorMode m_mode;
-		private readonly WActorEditor m_actorEditor;
+		//private readonly WActorEditor m_actorEditor;
 
 		public Selection(IEditorMode mode)
 		{

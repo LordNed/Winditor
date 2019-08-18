@@ -1,29 +1,49 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
     public partial class WWorld : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public WMap Map { get { return m_currentMap; } }
         public WUndoStack UndoStack { get { return m_undoStack; } }
-        public WActorEditor ActorEditor { get { return m_actorEditor; } }
+        //public WActorEditor ActorEditor { get { return m_actorEditor; } }
+
+        public IEditorMode CurrentMode
+        {
+            get { return m_CurrentMode; }
+            set
+            {
+                if (value != m_CurrentMode)
+                {
+                    SwitchMode(m_CurrentMode, value);
+
+                    m_CurrentMode = value;
+                    OnPropertyChanged("CurrentMode");
+                }
+            }
+        }
 
         private List<WSceneView> m_sceneViews;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
-        private WActorEditor m_actorEditor;
+        //private WActorEditor m_actorEditor;
         private WLineBatcher m_persistentLines;
         private WMap m_currentMap;
+
+        private IEditorMode m_CurrentMode;
+        private ActorMode m_ActorMode;
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
             m_undoStack = new WUndoStack();
-            m_actorEditor = new WActorEditor(this);
+            //m_actorEditor = new WActorEditor(this);
+
+            m_ActorMode = new ActorMode();
+            CurrentMode = m_ActorMode;
 
             m_sceneViews = new List<WSceneView>();
 
@@ -69,10 +89,12 @@ namespace WindEditor
 
                 // Iterate through all of the things that need to be added to the viewport and call AddToRenderer on them.
                 if (m_currentMap != null)
-                    m_currentMap.AddToRenderer(view);
+                {
+                    m_CurrentMode.FilterSceneForRenderer(view, this);
+                }
 
                 // Add our Actor Editor and Persistent Lines.
-                m_actorEditor.UpdateForSceneView(view);
+                m_CurrentMode.UpdateForSceneView(view);
                 m_persistentLines.AddToRenderer(view);
 
                 view.DrawFrame();
@@ -139,7 +161,7 @@ namespace WindEditor
             m_undoStack.Clear();
 
             // Clear our array of currently selected objects as well.
-            m_actorEditor.EditorSelection.ClearSelection();
+            m_CurrentMode.EditorSelection.ClearSelection();
 
             // Clear persistent lines from the last map as well.
             m_persistentLines.Clear();
@@ -158,9 +180,42 @@ namespace WindEditor
             foreach (var view in m_sceneViews)
                 view.Dispose();
 
-            m_actorEditor.Dispose();
+            m_CurrentMode.Dispose();
 
             m_persistentLines.Dispose();
         }
+
+        private void SwitchMode(IEditorMode old_mode, IEditorMode new_mode)
+        {
+            if (new_mode == null)
+            {
+                throw new System.Exception("World.SwitchMode: new_mode parameter was null!");
+            }
+
+            if (old_mode != null)
+            {
+                old_mode.GenerateUndoEvent -= UndoEventHandler;
+            }
+
+            new_mode.GenerateUndoEvent += UndoEventHandler;
+        }
+
+        private void UndoEventHandler(object sender, GenerateUndoEventArgs e)
+        {
+            if (e.Command != null)
+            {
+                UndoStack.Push(e.Command);
+            }
+        }
+
+        #region INotifyPropertyChanged Support
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }
