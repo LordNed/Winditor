@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
@@ -17,14 +18,13 @@ namespace WindEditor
 		public List<WDOMNode> SelectedObjects { get; protected set; }
 		public bool SingleObjectSelected { get { return SelectedObjects.Count == 1; } }
 
-		private readonly WWorld m_world;
+		private readonly IEditorMode m_mode;
 		private readonly WActorEditor m_actorEditor;
 
-		public Selection(WWorld world, WActorEditor actorEditor)
+		public Selection(IEditorMode mode)
 		{
 			SelectedObjects = new List<WDOMNode>();
-			m_world = world;
-			m_actorEditor = actorEditor;
+            m_mode = mode;
 		}
 
 		public void AddToSelection(WDOMNode Node)
@@ -35,9 +35,9 @@ namespace WindEditor
 		public void AddToSelection(IEnumerable<WDOMNode> Nodes)
 		{
 			WSelectionChangedAction undoAction = new WSelectionChangedAction(this, null, Enumerable.ToArray(Nodes));
-			m_world.UndoStack.Push(undoAction);
+            m_mode.BroadcastUndoEventGenerated(undoAction);
 
-			BroadcastPropertyChangedNotifications();
+            BroadcastPropertyChangedNotifications();
 		}
 
 		public void RemoveFromSelection(WDOMNode Node)
@@ -48,17 +48,17 @@ namespace WindEditor
 		public void RemoveFromSelection(IEnumerable<WDOMNode> Nodes)
 		{
 			WSelectionChangedAction undoAction = new WSelectionChangedAction(this, Enumerable.ToArray(Nodes), null);
-			m_world.UndoStack.Push(undoAction);
+            m_mode.BroadcastUndoEventGenerated(undoAction);
 
-			BroadcastPropertyChangedNotifications();
+            BroadcastPropertyChangedNotifications();
 		}
 
 		public void ClearSelection()
 		{
 			WSelectionChangedAction undoAction = new WSelectionChangedAction(this, Enumerable.ToArray(SelectedObjects), null);
-			m_world.UndoStack.Push(undoAction);
+            m_mode.BroadcastUndoEventGenerated(undoAction);
 
-			BroadcastPropertyChangedNotifications();
+            BroadcastPropertyChangedNotifications();
 		}
 
 		private void BroadcastPropertyChangedNotifications()

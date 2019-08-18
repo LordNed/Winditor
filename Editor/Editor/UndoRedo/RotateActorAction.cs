@@ -1,5 +1,6 @@
 ﻿using OpenTK;
 using System.Collections.Generic;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
@@ -9,12 +10,12 @@ namespace WindEditor
         private Quaternion m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
-        private WActorEditor m_actorEditor;
+        private IEditorModeGizmo m_mode;
 
-        public WRotateActorAction(IEnumerable<WDOMNode> actors, WActorEditor actorEditor, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
+        public WRotateActorAction(IEnumerable<WDOMNode> actors, IEditorModeGizmo mode, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
-            m_actorEditor = actorEditor;
+            m_mode = mode;
             m_delta = delta;
             m_isDone = isDone;
             m_transformSpace = transformSpace;
@@ -65,7 +66,7 @@ namespace WindEditor
                 }
             }
 
-            m_actorEditor.UpdateGizmoTransform();
+            m_mode.UpdateGizmoTransform();
         }
 
         public override void Undo()
@@ -83,7 +84,7 @@ namespace WindEditor
                 }
             }
 
-            m_actorEditor.UpdateGizmoTransform();
+            m_mode.UpdateGizmoTransform();
         }
     }
 }

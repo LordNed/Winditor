@@ -567,6 +567,10 @@
     <Compile Include="Editor\Entities\PathPoint.cs" />
     <Compile Include="Editor\Entities\VisibleDOMNode.cs" />
     <Compile Include="Editor\Globals.cs" />
+    <Compile Include="Editor\Modes\ActorMode\ActorMode.cs" />
+    <Compile Include="Editor\Modes\ActorMode\ActorMode_Gizmo.cs" />
+    <Compile Include="Editor\Modes\IEditorMode.cs" />
+    <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />
     <Compile Include="Editor\Managers\PlaytestManager.cs" />
     <Compile Include="Editor\PropertyCustomization\Attributes.cs" />
@@ -680,7 +684,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Editor\Editors\ActorEditor.cs" />
+    <Compile Include="Editor\Modes\ActorEditor.cs" />
     <Compile Include="Editor\Rendering\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh.cs" />
     <Compile Include="Editor\Rendering\DebugDrawing.cs" />
@@ -726,7 +730,7 @@
     <Compile Include="Editor\UndoRedo\UndoCommand.cs" />
     <Compile Include="Editor\UndoRedo\UndoStack.cs" />
     <Compile Include="Editor\Rendering\ViewportOrientationWidget.cs" />
-    <Compile Include="Editor\Editors\WindEditor.cs" />
+    <Compile Include="Editor\Modes\WindEditor.cs" />
     <Compile Include="Editor\Rendering\LineBatcher.cs" />
     <Compile Include="Editor\Maps\World.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

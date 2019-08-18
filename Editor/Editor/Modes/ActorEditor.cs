@@ -65,26 +65,6 @@ namespace WindEditor
                 DetailsViewModel.ReflectObject(EditorSelection.PrimarySelectedObject);
         }
 
-        public void UpdateGizmoTransform()
-        {
-			OpenTK.Vector3 position = OpenTK.Vector3.Zero;
-			OpenTK.Quaternion localRotation = OpenTK.Quaternion.Identity;
-
-			foreach(var entity in EditorSelection.SelectedObjects)
-            {
-				position += entity.Transform.Position;
-            }
-
-			if(EditorSelection.SelectedObjects.Count > 0)
-			{
-				position /= EditorSelection.SelectedObjects.Count;
-				localRotation = EditorSelection.SelectedObjects[0].Transform.LocalRotation;
-			}
-
-			m_transformGizmo.SetPosition(position);
-			m_transformGizmo.SetLocalRotation(localRotation);
-        }
-
         public void CreateEntity()
         {
             if (!EditorSelection.SingleObjectSelected)

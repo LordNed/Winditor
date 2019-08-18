@@ -62,17 +62,19 @@ namespace WindEditor
 
         public void OnApplicationRequestOpenProject()
         {
-            var ofd = new CommonOpenFileDialog();
-            ofd.Title = "Choose Directory";
-            ofd.IsFolderPicker = true;
-            ofd.AddToMostRecentlyUsedList = false;
-            ofd.AllowNonFileSystemItems = false;
-            ofd.EnsureFileExists = true;
-            ofd.EnsurePathExists = true;
-            ofd.EnsureReadOnly = false;
-            ofd.EnsureValidNames = true;
-            ofd.Multiselect = false;
-            ofd.ShowPlacesList = true;
+            var ofd = new CommonOpenFileDialog()
+            {
+                Title = "Choose Directory",
+                IsFolderPicker = true,
+                AddToMostRecentlyUsedList = false,
+                AllowNonFileSystemItems = false,
+                EnsureFileExists = true,
+                EnsurePathExists = true,
+                EnsureReadOnly = false,
+                EnsureValidNames = true,
+                Multiselect = false,
+                ShowPlacesList = true
+            };
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {

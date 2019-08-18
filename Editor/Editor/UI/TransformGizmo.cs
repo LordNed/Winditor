@@ -32,7 +32,7 @@ namespace WindEditor
         All,
     }
 
-    class WTransformGizmo : IRenderable, IDisposable
+    public class WTransformGizmo : IRenderable, IDisposable
     {
         public FSelectedAxes SelectedAxes { get { return m_selectedAxes; } }
         public FTransformMode Mode { get { return m_mode; } }
