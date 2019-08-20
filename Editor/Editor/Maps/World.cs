@@ -183,7 +183,7 @@ namespace WindEditor
             foreach (var view in m_sceneViews)
                 view.Dispose();
 
-            m_CurrentMode.Dispose();
+            m_ActorMode.Dispose();
 
             m_persistentLines.Dispose();
         }
