@@ -111,7 +111,7 @@ namespace WindEditor
             room = 0;
             spawn = 0;
 
-            Selection selected = scene.World.ActorEditor.EditorSelection;
+            Selection selected = scene.World.CurrentMode.EditorSelection;
 
             if (selected.PrimarySelectedObject is SpawnPoint)
             {

@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
@@ -43,7 +44,7 @@ namespace WindEditor
             m_viewModel = (MainWindowViewModel)DataContext;
             m_viewModel.OnMainEditorWindowLoaded((GLControl)glControlHost.Child);
 
-            m_viewModel.WindEditor.InitMinitorModules(m_viewModel.WindEditor.MainWorld.ActorEditor.DetailsViewModel);
+            m_viewModel.WindEditor.InitMinitorModules();
             List<Control> tools_items = new List<Control>(m_viewModel.WindEditor.GetRegisteredEditorMenus());
 
             tools_items.Add(new Separator());
@@ -151,10 +152,10 @@ namespace WindEditor
         private bool m_ignoreSelectionChange;
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (m_ignoreSelectionChange || e.NewValue == null)
+            if (m_ignoreSelectionChange || e.NewValue == null || m_viewModel.WindEditor.MainWorld.CurrentMode.GetType() != typeof(ActorMode))
                 return;
 
-            var selection = m_viewModel.WindEditor.MainWorld.ActorEditor.EditorSelection;
+            var selection = m_viewModel.WindEditor.MainWorld.CurrentMode.EditorSelection;
 
             m_ignoreSelectionChange = true;
             selection.ClearSelection();
@@ -300,7 +301,6 @@ namespace WindEditor
             ElementToGroupNames.Remove(checkBox);
             checkBox.Checked -= MenuItemChecked;
         }
-
 
         static void MenuItemChecked(object sender, RoutedEventArgs e)
         {

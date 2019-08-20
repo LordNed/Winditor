@@ -11,19 +11,6 @@ namespace WindEditor.Editor.Modes
     {
         public WTransformGizmo TransformGizmo { get; set; }
 
-        public void UpdateForSceneView(WSceneView view)
-        {
-            // Update our Selection Gizmo first, so we can check if it is currently transforming when we check to see
-            // if the user's selection has changed.
-            UpdateSelectionGizmo(view);
-
-            // Check to see if they've left clicked and are changing their selection.
-            CheckForObjectSelectionChange(view);
-
-            // Add our gizmo to the renderer this frame.
-            ((IRenderable)TransformGizmo).AddToRenderer(view);
-        }
-
         public void UpdateGizmoTransform()
         {
             OpenTK.Vector3 position = OpenTK.Vector3.Zero;

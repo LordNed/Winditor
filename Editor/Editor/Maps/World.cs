@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using WindEditor.Editor.Modes;
+using WindEditor.Minitors;
 
 namespace WindEditor
 {
@@ -42,7 +43,7 @@ namespace WindEditor
             m_undoStack = new WUndoStack();
             //m_actorEditor = new WActorEditor(this);
 
-            m_ActorMode = new ActorMode();
+            m_ActorMode = new ActorMode(this);
             CurrentMode = m_ActorMode;
 
             m_sceneViews = new List<WSceneView>();
@@ -94,7 +95,7 @@ namespace WindEditor
                 }
 
                 // Add our Actor Editor and Persistent Lines.
-                m_CurrentMode.UpdateForSceneView(view);
+                m_CurrentMode.Update(view);
                 m_persistentLines.AddToRenderer(view);
 
                 view.DrawFrame();
@@ -163,6 +164,8 @@ namespace WindEditor
             // Clear our array of currently selected objects as well.
             m_CurrentMode.EditorSelection.ClearSelection();
 
+            m_ActorMode.DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
+
             // Clear persistent lines from the last map as well.
             m_persistentLines.Clear();
 
@@ -206,6 +209,11 @@ namespace WindEditor
             {
                 UndoStack.Push(e.Command);
             }
+        }
+
+        public void InitMinitorModule(IMinitor minitor)
+        {
+            minitor.InitModule(m_ActorMode.DetailsViewModel);
         }
 
         #region INotifyPropertyChanged Support

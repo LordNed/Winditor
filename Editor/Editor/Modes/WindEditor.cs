@@ -238,7 +238,6 @@ namespace WindEditor
 
         public void OnApplicationRequestCloseProject()
         {
-            MainWorld.ActorEditor.DetailsViewModel.Categories = new OrderedDictionary();
             MainWorld.UnloadMap();
         }
 
@@ -277,7 +276,7 @@ namespace WindEditor
             Playtester.RequestStartPlaytest(MainWorld.Map, ActiveLayer);
         }
 
-        public void InitMinitorModules(WDetailsViewViewModel details_view_model)
+        public void InitMinitorModules()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
 
@@ -288,7 +287,7 @@ namespace WindEditor
                 if (type.Namespace == "WindEditor.Minitors" && type.GetInterface("IMinitor") != null)
                 {
                     IMinitor new_editor = (IMinitor)Activator.CreateInstance(type);
-                    new_editor.InitModule(details_view_model);
+                    MainWorld.InitMinitorModule(new_editor);
                     m_RegisteredMinitors.Add(new_editor);
                 }
             }

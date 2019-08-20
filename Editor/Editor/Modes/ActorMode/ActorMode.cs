@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using WindEditor.View;
 using WindEditor.ViewModel;
+using System.Windows.Input;
 
 namespace WindEditor.Editor.Modes
 {
@@ -40,17 +41,102 @@ namespace WindEditor.Editor.Modes
             }
         }
         public Selection EditorSelection { get; set; }
+        public WWorld World { get; }
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
 
-        public ActorMode()
+        public ActorMode(WWorld world)
         {
+            World = world;
+            TransformGizmo = new WTransformGizmo(world);
+
             EditorSelection = new Selection(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
 
             DetailsViewModel = new WDetailsViewViewModel();
 
             ModeControlsDock = CreateUI();
+        }
+
+        public void Update(WSceneView view)
+        {
+            UpdateSelectionGizmo(view);
+
+            // If we have a gizmo and we're transforming it, don't check for selection change.
+            if (TransformGizmo != null && TransformGizmo.IsTransforming)
+                return;
+            if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
+            {
+                FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                var addedActor = Raycast(mouseRay);
+
+                // Check the behaviour of this click to determine appropriate selection modification behaviour.
+                // Click w/o Modifiers = Clear Selection, add result to selection
+                // Click /w Ctrl = Toggle Selection State
+                // Click /w Shift = Add to Selection
+                bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
+                bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
+
+                if (!ctrlPressed & !shiftPressed)
+                {
+                    EditorSelection.ClearSelection();
+                    if (addedActor != null)
+                        EditorSelection.AddToSelection(addedActor);
+                }
+                else if (addedActor != null && (ctrlPressed && !shiftPressed))
+                {
+                    if (addedActor.IsSelected)
+                        EditorSelection.RemoveFromSelection(addedActor);
+                    else
+                        EditorSelection.AddToSelection(addedActor);
+                }
+                else if (addedActor != null && shiftPressed)
+                {
+                    if (!EditorSelection.SelectedObjects.Contains(addedActor))
+                        EditorSelection.AddToSelection(addedActor);
+                }
+
+                UpdateGizmoTransform();
+            }
+
+            // Add our gizmo to the renderer this frame.
+            ((IRenderable)TransformGizmo).AddToRenderer(view);
+        }
+
+        private WDOMNode Raycast(FRay ray)
+        {
+            if (World.Map == null)
+                return null;
+
+            WDOMNode closestResult = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (var scene in World.Map.SceneList)
+            {
+                var allActors = scene.GetChildrenOfType<VisibleDOMNode>();
+
+                foreach (VisibleDOMNode actorNode in allActors)
+                {
+                    float intersectDistance;
+                    bool hitActor = actorNode.Raycast(ray, out intersectDistance);
+                    if (hitActor)
+                    {
+                        if (intersectDistance >= 0 && intersectDistance < closestDistance)
+                        {
+                            closestDistance = intersectDistance;
+                            closestResult = actorNode;
+                        }
+                    }
+                }
+            }
+
+            if (closestResult != null)
+            {
+                if (!closestResult.IsRendered)
+                    closestResult = null;
+            }
+
+            return closestResult;
         }
 
         public void FilterSceneForRenderer(WSceneView view, WWorld world)

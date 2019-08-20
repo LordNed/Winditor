@@ -18,6 +18,9 @@ namespace WindEditor.Editor.Modes
     {
         DockPanel ModeControlsDock { get; set; }
         Selection EditorSelection { get; set; }
+        WWorld World { get; }
+
+        void Update(WSceneView view);
 
         event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
         void BroadcastUndoEventGenerated(WUndoCommand command);

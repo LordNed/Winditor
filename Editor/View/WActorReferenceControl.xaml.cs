@@ -66,7 +66,7 @@ namespace WindEditor.View
                 return;
             }
 
-            Selection s = ActorReference.World.ActorEditor.EditorSelection;
+            Selection s = ActorReference.World.CurrentMode.EditorSelection;
 
             s.ClearSelection();
             s.AddToSelection(ActorReference);
