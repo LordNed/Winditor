@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Data;
 using System.Globalization;
+using WindEditor.Collision;
 
 namespace WindEditor
 {
@@ -69,7 +70,7 @@ namespace WindEditor
 
                 return false;
             }
-            else if (value is WDOMLayeredGroupNode)
+            else if (value is WDOMLayeredGroupNode || value is CategoryDOMNode || value is J3DNode || value is WCollisionMesh)
                 return true;
             else if (value is WRoom || value is WStage)
                 return true;

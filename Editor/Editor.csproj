@@ -115,6 +115,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Editor\Collision\CollisionGroupNode.cs" />
+    <Compile Include="Editor\Collision\CollisionProperty.cs" />
+    <Compile Include="Editor\Collision\CollisionPropertyEnums.cs" />
+    <Compile Include="Editor\Collision\CollisionTriangle.cs" />
+    <Compile Include="Editor\DOM\CategoryDOMNode.cs" />
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
@@ -569,6 +574,7 @@
     <Compile Include="Editor\Globals.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode_Gizmo.cs" />
+    <Compile Include="Editor\Modes\CollisionMode\CollisionMode.cs" />
     <Compile Include="Editor\Modes\IEditorMode.cs" />
     <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />

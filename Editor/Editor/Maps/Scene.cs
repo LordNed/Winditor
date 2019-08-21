@@ -138,7 +138,11 @@ namespace WindEditor
                 collision.Load(reader);
             }
 
-            collision.SetParent(this);
+            CategoryDOMNode col_category = new CategoryDOMNode("Collision", m_world);
+            col_category.SetParent(this);
+
+            collision.FileName = Path.GetFileNameWithoutExtension(filePath);
+            collision.SetParent(col_category);
         }
 
         protected virtual void LoadLevelEntitiesFromFile(string filePath)

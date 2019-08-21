@@ -35,6 +35,7 @@ namespace WindEditor
 
         private IEditorMode m_CurrentMode;
         private ActorMode m_ActorMode;
+        private CollisionMode m_CollisionMode;
 
         public WWorld()
         {
@@ -44,7 +45,9 @@ namespace WindEditor
             //m_actorEditor = new WActorEditor(this);
 
             m_ActorMode = new ActorMode(this);
-            CurrentMode = m_ActorMode;
+            m_CollisionMode = new CollisionMode(this);
+
+            CurrentMode = m_CollisionMode;
 
             m_sceneViews = new List<WSceneView>();
 
@@ -144,6 +147,11 @@ namespace WindEditor
             m_currentMap = new WMap(this);
             m_currentMap.LoadFromDirectory(folderPath, sourcePath);
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
+
+            m_CollisionMode.OnBecomeActive();
+
+            List<Collision.WCollisionMesh> col_list = Map.SceneList[0].GetChildrenOfType<Collision.WCollisionMesh>();
+            m_CollisionMode.DetailsViewModel.ReflectObject(col_list[0].m_Properties[0]);
         }
 
         public void SaveMapToDirectory(string directory)

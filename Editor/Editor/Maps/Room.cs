@@ -95,7 +95,7 @@ namespace WindEditor
                     case "dzb":
                         {
                             string fileName = Path.Combine(folder, "room.dzb");
-                            //LoadLevelCollisionFromFile(fileName);
+                            LoadLevelCollisionFromFile(fileName);
                         }
                         break;
                     case "dzr":
@@ -117,14 +117,20 @@ namespace WindEditor
             string[] folderNames = new[] { "bmd", "bdl" };
             bool[] validModels = new bool[modelNames.Length];
 
-            foreach(var subFolder in folderNames)
+            CategoryDOMNode col_category = new CategoryDOMNode("Models", m_world);
+            col_category.SetParent(this);
+
+            foreach (var subFolder in folderNames)
             {
                 string folderPath = Path.Combine(filePath, subFolder);
                 foreach (var modelName in modelNames)
                 {
                     J3D mesh = LoadModel(folderPath, modelName);
                     if (mesh != null)
-                        m_roomModels.Add(mesh);
+                    {
+                        J3DNode j3d_node = new J3DNode(mesh, m_world);
+                        j3d_node.SetParent(col_category);
+                    }
                 }
             }
         }

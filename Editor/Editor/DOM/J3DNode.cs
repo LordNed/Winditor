@@ -12,6 +12,7 @@ namespace WindEditor
         public J3DNode(J3D model, WWorld world) : base(world)
         {
             m_model = model;
+            Name = model.Name;
             IsRendered = true;
         }
 
@@ -20,6 +21,11 @@ namespace WindEditor
             base.Tick(deltaTime);
 
             m_model.Tick(deltaTime);
+        }
+
+        public override string ToString()
+        {
+            return m_model.Name;
         }
 
         #region IRenderable

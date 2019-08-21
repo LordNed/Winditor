@@ -181,6 +181,11 @@ namespace WindEditor.Editor.Modes
             return actor_dock_panel;
         }
 
+        public void OnBecomeActive()
+        {
+
+        }
+
         private void OnSelectionChanged()
         {
             // This will get invoked when an Undo happens which allows the gizmo to fix itself.

@@ -20,6 +20,8 @@ namespace WindEditor.Editor.Modes
         Selection EditorSelection { get; set; }
         WWorld World { get; }
 
+        void OnBecomeActive();
+
         void Update(WSceneView view);
 
         event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
