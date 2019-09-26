@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 using GameFormatReader.Common;
 
 namespace WindEditor.Collision
@@ -19,6 +20,7 @@ namespace WindEditor.Collision
     public class CollisionGroupNode : INotifyPropertyChanged
     {
         private string m_Name;
+        private ObservableCollection<CollisionGroupNode> m_Children;
 
         private Vector3 m_Translation;
         private Quaternion m_Rotation;
@@ -59,13 +61,24 @@ namespace WindEditor.Collision
         }
 
         public CollisionGroupNode Parent { get; private set; }
-        public List<CollisionGroupNode> Children { get; private set; }
+        public ObservableCollection<CollisionGroupNode> Children
+        {
+            get { return m_Children; }
+            set
+            {
+                if (value != m_Children)
+                {
+                    m_Children = value;
+                    OnPropertyChanged("Children");
+                }
+            }
+        }
 
         public List<CollisionTriangle> Triangles { get; private set; }
 
         public CollisionGroupNode(EndianBinaryReader reader)
         {
-            Children = new List<CollisionGroupNode>();
+            Children = new ObservableCollection<CollisionGroupNode>();
             Triangles = new List<CollisionTriangle>();
 
             int name_offset = reader.ReadInt32();

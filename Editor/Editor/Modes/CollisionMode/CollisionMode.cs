@@ -10,11 +10,13 @@ using WindEditor.Collision;
 using System.ComponentModel;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Collections.ObjectModel;
 
 namespace WindEditor.Editor.Modes
 {
     public class CollisionMode : IEditorMode
     {
+        private TreeView m_test_tree;
         private DockPanel m_ModeControlsDock;
         private WDetailsViewViewModel m_DetailsViewModel;
         private WCollisionMesh m_CollisionMesh;
@@ -108,19 +110,19 @@ namespace WindEditor.Editor.Modes
 
             System.Windows.FrameworkElementFactory tb = new System.Windows.FrameworkElementFactory(typeof(TextBlock));
             tb.SetBinding(TextBlock.TextProperty, new Binding("Name"));
-            tb.SetValue(TextBlock.ForegroundProperty, Brushes.Yellow);
+            tb.SetValue(TextBlock.ForegroundProperty, Brushes.Black);
 
             template.VisualTree = tb;
 
-            TreeView collision_tree = new TreeView()
+            m_test_tree = new TreeView()
             {
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 ItemTemplate = template
             };
-            collision_tree.SetBinding(TreeView.ItemsSourceProperty, new Binding("RootNode.Children") { Source = ActiveCollisionMesh, Mode = BindingMode.OneWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged });
+            m_test_tree.SelectedItemChanged += M_test_tree_SelectedItemChanged;
 
-            Grid.SetRow(collision_tree, 0);
+            Grid.SetRow(m_test_tree, 0);
 
             GridSplitter splitter = new GridSplitter()
             {
@@ -148,7 +150,7 @@ namespace WindEditor.Editor.Modes
 
             Grid.SetRow(actor_prop_box, 2);
 
-            col_grid.Children.Add(collision_tree);
+            col_grid.Children.Add(m_test_tree);
             col_grid.Children.Add(splitter);
             col_grid.Children.Add(actor_prop_box);
 
@@ -160,14 +162,18 @@ namespace WindEditor.Editor.Modes
             return collision_dock_panel;
         }
 
+        private void M_test_tree_SelectedItemChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<object> e)
+        {
+            throw new NotImplementedException();
+        }
+
         public void OnBecomeActive()
         {
             WScene focused = World.Map.SceneList[0];
             List<WCollisionMesh> meshes = focused.GetChildrenOfType<WCollisionMesh>();
             ActiveCollisionMesh = meshes[0];
 
-            CollisionGroupNode test = ActiveCollisionMesh.RootNode;
-            ActiveCollisionMesh.RootNode = test;
+            m_test_tree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
         }
 
         public void Update(WSceneView view)
