@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using GameFormatReader.Common;
+using System.Drawing;
 
 namespace WindEditor.Collision
 {
@@ -24,6 +25,8 @@ namespace WindEditor.Collision
             Vertices[0] = positions[reader.ReadInt16()];
             Vertices[1] = positions[reader.ReadInt16()];
             Vertices[2] = positions[reader.ReadInt16()];
+
+            VertexColor = WLinearColor.FromHexString("0xB0E0C0FF");
 
             Properties = properties[reader.ReadInt16()];
             ParentGroup = nodes[reader.ReadInt16()];

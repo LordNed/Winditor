@@ -11,13 +11,16 @@ namespace WindEditor.Collision
 {
     public class WCollisionMesh : WDOMNode, IRenderable
     {
-        private int m_vbo, m_ebo;
+        private int m_vbo, m_cbo, m_ebo;
         private Shader m_primitiveShader;
         private int m_triangleCount;
 
         private FAABox m_aaBox;
 
         private Vector3[] m_Vertices;
+        private Vector4[] m_Colors;
+        private Vector4[] m_Colors_Black;
+        private int[] m_Indices;
         private CollisionGroupNode[] m_Nodes;
         private CollisionGroupNode m_RootNode;
         public CollisionProperty[] m_Properties;
@@ -42,7 +45,7 @@ namespace WindEditor.Collision
         public WCollisionMesh(WWorld world) : base(world)
         {
             IsRendered = true;
-            //CreateShader();
+            CreateShader();
         }
 
         private void CreateShader()
@@ -74,6 +77,25 @@ namespace WindEditor.Collision
             LoadTriangles(stream, triangleOffset, triangleCount);
 
             m_triangleCount = triangleCount;
+            int vertex_count = m_triangleCount * 3;
+
+            m_Vertices = new Vector3[vertex_count];
+            m_Indices = new int[vertex_count];
+            m_Colors_Black = new Vector4[vertex_count];
+
+            m_Colors = GetVertexColors();
+
+            for (int i = 0; i < Triangles.Length; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    int cur_index = (i * 3) + j;
+                    m_Indices[cur_index] = cur_index;
+                    m_Vertices[cur_index] = Triangles[i].Vertices[j];
+                }
+            }
+
+            SetupGL();
         }
 
         private void LoadVertices(EndianBinaryReader reader, int offset, int count)
@@ -147,18 +169,39 @@ namespace WindEditor.Collision
             return new FAABox(min, max);
         }
 
+        private Vector4[] GetVertexColors()
+        {
+            List<Vector4> colors = new List<Vector4>();
+
+            foreach (CollisionTriangle tri in Triangles)
+            {
+                Vector4 tri_color = new Vector4(tri.VertexColor.R, tri.VertexColor.G, tri.VertexColor.B, tri.VertexColor.A);
+
+                colors.Add(tri_color);
+                colors.Add(tri_color);
+                colors.Add(tri_color);
+            }
+
+            return colors.ToArray();
+        }
+
         private void SetupGL()
         {
             GL.GenBuffers(1, out m_vbo);
             GL.GenBuffers(1, out m_ebo);
+            GL.GenBuffers(1, out m_cbo);
 
             // Upload Verts
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(12 * m_Vertices.Length), m_Vertices, BufferUsageHint.StaticDraw);
 
+            // Upload initial colors
+            GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * m_Colors.Length), m_Colors, BufferUsageHint.DynamicDraw);
+
             // Upload eBO
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_ebo);
-            //GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * triangleIndexes.Length), triangleIndexes, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(4 * m_Indices.Length), m_Indices, BufferUsageHint.StaticDraw);
         }
 
         public void ReleaseResources()
@@ -181,7 +224,9 @@ namespace WindEditor.Collision
 
         void IRenderable.Draw(WSceneView view)
         {
-            /*GL.FrontFace(FrontFaceDirection.Ccw);
+            m_Colors = GetVertexColors();
+
+            GL.FrontFace(FrontFaceDirection.Ccw);
             GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.Blend);
             GL.DepthMask(true);
@@ -203,22 +248,37 @@ namespace WindEditor.Collision
             GL.EnableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.VertexAttribPointer((int)ShaderAttributeIds.Position, 3, VertexAttribPointerType.Float, false, 12, 0);
 
+            // CBO
+            GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * m_Colors.Length), m_Colors, BufferUsageHint.DynamicDraw);
+            GL.EnableVertexAttribArray((int)ShaderAttributeIds.Color0);
+            GL.VertexAttribPointer((int)ShaderAttributeIds.Color0, 4, VertexAttribPointerType.Float, false, 16, 0);
+
             // EBO
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_ebo);
 
             // Draw!
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
-            GL.DrawElements(BeginMode.Lines, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+
+            GL.Disable(EnableCap.Blend);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * m_Colors_Black.Length), m_Colors_Black, BufferUsageHint.DynamicDraw);
+
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+            GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
 
             // Disable all of our shit.
             GL.PolygonOffset(0, 0);
             GL.Disable(EnableCap.PolygonOffsetFill);
-
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
             GL.Disable(EnableCap.CullFace);
             GL.Disable(EnableCap.Blend);
             GL.DepthMask(false);
-            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);*/
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
         }
 
         Vector3 IRenderable.GetPosition()

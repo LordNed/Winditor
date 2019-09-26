@@ -10,6 +10,7 @@ out vec4 Color0;
 uniform mat4 ModelMtx;
 uniform mat4 ViewMtx;
 uniform mat4 ProjMtx;
+uniform vec4 COLOR0_Amb;
 
 void main()
 {
