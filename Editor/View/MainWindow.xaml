@@ -138,15 +138,15 @@
             </MenuItem>
             <MenuItem Name="ToolsMenu" Header="_Tools"/>
         </Menu>
-        
+
         <!-- Main Application Body -->
         <Grid Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <!-- Left Pane -->
-                    <ColumnDefinition MinWidth="200" Width="200"/>
+                    <ColumnDefinition MinWidth="200" Width="225"/>
                     <!-- Main Viewport -->
-                    <ColumnDefinition Width="*" MinWidth="200"/>
+                    <ColumnDefinition MinWidth="200"/>
                     <!-- Right Pane -->
                     <ColumnDefinition Width="350"/>
                 </Grid.ColumnDefinitions>
@@ -156,13 +156,13 @@
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <!-- Object List-->
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="17*"/>
                         <!-- Scene List -->
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="44*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Object List -->
-                    <GroupBox Header="Object List" Grid.Row="0">
+                    <GroupBox Header="Object List" Grid.Row="1">
                         <TreeView ItemsSource="{Binding Path=WindEditor.MainWorld.Map.FocusedScene.Children}" SelectedItemChanged="TreeView_SelectedItemChanged" PreviewMouseRightButtonDown="TreeView_PreviewMouseRightButtonDown">
                             <TreeView.Resources>
                                 <HierarchicalDataTemplate DataType="{x:Type local:WDOMNode}" ItemsSource="{Binding Path=Children}">
@@ -207,7 +207,7 @@
                     <GridSplitter Height="5" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
 
                     <!-- Scene List-->
-                    <GroupBox Header="Scene List" Grid.Row="1" MinHeight="80" Margin="0,5,0,0">
+                    <GroupBox Header="Scene List" Grid.Row="0" MinHeight="80" Margin="0,5,0,0">
                         <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -233,7 +233,7 @@
 
                     <!-- 3D Viewport -->
                     <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
-                    
+
                     <!-- Viewport Controls -->
                     <DockPanel Grid.Row="1">
                         <Label Content="Time of Day" Margin="0,0,5,0" Padding="2" DockPanel.Dock="Left"/>

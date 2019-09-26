@@ -205,7 +205,7 @@ namespace WindEditor
                     actor_mesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
                 }
 			}
-			else
+			else if (m_objRender != null)
 				m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
 		}
 
