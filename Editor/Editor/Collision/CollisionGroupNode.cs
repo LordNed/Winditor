@@ -154,6 +154,32 @@ namespace WindEditor.Collision
             return out_list;
         }
 
+        public int GatherTriangles(List<CollisionTriangle> out_list)
+        {
+            Stack<CollisionGroupNode> stack = new Stack<CollisionGroupNode>();
+            stack.Push(this);
+            int capacity = 0;
+
+            while (stack.Count > 0)
+            {
+                CollisionGroupNode node = stack.Pop();
+
+                if (out_list != null)
+                {
+                    out_list.AddRange(node.Triangles);
+                }
+
+                capacity += node.Triangles.Count;
+
+                foreach (var child in node.Children)
+                {
+                    stack.Push(child);
+                }
+            }
+
+            return capacity;
+        }
+
         public override string ToString()
         {
             return Name;

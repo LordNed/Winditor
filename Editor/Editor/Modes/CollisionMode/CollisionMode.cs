@@ -90,12 +90,20 @@ namespace WindEditor.Editor.Modes
 
                     ClearSelection();
 
-                    List<CollisionTriangle> tris = group.GetTrianglesRecursive();
+                    System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
+                    s.Start();
+                    int capacity = group.GatherTriangles(null);
+                    List<CollisionTriangle> triangles = new List<CollisionTriangle>(capacity);
+                    group.GatherTriangles(triangles);
+                    s.Stop();
 
-                    foreach (CollisionTriangle t in tris)
-                    {
-                        AddTriangleToSelection(t);
-                    }
+                    Console.WriteLine($"Elapsed time for recursion: { s.Elapsed }");
+
+                    s.Restart();
+                    AddTriangleToSelection(triangles);
+                    s.Stop();
+
+                    Console.WriteLine($"Elapsed time for adding triangles to selection: { s.Elapsed }");
                 }
             }
         }
@@ -304,6 +312,17 @@ namespace WindEditor.Editor.Modes
             {
                 EditorSelection.SelectedObjects[0].Properties.PropertyChanged += OnTriPropertyChanged;
             }
+
+            OnSelectionChanged();
+        }
+
+        private void AddTriangleToSelection(IEnumerable<CollisionTriangle> tris)
+        {
+            foreach (CollisionTriangle t in tris)
+                t.Select();
+
+            EditorSelection.AddToSelection(tris);
+            EditorSelection.SelectedObjects[0].Properties.PropertyChanged += OnTriPropertyChanged;
 
             OnSelectionChanged();
         }

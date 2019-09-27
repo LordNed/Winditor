@@ -254,8 +254,12 @@ namespace WindEditor.Collision
             // EBO
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_ebo);
 
+            GL.DepthMask(false);
+
             DrawTris();
             DrawLines();
+
+            GL.DepthMask(true);
 
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
@@ -292,13 +296,14 @@ namespace WindEditor.Collision
         private void DrawLines()
         {
             // Enable stuff
+            GL.Disable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Enable(EnableCap.CullFace);
             GL.CullFace(CullFaceMode.Back);
             GL.FrontFace(FrontFaceDirection.Ccw);
 
             GL.Enable(EnableCap.PolygonOffsetLine);
-            GL.PolygonOffset(-5f, 1f);
+            GL.PolygonOffset(-10f, 1f);
 
             // CBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
@@ -310,7 +315,6 @@ namespace WindEditor.Collision
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
             // Disable stuff
-            GL.Disable(EnableCap.Blend);
             GL.Disable(EnableCap.CullFace);
 
             GL.Disable(EnableCap.PolygonOffsetLine);
