@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using Assimp;
 
 namespace WindEditor.Collision
 {
@@ -46,6 +47,13 @@ namespace WindEditor.Collision
         {
             IsRendered = true;
             CreateShader();
+        }
+
+        public WCollisionMesh(WWorld world, Scene sc) :base(world)
+        {
+            IsRendered = true;
+            CreateShader();
+            LoadFromScene(sc);
         }
 
         private void CreateShader()
@@ -215,6 +223,139 @@ namespace WindEditor.Collision
             GL.DeleteBuffer(m_ebo);
             GL.DeleteBuffer(m_vbo);
             GL.DeleteBuffer(m_cbo);
+        }
+
+        public void ToDZBFile(string file_name)
+        {
+            using (FileStream s = new FileStream(file_name, FileMode.Create, FileAccess.Write))
+            {
+                byte[] data = ToDZBArray();
+                s.Write(data, 0, data.Length);
+
+                s.Flush();
+            }
+        }
+
+        public byte[] ToDZBArray()
+        {
+            byte[] data = null;
+
+            using (MemoryStream m = new MemoryStream())
+            {
+                EndianBinaryWriter writer = new EndianBinaryWriter(m, Endian.Big);
+                WriteDZB(writer);
+
+                data = m.ToArray();
+            }
+
+            return data;
+        }
+
+        public void ToOBJFile(string file_name)
+        {
+            using (FileStream s = new FileStream(file_name, FileMode.Create, FileAccess.Write))
+            {
+                using (StringWriter sw = new StringWriter())
+                {
+                    foreach (Vector3 v in m_Vertices)
+                    {
+                        sw.WriteLine($"v {v.X} {v.Y} {v.Z}");
+                    }
+
+                    sw.WriteLine();
+
+                    RootNode.ToOBJFile(sw, m_Vertices);
+
+                    byte[] file_bytes = System.Text.Encoding.ASCII.GetBytes(sw.ToString());
+
+                    s.Write(file_bytes, 0, file_bytes.Length);
+                    s.Flush();
+                }
+            }
+        }
+
+        public void ToDAEFile(string file_name)
+        {
+            AssimpContext cont = new AssimpContext();
+            cont.ExportFile(BuildDAEScene(), file_name, "collada", 0);
+        }
+
+        private Scene BuildDAEScene()
+        {
+            Scene sc = new Scene();
+
+            sc.Materials.Add(new Material());
+            sc.Meshes.AddRange(GetAssimpMeshes());
+            sc.RootNode = new Node("col_root");
+            sc.RootNode.Children.Add(RootNode.GetAssimpNodesRecursive(sc.Meshes));
+
+            return sc;
+        }
+
+        private List<Mesh> GetAssimpMeshes()
+        {
+            List<Mesh> meshes = new List<Mesh>();
+
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                if (n.Triangles.Count <= 0)
+                {
+                    continue;
+                }
+
+                Mesh m = new Mesh(n.Name);
+                m.PrimitiveType = Assimp.PrimitiveType.Triangle;
+
+                foreach (CollisionTriangle t in n.Triangles)
+                {
+                    Vector3D v1 = new Vector3D(t.Vertices[0].X, t.Vertices[0].Y, t.Vertices[0].Z);
+                    Vector3D v2 = new Vector3D(t.Vertices[1].X, t.Vertices[1].Y, t.Vertices[1].Z);
+                    Vector3D v3 = new Vector3D(t.Vertices[2].X, t.Vertices[2].Y, t.Vertices[2].Z);
+
+                    if (!m.Vertices.Contains(v1))
+                        m.Vertices.Add(v1);
+                    if (!m.Vertices.Contains(v2))
+                        m.Vertices.Add(v2);
+                    if (!m.Vertices.Contains(v3))
+                        m.Vertices.Add(v3);
+
+                    m.Faces.Add(new Face(new int[]{ m.Vertices.IndexOf(v1), m.Vertices.IndexOf(v2), m.Vertices.IndexOf(v3) }));
+                }
+
+                meshes.Add(m);
+            }
+
+            return meshes;
+        }
+
+        public static WCollisionMesh FromDAEFile(WWorld world, string file_name)
+        {
+            AssimpContext cont = new AssimpContext();
+            Scene scn = cont.ImportFile(file_name);
+
+            return new WCollisionMesh(world, scn);
+        }
+
+        private void LoadFromScene(Scene scn)
+        {
+            RootNode = GetCollisionNodesRecursive(scn.RootNode);
+        }
+
+        private CollisionGroupNode GetCollisionNodesRecursive(Node node)
+        {
+            CollisionGroupNode new_node = new CollisionGroupNode(node.Name);
+
+            foreach (Node n in node.Children)
+            {
+                new_node.Children.Add(GetCollisionNodesRecursive(n));
+            }
+
+            return new_node;
+        }
+
+        private void WriteDZB(EndianBinaryWriter writer)
+        {
+
         }
 
         public override string ToString()

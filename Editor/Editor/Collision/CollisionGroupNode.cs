@@ -7,6 +7,8 @@ using OpenTK;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using GameFormatReader.Common;
+using System.IO;
+using Assimp;
 
 namespace WindEditor.Collision
 {
@@ -24,7 +26,7 @@ namespace WindEditor.Collision
         private ObservableCollection<CollisionGroupNode> m_Children;
 
         private Vector3 m_Translation;
-        private Quaternion m_Rotation;
+        private OpenTK.Quaternion m_Rotation;
         private Vector3 m_Scale;
 
         private short m_ParentIndex;
@@ -125,6 +127,13 @@ namespace WindEditor.Collision
             m_RoomTableIndex = reader.ReadByte();
         }
 
+        public CollisionGroupNode(string name)
+        {
+            Name = name;
+            Triangles = new List<CollisionTriangle>();
+            Children = new ObservableCollection<CollisionGroupNode>();
+        }
+
         public void InflateHierarchyRecursive(CollisionGroupNode last_parent, CollisionGroupNode[] flat_hierarchy)
         {
             if (last_parent != null)
@@ -178,6 +187,44 @@ namespace WindEditor.Collision
             }
 
             return capacity;
+        }
+
+        public void ToOBJFile(StringWriter writer, Vector3[] vertices)
+        {
+            if (Triangles.Count > 0)
+            {
+                writer.WriteLine($"g { Name }");
+
+                foreach (CollisionTriangle t in Triangles)
+                {
+                    writer.WriteLine($"f { Array.IndexOf(vertices, t.Vertices[0]) + 1 } {Array.IndexOf(vertices, t.Vertices[1]) + 1} {Array.IndexOf(vertices, t.Vertices[2]) + 1}");
+                }
+
+                writer.WriteLine();
+            }
+
+            foreach (CollisionGroupNode n in Children)
+            {
+                n.ToOBJFile(writer, vertices);
+            }
+        }
+
+        public Node GetAssimpNodesRecursive(List<Mesh> meshes)
+        {
+            Node cur_node = new Node(Name);
+
+            if (Triangles.Count > 0)
+            {
+                int index = meshes.IndexOf(meshes.Find(x => x.Name == Name));
+                cur_node.MeshIndices.Add(index);
+            }
+
+            foreach (CollisionGroupNode n in Children)
+            {
+                cur_node.Children.Add(n.GetAssimpNodesRecursive(meshes));
+            }
+
+            return cur_node;
         }
 
         public override string ToString()
