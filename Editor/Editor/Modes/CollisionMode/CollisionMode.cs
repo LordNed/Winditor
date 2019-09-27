@@ -90,20 +90,11 @@ namespace WindEditor.Editor.Modes
 
                     ClearSelection();
 
-                    System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
-                    s.Start();
                     int capacity = group.GatherTriangles(null);
                     List<CollisionTriangle> triangles = new List<CollisionTriangle>(capacity);
                     group.GatherTriangles(triangles);
-                    s.Stop();
 
-                    Console.WriteLine($"Elapsed time for recursion: { s.Elapsed }");
-
-                    s.Restart();
                     AddTriangleToSelection(triangles);
-                    s.Stop();
-
-                    Console.WriteLine($"Elapsed time for adding triangles to selection: { s.Elapsed }");
                 }
             }
         }
