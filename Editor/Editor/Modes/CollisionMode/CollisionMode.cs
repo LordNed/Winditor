@@ -162,9 +162,19 @@ namespace WindEditor.Editor.Modes
             return collision_dock_panel;
         }
 
+        private CollisionGroupNode test_selected;
+
         private void M_test_tree_SelectedItemChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<object> e)
         {
-            throw new NotImplementedException();
+            CollisionGroupNode selected = e.NewValue as CollisionGroupNode;
+
+            if (test_selected != null)
+            {
+                test_selected.DeselectRecursive();
+            }
+
+            test_selected = selected;
+            selected.SelectRecursive();
         }
 
         public void OnBecomeActive()

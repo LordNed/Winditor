@@ -124,6 +124,32 @@ namespace WindEditor.Collision
                 flat_hierarchy[m_NextSiblingIndex].InflateHierarchyRecursive(last_parent, flat_hierarchy);
         }
 
+        public void SelectRecursive()
+        {
+            foreach (CollisionTriangle t in Triangles)
+            {
+                t.Select();
+            }
+
+            foreach (CollisionGroupNode c in Children)
+            {
+                c.SelectRecursive();
+            }
+        }
+
+        public void DeselectRecursive()
+        {
+            foreach (CollisionTriangle t in Triangles)
+            {
+                t.Deselect();
+            }
+
+            foreach (CollisionGroupNode c in Children)
+            {
+                c.DeselectRecursive();
+            }
+        }
+
         public override string ToString()
         {
             return Name;

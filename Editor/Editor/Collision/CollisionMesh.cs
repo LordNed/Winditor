@@ -83,6 +83,11 @@ namespace WindEditor.Collision
             m_Indices = new int[vertex_count];
             m_Colors_Black = new Vector4[vertex_count];
 
+            for (int i = 0; i < m_Colors_Black.Length; i++)
+            {
+                m_Colors_Black[i] = new Vector4(0, 0, 0, 1);
+            }
+
             m_Colors = GetVertexColors();
 
             for (int i = 0; i < Triangles.Length; i++)
@@ -209,6 +214,7 @@ namespace WindEditor.Collision
             m_primitiveShader.Dispose();
             GL.DeleteBuffer(m_ebo);
             GL.DeleteBuffer(m_vbo);
+            GL.DeleteBuffer(m_cbo);
         }
 
         public override string ToString()
@@ -226,15 +232,6 @@ namespace WindEditor.Collision
         {
             m_Colors = GetVertexColors();
 
-            GL.FrontFace(FrontFaceDirection.Ccw);
-            GL.Enable(EnableCap.CullFace);
-            GL.Enable(EnableCap.Blend);
-            GL.DepthMask(true);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-
-            GL.Enable(EnableCap.PolygonOffsetFill);
-            GL.PolygonOffset(-5f, 1f);
-
             Matrix4 modelMatrix = Matrix4.Identity;
             Matrix4 viewMatrix = view.ViewMatrix;
             Matrix4 projMatrix = view.ProjMatrix;
@@ -244,41 +241,80 @@ namespace WindEditor.Collision
             GL.UniformMatrix4(m_primitiveShader.UniformViewMtx, false, ref viewMatrix);
             GL.UniformMatrix4(m_primitiveShader.UniformProjMtx, false, ref projMatrix);
 
+            // VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
             GL.EnableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.VertexAttribPointer((int)ShaderAttributeIds.Position, 3, VertexAttribPointerType.Float, false, 12, 0);
 
             // CBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * m_Colors.Length), m_Colors, BufferUsageHint.DynamicDraw);
             GL.EnableVertexAttribArray((int)ShaderAttributeIds.Color0);
             GL.VertexAttribPointer((int)ShaderAttributeIds.Color0, 4, VertexAttribPointerType.Float, false, 16, 0);
 
             // EBO
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_ebo);
 
+            DrawTris();
+            DrawLines();
+
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
+            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
+        }
+
+        private void DrawTris()
+        {
+            // Enable stuff
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.Enable(EnableCap.Blend);
+            GL.Enable(EnableCap.CullFace);
+            GL.CullFace(CullFaceMode.Back);
+            GL.FrontFace(FrontFaceDirection.Ccw);
+
+            GL.Enable(EnableCap.PolygonOffsetFill);
+            GL.PolygonOffset(-5f, 1f);
+
+            // CBO
+            GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * m_Colors.Length), m_Colors, BufferUsageHint.DynamicDraw);
+
             // Draw!
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
 
+            // Disable stuff
             GL.Disable(EnableCap.Blend);
+            GL.Disable(EnableCap.CullFace);
 
+            GL.Disable(EnableCap.PolygonOffsetFill);
+            GL.PolygonOffset(0f, 0f);
+        }
+
+        private void DrawLines()
+        {
+            // Enable stuff
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.Enable(EnableCap.CullFace);
+            GL.CullFace(CullFaceMode.Back);
+            GL.FrontFace(FrontFaceDirection.Ccw);
+
+            GL.Enable(EnableCap.PolygonOffsetLine);
+            GL.PolygonOffset(-5f, 1f);
+
+            // CBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_cbo);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * m_Colors_Black.Length), m_Colors_Black, BufferUsageHint.DynamicDraw);
 
+            // Draw!
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
             GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
-
-            // Disable all of our shit.
-            GL.PolygonOffset(0, 0);
-            GL.Disable(EnableCap.PolygonOffsetFill);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
-            GL.Disable(EnableCap.CullFace);
+            // Disable stuff
             GL.Disable(EnableCap.Blend);
-            GL.DepthMask(false);
-            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
-            GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
+            GL.Disable(EnableCap.CullFace);
+
+            GL.Disable(EnableCap.PolygonOffsetLine);
+            GL.PolygonOffset(0f, 0f);
         }
 
         Vector3 IRenderable.GetPosition()
