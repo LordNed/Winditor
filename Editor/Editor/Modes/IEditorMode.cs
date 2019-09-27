@@ -17,7 +17,7 @@ namespace WindEditor.Editor.Modes
     public interface IEditorMode : IDisposable, INotifyPropertyChanged
     {
         DockPanel ModeControlsDock { get; set; }
-        Selection EditorSelection { get; set; }
+        //Selection<T> EditorSelection { get; set; }
         WWorld World { get; }
 
         void OnBecomeActive();
@@ -28,5 +28,7 @@ namespace WindEditor.Editor.Modes
         void BroadcastUndoEventGenerated(WUndoCommand command);
 
         void FilterSceneForRenderer(WSceneView view, WWorld world);
+
+        void ClearSelection();
     }
 }

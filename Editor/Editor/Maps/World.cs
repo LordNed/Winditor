@@ -149,9 +149,6 @@ namespace WindEditor
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
 
             m_CollisionMode.OnBecomeActive();
-
-            List<Collision.WCollisionMesh> col_list = Map.SceneList[0].GetChildrenOfType<Collision.WCollisionMesh>();
-            m_CollisionMode.DetailsViewModel.ReflectObject(col_list[0].m_Properties[0]);
         }
 
         public void SaveMapToDirectory(string directory)
@@ -170,9 +167,10 @@ namespace WindEditor
             m_undoStack.Clear();
 
             // Clear our array of currently selected objects as well.
-            m_CurrentMode.EditorSelection.ClearSelection();
+            m_CurrentMode.ClearSelection();
 
             m_ActorMode.DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
+            m_CollisionMode.Shutdown();
 
             // Clear persistent lines from the last map as well.
             m_persistentLines.Clear();

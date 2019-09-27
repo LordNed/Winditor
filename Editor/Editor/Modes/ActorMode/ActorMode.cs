@@ -40,7 +40,7 @@ namespace WindEditor.Editor.Modes
                 }
             }
         }
-        public Selection EditorSelection { get; set; }
+        public Selection<WDOMNode> EditorSelection { get; set; }
         public WWorld World { get; }
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
@@ -50,7 +50,7 @@ namespace WindEditor.Editor.Modes
             World = world;
             TransformGizmo = new WTransformGizmo(world);
 
-            EditorSelection = new Selection(this);
+            EditorSelection = new Selection<WDOMNode>(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
 
             DetailsViewModel = new WDetailsViewViewModel();
@@ -193,6 +193,11 @@ namespace WindEditor.Editor.Modes
 
             if (EditorSelection.PrimarySelectedObject != null)
                 DetailsViewModel.ReflectObject(EditorSelection.PrimarySelectedObject);
+        }
+
+        public void ClearSelection()
+        {
+
         }
 
         #region INotifyPropertyChanged Support

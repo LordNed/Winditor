@@ -155,7 +155,8 @@ namespace WindEditor
             if (m_ignoreSelectionChange || e.NewValue == null || m_viewModel.WindEditor.MainWorld.CurrentMode.GetType() != typeof(ActorMode))
                 return;
 
-            var selection = m_viewModel.WindEditor.MainWorld.CurrentMode.EditorSelection;
+            ActorMode mode = m_viewModel.WindEditor.MainWorld.CurrentMode as ActorMode;
+            var selection = mode.EditorSelection;
 
             m_ignoreSelectionChange = true;
             selection.ClearSelection();

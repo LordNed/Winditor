@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
@@ -111,9 +112,15 @@ namespace WindEditor
             room = 0;
             spawn = 0;
 
-            Selection selected = scene.World.CurrentMode.EditorSelection;
+            Selection<WDOMNode> selected = null;
 
-            if (selected.PrimarySelectedObject is SpawnPoint)
+            if (scene.World.CurrentMode is ActorMode)
+            {
+                ActorMode mode = scene.World.CurrentMode as ActorMode;
+                selected = mode.EditorSelection;
+            }
+
+            if (selected != null && selected.PrimarySelectedObject is SpawnPoint)
             {
                 SpawnPoint spawn_pt = (SpawnPoint)selected.PrimarySelectedObject;
 

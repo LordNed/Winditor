@@ -2,17 +2,17 @@
 
 namespace WindEditor
 {
-    class WSelectionChangedAction : WUndoCommand
+    class WSelectionChangedAction<T> : WUndoCommand
     {
-		private readonly WDOMNode[] m_removedEntity;
-		private readonly WDOMNode[] m_addedEntity;
-		private readonly Selection m_selection;
+		private readonly T[] m_removedEntity;
+		private readonly T[] m_addedEntity;
+		private readonly Selection<T> m_selection;
 
-		public WSelectionChangedAction(Selection parentSelection, WDOMNode[] removedActors, WDOMNode[] addedActors)
+		public WSelectionChangedAction(Selection<T> parentSelection, T[] removedActors, T[] addedActors)
 		{
 			this.m_selection = parentSelection;
-			m_removedEntity = removedActors != null ? removedActors : new WDOMNode[0];
-			m_addedEntity = addedActors != null ? addedActors : new WDOMNode[0];
+			m_removedEntity = removedActors != null ? removedActors : new T[0];
+			m_addedEntity = addedActors != null ? addedActors : new T[0];
 		}
 
         public override void Redo()
@@ -22,13 +22,13 @@ namespace WindEditor
 			foreach(var entity in m_removedEntity)
 			{
 				m_selection.SelectedObjects.Remove(entity);
-				entity.IsSelected = false;
+				//entity.IsSelected = false;
 			}
 
 			foreach(var entity in m_addedEntity)
 			{
 				m_selection.SelectedObjects.Add(entity);
-				entity.IsSelected = true;
+				//entity.IsSelected = true;
 			}
 		}
 
@@ -39,13 +39,13 @@ namespace WindEditor
 			foreach (var entity in m_addedEntity)
 			{
 				m_selection.SelectedObjects.Remove(entity);
-				entity.IsSelected = false;
+				//entity.IsSelected = false;
 			}
 
 			foreach (var entity in m_removedEntity)
 			{
 				m_selection.SelectedObjects.Add(entity);
-				entity.IsSelected = true;
+				//entity.IsSelected = true;
 			}
         }
     }

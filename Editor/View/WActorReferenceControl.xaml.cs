@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Reflection;
 using System.ComponentModel;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor.View
 {
@@ -61,12 +62,13 @@ namespace WindEditor.View
 
         private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ActorReference == null)
+            if (ActorReference == null || ActorReference.World.CurrentMode.GetType() != typeof(ActorMode))
             {
                 return;
             }
 
-            Selection s = ActorReference.World.CurrentMode.EditorSelection;
+            ActorMode mode = ActorReference.World.CurrentMode as ActorMode;
+            var s = mode.EditorSelection;
 
             s.ClearSelection();
             s.AddToSelection(ActorReference);

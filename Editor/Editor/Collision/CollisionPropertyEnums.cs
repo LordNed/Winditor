@@ -51,7 +51,7 @@ namespace WindEditor.Collision
         Wall = 0x2,
         Grabable = 0x3,
         Climbable_Ladder = 0x4,
-        Code6 = 0x5,
+        Ladder_Top = 0x5,
         Code7 = 0x6,
         Code8 = 0x7,
         Code9 = 0x8,

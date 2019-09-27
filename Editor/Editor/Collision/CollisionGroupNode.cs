@@ -17,6 +17,7 @@ namespace WindEditor.Collision
         Lava
     }
 
+    [HideCategories()]
     public class CollisionGroupNode : INotifyPropertyChanged
     {
         private string m_Name;
@@ -34,6 +35,7 @@ namespace WindEditor.Collision
 
         private int m_RoomTableIndex;
 
+        [WProperty("Group Settings", "Terrain Type", true, "Whether the surface is solid, water, or lava.")]
         public TerrainType Terrain
         {
             get { return m_Terrain; }
@@ -43,6 +45,20 @@ namespace WindEditor.Collision
                 {
                     m_Terrain = value;
                     OnPropertyChanged("Terrain");
+                }
+            }
+        }
+
+        [WProperty("Group Settings", "Room Table Index", true, "Unknown")]
+        public int RoomTableIndex
+        {
+            get { return m_RoomTableIndex; }
+            set
+            {
+                if (value != m_RoomTableIndex)
+                {
+                    m_RoomTableIndex = value;
+                    OnPropertyChanged("RoomTableIndex");
                 }
             }
         }
@@ -124,30 +140,18 @@ namespace WindEditor.Collision
                 flat_hierarchy[m_NextSiblingIndex].InflateHierarchyRecursive(last_parent, flat_hierarchy);
         }
 
-        public void SelectRecursive()
+        public List<CollisionTriangle> GetTrianglesRecursive()
         {
-            foreach (CollisionTriangle t in Triangles)
+            List<CollisionTriangle> out_list = new List<CollisionTriangle>();
+
+            out_list.AddRange(Triangles);
+
+            foreach (CollisionGroupNode node in Children)
             {
-                t.Select();
+                out_list.AddRange(node.GetTrianglesRecursive());
             }
 
-            foreach (CollisionGroupNode c in Children)
-            {
-                c.SelectRecursive();
-            }
-        }
-
-        public void DeselectRecursive()
-        {
-            foreach (CollisionTriangle t in Triangles)
-            {
-                t.Deselect();
-            }
-
-            foreach (CollisionGroupNode c in Children)
-            {
-                c.DeselectRecursive();
-            }
+            return out_list;
         }
 
         public override string ToString()

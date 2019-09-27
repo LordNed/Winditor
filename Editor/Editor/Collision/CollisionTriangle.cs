@@ -30,7 +30,7 @@ namespace WindEditor.Collision
 
             VertexColor = WLinearColor.FromHexString("0xB0E0C0FF");
 
-            Properties = properties[reader.ReadInt16()];
+            Properties = properties[reader.ReadInt16()].Clone();
             ParentGroup = nodes[reader.ReadInt16()];
             ParentGroup.Triangles.Add(this);
         }

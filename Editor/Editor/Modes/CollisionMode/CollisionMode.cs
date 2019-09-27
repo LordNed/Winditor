@@ -11,6 +11,8 @@ using System.ComponentModel;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using System.Windows;
 
 namespace WindEditor.Editor.Modes
 {
@@ -59,7 +61,7 @@ namespace WindEditor.Editor.Modes
             }
         }
 
-        public Selection EditorSelection { get; set; }
+        public Selection<CollisionTriangle> EditorSelection { get; set; }
         public WWorld World { get; }
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
@@ -68,12 +70,34 @@ namespace WindEditor.Editor.Modes
         {
             World = world;
 
-            EditorSelection = new Selection(this);
+            EditorSelection = new Selection<CollisionTriangle>(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
 
             DetailsViewModel = new WDetailsViewViewModel();
 
             ModeControlsDock = CreateUI();
+        }
+
+        private void OnItemMouseDoubleClick(object sender, MouseButtonEventArgs args)
+        {
+            if (args.OriginalSource is TextBlock)
+            {
+                TextBlock orig = args.OriginalSource as TextBlock;
+
+                if (orig.DataContext != null && orig.DataContext is CollisionGroupNode)
+                {
+                    CollisionGroupNode group = orig.DataContext as CollisionGroupNode;
+
+                    ClearSelection();
+
+                    List<CollisionTriangle> tris = group.GetTrianglesRecursive();
+
+                    foreach (CollisionTriangle t in tris)
+                    {
+                        AddTriangleToSelection(t);
+                    }
+                }
+            }
         }
 
         private DockPanel CreateUI()
@@ -121,6 +145,7 @@ namespace WindEditor.Editor.Modes
                 ItemTemplate = template
             };
             m_test_tree.SelectedItemChanged += M_test_tree_SelectedItemChanged;
+            m_test_tree.MouseDoubleClick += OnItemMouseDoubleClick;
 
             Grid.SetRow(m_test_tree, 0);
 
@@ -162,19 +187,40 @@ namespace WindEditor.Editor.Modes
             return collision_dock_panel;
         }
 
-        private CollisionGroupNode test_selected;
-
         private void M_test_tree_SelectedItemChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<object> e)
         {
             CollisionGroupNode selected = e.NewValue as CollisionGroupNode;
 
-            if (test_selected != null)
+            /*ClearSelection();
+
+            List<CollisionTriangle> new_selected_tris = selected.GetTrianglesRecursive();
+
+            foreach (CollisionTriangle t in new_selected_tris)
             {
-                test_selected.DeselectRecursive();
+                AddTriangleToSelection(t);
             }
 
-            test_selected = selected;
-            selected.SelectRecursive();
+            if (EditorSelection.SelectedObjects.Count > 1)
+            {
+                EditorSelection.SelectedObjects[0].Properties.PropertyChanged += OnTriPropertyChanged;
+            }*/
+
+            ClearSelection();
+
+            m_DetailsViewModel.ReflectObject(selected);
+
+            //OnSelectionChanged();
+        }
+
+        private void OnTriPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var new_value = sender.GetType().GetProperty(e.PropertyName).GetValue(sender, null);
+
+            for (int i = 1; i < EditorSelection.SelectedObjects.Count; i++)
+            {
+                CollisionProperty tri_props = EditorSelection.SelectedObjects[i].Properties;
+                tri_props.GetType().GetProperty(e.PropertyName).SetValue(tri_props, new_value, null);
+            }
         }
 
         public void OnBecomeActive()
@@ -184,11 +230,126 @@ namespace WindEditor.Editor.Modes
             ActiveCollisionMesh = meshes[0];
 
             m_test_tree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
+
+            World.Map.PropertyChanged += OnFocusedSceneChanged;
+        }
+
+        private void OnFocusedSceneChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName != "FocusedScene")
+            {
+                return;
+            }
+
+            ClearSelection();
+
+            if (World.Map.FocusedScene is WStage)
+            {
+                m_test_tree.ItemsSource = null;
+                return;
+            }
+
+            ActiveCollisionMesh = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>()[0];
+            m_test_tree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
         }
 
         public void Update(WSceneView view)
         {
-            //throw new NotImplementedException();
+            if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
+            {
+                FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                var addedActor = Raycast(mouseRay);
+
+                // Check the behaviour of this click to determine appropriate selection modification behaviour.
+                // Click w/o Modifiers = Clear Selection, add result to selection
+                // Click /w Ctrl = Toggle Selection State
+                // Click /w Shift = Add to Selection
+                bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
+                bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
+
+                if (!ctrlPressed & !shiftPressed)
+                {
+                    ClearSelection();
+                    if (addedActor != null)
+                        AddTriangleToSelection(addedActor);
+                }
+                else if (addedActor != null && (ctrlPressed && !shiftPressed))
+                {
+                    if (addedActor.IsSelected)
+                        RemoveTriangleFromSelection(addedActor);
+                    else
+                        AddTriangleToSelection(addedActor);
+                }
+                else if (addedActor != null && shiftPressed)
+                {
+                    if (!EditorSelection.SelectedObjects.Contains(addedActor))
+                        AddTriangleToSelection(addedActor);
+                }
+            }
+        }
+
+        public void Shutdown()
+        {
+            m_test_tree.ItemsSource = null;
+            m_DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
+        }
+
+        private void AddTriangleToSelection(CollisionTriangle tri)
+        {
+            tri.Select();
+            int prev_count = EditorSelection.SelectedObjects.Count;
+            EditorSelection.AddToSelection(tri);
+
+            if (prev_count == 1)
+            {
+                EditorSelection.SelectedObjects[0].Properties.PropertyChanged += OnTriPropertyChanged;
+            }
+
+            OnSelectionChanged();
+        }
+
+        private void RemoveTriangleFromSelection(CollisionTriangle tri)
+        {
+            tri.Deselect();
+
+            if (tri == EditorSelection.SelectedObjects[0])
+            {
+                EditorSelection.SelectedObjects[0].Properties.PropertyChanged -= OnTriPropertyChanged;
+            }
+
+            EditorSelection.SelectedObjects.Remove(tri);
+
+            if (EditorSelection.SelectedObjects.Count > 1)
+            {
+                EditorSelection.SelectedObjects[0].Properties.PropertyChanged += OnTriPropertyChanged;
+            }
+
+            OnSelectionChanged();
+        }
+
+        private CollisionTriangle Raycast(FRay ray)
+        {
+            if (World.Map == null)
+                return null;
+
+            CollisionTriangle closestResult = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (var tri in ActiveCollisionMesh.Triangles)
+            {
+                float dist = float.MaxValue;
+
+                if (WMath.RayIntersectsTriangle(ray, tri.Vertices[1], tri.Vertices[0], tri.Vertices[2], true, out dist))
+                {
+                    if (dist < closestDistance)
+                    {
+                        closestDistance = dist;
+                        closestResult = tri;
+                    }
+                }
+            }
+
+            return closestResult;
         }
 
         public void FilterSceneForRenderer(WSceneView view, WWorld world)
@@ -205,10 +366,31 @@ namespace WindEditor.Editor.Modes
             GenerateUndoEvent?.Invoke(this, new GenerateUndoEventArgs(command));
         }
 
+        public void ClearSelection()
+        {
+            foreach (CollisionTriangle t in EditorSelection.SelectedObjects)
+            {
+                t.Deselect();
+            }
+
+            if (EditorSelection.SelectedObjects.Count > 1)
+            {
+                EditorSelection.SelectedObjects[0].Properties.PropertyChanged -= OnTriPropertyChanged;
+            }
+
+            EditorSelection.ClearSelection();
+
+            OnSelectionChanged();
+        }
+
         private void OnSelectionChanged()
         {
             if (EditorSelection.PrimarySelectedObject != null)
-                DetailsViewModel.ReflectObject(EditorSelection.PrimarySelectedObject);
+                DetailsViewModel.ReflectObject(EditorSelection.PrimarySelectedObject.Properties);
+            else if (EditorSelection.SelectedObjects.Count > 1)
+                DetailsViewModel.ReflectObject(EditorSelection.SelectedObjects[0].Properties);
+            else
+                DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
         }
 
         #region INotifyPropertyChanged Support

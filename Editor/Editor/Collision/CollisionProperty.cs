@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace WindEditor.Collision
 {
     [HideCategories()]
-    public struct CollisionProperty : IEquatable<CollisionProperty>
+    public class CollisionProperty : IEquatable<CollisionProperty>, INotifyPropertyChanged
     {
         private int m_Bitfield1;
         private int m_Bitfield2;
@@ -22,6 +22,14 @@ namespace WindEditor.Collision
             m_Bitfield2 = reader.ReadInt32();
             m_Bitfield3 = reader.ReadInt32();
             m_CameraBehavior = reader.ReadInt32();
+        }
+
+        public CollisionProperty(int b1, int b2, int b3, int cb)
+        {
+            m_Bitfield1 = b1;
+            m_Bitfield2 = b2;
+            m_Bitfield3 = b3;
+            m_CameraBehavior = cb;
         }
 
         public void Write(EndianBinaryWriter writer)
@@ -42,9 +50,22 @@ namespace WindEditor.Collision
             return value;
         }
 
+        public CollisionProperty Clone()
+        {
+            return new CollisionProperty(m_Bitfield1, m_Bitfield2, m_Bitfield3, m_CameraBehavior);
+        }
+
         public bool Equals(CollisionProperty other)
         {
-            throw new NotImplementedException();
+            if (m_Bitfield1 == other.m_Bitfield1
+                && m_Bitfield2 == other.m_Bitfield2
+                && m_Bitfield3 == other.m_Bitfield3
+                && m_CameraBehavior == other.m_CameraBehavior)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         #region Bitfield 1
@@ -61,6 +82,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield1 &= ~(0x1F00);
                     m_Bitfield1 |= (Clamp((int)value, 0x1F) << 8);
+
+                    OnPropertyChanged("SoundID");
                 }
             }
         }
@@ -77,6 +100,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield1 &= ~(0xFF);
                     m_Bitfield1 |= Clamp(value, 0xFF);
+
+                    OnPropertyChanged("CamID");
                 }
             }
         }
@@ -93,6 +118,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield1 &= ~(0x7E000);
                     m_Bitfield1 |= (Clamp(value, 0x3F) << 13);
+
+                    OnPropertyChanged("ExitID");
                 }
             }
         }
@@ -109,6 +136,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield1 &= ~(0x7F80000);
                     m_Bitfield1 |= (Clamp(value, 0xFF) << 19);
+
+                    OnPropertyChanged("PolyColor");
                 }
             }
         }
@@ -129,6 +158,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield2 &= ~(0xFF);
                     m_Bitfield2 |= Clamp(value, 0xFF);
+
+                    OnPropertyChanged("LinkNo");
                 }
             }
         }
@@ -145,6 +176,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield2 &= ~(0xF00);
                     m_Bitfield2 |= (Clamp((int)value, 0xF) << 8);
+
+                    OnPropertyChanged("WallCode");
                 }
             }
         }
@@ -161,6 +194,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield2 &= ~(0xF000);
                     m_Bitfield2 |= (Clamp((int)value, 0xF) << 12);
+
+                    OnPropertyChanged("SpecialCode");
                 }
             }
         }
@@ -177,6 +212,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield2 &= ~(0x1F0000);
                     m_Bitfield2 |= (Clamp((int)value, 0x1F) << 16);
+
+                    OnPropertyChanged("AttributeCode");
                 }
             }
         }
@@ -193,6 +230,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield2 &= ~(0x3E00000);
                     m_Bitfield2 |= (Clamp((int)value, 0x1F) << 21);
+
+                    OnPropertyChanged("GroundCode");
                 }
             }
         }
@@ -213,6 +252,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield3 &= ~(0xFF);
                     m_Bitfield3 |= Clamp(value, 0xFF);
+
+                    OnPropertyChanged("CamMoveBG");
                 }
             }
         }
@@ -229,6 +270,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield3 &= ~(0xFF00);
                     m_Bitfield3 |= (Clamp(value, 0xFF) << 8);
+
+                    OnPropertyChanged("RoomCamID");
                 }
             }
         }
@@ -245,6 +288,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield3 &= ~(0xFF0000);
                     m_Bitfield3 |= (Clamp(value, 0xFF) << 16);
+
+                    OnPropertyChanged("RoomPathID");
                 }
             }
         }
@@ -261,6 +306,8 @@ namespace WindEditor.Collision
                 {
                     m_Bitfield3 &= (int)~(0xFF000000);
                     m_Bitfield3 |= (Clamp(value, 0xFF, -1) << 24);
+
+                    OnPropertyChanged("RoomPathPntNo");
                 }
             }
         }
@@ -276,8 +323,19 @@ namespace WindEditor.Collision
                 if (value != m_CameraBehavior)
                 {
                     m_CameraBehavior = value;
+                    OnPropertyChanged("CameraBehavior");
                 }
             }
         }
+
+        #region INotifyPropertyChanged Support
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }
