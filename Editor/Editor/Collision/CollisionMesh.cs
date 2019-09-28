@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using Assimp;
+using Collada141;
 
 namespace WindEditor.Collision
 {
@@ -15,6 +16,7 @@ namespace WindEditor.Collision
         private int m_vbo, m_cbo, m_ebo;
         private Shader m_primitiveShader;
         private int m_triangleCount;
+        private UpAxisType m_UpAxis;
 
         private FAABox m_aaBox;
 
@@ -22,7 +24,7 @@ namespace WindEditor.Collision
         private Vector4[] m_Colors;
         private Vector4[] m_Colors_Black;
         private int[] m_Indices;
-        private CollisionGroupNode[] m_Nodes;
+        private List<CollisionGroupNode> m_Nodes;
         private CollisionGroupNode m_RootNode;
         public CollisionProperty[] m_Properties;
 
@@ -41,19 +43,25 @@ namespace WindEditor.Collision
             }
         }
 
-        public CollisionTriangle[] Triangles { get; private set; }
+        public List<CollisionTriangle> Triangles { get; private set; }
 
         public WCollisionMesh(WWorld world) : base(world)
         {
+            m_UpAxis = UpAxisType.Y_UP;
+            Triangles = new List<CollisionTriangle>();
+            m_Nodes = new List<CollisionGroupNode>();
             IsRendered = true;
             CreateShader();
         }
 
-        public WCollisionMesh(WWorld world, Scene sc) :base(world)
+        public WCollisionMesh(WWorld world, COLLADA dae) :base(world)
         {
+            m_UpAxis = UpAxisType.Y_UP;
+            Triangles = new List<CollisionTriangle>();
+            m_Nodes = new List<CollisionGroupNode>();
             IsRendered = true;
             CreateShader();
-            LoadFromScene(sc);
+            LoadFromCollada(dae);
         }
 
         private void CreateShader()
@@ -85,6 +93,11 @@ namespace WindEditor.Collision
             LoadTriangles(stream, triangleOffset, triangleCount);
 
             m_triangleCount = triangleCount;
+            FinalizeLoad();
+        }
+
+        private void FinalizeLoad()
+        {
             int vertex_count = m_triangleCount * 3;
 
             m_Vertices = new Vector3[vertex_count];
@@ -98,7 +111,7 @@ namespace WindEditor.Collision
 
             m_Colors = GetVertexColors();
 
-            for (int i = 0; i < Triangles.Length; i++)
+            for (int i = 0; i < Triangles.Count; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
@@ -126,13 +139,11 @@ namespace WindEditor.Collision
 
         private void LoadGroups(EndianBinaryReader reader, int offset, int count)
         {
-            m_Nodes = new CollisionGroupNode[count];
             reader.BaseStream.Position = offset;
 
             for (int i = 0; i < count; i++)
             {
-                CollisionGroupNode new_node = new CollisionGroupNode(reader);
-                m_Nodes[i] = new_node;
+                m_Nodes.Add(new CollisionGroupNode(reader));
             }
 
             RootNode = m_Nodes[0];
@@ -153,13 +164,12 @@ namespace WindEditor.Collision
 
         private void LoadTriangles(EndianBinaryReader reader, int offset, int count)
         {
-            Triangles = new CollisionTriangle[count];
             reader.BaseStream.Position = offset;
 
             for (int i = 0; i < count; i++)
             {
                 CollisionTriangle new_tri = new CollisionTriangle(reader, m_Vertices, m_Nodes, m_Properties);
-                Triangles[i] = new_tri;
+                Triangles.Add(new_tri);
             }
         }
 
@@ -330,27 +340,99 @@ namespace WindEditor.Collision
 
         public static WCollisionMesh FromDAEFile(WWorld world, string file_name)
         {
-            AssimpContext cont = new AssimpContext();
-            Scene scn = cont.ImportFile(file_name);
-
-            return new WCollisionMesh(world, scn);
+            COLLADA dae_file = COLLADA.Load(file_name);
+            return new WCollisionMesh(world, dae_file);
         }
 
-        private void LoadFromScene(Scene scn)
+        private void LoadFromCollada(COLLADA dae)
         {
-            RootNode = GetCollisionNodesRecursive(scn.RootNode);
+            m_UpAxis = dae.asset.up_axis;
+
+            library_geometries geo = (library_geometries)Array.Find(dae.Items, x => x.GetType() == typeof(library_geometries));
+            library_visual_scenes vis = (library_visual_scenes)Array.Find(dae.Items, x => x.GetType() == typeof(library_visual_scenes));
+
+            visual_scene scene = vis.visual_scene[0];
+
+            RootNode = GetHierarchyFromColladaRecursive(scene.node[0], geo.geometry);
+
+            m_triangleCount = Triangles.Count;
+            FinalizeLoad();
         }
 
-        private CollisionGroupNode GetCollisionNodesRecursive(Node node)
+        private CollisionGroupNode GetHierarchyFromColladaRecursive(node root, geometry[] meshes)
         {
-            CollisionGroupNode new_node = new CollisionGroupNode(node.Name);
+            CollisionGroupNode new_node = new CollisionGroupNode(root.name);
+            m_Nodes.Add(new_node);
 
-            foreach (Node n in node.Children)
+            if (root.instance_geometry != null)
             {
-                new_node.Children.Add(GetCollisionNodesRecursive(n));
+                string mesh_id = root.instance_geometry[0].url.Trim('#');
+                geometry node_geo = (geometry)Array.Find(meshes, x => x.id == mesh_id);
+
+                ParseGeometry(new_node, node_geo);
+            }
+
+            if (root.node1 != null)
+            {
+                foreach (node n in root.node1)
+                {
+                    new_node.Children.Add(GetHierarchyFromColladaRecursive(n, meshes));
+                }
             }
 
             return new_node;
+        }
+
+        private void ParseGeometry(CollisionGroupNode parent, geometry geo)
+        {
+            mesh m = geo.Item as mesh;
+            InputLocal pos_input = Array.Find(m.vertices.input, x => x.semantic == "POSITION");
+            source pos_src = Array.Find(m.source, x => x.id == pos_input.source.Trim('#'));
+            float_array pos_arr = pos_src.Item as float_array;
+
+            triangles tris = m.Items[0] as triangles;
+            string[] indices = tris.p.Trim(' ').Split(' ');
+            int stride = tris.input.Length;
+
+            for (int i = 0; i < indices.Length; i += stride * 3)
+            {
+                int vec1_index = Convert.ToInt32(indices[i]);
+                int vec2_index = Convert.ToInt32(indices[i + stride]);
+                int vec3_index = Convert.ToInt32(indices[i + (stride * 2)]);
+
+                Vector3 vec1 = new Vector3((float)pos_arr.Values[vec1_index * 3],
+                                           (float)pos_arr.Values[(vec1_index * 3) + 1],
+                                           (float)pos_arr.Values[(vec1_index * 3) + 2]);
+                Vector3 vec2 = new Vector3((float)pos_arr.Values[vec2_index * 3],
+                                           (float)pos_arr.Values[(vec2_index * 3) + 1],
+                                           (float)pos_arr.Values[(vec2_index * 3) + 2]);
+                Vector3 vec3 = new Vector3((float)pos_arr.Values[vec3_index * 3],
+                                           (float)pos_arr.Values[(vec3_index * 3) + 1],
+                                           (float)pos_arr.Values[(vec3_index * 3) + 2]);
+
+                if (m_UpAxis != UpAxisType.Y_UP)
+                {
+                    vec1 = SwapYZ(vec1);
+                    vec2 = SwapYZ(vec2);
+                    vec3 = SwapYZ(vec3);
+                }
+
+                CollisionTriangle new_tri = new CollisionTriangle(vec1, vec2, vec3, parent);
+
+                parent.Triangles.Add(new_tri);
+                Triangles.Add(new_tri);
+            }
+        }
+
+        private Vector3 SwapYZ(Vector3 vec)
+        {
+            Vector3 new_vec = vec;
+
+            float temp = -new_vec.Y;
+            new_vec.Y = new_vec.Z;
+            new_vec.Z = temp;
+
+            return new_vec;
         }
 
         private void WriteDZB(EndianBinaryWriter writer)

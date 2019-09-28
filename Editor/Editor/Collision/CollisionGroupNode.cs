@@ -134,7 +134,7 @@ namespace WindEditor.Collision
             Children = new ObservableCollection<CollisionGroupNode>();
         }
 
-        public void InflateHierarchyRecursive(CollisionGroupNode last_parent, CollisionGroupNode[] flat_hierarchy)
+        public void InflateHierarchyRecursive(CollisionGroupNode last_parent, List<CollisionGroupNode> flat_hierarchy)
         {
             if (last_parent != null)
             {

@@ -228,7 +228,7 @@ namespace WindEditor.Editor.Modes
         {
             WScene focused = World.Map.SceneList[0];
             List<WCollisionMesh> meshes = focused.GetChildrenOfType<WCollisionMesh>();
-            ActiveCollisionMesh = WCollisionMesh.FromDAEFile(World, "C:\\Github\\Winditor\\custom_Test.dae"); //meshes[0];
+            ActiveCollisionMesh = meshes[0];
 
             m_test_tree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
 

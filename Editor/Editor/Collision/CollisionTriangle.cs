@@ -20,7 +20,7 @@ namespace WindEditor.Collision
         public bool IsSelected { get; private set; }
 
         public CollisionTriangle(EndianBinaryReader reader, Vector3[] positions,
-            CollisionGroupNode[] nodes, CollisionProperty[] properties)
+            List<CollisionGroupNode> nodes, CollisionProperty[] properties)
         {
             Vertices = new Vector3[3];
 
@@ -33,6 +33,15 @@ namespace WindEditor.Collision
             Properties = properties[reader.ReadInt16()].Clone();
             ParentGroup = nodes[reader.ReadInt16()];
             ParentGroup.Triangles.Add(this);
+        }
+
+        public CollisionTriangle(Vector3 v1, Vector3 v2, Vector3 v3, CollisionGroupNode parent)
+        {
+            Vertices = new Vector3[] { v1, v2, v3 };
+            VertexColor = WLinearColor.FromHexString("0xB0E0C0FF");
+
+            Properties = new CollisionProperty();
+            ParentGroup = parent;
         }
 
         public void Select()

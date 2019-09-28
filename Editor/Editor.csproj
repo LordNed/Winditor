@@ -120,6 +120,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Editor\Collision\collada_schema_1_4.cs" />
     <Compile Include="Editor\Collision\CollisionGroupNode.cs" />
     <Compile Include="Editor\Collision\CollisionProperty.cs" />
     <Compile Include="Editor\Collision\CollisionPropertyEnums.cs" />

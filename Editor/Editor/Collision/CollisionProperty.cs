@@ -32,6 +32,11 @@ namespace WindEditor.Collision
             m_CameraBehavior = cb;
         }
 
+        public CollisionProperty()
+        {
+
+        }
+
         public void Write(EndianBinaryWriter writer)
         {
             writer.Write(m_Bitfield1);
