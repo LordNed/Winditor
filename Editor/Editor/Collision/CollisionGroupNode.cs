@@ -149,6 +149,41 @@ namespace WindEditor.Collision
                 flat_hierarchy[m_NextSiblingIndex].InflateHierarchyRecursive(last_parent, flat_hierarchy);
         }
 
+        public void DeflateHierarchyRecursive(CollisionGroupNode last_parent, List<CollisionGroupNode> flat_hierarchy)
+        {
+            if (last_parent == null)
+            {
+                m_ParentIndex = -1;
+            }
+            else
+            {
+                m_ParentIndex = (short)flat_hierarchy.IndexOf(last_parent);
+            }
+
+            if (Children.Count > 0)
+            {
+                m_FirstChildIndex = (short)flat_hierarchy.IndexOf(Children[0]);
+
+                for (int i = 0; i < Children.Count; i++)
+                {
+                    Children[i].DeflateHierarchyRecursive(this, flat_hierarchy);
+
+                    if (Children[i] == Children.Last())
+                    {
+                        Children[i].m_NextSiblingIndex = -1;
+                    }
+                    else
+                    {
+                        Children[i].m_NextSiblingIndex = (short)flat_hierarchy.IndexOf(Children[i + 1]);
+                    }
+                }
+            }
+            else
+            {
+                m_FirstChildIndex = -1;
+            }
+        }
+
         public List<CollisionTriangle> GetTrianglesRecursive()
         {
             List<CollisionTriangle> out_list = new List<CollisionTriangle>();
@@ -207,6 +242,11 @@ namespace WindEditor.Collision
             {
                 n.ToOBJFile(writer, vertices);
             }
+        }
+
+        public void ToDZBFile(EndianBinaryWriter writer)
+        {
+
         }
 
         public Node GetAssimpNodesRecursive(List<Mesh> meshes)

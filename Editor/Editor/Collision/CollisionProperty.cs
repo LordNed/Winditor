@@ -37,7 +37,7 @@ namespace WindEditor.Collision
 
         }
 
-        public void Write(EndianBinaryWriter writer)
+        public void ToDZBFile(EndianBinaryWriter writer)
         {
             writer.Write(m_Bitfield1);
             writer.Write(m_Bitfield2);

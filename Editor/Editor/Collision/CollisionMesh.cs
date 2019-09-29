@@ -45,6 +45,8 @@ namespace WindEditor.Collision
 
         public List<CollisionTriangle> Triangles { get; private set; }
 
+        public bool IsDirty { get; set; }
+
         public WCollisionMesh(WWorld world) : base(world)
         {
             m_UpAxis = UpAxisType.Y_UP;
@@ -57,9 +59,12 @@ namespace WindEditor.Collision
         public WCollisionMesh(WWorld world, COLLADA dae) :base(world)
         {
             m_UpAxis = UpAxisType.Y_UP;
-            Triangles = new List<CollisionTriangle>();
             m_Nodes = new List<CollisionGroupNode>();
+
+            IsDirty = true;
+            Triangles = new List<CollisionTriangle>();
             IsRendered = true;
+
             CreateShader();
             LoadFromCollada(dae);
         }
@@ -94,6 +99,8 @@ namespace WindEditor.Collision
 
             m_triangleCount = triangleCount;
             FinalizeLoad();
+
+            ToDZBFile("D:\\Github\\Winditor\\test.dzb");
         }
 
         private void FinalizeLoad()
@@ -437,7 +444,114 @@ namespace WindEditor.Collision
 
         private void WriteDZB(EndianBinaryWriter writer)
         {
+            List<Vector3> unique_verts = GetUniqueVertices();
+            List<CollisionProperty> unique_properties = GetUniqueProperties();
+            RootNode.DeflateHierarchyRecursive(null, m_Nodes);
 
+            WriteDZBHeader(writer);
+
+            WriteVertexData(writer, unique_verts);
+            WriteTriangleData(writer, unique_verts, unique_properties);
+            // Octree indices
+            // Octree nodes
+            WritePropertyData(writer, unique_properties);
+            // Groups
+        }
+
+        private void WriteDZBHeader(EndianBinaryWriter writer)
+        {
+            writer.Write((int)0); // Vertex count
+            writer.Write((int)0); // Vertex offset
+
+            writer.Write((int)Triangles.Count);
+            writer.Write((int)0); // Triangle offset
+
+            writer.Write((int)0); // Octree index count
+            writer.Write((int)0); // Octree index offset
+
+            writer.Write((int)0); // Octree node count
+            writer.Write((int)0); // Octree node offset
+
+            writer.Write((int)m_Nodes.Count);
+            writer.Write((int)0); // Group offset
+
+            writer.Write((int)0); // Property count
+            writer.Write((int)0); // Property offset
+
+            writer.Write((int)0); // Padding
+        }
+
+        private void WriteVertexData(EndianBinaryWriter writer, List<Vector3> vertices)
+        {
+            writer.BaseStream.Seek(0, SeekOrigin.Begin);
+            writer.Write(vertices.Count);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (Vector3 v in vertices)
+            {
+                writer.Write(v.X);
+                writer.Write(v.Y);
+                writer.Write(v.Z);
+            }
+        }
+
+        private void WriteTriangleData(EndianBinaryWriter writer, List<Vector3> vertices, List<CollisionProperty> properties)
+        {
+            writer.BaseStream.Seek(12, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (CollisionTriangle t in Triangles)
+            {
+                t.ToDZBFile(writer, vertices, m_Nodes, properties);
+            }
+        }
+
+        private void WritePropertyData(EndianBinaryWriter writer, List<CollisionProperty> properties)
+        {
+            writer.BaseStream.Seek(0x28, SeekOrigin.Begin);
+            writer.Write(properties.Count);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (CollisionProperty p in properties)
+            {
+                p.ToDZBFile(writer);
+            }
+        }
+
+        private List<Vector3> GetUniqueVertices()
+        {
+            List<Vector3> unique_verts = new List<Vector3>();
+
+            foreach (CollisionTriangle tri in Triangles)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (!unique_verts.Contains(tri.Vertices[i]))
+                    {
+                        unique_verts.Add(tri.Vertices[i]);
+                    }
+                }
+            }
+
+            return unique_verts;
+        }
+
+        private List<CollisionProperty> GetUniqueProperties()
+        {
+            List<CollisionProperty> unique_verts = new List<CollisionProperty>();
+
+            foreach (CollisionTriangle tri in Triangles)
+            {
+                if (!unique_verts.Contains(tri.Properties))
+                {
+                    unique_verts.Add(tri.Properties);
+                }
+            }
+
+            return unique_verts;
         }
 
         public override string ToString()

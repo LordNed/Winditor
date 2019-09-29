@@ -55,5 +55,14 @@ namespace WindEditor.Collision
             VertexColor = WLinearColor.FromHexString("0xB0E0C0FF");
             IsSelected = false;
         }
+
+        public void ToDZBFile(EndianBinaryWriter writer, List<Vector3> verts, List<CollisionGroupNode> groups, List<CollisionProperty> properties)
+        {
+            writer.Write((short)verts.IndexOf(Vertices[0]));
+            writer.Write((short)verts.IndexOf(Vertices[1]));
+            writer.Write((short)verts.IndexOf(Vertices[2]));
+            writer.Write((short)properties.IndexOf(Properties));
+            writer.Write((short)groups.IndexOf(ParentGroup));
+        }
     }
 }
