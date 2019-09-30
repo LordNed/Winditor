@@ -12,6 +12,14 @@ namespace WindEditor.Collision
 {
     public partial class WCollisionMesh
     {
+        private int m_vbo, m_cbo, m_ebo;
+        private Shader m_primitiveShader;
+
+        private Vector3[] m_Vertices;
+        private Vector4[] m_Colors;
+        private Vector4[] m_Colors_Black;
+        private int[] m_Indices;
+
         private void SetupGL()
         {
             GL.GenBuffers(1, out m_vbo);

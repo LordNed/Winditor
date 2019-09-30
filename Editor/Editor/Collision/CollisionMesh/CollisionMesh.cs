@@ -13,17 +13,11 @@ namespace WindEditor.Collision
 {
     public partial class WCollisionMesh : WDOMNode, IRenderable
     {
-        private int m_vbo, m_cbo, m_ebo;
-        private Shader m_primitiveShader;
         private int m_triangleCount;
         private UpAxisType m_UpAxis;
 
         private FAABox m_aaBox;
 
-        private Vector3[] m_Vertices;
-        private Vector4[] m_Colors;
-        private Vector4[] m_Colors_Black;
-        private int[] m_Indices;
         private List<CollisionGroupNode> m_Nodes;
         private CollisionGroupNode m_RootNode;
         public CollisionProperty[] m_Properties;
