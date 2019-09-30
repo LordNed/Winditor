@@ -125,6 +125,7 @@
     <Compile Include="Editor\Collision\CollisionProperty.cs" />
     <Compile Include="Editor\Collision\CollisionPropertyEnums.cs" />
     <Compile Include="Editor\Collision\CollisionTriangle.cs" />
+    <Compile Include="Editor\Collision\OctreeNode.cs" />
     <Compile Include="Editor\DOM\CategoryDOMNode.cs" />
     <Compile Include="Editor\DOM\DOMGroupNode.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />

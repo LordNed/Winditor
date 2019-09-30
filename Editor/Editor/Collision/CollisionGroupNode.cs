@@ -94,6 +94,10 @@ namespace WindEditor.Collision
 
         public List<CollisionTriangle> Triangles { get; private set; }
 
+        public FAABox Bounds { get; private set; }
+
+        public short FirstVertex { get; set; }
+
         public CollisionGroupNode(EndianBinaryReader reader)
         {
             Children = new ObservableCollection<CollisionGroupNode>();
@@ -123,15 +127,18 @@ namespace WindEditor.Collision
             reader.SkipInt16(); // Octree index, we don't need it for loading from dzb
             reader.SkipInt16(); // unknown 3
 
-            Terrain = (TerrainType)reader.ReadByte();
+            Terrain = TerrainType.Water;//(TerrainType)reader.ReadByte();
+            reader.ReadByte();
             m_RoomTableIndex = reader.ReadByte();
         }
 
-        public CollisionGroupNode(string name)
+        public CollisionGroupNode(CollisionGroupNode root, string name)
         {
             Name = name;
             Triangles = new List<CollisionTriangle>();
             Children = new ObservableCollection<CollisionGroupNode>();
+            Parent = root;
+            m_Scale = Vector3.One;
         }
 
         public void InflateHierarchyRecursive(CollisionGroupNode last_parent, List<CollisionGroupNode> flat_hierarchy)
@@ -154,6 +161,7 @@ namespace WindEditor.Collision
             if (last_parent == null)
             {
                 m_ParentIndex = -1;
+                m_NextSiblingIndex = -1;
             }
             else
             {
@@ -244,9 +252,52 @@ namespace WindEditor.Collision
             }
         }
 
-        public void ToDZBFile(EndianBinaryWriter writer)
+        public void ToDZBFile(EndianBinaryWriter writer, List<OctreeNode> octree, Vector3[] verts)
         {
+            writer.Write((int)0); // Name offset
+            writer.Write(m_Scale.X);
+            writer.Write(m_Scale.Y);
+            writer.Write(m_Scale.Z);
 
+            Vector3 rotation = m_Rotation.ToEulerAngles();
+            writer.Write(WMath.RotationFloatToShort(rotation.X));
+            writer.Write(WMath.RotationFloatToShort(rotation.Y));
+            writer.Write(WMath.RotationFloatToShort(rotation.Z));
+            writer.Write((short)-1);
+
+            writer.Write(m_Translation.X);
+            writer.Write(m_Translation.Y);
+            writer.Write(m_Translation.Z);
+
+            writer.Write(m_ParentIndex);
+            writer.Write(m_NextSiblingIndex);
+            writer.Write(m_FirstChildIndex);
+
+            // Unknown 1
+            if (Parent == null)
+            {
+                writer.Write((short)0);
+            }
+            else
+            {
+                writer.Write((short)-1);
+            }
+
+            if (Triangles.Count > 0)
+            {
+                writer.Write(FirstVertex); // Unknown 2
+            }
+            else
+            {
+                writer.Write((short)0);
+            }
+
+            // The first octree object to have this group assigned to it is the root of its octree.
+            writer.Write((short)octree.IndexOf(octree.Find(x => x.Group == this)));
+
+            writer.Write((short)0);
+            writer.Write((byte)Terrain);
+            writer.Write((byte)0);
         }
 
         public Node GetAssimpNodesRecursive(List<Mesh> meshes)
@@ -265,6 +316,50 @@ namespace WindEditor.Collision
             }
 
             return cur_node;
+        }
+
+        public void CalculateBounds()
+        {
+            float min_x = float.MaxValue;
+            float min_y = float.MaxValue;
+            float min_z = float.MaxValue;
+            float max_x = float.MinValue;
+            float max_y = float.MinValue;
+            float max_z = float.MinValue;
+
+            foreach (CollisionTriangle t in Triangles)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (min_x > t.Vertices[i].X)
+                    {
+                        min_x = t.Vertices[i].X;
+                    }
+                    if (min_y > t.Vertices[i].Y)
+                    {
+                        min_y = t.Vertices[i].Y;
+                    }
+                    if (min_z > t.Vertices[i].Z)
+                    {
+                        min_z = t.Vertices[i].Z;
+                    }
+
+                    if (max_x < t.Vertices[i].X)
+                    {
+                        max_x = t.Vertices[i].X;
+                    }
+                    if (max_y < t.Vertices[i].Y)
+                    {
+                        max_y = t.Vertices[i].Y;
+                    }
+                    if (max_z < t.Vertices[i].Z)
+                    {
+                        max_z = t.Vertices[i].Z;
+                    }
+                }
+            }
+
+            Bounds = new FAABox(new Vector3(min_x, min_y, min_z), new Vector3(max_x, max_y, max_z));
         }
 
         public override string ToString()

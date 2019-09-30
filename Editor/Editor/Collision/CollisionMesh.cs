@@ -100,11 +100,20 @@ namespace WindEditor.Collision
             m_triangleCount = triangleCount;
             FinalizeLoad();
 
-            ToDZBFile("D:\\Github\\Winditor\\test.dzb");
+
         }
 
         private void FinalizeLoad()
         {
+
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                if (n.Triangles.Count > 0)
+                {
+                    n.CalculateBounds();
+                }
+            }
+
             int vertex_count = m_triangleCount * 3;
 
             m_Vertices = new Vector3[vertex_count];
@@ -127,7 +136,7 @@ namespace WindEditor.Collision
                     m_Vertices[cur_index] = Triangles[i].Vertices[j];
                 }
             }
-
+            ToDZBFile("D:\\Github\\Winditor\\test.dzb");
             SetupGL();
         }
 
@@ -360,30 +369,30 @@ namespace WindEditor.Collision
 
             visual_scene scene = vis.visual_scene[0];
 
-            RootNode = GetHierarchyFromColladaRecursive(scene.node[0], geo.geometry);
+            RootNode = GetHierarchyFromColladaRecursive(null, scene.node[0], geo.geometry);
 
             m_triangleCount = Triangles.Count;
             FinalizeLoad();
         }
 
-        private CollisionGroupNode GetHierarchyFromColladaRecursive(node root, geometry[] meshes)
+        private CollisionGroupNode GetHierarchyFromColladaRecursive(CollisionGroupNode root, node template, geometry[] meshes)
         {
-            CollisionGroupNode new_node = new CollisionGroupNode(root.name);
+            CollisionGroupNode new_node = new CollisionGroupNode(root, template.name);
             m_Nodes.Add(new_node);
 
-            if (root.instance_geometry != null)
+            if (template.instance_geometry != null)
             {
-                string mesh_id = root.instance_geometry[0].url.Trim('#');
+                string mesh_id = template.instance_geometry[0].url.Trim('#');
                 geometry node_geo = (geometry)Array.Find(meshes, x => x.id == mesh_id);
 
                 ParseGeometry(new_node, node_geo);
             }
 
-            if (root.node1 != null)
+            if (template.node1 != null)
             {
-                foreach (node n in root.node1)
+                foreach (node n in template.node1)
                 {
-                    new_node.Children.Add(GetHierarchyFromColladaRecursive(n, meshes));
+                    new_node.Children.Add(GetHierarchyFromColladaRecursive(new_node, n, meshes));
                 }
             }
 
@@ -446,16 +455,21 @@ namespace WindEditor.Collision
         {
             List<Vector3> unique_verts = GetUniqueVertices();
             List<CollisionProperty> unique_properties = GetUniqueProperties();
+            List<OctreeNode> octree_roots = GetOctreeRoots();
+            List<OctreeNode> flattened_octrees = FlattenOctrees(octree_roots);
+            List<CollisionTriangle> octree_arranged_tris = ArrangeTriangles(flattened_octrees);
+            List<CollisionTriangle> OctreeTrisForIndexing = GetTrianglesForOctreeIndex(flattened_octrees);
+            List<Vector3> arrange_verts = ArrangeVertices(octree_arranged_tris);
             RootNode.DeflateHierarchyRecursive(null, m_Nodes);
 
             WriteDZBHeader(writer);
 
-            WriteVertexData(writer, unique_verts);
-            WriteTriangleData(writer, unique_verts, unique_properties);
-            // Octree indices
-            // Octree nodes
+            WriteVertexData(writer, arrange_verts);
+            WriteTriangleData(writer, octree_arranged_tris, arrange_verts, unique_properties);
+            WriteOctreeNodeData(writer, flattened_octrees, OctreeTrisForIndexing);
             WritePropertyData(writer, unique_properties);
-            // Groups
+            WriteOctreeIndexData(writer, flattened_octrees, OctreeTrisForIndexing);
+            WriteGroupData(writer, flattened_octrees);
         }
 
         private void WriteDZBHeader(EndianBinaryWriter writer)
@@ -496,15 +510,80 @@ namespace WindEditor.Collision
             }
         }
 
-        private void WriteTriangleData(EndianBinaryWriter writer, List<Vector3> vertices, List<CollisionProperty> properties)
+        private void WriteTriangleData(EndianBinaryWriter writer, List<CollisionTriangle> octree_tris, List<Vector3> vertices, List<CollisionProperty> properties)
         {
-            writer.BaseStream.Seek(12, SeekOrigin.Begin);
+            writer.BaseStream.Seek(8, SeekOrigin.Begin);
+            writer.Write(octree_tris.Count);
             writer.Write((int)writer.BaseStream.Length);
             writer.BaseStream.Seek(0, SeekOrigin.End);
 
-            foreach (CollisionTriangle t in Triangles)
+            foreach (CollisionTriangle t in octree_tris)
             {
                 t.ToDZBFile(writer, vertices, m_Nodes, properties);
+            }
+        }
+
+        private void WriteOctreeIndexData(EndianBinaryWriter writer, List<OctreeNode> nodes, List<CollisionTriangle> octree_tris)
+        {
+            int index_count = 0;
+
+            writer.BaseStream.Seek(0x14, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (OctreeNode n in nodes)
+            {
+                if (n.IsLeaf)
+                {
+                    writer.Write((short)octree_tris.IndexOf(n.Triangles[0]));
+                    index_count++;
+                }
+            }
+
+            writer.Write((short)-1);
+            //writer.Write((short)-1);
+
+            writer.BaseStream.Seek(0x10, SeekOrigin.Begin);
+            writer.Write(index_count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+        }
+
+        private void WriteOctreeNodeData(EndianBinaryWriter writer, List<OctreeNode> nodes, List<CollisionTriangle> octree_tris)
+        {
+            writer.BaseStream.Seek(0x18, SeekOrigin.Begin);
+            writer.Write(nodes.Count);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (OctreeNode n in nodes)
+            {
+                n.ToDZBFile(writer, nodes, octree_tris);
+            }
+        }
+
+        private void WriteGroupData(EndianBinaryWriter writer, List<OctreeNode> octree)
+        {
+            long cur_offset = writer.BaseStream.Position;
+
+            writer.BaseStream.Seek(0x24, SeekOrigin.Begin);
+            writer.Write((int)cur_offset);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            // Group data
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                n.ToDZBFile(writer, octree, m_Vertices);
+            }
+
+            // Group names
+            for (int i = 0; i < m_Nodes.Count; i++)
+            {
+                writer.BaseStream.Seek(cur_offset + (i * 52), SeekOrigin.Begin);
+                writer.Write((int)writer.BaseStream.Length);
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+
+                writer.Write(m_Nodes[i].Name.ToCharArray());
+                writer.Write((byte)0);
             }
         }
 
@@ -552,6 +631,95 @@ namespace WindEditor.Collision
             }
 
             return unique_verts;
+        }
+
+        private List<OctreeNode> GetOctreeRoots()
+        {
+            List<OctreeNode> nodes = new List<OctreeNode>();
+
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                if (n.Triangles.Count > 0)
+                {
+                    nodes.Add(new OctreeNode(n.Bounds, n, n.Triangles));
+                }
+            }
+
+            return nodes;
+        }
+
+        private List<OctreeNode> FlattenOctrees(List<OctreeNode> roots)
+        {
+            List<OctreeNode> flat = new List<OctreeNode>();
+
+            foreach (OctreeNode n in roots)
+            {
+                n.FlattenHierarchyRecursive(flat);
+            }
+
+            return flat;
+        }
+
+        private List<CollisionTriangle> ArrangeTriangles(List<OctreeNode> octree)
+        {
+            List<CollisionTriangle> arranged_tris = new List<CollisionTriangle>();
+
+            foreach (OctreeNode n in octree)
+            {
+                if (n.IsLeaf)
+                {
+                    arranged_tris.AddRange(n.Triangles);
+                }
+            }
+
+            return arranged_tris;
+        }
+
+        private List<Vector3> ArrangeVertices(List<CollisionTriangle> triangles)
+        {
+            List<Vector3> vecs = new List<Vector3>();
+
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                if (n.Triangles.Count < 0)
+                {
+                    continue;
+                }
+
+                List<Vector3> local_list = new List<Vector3>();
+
+                n.FirstVertex = (short)vecs.Count;
+
+                foreach (CollisionTriangle t in n.Triangles)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (!local_list.Contains(t.Vertices[i]))
+                        {
+                            local_list.Add(t.Vertices[i]);
+                        }
+                    }
+                }
+
+                vecs.AddRange(local_list);
+            }
+
+            return vecs;
+        }
+
+        public List<CollisionTriangle> GetTrianglesForOctreeIndex(List<OctreeNode> nodes)
+        {
+            List<CollisionTriangle> tris = new List<CollisionTriangle>();
+
+            foreach (OctreeNode n in nodes)
+            {
+                if (n.IsLeaf)
+                {
+                    tris.Add(n.Triangles[0]);
+                }
+            }
+
+            return tris;
         }
 
         public override string ToString()

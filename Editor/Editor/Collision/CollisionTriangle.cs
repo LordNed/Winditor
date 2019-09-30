@@ -12,12 +12,14 @@ namespace WindEditor.Collision
     public class CollisionTriangle
     {
         public Vector3[] Vertices { get; private set; }
+        public Vector3 Center { get; private set; }
         public WLinearColor VertexColor { get; private set; }
 
         public CollisionGroupNode ParentGroup { get; set; }
         public CollisionProperty Properties { get; set; }
 
         public bool IsSelected { get; private set; }
+        public bool Taken { get; set; }
 
         public CollisionTriangle(EndianBinaryReader reader, Vector3[] positions,
             List<CollisionGroupNode> nodes, CollisionProperty[] properties)
@@ -33,6 +35,8 @@ namespace WindEditor.Collision
             Properties = properties[reader.ReadInt16()].Clone();
             ParentGroup = nodes[reader.ReadInt16()];
             ParentGroup.Triangles.Add(this);
+
+            CalculateCenter();
         }
 
         public CollisionTriangle(Vector3 v1, Vector3 v2, Vector3 v3, CollisionGroupNode parent)
@@ -42,6 +46,8 @@ namespace WindEditor.Collision
 
             Properties = new CollisionProperty();
             ParentGroup = parent;
+
+            CalculateCenter();
         }
 
         public void Select()
@@ -58,11 +64,18 @@ namespace WindEditor.Collision
 
         public void ToDZBFile(EndianBinaryWriter writer, List<Vector3> verts, List<CollisionGroupNode> groups, List<CollisionProperty> properties)
         {
-            writer.Write((short)verts.IndexOf(Vertices[0]));
-            writer.Write((short)verts.IndexOf(Vertices[1]));
-            writer.Write((short)verts.IndexOf(Vertices[2]));
+            writer.Write((short)verts.IndexOf(Vertices[0], ParentGroup.FirstVertex));
+            writer.Write((short)verts.IndexOf(Vertices[1], ParentGroup.FirstVertex));
+            writer.Write((short)verts.IndexOf(Vertices[2], ParentGroup.FirstVertex));
             writer.Write((short)properties.IndexOf(Properties));
             writer.Write((short)groups.IndexOf(ParentGroup));
+        }
+
+        private void CalculateCenter()
+        {
+            Center = new Vector3((Vertices[0].X + Vertices[1].X + Vertices[2].X) / 3,
+                                 (Vertices[0].Y + Vertices[1].Y + Vertices[2].Y) / 3,
+                                 (Vertices[0].Z + Vertices[1].Z + Vertices[2].Z) / 3);
         }
     }
 }
