@@ -122,6 +122,9 @@
     </ApplicationDefinition>
     <Compile Include="Editor\Collision\collada_schema_1_4.cs" />
     <Compile Include="Editor\Collision\CollisionGroupNode.cs" />
+    <Compile Include="Editor\Collision\CollisionMesh\CollisionMeshExport.cs" />
+    <Compile Include="Editor\Collision\CollisionMesh\CollisionMeshImport.cs" />
+    <Compile Include="Editor\Collision\CollisionMesh\CollisionMeshRendering.cs" />
     <Compile Include="Editor\Collision\CollisionProperty.cs" />
     <Compile Include="Editor\Collision\CollisionPropertyEnums.cs" />
     <Compile Include="Editor\Collision\CollisionTriangle.cs" />
@@ -699,7 +702,7 @@
     </Compile>
     <Compile Include="Editor\Modes\ActorEditor.cs" />
     <Compile Include="Editor\Rendering\Camera.cs" />
-    <Compile Include="Editor\Collision\CollisionMesh.cs" />
+    <Compile Include="Editor\Collision\CollisionMesh\CollisionMesh.cs" />
     <Compile Include="Editor\Rendering\DebugDrawing.cs" />
     <Compile Include="Editor\DOM\ActorNode.cs" />
     <Compile Include="Editor\DOM\DOMNode.cs" />
