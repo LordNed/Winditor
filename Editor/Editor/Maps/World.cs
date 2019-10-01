@@ -47,7 +47,7 @@ namespace WindEditor
             m_ActorMode = new ActorMode(this);
             m_CollisionMode = new CollisionMode(this);
 
-            CurrentMode = m_CollisionMode;
+            CurrentMode = m_ActorMode;
 
             m_sceneViews = new List<WSceneView>();
 
@@ -220,6 +220,16 @@ namespace WindEditor
         public void InitMinitorModule(IMinitor minitor)
         {
             minitor.InitModule(m_ActorMode.DetailsViewModel);
+        }
+
+        public void SwitchToActorMode()
+        {
+            CurrentMode = m_ActorMode;
+        }
+
+        public void SwitchToCollisionMode()
+        {
+            CurrentMode = m_CollisionMode;
         }
 
         #region INotifyPropertyChanged Support

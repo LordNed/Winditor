@@ -52,6 +52,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -139,8 +140,13 @@
             <MenuItem Name="ToolsMenu" Header="_Tools"/>
         </Menu>
 
+        <Menu Grid.Row="1">
+            <MenuItem Header="Actor Editor" Command="{Binding WindEditor.SwitchToActorModeCommand}"/>
+            <MenuItem Header="Collision Editor" Command="{Binding WindEditor.SwitchToCollisionModeCommand}"/>
+        </Menu>
+
         <!-- Main Application Body -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <!-- Left Pane -->

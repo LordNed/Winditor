@@ -13,6 +13,8 @@ using WindEditor.Minitors;
 using System.Windows.Controls;
 using System.Reflection;
 using WindEditor.ViewModel;
+using WindEditor.Editor;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
@@ -26,6 +28,9 @@ namespace WindEditor
         public ICommand ExportProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestExportAsProject(), x => MainWorld.Map != null); } }
         public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
         public ICommand StartPlaytestCommand { get { return new RelayCommand(x => OnApplicationRequestPlaytest(), x => MainWorld.Map != null); } }
+
+        public ICommand SwitchToActorModeCommand { get { return new RelayCommand(x => OnRequestSwitchToActorMode(), X => !(MainWorld.CurrentMode is ActorMode)); } }
+        public ICommand SwitchToCollisionModeCommand { get { return new RelayCommand(x => OnRequestSwitchToCollisionMode(), X => !(MainWorld.CurrentMode is CollisionMode)); } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -303,6 +308,16 @@ namespace WindEditor
             }
 
             return items;
+        }
+
+        public void OnRequestSwitchToActorMode()
+        {
+            MainWorld.SwitchToActorMode();
+        }
+
+        public void OnRequestSwitchToCollisionMode()
+        {
+            MainWorld.SwitchToCollisionMode();
         }
     }
 }
