@@ -22,6 +22,8 @@ namespace WindEditor.Collision
 
         private void SetupGL()
         {
+            m_Colors = GetVertexColors();
+
             GL.GenBuffers(1, out m_vbo);
             GL.GenBuffers(1, out m_ebo);
             GL.GenBuffers(1, out m_cbo);
@@ -107,7 +109,7 @@ namespace WindEditor.Collision
 
             // Draw!
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-            GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(BeginMode.Triangles, TriangleCount * 3, DrawElementsType.UnsignedInt, 0);
 
             // Disable stuff
             GL.Disable(EnableCap.Blend);
@@ -135,7 +137,7 @@ namespace WindEditor.Collision
 
             // Draw!
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-            GL.DrawElements(BeginMode.Triangles, m_triangleCount * 3, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(BeginMode.Triangles, TriangleCount * 3, DrawElementsType.UnsignedInt, 0);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
             // Disable stuff
@@ -153,6 +155,22 @@ namespace WindEditor.Collision
         float IRenderable.GetBoundingRadius()
         {
             return m_aaBox.Max.Length; // ToDo: This isn't correct.
+        }
+
+        private Vector4[] GetVertexColors()
+        {
+            List<Vector4> colors = new List<Vector4>();
+
+            foreach (CollisionTriangle tri in Triangles)
+            {
+                Vector4 tri_color = new Vector4(tri.VertexColor.R, tri.VertexColor.G, tri.VertexColor.B, tri.VertexColor.A);
+
+                colors.Add(tri_color);
+                colors.Add(tri_color);
+                colors.Add(tri_color);
+            }
+
+            return colors.ToArray();
         }
 
         public void ReleaseResources()

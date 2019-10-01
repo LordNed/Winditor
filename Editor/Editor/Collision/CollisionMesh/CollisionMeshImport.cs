@@ -12,8 +12,10 @@ namespace WindEditor.Collision
     public partial class WCollisionMesh
     {
         #region Loading from DZB
-        public void Load(EndianBinaryReader stream)
+        public void LoadFromDZB(EndianBinaryReader stream)
         {
+            List<Vector3> temp_vertices = new List<Vector3>();
+
             int vertexCount = stream.ReadInt32();
             int vertexOffset = stream.ReadInt32();
             int triangleCount = stream.ReadInt32();
@@ -27,29 +29,25 @@ namespace WindEditor.Collision
             int propertyCount = stream.ReadInt32();
             int propertyOffset = stream.ReadInt32();
 
-            LoadVertices(stream, vertexOffset, vertexCount);
-            LoadGroups(stream, groupOffset, groupCount);
-            LoadProperties(stream, propertyOffset, propertyCount);
-            LoadTriangles(stream, triangleOffset, triangleCount);
+            LoadVerticesFromDZB(stream, temp_vertices, vertexOffset, vertexCount);
+            LoadGroupsFromDZB(stream, groupOffset, groupCount);
+            LoadPropertiesFromDZB(stream, propertyOffset, propertyCount);
+            LoadTrianglesFromDZB(stream, temp_vertices, triangleOffset, triangleCount);
 
-            m_triangleCount = triangleCount;
             FinalizeLoad();
         }
 
-        private void LoadVertices(EndianBinaryReader reader, int offset, int count)
+        private void LoadVerticesFromDZB(EndianBinaryReader reader, List<Vector3> buffer, int offset, int count)
         {
-            m_Vertices = new Vector3[count];
             reader.BaseStream.Position = offset;
 
             for (int i = 0; i < count; i++)
             {
-                m_Vertices[i] = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+                buffer.Add(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
             }
-
-            m_aaBox = CalculateAABB(m_Vertices);
         }
 
-        private void LoadGroups(EndianBinaryReader reader, int offset, int count)
+        private void LoadGroupsFromDZB(EndianBinaryReader reader, int offset, int count)
         {
             reader.BaseStream.Position = offset;
 
@@ -62,7 +60,7 @@ namespace WindEditor.Collision
             RootNode.InflateHierarchyRecursive(null, m_Nodes);
         }
 
-        private void LoadProperties(EndianBinaryReader reader, int offset, int count)
+        private void LoadPropertiesFromDZB(EndianBinaryReader reader, int offset, int count)
         {
             m_Properties = new CollisionProperty[count];
             reader.BaseStream.Position = offset;
@@ -74,25 +72,19 @@ namespace WindEditor.Collision
             }
         }
 
-        private void LoadTriangles(EndianBinaryReader reader, int offset, int count)
+        private void LoadTrianglesFromDZB(EndianBinaryReader reader, List<Vector3> vertices, int offset, int count)
         {
             reader.BaseStream.Position = offset;
 
             for (int i = 0; i < count; i++)
             {
-                CollisionTriangle new_tri = new CollisionTriangle(reader, m_Vertices, m_Nodes, m_Properties);
+                CollisionTriangle new_tri = new CollisionTriangle(reader, vertices, m_Nodes, m_Properties);
                 Triangles.Add(new_tri);
             }
         }
         #endregion
 
         #region Loading from COLLADA
-        public static WCollisionMesh FromDAEFile(WWorld world, string file_name)
-        {
-            COLLADA dae_file = COLLADA.Load(file_name);
-            return new WCollisionMesh(world, dae_file);
-        }
-
         private void LoadFromCollada(COLLADA dae)
         {
             m_UpAxis = dae.asset.up_axis;
@@ -102,46 +94,51 @@ namespace WindEditor.Collision
 
             visual_scene scene = vis.visual_scene[0];
 
-            RootNode = GetHierarchyFromColladaRecursive(null, scene.node[0], geo.geometry);
+            RootNode = LoadGroupsFromColladaRecursive(null, scene.node[0], geo.geometry);
 
-            m_triangleCount = Triangles.Count;
             FinalizeLoad();
         }
 
-        private CollisionGroupNode GetHierarchyFromColladaRecursive(CollisionGroupNode root, node template, geometry[] meshes)
+        private CollisionGroupNode LoadGroupsFromColladaRecursive(CollisionGroupNode parent, node dae_node, geometry[] meshes)
         {
-            CollisionGroupNode new_node = new CollisionGroupNode(root, template.name);
+            CollisionGroupNode new_node = new CollisionGroupNode(parent, dae_node.name);
             m_Nodes.Add(new_node);
 
-            if (template.instance_geometry != null)
+            if (dae_node.instance_geometry != null)
             {
-                string mesh_id = template.instance_geometry[0].url.Trim('#');
-                geometry node_geo = (geometry)Array.Find(meshes, x => x.id == mesh_id);
+                string mesh_id = dae_node.instance_geometry[0].url.Trim('#');
+                geometry node_geo = Array.Find(meshes, x => x.id == mesh_id);
 
-                ParseGeometry(new_node, node_geo);
+                LoadGeometryFromCollada(new_node, node_geo);
             }
 
-            if (template.node1 != null)
+            if (dae_node.node1 != null)
             {
-                foreach (node n in template.node1)
+                foreach (node n in dae_node.node1)
                 {
-                    new_node.Children.Add(GetHierarchyFromColladaRecursive(new_node, n, meshes));
+                    new_node.Children.Add(LoadGroupsFromColladaRecursive(new_node, n, meshes));
                 }
             }
 
             return new_node;
         }
 
-        private void ParseGeometry(CollisionGroupNode parent, geometry geo)
+        private void LoadGeometryFromCollada(CollisionGroupNode parent, geometry geo)
         {
             mesh m = geo.Item as mesh;
+
+            // For safety, read the model's definition of where the position data is
+            // and grab it from there. We could just do a search for "position" in the
+            // source list names, but this makes sure there are no errors.
             InputLocal pos_input = Array.Find(m.vertices.input, x => x.semantic == "POSITION");
             source pos_src = Array.Find(m.source, x => x.id == pos_input.source.Trim('#'));
             float_array pos_arr = pos_src.Item as float_array;
 
+            // For some reason Maya puts a leading space in the face index data,
+            // so we need to trim that out before trying to parse the index string.
             triangles tris = m.Items[0] as triangles;
             string[] indices = tris.p.Trim(' ').Split(' ');
-            int stride = tris.input.Length;
+            int stride = tris.input.Length; // Make sure this tool can support meshes with multiple vertex attributes.
 
             for (int i = 0; i < indices.Length; i += stride * 3)
             {
@@ -152,14 +149,20 @@ namespace WindEditor.Collision
                 Vector3 vec1 = new Vector3((float)pos_arr.Values[vec1_index * 3],
                                            (float)pos_arr.Values[(vec1_index * 3) + 1],
                                            (float)pos_arr.Values[(vec1_index * 3) + 2]);
+
                 Vector3 vec2 = new Vector3((float)pos_arr.Values[vec2_index * 3],
                                            (float)pos_arr.Values[(vec2_index * 3) + 1],
                                            (float)pos_arr.Values[(vec2_index * 3) + 2]);
+
                 Vector3 vec3 = new Vector3((float)pos_arr.Values[vec3_index * 3],
                                            (float)pos_arr.Values[(vec3_index * 3) + 1],
                                            (float)pos_arr.Values[(vec3_index * 3) + 2]);
 
-                if (m_UpAxis != UpAxisType.Y_UP)
+                // The benefit of using this library is that we easily got the up-axis
+                // info from the file. If the up-axis was defined as Z-up, we need to
+                // swap the Y and Z components of our vectors so the mesh isn't sideways.
+                // (The Wind Waker is Y-up.)
+                if (m_UpAxis == UpAxisType.Z_UP)
                 {
                     vec1 = SwapYZ(vec1);
                     vec2 = SwapYZ(vec2);
@@ -187,27 +190,11 @@ namespace WindEditor.Collision
 
         private void FinalizeLoad()
         {
+            m_Colors_Black = new Vector4[TriangleCount * 3];
 
-            foreach (CollisionGroupNode n in m_Nodes)
-            {
-                if (n.Triangles.Count > 0)
-                {
-                    n.CalculateBounds();
-                }
-            }
-
-            int vertex_count = m_triangleCount * 3;
-
-            m_Vertices = new Vector3[vertex_count];
-            m_Indices = new int[vertex_count];
-            m_Colors_Black = new Vector4[vertex_count];
-
-            for (int i = 0; i < m_Colors_Black.Length; i++)
-            {
-                m_Colors_Black[i] = new Vector4(0, 0, 0, 1);
-            }
-
-            m_Colors = GetVertexColors();
+            // Generate vertex buffer and index buffer for drawing
+            m_Indices = new int[TriangleCount * 3];
+            m_Vertices = new Vector3[TriangleCount * 3];
 
             for (int i = 0; i < Triangles.Count; i++)
             {
@@ -219,42 +206,27 @@ namespace WindEditor.Collision
                 }
             }
 
+            CalculateAABB();
             SetupGL();
         }
 
-        private FAABox CalculateAABB(Vector3[] vertices)
+        private void CalculateAABB()
         {
             Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
             Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
 
-            for (int i = 0; i < vertices.Length; i++)
+            for (int i = 0; i < m_Vertices.Length; i++)
             {
-                if (vertices[i].X < min.X) min.X = vertices[i].X;
-                if (vertices[i].Y < min.Y) min.Y = vertices[i].Y;
-                if (vertices[i].Z < min.Z) min.Z = vertices[i].Z;
+                if (m_Vertices[i].X < min.X) min.X = m_Vertices[i].X;
+                if (m_Vertices[i].Y < min.Y) min.Y = m_Vertices[i].Y;
+                if (m_Vertices[i].Z < min.Z) min.Z = m_Vertices[i].Z;
 
-                if (vertices[i].X > max.X) max.X = vertices[i].X;
-                if (vertices[i].Y > max.Y) max.Y = vertices[i].Y;
-                if (vertices[i].Z > max.Z) max.Z = vertices[i].Z;
+                if (m_Vertices[i].X > max.X) max.X = m_Vertices[i].X;
+                if (m_Vertices[i].Y > max.Y) max.Y = m_Vertices[i].Y;
+                if (m_Vertices[i].Z > max.Z) max.Z = m_Vertices[i].Z;
             }
 
-            return new FAABox(min, max);
-        }
-
-        private Vector4[] GetVertexColors()
-        {
-            List<Vector4> colors = new List<Vector4>();
-
-            foreach (CollisionTriangle tri in Triangles)
-            {
-                Vector4 tri_color = new Vector4(tri.VertexColor.R, tri.VertexColor.G, tri.VertexColor.B, tri.VertexColor.A);
-
-                colors.Add(tri_color);
-                colors.Add(tri_color);
-                colors.Add(tri_color);
-            }
-
-            return colors.ToArray();
+            m_aaBox = new FAABox(min, max);
         }
     }
 }

@@ -27,6 +27,14 @@ namespace WindEditor.Collision
         {
             byte[] data = null;
 
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                if (n.Triangles.Count > 0)
+                {
+                    n.CalculateBounds();
+                }
+            }
+
             using (MemoryStream m = new MemoryStream())
             {
                 EndianBinaryWriter writer = new EndianBinaryWriter(m, Endian.Big);
@@ -352,7 +360,7 @@ namespace WindEditor.Collision
 
                 List<Vector3> local_list = new List<Vector3>();
 
-                n.FirstVertex = (short)vecs.Count;
+                n.FirstVertexIndex = (short)vecs.Count;
 
                 foreach (CollisionTriangle t in n.Triangles)
                 {

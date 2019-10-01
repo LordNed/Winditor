@@ -132,17 +132,10 @@ namespace WindEditor
             if (!File.Exists(filePath))
                 return;
 
-            var collision = new WCollisionMesh(m_world);
-            using (EndianBinaryReader reader = new EndianBinaryReader(File.OpenRead(filePath), Endian.Big))
-            {
-                collision.Load(reader);
-            }
-            //collision = WCollisionMesh.FromDAEFile(m_world, "D:\\Github\\Winditor\\custom_Test.dae");
-
             CategoryDOMNode col_category = new CategoryDOMNode("Collision", m_world);
             col_category.SetParent(this);
 
-            collision.FileName = Path.GetFileNameWithoutExtension(filePath);
+            WCollisionMesh collision = new WCollisionMesh(m_world, filePath);
             collision.SetParent(col_category);
         }
 

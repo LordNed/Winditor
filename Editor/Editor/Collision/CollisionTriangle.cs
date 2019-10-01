@@ -21,7 +21,7 @@ namespace WindEditor.Collision
         public bool IsSelected { get; private set; }
         public bool Taken { get; set; }
 
-        public CollisionTriangle(EndianBinaryReader reader, Vector3[] positions,
+        public CollisionTriangle(EndianBinaryReader reader, List<Vector3> positions,
             List<CollisionGroupNode> nodes, CollisionProperty[] properties)
         {
             Vertices = new Vector3[3];
@@ -64,9 +64,9 @@ namespace WindEditor.Collision
 
         public void ToDZBFile(EndianBinaryWriter writer, List<Vector3> verts, List<CollisionGroupNode> groups, List<CollisionProperty> properties)
         {
-            writer.Write((short)verts.IndexOf(Vertices[0], ParentGroup.FirstVertex));
-            writer.Write((short)verts.IndexOf(Vertices[1], ParentGroup.FirstVertex));
-            writer.Write((short)verts.IndexOf(Vertices[2], ParentGroup.FirstVertex));
+            writer.Write((short)verts.IndexOf(Vertices[0], ParentGroup.FirstVertexIndex));
+            writer.Write((short)verts.IndexOf(Vertices[1], ParentGroup.FirstVertexIndex));
+            writer.Write((short)verts.IndexOf(Vertices[2], ParentGroup.FirstVertexIndex));
             writer.Write((short)properties.IndexOf(Properties));
             writer.Write((short)groups.IndexOf(ParentGroup));
         }

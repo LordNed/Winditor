@@ -25,13 +25,15 @@ namespace WindEditor.Collision
         private string m_Name;
         private ObservableCollection<CollisionGroupNode> m_Children;
 
-        private Vector3 m_Translation;
-        private OpenTK.Quaternion m_Rotation;
         private Vector3 m_Scale;
+        private OpenTK.Quaternion m_Rotation;
+        private Vector3 m_Translation;
 
         private short m_ParentIndex;
         private short m_NextSiblingIndex;
         private short m_FirstChildIndex;
+
+        public short FirstVertexIndex { get; set; }
 
         private TerrainType m_Terrain;
 
@@ -79,6 +81,7 @@ namespace WindEditor.Collision
         }
 
         public CollisionGroupNode Parent { get; private set; }
+
         public ObservableCollection<CollisionGroupNode> Children
         {
             get { return m_Children; }
@@ -96,8 +99,6 @@ namespace WindEditor.Collision
 
         public FAABox Bounds { get; private set; }
 
-        public short FirstVertex { get; set; }
-
         public CollisionGroupNode(EndianBinaryReader reader)
         {
             Children = new ObservableCollection<CollisionGroupNode>();
@@ -111,11 +112,13 @@ namespace WindEditor.Collision
             reader.BaseStream.Seek(cur_offset, System.IO.SeekOrigin.Begin);
 
             m_Scale = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+
             //m_Rotation =
             reader.SkipInt16();
             reader.SkipInt16();
             reader.SkipInt16();
             reader.SkipInt16();
+
             m_Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
 
             m_ParentIndex = reader.ReadInt16();
@@ -123,9 +126,11 @@ namespace WindEditor.Collision
             m_FirstChildIndex = reader.ReadInt16();
 
             reader.SkipInt16(); // Unknown 1
-            reader.SkipInt16(); // Unknown 2
+
+            FirstVertexIndex = reader.ReadInt16();
+
             reader.SkipInt16(); // Octree index, we don't need it for loading from dzb
-            reader.SkipInt16(); // unknown 3
+            reader.SkipInt16(); // unknown 2
 
             Terrain = TerrainType.Water;//(TerrainType)reader.ReadByte();
             reader.ReadByte();
@@ -285,7 +290,7 @@ namespace WindEditor.Collision
 
             if (Triangles.Count > 0)
             {
-                writer.Write(FirstVertex); // Unknown 2
+                writer.Write(FirstVertexIndex); // Unknown 2
             }
             else
             {

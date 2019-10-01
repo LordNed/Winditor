@@ -13,12 +13,11 @@ namespace WindEditor.Collision
 {
     public partial class WCollisionMesh : WDOMNode, IRenderable
     {
-        private int m_triangleCount;
         private UpAxisType m_UpAxis;
+        private List<CollisionGroupNode> m_Nodes;
 
         private FAABox m_aaBox;
 
-        private List<CollisionGroupNode> m_Nodes;
         private CollisionGroupNode m_RootNode;
         public CollisionProperty[] m_Properties;
 
@@ -38,19 +37,35 @@ namespace WindEditor.Collision
         }
 
         public List<CollisionTriangle> Triangles { get; private set; }
+        public int TriangleCount { get { return Triangles != null ? Triangles.Count : 0; } }
 
         public bool IsDirty { get; set; }
 
-        public WCollisionMesh(WWorld world) : base(world)
+        /// <summary>
+        /// Creates a collision mesh from the given file, handling both COLLADA DAE and DZB files.
+        /// </summary>
+        /// <param name="world">World containing the collision mesh</param>
+        /// <param name="file_name">File to load the model from</param>
+        public WCollisionMesh(WWorld world, string file_name) : base(world)
         {
-            m_UpAxis = UpAxisType.Y_UP;
-            Triangles = new List<CollisionTriangle>();
-            m_Nodes = new List<CollisionGroupNode>();
-            IsRendered = true;
-            CreateShader();
+            Init();
+            FileName = Path.GetFileNameWithoutExtension(file_name);
+
+            if (file_name.EndsWith(".dae"))
+            {
+                COLLADA dae = COLLADA.Load(file_name);
+                LoadFromCollada(dae);
+            }
+            else if (file_name.EndsWith(".dzb"))
+            {
+                using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(file_name), Endian.Big))
+                {
+                    LoadFromDZB(reader);
+                }
+            }
         }
 
-        public WCollisionMesh(WWorld world, COLLADA dae) :base(world)
+        private void Init()
         {
             m_UpAxis = UpAxisType.Y_UP;
             m_Nodes = new List<CollisionGroupNode>();
@@ -60,7 +75,6 @@ namespace WindEditor.Collision
             IsRendered = true;
 
             CreateShader();
-            LoadFromCollada(dae);
         }
 
         public override string ToString()
