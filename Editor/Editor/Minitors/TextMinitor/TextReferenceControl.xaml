@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:xktc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              x:Name="_this"
              mc:Ignorable="d" Height="45">
     <Grid>
@@ -13,7 +13,7 @@
                     <ColumnDefinition Width="80*"/>
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
-                <xktc:ShortUpDown Name="MsgIDBox" Value="{Binding Path=MessageID, ElementName=_this}" Grid.Column="0" Margin="0,10,5,10" HorizontalAlignment="Stretch"/>
+                <xctk:ShortUpDown Name="MsgIDBox" Value="{Binding Path=MessageID, ElementName=_this}" Grid.Column="0" Margin="0,10,5,10" HorizontalAlignment="Stretch"/>
                 <Button Name="LookupButton" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,10" Click="LookupButton_Click">
                     <Image Source="..\..\..\resources\icons\magnifier.png"/>
                 </Button>
