@@ -132,8 +132,7 @@ namespace WindEditor.Collision
             reader.SkipInt16(); // Octree index, we don't need it for loading from dzb
             reader.SkipInt16(); // unknown 2
 
-            Terrain = TerrainType.Water;//(TerrainType)reader.ReadByte();
-            reader.ReadByte();
+            Terrain = (TerrainType)reader.ReadByte();
             m_RoomTableIndex = reader.ReadByte();
         }
 

@@ -80,23 +80,33 @@ namespace WindEditor.Editor.Modes
 
         private void OnItemMouseDoubleClick(object sender, MouseButtonEventArgs args)
         {
-            if (args.OriginalSource is TextBlock)
+            if (args.ClickCount > 1)
             {
-                TextBlock orig = args.OriginalSource as TextBlock;
-
-                if (orig.DataContext != null && orig.DataContext is CollisionGroupNode)
+                if (args.OriginalSource is TextBlock)
                 {
-                    CollisionGroupNode group = orig.DataContext as CollisionGroupNode;
+                    TextBlock orig = args.OriginalSource as TextBlock;
 
-                    ClearSelection();
+                    if (orig.DataContext != null && orig.DataContext is CollisionGroupNode)
+                    {
+                        CollisionGroupNode group = orig.DataContext as CollisionGroupNode;
 
-                    int capacity = group.GatherTriangles(null);
-                    List<CollisionTriangle> triangles = new List<CollisionTriangle>(capacity);
-                    group.GatherTriangles(triangles);
+                        ClearSelection();
 
-                    AddTriangleToSelection(triangles);
+                        int capacity = group.GatherTriangles(null);
+                        List<CollisionTriangle> triangles = new List<CollisionTriangle>(capacity);
+                        group.GatherTriangles(triangles);
 
-                    args.Handled = true;
+                        if (triangles.Count > 0)
+                        {
+                            AddTriangleToSelection(triangles);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"The collision node {group.Name} has no associated geometry.", "Collision Node Error", MessageBoxButton.OK);
+                        }
+
+                        args.Handled = true;
+                    }
                 }
             }
         }
@@ -146,7 +156,7 @@ namespace WindEditor.Editor.Modes
                 ItemTemplate = template
             };
             m_CollisionTree.SelectedItemChanged += M_test_tree_SelectedItemChanged;
-            m_CollisionTree.MouseDoubleClick += OnItemMouseDoubleClick;
+            m_CollisionTree.PreviewMouseLeftButtonDown += OnItemMouseDoubleClick;
 
             Grid.SetRow(m_CollisionTree, 0);
 
