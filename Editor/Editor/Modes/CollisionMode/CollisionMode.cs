@@ -102,7 +102,7 @@ namespace WindEditor.Editor.Modes
                         }
                         else
                         {
-                            MessageBox.Show($"The collision node {group.Name} has no associated geometry.", "Collision Node Error", MessageBoxButton.OK);
+                            MessageBox.Show($"The collision node \"{group.Name}\" has no associated geometry.", "Collision Node Error", MessageBoxButton.OK);
                         }
 
                         args.Handled = true;
