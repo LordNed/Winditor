@@ -148,7 +148,7 @@ namespace WindEditor
             m_currentMap.LoadFromDirectory(folderPath, sourcePath);
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
 
-            m_CollisionMode.OnBecomeActive();
+            m_ActorMode.OnBecomeActive();
         }
 
         public void SaveMapToDirectory(string directory)
@@ -203,10 +203,12 @@ namespace WindEditor
 
             if (old_mode != null)
             {
+                old_mode.OnBecomeInactive();
                 old_mode.GenerateUndoEvent -= UndoEventHandler;
             }
 
             new_mode.GenerateUndoEvent += UndoEventHandler;
+            new_mode.OnBecomeActive();
         }
 
         private void UndoEventHandler(object sender, GenerateUndoEventArgs e)

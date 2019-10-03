@@ -18,7 +18,7 @@ namespace WindEditor.Editor.Modes
 {
     public class CollisionMode : IEditorMode
     {
-        private TreeView m_test_tree;
+        private TreeView m_CollisionTree;
         private DockPanel m_ModeControlsDock;
         private WDetailsViewViewModel m_DetailsViewModel;
         private WCollisionMesh m_CollisionMesh;
@@ -139,16 +139,16 @@ namespace WindEditor.Editor.Modes
 
             template.VisualTree = tb;
 
-            m_test_tree = new TreeView()
+            m_CollisionTree = new TreeView()
             {
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 ItemTemplate = template
             };
-            m_test_tree.SelectedItemChanged += M_test_tree_SelectedItemChanged;
-            m_test_tree.MouseDoubleClick += OnItemMouseDoubleClick;
+            m_CollisionTree.SelectedItemChanged += M_test_tree_SelectedItemChanged;
+            m_CollisionTree.MouseDoubleClick += OnItemMouseDoubleClick;
 
-            Grid.SetRow(m_test_tree, 0);
+            Grid.SetRow(m_CollisionTree, 0);
 
             GridSplitter splitter = new GridSplitter()
             {
@@ -176,7 +176,7 @@ namespace WindEditor.Editor.Modes
 
             Grid.SetRow(actor_prop_box, 2);
 
-            col_grid.Children.Add(m_test_tree);
+            col_grid.Children.Add(m_CollisionTree);
             col_grid.Children.Add(splitter);
             col_grid.Children.Add(actor_prop_box);
 
@@ -226,13 +226,38 @@ namespace WindEditor.Editor.Modes
 
         public void OnBecomeActive()
         {
-            WScene focused = World.Map.SceneList[0];
-            List<WCollisionMesh> meshes = focused.GetChildrenOfType<WCollisionMesh>();
-            ActiveCollisionMesh = meshes[0];
+            foreach (WScene s in World.Map.SceneList)
+            {
+                List<WCollisionMesh> meshes = s.GetChildrenOfType<WCollisionMesh>();
 
-            m_test_tree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
+                if (meshes.Count > 0)
+                {
+                    meshes[0].PreviousRenderVisibility = meshes[0].IsRendered;
+                    meshes[0].IsRendered = true;
+                }
+            }
+
+            if (!(World.Map.FocusedScene is WStage))
+            {
+                UpdateActiveMesh();
+            }
 
             World.Map.PropertyChanged += OnFocusedSceneChanged;
+        }
+
+        public void OnBecomeInactive()
+        {
+            foreach (WScene s in World.Map.SceneList)
+            {
+                List<WCollisionMesh> meshes = s.GetChildrenOfType<WCollisionMesh>();
+
+                if (meshes.Count > 0)
+                {
+                    meshes[0].IsRendered = meshes[0].PreviousRenderVisibility;
+                }
+            }
+
+            World.Map.PropertyChanged -= OnFocusedSceneChanged;
         }
 
         private void OnFocusedSceneChanged(object sender, PropertyChangedEventArgs e)
@@ -246,12 +271,23 @@ namespace WindEditor.Editor.Modes
 
             if (World.Map.FocusedScene is WStage)
             {
-                m_test_tree.ItemsSource = null;
+                m_CollisionTree.ItemsSource = null;
+                ActiveCollisionMesh = null;
                 return;
             }
 
-            ActiveCollisionMesh = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>()[0];
-            m_test_tree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
+            UpdateActiveMesh();
+        }
+
+        private void UpdateActiveMesh()
+        {
+            List<WCollisionMesh> meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
+
+            if (meshes.Count > 0)
+            {
+                ActiveCollisionMesh = meshes[0];
+                m_CollisionTree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
+            }
         }
 
         public void Update(WSceneView view)
@@ -291,7 +327,7 @@ namespace WindEditor.Editor.Modes
 
         public void Shutdown()
         {
-            m_test_tree.ItemsSource = null;
+            m_CollisionTree.ItemsSource = null;
             m_DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
         }
 
@@ -341,7 +377,7 @@ namespace WindEditor.Editor.Modes
 
         private CollisionTriangle Raycast(FRay ray)
         {
-            if (World.Map == null)
+            if (World.Map == null || ActiveCollisionMesh == null)
                 return null;
 
             CollisionTriangle closestResult = null;

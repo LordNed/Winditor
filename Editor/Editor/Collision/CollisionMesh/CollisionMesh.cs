@@ -40,6 +40,7 @@ namespace WindEditor.Collision
         public int TriangleCount { get { return Triangles != null ? Triangles.Count : 0; } }
 
         public bool IsDirty { get; set; }
+        public bool PreviousRenderVisibility { get; set; }
 
         /// <summary>
         /// Creates a collision mesh from the given file, handling both COLLADA DAE and DZB files.
@@ -70,9 +71,9 @@ namespace WindEditor.Collision
             m_UpAxis = UpAxisType.Y_UP;
             m_Nodes = new List<CollisionGroupNode>();
 
+            IsRendered = false;
             IsDirty = true;
             Triangles = new List<CollisionTriangle>();
-            IsRendered = true;
 
             CreateShader();
         }

@@ -21,6 +21,7 @@ namespace WindEditor.Editor.Modes
         WWorld World { get; }
 
         void OnBecomeActive();
+        void OnBecomeInactive();
 
         void Update(WSceneView view);
 

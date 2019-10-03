@@ -186,6 +186,11 @@ namespace WindEditor.Editor.Modes
 
         }
 
+        public void OnBecomeInactive()
+        {
+
+        }
+
         private void OnSelectionChanged()
         {
             // This will get invoked when an Undo happens which allows the gizmo to fix itself.
