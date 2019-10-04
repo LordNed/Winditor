@@ -8,7 +8,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "jbo"
+      "Category": "jbo",
+      "ToolTip": ""
     }
   ]
 }

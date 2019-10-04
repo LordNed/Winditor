@@ -8,7 +8,8 @@
       "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": true,
-      "Category": "ep"
+      "Category": "ep",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000040,
       "Shift": 6,
       "Hidden": false,
-      "Category": "Unknowns"
+      "Category": "Unknowns",
+      "ToolTip": ""
     },
     {
       "Name": "Is Wooden",
@@ -33,7 +35,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Unknowns"
+      "Category": "Unknowns",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_5",
@@ -41,7 +44,8 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "Unknowns"
+      "Category": "Unknowns",
+      "ToolTip": ""
     },
     {
       "Name": "On Switch",

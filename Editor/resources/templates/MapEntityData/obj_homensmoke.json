@@ -8,7 +8,8 @@
       "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_homensmoke"
+      "Category": "obj_homensmoke",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000002,
       "Shift": 1,
       "Hidden": false,
-      "Category": "obj_homensmoke"
+      "Category": "obj_homensmoke",
+      "ToolTip": ""
     }
   ]
 }

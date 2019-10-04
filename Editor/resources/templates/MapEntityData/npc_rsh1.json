@@ -8,7 +8,8 @@
       "Mask": 0x00F00000,
       "Shift": 20,
       "Hidden": false,
-      "Category": "npc_rsh1"
+      "Category": "npc_rsh1",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "npc_rsh1"
+      "Category": "npc_rsh1",
+      "ToolTip": ""
     }
   ]
 }

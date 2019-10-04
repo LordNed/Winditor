@@ -8,7 +8,8 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x000000F0,
       "Shift": 4,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x00000FF0,
       "Shift": 4,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +35,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_5",
@@ -40,7 +44,8 @@
       "Mask": 0x000FF000,
       "Shift": 12,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_6",
@@ -48,7 +53,8 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_7",
@@ -56,7 +62,8 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_8",
@@ -64,7 +71,8 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_9",
@@ -72,7 +80,8 @@
       "Mask": 0xFF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_10",
@@ -80,7 +89,8 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_11",
@@ -88,7 +98,8 @@
       "Mask": 0xFF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_warpt"
+      "Category": "obj_warpt",
+      "ToolTip": ""
     }
   ]
 }

@@ -8,7 +8,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "waterfall"
+      "Category": "waterfall",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "waterfall"
+      "Category": "waterfall",
+      "ToolTip": ""
     }
   ]
 }

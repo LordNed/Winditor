@@ -8,7 +8,8 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "grass"
+      "Category": "grass",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000030,
       "Shift": 4,
       "Hidden": false,
-      "Category": "grass"
+      "Category": "grass",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x00000FC0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "grass"
+      "Category": "grass",
+      "ToolTip": ""
     }
   ]
 }

@@ -8,7 +8,8 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x000003F0,
       "Shift": 4,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x0003FC00,
       "Shift": 10,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +35,8 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_5",
@@ -40,7 +44,8 @@
       "Mask": 0x03FC0000,
       "Shift": 18,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_6",
@@ -48,7 +53,8 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_7",
@@ -56,7 +62,8 @@
       "Mask": 0xFF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_ikada"
+      "Category": "obj_ikada",
+      "ToolTip": ""
     }
   ]
 }

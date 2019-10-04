@@ -8,7 +8,8 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_try"
+      "Category": "obj_try",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_try"
+      "Category": "obj_try",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "obj_try"
+      "Category": "obj_try",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +35,8 @@
       "Mask": 0xFFFF00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_try"
+      "Category": "obj_try",
+      "ToolTip": ""
     }
   ]
 }

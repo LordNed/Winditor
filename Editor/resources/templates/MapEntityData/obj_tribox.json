@@ -8,7 +8,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_tribox"
+      "Category": "obj_tribox",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00010000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_tribox"
+      "Category": "obj_tribox",
+      "ToolTip": ""
     }
   ]
 }

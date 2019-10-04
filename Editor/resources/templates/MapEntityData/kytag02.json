@@ -8,7 +8,8 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "kytag02"
+      "Category": "kytag02",
+      "ToolTip": ""
     }
   ]
 }

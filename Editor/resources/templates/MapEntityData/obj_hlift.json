@@ -8,7 +8,8 @@
       "Mask": 0x00000007,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_hlift"
+      "Category": "obj_hlift",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000010,
       "Shift": 4,
       "Hidden": false,
-      "Category": "obj_hlift"
+      "Category": "obj_hlift",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_hlift"
+      "Category": "obj_hlift",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +35,8 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_hlift"
+      "Category": "obj_hlift",
+      "ToolTip": ""
     }
   ]
 }

@@ -8,7 +8,8 @@
       "Mask": 0x00000F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "tag_etc"
+      "Category": "tag_etc",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "tag_etc"
+      "Category": "tag_etc",
+      "ToolTip": ""
     }
   ]
 }

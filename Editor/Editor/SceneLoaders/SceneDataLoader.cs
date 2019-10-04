@@ -185,10 +185,13 @@ namespace WindEditor
         [JsonProperty("Hidden")]
         public bool IsHidden { get; set; }
 
+        [JsonProperty("ToolTip")]
+        public string ToolTip { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
-        public ActorBitfieldDescriptor(string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden)
+        public ActorBitfieldDescriptor(string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip)
         {
             FieldName = Name;
             ValueSource = Source;
@@ -196,6 +199,7 @@ namespace WindEditor
             BitShift = Shift;
             CategoryName = Category;
             IsHidden = Hidden;
+            ToolTip = Tip;
         }
     }
 #pragma warning restore 0649

@@ -8,7 +8,8 @@
       "Mask": 0x0F000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "tag_kf1"
+      "Category": "tag_kf1",
+      "ToolTip": ""
     }
   ]
 }

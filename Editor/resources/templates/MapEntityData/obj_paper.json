@@ -8,7 +8,8 @@
       "Mask": 0x0000FFFF,
       "Shift": 0,
       "Hidden": true,
-      "Category": "obj_paper"
+      "Category": "obj_paper",
+      "ToolTip": ""
     },
     {
       "Name": "Type",
@@ -16,7 +17,8 @@
       "Mask": 0x000F0000,
       "Shift": 16,
       "Hidden": true,
-      "Category": "obj_paper"
+      "Category": "obj_paper",
+      "ToolTip": ""
     }
   ]
 }

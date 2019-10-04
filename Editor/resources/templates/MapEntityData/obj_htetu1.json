@@ -8,7 +8,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_htetu1"
+      "Category": "obj_htetu1",
+      "ToolTip": ""
     }
   ]
 }

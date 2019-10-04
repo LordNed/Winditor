@@ -8,7 +8,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "swc00"
+      "Category": "swc00",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "swc00"
+      "Category": "swc00",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x00030000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "swc00"
+      "Category": "swc00",
+      "ToolTip": ""
     }
   ]
 }

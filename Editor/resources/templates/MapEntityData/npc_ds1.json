@@ -8,7 +8,8 @@
       "Mask": 0x00F00000,
       "Shift": 20,
       "Hidden": false,
-      "Category": "npc_ds1"
+      "Category": "npc_ds1",
+      "ToolTip": ""
     }
   ]
 }

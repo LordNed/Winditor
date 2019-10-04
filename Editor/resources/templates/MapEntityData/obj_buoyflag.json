@@ -8,7 +8,8 @@
       "Mask": 0x00000003,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_buoyflag"
+      "Category": "obj_buoyflag",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_buoyflag"
+      "Category": "obj_buoyflag",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "obj_buoyflag"
+      "Category": "obj_buoyflag",
+      "ToolTip": ""
     }
   ]
 }

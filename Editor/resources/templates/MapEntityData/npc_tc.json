@@ -8,7 +8,8 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "npc_tc"
+      "Category": "npc_tc",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "npc_tc"
+      "Category": "npc_tc",
+      "ToolTip": ""
     }
   ]
 }

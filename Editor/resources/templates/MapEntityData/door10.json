@@ -8,7 +8,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "Type",
@@ -16,7 +17,8 @@
       "Mask": 0x00000F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "Event ID",
@@ -24,7 +26,8 @@
       "Mask": 0x000FF000,
       "Shift": 12,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "Switch Bit 2",
@@ -32,7 +35,8 @@
       "Mask": 0x0FF00000,
       "Shift": 20,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "From Room Number",
@@ -40,7 +44,8 @@
       "Mask": 0x003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "To Room Number",
@@ -48,7 +53,8 @@
       "Mask": 0x0FC0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "Ship ID",
@@ -56,7 +62,8 @@
       "Mask": 0x003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     },
     {
       "Name": "Arg 1",
@@ -64,7 +71,8 @@
       "Mask": 0xFF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": ""
     }
   ]
 }

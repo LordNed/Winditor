@@ -8,7 +8,8 @@
       "Mask": 0x000003FC,
       "Shift": 2,
       "Hidden": false,
-      "Category": "steam_tag"
+      "Category": "steam_tag",
+      "ToolTip": ""
     }
   ]
 }

@@ -8,7 +8,8 @@
       "Mask": 0xFFFFFFFF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "kt"
+      "Category": "kt",
+      "ToolTip": ""
     }
   ]
 }

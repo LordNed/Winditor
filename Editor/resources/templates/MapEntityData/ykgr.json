@@ -8,7 +8,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "ykgr"
+      "Category": "ykgr",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00F00000,
       "Shift": 20,
       "Hidden": false,
-      "Category": "ykgr"
+      "Category": "ykgr",
+      "ToolTip": ""
     }
   ]
 }

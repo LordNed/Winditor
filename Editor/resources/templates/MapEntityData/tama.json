@@ -8,7 +8,8 @@
       "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "tama"
+      "Category": "tama",
+      "ToolTip": ""
     }
   ]
 }

@@ -8,7 +8,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_vmc"
+      "Category": "obj_vmc",
+      "ToolTip": ""
     }
   ]
 }

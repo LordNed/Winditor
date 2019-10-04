@@ -8,7 +8,8 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_magmarock"
+      "Category": "obj_magmarock",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_magmarock"
+      "Category": "obj_magmarock",
+      "ToolTip": ""
     }
   ]
 }

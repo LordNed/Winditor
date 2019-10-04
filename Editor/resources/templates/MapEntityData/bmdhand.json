@@ -8,7 +8,8 @@
       "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bmdhand"
+      "Category": "bmdhand",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000003,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bmdhand"
+      "Category": "bmdhand",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x0000001F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bmdhand"
+      "Category": "bmdhand",
+      "ToolTip": ""
     }
   ]
 }

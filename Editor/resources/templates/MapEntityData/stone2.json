@@ -8,7 +8,8 @@
       "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "stone2"
+      "Category": "stone2",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "stone2"
+      "Category": "stone2",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x007F0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "stone2"
+      "Category": "stone2",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +35,8 @@
       "Mask": 0x07000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "stone2"
+      "Category": "stone2",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_5",
@@ -40,7 +44,8 @@
       "Mask": 0x70000000,
       "Shift": 28,
       "Hidden": false,
-      "Category": "stone2"
+      "Category": "stone2",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_6",
@@ -48,7 +53,8 @@
       "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "stone2"
+      "Category": "stone2",
+      "ToolTip": ""
     }
   ]
 }

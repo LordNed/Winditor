@@ -8,7 +8,8 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_swheavy"
+      "Category": "obj_swheavy",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x07000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_swheavy"
+      "Category": "obj_swheavy",
+      "ToolTip": ""
     }
   ]
 }

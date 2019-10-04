@@ -8,7 +8,8 @@
       "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "acorn_leaf"
+      "Category": "acorn_leaf",
+      "ToolTip": ""
     }
   ]
 }

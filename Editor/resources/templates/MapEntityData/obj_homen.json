@@ -8,7 +8,8 @@
       "Mask": 0x0000007F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_homen"
+      "Category": "obj_homen",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00000F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_homen"
+      "Category": "obj_homen",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x0003F000,
       "Shift": 12,
       "Hidden": false,
-      "Category": "obj_homen"
+      "Category": "obj_homen",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_4",
@@ -32,7 +35,8 @@
       "Mask": 0x003C0000,
       "Shift": 18,
       "Hidden": false,
-      "Category": "obj_homen"
+      "Category": "obj_homen",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_5",
@@ -40,7 +44,8 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_homen"
+      "Category": "obj_homen",
+      "ToolTip": ""
     }
   ]
 }

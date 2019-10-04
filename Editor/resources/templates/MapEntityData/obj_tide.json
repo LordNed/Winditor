@@ -8,7 +8,8 @@
       "Mask": 0x00070000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_tide"
+      "Category": "obj_tide",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_tide"
+      "Category": "obj_tide",
+      "ToolTip": ""
     }
   ]
 }

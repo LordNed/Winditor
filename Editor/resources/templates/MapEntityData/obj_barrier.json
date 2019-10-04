@@ -8,7 +8,8 @@
       "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_barrier"
+      "Category": "obj_barrier",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00010000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_barrier"
+      "Category": "obj_barrier",
+      "ToolTip": ""
     }
   ]
 }

@@ -8,7 +8,8 @@
       "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_hcbh"
+      "Category": "obj_hcbh",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0x00001FC0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "obj_hcbh"
+      "Category": "obj_hcbh",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_3",
@@ -24,7 +26,8 @@
       "Mask": 0x001FE000,
       "Shift": 13,
       "Hidden": false,
-      "Category": "obj_hcbh"
+      "Category": "obj_hcbh",
+      "ToolTip": ""
     }
   ]
 }

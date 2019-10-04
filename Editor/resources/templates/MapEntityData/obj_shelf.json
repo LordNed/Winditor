@@ -8,7 +8,8 @@
       "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_shelf"
+      "Category": "obj_shelf",
+      "ToolTip": ""
     },
     {
       "Name": "Unknown_2",
@@ -16,7 +17,8 @@
       "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_shelf"
+      "Category": "obj_shelf",
+      "ToolTip": ""
     }
   ]
 }
