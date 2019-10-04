@@ -54,10 +54,13 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
 			string bitMaskHex;
+			string valueSourceType;
 			if (valueSource.Contains("Auxillary")) {
 				bitMaskHex = String.Format("0x{0:X4}", field.BitMask);
+				valueSourceType = "short";
 			} else {
 				bitMaskHex = String.Format("0x{0:X8}", field.BitMask);
+				valueSourceType = "int";
 			}
 
 			
@@ -75,19 +78,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			get { return (int)((<#= valueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>); }
 			set
 			{
-<#
-				if (valueSource.Contains("Auxillary"))
-				{
-#>
-				<#= valueSource #> = (short)(<#= valueSource #> & ~<#= bitMaskHex #> | (value << <#= field.BitShift #> & <#= bitMaskHex #>));
-<#				}
-				else
-				{
-#>
-				<#= valueSource #> = (int)(<#= valueSource #> & ~<#= bitMaskHex #> | (value << <#= field.BitShift #> & <#= bitMaskHex #>));
-<#
-				}
-#>
+				<#= valueSource #> = (<#= valueSourceType #>)(<#= valueSource #> & ~<#= bitMaskHex #> | (value << <#= field.BitShift #> & <#= bitMaskHex #>));
 				OnPropertyChanged("<#=fieldName#>");
 			}
 		}
