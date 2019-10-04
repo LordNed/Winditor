@@ -184,7 +184,7 @@ namespace WindEditor
 		public enum BehaviorTypeEnum
 		{
 			Wandering = 0,
-			GuardsArea = 1,
+			Guards_an_area = 1,
 		}
 
 		[WProperty("am", "Behavior Type", true)]
@@ -221,7 +221,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Switch Activates Armos Knight", true, "If this is set, the switch ID below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.")]
+		[WProperty("am", "Switch Activates Armos Knight", true, "If this is set, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.")]
 		public bool SwitchActivatesArmosKnight
 		{ 
 			get
@@ -238,8 +238,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Disable Spawn Switch ID", true)]
-		public int DisableSpawnSwitchID
+		[WProperty("am", "Disable Spawn Switch", true)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -251,7 +251,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("DisableSpawnSwitchID");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
@@ -15247,25 +15247,34 @@ namespace WindEditor
 	public partial class st : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("st", "Unknown_1", true)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Normal = 0,
+			Underground = 1,
+			Lying_in_coffin = 2,
+			Standing_in_coffin = 3,
+			Upper_body = 14,
+		}
+
+		[WProperty("st", "Type", true)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("st", "Unknown_2", true)]
-		public int Unknown_2
+		[WProperty("st", "Ambush Sight Range (Tens)", true, "If the Stalfos is underground or in a coffin, this is the range within it will notice the player.")]
+		public int AmbushSightRangeTens
 		{ 
 			get
 			{
@@ -15277,12 +15286,11 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("AmbushSightRangeTens");
 			}
 		}
 
-		[WProperty("st", "Unknown_3", true)]
-		public int Unknown_3
+		public int Unused
 		{ 
 			get
 			{
@@ -15294,12 +15302,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Unused");
 			}
 		}
 
-		[WProperty("st", "Unknown_4", true)]
-		public int Unknown_4
+		[WProperty("st", "Ambush Switch", true, "If this is a valid switch and the Stalfos is underground or in a coffin, it will only come out when this switch is set, overriding the normal behave of coming out when the player comes near it.")]
+		public int AmbushSwitch
 		{ 
 			get
 			{
@@ -15311,12 +15319,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("AmbushSwitch");
 			}
 		}
 
-		[WProperty("st", "Unknown_5", true)]
-		public int Unknown_5
+		[WProperty("st", "Death Switch", true)]
+		public int DeathSwitch
 		{ 
 			get
 			{
@@ -15328,7 +15336,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DeathSwitch");
 			}
 		}
 

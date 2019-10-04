@@ -3,47 +3,54 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
       "Category": "st",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Underground",
+        2: "Lying in coffin",
+        3: "Standing in coffin",
+        14: "Upper body",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Ambush Sight Range (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "st",
-      "ToolTip": "",
+      "ToolTip": "If the Stalfos is underground or in a coffin, this is the range within it will notice the player.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Unused",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "st",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Ambush Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "st",
-      "ToolTip": "",
+      "ToolTip": "If this is a valid switch and the Stalfos is underground or in a coffin, it will only come out when this switch is set, overriding the normal behave of coming out when the player comes near it.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Death Switch",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,

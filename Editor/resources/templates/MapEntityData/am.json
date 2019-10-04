@@ -13,7 +13,7 @@
       "DataType": "Enum",
       "EnumValues": {
         0: "Wandering",
-        1: "Guards Area"
+        1: "Guards an area"
       }
     },
     {
@@ -33,11 +33,11 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "am",
-      "ToolTip": "If this is set, the switch ID below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.",
+      "ToolTip": "If this is set, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.",
       "DataType": "Boolean"
     },
     {
-      "Name": "Disable Spawn Switch ID",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
