@@ -74,24 +74,25 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				case "Enum":
 					dataType = fieldName + "Enum";
 
-					if (field.EnumValues != null)
+					if (field.EnumValues == null)
 					{
+						throw new ArgumentException($"Field \"{field.FieldName}\" in file \"{file}\" specifies Enum data type, but does not list any EnumValues");
+					}
 #>
 		public enum <#= dataType #>
 		{
 <#
-						foreach (var item in field.EnumValues)
-						{
-							string sanitizedValue = Regex.Replace(item.Value, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+					foreach (var item in field.EnumValues)
+					{
+						string sanitizedValue = Regex.Replace(item.Value, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
 #>
 			<#= sanitizedValue #> = <#= item.Key #>,
 <#
-						}
+					}
 #>
 		}
 
 <#
-					}
 
 					break;
 				default:
