@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 65535,
+      "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
       "Category": "canon"

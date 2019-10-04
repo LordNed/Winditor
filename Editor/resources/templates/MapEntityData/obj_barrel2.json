@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 63,
+      "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_barrel2"
@@ -13,7 +13,7 @@
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 256,
+      "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
       "Category": "obj_barrel2"
@@ -21,7 +21,7 @@
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 1024,
+      "Mask": 0x00000400,
       "Shift": 10,
       "Hidden": false,
       "Category": "obj_barrel2"
@@ -29,7 +29,7 @@
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 8323072,
+      "Mask": 0x007F0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "obj_barrel2"
@@ -37,7 +37,7 @@
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 50331648,
+      "Mask": 0x03000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "obj_barrel2"
@@ -45,7 +45,7 @@
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 268435456,
+      "Mask": 0x10000000,
       "Shift": 28,
       "Hidden": false,
       "Category": "obj_barrel2"

@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 7,
+      "Mask": 0x00000007,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_mtest"
@@ -13,7 +13,7 @@
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "obj_mtest"
@@ -21,7 +21,7 @@
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 983040,
+      "Mask": 0x000F0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "obj_mtest"
@@ -29,7 +29,7 @@
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 251658240,
+      "Mask": 0x0F000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "obj_mtest"

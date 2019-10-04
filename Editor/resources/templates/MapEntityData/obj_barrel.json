@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 1879048192,
+      "Mask": 0x70000000,
       "Shift": 28,
       "Hidden": false,
       "Category": "obj_barrel"
@@ -13,7 +13,7 @@
     {
       "Name": "Unknown_2",
       "ValueSource": "AuxillaryParameters2",
-      "Mask": 65535,
+      "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_barrel"

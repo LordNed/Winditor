@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 3,
+      "Mask": 0x00000003,
       "Shift": 0,
       "Hidden": false,
       "Category": "tag_light"
@@ -13,7 +13,7 @@
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 768,
+      "Mask": 0x00000300,
       "Shift": 8,
       "Hidden": false,
       "Category": "tag_light"
@@ -21,7 +21,7 @@
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 1020,
+      "Mask": 0x000003FC,
       "Shift": 2,
       "Hidden": false,
       "Category": "tag_light"
@@ -29,7 +29,7 @@
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 15360,
+      "Mask": 0x00003C00,
       "Shift": 10,
       "Hidden": false,
       "Category": "tag_light"
@@ -37,7 +37,7 @@
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 49152,
+      "Mask": 0x0000C000,
       "Shift": 14,
       "Hidden": false,
       "Category": "tag_light"
@@ -45,7 +45,7 @@
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "tag_light"
@@ -53,7 +53,7 @@
     {
       "Name": "Unknown_7",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "tag_light"

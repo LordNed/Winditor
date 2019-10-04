@@ -5,7 +5,7 @@
     {
       "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "Deku Leaf Pickup"

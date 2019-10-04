@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 1,
+      "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_shelf"
@@ -13,7 +13,7 @@
     {
       "Name": "Unknown_2",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 65535,
+      "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_shelf"
