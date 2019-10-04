@@ -3,17 +3,21 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "am",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Wandering",
+        1: "Guards Area"
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Guarded Area Radius (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
@@ -23,17 +27,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Switch Activates Armos Knight",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "am",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "If this is set, the switch ID below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.",
+      "DataType": "Boolean"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Disable Spawn Switch ID",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,

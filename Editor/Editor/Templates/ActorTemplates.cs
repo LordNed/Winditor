@@ -181,25 +181,31 @@ namespace WindEditor
 	public partial class am : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("am", "Unknown_1", true)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Wandering = 0,
+			GuardsArea = 1,
+		}
+
+		[WProperty("am", "Behavior Type", true)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("am", "Unknown_2", true)]
-		public int Unknown_2
+		[WProperty("am", "Guarded Area Radius (Hundreds)", true)]
+		public int GuardedAreaRadiusHundreds
 		{ 
 			get
 			{
@@ -211,29 +217,29 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("GuardedAreaRadiusHundreds");
 			}
 		}
 
-		[WProperty("am", "Unknown_3", true)]
-		public int Unknown_3
+		[WProperty("am", "Switch Activates Armos Knight", true, "If this is set, the switch ID below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.")]
+		public bool SwitchActivatesArmosKnight
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				return Convert.ToBoolean(value_as_int);
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SwitchActivatesArmosKnight");
 			}
 		}
 
-		[WProperty("am", "Unknown_4", true)]
-		public int Unknown_4
+		[WProperty("am", "Disable Spawn Switch ID", true)]
+		public int DisableSpawnSwitchID
 		{ 
 			get
 			{
@@ -245,7 +251,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("DisableSpawnSwitchID");
 			}
 		}
 
