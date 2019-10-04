@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "tornado",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

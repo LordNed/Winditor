@@ -188,10 +188,18 @@ namespace WindEditor
         [JsonProperty("ToolTip")]
         public string ToolTip { get; set; }
 
+        [JsonProperty("DataType")]
+        public string DataType { get; set; }
+
+        [JsonProperty("EnumValues")]
+        public Dictionary<int, string> EnumValues { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
-        public ActorBitfieldDescriptor(string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip)
+        public ActorBitfieldDescriptor(
+            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip, string Type, Dictionary<int, string> Vals
+        )
         {
             FieldName = Name;
             ValueSource = Source;
@@ -200,6 +208,8 @@ namespace WindEditor
             CategoryName = Category;
             IsHidden = Hidden;
             ToolTip = Tip;
+            DataType = Type;
+            EnumValues = Vals;
         }
     }
 #pragma warning restore 0649

@@ -9,7 +9,8 @@
       "Shift": 20,
       "Hidden": false,
       "Category": "kanban",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "MessageID",
@@ -18,7 +19,8 @@
       "Shift": 0,
       "Hidden": true,
       "Category": "kanban",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

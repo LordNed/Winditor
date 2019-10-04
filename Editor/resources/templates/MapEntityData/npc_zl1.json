@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "npc_zl1",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

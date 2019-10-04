@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "kytag03",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "tag_photo",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

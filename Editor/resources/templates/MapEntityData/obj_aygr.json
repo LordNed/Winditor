@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_aygr",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

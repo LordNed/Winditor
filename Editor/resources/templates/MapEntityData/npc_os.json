@@ -9,7 +9,8 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "npc_os",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

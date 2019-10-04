@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Type",
@@ -18,7 +19,8 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Event ID",
@@ -27,7 +29,8 @@
       "Shift": 12,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Switch Bit 2",
@@ -36,7 +39,8 @@
       "Shift": 20,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "From Room Number",
@@ -45,7 +49,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "To Room Number",
@@ -54,7 +59,8 @@
       "Shift": 6,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Ship ID",
@@ -63,7 +69,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Arg 1",
@@ -72,7 +79,8 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

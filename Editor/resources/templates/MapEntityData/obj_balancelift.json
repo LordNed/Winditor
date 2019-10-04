@@ -9,7 +9,8 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "obj_balancelift",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

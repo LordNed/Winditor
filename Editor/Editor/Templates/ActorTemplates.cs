@@ -15,10 +15,16 @@ namespace WindEditor
 		[WProperty("acorn_leaf", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -37,10 +43,16 @@ namespace WindEditor
 		[WProperty("agbsw0", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value << 0 & 0x0000FFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -48,10 +60,16 @@ namespace WindEditor
 		[WProperty("agbsw0", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -59,10 +77,16 @@ namespace WindEditor
 		[WProperty("agbsw0", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -70,10 +94,16 @@ namespace WindEditor
 		[WProperty("agbsw0", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFFFF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFF0000 | (value << 16 & 0xFFFF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFF0000 | (value_as_int << 16 & 0xFFFF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -81,10 +111,16 @@ namespace WindEditor
 		[WProperty("agbsw0", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -92,10 +128,16 @@ namespace WindEditor
 		[WProperty("agbsw0", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -114,10 +156,16 @@ namespace WindEditor
 		[WProperty("alldie", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -136,10 +184,16 @@ namespace WindEditor
 		[WProperty("am", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -147,10 +201,16 @@ namespace WindEditor
 		[WProperty("am", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -158,10 +218,16 @@ namespace WindEditor
 		[WProperty("am", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -169,10 +235,16 @@ namespace WindEditor
 		[WProperty("am", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -191,10 +263,16 @@ namespace WindEditor
 		[WProperty("am2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -202,10 +280,16 @@ namespace WindEditor
 		[WProperty("am2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -213,10 +297,16 @@ namespace WindEditor
 		[WProperty("am2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -224,10 +314,16 @@ namespace WindEditor
 		[WProperty("am2", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -246,10 +342,16 @@ namespace WindEditor
 		[WProperty("amiprop", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -257,10 +359,16 @@ namespace WindEditor
 		[WProperty("amiprop", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -279,10 +387,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -290,10 +404,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -301,10 +421,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -312,10 +438,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -323,10 +455,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -334,10 +472,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -345,10 +489,16 @@ namespace WindEditor
 		[WProperty("andsw0", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -367,10 +517,16 @@ namespace WindEditor
 		[WProperty("andsw2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -378,10 +534,16 @@ namespace WindEditor
 		[WProperty("andsw2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -389,10 +551,16 @@ namespace WindEditor
 		[WProperty("andsw2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -400,10 +568,16 @@ namespace WindEditor
 		[WProperty("andsw2", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -411,10 +585,16 @@ namespace WindEditor
 		[WProperty("andsw2", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -422,10 +602,16 @@ namespace WindEditor
 		[WProperty("andsw2", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -455,10 +641,16 @@ namespace WindEditor
 		[WProperty("arrow_lighteff", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -477,10 +669,16 @@ namespace WindEditor
 		[WProperty("atdoor", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -499,10 +697,16 @@ namespace WindEditor
 		[WProperty("att", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -532,10 +736,16 @@ namespace WindEditor
 		[WProperty("bb", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -543,10 +753,16 @@ namespace WindEditor
 		[WProperty("bb", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -554,10 +770,16 @@ namespace WindEditor
 		[WProperty("bb", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -565,10 +787,16 @@ namespace WindEditor
 		[WProperty("bb", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -576,10 +804,16 @@ namespace WindEditor
 		[WProperty("bb", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -598,10 +832,16 @@ namespace WindEditor
 		[WProperty("bdk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -620,10 +860,16 @@ namespace WindEditor
 		[WProperty("bdkobj", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -631,10 +877,16 @@ namespace WindEditor
 		[WProperty("bdkobj", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -653,10 +905,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -664,10 +922,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -675,10 +939,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -686,10 +956,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -697,10 +973,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x10000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x10000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x10000000 | (value << 28 & 0x10000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -708,10 +990,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x30000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x30000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x30000000 | (value << 28 & 0x30000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -719,10 +1007,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((Parameters & 0xC0000000) >> 30); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xC0000000) >> 30);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xC0000000 | (value << 30 & 0xC0000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xC0000000 | (value_as_int << 30 & 0xC0000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -730,10 +1024,16 @@ namespace WindEditor
 		[WProperty("beam", "Unknown_8", true)]
 		public int Unknown_8
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -751,10 +1051,16 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		public int FlowerType
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("FlowerType");
 			}
 		}
@@ -762,10 +1068,16 @@ namespace WindEditor
 		[WProperty("bflower", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -784,10 +1096,16 @@ namespace WindEditor
 		[WProperty("bgn", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -828,10 +1146,16 @@ namespace WindEditor
 		[WProperty("bigelf", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -839,10 +1163,16 @@ namespace WindEditor
 		[WProperty("bigelf", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -850,10 +1180,16 @@ namespace WindEditor
 		[WProperty("bigelf", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -872,10 +1208,16 @@ namespace WindEditor
 		[WProperty("bita", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -883,10 +1225,16 @@ namespace WindEditor
 		[WProperty("bita", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -905,10 +1253,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -916,10 +1270,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000010) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000010) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000010 | (value << 4 & 0x00000010));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -927,10 +1287,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000020) >> 5); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000020) >> 5);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000020 | (value << 5 & 0x00000020));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000020 | (value_as_int << 5 & 0x00000020));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -938,10 +1304,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x000000C0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000C0 | (value << 6 & 0x000000C0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -949,10 +1321,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -960,10 +1338,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -971,10 +1355,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -982,10 +1372,16 @@ namespace WindEditor
 		[WProperty("bk", "Unknown_8", true)]
 		public int Unknown_8
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -1004,10 +1400,16 @@ namespace WindEditor
 		[WProperty("bl", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1015,10 +1417,16 @@ namespace WindEditor
 		[WProperty("bl", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1026,10 +1434,16 @@ namespace WindEditor
 		[WProperty("bl", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1037,10 +1451,16 @@ namespace WindEditor
 		[WProperty("bl", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1070,10 +1490,16 @@ namespace WindEditor
 		[WProperty("bmdfoot", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1092,10 +1518,16 @@ namespace WindEditor
 		[WProperty("bmdhand", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1103,10 +1535,16 @@ namespace WindEditor
 		[WProperty("bmdhand", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000003) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000003 | (value << 0 & 0x00000003));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1114,10 +1552,16 @@ namespace WindEditor
 		[WProperty("bmdhand", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000001F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000001F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000001F | (value << 0 & 0x0000001F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000001F | (value_as_int << 0 & 0x0000001F));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1136,10 +1580,16 @@ namespace WindEditor
 		[WProperty("bo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1147,10 +1597,16 @@ namespace WindEditor
 		[WProperty("bo", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1169,10 +1625,16 @@ namespace WindEditor
 		[WProperty("boko", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x3FFFFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x3FFFFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x3FFFFFFF | (value << 0 & 0x3FFFFFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x3FFFFFFF | (value_as_int << 0 & 0x3FFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1180,10 +1642,16 @@ namespace WindEditor
 		[WProperty("boko", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFFFFFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value << 0 & 0xFFFFFFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1191,10 +1659,16 @@ namespace WindEditor
 		[WProperty("boko", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1213,10 +1687,16 @@ namespace WindEditor
 		[WProperty("boss_item", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1235,10 +1715,16 @@ namespace WindEditor
 		[WProperty("bpw", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1246,10 +1732,16 @@ namespace WindEditor
 		[WProperty("bpw", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1257,10 +1749,16 @@ namespace WindEditor
 		[WProperty("bpw", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1290,10 +1788,16 @@ namespace WindEditor
 		[WProperty("bridge", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1301,10 +1805,16 @@ namespace WindEditor
 		[WProperty("bridge", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1312,10 +1822,16 @@ namespace WindEditor
 		[WProperty("bridge", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1333,10 +1849,16 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		public int ComponentType
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ComponentType");
 			}
 		}
@@ -1366,10 +1888,16 @@ namespace WindEditor
 		[WProperty("bwd", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1399,10 +1927,16 @@ namespace WindEditor
 		[WProperty("bwds", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1421,10 +1955,16 @@ namespace WindEditor
 		[WProperty("canon", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1443,10 +1983,16 @@ namespace WindEditor
 		[WProperty("cc", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1454,10 +2000,16 @@ namespace WindEditor
 		[WProperty("cc", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1465,10 +2017,16 @@ namespace WindEditor
 		[WProperty("cc", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1476,10 +2034,16 @@ namespace WindEditor
 		[WProperty("cc", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1520,10 +2084,16 @@ namespace WindEditor
 		[WProperty("dai", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1542,10 +2112,16 @@ namespace WindEditor
 		[WProperty("daiocta", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1553,10 +2129,16 @@ namespace WindEditor
 		[WProperty("daiocta", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1564,10 +2146,16 @@ namespace WindEditor
 		[WProperty("daiocta", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1575,10 +2163,16 @@ namespace WindEditor
 		[WProperty("daiocta", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1586,10 +2180,16 @@ namespace WindEditor
 		[WProperty("daiocta", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -1619,10 +2219,16 @@ namespace WindEditor
 		[WProperty("Deku Leaf Pickup", "Item Pickup Flag", true)]
 		public int ItemPickupFlag
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ItemPickupFlag");
 			}
 		}
@@ -1652,10 +2258,16 @@ namespace WindEditor
 		[WProperty("demo_item", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1663,10 +2275,16 @@ namespace WindEditor
 		[WProperty("demo_item", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1696,10 +2314,16 @@ namespace WindEditor
 		[WProperty("dk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1718,10 +2342,16 @@ namespace WindEditor
 		[WProperty("Door", "Switch Bit", true)]
 		public int SwitchBit
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchBit");
 			}
 		}
@@ -1729,10 +2359,16 @@ namespace WindEditor
 		[WProperty("Door", "Type", true)]
 		public int Type
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -1740,10 +2376,16 @@ namespace WindEditor
 		[WProperty("Door", "Event ID", true)]
 		public int EventID
 		{ 
-			get { return (int)((Parameters & 0x000FF000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000FF000 | (value << 12 & 0x000FF000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
 			}
 		}
@@ -1751,10 +2393,16 @@ namespace WindEditor
 		[WProperty("Door", "Switch Bit 2", true)]
 		public int SwitchBit2
 		{ 
-			get { return (int)((Parameters & 0x0FF00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0FF00000 | (value << 20 & 0x0FF00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SwitchBit2");
 			}
 		}
@@ -1762,10 +2410,16 @@ namespace WindEditor
 		[WProperty("Door", "From Room Number", true)]
 		public int FromRoomNumber
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -1773,10 +2427,16 @@ namespace WindEditor
 		[WProperty("Door", "To Room Number", true)]
 		public int ToRoomNumber
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x0FC0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x0FC0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x0FC0 | (value << 6 & 0x0FC0));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -1784,10 +2444,16 @@ namespace WindEditor
 		[WProperty("Door", "Ship ID", true)]
 		public int ShipID
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -1795,10 +2461,16 @@ namespace WindEditor
 		[WProperty("Door", "Arg 1", true)]
 		public int Arg1
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
 			}
 		}
@@ -1817,10 +2489,16 @@ namespace WindEditor
 		[WProperty("Door", "Switch Bit", true)]
 		public int SwitchBit
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchBit");
 			}
 		}
@@ -1828,10 +2506,16 @@ namespace WindEditor
 		[WProperty("Door", "Type", true)]
 		public int Type
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -1839,10 +2523,16 @@ namespace WindEditor
 		[WProperty("Door", "Event ID", true)]
 		public int EventID
 		{ 
-			get { return (int)((Parameters & 0x000FF000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000FF000 | (value << 12 & 0x000FF000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
 			}
 		}
@@ -1850,10 +2540,16 @@ namespace WindEditor
 		[WProperty("Door", "Switch Bit 2", true)]
 		public int SwitchBit2
 		{ 
-			get { return (int)((Parameters & 0x0FF00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0FF00000 | (value << 20 & 0x0FF00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SwitchBit2");
 			}
 		}
@@ -1861,10 +2557,16 @@ namespace WindEditor
 		[WProperty("Door", "From Room Number", true)]
 		public int FromRoomNumber
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -1872,10 +2574,16 @@ namespace WindEditor
 		[WProperty("Door", "To Room Number", true)]
 		public int ToRoomNumber
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x0FC0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x0FC0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x0FC0 | (value << 6 & 0x0FC0));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -1883,10 +2591,16 @@ namespace WindEditor
 		[WProperty("Door", "Ship ID", true)]
 		public int ShipID
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -1894,10 +2608,16 @@ namespace WindEditor
 		[WProperty("Door", "Arg 1", true)]
 		public int Arg1
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
 			}
 		}
@@ -1948,10 +2668,16 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		public int Type
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -1959,20 +2685,32 @@ namespace WindEditor
 		[WProperty("Unknowns", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000040) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000040) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000040 | (value << 6 & 0x00000040));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
 
 		public int IsWooden
 		{ 
-			get { return (int)((Parameters & 0x00000080) >> 7); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000080) >> 7);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000080 | (value << 7 & 0x00000080));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("IsWooden");
 			}
 		}
@@ -1980,10 +2718,16 @@ namespace WindEditor
 		[WProperty("Unknowns", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1991,20 +2735,32 @@ namespace WindEditor
 		[WProperty("Unknowns", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
 
 		public int OnSwitch
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("OnSwitch");
 			}
 		}
@@ -2034,10 +2790,16 @@ namespace WindEditor
 		[WProperty("fallrock_tag", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2056,10 +2818,16 @@ namespace WindEditor
 		[WProperty("fan", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2067,10 +2835,16 @@ namespace WindEditor
 		[WProperty("fan", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000300) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000300 | (value << 8 & 0x00000300));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2089,10 +2863,16 @@ namespace WindEditor
 		[WProperty("ff", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2100,10 +2880,16 @@ namespace WindEditor
 		[WProperty("ff", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2111,10 +2897,16 @@ namespace WindEditor
 		[WProperty("ff", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFFFF00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFF00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFF00FF | (value << 0 & 0xFFFF00FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2133,10 +2925,16 @@ namespace WindEditor
 		[WProperty("fganon", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2144,10 +2942,16 @@ namespace WindEditor
 		[WProperty("fganon", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2155,10 +2959,16 @@ namespace WindEditor
 		[WProperty("fganon", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2166,10 +2976,16 @@ namespace WindEditor
 		[WProperty("fganon", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2177,10 +2993,16 @@ namespace WindEditor
 		[WProperty("fganon", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2199,10 +3021,16 @@ namespace WindEditor
 		[WProperty("fgmahou", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2221,10 +3049,16 @@ namespace WindEditor
 		[WProperty("fire", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2232,10 +3066,16 @@ namespace WindEditor
 		[WProperty("fire", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2243,10 +3083,16 @@ namespace WindEditor
 		[WProperty("fire", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0001F000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0001F000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0001F000 | (value << 12 & 0x0001F000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0001F000 | (value_as_int << 12 & 0x0001F000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2254,10 +3100,16 @@ namespace WindEditor
 		[WProperty("fire", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x000E0000) >> 17); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000E0000) >> 17);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000E0000 | (value << 17 & 0x000E0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000E0000 | (value_as_int << 17 & 0x000E0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2265,10 +3117,16 @@ namespace WindEditor
 		[WProperty("fire", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2287,10 +3145,16 @@ namespace WindEditor
 		[WProperty("floor", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2309,10 +3173,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2320,10 +3190,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000300) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000300 | (value << 8 & 0x00000300));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2331,10 +3207,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000C00) >> 10); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000C00) >> 10);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000C00 | (value << 10 & 0x00000C00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000C00 | (value_as_int << 10 & 0x00000C00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2342,10 +3224,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2353,10 +3241,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2364,10 +3258,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -2375,10 +3275,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -2386,10 +3292,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_8", true)]
 		public int Unknown_8
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -2397,10 +3309,16 @@ namespace WindEditor
 		[WProperty("fm", "Unknown_9", true)]
 		public int Unknown_9
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_9");
 			}
 		}
@@ -2430,10 +3348,16 @@ namespace WindEditor
 		[WProperty("ghostship", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2441,10 +3365,16 @@ namespace WindEditor
 		[WProperty("ghostship", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2463,10 +3393,16 @@ namespace WindEditor
 		[WProperty("gm", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2474,10 +3410,16 @@ namespace WindEditor
 		[WProperty("gm", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2485,10 +3427,16 @@ namespace WindEditor
 		[WProperty("gm", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2496,10 +3444,16 @@ namespace WindEditor
 		[WProperty("gm", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2507,10 +3461,16 @@ namespace WindEditor
 		[WProperty("gm", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2529,10 +3489,16 @@ namespace WindEditor
 		[WProperty("gnd", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2540,10 +3506,16 @@ namespace WindEditor
 		[WProperty("gnd", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2562,10 +3534,16 @@ namespace WindEditor
 		[WProperty("goal_flag", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2573,10 +3551,16 @@ namespace WindEditor
 		[WProperty("goal_flag", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2595,10 +3579,16 @@ namespace WindEditor
 		[WProperty("grass", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2606,10 +3596,16 @@ namespace WindEditor
 		[WProperty("grass", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000030) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000030) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000030 | (value << 4 & 0x00000030));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000030 | (value_as_int << 4 & 0x00000030));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2617,10 +3613,16 @@ namespace WindEditor
 		[WProperty("grass", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000FC0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000FC0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000FC0 | (value << 6 & 0x00000FC0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000FC0 | (value_as_int << 6 & 0x00000FC0));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2661,10 +3663,16 @@ namespace WindEditor
 		[WProperty("himo3", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2672,10 +3680,16 @@ namespace WindEditor
 		[WProperty("himo3", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2683,10 +3697,16 @@ namespace WindEditor
 		[WProperty("himo3", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2694,10 +3714,16 @@ namespace WindEditor
 		[WProperty("himo3", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2705,10 +3731,16 @@ namespace WindEditor
 		[WProperty("himo3", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFFFFFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value << 0 & 0xFFFFFFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2727,10 +3759,16 @@ namespace WindEditor
 		[WProperty("hitobj", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2749,10 +3787,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2760,10 +3804,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2771,10 +3821,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2782,10 +3838,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00300000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00300000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00300000 | (value << 20 & 0x00300000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00300000 | (value_as_int << 20 & 0x00300000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2793,10 +3855,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x07C00000) >> 22); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x07C00000) >> 22);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x07C00000 | (value << 22 & 0x07C00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x07C00000 | (value_as_int << 22 & 0x07C00000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2804,10 +3872,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x78000000) >> 27); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x78000000) >> 27);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x78000000 | (value << 27 & 0x78000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x78000000 | (value_as_int << 27 & 0x78000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -2815,10 +3889,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -2826,10 +3906,16 @@ namespace WindEditor
 		[WProperty("hmlif", "Unknown_8", true)]
 		public int Unknown_8
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -2848,10 +3934,16 @@ namespace WindEditor
 		[WProperty("hot_floor", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2859,10 +3951,16 @@ namespace WindEditor
 		[WProperty("hot_floor", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000002) >> 1); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000002) >> 1);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000002 | (value << 1 & 0x00000002));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2881,10 +3979,16 @@ namespace WindEditor
 		[WProperty("hys", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2892,10 +3996,16 @@ namespace WindEditor
 		[WProperty("hys", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2914,10 +4024,16 @@ namespace WindEditor
 		[WProperty("icelift", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2925,10 +4041,16 @@ namespace WindEditor
 		[WProperty("icelift", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000FF0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000FF0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000FF0 | (value << 4 & 0x00000FF0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2936,10 +4058,16 @@ namespace WindEditor
 		[WProperty("icelift", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000FF000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000FF000 | (value << 12 & 0x000FF000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2958,10 +4086,16 @@ namespace WindEditor
 		[WProperty("ikari", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2969,10 +4103,16 @@ namespace WindEditor
 		[WProperty("ikari", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2991,10 +4131,16 @@ namespace WindEditor
 		[WProperty("Item Pickup", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3013,10 +4159,16 @@ namespace WindEditor
 		[WProperty("jbo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3046,10 +4198,16 @@ namespace WindEditor
 		[WProperty("kamome", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3057,10 +4215,16 @@ namespace WindEditor
 		[WProperty("kamome", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3068,10 +4232,16 @@ namespace WindEditor
 		[WProperty("kamome", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3079,10 +4249,16 @@ namespace WindEditor
 		[WProperty("kamome", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3101,20 +4277,32 @@ namespace WindEditor
 		[WProperty("kanban", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xFFF00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFF00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFF00000 | (value << 20 & 0xFFF00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFF00000 | (value_as_int << 20 & 0xFFF00000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
 
 		public int MessageID
 		{ 
-			get { return (int)((Parameters & 0x0000FFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value << 0 & 0x0000FFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -3133,10 +4321,16 @@ namespace WindEditor
 		[WProperty("kantera", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3144,10 +4338,16 @@ namespace WindEditor
 		[WProperty("kantera", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3155,10 +4355,16 @@ namespace WindEditor
 		[WProperty("kantera", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3177,10 +4383,16 @@ namespace WindEditor
 		[WProperty("kb", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3188,10 +4400,16 @@ namespace WindEditor
 		[WProperty("kb", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3199,10 +4417,16 @@ namespace WindEditor
 		[WProperty("kb", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3210,10 +4434,16 @@ namespace WindEditor
 		[WProperty("kb", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3221,10 +4451,16 @@ namespace WindEditor
 		[WProperty("kb", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3254,10 +4490,16 @@ namespace WindEditor
 		[WProperty("ki", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3265,10 +4507,16 @@ namespace WindEditor
 		[WProperty("ki", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00007F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00007F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00007F00 | (value << 8 & 0x00007F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3276,10 +4524,16 @@ namespace WindEditor
 		[WProperty("ki", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00008000) >> 15); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00008000) >> 15);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00008000 | (value << 15 & 0x00008000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3287,10 +4541,16 @@ namespace WindEditor
 		[WProperty("ki", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3298,10 +4558,16 @@ namespace WindEditor
 		[WProperty("ki", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3320,10 +4586,16 @@ namespace WindEditor
 		[WProperty("kita", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3331,10 +4603,16 @@ namespace WindEditor
 		[WProperty("kita", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3353,10 +4631,16 @@ namespace WindEditor
 		[WProperty("klft", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3364,10 +4648,16 @@ namespace WindEditor
 		[WProperty("klft", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3375,10 +4665,16 @@ namespace WindEditor
 		[WProperty("klft", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3408,10 +4704,16 @@ namespace WindEditor
 		[WProperty("kn", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3419,10 +4721,16 @@ namespace WindEditor
 		[WProperty("kn", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3441,10 +4749,16 @@ namespace WindEditor
 		[WProperty("knob00", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xF0000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xF0000000 | (value << 28 & 0xF0000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3463,10 +4777,16 @@ namespace WindEditor
 		[WProperty("kokiie", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3474,10 +4794,16 @@ namespace WindEditor
 		[WProperty("kokiie", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3507,10 +4833,16 @@ namespace WindEditor
 		[WProperty("ks", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3518,10 +4850,16 @@ namespace WindEditor
 		[WProperty("ks", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3529,10 +4867,16 @@ namespace WindEditor
 		[WProperty("ks", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3551,10 +4895,16 @@ namespace WindEditor
 		[WProperty("kt", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xFFFFFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value << 0 & 0xFFFFFFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3573,10 +4923,16 @@ namespace WindEditor
 		[WProperty("kui", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3584,10 +4940,16 @@ namespace WindEditor
 		[WProperty("kui", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3595,10 +4957,16 @@ namespace WindEditor
 		[WProperty("kui", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3617,10 +4985,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3628,10 +5002,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3639,10 +5019,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3650,10 +5036,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3661,10 +5053,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3672,10 +5070,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -3683,10 +5087,16 @@ namespace WindEditor
 		[WProperty("kytag00", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -3716,10 +5126,16 @@ namespace WindEditor
 		[WProperty("kytag02", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3738,10 +5154,16 @@ namespace WindEditor
 		[WProperty("kytag03", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3760,10 +5182,16 @@ namespace WindEditor
 		[WProperty("kytag04", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3771,10 +5199,16 @@ namespace WindEditor
 		[WProperty("kytag04", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3782,10 +5216,16 @@ namespace WindEditor
 		[WProperty("kytag04", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3804,10 +5244,16 @@ namespace WindEditor
 		[WProperty("kytag05", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3837,10 +5283,16 @@ namespace WindEditor
 		[WProperty("kytag07", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3859,10 +5311,16 @@ namespace WindEditor
 		[WProperty("lamp", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3881,10 +5339,16 @@ namespace WindEditor
 		[WProperty("lbridge", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3903,10 +5367,16 @@ namespace WindEditor
 		[WProperty("leaflift", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3936,10 +5406,16 @@ namespace WindEditor
 		[WProperty("lstair", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3969,10 +5445,16 @@ namespace WindEditor
 		[WProperty("machine", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4002,10 +5484,16 @@ namespace WindEditor
 		[WProperty("majuu_flag", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4013,10 +5501,16 @@ namespace WindEditor
 		[WProperty("majuu_flag", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4035,10 +5529,16 @@ namespace WindEditor
 		[WProperty("mant", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4057,10 +5557,16 @@ namespace WindEditor
 		[WProperty("mbdoor", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4068,10 +5574,16 @@ namespace WindEditor
 		[WProperty("mbdoor", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4079,10 +5591,16 @@ namespace WindEditor
 		[WProperty("mbdoor", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4101,10 +5619,16 @@ namespace WindEditor
 		[WProperty("mdoor", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4112,10 +5636,16 @@ namespace WindEditor
 		[WProperty("mdoor", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4123,10 +5653,16 @@ namespace WindEditor
 		[WProperty("mdoor", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4134,10 +5670,16 @@ namespace WindEditor
 		[WProperty("mdoor", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -4156,10 +5698,16 @@ namespace WindEditor
 		[WProperty("mflft", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4167,10 +5715,16 @@ namespace WindEditor
 		[WProperty("mflft", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4211,10 +5765,16 @@ namespace WindEditor
 		[WProperty("mo2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4222,10 +5782,16 @@ namespace WindEditor
 		[WProperty("mo2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4233,10 +5799,16 @@ namespace WindEditor
 		[WProperty("mo2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4244,10 +5816,16 @@ namespace WindEditor
 		[WProperty("mo2", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -4255,10 +5833,16 @@ namespace WindEditor
 		[WProperty("mo2", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -4288,10 +5872,16 @@ namespace WindEditor
 		[WProperty("mozo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4310,10 +5900,16 @@ namespace WindEditor
 		[WProperty("msw", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4332,10 +5928,16 @@ namespace WindEditor
 		[WProperty("mt", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4343,10 +5945,16 @@ namespace WindEditor
 		[WProperty("mt", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00007F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00007F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00007F00 | (value << 8 & 0x00007F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4354,10 +5962,16 @@ namespace WindEditor
 		[WProperty("mt", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00008000) >> 15); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00008000) >> 15);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00008000 | (value << 15 & 0x00008000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4365,10 +5979,16 @@ namespace WindEditor
 		[WProperty("mt", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -4376,10 +5996,16 @@ namespace WindEditor
 		[WProperty("mt", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -4387,10 +6013,16 @@ namespace WindEditor
 		[WProperty("mt", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -4409,10 +6041,16 @@ namespace WindEditor
 		[WProperty("mtoge", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4431,10 +6069,16 @@ namespace WindEditor
 		[WProperty("npc_ac1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4442,10 +6086,16 @@ namespace WindEditor
 		[WProperty("npc_ac1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4464,10 +6114,16 @@ namespace WindEditor
 		[WProperty("npc_ah", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4475,10 +6131,16 @@ namespace WindEditor
 		[WProperty("npc_ah", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4497,10 +6159,16 @@ namespace WindEditor
 		[WProperty("npc_aj1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4508,10 +6176,16 @@ namespace WindEditor
 		[WProperty("npc_aj1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4541,10 +6215,16 @@ namespace WindEditor
 		[WProperty("npc_ba1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4563,10 +6243,16 @@ namespace WindEditor
 		[WProperty("npc_bj1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4574,10 +6260,16 @@ namespace WindEditor
 		[WProperty("npc_bj1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4596,10 +6288,16 @@ namespace WindEditor
 		[WProperty("npc_bm1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4607,10 +6305,16 @@ namespace WindEditor
 		[WProperty("npc_bm1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4618,10 +6322,16 @@ namespace WindEditor
 		[WProperty("npc_bm1", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4640,10 +6350,16 @@ namespace WindEditor
 		[WProperty("npc_bmcon1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4662,10 +6378,16 @@ namespace WindEditor
 		[WProperty("npc_bms1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4695,10 +6417,16 @@ namespace WindEditor
 		[WProperty("npc_bs1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4706,10 +6434,16 @@ namespace WindEditor
 		[WProperty("npc_bs1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4739,10 +6473,16 @@ namespace WindEditor
 		[WProperty("npc_btsw2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4761,10 +6501,16 @@ namespace WindEditor
 		[WProperty("npc_cb1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xFFFFFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value << 0 & 0xFFFFFFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4783,10 +6529,16 @@ namespace WindEditor
 		[WProperty("npc_co1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4805,10 +6557,16 @@ namespace WindEditor
 		[WProperty("npc_de1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4827,10 +6585,16 @@ namespace WindEditor
 		[WProperty("npc_ds1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4849,10 +6613,16 @@ namespace WindEditor
 		[WProperty("npc_gk1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4871,10 +6641,16 @@ namespace WindEditor
 		[WProperty("npc_gp1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4882,10 +6658,16 @@ namespace WindEditor
 		[WProperty("npc_gp1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4904,10 +6686,16 @@ namespace WindEditor
 		[WProperty("npc_hi1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4937,10 +6725,16 @@ namespace WindEditor
 		[WProperty("npc_hr", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4948,10 +6742,16 @@ namespace WindEditor
 		[WProperty("npc_hr", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4959,10 +6759,16 @@ namespace WindEditor
 		[WProperty("npc_hr", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4981,10 +6787,16 @@ namespace WindEditor
 		[WProperty("npc_jb1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5014,10 +6826,16 @@ namespace WindEditor
 		[WProperty("npc_kamome", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5025,10 +6843,16 @@ namespace WindEditor
 		[WProperty("npc_kamome", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5047,10 +6871,16 @@ namespace WindEditor
 		[WProperty("npc_kf1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5058,10 +6888,16 @@ namespace WindEditor
 		[WProperty("npc_kf1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5069,10 +6905,16 @@ namespace WindEditor
 		[WProperty("npc_kf1", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5080,10 +6922,16 @@ namespace WindEditor
 		[WProperty("npc_kf1", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -5124,10 +6972,16 @@ namespace WindEditor
 		[WProperty("npc_kk1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5135,10 +6989,16 @@ namespace WindEditor
 		[WProperty("npc_kk1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5146,10 +7006,16 @@ namespace WindEditor
 		[WProperty("npc_kk1", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00030000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00030000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00030000 | (value << 16 & 0x00030000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5157,10 +7023,16 @@ namespace WindEditor
 		[WProperty("npc_kk1", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -5179,10 +7051,16 @@ namespace WindEditor
 		[WProperty("npc_km1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5201,10 +7079,16 @@ namespace WindEditor
 		[WProperty("npc_ko1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5212,10 +7096,16 @@ namespace WindEditor
 		[WProperty("npc_ko1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5234,10 +7124,16 @@ namespace WindEditor
 		[WProperty("npc_kp1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5256,10 +7152,16 @@ namespace WindEditor
 		[WProperty("npc_ls1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5278,10 +7180,16 @@ namespace WindEditor
 		[WProperty("npc_md", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5289,10 +7197,16 @@ namespace WindEditor
 		[WProperty("npc_md", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5300,10 +7214,16 @@ namespace WindEditor
 		[WProperty("npc_md", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5322,10 +7242,16 @@ namespace WindEditor
 		[WProperty("npc_mk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5333,10 +7259,16 @@ namespace WindEditor
 		[WProperty("npc_mk", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5355,10 +7287,16 @@ namespace WindEditor
 		[WProperty("npc_mn", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5366,10 +7304,16 @@ namespace WindEditor
 		[WProperty("npc_mn", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5377,10 +7321,16 @@ namespace WindEditor
 		[WProperty("npc_mn", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5421,10 +7371,16 @@ namespace WindEditor
 		[WProperty("npc_ob1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5432,10 +7388,16 @@ namespace WindEditor
 		[WProperty("npc_ob1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5454,10 +7416,16 @@ namespace WindEditor
 		[WProperty("npc_os", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5476,10 +7444,16 @@ namespace WindEditor
 		[WProperty("npc_p1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5487,10 +7461,16 @@ namespace WindEditor
 		[WProperty("npc_p1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5509,10 +7489,16 @@ namespace WindEditor
 		[WProperty("npc_p2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000003) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000003 | (value << 0 & 0x00000003));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5520,10 +7506,16 @@ namespace WindEditor
 		[WProperty("npc_p2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000003FC) >> 2); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000003FC) >> 2);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000003FC | (value << 2 & 0x000003FC));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5531,10 +7523,16 @@ namespace WindEditor
 		[WProperty("npc_p2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0003FC00) >> 10); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0003FC00) >> 10);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0003FC00 | (value << 10 & 0x0003FC00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5553,10 +7551,16 @@ namespace WindEditor
 		[WProperty("npc_people", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5564,10 +7568,16 @@ namespace WindEditor
 		[WProperty("npc_people", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5575,10 +7585,16 @@ namespace WindEditor
 		[WProperty("npc_people", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5597,10 +7613,16 @@ namespace WindEditor
 		[WProperty("npc_pf1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5608,10 +7630,16 @@ namespace WindEditor
 		[WProperty("npc_pf1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5630,10 +7658,16 @@ namespace WindEditor
 		[WProperty("npc_photo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5641,10 +7675,16 @@ namespace WindEditor
 		[WProperty("npc_photo", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5663,10 +7703,16 @@ namespace WindEditor
 		[WProperty("npc_pm1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5685,10 +7731,16 @@ namespace WindEditor
 		[WProperty("npc_roten", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5696,10 +7748,16 @@ namespace WindEditor
 		[WProperty("npc_roten", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5718,10 +7776,16 @@ namespace WindEditor
 		[WProperty("npc_rsh1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5729,10 +7793,16 @@ namespace WindEditor
 		[WProperty("npc_rsh1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5784,10 +7854,16 @@ namespace WindEditor
 		[WProperty("npc_tc", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5795,10 +7871,16 @@ namespace WindEditor
 		[WProperty("npc_tc", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5828,10 +7910,16 @@ namespace WindEditor
 		[WProperty("npc_uk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5839,10 +7927,16 @@ namespace WindEditor
 		[WProperty("npc_uk", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5850,10 +7944,16 @@ namespace WindEditor
 		[WProperty("npc_uk", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5872,10 +7972,16 @@ namespace WindEditor
 		[WProperty("npc_ym1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5894,10 +8000,16 @@ namespace WindEditor
 		[WProperty("npc_yw1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5905,10 +8017,16 @@ namespace WindEditor
 		[WProperty("npc_yw1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5927,10 +8045,16 @@ namespace WindEditor
 		[WProperty("npc_zk1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5949,10 +8073,16 @@ namespace WindEditor
 		[WProperty("npc_zl1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5971,10 +8101,16 @@ namespace WindEditor
 		[WProperty("nz", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5982,10 +8118,16 @@ namespace WindEditor
 		[WProperty("nz", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5993,10 +8135,16 @@ namespace WindEditor
 		[WProperty("nz", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6015,10 +8163,16 @@ namespace WindEditor
 		[WProperty("nzg", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6026,10 +8180,16 @@ namespace WindEditor
 		[WProperty("nzg", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6037,10 +8197,16 @@ namespace WindEditor
 		[WProperty("nzg", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6048,10 +8214,16 @@ namespace WindEditor
 		[WProperty("nzg", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6081,10 +8253,16 @@ namespace WindEditor
 		[WProperty("obj_ajav", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6114,10 +8292,16 @@ namespace WindEditor
 		[WProperty("obj_akabe", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6125,10 +8309,16 @@ namespace WindEditor
 		[WProperty("obj_akabe", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000300) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000300 | (value << 8 & 0x00000300));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6136,10 +8326,16 @@ namespace WindEditor
 		[WProperty("obj_akabe", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00001000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00001000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00001000 | (value << 12 & 0x00001000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6147,10 +8343,16 @@ namespace WindEditor
 		[WProperty("obj_akabe", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6169,10 +8371,16 @@ namespace WindEditor
 		[WProperty("obj_apzl", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6191,10 +8399,16 @@ namespace WindEditor
 		[WProperty("obj_ashut", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6202,10 +8416,16 @@ namespace WindEditor
 		[WProperty("obj_ashut", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6224,10 +8444,16 @@ namespace WindEditor
 		[WProperty("obj_auzu", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6235,10 +8461,16 @@ namespace WindEditor
 		[WProperty("obj_auzu", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6246,10 +8478,16 @@ namespace WindEditor
 		[WProperty("obj_auzu", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6257,10 +8495,16 @@ namespace WindEditor
 		[WProperty("obj_auzu", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6279,10 +8523,16 @@ namespace WindEditor
 		[WProperty("obj_aygr", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6301,10 +8551,16 @@ namespace WindEditor
 		[WProperty("obj_balancelift", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6323,10 +8579,16 @@ namespace WindEditor
 		[WProperty("obj_barrel", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x70000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x70000000 | (value << 28 & 0x70000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6334,10 +8596,16 @@ namespace WindEditor
 		[WProperty("obj_barrel", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6356,10 +8624,16 @@ namespace WindEditor
 		[WProperty("obj_barrel2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6367,10 +8641,16 @@ namespace WindEditor
 		[WProperty("obj_barrel2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6378,10 +8658,16 @@ namespace WindEditor
 		[WProperty("obj_barrel2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000400) >> 10); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000400) >> 10);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000400 | (value << 10 & 0x00000400));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000400 | (value_as_int << 10 & 0x00000400));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6389,10 +8675,16 @@ namespace WindEditor
 		[WProperty("obj_barrel2", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x007F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x007F0000 | (value << 16 & 0x007F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6400,10 +8692,16 @@ namespace WindEditor
 		[WProperty("obj_barrel2", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x03000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x03000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x03000000 | (value << 24 & 0x03000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -6411,10 +8709,16 @@ namespace WindEditor
 		[WProperty("obj_barrel2", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x10000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x10000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x10000000 | (value << 28 & 0x10000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -6433,10 +8737,16 @@ namespace WindEditor
 		[WProperty("obj_barrier", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6444,10 +8754,16 @@ namespace WindEditor
 		[WProperty("obj_barrier", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6466,10 +8782,16 @@ namespace WindEditor
 		[WProperty("obj_bemos", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6477,10 +8799,16 @@ namespace WindEditor
 		[WProperty("obj_bemos", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6488,10 +8816,16 @@ namespace WindEditor
 		[WProperty("obj_bemos", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6499,10 +8833,16 @@ namespace WindEditor
 		[WProperty("obj_bemos", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xF0000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xF0000000 | (value << 28 & 0xF0000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6510,10 +8850,16 @@ namespace WindEditor
 		[WProperty("obj_bemos", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -6521,10 +8867,16 @@ namespace WindEditor
 		[WProperty("obj_bemos", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x1FC0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x1FC0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x1FC0 | (value << 6 & 0x1FC0));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -6543,10 +8895,16 @@ namespace WindEditor
 		[WProperty("obj_bscurtain", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6565,10 +8923,16 @@ namespace WindEditor
 		[WProperty("obj_buoyflag", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000003) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000003 | (value << 0 & 0x00000003));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6576,10 +8940,16 @@ namespace WindEditor
 		[WProperty("obj_buoyflag", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6587,10 +8957,16 @@ namespace WindEditor
 		[WProperty("obj_buoyflag", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6609,10 +8985,16 @@ namespace WindEditor
 		[WProperty("obj_buoyrace", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6620,10 +9002,16 @@ namespace WindEditor
 		[WProperty("obj_buoyrace", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6653,10 +9041,16 @@ namespace WindEditor
 		[WProperty("obj_canon", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6664,10 +9058,16 @@ namespace WindEditor
 		[WProperty("obj_canon", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6675,10 +9075,16 @@ namespace WindEditor
 		[WProperty("obj_canon", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6686,10 +9092,16 @@ namespace WindEditor
 		[WProperty("obj_canon", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6708,10 +9120,16 @@ namespace WindEditor
 		[WProperty("obj_coming", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6719,10 +9137,16 @@ namespace WindEditor
 		[WProperty("obj_coming", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000040) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000040) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000040 | (value << 6 & 0x00000040));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6730,10 +9154,16 @@ namespace WindEditor
 		[WProperty("obj_coming", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000700) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000700) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000700 | (value << 8 & 0x00000700));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6741,10 +9171,16 @@ namespace WindEditor
 		[WProperty("obj_coming", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6752,10 +9188,16 @@ namespace WindEditor
 		[WProperty("obj_coming", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x03000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x03000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x03000000 | (value << 24 & 0x03000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -6763,10 +9205,16 @@ namespace WindEditor
 		[WProperty("obj_coming", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x30000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x30000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x30000000 | (value << 28 & 0x30000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -6785,10 +9233,16 @@ namespace WindEditor
 		[WProperty("obj_correct", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6796,10 +9250,16 @@ namespace WindEditor
 		[WProperty("obj_correct", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6807,10 +9267,16 @@ namespace WindEditor
 		[WProperty("obj_correct", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6818,10 +9284,16 @@ namespace WindEditor
 		[WProperty("obj_correct", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x40000000) >> 30); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x40000000) >> 30);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x40000000 | (value << 30 & 0x40000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6862,10 +9334,16 @@ namespace WindEditor
 		[WProperty("obj_doguu", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6884,10 +9362,16 @@ namespace WindEditor
 		[WProperty("obj_doguu_demo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6906,10 +9390,16 @@ namespace WindEditor
 		[WProperty("obj_dragonhead", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6928,10 +9418,16 @@ namespace WindEditor
 		[WProperty("obj_drift", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000007) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000007 | (value << 0 & 0x00000007));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6961,10 +9457,16 @@ namespace WindEditor
 		[WProperty("obj_ebomzo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6983,10 +9485,16 @@ namespace WindEditor
 		[WProperty("obj_eff", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7005,10 +9513,16 @@ namespace WindEditor
 		[WProperty("obj_ekskz", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7027,10 +9541,16 @@ namespace WindEditor
 		[WProperty("obj_eskban", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7049,10 +9569,16 @@ namespace WindEditor
 		[WProperty("obj_ferris", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7071,10 +9597,16 @@ namespace WindEditor
 		[WProperty("obj_figure", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7093,10 +9625,16 @@ namespace WindEditor
 		[WProperty("obj_firewall", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7115,10 +9653,16 @@ namespace WindEditor
 		[WProperty("obj_flame", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7126,10 +9670,16 @@ namespace WindEditor
 		[WProperty("obj_flame", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00001F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00001F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00001F00 | (value << 8 & 0x00001F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00001F00 | (value_as_int << 8 & 0x00001F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7137,10 +9687,16 @@ namespace WindEditor
 		[WProperty("obj_flame", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00006000) >> 13); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00006000) >> 13);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00006000 | (value << 13 & 0x00006000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00006000 | (value_as_int << 13 & 0x00006000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7148,10 +9704,16 @@ namespace WindEditor
 		[WProperty("obj_flame", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -7159,10 +9721,16 @@ namespace WindEditor
 		[WProperty("obj_flame", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x30000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x30000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x30000000 | (value << 28 & 0x30000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -7170,10 +9738,16 @@ namespace WindEditor
 		[WProperty("obj_flame", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -7192,10 +9766,16 @@ namespace WindEditor
 		[WProperty("obj_ftree", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7247,10 +9827,16 @@ namespace WindEditor
 		[WProperty("obj_gnnbtltaki", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7302,10 +9888,16 @@ namespace WindEditor
 		[WProperty("obj_gryw00", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7335,10 +9927,16 @@ namespace WindEditor
 		[WProperty("obj_hami2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7357,10 +9955,16 @@ namespace WindEditor
 		[WProperty("obj_hami3", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7368,10 +9972,16 @@ namespace WindEditor
 		[WProperty("obj_hami3", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7379,10 +9989,16 @@ namespace WindEditor
 		[WProperty("obj_hami3", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7401,10 +10017,16 @@ namespace WindEditor
 		[WProperty("obj_hami4", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7423,10 +10045,16 @@ namespace WindEditor
 		[WProperty("obj_hat", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7445,10 +10073,16 @@ namespace WindEditor
 		[WProperty("obj_hbrf1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7456,10 +10090,16 @@ namespace WindEditor
 		[WProperty("obj_hbrf1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7467,10 +10107,16 @@ namespace WindEditor
 		[WProperty("obj_hbrf1", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7489,10 +10135,16 @@ namespace WindEditor
 		[WProperty("obj_hcbh", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7500,10 +10152,16 @@ namespace WindEditor
 		[WProperty("obj_hcbh", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00001FC0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00001FC0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00001FC0 | (value << 6 & 0x00001FC0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7511,10 +10169,16 @@ namespace WindEditor
 		[WProperty("obj_hcbh", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x001FE000) >> 13); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x001FE000) >> 13);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x001FE000 | (value << 13 & 0x001FE000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7544,10 +10208,16 @@ namespace WindEditor
 		[WProperty("obj_hha", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7555,10 +10225,16 @@ namespace WindEditor
 		[WProperty("obj_hha", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7577,10 +10253,16 @@ namespace WindEditor
 		[WProperty("obj_hlift", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000007) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000007 | (value << 0 & 0x00000007));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7588,10 +10270,16 @@ namespace WindEditor
 		[WProperty("obj_hlift", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000010) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000010) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000010 | (value << 4 & 0x00000010));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7599,10 +10287,16 @@ namespace WindEditor
 		[WProperty("obj_hlift", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7610,10 +10304,16 @@ namespace WindEditor
 		[WProperty("obj_hlift", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -7632,10 +10332,16 @@ namespace WindEditor
 		[WProperty("obj_hole", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7643,10 +10349,16 @@ namespace WindEditor
 		[WProperty("obj_hole", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7665,10 +10377,16 @@ namespace WindEditor
 		[WProperty("obj_homen", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000007F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000007F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000007F | (value << 0 & 0x0000007F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7676,10 +10394,16 @@ namespace WindEditor
 		[WProperty("obj_homen", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7687,10 +10411,16 @@ namespace WindEditor
 		[WProperty("obj_homen", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0003F000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0003F000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0003F000 | (value << 12 & 0x0003F000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0003F000 | (value_as_int << 12 & 0x0003F000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7698,10 +10428,16 @@ namespace WindEditor
 		[WProperty("obj_homen", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x003C0000) >> 18); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x003C0000) >> 18);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x003C0000 | (value << 18 & 0x003C0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x003C0000 | (value_as_int << 18 & 0x003C0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -7709,10 +10445,16 @@ namespace WindEditor
 		[WProperty("obj_homen", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -7731,10 +10473,16 @@ namespace WindEditor
 		[WProperty("obj_homensmoke", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7742,10 +10490,16 @@ namespace WindEditor
 		[WProperty("obj_homensmoke", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000002) >> 1); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000002) >> 1);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000002 | (value << 1 & 0x00000002));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7764,10 +10518,16 @@ namespace WindEditor
 		[WProperty("obj_hsehi1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7775,10 +10535,16 @@ namespace WindEditor
 		[WProperty("obj_hsehi1", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FFFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FFFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FFFF00 | (value << 8 & 0x00FFFF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7797,10 +10563,16 @@ namespace WindEditor
 		[WProperty("obj_htetu1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7819,10 +10591,16 @@ namespace WindEditor
 		[WProperty("obj_ice", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7841,10 +10619,16 @@ namespace WindEditor
 		[WProperty("obj_iceisland", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7863,10 +10647,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7874,10 +10664,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000003F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000003F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000003F0 | (value << 4 & 0x000003F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000003F0 | (value_as_int << 4 & 0x000003F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7885,10 +10681,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0003FC00) >> 10); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0003FC00) >> 10);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0003FC00 | (value << 10 & 0x0003FC00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7896,10 +10698,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -7907,10 +10715,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x03FC0000) >> 18); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x03FC0000) >> 18);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x03FC0000 | (value << 18 & 0x03FC0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x03FC0000 | (value_as_int << 18 & 0x03FC0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -7918,10 +10732,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -7929,10 +10749,16 @@ namespace WindEditor
 		[WProperty("obj_ikada", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -7951,10 +10777,16 @@ namespace WindEditor
 		[WProperty("obj_Itnak", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7962,10 +10794,16 @@ namespace WindEditor
 		[WProperty("obj_Itnak", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7984,10 +10822,16 @@ namespace WindEditor
 		[WProperty("obj_jump", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8006,10 +10850,16 @@ namespace WindEditor
 		[WProperty("obj_kanat", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8028,10 +10878,16 @@ namespace WindEditor
 		[WProperty("obj_kanoke", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8039,10 +10895,16 @@ namespace WindEditor
 		[WProperty("obj_kanoke", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000003E) >> 1); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003E) >> 1);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003E | (value << 1 & 0x0000003E));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003E | (value_as_int << 1 & 0x0000003E));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8050,10 +10912,16 @@ namespace WindEditor
 		[WProperty("obj_kanoke", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000040) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000040) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000040 | (value << 6 & 0x00000040));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8061,10 +10929,16 @@ namespace WindEditor
 		[WProperty("obj_kanoke", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8072,10 +10946,16 @@ namespace WindEditor
 		[WProperty("obj_kanoke", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -8094,10 +10974,16 @@ namespace WindEditor
 		[WProperty("obj_ladder", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000007) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000007 | (value << 0 & 0x00000007));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8105,10 +10991,16 @@ namespace WindEditor
 		[WProperty("obj_ladder", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8116,10 +11008,16 @@ namespace WindEditor
 		[WProperty("obj_ladder", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8138,10 +11036,16 @@ namespace WindEditor
 		[WProperty("obj_leaves", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8149,10 +11053,16 @@ namespace WindEditor
 		[WProperty("obj_leaves", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00001FC0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00001FC0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00001FC0 | (value << 6 & 0x00001FC0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8160,10 +11070,16 @@ namespace WindEditor
 		[WProperty("obj_leaves", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x001FE000) >> 13); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x001FE000) >> 13);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x001FE000 | (value << 13 & 0x001FE000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8204,10 +11120,16 @@ namespace WindEditor
 		[WProperty("obj_magmarock", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8215,10 +11137,16 @@ namespace WindEditor
 		[WProperty("obj_magmarock", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8237,10 +11165,16 @@ namespace WindEditor
 		[WProperty("obj_majyuu_door", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8259,10 +11193,16 @@ namespace WindEditor
 		[WProperty("obj_mkie", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8270,10 +11210,16 @@ namespace WindEditor
 		[WProperty("obj_mkie", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8281,10 +11227,16 @@ namespace WindEditor
 		[WProperty("obj_mkie", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00001000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00001000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00001000 | (value << 12 & 0x00001000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8292,10 +11244,16 @@ namespace WindEditor
 		[WProperty("obj_mkie", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00002000) >> 13); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00002000) >> 13);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00002000 | (value << 13 & 0x00002000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00002000 | (value_as_int << 13 & 0x00002000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8303,10 +11261,16 @@ namespace WindEditor
 		[WProperty("obj_mkie", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -8325,10 +11289,16 @@ namespace WindEditor
 		[WProperty("obj_mkiek", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8336,10 +11306,16 @@ namespace WindEditor
 		[WProperty("obj_mkiek", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8358,10 +11334,16 @@ namespace WindEditor
 		[WProperty("obj_mknjd", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8369,10 +11351,16 @@ namespace WindEditor
 		[WProperty("obj_mknjd", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8402,10 +11390,16 @@ namespace WindEditor
 		[WProperty("obj_monument", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8413,10 +11407,16 @@ namespace WindEditor
 		[WProperty("obj_monument", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8435,10 +11435,16 @@ namespace WindEditor
 		[WProperty("obj_movebox", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8446,10 +11452,16 @@ namespace WindEditor
 		[WProperty("obj_movebox", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8457,10 +11469,16 @@ namespace WindEditor
 		[WProperty("obj_movebox", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x007F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x007F0000 | (value << 16 & 0x007F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8468,10 +11486,16 @@ namespace WindEditor
 		[WProperty("obj_movebox", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8479,10 +11503,16 @@ namespace WindEditor
 		[WProperty("obj_movebox", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x40000000) >> 30); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x40000000) >> 30);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x40000000 | (value << 30 & 0x40000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -8490,10 +11520,16 @@ namespace WindEditor
 		[WProperty("obj_movebox", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -8512,10 +11548,16 @@ namespace WindEditor
 		[WProperty("obj_msdan", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8523,10 +11565,16 @@ namespace WindEditor
 		[WProperty("obj_msdan", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8534,10 +11582,16 @@ namespace WindEditor
 		[WProperty("obj_msdan", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00040000) >> 18); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00040000) >> 18);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00040000 | (value << 18 & 0x00040000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00040000 | (value_as_int << 18 & 0x00040000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8545,10 +11599,16 @@ namespace WindEditor
 		[WProperty("obj_msdan", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8567,10 +11627,16 @@ namespace WindEditor
 		[WProperty("obj_msdan2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8589,10 +11655,16 @@ namespace WindEditor
 		[WProperty("obj_msdan_sub", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8600,10 +11672,16 @@ namespace WindEditor
 		[WProperty("obj_msdan_sub", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8611,10 +11689,16 @@ namespace WindEditor
 		[WProperty("obj_msdan_sub", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8633,10 +11717,16 @@ namespace WindEditor
 		[WProperty("obj_msdan_sub2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8644,10 +11734,16 @@ namespace WindEditor
 		[WProperty("obj_msdan_sub2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8666,10 +11762,16 @@ namespace WindEditor
 		[WProperty("obj_mshokki", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000003) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000003 | (value << 0 & 0x00000003));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8688,10 +11790,16 @@ namespace WindEditor
 		[WProperty("obj_mtest", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000007) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000007 | (value << 0 & 0x00000007));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8699,10 +11807,16 @@ namespace WindEditor
 		[WProperty("obj_mtest", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8710,10 +11824,16 @@ namespace WindEditor
 		[WProperty("obj_mtest", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8721,10 +11841,16 @@ namespace WindEditor
 		[WProperty("obj_mtest", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8754,10 +11880,16 @@ namespace WindEditor
 		[WProperty("obj_ohatch", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8787,10 +11919,16 @@ namespace WindEditor
 		[WProperty("obj_ospbox", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8798,10 +11936,16 @@ namespace WindEditor
 		[WProperty("obj_ospbox", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000700) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000700) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000700 | (value << 8 & 0x00000700));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8820,10 +11964,16 @@ namespace WindEditor
 		[WProperty("obj_otble", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8841,20 +11991,32 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		public int MessageID
 		{ 
-			get { return (int)((Parameters & 0x0000FFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value << 0 & 0x0000FFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
 
 		public int Type
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -8906,10 +12068,16 @@ namespace WindEditor
 		[WProperty("obj_pirateship", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8917,10 +12085,16 @@ namespace WindEditor
 		[WProperty("obj_pirateship", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8928,10 +12102,16 @@ namespace WindEditor
 		[WProperty("obj_pirateship", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8961,10 +12141,16 @@ namespace WindEditor
 		[WProperty("obj_quake", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8972,10 +12158,16 @@ namespace WindEditor
 		[WProperty("obj_quake", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000700) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000700) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000700 | (value << 8 & 0x00000700));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8983,10 +12175,16 @@ namespace WindEditor
 		[WProperty("obj_quake", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00003800) >> 11); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00003800) >> 11);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00003800 | (value << 11 & 0x00003800));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00003800 | (value_as_int << 11 & 0x00003800));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9005,10 +12203,16 @@ namespace WindEditor
 		[WProperty("obj_rcloud", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9049,10 +12253,16 @@ namespace WindEditor
 		[WProperty("obj_roten", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9071,10 +12281,16 @@ namespace WindEditor
 		[WProperty("obj_shelf", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9082,10 +12298,16 @@ namespace WindEditor
 		[WProperty("obj_shelf", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9104,10 +12326,16 @@ namespace WindEditor
 		[WProperty("obj_shmrgrd", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9126,10 +12354,16 @@ namespace WindEditor
 		[WProperty("obj_smplbg", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9148,10 +12382,16 @@ namespace WindEditor
 		[WProperty("obj_stair", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9170,10 +12410,16 @@ namespace WindEditor
 		[WProperty("obj_swflat", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000003) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000003 | (value << 0 & 0x00000003));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9181,10 +12427,16 @@ namespace WindEditor
 		[WProperty("obj_swflat", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9192,10 +12444,16 @@ namespace WindEditor
 		[WProperty("obj_swflat", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9214,10 +12472,16 @@ namespace WindEditor
 		[WProperty("obj_swhammer", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9225,10 +12489,16 @@ namespace WindEditor
 		[WProperty("obj_swhammer", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9247,10 +12517,16 @@ namespace WindEditor
 		[WProperty("obj_swheavy", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9258,10 +12534,16 @@ namespace WindEditor
 		[WProperty("obj_swheavy", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x07000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x07000000 | (value << 24 & 0x07000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9280,10 +12562,16 @@ namespace WindEditor
 		[WProperty("obj_swlight", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9291,10 +12579,16 @@ namespace WindEditor
 		[WProperty("obj_swlight", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9302,10 +12596,16 @@ namespace WindEditor
 		[WProperty("obj_swlight", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9324,10 +12624,16 @@ namespace WindEditor
 		[WProperty("obj_swpush", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9335,10 +12641,16 @@ namespace WindEditor
 		[WProperty("obj_swpush", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9346,10 +12658,16 @@ namespace WindEditor
 		[WProperty("obj_swpush", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9357,10 +12675,16 @@ namespace WindEditor
 		[WProperty("obj_swpush", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x07000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x07000000 | (value << 24 & 0x07000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9368,10 +12692,16 @@ namespace WindEditor
 		[WProperty("obj_swpush", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x40000000) >> 30); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x40000000) >> 30);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x40000000 | (value << 30 & 0x40000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -9390,10 +12720,16 @@ namespace WindEditor
 		[WProperty("obj_table", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9412,10 +12748,16 @@ namespace WindEditor
 		[WProperty("obj_tapestry", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9423,10 +12765,16 @@ namespace WindEditor
 		[WProperty("obj_tapestry", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9445,10 +12793,16 @@ namespace WindEditor
 		[WProperty("obj_tenmado", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9456,10 +12810,16 @@ namespace WindEditor
 		[WProperty("obj_tenmado", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9478,10 +12838,16 @@ namespace WindEditor
 		[WProperty("obj_tide", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00070000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00070000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00070000 | (value << 16 & 0x00070000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00070000 | (value_as_int << 16 & 0x00070000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9489,10 +12855,16 @@ namespace WindEditor
 		[WProperty("obj_tide", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9511,10 +12883,16 @@ namespace WindEditor
 		[WProperty("obj_timer", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9522,10 +12900,16 @@ namespace WindEditor
 		[WProperty("obj_timer", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9544,10 +12928,16 @@ namespace WindEditor
 		[WProperty("obj_tntrap", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9555,10 +12945,16 @@ namespace WindEditor
 		[WProperty("obj_tntrap", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9566,10 +12962,16 @@ namespace WindEditor
 		[WProperty("obj_tntrap", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9577,10 +12979,16 @@ namespace WindEditor
 		[WProperty("obj_tntrap", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00060000) >> 17); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00060000) >> 17);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00060000 | (value << 17 & 0x00060000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00060000 | (value_as_int << 17 & 0x00060000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9632,10 +13040,16 @@ namespace WindEditor
 		[WProperty("obj_trap", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9643,10 +13057,16 @@ namespace WindEditor
 		[WProperty("obj_trap", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9665,10 +13085,16 @@ namespace WindEditor
 		[WProperty("obj_tribox", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9676,10 +13102,16 @@ namespace WindEditor
 		[WProperty("obj_tribox", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00010000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00010000 | (value << 16 & 0x00010000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9698,10 +13130,16 @@ namespace WindEditor
 		[WProperty("obj_try", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9709,10 +13147,16 @@ namespace WindEditor
 		[WProperty("obj_try", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9720,10 +13164,16 @@ namespace WindEditor
 		[WProperty("obj_try", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9731,10 +13181,16 @@ namespace WindEditor
 		[WProperty("obj_try", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFFFF00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFF00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFF00FF | (value << 0 & 0xFFFF00FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9764,10 +13220,16 @@ namespace WindEditor
 		[WProperty("obj_Vds", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9786,10 +13248,16 @@ namespace WindEditor
 		[WProperty("obj_vfan", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9819,10 +13287,16 @@ namespace WindEditor
 		[WProperty("obj_vmc", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9863,10 +13337,16 @@ namespace WindEditor
 		[WProperty("obj_volcano", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9896,10 +13376,16 @@ namespace WindEditor
 		[WProperty("obj_vtil", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9918,10 +13404,16 @@ namespace WindEditor
 		[WProperty("obj_vyasi", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9940,10 +13432,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9951,10 +13449,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9962,10 +13466,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00000FF0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000FF0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000FF0 | (value << 4 & 0x00000FF0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9973,10 +13483,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9984,10 +13500,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x000FF000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000FF000 | (value << 12 & 0x000FF000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -9995,10 +13517,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -10006,10 +13534,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -10017,10 +13551,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_8", true)]
 		public int Unknown_8
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -10028,10 +13568,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_9", true)]
 		public int Unknown_9
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_9");
 			}
 		}
@@ -10039,10 +13585,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_10", true)]
 		public int Unknown_10
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_10");
 			}
 		}
@@ -10050,10 +13602,16 @@ namespace WindEditor
 		[WProperty("obj_warpt", "Unknown_11", true)]
 		public int Unknown_11
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_11");
 			}
 		}
@@ -10094,10 +13652,16 @@ namespace WindEditor
 		[WProperty("obj_Yboil", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10116,10 +13680,16 @@ namespace WindEditor
 		[WProperty("obj_ygush00", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000007) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000007 | (value << 0 & 0x00000007));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10138,10 +13708,16 @@ namespace WindEditor
 		[WProperty("obj_YLzou", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10160,10 +13736,16 @@ namespace WindEditor
 		[WProperty("obj_zouK", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10182,10 +13764,16 @@ namespace WindEditor
 		[WProperty("oq", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10193,10 +13781,16 @@ namespace WindEditor
 		[WProperty("oq", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10204,10 +13798,16 @@ namespace WindEditor
 		[WProperty("oq", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10226,10 +13826,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10237,10 +13843,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10248,10 +13860,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000F000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000F000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000F000 | (value << 12 & 0x0000F000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000F000 | (value_as_int << 12 & 0x0000F000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10259,10 +13877,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10270,10 +13894,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -10281,10 +13911,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -10292,10 +13928,16 @@ namespace WindEditor
 		[WProperty("oship", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -10314,10 +13956,16 @@ namespace WindEditor
 		[WProperty("pedestal", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10336,10 +13984,16 @@ namespace WindEditor
 		[WProperty("ph", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10347,10 +14001,16 @@ namespace WindEditor
 		[WProperty("ph", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10358,10 +14018,16 @@ namespace WindEditor
 		[WProperty("ph", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10391,10 +14057,16 @@ namespace WindEditor
 		[WProperty("pt", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10402,10 +14074,16 @@ namespace WindEditor
 		[WProperty("pt", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000010) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000010) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000010 | (value << 4 & 0x00000010));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10413,10 +14091,16 @@ namespace WindEditor
 		[WProperty("pt", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000000E0) >> 5); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000E0) >> 5);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000E0 | (value << 5 & 0x000000E0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000E0 | (value_as_int << 5 & 0x000000E0));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10424,10 +14108,16 @@ namespace WindEditor
 		[WProperty("pt", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10435,10 +14125,16 @@ namespace WindEditor
 		[WProperty("pt", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -10446,10 +14142,16 @@ namespace WindEditor
 		[WProperty("pt", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -10468,10 +14170,16 @@ namespace WindEditor
 		[WProperty("pw", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10479,10 +14187,16 @@ namespace WindEditor
 		[WProperty("pw", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000100) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000100 | (value << 8 & 0x00000100));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10490,10 +14204,16 @@ namespace WindEditor
 		[WProperty("pw", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FE00) >> 9); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FE00) >> 9);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FE00 | (value << 9 & 0x0000FE00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FE00 | (value_as_int << 9 & 0x0000FE00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10501,10 +14221,16 @@ namespace WindEditor
 		[WProperty("pw", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10512,10 +14238,16 @@ namespace WindEditor
 		[WProperty("pw", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -10534,10 +14266,16 @@ namespace WindEditor
 		[WProperty("pz", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10556,10 +14294,16 @@ namespace WindEditor
 		[WProperty("race_item", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10567,10 +14311,16 @@ namespace WindEditor
 		[WProperty("race_item", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00007F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00007F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00007F00 | (value << 8 & 0x00007F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10578,10 +14328,16 @@ namespace WindEditor
 		[WProperty("race_item", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00078000) >> 15); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00078000) >> 15);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00078000 | (value << 15 & 0x00078000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00078000 | (value_as_int << 15 & 0x00078000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10600,10 +14356,16 @@ namespace WindEditor
 		[WProperty("rd", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10611,10 +14373,16 @@ namespace WindEditor
 		[WProperty("rd", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000FE) >> 1); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FE) >> 1);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FE | (value << 1 & 0x000000FE));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FE | (value_as_int << 1 & 0x000000FE));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10622,10 +14390,16 @@ namespace WindEditor
 		[WProperty("rd", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10633,10 +14407,16 @@ namespace WindEditor
 		[WProperty("rd", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10677,10 +14457,16 @@ namespace WindEditor
 		[WProperty("saku", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10688,10 +14474,16 @@ namespace WindEditor
 		[WProperty("saku", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10699,10 +14491,16 @@ namespace WindEditor
 		[WProperty("saku", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10710,10 +14508,16 @@ namespace WindEditor
 		[WProperty("saku", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10743,10 +14547,16 @@ namespace WindEditor
 		[WProperty("salvage_tbox", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10754,10 +14564,16 @@ namespace WindEditor
 		[WProperty("salvage_tbox", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10809,10 +14625,16 @@ namespace WindEditor
 		[WProperty("shand", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10831,10 +14653,16 @@ namespace WindEditor
 		[WProperty("ship", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10842,10 +14670,16 @@ namespace WindEditor
 		[WProperty("ship", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10853,10 +14687,16 @@ namespace WindEditor
 		[WProperty("ship", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10875,10 +14715,16 @@ namespace WindEditor
 		[WProperty("shop_item", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10886,10 +14732,16 @@ namespace WindEditor
 		[WProperty("shop_item", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10908,10 +14760,16 @@ namespace WindEditor
 		[WProperty("shutter", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10919,10 +14777,16 @@ namespace WindEditor
 		[WProperty("shutter", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10941,10 +14805,16 @@ namespace WindEditor
 		[WProperty("shutter2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10974,10 +14844,16 @@ namespace WindEditor
 		[WProperty("sitem", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10985,10 +14861,16 @@ namespace WindEditor
 		[WProperty("sitem", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10996,10 +14878,16 @@ namespace WindEditor
 		[WProperty("sitem", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11007,10 +14895,16 @@ namespace WindEditor
 		[WProperty("sitem", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11029,10 +14923,16 @@ namespace WindEditor
 		[WProperty("sk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11040,10 +14940,16 @@ namespace WindEditor
 		[WProperty("sk", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11062,10 +14968,16 @@ namespace WindEditor
 		[WProperty("sk2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11073,10 +14985,16 @@ namespace WindEditor
 		[WProperty("sk2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11084,10 +15002,16 @@ namespace WindEditor
 		[WProperty("sk2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11106,10 +15030,16 @@ namespace WindEditor
 		[WProperty("spotbox", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000001) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000001 | (value << 0 & 0x00000001));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11128,10 +15058,16 @@ namespace WindEditor
 		[WProperty("ss", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11139,10 +15075,16 @@ namespace WindEditor
 		[WProperty("ss", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11150,10 +15092,16 @@ namespace WindEditor
 		[WProperty("ss", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11172,10 +15120,16 @@ namespace WindEditor
 		[WProperty("ssk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11183,10 +15137,16 @@ namespace WindEditor
 		[WProperty("ssk", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11194,10 +15154,16 @@ namespace WindEditor
 		[WProperty("ssk", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11216,10 +15182,16 @@ namespace WindEditor
 		[WProperty("sss", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11227,10 +15199,16 @@ namespace WindEditor
 		[WProperty("sss", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11238,10 +15216,16 @@ namespace WindEditor
 		[WProperty("sss", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11260,10 +15244,16 @@ namespace WindEditor
 		[WProperty("st", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11271,10 +15261,16 @@ namespace WindEditor
 		[WProperty("st", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11282,10 +15278,16 @@ namespace WindEditor
 		[WProperty("st", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11293,10 +15295,16 @@ namespace WindEditor
 		[WProperty("st", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11304,10 +15312,16 @@ namespace WindEditor
 		[WProperty("st", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11326,10 +15340,16 @@ namespace WindEditor
 		[WProperty("steam_tag", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000003FC) >> 2); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000003FC) >> 2);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000003FC | (value << 2 & 0x000003FC));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11348,10 +15368,16 @@ namespace WindEditor
 		[WProperty("stone", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11359,10 +15385,16 @@ namespace WindEditor
 		[WProperty("stone", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000C0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000C0 | (value << 6 & 0x000000C0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11370,10 +15402,16 @@ namespace WindEditor
 		[WProperty("stone", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11381,10 +15419,16 @@ namespace WindEditor
 		[WProperty("stone", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x007F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x007F0000 | (value << 16 & 0x007F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11392,10 +15436,16 @@ namespace WindEditor
 		[WProperty("stone", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x07000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x07000000 | (value << 24 & 0x07000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11403,10 +15453,16 @@ namespace WindEditor
 		[WProperty("stone", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x70000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x70000000 | (value << 28 & 0x70000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -11425,10 +15481,16 @@ namespace WindEditor
 		[WProperty("stone2", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11436,10 +15498,16 @@ namespace WindEditor
 		[WProperty("stone2", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11447,10 +15515,16 @@ namespace WindEditor
 		[WProperty("stone2", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x007F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x007F0000 | (value << 16 & 0x007F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11458,10 +15532,16 @@ namespace WindEditor
 		[WProperty("stone2", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x07000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x07000000 | (value << 24 & 0x07000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11469,10 +15549,16 @@ namespace WindEditor
 		[WProperty("stone2", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x70000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x70000000 | (value << 28 & 0x70000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11480,10 +15566,16 @@ namespace WindEditor
 		[WProperty("stone2", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -11502,10 +15594,16 @@ namespace WindEditor
 		[WProperty("swattack", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11513,10 +15611,16 @@ namespace WindEditor
 		[WProperty("swattack", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11535,10 +15639,16 @@ namespace WindEditor
 		[WProperty("swc00", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11546,10 +15656,16 @@ namespace WindEditor
 		[WProperty("swc00", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11557,10 +15673,16 @@ namespace WindEditor
 		[WProperty("swc00", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00030000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00030000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00030000 | (value << 16 & 0x00030000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11579,10 +15701,16 @@ namespace WindEditor
 		[WProperty("swhit0", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11590,10 +15718,16 @@ namespace WindEditor
 		[WProperty("swhit0", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11601,10 +15735,16 @@ namespace WindEditor
 		[WProperty("swhit0", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11612,10 +15752,16 @@ namespace WindEditor
 		[WProperty("swhit0", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x0FF00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0FF00000 | (value << 20 & 0x0FF00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11623,10 +15769,16 @@ namespace WindEditor
 		[WProperty("swhit0", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11634,10 +15786,16 @@ namespace WindEditor
 		[WProperty("swhit0", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -11656,10 +15814,16 @@ namespace WindEditor
 		[WProperty("switem", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11667,10 +15831,16 @@ namespace WindEditor
 		[WProperty("switem", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00003F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00003F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00003F00 | (value << 8 & 0x00003F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11678,10 +15848,16 @@ namespace WindEditor
 		[WProperty("switem", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x001FC000) >> 14); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x001FC000) >> 14);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x001FC000 | (value << 14 & 0x001FC000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x001FC000 | (value_as_int << 14 & 0x001FC000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11700,10 +15876,16 @@ namespace WindEditor
 		[WProperty("swpropeller", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11711,10 +15893,16 @@ namespace WindEditor
 		[WProperty("swpropeller", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11733,10 +15921,16 @@ namespace WindEditor
 		[WProperty("swtact", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11744,10 +15938,16 @@ namespace WindEditor
 		[WProperty("swtact", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11755,10 +15955,16 @@ namespace WindEditor
 		[WProperty("swtact", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000F0000 | (value << 16 & 0x000F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11777,10 +15983,16 @@ namespace WindEditor
 		[WProperty("swtdoor", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11788,10 +16000,16 @@ namespace WindEditor
 		[WProperty("swtdoor", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11821,10 +16039,16 @@ namespace WindEditor
 		[WProperty("tag_attention", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11832,10 +16056,16 @@ namespace WindEditor
 		[WProperty("tag_attention", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000300) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000300 | (value << 8 & 0x00000300));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11865,10 +16095,16 @@ namespace WindEditor
 		[WProperty("tag_etc", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11876,10 +16112,16 @@ namespace WindEditor
 		[WProperty("tag_etc", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11898,10 +16140,16 @@ namespace WindEditor
 		[WProperty("tag_event", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11909,10 +16157,16 @@ namespace WindEditor
 		[WProperty("tag_event", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11920,10 +16174,16 @@ namespace WindEditor
 		[WProperty("tag_event", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11931,10 +16191,16 @@ namespace WindEditor
 		[WProperty("tag_event", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11942,10 +16208,16 @@ namespace WindEditor
 		[WProperty("tag_event", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11964,10 +16236,16 @@ namespace WindEditor
 		[WProperty("tag_evsw", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11975,10 +16253,16 @@ namespace WindEditor
 		[WProperty("tag_evsw", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FFFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FFFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FFFF00 | (value << 8 & 0x00FFFF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11986,10 +16270,16 @@ namespace WindEditor
 		[WProperty("tag_evsw", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x03000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x03000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x03000000 | (value << 24 & 0x03000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12008,10 +16298,16 @@ namespace WindEditor
 		[WProperty("tag_ghostship", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12019,10 +16315,16 @@ namespace WindEditor
 		[WProperty("tag_ghostship", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12041,10 +16343,16 @@ namespace WindEditor
 		[WProperty("tag_hint", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12052,10 +16360,16 @@ namespace WindEditor
 		[WProperty("tag_hint", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000C0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000C0 | (value << 6 & 0x000000C0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12063,10 +16377,16 @@ namespace WindEditor
 		[WProperty("tag_hint", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12074,10 +16394,16 @@ namespace WindEditor
 		[WProperty("tag_hint", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12085,20 +16411,32 @@ namespace WindEditor
 		[WProperty("tag_hint", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
 
 		public int MessageID
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -12106,10 +16444,16 @@ namespace WindEditor
 		[WProperty("tag_hint", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -12128,10 +16472,16 @@ namespace WindEditor
 		[WProperty("tag_island", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12139,10 +16489,16 @@ namespace WindEditor
 		[WProperty("tag_island", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12150,10 +16506,16 @@ namespace WindEditor
 		[WProperty("tag_island", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12172,10 +16534,16 @@ namespace WindEditor
 		[WProperty("tag_kb_item", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12183,10 +16551,16 @@ namespace WindEditor
 		[WProperty("tag_kb_item", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12194,10 +16568,16 @@ namespace WindEditor
 		[WProperty("tag_kb_item", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12205,10 +16585,16 @@ namespace WindEditor
 		[WProperty("tag_kb_item", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12227,10 +16613,16 @@ namespace WindEditor
 		[WProperty("tag_kf1", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12260,10 +16652,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x00000003) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000003 | (value << 0 & 0x00000003));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12271,10 +16669,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000300) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000300 | (value << 8 & 0x00000300));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12282,10 +16686,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000003FC) >> 2); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000003FC) >> 2);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000003FC | (value << 2 & 0x000003FC));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12293,10 +16703,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00003C00) >> 10); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00003C00) >> 10);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00003C00 | (value << 10 & 0x00003C00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00003C00 | (value_as_int << 10 & 0x00003C00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12304,10 +16720,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x0000C000) >> 14); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000C000) >> 14);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000C000 | (value << 14 & 0x0000C000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -12315,10 +16737,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -12326,10 +16754,16 @@ namespace WindEditor
 		[WProperty("tag_light", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -12348,10 +16782,16 @@ namespace WindEditor
 		[WProperty("tag_md_cb", "MessageID", true)]
 		public int MessageID
 		{ 
-			get { return (int)((Parameters & 0x0000FFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value << 0 & 0x0000FFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -12359,10 +16799,16 @@ namespace WindEditor
 		[WProperty("tag_md_cb", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12370,10 +16816,16 @@ namespace WindEditor
 		[WProperty("tag_md_cb", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12381,10 +16833,16 @@ namespace WindEditor
 		[WProperty("tag_md_cb", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12403,10 +16861,16 @@ namespace WindEditor
 		[WProperty("tag_mk", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12414,10 +16878,16 @@ namespace WindEditor
 		[WProperty("tag_mk", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12425,10 +16895,16 @@ namespace WindEditor
 		[WProperty("tag_mk", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12447,10 +16923,16 @@ namespace WindEditor
 		[WProperty("tag_msg", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000C0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000C0 | (value << 6 & 0x000000C0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12458,10 +16940,16 @@ namespace WindEditor
 		[WProperty("tag_msg", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12469,10 +16957,16 @@ namespace WindEditor
 		[WProperty("tag_msg", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12480,20 +16974,32 @@ namespace WindEditor
 		[WProperty("tag_msg", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
 
 		public int MessageID
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -12501,10 +17007,16 @@ namespace WindEditor
 		[WProperty("tag_msg", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -12523,10 +17035,16 @@ namespace WindEditor
 		[WProperty("tag_photo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12545,10 +17063,16 @@ namespace WindEditor
 		[WProperty("tag_ret", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12567,10 +17091,16 @@ namespace WindEditor
 		[WProperty("tag_so", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12578,10 +17108,16 @@ namespace WindEditor
 		[WProperty("tag_so", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12589,10 +17125,16 @@ namespace WindEditor
 		[WProperty("tag_so", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12611,10 +17153,16 @@ namespace WindEditor
 		[WProperty("tag_volcano", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12622,10 +17170,16 @@ namespace WindEditor
 		[WProperty("tag_volcano", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000C0) >> 6); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000C0 | (value << 6 & 0x000000C0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12633,10 +17187,16 @@ namespace WindEditor
 		[WProperty("tag_volcano", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12644,10 +17204,16 @@ namespace WindEditor
 		[WProperty("tag_volcano", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12666,10 +17232,16 @@ namespace WindEditor
 		[WProperty("tag_waterlevel", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12688,10 +17260,16 @@ namespace WindEditor
 		[WProperty("tama", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0xFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value << 0 & 0xFFFF));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12710,10 +17288,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000007F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000007F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000007F | (value << 0 & 0x0000007F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12721,10 +17305,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F80) >> 7); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F80) >> 7);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F80 | (value << 7 & 0x00000F80));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12732,10 +17322,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x000FF000) >> 12); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000FF000 | (value << 12 & 0x000FF000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12743,10 +17339,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12754,10 +17356,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value << 0 & 0x003F));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -12765,10 +17373,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -12776,10 +17390,16 @@ namespace WindEditor
 		[WProperty("tbox", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0xFF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value << 8 & 0xFF00));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -12809,10 +17429,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12820,10 +17446,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x000000F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000F0 | (value << 4 & 0x000000F0));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12831,10 +17463,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12842,10 +17480,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12853,10 +17497,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -12864,10 +17514,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((AuxillaryParameters1 & 0x00E0) >> 5); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters1 & 0x00E0) >> 5);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00E0 | (value << 5 & 0x00E0));
+				int value_as_int = value;
+				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00E0 | (value_as_int << 5 & 0x00E0));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -12875,10 +17531,16 @@ namespace WindEditor
 		[WProperty("tn", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -12897,10 +17559,16 @@ namespace WindEditor
 		[WProperty("toge", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12908,10 +17576,16 @@ namespace WindEditor
 		[WProperty("toge", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12941,10 +17615,16 @@ namespace WindEditor
 		[WProperty("tornado", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xFFFFFFFF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value << 0 & 0xFFFFFFFF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12974,10 +17654,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000003F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000003F | (value << 0 & 0x0000003F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12985,10 +17671,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00003F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00003F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00003F00 | (value << 8 & 0x00003F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12996,10 +17688,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x0000C000) >> 14); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000C000) >> 14);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000C000 | (value << 14 & 0x0000C000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13007,10 +17705,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x007F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x007F0000 | (value << 16 & 0x007F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13018,10 +17722,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x0F000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0F000000 | (value << 24 & 0x0F000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -13029,10 +17739,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0x70000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x70000000 | (value << 28 & 0x70000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -13040,10 +17756,16 @@ namespace WindEditor
 		[WProperty("tsubo", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((Parameters & 0x80000000) >> 31); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x80000000 | (value << 31 & 0x80000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -13062,10 +17784,16 @@ namespace WindEditor
 		[WProperty("wall", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13073,10 +17801,16 @@ namespace WindEditor
 		[WProperty("wall", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13095,10 +17829,16 @@ namespace WindEditor
 		[WProperty("warpdm20", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13117,10 +17857,16 @@ namespace WindEditor
 		[WProperty("warpf", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xF0000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xF0000000 | (value << 28 & 0xF0000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13150,10 +17896,16 @@ namespace WindEditor
 		[WProperty("warpgn", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13161,10 +17913,16 @@ namespace WindEditor
 		[WProperty("warpgn", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13183,10 +17941,16 @@ namespace WindEditor
 		[WProperty("warphr", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0xF0000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xF0000000 | (value << 28 & 0xF0000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13205,10 +17969,16 @@ namespace WindEditor
 		[WProperty("warpls", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13216,10 +17986,16 @@ namespace WindEditor
 		[WProperty("warpls", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13227,10 +18003,16 @@ namespace WindEditor
 		[WProperty("warpls", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13238,10 +18020,16 @@ namespace WindEditor
 		[WProperty("warpls", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xF0000000) >> 28); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xF0000000 | (value << 28 & 0xF0000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13260,10 +18048,16 @@ namespace WindEditor
 		[WProperty("warpmj", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13282,10 +18076,16 @@ namespace WindEditor
 		[WProperty("waterfall", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13293,10 +18093,16 @@ namespace WindEditor
 		[WProperty("waterfall", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00000F00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00000F00 | (value << 8 & 0x00000F00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13326,10 +18132,16 @@ namespace WindEditor
 		[WProperty("windmill", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13348,10 +18160,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13359,10 +18177,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13370,10 +18194,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x001F0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x001F0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x001F0000 | (value << 16 & 0x001F0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x001F0000 | (value_as_int << 16 & 0x001F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13381,10 +18211,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0x00600000) >> 21); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00600000) >> 21);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00600000 | (value << 21 & 0x00600000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00600000 | (value_as_int << 21 & 0x00600000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13392,10 +18228,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((Parameters & 0x00800000) >> 23); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00800000) >> 23);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00800000 | (value << 23 & 0x00800000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00800000 | (value_as_int << 23 & 0x00800000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -13403,10 +18245,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_6", true)]
 		public int Unknown_6
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -13414,10 +18262,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_7", true)]
 		public int Unknown_7
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x000F | (value << 0 & 0x000F));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x000F | (value_as_int << 0 & 0x000F));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -13425,10 +18279,16 @@ namespace WindEditor
 		[WProperty("wind_tag", "Unknown_8", true)]
 		public int Unknown_8
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00F0) >> 4); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00F0) >> 4);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00F0 | (value << 4 & 0x00F0));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00F0 | (value_as_int << 4 & 0x00F0));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -13447,10 +18307,16 @@ namespace WindEditor
 		[WProperty("wz", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x000000FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x000000FF | (value << 0 & 0x000000FF));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13458,10 +18324,16 @@ namespace WindEditor
 		[WProperty("wz", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13469,10 +18341,16 @@ namespace WindEditor
 		[WProperty("wz", "Unknown_3", true)]
 		public int Unknown_3
 		{ 
-			get { return (int)((Parameters & 0x00FF0000) >> 16); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value << 16 & 0x00FF0000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13480,10 +18358,16 @@ namespace WindEditor
 		[WProperty("wz", "Unknown_4", true)]
 		public int Unknown_4
 		{ 
-			get { return (int)((Parameters & 0xFF000000) >> 24); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0xFF000000 | (value << 24 & 0xFF000000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13491,10 +18375,16 @@ namespace WindEditor
 		[WProperty("wz", "Unknown_5", true)]
 		public int Unknown_5
 		{ 
-			get { return (int)((AuxillaryParameters2 & 0x00FF) >> 0); }
+			get
+			{
+				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value << 0 & 0x00FF));
+				int value_as_int = value;
+				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -13513,10 +18403,16 @@ namespace WindEditor
 		[WProperty("ygcwp", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000000F) >> 0); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000000F | (value << 0 & 0x0000000F));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13535,10 +18431,16 @@ namespace WindEditor
 		[WProperty("ykgr", "Unknown_1", true)]
 		public int Unknown_1
 		{ 
-			get { return (int)((Parameters & 0x0000FF00) >> 8); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value << 8 & 0x0000FF00));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13546,10 +18448,16 @@ namespace WindEditor
 		[WProperty("ykgr", "Unknown_2", true)]
 		public int Unknown_2
 		{ 
-			get { return (int)((Parameters & 0x00F00000) >> 20); }
+			get
+			{
+				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				return value_as_int;
+			}
+
 			set
 			{
-				Parameters = (int)(Parameters & ~0x00F00000 | (value << 20 & 0x00F00000));
+				int value_as_int = value;
+				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}

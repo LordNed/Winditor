@@ -9,7 +9,8 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "obj_barrier",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
@@ -18,7 +19,8 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "obj_barrier",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

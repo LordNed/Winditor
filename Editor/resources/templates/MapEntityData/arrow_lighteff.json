@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "arrow_lighteff",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

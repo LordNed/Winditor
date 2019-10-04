@@ -9,7 +9,8 @@
       "Shift": 24,
       "Hidden": false,
       "Category": "obj_roten",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

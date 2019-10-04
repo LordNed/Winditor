@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "mant",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

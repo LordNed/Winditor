@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "lbridge",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

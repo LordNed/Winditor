@@ -9,7 +9,8 @@
       "Shift": 28,
       "Hidden": false,
       "Category": "warphr",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

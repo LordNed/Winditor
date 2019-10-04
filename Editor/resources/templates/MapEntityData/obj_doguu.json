@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_doguu",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

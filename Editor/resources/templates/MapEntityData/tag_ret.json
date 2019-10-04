@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "tag_ret",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

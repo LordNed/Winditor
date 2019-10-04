@@ -9,7 +9,8 @@
       "Shift": 31,
       "Hidden": false,
       "Category": "acorn_leaf",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

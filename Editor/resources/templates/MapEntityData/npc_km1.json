@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "npc_km1",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

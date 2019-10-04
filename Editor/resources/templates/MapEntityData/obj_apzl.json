@@ -9,7 +9,8 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "obj_apzl",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

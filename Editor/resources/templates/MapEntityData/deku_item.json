@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Deku Leaf Pickup",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

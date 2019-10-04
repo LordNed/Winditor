@@ -9,7 +9,8 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "npc_bmcon1",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

@@ -9,7 +9,8 @@
       "Shift": 28,
       "Hidden": false,
       "Category": "warpf",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

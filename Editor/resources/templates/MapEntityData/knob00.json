@@ -9,7 +9,8 @@
       "Shift": 28,
       "Hidden": false,
       "Category": "knob00",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

@@ -62,8 +62,41 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				bitMaskHex = String.Format("0x{0:X8}", field.BitMask);
 				valueSourceType = "int";
 			}
+			string dataType;
+			switch (field.DataType)
+			{
+				case "Integer":
+					dataType = "int";
+					break;
+				case "Boolean":
+					dataType = "bool";
+					break;
+				case "Enum":
+					dataType = fieldName + "Enum";
 
-			
+					if (field.EnumValues != null)
+					{
+#>
+		public enum <#= dataType #>
+		{
+<#
+						foreach (var item in field.EnumValues)
+						{
+#>
+			<#= item.Value #> = <#= item.Key #>,
+<#
+						}
+#>
+		}
+
+<#
+					}
+
+					break;
+				default:
+					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
+					break;
+			}
 #>
 <#		 // We hide padding and other fields that the user doesn't need to see/change.
 		if(!field.IsHidden)
@@ -73,12 +106,56 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 <# 
 		}
 #>
-		<#= overrideName #>public int <#= fieldName #>
+		<#= overrideName #>public <#= dataType #> <#= fieldName #>
 		{ 
-			get { return (int)((<#= valueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>); }
+			get
+			{
+				int value_as_int = (int)((<#= valueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>);
+<#
+				switch (field.DataType)
+				{
+					case "Integer":
+#>
+				return value_as_int;
+<#
+						break;
+					case "Boolean":
+#>
+				return Convert.ToBoolean(value_as_int);
+<#
+						break;
+					case "Enum":
+#>
+				return (<#= dataType #>)value_as_int;
+<#
+						break;
+				}
+#>
+			}
+
 			set
 			{
-				<#= valueSource #> = (<#= valueSourceType #>)(<#= valueSource #> & ~<#= bitMaskHex #> | (value << <#= field.BitShift #> & <#= bitMaskHex #>));
+<#
+				switch (field.DataType)
+				{
+					case "Integer":
+#>
+				int value_as_int = value;
+<#
+						break;
+					case "Boolean":
+#>
+				int value_as_int = Convert.ToInt32(value);
+<#
+						break;
+					case "Enum":
+#>
+				int value_as_int = (int)value;
+<#
+						break;
+				}
+#>
+				<#= valueSource #> = (<#= valueSourceType #>)(<#= valueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= field.BitShift #> & <#= bitMaskHex #>));
 				OnPropertyChanged("<#=fieldName#>");
 			}
 		}

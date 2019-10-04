@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "fallrock_tag",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

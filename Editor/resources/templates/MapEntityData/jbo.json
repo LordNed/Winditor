@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "jbo",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

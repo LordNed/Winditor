@@ -9,7 +9,8 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "obj_vmc",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

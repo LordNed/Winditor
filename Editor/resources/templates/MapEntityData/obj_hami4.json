@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_hami4",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

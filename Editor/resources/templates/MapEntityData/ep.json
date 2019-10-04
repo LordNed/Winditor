@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": true,
       "Category": "ep",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
@@ -18,7 +19,8 @@
       "Shift": 6,
       "Hidden": false,
       "Category": "Unknowns",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Is Wooden",
@@ -27,7 +29,8 @@
       "Shift": 7,
       "Hidden": true,
       "Category": "Torch",
-      "ToolTip":  "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold."
+      "ToolTip": "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold.",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
@@ -36,7 +39,8 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "Unknowns",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
@@ -45,7 +49,8 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "Unknowns",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "On Switch",
@@ -54,7 +59,8 @@
       "Shift": 24,
       "Hidden": true,
       "Category": "Torch",
-      "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default."
+      "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default.",
+      "DataType": "Integer"
     }
   ]
 }

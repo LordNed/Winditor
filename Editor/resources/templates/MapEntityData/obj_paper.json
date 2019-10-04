@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": true,
       "Category": "obj_paper",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Type",
@@ -18,7 +19,8 @@
       "Shift": 16,
       "Hidden": true,
       "Category": "obj_paper",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

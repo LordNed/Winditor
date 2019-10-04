@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "windmill",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

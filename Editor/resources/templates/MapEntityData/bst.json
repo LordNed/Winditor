@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": true,
       "Category": "bst",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

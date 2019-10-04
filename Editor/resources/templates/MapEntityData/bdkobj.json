@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "bdkobj",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
@@ -18,7 +19,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "bdkobj",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

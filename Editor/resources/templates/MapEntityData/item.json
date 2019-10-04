@@ -9,7 +9,8 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Item Pickup",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

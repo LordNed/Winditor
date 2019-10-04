@@ -9,7 +9,8 @@
       "Shift": 2,
       "Hidden": false,
       "Category": "steam_tag",
-      "ToolTip": ""
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }
