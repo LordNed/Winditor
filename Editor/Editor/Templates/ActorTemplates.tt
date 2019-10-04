@@ -66,7 +66,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 #>
 		<#= overrideName #>public int <#= fieldName #>
 		{ 
-			get { return (int)(<#= valueSource #> & <#= field.BitMask #>) >> <#= field.BitShift #>; }
+			get { return (int)((<#= valueSource #> & <#= field.BitMask #>) >> <#= field.BitShift #>); }
 			set
 			{
 <#
