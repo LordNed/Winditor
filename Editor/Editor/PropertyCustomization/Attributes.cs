@@ -6,19 +6,27 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
+    public enum SourceScene
+    {
+        Room,
+        Stage
+    }
+
     public class WProperty : System.Attribute
     {
         private string Category;
         private string DisplayName;
         private string ToolTip;
         private bool IsEditable;
+        private SourceScene SourceScene;
 
-        public WProperty(string category, string name, bool editable, string tip="")
+        public WProperty(string category, string name, bool editable, string tip="", SourceScene source=SourceScene.Room)
         {
             Category = category;
             DisplayName = name;
             IsEditable = editable;
             ToolTip = tip;
+            SourceScene = source;
         }
     }
 

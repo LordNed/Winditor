@@ -25,7 +25,7 @@ namespace WindEditor.Minitors.Text
             throw new NotImplementedException();
         }
 
-        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
+        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source, SourceScene source_scene)
         {
             WDetailSingleRowViewModel text_row = new WDetailSingleRowViewModel(display_name);
 

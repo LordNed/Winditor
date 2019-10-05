@@ -23,6 +23,7 @@ namespace WindEditor.View
     /// </summary>
     public partial class WActorReferenceControl : UserControl
     {
+        private SourceScene m_Source;
         public WDOMNode ActorReference
         {
             get { return (WDOMNode)GetValue(ActorReferenceProperty); }
@@ -32,16 +33,35 @@ namespace WindEditor.View
         public static readonly DependencyProperty ActorReferenceProperty = DependencyProperty.Register(
             "ActorReference", typeof(WDOMNode), typeof(WActorReferenceControl), new PropertyMetadata(null));
 
-        public WActorReferenceControl()
+        public WActorReferenceControl(SourceScene source)
         {
+            m_Source = source;
             InitializeComponent();
         }
 
         public void FillComboBox()
         {
             BindingExpression binding = GetBindingExpression(ActorReferenceProperty);
-            Type field_type = binding.ResolvedSource.GetType().GetProperty(binding.ResolvedSourcePropertyName).PropertyType;
 
+            List<WDOMNode> combo_list = new List<WDOMNode>();
+
+            if (m_Source == SourceScene.Room)
+            {
+                combo_list = GetNodesFromRoom(binding);
+            }
+            else if (m_Source == SourceScene.Stage)
+            {
+                combo_list = GetNodesFromStage(binding);
+            }
+
+            actor_combo.ItemsSource = combo_list;
+        }
+
+        private List<WDOMNode> GetNodesFromRoom(BindingExpression binding)
+        {
+            List<WDOMNode> result = new List<WDOMNode>();
+
+            Type field_type = binding.ResolvedSource.GetType().GetProperty(binding.ResolvedSourcePropertyName).PropertyType;
             WDOMNode source_object = binding.ResolvedSource as WDOMNode;
             WDOMNode cur_object = source_object;
 
@@ -50,14 +70,32 @@ namespace WindEditor.View
                 cur_object = cur_object.Parent;
             }
 
-            List<WDOMNode> ba = cur_object.GetChildrenOfType(field_type);
+            result = cur_object.GetChildrenOfType(field_type);
 
             if (source_object.GetType() == field_type)
             {
-                ba.Remove(source_object);
+                result.Remove(source_object);
             }
 
-            actor_combo.ItemsSource = ba;
+            return result;
+        }
+
+        private List<WDOMNode> GetNodesFromStage(BindingExpression binding)
+        {
+            List<WDOMNode> result = new List<WDOMNode>();
+
+            Type field_type = binding.ResolvedSource.GetType().GetProperty(binding.ResolvedSourcePropertyName).PropertyType;
+            WDOMNode source_object = binding.ResolvedSource as WDOMNode;
+
+            WStage stage = source_object.World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+            result = stage.GetChildrenOfType(field_type);
+
+            if (source_object.GetType() == field_type)
+            {
+                result.Remove(source_object);
+            }
+
+            return result;
         }
 
         private void Select_Button_Click(object sender, RoutedEventArgs e)

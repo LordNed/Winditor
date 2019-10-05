@@ -18,7 +18,7 @@ namespace WindEditor.Editor
             throw new NotImplementedException();
         }
 
-        List<WDetailSingleRowViewModel> IPropertyTypeCustomization.CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
+        List<WDetailSingleRowViewModel> IPropertyTypeCustomization.CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source, SourceScene source_scene)
         {
             WTransformControl pos_ctrl = new WTransformControl();
             WTransformControl scale_ctrl = new WTransformControl();

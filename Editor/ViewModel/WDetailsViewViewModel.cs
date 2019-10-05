@@ -88,6 +88,7 @@ namespace WindEditor.ViewModel
                 string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
                 bool is_editable     =   (bool)custom_attributes[0].ConstructorArguments[2].Value;
                 string tool_tip      = (string)custom_attributes[0].ConstructorArguments[3].Value;
+                SourceScene source_scene = (SourceScene)custom_attributes[0].ConstructorArguments[4].Value;
 
                 // Get the base type for possible use later
                 Type base_type = p.PropertyType;
@@ -123,20 +124,20 @@ namespace WindEditor.ViewModel
                 // If it is, we just grab the customization and generate a control with it.
                 if (m_TypeCustomizations.ContainsKey(p.PropertyType.Name))
                 {
-                    property_rows = m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, obj);
+                    property_rows = m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, obj, source_scene);
                 }
                 // If there is no customization registered, and the type is an enum, we
                 // use EnumTypeCustomization to generate a control.
                 else if (p.PropertyType.IsEnum)
                 {
                     EnumTypeCustomization enu = new EnumTypeCustomization();
-                    property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
+                    property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj, source_scene);
                 }
                 // Failing the prior checks, we see if the base type of the property is WDOMNode,
                 // in which case we just use the WDOMNode customization to generate a control.
                 else if (base_type.Name == typeof(WDOMNode).Name)
                 {
-                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
+                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj, source_scene);
                 }
                 // If the property type is completely unknown or unsupported, we create an empty row with
                 // just the property's name.

@@ -51,11 +51,11 @@ namespace WindEditor.Editor
             throw new NotImplementedException();
         }
 
-        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
+        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source, SourceScene scene)
         {
             WDetailSingleRowViewModel ref_row = new WDetailSingleRowViewModel(display_name);
 
-            WActorReferenceControl ref_ctrl = new WActorReferenceControl();
+            WActorReferenceControl ref_ctrl = new WActorReferenceControl(scene);
             ref_ctrl.IsEnabled = is_editable;
 
             Binding tbind = new Binding(property.Name)

@@ -45,7 +45,7 @@ namespace WindEditor.Editor
             throw new NotImplementedException();
         }
 
-        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
+        public List<WDetailSingleRowViewModel> CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source, SourceScene source_scene)
         {
             WDetailSingleRowViewModel enum_row = new WDetailSingleRowViewModel(display_name);
 
