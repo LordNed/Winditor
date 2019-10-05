@@ -9,8 +9,6 @@ namespace WindEditor.a
     public class DOMOrganizerNode<T> : WDOMNode
         where T : WDOMNode
     {
-        public override string Name { get; set; }
-
         public DOMOrganizerNode(WWorld world, string header) : base(world)
         {
             Name = header;

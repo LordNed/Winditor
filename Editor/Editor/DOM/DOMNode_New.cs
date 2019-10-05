@@ -30,7 +30,7 @@ namespace WindEditor.a
         public WDOMNode Parent { get; private set; }
         public ObservableCollection<WDOMNode> Children { get { return m_Children; } }
         public WWorld World { get; protected set; }
-        public virtual string Name { get { return ToString(); } set { } }
+        public string Name { get; protected set; }
 
         #region Flags
         public NodeFlags Flags { get; set; }
