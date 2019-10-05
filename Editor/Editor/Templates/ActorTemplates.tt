@@ -28,6 +28,17 @@ namespace WindEditor
 {
 <#
 
+string EscapeIdentifier(string input)
+{
+	return Regex.Replace(input, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+}
+string EscapeStringLiteral(string input)
+{
+	string output = Regex.Replace(input, @"([""\\])", @"\$1"); // Escape quotes and backslashes
+	output = Regex.Replace(output, @"([\0\a\b\f\n\r\t\v])", "", RegexOptions.IgnoreCase);
+	return "\"" + output + "\"";
+}
+
 // We sometimes have duplicate templates to handle loading from the file, so we'll not generate duplicate classes.
 List<string> usedClassNames = new List<string>();
 foreach (var file in Directory.GetFiles(TemplatePath))
@@ -48,7 +59,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			if(skippedFields.Contains(field.FieldName.Replace(" ", "")))
 				continue; 
 
-			string fieldName = Regex.Replace(field.FieldName, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+			string fieldName = EscapeIdentifier(field.FieldName);
 			string valueSource = String.IsNullOrEmpty(field.ValueSource) ? "Parameters" : field.ValueSource;
 			string privateFieldName = "m_" + fieldName;
 			string overrideName = field.FieldName == "Name" ? "override" : "";
@@ -85,7 +96,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 					foreach (var item in field.EnumValues)
 					{
 						string sanitizedValue = item.Value.Replace(" ", "_");
-						sanitizedValue = Regex.Replace(sanitizedValue, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+						sanitizedValue = EscapeIdentifier(sanitizedValue);
 #>
 			<#= sanitizedValue #> = <#= item.Key #>,
 <#
@@ -108,7 +119,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		if(!field.IsHidden)
 		{
 #>
-		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true<#= string.IsNullOrEmpty(field.ToolTip) ? "" : ", \"" + field.ToolTip + "\"" #>)]
+		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true<#= string.IsNullOrEmpty(field.ToolTip) ? "" : ", " + EscapeStringLiteral(field.ToolTip) #>)]
 <# 
 		}
 #>
