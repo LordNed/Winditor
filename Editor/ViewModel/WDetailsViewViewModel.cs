@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using WindEditor.Editor;
+using WindEditor.View;
 
 namespace WindEditor.ViewModel
 {
@@ -124,20 +125,24 @@ namespace WindEditor.ViewModel
                 // If it is, we just grab the customization and generate a control with it.
                 if (m_TypeCustomizations.ContainsKey(p.PropertyType.Name))
                 {
-                    property_rows = m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, obj, source_scene);
+                    property_rows = m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, obj);
                 }
                 // If there is no customization registered, and the type is an enum, we
                 // use EnumTypeCustomization to generate a control.
                 else if (p.PropertyType.IsEnum)
                 {
                     EnumTypeCustomization enu = new EnumTypeCustomization();
-                    property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj, source_scene);
+                    property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
                 }
                 // Failing the prior checks, we see if the base type of the property is WDOMNode,
                 // in which case we just use the WDOMNode customization to generate a control.
                 else if (base_type.Name == typeof(WDOMNode).Name)
                 {
-                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj, source_scene);
+                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
+
+                    WActorReferenceControl c = (WActorReferenceControl)property_rows[0].PropertyControl;
+                    c.Source = source_scene;
+                    c.FillComboBox();
                 }
                 // If the property type is completely unknown or unsupported, we create an empty row with
                 // just the property's name.

@@ -23,7 +23,10 @@ namespace WindEditor.View
     /// </summary>
     public partial class WActorReferenceControl : UserControl
     {
-        private SourceScene m_Source;
+        public SourceScene Source {
+            get;
+            set;
+        }
         public WDOMNode ActorReference
         {
             get { return (WDOMNode)GetValue(ActorReferenceProperty); }
@@ -33,9 +36,8 @@ namespace WindEditor.View
         public static readonly DependencyProperty ActorReferenceProperty = DependencyProperty.Register(
             "ActorReference", typeof(WDOMNode), typeof(WActorReferenceControl), new PropertyMetadata(null));
 
-        public WActorReferenceControl(SourceScene source)
+        public WActorReferenceControl()
         {
-            m_Source = source;
             InitializeComponent();
         }
 
@@ -45,11 +47,11 @@ namespace WindEditor.View
 
             List<WDOMNode> combo_list = new List<WDOMNode>();
 
-            if (m_Source == SourceScene.Room)
+            if (Source == SourceScene.Room)
             {
                 combo_list = GetNodesFromRoom(binding);
             }
-            else if (m_Source == SourceScene.Stage)
+            else if (Source == SourceScene.Stage)
             {
                 combo_list = GetNodesFromStage(binding);
             }
