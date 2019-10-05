@@ -3,17 +3,25 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "bb",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Flying around",
+        3: "Instantly targets Link",
+        4: "Sits in place A",
+        5: "Carrying a Moblin",
+        6: "Carrying a Bokoblin",
+        7: "Sits in place B",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Sight Range (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
@@ -23,17 +31,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "bb",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
@@ -43,7 +51,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,

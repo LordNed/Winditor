@@ -740,25 +740,35 @@ namespace WindEditor
 	public partial class bb : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bb", "Unknown_1", true)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Flying_around = 0,
+			Instantly_targets_Link = 3,
+			Sits_in_place_A = 4,
+			Carrying_a_Moblin = 5,
+			Carrying_a_Bokoblin = 6,
+			Sits_in_place_B = 7,
+		}
+
+		[WProperty("bb", "Behavior Type", true)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("bb", "Unknown_2", true)]
-		public int Unknown_2
+		[WProperty("bb", "Sight Range (Hundreds)", true)]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -770,29 +780,43 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
-		[WProperty("bb", "Unknown_3", true)]
-		public int Unknown_3
+		[WProperty("bb", "Path", true)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("bb", "Unknown_4", true)]
-		public int Unknown_4
+		[WProperty("bb", "Enable Spawn Switch", true)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -804,12 +828,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("bb", "Unknown_5", true)]
-		public int Unknown_5
+		[WProperty("bb", "Disable Spawn Switch", true)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -821,7 +845,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
@@ -3177,93 +3201,118 @@ namespace WindEditor
 	public partial class fm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fm", "Unknown_1", true)]
-		public int Unknown_1
+		[WProperty("fm", "Link Captured Exit", true, "Which exit this Floormaster takes Link through when it captures him.")]
+		public ExitData LinkCapturedExit
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
 				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("LinkCapturedExit");
 			}
 		}
 
-		[WProperty("fm", "Unknown_2", true)]
-		public int Unknown_2
+		public enum TypeEnum
+		{
+			Stalker_unused = 0,
+			Follows_path = 1,
+			Doesnt_follow_path = 2,
+		}
+
+		[WProperty("fm", "Type", true, "The unused Stalker type follows Link without coming out of the floor. That type only appears when its Enable Spawn Switch is set while in the same room as the Floormaster.")]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("fm", "Unknown_3", true)]
-		public int Unknown_3
+		public enum TargetingBehaviorTypeEnum
+		{
+			Target_Link_and_partner = 0,
+			Target_Link_only = 1,
+			Target_Partner_only = 2,
+		}
+
+		[WProperty("fm", "Targeting Behavior Type", true)]
+		public TargetingBehaviorTypeEnum TargetingBehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x00000C00) >> 10);
-				return value_as_int;
+				return (TargetingBehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				Parameters = (int)(Parameters & ~0x00000C00 | (value_as_int << 10 & 0x00000C00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("TargetingBehaviorType");
 			}
 		}
 
-		[WProperty("fm", "Unknown_4", true)]
-		public int Unknown_4
+		[WProperty("fm", "Path", true, "Only the \"Follows path\" type uses this path.")]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("fm", "Unknown_5", true)]
-		public int Unknown_5
-		{ 
-			get
-			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
-				OnPropertyChanged("Unknown_5");
-			}
-		}
-
-		[WProperty("fm", "Unknown_6", true)]
-		public int Unknown_6
+		[WProperty("fm", "Enable Spawn Switch", true)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -3275,12 +3324,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("fm", "Unknown_7", true)]
-		public int Unknown_7
+		[WProperty("fm", "Disable Spawn Switch", true)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -3292,12 +3341,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
-		[WProperty("fm", "Unknown_8", true)]
-		public int Unknown_8
+		[WProperty("fm", "Partner Captured Exit", true, "Which stage exit this Floormaster takes Medli/Makar through when it captures them.")]
+		public int PartnerCapturedExit
 		{ 
 			get
 			{
@@ -3309,12 +3358,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_8");
+				OnPropertyChanged("PartnerCapturedExit");
 			}
 		}
 
-		[WProperty("fm", "Unknown_9", true)]
-		public int Unknown_9
+		[WProperty("fm", "Sight Range (Hundreds)", true, "Defaults to a range of 3000 if you set this to 0 or 255.")]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -3326,7 +3375,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_9");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
