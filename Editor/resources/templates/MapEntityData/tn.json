@@ -3,27 +3,43 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
       "Category": "tn",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Wandering",
+        4: "Guards an area",
+        13: "Mini-boss",
+        14: "Drops down during event",
+        15: "Frozen in time",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Color",
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Shift": 4,
       "Hidden": false,
       "Category": "tn",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Silver and blue",
+        1: "Silver and red",
+        2: "Gold and black",
+        3: "White and silver",
+        4: "Black and brown",
+        5: "Red and gold",
+        15: "Red and gold B",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Guarded Area Radius (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
@@ -33,43 +49,52 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "tn",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "tn",
-      "ToolTip": "",
+      "ToolTip": "If this switch is valid, the Darknut will not appear until it is set.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Extra Equipment",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0x00E0,
       "Shift": 5,
       "Hidden": false,
       "Category": "tn",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Helmet",
+        2: "Shield",
+        3: "Helmet and shield",
+        4: "Shield and cape",
+        5: "Helmet shield and cape",
+        7: "Helmet shield and cape B",
+      }
     },
     {
-      "Name": "Unknown_7",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "tn",
-      "ToolTip": "",
+      "ToolTip": "The Darknut will set this switch when it dies and will not spawn while this is set.",
       "DataType": "Integer"
     }
   ]

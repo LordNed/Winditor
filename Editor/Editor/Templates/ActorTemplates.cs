@@ -17522,42 +17522,62 @@ namespace WindEditor
 	public partial class tn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tn", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Wandering = 0,
+			Guards_an_area = 4,
+			Miniboss = 13,
+			Drops_down_during_event = 14,
+			Frozen_in_time = 15,
+		}
+
+		[WProperty("tn", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("tn", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		public enum ColorEnum
+		{
+			Silver_and_blue = 0,
+			Silver_and_red = 1,
+			Gold_and_black = 2,
+			White_and_silver = 3,
+			Black_and_brown = 4,
+			Red_and_gold = 5,
+			Red_and_gold_B = 15,
+		}
+
+		[WProperty("tn", "Color", true, "", SourceScene.Room)]
+		public ColorEnum Color
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				return value_as_int;
+				return (ColorEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Color");
 			}
 		}
 
-		[WProperty("tn", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("tn", "Guarded Area Radius (Tens)", true, "", SourceScene.Room)]
+		public int GuardedAreaRadiusTens
 		{ 
 			get
 			{
@@ -17569,29 +17589,43 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("GuardedAreaRadiusTens");
 			}
 		}
 
-		[WProperty("tn", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("tn", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("tn", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("tn", "Enable Spawn Switch", true, "If this switch is valid, the Darknut will not appear until it is set.", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -17603,29 +17637,40 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("tn", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		public enum ExtraEquipmentEnum
+		{
+			Normal = 0,
+			Helmet = 1,
+			Shield = 2,
+			Helmet_and_shield = 3,
+			Shield_and_cape = 4,
+			Helmet_shield_and_cape = 5,
+			Helmet_shield_and_cape_B = 7,
+		}
+
+		[WProperty("tn", "Extra Equipment", true, "", SourceScene.Room)]
+		public ExtraEquipmentEnum ExtraEquipment
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00E0) >> 5);
-				return value_as_int;
+				return (ExtraEquipmentEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00E0 | (value_as_int << 5 & 0x00E0));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("ExtraEquipment");
 			}
 		}
 
-		[WProperty("tn", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("tn", "Disable Spawn on Death Switch", true, "The Darknut will set this switch when it dies and will not spawn while this is set.", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -17637,7 +17682,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
