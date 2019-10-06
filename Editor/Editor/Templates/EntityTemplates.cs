@@ -46,7 +46,7 @@ namespace WindEditor
 	public partial class MinimapSettings_Unused : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private Vector2 m_FullMapImageScale;
+		protected Vector2 m_FullMapImageScale;
 
 		[WProperty("Misc.", "Full Map Image Scale", false)]
 		 public Vector2 FullMapImageScale
@@ -60,7 +60,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_FullMapSpaceScale;
+		protected Vector2 m_FullMapSpaceScale;
 
 		[WProperty("Misc.", "Full Map Space Scale", false)]
 		 public Vector2 FullMapSpaceScale
@@ -74,7 +74,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_FullMapTranslation;
+		protected Vector2 m_FullMapTranslation;
 
 		[WProperty("Misc.", "Full Map Translation", false)]
 		 public Vector2 FullMapTranslation
@@ -88,7 +88,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_ZoomedMapScrolling1;
+		protected Vector2 m_ZoomedMapScrolling1;
 
 		[WProperty("Misc.", "Zoomed Map Scrolling 1", false)]
 		 public Vector2 ZoomedMapScrolling1
@@ -102,7 +102,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_ZoomedMapScrolling2;
+		protected Vector2 m_ZoomedMapScrolling2;
 
 		[WProperty("Misc.", "Zoomed Map Scrolling 2", false)]
 		 public Vector2 ZoomedMapScrolling2
@@ -116,7 +116,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_ZoomedMapTranslation;
+		protected Vector2 m_ZoomedMapTranslation;
 
 		[WProperty("Misc.", "Zoomed Map Translation", false)]
 		 public Vector2 ZoomedMapTranslation
@@ -130,7 +130,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_ZoomedMapScale;
+		protected float m_ZoomedMapScale;
 
 		[WProperty("Misc.", "Zoomed Map Scale", false)]
 		 public float ZoomedMapScale
@@ -144,7 +144,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown;
+		protected byte m_Unknown;
 
 		[WProperty("Misc.", "Unknown", false)]
 		 public byte Unknown
@@ -158,7 +158,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_MapImageIndex;
+		protected byte m_MapImageIndex;
 
 		[WProperty("Misc.", "Map Image Index", false)]
 		 public byte MapImageIndex
@@ -172,7 +172,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
@@ -186,7 +186,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding;
+		protected byte m_Padding;
 
 		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
@@ -256,7 +256,7 @@ namespace WindEditor
 	public partial class MinimapSettings : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private Vector2 m_FullMapImageScale;
+		protected Vector2 m_FullMapImageScale;
 
 		[WProperty("Misc.", "Full Map Image Scale", false)]
 		 public Vector2 FullMapImageScale
@@ -270,7 +270,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_FullMapSpaceScale;
+		protected Vector2 m_FullMapSpaceScale;
 
 		[WProperty("Misc.", "Full Map Space Scale", false)]
 		 public Vector2 FullMapSpaceScale
@@ -284,7 +284,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_FullMapTranslation;
+		protected Vector2 m_FullMapTranslation;
 
 		[WProperty("Misc.", "Full Map Translation", false)]
 		 public Vector2 FullMapTranslation
@@ -298,7 +298,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_ZoomedMapScrolling1;
+		protected Vector2 m_ZoomedMapScrolling1;
 
 		[WProperty("Misc.", "Zoomed Map Scrolling 1", false)]
 		 public Vector2 ZoomedMapScrolling1
@@ -312,7 +312,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_ZoomedMapScrolling2;
+		protected Vector2 m_ZoomedMapScrolling2;
 
 		[WProperty("Misc.", "Zoomed Map Scrolling 2", false)]
 		 public Vector2 ZoomedMapScrolling2
@@ -326,7 +326,7 @@ namespace WindEditor
 		}
 				
 
-		private Vector2 m_ZoomedMapTranslation;
+		protected Vector2 m_ZoomedMapTranslation;
 
 		[WProperty("Misc.", "Zoomed Map Translation", false)]
 		 public Vector2 ZoomedMapTranslation
@@ -340,7 +340,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_ZoomedMapScale;
+		protected float m_ZoomedMapScale;
 
 		[WProperty("Misc.", "Zoomed Map Scale", false)]
 		 public float ZoomedMapScale
@@ -354,7 +354,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown;
+		protected byte m_Unknown;
 
 		[WProperty("Misc.", "Unknown", false)]
 		 public byte Unknown
@@ -368,7 +368,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_MapImageIndex;
+		protected byte m_MapImageIndex;
 
 		[WProperty("Misc.", "Map Image Index", false)]
 		 public byte MapImageIndex
@@ -382,7 +382,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
@@ -396,7 +396,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding;
+		protected byte m_Padding;
 
 		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
@@ -466,7 +466,7 @@ namespace WindEditor
 	public partial class Actor : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -480,49 +480,16 @@ namespace WindEditor
 		}
 				
 
-		private int m_Parameters;
-
-		[WProperty("Misc.", "Parameters", false)]
-		 public int Parameters
-		{ 
-			get { return m_Parameters; }
-			set
-			{
-				m_Parameters = value;
-				OnPropertyChanged("Parameters");
-			}
-		}
+		protected int m_Parameters;
 				
 
-		private short m_AuxillaryParameters1;
-
-		[WProperty("Misc.", "Auxillary Parameters 1", false)]
-		 public short AuxillaryParameters1
-		{ 
-			get { return m_AuxillaryParameters1; }
-			set
-			{
-				m_AuxillaryParameters1 = value;
-				OnPropertyChanged("AuxillaryParameters1");
-			}
-		}
+		protected short m_AuxillaryParameters1;
 				
 
-		private short m_AuxillaryParameters2;
-
-		[WProperty("Misc.", "Auxillary Parameters 2", false)]
-		 public short AuxillaryParameters2
-		{ 
-			get { return m_AuxillaryParameters2; }
-			set
-			{
-				m_AuxillaryParameters2 = value;
-				OnPropertyChanged("AuxillaryParameters2");
-			}
-		}
+		protected short m_AuxillaryParameters2;
 				
 
-		private short m_EnemyNumber;
+		protected short m_EnemyNumber;
 
 		[WProperty("Misc.", "Enemy Number", false)]
 		 public short EnemyNumber
@@ -541,9 +508,6 @@ namespace WindEditor
 		public Actor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 1", TargetProperties = new string[] { "AuxillaryParameters1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 2", TargetProperties = new string[] { "AuxillaryParameters2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
@@ -565,28 +529,20 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Parameters);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)AuxillaryParameters1);
+			stream.Write((short)m_AuxillaryParameters1);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)AuxillaryParameters2);
+			stream.Write((short)m_AuxillaryParameters2);
 			stream.Write((short)EnemyNumber);
-
-            if (FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb)
-            {
-                stream.Write((byte)(Transform.LocalScale.X * 10f));
-                stream.Write((byte)(Transform.LocalScale.Y * 10f));
-                stream.Write((byte)(Transform.LocalScale.Z * 10f));
-                stream.Write((sbyte)-1);
-            }
-        }
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class CameraViewpoint_v1 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private short m_Padding;
+		protected short m_Padding;
 				
 
 
@@ -622,7 +578,7 @@ namespace WindEditor
 	public partial class CameraViewpoint_v2 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private short m_Padding;
+		protected short m_Padding;
 				
 
 
@@ -658,7 +614,7 @@ namespace WindEditor
 	public partial class CameraType_v1 : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_CameraType;
+		protected string m_CameraType;
 
 		[WProperty("Misc.", "Camera Type", false)]
 		 public string CameraType
@@ -672,7 +628,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_CameraPointIndex;
+		protected short m_CameraPointIndex;
 
 		[WProperty("Misc.", "Camera Point Index", false)]
 		 public short CameraPointIndex
@@ -686,7 +642,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding1;
+		protected byte m_Padding1;
 
 		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
@@ -700,7 +656,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
@@ -749,7 +705,7 @@ namespace WindEditor
 	public partial class CameraType_v2 : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_CameraType;
+		protected string m_CameraType;
 
 		[WProperty("Misc.", "Camera Type", false)]
 		 public string CameraType
@@ -763,7 +719,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_CameraPointIndex;
+		protected byte m_CameraPointIndex;
 
 		[WProperty("Misc.", "Camera Point Index", false)]
 		 public byte CameraPointIndex
@@ -777,7 +733,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding1;
+		protected byte m_Padding1;
 
 		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
@@ -791,7 +747,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
@@ -805,7 +761,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding3;
+		protected byte m_Padding3;
 
 		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
@@ -857,7 +813,7 @@ namespace WindEditor
 	public partial class Door_DOOR : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -871,7 +827,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_Parameters;
+		protected int m_Parameters;
 
 		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
@@ -885,7 +841,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_AuxiliaryParameters;
+		protected short m_AuxiliaryParameters;
 
 		[WProperty("Misc.", "Auxiliary Parameters", false)]
 		 public short AuxiliaryParameters
@@ -899,7 +855,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown1;
+		protected short m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public short Unknown1
@@ -913,7 +869,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown2;
+		protected short m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public short Unknown2
@@ -927,7 +883,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_ScaleX;
+		protected byte m_ScaleX;
 
 		[WProperty("Misc.", "Scale X", false)]
 		 public byte ScaleX
@@ -941,7 +897,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_ScaleY;
+		protected byte m_ScaleY;
 
 		[WProperty("Misc.", "Scale Y", false)]
 		 public byte ScaleY
@@ -955,7 +911,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_ScaleZ;
+		protected byte m_ScaleZ;
 
 		[WProperty("Misc.", "Scale Z", false)]
 		 public byte ScaleZ
@@ -969,7 +925,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding;
+		protected byte m_Padding;
 				
 
 
@@ -1025,7 +981,7 @@ namespace WindEditor
 	public partial class DungeonFloorSettings : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private float m_LowerBoundaryYHeight;
+		protected float m_LowerBoundaryYHeight;
 
 		[WProperty("Misc.", "Lower Boundary YHeight", false)]
 		 public float LowerBoundaryYHeight
@@ -1039,7 +995,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_FloorNumber;
+		protected byte m_FloorNumber;
 
 		[WProperty("Misc.", "Floor Number", false)]
 		 public byte FloorNumber
@@ -1053,7 +1009,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom0;
+		protected byte m_IncludedRoom0;
 
 		[WProperty("Misc.", "Included Room 0", false)]
 		 public byte IncludedRoom0
@@ -1067,7 +1023,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom1;
+		protected byte m_IncludedRoom1;
 
 		[WProperty("Misc.", "Included Room 1", false)]
 		 public byte IncludedRoom1
@@ -1081,7 +1037,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom2;
+		protected byte m_IncludedRoom2;
 
 		[WProperty("Misc.", "Included Room 2", false)]
 		 public byte IncludedRoom2
@@ -1095,7 +1051,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom3;
+		protected byte m_IncludedRoom3;
 
 		[WProperty("Misc.", "Included Room 3", false)]
 		 public byte IncludedRoom3
@@ -1109,7 +1065,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom4;
+		protected byte m_IncludedRoom4;
 
 		[WProperty("Misc.", "Included Room 4", false)]
 		 public byte IncludedRoom4
@@ -1123,7 +1079,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom5;
+		protected byte m_IncludedRoom5;
 
 		[WProperty("Misc.", "Included Room 5", false)]
 		 public byte IncludedRoom5
@@ -1137,7 +1093,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom6;
+		protected byte m_IncludedRoom6;
 
 		[WProperty("Misc.", "Included Room 6", false)]
 		 public byte IncludedRoom6
@@ -1151,7 +1107,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom7;
+		protected byte m_IncludedRoom7;
 
 		[WProperty("Misc.", "Included Room 7", false)]
 		 public byte IncludedRoom7
@@ -1165,7 +1121,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom8;
+		protected byte m_IncludedRoom8;
 
 		[WProperty("Misc.", "Included Room 8", false)]
 		 public byte IncludedRoom8
@@ -1179,7 +1135,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom9;
+		protected byte m_IncludedRoom9;
 
 		[WProperty("Misc.", "Included Room 9", false)]
 		 public byte IncludedRoom9
@@ -1193,7 +1149,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom10;
+		protected byte m_IncludedRoom10;
 
 		[WProperty("Misc.", "Included Room 10", false)]
 		 public byte IncludedRoom10
@@ -1207,7 +1163,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom11;
+		protected byte m_IncludedRoom11;
 
 		[WProperty("Misc.", "Included Room 11", false)]
 		 public byte IncludedRoom11
@@ -1221,7 +1177,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom12;
+		protected byte m_IncludedRoom12;
 
 		[WProperty("Misc.", "Included Room 12", false)]
 		 public byte IncludedRoom12
@@ -1235,7 +1191,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom13;
+		protected byte m_IncludedRoom13;
 
 		[WProperty("Misc.", "Included Room 13", false)]
 		 public byte IncludedRoom13
@@ -1249,7 +1205,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_IncludedRoom14;
+		protected byte m_IncludedRoom14;
 
 		[WProperty("Misc.", "Included Room 14", false)]
 		 public byte IncludedRoom14
@@ -1337,7 +1293,7 @@ namespace WindEditor
 	public partial class DungeonMapSettings : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private float m_MapSizeX;
+		protected float m_MapSizeX;
 
 		[WProperty("Misc.", "Map Size X", false)]
 		 public float MapSizeX
@@ -1351,7 +1307,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_MapSizeY;
+		protected float m_MapSizeY;
 
 		[WProperty("Misc.", "Map Size Y", false)]
 		 public float MapSizeY
@@ -1365,7 +1321,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_MapScaleInverse;
+		protected float m_MapScaleInverse;
 
 		[WProperty("Misc.", "Map Scale Inverse", false)]
 		 public float MapScaleInverse
@@ -1379,7 +1335,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_Unknown1;
+		protected float m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public float Unknown1
@@ -1428,7 +1384,7 @@ namespace WindEditor
 	public partial class LightSource : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private Vector3 m_Radius;
+		protected Vector3 m_Radius;
 
 		[WProperty("Misc.", "Radius", false)]
 		 public Vector3 Radius
@@ -1442,7 +1398,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_Color;
+		protected WLinearColor m_Color;
 
 		[WProperty("Misc.", "Color", false)]
 		 public WLinearColor Color
@@ -1487,19 +1443,19 @@ namespace WindEditor
 	public partial class EnvironmentLightingConditions : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_ClearIndex;
+		protected byte m_ClearIndex;
 				
 
-		private byte m_RainingIndex;
+		protected byte m_RainingIndex;
 				
 
-		private byte m_SnowingIndex;
+		protected byte m_SnowingIndex;
 				
 
-		private byte m_ForestParticlesIndex;
+		protected byte m_ForestParticlesIndex;
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Unknowns", "Unknown 1", true)]
 		 public byte Unknown1
@@ -1513,7 +1469,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Unknowns", "Unknown 2", true)]
 		 public byte Unknown2
@@ -1527,7 +1483,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown3;
+		protected byte m_Unknown3;
 
 		[WProperty("Unknowns", "Unknown 3", true)]
 		 public byte Unknown3
@@ -1541,7 +1497,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown4;
+		protected byte m_Unknown4;
 
 		[WProperty("Unknowns", "Unknown 4", true)]
 		 public byte Unknown4
@@ -1598,7 +1554,7 @@ namespace WindEditor
 	public partial class EnvironmentLightingPalette : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private WLinearColor m_ShadowColor;
+		protected WLinearColor m_ShadowColor;
 
 		[WProperty("Misc.", "Shadow Color", true)]
 		 public WLinearColor ShadowColor
@@ -1612,7 +1568,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_ActorAmbientColor;
+		protected WLinearColor m_ActorAmbientColor;
 
 		[WProperty("Misc.", "Actor Ambient Color", true)]
 		 public WLinearColor ActorAmbientColor
@@ -1626,7 +1582,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_RoomLightColor;
+		protected WLinearColor m_RoomLightColor;
 
 		[WProperty("Misc.", "Room Light Color", true)]
 		 public WLinearColor RoomLightColor
@@ -1640,7 +1596,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_RoomAmbientColor;
+		protected WLinearColor m_RoomAmbientColor;
 
 		[WProperty("Misc.", "Room Ambient Color", true)]
 		 public WLinearColor RoomAmbientColor
@@ -1654,7 +1610,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_WaveColor;
+		protected WLinearColor m_WaveColor;
 
 		[WProperty("Misc.", "Wave Color", true)]
 		 public WLinearColor WaveColor
@@ -1668,7 +1624,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_OceanColor;
+		protected WLinearColor m_OceanColor;
 
 		[WProperty("Misc.", "Ocean Color", true)]
 		 public WLinearColor OceanColor
@@ -1682,7 +1638,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_UnknownWhite1;
+		protected WLinearColor m_UnknownWhite1;
 
 		[WProperty("Misc.", "Unknown White 1", true)]
 		 public WLinearColor UnknownWhite1
@@ -1696,7 +1652,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_UnknownWhite2;
+		protected WLinearColor m_UnknownWhite2;
 
 		[WProperty("Misc.", "Unknown White 2", true)]
 		 public WLinearColor UnknownWhite2
@@ -1710,7 +1666,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_DoorBackfill;
+		protected WLinearColor m_DoorBackfill;
 
 		[WProperty("Misc.", "Door Backfill", true)]
 		 public WLinearColor DoorBackfill
@@ -1724,7 +1680,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_Unknown3;
+		protected WLinearColor m_Unknown3;
 
 		[WProperty("Misc.", "Unknown 3", true)]
 		 public WLinearColor Unknown3
@@ -1738,7 +1694,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_FogColor;
+		protected WLinearColor m_FogColor;
 
 		[WProperty("Misc.", "Fog Color", true)]
 		 public WLinearColor FogColor
@@ -1752,10 +1708,10 @@ namespace WindEditor
 		}
 				
 
-		private byte m_SkyboxPaletteIndex;
+		protected byte m_SkyboxPaletteIndex;
 				
 
-		private byte m_Padding1;
+		protected byte m_Padding1;
 
 		[WProperty("Misc.", "Padding 1", true)]
 		 public byte Padding1
@@ -1769,7 +1725,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding2;
+		protected byte m_Padding2;
 
 		[WProperty("Misc.", "Padding 2", true)]
 		 public byte Padding2
@@ -1783,7 +1739,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_FogFarPlane;
+		protected float m_FogFarPlane;
 
 		[WProperty("Misc.", "Fog Far Plane", true)]
 		 public float FogFarPlane
@@ -1797,7 +1753,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_FogNearPlane;
+		protected float m_FogNearPlane;
 
 		[WProperty("Misc.", "Fog Near Plane", true)]
 		 public float FogNearPlane
@@ -1881,7 +1837,7 @@ namespace WindEditor
 	public partial class EnvironmentLightingSkyboxPalette : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private WLinearColor m_Unknown1;
+		protected WLinearColor m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", true)]
 		 public WLinearColor Unknown1
@@ -1895,7 +1851,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_Unknown2;
+		protected WLinearColor m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", true)]
 		 public WLinearColor Unknown2
@@ -1909,7 +1865,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_Unknown3;
+		protected WLinearColor m_Unknown3;
 
 		[WProperty("Misc.", "Unknown 3", true)]
 		 public WLinearColor Unknown3
@@ -1923,7 +1879,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_Unknown4;
+		protected WLinearColor m_Unknown4;
 
 		[WProperty("Misc.", "Unknown 4", true)]
 		 public WLinearColor Unknown4
@@ -1937,7 +1893,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_HorizonCloudColor;
+		protected WLinearColor m_HorizonCloudColor;
 
 		[WProperty("Misc.", "Horizon Cloud Color", true)]
 		 public WLinearColor HorizonCloudColor
@@ -1951,7 +1907,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_CenterCloudColor;
+		protected WLinearColor m_CenterCloudColor;
 
 		[WProperty("Misc.", "Center Cloud Color", true)]
 		 public WLinearColor CenterCloudColor
@@ -1965,7 +1921,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_SkyColor;
+		protected WLinearColor m_SkyColor;
 
 		[WProperty("Misc.", "Sky Color", true)]
 		 public WLinearColor SkyColor
@@ -1979,7 +1935,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_FalseSeaColor;
+		protected WLinearColor m_FalseSeaColor;
 
 		[WProperty("Misc.", "False Sea Color", true)]
 		 public WLinearColor FalseSeaColor
@@ -1993,7 +1949,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_HorizonColor;
+		protected WLinearColor m_HorizonColor;
 
 		[WProperty("Misc.", "Horizon Color", true)]
 		 public WLinearColor HorizonColor
@@ -2007,7 +1963,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding1;
+		protected byte m_Padding1;
 
 		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
@@ -2021,7 +1977,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding2;
+		protected byte m_Padding2;
 
 		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
@@ -2035,7 +1991,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding3;
+		protected byte m_Padding3;
 
 		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
@@ -2108,28 +2064,28 @@ namespace WindEditor
 	public partial class EnvironmentLightingTimesOfDay : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_DawnIndex;
+		protected byte m_DawnIndex;
 				
 
-		private byte m_MorningIndex;
+		protected byte m_MorningIndex;
 				
 
-		private byte m_NoonIndex;
+		protected byte m_NoonIndex;
 				
 
-		private byte m_AfternoonIndex;
+		protected byte m_AfternoonIndex;
 				
 
-		private byte m_DuskIndex;
+		protected byte m_DuskIndex;
 				
 
-		private byte m_NightIndex;
+		protected byte m_NightIndex;
 				
 
-		private short m_Unknown1;
+		protected short m_Unknown1;
 				
 
-		private float m_Unknown2;
+		protected float m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public float Unknown2
@@ -2183,7 +2139,7 @@ namespace WindEditor
 	public partial class MapEvent : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
@@ -2197,7 +2153,7 @@ namespace WindEditor
 		}
 				
 
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -2211,7 +2167,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
@@ -2225,7 +2181,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown3;
+		protected byte m_Unknown3;
 
 		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
@@ -2239,7 +2195,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown4;
+		protected byte m_Unknown4;
 
 		[WProperty("Misc.", "Unknown 4", false)]
 		 public byte Unknown4
@@ -2253,7 +2209,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown5;
+		protected byte m_Unknown5;
 
 		[WProperty("Misc.", "Unknown 5", false)]
 		 public byte Unknown5
@@ -2267,7 +2223,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_RoomNumber;
+		protected byte m_RoomNumber;
 
 		[WProperty("Misc.", "Room Number", false)]
 		 public byte RoomNumber
@@ -2281,7 +2237,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding1;
+		protected byte m_Padding1;
 
 		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
@@ -2295,7 +2251,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding2;
+		protected byte m_Padding2;
 
 		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
@@ -2309,7 +2265,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding3;
+		protected byte m_Padding3;
 
 		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
@@ -2376,7 +2332,7 @@ namespace WindEditor
 	public partial class ExitData : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_MapName;
+		protected string m_MapName;
 
 		[WProperty("Misc.", "Map Name", false)]
 		 public string MapName
@@ -2390,7 +2346,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_SpawnIndex;
+		protected byte m_SpawnIndex;
 
 		[WProperty("Misc.", "Spawn Index", false)]
 		 public byte SpawnIndex
@@ -2404,7 +2360,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_RoomIndex;
+		protected byte m_RoomIndex;
 
 		[WProperty("Misc.", "Room Index", false)]
 		 public byte RoomIndex
@@ -2418,7 +2374,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_FadeOutType;
+		protected byte m_FadeOutType;
 
 		[WProperty("Misc.", "Fade Out Type", false)]
 		 public byte FadeOutType
@@ -2432,7 +2388,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding;
+		protected byte m_Padding;
 
 		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
@@ -2484,7 +2440,7 @@ namespace WindEditor
 	public partial class CutsceneIndexBank : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_Unknown;
+		protected byte m_Unknown;
 
 		[WProperty("Misc.", "Unknown", false)]
 		 public byte Unknown
@@ -2524,7 +2480,7 @@ namespace WindEditor
 	public partial class LightVector : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private Vector3 m_Radius;
+		protected Vector3 m_Radius;
 
 		[WProperty("Misc.", "Radius", false)]
 		 public Vector3 Radius
@@ -2538,7 +2494,7 @@ namespace WindEditor
 		}
 				
 
-		private WLinearColor m_Color;
+		protected WLinearColor m_Color;
 
 		[WProperty("Misc.", "Color", false)]
 		 public WLinearColor Color
@@ -2583,7 +2539,7 @@ namespace WindEditor
 	public partial class MemoryCO : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private byte m_Room;
+		protected byte m_Room;
 
 		[WProperty("Misc.", "Room", false)]
 		 public byte Room
@@ -2597,7 +2553,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Entry;
+		protected byte m_Entry;
 
 		[WProperty("Misc.", "Entry", false)]
 		 public byte Entry
@@ -2640,7 +2596,7 @@ namespace WindEditor
 	public partial class RoomMemoryManagement : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private int m_SizeInBytes;
+		protected int m_SizeInBytes;
 
 		[WProperty("Misc.", "SizeInBytes", false)]
 		 public int SizeInBytes
@@ -2680,7 +2636,7 @@ namespace WindEditor
 	public partial class SpawnPoint : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Spawn Properties", "Name", false)]
 		override public string Name
@@ -2694,7 +2650,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_EventIndex;
+		protected byte m_EventIndex;
 
 		[WProperty("Spawn Properties", "Event Index", true)]
 		 public byte EventIndex
@@ -2708,7 +2664,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Unknowns", "Unknown 1", false)]
 		 public byte Unknown1
@@ -2722,7 +2678,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_SpawnType;
+		protected byte m_SpawnType;
 
 		[WProperty("Spawn Properties", "Spawn Type", true)]
 		 public byte SpawnType
@@ -2736,7 +2692,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Room;
+		protected byte m_Room;
 
 		[WProperty("Spawn Properties", "Room", true)]
 		 public byte Room
@@ -2750,7 +2706,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown2;
+		protected short m_Unknown2;
 
 		[WProperty("Unknowns", "Unknown 2", false)]
 		 public short Unknown2
@@ -2764,7 +2720,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown3;
+		protected byte m_Unknown3;
 
 		[WProperty("Unknowns", "Unknown 3", false)]
 		 public byte Unknown3
@@ -2778,7 +2734,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_SpawnIndex;
+		protected byte m_SpawnIndex;
 
 		[WProperty("Spawn Properties", "Spawn Index", true)]
 		 public byte SpawnIndex
@@ -2792,7 +2748,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown4;
+		protected short m_Unknown4;
 
 		[WProperty("Unknowns", "Unknown 4", false)]
 		 public short Unknown4
@@ -2860,7 +2816,7 @@ namespace WindEditor
 	public partial class RoomProperties : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private int m_Parameters;
+		protected int m_Parameters;
 
 		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
@@ -2874,7 +2830,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_SkyboxYHeight;
+		protected float m_SkyboxYHeight;
 
 		[WProperty("Misc.", "Skybox Y Height", false)]
 		 public float SkyboxYHeight
@@ -2917,7 +2873,7 @@ namespace WindEditor
 	public partial class RoomModelTranslation : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private Vector2 m_Translation;
+		protected Vector2 m_Translation;
 
 		[WProperty("Misc.", "Translation", false)]
 		 public Vector2 Translation
@@ -2931,7 +2887,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Room;
+		protected byte m_Room;
 
 		[WProperty("Misc.", "Room", false)]
 		 public byte Room
@@ -2945,7 +2901,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_WaveHeightAddition;
+		protected byte m_WaveHeightAddition;
 
 		[WProperty("Misc.", "Wave Height Addition", false)]
 		 public byte WaveHeightAddition
@@ -2993,7 +2949,7 @@ namespace WindEditor
 	public partial class RoomTable : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private int m_Offset;
+		protected int m_Offset;
 
 		[WProperty("Misc.", "Offset", false)]
 		 public int Offset
@@ -3033,7 +2989,7 @@ namespace WindEditor
 	public partial class ScaleableObject : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -3047,7 +3003,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Parameter1;
+		protected byte m_Parameter1;
 
 		[WProperty("Misc.", "Parameter 1", false)]
 		 public byte Parameter1
@@ -3061,7 +3017,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Parameter2;
+		protected byte m_Parameter2;
 
 		[WProperty("Misc.", "Parameter 2", false)]
 		 public byte Parameter2
@@ -3075,7 +3031,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Parameter3;
+		protected byte m_Parameter3;
 
 		[WProperty("Misc.", "Parameter 3", false)]
 		 public byte Parameter3
@@ -3089,7 +3045,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Parameter4;
+		protected byte m_Parameter4;
 
 		[WProperty("Misc.", "Parameter 4", false)]
 		 public byte Parameter4
@@ -3103,7 +3059,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_AuxiliaryParameter;
+		protected short m_AuxiliaryParameter;
 
 		[WProperty("Misc.", "Auxiliary Parameter", false)]
 		 public short AuxiliaryParameter
@@ -3117,7 +3073,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown1;
+		protected short m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public short Unknown1
@@ -3131,7 +3087,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown2;
+		protected short m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public short Unknown2
@@ -3145,7 +3101,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding;
+		protected byte m_Padding;
 				
 
 
@@ -3207,7 +3163,7 @@ namespace WindEditor
 	public partial class ShipSpawnPoint : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private float /*single axis rotation */ m_Rotation;
+		protected float /*single axis rotation */ m_Rotation;
 
 		[WProperty("Misc.", "Rotation", false)]
 		 public float /*single axis rotation */ Rotation
@@ -3221,7 +3177,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_ShipId;
+		protected byte m_ShipId;
 
 		[WProperty("Misc.", "Ship Id", false)]
 		 public byte ShipId
@@ -3235,7 +3191,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
@@ -3283,7 +3239,7 @@ namespace WindEditor
 	public partial class SoundEffect : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -3297,7 +3253,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
@@ -3311,7 +3267,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
@@ -3325,7 +3281,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown3;
+		protected byte m_Unknown3;
 
 		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
@@ -3339,7 +3295,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_SoundID;
+		protected byte m_SoundID;
 
 		[WProperty("Misc.", "Sound ID", false)]
 		 public byte SoundID
@@ -3353,7 +3309,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_PathIndex;
+		protected byte m_PathIndex;
 
 		[WProperty("Misc.", "Path Index", false)]
 		 public byte PathIndex
@@ -3367,7 +3323,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding1;
+		protected byte m_Padding1;
 
 		[WProperty("Misc.", "Padding 1", false)]
 		 public byte Padding1
@@ -3381,7 +3337,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding2;
+		protected byte m_Padding2;
 
 		[WProperty("Misc.", "Padding 2", false)]
 		 public byte Padding2
@@ -3395,7 +3351,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding3;
+		protected byte m_Padding3;
 
 		[WProperty("Misc.", "Padding 3", false)]
 		 public byte Padding3
@@ -3461,7 +3417,7 @@ namespace WindEditor
 	public partial class StageProperties : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private float m_ZDepthMin;
+		protected float m_ZDepthMin;
 
 		[WProperty("Misc.", "Z Depth Min", false)]
 		 public float ZDepthMin
@@ -3475,7 +3431,7 @@ namespace WindEditor
 		}
 				
 
-		private float m_ZDepthMax;
+		protected float m_ZDepthMax;
 
 		[WProperty("Misc.", "Z Depth Max", false)]
 		 public float ZDepthMax
@@ -3489,7 +3445,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_StageID;
+		protected short m_StageID;
 
 		[WProperty("Misc.", "Stage ID", false)]
 		 public short StageID
@@ -3503,7 +3459,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unk_ParticleBank;
+		protected short m_Unk_ParticleBank;
 
 		[WProperty("Misc.", "Unk_Particle Bank", false)]
 		 public short Unk_ParticleBank
@@ -3517,7 +3473,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unk_PropertyIndex;
+		protected short m_Unk_PropertyIndex;
 
 		[WProperty("Misc.", "Unk_Property Index", false)]
 		 public short Unk_PropertyIndex
@@ -3531,7 +3487,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown1;
+		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public byte Unknown1
@@ -3545,7 +3501,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
@@ -3559,7 +3515,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown3;
+		protected byte m_Unknown3;
 
 		[WProperty("Misc.", "Unknown 3", false)]
 		 public byte Unknown3
@@ -3573,7 +3529,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown4;
+		protected byte m_Unknown4;
 
 		[WProperty("Misc.", "Unknown 4", false)]
 		 public byte Unknown4
@@ -3587,7 +3543,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unk_DrawRange;
+		protected short m_Unk_DrawRange;
 
 		[WProperty("Misc.", "Unk_Draw Range", false)]
 		 public short Unk_DrawRange
@@ -3654,7 +3610,7 @@ namespace WindEditor
 	public partial class TGDR : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -3668,7 +3624,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_Parameters;
+		protected int m_Parameters;
 
 		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
@@ -3682,7 +3638,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_AuxillaryParameters1;
+		protected short m_AuxillaryParameters1;
 
 		[WProperty("Misc.", "Auxillary Parameters 1", false)]
 		 public short AuxillaryParameters1
@@ -3696,7 +3652,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_AuxillaryParameters2;
+		protected short m_AuxillaryParameters2;
 
 		[WProperty("Misc.", "Auxillary Parameters 2", false)]
 		 public short AuxillaryParameters2
@@ -3710,7 +3666,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown1;
+		protected short m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public short Unknown1
@@ -3724,7 +3680,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Padding;
+		protected byte m_Padding;
 
 		[WProperty("Misc.", "Padding", false)]
 		 public byte Padding
@@ -3789,7 +3745,7 @@ namespace WindEditor
 	public partial class TagObject : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -3803,7 +3759,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_Parameters;
+		protected int m_Parameters;
 
 		[WProperty("Misc.", "Parameters", false)]
 		 public int Parameters
@@ -3817,7 +3773,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Padding;
+		protected short m_Padding;
 
 		[WProperty("Misc.", "Padding", false)]
 		 public short Padding
@@ -3871,7 +3827,7 @@ namespace WindEditor
 	public partial class TagScaleableObject : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Misc.", "Name", false)]
 		override public string Name
@@ -3885,7 +3841,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_Params1;
+		protected int m_Params1;
 
 		[WProperty("Misc.", "Params 1", false)]
 		 public int Params1
@@ -3899,7 +3855,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_RoomLoadingParams;
+		protected short m_RoomLoadingParams;
 
 		[WProperty("Misc.", "RoomLoadingParams", false)]
 		 public short RoomLoadingParams
@@ -3913,7 +3869,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_Params2;
+		protected int m_Params2;
 
 		[WProperty("Misc.", "Params 2", false)]
 		 public int Params2
@@ -3970,7 +3926,7 @@ namespace WindEditor
 	public partial class TreasureChest : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private string m_Name;
+		protected string m_Name;
 
 		[WProperty("Treasure Chest", "Name", false)]
 		override public string Name
@@ -3984,16 +3940,16 @@ namespace WindEditor
 		}
 				
 
-		private int m_Parameters;
+		protected int m_Parameters;
 				
 
-		private short m_AuxParameters1;
+		protected short m_AuxParameters1;
 				
 
-		private short m_AuxParameters2;
+		protected short m_AuxParameters2;
 				
 
-		private short m_Padding;
+		protected short m_Padding;
 				
 
 
@@ -4034,13 +3990,13 @@ namespace WindEditor
 	public partial class Path_v1 : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private short m_NumberofPoints;
+		protected short m_NumberofPoints;
 				
 
-		private short m_NextPathIndex;
+		protected short m_NextPathIndex;
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Unknowns", "Unknown 2", false)]
 		 public byte Unknown2
@@ -4054,7 +4010,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_PathLoops;
+		protected byte m_PathLoops;
 
 		[WProperty("Path Properties", "Path Loops", false)]
 		 public byte PathLoops
@@ -4068,7 +4024,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown4;
+		protected short m_Unknown4;
 
 		[WProperty("Unknowns", "Unknown 4", false)]
 		 public short Unknown4
@@ -4082,7 +4038,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_FirstEntryOffset;
+		protected int m_FirstEntryOffset;
 				
 
 
@@ -4123,7 +4079,7 @@ namespace WindEditor
 	public partial class Path_v2 : SerializableDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private short m_NumberofPoints;
+		protected short m_NumberofPoints;
 
 		[WProperty("Misc.", "Number of Points", false)]
 		 public short NumberofPoints
@@ -4137,7 +4093,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_NextPathIndex;
+		protected short m_NextPathIndex;
 
 		[WProperty("Misc.", "Next Path Index", false)]
 		 public short NextPathIndex
@@ -4151,7 +4107,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_Unknown2;
+		protected byte m_Unknown2;
 
 		[WProperty("Misc.", "Unknown 2", false)]
 		 public byte Unknown2
@@ -4165,7 +4121,7 @@ namespace WindEditor
 		}
 				
 
-		private byte m_PathLoops;
+		protected byte m_PathLoops;
 
 		[WProperty("Misc.", "Path Loops", false)]
 		 public byte PathLoops
@@ -4179,7 +4135,7 @@ namespace WindEditor
 		}
 				
 
-		private short m_Unknown4;
+		protected short m_Unknown4;
 
 		[WProperty("Misc.", "Unknown 4", false)]
 		 public short Unknown4
@@ -4193,7 +4149,7 @@ namespace WindEditor
 		}
 				
 
-		private int m_FirstEntryOffset;
+		protected int m_FirstEntryOffset;
 
 		[WProperty("Misc.", "First Entry Offset", false)]
 		 public int FirstEntryOffset
@@ -4248,7 +4204,7 @@ namespace WindEditor
 	public partial class PathPoint_v1 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private int m_Unknown1;
+		protected int m_Unknown1;
 
 		[WProperty("Unknowns", "Unknown 1", true)]
 		 public int Unknown1
@@ -4290,7 +4246,7 @@ namespace WindEditor
 	public partial class PathPoint_v2 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		private int m_Unknown1;
+		protected int m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", false)]
 		 public int Unknown1

@@ -83,14 +83,14 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 
 			string fieldName = field.FieldName.Replace(" ", "");
 			string fieldType = PropertyValueToOutput(field.FieldType);
-			string privateFieldName = "m_" + fieldName;
+			string protectedFieldName = "m_" + fieldName;
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
 			string isEditable = field.IsEditable ? "true" : "false";
 
 			
 #>
-		private <#=fieldType#> <#=privateFieldName#>;
+		protected <#=fieldType#> <#=protectedFieldName#>;
 <#		 // We hide padding and other fields that the user doesn't need to see/change.
 		if(!field.Hidden)
 		{
@@ -99,10 +99,10 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", <#= isEditable #>)]
 		<#= overrideName #> public <#= fieldType #> <#= fieldName #>
 		{ 
-			get { return <#=privateFieldName#>; }
+			get { return <#=protectedFieldName#>; }
 			set
 			{
-				<#=privateFieldName#> = value;
+				<#=protectedFieldName#> = value;
 				OnPropertyChanged("<#=fieldName#>");
 			}
 		}

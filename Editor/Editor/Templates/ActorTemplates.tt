@@ -63,6 +63,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 
 			string fieldName = EscapeIdentifier(field.FieldName);
 			string valueSource = String.IsNullOrEmpty(field.ValueSource) ? "Parameters" : field.ValueSource;
+			valueSource = "m_" + valueSource;
 			string privateFieldName = "m_" + fieldName;
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";

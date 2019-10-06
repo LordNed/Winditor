@@ -19,14 +19,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -47,14 +47,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -64,14 +64,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -81,14 +81,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -98,14 +98,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0xFFFF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFF0000 | (value_as_int << 16 & 0xFFFF0000));
+				m_Parameters = (int)(m_Parameters & ~0xFFFF0000 | (value_as_int << 16 & 0xFFFF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -115,14 +115,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -132,14 +132,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -160,14 +160,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -194,14 +194,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
 			}
 		}
@@ -211,14 +211,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("GuardedAreaRadiusHundreds");
 			}
 		}
@@ -228,14 +228,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return Convert.ToBoolean(value_as_int);
 			}
 
 			set
 			{
 				int value_as_int = Convert.ToInt32(value);
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchActivatesArmosKnight");
 			}
 		}
@@ -245,14 +245,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
@@ -273,14 +273,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -290,14 +290,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -307,14 +307,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -324,14 +324,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -352,14 +352,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -369,14 +369,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -397,14 +397,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -414,14 +414,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -431,14 +431,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -448,14 +448,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -465,14 +465,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -482,14 +482,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -499,14 +499,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -527,14 +527,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -544,14 +544,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -561,14 +561,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -578,14 +578,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -595,14 +595,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -612,14 +612,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -651,14 +651,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -679,14 +679,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -707,14 +707,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -756,14 +756,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
 			}
 		}
@@ -773,14 +773,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
@@ -790,7 +790,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				if (value_as_int == 0xFF) { return null; }
 				WDOMNode cur_object = this;
 				while (cur_object.Parent != null)
@@ -811,7 +811,7 @@ namespace WindEditor
 				}
 				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
 				int value_as_int = list.IndexOf(value);
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
 			}
 		}
@@ -821,14 +821,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
@@ -838,14 +838,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
@@ -866,14 +866,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -894,14 +894,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -911,14 +911,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -939,14 +939,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -956,14 +956,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -973,14 +973,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -990,14 +990,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1007,14 +1007,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x10000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x10000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
+				m_Parameters = (int)(m_Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -1024,14 +1024,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x30000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x30000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
+				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -1041,14 +1041,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xC0000000) >> 30);
+				int value_as_int = (int)((m_Parameters & 0xC0000000) >> 30);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xC0000000 | (value_as_int << 30 & 0xC0000000));
+				m_Parameters = (int)(m_Parameters & ~0xC0000000 | (value_as_int << 30 & 0xC0000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -1058,14 +1058,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -1085,14 +1085,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("FlowerType");
 			}
 		}
@@ -1102,14 +1102,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1130,14 +1130,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1180,14 +1180,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1197,14 +1197,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1214,14 +1214,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1242,14 +1242,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1259,14 +1259,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1287,14 +1287,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1304,14 +1304,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000010) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
+				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1321,14 +1321,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000020) >> 5);
+				int value_as_int = (int)((m_Parameters & 0x00000020) >> 5);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000020 | (value_as_int << 5 & 0x00000020));
+				m_Parameters = (int)(m_Parameters & ~0x00000020 | (value_as_int << 5 & 0x00000020));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1338,14 +1338,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
+				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1355,14 +1355,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -1372,14 +1372,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -1389,14 +1389,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -1406,14 +1406,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -1434,14 +1434,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1451,14 +1451,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1468,14 +1468,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1485,14 +1485,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -1524,14 +1524,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1552,14 +1552,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1569,14 +1569,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1586,14 +1586,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000001F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000001F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000001F | (value_as_int << 0 & 0x0000001F));
+				m_Parameters = (int)(m_Parameters & ~0x0000001F | (value_as_int << 0 & 0x0000001F));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1614,14 +1614,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1631,14 +1631,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1659,14 +1659,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x3FFFFFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x3FFFFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x3FFFFFFF | (value_as_int << 0 & 0x3FFFFFFF));
+				m_Parameters = (int)(m_Parameters & ~0x3FFFFFFF | (value_as_int << 0 & 0x3FFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1676,14 +1676,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1693,14 +1693,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1721,14 +1721,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1749,14 +1749,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1766,14 +1766,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1783,14 +1783,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1822,14 +1822,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1839,14 +1839,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -1856,14 +1856,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -1883,14 +1883,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ComponentType");
 			}
 		}
@@ -1922,14 +1922,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1961,14 +1961,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -1989,14 +1989,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2017,14 +2017,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2034,14 +2034,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2051,14 +2051,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2068,14 +2068,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2118,14 +2118,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2146,14 +2146,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2163,14 +2163,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2180,14 +2180,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2197,14 +2197,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2214,14 +2214,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2253,14 +2253,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ItemPickupFlag");
 			}
 		}
@@ -2292,14 +2292,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2309,14 +2309,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2348,14 +2348,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2376,14 +2376,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchBit");
 			}
 		}
@@ -2393,14 +2393,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -2410,14 +2410,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
 			}
 		}
@@ -2427,14 +2427,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0FF00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SwitchBit2");
 			}
 		}
@@ -2444,14 +2444,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -2461,14 +2461,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x0FC0) >> 6);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x0FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -2478,14 +2478,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -2495,14 +2495,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
 			}
 		}
@@ -2523,14 +2523,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchBit");
 			}
 		}
@@ -2540,14 +2540,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -2557,14 +2557,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
 			}
 		}
@@ -2574,14 +2574,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0FF00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SwitchBit2");
 			}
 		}
@@ -2591,14 +2591,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -2608,14 +2608,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x0FC0) >> 6);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x0FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -2625,14 +2625,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -2642,14 +2642,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
 			}
 		}
@@ -2702,14 +2702,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -2719,14 +2719,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000040) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2735,14 +2735,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000080) >> 7);
+				int value_as_int = (int)((m_Parameters & 0x00000080) >> 7);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
+				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("IsWooden");
 			}
 		}
@@ -2752,14 +2752,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -2769,14 +2769,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -2785,14 +2785,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("OnSwitch");
 			}
 		}
@@ -2824,14 +2824,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2852,14 +2852,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2869,14 +2869,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
+				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2897,14 +2897,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2914,14 +2914,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2931,14 +2931,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFF00FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFF00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -2959,14 +2959,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2976,14 +2976,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2993,14 +2993,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3010,14 +3010,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3027,14 +3027,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3055,14 +3055,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3083,14 +3083,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3100,14 +3100,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3117,14 +3117,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0001F000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x0001F000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0001F000 | (value_as_int << 12 & 0x0001F000));
+				m_Parameters = (int)(m_Parameters & ~0x0001F000 | (value_as_int << 12 & 0x0001F000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3134,14 +3134,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000E0000) >> 17);
+				int value_as_int = (int)((m_Parameters & 0x000E0000) >> 17);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000E0000 | (value_as_int << 17 & 0x000E0000));
+				m_Parameters = (int)(m_Parameters & ~0x000E0000 | (value_as_int << 17 & 0x000E0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3151,14 +3151,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3179,14 +3179,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3207,7 +3207,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				if (value_as_int == 0xFF) { return null; }
 				WDOMNode cur_object = this;
 				while (cur_object.Parent != null)
@@ -3228,7 +3228,7 @@ namespace WindEditor
 				}
 				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
 				int value_as_int = list.IndexOf(value);
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("LinkCapturedExit");
 			}
 		}
@@ -3245,14 +3245,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
 				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
+				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -3269,14 +3269,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000C00) >> 10);
+				int value_as_int = (int)((m_Parameters & 0x00000C00) >> 10);
 				return (TargetingBehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				Parameters = (int)(Parameters & ~0x00000C00 | (value_as_int << 10 & 0x00000C00));
+				m_Parameters = (int)(m_Parameters & ~0x00000C00 | (value_as_int << 10 & 0x00000C00));
 				OnPropertyChanged("TargetingBehaviorType");
 			}
 		}
@@ -3286,7 +3286,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				if (value_as_int == 0xFF) { return null; }
 				WDOMNode cur_object = this;
 				while (cur_object.Parent != null)
@@ -3307,7 +3307,7 @@ namespace WindEditor
 				}
 				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
 				int value_as_int = list.IndexOf(value);
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
 			}
 		}
@@ -3317,14 +3317,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
@@ -3334,14 +3334,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
@@ -3351,7 +3351,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<ExitData> list = stage.GetChildrenOfType<ExitData>();
@@ -3364,7 +3364,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<ExitData> list = stage.GetChildrenOfType<ExitData>();
 				int value_as_int = list.IndexOf(value);
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("PartnerCapturedExit");
 			}
 		}
@@ -3374,14 +3374,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
@@ -3413,14 +3413,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3430,14 +3430,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3458,14 +3458,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3475,14 +3475,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3492,14 +3492,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3509,14 +3509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3526,14 +3526,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3554,14 +3554,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3571,14 +3571,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3599,14 +3599,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3616,14 +3616,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3644,14 +3644,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3661,14 +3661,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000030) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x00000030) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000030 | (value_as_int << 4 & 0x00000030));
+				m_Parameters = (int)(m_Parameters & ~0x00000030 | (value_as_int << 4 & 0x00000030));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3678,14 +3678,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000FC0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x00000FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000FC0 | (value_as_int << 6 & 0x00000FC0));
+				m_Parameters = (int)(m_Parameters & ~0x00000FC0 | (value_as_int << 6 & 0x00000FC0));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3728,14 +3728,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3745,14 +3745,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3762,14 +3762,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3779,14 +3779,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3796,14 +3796,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3824,14 +3824,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3852,14 +3852,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -3869,14 +3869,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -3886,14 +3886,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -3903,14 +3903,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00300000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00300000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00300000 | (value_as_int << 20 & 0x00300000));
+				m_Parameters = (int)(m_Parameters & ~0x00300000 | (value_as_int << 20 & 0x00300000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -3920,14 +3920,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x07C00000) >> 22);
+				int value_as_int = (int)((m_Parameters & 0x07C00000) >> 22);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x07C00000 | (value_as_int << 22 & 0x07C00000));
+				m_Parameters = (int)(m_Parameters & ~0x07C00000 | (value_as_int << 22 & 0x07C00000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -3937,14 +3937,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x78000000) >> 27);
+				int value_as_int = (int)((m_Parameters & 0x78000000) >> 27);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x78000000 | (value_as_int << 27 & 0x78000000));
+				m_Parameters = (int)(m_Parameters & ~0x78000000 | (value_as_int << 27 & 0x78000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -3954,14 +3954,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -3971,14 +3971,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -3999,14 +3999,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4016,14 +4016,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000002) >> 1);
+				int value_as_int = (int)((m_Parameters & 0x00000002) >> 1);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
+				m_Parameters = (int)(m_Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4044,14 +4044,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4061,14 +4061,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4089,14 +4089,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4106,14 +4106,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000FF0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
+				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4123,14 +4123,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4151,14 +4151,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4168,14 +4168,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4196,14 +4196,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4224,14 +4224,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4263,14 +4263,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4280,14 +4280,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4297,14 +4297,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4314,14 +4314,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -4342,14 +4342,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFF00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0xFFF00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFF00000 | (value_as_int << 20 & 0xFFF00000));
+				m_Parameters = (int)(m_Parameters & ~0xFFF00000 | (value_as_int << 20 & 0xFFF00000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4358,14 +4358,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -4386,14 +4386,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4403,14 +4403,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4420,14 +4420,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4448,14 +4448,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4465,14 +4465,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4482,14 +4482,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4499,14 +4499,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -4516,14 +4516,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -4555,14 +4555,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4572,14 +4572,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00007F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00007F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
+				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4589,14 +4589,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00008000) >> 15);
+				int value_as_int = (int)((m_Parameters & 0x00008000) >> 15);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
+				m_Parameters = (int)(m_Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4606,14 +4606,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -4623,14 +4623,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -4651,14 +4651,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4668,14 +4668,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4696,14 +4696,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4713,14 +4713,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4730,14 +4730,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4769,14 +4769,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4786,14 +4786,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4814,14 +4814,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4842,14 +4842,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4859,14 +4859,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4898,14 +4898,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4915,14 +4915,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -4932,14 +4932,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -4960,14 +4960,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -4988,14 +4988,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5005,14 +5005,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5022,14 +5022,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5050,14 +5050,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5067,14 +5067,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5084,14 +5084,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5101,14 +5101,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -5118,14 +5118,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -5135,14 +5135,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -5152,14 +5152,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -5191,14 +5191,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5219,14 +5219,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5247,14 +5247,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5264,14 +5264,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5281,14 +5281,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5309,14 +5309,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5348,14 +5348,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5376,14 +5376,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5404,14 +5404,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5432,14 +5432,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5471,14 +5471,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5510,14 +5510,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5549,14 +5549,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5566,14 +5566,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5594,14 +5594,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5622,14 +5622,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5639,14 +5639,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5656,14 +5656,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5684,14 +5684,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5701,14 +5701,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5718,14 +5718,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5735,14 +5735,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -5763,14 +5763,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5780,14 +5780,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5830,14 +5830,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5847,14 +5847,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -5864,14 +5864,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -5881,14 +5881,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -5898,14 +5898,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -5937,14 +5937,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5965,14 +5965,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -5993,14 +5993,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6010,14 +6010,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00007F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00007F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
+				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6027,14 +6027,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00008000) >> 15);
+				int value_as_int = (int)((m_Parameters & 0x00008000) >> 15);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
+				m_Parameters = (int)(m_Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6044,14 +6044,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -6061,14 +6061,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -6078,14 +6078,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -6106,14 +6106,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6134,14 +6134,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6151,14 +6151,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6179,14 +6179,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6196,14 +6196,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6224,14 +6224,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6241,14 +6241,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6280,14 +6280,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6308,14 +6308,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6325,14 +6325,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6353,14 +6353,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6370,14 +6370,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6387,14 +6387,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6415,14 +6415,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6443,14 +6443,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6482,14 +6482,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6499,14 +6499,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6538,14 +6538,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6566,14 +6566,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6594,14 +6594,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6622,14 +6622,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6650,14 +6650,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6678,14 +6678,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6706,14 +6706,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6723,14 +6723,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6751,14 +6751,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6790,14 +6790,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6807,14 +6807,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6824,14 +6824,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6852,14 +6852,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6891,14 +6891,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6908,14 +6908,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6936,14 +6936,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -6953,14 +6953,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -6970,14 +6970,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -6987,14 +6987,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -7037,14 +7037,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7054,14 +7054,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7071,14 +7071,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00030000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00030000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
+				m_Parameters = (int)(m_Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7088,14 +7088,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -7116,14 +7116,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7144,14 +7144,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7161,14 +7161,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7189,14 +7189,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7217,14 +7217,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7245,14 +7245,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7262,14 +7262,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7279,14 +7279,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7307,14 +7307,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7324,14 +7324,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7352,14 +7352,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7369,14 +7369,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7386,14 +7386,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7436,14 +7436,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7453,14 +7453,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7481,14 +7481,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7509,14 +7509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7526,14 +7526,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7554,14 +7554,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7571,14 +7571,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000003FC) >> 2);
+				int value_as_int = (int)((m_Parameters & 0x000003FC) >> 2);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
+				m_Parameters = (int)(m_Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7588,14 +7588,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0003FC00) >> 10);
+				int value_as_int = (int)((m_Parameters & 0x0003FC00) >> 10);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
+				m_Parameters = (int)(m_Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7616,14 +7616,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7633,14 +7633,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7650,14 +7650,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7678,14 +7678,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7695,14 +7695,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7723,14 +7723,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7740,14 +7740,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7768,14 +7768,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7796,14 +7796,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7813,14 +7813,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7841,14 +7841,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7858,14 +7858,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7919,14 +7919,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7936,14 +7936,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -7975,14 +7975,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -7992,14 +7992,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8009,14 +8009,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8037,14 +8037,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8065,14 +8065,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8082,14 +8082,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8110,14 +8110,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8138,14 +8138,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8166,14 +8166,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8183,14 +8183,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8200,14 +8200,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8228,14 +8228,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8245,14 +8245,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8262,14 +8262,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8279,14 +8279,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8318,14 +8318,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8357,14 +8357,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8374,14 +8374,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
+				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8391,14 +8391,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00001000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x00001000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
+				m_Parameters = (int)(m_Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8408,14 +8408,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8436,14 +8436,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8464,14 +8464,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8481,14 +8481,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8509,14 +8509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8526,14 +8526,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8543,14 +8543,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8560,14 +8560,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8588,14 +8588,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8616,14 +8616,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8644,14 +8644,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x70000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
+				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8661,14 +8661,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8689,14 +8689,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8706,14 +8706,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8723,14 +8723,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000400) >> 10);
+				int value_as_int = (int)((m_Parameters & 0x00000400) >> 10);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000400 | (value_as_int << 10 & 0x00000400));
+				m_Parameters = (int)(m_Parameters & ~0x00000400 | (value_as_int << 10 & 0x00000400));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8740,14 +8740,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
+				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8757,14 +8757,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x03000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
+				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -8774,14 +8774,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x10000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x10000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
+				m_Parameters = (int)(m_Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -8802,14 +8802,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8819,14 +8819,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8847,14 +8847,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8864,14 +8864,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -8881,14 +8881,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8898,14 +8898,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -8915,14 +8915,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -8932,14 +8932,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x1FC0) >> 6);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x1FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -8960,14 +8960,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -8988,14 +8988,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9005,14 +9005,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9022,14 +9022,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9050,14 +9050,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9067,14 +9067,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9106,14 +9106,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9123,14 +9123,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9140,14 +9140,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9157,14 +9157,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9185,14 +9185,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9202,14 +9202,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000040) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9219,14 +9219,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000700) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000700) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
+				m_Parameters = (int)(m_Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9236,14 +9236,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9253,14 +9253,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x03000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
+				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -9270,14 +9270,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x30000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x30000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
+				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -9298,14 +9298,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9315,14 +9315,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9332,14 +9332,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9349,14 +9349,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x40000000) >> 30);
+				int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
+				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9399,14 +9399,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9427,14 +9427,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9455,14 +9455,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9483,14 +9483,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
+				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9522,14 +9522,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9550,14 +9550,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9578,14 +9578,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9606,14 +9606,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9634,14 +9634,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9662,14 +9662,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9690,14 +9690,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9718,14 +9718,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9735,14 +9735,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00001F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00001F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00001F00 | (value_as_int << 8 & 0x00001F00));
+				m_Parameters = (int)(m_Parameters & ~0x00001F00 | (value_as_int << 8 & 0x00001F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -9752,14 +9752,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00006000) >> 13);
+				int value_as_int = (int)((m_Parameters & 0x00006000) >> 13);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00006000 | (value_as_int << 13 & 0x00006000));
+				m_Parameters = (int)(m_Parameters & ~0x00006000 | (value_as_int << 13 & 0x00006000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9769,14 +9769,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -9786,14 +9786,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x30000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x30000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
+				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -9803,14 +9803,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -9831,14 +9831,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9892,14 +9892,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9953,14 +9953,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9992,14 +9992,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10020,14 +10020,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10037,14 +10037,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10054,14 +10054,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10082,14 +10082,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10110,14 +10110,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10138,14 +10138,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10155,14 +10155,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10172,14 +10172,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10200,14 +10200,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10217,14 +10217,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00001FC0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x00001FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
+				m_Parameters = (int)(m_Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10234,14 +10234,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x001FE000) >> 13);
+				int value_as_int = (int)((m_Parameters & 0x001FE000) >> 13);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
+				m_Parameters = (int)(m_Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10273,14 +10273,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10290,14 +10290,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10318,14 +10318,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
+				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10335,14 +10335,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000010) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
+				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10352,14 +10352,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10369,14 +10369,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10397,14 +10397,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10414,14 +10414,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10442,14 +10442,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000007F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000007F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
+				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10459,14 +10459,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10476,14 +10476,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0003F000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x0003F000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0003F000 | (value_as_int << 12 & 0x0003F000));
+				m_Parameters = (int)(m_Parameters & ~0x0003F000 | (value_as_int << 12 & 0x0003F000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10493,14 +10493,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x003C0000) >> 18);
+				int value_as_int = (int)((m_Parameters & 0x003C0000) >> 18);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x003C0000 | (value_as_int << 18 & 0x003C0000));
+				m_Parameters = (int)(m_Parameters & ~0x003C0000 | (value_as_int << 18 & 0x003C0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10510,14 +10510,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -10538,14 +10538,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10555,14 +10555,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000002) >> 1);
+				int value_as_int = (int)((m_Parameters & 0x00000002) >> 1);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
+				m_Parameters = (int)(m_Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10583,14 +10583,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10600,14 +10600,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FFFF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00FFFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
+				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10628,14 +10628,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10656,14 +10656,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10684,14 +10684,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10712,14 +10712,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10729,14 +10729,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000003F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000003F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000003F0 | (value_as_int << 4 & 0x000003F0));
+				m_Parameters = (int)(m_Parameters & ~0x000003F0 | (value_as_int << 4 & 0x000003F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10746,14 +10746,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0003FC00) >> 10);
+				int value_as_int = (int)((m_Parameters & 0x0003FC00) >> 10);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
+				m_Parameters = (int)(m_Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10763,14 +10763,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -10780,14 +10780,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x03FC0000) >> 18);
+				int value_as_int = (int)((m_Parameters & 0x03FC0000) >> 18);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x03FC0000 | (value_as_int << 18 & 0x03FC0000));
+				m_Parameters = (int)(m_Parameters & ~0x03FC0000 | (value_as_int << 18 & 0x03FC0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -10797,14 +10797,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -10814,14 +10814,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -10842,14 +10842,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10859,14 +10859,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10887,14 +10887,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10915,14 +10915,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10943,14 +10943,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -10960,14 +10960,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003E) >> 1);
+				int value_as_int = (int)((m_Parameters & 0x0000003E) >> 1);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003E | (value_as_int << 1 & 0x0000003E));
+				m_Parameters = (int)(m_Parameters & ~0x0000003E | (value_as_int << 1 & 0x0000003E));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -10977,14 +10977,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000040) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -10994,14 +10994,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11011,14 +11011,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11039,14 +11039,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
+				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11056,14 +11056,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11073,14 +11073,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11101,14 +11101,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11118,14 +11118,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00001FC0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x00001FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
+				m_Parameters = (int)(m_Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11135,14 +11135,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x001FE000) >> 13);
+				int value_as_int = (int)((m_Parameters & 0x001FE000) >> 13);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
+				m_Parameters = (int)(m_Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11185,14 +11185,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11202,14 +11202,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11230,14 +11230,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11258,14 +11258,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11275,14 +11275,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11292,14 +11292,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00001000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x00001000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
+				m_Parameters = (int)(m_Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11309,14 +11309,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00002000) >> 13);
+				int value_as_int = (int)((m_Parameters & 0x00002000) >> 13);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00002000 | (value_as_int << 13 & 0x00002000));
+				m_Parameters = (int)(m_Parameters & ~0x00002000 | (value_as_int << 13 & 0x00002000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11326,14 +11326,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11354,14 +11354,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11371,14 +11371,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11399,14 +11399,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11416,14 +11416,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11455,14 +11455,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11472,14 +11472,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11500,14 +11500,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11517,14 +11517,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11534,14 +11534,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
+				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11551,14 +11551,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11568,14 +11568,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x40000000) >> 30);
+				int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
+				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -11585,14 +11585,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -11613,14 +11613,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11630,14 +11630,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11647,14 +11647,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00040000) >> 18);
+				int value_as_int = (int)((m_Parameters & 0x00040000) >> 18);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00040000 | (value_as_int << 18 & 0x00040000));
+				m_Parameters = (int)(m_Parameters & ~0x00040000 | (value_as_int << 18 & 0x00040000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11664,14 +11664,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11692,14 +11692,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11720,14 +11720,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11737,14 +11737,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11754,14 +11754,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11782,14 +11782,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11799,14 +11799,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11827,14 +11827,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11855,14 +11855,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
+				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11872,14 +11872,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11889,14 +11889,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -11906,14 +11906,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -11945,14 +11945,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -11984,14 +11984,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12001,14 +12001,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000700) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000700) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
+				m_Parameters = (int)(m_Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12029,14 +12029,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12056,14 +12056,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -12072,14 +12072,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -12133,14 +12133,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12150,14 +12150,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12167,14 +12167,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12206,14 +12206,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12223,14 +12223,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000700) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000700) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
+				m_Parameters = (int)(m_Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12240,14 +12240,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00003800) >> 11);
+				int value_as_int = (int)((m_Parameters & 0x00003800) >> 11);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00003800 | (value_as_int << 11 & 0x00003800));
+				m_Parameters = (int)(m_Parameters & ~0x00003800 | (value_as_int << 11 & 0x00003800));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12268,14 +12268,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12318,14 +12318,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12346,14 +12346,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12363,14 +12363,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12391,14 +12391,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12419,14 +12419,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12447,14 +12447,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12475,14 +12475,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12492,14 +12492,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12509,14 +12509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12537,14 +12537,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12554,14 +12554,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12582,14 +12582,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12599,14 +12599,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12627,14 +12627,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12644,14 +12644,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12661,14 +12661,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12689,14 +12689,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12706,14 +12706,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12723,14 +12723,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -12740,14 +12740,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -12757,14 +12757,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x40000000) >> 30);
+				int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
+				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -12785,14 +12785,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12813,14 +12813,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12830,14 +12830,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12858,14 +12858,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12875,14 +12875,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12903,14 +12903,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00070000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00070000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00070000 | (value_as_int << 16 & 0x00070000));
+				m_Parameters = (int)(m_Parameters & ~0x00070000 | (value_as_int << 16 & 0x00070000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12920,14 +12920,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12948,14 +12948,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -12965,14 +12965,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12993,14 +12993,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13010,14 +13010,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13027,14 +13027,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13044,14 +13044,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00060000) >> 17);
+				int value_as_int = (int)((m_Parameters & 0x00060000) >> 17);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00060000 | (value_as_int << 17 & 0x00060000));
+				m_Parameters = (int)(m_Parameters & ~0x00060000 | (value_as_int << 17 & 0x00060000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13105,14 +13105,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13122,14 +13122,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13150,14 +13150,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13167,14 +13167,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00010000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
+				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13195,14 +13195,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13212,14 +13212,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13229,14 +13229,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13246,14 +13246,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFF00FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFF00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13285,14 +13285,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13313,14 +13313,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13352,14 +13352,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13402,14 +13402,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13441,14 +13441,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13469,14 +13469,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13497,14 +13497,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13514,14 +13514,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13531,14 +13531,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000FF0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
+				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13548,14 +13548,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13565,14 +13565,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -13582,14 +13582,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -13599,14 +13599,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -13616,14 +13616,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -13633,14 +13633,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_9");
 			}
 		}
@@ -13650,14 +13650,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_10");
 			}
 		}
@@ -13667,14 +13667,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_11");
 			}
 		}
@@ -13717,14 +13717,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13745,14 +13745,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000007) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
+				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13773,14 +13773,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13801,14 +13801,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13829,14 +13829,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13846,14 +13846,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13863,14 +13863,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13891,14 +13891,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -13908,14 +13908,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -13925,14 +13925,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000F000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x0000F000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000F000 | (value_as_int << 12 & 0x0000F000));
+				m_Parameters = (int)(m_Parameters & ~0x0000F000 | (value_as_int << 12 & 0x0000F000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -13942,14 +13942,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -13959,14 +13959,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -13976,14 +13976,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -13993,14 +13993,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -14021,14 +14021,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14049,14 +14049,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14066,14 +14066,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14083,14 +14083,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14122,14 +14122,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14139,14 +14139,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000010) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
+				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14156,14 +14156,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000E0) >> 5);
+				int value_as_int = (int)((m_Parameters & 0x000000E0) >> 5);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000E0 | (value_as_int << 5 & 0x000000E0));
+				m_Parameters = (int)(m_Parameters & ~0x000000E0 | (value_as_int << 5 & 0x000000E0));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14173,14 +14173,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -14190,14 +14190,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -14207,14 +14207,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -14235,14 +14235,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14252,14 +14252,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000100) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14269,14 +14269,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FE00) >> 9);
+				int value_as_int = (int)((m_Parameters & 0x0000FE00) >> 9);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FE00 | (value_as_int << 9 & 0x0000FE00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FE00 | (value_as_int << 9 & 0x0000FE00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14286,14 +14286,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -14303,14 +14303,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -14331,14 +14331,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14359,14 +14359,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14376,14 +14376,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00007F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00007F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
+				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14393,14 +14393,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00078000) >> 15);
+				int value_as_int = (int)((m_Parameters & 0x00078000) >> 15);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00078000 | (value_as_int << 15 & 0x00078000));
+				m_Parameters = (int)(m_Parameters & ~0x00078000 | (value_as_int << 15 & 0x00078000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14421,14 +14421,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14438,14 +14438,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FE) >> 1);
+				int value_as_int = (int)((m_Parameters & 0x000000FE) >> 1);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FE | (value_as_int << 1 & 0x000000FE));
+				m_Parameters = (int)(m_Parameters & ~0x000000FE | (value_as_int << 1 & 0x000000FE));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14455,14 +14455,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14472,14 +14472,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -14522,14 +14522,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14539,14 +14539,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14556,14 +14556,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14573,14 +14573,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -14612,14 +14612,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14629,14 +14629,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14690,14 +14690,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14718,14 +14718,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14735,14 +14735,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14752,14 +14752,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14780,14 +14780,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14797,14 +14797,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14825,14 +14825,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14842,14 +14842,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14870,14 +14870,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14909,14 +14909,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -14926,14 +14926,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -14943,14 +14943,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -14960,14 +14960,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -14988,14 +14988,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15005,14 +15005,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15033,14 +15033,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15050,14 +15050,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15067,14 +15067,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15095,14 +15095,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000001) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15123,14 +15123,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15140,14 +15140,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15157,14 +15157,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15185,14 +15185,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15202,14 +15202,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15219,14 +15219,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15247,14 +15247,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15264,14 +15264,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15281,14 +15281,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15318,14 +15318,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -15335,14 +15335,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("AmbushSightRangeTens");
 			}
 		}
@@ -15351,14 +15351,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unused");
 			}
 		}
@@ -15368,14 +15368,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("AmbushSwitch");
 			}
 		}
@@ -15385,14 +15385,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DeathSwitch");
 			}
 		}
@@ -15413,14 +15413,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000003FC) >> 2);
+				int value_as_int = (int)((m_Parameters & 0x000003FC) >> 2);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
+				m_Parameters = (int)(m_Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15441,14 +15441,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15458,14 +15458,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
+				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15475,14 +15475,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15492,14 +15492,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
+				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -15509,14 +15509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -15526,14 +15526,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x70000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
+				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -15554,14 +15554,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15571,14 +15571,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15588,14 +15588,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
+				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15605,14 +15605,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x07000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -15622,14 +15622,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x70000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
+				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -15639,14 +15639,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -15667,14 +15667,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15684,14 +15684,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15712,14 +15712,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15729,14 +15729,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15746,14 +15746,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00030000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00030000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
+				m_Parameters = (int)(m_Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15774,14 +15774,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15791,14 +15791,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15808,14 +15808,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15825,14 +15825,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0FF00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -15842,14 +15842,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -15859,14 +15859,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -15887,14 +15887,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15904,14 +15904,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00003F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00003F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
+				m_Parameters = (int)(m_Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15921,14 +15921,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x001FC000) >> 14);
+				int value_as_int = (int)((m_Parameters & 0x001FC000) >> 14);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x001FC000 | (value_as_int << 14 & 0x001FC000));
+				m_Parameters = (int)(m_Parameters & ~0x001FC000 | (value_as_int << 14 & 0x001FC000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -15949,14 +15949,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -15966,14 +15966,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -15994,14 +15994,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16011,14 +16011,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16028,14 +16028,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16056,14 +16056,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16073,14 +16073,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16112,14 +16112,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16129,14 +16129,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
+				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16168,14 +16168,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16185,14 +16185,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16232,14 +16232,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
 			}
 		}
@@ -16249,14 +16249,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SetSwitch");
 			}
 		}
@@ -16266,14 +16266,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
@@ -16283,7 +16283,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
@@ -16296,7 +16296,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
 				int value_as_int = list.IndexOf(value);
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
 			}
 		}
@@ -16306,14 +16306,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("EnableSpawnEventBit");
 			}
 		}
@@ -16334,14 +16334,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16351,14 +16351,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FFFF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00FFFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
+				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16368,14 +16368,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x03000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
+				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16396,14 +16396,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16413,14 +16413,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16441,14 +16441,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16458,14 +16458,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
+				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16475,14 +16475,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16492,14 +16492,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -16509,14 +16509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -16525,14 +16525,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -16542,14 +16542,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -16570,14 +16570,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16587,14 +16587,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16604,14 +16604,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16632,14 +16632,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16649,14 +16649,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16666,14 +16666,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16683,14 +16683,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -16711,14 +16711,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16750,14 +16750,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000003) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16767,14 +16767,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000300) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
+				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16784,14 +16784,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000003FC) >> 2);
+				int value_as_int = (int)((m_Parameters & 0x000003FC) >> 2);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
+				m_Parameters = (int)(m_Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16801,14 +16801,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00003C00) >> 10);
+				int value_as_int = (int)((m_Parameters & 0x00003C00) >> 10);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00003C00 | (value_as_int << 10 & 0x00003C00));
+				m_Parameters = (int)(m_Parameters & ~0x00003C00 | (value_as_int << 10 & 0x00003C00));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -16818,14 +16818,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000C000) >> 14);
+				int value_as_int = (int)((m_Parameters & 0x0000C000) >> 14);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
+				m_Parameters = (int)(m_Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -16835,14 +16835,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -16852,14 +16852,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -16880,14 +16880,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -16897,14 +16897,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16914,14 +16914,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -16931,14 +16931,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -16959,14 +16959,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -16976,14 +16976,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -16993,14 +16993,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17021,14 +17021,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
+				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17038,14 +17038,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17055,14 +17055,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17072,14 +17072,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -17088,14 +17088,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -17105,14 +17105,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -17133,14 +17133,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17161,14 +17161,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17189,14 +17189,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17206,14 +17206,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17223,14 +17223,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17251,14 +17251,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17268,14 +17268,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000C0) >> 6);
+				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
+				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17285,14 +17285,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17302,14 +17302,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -17330,14 +17330,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17358,14 +17358,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17386,14 +17386,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000007F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000007F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
+				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17403,14 +17403,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F80) >> 7);
+				int value_as_int = (int)((m_Parameters & 0x00000F80) >> 7);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
+				m_Parameters = (int)(m_Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17420,14 +17420,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000FF000) >> 12);
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17437,14 +17437,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -17454,14 +17454,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -17471,14 +17471,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -17488,14 +17488,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -17527,14 +17527,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17544,14 +17544,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000F0) >> 4);
+				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
+				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17561,14 +17561,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17578,14 +17578,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -17595,14 +17595,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -17612,14 +17612,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters1 & 0x00E0) >> 5);
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00E0) >> 5);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0x00E0 | (value_as_int << 5 & 0x00E0));
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00E0 | (value_as_int << 5 & 0x00E0));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -17629,14 +17629,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -17657,14 +17657,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17674,14 +17674,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17713,14 +17713,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFFFFFFFF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17752,14 +17752,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000003F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17769,14 +17769,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00003F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00003F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
+				m_Parameters = (int)(m_Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17786,14 +17786,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000C000) >> 14);
+				int value_as_int = (int)((m_Parameters & 0x0000C000) >> 14);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
+				m_Parameters = (int)(m_Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -17803,14 +17803,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x007F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
+				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -17820,14 +17820,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0F000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -17837,14 +17837,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x70000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0x70000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
+				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -17854,14 +17854,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -17882,14 +17882,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17899,14 +17899,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17927,14 +17927,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17955,14 +17955,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -17994,14 +17994,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18011,14 +18011,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -18039,14 +18039,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18067,14 +18067,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18084,14 +18084,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -18101,14 +18101,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -18118,14 +18118,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xF0000000) >> 28);
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -18146,14 +18146,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18174,14 +18174,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18191,14 +18191,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00000F00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -18230,14 +18230,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18258,14 +18258,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18275,14 +18275,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -18292,14 +18292,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x001F0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x001F0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x001F0000 | (value_as_int << 16 & 0x001F0000));
+				m_Parameters = (int)(m_Parameters & ~0x001F0000 | (value_as_int << 16 & 0x001F0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -18309,14 +18309,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00600000) >> 21);
+				int value_as_int = (int)((m_Parameters & 0x00600000) >> 21);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00600000 | (value_as_int << 21 & 0x00600000));
+				m_Parameters = (int)(m_Parameters & ~0x00600000 | (value_as_int << 21 & 0x00600000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -18326,14 +18326,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00800000) >> 23);
+				int value_as_int = (int)((m_Parameters & 0x00800000) >> 23);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00800000 | (value_as_int << 23 & 0x00800000));
+				m_Parameters = (int)(m_Parameters & ~0x00800000 | (value_as_int << 23 & 0x00800000));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -18343,14 +18343,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -18360,14 +18360,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x000F) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x000F | (value_as_int << 0 & 0x000F));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x000F | (value_as_int << 0 & 0x000F));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -18377,14 +18377,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00F0) >> 4);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00F0 | (value_as_int << 4 & 0x00F0));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00F0 | (value_as_int << 4 & 0x00F0));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -18405,14 +18405,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18422,14 +18422,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -18439,14 +18439,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -18456,14 +18456,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
 		}
@@ -18473,14 +18473,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -18501,14 +18501,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000000F) >> 0);
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18529,14 +18529,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -18546,14 +18546,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((Parameters & 0x00F00000) >> 20);
+				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				Parameters = (int)(Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
+				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
