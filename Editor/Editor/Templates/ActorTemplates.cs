@@ -3346,18 +3346,24 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fm", "Partner Captured Exit", true, "Which stage exit this Floormaster takes Medli/Makar through when it captures them.", SourceScene.Room)]
-		public int PartnerCapturedExit
+		[WProperty("fm", "Partner Captured Exit", true, "Which stage exit this Floormaster takes Medli/Makar through when it captures them.", SourceScene.Stage)]
+		public ExitData PartnerCapturedExit
 		{ 
 			get
 			{
 				int value_as_int = (int)((AuxillaryParameters1 & 0xFF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<ExitData> list = stage.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<ExitData> list = stage.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
 				AuxillaryParameters1 = (short)(AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("PartnerCapturedExit");
 			}
@@ -16202,25 +16208,44 @@ namespace WindEditor
 	public partial class tag_event : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_event", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Unknown_1 = 0,
+			Unknown_2 = 1,
+			Unknown_3 = 2,
+			Unknown_4 = 3,
+			Unknown_5 = 4,
+			Unknown_6 = 5,
+			Unknown_7 = 6,
+			Unknown_8 = 7,
+			Unknown_9 = 8,
+			Unknown_10 = 9,
+			Unknown_11 = 10,
+			Unknown_12 = 11,
+			Unknown_13 = 12,
+			Unknown_14 = 13,
+			Normal = 255,
+		}
+
+		[WProperty("tag_event", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				Parameters = (int)(Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("tag_event", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("tag_event", "Set Switch", true, "Switch that this trigger region sets when it triggers the event.", SourceScene.Room)]
+		public int SetSwitch
 		{ 
 			get
 			{
@@ -16232,12 +16257,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SetSwitch");
 			}
 		}
 
-		[WProperty("tag_event", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("tag_event", "Enable Spawn Switch", true, "Switch that must be set before this trigger region will become active.", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -16249,29 +16274,35 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				Parameters = (int)(Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("tag_event", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("tag_event", "Event", true, "The event to start when entering this region.", SourceScene.Stage)]
+		public MapEvent Event
 		{ 
 			get
 			{
 				int value_as_int = (int)((Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				Parameters = (int)(Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Event");
 			}
 		}
 
-		[WProperty("tag_event", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("tag_event", "Enable Spawn Event Bit", true, "Event bit that must be set before this trigger region will become active.", SourceScene.Room)]
+		public int EnableSpawnEventBit
 		{ 
 			get
 			{
@@ -16283,7 +16314,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				AuxillaryParameters2 = (short)(AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("EnableSpawnEventBit");
 			}
 		}
 

@@ -80,7 +80,7 @@
       "Hidden": false,
       "Category": "fm",
       "ToolTip": "Which stage exit this Floormaster takes Medli/Makar through when it captures them.",
-      "DataType": "Integer"
+      "DataType": "StageExit"
     },
     {
       "Name": "Sight Range (Hundreds)",
