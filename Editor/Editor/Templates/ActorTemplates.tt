@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WindEditor.ViewModel;
 
 namespace WindEditor
@@ -74,6 +75,17 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				bitMaskHex = String.Format("0x{0:X8}", field.BitMask);
 				valueSourceType = "int";
 			}
+			string sourceScene;
+			switch (field.DataType)
+			{
+				case "Event":
+				case "StageExit":
+					sourceScene = "SourceScene.Stage";
+					break;
+				default:
+					sourceScene = "SourceScene.Room";
+					break;
+			}
 			string dataType;
 			switch (field.DataType)
 			{
@@ -87,7 +99,11 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 					dataType = "Path_v2";
 					break;
 				case "Exit":
+				case "StageExit":
 					dataType = "ExitData";
+					break;
+				case "Event":
+					dataType = "MapEvent";
 					break;
 				case "Enum":
 					dataType = fieldName + "Enum";
@@ -126,7 +142,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		if(!field.IsHidden)
 		{
 #>
-		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true<#= string.IsNullOrEmpty(field.ToolTip) ? "" : ", " + EscapeStringLiteral(field.ToolTip) #>)]
+		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true, <#= field.ToolTip == null ? "\"\"" : EscapeStringLiteral(field.ToolTip) #>, <#= sourceScene #>)]
 <# 
 		}
 #>
@@ -158,6 +174,16 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 					cur_object = cur_object.Parent;
 				}
 				List<<#= dataType #>> list = cur_object.GetChildrenOfType<<#= dataType #>>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+<#
+						break;
+					case "Event":
+					case "StageExit":
+#>
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<<#= dataType #>> list = stage.GetChildrenOfType<<#= dataType #>>();
 				if (value_as_int >= list.Count) { return null; }
 				return list[value_as_int];
 <#
@@ -196,6 +222,14 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 					cur_object = cur_object.Parent;
 				}
 				List<<#= dataType #>> list = cur_object.GetChildrenOfType<<#= dataType #>>();
+				int value_as_int = list.IndexOf(value);
+<#
+						break;
+					case "Event":
+					case "StageExit":
+#>
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<<#= dataType #>> list = stage.GetChildrenOfType<<#= dataType #>>();
 				int value_as_int = list.IndexOf(value);
 <#
 						break;
