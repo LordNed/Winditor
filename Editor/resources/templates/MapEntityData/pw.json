@@ -3,54 +3,69 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "pw",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Wandering",
+        1: "Invisible until seeing Link",
+        2: "Invisible except Lantern until seeing Link",
+        3: "Jalhalla Poe A",
+        4: "Jalhalla Poe B",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Hovers At Initial Height?",
       "ValueSource": "Parameters",
       "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
       "Category": "pw",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "If checked, this Poe will maintain its height in the air like normal. If unchecked, it will slowly float down to the floor.",
+      "DataType": "Boolean"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Color",
       "ValueSource": "Parameters",
       "Mask": 0x0000FE00,
       "Shift": 9,
       "Hidden": false,
       "Category": "pw",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Blue",
+        1: "Purple",
+        2: "Orange",
+        3: "Yellow",
+        4: "Red",
+        5: "Green",
+      }
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Sight Range (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "pw",
-      "ToolTip": "",
+      "ToolTip": "For the 'Invisible except Lantern until seeing Link' type, this number multiplied by 10 is the range it can see Link within and will materialize. No effect on other types.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "pw",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }

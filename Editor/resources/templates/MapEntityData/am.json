@@ -27,13 +27,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Switch Activates Armos Knight",
+      "Name": "Switch Activates Armos Knight?",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "am",
-      "ToolTip": "If this is set, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.",
+      "ToolTip": "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.",
       "DataType": "Boolean"
     },
     {

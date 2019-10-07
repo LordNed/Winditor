@@ -3,33 +3,37 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "ph",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Peahat",
+        1: "Seahat",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Horizontal Sight Range (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "ph",
-      "ToolTip": "",
+      "ToolTip": "This number multiplied by 100 is the radius of the cylinder it can see Link within. 255 will default to a range of 1000 for Peahats or 12000 for Seahats.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Vertical Sight Range (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "ph",
-      "ToolTip": "",
+      "ToolTip": "This number multiplied by 100 is half the height of the cylinder it can see Link within. 255 will default to a range of 500 for Peahats or 6000 for Seahats.",
       "DataType": "Integer"
     }
   ]

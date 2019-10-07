@@ -3,27 +3,47 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "cc",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Falls from ceiling",
+        2: "Unknown 1",
+        3: "Unknown 2",
+        4: "Hiding in pot",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Color Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "cc",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "The 'attacks instantly' types are used by Wizzrobes. The 'attacks instantly and more vulnerabilities' type can die from Boomerang/Grappling Hook/Hookshot for some reason, but this type is unused.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Green",
+        1: "Red",
+        2: "Blue",
+        3: "Dark",
+        4: "Yellow",
+        10: "Green and attacks instantly",
+        11: "Red and attacks instantly",
+        12: "Blue and attacks instantly",
+        13: "Dark and attacks instantly",
+        14: "Yellow and attacks instantly",
+        15: "Red and attacks instantly and more vulnerabilities",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Sight Range (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
@@ -33,7 +53,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
