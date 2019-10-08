@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using WArchiveTools.FileSystem;
+using System.Collections.ObjectModel;
+using System.Windows.Data;
 
 namespace WindEditor
 {
@@ -25,7 +27,7 @@ namespace WindEditor
             }
         }
 
-        public BindingList<WScene> SceneList { get { return m_sceneList; } }
+        public ObservableCollection<WScene> SceneList { get { return m_sceneList; } }
 
         public float TimeOfDay
         {
@@ -44,14 +46,15 @@ namespace WindEditor
         private string m_mapName;
 
         private WWorld m_world;
-        private BindingList<WScene> m_sceneList;
+        private ObservableCollection<WScene> m_sceneList;
         private WScene m_focusedScene;
         private float m_timeOfDay;
 
         public WMap(WWorld parentWorld)
         {
             m_world = parentWorld;
-            m_sceneList = new BindingList<WScene>();
+            m_sceneList = new ObservableCollection<WScene>();
+            CollectionViewSource.GetDefaultView(m_sceneList).SortDescriptions.Add(new SortDescription("RoomIndex", ListSortDirection.Ascending));
 
             // Set us to mid-day lighting by default.
             TimeOfDay = 0.5f;
