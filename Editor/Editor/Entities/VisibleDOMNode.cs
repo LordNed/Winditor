@@ -155,17 +155,17 @@ namespace WindEditor
 			else
 			{
 				bHit = WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
-			}
 
-			if (bHit)
-			{
-				// Convert the hit point back to world space...
-				Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
-				localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation);
+                if (bHit)
+                {
+                    // Convert the hit point back to world space...
+                    Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
+                    localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation);
 
-				// Now get the distance from the original ray origin and the new worldspace hit point.
-				closestDistance = (localHitPoint - ray.Origin).Length;
-			}
+                    // Now get the distance from the original ray origin and the new worldspace hit point.
+                    closestDistance = (localHitPoint - ray.Origin).Length;
+                }
+            }
 
 			return bHit;
 		}
