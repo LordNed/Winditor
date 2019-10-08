@@ -214,7 +214,7 @@
 
                     <!-- Scene List-->
                     <GroupBox Header="Scene List" Grid.Row="0" MinHeight="80" Margin="0,5,0,0">
-                        <ListBox ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}">
+                        <ListBox x:Name="scene_box" ItemsSource="{Binding Path=WindEditor.MainWorld.Map.SceneList}" SelectedItem="{Binding Path=WindEditor.MainWorld.Map.FocusedScene}" ItemContainerStyle="{StaticResource ContainerStyle}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
