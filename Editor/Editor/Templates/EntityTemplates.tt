@@ -266,6 +266,19 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 
 			}
 #>
+<#
+			if (className == "Actor") {
+#>
+            if (FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb)
+            {
+                stream.Write((byte)(Transform.LocalScale.X * 10f));
+                stream.Write((byte)(Transform.LocalScale.Y * 10f));
+                stream.Write((byte)(Transform.LocalScale.Z * 10f));
+                stream.Write((sbyte)-1);
+            }
+<#
+			}
+#>
 		}
 	}
 

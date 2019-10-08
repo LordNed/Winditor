@@ -535,6 +535,14 @@ namespace WindEditor
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((short)m_AuxillaryParameters2);
 			stream.Write((short)EnemyNumber);
+
+            if (FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb)
+            {
+                stream.Write((byte)(Transform.LocalScale.X * 10f));
+                stream.Write((byte)(Transform.LocalScale.Y * 10f));
+                stream.Write((byte)(Transform.LocalScale.Z * 10f));
+                stream.Write((sbyte)-1);
+            }
 		}
 	}
 
