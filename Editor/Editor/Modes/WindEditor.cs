@@ -185,12 +185,20 @@ namespace WindEditor
 
         public void OnApplicationRequestExportProject()
         {
-            MainWorld.Map.ExportToDirectory(GetUserPath());
+            string path = GetUserPath();
+            if (path == null)
+                return;
+
+            MainWorld.Map.ExportToDirectory(path);
         }
 
         public void OnApplicationRequestExportAsProject()
         {
-            MainWorld.Map.ExportToDirectory(GetUserPath());
+            string path = GetUserPath();
+            if (path == null)
+                return;
+
+            MainWorld.Map.ExportToDirectory(path);
         }
 
         private void CopyTempDataToPermanentDir(string sourceDir, string destDir)
