@@ -37,7 +37,8 @@ string EscapeIdentifier(string input)
 string EscapeStringLiteral(string input)
 {
 	string output = Regex.Replace(input, @"([""\\])", @"\$1"); // Escape quotes and backslashes
-	output = Regex.Replace(output, @"([\0\a\b\f\n\r\t\v])", "", RegexOptions.IgnoreCase);
+	output = Regex.Replace(output, @"([\n])", "\\n", RegexOptions.IgnoreCase);
+	output = Regex.Replace(output, @"([\0\a\b\f\r\t\v])", "", RegexOptions.IgnoreCase);
 	return "\"" + output + "\"";
 }
 
