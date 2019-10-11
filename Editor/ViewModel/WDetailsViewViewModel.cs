@@ -86,23 +86,19 @@ namespace WindEditor.ViewModel
                 WProperty_new wprop_instance = (WProperty_new)p.GetValue(obj);
                 PropertyInfo[] wprops = p.PropertyType.GetProperties();
 
+                bool is_visible = (bool)wprops.First(x => x.Name == "Visible").GetValue(wprop_instance);
+                
+                // If this property is currently invisible, don't generate a control for it.
+                if (!is_visible)
+                    return;
+
                 // Grab our property values to use
                 string category_name = (string)wprops.First(x => x.Name == "CategoryName").GetValue(wprop_instance);
                 string property_name = (string)wprops.First(x => x.Name == "PropertyName").GetValue(wprop_instance);
                 string display_name  = (string)wprops.First(x => x.Name == "DisplayName").GetValue(wprop_instance);
                 string tool_tip      = (string)wprops.First(x => x.Name == "ToolTip").GetValue(wprop_instance);
-                bool is_visible      = (bool)wprops.First(x => x.Name == "Visible").GetValue(wprop_instance);
 
-                PropertyInfo base_prop_info = obj_properties.First(x => x.Name == property_name);
-                object base_prop_instance = base_prop_info.GetValue(obj);
-
-                Type prop_type = base_prop_info.PropertyType;
-
-                // If this property is currently invisible, don't generate a control for it.
-                if (!is_visible)
-                {
-                    return;
-                }
+                PropertyInfo bound_property_info = obj_properties.First(x => x.Name == property_name);
 
                 // Only add the category to the view if it's not blacklisted by the HideCategories attribute.
                 if (!new_details.Contains(category_name) && hidden_categories != null && !hidden_categories.CategoryHidden(category_name))
@@ -129,82 +125,71 @@ namespace WindEditor.ViewModel
 
                 List<WDetailSingleRowViewModel> property_rows = new List<WDetailSingleRowViewModel>();
 
-                switch (prop_type.Name)
-                {
-                    case "int":
-                        WIntProperty wprop_as_int = (WIntProperty)wprop_instance;
-
-                        property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
-                        IntegerUpDown intupdown = (IntegerUpDown)property_rows[0].PropertyControl;
-                        intupdown.Increment = wprop_as_int.Increment;
-                        break;
-                    case "uint":
-                        WIntProperty wprop_as_uint = (WIntProperty)wprop_instance;
-
-                        property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
-                        UIntegerUpDown uintupdown = (UIntegerUpDown)property_rows[0].PropertyControl;
-                        uintupdown.Increment = (uint)wprop_as_uint.Increment;
-                        break;
-                    case "WDOMNode":
-                        WActorReferenceProperty wprop_as_ref = (WActorReferenceProperty)wprop_instance;
-
-                        property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
-                        WActorReferenceControl refcontrol = (WActorReferenceControl)property_rows[0].PropertyControl;
-                        refcontrol.Source = wprop_as_ref.SourceScene;
-                        refcontrol.FillComboBox();
-                        break;
-                    default:
-                        // We first check if the type of the property has a customization registered.
-                        // If it is, we just grab the customization and generate a control with it.
-                        if (m_TypeCustomizations.ContainsKey(prop_type.Name))
-                        {
-                            property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
-                        }
-                        // If there is no customization registered, and the type is an enum, we
-                        // try to use EnumTypeCustomization to generate a control.
-                        else if (prop_type.IsEnum)
-                        {
-                            EnumTypeCustomization enu = new EnumTypeCustomization();
-                            property_rows = enu.CustomizeHeader(base_prop_info, property_name, true, obj);
-                        }
-                        else
-                        {
-                            property_rows.Add(new WDetailSingleRowViewModel(property_name));
-                        }
-                        break;
-                }
-
-                /*
                 // We first check if the type of the property has a customization registered.
-                // If it is, we just grab the customization and generate a control with it.
-                if (m_TypeCustomizations.ContainsKey(prop_type.Name))
+                // If it does, we just grab the customization and generate a control with it.
+                if (m_TypeCustomizations.ContainsKey(bound_property_info.PropertyType.Name))
                 {
-                    property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
+                    property_rows = m_TypeCustomizations[bound_property_info.PropertyType.Name].CustomizeHeader(bound_property_info, property_name, true, obj);
                 }
                 // If there is no customization registered, and the type is an enum, we
                 // use EnumTypeCustomization to generate a control.
-                else if (prop_type.IsEnum)
+                else if (bound_property_info.PropertyType.IsEnum)
                 {
                     EnumTypeCustomization enu = new EnumTypeCustomization();
-                    property_rows = enu.CustomizeHeader(p, property_name, true, obj);
+                    property_rows = enu.CustomizeHeader(bound_property_info, property_name, true, obj);
                 }
-                // Failing the prior checks, we see if the base type of the property is WDOMNode,
-                // in which case we just use the WDOMNode customization to generate a control.
-                else if (prop_type.Name == typeof(WDOMNode).Name)
-                {
-                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(base_prop_info, property_name, true, obj);
-
-                    WActorReferenceControl c = (WActorReferenceControl)property_rows[0].PropertyControl;
-                    //c.Source = source_scene;
-                    c.FillComboBox();
-                }
-                // If the property type is completely unknown or unsupported, we create an empty row with
-                // just the property's name.
                 else
                 {
-                    property_rows.Add(new WDetailSingleRowViewModel(property_name));
+                    // Failing the prior checks, we see if the base type of the property is WDOMNode,
+                    // in which case we just use the WDOMNode customization to generate a control.
+                    Type prop_base_type = bound_property_info.PropertyType;
+                    while (prop_base_type.BaseType != typeof(object))
+                    {
+                        prop_base_type = prop_base_type.BaseType;
+                    }
+
+                    if (prop_base_type.Name == typeof(WDOMNode).Name)
+                    {
+                        property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(bound_property_info, property_name, true, obj);
+                    }
+                    // If the property type is completely unknown or unsupported, we create an empty row with
+                    // just the property's name.
+                    else
+                    {
+                        property_rows.Add(new WDetailSingleRowViewModel(property_name));
+                    }
                 }
-                */
+
+                if (property_rows.Count > 0)
+                {
+                    // Now we've got some tweaks to make to the generated control(s) based on type.
+                    object generated_control = property_rows[0].PropertyControl;
+
+                    switch (generated_control.GetType().Name)
+                    {
+                        case "IntegerUpDown":
+                            WIntProperty int_ref_prop = (WIntProperty)wprop_instance;
+                            IntegerUpDown int_control = (IntegerUpDown)generated_control;
+
+                            int_control.Increment = int_ref_prop.Increment;
+                            break;
+                        case "UIntegerUpDown":
+                            WIntProperty uint_ref_prop = (WIntProperty)wprop_instance;
+                            UIntegerUpDown uint_control = (UIntegerUpDown)generated_control;
+
+                            uint_control.Increment = (uint)uint_ref_prop.Increment;
+                            break;
+                        case "WActorReferenceControl":
+                            WActorReferenceProperty actor_ref_prop = (WActorReferenceProperty)wprop_instance;
+                            WActorReferenceControl actor_ref_control = (WActorReferenceControl)generated_control;
+
+                            actor_ref_control.Source = actor_ref_prop.SourceScene;
+                            actor_ref_control.FillComboBox();
+                            break;
+                        default:
+                            break;
+                    }
+                }
 
                 // Saw online that adding multiple things to a binding list can be slow,
                 // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.
@@ -218,6 +203,7 @@ namespace WindEditor.ViewModel
 
                 current_category.PropertyRows.RaiseListChangedEvents = true;
                 current_category.PropertyRows.ResetBindings();
+
             }
 
             Categories = new_details;
