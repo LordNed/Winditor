@@ -79,11 +79,12 @@ namespace WindEditor.Editor.Modes
 
                 if (!ctrlPressed & !shiftPressed)
                 {
-                    EditorSelection.ClearSelection();
                     foreach (WDOMNode node in EditorSelection.SelectedObjects)
                     {
                         node.IsSelected = false;
                     }
+                    EditorSelection.ClearSelection();
+
                     if (addedActor != null)
                     {
                         EditorSelection.AddToSelection(addedActor);
