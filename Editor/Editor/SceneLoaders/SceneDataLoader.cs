@@ -145,6 +145,12 @@ namespace WindEditor
         [JsonProperty("Editable")]
         public bool IsEditable { get; set; }
 
+        [JsonProperty("Increment")]
+        public int Increment { get; set; }
+
+        [JsonProperty("SceneSource")]
+        public SourceScene SceneSource { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
