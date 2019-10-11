@@ -57,7 +57,8 @@ namespace WindEditor
         }
         #endregion
 
-        [WProperty("Main", "Root Directory", true, "The path to an extracted TWW ISO, dumped with a recent version of Dolphin.")]
+        public WIntProperty RootDirectoryProperty { get; set; } = new WIntProperty("FileReference", "RootDirectory", "Main", "Root Directory", 0);
+        //[WProperty("Main", "Root Directory", true, "The path to an extracted TWW ISO, dumped with a recent version of Dolphin.")]
         public FileReference RootDirectory
         {
             get { return m_RootDirectory; }

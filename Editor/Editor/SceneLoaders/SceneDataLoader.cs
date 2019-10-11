@@ -197,6 +197,12 @@ namespace WindEditor
         [JsonProperty("BooleanDefaultValue")]
         public bool BooleanDefaultValue { get; set; }
 
+        [JsonProperty("Increment")]
+        public int Increment { get; set; }
+
+        [JsonProperty("SceneSource")]
+        public SourceScene SceneSource { get; set; }
+
         public uint Length;
 
         [JsonConstructor]

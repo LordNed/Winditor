@@ -57,7 +57,8 @@
       "Hidden": false,
       "Category": "tag_event",
       "ToolTip": "The event to start when entering this region.",
-      "DataType": "Event"
+      "DataType": "Event",
+      "SceneSource": "Stage"
     },
     {
       "Name": "Enable Spawn Event Bit",

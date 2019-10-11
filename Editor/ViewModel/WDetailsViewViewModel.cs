@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using WindEditor.Editor;
 using WindEditor.View;
+using Xceed.Wpf.Toolkit;
 
 namespace WindEditor.ViewModel
 {
@@ -79,23 +80,28 @@ namespace WindEditor.ViewModel
 
             foreach (PropertyInfo p in obj_properties)
             {
-                // We want to ignore all properties that are not marked with the WProperty attribute.
-                CustomAttributeData[] custom_attributes = p.CustomAttributes.ToArray();
-                if (custom_attributes.Length == 0 || custom_attributes[0].AttributeType.Name != "WProperty")
+                if (p.PropertyType != typeof(WProperty_new) && p.PropertyType.BaseType != typeof(WProperty_new))
                     continue;
 
-                // Grab our custom attribute data for use
-                string category_name = (string)custom_attributes[0].ConstructorArguments[0].Value;
-                string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
-                bool is_editable     =   (bool)custom_attributes[0].ConstructorArguments[2].Value;
-                string tool_tip      = (string)custom_attributes[0].ConstructorArguments[3].Value;
-                SourceScene source_scene = (SourceScene)custom_attributes[0].ConstructorArguments[4].Value;
+                WProperty_new wprop_instance = (WProperty_new)p.GetValue(obj);
+                PropertyInfo[] wprops = p.PropertyType.GetProperties();
 
-                // Get the base type for possible use later
-                Type base_type = p.PropertyType;
-                while (base_type.BaseType != typeof(object))
+                // Grab our property values to use
+                string category_name = (string)wprops.First(x => x.Name == "CategoryName").GetValue(wprop_instance);
+                string property_name = (string)wprops.First(x => x.Name == "PropertyName").GetValue(wprop_instance);
+                string display_name  = (string)wprops.First(x => x.Name == "DisplayName").GetValue(wprop_instance);
+                string tool_tip      = (string)wprops.First(x => x.Name == "ToolTip").GetValue(wprop_instance);
+                bool is_visible      = (bool)wprops.First(x => x.Name == "Visible").GetValue(wprop_instance);
+
+                PropertyInfo base_prop_info = obj_properties.First(x => x.Name == property_name);
+                object base_prop_instance = base_prop_info.GetValue(obj);
+
+                Type prop_type = base_prop_info.PropertyType;
+
+                // If this property is currently invisible, don't generate a control for it.
+                if (!is_visible)
                 {
-                    base_type = base_type.BaseType;
+                    return;
                 }
 
                 // Only add the category to the view if it's not blacklisted by the HideCategories attribute.
@@ -107,7 +113,9 @@ namespace WindEditor.ViewModel
                         new_details.Insert(0, category_name, new WDetailsCategoryRowViewModel(category_name));
                     }
                     else
+                    {
                         new_details.Add(category_name, new WDetailsCategoryRowViewModel(category_name));
+                    }
                 }
 
                 WDetailsCategoryRowViewModel current_category = null;
@@ -121,27 +129,73 @@ namespace WindEditor.ViewModel
 
                 List<WDetailSingleRowViewModel> property_rows = new List<WDetailSingleRowViewModel>();
 
+                switch (prop_type.Name)
+                {
+                    case "int":
+                        WIntProperty wprop_as_int = (WIntProperty)wprop_instance;
+
+                        property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
+                        IntegerUpDown intupdown = (IntegerUpDown)property_rows[0].PropertyControl;
+                        intupdown.Increment = wprop_as_int.Increment;
+                        break;
+                    case "uint":
+                        WIntProperty wprop_as_uint = (WIntProperty)wprop_instance;
+
+                        property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
+                        UIntegerUpDown uintupdown = (UIntegerUpDown)property_rows[0].PropertyControl;
+                        uintupdown.Increment = (uint)wprop_as_uint.Increment;
+                        break;
+                    case "WDOMNode":
+                        WActorReferenceProperty wprop_as_ref = (WActorReferenceProperty)wprop_instance;
+
+                        property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
+                        WActorReferenceControl refcontrol = (WActorReferenceControl)property_rows[0].PropertyControl;
+                        refcontrol.Source = wprop_as_ref.SourceScene;
+                        refcontrol.FillComboBox();
+                        break;
+                    default:
+                        // We first check if the type of the property has a customization registered.
+                        // If it is, we just grab the customization and generate a control with it.
+                        if (m_TypeCustomizations.ContainsKey(prop_type.Name))
+                        {
+                            property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
+                        }
+                        // If there is no customization registered, and the type is an enum, we
+                        // try to use EnumTypeCustomization to generate a control.
+                        else if (prop_type.IsEnum)
+                        {
+                            EnumTypeCustomization enu = new EnumTypeCustomization();
+                            property_rows = enu.CustomizeHeader(base_prop_info, property_name, true, obj);
+                        }
+                        else
+                        {
+                            property_rows.Add(new WDetailSingleRowViewModel(property_name));
+                        }
+                        break;
+                }
+
+                /*
                 // We first check if the type of the property has a customization registered.
                 // If it is, we just grab the customization and generate a control with it.
-                if (m_TypeCustomizations.ContainsKey(p.PropertyType.Name))
+                if (m_TypeCustomizations.ContainsKey(prop_type.Name))
                 {
-                    property_rows = m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, obj);
+                    property_rows = m_TypeCustomizations[prop_type.Name].CustomizeHeader(base_prop_info, property_name, true, obj);
                 }
                 // If there is no customization registered, and the type is an enum, we
                 // use EnumTypeCustomization to generate a control.
-                else if (p.PropertyType.IsEnum)
+                else if (prop_type.IsEnum)
                 {
                     EnumTypeCustomization enu = new EnumTypeCustomization();
-                    property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
+                    property_rows = enu.CustomizeHeader(p, property_name, true, obj);
                 }
                 // Failing the prior checks, we see if the base type of the property is WDOMNode,
                 // in which case we just use the WDOMNode customization to generate a control.
-                else if (base_type.Name == typeof(WDOMNode).Name)
+                else if (prop_type.Name == typeof(WDOMNode).Name)
                 {
-                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
+                    property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(base_prop_info, property_name, true, obj);
 
                     WActorReferenceControl c = (WActorReferenceControl)property_rows[0].PropertyControl;
-                    c.Source = source_scene;
+                    //c.Source = source_scene;
                     c.FillComboBox();
                 }
                 // If the property type is completely unknown or unsupported, we create an empty row with
@@ -150,6 +204,7 @@ namespace WindEditor.ViewModel
                 {
                     property_rows.Add(new WDetailSingleRowViewModel(property_name));
                 }
+                */
 
                 // Saw online that adding multiple things to a binding list can be slow,
                 // so I'll do what that guy suggested. Disable raising changed events, then re-enable when we're done.

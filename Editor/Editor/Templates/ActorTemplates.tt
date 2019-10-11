@@ -98,6 +98,9 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				case "Integer":
 					dataType = "int";
 					break;
+				case "UInteger":
+					dataType = "uint";
+					break;
 				case "Boolean":
 					dataType = "bool";
 					break;
@@ -147,8 +150,28 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 <#		 // We hide padding and other fields that the user doesn't need to see/change.
 		if(!field.IsHidden)
 		{
+			switch(field.DataType)
+			{
+				case "Integer":
+				case "UInteger":
 #>
-		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true, <#= field.ToolTip == null ? "\"\"" : EscapeStringLiteral(field.ToolTip) #>, <#= sourceScene #>)]
+		public WIntProperty <#= fieldName #>Property { get; set; } = new WIntProperty("<#= dataType #>", "<#= fieldName #>", "<#= categoryName #>", "<#= field.FieldName #>", <#= field.Increment #>);
+<#					break;
+				case "Path":
+				case "Exit":
+				case "StageExit":
+				case "Event":
+#>
+		public WActorReferenceProperty <#= fieldName #>Property { get; set; } = new WActorReferenceProperty("<#= dataType #>", "<#= fieldName #>", "<#= categoryName #>", "<#= field.FieldName #>", SourceScene.<#= field.SceneSource #>);
+<#
+				break;
+				default:
+#>
+					public WProperty_new <#= fieldName #>Property { get; set; } = new WProperty_new("<#= dataType #>", "<#= fieldName #>", "<#= categoryName #>", "<#= field.FieldName #>");
+<#					break;
+			}
+#>
+
 <# 
 		}
 #>
@@ -165,6 +188,11 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				return value_as_int;
 <#
 						break;
+					case "UInteger":
+#>
+				return (uint)value_as_int;
+<#
+					break;
 					case "Boolean":
 #>
 				if (value_as_int == 0) {

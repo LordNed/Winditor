@@ -14,18 +14,19 @@ namespace WindEditor
 	public partial class acorn_leaf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("acorn_leaf", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("uint", "Unknown_1", "acorn_leaf", "Unknown_1", 1000);
+
+		public uint Unknown_1
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
-				return value_as_int;
+				return (uint)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+                int value_as_int = 0;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_1");
 			}
@@ -42,7 +43,8 @@ namespace WindEditor
 	public partial class agbsw0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("agbsw0", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "agbsw0", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -59,7 +61,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "agbsw0", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -76,7 +79,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "agbsw0", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -93,7 +97,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "agbsw0", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -110,7 +115,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "agbsw0", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -127,7 +133,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "agbsw0", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -155,7 +162,8 @@ namespace WindEditor
 	public partial class alldie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("alldie", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "alldie", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -189,7 +197,8 @@ namespace WindEditor
 			Guards_an_area = 1,
 		}
 
-		[WProperty("am", "Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new BehaviorTypeProperty { get; set; } = new WProperty_new("BehaviorTypeEnum", "BehaviorType", "am", "Behavior Type");
+
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -206,7 +215,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Guarded Area Radius (Hundreds)", true, "", SourceScene.Room)]
+		public WIntProperty GuardedAreaRadiusHundredsProperty { get; set; } = new WIntProperty("int", "GuardedAreaRadiusHundreds", "am", "Guarded Area Radius (Hundreds)", 0);
+
 		public int GuardedAreaRadiusHundreds
 		{ 
 			get
@@ -223,7 +233,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Switch Activates Armos Knight?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.", SourceScene.Room)]
+					public WProperty_new SwitchActivatesArmosKnightProperty { get; set; } = new WProperty_new("bool", "SwitchActivatesArmosKnight", "am", "Switch Activates Armos Knight?");
+
 		public bool SwitchActivatesArmosKnight
 		{ 
 			get
@@ -247,7 +258,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty DisableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnSwitch", "am", "Disable Spawn Switch", 0);
+
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -291,7 +303,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am2", "Sight Range (Hundreds)", true, "This number multiplied by 100 is the range it can see Link within.", SourceScene.Room)]
+		public WIntProperty SightRangeHundredsProperty { get; set; } = new WIntProperty("int", "SightRangeHundreds", "am2", "Sight Range (Hundreds)", 0);
+
 		public int SightRangeHundreds
 		{ 
 			get
@@ -308,7 +321,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am2", "Switch Activates Armos?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos's Spawn.", SourceScene.Room)]
+					public WProperty_new SwitchActivatesArmosProperty { get; set; } = new WProperty_new("bool", "SwitchActivatesArmos", "am2", "Switch Activates Armos?");
+
 		public bool SwitchActivatesArmos
 		{ 
 			get
@@ -332,7 +346,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am2", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty DisableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnSwitch", "am2", "Disable Spawn Switch", 0);
+
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -360,7 +375,8 @@ namespace WindEditor
 	public partial class amiprop : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("amiprop", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "amiprop", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -377,7 +393,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("amiprop", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "amiprop", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -405,7 +422,8 @@ namespace WindEditor
 	public partial class andsw0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("andsw0", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "andsw0", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -422,7 +440,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "andsw0", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -439,7 +458,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "andsw0", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -456,7 +476,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "andsw0", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -473,7 +494,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "andsw0", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -490,7 +512,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "andsw0", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -507,7 +530,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "andsw0", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -535,7 +559,8 @@ namespace WindEditor
 	public partial class andsw2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("andsw2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "andsw2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -552,7 +577,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "andsw2", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -569,7 +595,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "andsw2", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -586,7 +613,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "andsw2", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -603,7 +631,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "andsw2", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -620,7 +649,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "andsw2", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -659,7 +689,8 @@ namespace WindEditor
 	public partial class arrow_lighteff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("arrow_lighteff", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "arrow_lighteff", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -687,7 +718,8 @@ namespace WindEditor
 	public partial class atdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("atdoor", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "atdoor", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -715,7 +747,8 @@ namespace WindEditor
 	public partial class att : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("att", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "att", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -764,7 +797,8 @@ namespace WindEditor
 			Sits_in_place_B = 7,
 		}
 
-		[WProperty("bb", "Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new BehaviorTypeProperty { get; set; } = new WProperty_new("BehaviorTypeEnum", "BehaviorType", "bb", "Behavior Type");
+
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -781,7 +815,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
+		public WIntProperty SightRangeHundredsProperty { get; set; } = new WIntProperty("int", "SightRangeHundreds", "bb", "Sight Range (Hundreds)", 0);
+
 		public int SightRangeHundreds
 		{ 
 			get
@@ -798,7 +833,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Path", true, "", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "bb", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -829,7 +865,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "bb", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -846,7 +883,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty DisableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnSwitch", "bb", "Disable Spawn Switch", 0);
+
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -874,7 +912,8 @@ namespace WindEditor
 	public partial class bdk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bdk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bdk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -902,7 +941,8 @@ namespace WindEditor
 	public partial class bdkobj : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bdkobj", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bdkobj", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -919,7 +959,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bdkobj", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bdkobj", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -947,7 +988,8 @@ namespace WindEditor
 	public partial class beam : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("beam", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "beam", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -964,7 +1006,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "beam", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -981,7 +1024,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "beam", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -998,7 +1042,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "beam", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -1015,7 +1060,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "beam", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -1032,7 +1078,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "beam", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -1049,7 +1096,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "beam", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -1066,7 +1114,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("beam", "Unknown_8", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_8Property { get; set; } = new WIntProperty("int", "Unknown_8", "beam", "Unknown_8", 0);
+
 		public int Unknown_8
 		{ 
 			get
@@ -1110,7 +1159,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bflower", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bflower", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1138,7 +1188,8 @@ namespace WindEditor
 	public partial class bgn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bgn", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bgn", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1188,7 +1239,8 @@ namespace WindEditor
 	public partial class bigelf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bigelf", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bigelf", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1205,7 +1257,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bigelf", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bigelf", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1222,7 +1275,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bigelf", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "bigelf", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -1250,7 +1304,8 @@ namespace WindEditor
 	public partial class bita : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bita", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bita", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1267,7 +1322,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bita", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bita", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1295,7 +1351,8 @@ namespace WindEditor
 	public partial class bk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1312,7 +1369,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bk", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1329,7 +1387,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "bk", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -1346,7 +1405,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "bk", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -1363,7 +1423,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "bk", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -1380,7 +1441,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "bk", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -1397,7 +1459,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "bk", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -1414,7 +1477,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_8", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_8Property { get; set; } = new WIntProperty("int", "Unknown_8", "bk", "Unknown_8", 0);
+
 		public int Unknown_8
 		{ 
 			get
@@ -1451,7 +1515,8 @@ namespace WindEditor
 			Inanimate_Skull = 128,
 		}
 
-		[WProperty("bl", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "bl", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -1468,7 +1533,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bl", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "bl", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -1485,7 +1551,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bl", "Path", true, "", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "bl", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -1516,7 +1583,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bl", "Float at Initial Height?", true, "If this is not checked, the Bubble will float near the ground below it instead of in the air where it is actually placed.", SourceScene.Room)]
+					public WProperty_new FloatatInitialHeightProperty { get; set; } = new WProperty_new("bool", "FloatatInitialHeight", "bl", "Float at Initial Height?");
+
 		public bool FloatatInitialHeight
 		{ 
 			get
@@ -1562,7 +1630,8 @@ namespace WindEditor
 	public partial class bmdfoot : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bmdfoot", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bmdfoot", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1590,7 +1659,8 @@ namespace WindEditor
 	public partial class bmdhand : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bmdhand", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bmdhand", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1607,7 +1677,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bmdhand", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bmdhand", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1624,7 +1695,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bmdhand", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "bmdhand", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -1660,7 +1732,8 @@ namespace WindEditor
 			Bugged_and_invisible = 3,
 		}
 
-		[WProperty("bo", "Type", true, "Use the 'Normal' type. The two dying types are spawned by it automatically when it dies.", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "bo", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -1677,7 +1750,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bo", "Leave Behind Baba Bud?", true, "", SourceScene.Room)]
+					public WProperty_new LeaveBehindBabaBudProperty { get; set; } = new WProperty_new("bool", "LeaveBehindBabaBud", "bo", "Leave Behind Baba Bud?");
+
 		public bool LeaveBehindBabaBud
 		{ 
 			get
@@ -1712,7 +1786,8 @@ namespace WindEditor
 	public partial class boko : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("boko", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "boko", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1729,7 +1804,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("boko", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "boko", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1746,7 +1822,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("boko", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "boko", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -1774,7 +1851,8 @@ namespace WindEditor
 	public partial class boss_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("boss_item", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "boss_item", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1802,7 +1880,8 @@ namespace WindEditor
 	public partial class bpw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bpw", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bpw", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1819,7 +1898,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bpw", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bpw", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1836,7 +1916,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bpw", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "bpw", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -1875,7 +1956,8 @@ namespace WindEditor
 	public partial class bridge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bridge", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bridge", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -1892,7 +1974,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bridge", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "bridge", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -1909,7 +1992,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bridge", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "bridge", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -1975,7 +2059,8 @@ namespace WindEditor
 	public partial class bwd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bwd", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bwd", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2014,7 +2099,8 @@ namespace WindEditor
 	public partial class bwds : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bwds", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "bwds", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2042,7 +2128,8 @@ namespace WindEditor
 	public partial class canon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("canon", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "canon", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2079,7 +2166,8 @@ namespace WindEditor
 			Hiding_in_pot = 4,
 		}
 
-		[WProperty("cc", "Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new BehaviorTypeProperty { get; set; } = new WProperty_new("BehaviorTypeEnum", "BehaviorType", "cc", "Behavior Type");
+
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -2111,7 +2199,8 @@ namespace WindEditor
 			Red_and_attacks_instantly_and_more_vulnerabilities = 15,
 		}
 
-		[WProperty("cc", "Color Type", true, "The 'attacks instantly' types are used by Wizzrobes. The 'attacks instantly and more vulnerabilities' type can die from Boomerang/Grappling Hook/Hookshot for some reason, but this type is unused.", SourceScene.Room)]
+					public WProperty_new ColorTypeProperty { get; set; } = new WProperty_new("ColorTypeEnum", "ColorType", "cc", "Color Type");
+
 		public ColorTypeEnum ColorType
 		{ 
 			get
@@ -2128,7 +2217,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("cc", "Sight Range (Tens)", true, "", SourceScene.Room)]
+		public WIntProperty SightRangeTensProperty { get; set; } = new WIntProperty("int", "SightRangeTens", "cc", "Sight Range (Tens)", 0);
+
 		public int SightRangeTens
 		{ 
 			get
@@ -2145,7 +2235,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("cc", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty DisableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnSwitch", "cc", "Disable Spawn Switch", 0);
+
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -2195,7 +2286,8 @@ namespace WindEditor
 	public partial class dai : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("dai", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "dai", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2223,7 +2315,8 @@ namespace WindEditor
 	public partial class daiocta : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("daiocta", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "daiocta", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2240,7 +2333,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "daiocta", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -2257,7 +2351,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "daiocta", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -2274,7 +2369,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "daiocta", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -2291,7 +2387,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "daiocta", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -2330,7 +2427,8 @@ namespace WindEditor
 	public partial class deku_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Deku Leaf Pickup", "Item Pickup Flag", true, "", SourceScene.Room)]
+		public WIntProperty ItemPickupFlagProperty { get; set; } = new WIntProperty("int", "ItemPickupFlag", "Deku Leaf Pickup", "Item Pickup Flag", 0);
+
 		public int ItemPickupFlag
 		{ 
 			get
@@ -2369,7 +2467,8 @@ namespace WindEditor
 	public partial class demo_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("demo_item", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "demo_item", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2386,7 +2485,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("demo_item", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "demo_item", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -2425,7 +2525,8 @@ namespace WindEditor
 	public partial class dk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("dk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "dk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2453,7 +2554,8 @@ namespace WindEditor
 	public partial class door10 : TGDR
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
+		public WIntProperty SwitchBitProperty { get; set; } = new WIntProperty("int", "SwitchBit", "Door", "Switch Bit", 0);
+
 		public int SwitchBit
 		{ 
 			get
@@ -2470,7 +2572,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Type", true, "", SourceScene.Room)]
+		public WIntProperty TypeProperty { get; set; } = new WIntProperty("int", "Type", "Door", "Type", 0);
+
 		public int Type
 		{ 
 			get
@@ -2487,7 +2590,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Event ID", true, "", SourceScene.Room)]
+		public WIntProperty EventIDProperty { get; set; } = new WIntProperty("int", "EventID", "Door", "Event ID", 0);
+
 		public int EventID
 		{ 
 			get
@@ -2504,7 +2608,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch Bit 2", true, "", SourceScene.Room)]
+		public WIntProperty SwitchBit2Property { get; set; } = new WIntProperty("int", "SwitchBit2", "Door", "Switch Bit 2", 0);
+
 		public int SwitchBit2
 		{ 
 			get
@@ -2521,7 +2626,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "From Room Number", true, "", SourceScene.Room)]
+		public WIntProperty FromRoomNumberProperty { get; set; } = new WIntProperty("int", "FromRoomNumber", "Door", "From Room Number", 0);
+
 		public int FromRoomNumber
 		{ 
 			get
@@ -2538,7 +2644,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "To Room Number", true, "", SourceScene.Room)]
+		public WIntProperty ToRoomNumberProperty { get; set; } = new WIntProperty("int", "ToRoomNumber", "Door", "To Room Number", 0);
+
 		public int ToRoomNumber
 		{ 
 			get
@@ -2555,7 +2662,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Ship ID", true, "", SourceScene.Room)]
+		public WIntProperty ShipIDProperty { get; set; } = new WIntProperty("int", "ShipID", "Door", "Ship ID", 0);
+
 		public int ShipID
 		{ 
 			get
@@ -2572,7 +2680,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Arg 1", true, "", SourceScene.Room)]
+		public WIntProperty Arg1Property { get; set; } = new WIntProperty("int", "Arg1", "Door", "Arg 1", 0);
+
 		public int Arg1
 		{ 
 			get
@@ -2600,7 +2709,8 @@ namespace WindEditor
 	public partial class door12 : TGDR
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
+		public WIntProperty SwitchBitProperty { get; set; } = new WIntProperty("int", "SwitchBit", "Door", "Switch Bit", 0);
+
 		public int SwitchBit
 		{ 
 			get
@@ -2617,7 +2727,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Type", true, "", SourceScene.Room)]
+		public WIntProperty TypeProperty { get; set; } = new WIntProperty("int", "Type", "Door", "Type", 0);
+
 		public int Type
 		{ 
 			get
@@ -2634,7 +2745,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Event ID", true, "", SourceScene.Room)]
+		public WIntProperty EventIDProperty { get; set; } = new WIntProperty("int", "EventID", "Door", "Event ID", 0);
+
 		public int EventID
 		{ 
 			get
@@ -2651,7 +2763,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch Bit 2", true, "", SourceScene.Room)]
+		public WIntProperty SwitchBit2Property { get; set; } = new WIntProperty("int", "SwitchBit2", "Door", "Switch Bit 2", 0);
+
 		public int SwitchBit2
 		{ 
 			get
@@ -2668,7 +2781,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "From Room Number", true, "", SourceScene.Room)]
+		public WIntProperty FromRoomNumberProperty { get; set; } = new WIntProperty("int", "FromRoomNumber", "Door", "From Room Number", 0);
+
 		public int FromRoomNumber
 		{ 
 			get
@@ -2685,7 +2799,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "To Room Number", true, "", SourceScene.Room)]
+		public WIntProperty ToRoomNumberProperty { get; set; } = new WIntProperty("int", "ToRoomNumber", "Door", "To Room Number", 0);
+
 		public int ToRoomNumber
 		{ 
 			get
@@ -2702,7 +2817,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Ship ID", true, "", SourceScene.Room)]
+		public WIntProperty ShipIDProperty { get; set; } = new WIntProperty("int", "ShipID", "Door", "Ship ID", 0);
+
 		public int ShipID
 		{ 
 			get
@@ -2719,7 +2835,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Arg 1", true, "", SourceScene.Room)]
+		public WIntProperty Arg1Property { get; set; } = new WIntProperty("int", "Arg1", "Door", "Arg 1", 0);
+
 		public int Arg1
 		{ 
 			get
@@ -2796,7 +2913,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "Unknowns", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -2829,7 +2947,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "Unknowns", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -2846,7 +2965,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "Unknowns", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -2901,7 +3021,8 @@ namespace WindEditor
 	public partial class fallrock_tag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fallrock_tag", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "fallrock_tag", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2929,7 +3050,8 @@ namespace WindEditor
 	public partial class fan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fan", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "fan", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2946,7 +3068,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fan", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "fan", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -2974,7 +3097,8 @@ namespace WindEditor
 	public partial class ff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ff", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ff", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -2991,7 +3115,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ff", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ff", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3008,7 +3133,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ff", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "ff", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -3036,7 +3162,8 @@ namespace WindEditor
 	public partial class fganon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fganon", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "fganon", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3053,7 +3180,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fganon", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "fganon", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3070,7 +3198,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fganon", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "fganon", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -3087,7 +3216,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fganon", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "fganon", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -3104,7 +3234,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fganon", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "fganon", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -3132,7 +3263,8 @@ namespace WindEditor
 	public partial class fgmahou : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fgmahou", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "fgmahou", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3160,7 +3292,8 @@ namespace WindEditor
 	public partial class fire : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fire", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "fire", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3177,7 +3310,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fire", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "fire", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3194,7 +3328,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fire", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "fire", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -3211,7 +3346,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fire", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "fire", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -3228,7 +3364,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fire", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "fire", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -3256,7 +3393,8 @@ namespace WindEditor
 	public partial class floor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("floor", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "floor", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3284,7 +3422,8 @@ namespace WindEditor
 	public partial class fm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fm", "Link Captured Exit", true, "Which exit this Floormaster takes Link through when it captures him.", SourceScene.Room)]
+		public WActorReferenceProperty LinkCapturedExitProperty { get; set; } = new WActorReferenceProperty("ExitData", "LinkCapturedExit", "fm", "Link Captured Exit", SourceScene.Room);
+
 		public ExitData LinkCapturedExit
 		{ 
 			get
@@ -3322,7 +3461,8 @@ namespace WindEditor
 			Doesnt_follow_path = 2,
 		}
 
-		[WProperty("fm", "Type", true, "The unused Stalker type follows Link without coming out of the floor. That type only appears when its Enable Spawn Switch is set while in the same room as the Floormaster.", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "fm", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -3346,7 +3486,8 @@ namespace WindEditor
 			Target_Partner_only = 2,
 		}
 
-		[WProperty("fm", "Targeting Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new TargetingBehaviorTypeProperty { get; set; } = new WProperty_new("TargetingBehaviorTypeEnum", "TargetingBehaviorType", "fm", "Targeting Behavior Type");
+
 		public TargetingBehaviorTypeEnum TargetingBehaviorType
 		{ 
 			get
@@ -3363,7 +3504,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fm", "Path", true, "Only the \"Follows path\" type uses this path.", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "fm", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -3394,7 +3536,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fm", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "fm", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -3411,7 +3554,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fm", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty DisableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnSwitch", "fm", "Disable Spawn Switch", 0);
+
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -3428,7 +3572,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fm", "Partner Captured Exit", true, "Which stage exit this Floormaster takes Medli/Makar through when it captures them.", SourceScene.Stage)]
+		public WActorReferenceProperty PartnerCapturedExitProperty { get; set; } = new WActorReferenceProperty("ExitData", "PartnerCapturedExit", "fm", "Partner Captured Exit", SourceScene.Room);
+
 		public ExitData PartnerCapturedExit
 		{ 
 			get
@@ -3451,7 +3596,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("fm", "Sight Range (Hundreds)", true, "Defaults to a range of 3000 if you set this to 0 or 255.", SourceScene.Room)]
+		public WIntProperty SightRangeHundredsProperty { get; set; } = new WIntProperty("int", "SightRangeHundreds", "fm", "Sight Range (Hundreds)", 0);
+
 		public int SightRangeHundreds
 		{ 
 			get
@@ -3490,7 +3636,8 @@ namespace WindEditor
 	public partial class ghostship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ghostship", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ghostship", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3507,7 +3654,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ghostship", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ghostship", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3535,7 +3683,8 @@ namespace WindEditor
 	public partial class gm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("gm", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "gm", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3552,7 +3701,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gm", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "gm", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3569,7 +3719,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gm", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "gm", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -3586,7 +3737,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gm", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "gm", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -3603,7 +3755,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gm", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "gm", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -3631,7 +3784,8 @@ namespace WindEditor
 	public partial class gnd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("gnd", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "gnd", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3648,7 +3802,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gnd", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "gnd", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3676,7 +3831,8 @@ namespace WindEditor
 	public partial class goal_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("goal_flag", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "goal_flag", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3693,7 +3849,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("goal_flag", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "goal_flag", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3721,7 +3878,8 @@ namespace WindEditor
 	public partial class grass : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("grass", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "grass", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3738,7 +3896,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("grass", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "grass", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3755,7 +3914,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("grass", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "grass", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -3800,7 +3960,8 @@ namespace WindEditor
 			Stays_in_sector = 1,
 		}
 
-		[WProperty("gy_ctrl", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "gy_ctrl", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -3817,7 +3978,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gy_ctrl", "Number of Gyorgs", true, "How many Gyorgs to spawn. 15 defaults to 1 Gyorg.", SourceScene.Room)]
+		public WIntProperty NumberofGyorgsProperty { get; set; } = new WIntProperty("int", "NumberofGyorgs", "gy_ctrl", "Number of Gyorgs", 0);
+
 		public int NumberofGyorgs
 		{ 
 			get
@@ -3834,7 +3996,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gy_ctrl", "Sight Range (Thousands)", true, "This number multiplied by 1000 is the range it can see KoRL within and will start spawning Gyorgs.", SourceScene.Room)]
+		public WIntProperty SightRangeThousandsProperty { get; set; } = new WIntProperty("int", "SightRangeThousands", "gy_ctrl", "Sight Range (Thousands)", 0);
+
 		public int SightRangeThousands
 		{ 
 			get
@@ -3851,7 +4014,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gy_ctrl", "Enable Spawn Switch", true, "If this switch is valid, the spawner will not start spawning Gyorgs until the switch is set.", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "gy_ctrl", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -3879,7 +4043,8 @@ namespace WindEditor
 	public partial class himo3 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("himo3", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "himo3", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -3896,7 +4061,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("himo3", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "himo3", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -3913,7 +4079,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("himo3", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "himo3", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -3930,7 +4097,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("himo3", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "himo3", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -3947,7 +4115,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("himo3", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "himo3", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -3975,7 +4144,8 @@ namespace WindEditor
 	public partial class hitobj : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("hitobj", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "hitobj", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4003,7 +4173,8 @@ namespace WindEditor
 	public partial class hmlif : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("hmlif", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "hmlif", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4020,7 +4191,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "hmlif", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4037,7 +4209,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "hmlif", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -4054,7 +4227,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "hmlif", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -4071,7 +4245,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "hmlif", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -4088,7 +4263,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "hmlif", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -4105,7 +4281,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "hmlif", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -4122,7 +4299,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_8", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_8Property { get; set; } = new WIntProperty("int", "Unknown_8", "hmlif", "Unknown_8", 0);
+
 		public int Unknown_8
 		{ 
 			get
@@ -4150,7 +4328,8 @@ namespace WindEditor
 	public partial class hot_floor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("hot_floor", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "hot_floor", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4167,7 +4346,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hot_floor", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "hot_floor", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4195,7 +4375,8 @@ namespace WindEditor
 	public partial class hys : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("hys", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "hys", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4212,7 +4393,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hys", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "hys", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4240,7 +4422,8 @@ namespace WindEditor
 	public partial class icelift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("icelift", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "icelift", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4257,7 +4440,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("icelift", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "icelift", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4274,7 +4458,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("icelift", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "icelift", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -4302,7 +4487,8 @@ namespace WindEditor
 	public partial class ikari : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ikari", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ikari", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4319,7 +4505,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ikari", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ikari", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4347,7 +4534,8 @@ namespace WindEditor
 	public partial class item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Item Pickup", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "Item Pickup", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4375,7 +4563,8 @@ namespace WindEditor
 	public partial class jbo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("jbo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "jbo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4414,7 +4603,8 @@ namespace WindEditor
 	public partial class kamome : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kamome", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kamome", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4431,7 +4621,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kamome", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kamome", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4448,7 +4639,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kamome", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "kamome", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -4465,7 +4657,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kamome", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "kamome", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -4493,7 +4686,8 @@ namespace WindEditor
 	public partial class kanban : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kanban", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kanban", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4537,7 +4731,8 @@ namespace WindEditor
 	public partial class kantera : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kantera", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kantera", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4554,7 +4749,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kantera", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kantera", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4571,7 +4767,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kantera", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "kantera", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -4599,7 +4796,8 @@ namespace WindEditor
 	public partial class kb : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kb", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kb", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4616,7 +4814,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kb", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kb", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4633,7 +4832,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kb", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "kb", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -4650,7 +4850,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kb", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "kb", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -4667,7 +4868,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kb", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "kb", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -4716,7 +4918,8 @@ namespace WindEditor
 			Hanging_from_ceiling_passive = 128,
 		}
 
-		[WProperty("ki", "Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new BehaviorTypeProperty { get; set; } = new WProperty_new("BehaviorTypeEnum", "BehaviorType", "ki", "Behavior Type");
+
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -4742,7 +4945,8 @@ namespace WindEditor
 			_3000_B = 127,
 		}
 
-		[WProperty("ki", "Sight Range", true, "", SourceScene.Room)]
+					public WProperty_new SightRangeProperty { get; set; } = new WProperty_new("SightRangeEnum", "SightRange", "ki", "Sight Range");
+
 		public SightRangeEnum SightRange
 		{ 
 			get
@@ -4759,7 +4963,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ki", "Is Fire Keese?", true, "", SourceScene.Room)]
+					public WProperty_new IsFireKeeseProperty { get; set; } = new WProperty_new("bool", "IsFireKeese", "ki", "Is Fire Keese?");
+
 		public bool IsFireKeese
 		{ 
 			get
@@ -4783,7 +4988,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ki", "Path", true, "", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "ki", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -4814,7 +5020,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ki", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "ki", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -4842,7 +5049,8 @@ namespace WindEditor
 	public partial class kita : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kita", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kita", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4859,7 +5067,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kita", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kita", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4887,7 +5096,8 @@ namespace WindEditor
 	public partial class klft : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("klft", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "klft", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4904,7 +5114,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("klft", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "klft", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -4921,7 +5132,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("klft", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "klft", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -4960,7 +5172,8 @@ namespace WindEditor
 	public partial class kn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kn", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kn", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -4977,7 +5190,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kn", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kn", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5005,7 +5219,8 @@ namespace WindEditor
 	public partial class knob00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("knob00", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "knob00", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5033,7 +5248,8 @@ namespace WindEditor
 	public partial class kokiie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kokiie", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kokiie", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5050,7 +5266,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kokiie", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kokiie", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5100,7 +5317,8 @@ namespace WindEditor
 			Group_in_a_pot = 6,
 		}
 
-		[WProperty("ks", "Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new BehaviorTypeProperty { get; set; } = new WProperty_new("BehaviorTypeEnum", "BehaviorType", "ks", "Behavior Type");
+
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -5117,7 +5335,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ks", "Number in Group", true, "The number of Morths in this group. If you set this to 0 or higher than 21 it will just be a single Morth instead.", SourceScene.Room)]
+		public WIntProperty NumberinGroupProperty { get; set; } = new WIntProperty("int", "NumberinGroup", "ks", "Number in Group", 0);
+
 		public int NumberinGroup
 		{ 
 			get
@@ -5134,7 +5353,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ks", "Pot Sight Range (Tens)", true, "This number multiplied by 10 is the range around the pot the Morths are in that they'll notice the player and break out of the pot.", SourceScene.Room)]
+		public WIntProperty PotSightRangeTensProperty { get; set; } = new WIntProperty("int", "PotSightRangeTens", "ks", "Pot Sight Range (Tens)", 0);
+
 		public int PotSightRangeTens
 		{ 
 			get
@@ -5162,7 +5382,8 @@ namespace WindEditor
 	public partial class kt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kt", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kt", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5190,7 +5411,8 @@ namespace WindEditor
 	public partial class kui : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kui", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kui", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5207,7 +5429,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kui", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kui", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5224,7 +5447,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kui", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "kui", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -5252,7 +5476,8 @@ namespace WindEditor
 	public partial class kytag00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kytag00", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kytag00", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5269,7 +5494,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kytag00", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5286,7 +5512,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "kytag00", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -5303,7 +5530,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "kytag00", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -5320,7 +5548,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "kytag00", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -5337,7 +5566,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "kytag00", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -5354,7 +5584,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "kytag00", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -5393,7 +5624,8 @@ namespace WindEditor
 	public partial class kytag02 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kytag02", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kytag02", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5421,7 +5653,8 @@ namespace WindEditor
 	public partial class kytag03 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kytag03", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kytag03", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5449,7 +5682,8 @@ namespace WindEditor
 	public partial class kytag04 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kytag04", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kytag04", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5466,7 +5700,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag04", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "kytag04", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5483,7 +5718,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag04", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "kytag04", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -5511,7 +5747,8 @@ namespace WindEditor
 	public partial class kytag05 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kytag05", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kytag05", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5550,7 +5787,8 @@ namespace WindEditor
 	public partial class kytag07 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("kytag07", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "kytag07", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5578,7 +5816,8 @@ namespace WindEditor
 	public partial class lamp : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("lamp", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "lamp", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5606,7 +5845,8 @@ namespace WindEditor
 	public partial class lbridge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("lbridge", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "lbridge", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5634,7 +5874,8 @@ namespace WindEditor
 	public partial class leaflift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("leaflift", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "leaflift", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5673,7 +5914,8 @@ namespace WindEditor
 	public partial class lstair : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("lstair", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "lstair", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5712,7 +5954,8 @@ namespace WindEditor
 	public partial class machine : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("machine", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "machine", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5751,7 +5994,8 @@ namespace WindEditor
 	public partial class majuu_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("majuu_flag", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "majuu_flag", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5768,7 +6012,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("majuu_flag", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "majuu_flag", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5796,7 +6041,8 @@ namespace WindEditor
 	public partial class mant : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mant", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mant", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5824,7 +6070,8 @@ namespace WindEditor
 	public partial class mbdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mbdoor", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mbdoor", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5841,7 +6088,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mbdoor", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "mbdoor", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5858,7 +6106,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mbdoor", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "mbdoor", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -5886,7 +6135,8 @@ namespace WindEditor
 	public partial class mdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mdoor", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mdoor", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5903,7 +6153,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mdoor", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "mdoor", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -5920,7 +6171,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mdoor", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "mdoor", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -5937,7 +6189,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mdoor", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "mdoor", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -5965,7 +6218,8 @@ namespace WindEditor
 	public partial class mflft : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mflft", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mflft", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -5982,7 +6236,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mflft", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "mflft", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6041,7 +6296,8 @@ namespace WindEditor
 			Blue_skin_without_lantern_unused = 100,
 		}
 
-		[WProperty("mo2", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "mo2", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -6064,7 +6320,8 @@ namespace WindEditor
 			Walking_pose = 1,
 		}
 
-		[WProperty("mo2", "Frozen in Time Pose", true, "", SourceScene.Room)]
+					public WProperty_new FrozeninTimePoseProperty { get; set; } = new WProperty_new("FrozeninTimePoseEnum", "FrozeninTimePose", "mo2", "Frozen in Time Pose");
+
 		public FrozeninTimePoseEnum FrozeninTimePose
 		{ 
 			get
@@ -6081,7 +6338,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mo2", "Path", true, "", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "mo2", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -6112,7 +6370,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mo2", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "mo2", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -6129,7 +6388,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mo2", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public WIntProperty DisableSpawnonDeathSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnonDeathSwitch", "mo2", "Disable Spawn on Death Switch", 0);
+
 		public int DisableSpawnonDeathSwitch
 		{ 
 			get
@@ -6168,7 +6428,8 @@ namespace WindEditor
 	public partial class mozo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mozo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mozo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6196,7 +6457,8 @@ namespace WindEditor
 	public partial class msw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("msw", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "msw", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6224,7 +6486,8 @@ namespace WindEditor
 	public partial class mt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mt", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mt", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6241,7 +6504,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mt", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "mt", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6258,7 +6522,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mt", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "mt", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -6275,7 +6540,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mt", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "mt", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -6292,7 +6558,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mt", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "mt", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -6309,7 +6576,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mt", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "mt", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -6337,7 +6605,8 @@ namespace WindEditor
 	public partial class mtoge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("mtoge", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "mtoge", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6365,7 +6634,8 @@ namespace WindEditor
 	public partial class npc_ac1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ac1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ac1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6382,7 +6652,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_ac1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_ac1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6410,7 +6681,8 @@ namespace WindEditor
 	public partial class npc_ah : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ah", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ah", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6427,7 +6699,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_ah", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_ah", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6455,7 +6728,8 @@ namespace WindEditor
 	public partial class npc_aj1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_aj1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_aj1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6472,7 +6746,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_aj1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_aj1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6511,7 +6786,8 @@ namespace WindEditor
 	public partial class npc_ba1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ba1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ba1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6539,7 +6815,8 @@ namespace WindEditor
 	public partial class npc_bj1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_bj1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_bj1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6556,7 +6833,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_bj1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_bj1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6584,7 +6862,8 @@ namespace WindEditor
 	public partial class npc_bm1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_bm1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_bm1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6601,7 +6880,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_bm1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_bm1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6618,7 +6898,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_bm1", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_bm1", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -6646,7 +6927,8 @@ namespace WindEditor
 	public partial class npc_bmcon1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_bmcon1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_bmcon1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6674,7 +6956,8 @@ namespace WindEditor
 	public partial class npc_bms1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_bms1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_bms1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6713,7 +6996,8 @@ namespace WindEditor
 	public partial class npc_bs1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_bs1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_bs1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6730,7 +7014,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_bs1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_bs1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6769,7 +7054,8 @@ namespace WindEditor
 	public partial class npc_btsw2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_btsw2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_btsw2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6797,7 +7083,8 @@ namespace WindEditor
 	public partial class npc_cb1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_cb1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_cb1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6825,7 +7112,8 @@ namespace WindEditor
 	public partial class npc_co1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_co1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_co1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6853,7 +7141,8 @@ namespace WindEditor
 	public partial class npc_de1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_de1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_de1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6881,7 +7170,8 @@ namespace WindEditor
 	public partial class npc_ds1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ds1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ds1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6909,7 +7199,8 @@ namespace WindEditor
 	public partial class npc_gk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_gk1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_gk1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6937,7 +7228,8 @@ namespace WindEditor
 	public partial class npc_gp1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_gp1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_gp1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -6954,7 +7246,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_gp1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_gp1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -6982,7 +7275,8 @@ namespace WindEditor
 	public partial class npc_hi1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_hi1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_hi1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7021,7 +7315,8 @@ namespace WindEditor
 	public partial class npc_hr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_hr", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_hr", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7038,7 +7333,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_hr", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_hr", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7055,7 +7351,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_hr", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_hr", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7083,7 +7380,8 @@ namespace WindEditor
 	public partial class npc_jb1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_jb1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_jb1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7122,7 +7420,8 @@ namespace WindEditor
 	public partial class npc_kamome : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_kamome", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_kamome", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7139,7 +7438,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kamome", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_kamome", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7167,7 +7467,8 @@ namespace WindEditor
 	public partial class npc_kf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_kf1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_kf1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7184,7 +7485,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kf1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_kf1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7201,7 +7503,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kf1", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_kf1", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7218,7 +7521,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kf1", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "npc_kf1", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -7268,7 +7572,8 @@ namespace WindEditor
 	public partial class npc_kk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_kk1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_kk1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7285,7 +7590,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kk1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_kk1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7302,7 +7608,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kk1", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_kk1", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7319,7 +7626,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_kk1", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "npc_kk1", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -7347,7 +7655,8 @@ namespace WindEditor
 	public partial class npc_km1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_km1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_km1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7375,7 +7684,8 @@ namespace WindEditor
 	public partial class npc_ko1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ko1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ko1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7392,7 +7702,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_ko1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_ko1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7420,7 +7731,8 @@ namespace WindEditor
 	public partial class npc_kp1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_kp1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_kp1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7448,7 +7760,8 @@ namespace WindEditor
 	public partial class npc_ls1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ls1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ls1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7476,7 +7789,8 @@ namespace WindEditor
 	public partial class npc_md : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_md", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_md", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7493,7 +7807,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_md", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_md", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7510,7 +7825,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_md", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_md", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7538,7 +7854,8 @@ namespace WindEditor
 	public partial class npc_mk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_mk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_mk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7555,7 +7872,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_mk", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_mk", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7583,7 +7901,8 @@ namespace WindEditor
 	public partial class npc_mn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_mn", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_mn", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7600,7 +7919,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_mn", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_mn", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7617,7 +7937,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_mn", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_mn", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7667,7 +7988,8 @@ namespace WindEditor
 	public partial class npc_ob1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ob1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ob1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7684,7 +8006,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_ob1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_ob1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7712,7 +8035,8 @@ namespace WindEditor
 	public partial class npc_os : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_os", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_os", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7740,7 +8064,8 @@ namespace WindEditor
 	public partial class npc_p1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_p1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_p1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7757,7 +8082,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_p1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_p1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7785,7 +8111,8 @@ namespace WindEditor
 	public partial class npc_p2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_p2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_p2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7802,7 +8129,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_p2", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_p2", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7819,7 +8147,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_p2", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_p2", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7847,7 +8176,8 @@ namespace WindEditor
 	public partial class npc_people : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_people", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_people", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7864,7 +8194,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_people", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_people", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7881,7 +8212,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_people", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_people", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -7909,7 +8241,8 @@ namespace WindEditor
 	public partial class npc_pf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_pf1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_pf1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7926,7 +8259,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_pf1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_pf1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7954,7 +8288,8 @@ namespace WindEditor
 	public partial class npc_photo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_photo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_photo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -7971,7 +8306,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_photo", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_photo", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -7999,7 +8335,8 @@ namespace WindEditor
 	public partial class npc_pm1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_pm1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_pm1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8027,7 +8364,8 @@ namespace WindEditor
 	public partial class npc_roten : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_roten", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_roten", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8044,7 +8382,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_roten", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_roten", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8072,7 +8411,8 @@ namespace WindEditor
 	public partial class npc_rsh1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_rsh1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_rsh1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8089,7 +8429,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_rsh1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_rsh1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8150,7 +8491,8 @@ namespace WindEditor
 	public partial class npc_tc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_tc", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_tc", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8167,7 +8509,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_tc", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_tc", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8206,7 +8549,8 @@ namespace WindEditor
 	public partial class npc_uk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_uk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_uk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8223,7 +8567,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_uk", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_uk", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8240,7 +8585,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_uk", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "npc_uk", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -8268,7 +8614,8 @@ namespace WindEditor
 	public partial class npc_ym1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_ym1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_ym1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8296,7 +8643,8 @@ namespace WindEditor
 	public partial class npc_yw1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_yw1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_yw1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8313,7 +8661,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_yw1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "npc_yw1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8341,7 +8690,8 @@ namespace WindEditor
 	public partial class npc_zk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_zk1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_zk1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8369,7 +8719,8 @@ namespace WindEditor
 	public partial class npc_zl1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_zl1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "npc_zl1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8397,7 +8748,8 @@ namespace WindEditor
 	public partial class nz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("nz", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "nz", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8414,7 +8766,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("nz", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "nz", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8431,7 +8784,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("nz", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "nz", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -8459,7 +8813,8 @@ namespace WindEditor
 	public partial class nzg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("nzg", "Sight Range (Fives)", true, "This number multiplied by 5 is the range around the hole it will notice the player and start spawning Rats and/or Bombchus.", SourceScene.Room)]
+		public WIntProperty SightRangeFivesProperty { get; set; } = new WIntProperty("int", "SightRangeFives", "nzg", "Sight Range (Fives)", 0);
+
 		public int SightRangeFives
 		{ 
 			get
@@ -8476,7 +8831,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("nzg", "Maximum Number of Rats", true, "", SourceScene.Room)]
+		public WIntProperty MaximumNumberofRatsProperty { get; set; } = new WIntProperty("int", "MaximumNumberofRats", "nzg", "Maximum Number of Rats", 0);
+
 		public int MaximumNumberofRats
 		{ 
 			get
@@ -8500,7 +8856,8 @@ namespace WindEditor
 			Spawns_Rats_and_Bombchus = 2,
 		}
 
-		[WProperty("nzg", "Type", true, "The type that spawns just Rats also has the Rat Shopkeeper in it.\nThe type that spawns both Rats and Bombchus has a random 50% chance of which to spawn each time it spawns one.", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "nzg", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -8555,7 +8912,8 @@ namespace WindEditor
 	public partial class obj_ajav : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ajav", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ajav", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8594,7 +8952,8 @@ namespace WindEditor
 	public partial class obj_akabe : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_akabe", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_akabe", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8611,7 +8970,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_akabe", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_akabe", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8628,7 +8988,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_akabe", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_akabe", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -8645,7 +9006,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_akabe", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_akabe", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -8673,7 +9035,8 @@ namespace WindEditor
 	public partial class obj_apzl : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_apzl", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_apzl", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8701,7 +9064,8 @@ namespace WindEditor
 	public partial class obj_ashut : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ashut", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ashut", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8718,7 +9082,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ashut", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_ashut", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8746,7 +9111,8 @@ namespace WindEditor
 	public partial class obj_auzu : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_auzu", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_auzu", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8763,7 +9129,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_auzu", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_auzu", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8780,7 +9147,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_auzu", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_auzu", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -8797,7 +9165,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_auzu", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_auzu", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -8825,7 +9194,8 @@ namespace WindEditor
 	public partial class obj_aygr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_aygr", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_aygr", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8853,7 +9223,8 @@ namespace WindEditor
 	public partial class obj_balancelift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_balancelift", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_balancelift", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8881,7 +9252,8 @@ namespace WindEditor
 	public partial class obj_barrel : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_barrel", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_barrel", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8898,7 +9270,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_barrel", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8926,7 +9299,8 @@ namespace WindEditor
 	public partial class obj_barrel2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_barrel2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_barrel2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -8943,7 +9317,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel2", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_barrel2", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -8960,7 +9335,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel2", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_barrel2", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -8977,7 +9353,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel2", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_barrel2", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -8994,7 +9371,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel2", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_barrel2", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -9011,7 +9389,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel2", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_barrel2", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -9039,7 +9418,8 @@ namespace WindEditor
 	public partial class obj_barrier : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_barrier", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_barrier", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9056,7 +9436,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrier", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_barrier", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9084,7 +9465,8 @@ namespace WindEditor
 	public partial class obj_bemos : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_bemos", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_bemos", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9101,7 +9483,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_bemos", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9118,7 +9501,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_bemos", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -9135,7 +9519,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_bemos", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -9152,7 +9537,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_bemos", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -9169,7 +9555,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_bemos", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -9197,7 +9584,8 @@ namespace WindEditor
 	public partial class obj_bscurtain : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_bscurtain", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_bscurtain", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9225,7 +9613,8 @@ namespace WindEditor
 	public partial class obj_buoyflag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_buoyflag", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_buoyflag", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9242,7 +9631,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_buoyflag", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_buoyflag", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9259,7 +9649,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_buoyflag", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_buoyflag", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -9287,7 +9678,8 @@ namespace WindEditor
 	public partial class obj_buoyrace : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_buoyrace", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_buoyrace", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9304,7 +9696,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_buoyrace", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_buoyrace", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9343,7 +9736,8 @@ namespace WindEditor
 	public partial class obj_canon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_canon", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_canon", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9360,7 +9754,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_canon", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_canon", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9377,7 +9772,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_canon", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_canon", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -9394,7 +9790,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_canon", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_canon", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -9422,7 +9819,8 @@ namespace WindEditor
 	public partial class obj_coming : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_coming", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_coming", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9439,7 +9837,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_coming", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_coming", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9456,7 +9855,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_coming", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_coming", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -9473,7 +9873,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_coming", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_coming", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -9490,7 +9891,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_coming", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_coming", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -9507,7 +9909,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_coming", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_coming", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -9535,7 +9938,8 @@ namespace WindEditor
 	public partial class obj_correct : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_correct", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_correct", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9552,7 +9956,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_correct", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_correct", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9569,7 +9974,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_correct", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_correct", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -9586,7 +9992,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_correct", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_correct", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -9636,7 +10043,8 @@ namespace WindEditor
 	public partial class obj_doguu : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_doguu", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_doguu", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9664,7 +10072,8 @@ namespace WindEditor
 	public partial class obj_doguu_demo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_doguu_demo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_doguu_demo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9692,7 +10101,8 @@ namespace WindEditor
 	public partial class obj_dragonhead : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_dragonhead", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_dragonhead", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9720,7 +10130,8 @@ namespace WindEditor
 	public partial class obj_drift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_drift", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_drift", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9759,7 +10170,8 @@ namespace WindEditor
 	public partial class obj_ebomzo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ebomzo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ebomzo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9787,7 +10199,8 @@ namespace WindEditor
 	public partial class obj_eff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_eff", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_eff", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9815,7 +10228,8 @@ namespace WindEditor
 	public partial class obj_ekskz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ekskz", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ekskz", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9843,7 +10257,8 @@ namespace WindEditor
 	public partial class obj_eskban : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_eskban", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_eskban", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9871,7 +10286,8 @@ namespace WindEditor
 	public partial class obj_ferris : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ferris", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ferris", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9899,7 +10315,8 @@ namespace WindEditor
 	public partial class obj_figure : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_figure", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_figure", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9927,7 +10344,8 @@ namespace WindEditor
 	public partial class obj_firewall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_firewall", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_firewall", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9955,7 +10373,8 @@ namespace WindEditor
 	public partial class obj_flame : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_flame", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_flame", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -9972,7 +10391,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_flame", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -9989,7 +10409,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_flame", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -10006,7 +10427,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_flame", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -10023,7 +10445,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_flame", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -10040,7 +10463,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_flame", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -10068,7 +10492,8 @@ namespace WindEditor
 	public partial class obj_ftree : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ftree", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ftree", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10129,7 +10554,8 @@ namespace WindEditor
 	public partial class obj_gnnbtltaki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_gnnbtltaki", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_gnnbtltaki", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10190,7 +10616,8 @@ namespace WindEditor
 	public partial class obj_gryw00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_gryw00", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_gryw00", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10229,7 +10656,8 @@ namespace WindEditor
 	public partial class obj_hami2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hami2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hami2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10257,7 +10685,8 @@ namespace WindEditor
 	public partial class obj_hami3 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hami3", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hami3", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10274,7 +10703,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hami3", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hami3", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10291,7 +10721,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hami3", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_hami3", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -10319,7 +10750,8 @@ namespace WindEditor
 	public partial class obj_hami4 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hami4", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hami4", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10347,7 +10779,8 @@ namespace WindEditor
 	public partial class obj_hat : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hat", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hat", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10375,7 +10808,8 @@ namespace WindEditor
 	public partial class obj_hbrf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hbrf1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hbrf1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10392,7 +10826,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hbrf1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hbrf1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10409,7 +10844,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hbrf1", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_hbrf1", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -10437,7 +10873,8 @@ namespace WindEditor
 	public partial class obj_hcbh : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hcbh", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hcbh", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10454,7 +10891,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hcbh", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hcbh", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10471,7 +10909,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hcbh", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_hcbh", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -10510,7 +10949,8 @@ namespace WindEditor
 	public partial class obj_hha : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hha", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hha", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10527,7 +10967,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hha", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hha", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10555,7 +10996,8 @@ namespace WindEditor
 	public partial class obj_hlift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hlift", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hlift", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10572,7 +11014,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hlift", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hlift", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10589,7 +11032,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hlift", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_hlift", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -10606,7 +11050,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hlift", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_hlift", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -10634,7 +11079,8 @@ namespace WindEditor
 	public partial class obj_hole : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hole", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hole", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10651,7 +11097,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hole", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hole", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10679,7 +11126,8 @@ namespace WindEditor
 	public partial class obj_homen : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_homen", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_homen", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10696,7 +11144,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_homen", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_homen", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10713,7 +11162,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_homen", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_homen", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -10730,7 +11180,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_homen", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_homen", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -10747,7 +11198,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_homen", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_homen", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -10775,7 +11227,8 @@ namespace WindEditor
 	public partial class obj_homensmoke : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_homensmoke", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_homensmoke", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10792,7 +11245,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_homensmoke", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_homensmoke", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10820,7 +11274,8 @@ namespace WindEditor
 	public partial class obj_hsehi1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hsehi1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_hsehi1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10837,7 +11292,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hsehi1", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_hsehi1", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10865,7 +11321,8 @@ namespace WindEditor
 	public partial class obj_htetu1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_htetu1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_htetu1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10893,7 +11350,8 @@ namespace WindEditor
 	public partial class obj_ice : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ice", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ice", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10921,7 +11379,8 @@ namespace WindEditor
 	public partial class obj_iceisland : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_iceisland", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_iceisland", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10949,7 +11408,8 @@ namespace WindEditor
 	public partial class obj_ikada : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ikada", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ikada", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -10966,7 +11426,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_ikada", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -10983,7 +11444,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_ikada", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11000,7 +11462,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_ikada", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -11017,7 +11480,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_ikada", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -11034,7 +11498,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_ikada", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -11051,7 +11516,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "obj_ikada", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -11079,7 +11545,8 @@ namespace WindEditor
 	public partial class obj_Itnak : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_Itnak", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_Itnak", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11096,7 +11563,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_Itnak", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_Itnak", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11124,7 +11592,8 @@ namespace WindEditor
 	public partial class obj_jump : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_jump", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_jump", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11152,7 +11621,8 @@ namespace WindEditor
 	public partial class obj_kanat : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_kanat", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_kanat", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11180,7 +11650,8 @@ namespace WindEditor
 	public partial class obj_kanoke : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_kanoke", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_kanoke", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11197,7 +11668,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_kanoke", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11214,7 +11686,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_kanoke", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11231,7 +11704,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_kanoke", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -11248,7 +11722,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_kanoke", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -11276,7 +11751,8 @@ namespace WindEditor
 	public partial class obj_ladder : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ladder", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ladder", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11293,7 +11769,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ladder", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_ladder", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11310,7 +11787,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ladder", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_ladder", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11338,7 +11816,8 @@ namespace WindEditor
 	public partial class obj_leaves : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_leaves", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_leaves", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11355,7 +11834,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_leaves", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_leaves", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11372,7 +11852,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_leaves", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_leaves", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11422,7 +11903,8 @@ namespace WindEditor
 	public partial class obj_magmarock : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_magmarock", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_magmarock", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11439,7 +11921,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_magmarock", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_magmarock", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11467,7 +11950,8 @@ namespace WindEditor
 	public partial class obj_majyuu_door : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_majyuu_door", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_majyuu_door", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11495,7 +11979,8 @@ namespace WindEditor
 	public partial class obj_mkie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_mkie", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_mkie", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11512,7 +11997,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mkie", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_mkie", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11529,7 +12015,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mkie", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_mkie", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11546,7 +12033,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mkie", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_mkie", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -11563,7 +12051,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mkie", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_mkie", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -11591,7 +12080,8 @@ namespace WindEditor
 	public partial class obj_mkiek : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_mkiek", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_mkiek", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11608,7 +12098,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mkiek", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_mkiek", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11636,7 +12127,8 @@ namespace WindEditor
 	public partial class obj_mknjd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_mknjd", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_mknjd", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11653,7 +12145,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mknjd", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_mknjd", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11692,7 +12185,8 @@ namespace WindEditor
 	public partial class obj_monument : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_monument", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_monument", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11709,7 +12203,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_monument", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_monument", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11737,7 +12232,8 @@ namespace WindEditor
 	public partial class obj_movebox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_movebox", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_movebox", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11754,7 +12250,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_movebox", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11771,7 +12268,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_movebox", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11788,7 +12286,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_movebox", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -11805,7 +12304,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_movebox", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -11822,7 +12322,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_movebox", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -11850,7 +12351,8 @@ namespace WindEditor
 	public partial class obj_msdan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_msdan", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_msdan", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11867,7 +12369,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_msdan", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11884,7 +12387,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_msdan", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -11901,7 +12405,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_msdan", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -11929,7 +12434,8 @@ namespace WindEditor
 	public partial class obj_msdan2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_msdan2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_msdan2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11957,7 +12463,8 @@ namespace WindEditor
 	public partial class obj_msdan_sub : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_msdan_sub", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_msdan_sub", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -11974,7 +12481,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan_sub", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_msdan_sub", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -11991,7 +12499,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan_sub", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_msdan_sub", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12019,7 +12528,8 @@ namespace WindEditor
 	public partial class obj_msdan_sub2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_msdan_sub2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_msdan_sub2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12036,7 +12546,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan_sub2", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_msdan_sub2", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12064,7 +12575,8 @@ namespace WindEditor
 	public partial class obj_mshokki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_mshokki", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_mshokki", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12092,7 +12604,8 @@ namespace WindEditor
 	public partial class obj_mtest : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_mtest", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_mtest", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12109,7 +12622,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mtest", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_mtest", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12126,7 +12640,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mtest", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_mtest", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12143,7 +12658,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mtest", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_mtest", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -12182,7 +12698,8 @@ namespace WindEditor
 	public partial class obj_ohatch : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ohatch", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ohatch", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12221,7 +12738,8 @@ namespace WindEditor
 	public partial class obj_ospbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ospbox", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ospbox", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12238,7 +12756,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ospbox", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_ospbox", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12266,7 +12785,8 @@ namespace WindEditor
 	public partial class obj_otble : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_otble", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_otble", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12370,7 +12890,8 @@ namespace WindEditor
 	public partial class obj_pirateship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_pirateship", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_pirateship", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12387,7 +12908,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_pirateship", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_pirateship", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12404,7 +12926,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_pirateship", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_pirateship", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12443,7 +12966,8 @@ namespace WindEditor
 	public partial class obj_quake : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_quake", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_quake", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12460,7 +12984,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_quake", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_quake", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12477,7 +13002,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_quake", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_quake", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12505,7 +13031,8 @@ namespace WindEditor
 	public partial class obj_rcloud : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_rcloud", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_rcloud", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12555,7 +13082,8 @@ namespace WindEditor
 	public partial class obj_roten : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_roten", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_roten", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12583,7 +13111,8 @@ namespace WindEditor
 	public partial class obj_shelf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_shelf", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_shelf", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12600,7 +13129,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_shelf", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_shelf", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12628,7 +13158,8 @@ namespace WindEditor
 	public partial class obj_shmrgrd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_shmrgrd", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_shmrgrd", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12656,7 +13187,8 @@ namespace WindEditor
 	public partial class obj_smplbg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_smplbg", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_smplbg", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12684,7 +13216,8 @@ namespace WindEditor
 	public partial class obj_stair : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_stair", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_stair", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12712,7 +13245,8 @@ namespace WindEditor
 	public partial class obj_swflat : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swflat", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_swflat", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12729,7 +13263,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swflat", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_swflat", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12746,7 +13281,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swflat", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_swflat", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12774,7 +13310,8 @@ namespace WindEditor
 	public partial class obj_swhammer : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swhammer", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_swhammer", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12791,7 +13328,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swhammer", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_swhammer", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12819,7 +13357,8 @@ namespace WindEditor
 	public partial class obj_swheavy : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swheavy", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_swheavy", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12836,7 +13375,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swheavy", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_swheavy", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12864,7 +13404,8 @@ namespace WindEditor
 	public partial class obj_swlight : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swlight", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_swlight", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12881,7 +13422,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swlight", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_swlight", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12898,7 +13440,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swlight", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_swlight", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12926,7 +13469,8 @@ namespace WindEditor
 	public partial class obj_swpush : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swpush", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_swpush", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -12943,7 +13487,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_swpush", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -12960,7 +13505,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_swpush", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -12977,7 +13523,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_swpush", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -12994,7 +13541,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_swpush", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -13011,7 +13559,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_swpush", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -13039,7 +13588,8 @@ namespace WindEditor
 	public partial class obj_table : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_table", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_table", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13067,7 +13617,8 @@ namespace WindEditor
 	public partial class obj_tapestry : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_tapestry", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_tapestry", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13084,7 +13635,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tapestry", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_tapestry", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13112,7 +13664,8 @@ namespace WindEditor
 	public partial class obj_tenmado : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_tenmado", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_tenmado", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13129,7 +13682,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tenmado", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_tenmado", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13157,7 +13711,8 @@ namespace WindEditor
 	public partial class obj_tide : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_tide", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_tide", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13174,7 +13729,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tide", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_tide", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13202,7 +13758,8 @@ namespace WindEditor
 	public partial class obj_timer : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_timer", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_timer", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13219,7 +13776,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_timer", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_timer", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13247,7 +13805,8 @@ namespace WindEditor
 	public partial class obj_tntrap : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_tntrap", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_tntrap", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13264,7 +13823,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tntrap", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_tntrap", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13281,7 +13841,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tntrap", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_tntrap", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -13298,7 +13859,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tntrap", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_tntrap", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -13359,7 +13921,8 @@ namespace WindEditor
 	public partial class obj_trap : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_trap", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_trap", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13376,7 +13939,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_trap", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_trap", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13404,7 +13968,8 @@ namespace WindEditor
 	public partial class obj_tribox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_tribox", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_tribox", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13421,7 +13986,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_tribox", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_tribox", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13449,7 +14015,8 @@ namespace WindEditor
 	public partial class obj_try : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_try", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_try", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13466,7 +14033,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_try", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_try", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13483,7 +14051,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_try", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_try", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -13500,7 +14069,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_try", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_try", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -13539,7 +14109,8 @@ namespace WindEditor
 	public partial class obj_Vds : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_Vds", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_Vds", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13567,7 +14138,8 @@ namespace WindEditor
 	public partial class obj_vfan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_vfan", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_vfan", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13606,7 +14178,8 @@ namespace WindEditor
 	public partial class obj_vmc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_vmc", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_vmc", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13656,7 +14229,8 @@ namespace WindEditor
 	public partial class obj_volcano : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_volcano", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_volcano", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13695,7 +14269,8 @@ namespace WindEditor
 	public partial class obj_vtil : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_vtil", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_vtil", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13723,7 +14298,8 @@ namespace WindEditor
 	public partial class obj_vyasi : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_vyasi", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_vyasi", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13751,7 +14327,8 @@ namespace WindEditor
 	public partial class obj_warpt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_warpt", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_warpt", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13768,7 +14345,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "obj_warpt", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -13785,7 +14363,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "obj_warpt", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -13802,7 +14381,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "obj_warpt", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -13819,7 +14399,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "obj_warpt", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -13836,7 +14417,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "obj_warpt", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -13853,7 +14435,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "obj_warpt", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -13870,7 +14453,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_8", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_8Property { get; set; } = new WIntProperty("int", "Unknown_8", "obj_warpt", "Unknown_8", 0);
+
 		public int Unknown_8
 		{ 
 			get
@@ -13887,7 +14471,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_9", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_9Property { get; set; } = new WIntProperty("int", "Unknown_9", "obj_warpt", "Unknown_9", 0);
+
 		public int Unknown_9
 		{ 
 			get
@@ -13904,7 +14489,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_10", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_10Property { get; set; } = new WIntProperty("int", "Unknown_10", "obj_warpt", "Unknown_10", 0);
+
 		public int Unknown_10
 		{ 
 			get
@@ -13921,7 +14507,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_11", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_11Property { get; set; } = new WIntProperty("int", "Unknown_11", "obj_warpt", "Unknown_11", 0);
+
 		public int Unknown_11
 		{ 
 			get
@@ -13971,7 +14558,8 @@ namespace WindEditor
 	public partial class obj_Yboil : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_Yboil", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_Yboil", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -13999,7 +14587,8 @@ namespace WindEditor
 	public partial class obj_ygush00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ygush00", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_ygush00", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14027,7 +14616,8 @@ namespace WindEditor
 	public partial class obj_YLzou : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_YLzou", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_YLzou", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14055,7 +14645,8 @@ namespace WindEditor
 	public partial class obj_zouK : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_zouK", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "obj_zouK", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14094,7 +14685,8 @@ namespace WindEditor
 			Rock_shot_by_a_freshwater_Octorok = 6,
 		}
 
-		[WProperty("oq", "Type", true, "The 'Spawned saltwater Octorok' type does not appear when manually placed, it's just for the spawner to create.", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "oq", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -14117,7 +14709,8 @@ namespace WindEditor
 			Bombs = 1,
 		}
 
-		[WProperty("oq", "Projectile Type", true, "This only affects what freshwater Octoroks shoot, not saltwater ones.", SourceScene.Room)]
+					public WProperty_new ProjectileTypeProperty { get; set; } = new WProperty_new("ProjectileTypeEnum", "ProjectileType", "oq", "Projectile Type");
+
 		public ProjectileTypeEnum ProjectileType
 		{ 
 			get
@@ -14134,7 +14727,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oq", "Sight Range (Thousands)", true, "For the 'Saltwater Octorok spawner' type, this number multiplied by 1000 is the range within it will notice the player and start spawning saltwater Octoroks.\nNo effect on other types besides the spawner.", SourceScene.Room)]
+		public WIntProperty SightRangeThousandsProperty { get; set; } = new WIntProperty("int", "SightRangeThousands", "oq", "Sight Range (Thousands)", 0);
+
 		public int SightRangeThousands
 		{ 
 			get
@@ -14162,7 +14756,8 @@ namespace WindEditor
 	public partial class oship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("oship", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "oship", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14179,7 +14774,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oship", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "oship", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -14196,7 +14792,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oship", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "oship", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -14213,7 +14810,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oship", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "oship", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -14230,7 +14828,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oship", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "oship", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -14247,7 +14846,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oship", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "oship", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -14264,7 +14864,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("oship", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "oship", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -14292,7 +14893,8 @@ namespace WindEditor
 	public partial class pedestal : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("pedestal", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "pedestal", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14326,7 +14928,8 @@ namespace WindEditor
 			Seahat = 1,
 		}
 
-		[WProperty("ph", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "ph", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -14343,7 +14946,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ph", "Horizontal Sight Range (Hundreds)", true, "This number multiplied by 100 is the radius of the cylinder it can see Link within. 255 will default to a range of 1000 for Peahats or 12000 for Seahats.", SourceScene.Room)]
+		public WIntProperty HorizontalSightRangeHundredsProperty { get; set; } = new WIntProperty("int", "HorizontalSightRangeHundreds", "ph", "Horizontal Sight Range (Hundreds)", 0);
+
 		public int HorizontalSightRangeHundreds
 		{ 
 			get
@@ -14360,7 +14964,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ph", "Vertical Sight Range (Hundreds)", true, "This number multiplied by 100 is half the height of the cylinder it can see Link within. 255 will default to a range of 500 for Peahats or 6000 for Seahats.", SourceScene.Room)]
+		public WIntProperty VerticalSightRangeHundredsProperty { get; set; } = new WIntProperty("int", "VerticalSightRangeHundreds", "ph", "Vertical Sight Range (Hundreds)", 0);
+
 		public int VerticalSightRangeHundreds
 		{ 
 			get
@@ -14406,7 +15011,8 @@ namespace WindEditor
 			Nonrespawning_B = 15,
 		}
 
-		[WProperty("pt", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "pt", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -14423,7 +15029,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Initial Miniblin Won't Spawn Onscreen?", true, "If this is checked, the first Miniblin won't spawn until the player's camera is turned away from its spawn point.\n(Miniblins after the first one always act like that regardless of whether this is checked or not.)", SourceScene.Room)]
+					public WProperty_new InitialMiniblinWontSpawnOnscreenProperty { get; set; } = new WProperty_new("bool", "InitialMiniblinWontSpawnOnscreen", "pt", "Initial Miniblin Won't Spawn Onscreen?");
+
 		public bool InitialMiniblinWontSpawnOnscreen
 		{ 
 			get
@@ -14459,7 +15066,8 @@ namespace WindEditor
 			Use_initial_spawn_delay = 7,
 		}
 
-		[WProperty("pt", "Respawn Delay", true, "Number of frames after you kill it before it can respawn.", SourceScene.Room)]
+					public WProperty_new RespawnDelayProperty { get; set; } = new WProperty_new("RespawnDelayEnum", "RespawnDelay", "pt", "Respawn Delay");
+
 		public RespawnDelayEnum RespawnDelay
 		{ 
 			get
@@ -14476,7 +15084,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
+		public WIntProperty SightRangeHundredsProperty { get; set; } = new WIntProperty("int", "SightRangeHundreds", "pt", "Sight Range (Hundreds)", 0);
+
 		public int SightRangeHundreds
 		{ 
 			get
@@ -14493,7 +15102,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Disable Respawn Switch", true, "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\n(You could also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch', though it's kind of buggy.)", SourceScene.Room)]
+		public WIntProperty DisableRespawnSwitchProperty { get; set; } = new WIntProperty("int", "DisableRespawnSwitch", "pt", "Disable Respawn Switch", 0);
+
 		public int DisableRespawnSwitch
 		{ 
 			get
@@ -14510,7 +15120,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "pt", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -14527,7 +15138,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Initial Spawn Delay", true, "Number of frames after you enter the room before it can spawn the first Miniblin. If setting this to something other than 0, it is recommended to also check 'Initial Miniblin Won't Spawn Onscreen?'. If you don't, then the first Miniblin will be visible before it actually spawns, but simply be deactivated and invincible.", SourceScene.Room)]
+		public WIntProperty InitialSpawnDelayProperty { get; set; } = new WIntProperty("int", "InitialSpawnDelay", "pt", "Initial Spawn Delay", 0);
+
 		public int InitialSpawnDelay
 		{ 
 			get
@@ -14564,7 +15176,8 @@ namespace WindEditor
 			Jalhalla_Poe_B = 4,
 		}
 
-		[WProperty("pw", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "pw", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -14581,7 +15194,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pw", "Hovers At Initial Height?", true, "If checked, this Poe will maintain its height in the air like normal. If unchecked, it will slowly float down to the floor.", SourceScene.Room)]
+					public WProperty_new HoversAtInitialHeightProperty { get; set; } = new WProperty_new("bool", "HoversAtInitialHeight", "pw", "Hovers At Initial Height?");
+
 		public bool HoversAtInitialHeight
 		{ 
 			get
@@ -14615,7 +15229,8 @@ namespace WindEditor
 			Green = 5,
 		}
 
-		[WProperty("pw", "Color", true, "", SourceScene.Room)]
+					public WProperty_new ColorProperty { get; set; } = new WProperty_new("ColorEnum", "Color", "pw", "Color");
+
 		public ColorEnum Color
 		{ 
 			get
@@ -14632,7 +15247,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pw", "Sight Range (Tens)", true, "For the 'Invisible except Lantern until seeing Link' type, this number multiplied by 10 is the range it can see Link within and will materialize. No effect on other types.", SourceScene.Room)]
+		public WIntProperty SightRangeTensProperty { get; set; } = new WIntProperty("int", "SightRangeTens", "pw", "Sight Range (Tens)", 0);
+
 		public int SightRangeTens
 		{ 
 			get
@@ -14649,7 +15265,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pw", "Path", true, "", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "pw", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -14691,7 +15308,8 @@ namespace WindEditor
 	public partial class pz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("pz", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "pz", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14719,7 +15337,8 @@ namespace WindEditor
 	public partial class race_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("race_item", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "race_item", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14736,7 +15355,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("race_item", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "race_item", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -14753,7 +15373,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("race_item", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "race_item", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -14787,7 +15408,8 @@ namespace WindEditor
 			Sitting = 1,
 		}
 
-		[WProperty("rd", "Idle Animation", true, "", SourceScene.Room)]
+					public WProperty_new IdleAnimationProperty { get; set; } = new WProperty_new("IdleAnimationEnum", "IdleAnimation", "rd", "Idle Animation");
+
 		public IdleAnimationEnum IdleAnimation
 		{ 
 			get
@@ -14804,7 +15426,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("rd", "Guarded Area Radius", true, "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.", SourceScene.Room)]
+		public WIntProperty GuardedAreaRadiusProperty { get; set; } = new WIntProperty("int", "GuardedAreaRadius", "rd", "Guarded Area Radius", 0);
+
 		public int GuardedAreaRadius
 		{ 
 			get
@@ -14821,7 +15444,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("rd", "Should Check Switch To Enable Spawn?", true, "If this is checked, the Enable Spawn Switch must be set for the ReDead to spawn.\nIf the Enable Spawn Switch is invalid, then unlike most enemies, this ReDead will never appear instead of always appearing.", SourceScene.Room)]
+					public WProperty_new ShouldCheckSwitchToEnableSpawnProperty { get; set; } = new WProperty_new("bool", "ShouldCheckSwitchToEnableSpawn", "rd", "Should Check Switch To Enable Spawn?");
+
 		public bool ShouldCheckSwitchToEnableSpawn
 		{ 
 			get
@@ -14845,7 +15469,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("rd", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "rd", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -14895,7 +15520,8 @@ namespace WindEditor
 	public partial class saku : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("saku", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "saku", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -14912,7 +15538,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("saku", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "saku", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -14929,7 +15556,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("saku", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "saku", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -14946,7 +15574,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("saku", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "saku", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -14985,7 +15614,8 @@ namespace WindEditor
 	public partial class salvage_tbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("salvage_tbox", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "salvage_tbox", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15002,7 +15632,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("salvage_tbox", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "salvage_tbox", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15063,7 +15694,8 @@ namespace WindEditor
 	public partial class shand : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("shand", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "shand", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15091,7 +15723,8 @@ namespace WindEditor
 	public partial class ship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ship", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ship", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15108,7 +15741,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ship", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ship", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15125,7 +15759,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ship", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "ship", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15153,7 +15788,8 @@ namespace WindEditor
 	public partial class shop_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("shop_item", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "shop_item", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15170,7 +15806,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("shop_item", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "shop_item", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15198,7 +15835,8 @@ namespace WindEditor
 	public partial class shutter : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("shutter", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "shutter", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15215,7 +15853,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("shutter", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "shutter", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15243,7 +15882,8 @@ namespace WindEditor
 	public partial class shutter2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("shutter2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "shutter2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15282,7 +15922,8 @@ namespace WindEditor
 	public partial class sitem : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("sitem", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "sitem", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15299,7 +15940,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sitem", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "sitem", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15316,7 +15958,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sitem", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "sitem", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15333,7 +15976,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sitem", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "sitem", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -15361,7 +16005,8 @@ namespace WindEditor
 	public partial class sk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("sk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "sk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15378,7 +16023,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sk", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "sk", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15406,7 +16052,8 @@ namespace WindEditor
 	public partial class sk2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("sk2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "sk2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15423,7 +16070,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sk2", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "sk2", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15440,7 +16088,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sk2", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "sk2", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15468,7 +16117,8 @@ namespace WindEditor
 	public partial class spotbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("spotbox", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "spotbox", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15496,7 +16146,8 @@ namespace WindEditor
 	public partial class ss : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ss", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ss", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15513,7 +16164,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ss", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ss", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15530,7 +16182,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ss", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "ss", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15558,7 +16211,8 @@ namespace WindEditor
 	public partial class ssk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ssk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ssk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15575,7 +16229,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ssk", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ssk", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15592,7 +16247,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ssk", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "ssk", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15626,7 +16282,8 @@ namespace WindEditor
 			SFX_58F8 = 1,
 		}
 
-		[WProperty("sss", "SFX Type", true, "The SFX to play when it comes out of the ground. There's no noticeable difference between the two, so this is a useless parameter.", SourceScene.Room)]
+					public WProperty_new SFXTypeProperty { get; set; } = new WProperty_new("SFXTypeEnum", "SFXType", "sss", "SFX Type");
+
 		public SFXTypeEnum SFXType
 		{ 
 			get
@@ -15643,7 +16300,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sss", "Sight Range (Tens)", true, "This number multiplied by 10 is used as a range within it notices Link and comes out of the ground. 255 will default to a range of 1000.", SourceScene.Room)]
+		public WIntProperty SightRangeTensProperty { get; set; } = new WIntProperty("int", "SightRangeTens", "sss", "Sight Range (Tens)", 0);
+
 		public int SightRangeTens
 		{ 
 			get
@@ -15660,7 +16318,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sss", "Enable Spawn Switch", true, "If this is not 0 or 255, the Dexivine will hide underground until this switch is set.", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "sss", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -15697,7 +16356,8 @@ namespace WindEditor
 			Upper_body = 14,
 		}
 
-		[WProperty("st", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "st", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -15714,7 +16374,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Ambush Sight Range (Tens)", true, "If the Stalfos is underground or in a coffin, this is the range within it will notice the player.", SourceScene.Room)]
+		public WIntProperty AmbushSightRangeTensProperty { get; set; } = new WIntProperty("int", "AmbushSightRangeTens", "st", "Ambush Sight Range (Tens)", 0);
+
 		public int AmbushSightRangeTens
 		{ 
 			get
@@ -15747,7 +16408,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Ambush Switch", true, "If this is a valid switch and the Stalfos is underground or in a coffin, it will only come out when this switch is set, overriding the normal behave of coming out when the player comes near it.", SourceScene.Room)]
+		public WIntProperty AmbushSwitchProperty { get; set; } = new WIntProperty("int", "AmbushSwitch", "st", "Ambush Switch", 0);
+
 		public int AmbushSwitch
 		{ 
 			get
@@ -15764,7 +16426,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Death Switch", true, "", SourceScene.Room)]
+		public WIntProperty DeathSwitchProperty { get; set; } = new WIntProperty("int", "DeathSwitch", "st", "Death Switch", 0);
+
 		public int DeathSwitch
 		{ 
 			get
@@ -15792,7 +16455,8 @@ namespace WindEditor
 	public partial class steam_tag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("steam_tag", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "steam_tag", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15820,7 +16484,8 @@ namespace WindEditor
 	public partial class stone : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("stone", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "stone", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15837,7 +16502,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "stone", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15854,7 +16520,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "stone", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15871,7 +16538,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "stone", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -15888,7 +16556,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "stone", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -15905,7 +16574,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "stone", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -15933,7 +16603,8 @@ namespace WindEditor
 	public partial class stone2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("stone2", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "stone2", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -15950,7 +16621,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "stone2", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -15967,7 +16639,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "stone2", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -15984,7 +16657,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "stone2", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -16001,7 +16675,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "stone2", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -16018,7 +16693,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "stone2", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -16046,7 +16722,8 @@ namespace WindEditor
 	public partial class swattack : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swattack", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "swattack", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16063,7 +16740,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swattack", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "swattack", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16091,7 +16769,8 @@ namespace WindEditor
 	public partial class swc00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swc00", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "swc00", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16108,7 +16787,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swc00", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "swc00", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16125,7 +16805,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swc00", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "swc00", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -16153,7 +16834,8 @@ namespace WindEditor
 	public partial class swhit0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swhit0", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "swhit0", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16170,7 +16852,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "swhit0", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16187,7 +16870,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "swhit0", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -16204,7 +16888,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "swhit0", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -16221,7 +16906,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "swhit0", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -16238,7 +16924,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "swhit0", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -16266,7 +16953,8 @@ namespace WindEditor
 	public partial class switem : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("switem", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "switem", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16283,7 +16971,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("switem", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "switem", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16300,7 +16989,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("switem", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "switem", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -16328,7 +17018,8 @@ namespace WindEditor
 	public partial class swpropeller : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swpropeller", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "swpropeller", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16345,7 +17036,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swpropeller", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "swpropeller", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16373,7 +17065,8 @@ namespace WindEditor
 	public partial class swtact : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swtact", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "swtact", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16390,7 +17083,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swtact", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "swtact", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16407,7 +17101,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swtact", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "swtact", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -16435,7 +17130,8 @@ namespace WindEditor
 	public partial class swtdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swtdoor", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "swtdoor", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16452,7 +17148,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swtdoor", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "swtdoor", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16491,7 +17188,8 @@ namespace WindEditor
 	public partial class tag_attention : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_attention", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_attention", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16508,7 +17206,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_attention", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_attention", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16547,7 +17246,8 @@ namespace WindEditor
 	public partial class tag_etc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_etc", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_etc", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16564,7 +17264,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_etc", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_etc", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16611,7 +17312,8 @@ namespace WindEditor
 			Normal = 255,
 		}
 
-		[WProperty("tag_event", "Type", true, "", SourceScene.Room)]
+					public WProperty_new TypeProperty { get; set; } = new WProperty_new("TypeEnum", "Type", "tag_event", "Type");
+
 		public TypeEnum Type
 		{ 
 			get
@@ -16628,7 +17330,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_event", "Set Switch", true, "Switch that this trigger region sets when it triggers the event.", SourceScene.Room)]
+		public WIntProperty SetSwitchProperty { get; set; } = new WIntProperty("int", "SetSwitch", "tag_event", "Set Switch", 0);
+
 		public int SetSwitch
 		{ 
 			get
@@ -16645,7 +17348,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_event", "Enable Spawn Switch", true, "Switch that must be set before this trigger region will become active.", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "tag_event", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -16662,7 +17366,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_event", "Event", true, "The event to start when entering this region.", SourceScene.Stage)]
+		public WActorReferenceProperty EventProperty { get; set; } = new WActorReferenceProperty("MapEvent", "Event", "tag_event", "Event", SourceScene.Stage);
+
 		public MapEvent Event
 		{ 
 			get
@@ -16685,7 +17390,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_event", "Enable Spawn Event Bit", true, "Event bit that must be set before this trigger region will become active.", SourceScene.Room)]
+		public WIntProperty EnableSpawnEventBitProperty { get; set; } = new WIntProperty("int", "EnableSpawnEventBit", "tag_event", "Enable Spawn Event Bit", 0);
+
 		public int EnableSpawnEventBit
 		{ 
 			get
@@ -16713,7 +17419,8 @@ namespace WindEditor
 	public partial class tag_evsw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_evsw", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_evsw", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16730,7 +17437,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_evsw", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_evsw", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16747,7 +17455,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_evsw", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_evsw", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -16775,7 +17484,8 @@ namespace WindEditor
 	public partial class tag_ghostship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_ghostship", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_ghostship", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16792,7 +17502,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_ghostship", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_ghostship", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16820,7 +17531,8 @@ namespace WindEditor
 	public partial class tag_hint : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_hint", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_hint", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16837,7 +17549,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_hint", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16854,7 +17567,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_hint", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -16871,7 +17585,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tag_hint", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -16888,7 +17603,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "tag_hint", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -16921,7 +17637,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "tag_hint", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -16949,7 +17666,8 @@ namespace WindEditor
 	public partial class tag_island : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_island", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_island", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -16966,7 +17684,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_island", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_island", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -16983,7 +17702,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_island", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_island", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17011,7 +17731,8 @@ namespace WindEditor
 	public partial class tag_kb_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_kb_item", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_kb_item", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17028,7 +17749,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_kb_item", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_kb_item", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17045,7 +17767,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_kb_item", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_kb_item", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17062,7 +17785,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_kb_item", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tag_kb_item", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -17090,7 +17814,8 @@ namespace WindEditor
 	public partial class tag_kf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_kf1", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_kf1", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17129,7 +17854,8 @@ namespace WindEditor
 	public partial class tag_light : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_light", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_light", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17146,7 +17872,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_light", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17163,7 +17890,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_light", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17180,7 +17908,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tag_light", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -17197,7 +17926,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "tag_light", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -17214,7 +17944,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "tag_light", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -17231,7 +17962,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "tag_light", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -17259,7 +17991,8 @@ namespace WindEditor
 	public partial class tag_md_cb : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_md_cb", "MessageID", true, "", SourceScene.Room)]
+		public WIntProperty MessageIDProperty { get; set; } = new WIntProperty("int", "MessageID", "tag_md_cb", "MessageID", 0);
+
 		public int MessageID
 		{ 
 			get
@@ -17276,7 +18009,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_md_cb", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_md_cb", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17293,7 +18027,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_md_cb", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_md_cb", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17310,7 +18045,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_md_cb", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tag_md_cb", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -17338,7 +18074,8 @@ namespace WindEditor
 	public partial class tag_mk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_mk", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_mk", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17355,7 +18092,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_mk", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_mk", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17372,7 +18110,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_mk", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_mk", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17400,7 +18139,8 @@ namespace WindEditor
 	public partial class tag_msg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_msg", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_msg", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17417,7 +18157,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_msg", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17434,7 +18175,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_msg", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17451,7 +18193,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tag_msg", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -17484,7 +18227,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "tag_msg", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -17512,7 +18256,8 @@ namespace WindEditor
 	public partial class tag_photo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_photo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_photo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17540,7 +18285,8 @@ namespace WindEditor
 	public partial class tag_ret : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_ret", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_ret", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17568,7 +18314,8 @@ namespace WindEditor
 	public partial class tag_so : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_so", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_so", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17585,7 +18332,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_so", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_so", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17602,7 +18350,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_so", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_so", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17630,7 +18379,8 @@ namespace WindEditor
 	public partial class tag_volcano : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_volcano", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_volcano", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17647,7 +18397,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_volcano", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tag_volcano", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17664,7 +18415,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_volcano", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tag_volcano", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17681,7 +18433,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_volcano", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tag_volcano", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -17709,7 +18462,8 @@ namespace WindEditor
 	public partial class tag_waterlevel : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_waterlevel", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tag_waterlevel", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17737,7 +18491,8 @@ namespace WindEditor
 	public partial class tama : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tama", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tama", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17765,7 +18520,8 @@ namespace WindEditor
 	public partial class tbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tbox", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tbox", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -17782,7 +18538,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tbox", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tbox", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -17799,7 +18556,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tbox", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tbox", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -17816,7 +18574,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tbox", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tbox", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -17833,7 +18592,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tbox", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "tbox", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -17850,7 +18610,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tbox", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "tbox", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -17867,7 +18628,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tbox", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "tbox", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -17915,7 +18677,8 @@ namespace WindEditor
 			Frozen_in_time = 15,
 		}
 
-		[WProperty("tn", "Behavior Type", true, "", SourceScene.Room)]
+					public WProperty_new BehaviorTypeProperty { get; set; } = new WProperty_new("BehaviorTypeEnum", "BehaviorType", "tn", "Behavior Type");
+
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -17943,7 +18706,8 @@ namespace WindEditor
 			Red_and_gold_B = 15,
 		}
 
-		[WProperty("tn", "Color", true, "", SourceScene.Room)]
+					public WProperty_new ColorProperty { get; set; } = new WProperty_new("ColorEnum", "Color", "tn", "Color");
+
 		public ColorEnum Color
 		{ 
 			get
@@ -17960,7 +18724,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tn", "Guarded Area Radius (Tens)", true, "", SourceScene.Room)]
+		public WIntProperty GuardedAreaRadiusTensProperty { get; set; } = new WIntProperty("int", "GuardedAreaRadiusTens", "tn", "Guarded Area Radius (Tens)", 0);
+
 		public int GuardedAreaRadiusTens
 		{ 
 			get
@@ -17983,7 +18748,8 @@ namespace WindEditor
 			Attacking_pose = 1,
 		}
 
-		[WProperty("tn", "Frozen in Time Pose", true, "", SourceScene.Room)]
+					public WProperty_new FrozeninTimePoseProperty { get; set; } = new WProperty_new("FrozeninTimePoseEnum", "FrozeninTimePose", "tn", "Frozen in Time Pose");
+
 		public FrozeninTimePoseEnum FrozeninTimePose
 		{ 
 			get
@@ -18000,7 +18766,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tn", "Path", true, "", SourceScene.Room)]
+		public WActorReferenceProperty PathProperty { get; set; } = new WActorReferenceProperty("Path_v2", "Path", "tn", "Path", SourceScene.Room);
+
 		public Path_v2 Path
 		{ 
 			get
@@ -18031,7 +18798,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tn", "Enable Spawn Switch", true, "If this switch is valid, the Darknut will not appear until it is set.", SourceScene.Room)]
+		public WIntProperty EnableSpawnSwitchProperty { get; set; } = new WIntProperty("int", "EnableSpawnSwitch", "tn", "Enable Spawn Switch", 0);
+
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -18059,7 +18827,8 @@ namespace WindEditor
 			Helmet_shield_and_cape_B = 7,
 		}
 
-		[WProperty("tn", "Extra Equipment", true, "", SourceScene.Room)]
+					public WProperty_new ExtraEquipmentProperty { get; set; } = new WProperty_new("ExtraEquipmentEnum", "ExtraEquipment", "tn", "Extra Equipment");
+
 		public ExtraEquipmentEnum ExtraEquipment
 		{ 
 			get
@@ -18076,7 +18845,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tn", "Disable Spawn on Death Switch", true, "The Darknut will set this switch when it dies and will not spawn while this is set.", SourceScene.Room)]
+		public WIntProperty DisableSpawnonDeathSwitchProperty { get; set; } = new WIntProperty("int", "DisableSpawnonDeathSwitch", "tn", "Disable Spawn on Death Switch", 0);
+
 		public int DisableSpawnonDeathSwitch
 		{ 
 			get
@@ -18104,7 +18874,8 @@ namespace WindEditor
 	public partial class toge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("toge", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "toge", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18121,7 +18892,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("toge", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "toge", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18160,7 +18932,8 @@ namespace WindEditor
 	public partial class tornado : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tornado", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tornado", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18199,7 +18972,8 @@ namespace WindEditor
 	public partial class tsubo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tsubo", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "tsubo", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18216,7 +18990,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "tsubo", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18233,7 +19008,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "tsubo", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -18250,7 +19026,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "tsubo", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -18267,7 +19044,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "tsubo", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -18284,7 +19062,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "tsubo", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -18301,7 +19080,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "tsubo", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -18329,7 +19109,8 @@ namespace WindEditor
 	public partial class wall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("wall", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "wall", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18346,7 +19127,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wall", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "wall", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18374,7 +19156,8 @@ namespace WindEditor
 	public partial class warpdm20 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("warpdm20", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "warpdm20", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18402,7 +19185,8 @@ namespace WindEditor
 	public partial class warpf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("warpf", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "warpf", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18441,7 +19225,8 @@ namespace WindEditor
 	public partial class warpgn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("warpgn", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "warpgn", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18458,7 +19243,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("warpgn", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "warpgn", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18486,7 +19272,8 @@ namespace WindEditor
 	public partial class warphr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("warphr", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "warphr", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18514,7 +19301,8 @@ namespace WindEditor
 	public partial class warpls : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("warpls", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "warpls", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18531,7 +19319,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("warpls", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "warpls", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18548,7 +19337,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("warpls", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "warpls", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -18565,7 +19355,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("warpls", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "warpls", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -18593,7 +19384,8 @@ namespace WindEditor
 	public partial class warpmj : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("warpmj", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "warpmj", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18621,7 +19413,8 @@ namespace WindEditor
 	public partial class waterfall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("waterfall", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "waterfall", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18638,7 +19431,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("waterfall", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "waterfall", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18677,7 +19471,8 @@ namespace WindEditor
 	public partial class windmill : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("windmill", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "windmill", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18705,7 +19500,8 @@ namespace WindEditor
 	public partial class wind_tag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("wind_tag", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "wind_tag", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18722,7 +19518,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "wind_tag", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18739,7 +19536,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "wind_tag", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -18756,7 +19554,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "wind_tag", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -18773,7 +19572,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "wind_tag", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -18790,7 +19590,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_6", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_6Property { get; set; } = new WIntProperty("int", "Unknown_6", "wind_tag", "Unknown_6", 0);
+
 		public int Unknown_6
 		{ 
 			get
@@ -18807,7 +19608,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_7", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_7Property { get; set; } = new WIntProperty("int", "Unknown_7", "wind_tag", "Unknown_7", 0);
+
 		public int Unknown_7
 		{ 
 			get
@@ -18824,7 +19626,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_8", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_8Property { get; set; } = new WIntProperty("int", "Unknown_8", "wind_tag", "Unknown_8", 0);
+
 		public int Unknown_8
 		{ 
 			get
@@ -18852,7 +19655,8 @@ namespace WindEditor
 	public partial class wz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("wz", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "wz", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18869,7 +19673,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wz", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "wz", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get
@@ -18886,7 +19691,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wz", "Unknown_3", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_3Property { get; set; } = new WIntProperty("int", "Unknown_3", "wz", "Unknown_3", 0);
+
 		public int Unknown_3
 		{ 
 			get
@@ -18903,7 +19709,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wz", "Unknown_4", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_4Property { get; set; } = new WIntProperty("int", "Unknown_4", "wz", "Unknown_4", 0);
+
 		public int Unknown_4
 		{ 
 			get
@@ -18920,7 +19727,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wz", "Unknown_5", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_5Property { get; set; } = new WIntProperty("int", "Unknown_5", "wz", "Unknown_5", 0);
+
 		public int Unknown_5
 		{ 
 			get
@@ -18948,7 +19756,8 @@ namespace WindEditor
 	public partial class ygcwp : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ygcwp", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ygcwp", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18976,7 +19785,8 @@ namespace WindEditor
 	public partial class ykgr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ykgr", "Unknown_1", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_1Property { get; set; } = new WIntProperty("int", "Unknown_1", "ykgr", "Unknown_1", 0);
+
 		public int Unknown_1
 		{ 
 			get
@@ -18993,7 +19803,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ykgr", "Unknown_2", true, "", SourceScene.Room)]
+		public WIntProperty Unknown_2Property { get; set; } = new WIntProperty("int", "Unknown_2", "ykgr", "Unknown_2", 0);
+
 		public int Unknown_2
 		{ 
 			get

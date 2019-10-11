@@ -10,7 +10,8 @@
       "Hidden": false,
       "Category": "acorn_leaf",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "UInteger",
+      "Increment": 1000
     }
   ]
 }
