@@ -103,6 +103,174 @@
     ]
   },
   {
+    "Name": "Small Pot",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/obm_kotubo1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Large Pot",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/obm_ootubo1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Water Pot",
+    "Archive": "Kmtub_00",
+    "Models": [
+      {
+        "Path": "bdl/kmtub_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Barrel 1",
+    "Archive": "Ktaru_01",
+    "Models": [
+      {
+        "Path": "bdl/ktaru_01.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Stool",
+    "Archive": "Okmono",
+    "Models": [
+      {
+        "Path": "bdl/ostool.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Skull",
+    "Archive": "Odokuro",
+    "Models": [
+      {
+        "Path": "bdl/odokuro.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Bucket",
+    "Archive": "Okioke",
+    "Models": [
+      {
+        "Path": "bdl/okioke.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Nut",
+    "Archive": "Kmi00x",
+    "Models": [
+      {
+        "Path": "bdl/kmi_00x.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Golden Crate",
+    "Archive": "Hbox2",
+    "Models": [
+      {
+        "Path": "bdl/hbox2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Seed",
+    "Archive": "Sitem",
+    "Models": [
+      {
+        "Path": "bdl/kmi_02.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Fancy Pot",
+    "Archive": "Ptubo",
+    "Models": [
+      {
+        "Path": "bdl/ptubo.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Wooden Crate",
+    "Archive": "Kkiba_00",
+    "Models": [
+      {
+        "Path": "bdl/kkiba_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Large Tree",
     "Archive": "Lwood",
     "Models": [
@@ -275,6 +443,258 @@
             "Path": "bmt/green.bmt"
           }
         ]
+      }
+    ]
+  },
+  {
+    "Name": "Armos Knight",
+    "Archive": "Am",
+    "Models": [
+      {
+        "Path": "bdl/am.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/sleep_loop.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Armos",
+    "Archive": "Am2",
+    "Models": [
+      {
+        "Path": "bdlm/am2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/jump.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_main.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/await1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bmdm/tn_yoroi1.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Stalfos",
+    "Archive": "St",
+    "Models": [
+      {
+        "Path": "bdlm/st_head.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Peahat",
+    "Archive": "Ph",
+    "Models": [
+      {
+        "Path": "bdlm/phb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/bfly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/php.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/pfly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Seahat",
+    "Archive": "Sh",
+    "Models": [
+      {
+        "Path": "bmdm/shb.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/bfly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bmdm/shp.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/pfly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bubble",
+    "Archive": "Bl",
+    "Models": [
+      {
+        "Path": "bdlm/bl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Floormaster",
+    "Archive": "fm",
+    "Models": [
+      {
+        "Path": "bdl/fm.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/ypit00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Dexivine",
+    "Archive": "Sss",
+    "Models": [
+      {
+        "Path": "bmd/sss_hand.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
       }
     ]
   },
@@ -969,20 +1389,6 @@
     ]
   },
   {
-    "Name": "Nut",
-    "Archive": "Kmi00x",
-    "Models": [
-      {
-        "Path": "bdlm/kmi_00x.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
-    ]
-  },
-  {
     "Name": "Wooden Gate",
     "Archive": "Mdoor",
     "Models": [
@@ -1030,6 +1436,378 @@
     "Models": [
       {
         "Path": "bdl/kbota_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Heavy Button Switch",
+    "Archive": "Hhbot",
+    "Models": [
+      {
+        "Path": "bdl/hhbot2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Warp Pot",
+    "Archive": "ltubw",
+    "Models": [
+      {
+        "Path": "bdl/itubw.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Grating 1",
+    "Archive": "Hami1",
+    "Models": [
+      {
+        "Path": "bdl/hami1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Grating 2",
+    "Archive": "Hami2",
+    "Models": [
+      {
+        "Path": "bdl/hami2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Grating 3",
+    "Archive": "Hami3",
+    "Models": [
+      {
+        "Path": "bdl/hami3.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Grating Door 3",
+    "Archive": "Htobi3",
+    "Models": [
+      {
+        "Path": "bdl/htobi3.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Metallic Propeller",
+    "Archive": "Hpbot1",
+    "Models": [
+      {
+        "Path": "bdl/hpbot1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Organic Propeller",
+    "Archive": "Vpbot_00",
+    "Models": [
+      {
+        "Path": "bdl/vpbot_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Windmill 1",
+    "Archive": "Hpu1",
+    "Models": [
+      {
+        "Path": "bdl/hpu1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Windmill 2",
+    "Archive": "Hpu2",
+    "Models": [
+      {
+        "Path": "bdl/hpu2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Elevator",
+    "Archive": "Hbrf1",
+    "Models": [
+      {
+        "Path": "bdl/hbrf1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Torch",
+    "Archive": "Ep",
+    "Models": [
+      {
+        "Path": "bdl/obm_shokudai1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Blank Sage Stone",
+    "Archive": "MknjD",
+    "Models": [
+      {
+        "Path": "bdl/mknjh.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Earth Sage Stone",
+    "Archive": "MknjD",
+    "Models": [
+      {
+        "Path": "bdl/mknjd.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Wind Sage Stone",
+    "Archive": "MknjD",
+    "Models": [
+      {
+        "Path": "bdl/mknjk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Large Stone Head",
+    "Archive": "Homen",
+    "Models": [
+      {
+        "Path": "bdl/homen1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Stone Head",
+    "Archive": "Homen",
+    "Models": [
+      {
+        "Path": "bdl/homen2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Hookshot Target",
+    "Archive": "Hfuck1",
+    "Models": [
+      {
+        "Path": "bdl/hfuck1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Cracked Floor Tile",
+    "Archive": "Hhyu1",
+    "Models": [
+      {
+        "Path": "bdl/hhyu1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Floor Spikes",
+    "Archive": "Htoge1",
+    "Models": [
+      {
+        "Path": "bdl/htoge1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Spike Trap",
+    "Archive": "Trap",
+    "Models": [
+      {
+        "Path": "bdlm/htora1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Pushable Metal Box",
+    "Archive": "Hjump",
+    "Models": [
+      {
+        "Path": "bdl/hbox1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Pushable Metal Box With Spring",
+    "Archive": "Hjump",
+    "Models": [
+      {
+        "Path": "bdl/hjump1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Spring",
+    "Archive": "Hjump",
+    "Models": [
+      {
+        "Path": "bdl/hjump2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Dirt Patch",
+    "Archive": "Vmc",
+    "Models": [
+      {
+        "Path": "bdl/vmcbs.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdlm/vmcwd.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Light Beam Warp",
+    "Archive": "Ysdls00",
+    "Models": [
+      {
+        "Path": "bdl/ysdls00.bdl",
         "Offset": {
           "X": 0.0,
           "Y": 0.0,

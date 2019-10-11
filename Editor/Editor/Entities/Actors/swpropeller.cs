@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,17 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (Unknown_2 == 0)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Metallic Propeller");
+            }
+            else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Organic Propeller");
+            }
+        }
 	}
 }

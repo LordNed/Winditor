@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class am2
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Armos");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

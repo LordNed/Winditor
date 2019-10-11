@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,18 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            switch(Unknown_4)
+            {
+                case 6:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Pushable Metal Box");
+                    break;
+                case 7:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Pushable Metal Box With Spring");
+                    break;
+            }
+        }
 	}
 }

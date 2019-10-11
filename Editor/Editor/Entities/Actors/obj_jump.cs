@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_jump
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Spring");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class fm
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Floormaster");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class amiprop
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Grating 1");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

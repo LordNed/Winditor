@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_mknjd
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Blank Sage Stone");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

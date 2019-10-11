@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class wz
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Wizzrobe");
+            base.PostLoad();
 		}
 
 		public override void PreSave()
