@@ -3,17 +3,24 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "bl",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Red Bubble",
+        1: "Blue Bubble",
+        2: "Path Following Red Bubble",
+        3: "Path Following Blue Bubble",
+        128: "Inanimate Skull",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
@@ -23,24 +30,24 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "bl",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Float at Initial Height?",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "bl",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "If this is not checked, the Bubble will float near the ground below it instead of in the air where it is actually placed.",
+      "DataType": "Boolean"
     }
   ]
 }

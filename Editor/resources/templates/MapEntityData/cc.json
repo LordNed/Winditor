@@ -14,8 +14,8 @@
       "EnumValues": {
         0: "Normal",
         1: "Falls from ceiling",
-        2: "Unknown 1",
-        3: "Unknown 2",
+        2: "Bugged and does not appear",
+        3: "Random movement",
         4: "Hiding in pot",
       }
     },

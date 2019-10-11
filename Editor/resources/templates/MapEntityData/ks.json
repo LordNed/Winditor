@@ -3,33 +3,42 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "ks",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Group that chases player",
+        1: "Group that stays put",
+        2: "Single Morth that stays put",
+        3: "Single Morth that chases player",
+        4: "Unknown 1",
+        5: "Unknown 2",
+        6: "Group in a pot",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Number in Group",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "ks",
-      "ToolTip": "",
+      "ToolTip": "The number of Morths in this group. If you set this to 0 or higher than 21 it will just be a single Morth instead.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Pot Sight Range (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "ks",
-      "ToolTip": "",
+      "ToolTip": "This number multiplied by 10 is the range around the pot the Morths are in that they'll notice the player and break out of the pot.",
       "DataType": "Integer"
     }
   ]

@@ -3,47 +3,62 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "ki",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Hanging from ceiling",
+        1: "Flying around",
+        2: "Launch forward on spawn",
+        3: "Immediately targets Link",
+        30: "Instantly dies twice",
+        128: "Hanging from ceiling passive",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Sight Range",
       "ValueSource": "Parameters",
       "Mask": 0x00007F00,
       "Shift": 8,
       "Hidden": false,
       "Category": "ki",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "_300",
+        1: "_800",
+        2: "_1500",
+        3: "_3000",
+        127: "_3000 B",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Is Fire Keese?",
       "ValueSource": "Parameters",
       "Mask": 0x00008000,
       "Shift": 15,
       "Hidden": false,
       "Category": "ki",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "ki",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,

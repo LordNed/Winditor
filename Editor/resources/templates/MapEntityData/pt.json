@@ -3,37 +3,52 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
       "Category": "pt",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Respawning",
+        1: "Nonrespawning",
+        15: "Nonrespawning B",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Initial Miniblin Won't Spawn Onscreen?",
       "ValueSource": "Parameters",
       "Mask": 0x00000010,
       "Shift": 4,
       "Hidden": false,
       "Category": "pt",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "If this is checked, the first Miniblin won't spawn until the player's camera is turned away from its spawn point.\n(Miniblins after the first one always act like that regardless of whether this is checked or not.)",
+      "DataType": "Boolean"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Respawn Delay",
       "ValueSource": "Parameters",
       "Mask": 0x000000E0,
       "Shift": 5,
       "Hidden": false,
       "Category": "pt",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "Number of frames after you kill it before it can respawn.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "_20 frames",
+        1: "_40 frames",
+        2: "_60 frames",
+        3: "_80 frames",
+        4: "_100 frames",
+        5: "_120 frames",
+        6: "_140 frames",
+        7: "Use initial spawn delay",
+      }
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Sight Range (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
@@ -43,17 +58,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Disable Respawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "pt",
-      "ToolTip": "",
+      "ToolTip": "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\n(You could also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch', though it's kind of buggy.)",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
@@ -61,6 +76,16 @@
       "Category": "pt",
       "ToolTip": "",
       "DataType": "Integer"
-    }
+    },
+    {
+      "Name": "Initial Spawn Delay",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0xFFFF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "pt",
+      "ToolTip": "Number of frames after you enter the room before it can spawn the first Miniblin. If setting this to something other than 0, it is recommended to also check 'Initial Miniblin Won't Spawn Onscreen?'. If you don't, then the first Miniblin will be visible before it actually spawns, but simply be deactivated and invincible.",
+      "DataType": "Integer"
+    },
   ]
 }

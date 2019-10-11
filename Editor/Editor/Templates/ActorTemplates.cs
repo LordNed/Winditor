@@ -229,7 +229,9 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				if (value_as_int == 0 || value_as_int == 0xFF) {
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
 					return false;
 				} else {
 					return true;
@@ -312,7 +314,9 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				if (value_as_int == 0 || value_as_int == 0xFF) {
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
 					return false;
 				} else {
 					return true;
@@ -1438,25 +1442,34 @@ namespace WindEditor
 	public partial class bl : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bl", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Red_Bubble = 0,
+			Blue_Bubble = 1,
+			Path_Following_Red_Bubble = 2,
+			Path_Following_Blue_Bubble = 3,
+			Inanimate_Skull = 128,
+		}
+
+		[WProperty("bl", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("bl", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("bl", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -1468,41 +1481,62 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("bl", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("bl", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("bl", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("bl", "Float at Initial Height?", true, "If this is not checked, the Bubble will float near the ground below it instead of in the air where it is actually placed.", SourceScene.Room)]
+		public bool FloatatInitialHeight
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("FloatatInitialHeight");
 			}
 		}
 
@@ -1649,7 +1683,9 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 0 || value_as_int == 0xFF) {
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
 					return false;
 				} else {
 					return true;
@@ -2038,8 +2074,8 @@ namespace WindEditor
 		{
 			Normal = 0,
 			Falls_from_ceiling = 1,
-			Unknown_1 = 2,
-			Unknown_2 = 3,
+			Bugged_and_does_not_appear = 2,
+			Random_movement = 3,
 			Hiding_in_pot = 4,
 		}
 
@@ -4670,76 +4706,116 @@ namespace WindEditor
 	public partial class ki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ki", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Hanging_from_ceiling = 0,
+			Flying_around = 1,
+			Launch_forward_on_spawn = 2,
+			Immediately_targets_Link = 3,
+			Instantly_dies_twice = 30,
+			Hanging_from_ceiling_passive = 128,
+		}
+
+		[WProperty("ki", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("ki", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		public enum SightRangeEnum
+		{
+			_300 = 0,
+			_800 = 1,
+			_1500 = 2,
+			_3000 = 3,
+			_3000_B = 127,
+		}
+
+		[WProperty("ki", "Sight Range", true, "", SourceScene.Room)]
+		public SightRangeEnum SightRange
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00007F00) >> 8);
-				return value_as_int;
+				return (SightRangeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SightRange");
 			}
 		}
 
-		[WProperty("ki", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("ki", "Is Fire Keese?", true, "", SourceScene.Room)]
+		public bool IsFireKeese
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00008000) >> 15);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("IsFireKeese");
 			}
 		}
 
-		[WProperty("ki", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("ki", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("ki", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("ki", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -4751,7 +4827,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
@@ -5013,25 +5089,36 @@ namespace WindEditor
 	public partial class ks : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("ks", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Group_that_chases_player = 0,
+			Group_that_stays_put = 1,
+			Single_Morth_that_stays_put = 2,
+			Single_Morth_that_chases_player = 3,
+			Unknown_1 = 4,
+			Unknown_2 = 5,
+			Group_in_a_pot = 6,
+		}
+
+		[WProperty("ks", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("ks", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("ks", "Number in Group", true, "The number of Morths in this group. If you set this to 0 or higher than 21 it will just be a single Morth instead.", SourceScene.Room)]
+		public int NumberinGroup
 		{ 
 			get
 			{
@@ -5043,12 +5130,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("NumberinGroup");
 			}
 		}
 
-		[WProperty("ks", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("ks", "Pot Sight Range (Tens)", true, "This number multiplied by 10 is the range around the pot the Morths are in that they'll notice the player and break out of the pot.", SourceScene.Room)]
+		public int PotSightRangeTens
 		{ 
 			get
 			{
@@ -5060,7 +5147,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("PotSightRangeTens");
 			}
 		}
 
@@ -8372,8 +8459,8 @@ namespace WindEditor
 	public partial class nzg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("nzg", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("nzg", "Sight Range (Fives)", true, "This number multiplied by 5 is the range around the hole it will notice the player and start spawning Rats and/or Bombchus.", SourceScene.Room)]
+		public int SightRangeFives
 		{ 
 			get
 			{
@@ -8385,12 +8472,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SightRangeFives");
 			}
 		}
 
-		[WProperty("nzg", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("nzg", "Maximum Number of Rats", true, "", SourceScene.Room)]
+		public int MaximumNumberofRats
 		{ 
 			get
 			{
@@ -8402,29 +8489,35 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("MaximumNumberofRats");
 			}
 		}
 
-		[WProperty("nzg", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public enum TypeEnum
+		{
+			Spawns_Rats = 0,
+			Spawns_Bombchus = 1,
+			Spawns_Rats_and_Bombchus = 2,
+		}
+
+		[WProperty("nzg", "Type", true, "The type that spawns just Rats also has the Rat Shopkeeper in it.\nThe type that spawns both Rats and Bombchus has a random 50% chance of which to spawn each time it spawns one.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("nzg", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		public int Unused
 		{ 
 			get
 			{
@@ -8436,7 +8529,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Unused");
 			}
 		}
 
@@ -12918,6 +13011,23 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("obj_swpush", "Unknown_6", true, "", SourceScene.Room)]
+		public int Unknown_6
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("Unknown_6");
+			}
+		}
+
 		// Constructor
 		public obj_swpush(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -13973,42 +14083,59 @@ namespace WindEditor
 	public partial class oq : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("oq", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Freshwater_Octorok = 0,
+			Saltwater_Octorok_that_shoots_at_a_certain_range = 1,
+			Saltwater_Octorok_that_spawns_close_to_player_and_shoots_after_a_certain_delay = 2,
+			Saltwater_Octorok_spawner = 3,
+			Saltwater_Octorok_that_shoots_after_a_certain_delay = 4,
+			Spawned_saltwater_Octorok = 5,
+			Rock_shot_by_a_freshwater_Octorok = 6,
+		}
+
+		[WProperty("oq", "Type", true, "The 'Spawned saltwater Octorok' type does not appear when manually placed, it's just for the spawner to create.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("oq", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		public enum ProjectileTypeEnum
+		{
+			Rocks = 0,
+			Bombs = 1,
+		}
+
+		[WProperty("oq", "Projectile Type", true, "This only affects what freshwater Octoroks shoot, not saltwater ones.", SourceScene.Room)]
+		public ProjectileTypeEnum ProjectileType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				return (ProjectileTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ProjectileType");
 			}
 		}
 
-		[WProperty("oq", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("oq", "Sight Range (Thousands)", true, "For the 'Saltwater Octorok spawner' type, this number multiplied by 1000 is the range within it will notice the player and start spawning saltwater Octoroks.\nNo effect on other types besides the spawner.", SourceScene.Room)]
+		public int SightRangeThousands
 		{ 
 			get
 			{
@@ -14020,7 +14147,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SightRangeThousands");
 			}
 		}
 
@@ -14272,59 +14399,85 @@ namespace WindEditor
 	public partial class pt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("pt", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Respawning = 0,
+			Nonrespawning = 1,
+			Nonrespawning_B = 15,
+		}
+
+		[WProperty("pt", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("pt", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("pt", "Initial Miniblin Won't Spawn Onscreen?", true, "If this is checked, the first Miniblin won't spawn until the player's camera is turned away from its spawn point.\n(Miniblins after the first one always act like that regardless of whether this is checked or not.)", SourceScene.Room)]
+		public bool InitialMiniblinWontSpawnOnscreen
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("InitialMiniblinWontSpawnOnscreen");
 			}
 		}
 
-		[WProperty("pt", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public enum RespawnDelayEnum
+		{
+			_20_frames = 0,
+			_40_frames = 1,
+			_60_frames = 2,
+			_80_frames = 3,
+			_100_frames = 4,
+			_120_frames = 5,
+			_140_frames = 6,
+			Use_initial_spawn_delay = 7,
+		}
+
+		[WProperty("pt", "Respawn Delay", true, "Number of frames after you kill it before it can respawn.", SourceScene.Room)]
+		public RespawnDelayEnum RespawnDelay
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000E0) >> 5);
-				return value_as_int;
+				return (RespawnDelayEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000E0 | (value_as_int << 5 & 0x000000E0));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("RespawnDelay");
 			}
 		}
 
-		[WProperty("pt", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("pt", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -14336,12 +14489,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
-		[WProperty("pt", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("pt", "Disable Respawn Switch", true, "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\n(You could also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch', though it's kind of buggy.)", SourceScene.Room)]
+		public int DisableRespawnSwitch
 		{ 
 			get
 			{
@@ -14353,12 +14506,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DisableRespawnSwitch");
 			}
 		}
 
-		[WProperty("pt", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("pt", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -14370,7 +14523,24 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("EnableSpawnSwitch");
+			}
+		}
+
+		[WProperty("pt", "Initial Spawn Delay", true, "Number of frames after you enter the room before it can spawn the first Miniblin. If setting this to something other than 0, it is recommended to also check 'Initial Miniblin Won't Spawn Onscreen?'. If you don't, then the first Miniblin will be visible before it actually spawns, but simply be deactivated and invincible.", SourceScene.Room)]
+		public int InitialSpawnDelay
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("InitialSpawnDelay");
 			}
 		}
 
@@ -14417,7 +14587,9 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
-				if (value_as_int == 0 || value_as_int == 0xFF) {
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
 					return false;
 				} else {
 					return true;
@@ -14609,25 +14781,31 @@ namespace WindEditor
 	public partial class rd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("rd", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum IdleAnimationEnum
+		{
+			Standing = 0,
+			Sitting = 1,
+		}
+
+		[WProperty("rd", "Idle Animation", true, "", SourceScene.Room)]
+		public IdleAnimationEnum IdleAnimation
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
-				return value_as_int;
+				return (IdleAnimationEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("IdleAnimation");
 			}
 		}
 
-		[WProperty("rd", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("rd", "Guarded Area Radius", true, "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.", SourceScene.Room)]
+		public int GuardedAreaRadius
 		{ 
 			get
 			{
@@ -14639,29 +14817,36 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FE | (value_as_int << 1 & 0x000000FE));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("GuardedAreaRadius");
 			}
 		}
 
-		[WProperty("rd", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("rd", "Should Check Switch To Enable Spawn?", true, "If this is checked, the Enable Spawn Switch must be set for the ReDead to spawn.\nIf the Enable Spawn Switch is invalid, then unlike most enemies, this ReDead will never appear instead of always appearing.", SourceScene.Room)]
+		public bool ShouldCheckSwitchToEnableSpawn
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return true;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("ShouldCheckSwitchToEnableSpawn");
 			}
 		}
 
-		[WProperty("rd", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("rd", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -14673,7 +14858,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
@@ -17789,6 +17974,29 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("GuardedAreaRadiusTens");
+			}
+		}
+
+		public enum FrozeninTimePoseEnum
+		{
+			Walking_pose = 0,
+			Attacking_pose = 1,
+		}
+
+		[WProperty("tn", "Frozen in Time Pose", true, "", SourceScene.Room)]
+		public FrozeninTimePoseEnum FrozeninTimePose
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				return (FrozeninTimePoseEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("FrozeninTimePose");
 			}
 		}
 

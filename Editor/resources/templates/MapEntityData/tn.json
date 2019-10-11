@@ -49,6 +49,20 @@
       "DataType": "Integer"
     },
     {
+      "Name": "Frozen in Time Pose",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "tn",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Walking pose",
+        1: "Attacking pose",
+      }
+    },
+    {
       "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,

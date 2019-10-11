@@ -51,6 +51,16 @@
       "Category": "obj_swpush",
       "ToolTip": "",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown_6",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x00FF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_swpush",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }
