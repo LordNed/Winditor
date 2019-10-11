@@ -194,11 +194,14 @@ namespace WindEditor
         [JsonProperty("EnumValues")]
         public Dictionary<int, string> EnumValues { get; set; }
 
+        [JsonProperty("BooleanDefaultValue")]
+        public bool BooleanDefaultValue { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
         public ActorBitfieldDescriptor(
-            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip, string Type, Dictionary<int, string> Vals
+            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip, string Type, Dictionary<int, string> Vals, bool BoolDefault
         )
         {
             FieldName = Name;
@@ -210,6 +213,7 @@ namespace WindEditor
             ToolTip = Tip;
             DataType = Type;
             EnumValues = Vals;
+            BooleanDefaultValue = BoolDefault;
         }
     }
 #pragma warning restore 0649
