@@ -11,7 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+            m_actorMeshes = WResourceManager.LoadActorResource("Magtail");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

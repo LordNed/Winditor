@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class ks
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Morth");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

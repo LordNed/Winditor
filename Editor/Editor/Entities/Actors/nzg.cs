@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class nzg
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Rat Hole");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindEditor.ViewModel;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -22,6 +23,7 @@ namespace WindEditor
 
         private void UpdateModel()
         {
+            Transform.LocalScale = new Vector3(1f, 1f, 1f);
             switch (Unknown_5)
             {
                 case 0:
@@ -49,6 +51,7 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Nut");
                     break;
                 case 8:
+                    Transform.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
                     m_actorMeshes = WResourceManager.LoadActorResource("Golden Crate");
                     break;
                 case 13:
@@ -58,7 +61,11 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Fancy Pot");
                     break;
                 case 15:
+                    Transform.LocalScale = new Vector3(0.5f, 0.5f, 0.5f);
                     m_actorMeshes = WResourceManager.LoadActorResource("Wooden Crate");
+                    break;
+                default:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Blue Tower of the Gods Pillar Statue");
                     break;
             }
         }

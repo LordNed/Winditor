@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_ospbox
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Reinforced Crate");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

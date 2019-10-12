@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,17 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (Type == TypeEnum.Brown_skin_with_lantern)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Moblin");
+            }
+            else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Blue Moblin");
+            }
+        }
 	}
 }

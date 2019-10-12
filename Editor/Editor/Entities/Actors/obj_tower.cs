@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_tower
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Tower of the Gods");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

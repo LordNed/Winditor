@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_ashut
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Metal Barred Door");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

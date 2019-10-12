@@ -103,6 +103,160 @@
     ]
   },
   {
+    "Name": "Tetra",
+    "Archive": "Zl",
+    "Models": [
+      {
+        "Path": "bdlm/zl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Zelda",
+    "Archive": "Pz",
+    "Models": [
+      {
+        "Path": "bdlm/pz.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rich Maggie",
+    "Archive": "Kp",
+    "Models": [
+      {
+        "Path": "bdlm/kp.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rich Maggie's Father",
+    "Archive": "Gp",
+    "Models": [
+      {
+        "Path": "bdlm/gp.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Young Komali",
+    "Archive": "Co",
+    "Models": [
+      {
+        "Path": "bdlm/co.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/co_wait00.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Jabun",
+    "Archive": "Jb",
+    "Models": [
+      {
+        "Path": "bdlm/jb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/jb_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Seagull",
+    "Archive": "Kamome",
+    "Models": [
+      {
+        "Path": "bdl/ka.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/ka_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Small Pot",
     "Archive": "Always",
     "Models": [
@@ -173,6 +327,34 @@
     ]
   },
   {
+    "Name": "Table",
+    "Archive": "Okmono",
+    "Models": [
+      {
+        "Path": "bdl/otable.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Long Table",
+    "Archive": "Okmono",
+    "Models": [
+      {
+        "Path": "bdl/otablel.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Skull",
     "Archive": "Odokuro",
     "Models": [
@@ -205,7 +387,7 @@
     "Archive": "Kmi00x",
     "Models": [
       {
-        "Path": "bdl/kmi_00x.bdl",
+        "Path": "bdlm/kmi_00x.bdl",
         "Offset": {
           "X": 0.0,
           "Y": 0.0,
@@ -271,6 +453,250 @@
     ]
   },
   {
+    "Name": "Reinforced Crate",
+    "Archive": "Ospbox",
+    "Models": [
+      {
+        "Path": "bdl/ospbox.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Big Lift",
+    "Archive": "Hlift",
+    "Models": [
+      {
+        "Path": "bdl/hlift.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Lift",
+    "Archive": "Hlift",
+    "Models": [
+      {
+        "Path": "bdl/hliftb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Metal Barred Door",
+    "Archive": "Ashut",
+    "Models": [
+      {
+        "Path": "bdl/ashut.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Lamp",
+    "Archive": "Lamp",
+    "Models": [
+      {
+        "Path": "bmd/lamp_00.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Pedestal",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Fancy Potted Plant",
+    "Archive": "Rflw",
+    "Models": [
+      {
+        "Path": "bdl/phana.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Destructible Pillar",
+    "Archive": "Hcbh",
+    "Models": [
+      {
+        "Path": "bdl/hcbh1a.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/hcbh1b.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/hcbh1c.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/hcbh1d.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/hcbh2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+    ]
+  },
+  {
+    "Name": "Blue Tower of the Gods Pillar Statue",
+    "Archive": "Hseki",
+    "Models": [
+      {
+        "Path": "bdlm/hmon1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Red Tower of the Gods Pillar Statue",
+    "Archive": "Hseki",
+    "Models": [
+      {
+        "Path": "bdlm/hmon2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Tower of the Gods",
+    "Archive": "X_tower",
+    "Models": [
+      {
+        "Path": "bdl/x_tower.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Grapple Point",
+    "Archive": "Kui",
+    "Models": [
+      {
+        "Path": "bdl/obi_ropetag.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Grapple Device",
+    "Archive": "Kui",
+    "Models": [
+      {
+        "Path": "bdl/obi_ropetag.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/mropesw.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Tower of the Gods Bell",
+    "Archive": "Kui",
+    "Models": [
+      {
+        "Path": "bdl/hkane1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/hkane2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Large Tree",
     "Archive": "Lwood",
     "Models": [
@@ -281,50 +707,6 @@
           "Y": 0.0,
           "Z": 0.0
         }
-      }
-    ]
-  },
-  {
-    "Name": "Tetra",
-    "Archive": "Zl",
-    "Models": [
-      {
-        "Path": "bdlm/zl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
-        "Animations": [
-          {
-            "Anim Type": "bck",
-            "Path": "bcks/wait.bck",
-            "Paused on Load": false,
-            "Start Time": 0
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "Name": "Zelda",
-    "Archive": "Pz",
-    "Models": [
-      {
-        "Path": "bdlm/pz.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
-        "Animations": [
-          {
-            "Anim Type": "bck",
-            "Path": "bcks/wait01.bck",
-            "Paused on Load": false,
-            "Start Time": 0
-          }
-        ]
       }
     ]
   },
@@ -441,6 +823,254 @@
           {
             "Anim Type": "bmt",
             "Path": "bmt/green.bmt"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Moblin",
+    "Archive": "Mo2",
+    "Models": [
+      {
+        "Path": "bdlm/mo.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/waitdemo.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Blue Moblin",
+    "Archive": "Mo2",
+    "Models": [
+      {
+        "Path": "bdlm/mo.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait_demo.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/mo_green.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Morth",
+    "Archive": "Ks",
+    "Models": [
+      {
+        "Path": "bdlm/ks_body.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/ks_body.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/ks_eye.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Green ChuChu",
+    "Archive": "Cc",
+    "Models": [
+      {
+        "Path": "bmdm/cc.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/tachi_walk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/cc.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Red ChuChu",
+    "Archive": "Cc",
+    "Models": [
+      {
+        "Path": "bmdm/cc.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/tachi_walk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/cc.brk",
+            "Paused on Load": true,
+            "Start Time": 0.03333333333333333333333333333333
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Blue ChuChu",
+    "Archive": "Cc",
+    "Models": [
+      {
+        "Path": "bmdm/cc.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/tachi_walk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/cc.brk",
+            "Paused on Load": true,
+            "Start Time": 0.06666666666666666666666666666667
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Dark ChuChu",
+    "Archive": "Cc",
+    "Models": [
+      {
+        "Path": "bmdm/cc.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/tachi_walk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/cc.brk",
+            "Paused on Load": true,
+            "Start Time": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Yellow ChuChu",
+    "Archive": "Cc",
+    "Models": [
+      {
+        "Path": "bmdm/cc.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/tachi_walk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/cc.brk",
+            "Paused on Load": true,
+            "Start Time": 0.13333333333333333333333333333333
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Unk ChuChu",
+    "Archive": "Cc",
+    "Models": [
+      {
+        "Path": "bmdm/cc.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/tachi_walk.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/cc.brk",
+            "Paused on Load": true,
+            "Start Time": 0.16666666666666666666666666666667
           }
         ]
       }
@@ -695,6 +1325,280 @@
           "Y": 0.0,
           "Z": 0.0
         }
+      }
+    ]
+  },
+  {
+    "Name": "Rat",
+    "Archive": "Nz",
+    "Models": [
+      {
+        "Path": "bdlm/nz.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/nz_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/nz.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bombchu",
+    "Archive": "Nz",
+    "Models": [
+      {
+        "Path": "bdlm/nz.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/nz_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bom.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rat Hole",
+    "Archive": "Nzg",
+    "Models": [
+      {
+        "Path": "bdl/kana_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Wingless Mothula",
+    "Archive": "Gm",
+    "Models": [
+      {
+        "Path": "bdlm/gm.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/g_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Winged Mothula",
+    "Archive": "Gm",
+    "Models": [
+      {
+        "Path": "bdlm/gm.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Hanging Keese",
+    "Archive": "Ki",
+    "Models": [
+      {
+        "Path": "bdlm/ki.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Flying Keese",
+    "Archive": "Ki",
+    "Models": [
+      {
+        "Path": "bdlm/ki.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fly1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Hanging Fire Keese",
+    "Archive": "Ki",
+    "Models": [
+      {
+        "Path": "bdlm/fk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/fk.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Flying Fire Keese",
+    "Archive": "Ki",
+    "Models": [
+      {
+        "Path": "bdlm/fk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fly1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/fk.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Magtail",
+    "Archive": "Mt",
+    "Models": [
+      {
+        "Path": "bdlm/mg_head.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Kalle Demos",
+    "Archive": "Bmd",
+    "Models": [
+      {
+        "Path": "bmdm/bkm.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/hiraku_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bmdm/bkm_coa.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/coa_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
       }
     ]
   },
@@ -1817,6 +2721,56 @@
     ]
   },
   {
+    "Name": "Crystal Switch",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/obm_syougekisw.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/obm_syougekisw.bck",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/obm_syougekisw.btk",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Hyrule Barrier",
+    "Archive": "Ycage",
+    "Models": [
+      {
+        "Path": "bdlm/ycage00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/ycage00.btk",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Withered Bomb Flower",
     "Archive": "VbakH",
     "Models": [
@@ -1891,7 +2845,7 @@
     ]
   },
   {
-    "Name": "Octorock Wind Statue",
+    "Name": "Octorok Wind Statue",
     "Archive": "Ekskz",
     "Models": [
       {

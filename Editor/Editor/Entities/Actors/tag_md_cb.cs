@@ -38,6 +38,11 @@ namespace WindEditor
 		public override void PreSave()
 		{
             MessageID = MessageReference.MessageID;
-		}
-	}
+        }
+
+        public override void AddToRenderer(WSceneView view)
+        {
+            view.AddTransparentMesh(this);
+        }
+    }
 }

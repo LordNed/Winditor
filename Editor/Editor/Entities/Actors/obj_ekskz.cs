@@ -11,7 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-            m_actorMeshes = WResourceManager.LoadActorResource("Octorock Wind Statue");
+            m_actorMeshes = WResourceManager.LoadActorResource("Octorok Wind Statue");
         }
 
 		public override void PreSave()

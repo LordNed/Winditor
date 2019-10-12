@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class bmd
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Kalle Demos");
+            base.PostLoad();
 		}
 
 		public override void PreSave()
