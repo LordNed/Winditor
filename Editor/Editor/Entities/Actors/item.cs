@@ -18,12 +18,26 @@ namespace WindEditor
                 {
                     Unknown_1 = (int)value;
                     OnPropertyChanged("ItemPickupID");
+                    UpdateModel();
                 }
             }
         }
 
         public override void PostLoad()
         {
+            UpdateModel();
+            base.PostLoad();
+        }
+
+        public override void PreSave()
+        {
+
+        }
+
+        private void UpdateModel()
+        {
+            m_actorMeshes.Clear();
+            m_objRender = null;
             switch (ItemPickupId)
             {
                 case ItemID.Heart:
@@ -78,14 +92,9 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Red Chu Blob");
                     break;
                 default:
-                    base.PostLoad();
+                    m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
                     break;
             }
-        }
-
-        public override void PreSave()
-        {
-
         }
     }
 }

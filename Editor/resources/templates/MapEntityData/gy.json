@@ -4,7 +4,7 @@
   "Fields": [
     {
       "Name": "X Rotation",
-      "ValueSource": "AuxillaryParameters",
+      "ValueSource": "AuxillaryParameters1",
       "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,

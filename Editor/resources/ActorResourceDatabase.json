@@ -697,6 +697,172 @@
     ]
   },
   {
+    "Name": "Light Ray",
+    "Archive": "Mspot",
+    "Models": [
+      {
+        "Path": "bdlm/mspocn.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/mspocn.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Light Ray Cone",
+    "Archive": "Mspot",
+    "Models": [
+      {
+        "Path": "bdlm/mspocn.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/mspocn.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Light Ray Cylinder",
+    "Archive": "Mspot",
+    "Models": [
+      {
+        "Path": "bdlm/mspot.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/mspot.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mirror",
+    "Archive": "Mmirror",
+    "Models": [
+      {
+        "Path": "bdlm/mmrr.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/mmrr.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sun Statue",
+    "Archive": "Vds",
+    "Models": [
+      {
+        "Path": "bdlm/vdswt0.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/vdswt0.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vdswt0.brk",
+            "Paused on Load": true,
+            "Start Time": 1.9333333333333333333333333333333
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/vdswt1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/vdswt1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vdswt1.brk",
+            "Paused on Load": true,
+            "Start Time": 1.9333333333333333333333333333333
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sun Statue Eye",
+    "Archive": "Mmirror",
+    "Models": [
+      {
+        "Path": "bdlm/msusw.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/msusw.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/msusw.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Large Tree",
     "Archive": "Lwood",
     "Models": [
@@ -864,7 +1030,7 @@
         "Animations": [
           {
             "Anim Type": "bck",
-            "Path": "bck/wait_demo.bck",
+            "Path": "bck/waitdemo.bck",
             "Paused on Load": false,
             "Start Time": 0
           },
@@ -1043,34 +1209,6 @@
             "Path": "brk/cc.brk",
             "Paused on Load": true,
             "Start Time": 0.13333333333333333333333333333333
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "Name": "Unk ChuChu",
-    "Archive": "Cc",
-    "Models": [
-      {
-        "Path": "bmdm/cc.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
-        "Animations": [
-          {
-            "Anim Type": "bck",
-            "Path": "bck/tachi_walk.bck",
-            "Paused on Load": false,
-            "Start Time": 0
-          },
-          {
-            "Anim Type": "brk",
-            "Path": "brk/cc.brk",
-            "Paused on Load": true,
-            "Start Time": 0.16666666666666666666666666666667
           }
         ]
       }
@@ -1950,7 +2088,21 @@
           "X": 0.0,
           "Y": 0.0,
           "Z": 0.0
-        }
+        },
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vlupl.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
       }
     ]
   },
@@ -1967,10 +2119,16 @@
         },
         "Animations": [
           {
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
             "Anim Type": "brk",
             "Path": "brk/vlupl.brk",
             "Paused on Load": true,
-            "Start Time": 0.025
+            "Start Time": 0.03333333333333333333333333333333
           }
         ]
       }
@@ -1989,10 +2147,16 @@
         },
         "Animations": [
           {
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
             "Anim Type": "brk",
             "Path": "brk/vlupl.brk",
             "Paused on Load": true,
-            "Start Time": 0.075
+            "Start Time": 0.06666666666666666666666666666667
           }
         ]
       }
@@ -2010,6 +2174,12 @@
           "Z": 0.0
         },
         "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
           {
             "Anim Type": "brk",
             "Path": "brk/vlupl.brk",
@@ -2033,32 +2203,16 @@
         },
         "Animations": [
           {
-            "Anim Type": "brk",
-            "Path": "brk/vlupl.brk",
-            "Paused on Load": true,
-            "Start Time": 0.125
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "Name": "Magenta Rupee?",
-    "Archive": "Always",
-    "Models": [
-      {
-        "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
-        "Animations": [
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
           {
             "Anim Type": "brk",
             "Path": "brk/vlupl.brk",
             "Paused on Load": true,
-            "Start Time": 0.150
+            "Start Time": 1.3333333333333333333333333333333
           }
         ]
       }
@@ -2077,10 +2231,16 @@
         },
         "Animations": [
           {
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
             "Anim Type": "brk",
             "Path": "brk/vlupl.brk",
             "Paused on Load": true,
-            "Start Time": 0.175
+            "Start Time": 0.16666666666666666666666666666667
           }
         ]
       }
@@ -2098,6 +2258,12 @@
           "Z": 0.0
         },
         "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/vlupl.btk",
+            "Paused on Load": false,
+            "Start Time": 0.2
+          },
           {
             "Anim Type": "brk",
             "Path": "brk/vlupl.brk",
