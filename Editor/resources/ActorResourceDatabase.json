@@ -863,6 +863,104 @@
     ]
   },
   {
+    "Name": "Dissolving Wall",
+    "Archive": "MkieK",
+    "Models": [
+      {
+        "Path": "bdl/mkiek.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Coffin",
+    "Archive": "Mkanoke",
+    "Models": [
+      {
+        "Path": "bdl/moke1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Ladder 0",
+    "Archive": "Mhsg",
+    "Models": [
+      {
+        "Path": "bdl/mhsg6.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Ladder 1",
+    "Archive": "Mhsg",
+    "Models": [
+      {
+        "Path": "bdl/mhsg9.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Ladder 2",
+    "Archive": "Mhsg",
+    "Models": [
+      {
+        "Path": "bdl/mhsg12.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Ladder 3",
+    "Archive": "Mhsg",
+    "Models": [
+      {
+        "Path": "bdl/mhsg15.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Ladder 4",
+    "Archive": "Mhsg",
+    "Models": [
+      {
+        "Path": "bdl/mhsg4h.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Large Tree",
     "Archive": "Lwood",
     "Models": [

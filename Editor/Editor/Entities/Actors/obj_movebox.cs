@@ -22,13 +22,21 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            switch(Unknown_4)
+            m_actorMeshes.Clear();
+            m_objRender = null;
+            switch (Unknown_4)
             {
                 case 6:
                     m_actorMeshes = WResourceManager.LoadActorResource("Pushable Metal Box");
                     break;
                 case 7:
                     m_actorMeshes = WResourceManager.LoadActorResource("Pushable Metal Box With Spring");
+                    break;
+                case 10:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Mirror");
+                    break;
+                default:
+                    m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
                     break;
             }
         }
