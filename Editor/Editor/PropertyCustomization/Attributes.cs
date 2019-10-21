@@ -42,7 +42,7 @@ namespace WindEditor
         }
     }
 
-    public struct WProperty
+    public struct WProperty_
     {
         /// <summary>
         /// The name of the type of the property to be bound to the UI.
@@ -69,7 +69,7 @@ namespace WindEditor
         /// </summary>
         public bool Visible { get; set; }
 
-        public WProperty(string type, string prop, string cat, string disp, string tip = "", bool vis = true)
+        public WProperty_(string type, string prop, string cat, string disp, string tip = "", bool vis = true)
         {
             TypeName = type;
             PropertyName = prop;
