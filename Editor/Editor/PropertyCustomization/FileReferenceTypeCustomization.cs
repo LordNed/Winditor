@@ -24,6 +24,7 @@ namespace WindEditor.Editor
 
             FileReferenceControl fileref = new FileReferenceControl();
             fileref.IsEnabled = is_editable;
+            fileref.FieldName = property.Name;
 
             FileReference thing = property.GetValue(source) as FileReference;
 

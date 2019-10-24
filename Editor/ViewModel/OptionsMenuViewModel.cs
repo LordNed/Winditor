@@ -70,6 +70,10 @@ namespace WindEditor.ViewModel
         private void OnUserCancelSettings()
         {
             CloseOptionsMenuWindow();
+
+            // Kind of a hack to reset the state of the settings to
+            // before the user opened the window.
+            WSettingsManager.LoadSettings();
         }
 
         private void CloseOptionsMenuWindow()
