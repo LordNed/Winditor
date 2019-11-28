@@ -190,10 +190,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((float)FullMapImageScale.X); stream.Write((float)FullMapImageScale.Y);
 			stream.Write((float)FullMapSpaceScale.X); stream.Write((float)FullMapSpaceScale.Y);
 			stream.Write((float)FullMapTranslation.X); stream.Write((float)FullMapTranslation.Y);
@@ -390,10 +386,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((float)FullMapImageScale.X); stream.Write((float)FullMapImageScale.Y);
 			stream.Write((float)FullMapSpaceScale.X); stream.Write((float)FullMapSpaceScale.Y);
 			stream.Write((float)FullMapTranslation.X); stream.Write((float)FullMapTranslation.Y);
@@ -504,7 +496,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
@@ -543,7 +535,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write(WMath.RotationFloatToShort(originalRot.X));
@@ -580,7 +572,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write(WMath.RotationFloatToShort(originalRot.X));
@@ -667,10 +659,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((short)CameraPointIndex);
 			stream.Write((byte)0); // Padding
@@ -770,10 +758,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((byte)CameraPointIndex);
 			stream.Write((byte)0); // Padding
@@ -927,7 +911,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
@@ -1215,10 +1199,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((float)LowerBoundaryYHeight);
 			stream.Write((byte)FloorNumber);
 			stream.Write((byte)IncludedRoom0);
@@ -1316,10 +1296,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((float)MapSizeX);
 			stream.Write((float)MapSizeY);
 			stream.Write((float)MapScaleInverse);
@@ -1377,7 +1353,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
@@ -1478,10 +1454,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)m_ClearIndex);
 			stream.Write((byte)m_RainingIndex);
 			stream.Write((byte)m_SnowingIndex);
@@ -1739,10 +1711,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)(ShadowColor.R*255)); stream.Write((byte)(ShadowColor.G*255)); stream.Write((byte)(ShadowColor.B*255));
 			stream.Write((byte)(ActorAmbientColor.R*255)); stream.Write((byte)(ActorAmbientColor.G*255)); stream.Write((byte)(ActorAmbientColor.B*255));
 			stream.Write((byte)(RoomLightColor.R*255)); stream.Write((byte)(RoomLightColor.G*255)); stream.Write((byte)(RoomLightColor.B*255));
@@ -1959,10 +1927,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)(Unknown1.R*255)); stream.Write((byte)(Unknown1.G*255)); stream.Write((byte)(Unknown1.B*255)); stream.Write((byte)(Unknown1.A*255));
 			stream.Write((byte)(Unknown2.R*255)); stream.Write((byte)(Unknown2.G*255)); stream.Write((byte)(Unknown2.B*255)); stream.Write((byte)(Unknown2.A*255));
 			stream.Write((byte)(Unknown3.R*255)); stream.Write((byte)(Unknown3.G*255)); stream.Write((byte)(Unknown3.B*255)); stream.Write((byte)(Unknown3.A*255));
@@ -2038,10 +2002,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)m_DawnIndex);
 			stream.Write((byte)m_MorningIndex);
 			stream.Write((byte)m_NoonIndex);
@@ -2220,10 +2180,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)Unknown1);
 			stream.Write(Name.PadRight(15, '\0').ToCharArray());
 			stream.Write((byte)Unknown2);
@@ -2329,10 +2285,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write(MapName.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)SpawnIndex);
 			stream.Write((byte)RoomIndex);
@@ -2373,10 +2325,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)Unknown);
 		}
 	}
@@ -2431,7 +2379,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
@@ -2486,10 +2434,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((byte)Room);
 			stream.Write((byte)Entry);
 		}
@@ -2527,10 +2471,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((int)SizeInBytes);
 		}
 	}
@@ -2691,7 +2631,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)EventIndex);
@@ -2754,10 +2694,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((int)Parameters);
 			stream.Write((float)SkyboxYHeight);
 		}
@@ -2826,10 +2762,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((float)Translation.X); stream.Write((float)Translation.Y);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((byte)Room);
@@ -2869,10 +2801,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((int)Offset);
 		}
 	}
@@ -3025,7 +2953,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)Parameter1);
@@ -3109,7 +3037,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((short)Rotation);
@@ -3273,7 +3201,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
@@ -3455,10 +3383,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((float)ZDepthMin);
 			stream.Write((float)ZDepthMax);
 			stream.Write((short)StageID);
@@ -3586,7 +3510,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
@@ -3670,7 +3594,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
@@ -3765,7 +3689,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Params1);
@@ -3830,7 +3754,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
@@ -3916,10 +3840,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((short)m_NumberofPoints);
 			stream.Write((short)m_NextPathIndex);
 			stream.Write((byte)Unknown2);
@@ -4036,10 +3956,6 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
 			stream.Write((short)NumberofPoints);
 			stream.Write((short)NextPathIndex);
 			stream.Write((byte)Unknown2);
@@ -4084,7 +4000,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((int)Unknown1);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
@@ -4126,7 +4042,7 @@ namespace WindEditor.a
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
 
 			stream.Write((int)Unknown1);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
