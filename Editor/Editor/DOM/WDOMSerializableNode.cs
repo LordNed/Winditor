@@ -14,6 +14,8 @@ namespace WindEditor.a
             Name = header;
         }
 
+        public abstract void PostLoad();
+        public abstract void PreSave();
         public abstract void Serialize(EndianBinaryWriter writer);
         public abstract void Deserialize(EndianBinaryReader reader);
     }

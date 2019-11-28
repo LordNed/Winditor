@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace WindEditor.a
 {
-    public class WDOMOrganizerNode<T> : WDOMNode
-        where T : WDOMNode
+    public class WDOMOrganizerNode : WDOMNode
     {
-        public WDOMOrganizerNode(WWorld world, string header) : base(world)
+        public Type ContainingType { get; protected set; }
+
+        public WDOMOrganizerNode(WWorld world, Type contained_type, string header) : base(world)
         {
             Name = header;
+            ContainingType = contained_type;
         }
 
         #region Overrides
