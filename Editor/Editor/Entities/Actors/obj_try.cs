@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,17 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (Unknown_1 == 6)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Red Tower of the Gods Pillar Statue");
+            }
+            else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Blue Tower of the Gods Pillar Statue");
+            }
+        }
 	}
 }

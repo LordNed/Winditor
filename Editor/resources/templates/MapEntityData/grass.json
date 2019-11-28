@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 15,
+      "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "grass"
+      "Category": "grass",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 48,
+      "Mask": 0x00000030,
       "Shift": 4,
       "Hidden": false,
-      "Category": "grass"
+      "Category": "grass",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 4032,
+      "Mask": 0x00000FC0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "grass"
+      "Category": "grass",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

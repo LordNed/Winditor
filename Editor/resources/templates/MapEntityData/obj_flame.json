@@ -5,50 +5,62 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_flame"
+      "Category": "obj_flame",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 7936,
+      "Mask": 0x00001F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_flame"
+      "Category": "obj_flame",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 24576,
+      "Mask": 0x00006000,
       "Shift": 13,
       "Hidden": false,
-      "Category": "obj_flame"
+      "Category": "obj_flame",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_flame"
+      "Category": "obj_flame",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 805306368,
+      "Mask": 0x30000000,
       "Shift": 28,
       "Hidden": false,
-      "Category": "obj_flame"
+      "Category": "obj_flame",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 2147483648,
+      "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "obj_flame"
+      "Category": "obj_flame",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

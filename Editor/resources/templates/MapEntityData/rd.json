@@ -3,36 +3,49 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Idle Animation",
       "ValueSource": "Parameters",
-      "Mask": 1,
+      "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "rd"
+      "Category": "rd",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Standing",
+        1: "Sitting",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Guarded Area Radius",
       "ValueSource": "Parameters",
-      "Mask": 254,
+      "Mask": 0x000000FE,
       "Shift": 1,
       "Hidden": false,
-      "Category": "rd"
+      "Category": "rd",
+      "ToolTip": "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.",
+      "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Should Check Switch To Enable Spawn?",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "rd"
+      "Category": "rd",
+      "ToolTip": "If this is checked, the Enable Spawn Switch must be set for the ReDead to spawn.\nIf the Enable Spawn Switch is invalid, then unlike most enemies, this ReDead will never appear instead of always appearing.",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": true
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "rd"
+      "Category": "rd",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

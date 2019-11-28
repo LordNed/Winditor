@@ -12,7 +12,8 @@
     {
       "Name": "Parameters",
       "Type": "Int",
-      "Default": 0
+      "Default": 0,
+      "Hidden": true
     },
     {
       "Name": "Position",
@@ -25,7 +26,8 @@
     },
     {
       "Name": "Auxillary Parameters 1",
-      "Type": "Short"
+      "Type": "Short",
+      "Hidden": true
     },
     {
       "Name": "Y Rotation",
@@ -34,7 +36,8 @@
     {
       "Name": "Auxillary Parameters 2",
       "Type": "Short",
-      "Default": 0
+      "Default": 0,
+      "Hidden": true
     },
     {
       "Name": "Enemy Number",

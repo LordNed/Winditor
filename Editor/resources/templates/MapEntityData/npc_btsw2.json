@@ -5,10 +5,12 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "npc_btsw2"
+      "Category": "npc_btsw2",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

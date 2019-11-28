@@ -5,18 +5,22 @@
     {
       "Name": "Flower Type",
       "ValueSource": "Parameters",
-      "Mask": 240,
+      "Mask": 0x000000F0,
       "Shift": 4,
       "Hidden": true,
-      "Category": "bflower"
+      "Category": "bflower",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "bflower"
+      "Category": "bflower",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_barrier
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Hyrule Barrier");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

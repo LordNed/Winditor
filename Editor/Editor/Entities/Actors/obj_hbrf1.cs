@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_hbrf1
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Elevator");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

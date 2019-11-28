@@ -3,76 +3,94 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Link Captured Exit",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "Which exit this Floormaster takes Link through when it captures him.",
+      "DataType": "Exit"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 768,
+      "Mask": 0x00000300,
       "Shift": 8,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "The unused Stalker type follows Link without coming out of the floor. That type only appears when its Enable Spawn Switch is set while in the same room as the Floormaster.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Stalker (unused)",
+        1: "Follows path",
+        2: "Doesn't follow path",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Targeting Behavior Type",
       "ValueSource": "Parameters",
-      "Mask": 3072,
+      "Mask": 0x00000C00,
       "Shift": 10,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Target Link and partner",
+        1: "Target Link only",
+        2: "Target Partner only",
+      }
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "Only the \"Follows path\" type uses this path.",
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
-      "Mask": 251658240,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
-      "ValueSource": "Parameters",
-      "Mask": 4278190080,
-      "Shift": 24,
-      "Hidden": false,
-      "Category": "fm"
-    },
-    {
-      "Name": "Unknown_7",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 255,
+      "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
-      "Name": "Unknown_8",
+      "Name": "Partner Captured Exit",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 65280,
+      "Mask": 0xFF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "Which stage exit this Floormaster takes Medli/Makar through when it captures them.",
+      "DataType": "StageExit"
     },
     {
-      "Name": "Unknown_9",
+      "Name": "Sight Range (Hundreds)",
       "ValueSource": "AuxillaryParameters2",
-      "Mask": 255,
+      "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "fm"
+      "Category": "fm",
+      "ToolTip": "Defaults to a range of 3000 if you set this to 0 or 255.",
+      "DataType": "Integer"
     }
   ]
 }

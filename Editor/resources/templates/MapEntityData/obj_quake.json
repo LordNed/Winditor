@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_quake"
+      "Category": "obj_quake",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 1792,
+      "Mask": 0x00000700,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_quake"
+      "Category": "obj_quake",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 14336,
+      "Mask": 0x00003800,
       "Shift": 11,
       "Hidden": false,
-      "Category": "obj_quake"
+      "Category": "obj_quake",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

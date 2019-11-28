@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 3,
+      "Mask": 0x00000003,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_buoyflag"
+      "Category": "obj_buoyflag",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 256,
+      "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_buoyflag"
+      "Category": "obj_buoyflag",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 2147483648,
+      "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "obj_buoyflag"
+      "Category": "obj_buoyflag",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

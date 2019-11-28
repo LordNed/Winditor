@@ -5,66 +5,82 @@
     {
       "Name": "Switch Bit",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 3840,
+      "Mask": 0x00000F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Event ID",
       "ValueSource": "Parameters",
-      "Mask": 1044480,
+      "Mask": 0x000FF000,
       "Shift": 12,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Switch Bit 2",
       "ValueSource": "Parameters",
-      "Mask": 267386880,
+      "Mask": 0x0FF00000,
       "Shift": 20,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "From Room Number",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 63,
+      "Mask": 0x003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "To Room Number",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 4032,
+      "Mask": 0x0FC0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Ship ID",
       "ValueSource": "AuxillaryParameters2",
-      "Mask": 63,
+      "Mask": 0x003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Arg 1",
       "ValueSource": "AuxillaryParameters2",
-      "Mask": 65280,
+      "Mask": 0xFF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Door"
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

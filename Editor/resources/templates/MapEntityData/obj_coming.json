@@ -5,50 +5,62 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 15,
+      "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_coming"
+      "Category": "obj_coming",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 64,
+      "Mask": 0x00000040,
       "Shift": 6,
       "Hidden": false,
-      "Category": "obj_coming"
+      "Category": "obj_coming",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 1792,
+      "Mask": 0x00000700,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_coming"
+      "Category": "obj_coming",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_coming"
+      "Category": "obj_coming",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 50331648,
+      "Mask": 0x03000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_coming"
+      "Category": "obj_coming",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 805306368,
+      "Mask": 0x30000000,
       "Shift": 28,
       "Hidden": false,
-      "Category": "obj_coming"
+      "Category": "obj_coming",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

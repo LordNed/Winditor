@@ -1,5 +1,50 @@
 {
   "ClassName": "gy_ctrl",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "Fields": [
+    {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000000F,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "gy_ctrl",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Follows you across sectors",
+        1: "Stays in sector",
+      }
+    },
+    {
+      "Name": "Number of Gyorgs",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000F0,
+      "Shift": 4,
+      "Hidden": false,
+      "Category": "gy_ctrl",
+      "ToolTip": "How many Gyorgs to spawn. 15 defaults to 1 Gyorg.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Sight Range (Thousands)",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "gy_ctrl",
+      "ToolTip": "This number multiplied by 1000 is the range it can see KoRL within and will start spawning Gyorgs.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Enable Spawn Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "gy_ctrl",
+      "ToolTip": "If this switch is valid, the spawner will not start spawning Gyorgs until the switch is set.",
+      "DataType": "Integer"
+    },
+  ]
 }

@@ -5,50 +5,62 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 63,
+      "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "stone"
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 192,
+      "Mask": 0x000000C0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "stone"
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "stone"
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 8323072,
+      "Mask": 0x007F0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "stone"
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 117440512,
+      "Mask": 0x07000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "stone"
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 1879048192,
+      "Mask": 0x70000000,
       "Shift": 28,
       "Hidden": false,
-      "Category": "stone"
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

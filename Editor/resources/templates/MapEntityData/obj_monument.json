@@ -5,18 +5,22 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 1,
+      "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_monument"
+      "Category": "obj_monument",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_monument"
+      "Category": "obj_monument",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

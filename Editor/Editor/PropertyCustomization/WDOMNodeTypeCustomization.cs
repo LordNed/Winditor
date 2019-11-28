@@ -69,7 +69,6 @@ namespace WindEditor.Editor
             ref_ctrl.SetBinding(WActorReferenceControl.ActorReferenceProperty, tbind);
 
             ref_row.PropertyControl = ref_ctrl;
-            ref_ctrl.FillComboBox();
 
             return new List<WDetailSingleRowViewModel>() { ref_row };
         }

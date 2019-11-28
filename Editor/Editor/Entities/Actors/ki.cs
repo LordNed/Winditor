@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,31 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (IsFireKeese)
+            {
+                if (BehaviorType == BehaviorTypeEnum.Hanging_from_ceiling || BehaviorType == BehaviorTypeEnum.Hanging_from_ceiling_passive)
+                {
+                    m_actorMeshes = WResourceManager.LoadActorResource("Hanging Fire Keese");
+                }
+                else
+                {
+                    m_actorMeshes = WResourceManager.LoadActorResource("Flying Fire Keese");
+                }
+            }
+            else
+            {
+                if (BehaviorType == BehaviorTypeEnum.Hanging_from_ceiling || BehaviorType == BehaviorTypeEnum.Hanging_from_ceiling_passive)
+                {
+                    m_actorMeshes = WResourceManager.LoadActorResource("Hanging Keese");
+                }
+                else
+                {
+                    m_actorMeshes = WResourceManager.LoadActorResource("Flying Keese");
+                }
+            }
+        }
 	}
 }

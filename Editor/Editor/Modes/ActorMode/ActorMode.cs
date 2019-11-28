@@ -79,21 +79,38 @@ namespace WindEditor.Editor.Modes
 
                 if (!ctrlPressed & !shiftPressed)
                 {
+                    foreach (WDOMNode node in EditorSelection.SelectedObjects)
+                    {
+                        node.IsSelected = false;
+                    }
                     EditorSelection.ClearSelection();
+
                     if (addedActor != null)
+                    {
                         EditorSelection.AddToSelection(addedActor);
+                        addedActor.IsSelected = true;
+                    }
                 }
                 else if (addedActor != null && (ctrlPressed && !shiftPressed))
                 {
                     if (addedActor.IsSelected)
+                    {
                         EditorSelection.RemoveFromSelection(addedActor);
+                        addedActor.IsSelected = false;
+                    }
                     else
+                    {
                         EditorSelection.AddToSelection(addedActor);
+                        addedActor.IsSelected = true;
+                    }
                 }
                 else if (addedActor != null && shiftPressed)
                 {
                     if (!EditorSelection.SelectedObjects.Contains(addedActor))
+                    {
                         EditorSelection.AddToSelection(addedActor);
+                        addedActor.IsSelected = true;
+                    }
                 }
 
                 UpdateGizmoTransform();

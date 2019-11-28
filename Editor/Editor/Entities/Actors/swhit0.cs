@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class swhit0
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Crystal Switch");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class warpls
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Light Beam Warp");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

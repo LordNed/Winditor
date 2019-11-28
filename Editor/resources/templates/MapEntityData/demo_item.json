@@ -5,18 +5,22 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "demo_item"
+      "Category": "demo_item",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "demo_item"
+      "Category": "demo_item",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

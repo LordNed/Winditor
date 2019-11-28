@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "kantera"
+      "Category": "kantera",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "kantera"
+      "Category": "kantera",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "kantera"
+      "Category": "kantera",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

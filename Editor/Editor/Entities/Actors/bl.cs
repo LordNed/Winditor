@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class bl
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Bubble");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

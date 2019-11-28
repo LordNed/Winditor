@@ -5,34 +5,42 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 15,
+      "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "saku"
+      "Category": "saku",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 240,
+      "Mask": 0x000000F0,
       "Shift": 4,
       "Hidden": false,
-      "Category": "saku"
+      "Category": "saku",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "saku"
+      "Category": "saku",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "saku"
+      "Category": "saku",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

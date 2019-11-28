@@ -5,50 +5,62 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 63,
+      "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_movebox"
+      "Category": "obj_movebox",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_movebox"
+      "Category": "obj_movebox",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 8323072,
+      "Mask": 0x007F0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_movebox"
+      "Category": "obj_movebox",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 251658240,
+      "Mask": 0x0F000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_movebox"
+      "Category": "obj_movebox",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 1073741824,
+      "Mask": 0x40000000,
       "Shift": 30,
       "Hidden": false,
-      "Category": "obj_movebox"
+      "Category": "obj_movebox",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 2147483648,
+      "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "obj_movebox"
+      "Category": "obj_movebox",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

@@ -5,66 +5,82 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 15,
+      "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 16,
+      "Mask": 0x00000010,
       "Shift": 4,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 32,
+      "Mask": 0x00000020,
       "Shift": 5,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 192,
+      "Mask": 0x000000C0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_7",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_8",
       "ValueSource": "AuxillaryParameters2",
-      "Mask": 255,
+      "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bk"
+      "Category": "bk",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

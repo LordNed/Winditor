@@ -11,12 +11,24 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+            UpdateModel();
+            base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (Type == TypeEnum.Seahat)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Seahat");
+            } else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Peahat");
+            }
+        }
 	}
 }

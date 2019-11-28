@@ -5,10 +5,12 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_doguu_demo"
+      "Category": "obj_doguu_demo",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

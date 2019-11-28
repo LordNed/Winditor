@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class sss
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Dexivine");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

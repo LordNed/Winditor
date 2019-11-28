@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class npc_co1
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Young Komali");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

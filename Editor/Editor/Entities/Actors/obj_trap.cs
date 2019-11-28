@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_trap
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Spike Trap");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

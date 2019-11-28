@@ -5,42 +5,52 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_mkie"
+      "Category": "obj_mkie",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 256,
+      "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_mkie"
+      "Category": "obj_mkie",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 4096,
+      "Mask": 0x00001000,
       "Shift": 12,
       "Hidden": false,
-      "Category": "obj_mkie"
+      "Category": "obj_mkie",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 8192,
+      "Mask": 0x00002000,
       "Shift": 13,
       "Hidden": false,
-      "Category": "obj_mkie"
+      "Category": "obj_mkie",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_mkie"
+      "Category": "obj_mkie",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

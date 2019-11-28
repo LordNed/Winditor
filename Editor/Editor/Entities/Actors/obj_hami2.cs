@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_hami2
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Grating 2");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

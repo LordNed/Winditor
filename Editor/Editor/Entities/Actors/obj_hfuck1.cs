@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class obj_hfuck1
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Hookshot Target");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

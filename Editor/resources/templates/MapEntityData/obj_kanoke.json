@@ -5,42 +5,62 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 1,
+      "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_kanoke"
+      "Category": "obj_kanoke",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 62,
+      "Mask": 0x0000003E,
       "Shift": 1,
       "Hidden": false,
-      "Category": "obj_kanoke"
+      "Category": "obj_kanoke",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 64,
+      "Mask": 0x00000040,
       "Shift": 6,
       "Hidden": false,
-      "Category": "obj_kanoke"
+      "Category": "obj_kanoke",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_kanoke"
+      "Category": "obj_kanoke",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_kanoke"
+      "Category": "obj_kanoke",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
+    {
+      "Name": "X Rotation",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0xFFFF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "obj_kanoke",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
   ]
 }

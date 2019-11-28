@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "race_item"
+      "Category": "race_item",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 32512,
+      "Mask": 0x00007F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "race_item"
+      "Category": "race_item",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 491520,
+      "Mask": 0x00078000,
       "Shift": 15,
       "Hidden": false,
-      "Category": "race_item"
+      "Category": "race_item",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

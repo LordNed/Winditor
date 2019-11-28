@@ -3,28 +3,38 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "SFX Type",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "sss"
+      "Category": "sss",
+      "ToolTip": "The SFX to play when it comes out of the ground. There's no noticeable difference between the two, so this is a useless parameter.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "SFX 58F7",
+        1: "SFX 58F8",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Sight Range (Tens)",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "sss"
+      "Category": "sss",
+      "ToolTip": "This number multiplied by 10 is used as a range within it notices Link and comes out of the ground. 255 will default to a range of 1000.",
+      "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "sss"
+      "Category": "sss",
+      "ToolTip": "If this is not 0 or 255, the Dexivine will hide underground until this switch is set.",
+      "DataType": "Integer"
     }
   ]
 }

@@ -120,16 +120,40 @@ namespace WindEditor
                 selected = mode.EditorSelection;
             }
 
+            room = GetRoomNumberFromSceneName(scene.Name);
             if (selected != null && selected.PrimarySelectedObject is SpawnPoint)
             {
+                // If the user has a spawn point selected, spawn the player at that spawn point.
                 SpawnPoint spawn_pt = (SpawnPoint)selected.PrimarySelectedObject;
 
                 room = spawn_pt.Room;
                 spawn = spawn_pt.SpawnIndex;
             }
-            else
+            else if (selected != null && selected.PrimarySelectedObject != null)
             {
-                room = GetRoomNumberFromSceneName(scene.Name);
+                // If the user has something besides a spawn point selected, spawn the player at the first spawn point in the room that the selected object is in.
+                WDOMNode cur_object = selected.PrimarySelectedObject;
+                while (cur_object.Parent != null)
+                {
+                    cur_object = cur_object.Parent;
+                }
+                WRoom room_node = cur_object as WRoom;
+                SpawnPoint spawn_pt = room_node.GetChildrenOfType<SpawnPoint>().FirstOrDefault();
+                if (spawn_pt != null)
+                {
+                    room = spawn_pt.Room;
+                    spawn = spawn_pt.SpawnIndex;
+                }
+                else
+                {
+                    WStage stage = room_node.World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+                    spawn_pt = stage.GetChildrenOfType<SpawnPoint>().FirstOrDefault(x => x.Room == room_node.RoomIndex);
+                    if (spawn_pt != null)
+                    {
+                        room = spawn_pt.Room;
+                        spawn = spawn_pt.SpawnIndex;
+                    }
+                }
             }
         }
     }

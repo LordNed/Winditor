@@ -3,28 +3,47 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "oq"
+      "Category": "oq",
+      "ToolTip": "The 'Spawned saltwater Octorok' type does not appear when manually placed, it's just for the spawner to create.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Freshwater Octorok",
+        1: "Saltwater Octorok that shoots at a certain range",
+        2: "Saltwater Octorok that spawns close to player and shoots after a certain delay",
+        3: "Saltwater Octorok spawner",
+        4: "Saltwater Octorok that shoots after a certain delay",
+        5: "Spawned saltwater Octorok",
+        6: "Rock shot by a freshwater Octorok",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Projectile Type",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "oq"
+      "Category": "oq",
+      "ToolTip": "This only affects what freshwater Octoroks shoot, not saltwater ones.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Rocks",
+        1: "Bombs",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Sight Range (Thousands)",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "oq"
+      "Category": "oq",
+      "ToolTip": "For the 'Saltwater Octorok spawner' type, this number multiplied by 1000 is the range within it will notice the player and start spawning saltwater Octoroks.\nNo effect on other types besides the spawner.",
+      "DataType": "Integer"
     }
   ]
 }

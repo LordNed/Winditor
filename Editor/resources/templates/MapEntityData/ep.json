@@ -5,52 +5,62 @@
     {
       "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 63,
+      "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": true,
-      "Category": "ep"
+      "Category": "ep",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 64,
+      "Mask": 0x00000040,
       "Shift": 6,
       "Hidden": false,
-      "Category": "Unknowns"
+      "Category": "Unknowns",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Is Wooden",
       "ValueSource": "Parameters",
-      "Mask": 128,
+      "Mask": 0x00000080,
       "Shift": 7,
       "Hidden": true,
       "Category": "Torch",
-      "ToolTip":  "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold."
+      "ToolTip": "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold.",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
-      "Mask": 65280,
+      "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Unknowns"
+      "Category": "Unknowns",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "Unknowns"
+      "Category": "Unknowns",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "On Switch",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": true,
       "Category": "Torch",
-      "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default."
+      "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default.",
+      "DataType": "Integer"
     }
   ]
 }

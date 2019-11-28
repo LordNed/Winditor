@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "switem"
+      "Category": "switem",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 16128,
+      "Mask": 0x00003F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "switem"
+      "Category": "switem",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 2080768,
+      "Mask": 0x001FC000,
       "Shift": 14,
       "Hidden": false,
-      "Category": "switem"
+      "Category": "switem",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

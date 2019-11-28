@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,32 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            switch (ColorType)
+            {
+                case ColorTypeEnum.Green:
+                case ColorTypeEnum.Green_and_attacks_instantly:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Green ChuChu");
+                    break;
+                case ColorTypeEnum.Red:
+                case ColorTypeEnum.Red_and_attacks_instantly:
+                case ColorTypeEnum.Red_and_attacks_instantly_and_more_vulnerabilities:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Red ChuChu");
+                    break;
+                case ColorTypeEnum.Blue:
+                case ColorTypeEnum.Blue_and_attacks_instantly:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Blue ChuChu");
+                    break;
+                case ColorTypeEnum.Dark:
+                case ColorTypeEnum.Dark_and_attacks_instantly:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Dark ChuChu");
+                    break;
+                default:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Yellow ChuChu");
+                    break;
+            }
+        }
 	}
 }

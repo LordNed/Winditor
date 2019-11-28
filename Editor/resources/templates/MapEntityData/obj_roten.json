@@ -5,10 +5,12 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_roten"
+      "Category": "obj_roten",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

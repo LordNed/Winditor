@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 255,
+      "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "npc_people"
+      "Category": "npc_people",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "npc_people"
+      "Category": "npc_people",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 2147483648,
+      "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "npc_people"
+      "Category": "npc_people",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

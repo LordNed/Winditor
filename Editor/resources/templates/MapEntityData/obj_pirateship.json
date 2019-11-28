@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 15,
+      "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_pirateship"
+      "Category": "obj_pirateship",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_pirateship"
+      "Category": "obj_pirateship",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_pirateship"
+      "Category": "obj_pirateship",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

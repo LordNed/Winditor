@@ -5,10 +5,12 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 2147483648,
+      "Mask": 0x80000000,
       "Shift": 31,
       "Hidden": false,
-      "Category": "acorn_leaf"
+      "Category": "acorn_leaf",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

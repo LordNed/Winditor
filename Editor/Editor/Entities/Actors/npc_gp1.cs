@@ -11,7 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+            m_actorMeshes = WResourceManager.LoadActorResource("Rich Maggie's Father");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

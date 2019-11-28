@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class floor
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Cracked Floor Tile");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

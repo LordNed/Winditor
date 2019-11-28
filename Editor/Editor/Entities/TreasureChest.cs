@@ -174,14 +174,15 @@ namespace WindEditor
                 case ChestType.Big_Key:
                     m_actorMeshes = WResourceManager.LoadActorResource("Big Key Chest");
                     break;
-                case ChestType.Light_wood:
-                    m_actorMeshes = WResourceManager.LoadActorResource("Light Wood Chest");
-                    break;
                 case ChestType.Metal:
                     m_actorMeshes = WResourceManager.LoadActorResource("Metal Chest");
                     break;
                 case ChestType.Dark_wood:
                     m_actorMeshes = WResourceManager.LoadActorResource("Dark Wood Chest");
+                    break;
+                case ChestType.Light_wood:
+                default:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Light Wood Chest");
                     break;
             }
         }

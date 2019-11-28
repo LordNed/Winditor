@@ -5,26 +5,32 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 1,
+      "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bmdhand"
+      "Category": "bmdhand",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 3,
+      "Mask": 0x00000003,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bmdhand"
+      "Category": "bmdhand",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 31,
+      "Mask": 0x0000001F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bmdhand"
+      "Category": "bmdhand",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

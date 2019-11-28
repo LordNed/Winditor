@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using WindEditor.Editor;
+using WindEditor.View;
 
 namespace WindEditor.ViewModel
 {
@@ -88,6 +89,7 @@ namespace WindEditor.ViewModel
                 string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
                 bool is_editable     =   (bool)custom_attributes[0].ConstructorArguments[2].Value;
                 string tool_tip      = (string)custom_attributes[0].ConstructorArguments[3].Value;
+                SourceScene source_scene = (SourceScene)custom_attributes[0].ConstructorArguments[4].Value;
 
                 // Get the base type for possible use later
                 Type base_type = p.PropertyType;
@@ -137,6 +139,10 @@ namespace WindEditor.ViewModel
                 else if (base_type.Name == typeof(WDOMNode).Name)
                 {
                     property_rows = m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, obj);
+
+                    WActorReferenceControl c = (WActorReferenceControl)property_rows[0].PropertyControl;
+                    c.Source = source_scene;
+                    c.FillComboBox();
                 }
                 // If the property type is completely unknown or unsupported, we create an empty row with
                 // just the property's name.

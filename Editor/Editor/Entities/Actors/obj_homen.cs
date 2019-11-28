@@ -10,13 +10,26 @@ namespace WindEditor
 	public partial class obj_homen
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            UpdateModel();
+            base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (Unknown_2 == 0)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Large Stone Head");
+            }
+            else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Small Stone Head");
+            }
+        }
 	}
 }

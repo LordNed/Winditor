@@ -185,10 +185,24 @@ namespace WindEditor
         [JsonProperty("Hidden")]
         public bool IsHidden { get; set; }
 
+        [JsonProperty("ToolTip")]
+        public string ToolTip { get; set; }
+
+        [JsonProperty("DataType")]
+        public string DataType { get; set; }
+
+        [JsonProperty("EnumValues")]
+        public Dictionary<int, string> EnumValues { get; set; }
+
+        [JsonProperty("BooleanDefaultValue")]
+        public bool BooleanDefaultValue { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
-        public ActorBitfieldDescriptor(string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden)
+        public ActorBitfieldDescriptor(
+            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip, string Type, Dictionary<int, string> Vals, bool BoolDefault
+        )
         {
             FieldName = Name;
             ValueSource = Source;
@@ -196,6 +210,10 @@ namespace WindEditor
             BitShift = Shift;
             CategoryName = Category;
             IsHidden = Hidden;
+            ToolTip = Tip;
+            DataType = Type;
+            EnumValues = Vals;
+            BooleanDefaultValue = BoolDefault;
         }
     }
 #pragma warning restore 0649

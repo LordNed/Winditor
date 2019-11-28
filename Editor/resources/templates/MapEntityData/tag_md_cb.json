@@ -5,34 +5,42 @@
     {
       "Name": "MessageID",
       "ValueSource": "Parameters",
-      "Mask": 65535,
+      "Mask": 0x0000FFFF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "tag_md_cb"
+      "Category": "tag_md_cb",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
-      "Mask": 16711680,
+      "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "tag_md_cb"
+      "Category": "tag_md_cb",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
-      "Mask": 4278190080,
+      "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "tag_md_cb"
+      "Category": "tag_md_cb",
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "AuxillaryParameters1",
-      "Mask": 255,
+      "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "tag_md_cb"
+      "Category": "tag_md_cb",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }
