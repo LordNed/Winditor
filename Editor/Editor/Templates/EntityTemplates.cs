@@ -24,7 +24,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FullMapImageScale");
 			}
 		}
-				
 
 		private Vector2 m_FullMapSpaceScale;
 
@@ -38,7 +37,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FullMapSpaceScale");
 			}
 		}
-				
 
 		private Vector2 m_FullMapTranslation;
 
@@ -52,7 +50,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FullMapTranslation");
 			}
 		}
-				
 
 		private Vector2 m_ZoomedMapScrolling1;
 
@@ -66,7 +63,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapScrolling1");
 			}
 		}
-				
 
 		private Vector2 m_ZoomedMapScrolling2;
 
@@ -80,7 +76,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapScrolling2");
 			}
 		}
-				
 
 		private Vector2 m_ZoomedMapTranslation;
 
@@ -94,7 +89,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapTranslation");
 			}
 		}
-				
 
 		private float m_ZoomedMapScale;
 
@@ -108,7 +102,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapScale");
 			}
 		}
-				
 
 		private byte m_Unknown;
 
@@ -122,7 +115,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown");
 			}
 		}
-				
 
 		private byte m_MapImageIndex;
 
@@ -136,7 +128,6 @@ namespace WindEditor.a
 				OnPropertyChanged("MapImageIndex");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -150,7 +141,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Padding;
 
@@ -164,10 +154,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public MinimapSettings_Unused(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -220,7 +209,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FullMapImageScale");
 			}
 		}
-				
 
 		private Vector2 m_FullMapSpaceScale;
 
@@ -234,7 +222,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FullMapSpaceScale");
 			}
 		}
-				
 
 		private Vector2 m_FullMapTranslation;
 
@@ -248,7 +235,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FullMapTranslation");
 			}
 		}
-				
 
 		private Vector2 m_ZoomedMapScrolling1;
 
@@ -262,7 +248,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapScrolling1");
 			}
 		}
-				
 
 		private Vector2 m_ZoomedMapScrolling2;
 
@@ -276,7 +261,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapScrolling2");
 			}
 		}
-				
 
 		private Vector2 m_ZoomedMapTranslation;
 
@@ -290,7 +274,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapTranslation");
 			}
 		}
-				
 
 		private float m_ZoomedMapScale;
 
@@ -304,7 +287,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZoomedMapScale");
 			}
 		}
-				
 
 		private byte m_Unknown;
 
@@ -318,7 +300,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown");
 			}
 		}
-				
 
 		private byte m_MapImageIndex;
 
@@ -332,7 +313,6 @@ namespace WindEditor.a
 				OnPropertyChanged("MapImageIndex");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -346,7 +326,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Padding;
 
@@ -360,10 +339,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public MinimapSettings(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -416,7 +394,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private int m_Parameters;
 
@@ -430,7 +407,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameters");
 			}
 		}
-				
 
 		private short m_AuxillaryParameters1;
 
@@ -444,7 +420,6 @@ namespace WindEditor.a
 				OnPropertyChanged("AuxillaryParameters1");
 			}
 		}
-				
 
 		private short m_AuxillaryParameters2;
 
@@ -458,7 +433,6 @@ namespace WindEditor.a
 				OnPropertyChanged("AuxillaryParameters2");
 			}
 		}
-				
 
 		private short m_EnemyNumber;
 
@@ -472,10 +446,9 @@ namespace WindEditor.a
 				OnPropertyChanged("EnemyNumber");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public Actor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -513,10 +486,9 @@ namespace WindEditor.a
 	{
 		// Auto-Generated Properties from Templates
 		private short m_Padding;
-				
 
 
-		// Constructor
+        // Constructor
 		public CameraViewpoint_v1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -550,10 +522,9 @@ namespace WindEditor.a
 	{
 		// Auto-Generated Properties from Templates
 		private short m_Padding;
-				
 
 
-		// Constructor
+        // Constructor
 		public CameraViewpoint_v2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -598,7 +569,6 @@ namespace WindEditor.a
 				OnPropertyChanged("CameraType");
 			}
 		}
-				
 
 		private short m_CameraPointIndex;
 
@@ -612,7 +582,6 @@ namespace WindEditor.a
 				OnPropertyChanged("CameraPointIndex");
 			}
 		}
-				
 
 		private byte m_Padding1;
 
@@ -626,7 +595,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding1");
 			}
 		}
-				
 
 		private byte m_Unknown1;
 
@@ -640,10 +608,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public CameraType_v1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -682,7 +649,6 @@ namespace WindEditor.a
 				OnPropertyChanged("CameraType");
 			}
 		}
-				
 
 		private byte m_CameraPointIndex;
 
@@ -696,7 +662,6 @@ namespace WindEditor.a
 				OnPropertyChanged("CameraPointIndex");
 			}
 		}
-				
 
 		private byte m_Padding1;
 
@@ -710,7 +675,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding1");
 			}
 		}
-				
 
 		private byte m_Unknown1;
 
@@ -724,7 +688,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private byte m_Padding3;
 
@@ -738,10 +701,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding3");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public CameraType_v2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -782,7 +744,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private int m_Parameters;
 
@@ -796,7 +757,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameters");
 			}
 		}
-				
 
 		private short m_AuxiliaryParameters;
 
@@ -810,7 +770,6 @@ namespace WindEditor.a
 				OnPropertyChanged("AuxiliaryParameters");
 			}
 		}
-				
 
 		private short m_Unknown1;
 
@@ -824,7 +783,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private short m_Unknown2;
 
@@ -838,7 +796,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_ScaleX;
 
@@ -852,7 +809,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ScaleX");
 			}
 		}
-				
 
 		private byte m_ScaleY;
 
@@ -866,7 +822,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ScaleY");
 			}
 		}
-				
 
 		private byte m_ScaleZ;
 
@@ -880,13 +835,11 @@ namespace WindEditor.a
 				OnPropertyChanged("ScaleZ");
 			}
 		}
-				
 
 		private byte m_Padding;
-				
 
 
-		// Constructor
+        // Constructor
 		public Door_DOOR(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -943,7 +896,6 @@ namespace WindEditor.a
 				OnPropertyChanged("LowerBoundaryYHeight");
 			}
 		}
-				
 
 		private byte m_FloorNumber;
 
@@ -957,7 +909,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FloorNumber");
 			}
 		}
-				
 
 		private byte m_IncludedRoom0;
 
@@ -971,7 +922,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom0");
 			}
 		}
-				
 
 		private byte m_IncludedRoom1;
 
@@ -985,7 +935,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom1");
 			}
 		}
-				
 
 		private byte m_IncludedRoom2;
 
@@ -999,7 +948,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom2");
 			}
 		}
-				
 
 		private byte m_IncludedRoom3;
 
@@ -1013,7 +961,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom3");
 			}
 		}
-				
 
 		private byte m_IncludedRoom4;
 
@@ -1027,7 +974,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom4");
 			}
 		}
-				
 
 		private byte m_IncludedRoom5;
 
@@ -1041,7 +987,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom5");
 			}
 		}
-				
 
 		private byte m_IncludedRoom6;
 
@@ -1055,7 +1000,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom6");
 			}
 		}
-				
 
 		private byte m_IncludedRoom7;
 
@@ -1069,7 +1013,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom7");
 			}
 		}
-				
 
 		private byte m_IncludedRoom8;
 
@@ -1083,7 +1026,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom8");
 			}
 		}
-				
 
 		private byte m_IncludedRoom9;
 
@@ -1097,7 +1039,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom9");
 			}
 		}
-				
 
 		private byte m_IncludedRoom10;
 
@@ -1111,7 +1052,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom10");
 			}
 		}
-				
 
 		private byte m_IncludedRoom11;
 
@@ -1125,7 +1065,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom11");
 			}
 		}
-				
 
 		private byte m_IncludedRoom12;
 
@@ -1139,7 +1078,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom12");
 			}
 		}
-				
 
 		private byte m_IncludedRoom13;
 
@@ -1153,7 +1091,6 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom13");
 			}
 		}
-				
 
 		private byte m_IncludedRoom14;
 
@@ -1167,10 +1104,9 @@ namespace WindEditor.a
 				OnPropertyChanged("IncludedRoom14");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public DungeonFloorSettings(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -1235,7 +1171,6 @@ namespace WindEditor.a
 				OnPropertyChanged("MapSizeX");
 			}
 		}
-				
 
 		private float m_MapSizeY;
 
@@ -1249,7 +1184,6 @@ namespace WindEditor.a
 				OnPropertyChanged("MapSizeY");
 			}
 		}
-				
 
 		private float m_MapScaleInverse;
 
@@ -1263,7 +1197,6 @@ namespace WindEditor.a
 				OnPropertyChanged("MapScaleInverse");
 			}
 		}
-				
 
 		private float m_Unknown1;
 
@@ -1277,10 +1210,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public DungeonMapSettings(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -1319,7 +1251,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Radius");
 			}
 		}
-				
 
 		private WLinearColor m_Color;
 
@@ -1333,10 +1264,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Color");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public LightSource(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -1366,16 +1296,12 @@ namespace WindEditor.a
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_ClearIndex;
-				
 
 		private byte m_RainingIndex;
-				
 
 		private byte m_SnowingIndex;
-				
 
 		private byte m_ForestParticlesIndex;
-				
 
 		private byte m_Unknown1;
 
@@ -1389,7 +1315,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -1403,7 +1328,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Unknown3;
 
@@ -1417,7 +1341,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private byte m_Unknown4;
 
@@ -1431,10 +1354,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public EnvironmentLightingConditions(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -1481,7 +1403,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ShadowColor");
 			}
 		}
-				
 
 		private WLinearColor m_ActorAmbientColor;
 
@@ -1495,7 +1416,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ActorAmbientColor");
 			}
 		}
-				
 
 		private WLinearColor m_RoomLightColor;
 
@@ -1509,7 +1429,6 @@ namespace WindEditor.a
 				OnPropertyChanged("RoomLightColor");
 			}
 		}
-				
 
 		private WLinearColor m_RoomAmbientColor;
 
@@ -1523,7 +1442,6 @@ namespace WindEditor.a
 				OnPropertyChanged("RoomAmbientColor");
 			}
 		}
-				
 
 		private WLinearColor m_WaveColor;
 
@@ -1537,7 +1455,6 @@ namespace WindEditor.a
 				OnPropertyChanged("WaveColor");
 			}
 		}
-				
 
 		private WLinearColor m_OceanColor;
 
@@ -1551,7 +1468,6 @@ namespace WindEditor.a
 				OnPropertyChanged("OceanColor");
 			}
 		}
-				
 
 		private WLinearColor m_UnknownWhite1;
 
@@ -1565,7 +1481,6 @@ namespace WindEditor.a
 				OnPropertyChanged("UnknownWhite1");
 			}
 		}
-				
 
 		private WLinearColor m_UnknownWhite2;
 
@@ -1579,7 +1494,6 @@ namespace WindEditor.a
 				OnPropertyChanged("UnknownWhite2");
 			}
 		}
-				
 
 		private WLinearColor m_DoorBackfill;
 
@@ -1593,7 +1507,6 @@ namespace WindEditor.a
 				OnPropertyChanged("DoorBackfill");
 			}
 		}
-				
 
 		private WLinearColor m_Unknown3;
 
@@ -1607,7 +1520,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private WLinearColor m_FogColor;
 
@@ -1621,10 +1533,8 @@ namespace WindEditor.a
 				OnPropertyChanged("FogColor");
 			}
 		}
-				
 
 		private byte m_SkyboxPaletteIndex;
-				
 
 		private byte m_Padding1;
 
@@ -1638,7 +1548,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding1");
 			}
 		}
-				
 
 		private byte m_Padding2;
 
@@ -1652,7 +1561,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding2");
 			}
 		}
-				
 
 		private float m_FogFarPlane;
 
@@ -1666,7 +1574,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FogFarPlane");
 			}
 		}
-				
 
 		private float m_FogNearPlane;
 
@@ -1680,10 +1587,9 @@ namespace WindEditor.a
 				OnPropertyChanged("FogNearPlane");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public EnvironmentLightingPalette(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -1746,7 +1652,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private WLinearColor m_Unknown2;
 
@@ -1760,7 +1665,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private WLinearColor m_Unknown3;
 
@@ -1774,7 +1678,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private WLinearColor m_Unknown4;
 
@@ -1788,7 +1691,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 		private WLinearColor m_HorizonCloudColor;
 
@@ -1802,7 +1704,6 @@ namespace WindEditor.a
 				OnPropertyChanged("HorizonCloudColor");
 			}
 		}
-				
 
 		private WLinearColor m_CenterCloudColor;
 
@@ -1816,7 +1717,6 @@ namespace WindEditor.a
 				OnPropertyChanged("CenterCloudColor");
 			}
 		}
-				
 
 		private WLinearColor m_SkyColor;
 
@@ -1830,7 +1730,6 @@ namespace WindEditor.a
 				OnPropertyChanged("SkyColor");
 			}
 		}
-				
 
 		private WLinearColor m_FalseSeaColor;
 
@@ -1844,7 +1743,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FalseSeaColor");
 			}
 		}
-				
 
 		private WLinearColor m_HorizonColor;
 
@@ -1858,7 +1756,6 @@ namespace WindEditor.a
 				OnPropertyChanged("HorizonColor");
 			}
 		}
-				
 
 		private byte m_Padding1;
 
@@ -1872,7 +1769,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding1");
 			}
 		}
-				
 
 		private byte m_Padding2;
 
@@ -1886,7 +1782,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding2");
 			}
 		}
-				
 
 		private byte m_Padding3;
 
@@ -1900,10 +1795,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding3");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public EnvironmentLightingSkyboxPalette(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -1947,25 +1841,18 @@ namespace WindEditor.a
 	{
 		// Auto-Generated Properties from Templates
 		private byte m_DawnIndex;
-				
 
 		private byte m_MorningIndex;
-				
 
 		private byte m_NoonIndex;
-				
 
 		private byte m_AfternoonIndex;
-				
 
 		private byte m_DuskIndex;
-				
 
 		private byte m_NightIndex;
-				
 
 		private short m_Unknown1;
-				
 
 		private float m_Unknown2;
 
@@ -1979,10 +1866,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public EnvironmentLightingTimesOfDay(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2029,7 +1915,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private string m_Name;
 
@@ -2043,7 +1928,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -2057,7 +1941,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Unknown3;
 
@@ -2071,7 +1954,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private byte m_Unknown4;
 
@@ -2085,7 +1967,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 		private byte m_Unknown5;
 
@@ -2099,7 +1980,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown5");
 			}
 		}
-				
 
 		private byte m_RoomNumber;
 
@@ -2113,7 +1993,6 @@ namespace WindEditor.a
 				OnPropertyChanged("RoomNumber");
 			}
 		}
-				
 
 		private byte m_Padding1;
 
@@ -2127,7 +2006,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding1");
 			}
 		}
-				
 
 		private byte m_Padding2;
 
@@ -2141,7 +2019,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding2");
 			}
 		}
-				
 
 		private byte m_Padding3;
 
@@ -2155,10 +2032,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding3");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public MapEvent(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2209,7 +2085,6 @@ namespace WindEditor.a
 				OnPropertyChanged("MapName");
 			}
 		}
-				
 
 		private byte m_SpawnIndex;
 
@@ -2223,7 +2098,6 @@ namespace WindEditor.a
 				OnPropertyChanged("SpawnIndex");
 			}
 		}
-				
 
 		private byte m_RoomIndex;
 
@@ -2237,7 +2111,6 @@ namespace WindEditor.a
 				OnPropertyChanged("RoomIndex");
 			}
 		}
-				
 
 		private byte m_FadeOutType;
 
@@ -2251,7 +2124,6 @@ namespace WindEditor.a
 				OnPropertyChanged("FadeOutType");
 			}
 		}
-				
 
 		private byte m_Padding;
 
@@ -2265,10 +2137,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public ExitData(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2309,10 +2180,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public CutsceneIndexBank(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2345,7 +2215,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Radius");
 			}
 		}
-				
 
 		private WLinearColor m_Color;
 
@@ -2359,10 +2228,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Color");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public LightVector(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2403,7 +2271,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Room");
 			}
 		}
-				
 
 		private byte m_Entry;
 
@@ -2417,10 +2284,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Entry");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public MemoryCO(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2455,10 +2321,9 @@ namespace WindEditor.a
 				OnPropertyChanged("SizeInBytes");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public RoomMemoryManagement(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2491,7 +2356,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private byte m_EventIndex;
 
@@ -2505,7 +2369,6 @@ namespace WindEditor.a
 				OnPropertyChanged("EventIndex");
 			}
 		}
-				
 
 		private byte m_Unknown1;
 
@@ -2519,7 +2382,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private byte m_SpawnType;
 
@@ -2533,7 +2395,6 @@ namespace WindEditor.a
 				OnPropertyChanged("SpawnType");
 			}
 		}
-				
 
 		private byte m_Room;
 
@@ -2547,7 +2408,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Room");
 			}
 		}
-				
 
 		private short m_Unknown2;
 
@@ -2561,7 +2421,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Unknown3;
 
@@ -2575,7 +2434,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private byte m_SpawnIndex;
 
@@ -2589,7 +2447,6 @@ namespace WindEditor.a
 				OnPropertyChanged("SpawnIndex");
 			}
 		}
-				
 
 		private short m_Unknown4;
 
@@ -2603,10 +2460,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public SpawnPoint(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2663,7 +2519,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameters");
 			}
 		}
-				
 
 		private float m_SkyboxYHeight;
 
@@ -2677,10 +2532,9 @@ namespace WindEditor.a
 				OnPropertyChanged("SkyboxYHeight");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public RoomProperties(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2700,7 +2554,7 @@ namespace WindEditor.a
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class RoomModelTranslation : WDOMEntityNode
+	public partial class RoomModelTranslation : WDOMPositionableEntityNode
 	{
 		// Auto-Generated Properties from Templates
 		private Vector2 m_Translation;
@@ -2715,7 +2569,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Translation");
 			}
 		}
-				
 
 		private byte m_Room;
 
@@ -2729,7 +2582,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Room");
 			}
 		}
-				
 
 		private byte m_WaveHeightAddition;
 
@@ -2743,10 +2595,9 @@ namespace WindEditor.a
 				OnPropertyChanged("WaveHeightAddition");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public RoomModelTranslation(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2762,6 +2613,10 @@ namespace WindEditor.a
 
 		override public void Serialize(EndianBinaryWriter stream)
 		{
+			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
+            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
+			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z));
+
 			stream.Write((float)Translation.X); stream.Write((float)Translation.Y);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((byte)Room);
@@ -2785,10 +2640,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Offset");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public RoomTable(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2821,7 +2675,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private byte m_Parameter1;
 
@@ -2835,7 +2688,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameter1");
 			}
 		}
-				
 
 		private byte m_Parameter2;
 
@@ -2849,7 +2701,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameter2");
 			}
 		}
-				
 
 		private byte m_Parameter3;
 
@@ -2863,7 +2714,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameter3");
 			}
 		}
-				
 
 		private byte m_Parameter4;
 
@@ -2877,7 +2727,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameter4");
 			}
 		}
-				
 
 		private short m_AuxiliaryParameter;
 
@@ -2891,7 +2740,6 @@ namespace WindEditor.a
 				OnPropertyChanged("AuxiliaryParameter");
 			}
 		}
-				
 
 		private short m_Unknown1;
 
@@ -2905,7 +2753,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private short m_Unknown2;
 
@@ -2919,13 +2766,11 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Padding;
-				
 
 
-		// Constructor
+        // Constructor
 		public ScaleableObject(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -2988,7 +2833,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Rotation");
 			}
 		}
-				
 
 		private byte m_ShipId;
 
@@ -3002,7 +2846,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ShipId");
 			}
 		}
-				
 
 		private byte m_Unknown1;
 
@@ -3016,10 +2859,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public ShipSpawnPoint(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3062,7 +2904,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private byte m_Unknown1;
 
@@ -3076,7 +2917,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -3090,7 +2930,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Unknown3;
 
@@ -3104,7 +2943,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private byte m_SoundID;
 
@@ -3118,7 +2956,6 @@ namespace WindEditor.a
 				OnPropertyChanged("SoundID");
 			}
 		}
-				
 
 		private byte m_PathIndex;
 
@@ -3132,7 +2969,6 @@ namespace WindEditor.a
 				OnPropertyChanged("PathIndex");
 			}
 		}
-				
 
 		private byte m_Padding1;
 
@@ -3146,7 +2982,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding1");
 			}
 		}
-				
 
 		private byte m_Padding2;
 
@@ -3160,7 +2995,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding2");
 			}
 		}
-				
 
 		private byte m_Padding3;
 
@@ -3174,10 +3008,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding3");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public SoundEffect(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3232,7 +3065,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZDepthMin");
 			}
 		}
-				
 
 		private float m_ZDepthMax;
 
@@ -3246,7 +3078,6 @@ namespace WindEditor.a
 				OnPropertyChanged("ZDepthMax");
 			}
 		}
-				
 
 		private short m_StageID;
 
@@ -3260,7 +3091,6 @@ namespace WindEditor.a
 				OnPropertyChanged("StageID");
 			}
 		}
-				
 
 		private short m_Unk_ParticleBank;
 
@@ -3274,7 +3104,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unk_ParticleBank");
 			}
 		}
-				
 
 		private short m_Unk_PropertyIndex;
 
@@ -3288,7 +3117,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unk_PropertyIndex");
 			}
 		}
-				
 
 		private byte m_Unknown1;
 
@@ -3302,7 +3130,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -3316,7 +3143,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_Unknown3;
 
@@ -3330,7 +3156,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown3");
 			}
 		}
-				
 
 		private byte m_Unknown4;
 
@@ -3344,7 +3169,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 		private short m_Unk_DrawRange;
 
@@ -3358,10 +3182,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unk_DrawRange");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public StageProperties(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3412,7 +3235,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private int m_Parameters;
 
@@ -3426,7 +3248,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameters");
 			}
 		}
-				
 
 		private short m_AuxillaryParameters1;
 
@@ -3440,7 +3261,6 @@ namespace WindEditor.a
 				OnPropertyChanged("AuxillaryParameters1");
 			}
 		}
-				
 
 		private short m_AuxillaryParameters2;
 
@@ -3454,7 +3274,6 @@ namespace WindEditor.a
 				OnPropertyChanged("AuxillaryParameters2");
 			}
 		}
-				
 
 		private short m_Unknown1;
 
@@ -3468,7 +3287,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 		private byte m_Padding;
 
@@ -3482,10 +3300,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public TGDR(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3542,7 +3359,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private int m_Parameters;
 
@@ -3556,7 +3372,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Parameters");
 			}
 		}
-				
 
 		private short m_Padding;
 
@@ -3570,10 +3385,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Padding");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public TagObject(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3622,7 +3436,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private int m_Params1;
 
@@ -3636,7 +3449,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Params1");
 			}
 		}
-				
 
 		private short m_RoomLoadingParams;
 
@@ -3650,7 +3462,6 @@ namespace WindEditor.a
 				OnPropertyChanged("RoomLoadingParams");
 			}
 		}
-				
 
 		private int m_Params2;
 
@@ -3664,10 +3475,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Params2");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public TagScaleableObject(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3718,22 +3528,17 @@ namespace WindEditor.a
 				OnPropertyChanged("Name");
 			}
 		}
-				
 
 		private int m_Parameters;
-				
 
 		private short m_AuxParameters1;
-				
 
 		private short m_AuxParameters2;
-				
 
 		private short m_Padding;
-				
 
 
-		// Constructor
+        // Constructor
 		public TreasureChest(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3771,10 +3576,8 @@ namespace WindEditor.a
 	{
 		// Auto-Generated Properties from Templates
 		private short m_NumberofPoints;
-				
 
 		private short m_NextPathIndex;
-				
 
 		private byte m_Unknown2;
 
@@ -3788,7 +3591,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_PathLoops;
 
@@ -3802,7 +3604,6 @@ namespace WindEditor.a
 				OnPropertyChanged("PathLoops");
 			}
 		}
-				
 
 		private short m_Unknown4;
 
@@ -3816,13 +3617,11 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 		private int m_FirstEntryOffset;
-				
 
 
-		// Constructor
+        // Constructor
 		public Path_v1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3865,7 +3664,6 @@ namespace WindEditor.a
 				OnPropertyChanged("NumberofPoints");
 			}
 		}
-				
 
 		private short m_NextPathIndex;
 
@@ -3879,7 +3677,6 @@ namespace WindEditor.a
 				OnPropertyChanged("NextPathIndex");
 			}
 		}
-				
 
 		private byte m_Unknown2;
 
@@ -3893,7 +3690,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown2");
 			}
 		}
-				
 
 		private byte m_PathLoops;
 
@@ -3907,7 +3703,6 @@ namespace WindEditor.a
 				OnPropertyChanged("PathLoops");
 			}
 		}
-				
 
 		private short m_Unknown4;
 
@@ -3921,7 +3716,6 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown4");
 			}
 		}
-				
 
 		private int m_FirstEntryOffset;
 
@@ -3935,10 +3729,9 @@ namespace WindEditor.a
 				OnPropertyChanged("FirstEntryOffset");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public Path_v2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -3981,10 +3774,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public PathPoint_v1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 
@@ -4023,10 +3815,9 @@ namespace WindEditor.a
 				OnPropertyChanged("Unknown1");
 			}
 		}
-				
 
 
-		// Constructor
+        // Constructor
 		public PathPoint_v2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 

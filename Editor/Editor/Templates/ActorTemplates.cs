@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System;
 using WindEditor.ViewModel;
 
-namespace WindEditor
+namespace WindEditor.a
 {
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class acorn_leaf : Actor
@@ -24,7 +24,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public acorn_leaf(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public acorn_leaf(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -101,7 +101,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public agbsw0(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public agbsw0(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -123,7 +123,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public alldie(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public alldie(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -178,7 +178,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public am(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public am(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -233,7 +233,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public am2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public am2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -266,7 +266,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public amiprop(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public amiprop(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -354,7 +354,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public andsw0(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public andsw0(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -431,7 +431,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public andsw2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public andsw2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -442,7 +442,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public arrow_iceeff(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public arrow_iceeff(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -464,7 +464,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public arrow_lighteff(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public arrow_lighteff(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -486,7 +486,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public atdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public atdoor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -508,7 +508,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public att(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public att(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -519,7 +519,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public auction(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public auction(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -585,7 +585,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bb(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bb(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -607,7 +607,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bdk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bdk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -640,7 +640,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bdkobj(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bdkobj(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -739,7 +739,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public beam(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public beam(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -771,7 +771,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bflower(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bflower(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -793,7 +793,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bgn(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bgn(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -804,7 +804,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public bgn2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bgn2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -815,7 +815,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public bgn3(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bgn3(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -859,7 +859,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bigelf(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bigelf(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -892,7 +892,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bita(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bita(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -991,7 +991,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1046,7 +1046,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bl(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bl(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1057,7 +1057,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public bmd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bmd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1079,7 +1079,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bmdfoot(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bmdfoot(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1123,7 +1123,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bmdhand(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bmdhand(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1156,7 +1156,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1200,7 +1200,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public boko(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public boko(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1222,7 +1222,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public boss_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public boss_item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1266,7 +1266,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bpw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bpw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1277,7 +1277,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public branch(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public branch(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1321,7 +1321,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bridge(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bridge(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1342,7 +1342,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bst(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bst(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1353,7 +1353,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public btd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public btd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1375,7 +1375,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bwd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bwd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1386,7 +1386,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public bwdg(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bwdg(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1408,7 +1408,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public bwds(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public bwds(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1430,7 +1430,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public canon(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public canon(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1485,7 +1485,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public cc(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public cc(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1496,7 +1496,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public coming2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public coming2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1507,7 +1507,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public coming3(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public coming3(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1529,7 +1529,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public dai(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public dai(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1595,7 +1595,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public daiocta(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public daiocta(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1606,7 +1606,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public daiocta_eye(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public daiocta_eye(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1628,7 +1628,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public deku_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public deku_item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1639,7 +1639,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public demo_dk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public demo_dk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1672,7 +1672,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public demo_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public demo_item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1683,7 +1683,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public demo_kmm(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public demo_kmm(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1705,7 +1705,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public dk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public dk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1804,7 +1804,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public door10(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public door10(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1903,7 +1903,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public door12(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public door12(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1914,7 +1914,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public dr(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public dr(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1925,7 +1925,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public dr2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public dr2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -1936,7 +1936,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public dummy(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public dummy(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2010,7 +2010,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ep(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ep(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2021,7 +2021,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public fallrock(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fallrock(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2043,7 +2043,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public fallrock_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fallrock_tag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2076,7 +2076,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public fan(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fan(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2120,7 +2120,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ff(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ff(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2186,7 +2186,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public fganon(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fganon(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2208,7 +2208,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public fgmahou(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fgmahou(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2274,7 +2274,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public fire(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fire(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2296,7 +2296,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public floor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public floor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2406,7 +2406,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public fm(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public fm(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2417,7 +2417,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public f_pc_profile_lst(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public f_pc_profile_lst(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2450,7 +2450,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ghostship(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ghostship(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2516,7 +2516,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public gm(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public gm(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2549,7 +2549,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public gnd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public gnd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2582,7 +2582,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public goal_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public goal_flag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2626,7 +2626,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public grass(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public grass(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2637,7 +2637,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public gy(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public gy(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2648,7 +2648,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public gy_ctrl(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public gy_ctrl(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2714,7 +2714,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public himo3(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public himo3(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2736,7 +2736,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public hitobj(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public hitobj(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2835,7 +2835,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public hmlif(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public hmlif(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2868,7 +2868,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public hot_floor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public hot_floor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2901,7 +2901,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public hys(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public hys(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2945,7 +2945,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public icelift(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public icelift(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -2978,7 +2978,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ikari(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ikari(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3000,7 +3000,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3022,7 +3022,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public jbo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public jbo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3033,7 +3033,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public kaji(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kaji(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3088,7 +3088,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kamome(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kamome(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3120,7 +3120,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kanban(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kanban(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3164,7 +3164,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kantera(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kantera(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3230,7 +3230,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kb(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kb(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3241,7 +3241,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public kddoor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kddoor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3307,7 +3307,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ki(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ki(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3340,7 +3340,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kita(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kita(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3384,7 +3384,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public klft(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public klft(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3395,7 +3395,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public kmon(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kmon(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3428,7 +3428,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kn(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kn(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3450,7 +3450,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public knob00(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public knob00(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3483,7 +3483,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kokiie(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kokiie(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3494,7 +3494,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public komore(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public komore(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3538,7 +3538,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ks(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ks(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3560,7 +3560,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kt(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kt(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3604,7 +3604,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kui(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kui(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3692,7 +3692,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kytag00(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag00(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3703,7 +3703,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public kytag01(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag01(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3725,7 +3725,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kytag02(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag02(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3747,7 +3747,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kytag03(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag03(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3791,7 +3791,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kytag04(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag04(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3813,7 +3813,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kytag05(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag05(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3824,7 +3824,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public kytag06(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag06(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3846,7 +3846,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public kytag07(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public kytag07(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3868,7 +3868,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public lamp(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public lamp(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3890,7 +3890,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public lbridge(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public lbridge(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3912,7 +3912,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public leaflift(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public leaflift(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3923,7 +3923,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public lod_bg(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public lod_bg(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3945,7 +3945,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public lstair(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public lstair(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3956,7 +3956,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public lwood(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public lwood(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3978,7 +3978,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public machine(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public machine(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -3989,7 +3989,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public magma(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public magma(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4022,7 +4022,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public majuu_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public majuu_flag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4044,7 +4044,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mant(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mant(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4088,7 +4088,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mbdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mbdoor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4143,7 +4143,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mdoor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4176,7 +4176,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mflft(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mflft(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4187,7 +4187,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public mgameboard(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mgameboard(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4198,7 +4198,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public mmusic(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mmusic(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4264,7 +4264,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mo2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mo2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4275,7 +4275,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public movie_player(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public movie_player(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4297,7 +4297,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mozo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mozo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4319,7 +4319,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public msw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public msw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4396,7 +4396,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mt(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mt(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4418,7 +4418,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public mtoge(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public mtoge(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4451,7 +4451,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ac1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ac1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4484,7 +4484,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ah(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ah(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4517,7 +4517,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_aj1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_aj1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4528,7 +4528,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_auction(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_auction(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4550,7 +4550,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ba1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ba1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4583,7 +4583,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_bj1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_bj1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4627,7 +4627,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_bm1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_bm1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4649,7 +4649,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_bmcon1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_bmcon1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4671,7 +4671,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_bms1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_bms1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4682,7 +4682,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_bmsw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_bmsw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4715,7 +4715,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_bs1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_bs1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4726,7 +4726,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_btsw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_btsw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4748,7 +4748,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_btsw2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_btsw2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4770,7 +4770,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_cb1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_cb1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4792,7 +4792,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_co1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_co1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4814,7 +4814,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_de1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_de1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4836,7 +4836,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ds1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ds1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4858,7 +4858,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_gk1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_gk1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4891,7 +4891,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_gp1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_gp1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4913,7 +4913,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_hi1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_hi1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4924,7 +4924,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_ho(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ho(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4968,7 +4968,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_hr(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_hr(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -4990,7 +4990,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_jb1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_jb1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5001,7 +5001,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_ji1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ji1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5034,7 +5034,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_kamome(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_kamome(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5089,7 +5089,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_kf1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_kf1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5100,7 +5100,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_kg1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_kg1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5111,7 +5111,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_kg2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_kg2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5166,7 +5166,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_kk1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_kk1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5188,7 +5188,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_km1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_km1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5221,7 +5221,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ko1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ko1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5243,7 +5243,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_kp1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_kp1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5265,7 +5265,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ls1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ls1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5309,7 +5309,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_md(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_md(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5342,7 +5342,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_mk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_mk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5386,7 +5386,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_mn(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_mn(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5397,7 +5397,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_mt(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_mt(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5408,7 +5408,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_nz(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_nz(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5441,7 +5441,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ob1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ob1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5463,7 +5463,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_os(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_os(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5496,7 +5496,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_p1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_p1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5540,7 +5540,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_p2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_p2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5584,7 +5584,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_people(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_people(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5617,7 +5617,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_pf1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_pf1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5650,7 +5650,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_photo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_photo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5672,7 +5672,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_pm1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_pm1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5705,7 +5705,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_roten(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_roten(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5738,7 +5738,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_rsh1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_rsh1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5749,7 +5749,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_sarace(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_sarace(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5760,7 +5760,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_so(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_so(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5771,7 +5771,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_sv(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_sv(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5804,7 +5804,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_tc(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_tc(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5815,7 +5815,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public npc_tt(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_tt(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5859,7 +5859,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_uk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_uk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5881,7 +5881,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_ym1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_ym1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5914,7 +5914,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_yw1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_yw1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5936,7 +5936,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_zk1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_zk1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -5958,7 +5958,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public npc_zl1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public npc_zl1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6002,7 +6002,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public nz(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public nz(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6057,7 +6057,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public nzg(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public nzg(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6068,7 +6068,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_adnno(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_adnno(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6090,7 +6090,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ajav(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ajav(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6101,7 +6101,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_ajavw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ajavw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6156,7 +6156,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_akabe(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_akabe(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6178,7 +6178,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_apzl(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_apzl(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6211,7 +6211,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ashut(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ashut(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6266,7 +6266,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_auzu(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_auzu(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6288,7 +6288,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_aygr(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_aygr(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6310,7 +6310,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_balancelift(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_balancelift(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6343,7 +6343,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_barrel(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_barrel(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6420,7 +6420,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_barrel2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_barrel2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6453,7 +6453,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_barrier(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_barrier(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6530,7 +6530,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_bemos(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_bemos(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6552,7 +6552,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_bscurtain(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_bscurtain(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6596,7 +6596,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_buoyflag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_buoyflag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6629,7 +6629,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_buoyrace(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_buoyrace(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6640,7 +6640,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_cafelmp(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_cafelmp(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6695,7 +6695,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_canon(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_canon(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6772,7 +6772,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_coming(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_coming(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6827,7 +6827,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_correct(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_correct(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6838,7 +6838,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_demo_barrel(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_demo_barrel(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6849,7 +6849,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_dmgroom(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_dmgroom(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6871,7 +6871,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_doguu(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_doguu(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6893,7 +6893,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_doguu_demo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_doguu_demo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6915,7 +6915,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_dragonhead(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_dragonhead(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6937,7 +6937,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_drift(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_drift(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6948,7 +6948,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_eayogn(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_eayogn(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6970,7 +6970,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ebomzo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ebomzo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -6992,7 +6992,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_eff(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_eff(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7014,7 +7014,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ekskz(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ekskz(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7036,7 +7036,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_eskban(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_eskban(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7058,7 +7058,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ferris(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ferris(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7080,7 +7080,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_figure(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_figure(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7102,7 +7102,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_firewall(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_firewall(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7179,7 +7179,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_flame(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_flame(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7201,7 +7201,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ftree(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ftree(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7212,7 +7212,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_ganonbed(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ganonbed(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7223,7 +7223,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_gaship(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gaship(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7234,7 +7234,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_gaship2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gaship2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7256,7 +7256,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_gnnbtltaki(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gnnbtltaki(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7267,7 +7267,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_gnndemotakie(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gnndemotakie(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7278,7 +7278,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_gnndemotakis(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gnndemotakis(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7289,7 +7289,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_gong(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gong(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7311,7 +7311,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_gryw00(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gryw00(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7322,7 +7322,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_gtaki(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_gtaki(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7344,7 +7344,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hami2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hami2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7388,7 +7388,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hami3(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hami3(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7410,7 +7410,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hami4(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hami4(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7432,7 +7432,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hat(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hat(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7476,7 +7476,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hbrf1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hbrf1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7520,7 +7520,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hcbh(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hcbh(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7531,7 +7531,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_hfuck1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hfuck1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7564,7 +7564,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hha(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hha(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7619,7 +7619,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hlift(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hlift(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7652,7 +7652,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hole(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hole(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7718,7 +7718,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_homen(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_homen(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7751,7 +7751,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_homensmoke(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_homensmoke(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7784,7 +7784,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_hsehi1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_hsehi1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7806,7 +7806,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_htetu1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_htetu1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7828,7 +7828,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ice(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ice(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7850,7 +7850,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_iceisland(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_iceisland(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7938,7 +7938,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ikada(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ikada(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7971,7 +7971,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_Itnak(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_Itnak(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -7993,7 +7993,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_jump(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_jump(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8015,7 +8015,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_kanat(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_kanat(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8081,7 +8081,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_kanoke(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_kanoke(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8125,7 +8125,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ladder(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ladder(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8169,7 +8169,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_leaves(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_leaves(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8180,7 +8180,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_light(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_light(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8191,7 +8191,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_lpalm(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_lpalm(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8224,7 +8224,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_magmarock(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_magmarock(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8246,7 +8246,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_majyuu_door(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_majyuu_door(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8312,7 +8312,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_mkie(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_mkie(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8345,7 +8345,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_mkiek(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_mkiek(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8378,7 +8378,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_mknjd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_mknjd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8389,7 +8389,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_mmrr(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_mmrr(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8422,7 +8422,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_monument(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_monument(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8499,7 +8499,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_movebox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_movebox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8554,7 +8554,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_msdan(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_msdan(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8576,7 +8576,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_msdan2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_msdan2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8620,7 +8620,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_msdan_sub(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_msdan_sub(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8653,7 +8653,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_msdan_sub2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_msdan_sub2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8675,7 +8675,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_mshokki(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_mshokki(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8730,7 +8730,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_mtest(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_mtest(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8741,7 +8741,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_nest(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_nest(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8763,7 +8763,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ohatch(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ohatch(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8774,7 +8774,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_ojtree(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ojtree(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8807,7 +8807,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ospbox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ospbox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8829,7 +8829,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_otble(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_otble(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8860,7 +8860,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_paper(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_paper(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8871,7 +8871,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_pbco(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_pbco(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8882,7 +8882,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_pbka(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_pbka(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8893,7 +8893,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_pfall(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_pfall(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8937,7 +8937,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_pirateship(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_pirateship(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8948,7 +8948,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_plant(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_plant(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -8992,7 +8992,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_quake(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_quake(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9014,7 +9014,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_rcloud(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_rcloud(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9025,7 +9025,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_rflw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_rflw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9036,7 +9036,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_rforce(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_rforce(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9058,7 +9058,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_roten(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_roten(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9091,7 +9091,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_shelf(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_shelf(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9113,7 +9113,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_shmrgrd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_shmrgrd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9135,7 +9135,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_smplbg(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_smplbg(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9157,7 +9157,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_stair(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_stair(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9201,7 +9201,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_swflat(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_swflat(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9234,7 +9234,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_swhammer(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_swhammer(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9267,7 +9267,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_swheavy(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_swheavy(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9311,7 +9311,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_swlight(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_swlight(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9377,7 +9377,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_swpush(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_swpush(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9399,7 +9399,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_table(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_table(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9432,7 +9432,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_tapestry(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tapestry(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9465,7 +9465,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_tenmado(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tenmado(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9498,7 +9498,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_tide(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tide(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9531,7 +9531,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_timer(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_timer(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9586,7 +9586,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_tntrap(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tntrap(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9597,7 +9597,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_toripost(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_toripost(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9608,7 +9608,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_tousekiki(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tousekiki(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9619,7 +9619,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_tower(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tower(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9652,7 +9652,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_trap(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_trap(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9685,7 +9685,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_tribox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_tribox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9740,7 +9740,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_try(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_try(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9751,7 +9751,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_usovmc(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_usovmc(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9773,7 +9773,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_Vds(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_Vds(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9795,7 +9795,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_vfan(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vfan(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9806,7 +9806,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_vgnfd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vgnfd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9828,7 +9828,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_vmc(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vmc(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9839,7 +9839,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_vmsdz(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vmsdz(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9850,7 +9850,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_vmsms(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vmsms(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9872,7 +9872,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_volcano(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_volcano(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9883,7 +9883,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_Vteng(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_Vteng(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9905,7 +9905,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_vtil(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vtil(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -9927,7 +9927,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_vyasi(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_vyasi(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10059,7 +10059,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_warpt(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_warpt(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10070,7 +10070,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_wood(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_wood(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10081,7 +10081,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public obj_xfuta(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_xfuta(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10103,7 +10103,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_Yboil(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_Yboil(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10125,7 +10125,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ygush00(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_ygush00(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10147,7 +10147,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_YLzou(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_YLzou(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10169,7 +10169,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_zouK(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_zouK(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10213,7 +10213,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public oq(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public oq(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10301,7 +10301,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public oship(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public oship(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10323,7 +10323,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public pedestal(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public pedestal(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10367,7 +10367,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ph(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ph(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10378,7 +10378,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public pirate_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public pirate_flag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10455,7 +10455,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public pt(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public pt(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10521,7 +10521,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public pw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public pw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10543,7 +10543,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public pz(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public pz(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10587,7 +10587,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public race_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public race_item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10642,7 +10642,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public rd(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public rd(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10653,7 +10653,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public rectangle(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public rectangle(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10664,7 +10664,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public sail(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sail(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10719,7 +10719,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public saku(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public saku(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10730,7 +10730,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public salvage(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public salvage(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10763,7 +10763,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public salvage_tbox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public salvage_tbox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10774,7 +10774,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public sbox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sbox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10785,7 +10785,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public scene_change(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public scene_change(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10796,7 +10796,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public seatag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public seatag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10818,7 +10818,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public shand(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public shand(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10862,7 +10862,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ship(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ship(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10895,7 +10895,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public shop_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public shop_item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10928,7 +10928,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public shutter(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public shutter(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10950,7 +10950,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public shutter2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public shutter2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -10961,7 +10961,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public sie_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sie_flag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11016,7 +11016,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public sitem(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sitem(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11049,7 +11049,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public sk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11093,7 +11093,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public sk2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sk2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11115,7 +11115,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public spotbox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public spotbox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11159,7 +11159,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ss(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ss(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11203,7 +11203,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ssk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ssk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11247,7 +11247,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public sss(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public sss(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11313,7 +11313,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public st(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public st(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11335,7 +11335,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public steam_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public steam_tag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11412,7 +11412,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public stone(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public stone(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11489,7 +11489,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public stone2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public stone2(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11522,7 +11522,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public swattack(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public swattack(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11566,7 +11566,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public swc00(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public swc00(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11643,7 +11643,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public swhit0(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public swhit0(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11687,7 +11687,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public switem(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public switem(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11720,7 +11720,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public swpropeller(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public swpropeller(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11764,7 +11764,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public swtact(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public swtact(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11797,7 +11797,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public swtdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public swtdoor(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11808,7 +11808,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public syan(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public syan(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11841,7 +11841,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_attention(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_attention(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11852,7 +11852,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public tag_ba1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_ba1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11885,7 +11885,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_etc(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_etc(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11951,7 +11951,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_event(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_event(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -11995,7 +11995,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_evsw(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_evsw(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12028,7 +12028,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_ghostship(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_ghostship(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12115,7 +12115,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_hint(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_hint(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12159,7 +12159,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_island(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_island(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12214,7 +12214,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_kb_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_kb_item(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12236,7 +12236,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_kf1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_kf1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12247,7 +12247,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public tag_kk1(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_kk1(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12335,7 +12335,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_light(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_light(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12390,7 +12390,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_md_cb(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_md_cb(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12434,7 +12434,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_mk(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_mk(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12510,7 +12510,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_msg(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_msg(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12532,7 +12532,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_photo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_photo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12554,7 +12554,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_ret(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_ret(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12598,7 +12598,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_so(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_so(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12653,7 +12653,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_volcano(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_volcano(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12675,7 +12675,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tag_waterlevel(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tag_waterlevel(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12697,7 +12697,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tama(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tama(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12785,7 +12785,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tbox(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tbox(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12796,7 +12796,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public title(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public title(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12884,7 +12884,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tn(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tn(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12917,7 +12917,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public toge(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public toge(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12928,7 +12928,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public tori_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tori_flag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12950,7 +12950,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tornado(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tornado(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -12961,7 +12961,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public tpota(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tpota(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13049,7 +13049,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public tsubo(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public tsubo(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13082,7 +13082,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public wall(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public wall(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13104,7 +13104,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public warpdm20(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warpdm20(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13126,7 +13126,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public warpf(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warpf(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13137,7 +13137,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public warpfout(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warpfout(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13170,7 +13170,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public warpgn(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warpgn(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13192,7 +13192,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public warphr(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warphr(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13247,7 +13247,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public warpls(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warpls(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13269,7 +13269,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public warpmj(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public warpmj(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13302,7 +13302,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public waterfall(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public waterfall(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13313,7 +13313,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public wbird(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public wbird(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13335,7 +13335,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public windmill(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public windmill(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13434,7 +13434,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public wind_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public wind_tag(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13500,7 +13500,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public wz(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public wz(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13522,7 +13522,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ygcwp(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ygcwp(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13555,7 +13555,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public ykgr(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public ykgr(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
@@ -13566,7 +13566,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		// Constructor
-		public yougan(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public yougan(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
 			
 		}
