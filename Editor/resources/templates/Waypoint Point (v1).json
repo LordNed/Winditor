@@ -1,10 +1,17 @@
 ﻿{
-	"ClassName" : "PathPoint_v1",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "PPNT",
-	"Fields" :
-	[
-		{"Name" : "Unknown 1", "Type" : "Int", "Category": "Unknowns", "Editable": true},
-		{"Name" : "Position", "Type" : "Vector3"}
-	]
+  "ClassName": "PathPoint_v1",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "PPNT",
+  "Fields": [
+    {
+      "Name": "Unknown 1",
+      "Type": "Int",
+      "Category": "Unknowns",
+      "Editable": true
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    }
+  ]
 }

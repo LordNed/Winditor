@@ -1,7 +1,7 @@
 ﻿{
-	"ClassName" : "TGDR",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "TGDR",
+  "ClassName": "TGDR",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "TGDR",
   "Fields": [
     {
       "Name": "Name",

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindEditor.a
 {
-    public class DOMOrganizerNode<T> : WDOMNode
+    public class WDOMOrganizerNode<T> : WDOMNode
         where T : WDOMNode
     {
-        public DOMOrganizerNode(WWorld world, string header) : base(world)
+        public WDOMOrganizerNode(WWorld world, string header) : base(world)
         {
             Name = header;
         }

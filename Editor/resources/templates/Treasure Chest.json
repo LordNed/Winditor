@@ -1,18 +1,18 @@
 ﻿{
-	"ClassName" : "TreasureChest",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "TRES",
+  "ClassName": "TreasureChest",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "TRES",
   "Fields": [
     {
       "Name": "Name",
       "Type": "FixedLengthString",
       "Length": 8,
-      "Category":  "Treasure Chest"
+      "Category": "Treasure Chest"
     },
     {
       "Name": "Parameters",
       "Type": "Int",
-      "Hidden":  true
+      "Hidden": true
     },
     {
       "Name": "Position",
@@ -21,7 +21,7 @@
     {
       "Name": "Aux Parameters 1",
       "Type": "Short",
-      "Hidden":  true
+      "Hidden": true
     },
     {
       "Name": "Y Rotation",
@@ -35,7 +35,7 @@
     {
       "Name": "Padding",
       "Type": "Short",
-      "Hidden":  true
+      "Hidden": true
     }
   ]
 }

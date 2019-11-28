@@ -1,22 +1,65 @@
 ﻿{
-	"ClassName" : "ScaleableObject",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "SCOB",
-	"Fields" :
-	[
-		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8},
-		{"Name" : "Parameter 1", "Type" : "Byte"},
-		{"Name" : "Parameter 2", "Type" : "Byte"},
-		{"Name" : "Parameter 3", "Type" : "Byte"},
-		{"Name" : "Parameter 4", "Type" : "Byte"},
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Auxiliary Parameter", "Type" : "Short"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Unknown 1", "Type" : "Short"},
-		{"Name" : "Unknown 2", "Type" : "Short"},
-		{"Name" : "X Scale", "Type" : "Byte"},
-		{"Name" : "Y Scale", "Type" : "Byte"},
-		{"Name" : "Z Scale", "Type" : "Byte"},
-		{"Name" : "Padding", "Type" : "Byte", "Hidden" : "True"}
-	]
+  "ClassName": "ScaleableObject",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "SCOB",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Type": "FixedLengthString",
+      "Length": 8
+    },
+    {
+      "Name": "Parameter 1",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Parameter 2",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Parameter 3",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Parameter 4",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Auxiliary Parameter",
+      "Type": "Short"
+    },
+    {
+      "Name": "Y Rotation",
+      "Type": "YRotation"
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Short"
+    },
+    {
+      "Name": "Unknown 2",
+      "Type": "Short"
+    },
+    {
+      "Name": "X Scale",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Y Scale",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Z Scale",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Padding",
+      "Type": "Byte",
+      "Hidden": "True"
+    }
+  ]
 }

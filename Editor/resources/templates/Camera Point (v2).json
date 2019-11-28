@@ -1,13 +1,28 @@
 ﻿{
-	"ClassName" : "CameraViewpoint_v2",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "RARO",
-	"Fields" :
-	[
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "X Rotation", "Type" : "XRotation"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Z Rotation", "Type" : "ZRotation"},
-		{"Name" : "Padding", "Type" : "Short", "Hidden" : "True"}
-	]
+  "ClassName": "CameraViewpoint_v2",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "RARO",
+  "Fields": [
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "X Rotation",
+      "Type": "XRotation"
+    },
+    {
+      "Name": "Y Rotation",
+      "Type": "YRotation"
+    },
+    {
+      "Name": "Z Rotation",
+      "Type": "ZRotation"
+    },
+    {
+      "Name": "Padding",
+      "Type": "Short",
+      "Hidden": "True"
+    }
+  ]
 }

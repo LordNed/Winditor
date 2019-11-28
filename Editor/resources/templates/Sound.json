@@ -1,18 +1,49 @@
 ﻿{
-	"ClassName" : "SoundEffect",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "SOND",
-	"Fields" :
-	[
-		{ "Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Description" : "Known Values: sndpath" },
-		{ "Name" : "Position", "Type" : "Vector3" },
-		{ "Name" : "Unknown 1", "Type" : "Byte" },
-		{ "Name" : "Unknown 2", "Type" : "Byte" },
-		{ "Name" : "Unknown 3", "Type" : "Byte" },
-		{ "Name" : "Sound ID", "Type" : "Byte" },
-		{ "Name" : "Path Index", "Type" : "Byte" },
-		{ "Name" : "Padding 1", "Type" : "Byte" },
-		{ "Name" : "Padding 2", "Type" : "Byte" },
-		{ "Name" : "Padding 3", "Type" : "Byte" }
-	]
+  "ClassName": "SoundEffect",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "SOND",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Type": "FixedLengthString",
+      "Length": 8,
+      "Description": "Known Values: sndpath"
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Unknown 2",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Unknown 3",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Sound ID",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Path Index",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Padding 1",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Padding 2",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Padding 3",
+      "Type": "Byte"
+    }
+  ]
 }

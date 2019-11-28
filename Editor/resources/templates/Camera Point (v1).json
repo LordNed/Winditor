@@ -1,6 +1,6 @@
 ﻿{
 	"ClassName" : "CameraViewpoint_v1",
-	"ParentClassOverride" : "VisibleDOMNode",
+	"ParentClassOverride" : "WDOMPositionableEntityNode",
 	"FourCC" : "AROB",
 	"Fields" :
 	[

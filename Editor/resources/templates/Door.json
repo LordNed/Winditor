@@ -1,19 +1,53 @@
 ﻿{
-	"ClassName" : "Door_DOOR",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "DOOR",
-	"Fields" :
-	[
-		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8},
-		{"Name" : "Parameters", "Type" : "Int"},
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Auxiliary Parameters", "Type" : "Short"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Unknown 1", "Type" : "Short"},
-		{"Name" : "Unknown 2", "Type" : "Short"},
-		{"Name" : "Scale X", "Type" : "Byte"},
-		{"Name" : "Scale Y", "Type" : "Byte"},
-		{"Name" : "Scale Z", "Type" : "Byte"},
-		{"Name" : "Padding", "Type" : "Byte", "Hidden" : "True"}
-	]
+  "ClassName": "Door_DOOR",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "DOOR",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Type": "FixedLengthString",
+      "Length": 8
+    },
+    {
+      "Name": "Parameters",
+      "Type": "Int"
+    },
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Auxiliary Parameters",
+      "Type": "Short"
+    },
+    {
+      "Name": "Y Rotation",
+      "Type": "YRotation"
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Short"
+    },
+    {
+      "Name": "Unknown 2",
+      "Type": "Short"
+    },
+    {
+      "Name": "Scale X",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Scale Y",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Scale Z",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Padding",
+      "Type": "Byte",
+      "Hidden": "True"
+    }
+  ]
 }

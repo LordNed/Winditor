@@ -23,42 +23,8 @@ using System.Diagnostics;
 using System;
 using WindEditor.ViewModel;
 
-namespace WindEditor
+namespace WindEditor.a
 {
-	public abstract class SerializableDOMNode : WDOMNode
-	{
-		public readonly FourCC FourCC;
-		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
-
-		private MapLayer m_layer;
-
-		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
-		{
-			FourCC = fourCC;
-			OnConstruction();
-		}
-
-		// Called by the constructor, override this if you want to put things in your own constructor in a partial class.
-		public virtual void OnConstruction() {}
-
-		// This is called after the data is loaded out of the disk. Use this if you need to post-process the loaded data.
-		public virtual void PostLoad() {}
-
-		// This is called before writing data to the disk. Use this if you need to pre-process the data to be saved.
-		public virtual void PreSave() {}
-
-		public virtual void Load(EndianBinaryReader stream) {}
-		public virtual void Save(EndianBinaryWriter stream) {}
-	}
-
-	public partial class VisibleDOMNode : SerializableDOMNode
-	{
-		public VisibleDOMNode(FourCC fourCC, WWorld world) : base(fourCC, world)
-		{
-		}
-	}
-	 
-
 <#
 
 // We sometimes have duplicate templates to handle loading from the file, so we'll not generate duplicate classes.
@@ -67,7 +33,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 {
     MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
 	string className = descriptor.ClassName;
-	string parentClassName = string.IsNullOrEmpty(descriptor.ParentClassOverride) ? "SerializableDOMNode" : descriptor.ParentClassOverride;
+	string parentClassName = string.IsNullOrEmpty(descriptor.ParentClassOverride) ? "WDOMEntityNode" : descriptor.ParentClassOverride;
 #>
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class <#= className #> : <#= parentClassName #>
@@ -113,23 +79,12 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 #>
 
 		// Constructor
-		public <#= className #>(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public <#= className #>(WWorld world, FourCC fourCC) : base(world, fourCC)
 		{
-<# 
-			foreach(var field in descriptor.Fields)
-			{
-			   if(!field.Hidden && !skippedFields.Contains(field.FieldName.Replace(" ", "")))
-			   {
-				   string propertyFieldName = field.FieldName.Replace(" ", ""); 
-#>			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "<#=field.FieldName#>", TargetProperties = new string[] { "<#=propertyFieldName#>"} });
-<#
-   
-				}
-			}
-#>
+
 		}
 
-		override public void Load(EndianBinaryReader stream)
+		override public void Deserialize(EndianBinaryReader stream)
 		{
 <#			foreach(var field in descriptor.Fields)
 			{
@@ -198,7 +153,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 #>
 		}
 
-		override public void Save(EndianBinaryWriter stream)
+		override public void Serialize(EndianBinaryWriter stream)
 		{
 			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();

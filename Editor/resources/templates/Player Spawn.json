@@ -1,9 +1,8 @@
 ﻿{
-	"ClassName" : "SpawnPoint",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "PLYR",
-	"Fields" :
-	[
+  "ClassName": "SpawnPoint",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "PLYR",
+  "Fields": [
     {
       "Name": "Name",
       "Type": "FixedLengthString",
@@ -73,5 +72,5 @@
       "Category": "Unknowns",
       "Editable": "False"
     }
-	]
+  ]
 }

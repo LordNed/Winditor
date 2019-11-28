@@ -1,11 +1,19 @@
 ﻿{
-	"ClassName" : "LightVector",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "LGTV",
-	"Fields" :
-	[
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Radius", "Type" : "Vector3"},
-		{"Name" : "Color", "Type" : "Color32"}
-	]
+  "ClassName": "LightVector",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "LGTV",
+  "Fields": [
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Radius",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Color",
+      "Type": "Color32"
+    }
+  ]
 }

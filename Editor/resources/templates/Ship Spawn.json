@@ -1,12 +1,23 @@
 ﻿{
-	"ClassName" : "ShipSpawnPoint",
-	"ParentClassOverride" : "VisibleDOMNode",
-	"FourCC" : "SHIP",
-	"Fields" :
-	[
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Rotation", "Type" : "YRotation"},
-		{"Name" : "Ship Id", "Type" : "Byte"},
-		{"Name" : "Unknown 1", "Type" : "Byte"}
-	]
+  "ClassName": "ShipSpawnPoint",
+  "ParentClassOverride": "WDOMPositionableEntityNode",
+  "FourCC": "SHIP",
+  "Fields": [
+    {
+      "Name": "Position",
+      "Type": "Vector3"
+    },
+    {
+      "Name": "Rotation",
+      "Type": "YRotation"
+    },
+    {
+      "Name": "Ship Id",
+      "Type": "Byte"
+    },
+    {
+      "Name": "Unknown 1",
+      "Type": "Byte"
+    }
+  ]
 }

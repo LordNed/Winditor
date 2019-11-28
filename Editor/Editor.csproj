@@ -149,6 +149,8 @@
     <Compile Include="Editor\DOM\DOMNode_New.cs" />
     <Compile Include="Editor\DOM\DOMOrganizerNode.cs" />
     <Compile Include="Editor\DOM\DOMRenderNode.cs" />
+    <Compile Include="Editor\DOM\WDOMEntityNode.cs" />
+    <Compile Include="Editor\DOM\WDOMSerializableNode.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />

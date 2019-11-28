@@ -1,6 +1,6 @@
 ﻿{
 	"ClassName" : "PathPoint_v2",
-	"ParentClassOverride" : "VisibleDOMNode",
+	"ParentClassOverride" : "WDOMPositionableEntityNode",
 	"FourCC" : "RPPN",
 	"Fields" :
 	[
