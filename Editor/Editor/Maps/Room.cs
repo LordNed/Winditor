@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using GameFormatReader.Common;
 using WArchiveTools.FileSystem;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public class WRoomTable
     {
@@ -64,20 +64,15 @@ namespace WindEditor
 
 
 
-    public class WRoom : WScene, IRenderable
+    public class WRoom : WScene
     {
         public int RoomIndex { get; protected set; }
         public int MemoryAllocation { get; set; }
         public WRoomTransform RoomTransform { get; set; }
-        public EnvironmentLightingConditions EnvironmentLighting { get; set; }
-
-        private List<J3D> m_roomModels;
-
 
         public WRoom(WWorld world, int roomIndex):base(world)
         {
             RoomIndex = roomIndex;
-            m_roomModels = new List<J3D>();
             IsRendered = true;
         }
 
@@ -117,7 +112,7 @@ namespace WindEditor
             string[] folderNames = new[] { "bmd", "bdl" };
             bool[] validModels = new bool[modelNames.Length];
 
-            CategoryDOMNode col_category = new CategoryDOMNode("Models", m_world);
+            WDOMOrganizerNode col_category = new WDOMOrganizerNode(World, typeof(WDOMOrganizerNode), "Models");
             col_category.SetParent(this);
 
             foreach (var subFolder in folderNames)
@@ -125,109 +120,45 @@ namespace WindEditor
                 string folderPath = Path.Combine(filePath, subFolder);
                 foreach (var modelName in modelNames)
                 {
+                    LightingType light_type = LightingType.Room;
+
+                    switch (modelName)
+                    {
+                        // model is always the main room model, so it uses the Room lighting type.
+                        case "model":
+                            light_type = LightingType.Room;
+                            break;
+                        // model1 is usually reserved for water, so it uses the water colors.
+                        case "model1":
+                            light_type = LightingType.Water;
+                            break;
+                        // model2 is has no defined purpose, but it has a section in the lighing block.
+                        case "model2":
+                            light_type = LightingType.Exterior;
+                            break;
+                        // model3 is usually for door and window backfills.
+                        case "model3":
+                            light_type = LightingType.Backfill;
+                            break;
+                    }
+
                     J3D mesh = LoadModel(folderPath, modelName);
                     if (mesh != null)
                     {
-                        J3DNode j3d_node = new J3DNode(mesh, m_world);
-                        j3d_node.SetParent(col_category);
+                        WJ3DRenderNode room_model = new WJ3DRenderNode(World, mesh.Name)
+                        {
+                            Renderable = new J3DRenderable(mesh, null, light_type)
+                        };
+
+                        room_model.SetParent(col_category);
                     }
                 }
             }
-        }
-
-        public override void Tick(float deltaTime)
-        {
-            base.Tick(deltaTime);
-
-            foreach (var model in m_roomModels)
-                model.Tick(deltaTime);
-        }
-
-        public override void SetTimeOfDay(float timeOfDay)
-        {
-            base.SetTimeOfDay(timeOfDay);
-
-            if(EnvironmentLighting != null)
-            {
-                var curLight = EnvironmentLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
-                foreach (var model in m_roomModels)
-                {
-                    if(model.Name == "model")
-                    {
-                    model.SetTevColorOverride(0, curLight.RoomLightColor);
-                    model.SetTevkColorOverride(0, curLight.RoomAmbientColor);
-                    }
-                    else if(model.Name == "model1")
-                    {
-                        model.SetTevColorOverride(0, curLight.WaveColor);
-                        model.SetTevkColorOverride(0, curLight.OceanColor);
-                    }
-                    else if(model.Name == "model3")
-                    {
-                        model.SetTevColorOverride(0, curLight.DoorBackfill);
-                    }
-                }
-
-                var childActors = GetChildrenOfType<VisibleDOMNode>();
-                foreach(var child in childActors)
-                {
-                    child.ColorOverrides.SetTevColorOverride(0, curLight.ShadowColor);
-                    child.ColorOverrides.SetTevkColorOverride(0, curLight.ActorAmbientColor);
-                }
-            }
-
         }
 
         public override string ToString()
         {
             return Name;
-        }
-
-        void IRenderable.AddToRenderer(WSceneView view)
-        {
-            view.AddOpaqueMesh(this);
-        }
-
-        void IRenderable.Draw(WSceneView view)
-        {
-            Vector3 scale = Transform.LocalScale;
-            Quaternion rotation = Transform.Rotation;
-            Vector3 translation = Transform.Position;
-
-            if(RoomTransform != null)
-            {
-                rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(RoomTransform.YRotation));
-                translation = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
-            }
-
-            Matrix4 trs = Matrix4.CreateScale(scale) * Matrix4.CreateFromQuaternion(rotation) * Matrix4.CreateTranslation(translation);
-            foreach(var mesh in m_roomModels)
-                mesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
-        }
-
-        Vector3 IRenderable.GetPosition()
-        {
-            Vector3 roomOffset = Vector3.Zero;
-
-            if (RoomTransform != null)
-                roomOffset = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
-
-            if (m_roomModels.Count > 0)
-                roomOffset += m_roomModels[0].BoundingSphere.Center;
-
-            return roomOffset;
-        }
-
-        float IRenderable.GetBoundingRadius()
-        {
-            float largestRadius = 0f;
-            for(int i = 0; i < m_roomModels.Count; i++)
-            {
-                if (m_roomModels[i].BoundingSphere.Radius > largestRadius)
-                    largestRadius = m_roomModels[i].BoundingSphere.Radius;
-            }
-
-            return largestRadius;
         }
 
         public override void SaveEntitiesToDirectory(string directory)

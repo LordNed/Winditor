@@ -19,6 +19,7 @@ namespace WindEditor.a
         Actor,
         Room,
         Water,
+        Exterior,
         Backfill,
         Skybox
     }
@@ -59,8 +60,11 @@ namespace WindEditor.a
                 case LightingType.Water:
                     ApplyLightOverrides(lights.WaveColor, lights.OceanColor);
                     break;
+                case LightingType.Exterior:
+                    ApplyLightOverrides(lights.UnknownWhite1, lights.UnknownWhite2);
+                    break;
                 case LightingType.Skybox:
-                    ApplySkyOverrides(lights.SkyboxPalette);
+                    ApplySkyOverrides(lights.);
                     break;
             }
 

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     [HideCategories(new string[] { "Transform" })]
     public partial class EnvironmentLightingSkyboxPalette
     {
-        public EnvironmentLightingSkyboxPalette() : base(FourCC.Virt, null)
+        public EnvironmentLightingSkyboxPalette() : base(null, FourCC.Virt)
         {
 
         }
@@ -32,6 +32,16 @@ namespace WindEditor
             interpSkybox.HorizonColor = WLinearColor.Lerp(palette_a.HorizonColor, palette_b.HorizonColor, t);
 
             return interpSkybox;
+        }
+
+        public override void PostLoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void PreSave()
+        {
+            throw new NotImplementedException();
         }
     }
 }

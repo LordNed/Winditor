@@ -29,7 +29,6 @@ namespace WindEditor
         private List<WSceneView> m_sceneViews;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
-        //private WActorEditor m_actorEditor;
         private WLineBatcher m_persistentLines;
         private WMap m_currentMap;
 

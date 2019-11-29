@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     [HideCategories(new string[] { "Transform" })]
     public partial class EnvironmentLightingConditions

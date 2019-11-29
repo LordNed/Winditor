@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using WArchiveTools.FileSystem;
+using JStudio.J3D;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public class WStage : WScene
     {
-        private WSkyboxNode m_skybox;
-
         public WStage(WWorld world) : base(world)
         {
             IsRendered = true;
@@ -34,9 +33,7 @@ namespace WindEditor
                     case "bmd":
                     case "bdl":
                         {
-                            m_skybox = new WSkyboxNode(m_world);
-                            m_skybox.LoadSkyboxModelsFromFixedModelList(folder);
-                            m_skybox.SetParent(this);
+                            LoadSkyboxModels(filePath);
                         }
                         break;
                 }
@@ -48,7 +45,7 @@ namespace WindEditor
             string dzsFilePath = Path.Combine(mapDirectory, "Stage/dzs/stage.dzs");
             if (File.Exists(dzsFilePath))
             {
-                SceneDataLoader sceneData = new SceneDataLoader(dzsFilePath, m_world);
+                SceneDataLoader sceneData = new SceneDataLoader(dzsFilePath, World);
                 // Load Room Translation info. Wind Waker stores collision and entities in world-space coordinates,
                 // but models all of their rooms around 0,0,0. To solve this, there is a chunk labeled "MULT" which stores
                 // the room model's translation and rotation.
@@ -102,32 +99,32 @@ namespace WindEditor
             }
         }
 
-        public override void SetTimeOfDay(float timeOfDay)
+        private void LoadSkyboxModels(string filePath)
         {
-            base.SetTimeOfDay(timeOfDay);
+            // Search the bmd and bdl folders for valid model names. Then search for a matching brk and btk for those models.
+            string[] modelNames = new[] { "vr_back_cloud", "vr_kasumi_mae", "vr_sky", "vr_uso_umi" };
+            string[] folderNames = new[] { "bmd", "bdl" };
 
-            if (m_skybox == null)
-                return;
+            WDOMOrganizerNode col_category = new WDOMOrganizerNode(World, typeof(WDOMOrganizerNode), "Models");
+            col_category.SetParent(this);
 
-            WRoom first_room = null;
-
-            foreach (var node in m_world.Map.SceneList)
+            foreach (var subFolder in folderNames)
             {
-                if (node is WRoom)
+                string folderPath = Path.Combine(filePath, subFolder);
+                foreach (var modelName in modelNames)
                 {
-                    first_room = (WRoom)node;
-                    break;
+                    J3D mesh = LoadModel(folderPath, modelName);
+                    if (mesh != null)
+                    {
+                        WJ3DRenderNode room_model = new WJ3DRenderNode(World, mesh.Name)
+                        {
+                            Renderable = new J3DRenderable(mesh, null, LightingType.Skybox)
+                        };
+
+                        room_model.SetParent(col_category);
+                    }
                 }
             }
-
-            if (first_room == null || first_room.EnvironmentLighting == null)
-                return;
-
-            var envrData = GetChildrenOfType<EnvironmentLightingConditions>();
-
-            var curLight = envrData[0].Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
-
-            m_skybox.SetColors(curLight.SkyboxPalette);
         }
 
         public override void SaveEntitiesToDirectory(string directory)

@@ -12,6 +12,7 @@ namespace WindEditor.a
     {
         override public string Name { get; set; }
         public VirtualFilesystemDirectory SourceDirectory { get; set; }
+        public EnvironmentLightingConditions EnvironmentLighting { get; set; }
 
         protected Dictionary<FourCC, WDOMOrganizerNode> m_fourCCGroups;
 
@@ -63,30 +64,6 @@ namespace WindEditor.a
                 WDOMOrganizerNode tresLayer = new WDOMOrganizerNode(World, typeof(TreasureChest), $"Layer { i }");
                 tresLayer.SetParent(m_fourCCGroups[FourCC.TRES]);
             }
-
-            /*m_fourCCGroups["Actors"] = new WDOMGroupNode("Actors", m_world);
-            WDOMGroupNode actrDefault = new WDOMGroupNode("ACTR", m_world);
-            actrDefault.SetParent(m_fourCCGroups["Actors"]);
-
-            m_fourCCGroups["Scaleable Objects"] = new WDOMGroupNode("Scaleable Objects", m_world);
-            WDOMGroupNode scobDefault = new WDOMGroupNode("SCOB", m_world);
-            scobDefault.SetParent(m_fourCCGroups["Scaleable Objects"]);
-
-            m_fourCCGroups["Treasure Chests"] = new WDOMGroupNode("Treasure Chests", m_world);
-            WDOMGroupNode tresDefault = new WDOMGroupNode("TRES", m_world);
-            tresDefault.SetParent(m_fourCCGroups["Treasure Chests"]);
-
-            for (int i = 0; i < 12; i++)
-            {
-                WDOMGroupNode actX = new WDOMGroupNode($"ACT{ i.ToString("x") }", m_world);
-                actX.SetParent(m_fourCCGroups["Actors"]);
-
-                WDOMGroupNode scoX = new WDOMGroupNode($"SCO{ i.ToString("x") }", m_world);
-                scoX.SetParent(m_fourCCGroups["Scaleable Objects"]);
-
-                WDOMGroupNode treX = new WDOMGroupNode($"TRE{ i.ToString("x") }", m_world);
-                treX.SetParent(m_fourCCGroups["Treasure Chests"]);
-            }*/
         }
 
         public virtual void Load(string filePath)
@@ -198,6 +175,23 @@ namespace WindEditor.a
             foreach (WDOMEntityNode child in loadedActors)
             {
                 child.PostLoad();
+            }
+        }
+
+        public virtual void SetTimeOfDay(float time)
+        {
+            if (EnvironmentLighting == null)
+            {
+                return;
+            }
+
+            var curLight = EnvironmentLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, time);
+
+            List<WJ3DRenderNode> j3d_nodes = GetChildrenOfType<WJ3DRenderNode>();
+
+            foreach (var node in j3d_nodes)
+            {
+                node.Renderable.ApplyEnvironmentLighting(curLight);
             }
         }
 

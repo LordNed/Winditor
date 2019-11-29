@@ -3,7 +3,7 @@ using OpenTK;
 using System;
 using System.Collections.Generic;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public enum MapLayer
     {
