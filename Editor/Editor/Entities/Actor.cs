@@ -15,7 +15,7 @@ namespace WindEditor.a
 
         public override void PostLoad()
         {
-            //base.PostLoad();
+            Layer = FourCCToLayer();
         }
 
         public MapLayer FourCCToLayer()

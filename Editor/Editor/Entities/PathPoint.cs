@@ -6,7 +6,7 @@ using System.Globalization;
 using System.ComponentModel;
 using WindEditor.ViewModel;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public partial class PathPoint_v1
 	{

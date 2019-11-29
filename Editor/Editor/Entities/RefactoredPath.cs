@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using WindEditor.ViewModel;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public partial class Path_v2
     {
@@ -53,7 +53,7 @@ namespace WindEditor
             // etc. until we hit a end-of-path node. 
         }
 
-        public void SetNodes(List<WDOMNode> points)
+        public void SetNodes(List<WDOMEntityNode> points)
         {
             int first_index = m_FirstEntryOffset / 16;
 

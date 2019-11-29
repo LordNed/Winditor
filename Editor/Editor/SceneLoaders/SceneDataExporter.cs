@@ -5,7 +5,7 @@ using System.IO;
 using Newtonsoft.Json;
 using OpenTK;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public class SceneDataExporter
     {
@@ -16,41 +16,15 @@ namespace WindEditor
         public void ExportToStream(EndianBinaryWriter writer, WScene scene)
         {
             // Build a dictionary which lists unique FourCC's and a list of all relevant actors.
-            var actorCategories = new Dictionary<FourCC, List<SerializableDOMNode>>();
-            foreach(var child in scene)
+            var actorCategories = new Dictionary<FourCC, List<WDOMEntityNode>>();
+            var actorsToSort = scene.GetChildrenOfType<WDOMEntityNode>();
+
+            foreach (var node in actorsToSort)
             {
-                var groupNode = child as WDOMGroupNode;
-                if (groupNode == null)
-                    continue;
+                if (!actorCategories.ContainsKey(node.FourCC))
+                    actorCategories[node.FourCC] = new List<WDOMEntityNode>();
 
-                // If this is an ACTR, SCOB, or TRES group node, we have to dig into it to get the layers.
-                if (groupNode.FourCC == FourCC.ACTR || groupNode.FourCC == FourCC.SCOB || groupNode.FourCC == FourCC.TRES)
-                {
-                    foreach (var layer in groupNode.Children)
-                    {
-                        foreach (var obj in layer.Children)
-                        {
-                            var actor = obj as SerializableDOMNode;
-
-                            if (actor != null)
-                            {
-                                AddObjectToDictionary(actor, actorCategories);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var obj in groupNode.Children)
-                    {
-                        var actor = obj as SerializableDOMNode;
-
-                        if (actor != null)
-                        {
-                            AddObjectToDictionary(actor, actorCategories);
-                        }
-                    }
-                }
+                actorCategories[node.FourCC].Add(node);
             }
 
             // Create a chunk header for each one.
@@ -76,7 +50,7 @@ namespace WindEditor
             }
 
             // For each chunk, write the data for that chunk. Before writing the data, get the current offset and update the header.
-            List<SerializableDOMNode>[] dictionaryData = new List<SerializableDOMNode>[actorCategories.Count];
+            List<WDOMEntityNode>[] dictionaryData = new List<WDOMEntityNode>[actorCategories.Count];
             actorCategories.Values.CopyTo(dictionaryData, 0);
 
             for(int i = 0; i < chunkHeaders.Count; i++)
@@ -84,7 +58,7 @@ namespace WindEditor
                 ChunkHeader header = chunkHeaders[i];
                 chunkHeaders[i] = new ChunkHeader(header.FourCC, header.ElementCount, (int)(writer.BaseStream.Position - chunkStart));
 
-                List<SerializableDOMNode> actors = dictionaryData[i];
+                List<WDOMEntityNode> actors = dictionaryData[i];
 
                 if (header.FourCC == FourCC.RTBL)
                 {
@@ -94,17 +68,8 @@ namespace WindEditor
 
                 foreach (var actor in actors)
                 {
-                    MapActorDescriptor template = Globals.ActorDescriptors.Find(x => x.FourCC == actor.FourCC);
-                    if (template == null)
-                    {
-                        Console.WriteLine("Unsupported FourCC (\"{0}\") for exporting!", actor.FourCC);
-                        continue;
-                    }
-
                     actor.PreSave();
-
-                    actor.Save(writer);
-                    //WriteActorToChunk(actor, template, writer);
+                    actor.Serialize(writer);
                 }
             }
 
@@ -125,19 +90,7 @@ namespace WindEditor
                 writer.Write((byte)0xFF);
         }
 
-        public void AddObjectToDictionary(SerializableDOMNode actor, Dictionary<FourCC, List<SerializableDOMNode>> actorCategories)
-        {
-            string rawFourCC = FourCCConversion.GetStringFromEnum(actor.FourCC);
-            string fixedFourCC = ChunkHeader.LayerToFourCC(rawFourCC, actor.Layer);
-            FourCC fixedFourCCEnum = FourCCConversion.GetEnumFromString(fixedFourCC);
-
-            if (!actorCategories.ContainsKey(fixedFourCCEnum))
-                actorCategories[fixedFourCCEnum] = new List<SerializableDOMNode>();
-
-            actorCategories[fixedFourCCEnum].Add(actor);
-        }
-
-        private void SaveRoomTable(List<SerializableDOMNode> entries, EndianBinaryWriter writer)
+        private void SaveRoomTable(List<WDOMEntityNode> entries, EndianBinaryWriter writer)
         {
             int base_offset = (int)writer.BaseStream.Position;
 
@@ -155,7 +108,7 @@ namespace WindEditor
                 writer.Write((int)writer.BaseStream.Length);
                 writer.Seek(0, SeekOrigin.End);
 
-                entry.Save(writer);
+                entry.Serialize(writer);
 
                 base_offset += 4;
 
@@ -172,101 +125,5 @@ namespace WindEditor
 
             writer.Seek(0, SeekOrigin.End);
         }
-
-        /*private void WriteActorToChunk(SerializableDOMNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
-        {
-            // Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = actor.Transform.Rotation.ToEulerAngles();
-
-            foreach(var field in template.Fields)
-            {
-                IPropertyValue propValue = actor.Properties.Find(x => x.Name == field.FieldName);
-                if (field.FieldName == "Position")
-                    propValue = new TVector3PropertyValue(actor.Transform.Position, "Position");
-                else if(field.FieldName == "X Rotation")
-                {
-                    short xRotShort = WMath.RotationFloatToShort(eulerRot.X);
-                    propValue = new TShortPropertyValue(xRotShort, "X Rotation");
-                }
-                else if (field.FieldName == "Y Rotation")
-                {
-                    short yRotShort = WMath.RotationFloatToShort(eulerRot.Y);
-                    propValue = new TShortPropertyValue(yRotShort, "Y Rotation");
-                }
-                else if (field.FieldName == "Z Rotation")
-                {
-                    short zRotShort = WMath.RotationFloatToShort(eulerRot.Z);
-                    propValue = new TShortPropertyValue(zRotShort, "Z Rotation");
-                }
-                else if (field.FieldName == "X Scale")
-                {
-                    float xScale = actor.Transform.LocalScale.X;
-                    propValue = new TBytePropertyValue((byte)(xScale * 10), "X Scale");
-                }
-                else if (field.FieldName == "Y Scale")
-                {
-                    float yScale = actor.Transform.LocalScale.Y;
-                    propValue = new TBytePropertyValue((byte)(yScale * 10), "Y Scale");
-                }
-                else if (field.FieldName == "Z Scale")
-                {
-                    float zScale = actor.Transform.LocalScale.Z;
-                    propValue = new TBytePropertyValue((byte)(zScale * 10), "Z Scale");
-                }
-
-                switch (field.FieldType)
-                {
-                    case PropertyValueType.Byte:
-                        writer.Write((byte)propValue.GetValue()); break;
-                    case PropertyValueType.Bool:
-                        writer.Write((bool)propValue.GetValue()); break;
-                    case PropertyValueType.Short:
-                        writer.Write((short)propValue.GetValue()); break;
-                    case PropertyValueType.Int:
-                        writer.Write((int)propValue.GetValue()); break;
-                    case PropertyValueType.Float:
-                        writer.Write((float)propValue.GetValue()); break;
-                    case PropertyValueType.String:
-                        writer.Write(System.Text.Encoding.ASCII.GetBytes((string)propValue.GetValue())); break;
-                    case PropertyValueType.FixedLengthString:
-                        string fixedLenStr = (string)propValue.GetValue();
-                        for (int i = 0; i < field.Length; i++)
-                            writer.Write(i < fixedLenStr.Length ? (byte)fixedLenStr[i] : (byte)0);
-                        //writer.WriteFixedString((string)propValue.GetValue(), (int)field.Length); break;
-                        break;
-                    case PropertyValueType.Vector2:
-                        Vector2 vec2Val = (Vector2)propValue.GetValue();
-                        writer.Write(vec2Val.X);
-                        writer.Write(vec2Val.Y);
-                        break;
-                    case PropertyValueType.Vector3:
-                        Vector3 vec3Val = (Vector3)propValue.GetValue();
-                        writer.Write(vec3Val.X);
-                        writer.Write(vec3Val.Y);
-                        writer.Write(vec3Val.Z);
-                        break;
-                    case PropertyValueType.XRotation:
-                    case PropertyValueType.YRotation:
-                    case PropertyValueType.ZRotation:
-                        writer.Write((short)propValue.GetValue()); break;
-                    case PropertyValueType.Color24:
-                        WLinearColor color24 = (WLinearColor)propValue.GetValue();
-                        writer.Write((byte)(color24.R * 255));
-                        writer.Write((byte)(color24.G * 255));
-                        writer.Write((byte)(color24.B * 255));
-                        break;
-                    case PropertyValueType.Color32:
-                        WLinearColor color32 = (WLinearColor)propValue.GetValue();
-                        writer.Write((byte)(color32.R * 255));
-                        writer.Write((byte)(color32.G * 255));
-                        writer.Write((byte)(color32.B * 255));
-                        writer.Write((byte)(color32.A * 255));
-                        break;
-                    default:
-                        Console.WriteLine("Unsupported PropertyValueType: {0}", field.FieldType);
-                        break;
-                }
-            }
-        }*/
     }
 }

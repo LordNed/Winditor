@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using WindEditor.ViewModel;
 
-namespace WindEditor
+namespace WindEditor.a
 {
 	public partial class Path_v1
 	{
@@ -44,7 +44,7 @@ namespace WindEditor
             return Name;
         }
 
-        public void SetNodes(List<WDOMNode> points)
+        public void SetNodes(List<WDOMEntityNode> points)
         {
             int first_index = m_FirstEntryOffset / 16;
 
@@ -62,17 +62,27 @@ namespace WindEditor
             }
         }
 
-		// override void PreSave(...)
-		// {
-		//		int NodeIndex = InList.GetNodesOfType<PathPoint_v1>().IndexOf(FirstNode);
-		//		if(NodeIndex< 0)
-		// 		{
-		// 			Console.WriteLine("Warning blahblah null setting to zero to try and keep the game from crashing on load.");
-		// 			NodeIndex = 0;
-		// 		}
-		// 
-		//		// Set the property for FirstIndex to NodeIndex, etc etc.
-		// 
-		// }
-	}
+        public override void PostLoad()
+        {
+            
+        }
+
+        public override void PreSave()
+        {
+            throw new NotImplementedException();
+        }
+
+        // override void PreSave(...)
+        // {
+        //		int NodeIndex = InList.GetNodesOfType<PathPoint_v1>().IndexOf(FirstNode);
+        //		if(NodeIndex< 0)
+        // 		{
+        // 			Console.WriteLine("Warning blahblah null setting to zero to try and keep the game from crashing on load.");
+        // 			NodeIndex = 0;
+        // 		}
+        // 
+        //		// Set the property for FirstIndex to NodeIndex, etc etc.
+        // 
+        // }
+    }
 }

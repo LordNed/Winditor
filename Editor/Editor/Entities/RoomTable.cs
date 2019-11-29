@@ -7,10 +7,10 @@ using System.ComponentModel;
 using WindEditor.ViewModel;
 using GameFormatReader.Common;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     [HideCategories(new string[] { "Transform" })]
-    public class RoomTableEntryNode : SerializableDOMNode
+    public class RoomTableEntryNode : WDOMEntityNode
     {
         private List<byte> m_LoadedRoomIndices;
 
@@ -77,7 +77,7 @@ namespace WindEditor
             }
         }
 
-        public RoomTableEntryNode(FourCC fourCC, WWorld world, EndianBinaryReader reader) : base(fourCC, world)
+        public RoomTableEntryNode(FourCC fourCC, WWorld world, EndianBinaryReader reader) : base(world, fourCC)
         {
             m_LoadedRoomIndices = new List<byte>();
 
@@ -95,7 +95,7 @@ namespace WindEditor
             }
         }
 
-        public override void Save(EndianBinaryWriter stream)
+        public override void Serialize(EndianBinaryWriter stream)
         {
             stream.Write((byte)m_LoadedRoomIndices.Count);
             stream.Write((byte)m_ReverbAmount);
@@ -119,6 +119,21 @@ namespace WindEditor
             }
 
             writer.Seek(next_entry_position, System.IO.SeekOrigin.Begin);
+        }
+
+        public override void PostLoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void PreSave()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Deserialize(EndianBinaryReader reader)
+        {
+            throw new NotImplementedException();
         }
     }
 }

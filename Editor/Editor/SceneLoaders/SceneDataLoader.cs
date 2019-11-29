@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace WindEditor
+namespace WindEditor.a
 {
     public enum PropertyValueType
     {
@@ -271,9 +271,9 @@ namespace WindEditor
             m_reader = null;
         }
 
-        public List<WDOMNode> GetMapEntities()
+        public List<WDOMEntityNode> GetMapEntities()
         {
-            var loadedActors = new List<WDOMNode>();
+            var loadedActors = new List<WDOMEntityNode>();
             foreach (var chunk in m_chunkList)
             {
                 m_reader.BaseStream.Position = chunk.ChunkOffset;
@@ -287,10 +287,11 @@ namespace WindEditor
                 switch (chunk.FourCC)
                 {
                     // Don't turn these into map actors, as they will be handled elsewhere.
-                    //case "RTBL":
                     case FourCC.MECO:
                     case FourCC.MEMA:
                         break;
+                    // All of these SCOB and ACTR objects will be instantiated into specific
+                    // classes based on the actor name, NOT the FourCC.
                     case FourCC.SCOB:
                     case FourCC.SCO0:
                     case FourCC.SCO1:
@@ -305,23 +306,6 @@ namespace WindEditor
                     case FourCC.SCOa:
                     case FourCC.SCOb:
                     case FourCC.TGSC:
-                        for (int i = 0; i < chunk.ElementCount; i++)
-                        {
-                            // We need to read the entity name so we can load the right derived class for it
-                            string entity_name = Encoding.ASCII.GetString(m_reader.PeekReadBytes(8)).Trim('\0');
-
-                            Type actorType = WResourceManager.GetTypeByName(entity_name);
-                            SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
-
-                            entity.Load(m_reader);
-                            entity.Layer = chunk.Layer;
-
-                            entity.Transform.LocalScale = new Vector3(m_reader.ReadByte() / 10f, m_reader.ReadByte() / 10f, m_reader.ReadByte() / 10f);
-                            int padding = m_reader.ReadByte();
-
-                            loadedActors.Add(entity);
-                        }
-                        break;
                     case FourCC.ACTR:
                     case FourCC.ACT0:
                     case FourCC.ACT1:
@@ -342,15 +326,17 @@ namespace WindEditor
                             // We need to read the entity name so we can load the right derived class for it
                             string entity_name = Encoding.ASCII.GetString(m_reader.PeekReadBytes(8)).Trim('\0');
 
+                            // Instantiate the object
                             Type actorType = WResourceManager.GetTypeByName(entity_name);
-                            SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
+                            WDOMEntityNode entity = (WDOMEntityNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
 
-                            entity.Load(m_reader);
-                            entity.Layer = chunk.Layer;
+                            // Deserialize it from the stream
+                            entity.Deserialize(m_reader);
 
                             loadedActors.Add(entity);
                         }
                         break;
+                    // Room TaBLe is a special structure, so load it separately.
                     case FourCC.RTBL:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {
@@ -366,13 +352,15 @@ namespace WindEditor
                         }
 
                         break;
+                    // All other FourCC entities are instantiated here.
                     default:
                         for (int i = 0; i < chunk.ElementCount; i++)
-                        {
-							Type actorType = Type.GetType($"WindEditor.{template.ClassName}");
-							SerializableDOMNode entity = (SerializableDOMNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
-							entity.Load(m_reader);
-							entity.Layer = chunk.Layer;
+                        {   
+                            // Instantiate the object
+                            Type actorType = Type.GetType($"WindEditor.{template.ClassName}");
+                            WDOMEntityNode entity = (WDOMEntityNode)Activator.CreateInstance(actorType, chunk.FourCC, m_world);
+
+							entity.Deserialize(m_reader);
 
                             loadedActors.Add(entity);
                         }
@@ -380,31 +368,15 @@ namespace WindEditor
                 }
             }
 
-            // var dict = new Dictionary<string, List<WDOMNode>>();
-            // foreach(var actor in loadedActors)
-            // {
-            //     if (!dict.ContainsKey(actor.FourCC))
-            //         dict[actor.FourCC] = new List<WDOMNode>();
-            //     dict[actor.FourCC].Add(actor);
-            // }
-            // 
-            // string[] nodes = new[] { "EnvR", "Pale", "Virt", "Colo" };
-            // foreach(var node in nodes)
-            // {
-            //     if (dict.ContainsKey(node))
-            //         Console.WriteLine("{0} Count: {1}", node, dict[node].Count);
-            // 
-            // }
-
             AssignPaths(loadedActors);
 
             return loadedActors;
         }
 
-        public void AssignPaths(List<WDOMNode> loaded_actors)
+        public void AssignPaths(List<WDOMEntityNode> loaded_actors)
         {
-            List<WDOMNode> v1_paths = loaded_actors.FindAll(x => x.GetType() == typeof(Path_v1));
-            List<WDOMNode> v1_points = loaded_actors.FindAll(x => x.GetType() == typeof(PathPoint_v1));
+            List<WDOMEntityNode> v1_paths = loaded_actors.FindAll(x => x.GetType() == typeof(Path_v1));
+            List<WDOMEntityNode> v1_points = loaded_actors.FindAll(x => x.GetType() == typeof(PathPoint_v1));
 
             foreach (WDOMNode path_v1 in v1_paths)
             {
@@ -413,8 +385,8 @@ namespace WindEditor
                 cur_path.SetNodes(v1_points);
             }
 
-            List<WDOMNode> v2_paths = loaded_actors.FindAll(x => x.GetType() == typeof(Path_v2));
-            List<WDOMNode> v2_points = loaded_actors.FindAll(x => x.GetType() == typeof(PathPoint_v2));
+            List<WDOMEntityNode> v2_paths = loaded_actors.FindAll(x => x.GetType() == typeof(Path_v2));
+            List<WDOMEntityNode> v2_points = loaded_actors.FindAll(x => x.GetType() == typeof(PathPoint_v2));
 
             foreach (WDOMNode path_v2 in v2_paths)
             {
