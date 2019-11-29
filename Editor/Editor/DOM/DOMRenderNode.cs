@@ -10,8 +10,12 @@ namespace WindEditor.a
 {
     public interface IRenderable_a
     {
+        WTransform LocalTransform { get; set; }
+
         void Update(float delta_time);
         void Render(WSceneView view, WTransform global_transform);
+        Vector3 GetPosition();
+        float GetBoundingRadius();
     }
 
     public enum LightingType
@@ -26,21 +30,25 @@ namespace WindEditor.a
 
     public class J3DRenderable : IRenderable_a
     {
+        public WTransform LocalTransform { get; set; }
+
         private J3DRenderable m_Parent;
 
         private J3D m_Model;
         private LightingType m_LightType;
         private string m_SocketName;
+        private bool m_Transparent;
 
         public List<J3DRenderable> Children { get; private set; }
 
-        public J3DRenderable(J3D model_ref, J3DRenderable parent, LightingType light_type = LightingType.Actor, string socket = "")
+        public J3DRenderable(J3D model_ref, J3DRenderable parent, LightingType light_type = LightingType.Actor, bool transparent = false, string socket = "")
         {
             Children = new List<J3DRenderable>();
 
             m_Parent = parent;
             m_Model = model_ref;
             m_LightType = light_type;
+            m_Transparent = transparent;
             m_SocketName = socket;
         }
 
@@ -64,13 +72,30 @@ namespace WindEditor.a
                     ApplyLightOverrides(lights.UnknownWhite1, lights.UnknownWhite2);
                     break;
                 case LightingType.Skybox:
-                    ApplySkyOverrides(lights.);
+                    ApplySkyOverrides(lights.SkyboxPalette);
                     break;
             }
 
             foreach (var j in Children)
             {
                 j.ApplyEnvironmentLighting(lights);
+            }
+        }
+
+        public void AddToRenderer(WSceneView view)
+        {
+            if (m_Transparent)
+            {
+                view.AddTransparentMesh(this);
+            }
+            else
+            {
+                view.AddOpaqueMesh(this);
+            }
+
+            foreach (var child in Children)
+            {
+                child.AddToRenderer(view);
             }
         }
 
@@ -115,6 +140,51 @@ namespace WindEditor.a
             Matrix4 model_matrix = Matrix4.Identity;
             m_Model.Render(view.ViewMatrix, view.ProjMatrix, model_matrix);
         }
+
+        public Vector3 GetPosition()
+        {
+            return m_Model.BoundingSphere.Center + LocalTransform.Position;
+        }
+
+        public float GetBoundingRadius()
+        {
+            return m_Model.BoundingSphere.Radius;
+        }
+        #endregion
+    }
+
+    public class OBJRenderable : IRenderable_a
+    {
+        public WTransform LocalTransform { get; set; }
+
+        private SimpleObjRenderer m_Model;
+
+        public OBJRenderable(SimpleObjRenderer model_ref)
+        {
+            m_Model = model_ref;
+        }
+
+        #region IRenderable Interface
+        public void Update(float delta_time)
+        {
+
+        }
+
+        public void Render(WSceneView view, WTransform global_transform)
+        {
+            Matrix4 model_matrix = Matrix4.Identity;
+            m_Model.Render(view.ViewMatrix, view.ProjMatrix, model_matrix);
+        }
+
+        public Vector3 GetPosition()
+        {
+            return LocalTransform.Position;
+        }
+
+        public float GetBoundingRadius()
+        {
+            return 10.0f;
+        }
         #endregion
     }
 
@@ -131,18 +201,45 @@ namespace WindEditor.a
         public virtual void Render(WSceneView view) { }
     }
 
-    public class WJ3DRenderNode : WDOMRenderNode
+    public class WDOMJ3DRenderNode : WDOMRenderNode
     {
         public J3DRenderable Renderable { get; set; }
 
-        public WJ3DRenderNode(WWorld world, string name) : base(world, name)
+        public WDOMJ3DRenderNode(WWorld world, string name) : base(world, name)
         {
             
         }
 
+        public override void Tick(float deltaTime)
+        {
+            base.Tick(deltaTime);
+
+            Renderable.Update(deltaTime);
+        }
+
         public override void AddToRenderer(WSceneView view)
         {
-            
+            Renderable.AddToRenderer(view);
+        }
+
+        public override void Render(WSceneView view)
+        {
+            Renderable.Render(view, GlobalTransform);
+        }
+    }
+
+    public class WDOMOBJRenderNode : WDOMRenderNode
+    {
+        public OBJRenderable Renderable { get; set; }
+
+        public WDOMOBJRenderNode(WWorld world, string name) : base(world, name)
+        {
+
+        }
+
+        public override void AddToRenderer(WSceneView view)
+        {
+            view.AddTransparentMesh(Renderable);
         }
 
         public override void Render(WSceneView view)

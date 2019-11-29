@@ -187,7 +187,7 @@ namespace WindEditor.a
 
             var curLight = EnvironmentLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, time);
 
-            List<WJ3DRenderNode> j3d_nodes = GetChildrenOfType<WJ3DRenderNode>();
+            List<WDOMJ3DRenderNode> j3d_nodes = GetChildrenOfType<WDOMJ3DRenderNode>();
 
             foreach (var node in j3d_nodes)
             {

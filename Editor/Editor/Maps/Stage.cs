@@ -116,7 +116,7 @@ namespace WindEditor.a
                     J3D mesh = LoadModel(folderPath, modelName);
                     if (mesh != null)
                     {
-                        WJ3DRenderNode room_model = new WJ3DRenderNode(World, mesh.Name)
+                        WDOMJ3DRenderNode room_model = new WDOMJ3DRenderNode(World, mesh.Name)
                         {
                             Renderable = new J3DRenderable(mesh, null, LightingType.Skybox)
                         };
