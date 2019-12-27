@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class pt
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Miniblin");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

@@ -495,6 +495,48 @@
     ]
   },
   {
+    "Name": "Breakable Jug",
+    "Archive": "Mshokki",
+    "Models": [
+      {
+        "Path": "bdl/pot.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Breakable Plate",
+    "Archive": "Mshokki",
+    "Models": [
+      {
+        "Path": "bdl/osara.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Breakable Cup",
+    "Archive": "Mshokki",
+    "Models": [
+      {
+        "Path": "bdl/koppu.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Metal Barred Door",
     "Archive": "Ashut",
     "Models": [
@@ -1326,7 +1368,7 @@
         "Animations": [
           {
             "Anim Type": "bck",
-            "Path": "bck/sleep_loop.bck",
+            "Path": "bck/open_loop.bck",
             "Paused on Load": false,
             "Start Time": 0
           }
@@ -1349,6 +1391,18 @@
           {
             "Anim Type": "bck",
             "Path": "bck/jump.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/am2.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/am2.btk",
             "Paused on Load": false,
             "Start Time": 0
           }
@@ -1801,6 +1855,28 @@
     ]
   },
   {
+    "Name": "Miniblin",
+    "Archive": "Pt",
+    "Models": [
+      {
+        "Path": "bdlm/pt.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Kalle Demos",
     "Archive": "Bmd",
     "Models": [
@@ -1839,11 +1915,67 @@
     ]
   },
   {
-    "Name": "Large Bombable Rock",
+    "Name": "Small Rock",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/obm_koisi1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Black Rock",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/obm_koisi2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Boulder",
     "Archive": "Ebrock",
     "Models": [
       {
         "Path": "bdl/ebrock.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Boulder",
+    "Archive": "Ebrock",
+    "Models": [
+      {
+        "Path": "bdl/ebrock2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Head Boulder",
+    "Archive": "Ekao",
+    "Models": [
+      {
+        "Path": "bdl/ekao.bdl",
         "Offset": {
           "X": 0.0,
           "Y": 0.0,
@@ -1858,34 +1990,6 @@
     "Models": [
       {
         "Path": "bdl/eskban.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
-    ]
-  },
-  {
-    "Name": "Small Bombable Rock",
-    "Archive": "Ebrock",
-    "Models": [
-      {
-        "Path": "bdl/ebrock2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
-    ]
-  },
-  {
-    "Name": "Headstone",
-    "Archive": "Ekao",
-    "Models": [
-      {
-        "Path": "bdl/ekao.bdl",
         "Offset": {
           "X": 0.0,
           "Y": 0.0,
@@ -2907,6 +3011,62 @@
     ]
   },
   {
+    "Name": "Black Box",
+    "Archive": "Osiblk",
+    "Models": [
+      {
+        "Path": "bdl/obm_osihikiblk1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Black Box With Statue on Top",
+    "Archive": "Osiblk",
+    "Models": [
+      {
+        "Path": "bdl/obm_osihikiblk2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Big Black Box",
+    "Archive": "MpwrB",
+    "Models": [
+      {
+        "Path": "bdl/mpwrb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Mossy Black Box",
+    "Archive": "Ecube",
+    "Models": [
+      {
+        "Path": "bdl/ecube.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Pushable Metal Box",
     "Archive": "Hjump",
     "Models": [
@@ -3031,6 +3191,34 @@
             "Start Time": 0.0
           }
         ]
+      }
+    ]
+  },
+  {
+    "Name": "Plain Bridge Plank",
+    "Archive": "Bridge",
+    "Models": [
+      {
+        "Path": "bdl/obm_bridge.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Reinforced Bridge Plank",
+    "Archive": "Bridge",
+    "Models": [
+      {
+        "Path": "bdl/obm_bridge2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
       }
     ]
   },
@@ -3251,6 +3439,98 @@
           "Y": 0.0,
           "Z": 0.0
         }
+      }
+    ]
+  },
+  {
+    "Name": "Hanging Platform",
+    "Archive": "Msw",
+    "Models": [
+      {
+        "Path": "bdl/mswng.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Small Pillar of Flames",
+    "Archive": "Yfire_00",
+    "Models": [
+      {
+        "Path": "bmdm/yfire_00.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          //{
+          //  "Anim Type": "brk",
+          //  "Path": "brk/yfire_00.brk",
+          //  "Paused on Load": false,
+          //  "Start Time": 0
+          //},
+          {
+            "Anim Type": "btk",
+            "Path": "btk/yfire_00.btk",
+            "Paused on Load": true,
+            "Start Time": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Large Pillar of Flames",
+    "Archive": "Yfire_00",
+    "Models": [
+      {
+        "Path": "bmdm/yfirb_00.bmd",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        //"Animations": [
+        //  {
+        //    "Anim Type": "btk",
+        //    "Path": "btk/yfirb_00.bmd",
+        //    "Paused on Load": false,
+        //    "Start Time": 0
+        //  }
+        //]
+      }
+    ]
+  },
+  {
+    "Name": "Flame Elevator Platform",
+    "Archive": "Mflft",
+    "Models": [
+      {
+        "Path": "bdl/mflft.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+      }
+    ]
+  },
+  {
+    "Name": "Shelf",
+    "Archive": "Otana",
+    "Models": [
+      {
+        "Path": "bdl/otana.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
       }
     ]
   },

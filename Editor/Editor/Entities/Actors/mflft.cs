@@ -8,13 +8,14 @@ using WindEditor.ViewModel;
 namespace WindEditor
 {
 	public partial class mflft
-	{
-		public override void PostLoad()
-		{
-			base.PostLoad();
-		}
+    {
+        public override void PostLoad()
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Flame Elevator Platform");
+            base.PostLoad();
+        }
 
-		public override void PreSave()
+        public override void PreSave()
 		{
 
 		}

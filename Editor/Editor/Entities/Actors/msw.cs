@@ -10,8 +10,9 @@ namespace WindEditor
 	public partial class msw
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
+        {
+            m_actorMeshes = WResourceManager.LoadActorResource("Hanging Platform");
+            base.PostLoad();
 		}
 
 		public override void PreSave()

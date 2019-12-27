@@ -10,16 +10,27 @@ namespace WindEditor
     {
         public override void PostLoad()
         {
-            switch(Name)
+            UpdateModel();
+            base.PostLoad();
+        }
+
+        private void UpdateModel()
+        {
+            m_actorMeshes.Clear();
+            m_objRender = null;
+            switch (Unknown_4)
             {
-                case "Ebrock":
-                    m_actorMeshes = WResourceManager.LoadActorResource("Large Bombable Rock");
+                case 2:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Boulder");
                     break;
-                case "Ebrock2":
-                    m_actorMeshes = WResourceManager.LoadActorResource("Small Bombable Rock");
+                case 3:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Head Boulder");
                     break;
-                case "Ekao":
-                    m_actorMeshes = WResourceManager.LoadActorResource("Headstone");
+                case 4:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Small Boulder");
+                    break;
+                default:
+                    m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
                     break;
             }
         }

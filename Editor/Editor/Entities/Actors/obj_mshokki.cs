@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,22 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            switch (Unknown_1)
+            {
+                case 0:
+                default:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Breakable Jug");
+                    break;
+                case 1:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Breakable Plate");
+                    break;
+                case 2:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Breakable Cup");
+                    break;
+            }
+        }
 	}
 }
