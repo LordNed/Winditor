@@ -811,22 +811,34 @@
     <Content Include="resources\editor\T_DevCheckersOrange_trans.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\flower.mtl">
+    <Content Include="resources\models\foliage\flower.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\flower.obj">
+    <Content Include="resources\models\foliage\flower.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\pflower_oasis.mtl">
+    <Content Include="resources\models\foliage\l_K_kusa_00TEX.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\pflower_oasis.obj">
+    <Content Include="resources\models\foliage\l_Txa_ob_kusa_aTEX.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\pflower_pink.mtl">
+    <Content Include="resources\models\foliage\l_Txa_swood_aTEX.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\pflower_pink.obj">
+    <Content Include="resources\models\foliage\l_Txa_swood_bTEX.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\pflower_oasis.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\pflower_oasis.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\pflower_pink.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\pflower_pink.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\ActorResourceDatabase.json">
@@ -851,6 +863,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\patches\test_room_diff.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\grass.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\grass_l_matDL.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\tree.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\tree_l_matDL.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\bush.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\bush_l_matDL.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\grass_Vmori.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\models\foliage\grass_Vmori_l_matDL.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />
@@ -1275,13 +1311,13 @@
     <Resource Include="resources\icons\cancel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="resources\models\flowers\l_Txo_ob_flower_pink_64x64TEX_0.png">
+    <Content Include="resources\models\foliage\l_Txo_ob_flower_pink_64x64TEX_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\l_Txo_ob_flower_white_64x64TEX_0.png">
+    <Content Include="resources\models\foliage\l_Txo_ob_flower_white_64x64TEX_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\models\flowers\l_Txq_bessou_hanaTEX_0.png">
+    <Content Include="resources\models\foliage\l_Txq_bessou_hanaTEX_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\patches\room_playtest.asm">
