@@ -29,7 +29,7 @@
       "Shift": 16,
       "Hidden": false,
       "Category": "andsw2",
-      "ToolTip": "",
+      "ToolTip": "The switch to be set once all the switches to check have been set.",
       "DataType": "Integer"
     },
     {

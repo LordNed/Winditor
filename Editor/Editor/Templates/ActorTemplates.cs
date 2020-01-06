@@ -405,25 +405,8 @@ namespace WindEditor
 	public partial class andsw0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("andsw0", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
-			}
-		}
-
-		[WProperty("andsw0", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("andsw0", "Num Switches to Check", true, "How many switches to check.", SourceScene.Room)]
+		public int NumSwitchestoCheck
 		{ 
 			get
 			{
@@ -435,29 +418,38 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("NumSwitchestoCheck");
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public enum TypeEnum
+		{
+			Normal = 0,
+			Check_for_unset_after_set = 1,
+			Time_limit_check = 2,
+			Normal_with_65_frames_delayed_set = 3,
+			Normal_B = 255,
+		}
+
+		[WProperty("andsw0", "Type", true, "'Normal' just checks all the switches it should and then sets 'Switch to Set'.\n'Check for unset after set' does the same, but if any of the switches to check are ever unset, 'Switch to Set' will also be unset.\n'Time limit check' starts a time limit once the first switch to check has been set, you must set the other ones within it.\n'Normal with 65 frames delayed set' waits 65 frames after the last switch to check is set before setting 'Switch to Set'.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("andsw0", "First Switch to Check", true, "The first switch index to check. If this is 0, use (Switch to Set + 1) as the first switch to check instead.\nThe other switches it checks are sequential after the first one. For example, if the first switch is 5, and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.", SourceScene.Room)]
+		public int FirstSwitchtoCheck
 		{ 
 			get
 			{
@@ -469,12 +461,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("FirstSwitchtoCheck");
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("andsw0", "Switch to Set", true, "The switch to be set once all the switches to check have been set.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -486,29 +478,35 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("andsw0", "Event", true, "The event to start once all the switches to check have been set.", SourceScene.Stage)]
+		public MapEvent Event
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Event");
 			}
 		}
 
-		[WProperty("andsw0", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("andsw0", "Time Limit (Half Seconds)", true, "For the 'Time limit check' type, this number times 15 frames is how long the player has to set all the switches after the first switch is set.", SourceScene.Room)]
+		public int TimeLimitHalfSeconds
 		{ 
 			get
 			{
@@ -520,7 +518,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("TimeLimitHalfSeconds");
 			}
 		}
 
@@ -569,7 +567,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Switch to Set", true, "", SourceScene.Room)]
+		[WProperty("andsw2", "Switch to Set", true, "The switch to be set once all the switches to check have been set.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
