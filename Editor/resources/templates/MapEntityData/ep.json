@@ -7,30 +7,36 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Shift": 0,
-      "Hidden": true,
+      "Hidden": false,
       "Category": "ep",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Has brazier 1",
+        1: "Does not have brazier 1",
+        2: "Does not have brazier 2",
+        3: "Has brazier 2",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Has Fireflies?",
       "ValueSource": "Parameters",
       "Mask": 0x00000040,
       "Shift": 6,
       "Hidden": false,
-      "Category": "Unknowns",
+      "Category": "ep",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean"
     },
     {
-      "Name": "Is Wooden",
+      "Name": "Is Wooden?",
       "ValueSource": "Parameters",
       "Mask": 0x00000080,
       "Shift": 7,
-      "Hidden": true,
+      "Hidden": false,
       "Category": "Torch",
       "ToolTip": "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold.",
-      "DataType": "Integer"
+      "DataType": "Boolean"
     },
     {
       "Name": "Unknown_4",
@@ -38,7 +44,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "Unknowns",
+      "Category": "ep",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -48,7 +54,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "Unknowns",
+      "Category": "ep",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -57,7 +63,7 @@
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
-      "Hidden": true,
+      "Hidden": false,
       "Category": "Torch",
       "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default.",
       "DataType": "Integer"

@@ -3,44 +3,64 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
       "Category": "bk",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "The behavior of the Bokoblin when it spawns.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Wandering",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Hiding in a Pot",
+        4: "Guarding",
+        5: "Being carried by a Kargaroc",
+        6: "Search Light Operator",
+        7: "Jumping",
+        10: "Guarding_and_Yawning",
+        11: "Pink Bokoblin with Telescope",
+        15: "Debug",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch Spawns Bokoblin",
       "ValueSource": "Parameters",
       "Mask": 0x00000010,
       "Shift": 4,
       "Hidden": false,
       "Category": "bk",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.",
+      "DataType": "Boolean"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Is Green",
       "ValueSource": "Parameters",
       "Mask": 0x00000020,
       "Shift": 5,
       "Hidden": false,
       "Category": "bk",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.",
+      "DataType": "Boolean"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Weapon",
       "ValueSource": "Parameters",
       "Mask": 0x000000C0,
       "Shift": 6,
       "Hidden": false,
       "Category": "bk",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "The weapon that the Bokoblin is holding when it spawns.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unlit Torch",
+        1: "Machete 1",
+        2: "Lit Torch",
+        3: "Machete 2",
+      }
     },
     {
       "Name": "Unknown_5",
@@ -53,17 +73,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "bk",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "The path that the Bokoblin follows.",
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_7",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
@@ -73,7 +93,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_8",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,
