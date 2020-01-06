@@ -4,7 +4,10 @@
 	"FourCC" : "PPNT",
 	"Fields" :
 	[
-		{"Name" : "Unknown 1", "Type" : "Int", "Category": "Unknowns", "Editable": true},
+		{"Name" : "Unknown 1", "Type" : "Byte", "Editable": true},
+		{"Name" : "Unknown 2", "Type" : "Byte", "Editable": true},
+		{"Name" : "Unknown 3", "Type" : "Byte", "Editable": true},
+		{"Name" : "Action Type", "Type" : "Byte", "Editable": true},
 		{"Name" : "Position", "Type" : "Vector3"}
 	]
 }

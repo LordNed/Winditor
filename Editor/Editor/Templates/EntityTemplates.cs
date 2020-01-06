@@ -4211,16 +4211,58 @@ namespace WindEditor
 	public partial class PathPoint_v1 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected int m_Unknown1;
+		protected byte m_Unknown1;
 
-		[WProperty("Unknowns", "Unknown 1", true)]
-		 public int Unknown1
+		[WProperty("Misc.", "Unknown 1", true)]
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
 			{
 				m_Unknown1 = value;
 				OnPropertyChanged("Unknown1");
+			}
+		}
+				
+
+		protected byte m_Unknown2;
+
+		[WProperty("Misc.", "Unknown 2", true)]
+		 public byte Unknown2
+		{ 
+			get { return m_Unknown2; }
+			set
+			{
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
+			}
+		}
+				
+
+		protected byte m_Unknown3;
+
+		[WProperty("Misc.", "Unknown 3", true)]
+		 public byte Unknown3
+		{ 
+			get { return m_Unknown3; }
+			set
+			{
+				m_Unknown3 = value;
+				OnPropertyChanged("Unknown3");
+			}
+		}
+				
+
+		protected byte m_ActionType;
+
+		[WProperty("Misc.", "Action Type", true)]
+		 public byte ActionType
+		{ 
+			get { return m_ActionType; }
+			set
+			{
+				m_ActionType = value;
+				OnPropertyChanged("ActionType");
 			}
 		}
 				
@@ -4230,11 +4272,17 @@ namespace WindEditor
 		public PathPoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Action Type", TargetProperties = new string[] { "ActionType"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
-			m_Unknown1 = stream.ReadInt32(); 
+			m_Unknown1 = stream.ReadByte(); 
+			m_Unknown2 = stream.ReadByte(); 
+			m_Unknown3 = stream.ReadByte(); 
+			m_ActionType = stream.ReadByte(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 		}
 
@@ -4244,7 +4292,10 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((int)Unknown1);
+			stream.Write((byte)Unknown1);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)ActionType);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 		}
 	}
@@ -4253,10 +4304,10 @@ namespace WindEditor
 	public partial class PathPoint_v2 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected int m_Unknown1;
+		protected byte m_Unknown1;
 
-		[WProperty("Misc.", "Unknown 1", false)]
-		 public int Unknown1
+		[WProperty("Misc.", "Unknown 1", true)]
+		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
 			set
@@ -4267,16 +4318,64 @@ namespace WindEditor
 		}
 				
 
+		protected byte m_Unknown2;
+
+		[WProperty("Misc.", "Unknown 2", true)]
+		 public byte Unknown2
+		{ 
+			get { return m_Unknown2; }
+			set
+			{
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
+			}
+		}
+				
+
+		protected byte m_Unknown3;
+
+		[WProperty("Misc.", "Unknown 3", true)]
+		 public byte Unknown3
+		{ 
+			get { return m_Unknown3; }
+			set
+			{
+				m_Unknown3 = value;
+				OnPropertyChanged("Unknown3");
+			}
+		}
+				
+
+		protected byte m_ActionType;
+
+		[WProperty("Misc.", "Action Type", true)]
+		 public byte ActionType
+		{ 
+			get { return m_ActionType; }
+			set
+			{
+				m_ActionType = value;
+				OnPropertyChanged("ActionType");
+			}
+		}
+				
+
 
 		// Constructor
 		public PathPoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Action Type", TargetProperties = new string[] { "ActionType"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
-			m_Unknown1 = stream.ReadInt32(); 
+			m_Unknown1 = stream.ReadByte(); 
+			m_Unknown2 = stream.ReadByte(); 
+			m_Unknown3 = stream.ReadByte(); 
+			m_ActionType = stream.ReadByte(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 		}
 
@@ -4286,7 +4385,10 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((int)Unknown1);
+			stream.Write((byte)Unknown1);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((byte)ActionType);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 		}
 	}

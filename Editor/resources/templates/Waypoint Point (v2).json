@@ -4,7 +4,10 @@
 	"FourCC" : "RPPN",
 	"Fields" :
 	[
-		{"Name" : "Unknown 1", "Type" : "Int"},
-		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "Unknown 1", "Type" : "Byte", "Editable": true},
+		{"Name" : "Unknown 2", "Type" : "Byte", "Editable": true},
+		{"Name" : "Unknown 3", "Type" : "Byte", "Editable": true},
+		{"Name" : "Action Type", "Type" : "Byte", "Editable": true},
+		{"Name" : "Position", "Type" : "Vector3"}
 	]
 }
