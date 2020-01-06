@@ -535,8 +535,8 @@ namespace WindEditor
 	public partial class andsw2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("andsw2", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("andsw2", "Num Switches to Check", true, "", SourceScene.Room)]
+		public int NumSwitchestoCheck
 		{ 
 			get
 			{
@@ -548,7 +548,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("NumSwitchestoCheck");
 			}
 		}
 
@@ -569,8 +569,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("andsw2", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -582,12 +582,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("andsw2", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("andsw2", "First Switch to Check", true, "The first switch index to check. The other switches it checks are after this one sequentially.\nFor example, if this is 5 and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.", SourceScene.Room)]
+		public int FirstSwitchtoCheck
 		{ 
 			get
 			{
@@ -599,7 +599,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("FirstSwitchtoCheck");
 			}
 		}
 
@@ -1295,71 +1295,109 @@ namespace WindEditor
 	public partial class bk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("bk", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Wandering = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Hiding_in_a_Pot = 3,
+			Guarding = 4,
+			Being_carried_by_a_Kargaroc = 5,
+			Search_Light_Operator = 6,
+			Jumping = 7,
+			Guarding_and_Yawning = 10,
+			Pink_Bokoblin_with_Telescope = 11,
+			Debug = 15,
+		}
+
+		[WProperty("bk", "Type", true, "The behavior of the Bokoblin when it spawns.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("bk", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("bk", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.", SourceScene.Room)]
+		public bool SwitchSpawnsBokoblin
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchSpawnsBokoblin");
 			}
 		}
 
-		[WProperty("bk", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("bk", "Is Green", true, "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.", SourceScene.Room)]
+		public bool IsGreen
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000020) >> 5);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000020 | (value_as_int << 5 & 0x00000020));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("IsGreen");
 			}
 		}
 
-		[WProperty("bk", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		public enum WeaponEnum
+		{
+			Unlit_Torch = 0,
+			Machete_1 = 1,
+			Lit_Torch = 2,
+			Machete_2 = 3,
+		}
+
+		[WProperty("bk", "Weapon", true, "The weapon that the Bokoblin is holding when it spawns.", SourceScene.Room)]
+		public WeaponEnum Weapon
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
-				return value_as_int;
+				return (WeaponEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Weapon");
 			}
 		}
 
@@ -1380,25 +1418,39 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("bk", "Path", true, "The path that the Bokoblin follows.", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("bk", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("bk", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -1410,12 +1462,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("bk", "Unknown_8", true, "", SourceScene.Room)]
-		public int Unknown_8
+		[WProperty("bk", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -1427,7 +1479,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_8");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
@@ -1909,20 +1961,34 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bridge", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("bridge", "Path", true, "The path for the bridge to be stretched along.", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
 
@@ -2780,56 +2846,80 @@ namespace WindEditor
 	public partial class ep : Actor
 	{
 		// Auto-Generated Properties from Templates
-		public int Type
+		public enum TypeEnum
+		{
+			Has_brazier_1 = 0,
+			Does_not_have_brazier_1 = 1,
+			Does_not_have_brazier_2 = 2,
+			Has_brazier_2 = 3,
+		}
+
+		[WProperty("ep", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("ep", "Has Fireflies?", true, "", SourceScene.Room)]
+		public bool HasFireflies
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("HasFireflies");
 			}
 		}
 
-		public int IsWooden
+		[WProperty("Torch", "Is Wooden?", true, "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold.", SourceScene.Room)]
+		public bool IsWooden
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000080) >> 7);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("IsWooden");
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("ep", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -2846,7 +2936,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("ep", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -2863,6 +2953,7 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Torch", "On Switch", true, "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default.", SourceScene.Room)]
 		public int OnSwitch
 		{ 
 			get
@@ -5195,6 +5286,23 @@ namespace WindEditor
 		{ 
 			get
 			{
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				OnPropertyChanged("Unknown_1");
+			}
+		}
+
+		[WProperty("kui", "Unknown_2", true, "", SourceScene.Room)]
+		public int Unknown_2
+		{ 
+			get
+			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
 				return value_as_int;
 			}
@@ -5203,12 +5311,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Unknown_2");
 			}
 		}
 
-		[WProperty("kui", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("kui", "Unknown_3", true, "", SourceScene.Room)]
+		public int Unknown_3
 		{ 
 			get
 			{
@@ -5220,12 +5328,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Unknown_3");
 			}
 		}
 
-		[WProperty("kui", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("kui", "Unknown_4", true, "", SourceScene.Room)]
+		public int Unknown_4
 		{ 
 			get
 			{
@@ -5237,7 +5345,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Unknown_4");
 			}
 		}
 
@@ -12392,6 +12500,23 @@ namespace WindEditor
 		{ 
 			get
 			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("Unknown_2");
+			}
+		}
+
+		[WProperty("obj_pirateship", "Unknown_3", true, "", SourceScene.Room)]
+		public int Unknown_3
+		{ 
+			get
+			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
@@ -12400,12 +12525,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Unknown_3");
 			}
 		}
 
-		[WProperty("obj_pirateship", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("obj_pirateship", "Unknown_4", true, "", SourceScene.Room)]
+		public int Unknown_4
 		{ 
 			get
 			{
@@ -12417,7 +12542,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Unknown_4");
 			}
 		}
 
@@ -14493,7 +14618,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Disable Respawn Switch", true, "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\n(You could also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch', though it's kind of buggy.)", SourceScene.Room)]
+		[WProperty("pt", "Disable Respawn Switch", true, "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\nAlternatively, you can also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch' that it sets on death - but you should only set a temporary switch this way, as if you set a permanent switch the Miniblin will be permanently inactive the next time you enter the room but won't be considered dead.", SourceScene.Room)]
 		public int DisableRespawnSwitch
 		{ 
 			get
