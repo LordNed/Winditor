@@ -23,14 +23,14 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "bridge",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "The path for the bridge to be stretched along.",
+      "DataType": "Path"
     }
   ]
 }

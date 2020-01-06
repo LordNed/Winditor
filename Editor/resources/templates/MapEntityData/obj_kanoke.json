@@ -51,7 +51,7 @@
       "Category": "obj_kanoke",
       "ToolTip": "",
       "DataType": "Integer"
-    }
+    },
     {
       "Name": "X Rotation",
       "ValueSource": "AuxillaryParameters1",

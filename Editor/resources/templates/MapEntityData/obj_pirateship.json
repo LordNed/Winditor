@@ -15,6 +15,16 @@
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_pirateship",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
@@ -23,7 +33,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Unknown_4",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
