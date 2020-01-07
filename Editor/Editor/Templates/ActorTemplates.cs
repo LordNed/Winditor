@@ -2514,7 +2514,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class door10 : TGDR
+	public partial class door10 : Actor
 	{
 		// Auto-Generated Properties from Templates
 		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
@@ -2661,7 +2661,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class door12 : TGDR
+	public partial class door12 : Actor
 	{
 		// Auto-Generated Properties from Templates
 		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]

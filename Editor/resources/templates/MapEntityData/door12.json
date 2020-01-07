@@ -1,6 +1,6 @@
 {
   "ClassName": "door12",
-  "ParentClassOverride": "TGDR",
+  "ParentClassOverride": "Actor",
   "Fields": [
     {
       "Name": "Switch Bit",
