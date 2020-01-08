@@ -10,7 +10,8 @@ namespace WindEditor
     {
         public WMap Map { get { return m_currentMap; } }
         public WUndoStack UndoStack { get { return m_undoStack; } }
-        //public WActorEditor ActorEditor { get { return m_actorEditor; } }
+        public ActorMode ActorMode { get { return m_ActorMode; } }
+        public CollisionMode CollisionMode { get { return m_CollisionMode; } }
 
         public IEditorMode CurrentMode
         {
