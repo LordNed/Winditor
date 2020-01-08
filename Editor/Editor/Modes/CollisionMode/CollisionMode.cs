@@ -489,7 +489,10 @@ namespace WindEditor.Editor.Modes
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                m_CollisionMesh.FromDAEFile(ofd.FileName);
+                WRoom currRoom = World.Map.FocusedScene as WRoom;
+                m_CollisionMesh.FromDAEFile(ofd.FileName, currRoom.RoomIndex);
+
+                m_CollisionTree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
             }
         }
 
