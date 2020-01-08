@@ -170,6 +170,9 @@ namespace WindEditor
             // Clear our array of currently selected objects as well.
             m_CurrentMode.ClearSelection();
 
+            // Unload any loaded resources and free all associated memory.
+            WResourceManager.UnloadAllResources();
+
             // Free collision mesh resources.
             if (Map != null)
             {

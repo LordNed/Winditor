@@ -441,11 +441,11 @@ namespace WindEditor
 
             foreach (var j3d in m_j3dList)
                 j3d.Asset.Dispose();
+            m_j3dList.Clear();
 
             foreach (var obj in m_objList)
                 obj.Asset.Dispose();
-
-            m_actorDescriptors.Clear();
+            m_objList.Clear();
         }
     }
 }
