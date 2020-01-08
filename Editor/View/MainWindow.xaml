@@ -16,8 +16,11 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.OpenRoomsCommand}" Key="O" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.SaveProjectCommand}" Key="S" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.SaveProjectAsCommand}" Key="S" Modifiers="Ctrl+Shift"/>
+        <KeyBinding Command="{Binding Path=WindEditor.ExportProjectCommand}" Key="E" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.ExportProjectAsCommand}" Key="E" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
@@ -59,12 +62,12 @@
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Stage..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
-                <MenuItem Header="Open _Room(s)..." Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
+                <MenuItem Header="Open _Room(s)..." InputGestureText="Ctrl + Shift + O" Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
                 <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.SaveProjectCommand}"/>
                 <MenuItem Header="Save _As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
                 <Separator/>
-                <MenuItem Header="_Export" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.ExportProjectCommand}"/>
-                <MenuItem Header="E_xport As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.ExportProjectAsCommand}"/>
+                <MenuItem Header="_Export" InputGestureText="Ctrl + E" Command="{Binding Path=WindEditor.ExportProjectCommand}"/>
+                <MenuItem Header="E_xport As..." InputGestureText="Ctrl + Shift + E" Command="{Binding Path=WindEditor.ExportProjectAsCommand}"/>
                 <Separator/>
                 <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
                 <Separator/>
