@@ -99,7 +99,7 @@ namespace WindEditor
                 if (mesh is WDOMNode)
                 {
                     WDOMNode node = (WDOMNode)mesh;
-                    if (mesh.GetType() != typeof(WSkyboxNode) && node.IsRendered)
+                    if (mesh.GetType() != typeof(WSkyboxNode) && node.ShouldBeRendered())
                     {
                         float dist = (mesh.GetPosition() - GetCameraPos()).Length;
 
@@ -121,7 +121,7 @@ namespace WindEditor
                 if (mesh is WDOMNode)
                 {
                     WDOMNode node = (WDOMNode)mesh;
-                    if (node.IsRendered)
+                    if (node.ShouldBeRendered())
                         mesh.Draw(this);
                 }
                 else

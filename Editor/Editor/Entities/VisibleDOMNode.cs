@@ -104,22 +104,6 @@ namespace WindEditor
             IsRendered = true;
 		}
 
-        public override void SetParent(WDOMNode newParent)
-        {
-            base.SetParent(newParent);
-
-            if (IsRendered == true)
-            {
-                WDOMNode parent = Parent;
-
-                while (parent != null)
-                {
-                    parent.IsRendered = true;
-                    parent = parent.Parent;
-                }
-            }
-        }
-
         public override void PostLoad()
 		{
 			base.PostLoad();

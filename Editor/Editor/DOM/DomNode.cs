@@ -139,11 +139,6 @@ namespace WindEditor
                     else
                         Flags &= ~NodeFlags.Rendered;
 
-                    foreach (var node in Children)
-                    {
-                        node.IsRendered = value;
-                    }
-
                     OnPropertyChanged("IsRendered");
                 }
             }
@@ -181,6 +176,22 @@ namespace WindEditor
         {
             foreach (var child in m_children)
                 child.SetTimeOfDay(timeOfDay);
+        }
+
+        public virtual bool ShouldBeRendered()
+        {
+            if (!IsRendered)
+                return false;
+
+            WDOMNode parent = Parent;
+            while (parent != null)
+            {
+                if (!parent.IsRendered)
+                    return false;
+                parent = parent.Parent;
+            }
+
+            return true;
         }
 
         //public virtual void Render(WSceneView view)

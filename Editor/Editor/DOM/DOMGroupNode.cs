@@ -8,6 +8,11 @@
         {
             FourCC = fourCC;
             IsVisible = true;
+            IsRendered = true;
+            if (FourCC == FourCC.SCOB)
+            {
+                IsRendered = false;
+            }
         }
 
         public override string ToString()
@@ -36,6 +41,7 @@
             FourCC = fourCC;
             Layer = layer;
             IsVisible = true;
+            IsRendered = true;
         }
 
         public override string ToString()
