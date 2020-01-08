@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using WindEditor.Editor.Modes;
 using WindEditor.Minitors;
+using WindEditor.Collision;
 
 namespace WindEditor
 {
@@ -169,6 +170,18 @@ namespace WindEditor
             // Clear our array of currently selected objects as well.
             m_CurrentMode.ClearSelection();
 
+            // Free collision mesh resources.
+            if (Map != null)
+            {
+                foreach (var scene in Map.SceneList)
+                {
+                    foreach (var collisionMesh in scene.GetChildrenOfType<WCollisionMesh>())
+                    {
+                        collisionMesh.ReleaseResources();
+                    }
+                }
+            }
+
             m_ActorMode.DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
             m_CollisionMode.Shutdown();
 
@@ -185,6 +198,18 @@ namespace WindEditor
 
             // Unload any loaded resources and free all associated memory.
             WResourceManager.UnloadAllResources();
+
+            // Free collision mesh resources.
+            if (Map != null)
+            {
+                foreach (var scene in Map.SceneList)
+                {
+                    foreach (var collisionMesh in scene.GetChildrenOfType<WCollisionMesh>())
+                    {
+                        collisionMesh.ReleaseResources();
+                    }
+                }
+            }
 
             foreach (var view in m_sceneViews)
                 view.Dispose();
