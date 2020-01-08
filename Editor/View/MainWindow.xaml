@@ -223,6 +223,11 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Go Here" Command="{Binding Path=WindEditor.MainWorld.Map.GoToSceneCommand}"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
                         </ListBox>
                     </GroupBox>
                 </Grid>

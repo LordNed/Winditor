@@ -5,12 +5,14 @@ using System.IO;
 using WArchiveTools.FileSystem;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace WindEditor
 {
     public class WMap : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand GoToSceneCommand { get { return new RelayCommand(x => GoToScene()); } }
 
         public string FocusedSceneLabel { get { return FocusedScene == null ? "" : FocusedScene is WStage ? "Stage" : FocusedScene.Name; } }
         public string MapName { get { return m_mapName; } }
@@ -164,6 +166,16 @@ namespace WindEditor
             {
                 foreach (var renderable in scene.GetChildrenOfType<IRenderable>())
                     renderable.AddToRenderer(view);
+            }
+        }
+
+        public void GoToScene()
+        {
+            if (FocusedScene.GetType() == typeof(WRoom))
+            {
+                var room = FocusedScene as WRoom;
+                BindingVector3 roomCenter = room.GetCenter();
+                m_world.GetFocusedSceneView().ViewCamera.Transform.Position = roomCenter;
             }
         }
 
