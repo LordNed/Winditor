@@ -236,37 +236,13 @@ namespace WindEditor.Editor.Modes
 
         public void OnBecomeActive()
         {
-            foreach (WScene s in World.Map.SceneList)
-            {
-                List<WCollisionMesh> meshes = s.GetChildrenOfType<WCollisionMesh>();
-
-                if (meshes.Count > 0)
-                {
-                    meshes[0].PreviousRenderVisibility = meshes[0].IsRendered;
-                    meshes[0].IsRendered = true;
-                }
-            }
-
-            if (!(World.Map.FocusedScene is WStage))
-            {
-                UpdateActiveMesh();
-            }
+            UpdateActiveMesh();
 
             World.Map.PropertyChanged += OnFocusedSceneChanged;
         }
 
         public void OnBecomeInactive()
         {
-            foreach (WScene s in World.Map.SceneList)
-            {
-                List<WCollisionMesh> meshes = s.GetChildrenOfType<WCollisionMesh>();
-
-                if (meshes.Count > 0)
-                {
-                    meshes[0].IsRendered = meshes[0].PreviousRenderVisibility;
-                }
-            }
-
             World.Map.PropertyChanged -= OnFocusedSceneChanged;
         }
 
@@ -279,6 +255,14 @@ namespace WindEditor.Editor.Modes
 
             ClearSelection();
 
+            UpdateActiveMesh();
+        }
+
+        private void UpdateActiveMesh()
+        {
+            if (ActiveCollisionMesh != null)
+                ActiveCollisionMesh.IsRendered = ActiveCollisionMesh.PreviousRenderVisibility;
+
             if (World.Map.FocusedScene is WStage)
             {
                 m_CollisionTree.ItemsSource = null;
@@ -286,16 +270,14 @@ namespace WindEditor.Editor.Modes
                 return;
             }
 
-            UpdateActiveMesh();
-        }
-
-        private void UpdateActiveMesh()
-        {
             List<WCollisionMesh> meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
 
             if (meshes.Count > 0)
             {
                 ActiveCollisionMesh = meshes[0];
+                ActiveCollisionMesh.PreviousRenderVisibility = ActiveCollisionMesh.IsRendered;
+                ActiveCollisionMesh.IsRendered = true;
+
                 m_CollisionTree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
             }
         }
