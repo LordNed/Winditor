@@ -169,6 +169,11 @@ namespace WindEditor.Collision
 
         private void WriteVertexData(EndianBinaryWriter writer, List<Vector3> vertices)
         {
+            // Pad to 4 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 4 != 0)
+                writer.Write((byte)0xFF);
+
             writer.BaseStream.Seek(0, SeekOrigin.Begin);
             writer.Write(vertices.Count);
             writer.Write((int)writer.BaseStream.Length);
@@ -184,6 +189,11 @@ namespace WindEditor.Collision
 
         private void WriteTriangleData(EndianBinaryWriter writer, List<CollisionTriangle> octree_tris, List<Vector3> vertices, List<CollisionProperty> properties)
         {
+            // Pad to 2 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 2 != 0)
+                writer.Write((byte)0xFF);
+
             writer.BaseStream.Seek(8, SeekOrigin.Begin);
             writer.Write(octree_tris.Count);
             writer.Write((int)writer.BaseStream.Length);
@@ -197,6 +207,11 @@ namespace WindEditor.Collision
 
         private void WriteOctreeIndexData(EndianBinaryWriter writer, List<OctreeNode> nodes, List<CollisionTriangle> octree_tris)
         {
+            // Pad to 2 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 2 != 0)
+                writer.Write((byte)0xFF);
+
             int index_count = 0;
 
             writer.BaseStream.Seek(0x14, SeekOrigin.Begin);
@@ -222,6 +237,11 @@ namespace WindEditor.Collision
 
         private void WriteOctreeNodeData(EndianBinaryWriter writer, List<OctreeNode> nodes, List<CollisionTriangle> octree_tris)
         {
+            // Pad to 2 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 2 != 0)
+                writer.Write((byte)0xFF);
+
             writer.BaseStream.Seek(0x18, SeekOrigin.Begin);
             writer.Write(nodes.Count);
             writer.Write((int)writer.BaseStream.Length);
@@ -235,6 +255,11 @@ namespace WindEditor.Collision
 
         private void WriteGroupData(EndianBinaryWriter writer, List<OctreeNode> octree)
         {
+            // Pad to 4 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 4 != 0)
+                writer.Write((byte)0xFF);
+
             long cur_offset = writer.BaseStream.Position;
 
             writer.BaseStream.Seek(0x24, SeekOrigin.Begin);
@@ -261,6 +286,11 @@ namespace WindEditor.Collision
 
         private void WritePropertyData(EndianBinaryWriter writer, List<CollisionProperty> properties)
         {
+            // Pad to 4 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 4 != 0)
+                writer.Write((byte)0xFF);
+
             writer.BaseStream.Seek(0x28, SeekOrigin.Begin);
             writer.Write(properties.Count);
             writer.Write((int)writer.BaseStream.Length);
