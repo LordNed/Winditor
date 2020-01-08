@@ -134,6 +134,8 @@ namespace WindEditor.Editor.Modes
 
                 foreach (VisibleDOMNode actorNode in allActors)
                 {
+                    if (!actorNode.ShouldBeRendered())
+                        continue;
                     float intersectDistance;
                     bool hitActor = actorNode.Raycast(ray, out intersectDistance);
                     if (hitActor)
@@ -145,12 +147,6 @@ namespace WindEditor.Editor.Modes
                         }
                     }
                 }
-            }
-
-            if (closestResult != null)
-            {
-                if (!closestResult.IsRendered)
-                    closestResult = null;
             }
 
             return closestResult;
