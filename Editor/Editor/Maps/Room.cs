@@ -6,6 +6,7 @@ using JStudio.J3D;
 using System.Collections.Generic;
 using GameFormatReader.Common;
 using WArchiveTools.FileSystem;
+using WindEditor.Collision;
 
 namespace WindEditor
 {
@@ -228,6 +229,26 @@ namespace WindEditor
                 exporter.ExportToStream(writer, this);
             }
         }
+        public override void SaveCollisionToDirectory(string directory)
+        {
+            Console.WriteLine("Writing DZB File...");
+
+            List<WCollisionMesh> meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
+            if (meshes.Count == 0)
+                return;
+
+            string dzbDirectory = string.Format("{0}/dzb", directory);
+            if (!Directory.Exists(dzbDirectory))
+                Directory.CreateDirectory(dzbDirectory);
+
+            string filePath = string.Format("{0}/room.dzb", dzbDirectory);
+            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+            {
+                writer.Write(meshes[0].ToDZBArray());
+            }
+
+            Console.WriteLine("Finished saving DZB File.");
+        }
 
         public override VirtualFilesystemDirectory ExportToVFS()
         {
@@ -246,6 +267,21 @@ namespace WindEditor
                     writer.Flush();
 
                     dzr_file.Data = mem.ToArray();
+                }
+            }
+
+            List<WCollisionMesh> meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
+            if (meshes.Count > 0)
+            {
+                VirtualFilesystemFile dzb_file = SourceDirectory.GetFileAtPath("dzb/room.dzb");
+
+                using (MemoryStream mem = new MemoryStream())
+                {
+                    using (EndianBinaryWriter writer = new EndianBinaryWriter(mem, Endian.Big))
+                    {
+                        writer.Write(meshes[0].ToDZBArray());
+                        dzb_file.Data = mem.ToArray();
+                    }
                 }
             }
 

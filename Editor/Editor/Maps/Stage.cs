@@ -146,6 +146,10 @@ namespace WindEditor
             }
         }
 
+        public override void SaveCollisionToDirectory(string directory)
+        {
+        }
+
         public override VirtualFilesystemDirectory ExportToVFS()
         {
             VirtualFilesystemDirectory new_dir = SourceDirectory;

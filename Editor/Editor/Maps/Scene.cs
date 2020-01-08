@@ -214,11 +214,13 @@ namespace WindEditor
             SaveEntitiesToDirectory(directory);
             Console.WriteLine("Finished saving DZR/DZS File.");
 
+            SaveCollisionToDirectory(directory);
 
             Console.WriteLine("Finished Saving {0}.", Name);
         }
 
         public abstract void SaveEntitiesToDirectory(string directory);
+        public abstract void SaveCollisionToDirectory(string directory);
 
         public virtual VirtualFilesystemDirectory ExportToVFS()
         {
