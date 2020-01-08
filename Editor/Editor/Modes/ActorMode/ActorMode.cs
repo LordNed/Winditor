@@ -13,6 +13,14 @@ namespace WindEditor.Editor.Modes
 {
     public partial class ActorMode : IEditorMode
     {
+        public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
+        public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
+        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => false); } }
+        public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
+        public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
+        public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
+        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity()); } }
+
         private DockPanel m_ModeControlsDock;
         private WDetailsViewViewModel m_DetailsViewModel;
 
@@ -230,6 +238,41 @@ namespace WindEditor.Editor.Modes
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
+
+        private void CutSelection()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void CopySelection()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void PasteSelection()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void DeleteSelection()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void SelectAll()
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        private void SelectNone()
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        public void CreateEntity()
+        {
+            //throw new NotImplementedException();
+        }
 
         ~ActorMode()
         {

@@ -18,12 +18,12 @@
         <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.SaveProjectCommand}" Key="S" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.SaveProjectAsCommand}" Key="S" Modifiers="Ctrl+Shift"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}" Key="Delete"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}" Key="D" Modifiers="Shift"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.DeleteSelectionCommand}" Key="Delete"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}" Key="D" Modifiers="Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.StartPlaytestCommand}" Key="P" Modifiers="Ctrl"/>
     </Window.InputBindings>
     <Window.DataContext>
@@ -81,38 +81,38 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Cu_t" InputGestureText="Ctrl + X" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CutSelectionCommand}">
+                <MenuItem Header="Cu_t" InputGestureText="Ctrl + X" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CutSelectionCommand}">
                     <MenuItem.Icon>
                         <Image Source="../resources/ui/cut_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Copy" InputGestureText="Ctrl + C" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CopySelectionCommand}">
+                <MenuItem Header="_Copy" InputGestureText="Ctrl + C" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CopySelectionCommand}">
                     <MenuItem.Icon>
                         <Image Source="../resources/ui/copy_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Paste" InputGestureText="Ctrl + V" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.PasteSelectionCommand}">
+                <MenuItem Header="Paste" InputGestureText="Ctrl + V" Command="{Binding Path=WindEditor.MainWorld.ActorMode.PasteSelectionCommand}">
                     <MenuItem.Icon>
                         <Image Source="../resources/ui/paste_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Delete" InputGestureText="Del" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.DeleteSelectionCommand}">
+                <MenuItem Header="_Delete" InputGestureText="Del" Command="{Binding Path=WindEditor.MainWorld.ActorMode.DeleteSelectionCommand}">
                     <MenuItem.Icon>
                         <Image Source="../resources/ui/deleteuser_16x.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectAllCommand}"/>
-                <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.SelectNoneCommand}"/>
+                <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectAllCommand}"/>
+                <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}"/>
             </MenuItem>
             <MenuItem Header="Create">
-                <MenuItem Header="Actor" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="ACTR"/>
+                <MenuItem Header="Actor" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="ACTR"/>
                 <Separator/>
-                <MenuItem Header="Player Spawn" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="PLYR"/>
-                <MenuItem Header="Ship Spawn" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="SHIP"/>
+                <MenuItem Header="Player Spawn" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="PLYR"/>
+                <MenuItem Header="Ship Spawn" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="SHIP"/>
                 <Separator/>
-                <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="TRES"/>
-                <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}" CommandParameter="SCLS"/>
+                <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="TRES"/>
+                <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="SCLS"/>
             </MenuItem>
             <MenuItem Header="_Play" InputGestureText="Ctrl + P" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
             <MenuItem Padding="0" Width="15">
@@ -188,7 +188,7 @@
                             </TreeView.Resources>
                             <TreeView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Add Object" Command="{Binding Path=WindEditor.MainWorld.ActorEditor.CreateEntityCommand}"/>
+                                    <MenuItem Header="Add Object" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}"/>
                                 </ContextMenu>
                             </TreeView.ContextMenu>
                             <TreeView.ItemContainerStyle>
