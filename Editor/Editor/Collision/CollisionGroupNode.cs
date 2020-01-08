@@ -37,7 +37,8 @@ namespace WindEditor.Collision
 
         private TerrainType m_Terrain;
 
-        private int m_RoomTableIndex;
+        private short m_RoomNum;
+        private byte m_RoomTableIndex;
 
         [WProperty("Group Settings", "Terrain Type", true, "Whether the surface is solid, water, or lava.")]
         public TerrainType Terrain
@@ -53,7 +54,21 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Group Settings", "Room Table Index", true, "Unknown")]
+        [WProperty("Group Settings", "Room Number", true, "Which room to consider the current room when the player is above this surface.")]
+        public int RoomNumber
+        {
+            get { return m_RoomNum; }
+            set
+            {
+                if (value != m_RoomNum)
+                {
+                    m_RoomNum = (short)value;
+                    OnPropertyChanged("RoomNumber");
+                }
+            }
+        }
+
+        [WProperty("Group Settings", "Room Table Index", true, "The index in the RTBL list to decide what rooms to load when the player is above this surface.")]
         public int RoomTableIndex
         {
             get { return m_RoomTableIndex; }
@@ -61,7 +76,7 @@ namespace WindEditor.Collision
             {
                 if (value != m_RoomTableIndex)
                 {
-                    m_RoomTableIndex = value;
+                    m_RoomTableIndex = (byte)value;
                     OnPropertyChanged("RoomTableIndex");
                 }
             }
@@ -125,7 +140,7 @@ namespace WindEditor.Collision
             m_NextSiblingIndex = reader.ReadInt16();
             m_FirstChildIndex = reader.ReadInt16();
 
-            reader.SkipInt16(); // Unknown 1
+            m_RoomNum = reader.ReadInt16();
 
             FirstVertexIndex = reader.ReadInt16();
 
@@ -277,10 +292,9 @@ namespace WindEditor.Collision
             writer.Write(m_NextSiblingIndex);
             writer.Write(m_FirstChildIndex);
 
-            // Unknown 1
             if (Parent == null)
             {
-                writer.Write((short)0);
+                writer.Write(m_RoomNum);
             }
             else
             {
@@ -301,7 +315,7 @@ namespace WindEditor.Collision
 
             writer.Write((short)0);
             writer.Write((byte)Terrain);
-            writer.Write((byte)0);
+            writer.Write((byte)m_RoomTableIndex);
         }
 
         public Node GetAssimpNodesRecursive(List<Mesh> meshes)
