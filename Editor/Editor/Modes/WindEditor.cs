@@ -22,6 +22,7 @@ namespace WindEditor
     {
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
         public ICommand OpenProjectCommand { get { return new RelayCommand(x => OnApplicationRequestOpenProject()); } }
+        public ICommand OpenRoomsCommand { get { return new RelayCommand(x => OnApplicationRequestOpenRooms()); } }
         public ICommand SaveProjectCommand { get { return new RelayCommand(x => OnApplicationRequestSaveProject(), x => MainWorld.Map != null); } }
         public ICommand SaveProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestSaveAsProject(), x => MainWorld.Map != null); } }
         public ICommand ExportProjectCommand { get { return new RelayCommand(x => OnApplicationRequestExportProject(), x => MainWorld.Map != null); } }
@@ -96,7 +97,12 @@ namespace WindEditor
                 // We'll have to dump the contents of the arcs
                 else
                 {
-                    string tempMapPath = Path.GetTempPath() + Path.GetFileName(ofd.FileName); // This is where we'll dump the arc contents to
+                    string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(ofd.FileName)); // This is where we'll dump the arc contents to
+
+                    DeleteDumpContentsFromTempDir();
+
+                    if (!Directory.Exists(GetStageDumpPath()))
+                        Directory.CreateDirectory(GetStageDumpPath());
 
                     if (!Directory.Exists(tempMapPath))
                         Directory.CreateDirectory(tempMapPath);
@@ -124,6 +130,65 @@ namespace WindEditor
             }
         }
 
+        public void OnApplicationRequestOpenRooms()
+        {
+            var ofd = new CommonOpenFileDialog()
+            {
+                Title = "Choose Rooms to Open",
+                AddToMostRecentlyUsedList = false,
+                AllowNonFileSystemItems = false,
+                EnsureFileExists = true,
+                EnsurePathExists = true,
+                EnsureReadOnly = false,
+                EnsureValidNames = true,
+                Multiselect = true,
+                ShowPlacesList = true
+            };
+
+            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                List<string> files = new List<string>(ofd.FileNames);
+                string dirPath = Path.GetDirectoryName(files[0]);
+
+                string stageArcPath = Path.Combine(dirPath, "Stage.arc");
+                if (!files.Contains(stageArcPath) && File.Exists(stageArcPath))
+                {
+                    // Always load the stage arc even if it wasn't selected by the user.
+                    files.Add(stageArcPath);
+                }
+
+                string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(dirPath)); // This is where we'll dump the arc contents to
+
+                DeleteDumpContentsFromTempDir();
+
+                if (!Directory.Exists(GetStageDumpPath()))
+                    Directory.CreateDirectory(GetStageDumpPath());
+
+                if (!Directory.Exists(tempMapPath))
+                    Directory.CreateDirectory(tempMapPath);
+
+                foreach (var arc in files)
+                {
+                    VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
+                    if (archiveRoot == null)
+                        continue;
+
+                    string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
+
+                    if (!Directory.Exists(tempArcPath))
+                        Directory.CreateDirectory(tempMapPath);
+
+                    DumpContents(archiveRoot, tempArcPath);
+                }
+
+                LoadProject(tempMapPath, dirPath);
+
+                // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
+                MainWorld.Map.SavePath = null;
+                m_sourceDataPath = tempMapPath;
+            }
+        }
+
         private void DumpContents(VirtualFilesystemDirectory dir, string rootPath)
         {
             foreach (var child in dir.Children)
@@ -139,6 +204,20 @@ namespace WindEditor
 
                     DumpContents(child as VirtualFilesystemDirectory, dirPath);
                 }
+            }
+        }
+
+        private string GetStageDumpPath()
+        {
+            return Path.Combine(Path.GetTempPath(), "WinditorStageDumps");
+        }
+
+        private void DeleteDumpContentsFromTempDir()
+        {
+            DirectoryInfo dir = new DirectoryInfo(GetStageDumpPath());
+            if (dir.Exists)
+            {
+                dir.Delete(true);
             }
         }
 

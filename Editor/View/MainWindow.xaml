@@ -58,7 +58,8 @@
 
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
+                <MenuItem Header="_Open Stage..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
+                <MenuItem Header="Open _Room(s)..." Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
                 <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.SaveProjectCommand}"/>
                 <MenuItem Header="Save _As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
                 <Separator/>
