@@ -85,6 +85,14 @@ namespace WindEditor.Collision
         #endregion
 
         #region Loading from COLLADA
+        public void FromDAEFile(string file_name)
+        {
+            COLLADA dae = COLLADA.Load(file_name);
+            m_Nodes = new List<CollisionGroupNode>();
+            Triangles = new List<CollisionTriangle>();
+            LoadFromCollada(dae);
+        }
+
         private void LoadFromCollada(COLLADA dae)
         {
             m_UpAxis = dae.asset.up_axis;

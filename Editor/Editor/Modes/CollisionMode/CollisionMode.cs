@@ -13,11 +13,15 @@ using System.Windows.Media;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace WindEditor.Editor.Modes
 {
     public class CollisionMode : IEditorMode
     {
+        public ICommand ExportToDAECommand { get { return new RelayCommand(x => ExportToDae()); } }
+        public ICommand ImportFromDAECommand { get { return new RelayCommand(x => ImportFromDae()); } }
+
         private TreeView m_CollisionTree;
         private DockPanel m_ModeControlsDock;
         private WDetailsViewViewModel m_DetailsViewModel;
@@ -123,6 +127,19 @@ namespace WindEditor.Editor.Modes
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
             };
+
+            Button export_dae_button = new Button()
+            {
+                Content = "Export DAE",
+                Command = ExportToDAECommand,
+            };
+            Button import_dae_button = new Button()
+            {
+                Content = "Import DAE",
+                Command = ImportFromDAECommand,
+            };
+            collision_stack_panel.Children.Add(export_dae_button);
+            collision_stack_panel.Children.Add(import_dae_button);
 
             RowDefinition tree_row = new RowDefinition();
             RowDefinition splitter_row = new RowDefinition();
@@ -431,6 +448,49 @@ namespace WindEditor.Editor.Modes
                 DetailsViewModel.ReflectObject(EditorSelection.SelectedObjects[0].Properties);
             else
                 DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
+        }
+
+        public void ExportToDae()
+        {
+            if (m_CollisionMesh == null)
+            {
+                MessageBox.Show("You must select a room before you can export its collision.", "No collision mesh selected");
+                return;
+            }
+
+            var sfd = new CommonSaveFileDialog()
+            {
+                Title = "Export DAE",
+                DefaultExtension = "dae",
+                AlwaysAppendDefaultExtension = true,
+            };
+            sfd.Filters.Add(new CommonFileDialogFilter("Collada", ".dae"));
+
+            if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                m_CollisionMesh.ToDAEFile(sfd.FileName);
+            }
+        }
+
+        public void ImportFromDae()
+        {
+            if (m_CollisionMesh == null)
+            {
+                MessageBox.Show("You must select a room before you can import collision for it.", "No collision mesh selected");
+                return;
+            }
+
+            var ofd = new CommonOpenFileDialog()
+            {
+                Title = "Import DAE",
+                DefaultExtension = "dae",
+            };
+            ofd.Filters.Add(new CommonFileDialogFilter("Collada", ".dae"));
+
+            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                m_CollisionMesh.FromDAEFile(ofd.FileName);
+            }
         }
 
         #region INotifyPropertyChanged Support
