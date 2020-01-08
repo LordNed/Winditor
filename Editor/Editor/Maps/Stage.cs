@@ -60,7 +60,9 @@ namespace WindEditor
                 {
                     WRoom room = mapRooms.Find(x => x.RoomIndex == multTable[i].RoomNumber);
                     if (room != null)
-                        room.RoomTransform = multTable[i];
+                    {
+                        room.SetRoomTransform(multTable[i]);
+                    }
                 }
 
                 // Load Room Memory Allocation info. How much extra memory do these rooms allocate?

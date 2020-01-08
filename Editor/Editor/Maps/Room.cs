@@ -64,20 +64,20 @@ namespace WindEditor
 
 
 
-    public class WRoom : WScene, IRenderable
+    public class WRoom : WScene
     {
         public int RoomIndex { get; protected set; }
         public int MemoryAllocation { get; set; }
         public WRoomTransform RoomTransform { get; set; }
         public EnvironmentLightingConditions EnvironmentLighting { get; set; }
 
-        private List<J3D> m_roomModels;
+        private List<J3DNode> m_roomModelNodes;
 
 
         public WRoom(WWorld world, int roomIndex):base(world)
         {
             RoomIndex = roomIndex;
-            m_roomModels = new List<J3D>();
+            m_roomModelNodes = new List<J3DNode>();
             IsRendered = true;
         }
 
@@ -130,6 +130,7 @@ namespace WindEditor
                     {
                         J3DNode j3d_node = new J3DNode(mesh, m_world);
                         j3d_node.SetParent(col_category);
+                        m_roomModelNodes.Add(j3d_node);
                     }
                 }
             }
@@ -138,9 +139,6 @@ namespace WindEditor
         public override void Tick(float deltaTime)
         {
             base.Tick(deltaTime);
-
-            foreach (var model in m_roomModels)
-                model.Tick(deltaTime);
         }
 
         public override void SetTimeOfDay(float timeOfDay)
@@ -150,12 +148,13 @@ namespace WindEditor
             if(EnvironmentLighting != null)
             {
                 var curLight = EnvironmentLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
-                foreach (var model in m_roomModels)
+                foreach (J3DNode node in m_roomModelNodes)
                 {
+                    J3D model = node.Model;
                     if(model.Name == "model")
                     {
-                    model.SetTevColorOverride(0, curLight.RoomLightColor);
-                    model.SetTevkColorOverride(0, curLight.RoomAmbientColor);
+                        model.SetTevColorOverride(0, curLight.RoomLightColor);
+                        model.SetTevkColorOverride(0, curLight.RoomAmbientColor);
                     }
                     else if(model.Name == "model1")
                     {
@@ -178,56 +177,42 @@ namespace WindEditor
 
         }
 
-        public override string ToString()
+        public void SetRoomTransform(WRoomTransform roomTransform)
         {
-            return Name;
-        }
-
-        void IRenderable.AddToRenderer(WSceneView view)
-        {
-            view.AddOpaqueMesh(this);
-        }
-
-        void IRenderable.Draw(WSceneView view)
-        {
-            Vector3 scale = Transform.LocalScale;
-            Quaternion rotation = Transform.Rotation;
-            Vector3 translation = Transform.Position;
-
-            if(RoomTransform != null)
+            RoomTransform = roomTransform;
+            foreach (J3DNode j3d_node in m_roomModelNodes)
             {
-                rotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(RoomTransform.YRotation));
-                translation = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+                j3d_node.Transform.Position = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+                j3d_node.Transform.LocalRotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(RoomTransform.YRotation));
             }
-
-            Matrix4 trs = Matrix4.CreateScale(scale) * Matrix4.CreateFromQuaternion(rotation) * Matrix4.CreateTranslation(translation);
-            foreach(var mesh in m_roomModels)
-                mesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
 
-        Vector3 IRenderable.GetPosition()
+        public Vector3 GetCenter()
         {
             Vector3 roomOffset = Vector3.Zero;
 
-            if (RoomTransform != null)
-                roomOffset = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+            if (m_roomModelNodes.Count > 0)
+            {
+                roomOffset += m_roomModelNodes[0].Model.BoundingSphere.Center;
+            }
 
-            if (m_roomModels.Count > 0)
-                roomOffset += m_roomModels[0].BoundingSphere.Center;
+            if (RoomTransform != null)
+            {
+                roomOffset += new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+
+                float angle = WMath.DegreesToRadians(-RoomTransform.YRotation);
+                float origX = roomOffset.X;
+                float origZ = roomOffset.Z;
+                roomOffset.X = (float)(origX * Math.Cos(angle) - origZ * Math.Sin(angle));
+                roomOffset.Z = (float)(origX * Math.Sin(angle) + origZ * Math.Cos(angle));
+            }
 
             return roomOffset;
         }
 
-        float IRenderable.GetBoundingRadius()
+        public override string ToString()
         {
-            float largestRadius = 0f;
-            for(int i = 0; i < m_roomModels.Count; i++)
-            {
-                if (m_roomModels[i].BoundingSphere.Radius > largestRadius)
-                    largestRadius = m_roomModels[i].BoundingSphere.Radius;
-            }
-
-            return largestRadius;
+            return Name;
         }
 
         public override void SaveEntitiesToDirectory(string directory)
