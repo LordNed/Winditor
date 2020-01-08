@@ -34,7 +34,21 @@ namespace WindEditor.Collision
 
         public CollisionProperty()
         {
+            CamID = 0xFF;
+            SoundID = SoundID.Normal;
+            ExitID = 0x3F;
+            PolyColor = 0xFF;
 
+            LinkNo = 0xFF;
+            WallCode = WallCode.Normal;
+            SpecialCode = SpecialCode.Normal;
+            AttributeCode = AttributeCode.Normal;
+            GroundCode = GroundCode.Normal;
+
+            CamMoveBG = 0xFF;
+            RoomCamID = 0xFF;
+            RoomPathID = 0xFF;
+            RoomPathPntNo = 0xFF;
         }
 
         public void ToDZBFile(EndianBinaryWriter writer)
