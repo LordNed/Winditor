@@ -144,9 +144,24 @@ namespace WindEditor.Collision
 
             // For some reason Maya puts a leading space in the face index data,
             // so we need to trim that out before trying to parse the index string.
-            triangles tris = m.Items[0] as triangles;
-            string[] indices = tris.p.Trim(' ').Split(' ');
-            int stride = tris.input.Length; // Make sure this tool can support meshes with multiple vertex attributes.
+            string[] indices;
+            int stride;
+            if (m.Items[0].GetType() == typeof(triangles))
+            {
+                triangles tris = m.Items[0] as triangles;
+                indices = tris.p.Trim(' ').Split(' ');
+                stride = tris.input.Length; // Make sure this tool can support meshes with multiple vertex attributes.
+            }
+            else if (m.Items[0].GetType() == typeof(polylist))
+            {
+                polylist polys = m.Items[0] as polylist;
+                indices = polys.p.Trim(' ').Split(' ');
+                stride = polys.input.Length; // Make sure this tool can support meshes with multiple vertex attributes.
+            }
+            else
+            {
+                throw new Exception($"Unsupported polygon type for mesh {geo.name}: {m.Items[0].GetType()}");
+            }
 
             for (int i = 0; i < indices.Length; i += stride * 3)
             {
