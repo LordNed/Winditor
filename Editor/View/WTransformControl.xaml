@@ -22,7 +22,7 @@
                 <TextBlock Text="Y" Grid.Column="2" TextAlignment="Center" Foreground="White" Background="Green"/>
                 <TextBlock Text="Z" Grid.Column="4" TextAlignment="Center" Foreground="White" Background="Blue"/>
                 <xctk:SingleUpDown x:Name="XUpDown" Value="{Binding ElementName=_this, Path=BackingVector.X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch"/>
-                <xctk:SingleUpDown x:Name="YUpDown" Value="{Binding ElementName=_this, Path=BackingVector.Y}" Grid.Column="3" HorizontalAlignment="Stretch"/>
+                <xctk:SingleUpDown x:Name="YUpDown" Value="{Binding ElementName=_this, Path=BackingVector.Y}" Increment="1" Grid.Column="3" HorizontalAlignment="Stretch"/>
                 <xctk:SingleUpDown x:Name="ZUpDown" Value="{Binding ElementName=_this, Path=BackingVector.Z}" Grid.Column="5" HorizontalAlignment="Stretch"/>
             </Grid>
         </DockPanel>

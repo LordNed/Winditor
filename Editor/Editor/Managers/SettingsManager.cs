@@ -57,7 +57,7 @@ namespace WindEditor
         }
         #endregion
 
-        [WProperty("Main", "Root Directory", true, "The path to an extracted TWW ISO, dumped with a recent version of Dolphin.")]
+        [WProperty("Paths", "Game Root", true, "Path to an extracted TWW ISO, dumped with a recent version of Dolphin.")]
         public FileReference RootDirectory
         {
             get { return m_RootDirectory; }
@@ -67,6 +67,20 @@ namespace WindEditor
                 {
                     m_RootDirectory = value;
                     OnPropertyChanged("RootDirectory");
+                }
+            }
+        }
+
+        [WProperty("Paths", "Dolphin", true, "Path to an installation of Dolphin. Required for playtesting.")]
+        public FileReference DolphinDirectory
+        {
+            get { return m_DolphinDirectory; }
+            set
+            {
+                if (value != m_DolphinDirectory)
+                {
+                    m_DolphinDirectory = value;
+                    OnPropertyChanged("DolphinDirectory");
                 }
             }
         }
@@ -106,12 +120,26 @@ namespace WindEditor
         }
 
         private FileReference m_RootDirectory;
+        private FileReference m_DolphinDirectory;
         private bool m_DumpTextures;
         private bool m_DumpShaders;
 
         public WSettingsContainer()
         {
             RootDirectory = new FileReference();
+        }
+
+        public void SetProperty(string property_name, object value)
+        {
+            PropertyInfo[] props = this.GetType().GetProperties();
+
+            foreach (PropertyInfo p in props)
+            {
+                if (p.Name == property_name)
+                {
+                    p.SetValue(this, value);
+                }
+            }
         }
     }
 

@@ -30,6 +30,8 @@ namespace WindEditor.View
         public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register(
             "FileName", typeof(string), typeof(FileReferenceControl), new PropertyMetadata(""));
 
+        public string FieldName { get; set; }
+
         public FileReferenceControl()
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace WindEditor.View
 
         private void FileSelectorButton_Click(object sender, RoutedEventArgs e)
         {
+            // Set up the directory picker
             var ofd = new CommonOpenFileDialog();
             ofd.Title = "Choose Directory";
             ofd.IsFolderPicker = true;
@@ -52,7 +55,13 @@ namespace WindEditor.View
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
             if (ofd.ShowDialog(window) == CommonFileDialogResult.Ok)
             {
-                WSettingsManager.GetSettings().RootDirectory.FilePath = ofd.FileName;
+                FileReference reference = new FileReference
+                {
+                    FilePath = ofd.FileName
+                };
+
+                WSettingsManager.GetSettings().SetProperty(FieldName, reference);
+                FileName = ofd.FileName;
             }
         }
     }

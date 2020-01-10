@@ -31,6 +31,7 @@ namespace WindEditor
             // Sky
             if (m_vrSky != null)
             {
+                m_vrSky.Tick(deltaTime);
                 // Background
                 m_vrSky.Model.SetTevkColorOverride(0, m_colors.SkyColor);
                 // Floor
@@ -39,15 +40,24 @@ namespace WindEditor
 
             // Horizon Color
             if (m_vrKasumiMae != null)
+            {
+                m_vrKasumiMae.Tick(deltaTime);
                 m_vrKasumiMae.Model.SetTevColorOverride(0, m_colors.HorizonColor);
+            }
 
             // False Sea Color
             if (m_vrUsoUmi != null)
+            {
+                m_vrUsoUmi.Tick(deltaTime);
                 m_vrUsoUmi.Model.SetTevkColorOverride(0, m_colors.FalseSeaColor);
+            }
 
             // Cloud Color
             if (m_vrBackCloud != null)
+            {
+                m_vrBackCloud.Tick(deltaTime);
                 m_vrBackCloud.Model.SetTevColorOverride(0, m_colors.HorizonCloudColor);
+            }
         }
 
         public void UpdatePosition(Vector3 camPosition)

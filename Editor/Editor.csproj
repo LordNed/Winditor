@@ -648,6 +648,9 @@
     <Compile Include="View\OptionsMenu.xaml.cs">
       <DependentUpon>OptionsMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WActorCreatorWindow.xaml.cs">
+      <DependentUpon>WActorCreatorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WActorReferenceControl.xaml.cs">
       <DependentUpon>WActorReferenceControl.xaml</DependentUpon>
     </Compile>
@@ -679,6 +682,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\OptionsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WActorCreatorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

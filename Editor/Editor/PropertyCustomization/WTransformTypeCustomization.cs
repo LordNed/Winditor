@@ -26,7 +26,7 @@ namespace WindEditor.Editor
 
             WTransform transform = property.GetValue(source) as WTransform;
 
-            Binding pos_bind = new Binding("Position")
+            Binding pos_bind = new Binding("PositionBase")
             {
                 Source = transform,
                 Mode = BindingMode.TwoWay,
@@ -35,14 +35,23 @@ namespace WindEditor.Editor
 
             pos_ctrl.SetBinding(WTransformControl.Vector3Property, pos_bind);
 
+            Binding scale_bind = new Binding("ScaleBase")
+            {
+                Source = transform,
+                Mode = BindingMode.TwoWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            };
+
+            scale_ctrl.SetBinding(WTransformControl.Vector3Property, scale_bind);
+
             WDetailSingleRowViewModel pos_row = new WDetailSingleRowViewModel("Position");
             pos_row.PropertyControl = pos_ctrl;
-            WDetailSingleRowViewModel rot_row = new WDetailSingleRowViewModel("Rotation");
-            rot_row.PropertyControl = rot_ctrl;
+            //WDetailSingleRowViewModel rot_row = new WDetailSingleRowViewModel("Rotation");
+            //rot_row.PropertyControl = rot_ctrl;
             WDetailSingleRowViewModel scale_row = new WDetailSingleRowViewModel("Scale");
             scale_row.PropertyControl = scale_ctrl;
 
-            return new List<WDetailSingleRowViewModel>() { pos_row, rot_row, scale_row };
+            return new List<WDetailSingleRowViewModel>() { pos_row, scale_row };//, rot_row, scale_row };
         }
     }
 }
