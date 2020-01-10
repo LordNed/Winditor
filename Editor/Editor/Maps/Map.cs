@@ -174,8 +174,7 @@ namespace WindEditor
             if (FocusedScene.GetType() == typeof(WRoom))
             {
                 var room = FocusedScene as WRoom;
-                BindingVector3 roomCenter = room.GetCenter();
-                m_world.GetFocusedSceneView().ViewCamera.Transform.Position = roomCenter;
+                m_world.GetFocusedSceneView().ViewCamera.Transform.Position = room.GetCenter(); ;
             }
         }
 
