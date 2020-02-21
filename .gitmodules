@@ -5,7 +5,3 @@
 [submodule "JStudio"]
 	path = JStudio
 	url = https://github.com/LordNed/JStudio.git
-[submodule "WCommon"]
-	path = WCommon
-	url = https://github.com/LagoLunatic/WCommon.git
-	branch = foliage-objs
