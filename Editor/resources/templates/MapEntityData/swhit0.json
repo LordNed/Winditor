@@ -3,43 +3,51 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "swhit0",
-      "ToolTip": "",
+      "ToolTip": "Switch to set when hit.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Event",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "swhit0",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "The event to start when hit? (Only for type 'Unknown 3'.)",
+      "DataType": "Event"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "swhit0",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+        15: "Unknown 4 B",
+      }
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Time Limit (Half Seconds)",
       "ValueSource": "Parameters",
       "Mask": 0x0FF00000,
       "Shift": 20,
       "Hidden": false,
       "Category": "swhit0",
-      "ToolTip": "",
+      "ToolTip": "This number times 15 frames is how long the player has to hit all the crystals after the first crystal is hit.",
       "DataType": "Integer"
     },
     {
@@ -53,13 +61,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Switch to Check",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "swhit0",
-      "ToolTip": "",
+      "ToolTip": "Once this switch is set, the crystal will consider the puzzle finished and no longer be on a timer.",
       "DataType": "Integer"
     }
   ]

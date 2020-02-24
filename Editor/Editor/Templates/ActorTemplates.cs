@@ -4784,6 +4784,142 @@ namespace WindEditor
 	public partial class kddoor : Actor
 	{
 		// Auto-Generated Properties from Templates
+		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
+		public int SwitchBit
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("SwitchBit");
+			}
+		}
+
+		[WProperty("Door", "Type", true, "", SourceScene.Room)]
+		public int Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				OnPropertyChanged("Type");
+			}
+		}
+
+		[WProperty("Door", "Event ID", true, "", SourceScene.Room)]
+		public int EventID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				OnPropertyChanged("EventID");
+			}
+		}
+
+		[WProperty("Door", "Switch Bit 2", true, "", SourceScene.Room)]
+		public int SwitchBit2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("SwitchBit2");
+			}
+		}
+
+		[WProperty("Door", "From Room Number", true, "", SourceScene.Room)]
+		public int FromRoomNumber
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				OnPropertyChanged("FromRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "To Room Number", true, "", SourceScene.Room)]
+		public int ToRoomNumber
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x0FC0) >> 6);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				OnPropertyChanged("ToRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "Ship ID", true, "", SourceScene.Room)]
+		public int ShipID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				OnPropertyChanged("ShipID");
+			}
+		}
+
+		[WProperty("Door", "Arg 1", true, "", SourceScene.Room)]
+		public int Arg1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				OnPropertyChanged("Arg1");
+			}
+		}
+
 		// Constructor
 		public kddoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -16276,8 +16412,8 @@ namespace WindEditor
 	public partial class swhit0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("swhit0", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("swhit0", "Switch to Set", true, "Switch to set when hit.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -16289,46 +16425,62 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("swhit0", "Event", true, "The event to start when hit? (Only for type 'Unknown 3'.)", SourceScene.Stage)]
+		public MapEvent Event
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Event");
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_4_B = 15,
+		}
+
+		[WProperty("swhit0", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("swhit0", "Time Limit (Half Seconds)", true, "This number times 15 frames is how long the player has to hit all the crystals after the first crystal is hit.", SourceScene.Room)]
+		public int TimeLimitHalfSeconds
 		{ 
 			get
 			{
@@ -16340,7 +16492,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("TimeLimitHalfSeconds");
 			}
 		}
 
@@ -16361,8 +16513,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("swhit0", "Switch to Check", true, "Once this switch is set, the crystal will consider the puzzle finished and no longer be on a timer.", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -16374,7 +16526,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
