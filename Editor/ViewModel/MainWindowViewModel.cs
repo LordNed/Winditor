@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using System;
 using System.Windows;
+using System.IO;
 
 namespace WindEditor.ViewModel
 {
@@ -20,7 +21,34 @@ namespace WindEditor.ViewModel
 
         public MainWindowViewModel()
         {
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) => WriteUnhandledExceptionToCrashLog(e.ExceptionObject);
             App.Current.MainWindow.Closing += OnMainWindowClosed;
+        }
+
+        private static void WriteUnhandledExceptionToCrashLog(object exceptionObject)
+        {
+            string crashLogPath = "./CrashLog.txt";
+            Exception exception = exceptionObject as Exception;
+            if (exception == null)
+            {
+                return;
+            }
+            using (StreamWriter writer = new StreamWriter(crashLogPath, append: true))
+            {
+                writer.WriteLine("----------------------------------------");
+                writer.WriteLine("Winditor crashed on: " + DateTime.Now.ToString());
+                writer.WriteLine();
+
+                while (exception != null)
+                {
+                    writer.WriteLine(exception.GetType().FullName);
+                    writer.WriteLine(exception.Message);
+                    writer.WriteLine(exception.StackTrace);
+                    writer.WriteLine();
+
+                    exception = exception.InnerException;
+                }
+            }
         }
 
         internal void OnMainEditorWindowLoaded(GLControl glControl)
