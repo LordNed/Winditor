@@ -99,7 +99,7 @@ namespace WindEditor.ViewModel
                 }
 
                 // Only add the category to the view if it's not blacklisted by the HideCategories attribute.
-                if (!new_details.Contains(category_name) && hidden_categories != null && !hidden_categories.CategoryHidden(category_name))
+                if (!new_details.Contains(category_name) && (hidden_categories == null || !hidden_categories.CategoryHidden(category_name)))
                 {
                     // Also, we want to force the Transform category to the top of the list.
                     if (category_name == "Transform")
