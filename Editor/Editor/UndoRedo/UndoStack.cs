@@ -42,13 +42,16 @@ namespace WindEditor
             m_redoStack.Push(action);
         }
 
+        private bool m_isRedoing;
         public void Redo()
         {
             if (!CanRedo)
                 return;
 
             WUndoCommand action = m_redoStack.Pop();
+            m_isRedoing = true;
             action.Redo();
+            m_isRedoing = false;
 
             m_undoStack.Push(action);
         }
@@ -93,6 +96,10 @@ namespace WindEditor
         /// <param name="command"></param>
         public void Push(WUndoCommand command)
         {
+            // Prevent creating any more undo actions while we're in the middle of redoing.
+            if (m_isRedoing)
+                return;
+
             // If we have an open macro, we push it to the macro instead of the stack, and when the macro is ended, that is when it is finally pushed to the stack.
             // command.GetType().IsSubclassOf(typeof(WUndoCommand)) will return false if we're pushing a WUndoCommand, ie: the end of a macro.
             if(m_macroParent != null && command.GetType().IsSubclassOf(typeof(WUndoCommand)))

@@ -350,11 +350,15 @@ namespace WindEditor.Editor.Modes
             else
                 return;
 
-            if (newNode != null)
-            {
-                EditorSelection.ClearSelection();
-                EditorSelection.AddToSelection(newNode);
-            }
+            if (newNode == null)
+                return;
+
+            World.UndoStack.BeginMacro($"Create {newNode.Name}");
+            var undoAction = new WCreateEntityAction(newNode);
+            EditorSelection.ClearSelection();
+            EditorSelection.AddToSelection(newNode);
+            World.UndoStack.EndMacro();
+            BroadcastUndoEventGenerated(undoAction);
         }
 
         ~ActorMode()

@@ -254,6 +254,12 @@ namespace WindEditor
             Parent.RemoveChild(this);
         }
 
+        public virtual void Undestroy(WDOMNode parent)
+        {
+            m_IsDestroyed = false;
+            SetParent(parent);
+        }
+
         public static bool operator ==(WDOMNode node1, WDOMNode node2)
         {
             bool AIsValid = !ReferenceEquals(node1, null) ? !node1.m_IsDestroyed : false;

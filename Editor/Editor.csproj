@@ -637,6 +637,7 @@
       <DependentUpon>EntityTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Editor\SceneLoaders\SceneDataExporter.cs" />
+    <Compile Include="Editor\UndoRedo\CreateEntityAction.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
