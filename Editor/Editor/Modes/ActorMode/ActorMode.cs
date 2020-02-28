@@ -250,7 +250,8 @@ namespace WindEditor.Editor.Modes
 
         private void CutSelection()
         {
-            //throw new NotImplementedException();
+            CopySelection();
+            DeleteSelection();
         }
 
         private void CopySelection()
