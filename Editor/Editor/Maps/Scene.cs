@@ -35,7 +35,7 @@ namespace WindEditor
             // To handle the fact that actors/scaleable/treasure chests have layers, we're going to create DOM nodes using
             // the default layer's FourCC (ACTR/SCOB/TRES). This DOM node won't interact directly with the entities, rather
             // it will be the parent node of the nodes that do. WDOMGroupNode.ToString() is overridden to return a more general
-            // description of them ("Actors", etc) instead of the FourCC's FourCCConversion.GetDescriptionFromEnum() value.
+            // description of them ("ACTR (Actors)", etc) instead of the FourCC's FourCCConversion.GetDescriptionFromEnum() value.
             m_fourCCGroups[FourCC.ACTR] = new WDOMGroupNode(FourCC.ACTR, m_world);
             m_fourCCGroups[FourCC.SCOB] = new WDOMGroupNode(FourCC.SCOB, m_world);
             m_fourCCGroups[FourCC.TRES] = new WDOMGroupNode(FourCC.TRES, m_world);
@@ -64,28 +64,28 @@ namespace WindEditor
                 tresLayer.SetParent(m_fourCCGroups[FourCC.TRES]);
             }
 
-            /*m_fourCCGroups["Actors"] = new WDOMGroupNode("Actors", m_world);
+            /*m_fourCCGroups["ACTR (Actors)"] = new WDOMGroupNode("ACTR (Actors)", m_world);
             WDOMGroupNode actrDefault = new WDOMGroupNode("ACTR", m_world);
-            actrDefault.SetParent(m_fourCCGroups["Actors"]);
+            actrDefault.SetParent(m_fourCCGroups["ACTR (Actors)"]);
 
-            m_fourCCGroups["Scaleable Objects"] = new WDOMGroupNode("Scaleable Objects", m_world);
+            m_fourCCGroups["SCOB (Scaleable Objects)"] = new WDOMGroupNode("SCOB (Scaleable Objects)", m_world);
             WDOMGroupNode scobDefault = new WDOMGroupNode("SCOB", m_world);
-            scobDefault.SetParent(m_fourCCGroups["Scaleable Objects"]);
+            scobDefault.SetParent(m_fourCCGroups["SCOB (Scaleable Objects)"]);
 
-            m_fourCCGroups["Treasure Chests"] = new WDOMGroupNode("Treasure Chests", m_world);
+            m_fourCCGroups["TRES (Treasure Chests)"] = new WDOMGroupNode("TRES (Treasure Chests)", m_world);
             WDOMGroupNode tresDefault = new WDOMGroupNode("TRES", m_world);
-            tresDefault.SetParent(m_fourCCGroups["Treasure Chests"]);
+            tresDefault.SetParent(m_fourCCGroups["TRES (Treasure Chests)"]);
 
             for (int i = 0; i < 12; i++)
             {
                 WDOMGroupNode actX = new WDOMGroupNode($"ACT{ i.ToString("x") }", m_world);
-                actX.SetParent(m_fourCCGroups["Actors"]);
+                actX.SetParent(m_fourCCGroups["ACTR (Actors)"]);
 
                 WDOMGroupNode scoX = new WDOMGroupNode($"SCO{ i.ToString("x") }", m_world);
-                scoX.SetParent(m_fourCCGroups["Scaleable Objects"]);
+                scoX.SetParent(m_fourCCGroups["SCOB (Scaleable Objects)"]);
 
                 WDOMGroupNode treX = new WDOMGroupNode($"TRE{ i.ToString("x") }", m_world);
-                treX.SetParent(m_fourCCGroups["Treasure Chests"]);
+                treX.SetParent(m_fourCCGroups["TRES (Treasure Chests)"]);
             }*/
         }
 

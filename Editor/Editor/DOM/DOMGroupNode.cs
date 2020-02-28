@@ -20,11 +20,11 @@
             switch (FourCC)
             {
                 case FourCC.ACTR:
-                    return "Actors";
+                    return "ACTR (Actors)";
                 case FourCC.SCOB:
-                    return "Scaleable Objects";
+                    return "SCOB (Scaleable Objects)";
                 case FourCC.TRES:
-                    return "Treasure Chests";
+                    return "TRES (Treasure Chests)";
                 default:
                     return FourCCConversion.GetDescriptionFromEnum(FourCC);
             }
