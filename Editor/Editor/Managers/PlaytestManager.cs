@@ -37,9 +37,10 @@ namespace WindEditor
 
         private void StartPlaytest(WMap map, MapLayer active_layer)
         {
-            if (!File.Exists(@"dolphin\Dolphin.exe"))
+            string dolphinPath = Path.Combine(WSettingsManager.GetSettings().DolphinDirectory.FilePath, "Dolphin.exe");
+            if (!File.Exists(dolphinPath))
             {
-                MessageBox.Show("Dolphin does not exist at the specified path, cannot playtest.", "Dolphin not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You must specify the path to Dolphin in the options menu before you can playtest.", "Dolphin not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -52,7 +53,7 @@ namespace WindEditor
             m_DolPath = Path.Combine(dol_dir, "main.dol");
             m_BackupDolPath = Path.Combine(dol_dir, "main_backup.dol");
 
-            m_DolphinStartInfo = new ProcessStartInfo(@"dolphin\Dolphin.exe");
+            m_DolphinStartInfo = new ProcessStartInfo(dolphinPath);
             m_DolphinStartInfo.Arguments = $"-b -e \"{ m_DolPath }\"";
 
             byte room_no = 0;
