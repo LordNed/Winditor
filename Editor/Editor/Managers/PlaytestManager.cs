@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
 using WindEditor.Editor.Modes;
+using System.Windows.Forms;
 
 namespace WindEditor
 {
@@ -36,6 +37,12 @@ namespace WindEditor
 
         private void StartPlaytest(WMap map, MapLayer active_layer)
         {
+            if (!File.Exists(@"dolphin\Dolphin.exe"))
+            {
+                MessageBox.Show("Dolphin does not exist at the specified path, cannot playtest.", "Dolphin not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Console.WriteLine($"Stage name: { map.MapName }, Room Name: { map.FocusedSceneLabel }");
 
             string map_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", map.MapName);
