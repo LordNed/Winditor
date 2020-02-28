@@ -356,10 +356,10 @@ namespace WindEditor.Editor.Modes
 
             World.UndoStack.BeginMacro($"Create {newNode.Name}");
             var undoAction = new WCreateEntityAction(newNode);
+            BroadcastUndoEventGenerated(undoAction);
             EditorSelection.ClearSelection();
             EditorSelection.AddToSelection(newNode);
             World.UndoStack.EndMacro();
-            BroadcastUndoEventGenerated(undoAction);
         }
 
         ~ActorMode()

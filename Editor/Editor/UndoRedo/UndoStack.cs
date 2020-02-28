@@ -112,7 +112,9 @@ namespace WindEditor
             m_redoStack.Clear();
 
             // Call the Redo function to apply the state change encapsulated by the IAction.
+            m_isRedoing = true;
             command.Redo();
+            m_isRedoing = false;
 
             // Attempt to merge with our new action. If this fails, add our new action to the undo stack.
             WUndoCommand latestAction = m_undoStack.Peek();
