@@ -5,9 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows;
 using WindEditor.View;
 using WindEditor.ViewModel;
 using System.Windows.Input;
+using Newtonsoft.Json;
+using System.IO;
+using Newtonsoft.Json.Converters;
+using WindEditor.Serialization;
 
 namespace WindEditor.Editor.Modes
 {
@@ -223,7 +228,11 @@ namespace WindEditor.Editor.Modes
 
         public void ClearSelection()
         {
-
+            foreach (WDOMNode node in EditorSelection.SelectedObjects)
+            {
+                node.IsSelected = false;
+            }
+            EditorSelection.ClearSelection();
         }
 
         #region INotifyPropertyChanged Support
@@ -246,7 +255,17 @@ namespace WindEditor.Editor.Modes
 
         private void CopySelection()
         {
-            //throw new NotImplementedException();
+            StringWriter sw = new StringWriter();
+            JsonSerializer serial = new JsonSerializer();
+            serial.Converters.Add(new StringEnumConverter());
+            serial.Converters.Add(new Vector2Converter());
+            serial.Converters.Add(new Vector3Converter());
+            serial.Converters.Add(new QuaternionConverter());
+            serial.Converters.Add(new WDOMNodeJsonConverter());
+            serial.Formatting = Formatting.Indented;
+            serial.Serialize(sw, EditorSelection.SelectedObjects);
+
+            Clipboard.SetText(sw.ToString());
         }
 
         private void PasteSelection()
@@ -261,12 +280,23 @@ namespace WindEditor.Editor.Modes
 
         private void SelectAll()
         {
-            //throw new System.NotImplementedException();
+            List<WDOMNode> actorsToSelect = new List<WDOMNode>();
+            foreach (var scene in World.Map.SceneList)
+            {
+                var allActorsInScene = scene.GetChildrenOfType<VisibleDOMNode>();
+
+                foreach (VisibleDOMNode actorNode in allActorsInScene)
+                {
+                    actorNode.IsSelected = true;
+                    actorsToSelect.Add(actorNode);
+                }
+            }
+            EditorSelection.AddToSelection(actorsToSelect);
         }
 
         private void SelectNone()
         {
-            //throw new System.NotImplementedException();
+            ClearSelection();
         }
 
         public void CreateEntity()

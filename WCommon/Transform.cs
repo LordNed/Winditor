@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace WindEditor
 {
@@ -12,6 +13,7 @@ namespace WindEditor
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary> The parent of this transform that this transform moves locally to. null if a root object. </summary>
+        [JsonIgnore]
         public WTransform Parent
         {
             get { return m_parent; }
@@ -33,7 +35,9 @@ namespace WindEditor
             }
         }
 
+        [JsonIgnore]
         public BindingVector3 PositionBase { get; set; }
+        [JsonIgnore]
         public BindingVector3 ScaleBase { get; set; }
 
         /// <summary> Position of the object in global space. </summary>
@@ -121,6 +125,7 @@ namespace WindEditor
         }
 
         /// <summary> Local position relative to the parent. Equivelent to Position if parent is null. </summary>
+        [JsonIgnore]
         public Vector3 LocalPosition
         {
             get { return PositionBase.BackingVector; }
@@ -132,6 +137,7 @@ namespace WindEditor
         }
 
         /// <summary> Local rotation relative to the parent. Equivelent to Rotation if parent is null. </summary>
+        [JsonIgnore]
         public Quaternion LocalRotation
         {
             get { return m_localRotation; }
@@ -142,24 +148,28 @@ namespace WindEditor
         }
 
         /// <summary> The number of children in this transform. </summary>
+        [JsonIgnore]
         public int ChildCount
         {
             get { return m_children.Count; }
         }
 
         /// <summary> The local up axis of this object as a direction in world space. </summary>
+        [JsonIgnore]
         public Vector3 Up
         {
             get { return Vector3.Transform(Vector3.UnitY, Rotation); }
         }
 
         /// <summary> The local right axis of this object as a direction in world space. </summary>
+        [JsonIgnore]
         public Vector3 Right
         {
             get { return Vector3.Transform(Vector3.UnitX, Rotation); }
         }
 
         /// <summary> The local forward axis of this object as a direction in world space. </summary>
+        [JsonIgnore]
         public Vector3 Forward
         {
             get { return Vector3.Transform(Vector3.UnitZ, Rotation); }
