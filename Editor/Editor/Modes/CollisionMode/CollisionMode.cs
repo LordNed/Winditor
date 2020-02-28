@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows;
+using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace WindEditor.Editor.Modes
@@ -465,10 +466,17 @@ namespace WindEditor.Editor.Modes
                 AlwaysAppendDefaultExtension = true,
             };
             sfd.Filters.Add(new CommonFileDialogFilter("Collada", ".dae"));
+            if (WSettingsManager.GetSettings().LastCollisionDaePath.FilePath != "")
+            {
+                sfd.InitialDirectory = WSettingsManager.GetSettings().LastCollisionDaePath.FilePath;
+            }
 
             if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 m_CollisionMesh.ToDAEFile(sfd.FileName);
+                
+                WSettingsManager.GetSettings().LastCollisionDaePath.FilePath = Path.GetDirectoryName(sfd.FileName);
+                WSettingsManager.SaveSettings();
             }
         }
 
@@ -486,6 +494,10 @@ namespace WindEditor.Editor.Modes
                 DefaultExtension = "dae",
             };
             ofd.Filters.Add(new CommonFileDialogFilter("Collada", ".dae"));
+            if (WSettingsManager.GetSettings().LastCollisionDaePath.FilePath != "")
+            {
+                ofd.InitialDirectory = WSettingsManager.GetSettings().LastCollisionDaePath.FilePath;
+            }
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -493,6 +505,9 @@ namespace WindEditor.Editor.Modes
                 m_CollisionMesh.FromDAEFile(ofd.FileName, currRoom.RoomIndex);
 
                 m_CollisionTree.ItemsSource = new ObservableCollection<CollisionGroupNode>() { ActiveCollisionMesh.RootNode };
+
+                WSettingsManager.GetSettings().LastCollisionDaePath.FilePath = Path.GetDirectoryName(ofd.FileName);
+                WSettingsManager.SaveSettings();
             }
         }
 

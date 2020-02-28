@@ -81,6 +81,10 @@ namespace WindEditor
                 Multiselect = false,
                 ShowPlacesList = true
             };
+            if (WSettingsManager.GetSettings().LastStagePath.FilePath != "")
+            {
+                ofd.InitialDirectory = WSettingsManager.GetSettings().LastStagePath.FilePath;
+            }
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -126,6 +130,9 @@ namespace WindEditor
                     // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
                     MainWorld.Map.SavePath = null;
                     m_sourceDataPath = tempMapPath;
+
+                    WSettingsManager.GetSettings().LastStagePath.FilePath = ofd.FileName;
+                    WSettingsManager.SaveSettings();
                 }
             }
         }
@@ -144,6 +151,10 @@ namespace WindEditor
                 Multiselect = true,
                 ShowPlacesList = true
             };
+            if (WSettingsManager.GetSettings().LastStagePath.FilePath != "")
+            {
+                ofd.InitialDirectory = WSettingsManager.GetSettings().LastStagePath.FilePath;
+            }
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -186,6 +197,9 @@ namespace WindEditor
                 // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
                 MainWorld.Map.SavePath = null;
                 m_sourceDataPath = tempMapPath;
+
+                WSettingsManager.GetSettings().LastStagePath.FilePath = dirPath;
+                WSettingsManager.SaveSettings();
             }
         }
 
@@ -240,7 +254,7 @@ namespace WindEditor
             // Data was loaded from archives to a temp folder. We need a new folder to copy this data to!
             if (MainWorld.Map.SavePath == null)
             {
-                string path = GetUserPath();
+                string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
                 if (path == null)
                     return;
 
@@ -248,6 +262,8 @@ namespace WindEditor
                 CopyTempDataToPermanentDir(m_sourceDataPath, newMapDir);
 
                 MainWorld.Map.SavePath = newMapDir;
+
+                WSettingsManager.GetSettings().LastStagePath.FilePath = path;
             }
 
             MainWorld.SaveMapToDirectory("");
@@ -255,29 +271,35 @@ namespace WindEditor
 
         public void OnApplicationRequestSaveAsProject()
         {
-            string path = GetUserPath();
+            string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
             if (path == null)
                 return;
 
             MainWorld.SaveMapToDirectory(path);
+
+            WSettingsManager.GetSettings().LastStagePath.FilePath = path;
         }
 
         public void OnApplicationRequestExportProject()
         {
-            string path = GetUserPath();
+            string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
             if (path == null)
                 return;
 
             MainWorld.Map.ExportToDirectory(path);
+
+            WSettingsManager.GetSettings().LastStagePath.FilePath = path;
         }
 
         public void OnApplicationRequestExportAsProject()
         {
-            string path = GetUserPath();
+            string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
             if (path == null)
                 return;
 
             MainWorld.Map.ExportToDirectory(path);
+
+            WSettingsManager.GetSettings().LastStagePath.FilePath = path;
         }
 
         private void CopyTempDataToPermanentDir(string sourceDir, string destDir)
@@ -296,7 +318,7 @@ namespace WindEditor
             }
         }
 
-        private string GetUserPath()
+        private string GetUserPath(string initialPath="")
         {
             string path = null;
 
@@ -311,6 +333,11 @@ namespace WindEditor
             ofd.EnsureValidNames = true;
             ofd.Multiselect = false;
             ofd.ShowPlacesList = true;
+
+            if (initialPath != "")
+            {
+                ofd.InitialDirectory = initialPath;
+            }
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {

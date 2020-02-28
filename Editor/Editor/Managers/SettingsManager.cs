@@ -85,6 +85,36 @@ namespace WindEditor
             }
         }
 
+        [HideCategoriesAttribute()]
+        [WProperty("Paths", "Last Stage Path", true, "")]
+        public FileReference LastStagePath
+        {
+            get { return m_LastStagePath; }
+            set
+            {
+                if (value != m_LastStagePath)
+                {
+                    m_LastStagePath = value;
+                    OnPropertyChanged("LastStagePath");
+                }
+            }
+        }
+
+        [HideCategoriesAttribute()]
+        [WProperty("Paths", "Last Collision Dae Path", true, "")]
+        public FileReference LastCollisionDaePath
+        {
+            get { return m_LastCollisionDaePath; }
+            set
+            {
+                if (value != m_LastCollisionDaePath)
+                {
+                    m_LastCollisionDaePath = value;
+                    OnPropertyChanged("LastCollisionDaePath");
+                }
+            }
+        }
+
         [WProperty("Advanced", "Dump Textures", true, "When checked, dumps the textures of loaded meshes to file.")]
         public bool DumpTextures
         {
@@ -121,12 +151,17 @@ namespace WindEditor
 
         private FileReference m_RootDirectory;
         private FileReference m_DolphinDirectory;
+        private FileReference m_LastStagePath;
+        private FileReference m_LastCollisionDaePath;
         private bool m_DumpTextures;
         private bool m_DumpShaders;
 
         public WSettingsContainer()
         {
             RootDirectory = new FileReference();
+            DolphinDirectory = new FileReference();
+            LastStagePath = new FileReference();
+            LastCollisionDaePath = new FileReference();
         }
 
         public void SetProperty(string property_name, object value)
