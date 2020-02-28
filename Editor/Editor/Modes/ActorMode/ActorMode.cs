@@ -275,7 +275,13 @@ namespace WindEditor.Editor.Modes
 
         private void DeleteSelection()
         {
-            //throw new NotImplementedException();
+            WDOMNode[] entitiesToDelete = EditorSelection.SelectedObjects.ToArray();
+
+            World.UndoStack.BeginMacro($"Delete entities");
+            var undoAction = new WDeleteEntitiesAction(entitiesToDelete);
+            BroadcastUndoEventGenerated(undoAction);
+            EditorSelection.ClearSelection();
+            World.UndoStack.EndMacro();
         }
 
         private void SelectAll()
