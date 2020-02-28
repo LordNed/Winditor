@@ -312,6 +312,7 @@ namespace WindEditor.Editor.Modes
                 SerializableDOMNode origNode = selected as SerializableDOMNode;
                 Type selType = selected.GetType();
                 newNode = (SerializableDOMNode)Activator.CreateInstance(selType, origNode.FourCC, World);
+                newNode.Name = origNode.Name;
                 newNode.PostLoad();
                 newNode.SetParent(selected.Parent);
 
