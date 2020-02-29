@@ -272,15 +272,8 @@ namespace WindEditor
 
         public static Type GetTypeFromEnum(FourCC value)
         {
-            switch (value)
-            {
-                case FourCC.SCLS:
-                    return typeof(ExitData);
-                case FourCC.PLYR:
-                    return typeof(SpawnPoint);
-            }
-
-            return null;
+            MapActorDescriptor template = Globals.ActorDescriptors.Find(x => x.FourCC == value);
+            return Type.GetType($"WindEditor.{template.ClassName}");
         }
     }
 }
