@@ -77,8 +77,10 @@ namespace WindEditor
             PathPoint_v1 nextPoint = (PathPoint_v1)FirstNode;
             while (nextPoint != null)
             {
-                nextPoint = nextPoint.NextNode;
                 m_NumberofPoints++;
+                nextPoint = nextPoint.NextNode;
+                if (nextPoint == FirstNode)
+                    break; // Prevent infinite loops
             }
         }
     }
