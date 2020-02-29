@@ -62,17 +62,16 @@ namespace WindEditor
             }
         }
 
-		// override void PreSave(...)
-		// {
-		//		int NodeIndex = InList.GetNodesOfType<PathPoint_v1>().IndexOf(FirstNode);
-		//		if(NodeIndex< 0)
-		// 		{
-		// 			Console.WriteLine("Warning blahblah null setting to zero to try and keep the game from crashing on load.");
-		// 			NodeIndex = 0;
-		// 		}
-		// 
-		//		// Set the property for FirstIndex to NodeIndex, etc etc.
-		// 
-		// }
-	}
+        public void SetNodeOffset(List<SerializableDOMNode> points)
+        {
+            int first_index = points.IndexOf(FirstNode);
+            if (first_index < 0)
+            {
+                Console.WriteLine("Warning: Path has no first point assigned, defaulting to point 0");
+                first_index = 0;
+            }
+
+            m_FirstEntryOffset = first_index * 16;
+        }
+    }
 }

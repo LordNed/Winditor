@@ -53,6 +53,8 @@ namespace WindEditor
                 }
             }
 
+            SavePaths(actorCategories);
+
             // Create a chunk header for each one.
             var chunkHeaders = new List<ChunkHeader>();
             foreach(var kvp in actorCategories)
@@ -171,6 +173,35 @@ namespace WindEditor
             }
 
             writer.Seek(0, SeekOrigin.End);
+        }
+
+        public void SavePaths(Dictionary<FourCC, List<SerializableDOMNode>> actorCategories)
+        {
+            if (actorCategories.ContainsKey(FourCC.PATH))
+            {
+                var v1_paths = actorCategories[FourCC.PATH];
+                var v1_points = new List<SerializableDOMNode>();
+                actorCategories.TryGetValue(FourCC.PPNT, out v1_points);
+
+                foreach (WDOMNode path_v1 in v1_paths)
+                {
+                    Path_v1 cur_path = (Path_v1)path_v1;
+                    cur_path.SetNodeOffset(v1_points);
+                }
+            }
+
+            if (actorCategories.ContainsKey(FourCC.RPAT))
+            {
+                var v2_paths = actorCategories[FourCC.RPAT];
+                var v2_points = new List<SerializableDOMNode>();
+                actorCategories.TryGetValue(FourCC.RPPN, out v2_points);
+
+                foreach (WDOMNode path_v2 in v2_paths)
+                {
+                    Path_v2 cur_path = (Path_v2)path_v2;
+                    cur_path.SetNodeOffset(v2_points);
+                }
+            }
         }
 
         /*private void WriteActorToChunk(SerializableDOMNode actor, MapActorDescriptor template, EndianBinaryWriter writer)
