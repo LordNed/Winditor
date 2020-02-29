@@ -436,6 +436,8 @@ namespace WindEditor.Editor.Modes
             WDOMNode[] entitiesToCreate = { newNode };
             WDOMNode[] parents = { newNode.Parent };
 
+            newNode.Parent.IsExpanded = true;
+
             World.UndoStack.BeginMacro($"Create {newNode.Name}");
             var undoAction = new WCreateEntitiesAction(entitiesToCreate, parents);
             BroadcastUndoEventGenerated(undoAction);
