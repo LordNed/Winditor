@@ -145,7 +145,16 @@ namespace WindEditor
                 {
                     cur_object = cur_object.Parent;
                 }
-                WRoom room_node = cur_object as WRoom;
+                WRoom room_node;
+                if (cur_object is WRoom)
+                {
+                    room_node = cur_object as WRoom;
+                } else
+                {
+                    // A stage entity is selected. For now just choose the first loaded room to playtest in.
+                    // A better solution would be to playtest in the room corresponding to the specific stage entity selected (e.g. by looking at a treasure chest's room index).
+                    room_node = cur_object.World.Map.SceneList.First(x => x.GetType() == typeof(WRoom)) as WRoom;
+                }
                 SpawnPoint spawn_pt = room_node.GetChildrenOfType<SpawnPoint>().FirstOrDefault();
                 if (spawn_pt != null)
                 {
