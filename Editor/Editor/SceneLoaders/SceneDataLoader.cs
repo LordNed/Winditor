@@ -4,6 +4,7 @@ using Newtonsoft.Json.Converters;
 using OpenTK;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -142,7 +143,8 @@ namespace WindEditor
         [JsonProperty("Category")]
         public string CategoryName { get; set; }
 
-        [JsonProperty("Editable")]
+        [JsonProperty("Editable", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [DefaultValue(true)]
         public bool IsEditable { get; set; }
 
         public uint Length;
