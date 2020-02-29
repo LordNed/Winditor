@@ -423,6 +423,7 @@ namespace WindEditor.Editor.Modes
 
                 Type newObjType = FourCCConversion.GetTypeFromEnum(grpNode.FourCC);
                 newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, grpNode.FourCC, World);
+                newNode.Name = "New";
                 newNode.PostLoad();
                 newNode.SetParent(grpNode);
             }
