@@ -81,6 +81,14 @@ namespace WindEditor
         	}
 
             m_FirstEntryOffset = first_index * 16;
+
+            m_NumberofPoints = 0;
+            PathPoint_v2 nextPoint = (PathPoint_v2)FirstNode;
+            while (nextPoint != null)
+            {
+                nextPoint = nextPoint.NextNode;
+                m_NumberofPoints++;
+            }
         }
     }
 }
