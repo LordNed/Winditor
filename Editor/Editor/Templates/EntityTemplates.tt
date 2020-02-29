@@ -269,7 +269,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 <#
 			if (className == "Actor") {
 #>
-            if ((FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb) || FourCC == FourCC.TGSC)
+            if ((FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb) || FourCC == FourCC.TGSC || FourCC == FourCC.TGDR)
             {
                 stream.Write((byte)(Transform.LocalScale.X * 10f));
                 stream.Write((byte)(Transform.LocalScale.Y * 10f));
