@@ -22,6 +22,7 @@ namespace WindEditor
                 if (m_MessageReference != value)
                 {
                     m_MessageReference = value;
+                    MessageID = MessageReference.MessageID;
                     OnPropertyChanged("MessageReference");
                 }
             }

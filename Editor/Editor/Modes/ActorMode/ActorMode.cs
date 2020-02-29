@@ -20,7 +20,7 @@ namespace WindEditor.Editor.Modes
     {
         public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
-        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => false); } }
+        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => true); } }
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
@@ -256,14 +256,15 @@ namespace WindEditor.Editor.Modes
 
         private void CopySelection()
         {
-            StringWriter sw = new StringWriter();
             JsonSerializer serial = new JsonSerializer();
             serial.Converters.Add(new StringEnumConverter());
             serial.Converters.Add(new Vector2Converter());
             serial.Converters.Add(new Vector3Converter());
             serial.Converters.Add(new QuaternionConverter());
-            serial.Converters.Add(new WDOMNodeJsonConverter());
+            serial.Converters.Add(new WDOMNodeJsonConverter(World, EditorSelection.PrimarySelectedObject));
             serial.Formatting = Formatting.Indented;
+
+            StringWriter sw = new StringWriter();
             serial.Serialize(sw, EditorSelection.SelectedObjects);
 
             Clipboard.SetText(sw.ToString());
@@ -271,7 +272,68 @@ namespace WindEditor.Editor.Modes
 
         private void PasteSelection()
         {
-            //throw new NotImplementedException();
+            WDOMNode selected = EditorSelection.PrimarySelectedObject;
+            WDOMNode parent;
+
+            if (selected is SerializableDOMNode)
+                parent = selected.Parent;
+            else if (selected is WDOMLayeredGroupNode)
+                parent = selected;
+            else if (selected is WDOMGroupNode)
+                parent = selected;
+            else
+                return;
+
+            JsonSerializer serial = new JsonSerializer();
+            serial.Converters.Add(new StringEnumConverter());
+            serial.Converters.Add(new Vector2Converter());
+            serial.Converters.Add(new Vector3Converter());
+            serial.Converters.Add(new QuaternionConverter());
+            serial.Converters.Add(new WDOMNodeJsonConverter(World, parent));
+            serial.Formatting = Formatting.Indented;
+
+            List<SerializableDOMNode> pastedEntities;
+            try
+            {
+                string text = Clipboard.GetText();
+                StringReader sr = new StringReader(text);
+                JsonTextReader reader = new JsonTextReader(sr);
+                pastedEntities = serial.Deserialize<List<SerializableDOMNode>>(reader);
+            } catch (Exception e)
+            {
+                string error = "Failed to paste entities from the clipboard.\n\nFull error:\n\n";
+                error += e.GetType().FullName;
+                error += e.Message;
+                error += e.StackTrace;
+                System.Windows.Forms.MessageBox.Show(
+                    error,
+                    "Failed to paste entities",
+                    System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error
+                );
+                return;
+            }
+
+            pastedEntities = pastedEntities.Where(x => x != null).ToList(); // Remove entities that failed to convert
+            if (pastedEntities.Count > 0)
+            {
+                WDOMNode[] entitiesToPaste = pastedEntities.ToArray();
+                WDOMNode[] parents = new WDOMNode[entitiesToPaste.Length];
+                for (int i = 0; i < entitiesToPaste.Length; i++)
+                {
+                    parents[i] = entitiesToPaste[i].Parent;
+                }
+
+                World.UndoStack.BeginMacro($"Paste {pastedEntities.Count} entities");
+                var undoAction = new WCreateEntitiesAction(entitiesToPaste, parents);
+                BroadcastUndoEventGenerated(undoAction);
+                EditorSelection.ClearSelection();
+                EditorSelection.AddToSelection(pastedEntities);
+                World.UndoStack.EndMacro();
+            }
+            foreach (SerializableDOMNode node in pastedEntities) {
+                node.IsSelected = true;
+            }
         }
 
         private void DeleteSelection()
@@ -370,8 +432,11 @@ namespace WindEditor.Editor.Modes
             if (newNode == null)
                 return;
 
+            WDOMNode[] entitiesToCreate = { newNode };
+            WDOMNode[] parents = { newNode.Parent };
+
             World.UndoStack.BeginMacro($"Create {newNode.Name}");
-            var undoAction = new WCreateEntityAction(newNode);
+            var undoAction = new WCreateEntitiesAction(entitiesToCreate, parents);
             BroadcastUndoEventGenerated(undoAction);
             EditorSelection.ClearSelection();
             EditorSelection.AddToSelection(newNode);
