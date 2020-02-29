@@ -29,16 +29,37 @@ namespace WindEditor.Serialization
             var nodeJson = JObject.Load(reader);
             var actorName = (string)nodeJson["Name"];
 
-            Type actorType = WResourceManager.GetTypeByName(actorName);
-            if (actorType == typeof(Actor))
+            SerializableDOMNode newNode;
+            if (m_parent is WDOMLayeredGroupNode)
+            {
+                WDOMLayeredGroupNode layerNode = m_parent as WDOMLayeredGroupNode;
+                string unlayedFourCC = layerNode.FourCC.ToString();
+                MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
+                FourCC fourcc = FourCCConversion.GetEnumFromString(unlayedFourCC);
+
+                Type newObjType = WResourceManager.GetTypeByName(actorName);
+                if (newObjType == typeof(Actor))
+                    return null;
+
+                newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, fourcc, m_world);
+                newNode.Layer = layer;
+            }
+            else if (m_parent is WDOMGroupNode)
+            {
+                WDOMGroupNode groupNode = m_parent as WDOMGroupNode;
+
+                if (groupNode.FourCC == FourCC.ACTR || groupNode.FourCC == FourCC.SCOB || groupNode.FourCC == FourCC.TRES)
+                    return null;
+
+                Type newObjType = FourCCConversion.GetTypeFromEnum(groupNode.FourCC);
+                FourCC fourcc = groupNode.FourCC;
+
+                newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, fourcc, m_world);
+            }
+            else
+            {
                 return null;
-            
-            WDOMLayeredGroupNode lyrNode = m_parent as WDOMLayeredGroupNode; // TODO what if it's not a layered group node?
-            string unlayedFourCC = lyrNode.FourCC.ToString();
-            MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
-            FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
-            
-            SerializableDOMNode newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, enumVal, m_world);
+            }
 
             var wproperties = newNode.GetType().GetProperties().Where(prop =>
             {
@@ -120,9 +141,8 @@ namespace WindEditor.Serialization
                 }
             }
 
-            newNode.Layer = layer;
             newNode.PostLoad();
-            newNode.SetParent(lyrNode);
+            newNode.SetParent(m_parent);
 
             return newNode;
         }
