@@ -102,7 +102,9 @@ namespace WindEditor
             m_actorMeshes = new List<J3D>();
             PropertyChanged += VisibleDOMNode_PropertyChanged;
             IsRendered = true;
-		}
+
+            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1, 1, 1, 1));
+        }
 
         public override void PostLoad()
 		{
