@@ -306,7 +306,7 @@ namespace WindEditor.Editor.Modes
             ClearSelection();
         }
 
-        public void CreateEntity(string actorName = "Bk") // TODO GUI dialog to select the actor name
+        public void CreateEntity()
         {
             if (!EditorSelection.SingleObjectSelected)
                 return;
@@ -330,9 +330,18 @@ namespace WindEditor.Editor.Modes
             }
             else if (selected is WDOMLayeredGroupNode)
             {
-                WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
-                Type actorType = WResourceManager.GetTypeByName(actorName);
 
+                WActorCreatorWindow actorCreator = new WActorCreatorWindow();
+                actorCreator.ShowDialog();
+                // TODO this is a temporary hack to get the actor name from the text input until the UI is properly coded
+                string actorName = actorCreator.filter_box.Text;
+                if (actorName == "")
+                    return;
+                Type actorType = WResourceManager.GetTypeByName(actorName);
+                if (actorType == typeof(Actor))
+                    return;
+
+                WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
                 string unlayedFourCC = lyrNode.FourCC.ToString();
                 MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
                 FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
