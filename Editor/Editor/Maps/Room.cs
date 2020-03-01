@@ -233,18 +233,21 @@ namespace WindEditor
         {
             Console.WriteLine("Writing DZB File...");
 
-            List<WCollisionMesh> meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
+            List<WCollisionMesh> meshes = GetChildrenOfType<WCollisionMesh>();
             if (meshes.Count == 0)
                 return;
 
-            string dzbDirectory = string.Format("{0}/dzb", directory);
-            if (!Directory.Exists(dzbDirectory))
-                Directory.CreateDirectory(dzbDirectory);
-
-            string filePath = string.Format("{0}/room.dzb", dzbDirectory);
-            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+            foreach (WCollisionMesh m in meshes)
             {
-                writer.Write(meshes[0].ToDZBArray());
+                string dzbDirectory = string.Format("{0}/dzb", directory);
+                if (!Directory.Exists(dzbDirectory))
+                    Directory.CreateDirectory(dzbDirectory);
+
+                string filePath = string.Format("{0}/room.dzb", dzbDirectory);
+                using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+                {
+                    writer.Write(m.ToDZBArray());
+                }
             }
 
             Console.WriteLine("Finished saving DZB File.");
@@ -270,8 +273,9 @@ namespace WindEditor
                 }
             }
 
-            List<WCollisionMesh> meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
-            if (meshes.Count > 0)
+            List<WCollisionMesh> meshes = GetChildrenOfType<WCollisionMesh>();
+
+            foreach (WCollisionMesh m in meshes)
             {
                 VirtualFilesystemFile dzb_file = SourceDirectory.GetFileAtPath("dzb/room.dzb");
 
@@ -279,7 +283,7 @@ namespace WindEditor
                 {
                     using (EndianBinaryWriter writer = new EndianBinaryWriter(mem, Endian.Big))
                     {
-                        writer.Write(meshes[0].ToDZBArray());
+                        writer.Write(m.ToDZBArray());
                         dzb_file.Data = mem.ToArray();
                     }
                 }
