@@ -7,7 +7,7 @@ namespace WindEditor
     {
         public Vector3 Min { get { return m_min; } }
         public Vector3 Max { get { return m_max; } }
-        public Vector3 Center { get { return (Max + Min) / 2; } }
+        public Vector3 Center { get { return Min + ((Max - Min) / 2); } }
         public Vector3 Extents { get { return (Max - Min) / 2; } }
 
         private Vector3 m_min;

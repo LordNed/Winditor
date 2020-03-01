@@ -140,7 +140,7 @@ namespace WindEditor.Collision
             WriteTriangleData(writer, octree_arranged_tris, arrange_verts, unique_properties);
             WriteOctreeNodeData(writer, flattened_octrees, OctreeTrisForIndexing);
             WritePropertyData(writer, unique_properties);
-            WriteOctreeIndexData(writer, flattened_octrees, OctreeTrisForIndexing);
+            WriteOctreeIndexData(writer, flattened_octrees, octree_arranged_tris);
             WriteGroupData(writer, flattened_octrees);
         }
 

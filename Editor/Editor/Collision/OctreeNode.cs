@@ -28,7 +28,7 @@ namespace WindEditor.Collision
 
         public OctreeNode(FAABox bounds, CollisionGroupNode node, List<CollisionTriangle> triangles)
         {
-            Triangles = triangles;
+            Triangles = new List<CollisionTriangle>(triangles);
             Bounds = bounds;
             Group = node;
 
@@ -101,40 +101,43 @@ namespace WindEditor.Collision
 
         private void SortTriangles()
         {
-            List<CollisionTriangle> contained_tris = new List<CollisionTriangle>();
-
-            foreach (CollisionTriangle tri in Triangles)
+            if (Triangles.Count <= 12)
             {
-                if (Bounds.Contains(tri.Center) && !tri.Taken)
-                {
-                    contained_tris.Add(tri);
-                }
-            }
-
-            Triangles = contained_tris;
-
-            if (Triangles.Count <= 10)
-            {
-                foreach (CollisionTriangle t in Triangles)
-                {
-                    t.Taken = true;
-                }
-
                 IsLeaf = true;
                 return;
             }
 
             FAABox[] new_octants = SubdivideBounds();
+            List<CollisionTriangle>[] octantTris = new List<CollisionTriangle>[8];
 
             for (int i = 0; i < 8; i++)
             {
-                Children[i] = new OctreeNode(new_octants[i], Group, Triangles);
-                Children[i].Parent = this;
+                octantTris[i] = new List<CollisionTriangle>();
 
-                if (Children[i].Triangles.Count == 0)
+                foreach (CollisionTriangle t in Triangles)
+                {
+                    if (new_octants[i].Contains(t.Center))
+                    {
+                        octantTris[i].Add(t);
+                    }
+                }
+
+                foreach (CollisionTriangle t in octantTris[i])
+                {
+                    Triangles.Remove(t);
+                }
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (octantTris[i].Count == 0)
                 {
                     Children[i] = null;
+                    continue;
                 }
+
+                Children[i] = new OctreeNode(new_octants[i], Group, octantTris[i]);
+                Children[i].Parent = this;
             }
         }
 
