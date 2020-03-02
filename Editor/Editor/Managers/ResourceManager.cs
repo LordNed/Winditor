@@ -22,10 +22,10 @@ namespace WindEditor
         public string ArchiveName;
 
         [JsonProperty("Actor Name")]
-        public string ActorName;
+        public string ActorName { get; set; }
 
         [JsonProperty("English Name")]
-        public string Description;
+        public string Description { get; set; }
 
         [JsonProperty("Main Model")]
         public string ModelPath;
@@ -446,6 +446,11 @@ namespace WindEditor
             foreach (var obj in m_objList)
                 obj.Asset.Dispose();
             m_objList.Clear();
+        }
+
+        public static Dictionary<string, WActorDescriptor> GetActorDescriptors()
+        {
+            return m_actorDescriptors;
         }
     }
 }

@@ -374,7 +374,7 @@ namespace WindEditor.Editor.Modes
                 return;
 
             WDOMNode selected = EditorSelection.PrimarySelectedObject;
-            SerializableDOMNode newNode;
+            SerializableDOMNode newNode = null;
 
             if (selected is SerializableDOMNode)
             {
@@ -392,27 +392,36 @@ namespace WindEditor.Editor.Modes
             }
             else if (selected is WDOMLayeredGroupNode)
             {
-
                 WActorCreatorWindow actorCreator = new WActorCreatorWindow();
-                actorCreator.ShowDialog();
+
+                if (actorCreator.ShowDialog() == true)
+                {
+                    string actorName = actorCreator.Descriptor.ActorName;
+
+                    if (actorName == "")
+                    {
+                        return;
+                    }
+
+                    Type actorType = WResourceManager.GetTypeByName(actorName);
+
+                    if (actorType == typeof(Actor))
+                    {
+                        return;
+                    }
+
+                    WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
+                    string unlayedFourCC = lyrNode.FourCC.ToString();
+                    MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
+                    FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
+
+                    newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, enumVal, World);
+                    newNode.Name = actorName;
+                    newNode.Layer = layer;
+                    newNode.PostLoad();
+                    newNode.SetParent(lyrNode);
+                }
                 // TODO this is a temporary hack to get the actor name from the text input until the UI is properly coded
-                string actorName = actorCreator.filter_box.Text;
-                if (actorName == "")
-                    return;
-                Type actorType = WResourceManager.GetTypeByName(actorName);
-                if (actorType == typeof(Actor))
-                    return;
-
-                WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
-                string unlayedFourCC = lyrNode.FourCC.ToString();
-                MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
-                FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
-
-                newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, enumVal, World);
-                newNode.Name = actorName;
-                newNode.Layer = layer;
-                newNode.PostLoad();
-                newNode.SetParent(lyrNode);
             }
             else if (selected is WDOMGroupNode)
             {
