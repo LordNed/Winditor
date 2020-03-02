@@ -27,6 +27,9 @@ namespace WindEditor.View
             get { return (string)GetValue(FileNameProperty); }
             set { SetValue(FileNameProperty, value); }
         }
+
+        public bool IsFilePicker { get; set; }
+
         public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register(
             "FileName", typeof(string), typeof(FileReferenceControl), new PropertyMetadata(""));
 
@@ -42,7 +45,7 @@ namespace WindEditor.View
             // Set up the directory picker
             var ofd = new CommonOpenFileDialog();
             ofd.Title = "Choose Directory";
-            ofd.IsFolderPicker = true;
+            ofd.IsFolderPicker = !IsFilePicker;
             ofd.AddToMostRecentlyUsedList = false;
             ofd.AllowNonFileSystemItems = false;
             ofd.EnsureFileExists = true;

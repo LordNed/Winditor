@@ -129,19 +129,6 @@ namespace WindEditor.Editor.Modes
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
             };
 
-            Button export_dae_button = new Button()
-            {
-                Content = "Export DAE",
-                Command = ExportToDAECommand,
-            };
-            Button import_dae_button = new Button()
-            {
-                Content = "Import DAE",
-                Command = ImportFromDAECommand,
-            };
-            collision_stack_panel.Children.Add(export_dae_button);
-            collision_stack_panel.Children.Add(import_dae_button);
-
             RowDefinition tree_row = new RowDefinition();
             RowDefinition splitter_row = new RowDefinition();
             RowDefinition properties_row = new RowDefinition();

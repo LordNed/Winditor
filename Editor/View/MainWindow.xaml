@@ -61,13 +61,17 @@
 
         <Menu IsMainMenu="True" Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open Stage..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
-                <MenuItem Header="Open _Room(s)..." InputGestureText="Ctrl + Shift + O" Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
+                <MenuItem Header="_Open">
+                    <MenuItem Header="_Stage..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
+                    <MenuItem Header="_Room(s)..." InputGestureText="Ctrl + Shift + O" Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
+                </MenuItem>
                 <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.SaveProjectCommand}"/>
                 <MenuItem Header="Save _As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
                 <Separator/>
-                <MenuItem Header="_Export" InputGestureText="Ctrl + E" Command="{Binding Path=WindEditor.ExportProjectCommand}"/>
-                <MenuItem Header="E_xport As..." InputGestureText="Ctrl + Shift + E" Command="{Binding Path=WindEditor.ExportProjectAsCommand}"/>
+                <MenuItem Header="_Import">
+                    <MenuItem Header="Visual Mesh"/>
+                    <MenuItem Header="Collision Mesh" Command="{Binding Path=WindEditor.ImportCollisionCommand}"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
                 <Separator/>
@@ -117,6 +121,10 @@
                 <Separator/>
                 <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="TRES"/>
                 <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="SCLS"/>
+            </MenuItem>
+            <MenuItem Header="Build">
+                <MenuItem Header="_Build Stage" InputGestureText="Ctrl + B" Command="{Binding Path=WindEditor.ExportProjectCommand}"/>
+                <MenuItem Header="Build Stage to..." InputGestureText="Ctrl + Shift + B" Command="{Binding Path=WindEditor.ExportProjectAsCommand}"/>
             </MenuItem>
             <MenuItem Header="_Play" InputGestureText="Ctrl + P" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
             <MenuItem Padding="0" Width="15">

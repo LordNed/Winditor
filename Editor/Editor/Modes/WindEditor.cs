@@ -15,6 +15,8 @@ using System.Reflection;
 using WindEditor.ViewModel;
 using WindEditor.Editor;
 using WindEditor.Editor.Modes;
+using System.Windows;
+using WindEditor.Collision;
 
 namespace WindEditor
 {
@@ -32,6 +34,8 @@ namespace WindEditor
 
         public ICommand SwitchToActorModeCommand { get { return new RelayCommand(x => OnRequestSwitchToActorMode(), X => !(MainWorld.CurrentMode is ActorMode || MainWorld.Map == null)); } }
         public ICommand SwitchToCollisionModeCommand { get { return new RelayCommand(x => OnRequestSwitchToCollisionMode(), X => !(MainWorld.CurrentMode is CollisionMode || MainWorld.Map == null)); } }
+
+        public ICommand ImportCollisionCommand { get { return new RelayCommand(x => OnRequestImportCollision(), X => !(MainWorld.Map == null)); ; } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -432,6 +436,64 @@ namespace WindEditor
         public void OnRequestSwitchToCollisionMode()
         {
             MainWorld.SwitchToCollisionMode();
+        }
+
+        public void OnRequestImportCollision()
+        {
+            View.CollisionImportWindow window = new View.CollisionImportWindow(MainWorld.Map);
+            window.FileSelector.IsFilePicker = true;
+
+            if (window.ShowDialog() == true)
+            {
+                if (window.FileName == "" || !File.Exists(window.FileName))
+                {
+                    MessageBox.Show("Invalid filename entered!", "Collision Import Error");
+                    return;
+                }
+
+                if (window.RoomNumber == -1 || window.RoomNumber > MainWorld.Map.SceneList.Count - 1)
+                {
+                    MessageBox.Show("Invalid room number entered!", "Collision Import Error");
+                    return;
+                }
+
+                string ext = Path.GetExtension(window.FileName);
+                if (ext != ".dae" && ext != ".dzb")
+                {
+                    MessageBox.Show($"Input file { window.FileName } was not a supported format.", "Collision Import Error");
+                    return;
+                }
+
+                WRoom room = null;
+                for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
+                {
+                    WRoom castTest = MainWorld.Map.SceneList[i] as WRoom;
+                    if (castTest != null && castTest.RoomIndex == window.RoomNumber)
+                    {
+                        room = castTest;
+                        break;
+                    }
+                }
+
+                CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
+                WCollisionMesh newMesh = new WCollisionMesh(MainWorld, window.FileName);
+
+                List<WCollisionMesh> originalMeshList = room.GetChildrenOfType<WCollisionMesh>();
+                if (originalMeshList.Count > 0)
+                {
+                    originalMeshList[0].ReleaseResources();
+                    colCategory.Children.Remove(originalMeshList[0]);
+
+                    if (MainWorld.CollisionMode.ActiveCollisionMesh == originalMeshList[0])
+                    {
+                        newMesh.IsRendered = true;
+                        MainWorld.CollisionMode.ClearSelection();
+                        MainWorld.CollisionMode.ActiveCollisionMesh = newMesh;
+                    }
+                }
+
+                colCategory.Children.Add(newMesh);
+            }
         }
     }
 }
