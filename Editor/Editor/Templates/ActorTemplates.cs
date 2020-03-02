@@ -8448,54 +8448,82 @@ namespace WindEditor
 	public partial class npc_uk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("npc_uk", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Normal = 1,
+			Hiding = 2,
+		}
+
+		[WProperty("npc_uk", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("npc_uk", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("npc_uk", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("npc_uk", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public enum WhichKillerBeeEnum
+		{
+			Jin = 0,
+			Jan = 1,
+			JunRoberto = 2,
+		}
+
+		[WProperty("npc_uk", "Which Killer Bee", true, "", SourceScene.Room)]
+		public WhichKillerBeeEnum WhichKillerBee
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				return value_as_int;
+				return (WhichKillerBeeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("WhichKillerBee");
+				UpdateModel();
 			}
 		}
 

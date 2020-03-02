@@ -2021,6 +2021,108 @@
     ]
   },
   {
+    "Name": "Jin",
+    "Archive": "Uk",
+    "Models": [
+      {
+        "Path": "bdlm/uk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdl/ukhead_b.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Jan",
+    "Archive": "Uk",
+    "Models": [
+      {
+        "Path": "bdlm/uk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uk_c.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdlm/ukhead_c.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Jun-Roberto",
+    "Archive": "Uk",
+    "Models": [
+      {
+        "Path": "bdlm/uk.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uk_d.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      },
+      {
+        "Path": "bdl/ukhead_d.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Gohdan Head",
     "Archive": "Bst",
     "Models": [

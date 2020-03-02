@@ -3,34 +3,44 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "npc_uk",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        1: "Normal",
+        2: "Hiding",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "npc_uk",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Which Killer Bee",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "npc_uk",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Jin",
+        1: "Jan",
+        2: "Jun-Roberto",
+      },
+      "UpdateModel": true,
     }
   ]
 }
