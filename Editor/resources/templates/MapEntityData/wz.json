@@ -3,17 +3,27 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "wz",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Shoots Fireballs",
+        1: "Spawns Enemies and Shoots Fireballs",
+        2: "Mini-boss",
+        3: "Unknown 1",
+        10: "Fireball",
+        12: "Spawner Orb 1?",
+        13: "Spawner Orb 2?",
+        255: "Shoots Fireballs B",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
@@ -23,7 +33,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
@@ -33,24 +43,41 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "wz",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Enemy Summon Table",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "wz",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Many Keese and Magtails",
+        1: "Many Keese and Red Bubbles",
+        2: "Blue Bubbles",
+        3: "Many Morths",
+        4: "Many Green ChuChus",
+        5: "Red and Blue Bubbles and Poes",
+        6: "Stalfos and ReDeads",
+        7: "Moblins and Darknuts",
+        8: "Peahats, Keese, and Kargarocs",
+        9: "Keese and Magtails",
+        10: "Keese and Red Bubbles",
+        11: "Morths",
+        12: "Green ChuChus",
+        13: "Bokoblins and Moblins",
+        14: "Kargarocs, Keese, Green and Red ChuChus, and Morths",
+      }
     }
   ]
 }
