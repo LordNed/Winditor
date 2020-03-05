@@ -394,7 +394,7 @@ namespace WindEditor.Editor.Modes
             {
                 WActorCreatorWindow actorCreator = new WActorCreatorWindow();
 
-                if (actorCreator.ShowDialog() == true)
+                if (actorCreator.ShowDialog() == true && actorCreator.Descriptor != null)
                 {
                     string actorName = actorCreator.Descriptor.ActorName;
 
@@ -421,7 +421,6 @@ namespace WindEditor.Editor.Modes
                     newNode.PostLoad();
                     newNode.SetParent(lyrNode);
                 }
-                // TODO this is a temporary hack to get the actor name from the text input until the UI is properly coded
             }
             else if (selected is WDOMGroupNode)
             {
