@@ -9095,20 +9095,28 @@ namespace WindEditor
 	public partial class obj_aygr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_aygr", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_aygr", "Has Ladder", true, "", SourceScene.Room)]
+		public bool HasLadder
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 0xFF) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = Convert.ToInt32(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("HasLadder");
+				UpdateModel();
 			}
 		}
 

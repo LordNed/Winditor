@@ -3,14 +3,15 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Has Ladder",
       "ValueSource": "Parameters",
       "Mask": 0x00000001,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_aygr",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "UpdateModel": true
     }
   ]
 }

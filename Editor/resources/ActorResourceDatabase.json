@@ -3636,4 +3636,40 @@
       }
     ]
   },
+  {
+    "Name": "Lookout Platform Without Ladder",
+    "Archive": "Aygr",
+    "Models": [
+      {
+        "Path": "bdl/aygr.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+      }
+    ]
+  },
+  {
+    "Name": "Lookout Platform With Ladder",
+    "Archive": "Aygr",
+    "Models": [
+      {
+        "Path": "bdl/aygr.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+      },
+      {
+        "Path": "bdl/aygrh.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+      }
+    ]
+  },
 ]

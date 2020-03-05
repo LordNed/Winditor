@@ -11,12 +11,24 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+            UpdateModel();
+            base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (HasLadder)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Lookout Platform With Ladder");
+            } else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Lookout Platform Without Ladder");
+            }
+        }
 	}
 }
