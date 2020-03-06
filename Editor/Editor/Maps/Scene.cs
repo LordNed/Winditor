@@ -236,11 +236,15 @@ namespace WindEditor
                 return;
             }
 
-            string folderName = "bmd";
+            string folderName = "";
 
-            if (models[0].Model.StudioType.Contains("BDL"))
+            if (models[0].Model.StudioType.Contains("bdl"))
             {
                 folderName = "bdl";
+            }
+            else
+            {
+                folderName = "bmd";
             }
 
             string finalDirName = Path.Combine(directory, folderName);
@@ -258,7 +262,7 @@ namespace WindEditor
 
                 string destPath = Path.Combine(finalDirName, Path.GetFileName(node.Filename));
 
-                File.Copy(node.Filename, destPath);
+                File.Copy(node.Filename, destPath, true);
             }
         }
 

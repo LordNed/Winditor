@@ -121,25 +121,25 @@ namespace WindEditor
             if (File.Exists(m_vrSky.Filename))
             {
                 name = Path.GetFileName(m_vrSky.Filename);
-                File.Copy(m_vrSky.Filename, Path.Combine(directory, name));
+                File.Copy(m_vrSky.Filename, Path.Combine(directory, name), true);
             }
 
             if (File.Exists(m_vrKasumiMae.Filename))
             {
                 name = Path.GetFileName(m_vrKasumiMae.Filename);
-                File.Copy(m_vrKasumiMae.Filename, Path.Combine(directory, name));
+                File.Copy(m_vrKasumiMae.Filename, Path.Combine(directory, name), true);
             }
 
             if (File.Exists(m_vrBackCloud.Filename))
             {
                 name = Path.GetFileName(m_vrBackCloud.Filename);
-                File.Copy(m_vrBackCloud.Filename, Path.Combine(directory, name));
+                File.Copy(m_vrBackCloud.Filename, Path.Combine(directory, name), true);
             }
 
             if (File.Exists(m_vrUsoUmi.Filename))
             {
                 name = Path.GetFileName(m_vrUsoUmi.Filename);
-                File.Copy(m_vrUsoUmi.Filename, Path.Combine(directory, name));
+                File.Copy(m_vrUsoUmi.Filename, Path.Combine(directory, name), true);
             }
         }
 
