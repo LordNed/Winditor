@@ -214,13 +214,53 @@ namespace WindEditor
             SaveEntitiesToDirectory(directory);
             Console.WriteLine("Finished saving DZR/DZS File.");
 
+            Console.WriteLine("Writing DZB File...");
             SaveCollisionToDirectory(directory);
+            Console.WriteLine("Finished saving DZB File.");
+
+            Console.WriteLine("Writing BMD/BDL Files...");
+            SaveModelsToDirectory(directory);
+            Console.WriteLine("Finished saving BMD/BDL files.");
 
             Console.WriteLine("Finished Saving {0}.", Name);
+
         }
 
         public abstract void SaveEntitiesToDirectory(string directory);
         public abstract void SaveCollisionToDirectory(string directory);
+        public virtual void SaveModelsToDirectory(string directory)
+        {
+            List<J3DNode> models = GetChildrenOfType<J3DNode>();
+            if (models.Count <= 0)
+            {
+                return;
+            }
+
+            string folderName = "bmd";
+
+            if (models[0].Model.StudioType.Contains("BDL"))
+            {
+                folderName = "bdl";
+            }
+
+            string finalDirName = Path.Combine(directory, folderName);
+
+            if (!Directory.Exists(finalDirName))
+                Directory.CreateDirectory(finalDirName);
+
+            foreach (J3DNode node in models)
+            {
+                if (!File.Exists(node.Filename))
+                {
+                    Console.WriteLine($"File { node.Filename } does not exist anymore!");
+                    continue;
+                }
+
+                string destPath = Path.Combine(finalDirName, Path.GetFileName(node.Filename));
+
+                File.Copy(node.Filename, destPath);
+            }
+        }
 
         public virtual VirtualFilesystemDirectory ExportToVFS()
         {

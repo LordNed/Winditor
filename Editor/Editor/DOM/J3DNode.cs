@@ -6,13 +6,28 @@ namespace WindEditor
     public class J3DNode : WDOMNode, IRenderable
     {
         public J3D Model { get { return m_model; } }
+        public string Filename
+        {
+            get { return m_filename; }
+            set
+            {
+                if (m_filename != value)
+                {
+                    m_filename = value;
+                    OnPropertyChanged("Filename");
+                }
+            }
+        }
 
         private J3D m_model;
+        private string m_filename;
 
-        public J3DNode(J3D model, WWorld world) : base(world)
+        public J3DNode(J3D model, WWorld world, string filename = "") : base(world)
         {
             m_model = model;
             Name = model.Name;
+            Filename = filename;
+
             IsRendered = true;
         }
 

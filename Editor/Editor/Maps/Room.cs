@@ -129,7 +129,17 @@ namespace WindEditor
                     J3D mesh = LoadModel(folderPath, modelName);
                     if (mesh != null)
                     {
-                        J3DNode j3d_node = new J3DNode(mesh, m_world);
+                        string model_path = Path.Combine(folderPath, modelName);
+                        if (subFolder == "bmd")
+                        {
+                            model_path += ".bmd";
+                        }
+                        else
+                        {
+                            model_path += ".bdl";
+                        }
+
+                        J3DNode j3d_node = new J3DNode(mesh, m_world, model_path);
                         j3d_node.SetParent(col_category);
                         m_roomModelNodes.Add(j3d_node);
                     }

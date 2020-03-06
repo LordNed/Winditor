@@ -97,7 +97,7 @@ namespace WindEditor
                     if (File.Exists(fullPath))
                     {
                         J3D j3dModel = WResourceManager.LoadResource(fullPath);
-                        J3DNode modelNode = new J3DNode(j3dModel, m_world);
+                        J3DNode modelNode = new J3DNode(j3dModel, m_world, fullPath);
 
                         switch (model)
                         {
@@ -108,6 +108,38 @@ namespace WindEditor
                         }
                     }
                 }
+            }
+        }
+
+        public void SaveToDirectory(string directory)
+        {
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            string name = "";
+
+            if (File.Exists(m_vrSky.Filename))
+            {
+                name = Path.GetFileName(m_vrSky.Filename);
+                File.Copy(m_vrSky.Filename, Path.Combine(directory, name));
+            }
+
+            if (File.Exists(m_vrKasumiMae.Filename))
+            {
+                name = Path.GetFileName(m_vrKasumiMae.Filename);
+                File.Copy(m_vrKasumiMae.Filename, Path.Combine(directory, name));
+            }
+
+            if (File.Exists(m_vrBackCloud.Filename))
+            {
+                name = Path.GetFileName(m_vrBackCloud.Filename);
+                File.Copy(m_vrBackCloud.Filename, Path.Combine(directory, name));
+            }
+
+            if (File.Exists(m_vrUsoUmi.Filename))
+            {
+                name = Path.GetFileName(m_vrUsoUmi.Filename);
+                File.Copy(m_vrUsoUmi.Filename, Path.Combine(directory, name));
             }
         }
 

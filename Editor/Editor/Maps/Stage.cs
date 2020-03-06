@@ -177,5 +177,18 @@ namespace WindEditor
         {
             return Name;
         }
+
+        public override void SaveModelsToDirectory(string directory)
+        {
+            base.SaveModelsToDirectory(directory);
+
+            // Save skybox models
+            List<WSkyboxNode> skyboxList = GetChildrenOfType<WSkyboxNode>();
+            if (skyboxList.Count > 0)
+            {
+                string finalDir = Path.Combine(directory, "bdl");
+                skyboxList[0].SaveToDirectory(finalDir);
+            }
+        }
     }
 }
