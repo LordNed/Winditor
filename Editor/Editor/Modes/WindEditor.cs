@@ -36,6 +36,7 @@ namespace WindEditor
         public ICommand SwitchToCollisionModeCommand { get { return new RelayCommand(x => OnRequestSwitchToCollisionMode(), X => !(MainWorld.CurrentMode is CollisionMode || MainWorld.Map == null)); } }
 
         public ICommand ImportCollisionCommand { get { return new RelayCommand(x => OnRequestImportCollision(), X => !(MainWorld.Map == null)); ; } }
+        public ICommand ImportVisualMeshCommand { get { return new RelayCommand(x => OnRequestImportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -493,6 +494,68 @@ namespace WindEditor
                 }
 
                 colCategory.Children.Add(newMesh);
+            }
+        }
+
+        public void OnRequestImportVisualMesh()
+        {
+            View.CollisionImportWindow window = new View.CollisionImportWindow(MainWorld.Map);
+            window.FileSelector.IsFilePicker = true;
+
+            if (window.ShowDialog() == true)
+            {
+                if (window.FileName == "" || !File.Exists(window.FileName))
+                {
+                    MessageBox.Show("Invalid filename entered!", "Mesh Import Error");
+                    return;
+                }
+
+                if (window.RoomNumber == -1 || window.RoomNumber > MainWorld.Map.SceneList.Count - 1)
+                {
+                    MessageBox.Show("Invalid room number entered!", "Mesh Import Error");
+                    return;
+                }
+
+                WRoom room = null;
+                for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
+                {
+                    WRoom castTest = MainWorld.Map.SceneList[i] as WRoom;
+                    if (castTest != null && castTest.RoomIndex == window.RoomNumber)
+                    {
+                        room = castTest;
+                        break;
+                    }
+                }
+
+                string fileExt = Path.GetExtension(window.FileName);
+                J3DNode newNode = null;
+
+                if (fileExt == ".bmd" || fileExt == ".bdl")
+                {
+                    JStudio.J3D.J3D newMesh = WResourceManager.LoadResource(window.FileName);
+                    newNode = new J3DNode(newMesh, MainWorld, window.FileName);
+                }
+                else
+                {
+
+                }
+
+                if (newNode == null)
+                {
+                    MessageBox.Show("Failed to import mesh!", "Mesh Import Error");
+                    return;
+                }
+
+                newNode.IsRendered = true;
+
+                CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
+                List<J3DNode> meshList = meshCategory.GetChildrenOfType<J3DNode>();
+
+                J3DNode oldNode = meshList.Find(x => x.Name == newNode.Name);
+                int oldNodeIndex = meshList.IndexOf(oldNode);
+
+                meshCategory.Children.Remove(oldNode);
+                meshCategory.Children.Add(newNode);
             }
         }
     }

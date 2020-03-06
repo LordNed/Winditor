@@ -69,7 +69,7 @@
                 <MenuItem Header="Save _As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
                 <Separator/>
                 <MenuItem Header="_Import">
-                    <MenuItem Header="Visual Mesh"/>
+                    <MenuItem Header="Visual Mesh" Command="{Binding Path=WindEditor.ImportVisualMeshCommand}"/>
                     <MenuItem Header="Collision Mesh" Command="{Binding Path=WindEditor.ImportCollisionCommand}"/>
                 </MenuItem>
                 <Separator/>

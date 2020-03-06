@@ -283,9 +283,9 @@ namespace WindEditor
                 }
             }
 
-            List<WCollisionMesh> meshes = GetChildrenOfType<WCollisionMesh>();
+            List<WCollisionMesh> colMeshes = GetChildrenOfType<WCollisionMesh>();
 
-            foreach (WCollisionMesh m in meshes)
+            foreach (WCollisionMesh m in colMeshes)
             {
                 VirtualFilesystemFile dzb_file = SourceDirectory.GetFileAtPath("dzb/room.dzb");
 
@@ -298,6 +298,11 @@ namespace WindEditor
                     }
                 }
             }
+
+            VirtualFilesystemFile bmd_file = SourceDirectory.GetFileAtPath("bdl/model.bdl");
+            List<J3DNode> meshes = GetChildrenOfType<J3DNode>();
+
+            bmd_file.Data = File.ReadAllBytes(meshes[0].Filename);
 
             return new_dir;
         }

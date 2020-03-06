@@ -1833,6 +1833,10 @@
       <Project>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</Project>
       <Name>JStudio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SuperBMDLib\SuperBMDLib.csproj">
+      <Project>{828be5e5-9e98-46c9-b63e-d2d03322a825}</Project>
+      <Name>SuperBMDLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj">
       <Project>{B715685D-1603-4CE3-8EA1-552B01C2BA4B}</Project>
       <Name>ArchiveToolsLib</Name>
