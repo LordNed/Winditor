@@ -299,10 +299,41 @@ namespace WindEditor
                 }
             }
 
-            VirtualFilesystemFile bmd_file = SourceDirectory.GetFileAtPath("bdl/model.bdl");
             List<J3DNode> meshes = GetChildrenOfType<J3DNode>();
 
-            bmd_file.Data = File.ReadAllBytes(meshes[0].Filename);
+            for (int i = 0; i < meshes.Count; i++)
+            {
+                string modelExt = meshes[i].Model.StudioType == "bdl4" ? "bdl" : "bmd";
+
+                VirtualFilesystemFile modelFile = SourceDirectory.GetFileAtPath($"{ modelExt }/{ meshes[i].Name }.{ modelExt }");
+                byte[] data = File.ReadAllBytes(meshes[i].Filename);
+
+                if (modelFile != null)
+                {
+                    modelFile.Data = data;
+                }
+                else
+                {
+                    VirtualFilesystemDirectory modelDir = null;
+
+                    foreach (VirtualFilesystemNode n in new_dir.Children)
+                    {
+                        if (n.Name == modelExt)
+                        {
+                            modelDir = n as VirtualFilesystemDirectory;
+                            break;
+                        }
+                    }
+
+                    if (modelDir == null)
+                    {
+                        modelDir = new VirtualFilesystemDirectory(modelExt);
+                        new_dir.Children.Add(modelDir);
+                    }
+
+                    modelDir.Children.Add(new VirtualFilesystemFile(meshes[i].Name, $".{ modelExt }", data));
+                }
+            }
 
             return new_dir;
         }

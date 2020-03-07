@@ -499,7 +499,7 @@ namespace WindEditor
 
         public void OnRequestImportVisualMesh()
         {
-            View.CollisionImportWindow window = new View.CollisionImportWindow(MainWorld.Map);
+            View.VisualMeshImportWindow window = new View.VisualMeshImportWindow(MainWorld.Map);
             window.FileSelector.IsFilePicker = true;
 
             if (window.ShowDialog() == true)
@@ -510,53 +510,90 @@ namespace WindEditor
                     return;
                 }
 
-                if (window.RoomNumber == -1 || window.RoomNumber > MainWorld.Map.SceneList.Count - 1)
+                if (window.SceneNumber == -1 || window.SceneNumber > MainWorld.Map.SceneList.Count)
                 {
                     MessageBox.Show("Invalid room number entered!", "Mesh Import Error");
                     return;
                 }
 
-                WRoom room = null;
-                for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
+                if (window.SceneNumber == 0)
                 {
-                    WRoom castTest = MainWorld.Map.SceneList[i] as WRoom;
-                    if (castTest != null && castTest.RoomIndex == window.RoomNumber)
-                    {
-                        room = castTest;
-                        break;
-                    }
-                }
 
-                string fileExt = Path.GetExtension(window.FileName);
-                J3DNode newNode = null;
-
-                if (fileExt == ".bmd" || fileExt == ".bdl")
-                {
-                    JStudio.J3D.J3D newMesh = WResourceManager.LoadResource(window.FileName);
-                    newNode = new J3DNode(newMesh, MainWorld, window.FileName);
                 }
                 else
                 {
-
+                    ImportVisualMeshToRoom(window);
                 }
-
-                if (newNode == null)
-                {
-                    MessageBox.Show("Failed to import mesh!", "Mesh Import Error");
-                    return;
-                }
-
-                newNode.IsRendered = true;
-
-                CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
-                List<J3DNode> meshList = meshCategory.GetChildrenOfType<J3DNode>();
-
-                J3DNode oldNode = meshList.Find(x => x.Name == newNode.Name);
-                int oldNodeIndex = meshList.IndexOf(oldNode);
-
-                meshCategory.Children.Remove(oldNode);
-                meshCategory.Children.Add(newNode);
             }
+        }
+
+        private void ImportVisualMeshToRoom(View.VisualMeshImportWindow importWindow)
+        {
+            WRoom room = GetRoomFromIndex(importWindow.SceneNumber - 1);
+            CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
+            List<J3DNode> meshList = meshCategory.GetChildrenOfType<J3DNode>();
+
+            string newMeshName = "model";
+
+            if (importWindow.SlotNumber > 0)
+            {
+                newMeshName += importWindow.SlotNumber;
+            }
+
+            bool isBDL = true;
+
+            J3DNode oldMeshNode = meshList.Find(x => x.Name == newMeshName);
+            if (oldMeshNode != null)
+            {
+                meshCategory.Children.Remove(oldMeshNode);
+                isBDL = oldMeshNode.Model.StudioType == "bdl4";
+            }
+
+            string fileExt = Path.GetExtension(importWindow.FileName);
+            string loadFilename = "";
+
+            if (fileExt == ".bmd" || fileExt == ".bdl")
+            {
+                loadFilename = importWindow.FileName;
+            }
+            else
+            {
+                loadFilename = Path.Combine(Path.GetTempPath(), newMeshName + (isBDL ? ".bdl" : ".bmd"));
+
+                List<string> superBMDArgs = new List<string>(new string[] {"-i", $"{ importWindow.FileName }"});
+                if (isBDL)
+                {
+                    superBMDArgs.Add("-b");
+                }
+
+                SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
+
+                SuperBMDLib.Model newJ3D = SuperBMDLib.Model.Load(args);
+                newJ3D.ExportBMD(loadFilename, true);
+            }
+
+            JStudio.J3D.J3D newMesh = WResourceManager.LoadResource(loadFilename);
+            J3DNode newNode = new J3DNode(newMesh, MainWorld, loadFilename);
+            newNode.Name = newMeshName;
+
+            meshCategory.Children.Add(newNode);
+        }
+
+        private WRoom GetRoomFromIndex(int index)
+        {
+            WRoom room = null;
+
+            for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
+            {
+                WRoom castTest = MainWorld.Map.SceneList[i] as WRoom;
+                if (castTest != null && castTest.RoomIndex == index)
+                {
+                    room = castTest;
+                    break;
+                }
+            }
+
+            return room;
         }
     }
 }
