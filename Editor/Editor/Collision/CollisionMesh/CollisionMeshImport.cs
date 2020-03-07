@@ -198,12 +198,12 @@ namespace WindEditor.Collision
                 // info from the file. If the up-axis was defined as Z-up, we need to
                 // swap the Y and Z components of our vectors so the mesh isn't sideways.
                 // (The Wind Waker is Y-up.)
-                /*if (m_UpAxis == UpAxisType.Z_UP)
+                if (m_UpAxis == UpAxisType.Z_UP)
                 {
                     vec1 = SwapYZ(vec1);
                     vec2 = SwapYZ(vec2);
                     vec3 = SwapYZ(vec3);
-                }*/
+                }
 
                 CollisionTriangle new_tri = new CollisionTriangle(vec1, vec2, vec3, parent);
 
