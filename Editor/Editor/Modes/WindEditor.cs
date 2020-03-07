@@ -118,6 +118,9 @@ namespace WindEditor
 
                     foreach (var arc in files)
                     {
+                        if (!arc.EndsWith(".arc"))
+                            continue;
+
                         VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
                         if (archiveRoot == null)
                             continue;
