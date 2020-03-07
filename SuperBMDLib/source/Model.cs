@@ -111,6 +111,11 @@ namespace SuperBMDLib
             EnsureOneMaterialPerMesh(scene);
             SortMeshesByObjectNames(scene);
 
+            if (args.rotate_model)
+            {
+                RotateModel(scene);
+            }
+
             VertexData = new VTX1(scene);
             Joints = new JNT1(scene, VertexData);
             Textures = new TEX1(scene, args);
@@ -679,6 +684,53 @@ namespace SuperBMDLib
                     {
                         throw new Exception($"Mesh \"{mesh1.Name}\" has more than one material assigned to it. Currently only one material per mesh is supported.");
                     }
+                }
+            }
+        }
+
+        private void RotateModel(Scene scene)
+        {
+            Assimp.Node root = null;
+            for (int i = 0; i < scene.RootNode.ChildCount; i++)
+            {
+                if (scene.RootNode.Children[i].Name.ToLowerInvariant() == "skeleton_root")
+                {
+                    if (scene.RootNode.Children[i].ChildCount == 0)
+                    {
+                        throw new System.Exception("skeleton_root has no children! If you are making a rigged model, make sure skeleton_root contains the root of your skeleton.");
+                    }
+                    root = scene.RootNode.Children[i].Children[0];
+                    break;
+                }
+            }
+
+            Matrix4x4 rotate = Matrix4x4.FromRotationX((float)((1 / 2.0) * Math.PI));
+            Matrix4x4 rotateinv = rotate;
+            rotateinv.Inverse();
+
+
+            foreach (Mesh mesh in scene.Meshes)
+            {
+                if (root != null)
+                {
+                    foreach (Assimp.Bone bone in mesh.Bones)
+                    {
+                        bone.OffsetMatrix = rotateinv * bone.OffsetMatrix;
+                    }
+                }
+
+                for (int i = 0; i < mesh.VertexCount; i++)
+                {
+                    Vector3D vertex = mesh.Vertices[i];
+                    vertex.Set(vertex.X, -vertex.Z, vertex.Y);
+                    mesh.Vertices[i] = vertex;
+                }
+                for (int i = 0; i < mesh.Normals.Count; i++)
+                {
+                    Vector3D norm = mesh.Normals[i];
+                    norm.Set(norm.X, -norm.Z, norm.Y);
+
+                    mesh.Normals[i] = norm;
                 }
             }
         }

@@ -564,6 +564,7 @@ namespace WindEditor
                 loadFilename = Path.Combine(Path.GetTempPath(), newMeshName + (isBDL ? ".bdl" : ".bmd"));
 
                 List<string> superBMDArgs = new List<string>(new string[] {"-i", $"{ importWindow.FileName }"});
+                superBMDArgs.Add("--rotate");
                 if (isBDL)
                 {
                     superBMDArgs.Add("-b");
