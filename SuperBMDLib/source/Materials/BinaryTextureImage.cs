@@ -249,8 +249,8 @@ namespace SuperBMDLib.Materials
 
             if (File.Exists(texPath))
             {
-                texData = new Bitmap(texture.FilePath);
-                Name = Path.GetFileNameWithoutExtension(texture.FilePath);
+                texData = new Bitmap(texPath);
+                Name = Path.GetFileNameWithoutExtension(texPath);
             }
             else
             {
