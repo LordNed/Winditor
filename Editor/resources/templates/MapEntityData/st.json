@@ -50,7 +50,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Death Switch",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,

@@ -16059,8 +16059,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Death Switch", true, "", SourceScene.Room)]
-		public int DeathSwitch
+		[WProperty("st", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -16072,7 +16072,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("DeathSwitch");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
