@@ -704,7 +704,7 @@ namespace SuperBMDLib
                 }
             }
 
-            Matrix4x4 rotate = Matrix4x4.FromRotationX((float)((1 / 2.0) * Math.PI));
+            Matrix4x4 rotate = Matrix4x4.FromRotationX((float)(-(1 / 2.0) * Math.PI));
             Matrix4x4 rotateinv = rotate;
             rotateinv.Inverse();
 
@@ -722,13 +722,13 @@ namespace SuperBMDLib
                 for (int i = 0; i < mesh.VertexCount; i++)
                 {
                     Vector3D vertex = mesh.Vertices[i];
-                    vertex.Set(vertex.X, -vertex.Z, vertex.Y);
+                    vertex.Set(vertex.X, vertex.Z, -vertex.Y);
                     mesh.Vertices[i] = vertex;
                 }
                 for (int i = 0; i < mesh.Normals.Count; i++)
                 {
                     Vector3D norm = mesh.Normals[i];
-                    norm.Set(norm.X, -norm.Z, norm.Y);
+                    norm.Set(norm.X, norm.Z, -norm.Y);
 
                     mesh.Normals[i] = norm;
                 }
