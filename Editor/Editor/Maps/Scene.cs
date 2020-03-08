@@ -260,7 +260,7 @@ namespace WindEditor
                     continue;
                 }
 
-                string destPath = Path.Combine(finalDirName, Path.GetFileName(node.Filename));
+                string destPath = Path.Combine(finalDirName, node.Name + $".{ folderName }");
 
                 File.Copy(node.Filename, destPath, true);
             }

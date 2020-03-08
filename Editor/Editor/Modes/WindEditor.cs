@@ -231,7 +231,7 @@ namespace WindEditor
 
         private string GetStageDumpPath()
         {
-            return Path.Combine(Path.GetTempPath(), "WinditorStageDumps");
+            return Path.Combine(Path.GetTempPath(), "Winditor");
         }
 
         private void DeleteDumpContentsFromTempDir()
@@ -562,7 +562,8 @@ namespace WindEditor
             }
             else
             {
-                loadFilename = Path.Combine(Path.GetTempFileName().Replace(".tmp", (isBDL ? ".bdl" : ".bmd")));
+                string tempFileName = Path.GetFileNameWithoutExtension(Path.GetTempFileName());
+                loadFilename = Path.Combine(Path.GetTempPath(), "Winditor", tempFileName + (isBDL ? ".bdl" : ".bmd"));
 
                 List<string> superBMDArgs = new List<string>(new string[] {"-i", $"{ importWindow.FileName }"});
                 superBMDArgs.Add("--rotate");
