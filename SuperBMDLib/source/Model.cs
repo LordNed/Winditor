@@ -109,7 +109,6 @@ namespace SuperBMDLib
         public Model(Scene scene, Arguments args)
         {
             EnsureOneMaterialPerMesh(scene);
-            SortMeshesByObjectNames(scene);
 
             if (args.rotate_model)
             {
@@ -618,38 +617,6 @@ namespace SuperBMDLib
             return true;
         }
 
-        private void SortMeshesByObjectNames(Scene scene)
-        {
-            // Sort meshes by their name instead of keeping the order they're in inside the file.
-            // Specifically, natural sorting is used so that mesh-9 comes before mesh-10.
-
-            List<string> meshNames = new List<string>();
-            int maxNumberLength = 0;
-            GetMeshNamesRecursive(scene.RootNode, meshNames, ref maxNumberLength);
-
-            if (meshNames.Count != scene.Meshes.Count)
-            {
-                throw new Exception($"Number of meshes ({scene.Meshes.Count}) is not the same as the number of mesh objects ({meshNames.Count}); cannot sort.\nMesh objects: {String.Join(", ", meshNames)}\nMeshes: {String.Join(", ", scene.Meshes.Select(mesh => mesh.Name))}");
-            }
-
-            // Pad the numbers in mesh names with 0s.
-            List<string> meshNamesPadded = new List<string>();
-            foreach (string meshName in meshNames)
-            {
-                meshNamesPadded.Add(Regex.Replace(meshName, @"\d+", m => m.Value.PadLeft(maxNumberLength, '0')));
-            }
-
-            // Use Array.Sort to sort the meshes by the order of their object names.
-            var meshNamesArray = meshNamesPadded.ToArray();
-            var meshesArray = scene.Meshes.ToArray();
-            Array.Sort(meshNamesArray, meshesArray);
-
-            for (int i = 0; i < scene.Meshes.Count; i++)
-            {
-                scene.Meshes[i] = meshesArray[i];
-            }
-        }
-        
         private void GetMeshNamesRecursive(Node parentNode, List<string> meshNames, ref int maxNumberLength)
         {
             foreach (Node node in parentNode.Children)
