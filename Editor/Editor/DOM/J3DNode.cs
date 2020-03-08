@@ -5,7 +5,19 @@ namespace WindEditor
 {
     public class J3DNode : WDOMNode, IRenderable
     {
-        public J3D Model { get { return m_model; } }
+        public J3D Model
+        {
+            get { return m_model; }
+            set
+            {
+                if (m_model != value)
+                {
+                    m_model = value;
+                    OnPropertyChanged("Model");
+                }
+            }
+        }
+
         public string Filename
         {
             get { return m_filename; }

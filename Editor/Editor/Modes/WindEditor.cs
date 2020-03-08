@@ -481,6 +481,7 @@ namespace WindEditor
 
                 CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
                 WCollisionMesh newMesh = new WCollisionMesh(MainWorld, window.FileName);
+                newMesh.Name = "room";
 
                 List<WCollisionMesh> originalMeshList = room.GetChildrenOfType<WCollisionMesh>();
                 if (originalMeshList.Count > 0)
@@ -561,7 +562,7 @@ namespace WindEditor
             }
             else
             {
-                loadFilename = Path.Combine(Path.GetTempPath(), newMeshName + (isBDL ? ".bdl" : ".bmd"));
+                loadFilename = Path.Combine(Path.GetTempFileName().Replace(".tmp", (isBDL ? ".bdl" : ".bmd")));
 
                 List<string> superBMDArgs = new List<string>(new string[] {"-i", $"{ importWindow.FileName }"});
                 superBMDArgs.Add("--rotate");
@@ -577,8 +578,8 @@ namespace WindEditor
             }
 
             JStudio.J3D.J3D newMesh = WResourceManager.LoadResource(loadFilename);
+            newMesh.Name = newMeshName;
             J3DNode newNode = new J3DNode(newMesh, MainWorld, loadFilename);
-            newNode.Name = newMeshName;
 
             meshCategory.Children.Add(newNode);
         }
