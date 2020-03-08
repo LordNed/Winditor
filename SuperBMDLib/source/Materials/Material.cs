@@ -140,6 +140,8 @@ namespace SuperBMDLib.Materials
                 AddTevOrder(TexCoordId.TexCoord0, TexMapId.TexMap0, GXColorChannelId.ColorNull);
                 AddTexIndex(texIndex);
 
+                TextureNames[0] = texName;
+
                 // Texture + Vertex Color
                 if (hasVtxColor)
                 {
