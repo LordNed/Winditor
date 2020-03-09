@@ -89,6 +89,8 @@ namespace WindEditor.Serialization
                             position.X = ((float?)jsonValueObject["Position"]["X"]).GetValueOrDefault();
                             position.Y = ((float?)jsonValueObject["Position"]["Y"]).GetValueOrDefault();
                             position.Z = ((float?)jsonValueObject["Position"]["Z"]).GetValueOrDefault();
+
+                            transform.Position = position;
                         }
                         if (jsonValueObject.ContainsKey("Rotation"))
                         {
@@ -98,6 +100,8 @@ namespace WindEditor.Serialization
                             rotation.Y = ((float?)jsonValueObject["Rotation"]["Y"]).GetValueOrDefault();
                             rotation.Z = ((float?)jsonValueObject["Rotation"]["Z"]).GetValueOrDefault();
                             rotation.W = ((float?)jsonValueObject["Rotation"]["W"]).GetValueOrDefault();
+
+                            transform.Rotation = rotation;
                         }
                         if (jsonValueObject.ContainsKey("LocalScale"))
                         {
@@ -106,6 +110,8 @@ namespace WindEditor.Serialization
                             localScale.X = ((float?)jsonValueObject["LocalScale"]["X"]).GetValueOrDefault(1.0f);
                             localScale.Y = ((float?)jsonValueObject["LocalScale"]["Y"]).GetValueOrDefault(1.0f);
                             localScale.Z = ((float?)jsonValueObject["LocalScale"]["Z"]).GetValueOrDefault(1.0f);
+
+                            transform.LocalScale = localScale;
                         }
                     }
                 }
