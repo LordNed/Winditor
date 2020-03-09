@@ -21,6 +21,26 @@
       "Category": "shutter",
       "ToolTip": "",
       "DataType": "Integer"
+    },
+    {
+      "Name": "X Rotation",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0xFFFF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "shutter",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Z Rotation",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0xFFFF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "shutter",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }
