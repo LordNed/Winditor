@@ -216,6 +216,8 @@ namespace WindEditor
 
             m_j3dList.Add(existRef);
 
+            model.Tick(1 / (float)60);
+
             return model;
         }
 
