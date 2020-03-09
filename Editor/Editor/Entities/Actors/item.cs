@@ -49,7 +49,8 @@ namespace WindEditor
                 case ItemID.Blue_Rupee:
                     m_actorMeshes = WResourceManager.LoadActorResource("Blue Rupee");
                     break;
-                case ItemID.Yellow_Rupee_1:
+                case ItemID.Yellow_Rupee:
+                case ItemID.Yellow_Rupee_Joke_Message:
                     m_actorMeshes = WResourceManager.LoadActorResource("Yellow Rupee");
                     break;
                 case ItemID.Red_Rupee:
