@@ -2805,6 +2805,20 @@
     ]
   },
   {
+    "Name": "Spiked Hammer Switch",
+    "Archive": "Shmrgrd",
+    "Models": [
+      {
+        "Path": "bdl/shmrgrd.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Button Switch",
     "Archive": "Kbota_00",
     "Models": [

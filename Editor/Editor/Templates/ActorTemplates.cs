@@ -12923,8 +12923,8 @@ namespace WindEditor
 	public partial class obj_shmrgrd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_shmrgrd", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_shmrgrd", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -12936,7 +12936,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -13069,8 +13069,8 @@ namespace WindEditor
 	public partial class obj_swhammer : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swhammer", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_swhammer", "Switch to Unset", true, "This switch will be unset when the button is pressed.", SourceScene.Room)]
+		public int SwitchtoUnset
 		{ 
 			get
 			{
@@ -13082,12 +13082,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoUnset");
 			}
 		}
 
-		[WProperty("obj_swhammer", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_swhammer", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -13099,7 +13099,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
