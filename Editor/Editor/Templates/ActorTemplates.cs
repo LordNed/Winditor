@@ -4508,43 +4508,60 @@ namespace WindEditor
 			}
 		}
 
-		public enum Unknown1Enum
+		public enum BehaviorTypeEnum
 		{
-			Unknown_0 = 0,
-			Unknown_1 = 1,
+			Fade_away = 0,
+			Float_in_place_and_do_not_fade_away = 1,
 			Unknown_2 = 2,
 			Do_not_fade_away = 3,
 		}
 
-		[WProperty("Item Pickup", "Unknown 1", true, "", SourceScene.Room)]
-		public Unknown1Enum Unknown1
+		[WProperty("Item Pickup", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
-				return (Unknown1Enum)value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
-				OnPropertyChanged("Unknown1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
+		public enum ItemActionEnum
+		{
+			Normal = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Make_a_ding_sound = 5,
+			Unknown_6 = 6,
+			Unknown_7 = 7,
+			Unknown_8 = 8,
+			Unknown_9 = 9,
+			Unknown_10 = 10,
+			Unknown_11 = 11,
+			Unknown_12 = 12,
+		}
+
 		[WProperty("Item Pickup", "Item Action", true, "", SourceScene.Room)]
-		public int ItemAction
+		public ItemActionEnum ItemAction
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFC000000) >> 26);
-				return value_as_int;
+				return (ItemActionEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xFC000000 | (value_as_int << 26 & 0xFC000000));
 				OnPropertyChanged("ItemAction");
 			}
@@ -4555,14 +4572,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 26);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 26 & 0x00FF));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableActivationSwitch");
 			}
 		}

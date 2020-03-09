@@ -33,7 +33,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown 1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x03000000,
       "Shift": 24,
@@ -42,8 +42,8 @@
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
-        0: "Unknown 0",
-        1: "Unknown 1",
+        0: "Fade away",
+        1: "Float in place and do not fade away",
         2: "Unknown 2",
         3: "Do not fade away",
       }
@@ -56,13 +56,28 @@
       "Hidden": false,
       "Category": "Item Pickup",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+        5: "Make a ding sound",
+        6: "Unknown 6",
+        7: "Unknown 7",
+        8: "Unknown 8",
+        9: "Unknown 9",
+        10: "Unknown 10",
+        11: "Unknown 11",
+        12: "Unknown 12",
+      }
     },
     {
       "Name": "Enable Activation Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
-      "Shift": 26,
+      "Shift": 0,
       "Hidden": false,
       "Category": "Item Pickup",
       "ToolTip": "The player will not be able to pick this item up until this switch is set.\nIt will still be visible and animated, but touching it will not give the item.\nAlso note that the item will not begin to fade away before this switch is set either.",
