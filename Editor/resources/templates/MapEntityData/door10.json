@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Switch to Set When All Enemies Dead",
+      "Name": "Switch 1",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": "This only has an effect for barred-type doors.",
+      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.",
       "DataType": "Integer",
       "UpdateModel": true
     },
@@ -26,9 +26,9 @@
         0: "Normal",
         1: "Boss",
         2: "Barred until all enemies dead",
-        3: "Unknown 3",
+        3: "Unknown",
         4: "Locked",
-        5: "Barred until all enemies dead 2",
+        5: "Locked and barred",
       },
       "UpdateModel": true
     },
@@ -43,7 +43,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Switch to Check for Unlock",
+      "Name": "Switch 2",
       "ValueSource": "Parameters",
       "Mask": 0x0FF00000,
       "Shift": 20,

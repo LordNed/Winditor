@@ -2517,8 +2517,8 @@ namespace WindEditor
 	public partial class door10 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Door", "Switch to Set When All Enemies Dead", true, "This only has an effect for barred-type doors.", SourceScene.Room)]
-		public int SwitchtoSetWhenAllEnemiesDead
+		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
+		public int Switch1
 		{ 
 			get
 			{
@@ -2530,7 +2530,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("SwitchtoSetWhenAllEnemiesDead");
+				OnPropertyChanged("Switch1");
 				UpdateModel();
 			}
 		}
@@ -2540,9 +2540,9 @@ namespace WindEditor
 			Normal = 0,
 			Boss = 1,
 			Barred_until_all_enemies_dead = 2,
-			Unknown_3 = 3,
+			Unknown = 3,
 			Locked = 4,
-			Barred_until_all_enemies_dead_2 = 5,
+			Locked_and_barred = 5,
 		}
 
 		[WProperty("Door", "Type", true, "", SourceScene.Room)]
@@ -2580,8 +2580,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch to Check for Unlock", true, "", SourceScene.Room)]
-		public int SwitchtoCheckforUnlock
+		[WProperty("Door", "Switch 2", true, "", SourceScene.Room)]
+		public int Switch2
 		{ 
 			get
 			{
@@ -2593,7 +2593,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("SwitchtoCheckforUnlock");
+				OnPropertyChanged("Switch2");
 			}
 		}
 
@@ -2676,8 +2676,8 @@ namespace WindEditor
 	public partial class door12 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Door", "Switch to Set When All Enemies Dead", true, "This only has an effect for barred-type doors.", SourceScene.Room)]
-		public int SwitchtoSetWhenAllEnemiesDead
+		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
+		public int Switch1
 		{ 
 			get
 			{
@@ -2689,7 +2689,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("SwitchtoSetWhenAllEnemiesDead");
+				OnPropertyChanged("Switch1");
 			}
 		}
 
@@ -2736,8 +2736,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch to Check for Unlock", true, "", SourceScene.Room)]
-		public int SwitchtoCheckforUnlock
+		[WProperty("Door", "Switch 2", true, "", SourceScene.Room)]
+		public int Switch2
 		{ 
 			get
 			{
@@ -2749,7 +2749,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("SwitchtoCheckforUnlock");
+				OnPropertyChanged("Switch2");
 			}
 		}
 

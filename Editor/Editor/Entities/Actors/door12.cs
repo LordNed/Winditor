@@ -66,7 +66,7 @@ namespace WindEditor
             {
                 model_list.AddRange(WResourceManager.LoadActorResource("Small Key Lock"));
             }
-            else if (Type == TypeEnum.Barred_until_all_enemies_dead || SwitchtoSetWhenAllEnemiesDead < 255)
+            else if (Type == TypeEnum.Barred_until_all_enemies_dead || Switch1 < 255)
             {
                 model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl"));
             }

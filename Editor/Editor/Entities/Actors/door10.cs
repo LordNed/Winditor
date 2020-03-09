@@ -63,13 +63,17 @@ namespace WindEditor
                 model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/door10.bdl"));
             }
 
-            if (Type == TypeEnum.Locked)
+            if (Type == TypeEnum.Locked || Type == TypeEnum.Locked_and_barred)
             {
                 model_list.AddRange(WResourceManager.LoadActorResource("Small Key Lock"));
             }
-            else if (Type == TypeEnum.Barred_until_all_enemies_dead || SwitchtoSetWhenAllEnemiesDead < 255)
+
+            if (Type == TypeEnum.Barred_until_all_enemies_dead || Type == TypeEnum.Locked_and_barred || Switch1 < 255)
             {
-                model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl"));
+                if (stage_dir.GetFileAtPath("bdl/stop10.bdl") != null)
+                {
+                    model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl"));
+                }
             }
 
             return model_list;
