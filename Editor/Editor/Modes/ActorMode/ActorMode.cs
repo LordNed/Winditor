@@ -382,9 +382,9 @@ namespace WindEditor.Editor.Modes
                 SerializableDOMNode origNode = selected as SerializableDOMNode;
                 Type selType = selected.GetType();
                 newNode = (SerializableDOMNode)Activator.CreateInstance(selType, origNode.FourCC, World);
+                newNode.SetParent(selected.Parent);
                 newNode.Name = origNode.Name;
                 newNode.PostLoad();
-                newNode.SetParent(selected.Parent);
 
                 if (origNode.Parent is WDOMLayeredGroupNode)
                 {
@@ -398,18 +398,12 @@ namespace WindEditor.Editor.Modes
                 if (actorCreator.ShowDialog() == true && actorCreator.Descriptor != null)
                 {
                     string actorName = actorCreator.Descriptor.ActorName;
-
                     if (actorName == "")
-                    {
                         return;
-                    }
 
                     Type actorType = WResourceManager.GetTypeByName(actorName);
-
                     if (actorType == typeof(Actor))
-                    {
                         return;
-                    }
 
                     WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
                     string unlayedFourCC = lyrNode.FourCC.ToString();
@@ -417,10 +411,10 @@ namespace WindEditor.Editor.Modes
                     FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
 
                     newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, enumVal, World);
+                    newNode.SetParent(lyrNode);
                     newNode.Name = actorName;
                     newNode.Layer = layer;
                     newNode.PostLoad();
-                    newNode.SetParent(lyrNode);
                 }
             }
             else if (selected is WDOMGroupNode)
@@ -430,11 +424,34 @@ namespace WindEditor.Editor.Modes
                 if (grpNode.FourCC == FourCC.ACTR || grpNode.FourCC == FourCC.SCOB || grpNode.FourCC == FourCC.TRES)
                     return;
 
-                Type newObjType = FourCCConversion.GetTypeFromEnum(grpNode.FourCC);
-                newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, grpNode.FourCC, World);
-                newNode.Name = "New";
-                newNode.PostLoad();
-                newNode.SetParent(grpNode);
+                if (grpNode.FourCC == FourCC.TGDR || grpNode.FourCC == FourCC.TGSC || grpNode.FourCC == FourCC.TGOB)
+                {
+                    WActorCreatorWindow actorCreator = new WActorCreatorWindow();
+
+                    if (actorCreator.ShowDialog() == true && actorCreator.Descriptor != null)
+                    {
+                        string actorName = actorCreator.Descriptor.ActorName;
+                        if (actorName == "")
+                            return;
+
+                        Type actorType = WResourceManager.GetTypeByName(actorName);
+                        if (actorType == typeof(Actor))
+                            return;
+
+                        newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, grpNode.FourCC, World);
+                        newNode.SetParent(grpNode);
+                        newNode.Name = actorName;
+                        newNode.PostLoad();
+                    }
+                }
+                else
+                {
+                    Type newObjType = FourCCConversion.GetTypeFromEnum(grpNode.FourCC);
+                    newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, grpNode.FourCC, World);
+                    newNode.SetParent(grpNode);
+                    newNode.Name = "New";
+                    newNode.PostLoad();
+                }
             }
             else
                 return;
