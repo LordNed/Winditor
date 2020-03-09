@@ -47,19 +47,32 @@ namespace WindEditor.Serialization
             else if (m_parent is WDOMGroupNode)
             {
                 WDOMGroupNode groupNode = m_parent as WDOMGroupNode;
-
-                if (groupNode.FourCC == FourCC.ACTR || groupNode.FourCC == FourCC.SCOB || groupNode.FourCC == FourCC.TRES)
-                    return null;
-
-                Type newObjType = FourCCConversion.GetTypeFromEnum(groupNode.FourCC);
                 FourCC fourcc = groupNode.FourCC;
 
-                newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, fourcc, m_world);
+                if (fourcc == FourCC.ACTR || fourcc == FourCC.SCOB || fourcc == FourCC.TRES)
+                    return null;
+
+                if (fourcc == FourCC.TGDR || fourcc == FourCC.TGSC || fourcc == FourCC.TGOB)
+                {
+                    Type newObjType = WResourceManager.GetTypeByName(actorName);
+                    if (newObjType == typeof(Actor))
+                        return null;
+
+                    newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, fourcc, m_world);
+                }
+                else
+                {
+                    Type newObjType = FourCCConversion.GetTypeFromEnum(groupNode.FourCC);
+
+                    newNode = (SerializableDOMNode)Activator.CreateInstance(newObjType, fourcc, m_world);
+                }
             }
             else
             {
                 return null;
             }
+
+            newNode.SetParent(m_parent);
 
             var wproperties = newNode.GetType().GetProperties().Where(prop =>
             {
@@ -72,6 +85,7 @@ namespace WindEditor.Serialization
             foreach (var prop in wproperties)
             {
                 JToken jsonValue = nodeJson[prop.Name];
+                
                 if (prop.PropertyType == typeof(WTransform))
                 {
                     if (!(jsonValue is JObject))
@@ -148,7 +162,6 @@ namespace WindEditor.Serialization
             }
 
             newNode.PostLoad();
-            newNode.SetParent(m_parent);
 
             return newNode;
         }
