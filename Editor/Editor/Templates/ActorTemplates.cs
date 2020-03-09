@@ -4457,20 +4457,113 @@ namespace WindEditor
 	public partial class item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Item Pickup", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Item Pickup", "Item ID", true, "", SourceScene.Room)]
+		public ItemID ItemID
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return (ItemID)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("ItemID");
+			}
+		}
+
+		[WProperty("Item Pickup", "Item Pickup Flag", true, "", SourceScene.Room)]
+		public int ItemPickupFlag
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("ItemPickupFlag");
+			}
+		}
+
+		[WProperty("Item Pickup", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("EnableSpawnSwitch");
+			}
+		}
+
+		public enum Unknown1Enum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Do_not_fade_away = 3,
+		}
+
+		[WProperty("Item Pickup", "Unknown 1", true, "", SourceScene.Room)]
+		public Unknown1Enum Unknown1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
+				return (Unknown1Enum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
+				OnPropertyChanged("Unknown1");
+			}
+		}
+
+		[WProperty("Item Pickup", "Item Action", true, "", SourceScene.Room)]
+		public int ItemAction
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFC000000) >> 26);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFC000000 | (value_as_int << 26 & 0xFC000000));
+				OnPropertyChanged("ItemAction");
+			}
+		}
+
+		[WProperty("Item Pickup", "Enable Activation Switch", true, "The player will not be able to pick this item up until this switch is set.\nIt will still be visible and animated, but touching it will not give the item.\nAlso note that the item will not begin to fade away before this switch is set either.", SourceScene.Room)]
+		public int EnableActivationSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 26);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 26 & 0x00FF));
+				OnPropertyChanged("EnableActivationSwitch");
 			}
 		}
 
@@ -18531,20 +18624,20 @@ namespace WindEditor
 	public partial class tsubo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tsubo", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("tsubo", "Dropped Item", true, "", SourceScene.Room)]
+		public DroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				return value_as_int;
+				return (DroppedItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DroppedItem");
 			}
 		}
 
@@ -18582,8 +18675,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("tsubo", "Item Pickup Flag", true, "", SourceScene.Room)]
+		public int ItemPickupFlag
 		{ 
 			get
 			{
@@ -18595,24 +18688,45 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("ItemPickupFlag");
 			}
 		}
 
-		[WProperty("tsubo", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		public enum TypeEnum
+		{
+			Small_pot = 0,
+			Large_pot = 1,
+			Water_pot = 2,
+			Barrel = 3,
+			Stool = 4,
+			Skull = 5,
+			Bucket = 6,
+			Nut = 7,
+			Golden_crate = 8,
+			TotG_Pillar_Statue_A = 9,
+			TotG_Pillar_Statue_B = 10,
+			TotG_Pillar_Statue_C = 11,
+			TotG_Pillar_Statue_D = 12,
+			Seed = 13,
+			Fancy_pot = 14,
+			Wooden_crate = 15,
+		}
+
+		[WProperty("tsubo", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 

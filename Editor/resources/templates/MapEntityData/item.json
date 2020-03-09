@@ -3,13 +3,69 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Item ID",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "Item Pickup",
       "ToolTip": "",
+      "DataType": "ItemID"
+    },
+    {
+      "Name": "Item Pickup Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Shift": 8,
+      "Hidden": false,
+      "Category": "Item Pickup",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Enable Spawn Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "Item Pickup",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x03000000,
+      "Shift": 24,
+      "Hidden": false,
+      "Category": "Item Pickup",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Do not fade away",
+      }
+    },
+    {
+      "Name": "Item Action",
+      "ValueSource": "Parameters",
+      "Mask": 0xFC000000,
+      "Shift": 26,
+      "Hidden": false,
+      "Category": "Item Pickup",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Enable Activation Switch",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0x00FF,
+      "Shift": 26,
+      "Hidden": false,
+      "Category": "Item Pickup",
+      "ToolTip": "The player will not be able to pick this item up until this switch is set.\nIt will still be visible and animated, but touching it will not give the item.\nAlso note that the item will not begin to fade away before this switch is set either.",
       "DataType": "Integer"
     }
   ]

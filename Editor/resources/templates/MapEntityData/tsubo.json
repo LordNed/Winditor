@@ -3,14 +3,14 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
       "Category": "tsubo",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "DroppedItemID"
     },
     {
       "Name": "Unknown_2",
@@ -33,7 +33,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",
       "Mask": 0x007F0000,
       "Shift": 16,
@@ -43,14 +43,33 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0F000000,
       "Shift": 24,
       "Hidden": false,
       "Category": "tsubo",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Small pot",
+        1: "Large pot",
+        2: "Water pot",
+        3: "Barrel",
+        4: "Stool",
+        5: "Skull",
+        6: "Bucket",
+        7: "Nut",
+        8: "Golden crate",
+        9: "TotG Pillar Statue A",
+        10: "TotG Pillar Statue B",
+        11: "TotG Pillar Statue C",
+        12: "TotG Pillar Statue D",
+        13: "Seed",
+        14: "Fancy pot",
+        15: "Wooden crate",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_6",

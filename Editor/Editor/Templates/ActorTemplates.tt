@@ -139,6 +139,9 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				case "ItemID":
 					dataType = "ItemID";
 					break;
+				case "DroppedItemID":
+					dataType = "DroppedItemID";
+					break;
 				default:
 					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 					break;
@@ -203,6 +206,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 						break;
 					case "Enum":
 					case "ItemID":
+					case "DroppedItemID":
 #>
 				return (<#= dataType #>)value_as_int;
 <#
@@ -248,6 +252,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 						break;
 					case "Enum":
 					case "ItemID":
+					case "DroppedItemID":
 #>
 				int value_as_int = (int)value;
 <#

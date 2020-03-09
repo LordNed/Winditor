@@ -24,43 +24,43 @@ namespace WindEditor
         private void UpdateModel()
         {
             Transform.LocalScale = new Vector3(1f, 1f, 1f);
-            switch (Unknown_5)
+            switch (Type)
             {
-                case 0:
+                case TypeEnum.Small_pot:
                     m_actorMeshes = WResourceManager.LoadActorResource("Small Pot");
                     break;
-                case 1:
+                case TypeEnum.Large_pot:
                     m_actorMeshes = WResourceManager.LoadActorResource("Large Pot");
                     break;
-                case 2:
+                case TypeEnum.Water_pot:
                     m_actorMeshes = WResourceManager.LoadActorResource("Water Pot");
                     break;
-                case 3:
+                case TypeEnum.Barrel:
                     m_actorMeshes = WResourceManager.LoadActorResource("Barrel 1");
                     break;
-                case 4:
+                case TypeEnum.Stool:
                     m_actorMeshes = WResourceManager.LoadActorResource("Stool");
                     break;
-                case 5:
+                case TypeEnum.Skull:
                     m_actorMeshes = WResourceManager.LoadActorResource("Skull");
                     break;
-                case 6:
+                case TypeEnum.Bucket:
                     m_actorMeshes = WResourceManager.LoadActorResource("Bucket");
                     break;
-                case 7:
+                case TypeEnum.Nut:
                     m_actorMeshes = WResourceManager.LoadActorResource("Nut");
                     break;
-                case 8:
+                case TypeEnum.Golden_crate:
                     Transform.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
                     m_actorMeshes = WResourceManager.LoadActorResource("Golden Crate");
                     break;
-                case 13:
+                case TypeEnum.Seed:
                     m_actorMeshes = WResourceManager.LoadActorResource("Seed");
                     break;
-                case 14:
+                case TypeEnum.Fancy_pot:
                     m_actorMeshes = WResourceManager.LoadActorResource("Fancy Pot");
                     break;
-                case 15:
+                case TypeEnum.Wooden_crate:
                     Transform.LocalScale = new Vector3(0.5f, 0.5f, 0.5f);
                     m_actorMeshes = WResourceManager.LoadActorResource("Wooden Crate");
                     break;

@@ -8,21 +8,6 @@ namespace WindEditor
 {
     public partial class item
     {
-        [WProperty("Item Pickup", "Item ID", true)]
-        public ItemID ItemPickupId
-        {
-            get { return (ItemID)Unknown_1; }
-            set
-            {
-                if ((int)value != Unknown_1)
-                {
-                    Unknown_1 = (int)value;
-                    OnPropertyChanged("ItemPickupID");
-                    UpdateModel();
-                }
-            }
-        }
-
         public override void PostLoad()
         {
             UpdateModel();
@@ -38,7 +23,7 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
-            switch (ItemPickupId)
+            switch (ItemID)
             {
                 case ItemID.Heart:
                     m_actorMeshes = WResourceManager.LoadActorResource("Heart Pickup");
