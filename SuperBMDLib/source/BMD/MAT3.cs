@@ -543,12 +543,15 @@ namespace SuperBMDLib.BMD
 
         private void LoadFromScene(Assimp.Scene scene, TEX1 textures, SHP1 shapes)
         {
-            for (int i = 0; i < scene.MeshCount; i++)
+            for (int mat_index = 0; mat_index < scene.MaterialCount; mat_index++)
             {
-                Assimp.Material meshMat = scene.Materials[scene.Meshes[i].MaterialIndex];
+                var mesh = scene.Meshes.Find(m => m.MaterialIndex == mat_index);
+                int meshIndex = scene.Meshes.IndexOf(mesh);
+
+                Assimp.Material meshMat = scene.Materials[mesh.MaterialIndex];
                 Materials.Material bmdMaterial = new Material();
 
-                bool hasVtxColor0 = shapes.Shapes[i].AttributeData.CheckAttribute(GXVertexAttribute.Color0);
+                bool hasVtxColor0 = shapes.Shapes[meshIndex].AttributeData.CheckAttribute(GXVertexAttribute.Color0);
                 int texIndex = -1;
                 string texName = null;
                 if (meshMat.HasTextureDiffuse)
@@ -560,7 +563,7 @@ namespace SuperBMDLib.BMD
                 bmdMaterial.SetUpTev(meshMat.HasTextureDiffuse, hasVtxColor0, texIndex, texName);
 
                 m_Materials.Add(bmdMaterial);
-                m_RemapIndices.Add(i);
+                m_RemapIndices.Add(mat_index);
                 m_MaterialNames.Add(meshMat.Name);
             }
         }
