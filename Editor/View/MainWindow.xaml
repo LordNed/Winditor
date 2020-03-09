@@ -201,6 +201,7 @@
                             <TreeView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Add Object" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}"/>
+                                    <MenuItem Header="Go Here" Command="{Binding Path=WindEditor.MainWorld.ActorMode.GoToObjectCommand}"/>
                                 </ContextMenu>
                             </TreeView.ContextMenu>
                             <TreeView.ItemContainerStyle>

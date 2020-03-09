@@ -25,6 +25,7 @@ namespace WindEditor.Editor.Modes
         public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity()); } }
+        public ICommand GoToObjectCommand { get { return new RelayCommand(x => GoToEntity()); } }
 
         private DockPanel m_ModeControlsDock;
         private WDetailsViewViewModel m_DetailsViewModel;
@@ -452,6 +453,18 @@ namespace WindEditor.Editor.Modes
             EditorSelection.ClearSelection();
             EditorSelection.AddToSelection(newNode);
             World.UndoStack.EndMacro();
+        }
+
+        public void GoToEntity()
+        {
+            if (EditorSelection.PrimarySelectedObject != null)
+            {
+                var entity = EditorSelection.PrimarySelectedObject;
+                OpenTK.Vector3 entityPos = entity.Transform.Position;
+                WCamera camera = World.GetFocusedSceneView().ViewCamera;
+                OpenTK.Vector3 newCameraPos = entityPos + OpenTK.Vector3.Transform(new OpenTK.Vector3(0.0f, 0.0f, 1000.0f), camera.Transform.Rotation);
+                camera.Transform.Position = newCameraPos;
+            }
         }
 
         ~ActorMode()
