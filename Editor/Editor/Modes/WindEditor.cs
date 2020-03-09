@@ -522,7 +522,7 @@ namespace WindEditor
 
                 if (window.SceneNumber == 0)
                 {
-
+                    ImportVisualMeshToStage(window);
                 }
                 else
                 {
@@ -531,11 +531,51 @@ namespace WindEditor
             }
         }
 
+        private void ImportVisualMeshToStage(View.VisualMeshImportWindow importWindow)
+        {
+            WStage stage = GetStage();
+
+            if (importWindow.SlotNumber == 4)
+            {
+                ImportVisualMeshToSkybox(importWindow, stage);
+            }
+            else
+            {
+                CategoryDOMNode meshCategory = stage.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
+                string meshName = "";
+
+                switch (importWindow.SlotNumber)
+                {
+                    case 0:
+                        meshName = "vr_sky";
+                        break;
+                    case 4:
+                        meshName = "door10";
+                        break;
+                    case 5:
+                        meshName = "door20";
+                        break;
+                    case 6:
+                        meshName = "key10";
+                        break;
+                    case 7:
+                        meshName = "stop10";
+                        break;
+                }
+
+                ImportVisualMeshToCategory(importWindow, meshCategory, meshName);
+            }
+        }
+
+        private void ImportVisualMeshToSkybox(View.VisualMeshImportWindow importWindow, WStage stage)
+        {
+
+        }
+
         private void ImportVisualMeshToRoom(View.VisualMeshImportWindow importWindow)
         {
             WRoom room = GetRoomFromIndex(importWindow.SceneNumber - 1);
             CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
-            List<J3DNode> meshList = meshCategory.GetChildrenOfType<J3DNode>();
 
             string newMeshName = "model";
 
@@ -544,12 +584,19 @@ namespace WindEditor
                 newMeshName += importWindow.SlotNumber;
             }
 
+            ImportVisualMeshToCategory(importWindow, meshCategory, newMeshName);
+        }
+
+        private void ImportVisualMeshToCategory(View.VisualMeshImportWindow importWindow, CategoryDOMNode category, string meshName)
+        {
+            List<J3DNode> meshList = category.GetChildrenOfType<J3DNode>();
+
             bool isBDL = true;
 
-            J3DNode oldMeshNode = meshList.Find(x => x.Name == newMeshName);
+            J3DNode oldMeshNode = meshList.Find(x => x.Name == meshName);
             if (oldMeshNode != null)
             {
-                meshCategory.Children.Remove(oldMeshNode);
+                category.Children.Remove(oldMeshNode);
                 isBDL = oldMeshNode.Model.StudioType == "bdl4";
             }
 
@@ -562,27 +609,34 @@ namespace WindEditor
             }
             else
             {
-                string tempFileName = Path.GetFileNameWithoutExtension(Path.GetTempFileName());
-                loadFilename = Path.Combine(Path.GetTempPath(), "Winditor", tempFileName + (isBDL ? ".bdl" : ".bmd"));
-
-                List<string> superBMDArgs = new List<string>(new string[] {"-i", $"{ importWindow.FileName }"});
-                superBMDArgs.Add("--rotate");
-                if (isBDL)
-                {
-                    superBMDArgs.Add("-b");
-                }
-
-                SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
-
-                SuperBMDLib.Model newJ3D = SuperBMDLib.Model.Load(args);
-                newJ3D.ExportBMD(loadFilename, true);
+                loadFilename = ImportVisualMesh(importWindow, isBDL);
             }
 
             JStudio.J3D.J3D newMesh = WResourceManager.LoadResource(loadFilename);
-            newMesh.Name = newMeshName;
+            newMesh.Name = meshName;
             J3DNode newNode = new J3DNode(newMesh, MainWorld, loadFilename);
 
-            meshCategory.Children.Add(newNode);
+            category.Children.Add(newNode);
+        }
+
+        private string ImportVisualMesh(View.VisualMeshImportWindow importWindow, bool isBDL)
+        {
+            string tempFileName = Path.GetFileNameWithoutExtension(Path.GetTempFileName());
+            string loadFilename = Path.Combine(Path.GetTempPath(), "Winditor", tempFileName + (isBDL ? ".bdl" : ".bmd"));
+
+            List<string> superBMDArgs = new List<string>(new string[] { "-i", $"{ importWindow.FileName }" });
+            superBMDArgs.Add("--rotate");
+            if (isBDL)
+            {
+                superBMDArgs.Add("-b");
+            }
+
+            SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
+
+            SuperBMDLib.Model newJ3D = SuperBMDLib.Model.Load(args);
+            newJ3D.ExportBMD(loadFilename, true);
+
+            return loadFilename;
         }
 
         private WRoom GetRoomFromIndex(int index)
@@ -600,6 +654,23 @@ namespace WindEditor
             }
 
             return room;
+        }
+
+        private WStage GetStage()
+        {
+            WStage stage = null;
+
+            for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
+            {
+                WStage castTest = MainWorld.Map.SceneList[i] as WStage;
+                if (castTest != null)
+                {
+                    stage = castTest;
+                    break;
+                }
+            }
+
+            return stage;
         }
     }
 }

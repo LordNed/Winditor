@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using WArchiveTools.FileSystem;
+using JStudio.J3D;
 
 namespace WindEditor
 {
@@ -31,14 +32,35 @@ namespace WindEditor
                                 LoadLevelEntitiesFromFile(fileName);
                         }
                         break;
-                    case "bmd":
+                    //case "bmd":
                     case "bdl":
                         {
-                            m_skybox = new WSkyboxNode(m_world);
-                            m_skybox.LoadSkyboxModelsFromFixedModelList(folder);
-                            m_skybox.SetParent(this);
+                            LoadStageModels(folder);
                         }
                         break;
+                }
+            }
+        }
+
+        private void LoadStageModels(string filepath)
+        {
+            m_skybox = new WSkyboxNode(m_world);
+            m_skybox.LoadSkyboxModelsFromFixedModelList(filepath);
+            m_skybox.SetParent(this);
+
+            CategoryDOMNode meshCategory = new CategoryDOMNode("Models", m_world);
+            meshCategory.SetParent(this);
+
+            string[] files = Directory.GetFiles(filepath, "*.bdl");
+
+            foreach (string str in files)
+            {
+                J3D mesh = LoadModel(filepath, Path.GetFileNameWithoutExtension(str));
+                if (mesh != null)
+                {
+                    J3DNode j3d_node = new J3DNode(mesh, m_world, str);
+                    j3d_node.IsRendered = false;
+                    j3d_node.SetParent(meshCategory);
                 }
             }
         }
@@ -167,6 +189,42 @@ namespace WindEditor
                     writer.Flush();
 
                     dzs_file.Data = mem.ToArray();
+                }
+            }
+
+            List<J3DNode> meshes = GetChildrenOfType<J3DNode>();
+
+            for (int i = 0; i < meshes.Count; i++)
+            {
+                string modelExt = meshes[i].Model.StudioType == "bdl4" ? "bdl" : "bmd";
+
+                VirtualFilesystemFile modelFile = SourceDirectory.GetFileAtPath($"{ modelExt }/{ meshes[i].Name }.{ modelExt }");
+                byte[] data = File.ReadAllBytes(meshes[i].Filename);
+
+                if (modelFile != null)
+                {
+                    modelFile.Data = data;
+                }
+                else
+                {
+                    VirtualFilesystemDirectory modelDir = null;
+
+                    foreach (VirtualFilesystemNode n in new_dir.Children)
+                    {
+                        if (n.Name == modelExt)
+                        {
+                            modelDir = n as VirtualFilesystemDirectory;
+                            break;
+                        }
+                    }
+
+                    if (modelDir == null)
+                    {
+                        modelDir = new VirtualFilesystemDirectory(modelExt);
+                        new_dir.Children.Add(modelDir);
+                    }
+
+                    modelDir.Children.Add(new VirtualFilesystemFile(meshes[i].Name, $".{ modelExt }", data));
                 }
             }
 
