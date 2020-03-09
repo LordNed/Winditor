@@ -96,10 +96,9 @@ namespace WindEditor
                 List<string> files = new List<string>(Directory.GetFiles(ofd.FileName));
                 List<string> dirs = new List<string>(Directory.GetDirectories(ofd.FileName));
 
-                // There are directories here, so we will assume they are from already unpacked data.
-                if (dirs.Count != 0)
+                // There are directories here, and one of them is an unpacked Stage folder, so try to load all of these instead of loading the .arcs.
+                if (dirs.Count != 0 && File.Exists(Path.Combine(ofd.FileName, "Stage/dzs/stage.dzs")))
                 {
-                    // Just assume the folder paths are valid now.
                     LoadProject(ofd.FileName, ofd.FileName);
                     m_sourceDataPath = ofd.FileName;
                 }
