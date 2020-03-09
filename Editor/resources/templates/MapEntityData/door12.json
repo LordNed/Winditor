@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Switch Bit",
+      "Name": "Switch to Set When All Enemies Dead",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": "",
+      "ToolTip": "This only has an effect for barred-type doors.",
       "DataType": "Integer"
     },
     {
@@ -20,7 +20,14 @@
       "Hidden": false,
       "Category": "Door",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Boss",
+        2: "Barred until all enemies dead",
+        3: "Unknown 3",
+        4: "Locked",
+      }
     },
     {
       "Name": "Event ID",
@@ -33,7 +40,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Switch Bit 2",
+      "Name": "Switch to Check for Unlock",
       "ValueSource": "Parameters",
       "Mask": 0x0FF00000,
       "Shift": 20,

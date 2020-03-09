@@ -2517,8 +2517,8 @@ namespace WindEditor
 	public partial class door10 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
-		public int SwitchBit
+		[WProperty("Door", "Switch to Set When All Enemies Dead", true, "This only has an effect for barred-type doors.", SourceScene.Room)]
+		public int SwitchtoSetWhenAllEnemiesDead
 		{ 
 			get
 			{
@@ -2530,24 +2530,36 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("SwitchBit");
+				OnPropertyChanged("SwitchtoSetWhenAllEnemiesDead");
+				UpdateModel();
 			}
 		}
 
+		public enum TypeEnum
+		{
+			Normal = 0,
+			Boss = 1,
+			Barred_until_all_enemies_dead = 2,
+			Unknown_3 = 3,
+			Locked = 4,
+			Barred_until_all_enemies_dead_2 = 5,
+		}
+
 		[WProperty("Door", "Type", true, "", SourceScene.Room)]
-		public int Type
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -2568,8 +2580,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch Bit 2", true, "", SourceScene.Room)]
-		public int SwitchBit2
+		[WProperty("Door", "Switch to Check for Unlock", true, "", SourceScene.Room)]
+		public int SwitchtoCheckforUnlock
 		{ 
 			get
 			{
@@ -2581,7 +2593,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("SwitchBit2");
+				OnPropertyChanged("SwitchtoCheckforUnlock");
 			}
 		}
 
@@ -2664,8 +2676,8 @@ namespace WindEditor
 	public partial class door12 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
-		public int SwitchBit
+		[WProperty("Door", "Switch to Set When All Enemies Dead", true, "This only has an effect for barred-type doors.", SourceScene.Room)]
+		public int SwitchtoSetWhenAllEnemiesDead
 		{ 
 			get
 			{
@@ -2677,22 +2689,31 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("SwitchBit");
+				OnPropertyChanged("SwitchtoSetWhenAllEnemiesDead");
 			}
 		}
 
+		public enum TypeEnum
+		{
+			Normal = 0,
+			Boss = 1,
+			Barred_until_all_enemies_dead = 2,
+			Unknown_3 = 3,
+			Locked = 4,
+		}
+
 		[WProperty("Door", "Type", true, "", SourceScene.Room)]
-		public int Type
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
 			}
@@ -2715,8 +2736,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch Bit 2", true, "", SourceScene.Room)]
-		public int SwitchBit2
+		[WProperty("Door", "Switch to Check for Unlock", true, "", SourceScene.Room)]
+		public int SwitchtoCheckforUnlock
 		{ 
 			get
 			{
@@ -2728,7 +2749,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("SwitchBit2");
+				OnPropertyChanged("SwitchtoCheckforUnlock");
 			}
 		}
 
