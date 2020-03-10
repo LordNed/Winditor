@@ -108,6 +108,11 @@ namespace WindEditor
                     actor.Save(writer);
                     //WriteActorToChunk(actor, template, writer);
                 }
+
+                // Pad to 4 bytes
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+                while (writer.BaseStream.Position % 4 != 0)
+                    writer.Write((byte)0xFF);
             }
 
             // Now that we've written every actor to file we can go back and re-write the headers now that we know their offsets.
@@ -122,7 +127,7 @@ namespace WindEditor
             // Seek to the end of the file, and then pad us to 32-byte alignment.
             writer.BaseStream.Seek(0, SeekOrigin.End);
 
-            int delta = WMath.Pad16Delta(writer.BaseStream.Position);
+            int delta = WMath.Pad32Delta(writer.BaseStream.Position);
             for (int i = 0; i < delta; i++)
                 writer.Write((byte)0xFF);
         }
