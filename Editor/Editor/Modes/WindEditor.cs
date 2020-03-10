@@ -633,7 +633,7 @@ namespace WindEditor
             SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
 
             SuperBMDLib.Model newJ3D = SuperBMDLib.Model.Load(args);
-            newJ3D.ExportBMD(loadFilename, true);
+            newJ3D.ExportBMD(loadFilename, isBDL);
 
             return loadFilename;
         }
