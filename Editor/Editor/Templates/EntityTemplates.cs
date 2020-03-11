@@ -3426,7 +3426,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected float m_ZDepthMin;
 
-		[WProperty("Misc.", "Z Depth Min", true)]
+		[WProperty("Stage Properties", "Z Depth Min", true)]
 		 public float ZDepthMin
 		{ 
 			get { return m_ZDepthMin; }
@@ -3440,7 +3440,7 @@ namespace WindEditor
 
 		protected float m_ZDepthMax;
 
-		[WProperty("Misc.", "Z Depth Max", true)]
+		[WProperty("Stage Properties", "Z Depth Max", true)]
 		 public float ZDepthMax
 		{ 
 			get { return m_ZDepthMax; }
@@ -3454,7 +3454,7 @@ namespace WindEditor
 
 		protected byte m_Unknown1;
 
-		[WProperty("Misc.", "Unknown 1", true)]
+		[WProperty("Stage Properties", "Unknown 1", true)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -3467,31 +3467,9 @@ namespace WindEditor
 				
 
 		protected byte m_Parameters1;
-
-		[WProperty("Misc.", "Parameters1", true)]
-		 public byte Parameters1
-		{ 
-			get { return m_Parameters1; }
-			set
-			{
-				m_Parameters1 = value;
-				OnPropertyChanged("Parameters1");
-			}
-		}
 				
 
 		protected short m_Parameters2;
-
-		[WProperty("Misc.", "Parameters2", true)]
-		 public short Parameters2
-		{ 
-			get { return m_Parameters2; }
-			set
-			{
-				m_Parameters2 = value;
-				OnPropertyChanged("Parameters2");
-			}
-		}
 				
 
 		protected int m_Parameters3;
@@ -3529,8 +3507,6 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Min", TargetProperties = new string[] { "ZDepthMin"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Max", TargetProperties = new string[] { "ZDepthMax"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters1", TargetProperties = new string[] { "Parameters1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters2", TargetProperties = new string[] { "Parameters2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters3", TargetProperties = new string[] { "Parameters3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters4", TargetProperties = new string[] { "Parameters4"} });
 		}
@@ -3555,8 +3531,8 @@ namespace WindEditor
 			stream.Write((float)ZDepthMin);
 			stream.Write((float)ZDepthMax);
 			stream.Write((byte)Unknown1);
-			stream.Write((byte)Parameters1);
-			stream.Write((short)Parameters2);
+			stream.Write((byte)m_Parameters1);
+			stream.Write((short)m_Parameters2);
 			stream.Write((int)Parameters3);
 			stream.Write((int)Parameters4);
 		}
