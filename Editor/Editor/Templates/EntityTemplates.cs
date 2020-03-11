@@ -3452,48 +3452,6 @@ namespace WindEditor
 		}
 				
 
-		protected short m_StageID;
-
-		[WProperty("Misc.", "Stage ID", true)]
-		 public short StageID
-		{ 
-			get { return m_StageID; }
-			set
-			{
-				m_StageID = value;
-				OnPropertyChanged("StageID");
-			}
-		}
-				
-
-		protected short m_Unk_ParticleBank;
-
-		[WProperty("Misc.", "Unk_Particle Bank", true)]
-		 public short Unk_ParticleBank
-		{ 
-			get { return m_Unk_ParticleBank; }
-			set
-			{
-				m_Unk_ParticleBank = value;
-				OnPropertyChanged("Unk_ParticleBank");
-			}
-		}
-				
-
-		protected short m_Unk_PropertyIndex;
-
-		[WProperty("Misc.", "Unk_Property Index", true)]
-		 public short Unk_PropertyIndex
-		{ 
-			get { return m_Unk_PropertyIndex; }
-			set
-			{
-				m_Unk_PropertyIndex = value;
-				OnPropertyChanged("Unk_PropertyIndex");
-			}
-		}
-				
-
 		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", true)]
@@ -3508,58 +3466,58 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Unknown2;
+		protected byte m_Parameters1;
 
-		[WProperty("Misc.", "Unknown 2", true)]
-		 public byte Unknown2
+		[WProperty("Misc.", "Parameters1", true)]
+		 public byte Parameters1
 		{ 
-			get { return m_Unknown2; }
+			get { return m_Parameters1; }
 			set
 			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
+				m_Parameters1 = value;
+				OnPropertyChanged("Parameters1");
 			}
 		}
 				
 
-		protected byte m_Unknown3;
+		protected short m_Parameters2;
 
-		[WProperty("Misc.", "Unknown 3", true)]
-		 public byte Unknown3
+		[WProperty("Misc.", "Parameters2", true)]
+		 public short Parameters2
 		{ 
-			get { return m_Unknown3; }
+			get { return m_Parameters2; }
 			set
 			{
-				m_Unknown3 = value;
-				OnPropertyChanged("Unknown3");
+				m_Parameters2 = value;
+				OnPropertyChanged("Parameters2");
 			}
 		}
 				
 
-		protected byte m_Unknown4;
+		protected int m_Parameters3;
 
-		[WProperty("Misc.", "Unknown 4", true)]
-		 public byte Unknown4
+		[WProperty("Misc.", "Parameters3", true)]
+		 public int Parameters3
 		{ 
-			get { return m_Unknown4; }
+			get { return m_Parameters3; }
 			set
 			{
-				m_Unknown4 = value;
-				OnPropertyChanged("Unknown4");
+				m_Parameters3 = value;
+				OnPropertyChanged("Parameters3");
 			}
 		}
 				
 
-		protected short m_Unk_DrawRange;
+		protected int m_Parameters4;
 
-		[WProperty("Misc.", "Unk_Draw Range", true)]
-		 public short Unk_DrawRange
+		[WProperty("Misc.", "Parameters4", true)]
+		 public int Parameters4
 		{ 
-			get { return m_Unk_DrawRange; }
+			get { return m_Parameters4; }
 			set
 			{
-				m_Unk_DrawRange = value;
-				OnPropertyChanged("Unk_DrawRange");
+				m_Parameters4 = value;
+				OnPropertyChanged("Parameters4");
 			}
 		}
 				
@@ -3570,28 +3528,22 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Min", TargetProperties = new string[] { "ZDepthMin"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Max", TargetProperties = new string[] { "ZDepthMax"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Stage ID", TargetProperties = new string[] { "StageID"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Particle Bank", TargetProperties = new string[] { "Unk_ParticleBank"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Property Index", TargetProperties = new string[] { "Unk_PropertyIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unk_Draw Range", TargetProperties = new string[] { "Unk_DrawRange"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters1", TargetProperties = new string[] { "Parameters1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters2", TargetProperties = new string[] { "Parameters2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters3", TargetProperties = new string[] { "Parameters3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters4", TargetProperties = new string[] { "Parameters4"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_ZDepthMin = stream.ReadSingle(); 
 			m_ZDepthMax = stream.ReadSingle(); 
-			m_StageID = stream.ReadInt16(); 
-			m_Unk_ParticleBank = stream.ReadInt16(); 
-			m_Unk_PropertyIndex = stream.ReadInt16(); 
 			m_Unknown1 = stream.ReadByte(); 
-			m_Unknown2 = stream.ReadByte(); 
-			m_Unknown3 = stream.ReadByte(); 
-			m_Unknown4 = stream.ReadByte(); 
-			m_Unk_DrawRange = stream.ReadInt16(); 
+			m_Parameters1 = stream.ReadByte(); 
+			m_Parameters2 = stream.ReadInt16(); 
+			m_Parameters3 = stream.ReadInt32(); 
+			m_Parameters4 = stream.ReadInt32(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -3602,14 +3554,11 @@ namespace WindEditor
 
 			stream.Write((float)ZDepthMin);
 			stream.Write((float)ZDepthMax);
-			stream.Write((short)StageID);
-			stream.Write((short)Unk_ParticleBank);
-			stream.Write((short)Unk_PropertyIndex);
 			stream.Write((byte)Unknown1);
-			stream.Write((byte)Unknown2);
-			stream.Write((byte)Unknown3);
-			stream.Write((byte)Unknown4);
-			stream.Write((short)Unk_DrawRange);
+			stream.Write((byte)Parameters1);
+			stream.Write((short)Parameters2);
+			stream.Write((int)Parameters3);
+			stream.Write((int)Parameters4);
 		}
 	}
 
