@@ -87,6 +87,8 @@ namespace WindEditor.Serialization
                 foreach (var prop in wproperties)
                 {
                     JToken jsonValue = nodeJson[prop.Name];
+                    if (jsonValue == null)
+                        continue;
 
                     if (prop.PropertyType == typeof(WTransform))
                     {
