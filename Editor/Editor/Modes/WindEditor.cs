@@ -467,16 +467,7 @@ namespace WindEditor
                     return;
                 }
 
-                WRoom room = null;
-                for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
-                {
-                    WRoom castTest = MainWorld.Map.SceneList[i] as WRoom;
-                    if (castTest != null && castTest.RoomIndex == window.RoomNumber)
-                    {
-                        room = castTest;
-                        break;
-                    }
-                }
+                WRoom room = GetRoomFromIndex(window.RoomNumber);
 
                 CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
                 WCollisionMesh newMesh = new WCollisionMesh(MainWorld, window.FileName);
@@ -640,19 +631,19 @@ namespace WindEditor
 
         private WRoom GetRoomFromIndex(int index)
         {
-            WRoom room = null;
-
-            for (int i = 0; i < MainWorld.Map.SceneList.Count; i++)
+            int i = 0;
+            foreach (WScene scene in MainWorld.Map.SceneList)
             {
-                WRoom castTest = MainWorld.Map.SceneList[i] as WRoom;
-                if (castTest != null && castTest.RoomIndex == index)
+                if (scene is WRoom)
                 {
-                    room = castTest;
-                    break;
+                    if (i == index)
+                        return scene as WRoom;
+
+                    i += 1;
                 }
             }
 
-            return room;
+            return null;
         }
 
         private WStage GetStage()

@@ -29,13 +29,18 @@ namespace WindEditor.View
         {
             InitializeComponent();
 
-            int room_count = map.SceneList.Count - 1;
-
             SceneCombo.Items.Add("Stage");
 
-            for (int i = 0; i < room_count; i++)
+            foreach (WScene scene in map.SceneList)
             {
-                SceneCombo.Items.Add($"Room { i }");
+                if (scene is WStage)
+                    continue;
+
+                byte room_no = 0;
+                string room_removed = scene.Name.ToLowerInvariant().Replace("room", "");
+                byte.TryParse(room_removed, out room_no);
+
+                SceneCombo.Items.Add($"Room { room_no }");
             }
         }
 
