@@ -14323,6 +14323,23 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Cyclic Warp Pot", "Top Unblocked Switch", true, "Only has an effect if this warp pot is locked.\nFor a normal warp pot blocked with a lid, set this to 255.\nFor a warp pot that has its top blocked by some other object like a boulder, set this to what the switch set by that other object when it's destroyed is.", SourceScene.Room)]
+		public int TopUnblockedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("TopUnblockedSwitch");
+			}
+		}
+
 		[WProperty("Cyclic Warp Pot", "Play Unlocked Sound Effect", true, "", SourceScene.Room)]
 		public bool PlayUnlockedSoundEffect
 		{ 
@@ -14398,8 +14415,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Noncyclic Warp Pot", "Exit to Other Pot", true, "", SourceScene.Room)]
-		public ExitData ExittoOtherPot
+		[WProperty("Noncyclic Warp Pot", "Exit to Destination Pot", true, "", SourceScene.Room)]
+		public ExitData ExittoDestinationPot
 		{ 
 			get
 			{
@@ -14425,7 +14442,7 @@ namespace WindEditor
 				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("ExittoOtherPot");
+				OnPropertyChanged("ExittoDestinationPot");
 			}
 		}
 

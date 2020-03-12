@@ -68,6 +68,16 @@
       "DataType": "Exit"
     },
     {
+      "Name": "Top Unblocked Switch",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0x00FF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Cyclic Warp Pot",
+      "ToolTip": "Only has an effect if this warp pot is locked.\nFor a normal warp pot blocked with a lid, set this to 255.\nFor a warp pot that has its top blocked by some other object like a boulder, set this to what the switch set by that other object when it's destroyed is.",
+      "DataType": "Integer"
+    },
+    {
       "Name": "Play Unlocked Sound Effect",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
@@ -102,7 +112,7 @@
       "DataType": "Exit"
     },
     {
-      "Name": "Exit to Other Pot",
+      "Name": "Exit to Destination Pot",
       "ValueSource": "Parameters",
       "Mask": 0x000FF000,
       "Shift": 12,
