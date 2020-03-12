@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+            UpdateModel();
 			base.PostLoad();
 		}
 
@@ -18,5 +19,17 @@ namespace WindEditor
 		{
 
 		}
+
+        private void UpdateModel()
+        {
+            if (IdleAnimation == IdleAnimationEnum.Standing)
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Standing ReDead");
+            }
+            else
+            {
+                m_actorMeshes = WResourceManager.LoadActorResource("Sitting ReDead");
+            }
+        }
 	}
 }

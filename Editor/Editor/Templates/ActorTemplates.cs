@@ -15172,6 +15172,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FE00 | (value_as_int << 9 & 0x0000FE00));
 				OnPropertyChanged("Color");
+				UpdateModel();
 			}
 		}
 
@@ -15344,6 +15345,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("IdleAnimation");
+				UpdateModel();
 			}
 		}
 

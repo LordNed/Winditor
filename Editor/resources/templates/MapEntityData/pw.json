@@ -45,7 +45,8 @@
         3: "Yellow",
         4: "Red",
         5: "Green",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Sight Range (Tens)",

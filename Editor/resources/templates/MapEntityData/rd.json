@@ -14,7 +14,8 @@
       "EnumValues": {
         0: "Standing",
         1: "Sitting",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Guarded Area Radius",
