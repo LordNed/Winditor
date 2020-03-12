@@ -2353,16 +2353,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_SpawnIndex;
+		protected byte m_SpawnID;
 
-		[WProperty("Misc.", "Spawn Index", true)]
-		 public byte SpawnIndex
+		[WProperty("Misc.", "Spawn ID", true)]
+		 public byte SpawnID
 		{ 
-			get { return m_SpawnIndex; }
+			get { return m_SpawnID; }
 			set
 			{
-				m_SpawnIndex = value;
-				OnPropertyChanged("SpawnIndex");
+				m_SpawnID = value;
+				OnPropertyChanged("SpawnID");
 			}
 		}
 				
@@ -2414,7 +2414,7 @@ namespace WindEditor
 		public ExitData(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Name", TargetProperties = new string[] { "MapName"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn ID", TargetProperties = new string[] { "SpawnID"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fade Out Type", TargetProperties = new string[] { "FadeOutType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
@@ -2423,7 +2423,7 @@ namespace WindEditor
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_MapName = stream.ReadString(8).Trim(new[] { '\0' }); 
-			m_SpawnIndex = stream.ReadByte(); 
+			m_SpawnID = stream.ReadByte(); 
 			m_RoomIndex = stream.ReadByte(); 
 			m_FadeOutType = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
@@ -2436,7 +2436,7 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(MapName.PadRight(8, '\0').ToCharArray());
-			stream.Write((byte)SpawnIndex);
+			stream.Write((byte)SpawnID);
 			stream.Write((byte)RoomIndex);
 			stream.Write((byte)FadeOutType);
 			stream.Write((byte)0); // Padding
@@ -2741,16 +2741,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_SpawnIndex;
+		protected byte m_SpawnID;
 
-		[WProperty("Spawn Properties", "Spawn Index", true)]
-		 public byte SpawnIndex
+		[WProperty("Spawn Properties", "Spawn ID", true)]
+		 public byte SpawnID
 		{ 
-			get { return m_SpawnIndex; }
+			get { return m_SpawnID; }
 			set
 			{
-				m_SpawnIndex = value;
-				OnPropertyChanged("SpawnIndex");
+				m_SpawnID = value;
+				OnPropertyChanged("SpawnID");
 			}
 		}
 				
@@ -2780,7 +2780,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Index", TargetProperties = new string[] { "SpawnIndex"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn ID", TargetProperties = new string[] { "SpawnID"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 		}
 
@@ -2795,7 +2795,7 @@ namespace WindEditor
 			m_Unknown2 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_Unknown3 = stream.ReadByte(); 
-			m_SpawnIndex = stream.ReadByte(); 
+			m_SpawnID = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadInt16(); 
 		}
 
@@ -2814,7 +2814,7 @@ namespace WindEditor
 			stream.Write((short)Unknown2);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((byte)Unknown3);
-			stream.Write((byte)SpawnIndex);
+			stream.Write((byte)SpawnID);
 			stream.Write((short)Unknown4);
 		}
 	}

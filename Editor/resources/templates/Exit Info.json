@@ -4,7 +4,7 @@
 	"Fields" :
 	[
 		{"Name" : "Map Name", "Type" : "FixedLengthString" , "Length" : 8},
-		{ "Name" : "Spawn Index", "Type" : "Byte"},
+		{ "Name" : "Spawn ID", "Type" : "Byte"},
 		{ "Name" : "Room Index", "Type" : "Byte"},
 		{ "Name" : "Fade Out Type", "Type" : "Byte"},
 		{ "Name" : "Padding", "Type" : "Byte"}

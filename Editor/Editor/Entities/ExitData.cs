@@ -10,7 +10,7 @@ namespace WindEditor
     {
         public override string ToString()
         {
-            return $"Map: { MapName }, Room: { RoomIndex }, Spawn ID: { SpawnIndex }";
+            return $"Map: { MapName }, Room: { RoomIndex }, Spawn ID: { SpawnID }";
         }
     }
 }

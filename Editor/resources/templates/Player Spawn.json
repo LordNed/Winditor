@@ -62,7 +62,7 @@
       "Editable": "False"
     },
     {
-      "Name": "Spawn Index",
+      "Name": "Spawn ID",
       "Type": "Byte",
       "Category": "Spawn Properties",
       "Editable": true

@@ -135,7 +135,7 @@ namespace WindEditor
                 SpawnPoint spawn_pt = (SpawnPoint)selected.PrimarySelectedObject;
 
                 room = spawn_pt.Room;
-                spawn = spawn_pt.SpawnIndex;
+                spawn = spawn_pt.SpawnID;
             }
             else if (selected != null && selected.PrimarySelectedObject != null)
             {
@@ -159,7 +159,7 @@ namespace WindEditor
                 if (spawn_pt != null)
                 {
                     room = spawn_pt.Room;
-                    spawn = spawn_pt.SpawnIndex;
+                    spawn = spawn_pt.SpawnID;
                 }
                 else
                 {
@@ -168,7 +168,7 @@ namespace WindEditor
                     if (spawn_pt != null)
                     {
                         room = spawn_pt.Room;
-                        spawn = spawn_pt.SpawnIndex;
+                        spawn = spawn_pt.SpawnID;
                     }
                 }
             }
