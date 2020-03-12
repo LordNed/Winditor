@@ -61,7 +61,7 @@ namespace WindEditor.ViewModel
 
         public WDetailSingleRowViewModel(string name)
         {
-            m_PropertyName = name;
+            m_PropertyName = name.Replace("_", "__"); // Escape underscores so they're not interpreted access keys.
         }
 
         protected void OnPropertyChanged(string propertyName)
