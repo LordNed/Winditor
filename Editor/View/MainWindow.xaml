@@ -72,6 +72,10 @@
                     <MenuItem Header="Visual Mesh" Command="{Binding Path=WindEditor.ImportVisualMeshCommand}"/>
                     <MenuItem Header="Collision Mesh" Command="{Binding Path=WindEditor.ImportCollisionCommand}"/>
                 </MenuItem>
+                <MenuItem Header="_Export">
+                    <MenuItem Header="Visual Mesh" Command="{Binding Path=WindEditor.ExportVisualMeshCommand}"/>
+                    <MenuItem Header="Collision Mesh" Command="{Binding Path=WindEditor.ExportCollisionCommand}"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
                 <Separator/>

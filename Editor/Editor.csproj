@@ -647,6 +647,9 @@
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailSingleRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
+    <Compile Include="View\CollisionExportWindow.xaml.cs">
+      <DependentUpon>CollisionExportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\VisualMeshImportWindow.xaml.cs">
       <DependentUpon>VisualMeshImportWindow.xaml</DependentUpon>
     </Compile>
@@ -687,6 +690,10 @@
     <Page Include="Editor\Minitors\TextMinitor\TextReferenceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CollisionExportWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\VisualMeshImportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

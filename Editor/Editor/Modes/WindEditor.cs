@@ -37,6 +37,8 @@ namespace WindEditor
 
         public ICommand ImportCollisionCommand { get { return new RelayCommand(x => OnRequestImportCollision(), X => !(MainWorld.Map == null)); ; } }
         public ICommand ImportVisualMeshCommand { get { return new RelayCommand(x => OnRequestImportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
+        public ICommand ExportCollisionCommand { get { return new RelayCommand(x => OnRequestExportCollision(), X => !(MainWorld.Map == null)); ; } }
+        public ICommand ExportVisualMeshCommand { get { return new RelayCommand(x => OnRequestExportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -661,6 +663,69 @@ namespace WindEditor
             }
 
             return stage;
+        }
+
+        public void OnRequestExportCollision()
+        {
+            View.CollisionExportWindow window = new View.CollisionExportWindow(MainWorld.Map);
+            window.FileSelector.IsFilePicker = true;
+            window.FileSelector.IsFileSaver = true;
+            window.FileSelector.FileExtension = "dae";
+            
+            if (window.ShowDialog() == true)
+            {
+                if (window.FileName == "")
+                {
+                    MessageBox.Show("No filename entered!", "Collision Export Error");
+                    return;
+                }
+                
+                if (window.RoomNumber == -1 || window.RoomNumber > MainWorld.Map.SceneList.Count - 1)
+                {
+                    MessageBox.Show("Invalid room number entered!", "Collision Export Error");
+                    return;
+                }
+                
+                WRoom room = GetRoomFromIndex(window.RoomNumber);
+                
+                CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
+                WCollisionMesh mesh = colCategory.Children[0] as WCollisionMesh;
+                mesh.ToDAEFile(window.FileName);
+
+                MessageBox.Show("Successfully saved collision to file.", "Success");
+            }
+        }
+
+        public void OnRequestExportVisualMesh()
+        {
+            // TODO
+
+            //View.VisualMeshImportWindow window = new View.VisualMeshImportWindow(MainWorld.Map);
+            //window.FileSelector.IsFilePicker = true;
+            //
+            //if (window.ShowDialog() == true)
+            //{
+            //    if (window.FileName == "" || !File.Exists(window.FileName))
+            //    {
+            //        MessageBox.Show("Invalid filename entered!", "Mesh Import Error");
+            //        return;
+            //    }
+            //
+            //    if (window.SceneNumber == -1 || window.SceneNumber > MainWorld.Map.SceneList.Count)
+            //    {
+            //        MessageBox.Show("Invalid room number entered!", "Mesh Import Error");
+            //        return;
+            //    }
+            //
+            //    if (window.SceneNumber == 0)
+            //    {
+            //        ImportVisualMeshToStage(window);
+            //    }
+            //    else
+            //    {
+            //        ImportVisualMeshToRoom(window);
+            //    }
+            //}
         }
     }
 }

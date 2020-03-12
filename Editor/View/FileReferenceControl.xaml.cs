@@ -29,6 +29,8 @@ namespace WindEditor.View
         }
 
         public bool IsFilePicker { get; set; }
+        public bool IsFileSaver { get; set; }
+        public string FileExtension { get; set; }
 
         public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register(
             "FileName", typeof(string), typeof(FileReferenceControl), new PropertyMetadata(""));
@@ -42,29 +44,45 @@ namespace WindEditor.View
 
         private void FileSelectorButton_Click(object sender, RoutedEventArgs e)
         {
-            // Set up the directory picker
-            var ofd = new CommonOpenFileDialog();
-            ofd.Title = IsFilePicker ? "Choose File" : "Choose Directory";
-            ofd.IsFolderPicker = !IsFilePicker;
-            ofd.AddToMostRecentlyUsedList = false;
-            ofd.AllowNonFileSystemItems = false;
-            ofd.EnsureFileExists = true;
-            ofd.EnsurePathExists = true;
-            ofd.EnsureReadOnly = false;
-            ofd.EnsureValidNames = true;
-            ofd.Multiselect = false;
-            ofd.ShowPlacesList = true;
+            // Set up the file/directory picker
+            CommonFileDialog fd;
+            if (IsFileSaver)
+            {
+                fd = new CommonSaveFileDialog();
+                if (FileExtension != null)
+                {
+                    CommonSaveFileDialog sfd = fd as CommonSaveFileDialog;
+                    sfd.DefaultExtension = FileExtension;
+                    sfd.AlwaysAppendDefaultExtension = true;
+                    sfd.Filters.Add(new CommonFileDialogFilter(FileExtension, "." + FileExtension));
+                }
+            }
+            else
+            {
+                fd = new CommonOpenFileDialog();
+                CommonOpenFileDialog ofd = fd as CommonOpenFileDialog;
+                ofd.IsFolderPicker = !IsFilePicker;
+                ofd.AllowNonFileSystemItems = false;
+                ofd.Multiselect = false;
+            }
+            fd.Title = IsFilePicker ? "Choose File" : "Choose Directory";
+            fd.AddToMostRecentlyUsedList = false;
+            fd.EnsureFileExists = true;
+            fd.EnsurePathExists = true;
+            fd.EnsureReadOnly = false;
+            fd.EnsureValidNames = true;
+            fd.ShowPlacesList = true;
 
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
-            if (ofd.ShowDialog(window) == CommonFileDialogResult.Ok)
+            if (fd.ShowDialog(window) == CommonFileDialogResult.Ok)
             {
                 FileReference reference = new FileReference
                 {
-                    FilePath = ofd.FileName
+                    FilePath = fd.FileName
                 };
 
                 WSettingsManager.GetSettings().SetProperty(FieldName, reference);
-                FileName = ofd.FileName;
+                FileName = fd.FileName;
             }
         }
     }
