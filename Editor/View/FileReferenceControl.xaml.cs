@@ -44,7 +44,7 @@ namespace WindEditor.View
         {
             // Set up the directory picker
             var ofd = new CommonOpenFileDialog();
-            ofd.Title = "Choose Directory";
+            ofd.Title = IsFilePicker ? "Choose File" : "Choose Directory";
             ofd.IsFolderPicker = !IsFilePicker;
             ofd.AddToMostRecentlyUsedList = false;
             ofd.AllowNonFileSystemItems = false;
