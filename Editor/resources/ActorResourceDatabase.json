@@ -2593,6 +2593,76 @@
     ]
   },
   {
+    "Name": "Small Magic Jar",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/mpoda.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Large Magic Jar",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/mpodb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Bombs Pickup",
+    "Archive": "Link",
+    "Models": [
+      {
+        "Path": "bdlm/bomb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Bombs Ability",
+    "Archive": "Bomb_00",
+    "Models": [
+      {
+        "Path": "bdl/vbomb.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Arrows Pickup",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/mpoda.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Small Key",
     "Archive": "Always",
     "Models": [

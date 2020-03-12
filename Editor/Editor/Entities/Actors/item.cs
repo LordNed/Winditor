@@ -53,6 +53,33 @@ namespace WindEditor
                 case ItemID.Small_Key:
                     m_actorMeshes = WResourceManager.LoadActorResource("Small Key");
                     break;
+                case ItemID.Small_Magic_Jar:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Small Magic Jar");
+                    break;
+                case ItemID.Large_Magic_Jar:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Large Magic Jar");
+                    break;
+                case ItemID.Bombs_5:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Bombs Pickup");
+                    break;
+                case ItemID.Bombs_10:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Bombs Pickup");
+                    break;
+                case ItemID.Bombs_20:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Bombs Pickup");
+                    break;
+                case ItemID.Bombs_30:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Bombs Pickup");
+                    break;
+                case ItemID.Arrows_10:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Arrows Pickup");
+                    break;
+                case ItemID.Arrows_20:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Arrows Pickup");
+                    break;
+                case ItemID.Arrows_30:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Arrows Pickup");
+                    break;
                 case ItemID.Knights_Crest:
                     m_actorMeshes = WResourceManager.LoadActorResource("Knights Crest");
                     break;
@@ -76,6 +103,9 @@ namespace WindEditor
                     break;
                 case ItemID.Red_Chu_Jelly:
                     m_actorMeshes = WResourceManager.LoadActorResource("Red Chu Blob");
+                    break;
+                case ItemID.Bombs:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Bombs Ability");
                     break;
                 default:
                     m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));

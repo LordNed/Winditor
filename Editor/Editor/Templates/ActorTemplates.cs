@@ -4471,6 +4471,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ItemID");
+				UpdateModel();
 			}
 		}
 

@@ -10,7 +10,8 @@
       "Hidden": false,
       "Category": "Item Pickup",
       "ToolTip": "",
-      "DataType": "ItemID"
+      "DataType": "ItemID",
+      "UpdateModel": true
     },
     {
       "Name": "Item Pickup Flag",
