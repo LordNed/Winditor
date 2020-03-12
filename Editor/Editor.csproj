@@ -650,6 +650,9 @@
     <Compile Include="View\CollisionExportWindow.xaml.cs">
       <DependentUpon>CollisionExportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\VisualMeshExportWindow.xaml.cs">
+      <DependentUpon>VisualMeshExportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\VisualMeshImportWindow.xaml.cs">
       <DependentUpon>VisualMeshImportWindow.xaml</DependentUpon>
     </Compile>
@@ -692,6 +695,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CollisionExportWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\VisualMeshExportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

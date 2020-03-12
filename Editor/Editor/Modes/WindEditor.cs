@@ -698,34 +698,84 @@ namespace WindEditor
 
         public void OnRequestExportVisualMesh()
         {
-            // TODO
+            View.VisualMeshExportWindow window = new View.VisualMeshExportWindow(MainWorld.Map);
+            window.FileSelector.IsFilePicker = true;
+            window.FileSelector.IsFileSaver = true;
+            window.FileSelector.FileExtension = "dae";
 
-            //View.VisualMeshImportWindow window = new View.VisualMeshImportWindow(MainWorld.Map);
-            //window.FileSelector.IsFilePicker = true;
-            //
-            //if (window.ShowDialog() == true)
-            //{
-            //    if (window.FileName == "" || !File.Exists(window.FileName))
-            //    {
-            //        MessageBox.Show("Invalid filename entered!", "Mesh Import Error");
-            //        return;
-            //    }
-            //
-            //    if (window.SceneNumber == -1 || window.SceneNumber > MainWorld.Map.SceneList.Count)
-            //    {
-            //        MessageBox.Show("Invalid room number entered!", "Mesh Import Error");
-            //        return;
-            //    }
-            //
-            //    if (window.SceneNumber == 0)
-            //    {
-            //        ImportVisualMeshToStage(window);
-            //    }
-            //    else
-            //    {
-            //        ImportVisualMeshToRoom(window);
-            //    }
-            //}
+            if (window.ShowDialog() == true)
+            {
+                if (window.FileName == "")
+                {
+                    MessageBox.Show("No filename entered!", "Mesh Export Error");
+                    return;
+                }
+            
+                if (window.SceneNumber == -1 || window.SceneNumber > MainWorld.Map.SceneList.Count)
+                {
+                    MessageBox.Show("Invalid room number entered!", "Mesh Export Error");
+                    return;
+                }
+            
+                if (window.SceneNumber == 0)
+                {
+                    ExportVisualMeshFromStage(window);
+                }
+                else
+                {
+                    ExportVisualMeshFromRoom(window);
+                }
+            }
+
+            MessageBox.Show("Successfully saved mesh to file.", "Success");
+        }
+
+        public void ExportVisualMeshFromStage(View.VisualMeshExportWindow exportWindow)
+        {
+            // TODO
+        }
+
+        public void ExportVisualMeshFromRoom(View.VisualMeshExportWindow exportWindow)
+        {
+            WRoom room = GetRoomFromIndex(exportWindow.SceneNumber - 1);
+            CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
+
+            string newMeshName = "model";
+
+            if (exportWindow.SlotNumber > 0)
+            {
+                newMeshName += exportWindow.SlotNumber;
+            }
+
+            ExportVisualMeshToCategory(exportWindow, meshCategory, newMeshName);
+        }
+
+        private void ExportVisualMeshToCategory(View.VisualMeshExportWindow exportWindow, CategoryDOMNode category, string meshName)
+        {
+            List<J3DNode> meshList = category.GetChildrenOfType<J3DNode>();
+
+            J3DNode meshNode = meshList.Find(x => x.Name == meshName);
+            if (meshNode == null)
+            {
+                MessageBox.Show("No mesh in the selected slot!", "Mesh Export Error");
+                return;
+            }
+
+            ExportVisualMesh(exportWindow, meshNode.Filename);
+        }
+
+        private void ExportVisualMesh(View.VisualMeshExportWindow exportWindow, string modelFilename)
+        {
+            List<string> superBMDArgs = new List<string>(new string[] {
+                "-i", $"{ modelFilename }",
+                "-o", $"{ exportWindow.FileName }",
+            });
+            
+            SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
+            
+            SuperBMDLib.Model newJ3D = SuperBMDLib.Model.Load(args);
+            newJ3D.ExportAssImp(exportWindow.FileName, "dae", new SuperBMDLib.ExportSettings());
+            // TODO: the daes exported by this have issues that prevents them from being read properly by blender
         }
     }
 }
