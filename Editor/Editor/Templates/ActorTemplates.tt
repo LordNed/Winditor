@@ -7,6 +7,7 @@
 <#@ import namespace="WindEditor" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
 <#@ import namespace="GameFormatReader.Common" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ output extension=".cs" #>
@@ -68,10 +69,32 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			string privateFieldName = "m_" + fieldName;
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
-			bool defaultBooleanValue = false;
-			if (field.BooleanDefaultValue != null) {
-				defaultBooleanValue = field.BooleanDefaultValue;
+
+			bool defaultBooleanValue = field.BooleanDefaultValue;
+			int[] boolNonDefaults = new int[] {0, 0xFF};
+			if (field.BooleanNonDefaults != null) {
+				boolNonDefaults = field.BooleanNonDefaults;
 			}
+			int boolCanonicalIntRepresentationOfTrue = 1;
+			int boolCanonicalIntRepresentationOfFalse = 0;
+			if (defaultBooleanValue == true) {
+				boolCanonicalIntRepresentationOfFalse = boolNonDefaults[0];
+				for (int i = 0; i <= 0xFF; i++) {
+					if (boolNonDefaults.Contains(i))
+						continue;
+					boolCanonicalIntRepresentationOfTrue = i;
+					break;
+				}
+			} else {
+				boolCanonicalIntRepresentationOfTrue = boolNonDefaults[0];
+				for (int i = 0; i <= 0xFF; i++) {
+					if (boolNonDefaults.Contains(i))
+						continue;
+					boolCanonicalIntRepresentationOfFalse = i;
+					break;
+				}
+			}
+
 			string bitMaskHex;
 			string valueSourceType;
 			if (valueSource.Contains("Auxillary")) {
@@ -169,13 +192,17 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 <#
 						break;
 					case "Boolean":
+						bool onFirst = true;
+						foreach (int non_default_val in boolNonDefaults) {
 #>
-				if (value_as_int == 0) {
-					return false;
-				} else if (value_as_int == 0xFF) {
-					return <#= defaultBooleanValue ? "true" : "false" #>;
+				<#= onFirst ? "" : "} else " #>if (value_as_int == <#= non_default_val #>) {
+					return <#= defaultBooleanValue ? "false" : "true" #>;
+<#
+							onFirst = false;
+						}
+#>
 				} else {
-					return true;
+					return <#= defaultBooleanValue ? "true" : "false" #>;
 				}
 				
 <#
@@ -227,7 +254,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 						break;
 					case "Boolean":
 #>
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? <#= boolCanonicalIntRepresentationOfTrue #> : <#= boolCanonicalIntRepresentationOfFalse #>;
 <#
 						break;
 					case "Path":

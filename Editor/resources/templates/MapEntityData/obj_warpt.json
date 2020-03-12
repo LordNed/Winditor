@@ -74,8 +74,10 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Cyclic Warp Pot",
-      "ToolTip": "If 255, this warp pot will play a sound effect when the player unlocks it.",
-      "DataType": "Integer"
+      "ToolTip": "",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [0xFF]
     },
     {
       "Name": "Is Locked",
@@ -84,8 +86,10 @@
       "Shift": 8,
       "Hidden": false,
       "Category": "Cyclic Warp Pot",
-      "ToolTip": "If 255, this warp pot will be locked by default",
-      "DataType": "Integer"
+      "ToolTip": "",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [0xFF]
     },
     {
       "Name": "Unused Exit to This Pot",

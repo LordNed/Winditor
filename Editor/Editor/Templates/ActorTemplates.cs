@@ -231,7 +231,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -241,7 +241,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchActivatesArmosKnight");
 			}
@@ -316,7 +316,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -326,7 +326,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchActivatesArmos");
 			}
@@ -1334,7 +1334,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -1344,7 +1344,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("SwitchSpawnsBokoblin");
 			}
@@ -1358,7 +1358,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000020) >> 5);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -1368,7 +1368,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000020 | (value_as_int << 5 & 0x00000020));
 				OnPropertyChanged("IsGreen");
 			}
@@ -1574,7 +1574,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -1584,7 +1584,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FloatatInitialHeight");
 			}
@@ -1735,7 +1735,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -1745,7 +1745,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("LeaveBehindBabaBud");
 			}
@@ -2898,7 +2898,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -2908,7 +2908,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("HasFireflies");
 			}
@@ -2922,7 +2922,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000080) >> 7);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -2932,7 +2932,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("IsWooden");
 			}
@@ -5123,7 +5123,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00008000) >> 15);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -5133,7 +5133,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("IsFireKeese");
 			}
@@ -9234,7 +9234,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -9244,7 +9244,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("HasLadder");
 				UpdateModel();
@@ -14323,35 +14323,45 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Cyclic Warp Pot", "Play Unlocked Sound Effect", true, "If 255, this warp pot will play a sound effect when the player unlocks it.", SourceScene.Room)]
-		public int PlayUnlockedSoundEffect
+		[WProperty("Cyclic Warp Pot", "Play Unlocked Sound Effect", true, "", SourceScene.Room)]
+		public bool PlayUnlockedSoundEffect
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 255) {
+					return true;
+				} else {
+					return false;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 255 : 0;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("PlayUnlockedSoundEffect");
 			}
 		}
 
-		[WProperty("Cyclic Warp Pot", "Is Locked", true, "If 255, this warp pot will be locked by default", SourceScene.Room)]
-		public int IsLocked
+		[WProperty("Cyclic Warp Pot", "Is Locked", true, "", SourceScene.Room)]
+		public bool IsLocked
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 255) {
+					return true;
+				} else {
+					return false;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 255 : 0;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("IsLocked");
 			}
@@ -14946,7 +14956,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -14956,7 +14966,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("InitialMiniblinWontSpawnOnscreen");
 			}
@@ -15104,7 +15114,7 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
+				} else if (value_as_int == 255) {
 					return false;
 				} else {
 					return true;
@@ -15114,7 +15124,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("HoversAtInitialHeight");
 			}
@@ -15344,8 +15354,6 @@ namespace WindEditor
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				if (value_as_int == 0) {
 					return false;
-				} else if (value_as_int == 0xFF) {
-					return true;
 				} else {
 					return true;
 				}
@@ -15354,7 +15362,7 @@ namespace WindEditor
 
 			set
 			{
-				int value_as_int = Convert.ToInt32(value);
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ShouldCheckSwitchToEnableSpawn");
 			}
