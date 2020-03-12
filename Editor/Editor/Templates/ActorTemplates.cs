@@ -14177,161 +14177,154 @@ namespace WindEditor
 	public partial class obj_warpt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_warpt", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Locked_noncyclic_pot = 0,
+			Unlocked_noncyclic_pot = 1,
+			First_in_cycle = 2,
+			Second_in_cycle = 3,
+			Third_in_cycle = 4,
+		}
+
+		[WProperty("Warp Pot", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		public enum UnlockedRegisterEnum
+		{
+			DRC_0xA207 = 0,
+			FW_0xA107 = 1,
+			Unused_0xA007 = 2,
+			WT_0x9F07 = 3,
+			ET_0xA307 = 4,
+			Unused_0xA407 = 5,
+		}
+
+		[WProperty("Cyclic Warp Pot", "Unlocked Register", true, "", SourceScene.Room)]
+		public UnlockedRegisterEnum UnlockedRegister
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				return value_as_int;
+				return (UnlockedRegisterEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("UnlockedRegister");
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("obj_warpt", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Cyclic Warp Pot", "Exit to First Pot in Cycle", true, "", SourceScene.Room)]
+		public ExitData ExittoFirstPotinCycle
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("ExittoFirstPotinCycle");
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("Unknown_5");
-			}
-		}
-
-		[WProperty("obj_warpt", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Cyclic Warp Pot", "Exit to Second Pot in Cycle", true, "", SourceScene.Room)]
+		public ExitData ExittoSecondPotinCycle
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("ExittoSecondPotinCycle");
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("Cyclic Warp Pot", "Exit to Third Pot in Cycle", true, "", SourceScene.Room)]
+		public ExitData ExittoThirdPotinCycle
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("ExittoThirdPotinCycle");
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_8", true, "", SourceScene.Room)]
-		public int Unknown_8
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_8");
-			}
-		}
-
-		[WProperty("obj_warpt", "Unknown_9", true, "", SourceScene.Room)]
-		public int Unknown_9
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_9");
-			}
-		}
-
-		[WProperty("obj_warpt", "Unknown_10", true, "", SourceScene.Room)]
-		public int Unknown_10
+		[WProperty("Cyclic Warp Pot", "Play Unlocked Sound Effect", true, "If 255, this warp pot will play a sound effect when the player unlocks it.", SourceScene.Room)]
+		public int PlayUnlockedSoundEffect
 		{ 
 			get
 			{
@@ -14343,12 +14336,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_10");
+				OnPropertyChanged("PlayUnlockedSoundEffect");
 			}
 		}
 
-		[WProperty("obj_warpt", "Unknown_11", true, "", SourceScene.Room)]
-		public int Unknown_11
+		[WProperty("Cyclic Warp Pot", "Is Locked", true, "If 255, this warp pot will be locked by default", SourceScene.Room)]
+		public int IsLocked
 		{ 
 			get
 			{
@@ -14360,7 +14353,103 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_11");
+				OnPropertyChanged("IsLocked");
+			}
+		}
+
+		[WProperty("Noncyclic Warp Pot", "Unused Exit to This Pot", true, "", SourceScene.Room)]
+		public ExitData UnusedExittoThisPot
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
+				OnPropertyChanged("UnusedExittoThisPot");
+			}
+		}
+
+		[WProperty("Noncyclic Warp Pot", "Exit to Other Pot", true, "", SourceScene.Room)]
+		public ExitData ExittoOtherPot
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				OnPropertyChanged("ExittoOtherPot");
+			}
+		}
+
+		[WProperty("Noncyclic Warp Pot", "This Unlocked Switch", true, "The warp pot will set this switch when it is unlocked.\nIf this is an 'Unlocked'-type warp pot, it sets this automatically when you enter the room.", SourceScene.Room)]
+		public int ThisUnlockedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("ThisUnlockedSwitch");
+			}
+		}
+
+		[WProperty("Noncyclic Warp Pot", "Destination Unlocked Switch", true, "The warp pot will not let the player go through it until this switch is set.", SourceScene.Room)]
+		public int DestinationUnlockedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				OnPropertyChanged("DestinationUnlockedSwitch");
 			}
 		}
 
