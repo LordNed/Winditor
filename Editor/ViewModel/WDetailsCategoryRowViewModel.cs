@@ -48,7 +48,7 @@ namespace WindEditor.ViewModel
 
         public WDetailsCategoryRowViewModel(string name)
         {
-            CategoryName = name;
+            CategoryName = name.Replace("_", "__"); // Escape underscores so they're not interpreted access keys.
 
             m_PropertyRows = new BindingList<WDetailSingleRowViewModel>();
         }
