@@ -71,17 +71,17 @@
   },
   {
     "Actor Name": "ALLdie",
-    "English Name": "alldie",
+    "English Name": "All Enemies Dead Switch Setter",
     "ActorClassType": "alldie"
   },
   {
     "Actor Name": "amos",
-    "English Name": "am",
+    "English Name": "Armos Knight",
     "ActorClassType": "am"
   },
   {
     "Actor Name": "amos2",
-    "English Name": "am2",
+    "English Name": "Armos",
     "ActorClassType": "am2"
   },
   {
@@ -96,22 +96,22 @@
   },
   {
     "Actor Name": "AND_SW0",
-    "English Name": "andsw0",
+    "English Name": "Switch AND Operator (Type 0?)",
     "ActorClassType": "andsw0"
   },
   {
     "Actor Name": "AND_SW2",
-    "English Name": "andsw2",
+    "English Name": "Switch AND Operator (Type 2?)",
     "ActorClassType": "andsw2"
   },
   {
     "Actor Name": "Arrow_i",
-    "English Name": "arrow_iceeff",
+    "English Name": "Cone Around Fire/Ice Arrows",
     "ActorClassType": "arrow_iceeff"
   },
   {
     "Actor Name": "Arrow_l",
-    "English Name": "arrow_lighteff",
+    "English Name": "Cone Around Light Arrows",
     "ActorClassType": "arrow_lighteff"
   },
   {
@@ -146,7 +146,7 @@
   },
   {
     "Actor Name": "Ylesr00",
-    "English Name": "beam",
+    "English Name": "Beam Fired by TotG Laser Barrier or Moblin Statue",
     "ActorClassType": "beam"
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "Actor Name": "bable",
-    "English Name": "bl",
+    "English Name": "Red/Blue Bubble",
     "ActorClassType": "bl"
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "Actor Name": "bbaba",
-    "English Name": "bo",
+    "English Name": "Boko Baba",
     "ActorClassType": "bo"
   },
   {
@@ -226,12 +226,12 @@
   },
   {
     "Actor Name": "Boko",
-    "English Name": "boko",
+    "English Name": "Dropped Enemy Weapon",
     "ActorClassType": "boko"
   },
   {
     "Actor Name": "Bitem",
-    "English Name": "boss_item",
+    "English Name": "Boss Heart Container Item",
     "ActorClassType": "boss_item"
   },
   {
@@ -246,7 +246,7 @@
   },
   {
     "Actor Name": "bridge",
-    "English Name": "bridge",
+    "English Name": "Bridge",
     "ActorClassType": "bridge"
   },
   {
@@ -256,12 +256,12 @@
   },
   {
     "Actor Name": "Btd",
-    "English Name": "btd",
+    "English Name": "Gohma",
     "ActorClassType": "btd"
   },
   {
     "Actor Name": "Bwd",
-    "English Name": "bwd",
+    "English Name": "Molgera",
     "ActorClassType": "bwd"
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "Actor Name": "Bwds",
-    "English Name": "bwds",
+    "English Name": "Molgera Child",
     "ActorClassType": "bwds"
   },
   {
@@ -281,27 +281,27 @@
   },
   {
     "Actor Name": "c_green",
-    "English Name": "cc",
+    "English Name": "Green ChuChu",
     "ActorClassType": "cc"
   },
   {
     "Actor Name": "c_red",
-    "English Name": "cc",
+    "English Name": "Red ChuChu",
     "ActorClassType": "cc"
   },
   {
     "Actor Name": "c_blue",
-    "English Name": "cc",
+    "English Name": "Blue ChuChu",
     "ActorClassType": "cc"
   },
   {
     "Actor Name": "c_black",
-    "English Name": "cc",
+    "English Name": "Dark ChuChu",
     "ActorClassType": "cc"
   },
   {
     "Actor Name": "c_kiiro",
-    "English Name": "cc",
+    "English Name": "Yellow ChuChu",
     "ActorClassType": "cc"
   },
   {
@@ -316,27 +316,27 @@
   },
   {
     "Actor Name": "Fdai",
-    "English Name": "dai",
+    "English Name": "Windfall Island Decorative Item Pedestal",
     "ActorClassType": "dai"
   },
   {
     "Actor Name": "Daiocta",
-    "English Name": "daiocta",
+    "English Name": "Big Octo",
     "ActorClassType": "daiocta"
   },
   {
     "Actor Name": "Daioeye",
-    "English Name": "daiocta_eye",
+    "English Name": "Big Octo Eye",
     "ActorClassType": "daiocta_eye"
   },
   {
     "Actor Name": "itemDek",
-    "English Name": "deku_item",
+    "English Name": "Deku Leaf Item",
     "ActorClassType": "deku_item"
   },
   {
     "Actor Name": "Demo_Dk",
-    "English Name": "demo_dk",
+    "English Name": "Helmaroc King (Cutscenes)",
     "ActorClassType": "demo_dk"
   },
   {
@@ -466,7 +466,7 @@
   },
   {
     "Actor Name": "bonbori",
-    "English Name": "ep",
+    "English Name": "Torch",
     "ActorClassType": "ep"
   },
   {
@@ -496,27 +496,27 @@
   },
   {
     "Actor Name": "ho",
-    "English Name": "ff",
+    "English Name": "Firefly",
     "ActorClassType": "ff"
   },
   {
     "Actor Name": "Fganon",
-    "English Name": "fganon",
+    "English Name": "Phantom Ganon",
     "ActorClassType": "fganon"
   },
   {
     "Actor Name": "",
-    "English Name": "fgmahou",
+    "English Name": "Phantom Ganon's Magic Projectile",
     "ActorClassType": "fgmahou"
   },
   {
     "Actor Name": "Fire",
-    "English Name": "fire",
+    "English Name": "Ring of Flames",
     "ActorClassType": "fire"
   },
   {
     "Actor Name": "Zenfire",
-    "English Name": "fire",
+    "English Name": "Ring of Flames (Checks all enemies dead)",
     "ActorClassType": "fire"
   },
   {
@@ -526,27 +526,27 @@
   },
   {
     "Actor Name": "Fmaster",
-    "English Name": "fm",
+    "English Name": "Stalking Floormaster",
     "ActorClassType": "fm"
   },
   {
     "Actor Name": "Fmastr1",
-    "English Name": "fm",
+    "English Name": "Path-Following Floormaster",
     "ActorClassType": "fm"
   },
   {
     "Actor Name": "Fmastr2",
-    "English Name": "fm",
+    "English Name": "Non-Path-Following Floormaster",
     "ActorClassType": "fm"
   },
   {
     "Actor Name": "Ayush",
-    "English Name": "ghostship",
+    "English Name": "Ghost Ship",
     "ActorClassType": "ghostship"
   },
   {
     "Actor Name": "gmos",
-    "English Name": "gm",
+    "English Name": "Mothula",
     "ActorClassType": "gm"
   },
   {
@@ -561,7 +561,7 @@
   },
   {
     "Actor Name": "Gnd",
-    "English Name": "gnd",
+    "English Name": "Ganondorf",
     "ActorClassType": "gnd"
   },
   {
@@ -571,57 +571,57 @@
   },
   {
     "Actor Name": "kusax1",
-    "English Name": "grass",
+    "English Name": "1 Grass Bunch",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "kusax7",
-    "English Name": "grass",
+    "English Name": "7 Grass Bunches",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "kusax21",
-    "English Name": "grass",
+    "English Name": "21 Grass Bunches",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "flower",
-    "English Name": "grass",
+    "English Name": "1 White Flower",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "flwr7",
-    "English Name": "grass",
+    "English Name": "7 White Flowers",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "flwr17",
-    "English Name": "grass",
+    "English Name": "17 White Flowers",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "pflower",
-    "English Name": "grass",
+    "English Name": "1 Pink Flower",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "pflwrx7",
-    "English Name": "grass",
+    "English Name": "7 Pink Flowers",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "swood",
-    "English Name": "grass",
+    "English Name": "1 Tree",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "swood3",
-    "English Name": "grass",
+    "English Name": "3 Trees",
     "ActorClassType": "grass"
   },
   {
     "Actor Name": "swood5",
-    "English Name": "grass",
+    "English Name": "5 Trees",
     "ActorClassType": "grass"
   },
   {
@@ -631,17 +631,17 @@
   },
   {
     "Actor Name": "Gy",
-    "English Name": "gy",
+    "English Name": "Gyorg",
     "ActorClassType": "gy"
   },
   {
     "Actor Name": "GyCtrl",
-    "English Name": "gy_ctrl",
+    "English Name": "Cross-Sector Gyorg Spawner",
     "ActorClassType": "gy_ctrl"
   },
   {
     "Actor Name": "GyCtrlB",
-    "English Name": "gy_ctrl",
+    "English Name": "Single-Sector Gyorg Spawner",
     "ActorClassType": "gy_ctrl"
   },
   {
@@ -731,7 +731,7 @@
   },
   {
     "Actor Name": "Pig",
-    "English Name": "kb",
+    "English Name": "Pig",
     "ActorClassType": "kb"
   },
   {
@@ -761,12 +761,12 @@
   },
   {
     "Actor Name": "keeth",
-    "English Name": "ki",
+    "English Name": "Keese",
     "ActorClassType": "ki"
   },
   {
     "Actor Name": "Fkeeth",
-    "English Name": "ki",
+    "English Name": "Fire Keese",
     "ActorClassType": "ki"
   },
   {
@@ -841,12 +841,12 @@
   },
   {
     "Actor Name": "kuro_s",
-    "English Name": "ks",
+    "English Name": "Chasing Morths",
     "ActorClassType": "ks"
   },
   {
     "Actor Name": "kuro_t",
-    "English Name": "ks",
+    "English Name": "Stationary Morths",
     "ActorClassType": "ks"
   },
   {
@@ -856,7 +856,7 @@
   },
   {
     "Actor Name": "Kui",
-    "English Name": "kui",
+    "English Name": "Grapple Point",
     "ActorClassType": "kui"
   },
   {
@@ -1241,7 +1241,7 @@
   },
   {
     "Actor Name": "mo2",
-    "English Name": "mo2",
+    "English Name": "Moblin",
     "ActorClassType": "mo2"
   },
   {
@@ -1251,7 +1251,7 @@
   },
   {
     "Actor Name": "moZOU",
-    "English Name": "mozo",
+    "English Name": "Moblin Statue",
     "ActorClassType": "mozo"
   },
   {
@@ -1261,7 +1261,7 @@
   },
   {
     "Actor Name": "magtail",
-    "English Name": "mt",
+    "English Name": "Magtail",
     "ActorClassType": "mt"
   },
   {
@@ -1446,7 +1446,7 @@
   },
   {
     "Actor Name": "Cb1",
-    "English Name": "npc_cb1",
+    "English Name": "Makar",
     "ActorClassType": "npc_cb1"
   },
   {
@@ -1481,7 +1481,7 @@
   },
   {
     "Actor Name": "Ho",
-    "English Name": "npc_ho",
+    "English Name": "Mrs. Marie",
     "ActorClassType": "npc_ho"
   },
   {
@@ -1551,17 +1551,17 @@
   },
   {
     "Actor Name": "Ls1",
-    "English Name": "npc_ls1",
+    "English Name": "Aryll",
     "ActorClassType": "npc_ls1"
   },
   {
     "Actor Name": "Md1",
-    "English Name": "npc_md",
+    "English Name": "Medli",
     "ActorClassType": "npc_md"
   },
   {
     "Actor Name": "Mk",
-    "English Name": "npc_mk",
+    "English Name": "Ivan",
     "ActorClassType": "npc_mk"
   },
   {
@@ -1771,7 +1771,7 @@
   },
   {
     "Actor Name": "NpcSo",
-    "English Name": "npc_so",
+    "English Name": "Fishman",
     "ActorClassType": "npc_so"
   },
   {
@@ -1856,17 +1856,17 @@
   },
   {
     "Actor Name": "Zl1",
-    "English Name": "npc_zl1",
+    "English Name": "Tetra",
     "ActorClassType": "npc_zl1"
   },
   {
     "Actor Name": "nezumi",
-    "English Name": "nz",
+    "English Name": "Rat",
     "ActorClassType": "nz"
   },
   {
     "Actor Name": "nezuana",
-    "English Name": "nzg",
+    "English Name": "Rat Spawning Hole",
     "ActorClassType": "nzg"
   },
   {
@@ -1886,7 +1886,7 @@
   },
   {
     "Actor Name": "Akabe",
-    "English Name": "obj_akabe",
+    "English Name": "Invisible Wall",
     "ActorClassType": "obj_akabe"
   },
   {
@@ -1906,7 +1906,7 @@
   },
   {
     "Actor Name": "Apzl",
-    "English Name": "obj_apzl",
+    "English Name": "Sliding Puzzle",
     "ActorClassType": "obj_apzl"
   },
   {
@@ -1916,12 +1916,12 @@
   },
   {
     "Actor Name": "Auzu",
-    "English Name": "obj_auzu",
+    "English Name": "Whirlpool",
     "ActorClassType": "obj_auzu"
   },
   {
     "Actor Name": "Aygr",
-    "English Name": "obj_aygr",
+    "English Name": "Lookout Platform",
     "ActorClassType": "obj_aygr"
   },
   {
@@ -1941,22 +1941,22 @@
   },
   {
     "Actor Name": "Ycage00",
-    "English Name": "obj_barrier",
+    "English Name": "Hyrule Barrier",
     "ActorClassType": "obj_barrier"
   },
   {
     "Actor Name": "Hmos1",
-    "English Name": "obj_bemos",
+    "English Name": "Blue Beamos (Barrier)",
     "ActorClassType": "obj_bemos"
   },
   {
     "Actor Name": "Hmos2",
-    "English Name": "obj_bemos",
+    "English Name": "Red Beamos (Tracking)",
     "ActorClassType": "obj_bemos"
   },
   {
     "Actor Name": "Hmos3",
-    "English Name": "obj_bemos",
+    "English Name": "Tower of the Gods Laser Barrier",
     "ActorClassType": "obj_bemos"
   },
   {
@@ -1986,7 +1986,7 @@
   },
   {
     "Actor Name": "Ocanon",
-    "English Name": "obj_canon",
+    "English Name": "Wall-Mounted Cannon",
     "ActorClassType": "obj_canon"
   },
   {
@@ -2046,27 +2046,27 @@
   },
   {
     "Actor Name": "Doguu",
-    "English Name": "obj_doguu",
+    "English Name": "Sealed Goddess Statue",
     "ActorClassType": "obj_doguu"
   },
   {
     "Actor Name": "MegamiD",
-    "English Name": "obj_doguu",
+    "English Name": "Din Goddess Statue",
     "ActorClassType": "obj_doguu"
   },
   {
     "Actor Name": "MegamiF",
-    "English Name": "obj_doguu",
+    "English Name": "Farore Goddess Statue",
     "ActorClassType": "obj_doguu"
   },
   {
     "Actor Name": "MegamiN",
-    "English Name": "obj_doguu",
+    "English Name": "Nayru Goddess Statue",
     "ActorClassType": "obj_doguu"
   },
   {
     "Actor Name": "DoguuD",
-    "English Name": "obj_doguu_demo",
+    "English Name": "Goddess Statue (Cutscenes)",
     "ActorClassType": "obj_doguu_demo"
   },
   {
@@ -2101,7 +2101,7 @@
   },
   {
     "Actor Name": "Eskban",
-    "English Name": "Large Bombable Rock (2)",
+    "English Name": "Large Bombable Rock from DRC Entrance",
     "ActorClassType": "obj_eskban"
   },
   {
@@ -2111,7 +2111,7 @@
   },
   {
     "Actor Name": "Figure",
-    "English Name": "obj_figure",
+    "English Name": "Nintendo Gallery Figurine",
     "ActorClassType": "obj_figure"
   },
   {
@@ -2121,12 +2121,12 @@
   },
   {
     "Actor Name": "Yfire00",
-    "English Name": "obj_flame",
+    "English Name": "Magma Jet",
     "ActorClassType": "obj_flame"
   },
   {
     "Actor Name": "FTree",
-    "English Name": "obj_ftree",
+    "English Name": "Korok Tree",
     "ActorClassType": "obj_ftree"
   },
   {
@@ -2206,7 +2206,7 @@
   },
   {
     "Actor Name": "Hfuck1",
-    "English Name": "obj_hfuck1",
+    "English Name": "Hookshot Target",
     "ActorClassType": "obj_hfuck1"
   },
   {
@@ -2236,12 +2236,12 @@
   },
   {
     "Actor Name": "Homen1",
-    "English Name": "obj_homen",
+    "English Name": "Large Stone Head with Hookshot Target",
     "ActorClassType": "obj_homen"
   },
   {
     "Actor Name": "Homen2",
-    "English Name": "obj_homen",
+    "English Name": "Small Stone Head with Hookshot Target",
     "ActorClassType": "obj_homen"
   },
   {
@@ -2276,27 +2276,27 @@
   },
   {
     "Actor Name": "Ikada",
-    "English Name": "obj_ikada",
+    "English Name": "Raft",
     "ActorClassType": "obj_ikada"
   },
   {
     "Actor Name": "ikada_h",
-    "English Name": "obj_ikada",
+    "English Name": "Beedle's Shop Ship",
     "ActorClassType": "obj_ikada"
   },
   {
     "Actor Name": "ikadaS",
-    "English Name": "obj_ikada",
+    "English Name": "Submarine",
     "ActorClassType": "obj_ikada"
   },
   {
     "Actor Name": "ikada_u",
-    "English Name": "obj_ikada",
+    "English Name": "Beedle's Special Shop Ship",
     "ActorClassType": "obj_ikada"
   },
   {
     "Actor Name": "Svsp",
-    "English Name": "obj_ikada",
+    "English Name": "Salvage Corp Ship",
     "ActorClassType": "obj_ikada"
   },
   {
@@ -2356,12 +2356,12 @@
   },
   {
     "Actor Name": "Stoudai",
-    "English Name": "obj_light",
+    "English Name": "Lighthouse",
     "ActorClassType": "obj_light"
   },
   {
     "Actor Name": "Oyashi",
-    "English Name": "obj_lpalm",
+    "English Name": "Palm Tree",
     "ActorClassType": "obj_lpalm"
   },
   {
@@ -2411,12 +2411,12 @@
   },
   {
     "Actor Name": "osiBLK0",
-    "English Name": "obj_movebox",
+    "English Name": "Pushable Black Box",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "osiBLK1",
-    "English Name": "obj_movebox",
+    "English Name": "Pushable Black Box With Statue",
     "ActorClassType": "obj_movebox"
   },
   {
@@ -2436,7 +2436,7 @@
   },
   {
     "Actor Name": "Mmrr",
-    "English Name": "obj_movebox",
+    "English Name": "Large Pushable Mirror",
     "ActorClassType": "obj_movebox"
   },
   {
@@ -2446,17 +2446,17 @@
   },
   {
     "Actor Name": "Ecube",
-    "English Name": "obj_movebox",
+    "English Name": "Pushable Mossy Black Box",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Hjump1",
-    "English Name": "obj_movebox",
+    "English Name": "Pushable Metal Box With Spring",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Hbox1",
-    "English Name": "obj_movebox",
+    "English Name": "Pushable Metal Box",
     "ActorClassType": "obj_movebox"
   },
   {
@@ -2681,7 +2681,7 @@
   },
   {
     "Actor Name": "Shmrgrd",
-    "English Name": "obj_shmrgrd",
+    "English Name": "Spiked Hammer Button",
     "ActorClassType": "obj_shmrgrd"
   },
   {
@@ -2711,7 +2711,7 @@
   },
   {
     "Actor Name": "MhmrSW0",
-    "English Name": "obj_swhammer",
+    "English Name": "Hammer Button",
     "ActorClassType": "obj_swhammer"
   },
   {
@@ -2801,22 +2801,22 @@
   },
   {
     "Actor Name": "TnTrap",
-    "English Name": "obj_tntrap",
+    "English Name": "Hyrule Castle Laser Barrier",
     "ActorClassType": "obj_tntrap"
   },
   {
     "Actor Name": "FgTrap",
-    "English Name": "obj_tntrap",
+    "English Name": "Forsaken Fortress Laser Barrier (During Phantom Ganon Fight)",
     "ActorClassType": "obj_tntrap"
   },
   {
     "Actor Name": "CmTrap",
-    "English Name": "obj_tntrap",
+    "English Name": "Savage Labyrinth Laser Barrier",
     "ActorClassType": "obj_tntrap"
   },
   {
     "Actor Name": "Tpost",
-    "English Name": "obj_toripost",
+    "English Name": "Postbox",
     "ActorClassType": "obj_toripost"
   },
   {
@@ -2941,7 +2941,7 @@
   },
   {
     "Actor Name": "VmcBS",
-    "English Name": "obj_vmc",
+    "English Name": "Makar Seed-Planting Spot",
     "ActorClassType": "obj_vmc"
   },
   {
@@ -2996,27 +2996,27 @@
   },
   {
     "Actor Name": "Warpt",
-    "English Name": "obj_warpt",
+    "English Name": "Locked Noncyclic Warp Pot",
     "ActorClassType": "obj_warpt"
   },
   {
     "Actor Name": "Warpnt",
-    "English Name": "obj_warpt",
+    "English Name": "Unlocked Noncyclic Warp Pot",
     "ActorClassType": "obj_warpt"
   },
   {
     "Actor Name": "Warpts1",
-    "English Name": "obj_warpt",
+    "English Name": "Cyclic Warp Pot 1",
     "ActorClassType": "obj_warpt"
   },
   {
     "Actor Name": "Warpts2",
-    "English Name": "obj_warpt",
+    "English Name": "Cyclic Warp Pot 2",
     "ActorClassType": "obj_warpt"
   },
   {
     "Actor Name": "Warpts3",
-    "English Name": "obj_warpt",
+    "English Name": "Cyclic Warp Pot 3",
     "ActorClassType": "obj_warpt"
   },
   {
@@ -3076,17 +3076,17 @@
   },
   {
     "Actor Name": "Oq",
-    "English Name": "oq",
+    "English Name": "Freshwater Octorok",
     "ActorClassType": "oq"
   },
   {
     "Actor Name": "Oqw",
-    "English Name": "oq",
+    "English Name": "Saltwater Octorok",
     "ActorClassType": "oq"
   },
   {
     "Actor Name": "Oship",
-    "English Name": "oship",
+    "English Name": "Gunboat",
     "ActorClassType": "oship"
   },
   {
@@ -3106,12 +3106,12 @@
   },
   {
     "Actor Name": "p_hat",
-    "English Name": "Pea Hat",
+    "English Name": "Peahat",
     "ActorClassType": "ph"
   },
   {
     "Actor Name": "sea_hat",
-    "English Name": "Sea Hat",
+    "English Name": "Seahat",
     "ActorClassType": "ph"
   },
   {
@@ -3121,7 +3121,7 @@
   },
   {
     "Actor Name": "Puti",
-    "English Name": "pt",
+    "English Name": "Miniblin",
     "ActorClassType": "pt"
   },
   {
@@ -3131,7 +3131,7 @@
   },
   {
     "Actor Name": "p_zelda",
-    "English Name": "Zelda",
+    "English Name": "Princess Zelda",
     "ActorClassType": "pz"
   },
   {
@@ -3141,17 +3141,17 @@
   },
   {
     "Actor Name": "Rdead1",
-    "English Name": "rd",
+    "English Name": "Standing ReDead",
     "ActorClassType": "rd"
   },
   {
     "Actor Name": "Rdead2",
-    "English Name": "rd",
+    "English Name": "Sitting ReDead",
     "ActorClassType": "rd"
   },
   {
     "Actor Name": "hotest",
-    "English Name": "rectangle",
+    "English Name": "Blank Test Actor",
     "ActorClassType": "rectangle"
   },
   {
@@ -3161,22 +3161,22 @@
   },
   {
     "Actor Name": "Ksaku",
-    "English Name": "saku",
+    "English Name": "Weak Boarded Up Wall",
     "ActorClassType": "saku"
   },
   {
     "Actor Name": "Dsaku",
-    "English Name": "saku",
+    "English Name": "Sturdy Boarded Up Wall",
     "ActorClassType": "saku"
   },
   {
     "Actor Name": "Salvage",
-    "English Name": "salvage",
+    "English Name": "Chart Salvage Region",
     "ActorClassType": "salvage"
   },
   {
     "Actor Name": "SwSlvg",
-    "English Name": "salvage",
+    "English Name": "Gunboat/Big Octo Salvage Region",
     "ActorClassType": "salvage"
   },
   {
@@ -3296,12 +3296,12 @@
   },
   {
     "Actor Name": "Sss",
-    "English Name": "sss",
+    "English Name": "Dexivine",
     "ActorClassType": "sss"
   },
   {
     "Actor Name": "Stal",
-    "English Name": "st",
+    "English Name": "Stalfos",
     "ActorClassType": "st"
   },
   {
@@ -3331,7 +3331,7 @@
   },
   {
     "Actor Name": "Ekao",
-    "English Name": "Stone Face",
+    "English Name": "Large Stone Face (Liftable with Power Bracelets)",
     "ActorClassType": "stone2"
   },
   {
@@ -3346,7 +3346,7 @@
   },
   {
     "Actor Name": "SW_C00",
-    "English Name": "swc00",
+    "English Name": "Switch Setter Trigger Region",
     "ActorClassType": "swc00"
   },
   {
@@ -3411,7 +3411,7 @@
   },
   {
     "Actor Name": "TagEv",
-    "English Name": "tag_event",
+    "English Name": "Event Trigger Region",
     "ActorClassType": "tag_event"
   },
   {
@@ -3426,12 +3426,12 @@
   },
   {
     "Actor Name": "TagHt",
-    "English Name": "tag_hint",
+    "English Name": "Hint Trigger Region 1",
     "ActorClassType": "tag_hint"
   },
   {
     "Actor Name": "TagHt2",
-    "English Name": "tag_hint",
+    "English Name": "Hint Trigger Region 2",
     "ActorClassType": "tag_hint"
   },
   {
@@ -3441,7 +3441,7 @@
   },
   {
     "Actor Name": "TagKb",
-    "English Name": "tag_kb_item",
+    "English Name": "Pig Item Dig Region",
     "ActorClassType": "tag_kb_item"
   },
   {
@@ -3531,7 +3531,7 @@
   },
   {
     "Actor Name": "TagMk",
-    "English Name": "tag_mk",
+    "English Name": "Joy Pendant Hidden in a Tree",
     "ActorClassType": "tag_mk"
   },
   {
@@ -3581,7 +3581,7 @@
   },
   {
     "Actor Name": "VolTag",
-    "English Name": "tag_volcano",
+    "English Name": "Kill Trigger for Ice Ring Isle/Fire Mountain",
     "ActorClassType": "tag_volcano"
   },
   {
@@ -3721,62 +3721,62 @@
   },
   {
     "Actor Name": "kotubo",
-    "English Name": "tsubo",
+    "English Name": "Small Pot",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "ootubo1",
-    "English Name": "tsubo",
+    "English Name": "Large Pot",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Kmtub",
-    "English Name": "tsubo",
+    "English Name": "Water Pot",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Ktaru",
-    "English Name": "tsubo",
+    "English Name": "Barrel",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Ostool",
-    "English Name": "tsubo",
+    "English Name": "Stool",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Odokuro",
-    "English Name": "tsubo",
+    "English Name": "Skull",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Okioke",
-    "English Name": "tsubo",
+    "English Name": "Bucket",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Kmi02",
-    "English Name": "tsubo",
+    "English Name": "Seed",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Ptubo",
-    "English Name": "tsubo",
+    "English Name": "Fancy Pot",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "KkibaB",
-    "English Name": "tsubo",
+    "English Name": "Wooden Crate",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Kmi00",
-    "English Name": "tsubo",
+    "English Name": "Nut",
     "ActorClassType": "tsubo"
   },
   {
     "Actor Name": "Hbox2S",
-    "English Name": "tsubo",
+    "English Name": "Golden Crate",
     "ActorClassType": "tsubo"
   },
   {
@@ -3856,7 +3856,7 @@
   },
   {
     "Actor Name": "wiz_r",
-    "English Name": "wz",
+    "English Name": "Wizzrobe",
     "ActorClassType": "wz"
   },
   {
