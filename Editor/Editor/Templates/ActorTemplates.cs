@@ -11061,20 +11061,42 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hole", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_hole", "Has Visible Hole", true, "", SourceScene.Room)]
+		public bool HasVisibleHole
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				if (value_as_int == 0) {
+					return false;
+				} else {
+					return true;
+				}
+				
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("HasVisibleHole");
+			}
+		}
+
+		[WProperty("obj_hole", "Unknown_3", true, "", SourceScene.Room)]
+		public int Unknown_3
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("Unknown_3");
 			}
 		}
 
@@ -13353,25 +13375,31 @@ namespace WindEditor
 	public partial class obj_swpush : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swpush", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_swpush", "Event to Start", true, "", SourceScene.Stage)]
+		public MapEvent EventtoStart
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("EventtoStart");
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_swpush", "Switch to Set", true, "The switch for this button being pressed.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -13383,63 +13411,85 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("obj_swpush", "Alt Model (No Effect)", true, "This param seems like it was intended to change the visual model of the button.\nHowever, all 4 types of button have the same model specified for their normal and alternative models, so this has no effect.", SourceScene.Room)]
+		public bool AltModelNoEffect
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("AltModelNoEffect");
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		public enum TypeEnum
+		{
+			Press_Once = 0,
+			Hold_Down = 1,
+			Press_Once_Inverted = 2,
+			Iron_Boots_Button_Base = 3,
+		}
+
+		[WProperty("obj_swpush", "Type", true, "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("obj_swpush", "Should Use Disabled Switch", true, "For 'Hold Down' type buttons, this must be checked for 'Disabled Switch' to work. No effect on other types.", SourceScene.Room)]
+		public bool ShouldUseDisabledSwitch
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("ShouldUseDisabledSwitch");
 			}
 		}
 
-		[WProperty("obj_swpush", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("obj_swpush", "Disabled Switch", true, "For 'Hold Down' type buttons, they will stop automatically unpressing themselves once this switch is set by something else (though they still need to be pressed once manually). No effect on other types.", SourceScene.Room)]
+		public int DisabledSwitch
 		{ 
 			get
 			{
@@ -13451,7 +13501,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("DisabledSwitch");
 			}
 		}
 

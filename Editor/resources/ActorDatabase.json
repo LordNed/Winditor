@@ -2231,7 +2231,7 @@
   },
   {
     "Actor Name": "Pitfall",
-    "English Name": "Grotto Entrance",
+    "English Name": "Grotto Entrance Hole",
     "ActorClassType": "obj_hole"
   },
   {
@@ -2736,17 +2736,17 @@
   },
   {
     "Actor Name": "Kbota_A",
-    "English Name": "obj_swpush",
+    "English Name": "Button (Press Once)",
     "ActorClassType": "obj_swpush"
   },
   {
     "Actor Name": "Kbota_B",
-    "English Name": "obj_swpush",
+    "English Name": "Button (Hold Down)",
     "ActorClassType": "obj_swpush"
   },
   {
     "Actor Name": "KbotaC",
-    "English Name": "obj_swpush",
+    "English Name": "Button (Press Once Inverted)",
     "ActorClassType": "obj_swpush"
   },
   {

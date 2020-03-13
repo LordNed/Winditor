@@ -13,10 +13,22 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Has Visible Hole",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
+      "Hidden": false,
+      "Category": "obj_hole",
+      "ToolTip": "",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": true,
+      "BooleanNonDefaults": [0]
+    },
+    {
+      "Name": "Unknown_3",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0xFFFF,
+      "Shift": 0,
       "Hidden": false,
       "Category": "obj_hole",
       "ToolTip": "",
