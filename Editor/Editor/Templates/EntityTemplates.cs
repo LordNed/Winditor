@@ -1393,7 +1393,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected Vector3 m_Radius;
 
-		[WProperty("Misc.", "Radius", true)]
+		[WProperty("Dynamic Light", "Radius", true)]
 		 public Vector3 Radius
 		{ 
 			get { return m_Radius; }
@@ -1407,7 +1407,7 @@ namespace WindEditor
 
 		protected WLinearColor m_Color;
 
-		[WProperty("Misc.", "Color", true)]
+		[WProperty("Dynamic Light", "Color", true)]
 		 public WLinearColor Color
 		{ 
 			get { return m_Color; }
@@ -2489,7 +2489,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected Vector3 m_Radius;
 
-		[WProperty("Misc.", "Radius", true)]
+		[WProperty("Light Vector", "Radius", true)]
 		 public Vector3 Radius
 		{ 
 			get { return m_Radius; }
@@ -2503,7 +2503,7 @@ namespace WindEditor
 
 		protected WLinearColor m_Color;
 
-		[WProperty("Misc.", "Color", true)]
+		[WProperty("Light Vector", "Color", true)]
 		 public WLinearColor Color
 		{ 
 			get { return m_Color; }

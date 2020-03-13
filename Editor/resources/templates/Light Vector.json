@@ -5,7 +5,7 @@
 	"Fields" :
 	[
 		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Radius", "Type" : "Vector3"},
-		{"Name" : "Color", "Type" : "Color32"}
+		{"Name" : "Radius", "Type" : "Vector3", "Category": "Light Vector"},
+		{"Name" : "Color", "Type" : "Color32", "Category": "Light Vector"}
 	]
 }
