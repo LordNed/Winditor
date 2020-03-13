@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <DockPanel Name="LabelDock" Grid.Column="0" LastChildFill="True">
             <Grid>
-                <Label Content="{Binding Path=PropertyName}" ToolTip="{Binding Path=PropertyToolTip}"/>
+                <Label Content="{Binding Path=PropertyName}" ToolTip="{Binding Path=PropertyToolTip}" ToolTipService.ShowDuration="2147483647"/>
             </Grid>
         </DockPanel>
         <GridSplitter Grid.Column="1" BorderBrush="DarkSlateGray" Background="Gray" Width="2"/>
