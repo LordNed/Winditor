@@ -39,6 +39,7 @@ namespace WindEditor
         public ICommand ImportVisualMeshCommand { get { return new RelayCommand(x => OnRequestImportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
         public ICommand ExportCollisionCommand { get { return new RelayCommand(x => OnRequestExportCollision(), X => !(MainWorld.Map == null)); ; } }
         public ICommand ExportVisualMeshCommand { get { return new RelayCommand(x => OnRequestExportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
+        public ICommand ImportIslandCommand { get { return new RelayCommand(x => OnRequestImportIsland(), X => !(MainWorld.Map == null)); ; } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -107,15 +108,7 @@ namespace WindEditor
                 // We'll have to dump the contents of the arcs
                 else
                 {
-                    string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(ofd.FileName)); // This is where we'll dump the arc contents to
-
-                    DeleteDumpContentsFromTempDir();
-
-                    if (!Directory.Exists(GetStageDumpPath()))
-                        Directory.CreateDirectory(GetStageDumpPath());
-
-                    if (!Directory.Exists(tempMapPath))
-                        Directory.CreateDirectory(tempMapPath);
+                    string tempMapPath = HandleTempPath(ofd.FileName);
 
                     foreach (var arc in files)
                     {
@@ -144,6 +137,21 @@ namespace WindEditor
                     WSettingsManager.SaveSettings();
                 }
             }
+        }
+
+        private string HandleTempPath(string fileName)
+        {
+            string tempPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(fileName)); // This is where we'll dump the arc contents to
+
+            DeleteDumpContentsFromTempDir();
+
+            if (!Directory.Exists(GetStageDumpPath()))
+                Directory.CreateDirectory(GetStageDumpPath());
+
+            if (!Directory.Exists(tempPath))
+                Directory.CreateDirectory(tempPath);
+
+            return tempPath;
         }
 
         public void OnApplicationRequestOpenRooms()
@@ -430,6 +438,8 @@ namespace WindEditor
                 items.Add(e.GetMenuItem());
             }
 
+            items.Add(new MenuItem() { Name = "islandimporteritem", Header = "Island Importer", Command = ImportIslandCommand });
+
             return items;
         }
 
@@ -633,15 +643,14 @@ namespace WindEditor
 
         private WRoom GetRoomFromIndex(int index)
         {
-            int i = 0;
             foreach (WScene scene in MainWorld.Map.SceneList)
             {
                 if (scene is WRoom)
                 {
-                    if (i == index)
-                        return scene as WRoom;
+                    WRoom room = scene as WRoom;
 
-                    i += 1;
+                    if (room.RoomIndex == index)
+                        return scene as WRoom;
                 }
             }
 
@@ -776,6 +785,59 @@ namespace WindEditor
             SuperBMDLib.Model newJ3D = SuperBMDLib.Model.Load(args);
             newJ3D.ExportAssImp(exportWindow.FileName, "dae", new SuperBMDLib.ExportSettings());
             // TODO: the daes exported by this have issues that prevents them from being read properly by blender
+        }
+
+        private void OnRequestImportIsland()
+        {
+            View.IslandImportWindow window = new View.IslandImportWindow();
+            window.FileSelector.IsFilePicker = true;
+            window.FileSelector.FileExtension = "arc";
+
+            if (window.ShowDialog() == true)
+            {
+                if (window.FileName == "")
+                {
+                    MessageBox.Show("No filename entered!", "Island Import Error");
+                    return;
+                }
+
+                if (window.RoomNumber == -1)
+                {
+                    MessageBox.Show("Invalid room number entered!", "Island Import Error");
+                    return;
+                }
+
+                WRoom oldRoom = GetRoomFromIndex(window.RoomNumber + 1);
+                if (oldRoom != null)
+                {
+                    MainWorld.Map.SceneList.Remove(oldRoom);
+                }
+
+                string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(window.FileName));
+
+                VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(window.FileName);
+                if (archiveRoot == null)
+                {
+                    MessageBox.Show("Invalid archive selected!", "Island Import Error");
+                    return;
+                }
+
+                string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
+
+                if (!Directory.Exists(tempArcPath))
+                    Directory.CreateDirectory(tempMapPath);
+
+                DumpContents(archiveRoot, tempArcPath);
+
+                WRoom newRoom = new WRoom(MainWorld, window.RoomNumber + 1);
+                newRoom.Load(tempArcPath);
+
+                newRoom.Name = "room" + (window.RoomNumber + 1);
+                archiveRoot.Name = "room" + (window.RoomNumber + 1);
+                newRoom.SourceDirectory = archiveRoot;
+
+                MainWorld.Map.SceneList.Add(newRoom);
+            }
         }
     }
 }
