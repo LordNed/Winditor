@@ -8,7 +8,7 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "The behavior of the Bokoblin when it spawns.",
       "DataType": "Enum",
       "EnumValues": {
@@ -32,7 +32,7 @@
       "Mask": 0x00000010,
       "Shift": 4,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.",
       "DataType": "Boolean"
     },
@@ -42,7 +42,7 @@
       "Mask": 0x00000020,
       "Shift": 5,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.",
       "DataType": "Boolean"
     },
@@ -52,7 +52,7 @@
       "Mask": 0x000000C0,
       "Shift": 6,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "The weapon that the Bokoblin is holding when it spawns.",
       "DataType": "Enum",
       "EnumValues": {
@@ -68,7 +68,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -78,7 +78,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "The path that the Bokoblin follows.",
       "DataType": "Path"
     },
@@ -88,7 +88,7 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -98,7 +98,7 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bk",
+      "Category": "Bokoblin",
       "ToolTip": "",
       "DataType": "Integer"
     }

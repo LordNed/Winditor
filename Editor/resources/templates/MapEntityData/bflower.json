@@ -8,17 +8,41 @@
       "Mask": 0x000000F0,
       "Shift": 4,
       "Hidden": true,
-      "Category": "bflower",
+      "Category": "Bomb Flower",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Ripe",
+        1: "Withered"
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Unknown Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "bflower",
+      "Category": "Bomb Flower",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "X Rotation",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0xFFFF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "gy",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Z Rotation",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0xFFFF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "gy",
       "ToolTip": "",
       "DataType": "Integer"
     }

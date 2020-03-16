@@ -11,7 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-            m_actorMeshes = WResourceManager.LoadActorResource("Button Switch");
+            m_actorMeshes = WResourceManager.LoadActorResource("Button");
         }
 
 		public override void PreSave()

@@ -8,7 +8,7 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_swhammer",
+      "Category": "Hammer Button",
       "ToolTip": "This switch will be unset when the button is pressed.",
       "DataType": "Integer"
     },
@@ -18,7 +18,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_swhammer",
+      "Category": "Hammer Button",
       "ToolTip": "This switch will be set when the button is pressed.",
       "DataType": "Integer"
     }

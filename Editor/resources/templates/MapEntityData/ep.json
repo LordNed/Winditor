@@ -8,7 +8,7 @@
       "Mask": 0x0000003F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "ep",
+      "Category": "Torch",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -24,7 +24,7 @@
       "Mask": 0x00000040,
       "Shift": 6,
       "Hidden": false,
-      "Category": "ep",
+      "Category": "Torch",
       "ToolTip": "",
       "DataType": "Boolean"
     },
@@ -44,7 +44,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "ep",
+      "Category": "Torch",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -54,7 +54,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "ep",
+      "Category": "Torch",
       "ToolTip": "",
       "DataType": "Integer"
     },

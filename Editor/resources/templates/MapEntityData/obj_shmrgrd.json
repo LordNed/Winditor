@@ -8,7 +8,7 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_shmrgrd",
+      "Category": "Spiked Hammer Button",
       "ToolTip": "This switch will be set when the button is pressed.",
       "DataType": "Integer"
     }

@@ -8,7 +8,7 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": true,
-      "Category": "am2",
+      "Category": "Armos",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -18,7 +18,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "am2",
+      "Category": "Armos",
       "ToolTip": "This number multiplied by 100 is the range it can see Link within.",
       "DataType": "Integer"
     },
@@ -28,7 +28,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "am2",
+      "Category": "Armos",
       "ToolTip": "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos's Spawn.",
       "DataType": "Boolean"
     },
@@ -38,7 +38,7 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "am2",
+      "Category": "Armos",
       "ToolTip": "",
       "DataType": "Integer"
     }

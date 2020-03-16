@@ -8,7 +8,7 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "st",
+      "Category": "Stalfos",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -25,7 +25,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "st",
+      "Category": "Stalfos",
       "ToolTip": "If the Stalfos is underground or in a coffin, this is the range within it will notice the player.",
       "DataType": "Integer"
     },
@@ -35,7 +35,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": true,
-      "Category": "st",
+      "Category": "Stalfos",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -45,7 +45,7 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "st",
+      "Category": "Stalfos",
       "ToolTip": "If this is a valid switch and the Stalfos is underground or in a coffin, it will only come out when this switch is set, overriding the normal behave of coming out when the player comes near it.",
       "DataType": "Integer"
     },
@@ -55,7 +55,7 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "st",
+      "Category": "Stalfos",
       "ToolTip": "",
       "DataType": "Integer"
     }

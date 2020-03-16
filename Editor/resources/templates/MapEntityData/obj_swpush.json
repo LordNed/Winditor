@@ -8,7 +8,7 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_swpush",
+      "Category": "Button",
       "ToolTip": "",
       "DataType": "Event"
     },
@@ -18,7 +18,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_swpush",
+      "Category": "Button",
       "ToolTip": "The switch for this button being pressed.",
       "DataType": "Integer"
     },
@@ -28,7 +28,7 @@
       "Mask": 0x00010000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_swpush",
+      "Category": "Button",
       "ToolTip": "This param seems like it was intended to change the visual model of the button.\nHowever, all 4 types of button have the same model specified for their normal and alternative models, so this has no effect.",
       "DataType": "Boolean"
     },
@@ -38,7 +38,7 @@
       "Mask": 0x07000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_swpush",
+      "Category": "Button",
       "ToolTip": "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.",
       "DataType": "Enum",
       "EnumValues": {
@@ -54,7 +54,7 @@
       "Mask": 0x40000000,
       "Shift": 30,
       "Hidden": false,
-      "Category": "obj_swpush",
+      "Category": "Button",
       "ToolTip": "For 'Hold Down' type buttons, this must be checked for 'Disabled Switch' to work. No effect on other types.",
       "DataType": "Boolean"
     },
@@ -64,7 +64,7 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_swpush",
+      "Category": "Button",
       "ToolTip": "For 'Hold Down' type buttons, they will stop automatically unpressing themselves once this switch is set by something else (though they still need to be pressed once manually). No effect on other types.",
       "DataType": "Integer"
     }

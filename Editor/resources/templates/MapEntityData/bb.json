@@ -8,7 +8,7 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bb",
+      "Category": "Kargaroc",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -26,7 +26,7 @@
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "bb",
+      "Category": "Kargaroc",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -36,7 +36,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "bb",
+      "Category": "Kargaroc",
       "ToolTip": "",
       "DataType": "Path"
     },
@@ -46,7 +46,7 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "bb",
+      "Category": "Kargaroc",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -56,7 +56,7 @@
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "bb",
+      "Category": "Kargaroc",
       "ToolTip": "",
       "DataType": "Integer"
     }

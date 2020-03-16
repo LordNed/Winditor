@@ -8,7 +8,7 @@
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "pw",
+      "Category": "Poe",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -25,7 +25,7 @@
       "Mask": 0x00000100,
       "Shift": 8,
       "Hidden": false,
-      "Category": "pw",
+      "Category": "Poe",
       "ToolTip": "If checked, this Poe will maintain its height in the air like normal. If unchecked, it will slowly float down to the floor.",
       "DataType": "Boolean"
     },
@@ -35,7 +35,7 @@
       "Mask": 0x0000FE00,
       "Shift": 9,
       "Hidden": false,
-      "Category": "pw",
+      "Category": "Poe",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -54,7 +54,7 @@
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "pw",
+      "Category": "Poe",
       "ToolTip": "For the 'Invisible except Lantern until seeing Link' type, this number multiplied by 10 is the range it can see Link within and will materialize. No effect on other types.",
       "DataType": "Integer"
     },
@@ -64,7 +64,7 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "pw",
+      "Category": "Poe",
       "ToolTip": "",
       "DataType": "Path"
     }

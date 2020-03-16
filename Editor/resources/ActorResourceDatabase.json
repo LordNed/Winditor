@@ -3073,7 +3073,7 @@
     ]
   },
   {
-    "Name": "Hammer Switch",
+    "Name": "Hammer Button",
     "Archive": "MhmrSW",
     "Models": [
       {
@@ -3087,7 +3087,7 @@
     ]
   },
   {
-    "Name": "Spiked Hammer Switch",
+    "Name": "Spiked Hammer Button",
     "Archive": "Shmrgrd",
     "Models": [
       {
@@ -3101,7 +3101,7 @@
     ]
   },
   {
-    "Name": "Button Switch",
+    "Name": "Button",
     "Archive": "Kbota_00",
     "Models": [
       {
@@ -3115,7 +3115,7 @@
     ]
   },
   {
-    "Name": "Heavy Button Switch",
+    "Name": "Heavy Button",
     "Archive": "Hhbot",
     "Models": [
       {

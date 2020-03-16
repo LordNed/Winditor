@@ -9,27 +9,14 @@ namespace WindEditor
 {
 	public partial class bflower
 	{
-        [WProperty("Bomb Flower", "Flower State", true, "Whether the flower spawns as ripe or withered.")]
-        public BombFlowerType Type
-        {
-            get { return (BombFlowerType)FlowerType; }
-            set
-            {
-                if (FlowerType != (int)value)
-                {
-                    FlowerType = (int)value;
-                    OnPropertyChanged("Type");
-                }
-            }
-        }
 		public override void PostLoad()
 		{
-			switch (Type)
+			switch (FlowerType)
             {
-                case BombFlowerType.Ripe:
+                case FlowerTypeEnum.Ripe:
                     m_actorMeshes = WResourceManager.LoadActorResource("Bomb Flower");
                     break;
-                case BombFlowerType.Withered:
+                case FlowerTypeEnum.Withered:
                     m_actorMeshes = WResourceManager.LoadActorResource("Withered Bomb Flower");
                     break;
                 default:

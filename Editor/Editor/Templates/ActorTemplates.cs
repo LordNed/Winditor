@@ -189,7 +189,7 @@ namespace WindEditor
 			Guards_an_area = 1,
 		}
 
-		[WProperty("am", "Behavior Type", true, "", SourceScene.Room)]
+		[WProperty("Armos Knight", "Behavior Type", true, "", SourceScene.Room)]
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -206,7 +206,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Guarded Area Radius (Hundreds)", true, "", SourceScene.Room)]
+		[WProperty("Armos Knight", "Guarded Area Radius (Hundreds)", true, "", SourceScene.Room)]
 		public int GuardedAreaRadiusHundreds
 		{ 
 			get
@@ -223,7 +223,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Switch Activates Armos Knight?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.", SourceScene.Room)]
+		[WProperty("Armos Knight", "Switch Activates Armos Knight?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.", SourceScene.Room)]
 		public bool SwitchActivatesArmosKnight
 		{ 
 			get
@@ -247,7 +247,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Armos Knight", "Disable Spawn Switch", true, "", SourceScene.Room)]
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -291,7 +291,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am2", "Sight Range (Hundreds)", true, "This number multiplied by 100 is the range it can see Link within.", SourceScene.Room)]
+		[WProperty("Armos", "Sight Range (Hundreds)", true, "This number multiplied by 100 is the range it can see Link within.", SourceScene.Room)]
 		public int SightRangeHundreds
 		{ 
 			get
@@ -308,7 +308,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am2", "Switch Activates Armos?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos's Spawn.", SourceScene.Room)]
+		[WProperty("Armos", "Switch Activates Armos?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos's Spawn.", SourceScene.Room)]
 		public bool SwitchActivatesArmos
 		{ 
 			get
@@ -332,7 +332,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("am2", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Armos", "Disable Spawn Switch", true, "", SourceScene.Room)]
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -762,7 +762,7 @@ namespace WindEditor
 			Sits_in_place_B = 7,
 		}
 
-		[WProperty("bb", "Behavior Type", true, "", SourceScene.Room)]
+		[WProperty("Kargaroc", "Behavior Type", true, "", SourceScene.Room)]
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -779,7 +779,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
+		[WProperty("Kargaroc", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
 		public int SightRangeHundreds
 		{ 
 			get
@@ -796,7 +796,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Path", true, "", SourceScene.Room)]
+		[WProperty("Kargaroc", "Path", true, "", SourceScene.Room)]
 		public Path_v2 Path
 		{ 
 			get
@@ -827,7 +827,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Kargaroc", "Enable Spawn Switch", true, "", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -844,7 +844,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bb", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Kargaroc", "Disable Spawn Switch", true, "", SourceScene.Room)]
 		public int DisableSpawnSwitch
 		{ 
 			get
@@ -1092,24 +1092,30 @@ namespace WindEditor
 	public partial class bflower : Actor
 	{
 		// Auto-Generated Properties from Templates
-		public int FlowerType
+		public enum FlowerTypeEnum
+		{
+			Ripe = 0,
+			Withered = 1,
+		}
+
+		public FlowerTypeEnum FlowerType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				return value_as_int;
+				return (FlowerTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("FlowerType");
 			}
 		}
 
-		[WProperty("bflower", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Bomb Flower", "Unknown Switch", true, "", SourceScene.Room)]
+		public int UnknownSwitch
 		{ 
 			get
 			{
@@ -1121,7 +1127,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("UnknownSwitch");
 			}
 		}
 
@@ -1308,7 +1314,7 @@ namespace WindEditor
 			Debug = 15,
 		}
 
-		[WProperty("bk", "Type", true, "The behavior of the Bokoblin when it spawns.", SourceScene.Room)]
+		[WProperty("Bokoblin", "Type", true, "The behavior of the Bokoblin when it spawns.", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -1326,7 +1332,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.", SourceScene.Room)]
+		[WProperty("Bokoblin", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.", SourceScene.Room)]
 		public bool SwitchSpawnsBokoblin
 		{ 
 			get
@@ -1350,7 +1356,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Is Green", true, "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.", SourceScene.Room)]
+		[WProperty("Bokoblin", "Is Green", true, "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.", SourceScene.Room)]
 		public bool IsGreen
 		{ 
 			get
@@ -1382,7 +1388,7 @@ namespace WindEditor
 			Machete_2 = 3,
 		}
 
-		[WProperty("bk", "Weapon", true, "The weapon that the Bokoblin is holding when it spawns.", SourceScene.Room)]
+		[WProperty("Bokoblin", "Weapon", true, "The weapon that the Bokoblin is holding when it spawns.", SourceScene.Room)]
 		public WeaponEnum Weapon
 		{ 
 			get
@@ -1399,7 +1405,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Bokoblin", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -1416,7 +1422,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Path", true, "The path that the Bokoblin follows.", SourceScene.Room)]
+		[WProperty("Bokoblin", "Path", true, "The path that the Bokoblin follows.", SourceScene.Room)]
 		public Path_v2 Path
 		{ 
 			get
@@ -1447,7 +1453,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Bokoblin", "Enable Spawn Switch", true, "", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -1464,7 +1470,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bk", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		[WProperty("Bokoblin", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
 		public int DisableSpawnonDeathSwitch
 		{ 
 			get
@@ -2873,7 +2879,7 @@ namespace WindEditor
 			Has_brazier_2 = 3,
 		}
 
-		[WProperty("ep", "Type", true, "", SourceScene.Room)]
+		[WProperty("Torch", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -2890,7 +2896,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ep", "Has Fireflies?", true, "", SourceScene.Room)]
+		[WProperty("Torch", "Has Fireflies?", true, "", SourceScene.Room)]
 		public bool HasFireflies
 		{ 
 			get
@@ -2938,7 +2944,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ep", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Torch", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -2955,7 +2961,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ep", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Torch", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -13077,7 +13083,7 @@ namespace WindEditor
 	public partial class obj_shmrgrd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_shmrgrd", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
+		[WProperty("Spiked Hammer Button", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
@@ -13223,7 +13229,7 @@ namespace WindEditor
 	public partial class obj_swhammer : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swhammer", "Switch to Unset", true, "This switch will be unset when the button is pressed.", SourceScene.Room)]
+		[WProperty("Hammer Button", "Switch to Unset", true, "This switch will be unset when the button is pressed.", SourceScene.Room)]
 		public int SwitchtoUnset
 		{ 
 			get
@@ -13240,7 +13246,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swhammer", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
+		[WProperty("Hammer Button", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
@@ -13375,7 +13381,7 @@ namespace WindEditor
 	public partial class obj_swpush : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_swpush", "Event to Start", true, "", SourceScene.Stage)]
+		[WProperty("Button", "Event to Start", true, "", SourceScene.Stage)]
 		public MapEvent EventtoStart
 		{ 
 			get
@@ -13398,7 +13404,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Switch to Set", true, "The switch for this button being pressed.", SourceScene.Room)]
+		[WProperty("Button", "Switch to Set", true, "The switch for this button being pressed.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
@@ -13415,7 +13421,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Alt Model (No Effect)", true, "This param seems like it was intended to change the visual model of the button.\nHowever, all 4 types of button have the same model specified for their normal and alternative models, so this has no effect.", SourceScene.Room)]
+		[WProperty("Button", "Alt Model (No Effect)", true, "This param seems like it was intended to change the visual model of the button.\nHowever, all 4 types of button have the same model specified for their normal and alternative models, so this has no effect.", SourceScene.Room)]
 		public bool AltModelNoEffect
 		{ 
 			get
@@ -13447,7 +13453,7 @@ namespace WindEditor
 			Iron_Boots_Button_Base = 3,
 		}
 
-		[WProperty("obj_swpush", "Type", true, "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.", SourceScene.Room)]
+		[WProperty("Button", "Type", true, "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -13464,7 +13470,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Should Use Disabled Switch", true, "For 'Hold Down' type buttons, this must be checked for 'Disabled Switch' to work. No effect on other types.", SourceScene.Room)]
+		[WProperty("Button", "Should Use Disabled Switch", true, "For 'Hold Down' type buttons, this must be checked for 'Disabled Switch' to work. No effect on other types.", SourceScene.Room)]
 		public bool ShouldUseDisabledSwitch
 		{ 
 			get
@@ -13488,7 +13494,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swpush", "Disabled Switch", true, "For 'Hold Down' type buttons, they will stop automatically unpressing themselves once this switch is set by something else (though they still need to be pressed once manually). No effect on other types.", SourceScene.Room)]
+		[WProperty("Button", "Disabled Switch", true, "For 'Hold Down' type buttons, they will stop automatically unpressing themselves once this switch is set by something else (though they still need to be pressed once manually). No effect on other types.", SourceScene.Room)]
 		public int DisabledSwitch
 		{ 
 			get
@@ -14999,7 +15005,7 @@ namespace WindEditor
 			Nonrespawning_B = 15,
 		}
 
-		[WProperty("pt", "Type", true, "", SourceScene.Room)]
+		[WProperty("Miniblin", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -15016,7 +15022,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Initial Miniblin Won't Spawn Onscreen?", true, "If this is checked, the first Miniblin won't spawn until the player's camera is turned away from its spawn point.\n(Miniblins after the first one always act like that regardless of whether this is checked or not.)", SourceScene.Room)]
+		[WProperty("Miniblin", "Initial Miniblin Won't Spawn Onscreen?", true, "If this is checked, the first Miniblin won't spawn until the player's camera is turned away from its spawn point.\n(Miniblins after the first one always act like that regardless of whether this is checked or not.)", SourceScene.Room)]
 		public bool InitialMiniblinWontSpawnOnscreen
 		{ 
 			get
@@ -15052,7 +15058,7 @@ namespace WindEditor
 			Use_initial_spawn_delay = 7,
 		}
 
-		[WProperty("pt", "Respawn Delay", true, "Number of frames after you kill it before it can respawn.", SourceScene.Room)]
+		[WProperty("Miniblin", "Respawn Delay", true, "Number of frames after you kill it before it can respawn.", SourceScene.Room)]
 		public RespawnDelayEnum RespawnDelay
 		{ 
 			get
@@ -15069,7 +15075,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
+		[WProperty("Miniblin", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
 		public int SightRangeHundreds
 		{ 
 			get
@@ -15086,7 +15092,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Disable Respawn Switch", true, "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\nAlternatively, you can also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch' that it sets on death - but you should only set a temporary switch this way, as if you set a permanent switch the Miniblin will be permanently inactive the next time you enter the room but won't be considered dead.", SourceScene.Room)]
+		[WProperty("Miniblin", "Disable Respawn Switch", true, "If this is a valid switch and used with a respawning type Miniblin, this being set stops it from respawning.\nAlternatively, you can also use this with a non-respawning Miniblin, in which case it acts like a 'Deactivate on Death Switch' that it sets on death - but you should only set a temporary switch this way, as if you set a permanent switch the Miniblin will be permanently inactive the next time you enter the room but won't be considered dead.", SourceScene.Room)]
 		public int DisableRespawnSwitch
 		{ 
 			get
@@ -15103,7 +15109,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Miniblin", "Enable Spawn Switch", true, "", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -15120,7 +15126,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pt", "Initial Spawn Delay", true, "Number of frames after you enter the room before it can spawn the first Miniblin. If setting this to something other than 0, it is recommended to also check 'Initial Miniblin Won't Spawn Onscreen?'. If you don't, then the first Miniblin will be visible before it actually spawns, but simply be deactivated and invincible.", SourceScene.Room)]
+		[WProperty("Miniblin", "Initial Spawn Delay", true, "Number of frames after you enter the room before it can spawn the first Miniblin. If setting this to something other than 0, it is recommended to also check 'Initial Miniblin Won't Spawn Onscreen?'. If you don't, then the first Miniblin will be visible before it actually spawns, but simply be deactivated and invincible.", SourceScene.Room)]
 		public int InitialSpawnDelay
 		{ 
 			get
@@ -15157,7 +15163,7 @@ namespace WindEditor
 			Jalhalla_Poe_B = 4,
 		}
 
-		[WProperty("pw", "Type", true, "", SourceScene.Room)]
+		[WProperty("Poe", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -15174,7 +15180,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pw", "Hovers At Initial Height?", true, "If checked, this Poe will maintain its height in the air like normal. If unchecked, it will slowly float down to the floor.", SourceScene.Room)]
+		[WProperty("Poe", "Hovers At Initial Height?", true, "If checked, this Poe will maintain its height in the air like normal. If unchecked, it will slowly float down to the floor.", SourceScene.Room)]
 		public bool HoversAtInitialHeight
 		{ 
 			get
@@ -15208,7 +15214,7 @@ namespace WindEditor
 			Green = 5,
 		}
 
-		[WProperty("pw", "Color", true, "", SourceScene.Room)]
+		[WProperty("Poe", "Color", true, "", SourceScene.Room)]
 		public ColorEnum Color
 		{ 
 			get
@@ -15226,7 +15232,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pw", "Sight Range (Tens)", true, "For the 'Invisible except Lantern until seeing Link' type, this number multiplied by 10 is the range it can see Link within and will materialize. No effect on other types.", SourceScene.Room)]
+		[WProperty("Poe", "Sight Range (Tens)", true, "For the 'Invisible except Lantern until seeing Link' type, this number multiplied by 10 is the range it can see Link within and will materialize. No effect on other types.", SourceScene.Room)]
 		public int SightRangeTens
 		{ 
 			get
@@ -15243,7 +15249,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("pw", "Path", true, "", SourceScene.Room)]
+		[WProperty("Poe", "Path", true, "", SourceScene.Room)]
 		public Path_v2 Path
 		{ 
 			get
@@ -15381,7 +15387,7 @@ namespace WindEditor
 			Sitting = 1,
 		}
 
-		[WProperty("rd", "Idle Animation", true, "", SourceScene.Room)]
+		[WProperty("ReDead", "Idle Animation", true, "", SourceScene.Room)]
 		public IdleAnimationEnum IdleAnimation
 		{ 
 			get
@@ -15399,7 +15405,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("rd", "Guarded Area Radius", true, "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.", SourceScene.Room)]
+		[WProperty("ReDead", "Guarded Area Radius", true, "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.", SourceScene.Room)]
 		public int GuardedAreaRadius
 		{ 
 			get
@@ -15416,7 +15422,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("rd", "Should Check Switch To Enable Spawn?", true, "If this is checked, the Enable Spawn Switch must be set for the ReDead to spawn.\nIf the Enable Spawn Switch is invalid, then unlike most enemies, this ReDead will never appear instead of always appearing.", SourceScene.Room)]
+		[WProperty("ReDead", "Should Check Switch To Enable Spawn?", true, "If this is checked, the Enable Spawn Switch must be set for the ReDead to spawn.\nIf the Enable Spawn Switch is invalid, then unlike most enemies, this ReDead will never appear instead of always appearing.", SourceScene.Room)]
 		public bool ShouldCheckSwitchToEnableSpawn
 		{ 
 			get
@@ -15438,7 +15444,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("rd", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("ReDead", "Enable Spawn Switch", true, "", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -16290,7 +16296,7 @@ namespace WindEditor
 			Upper_body = 14,
 		}
 
-		[WProperty("st", "Type", true, "", SourceScene.Room)]
+		[WProperty("Stalfos", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -16307,7 +16313,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Ambush Sight Range (Tens)", true, "If the Stalfos is underground or in a coffin, this is the range within it will notice the player.", SourceScene.Room)]
+		[WProperty("Stalfos", "Ambush Sight Range (Tens)", true, "If the Stalfos is underground or in a coffin, this is the range within it will notice the player.", SourceScene.Room)]
 		public int AmbushSightRangeTens
 		{ 
 			get
@@ -16340,7 +16346,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Ambush Switch", true, "If this is a valid switch and the Stalfos is underground or in a coffin, it will only come out when this switch is set, overriding the normal behave of coming out when the player comes near it.", SourceScene.Room)]
+		[WProperty("Stalfos", "Ambush Switch", true, "If this is a valid switch and the Stalfos is underground or in a coffin, it will only come out when this switch is set, overriding the normal behave of coming out when the player comes near it.", SourceScene.Room)]
 		public int AmbushSwitch
 		{ 
 			get
@@ -16357,7 +16363,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("st", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		[WProperty("Stalfos", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
 		public int DisableSpawnonDeathSwitch
 		{ 
 			get

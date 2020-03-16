@@ -11,7 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-            m_actorMeshes = WResourceManager.LoadActorResource("Spiked Hammer Switch");
+            m_actorMeshes = WResourceManager.LoadActorResource("Spiked Hammer Button");
         }
 
 		public override void PreSave()
