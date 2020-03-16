@@ -15431,16 +15431,16 @@ namespace WindEditor
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				if (value_as_int == 0) {
-					return false;
-				} else {
 					return true;
+				} else {
+					return false;
 				}
 				
 			}
 
 			set
 			{
-				int value_as_int = value ? 1 : 0;
+				int value_as_int = value ? 0 : 1;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ShouldCheckSwitchToEnableSpawn");
 			}
