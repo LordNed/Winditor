@@ -177,11 +177,15 @@ namespace WindEditor
                 // Enable transparency
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.Enable(EnableCap.AlphaTest);
+                GL.AlphaFunc(AlphaFunction.Gequal, 0.5f);
             }
             else
             {
                 GL.Disable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.Disable(EnableCap.AlphaTest);
+                GL.AlphaFunc(AlphaFunction.Always, 0f);
             }
 
             GL.DepthMask(true);
