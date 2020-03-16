@@ -419,6 +419,8 @@ namespace WindEditor
             Vector2 cursorPos = App.GetCursorPosition();
             Vector2 mouseCoords = new Vector2(((2f * cursorPos.X) / screenDimensions.X) - 1f, (1f - ((2f * cursorPos.Y) / screenDimensions.Y))); //[-1,1] range
 
+            bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
+
             if (m_mode == FTransformMode.Translation)
             {
                 // Create a Translation Plane
@@ -457,6 +459,13 @@ namespace WindEditor
                     if (ContainsAxis(m_selectedAxes, FSelectedAxes.Z))
                         newPos += Vector3.Transform(Vector3.UnitZ, m_rotation) * localDelta.Z;
 
+                    if (shiftPressed)
+                    {
+                        // Round to nearest 100 unit increment while shift is held down.
+                        newPos.X = (float)Math.Round(newPos.X / 100f) * 100f;
+                        newPos.Y = (float)Math.Round(newPos.Y / 100f) * 100f;
+                        newPos.Z = (float)Math.Round(newPos.Z / 100f) * 100f;
+                    }
 
                     // Check the new location to see if it's skyrocked off into the distance due to near-plane raytracing issues.
                     Vector3 newPosDirToCamera = (newPos - view.GetCameraPos()).Normalized();
@@ -531,6 +540,11 @@ namespace WindEditor
 
                 // Apply Rotation
                 rotAmount += m_rotateOffset;
+                if (shiftPressed)
+                {
+                    // Round to nearest 45 degree increment while shift is held down.
+                    rotAmount = (float)Math.Round(rotAmount / 45f) * 45f;
+                }
                 Quaternion oldRot = m_currentRotation;
                 m_currentRotation = Quaternion.FromAxisAngle(rotationAxis, WMath.DegreesToRadians(rotAmount));
                 m_deltaRotation = m_currentRotation * oldRot.Inverted();
@@ -596,6 +610,12 @@ namespace WindEditor
                     lineDir = Vector2.UnitY;
 
                 float scaleAmount = Vector2.Dot(lineDir, mouseCoords + m_wrapOffset - lineOrigin) * 5f;
+
+                if (shiftPressed)
+                {
+                    // Round to nearest whole number scale while shift is held down.
+                    scaleAmount = (float)Math.Round(scaleAmount);
+                }
 
                 // Set their initial offset if we haven't already
                 if (!m_hasSetMouseOffset)
