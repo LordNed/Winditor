@@ -227,10 +227,5 @@ namespace WindEditor
                 m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }
         }
-
-        public override void AddToRenderer(WSceneView view)
-        {
-            view.AddTransparentMesh(this);
-        }
     }
 }
