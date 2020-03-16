@@ -1,6 +1,8 @@
 ﻿using System;
 using OpenTK;
 using System.Collections.Generic;
+using OpenTK.Graphics.OpenGL;
+using System.Windows.Input;
 
 // http://pastebin.com/raw/p8EqPs8p
 // http://pastebin.com/raw/QRHEcsW2
@@ -49,7 +51,7 @@ namespace WindEditor
         public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
         /// <summary> The amount of rotation this frame the Gizmo has experienced in local space. </summary>
         public Quaternion DeltaRotation { get { return m_deltaRotation; } }
-        /// <summary> The amount of scale this frame the Gizmo ha experienced in local space. </summary>
+        /// <summary> The amount of scale this frame the Gizmo has experienced in local space. </summary>
         public Vector3 DeltaScale { get { return m_deltaScale; } }
 
         struct AxisDistanceResult
@@ -143,7 +145,9 @@ namespace WindEditor
                 {
                     Obj obj = new Obj();
                     obj.Load("resources/editor/" + meshNames[i][j] + ".obj");
-                    m_gizmoMeshes[i][j] = new SimpleObjRenderer(obj, new OpenTK.Vector4(1, 1, 1, 1));
+                    m_gizmoMeshes[i][j] = new SimpleObjRenderer(obj, new OpenTK.Vector4(1, 1, 1, 0.50f));
+                    m_gizmoMeshes[i][j].FaceCullingEnabled = false;
+                    m_gizmoMeshes[i][j].BlendingEnabled = true;
                 }
             }
         }
@@ -274,10 +278,7 @@ namespace WindEditor
                 return;
 
             // Update camera distance to our camera.
-            if ((!m_isTransforming) || (m_mode != FTransformMode.Translation))
-            {
-                m_cameraDistance = (view.GetCameraPos() - m_position).Length;
-            }
+            m_cameraDistance = (view.GetCameraPos() - m_position).Length;
 
             WLinearColor[] gizmoColors = new[]
             {
@@ -761,7 +762,7 @@ namespace WindEditor
         #region IRenderable
         void IRenderable.AddToRenderer(WSceneView view)
         {
-            view.AddOpaqueMesh(this);
+            view.AddTransparentMesh(this);
         }
 
         void IRenderable.Draw(WSceneView view)
@@ -769,10 +770,14 @@ namespace WindEditor
             if (!Enabled)
                 return;
 
-            m_scale = Vector3.One * m_gizmoSize * (m_cameraDistance / 100f);
+            m_scale = Vector3.One * m_gizmoSize * (float)(Math.Sqrt(m_cameraDistance) / 2.5f);
 
             // Construct a model matrix for the gizmo mesh to render at.
             Matrix4 modelMatrix = Matrix4.CreateScale(m_scale) * Matrix4.CreateFromQuaternion(m_rotation) * Matrix4.CreateTranslation(m_position);
+
+            // Clear the depth buffer so the transform gizmo draws on top of everything else.
+            // Note that we must clear it only before drawing the entire gizmo. Clearing it for each mesh would result in strange z-indexing between the multiple meshes.
+            GL.Clear(ClearBufferMask.DepthBufferBit);
 
             int gizmoIndex = (int)m_mode - 1;
             if (gizmoIndex >= 0)

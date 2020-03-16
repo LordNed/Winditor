@@ -76,6 +76,10 @@ namespace WindEditor.Editor.Modes
         {
             UpdateSelectionGizmo(view);
 
+            // Add our gizmo to the renderer this frame.
+            if (TransformGizmo != null)
+                ((IRenderable)TransformGizmo).AddToRenderer(view);
+
             // If we have a gizmo and we're transforming it, don't check for selection change.
             if (TransformGizmo != null && TransformGizmo.IsTransforming)
                 return;
@@ -129,9 +133,6 @@ namespace WindEditor.Editor.Modes
 
                 UpdateGizmoTransform();
             }
-
-            // Add our gizmo to the renderer this frame.
-            ((IRenderable)TransformGizmo).AddToRenderer(view);
         }
 
         private WDOMNode Raycast(FRay ray)
