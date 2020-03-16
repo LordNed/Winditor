@@ -7,23 +7,24 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Shift": 4,
-      "Hidden": true,
+      "Hidden": false,
       "Category": "Bomb Flower",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
         0: "Ripe",
         1: "Withered"
-      }
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown Switch",
+      "Name": "Watered Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "Bomb Flower",
-      "ToolTip": "",
+      "ToolTip": "Withered bomb flowers will set this switch when you pour water on them. If the switch is still set when the room reloads, the withered bomb flower will still be ripe then.\nNo effect on bomb flowers that are ripe to begin with.",
       "DataType": "Integer"
     },
     {

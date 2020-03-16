@@ -11,7 +11,17 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			switch (FlowerType)
+            UpdateModel();
+        }
+
+		public override void PreSave()
+		{
+
+		}
+
+        private void UpdateModel()
+        {
+            switch (FlowerType)
             {
                 case FlowerTypeEnum.Ripe:
                     m_actorMeshes = WResourceManager.LoadActorResource("Bomb Flower");
@@ -20,14 +30,9 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Withered Bomb Flower");
                     break;
                 default:
-                    base.PostLoad();
+                    m_actorMeshes = WResourceManager.LoadActorResource("Bomb Flower");
                     break;
             }
-		}
-
-		public override void PreSave()
-		{
-
-		}
+        }
 	}
 }

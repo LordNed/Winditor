@@ -1098,6 +1098,7 @@ namespace WindEditor
 			Withered = 1,
 		}
 
+		[WProperty("Bomb Flower", "Flower Type", true, "", SourceScene.Room)]
 		public FlowerTypeEnum FlowerType
 		{ 
 			get
@@ -1111,11 +1112,12 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("FlowerType");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("Bomb Flower", "Unknown Switch", true, "", SourceScene.Room)]
-		public int UnknownSwitch
+		[WProperty("Bomb Flower", "Watered Switch", true, "Withered bomb flowers will set this switch when you pour water on them. If the switch is still set when the room reloads, the withered bomb flower will still be ripe then.\nNo effect on bomb flowers that are ripe to begin with.", SourceScene.Room)]
+		public int WateredSwitch
 		{ 
 			get
 			{
@@ -1127,7 +1129,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("UnknownSwitch");
+				OnPropertyChanged("WateredSwitch");
 			}
 		}
 
