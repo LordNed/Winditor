@@ -178,7 +178,7 @@ namespace WindEditor
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 GL.Enable(EnableCap.AlphaTest);
-                GL.AlphaFunc(AlphaFunction.Gequal, 0.5f);
+                GL.AlphaFunc(AlphaFunction.Gequal, 0.1f);
             }
             else
             {
