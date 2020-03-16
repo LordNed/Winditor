@@ -1,0 +1,17 @@
+{
+	"Name": "Enable Developer Mode",
+	"Description": "Patches the main executable to enable the developer mode left in Wind Waker's code.",
+	"Files":
+	[
+		{
+			"FileName": "sys/main.dol",
+			"Patchlets":
+			[
+				{
+					"Offset": 0x803F60E0,
+					"Data": [0x01]
+				}
+			]
+		}
+	]
+}

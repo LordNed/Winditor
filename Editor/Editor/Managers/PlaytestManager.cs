@@ -61,12 +61,6 @@ namespace WindEditor
 
             GetRoomAndSpawnID(map.FocusedScene, out room_no, out spawn_id);
 
-            Patch p = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\test_room_diff.json"));
-            p.Files[0].Patchlets.Add(new Patchlet(2149765112, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
-            p.Files[0].Patchlets.Add(new Patchlet(2147824099, new List<byte>(new byte[] { spawn_id })));
-            p.Files[0].Patchlets.Add(new Patchlet(2147824103, new List<byte>(new byte[] { room_no })));
-            p.Files[0].Patchlets.Add(new Patchlet(2147824107, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
-
             if (!File.Exists(m_DolPath))
             {
                 Console.WriteLine("ISO root has no executable!");
@@ -80,7 +74,18 @@ namespace WindEditor
 
             File.Copy(m_DolPath, m_BackupDolPath);
 
-            p.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
+            Patch testRoomPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\test_room_diff.json"));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022CFF8, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E3, new List<byte>(new byte[] { spawn_id })));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E7, new List<byte>(new byte[] { room_no })));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531EB, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
+            testRoomPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
+
+            Patch devModePatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\developer_mode_diff.json"));
+            devModePatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
+
+            Patch particleIdsPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\missing_particle_ids_diff.json"));
+            particleIdsPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
 
             m_DolphinInstance = Process.Start(m_DolphinStartInfo);
 
