@@ -3543,6 +3543,34 @@
     ]
   },
   {
+    "Name": "Command Melody Stone",
+    "Archive": "Hsehi1",
+    "Models": [
+      {
+        "Path": "bdl/hsehi1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Tower of the Gods Instruction Stone",
+    "Archive": "Hsehi2",
+    "Models": [
+      {
+        "Path": "bdl/hsehi2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Crystal Switch",
     "Archive": "Always",
     "Models": [

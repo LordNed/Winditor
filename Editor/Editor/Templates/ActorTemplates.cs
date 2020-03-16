@@ -11260,8 +11260,8 @@ namespace WindEditor
 	public partial class obj_hsehi1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hsehi1", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_hsehi1", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -11273,12 +11273,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("obj_hsehi1", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_hsehi1", "Message", true, "", SourceScene.Room)]
+		public int Message
 		{ 
 			get
 			{
@@ -11290,7 +11290,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Message");
 			}
 		}
 
