@@ -151,10 +151,19 @@ namespace WindEditor
                     room_node = cur_object as WRoom;
                 } else
                 {
-                    // A stage entity is selected. For now just choose the first loaded room to playtest in.
-                    // A better solution would be to playtest in the room corresponding to the specific stage entity selected (e.g. by looking at a treasure chest's room index).
-                    room_node = cur_object.World.Map.SceneList.First(x => x.GetType() == typeof(WRoom)) as WRoom;
+                    // A stage entity is selected. Use whatever spawn point is physically closest to the selected entity, regardless of what scene that spawn is in.
+                    List<SpawnPoint> allSpawnPts = new List<SpawnPoint>();
+                    foreach (WScene scn in scene.World.Map.SceneList)
+                    {
+                        allSpawnPts.AddRange(scn.GetChildrenOfType<SpawnPoint>());
+                    }
+
+                    SpawnPoint closestSpawnPt = allSpawnPts.OrderBy(spawnPt => (spawnPt.Transform.Position - selected.PrimarySelectedObject.Transform.Position).Length).First();
+                    room = closestSpawnPt.Room;
+                    spawn = closestSpawnPt.SpawnID;
+                    return;
                 }
+
                 SpawnPoint spawn_pt = room_node.GetChildrenOfType<SpawnPoint>().FirstOrDefault();
                 if (spawn_pt != null)
                 {
