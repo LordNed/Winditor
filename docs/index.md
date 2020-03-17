@@ -1,3 +1,5 @@
+<img src="./img/winditor.png"></img>
+
 Winditor is a multitool for *The Legend of Zelda: The Wind Waker*, offering a map editor, a collision editor, a text editor, and more! It was written over many years by LordNed, Sage of Mirrors, LagoLunatic, and many others.
 
 # Examples
