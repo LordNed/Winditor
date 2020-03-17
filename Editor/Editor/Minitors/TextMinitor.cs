@@ -1,4 +1,5 @@
 ﻿using GameFormatReader.Common;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -251,7 +252,25 @@ namespace WindEditor.Minitors
 
         private void OnRequestSaveMessageDataAs()
         {
+            var sfd = new CommonSaveFileDialog()
+            {
+                Title = "Export Script Archive",
+                DefaultExtension = "arc",
+                AlwaysAppendDefaultExtension = true,
+            };
+            sfd.Filters.Add(new CommonFileDialogFilter("Archives", ".arc"));
+            if (WSettingsManager.GetSettings().LastScriptArchivePath.FilePath != "")
+            {
+                sfd.InitialDirectory = WSettingsManager.GetSettings().LastScriptArchivePath.FilePath;
+            }
 
+            if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                SaveMessageArchive(sfd.FileName);
+
+                WSettingsManager.GetSettings().LastScriptArchivePath.FilePath = Path.GetDirectoryName(sfd.FileName);
+                WSettingsManager.SaveSettings();
+            }
         }
 
         private void OnRequestAddMessage()

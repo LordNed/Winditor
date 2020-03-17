@@ -115,6 +115,21 @@ namespace WindEditor
             }
         }
 
+        [HideCategoriesAttribute()]
+        [WProperty("Paths", "Last Script Archive Path", true, "")]
+        public FileReference LastScriptArchivePath
+        {
+            get { return m_LastScriptArchivePath; }
+            set
+            {
+                if (value != m_LastScriptArchivePath)
+                {
+                    m_LastScriptArchivePath = value;
+                    OnPropertyChanged("LastScriptArchivePath");
+                }
+            }
+        }
+
         [WProperty("Advanced", "Dump Textures", true, "When checked, dumps the textures of loaded meshes to file.")]
         public bool DumpTextures
         {
@@ -153,6 +168,7 @@ namespace WindEditor
         private FileReference m_DolphinDirectory;
         private FileReference m_LastStagePath;
         private FileReference m_LastCollisionDaePath;
+        private FileReference m_LastScriptArchivePath;
         private bool m_DumpTextures;
         private bool m_DumpShaders;
 
@@ -162,6 +178,7 @@ namespace WindEditor
             DolphinDirectory = new FileReference();
             LastStagePath = new FileReference();
             LastCollisionDaePath = new FileReference();
+            LastScriptArchivePath = new FileReference();
         }
 
         public void SetProperty(string property_name, object value)
