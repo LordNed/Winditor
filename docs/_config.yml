@@ -1,4 +1,4 @@
 theme: jekyll-theme-leap-day
-show-downloads: "true"
+show_downloads: "true"
 github:
   release_url: "https://github.com/LordNed/Winditor/releases/latest/download/Winditor.zip"
