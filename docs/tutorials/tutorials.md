@@ -1,5 +1,5 @@
 ## Tutorials
 
 <p align="center">
-[Back](index.md)
+  <a href="/index.md">Back</a>
 </p>
