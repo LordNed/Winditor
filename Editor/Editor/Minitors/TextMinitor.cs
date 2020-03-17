@@ -500,6 +500,12 @@ namespace WindEditor.Minitors
                             bmg_writer.Write((byte)0);
                     }
 
+                    // Seek to the end of the stream, and then pad us to 32-byte alignment.
+                    text_data_strm.Seek(0, SeekOrigin.End);
+                    int pad32delta = WMath.Pad32Delta(text_data_strm.Position + 8);
+                    for (int i = 0; i < pad32delta; i++)
+                        text_data_writer.Write((byte)0x00);
+
                     bmg_writer.Write("DAT1".ToCharArray());
                     bmg_writer.Write((uint)text_data_strm.Length + 8);
 

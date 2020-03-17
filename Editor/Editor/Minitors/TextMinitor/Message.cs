@@ -197,7 +197,7 @@ namespace WindEditor.Minitors.Text
         private DrawType m_DrawType;
         private BoxPosition m_TextboxPosition;
         private ItemID m_ItemImage;
-        private bool m_Unknown2;
+        private byte m_Unknown2;
         private byte m_InitialSound;
         private byte m_InitialCamera;
         private byte m_InitialAnimation;
@@ -224,7 +224,7 @@ namespace WindEditor.Minitors.Text
             m_TextboxPosition = (BoxPosition)reader.ReadByte();
             m_ItemImage = (ItemID)reader.ReadByte();
 
-            m_Unknown2 = reader.ReadBoolean();
+            m_Unknown2 = reader.ReadByte();
 
             m_InitialSound = reader.ReadByte();
             m_InitialCamera = reader.ReadByte();
@@ -435,7 +435,10 @@ namespace WindEditor.Minitors.Text
 
                 if (Enum.TryParse(split_tag[0], out SevenByteCode seven_result))
                 {
-                    return new byte[] { 0x1A, 0x07, 0x00, 0x00, (byte)seven_result, tag_arg_bytes[1], tag_arg_bytes[0] };
+                    byte first_byte = 0x00;
+                    if ((byte)seven_result == 1)
+                        first_byte = 0xFF;
+                    return new byte[] { 0x1A, 0x07, first_byte, 0x00, (byte)seven_result, tag_arg_bytes[1], tag_arg_bytes[0] };
                 }
                 else if (split_tag[0] == "sound")
                 {
