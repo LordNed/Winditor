@@ -24,9 +24,12 @@ namespace WindEditor.Collision
         {
             m_Colors = GetVertexColors();
 
-            GL.GenBuffers(1, out m_vbo);
-            GL.GenBuffers(1, out m_ebo);
-            GL.GenBuffers(1, out m_cbo);
+            if (m_vbo == -1)
+                GL.GenBuffers(1, out m_vbo);
+            if (m_ebo == -1)
+                GL.GenBuffers(1, out m_ebo);
+            if (m_cbo == -1)
+                GL.GenBuffers(1, out m_cbo);
 
             // Upload Verts
             GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
@@ -171,6 +174,32 @@ namespace WindEditor.Collision
             }
 
             return colors.ToArray();
+        }
+
+        public void ApplyRoomTransform(Vector3 offset, int roomNumber)
+        {
+            for (int i = 0; i < m_Vertices.Length; i++)
+            {
+                m_Vertices[i] = m_Vertices[i] + offset;
+            }
+
+            foreach (CollisionGroupNode n in m_Nodes)
+            {
+                n.RoomTableIndex = roomNumber;
+            }
+
+            foreach (CollisionTriangle t in Triangles)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    t.Vertices[i] = t.Vertices[i] + offset;
+                }
+
+                t.CalculateCenter();
+            }
+
+            CalculateAABB();
+            SetupGL();
         }
 
         public void ReleaseResources()

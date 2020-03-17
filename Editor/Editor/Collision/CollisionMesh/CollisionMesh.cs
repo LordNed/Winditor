@@ -75,6 +75,10 @@ namespace WindEditor.Collision
             IsDirty = true;
             Triangles = new List<CollisionTriangle>();
 
+            m_vbo = -1;
+            m_ebo = -1;
+            m_cbo = -1;
+
             CreateShader();
         }
 

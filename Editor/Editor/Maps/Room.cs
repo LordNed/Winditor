@@ -337,5 +337,29 @@ namespace WindEditor
 
             return new_dir;
         }
+
+        public void ApplyTransformToObjects()
+        {
+            SetRoomTransform(RoomTransform);
+            Vector3 offset = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
+
+            List<VisibleDOMNode> objects = GetChildrenOfType<VisibleDOMNode>();
+
+            foreach (VisibleDOMNode n in objects)
+            {
+                n.Transform.Position += offset;
+
+                if (n is SpawnPoint)
+                {
+                    SpawnPoint spwn = n as SpawnPoint;
+                    spwn.Room = (byte)RoomIndex;
+                }
+            }
+
+            List<WCollisionMesh> colList = GetChildrenOfType<WCollisionMesh>();
+
+            if (colList.Count > 0)
+                colList[0].ApplyRoomTransform(offset, RoomIndex);
+        }
     }
 }

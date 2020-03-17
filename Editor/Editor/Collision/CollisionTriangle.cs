@@ -71,7 +71,7 @@ namespace WindEditor.Collision
             writer.Write((short)groups.IndexOf(ParentGroup));
         }
 
-        private void CalculateCenter()
+        public void CalculateCenter()
         {
             Center = new Vector3((Vertices[0].X + Vertices[1].X + Vertices[2].X) / 3,
                                  (Vertices[0].Y + Vertices[1].Y + Vertices[2].Y) / 3,

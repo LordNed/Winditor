@@ -813,6 +813,11 @@ namespace WindEditor
                     MainWorld.Map.SceneList.Remove(oldRoom);
                 }
 
+                List<WCollisionMesh> colList = oldRoom.GetChildrenOfType<WCollisionMesh>();
+
+                if (colList.Count > 0)
+                    colList[0].ReleaseResources();
+
                 string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(window.FileName));
 
                 VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(window.FileName);
@@ -831,6 +836,8 @@ namespace WindEditor
 
                 WRoom newRoom = new WRoom(MainWorld, window.RoomNumber + 1);
                 newRoom.Load(tempArcPath);
+                newRoom.RoomTransform = oldRoom.RoomTransform;
+                newRoom.ApplyTransformToObjects();
 
                 newRoom.Name = "room" + (window.RoomNumber + 1);
                 archiveRoot.Name = "room" + (window.RoomNumber + 1);
