@@ -13,7 +13,7 @@ When you download Winditor and open it up, you will be presented with the main w
 
 ### Scene View
 <p align="center">
-  <img src="./sceneview.png" width=25% height=25%>
+  <img src="./sceneview.png">
 </p>
 
 ### Viewport
@@ -23,7 +23,7 @@ When you download Winditor and open it up, you will be presented with the main w
 
 ### Mode Panel
 <p align="center">
-  <img src="./modepanel.png" width=40% height=40%>
+  <img src="./modepanel.png">
 </p>
 
 <hr>
