@@ -8,3 +8,13 @@ Want to learn how to use the tools? Check out the [Tutorials](tutorials/tutorial
 
 # Examples
 You can find some examples of mods made with Winditor on the [Examples](examples/examples.md) page.
+
+# Credits
+A lot of people made Winditor possible! Here are a few names, in no particular order:
+
+* LordNed ([@LordNed](https://twitter.com/LordNed))
+* Sage of Mirrors ([@SageOfMirrors](https://twitter.com/SageOfMirrors))
+* LagoLunatic ([@LagoLunatic](https://twitter.com/LagoLunatic))
+* Jasper ([@JasperRLZ](https://twitter.com/JasperRLZ))
+* Mike Lester ([@themikelester](https://twitter.com/themikelester))
+* xdaniel ([@xdanieldzd](https://twitter.com/xdanieldzd))
