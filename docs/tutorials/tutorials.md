@@ -1,5 +1,5 @@
 ## Tutorials
 
 <p align="center">
-  <a href="../index.md">Back</a>
+  <a href="../index.html">Back</a>
 </p>
