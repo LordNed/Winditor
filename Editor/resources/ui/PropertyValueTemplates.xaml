@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:WindEditor.ViewModel;assembly=WindEditor">
+                    xmlns:vm="clr-namespace:WindEditor.ViewModel;assembly=Winditor">
     <vm:ByteToStringConverter x:Key="ByteToStringConverter"/>
     <vm:ShortToStringConverter x:Key="ShortToStringConverter"/>
     <vm:IntToStringConverter x:Key="IntToStringConverter"/>
