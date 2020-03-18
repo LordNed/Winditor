@@ -376,6 +376,8 @@ namespace WindEditor.Minitors.Text
                 {
                     case 0:
                         string five_name = Enum.GetName(typeof(FiveByteCode), data[2]);
+                        if (five_name == null)
+                            five_name = $"unknown_5_{data[2]:X}";
                         result.AddRange(Encoding.ASCII.GetBytes(five_name.ToLowerInvariant()));
                         break;
                     case 1:
@@ -464,6 +466,11 @@ namespace WindEditor.Minitors.Text
             else if (Enum.TryParse(tag, out TextColor color_result))
             {
                 return new byte[] { 0x1A, 0x06, 0xFF, 0x00, 0x00, (byte)color_result };
+            }
+            else if (tag.StartsWith("unknown_5_"))
+            {
+                int five_byte_code = Convert.ToInt32(tag.Substring("unknown_5_".Length), 16);
+                return new byte[] { 0x1A, 0x05, 0x00, 0x00, (byte)five_byte_code };
             }
             else
             {
