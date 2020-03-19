@@ -13037,6 +13037,135 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class obj_search : Actor
+	{
+		// Auto-Generated Properties from Templates
+		public enum Unknown_1Enum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_255 = 255,
+		}
+
+		[WProperty("Searchlight", "Unknown_1", true, "", SourceScene.Room)]
+		public Unknown_1Enum Unknown_1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return (Unknown_1Enum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("Unknown_1");
+			}
+		}
+
+		public enum Unknown_2Enum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+			Unknown_0_B = 255,
+		}
+
+		[WProperty("Searchlight", "Unknown_2", true, "", SourceScene.Room)]
+		public Unknown_2Enum Unknown_2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				return (Unknown_2Enum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("Unknown_2");
+			}
+		}
+
+		[WProperty("Searchlight", "Path to Search", true, "", SourceScene.Room)]
+		public Path_v2 PathtoSearch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("PathtoSearch");
+			}
+		}
+
+		[WProperty("Searchlight", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("SwitchtoCheck");
+			}
+		}
+
+		[WProperty("Searchlight", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				OnPropertyChanged("SwitchtoSet");
+			}
+		}
+
+		// Constructor
+		public obj_search(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+	}
+
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class obj_shelf : Actor
 	{
 		// Auto-Generated Properties from Templates

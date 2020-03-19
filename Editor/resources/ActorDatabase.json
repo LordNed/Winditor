@@ -3903,5 +3903,10 @@
     "Actor Name": "item",
     "English Name": "Item Pickup",
     "ActorClassType": "item"
+  },
+  {
+    "Actor Name": "Search",
+    "English Name": "Searchlight",
+    "ActorClassType": "obj_search"
   }
 ]

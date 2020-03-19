@@ -154,6 +154,7 @@
     <Compile Include="Editor\DOM\DOMNode_New.cs" />
     <Compile Include="Editor\DOM\DOMOrganizerNode.cs" />
     <Compile Include="Editor\DOM\DOMRenderNode.cs" />
+    <Compile Include="Editor\Entities\Actors\obj_search.cs" />
     <Compile Include="Editor\Entities\CameraViewpoint_v1.cs" />
     <Compile Include="Editor\Entities\CameraViewpoint_v2.cs" />
     <Compile Include="Editor\Entities\LightSource.cs" />
