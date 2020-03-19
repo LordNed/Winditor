@@ -3,53 +3,60 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "fganon",
+      "Category": "Phantom Ganon",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Forsaken Fortress Encounter",
+        1: "Maze Encounter",
+        2: "After Light Arrows Encounter",
+        3: "Clone",
+        15: "Maze Encounter (Immortal for Testing)",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Which Clone",
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Shift": 4,
       "Hidden": false,
-      "Category": "fganon",
-      "ToolTip": "",
+      "Category": "Phantom Ganon",
+      "ToolTip": "1-4 for which of the clones this is. No effect on anything besides the 'Clone' behavior type.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Sight Range (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "fganon",
-      "ToolTip": "",
+      "Category": "Phantom Ganon",
+      "ToolTip": "The fight won't start until the player is within this number times ten units of where Phantom Ganon was placed.\nNote that this only affects the range on the X/Z plane. Phantom Ganon does not check difference in height between himself and the player, and will trigger the fight even if the player is very far above or below him.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "fganon",
-      "ToolTip": "",
+      "Category": "Phantom Ganon",
+      "ToolTip": "Only works for the 'Forsaken Fortress' and 'After Light Arrows' behavior types.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Fight in Progress Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "fganon",
-      "ToolTip": "",
+      "Category": "Phantom Ganon",
+      "ToolTip": "He will set this switch when the fight starts and unset it when he's defeated.",
       "DataType": "Integer"
     }
   ]

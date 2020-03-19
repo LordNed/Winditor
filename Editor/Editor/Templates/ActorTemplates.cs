@@ -3154,25 +3154,34 @@ namespace WindEditor
 	public partial class fganon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("fganon", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum BehaviorTypeEnum
+		{
+			Forsaken_Fortress_Encounter = 0,
+			Maze_Encounter = 1,
+			After_Light_Arrows_Encounter = 2,
+			Clone = 3,
+			Maze_Encounter_Immortal_for_Testing = 15,
+		}
+
+		[WProperty("Phantom Ganon", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("fganon", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Phantom Ganon", "Which Clone", true, "1-4 for which of the clones this is. No effect on anything besides the 'Clone' behavior type.", SourceScene.Room)]
+		public int WhichClone
 		{ 
 			get
 			{
@@ -3184,12 +3193,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("WhichClone");
 			}
 		}
 
-		[WProperty("fganon", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Phantom Ganon", "Sight Range (Tens)", true, "The fight won't start until the player is within this number times ten units of where Phantom Ganon was placed.\nNote that this only affects the range on the X/Z plane. Phantom Ganon does not check difference in height between himself and the player, and will trigger the fight even if the player is very far above or below him.", SourceScene.Room)]
+		public int SightRangeTens
 		{ 
 			get
 			{
@@ -3201,12 +3210,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SightRangeTens");
 			}
 		}
 
-		[WProperty("fganon", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Phantom Ganon", "Disable Spawn on Death Switch", true, "Only works for the 'Forsaken Fortress' and 'After Light Arrows' behavior types.", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -3218,12 +3227,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
-		[WProperty("fganon", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Phantom Ganon", "Fight in Progress Switch", true, "He will set this switch when the fight starts and unset it when he's defeated.", SourceScene.Room)]
+		public int FightinProgressSwitch
 		{ 
 			get
 			{
@@ -3235,7 +3244,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("FightinProgressSwitch");
 			}
 		}
 
