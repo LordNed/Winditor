@@ -11,6 +11,7 @@ namespace WindEditor
 {
     public partial class grass
     {
+        #region Constants
         private static readonly int[] kFoliageSpawnPatternGroupIndexes = {
             0,
             0,
@@ -115,6 +116,7 @@ namespace WindEditor
                 new Vector3(40, 0, 0),
             }
         };
+        #endregion
 
         [WProperty("Foliage", "Type", true)]
         public FoliageType Type
