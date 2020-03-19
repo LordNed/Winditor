@@ -2089,6 +2089,28 @@
     ]
   },
   {
+    "Name": "Phantom Ganon",
+    "Archive": "Fganon",
+    "Models": [
+      {
+        "Path": "bdlm/bpg.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Kalle Demos",
     "Archive": "Bmd",
     "Models": [
@@ -3993,6 +4015,20 @@
           "Y": 0.0,
           "Z": 0.0
         },
+      }
+    ]
+  },
+  {
+    "Name": "Searchlight",
+    "Archive": "Search",
+    "Models": [
+      {
+        "Path": "bdl/s_search.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
       }
     ]
   },

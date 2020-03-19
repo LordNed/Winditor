@@ -10,12 +10,8 @@ namespace WindEditor
     {
         public override void PostLoad()
         {
-            
-        }
-
-        private void UpdateModel()
-        {
-            
+            m_actorMeshes = WResourceManager.LoadActorResource("Searchlight");
+            base.PostLoad();
         }
     }
 }
