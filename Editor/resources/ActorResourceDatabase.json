@@ -4032,4 +4032,74 @@
       }
     ]
   },
+  {
+    "Name": "Raft",
+    "Archive": "IkadaH",
+    "Models": [
+      {
+        "Path": "bdl/vikae.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Submarine",
+    "Archive": "IkadaH",
+    "Models": [
+      {
+        "Path": "bdl/vikah.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Salvage Corp Ship",
+    "Archive": "IkadaH",
+    "Models": [
+      {
+        "Path": "bdl/vsvsp.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Beedle's Shop Ship",
+    "Archive": "IkadaH",
+    "Models": [
+      {
+        "Path": "bdl/vtsp.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Beedle's Special Shop Ship",
+    "Archive": "IkadaH",
+    "Models": [
+      {
+        "Path": "bdl/vtsp2.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
 ]

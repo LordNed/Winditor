@@ -11398,20 +11398,30 @@ namespace WindEditor
 	public partial class obj_ikada : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_ikada", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum TypeEnum
+		{
+			Raft = 0,
+			Beedles_Shop_Ship = 1,
+			Submarine = 2,
+			Beedles_Special_Shop_Ship = 3,
+			Salvage_Corp_Ship = 4,
+		}
+
+		[WProperty("Various Ships", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -11449,23 +11459,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
-			}
-		}
-
 		[WProperty("obj_ikada", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
@@ -11500,20 +11493,65 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("obj_ikada", "Path to Follow", true, "", SourceScene.Room)]
+		public Path_v2 PathtoFollow
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("PathtoFollow");
+			}
+		}
+
+		[WProperty("Salvage Corp Ship", "Salvage Corp Path to Follow", true, "", SourceScene.Room)]
+		public Path_v2 SalvageCorpPathtoFollow
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("SalvageCorpPathtoFollow");
 			}
 		}
 
