@@ -21,7 +21,7 @@ The options are:
 * Slot: Each scene has a fixed number of meshes that can be imported into it, and this box determines where your selected mesh ends up. The slots change depending on whether you have a Stage or a Room selected in the Scene box.
 	* For Stages, these are the available model slots:
 		* Main Skybox: This is the model that makes up the majority of the sky. In-game, this is a cylinder with a solid color. The model name for this mesh is `vr_sky.bdl`.
-		* Horizon Clouds: This is the model that makes up the clouds that ring the horizon. The model name for this mesh is `vr_back_cloud.bdl'.
+		* Horizon Clouds: This is the model that makes up the clouds that ring the horizon. The model name for this mesh is `vr_back_cloud.bdl`.
 		* Horizon Sea: This model simulates the ocean at a distance, making the water look like it goes farther than it does. The model name for this mesh is `vr_uso_umi.bdl`.
 		* Horizon Gradient: This model is a gradient that fades from the main skybox's color to another color. The model name for this mesh is `vr_kasumi_mae.bdl`.
 		* Normal Dungeon Door: This is the model used with a TGDR entry  Its internal name is `door10.bdl`.
