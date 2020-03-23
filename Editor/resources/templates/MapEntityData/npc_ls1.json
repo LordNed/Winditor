@@ -3,14 +3,22 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "npc_ls1",
+      "Category": "Aryll",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Looking Out of Lookout",
+        1: "Captured in FF1 on Floor",
+        2: "For Cutscenes",
+        3: "Telling Link to See Grandma",
+        4: "Ending",
+        255: "Unknown 255",
+      }
     }
   ]
 }

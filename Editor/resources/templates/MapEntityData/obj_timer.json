@@ -3,23 +3,23 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Time Limit (Half Seconds)",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_timer",
-      "ToolTip": "",
+      "ToolTip": "This number multiplied by 15 frames is how long to wait before unsetting the switch.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Unset",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
       "Category": "obj_timer",
-      "ToolTip": "",
+      "ToolTip": "When something else sets this switch, this timer object starts a countdown. When the countdown reaches zero, it unsets this switch.",
       "DataType": "Integer"
     }
   ]

@@ -3,32 +3,42 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "What Triggers It",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "switem",
+      "Category": "Hidden Item Pickup",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Sword or Enemy Weapon",
+        1: "Bombs",
+        2: "Boomerang",
+        3: "Skull Hammer",
+        4: "Any Arrows",
+        5: "Hookshot",
+        6: "Never Triggers",
+        255: "Anything",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Spawned Item",
       "ValueSource": "Parameters",
       "Mask": 0x00003F00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "switem",
+      "Category": "Hidden Item Pickup",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "DroppedItemID"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",
       "Mask": 0x001FC000,
       "Shift": 14,
       "Hidden": false,
-      "Category": "switem",
+      "Category": "Hidden Item Pickup",
       "ToolTip": "",
       "DataType": "Integer"
     }

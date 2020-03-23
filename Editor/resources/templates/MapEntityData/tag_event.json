@@ -30,7 +30,7 @@
       }
     },
     {
-      "Name": "Set Switch",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,

@@ -13,14 +13,18 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
       "Category": "andsw2",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1"
+      }
     },
     {
       "Name": "Switch to Set",
@@ -43,17 +47,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Event",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0x00FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "andsw2",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Event"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Time Limit (Half Seconds)",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Shift": 0,
