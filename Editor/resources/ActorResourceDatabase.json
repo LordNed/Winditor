@@ -843,12 +843,6 @@
             "Path": "bck/vdswt0.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
-          {
-            "Anim Type": "brk",
-            "Path": "brk/vdswt0.brk",
-            "Paused on Load": true,
-            "Start Time": 1.9333333333333333333333333333333
           }
         ]
       },
@@ -865,12 +859,6 @@
             "Path": "bck/vdswt1.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
-          {
-            "Anim Type": "brk",
-            "Path": "brk/vdswt1.brk",
-            "Paused on Load": true,
-            "Start Time": 1.9333333333333333333333333333333
           }
         ]
       }
