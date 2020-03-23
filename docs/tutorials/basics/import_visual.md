@@ -24,8 +24,8 @@ The options are:
 		* **Horizon Clouds**: This is the model that makes up the clouds that ring the horizon. The model name for this mesh is `vr_back_cloud.bdl`.
 		* **Horizon Sea**: This model simulates the ocean at a distance, making the water look like it goes farther than it does. The model name for this mesh is `vr_uso_umi.bdl`.
 		* **Horizon Gradient**: This model is a gradient that fades from the main skybox's color to another color. The model name for this mesh is `vr_kasumi_mae.bdl`.
-		* **Normal Dungeon Door**: This is the model used with a TGDR entry  Its internal name is `door10.bdl`.
-		* **Boss Dungeon Door**: Its internal name is `door20.bdl`.
+		* **Normal Dungeon Door**: When a TGDR entry is named `door10`, `keyshut`, or `Zenshut`, this is the model that it will use. Generally, this is the kind of door that is a slab that lifts up to open. These are found in Dragon Roost Cavern, the Forbidden Woods, the Tower of the Gods, and various minidungeons. The Earth and Wind Temples use special door models not found in the map's Stage. The model's internal name is `door10.bdl`.
+		* **Boss Dungeon Door**: When a TGDR entry is named `door20`, this is the model that it will use. As explained above, this door model is used in the first three dungeons of the game; the Earth and Wind Temples use separate models. Its internal name is `door20.bdl`.
 		* **Dungeon Door Lock**: This is the model placed over a door when the door is locked and requires a key. Its internal name is `key10.bdl`.
 		* **Dungeon Door Bars**: This is the model placed over a door when it is barred, usually requiring a puzzle to be solved or the enemies in a room to be killed. Its internal name is `stop10.bdl`.
 	* For **Rooms**, these are the available model slots:
