@@ -8,7 +8,7 @@ The Import Visual Mesh option can be found in the File menu, at File -> Import -
   <img src="./import_visual_mesh_menu.png" alignment="center">
 </p>
 
-## Dialog
+## The Dialog
 Upon clicking the menu option, you will be presented with the Import Visual Mesh dialog.
 
 <p align="center">
