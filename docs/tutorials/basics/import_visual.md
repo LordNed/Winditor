@@ -1,4 +1,4 @@
-## Basics
+## Importing a Visual Mesh
 This tutorial will go over how to import a visual mesh into a map using the Import Visual Mesh dialog.
 
 ## Where to Look
