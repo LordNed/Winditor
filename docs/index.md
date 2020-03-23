@@ -18,3 +18,4 @@ A lot of people made Winditor possible! Here are a few names, in no particular o
 * Jasper ([@JasperRLZ](https://twitter.com/JasperRLZ))
 * Mike Lester ([@themikelester](https://twitter.com/themikelester))
 * xdaniel ([@xdanieldzd](https://twitter.com/xdanieldzd))
+* BigSharkZ ([BigSharkZ](https://www.youtube.com/user/BigSharkZ/))
