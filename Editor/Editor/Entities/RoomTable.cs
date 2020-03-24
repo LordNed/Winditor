@@ -63,7 +63,7 @@ namespace WindEditor
 
         private byte m_Unknown1;
 
-        [WProperty("Uknowns", "Unknown 1", true)]
+        [WProperty("Unknowns", "Unknown 1", true)]
         public byte Unknown1
         {
             get { return m_Unknown1; }
