@@ -117,5 +117,22 @@ namespace WindEditor
                 OnPropertyChanged("ParticleBank");
             }
         }
+
+        [WProperty("Room Properties", "Disable Song of Passing", true, "If this is checked, the player will not be allowed to use Song of Passing in this room, and will be give that message about the sun and moon not being visible.", SourceScene.Room)]
+        public bool DisableSongofPassing
+        {
+            get
+            {
+                int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
+                return value_as_int == 0 ? false : true;
+            }
+
+            set
+            {
+                int value_as_int = Convert.ToInt32(value);
+                m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
+                OnPropertyChanged("DisableSongOfPassing");
+            }
+        }
     }
 }
