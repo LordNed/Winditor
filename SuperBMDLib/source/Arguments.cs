@@ -15,6 +15,7 @@ namespace SuperBMDLib
         public string tristrip_mode;
         public bool rotate_model;
         public bool output_bdl;
+        public bool generate_map_materials;
 
         /// <summary>
         /// Initializes a new Arguments instance from the arguments passed in to SuperBMD.
@@ -29,6 +30,7 @@ namespace SuperBMDLib
             tristrip_mode = "static";
             rotate_model = false;
             output_bdl = false;
+            generate_map_materials = false;
 
             for (int i = 0; i < args.Length; i++)
             {
@@ -81,6 +83,9 @@ namespace SuperBMDLib
                     case "-b":
                     case "--bdl":
                         output_bdl = true;
+                        break;
+                    case "-glm":
+                        generate_map_materials = true;
                         break;
                     default:
                         throw new Exception($"Unknown parameter \"{ args[i] }\"");

@@ -25,6 +25,8 @@ namespace WindEditor.View
 
         public int SlotNumber { get { return SlotCombo.SelectedIndex; } }
 
+        public bool GenerateMaterials { get { return (bool)materials_box.IsChecked; } }
+
         public VisualMeshImportWindow(WMap map)
         {
             InitializeComponent();

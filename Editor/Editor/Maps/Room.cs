@@ -72,13 +72,9 @@ namespace WindEditor
         public WRoomTransform RoomTransform { get; set; }
         public EnvironmentLightingConditions EnvironmentLighting { get; set; }
 
-        private List<J3DNode> m_roomModelNodes;
-
-
         public WRoom(WWorld world, int roomIndex):base(world)
         {
             RoomIndex = roomIndex;
-            m_roomModelNodes = new List<J3DNode>();
             IsRendered = true;
         }
 
@@ -141,7 +137,6 @@ namespace WindEditor
 
                         J3DNode j3d_node = new J3DNode(mesh, m_world, model_path);
                         j3d_node.SetParent(col_category);
-                        m_roomModelNodes.Add(j3d_node);
                     }
                 }
             }
@@ -155,6 +150,8 @@ namespace WindEditor
         public override void SetTimeOfDay(float timeOfDay)
         {
             base.SetTimeOfDay(timeOfDay);
+
+            List<J3DNode> m_roomModelNodes = GetChildrenOfType<J3DNode>();
 
             if(EnvironmentLighting != null)
             {
@@ -190,6 +187,8 @@ namespace WindEditor
 
         public void SetRoomTransform(WRoomTransform roomTransform)
         {
+            List<J3DNode> m_roomModelNodes = GetChildrenOfType<J3DNode>();
+
             RoomTransform = roomTransform;
             foreach (J3DNode j3d_node in m_roomModelNodes)
             {
@@ -200,6 +199,8 @@ namespace WindEditor
 
         public Vector3 GetCenter()
         {
+            List<J3DNode> m_roomModelNodes = GetChildrenOfType<J3DNode>();
+
             Vector3 roomOffset = Vector3.Zero;
 
             if (m_roomModelNodes.Count > 0)

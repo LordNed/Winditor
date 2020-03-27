@@ -186,6 +186,7 @@ namespace WindEditor.Collision
             foreach (CollisionGroupNode n in m_Nodes)
             {
                 n.RoomTableIndex = roomNumber;
+                n.RoomNumber = roomNumber;
             }
 
             foreach (CollisionTriangle t in Triangles)

@@ -632,6 +632,10 @@ namespace WindEditor
             {
                 superBMDArgs.Add("-b");
             }
+            if (importWindow.GenerateMaterials)
+            {
+                superBMDArgs.Add("-glm");
+            }
 
             SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
 
