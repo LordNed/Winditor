@@ -40,7 +40,7 @@ The toolbars contain various options and features that you can use while editing
 The map and rooms that are currently loaded will be displayed in the **viewport**. It shows all of the entities within the map that have positions within the world, even if they are not displayed in-game. The controls are as follows:
 
 #### Movement
-* **right-click and drag** on the viewport to look around the scene.
+* **Right-click and drag** on the viewport to look around the scene.
 * While holding the right mouse button, **use the W, A, S, and D keys** to move around the map.
 * While moving around the map, **hold shift** to move faster.
 * You can also adjust movement speed by **scrolling in and out with the scroll wheel.**
