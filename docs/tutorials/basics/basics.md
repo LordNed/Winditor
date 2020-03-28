@@ -65,7 +65,7 @@ The map and rooms that are currently loaded will be displayed in the **viewport*
   <img src="./basics_rot_axes.png">
 </p>
 
-* With an object selected, **press the E key** to switch the axes to the Rotation Widget.
+* With an object selected, **press the E key** to switch to the Rotation Widget.
 * **Left-click and drag an arc** on the widget to rotate the object on that axis. Note that many objects do not support rotating in all directions.
 
 ##### Scaling
@@ -73,7 +73,7 @@ The map and rooms that are currently loaded will be displayed in the **viewport*
   <img src="./basics_scale_axes.png">
 </p>
 
-* With an object selected, **press the R key** to switch the axes to the Scaling Widget.
+* With an object selected, **press the R key** to switch to the Scaling Widget.
 * **Left-click and drag a cube** on the widget to scale the object on that axis. Note that many objects do not support scaling.
 
 ### Mode Panel
