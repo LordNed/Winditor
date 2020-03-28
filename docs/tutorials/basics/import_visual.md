@@ -1,6 +1,13 @@
 ## Importing a Visual Mesh
 This tutorial will go over how to import a visual mesh into a map using the Import Visual Mesh dialog.
 
+## Preparation
+There are a few things to do before you can properly import a visual mesh.
+
+* In most cases any model format will work, but Blender-created DAE and FBX models are recommended.
+* All meshes within a model must have *only* a single material.
+* All meshes within a model must have vertex color data, even if it is not used. Not having this data will still allow the mesh to be imported, but it will not use the game's lighting system.
+
 ## Where to Look
 The Import Visual Mesh option can be found in the File menu, at File -> Import -> Visual Mesh.
 
@@ -33,6 +40,7 @@ The options are:
 		* **Water**: This mesh is usually made up of all the water planes in the room. Water is separated from the main mesh like this to make animating it easier. Its internal name is `model1.bdl`.
 		* **Misc.**: This mesh has no strict purpose - it fulfills whatever role the developer sees fit. Its internal name is `model2.bdl`.
 		* **Backfill**: This mesh typically makes up the lighting found behind doors and windows on the overworld, or behind cave entrances. The color of the gradient changes based on the map's lighting configuration. For example, it can change from black to yellow as night falls to show that there is a light on inside a building. Its internal name is `model3.bdl`.
+* **Generate Materials**: This option defaults to "checked." When checked, Winditor will generate default materials that allow imported models to use the game's lighting system - applying colors from the ENVR/COLO/PALE data chunks. If unchecked, Winditor will attempt to use a `materials.json` file in the same directory as the model to import.
 
 <hr>
 <p align="center">
