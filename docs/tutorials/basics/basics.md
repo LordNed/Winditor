@@ -32,12 +32,33 @@ The toolbars contain various options and features that you can use while editing
   <img src="./sceneview.png">
 </p>
 
+The **Scene View** is composed of two components: the Scene List on top, and the Object List on the bottom.
+
+#### Scene List
+The Scene List displays the currently loaded scenes, which include the map's Stage and its Rooms.
+
+* The **Stage** is made up of global objects which are loaded regardless of what Room that Link is in. In most cases, these include lighting and exit data. However, any object type can be placed here. The skybox models are also contained within the Stage, as well as the textures for clouds and the map's Event List.
+* **Rooms** are individual spaces composed of models, collision data, and object setups. A map requires at least one room, and it can have up to 64.
+
+##### Controls
+* **Left-clicking** on a scene in the list will make the scene active, and display its objects in the Object List.
+* **Toggling the checkbox** to the left of a scene will show or hide that scene's components - models, collision, and objects.
+
+#### Object List
+The Object List displays all of the objects within the selected scene. The `Models` and `Collision` categories are special categories that represent the scene's visual models and collision mesh. The rest of the categories are named after their identifiers in the files with a short description of what they are.
+
+##### Controls
+* If there is a small arrow to the left of an object type, **left-click it** to show the objects beneath it.
+* If there *isn't* an arrow by the object type, you can **right-click** on it and select "Add Object" from the context menu to add a new instance of that type.
+* You can also select "Go Here" from the context menu to move the camera directly to that object.
+* **Left-click** an instance of an object to display its properties in the Mode Panel on the right side of the screen.
+
 ### Viewport
 <p align="center">
   <img src="./viewport.png">
 </p>
 
-The map and rooms that are currently loaded will be displayed in the **viewport**. It shows all of the entities within the map that have positions within the world, even if they are not displayed in-game. The controls are as follows:
+The map and rooms that are currently loaded will be displayed in the **Viewport**. It shows all of the entities within the map that have positions within the world, even if they are not displayed in-game. The controls are as follows:
 
 #### Movement
 * **Right-click and drag** on the viewport to look around the scene.
