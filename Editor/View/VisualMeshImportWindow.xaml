@@ -27,7 +27,7 @@
                 <ComboBox Name="SlotCombo" Grid.Row="2" Grid.Column="1" Height="23" VerticalAlignment="Bottom" Margin="0,0,5,5"/>
             </Grid>
         </DockPanel>
-        <CheckBox Margin="10,100,128,52" IsChecked="True" x:Name="materials_box">Generate Materials</CheckBox>
+        <CheckBox Margin="10,0,0,52" IsChecked="True" x:Name="materials_box" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120">Generate Materials</CheckBox>
         <Button IsDefault="True" Margin="10,0,0,10" HorizontalAlignment="Left" Width="100" Click="Button_Click" Height="32" VerticalAlignment="Bottom">Import</Button>
         <Button IsCancel="True" Margin="0,0,10,10" HorizontalAlignment="Right" Width="100" Height="32" VerticalAlignment="Bottom">Cancel</Button>
     </Grid>
