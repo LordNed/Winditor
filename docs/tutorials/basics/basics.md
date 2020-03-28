@@ -37,6 +37,45 @@ The toolbars contain various options and features that you can use while editing
   <img src="./viewport.png">
 </p>
 
+The map and rooms that are currently loaded will be displayed in the **viewport**. It shows all of the entities within the map that have positions within the world, even if they are not displayed in-game. The controls are as follows:
+
+#### Movement
+* **right-click and drag** on the viewport to look around the scene.
+* While holding the right mouse button, **use the W, A, S, and D keys** to move around the map.
+* While moving around the map, **hold shift** to move faster.
+* You can also adjust movement speed by **scrolling in and out with the scroll wheel.**
+
+#### Object Manipulation
+* Select an object by **left-clicking** on it.
+* To select multiple objects, hold **shift** while left-clicking.
+* To undo an action, **press ctrl + Z**.
+* To redo an action, **press ctrl + Y**.
+
+##### Translation
+<p align="center">
+  <img src="./basics_move_axes.png">
+</p>
+
+* When an object is selected, the Translation Widget will appear. **Left-click and drag** on any of the arrows on the widget to move the object along that axis.
+* Left-click and drag **on the squares between arrows** to move the object on both of those axes at once.
+* **Press the W key** to switch back to the Translation widget if you have switched it to the Rotation or Scaling widgets.
+
+##### Rotation
+<p align="center">
+  <img src="./basics_rot_axes.png">
+</p>
+
+* With an object selected, **press the E key** to switch the axes to the Rotation Widget.
+* **Left-click and drag an arc** on the widget to rotate the object on that axis. Note that many objects do not support rotating in all directions.
+
+##### Scaling
+<p align="center">
+  <img src="./basics_scale_axes.png">
+</p>
+
+* With an object selected, **press the R key** to switch the axes to the Scaling Widget.
+* **Left-click and drag a cube** on the widget to scale the object on that axis. Note that many objects do not support scaling.
+
 ### Mode Panel
 <p align="center">
   <img src="./modepanel.png">
