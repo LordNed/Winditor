@@ -37,7 +37,7 @@ The **Scene View** is composed of two components: the Scene List on top, and the
 #### Scene List
 The Scene List displays the currently loaded scenes, which include the map's Stage and its Rooms.
 
-* The **Stage** is made up of global objects which are loaded regardless of what Room that Link is in. In most cases, these include lighting and exit data. However, any object type can be placed here. The skybox models are also contained within the Stage, as well as the textures for clouds and the map's Event List.
+* The **Stage** is made up of global objects which are loaded regardless of what Room Link is in. In most cases, these include lighting and exit data. However, any object type can be placed here. The skybox models are also contained within the Stage, as well as the textures for clouds and the map's Event List.
 * **Rooms** are individual spaces composed of models, collision data, and object setups. A map requires at least one room, and it can have up to 64.
 
 ##### Controls
@@ -48,7 +48,7 @@ The Scene List displays the currently loaded scenes, which include the map's Sta
 The Object List displays all of the objects within the selected scene. The `Models` and `Collision` categories are special categories that represent the scene's visual models and collision mesh. The rest of the categories are named after their identifiers in the files with a short description of what they are.
 
 ##### Controls
-* If there is a small arrow to the left of an object type, **left-click it** to show the objects beneath it.
+* If there is a small arrow to the left of an object type, **left-click it** to show the object instances beneath it.
 * If there *isn't* an arrow by the object type, you can **right-click** on it and select "Add Object" from the context menu to add a new instance of that type.
 * You can also select "Go Here" from the context menu to move the camera directly to that object.
 * **Left-click** an instance of an object to display its properties in the Mode Panel on the right side of the screen.
