@@ -118,7 +118,7 @@ When in Actor Mode, the Mode Panel will be blank until you select an object, eit
 
 When in Collision Mode, the Mode Panel will display the collision mesh's hierarchy on top and a blank panel on the bottom. The bottom panel will change depending on what you select.
 
-For more information about the Collision Editor, see the [Collision Editing tutorial](../collision/collision_editor.html).
+For more information about the Collision Editor, see the [Collision Editing tutorial](../collision/collision.html).
 
 <hr>
 <p align="center">
