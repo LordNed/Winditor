@@ -98,9 +98,27 @@ The map and rooms that are currently loaded will be displayed in the **Viewport*
 * **Left-click and drag a cube** on the widget to scale the object on that axis. Note that many objects do not support scaling.
 
 ### Mode Panel
+
+The **Mode Panel** is to the right of the Viewport. It is initially blank, but it will change depending on what editing mode Winditor is in and whether you have an object selected in the Viewport. These are the forms that the Mode Panel can take:
+
+#### Actor Editor
 <p align="center">
   <img src="./modepanel.png">
 </p>
+
+When in Actor Mode, the Mode Panel will be blank until you select an object, either through the Viewport or the Object List. The panel will then be filled with all the properties of that object that you can edit.
+
+* **Hovering over the label of a property** will pop up a tooltip describing what that property does.
+* The Position and Scale properties can be used to precisely position and scale the object.
+
+#### Collision Editor
+<p align="center">
+  <img src="./modepanel_collision.png">
+</p>
+
+When in Collision Mode, the Mode Panel will display the collision mesh's hierarchy on top and a blank panel on the bottom. The bottom panel will change depending on what you select.
+
+For more information about the Collision Editor, see the [Collision Editing tutorial](../collision/collision_editor.html).
 
 <hr>
 <p align="center">
