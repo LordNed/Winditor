@@ -73,7 +73,7 @@ The nodes that make up the collision mesh's hierarchy have their own set of prop
 
 * **Terrain Type**: Whether the triangles in this group are considered solid, water, or lava. **This property must be set for Link to swim in water!** It is not enough to set the triangles themselves to have water properties.
 * **Room Number**: What Room this node is considered to be in. All nodes inherit this value from their parent nodes, so it is only necessary to set this on the root node; all other nodes can have this index be -1.
-* **Room Table Index**: This determines what Room Table data is used when Link is colliding with triangles that belong to this node. This is often used in dungeons to pre-load rooms so that moving between rooms is as fast as possible.
+* **Room Table Index**: This determines what Room Table data is used when Link is above the triangles that belong to this node, even if he is in the air. This is often used in dungeons to pre-load rooms so that moving between rooms is as fast as possible.
 
 <hr>
 <p align="center">
