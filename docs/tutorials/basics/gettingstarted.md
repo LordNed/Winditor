@@ -49,7 +49,7 @@ When you open Winditor, it should look like the image above. Before you start us
 
 The options that we are interested in are the first two:
 
-* **Game Root**: This is the path to the folder containing the game's `files` and `sys` directories, as extracted in the "Preparing the Game" section above. **Note that any edits are saved to this copy of the files**.
+* **Game Root**: This is the path to the folder containing the game's `files` and `sys` directories, as extracted in the "Extracting the Files" section above. **Note that any edits are saved to this copy of the files**.
 * **Dolphin**: This is the path to an installation of Dolphin 5.0. There is no known restriction on versions, but we recommend using the latest nightly version.
 
 Setting both of these will allow you access to playtesting and any tools in the Tools menu. It will also allow Winditor to display actors with their proper models instead of displaying them as cubes. Click the "..." buttons by each option to open a folder selection window, then use it to choose the appropriate folders.
