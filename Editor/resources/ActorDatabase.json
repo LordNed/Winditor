@@ -3171,32 +3171,32 @@
   },
   {
     "Actor Name": "Salvage",
-    "English Name": "Chart Salvage Region",
+    "English Name": "Chart Salvage Point",
     "ActorClassType": "salvage"
   },
   {
     "Actor Name": "SwSlvg",
-    "English Name": "Gunboat/Big Octo Salvage Region",
+    "English Name": "Gunboat/Big Octo Salvage Point",
     "ActorClassType": "salvage"
   },
   {
     "Actor Name": "Salvag2",
-    "English Name": "salvage",
+    "English Name": "Normal Light Ring Salvage Point",
     "ActorClassType": "salvage"
   },
   {
     "Actor Name": "SalvagN",
-    "English Name": "salvage",
+    "English Name": "Nighttime Salvage Point",
     "ActorClassType": "salvage"
   },
   {
     "Actor Name": "SalvagE",
-    "English Name": "salvage",
+    "English Name": "Octorok Vase Salvage Point",
     "ActorClassType": "salvage"
   },
   {
     "Actor Name": "SalvFM",
-    "English Name": "salvage",
+    "English Name": "Full Moon Salvage Point",
     "ActorClassType": "salvage"
   },
   {
@@ -3416,7 +3416,7 @@
   },
   {
     "Actor Name": "Evsw",
-    "English Name": "tag_evsw",
+    "English Name": "Event Bit Switch Setter",
     "ActorClassType": "tag_evsw"
   },
   {

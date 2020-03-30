@@ -15773,6 +15773,85 @@ namespace WindEditor
 	public partial class salvage : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Needs_Chart = 0,
+			Unused = 1,
+			Appears_When_Enemy_Defeated = 2,
+			Normal_Light_Ring = 3,
+			Night_Only = 4,
+			Octorok_Vase = 5,
+			Full_Moon_Night_Only = 6,
+		}
+
+		[WProperty("Salvage Point", "Type", true, "'Needs Chart' are the important pillar of light salvage points that won't appear until you have the relevant Treasure Chart or Triforce Chart.\n'Appears When Enemy Defeated' are salvage points dropped by a Gunboat or Big Octo.\n'Normal Light Ring' are light rings that always appear.\n'Night Only' are light rings that only appear at night.\n'Octorok Vase' are invisible salvage points that will cause the player to fish up an old vase, and then spawn a Saltwater Octorok next to them.\n'Full Moon Night Only' are light rings that only appear at night when the full moon is out.", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				OnPropertyChanged("Type");
+			}
+		}
+
+		[WProperty("Salvage Point", "Item ID", true, "", SourceScene.Room)]
+		public int ItemID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
+				OnPropertyChanged("ItemID");
+			}
+		}
+
+		[WProperty("Salvage Point", "Unknown 1", true, "", SourceScene.Room)]
+		public int Unknown1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("Unknown1");
+			}
+		}
+
+		[WProperty("Chart Salvage Point", "Duplicate Placement ID", true, "When placing a salvage point that needs a chart to see, you should actually place 4 in the same sector in different placements, with the only difference being that this ID should be 0, 1, 2, or 3, one for each.\nWhen the player starts a new save file, the game will randomly pick one of these different placements from 0-2, and only that placement of chart salvages will appear on that save file.\nIn Second Quest, only the ones with placement ID 3 will appear.\nNo effect on salvage points that don't need a chart to see.", SourceScene.Room)]
+		public int DuplicatePlacementID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x0003) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x0003 | (value_as_int << 0 & 0x0003));
+				OnPropertyChanged("DuplicatePlacementID");
+			}
+		}
+
 		// Constructor
 		public salvage(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17548,8 +17627,8 @@ namespace WindEditor
 	public partial class tag_evsw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("tag_evsw", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Event Bit Switch Setter", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -17561,12 +17640,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("tag_evsw", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Event Bit Switch Setter", "Event Bit to Check", true, "", SourceScene.Room)]
+		public int EventBittoCheck
 		{ 
 			get
 			{
@@ -17578,24 +17657,32 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("EventBittoCheck");
 			}
 		}
 
-		[WProperty("tag_evsw", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public enum TypeEnum
+		{
+			Set_and_Unset = 0,
+			Only_Set = 1,
+			Set_and_Unset_B = 2,
+			Set_and_Unset_C = 3,
+		}
+
+		[WProperty("Event Bit Switch Setter", "Type", true, "'Set and Unset' will set the switch if the event bit is set, and unset it if it's not.\n'Only Set' will set the switch if the event bit is set, but will never unset it.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Type");
 			}
 		}
 

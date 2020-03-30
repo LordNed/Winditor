@@ -1,5 +1,55 @@
 {
   "ClassName": "salvage",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "Fields": [
+    {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0xF0000000,
+      "Shift": 28,
+      "Hidden": false,
+      "Category": "Salvage Point",
+      "ToolTip": "'Needs Chart' are the important pillar of light salvage points that won't appear until you have the relevant Treasure Chart or Triforce Chart.\n'Appears When Enemy Defeated' are salvage points dropped by a Gunboat or Big Octo.\n'Normal Light Ring' are light rings that always appear.\n'Night Only' are light rings that only appear at night.\n'Octorok Vase' are invisible salvage points that will cause the player to fish up an old vase, and then spawn a Saltwater Octorok next to them.\n'Full Moon Night Only' are light rings that only appear at night when the full moon is out.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Needs Chart",
+        1: "Unused",
+        2: "Appears When Enemy Defeated",
+        3: "Normal Light Ring",
+        4: "Night Only",
+        5: "Octorok Vase",
+        6: "Full Moon Night Only",
+      }
+    },
+    {
+      "Name": "Item ID",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000FF0,
+      "Shift": 4,
+      "Hidden": false,
+      "Category": "Salvage Point",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x0FF00000,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "Salvage Point",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Duplicate Placement ID",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x0003,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Chart Salvage Point",
+      "ToolTip": "When placing a salvage point that needs a chart to see, you should actually place 4 in the same sector in different placements, with the only difference being that this ID should be 0, 1, 2, or 3, one for each.\nWhen the player starts a new save file, the game will randomly pick one of these different placements from 0-2, and only that placement of chart salvages will appear on that save file.\nIn Second Quest, only the ones with placement ID 3 will appear.\nNo effect on salvage points that don't need a chart to see.",
+      "DataType": "Integer"
+    }
+  ]
 }
