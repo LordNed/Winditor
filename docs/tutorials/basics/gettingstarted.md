@@ -1,7 +1,7 @@
 ## Getting Started
 This tutorial will talk about a couple of things you should know before you begin using Winditor for the first time.
 
-### Preparing the Game
+### Extracting the Files
 In order to edit *The Wind Waker*, the files must be extracted from a disc image using a recent version of <a href="https://dolphin-emu.org/">Dolphin</a>. **We cannot provide you with a copy of the game.** The safest way to get a copy of the game is to <a href="https://wiki.dolphin-emu.org/index.php?title=Ripping_Games">rip it yourself.</a>
 
 Open Dolphin. Right-click on *The Wind Waker* in the Games Panel and click "Properties":
