@@ -56,8 +56,8 @@ namespace WindEditor
             m_DolphinStartInfo = new ProcessStartInfo(dolphinPath);
             m_DolphinStartInfo.Arguments = $"-b -e \"{ m_DolPath }\"";
 
-            byte room_no = 0;
-            byte spawn_id = 0;
+            int room_no = 0;
+            int spawn_id = 0;
 
             GetRoomAndSpawnID(map.FocusedScene, out room_no, out spawn_id);
 
@@ -76,8 +76,8 @@ namespace WindEditor
 
             Patch testRoomPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\test_room_diff.json"));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022CFF8, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
-            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E3, new List<byte>(new byte[] { spawn_id })));
-            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E7, new List<byte>(new byte[] { room_no })));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E3, new List<byte>(new byte[] { (byte)spawn_id })));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E7, new List<byte>(new byte[] { (byte)room_no })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531EB, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
             testRoomPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
 
@@ -120,7 +120,7 @@ namespace WindEditor
             return room_no;
         }
 
-        private void GetRoomAndSpawnID(WScene scene, out byte room, out byte spawn)
+        private void GetRoomAndSpawnID(WScene scene, out int room, out int spawn)
         {
             room = 0;
             spawn = 0;

@@ -12,30 +12,10 @@
       "Editable": true
     },
     {
-      "Name": "Event Index",
-      "Type": "Byte",
+      "Name": "Parameters",
+      "Type": "Int",
       "Category": "Spawn Properties",
-      "Editable": true
-    },
-    {
-      "Name": "Unknown 1",
-      "Type": "Byte",
-      "Category": "Unknowns",
-      "Editable": true
-    },
-    {
-      "Name": "Spawn Type",
-      "Type": "Byte",
-      "EnumType": "SpawnRoomEntranceTypes",
-      "Category": "Spawn Properties",
-      "Editable": true
-    },
-    {
-      "Name": "Room",
-      "Type": "Byte",
-      "ReferenceType": "Room",
-      "Category": "Spawn Properties",
-      "Editable": true
+      "Hidden": true
     },
     {
       "Name": "Position",
@@ -44,7 +24,7 @@
       "Editable": true
     },
     {
-      "Name": "Unknown 2",
+      "Name": "Unknown 5",
       "Type": "Short",
       "Category": "Unknowns",
       "Editable": true
@@ -56,19 +36,13 @@
       "Editable": true
     },
     {
-      "Name": "Unknown 3",
-      "Type": "Byte",
-      "Category": "Unknowns",
-      "Editable": true
-    },
-    {
-      "Name": "Spawn ID",
-      "Type": "Byte",
+      "Name": "AuxillaryParameters2",
+      "Type": "Short",
       "Category": "Spawn Properties",
-      "Editable": true
+      "Hidden": true
     },
     {
-      "Name": "Unknown 4",
+      "Name": "Unknown 7",
       "Type": "Short",
       "Category": "Unknowns",
       "Editable": true

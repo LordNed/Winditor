@@ -2660,114 +2660,36 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_EventIndex;
+		protected int m_Parameters;
+				
 
-		[WProperty("Spawn Properties", "Event Index", true)]
-		 public byte EventIndex
+		protected short m_Unknown5;
+
+		[WProperty("Unknowns", "Unknown 5", true)]
+		 public short Unknown5
 		{ 
-			get { return m_EventIndex; }
+			get { return m_Unknown5; }
 			set
 			{
-				m_EventIndex = value;
-				OnPropertyChanged("EventIndex");
+				m_Unknown5 = value;
+				OnPropertyChanged("Unknown5");
 			}
 		}
 				
 
-		protected byte m_Unknown1;
-
-		[WProperty("Unknowns", "Unknown 1", true)]
-		 public byte Unknown1
-		{ 
-			get { return m_Unknown1; }
-			set
-			{
-				m_Unknown1 = value;
-				OnPropertyChanged("Unknown1");
-			}
-		}
+		protected short m_AuxillaryParameters2;
 				
 
-		protected byte m_SpawnType;
+		protected short m_Unknown7;
 
-		[WProperty("Spawn Properties", "Spawn Type", true)]
-		 public byte SpawnType
+		[WProperty("Unknowns", "Unknown 7", true)]
+		 public short Unknown7
 		{ 
-			get { return m_SpawnType; }
+			get { return m_Unknown7; }
 			set
 			{
-				m_SpawnType = value;
-				OnPropertyChanged("SpawnType");
-			}
-		}
-				
-
-		protected byte m_Room;
-
-		[WProperty("Spawn Properties", "Room", true)]
-		 public byte Room
-		{ 
-			get { return m_Room; }
-			set
-			{
-				m_Room = value;
-				OnPropertyChanged("Room");
-			}
-		}
-				
-
-		protected short m_Unknown2;
-
-		[WProperty("Unknowns", "Unknown 2", true)]
-		 public short Unknown2
-		{ 
-			get { return m_Unknown2; }
-			set
-			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
-			}
-		}
-				
-
-		protected byte m_Unknown3;
-
-		[WProperty("Unknowns", "Unknown 3", true)]
-		 public byte Unknown3
-		{ 
-			get { return m_Unknown3; }
-			set
-			{
-				m_Unknown3 = value;
-				OnPropertyChanged("Unknown3");
-			}
-		}
-				
-
-		protected byte m_SpawnID;
-
-		[WProperty("Spawn Properties", "Spawn ID", true)]
-		 public byte SpawnID
-		{ 
-			get { return m_SpawnID; }
-			set
-			{
-				m_SpawnID = value;
-				OnPropertyChanged("SpawnID");
-			}
-		}
-				
-
-		protected short m_Unknown4;
-
-		[WProperty("Unknowns", "Unknown 4", true)]
-		 public short Unknown4
-		{ 
-			get { return m_Unknown4; }
-			set
-			{
-				m_Unknown4 = value;
-				OnPropertyChanged("Unknown4");
+				m_Unknown7 = value;
+				OnPropertyChanged("Unknown7");
 			}
 		}
 				
@@ -2777,29 +2699,19 @@ namespace WindEditor
 		public SpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Event Index", TargetProperties = new string[] { "EventIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn Type", TargetProperties = new string[] { "SpawnType"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn ID", TargetProperties = new string[] { "SpawnID"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
-			m_EventIndex = stream.ReadByte(); 
-			m_Unknown1 = stream.ReadByte(); 
-			m_SpawnType = stream.ReadByte(); 
-			m_Room = stream.ReadByte(); 
+			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_Unknown2 = stream.ReadInt16(); 
+			m_Unknown5 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_Unknown3 = stream.ReadByte(); 
-			m_SpawnID = stream.ReadByte(); 
-			m_Unknown4 = stream.ReadInt16(); 
+			m_AuxillaryParameters2 = stream.ReadInt16(); 
+			m_Unknown7 = stream.ReadInt16(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -2809,16 +2721,12 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((byte)EventIndex);
-			stream.Write((byte)Unknown1);
-			stream.Write((byte)SpawnType);
-			stream.Write((byte)Room);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)Unknown2);
+			stream.Write((short)Unknown5);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((byte)Unknown3);
-			stream.Write((byte)SpawnID);
-			stream.Write((short)Unknown4);
+			stream.Write((short)m_AuxillaryParameters2);
+			stream.Write((short)Unknown7);
 		}
 	}
 
