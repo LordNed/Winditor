@@ -36,6 +36,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -149,6 +155,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -176,6 +193,12 @@ namespace WindEditor
 		public alldie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -269,6 +292,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			GuardedAreaRadiusHundreds = -1;
+			DisableSpawnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -354,6 +384,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unused_1 = -1;
+			SightRangeHundreds = -1;
+			DisableSpawnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -398,6 +436,13 @@ namespace WindEditor
 		public amiprop(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -527,6 +572,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			NumSwitchestoCheck = -1;
+			FirstSwitchtoCheck = -1;
+			SwitchtoSet = -1;
+			Event = null;
+			TimeLimitHalfSeconds = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -652,6 +707,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			NumSwitchestoCheck = -1;
+			SwitchtoSet = -1;
+			FirstSwitchtoCheck = -1;
+			Event = null;
+			TimeLimitHalfSeconds = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -691,6 +756,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -719,6 +790,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -746,6 +823,12 @@ namespace WindEditor
 		public att(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -878,6 +961,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeHundreds = -1;
+			Path = null;
+			EnableSpawnSwitch = -1;
+			DisableSpawnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -905,6 +997,12 @@ namespace WindEditor
 		public bdk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -950,6 +1048,13 @@ namespace WindEditor
 		public bdkobj(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -1098,6 +1203,19 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
+			Unknown_8 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -1150,6 +1268,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			WateredSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -1177,6 +1301,12 @@ namespace WindEditor
 		public bgn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -1262,6 +1392,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -1306,6 +1444,13 @@ namespace WindEditor
 		public bita(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -1506,6 +1651,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_5 = -1;
+			Path = null;
+			EnableSpawnSwitch = -1;
+			DisableSpawnonDeathSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -1615,6 +1769,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			EnableSpawnSwitch = -1;
+			Path = null;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -1653,6 +1814,12 @@ namespace WindEditor
 		public bmdfoot(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -1715,6 +1882,14 @@ namespace WindEditor
 		public bmdhand(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -1838,6 +2013,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -1865,6 +2048,12 @@ namespace WindEditor
 		public boss_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -1927,6 +2116,14 @@ namespace WindEditor
 		public bpw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -2015,6 +2212,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Path = null;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2041,6 +2246,12 @@ namespace WindEditor
 		public bst(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ComponentType = -1;
 		}
 	}
 
@@ -2081,6 +2292,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2120,6 +2337,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2147,6 +2370,12 @@ namespace WindEditor
 		public canon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -2251,6 +2480,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeTens = -1;
+			DisableSpawnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2300,6 +2536,12 @@ namespace WindEditor
 		public dai(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -2397,6 +2639,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2435,6 +2687,12 @@ namespace WindEditor
 		public deku_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ItemPickupFlag = -1;
 		}
 	}
 
@@ -2492,6 +2750,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2530,6 +2795,12 @@ namespace WindEditor
 		public dk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -2690,6 +2961,18 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Switch1 = -1;
+			EventID = -1;
+			Switch2 = -1;
+			FromRoomNumber = -1;
+			ToRoomNumber = -1;
+			ShipID = -1;
+			Arg1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -2845,6 +3128,18 @@ namespace WindEditor
 		public door12(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Switch1 = -1;
+			EventID = -1;
+			Switch2 = -1;
+			FromRoomNumber = -1;
+			ToRoomNumber = -1;
+			ShipID = -1;
+			Arg1 = -1;
 		}
 	}
 
@@ -3014,6 +3309,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			OnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -3052,6 +3355,12 @@ namespace WindEditor
 		public fallrock_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -3097,6 +3406,13 @@ namespace WindEditor
 		public fan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -3159,6 +3475,14 @@ namespace WindEditor
 		public ff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -3265,6 +3589,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			WhichClone = -1;
+			SightRangeTens = -1;
+			DisableSpawnonDeathSwitch = -1;
+			FightinProgressSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -3292,6 +3625,12 @@ namespace WindEditor
 		public fgmahou(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -3389,6 +3728,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -3416,6 +3765,12 @@ namespace WindEditor
 		public floor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -3612,6 +3967,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			LinkCapturedExit = null;
+			Path = null;
+			EnableSpawnSwitch = -1;
+			DisableSpawnSwitch = -1;
+			PartnerCapturedExit = null;
+			SightRangeHundreds = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -3667,6 +4033,13 @@ namespace WindEditor
 		public ghostship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -3764,6 +4137,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -3809,6 +4192,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -3853,6 +4243,13 @@ namespace WindEditor
 		public goal_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -3915,6 +4312,14 @@ namespace WindEditor
 		public grass(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -4012,6 +4417,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			NumberofGyorgs = -1;
+			SightRangeThousands = -1;
+			EnableSpawnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4108,6 +4521,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4135,6 +4558,12 @@ namespace WindEditor
 		public hitobj(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -4283,6 +4712,19 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
+			Unknown_8 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4328,6 +4770,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4372,6 +4821,13 @@ namespace WindEditor
 		public hys(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -4435,6 +4891,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4479,6 +4943,13 @@ namespace WindEditor
 		public ikari(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -4619,6 +5090,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ItemPickupFlag = -1;
+			EnableSpawnSwitch = -1;
+			EnableActivationSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4646,6 +5125,12 @@ namespace WindEditor
 		public jbo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -4737,6 +5222,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4780,6 +5274,13 @@ namespace WindEditor
 		public kanban(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			MessageID = -1;
 		}
 	}
 
@@ -4842,6 +5343,14 @@ namespace WindEditor
 		public kantera(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -4938,6 +5447,16 @@ namespace WindEditor
 		public kb(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
 		}
 	}
 
@@ -5086,6 +5605,19 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchBit = -1;
+			Type = -1;
+			EventID = -1;
+			SwitchBit2 = -1;
+			FromRoomNumber = -1;
+			ToRoomNumber = -1;
+			ShipID = -1;
+			Arg1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5222,6 +5754,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Path = null;
+			EnableSpawnSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5266,6 +5805,13 @@ namespace WindEditor
 		public kita(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -5329,6 +5875,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5385,6 +5939,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5412,6 +5973,12 @@ namespace WindEditor
 		public knob00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -5457,6 +6024,13 @@ namespace WindEditor
 		public kokiie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -5542,6 +6116,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			NumberinGroup = -1;
+			PotSightRangeTens = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5569,6 +6150,12 @@ namespace WindEditor
 		public kt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -5648,6 +6235,15 @@ namespace WindEditor
 		public kui(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
 		}
 	}
 
@@ -5779,6 +6375,18 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5818,6 +6426,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5845,6 +6459,12 @@ namespace WindEditor
 		public kytag03(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -5908,6 +6528,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -5935,6 +6563,12 @@ namespace WindEditor
 		public kytag05(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -5975,6 +6609,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6002,6 +6642,12 @@ namespace WindEditor
 		public lamp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6031,6 +6677,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6058,6 +6710,12 @@ namespace WindEditor
 		public leaflift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6098,6 +6756,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6136,6 +6800,12 @@ namespace WindEditor
 		public machine(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6193,6 +6863,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6220,6 +6897,12 @@ namespace WindEditor
 		public mant(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6282,6 +6965,14 @@ namespace WindEditor
 		public mbdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -6362,6 +7053,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6406,6 +7106,13 @@ namespace WindEditor
 		public mflft(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -6554,6 +7261,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Path = null;
+			EnableSpawnSwitch = -1;
+			DisableSpawnonDeathSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6593,6 +7308,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6620,6 +7341,12 @@ namespace WindEditor
 		public msw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6734,6 +7461,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6761,6 +7499,12 @@ namespace WindEditor
 		public mtoge(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6807,6 +7551,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6851,6 +7602,13 @@ namespace WindEditor
 		public npc_ah(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -6897,6 +7655,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -6935,6 +7700,12 @@ namespace WindEditor
 		public npc_ba1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -6980,6 +7751,13 @@ namespace WindEditor
 		public npc_bj1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -7043,6 +7821,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7071,6 +7857,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7098,6 +7890,12 @@ namespace WindEditor
 		public npc_bms1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7155,6 +7953,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7194,6 +7999,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7221,6 +8032,12 @@ namespace WindEditor
 		public npc_cb1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7250,6 +8067,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7277,6 +8100,12 @@ namespace WindEditor
 		public npc_de1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7306,6 +8135,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7333,6 +8168,12 @@ namespace WindEditor
 		public npc_gk1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7379,6 +8220,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7406,6 +8254,12 @@ namespace WindEditor
 		public npc_hi1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7480,6 +8334,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7507,6 +8369,12 @@ namespace WindEditor
 		public npc_jb1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7563,6 +8431,13 @@ namespace WindEditor
 		public npc_kamome(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -7642,6 +8517,15 @@ namespace WindEditor
 		public npc_kf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
 		}
 	}
 
@@ -7744,6 +8628,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7771,6 +8664,12 @@ namespace WindEditor
 		public npc_km1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7817,6 +8716,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7844,6 +8750,12 @@ namespace WindEditor
 		public npc_kp1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -7945,6 +8857,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -7989,6 +8909,13 @@ namespace WindEditor
 		public npc_mk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -8051,6 +8978,14 @@ namespace WindEditor
 		public npc_mn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -8119,6 +9054,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8146,6 +9088,12 @@ namespace WindEditor
 		public npc_os(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -8191,6 +9139,13 @@ namespace WindEditor
 		public npc_p1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -8254,6 +9209,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8316,6 +9279,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8360,6 +9331,13 @@ namespace WindEditor
 		public npc_pf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -8406,6 +9384,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8433,6 +9418,12 @@ namespace WindEditor
 		public npc_pm1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -8479,6 +9470,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8523,6 +9521,13 @@ namespace WindEditor
 		public npc_rsh1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -8601,6 +9606,13 @@ namespace WindEditor
 		public npc_tc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -8703,6 +9715,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Path = null;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8730,6 +9748,12 @@ namespace WindEditor
 		public npc_ym1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -8776,6 +9800,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8804,6 +9835,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -8831,6 +9868,12 @@ namespace WindEditor
 		public npc_zl1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -8893,6 +9936,14 @@ namespace WindEditor
 		public nz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -8979,6 +10030,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeFives = -1;
+			MaximumNumberofRats = -1;
+			Unused = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9017,6 +10076,12 @@ namespace WindEditor
 		public obj_ajav(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -9108,6 +10173,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9135,6 +10209,12 @@ namespace WindEditor
 		public obj_apzl(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -9180,6 +10260,13 @@ namespace WindEditor
 		public obj_ashut(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -9260,6 +10347,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9324,6 +10420,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9368,6 +10470,13 @@ namespace WindEditor
 		public obj_barrel(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -9482,6 +10591,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9526,6 +10646,13 @@ namespace WindEditor
 		public obj_barrier(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -9640,6 +10767,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9667,6 +10805,12 @@ namespace WindEditor
 		public obj_bscurtain(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -9730,6 +10874,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -9774,6 +10926,13 @@ namespace WindEditor
 		public obj_buoyrace(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -9864,6 +11023,15 @@ namespace WindEditor
 		public obj_canon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
 		}
 	}
 
@@ -9978,6 +11146,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10057,6 +11236,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10107,6 +11295,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10134,6 +11328,12 @@ namespace WindEditor
 		public obj_doguu_demo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10163,6 +11363,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10190,6 +11396,12 @@ namespace WindEditor
 		public obj_drift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10230,6 +11442,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10257,6 +11475,12 @@ namespace WindEditor
 		public obj_eff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10286,6 +11510,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10313,6 +11543,12 @@ namespace WindEditor
 		public obj_eskban(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10342,6 +11578,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10370,6 +11612,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10397,6 +11645,12 @@ namespace WindEditor
 		public obj_firewall(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10511,6 +11765,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10538,6 +11803,12 @@ namespace WindEditor
 		public obj_ftree(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10600,6 +11871,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10661,6 +11938,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10699,6 +11982,12 @@ namespace WindEditor
 		public obj_hami2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10762,6 +12051,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10790,6 +12087,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10817,6 +12120,12 @@ namespace WindEditor
 		public obj_hat(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -10880,6 +12189,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10942,6 +12259,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -10997,6 +12322,13 @@ namespace WindEditor
 		public obj_hha(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -11077,6 +12409,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11143,6 +12484,13 @@ namespace WindEditor
 		public obj_hole(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -11240,6 +12588,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11284,6 +12642,13 @@ namespace WindEditor
 		public obj_homensmoke(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -11330,6 +12695,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoSet = -1;
+			Message = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11357,6 +12729,12 @@ namespace WindEditor
 		public obj_htetu1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -11386,6 +12764,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11413,6 +12797,12 @@ namespace WindEditor
 		public obj_iceisland(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -11582,6 +12972,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			PathtoFollow = null;
+			SalvageCorpPathtoFollow = null;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11627,6 +13028,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11655,6 +13063,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11682,6 +13096,12 @@ namespace WindEditor
 		public obj_kanat(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -11779,6 +13199,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11841,6 +13271,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11902,6 +13340,14 @@ namespace WindEditor
 		public obj_leaves(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -11970,6 +13416,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -11997,6 +13450,12 @@ namespace WindEditor
 		public obj_majyuu_door(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -12094,6 +13553,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12139,6 +13608,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12183,6 +13659,13 @@ namespace WindEditor
 		public obj_mknjd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -12239,6 +13722,13 @@ namespace WindEditor
 		public obj_monument(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -12353,6 +13843,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12432,6 +13933,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12459,6 +13969,12 @@ namespace WindEditor
 		public obj_msdan2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -12522,6 +14038,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12567,6 +14091,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12594,6 +14125,12 @@ namespace WindEditor
 		public obj_mshokki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -12674,6 +14211,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12712,6 +14258,12 @@ namespace WindEditor
 		public obj_ohatch(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -12769,6 +14321,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -12796,6 +14355,12 @@ namespace WindEditor
 		public obj_otble(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -12839,6 +14404,13 @@ namespace WindEditor
 		public obj_paper(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			MessageID = -1;
+			Type = -1;
 		}
 	}
 
@@ -12952,6 +14524,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13025,6 +14606,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13052,6 +14641,12 @@ namespace WindEditor
 		public obj_rcloud(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -13102,6 +14697,12 @@ namespace WindEditor
 		public obj_roten(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -13232,6 +14833,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			PathtoSearch = null;
+			SwitchtoCheck = -1;
+			SwitchtoSet = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13277,6 +14886,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13304,6 +14920,12 @@ namespace WindEditor
 		public obj_shmrgrd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoSet = -1;
 		}
 	}
 
@@ -13333,6 +14955,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13360,6 +14988,12 @@ namespace WindEditor
 		public obj_stair(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -13423,6 +15057,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13468,6 +15110,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoUnset = -1;
+			SwitchtoSet = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13512,6 +15161,13 @@ namespace WindEditor
 		public obj_swheavy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -13574,6 +15230,14 @@ namespace WindEditor
 		public obj_swlight(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -13716,6 +15380,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			EventtoStart = null;
+			SwitchtoSet = -1;
+			DisabledSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13743,6 +15415,12 @@ namespace WindEditor
 		public obj_table(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -13789,6 +15467,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13833,6 +15518,13 @@ namespace WindEditor
 		public obj_tenmado(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -13879,6 +15571,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -13923,6 +15622,13 @@ namespace WindEditor
 		public obj_timer(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			TimeLimitHalfSeconds = -1;
+			SwitchtoUnset = -1;
 		}
 	}
 
@@ -14003,6 +15709,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14081,6 +15796,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14125,6 +15847,13 @@ namespace WindEditor
 		public obj_tribox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -14205,6 +15934,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14244,6 +15982,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14271,6 +16015,12 @@ namespace WindEditor
 		public obj_vfan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -14310,6 +16060,12 @@ namespace WindEditor
 		public obj_vmc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -14361,6 +16117,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14400,6 +16162,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14427,6 +16195,12 @@ namespace WindEditor
 		public obj_vyasi(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -14742,6 +16516,19 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ExittoFirstPotinCycle = null;
+			ExittoSecondPotinCycle = null;
+			ExittoThirdPotinCycle = null;
+			TopUnblockedSwitch = -1;
+			UnusedExittoThisPot = null;
+			ExittoDestinationPot = null;
+			ThisUnlockedSwitch = -1;
+			DestinationUnlockedSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14792,6 +16579,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14819,6 +16612,12 @@ namespace WindEditor
 		public obj_ygush00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -14848,6 +16647,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -14875,6 +16680,12 @@ namespace WindEditor
 		public obj_zouK(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -14954,6 +16765,12 @@ namespace WindEditor
 		public oq(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeThousands = -1;
 		}
 	}
 
@@ -15085,6 +16902,18 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -15112,6 +16941,12 @@ namespace WindEditor
 		public pedestal(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -15180,6 +17015,13 @@ namespace WindEditor
 		public ph(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			HorizontalSightRangeHundreds = -1;
+			VerticalSightRangeHundreds = -1;
 		}
 	}
 
@@ -15348,6 +17190,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeHundreds = -1;
+			DisableRespawnSwitch = -1;
+			EnableSpawnSwitch = -1;
+			InitialSpawnDelay = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -15485,6 +17336,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeTens = -1;
+			Path = null;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -15512,6 +17370,12 @@ namespace WindEditor
 		public pz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -15574,6 +17438,14 @@ namespace WindEditor
 		public race_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -15665,6 +17537,13 @@ namespace WindEditor
 		public rd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			GuardedAreaRadius = -1;
+			EnableSpawnSwitch = -1;
 		}
 	}
 
@@ -15767,6 +17646,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -15857,6 +17745,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ItemID = -1;
+			Unknown1 = -1;
+			DuplicatePlacementID = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -15901,6 +17797,13 @@ namespace WindEditor
 		public salvage_tbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -15962,6 +17865,12 @@ namespace WindEditor
 		public shand(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -16025,6 +17934,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16069,6 +17986,13 @@ namespace WindEditor
 		public shop_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -16115,6 +18039,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16142,6 +18073,12 @@ namespace WindEditor
 		public shutter2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -16233,6 +18170,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16277,6 +18223,13 @@ namespace WindEditor
 		public sk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -16340,6 +18293,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16367,6 +18328,12 @@ namespace WindEditor
 		public spotbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -16430,6 +18397,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16491,6 +18466,14 @@ namespace WindEditor
 		public ssk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -16559,6 +18542,13 @@ namespace WindEditor
 		public sss(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SightRangeTens = -1;
+			EnableSpawnSwitch = -1;
 		}
 	}
 
@@ -16664,6 +18654,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			AmbushSightRangeTens = -1;
+			Unused = -1;
+			AmbushSwitch = -1;
+			DisableSpawnonDeathSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16691,6 +18690,12 @@ namespace WindEditor
 		public steam_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -16805,6 +18810,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16918,6 +18934,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -16962,6 +18989,13 @@ namespace WindEditor
 		public swattack(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -17032,6 +19066,13 @@ namespace WindEditor
 		public swc00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoSet = -1;
+			PrerequisiteSwitch = -1;
 		}
 	}
 
@@ -17162,6 +19203,16 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoSet = -1;
+			Event = null;
+			TimeLimitHalfSeconds = -1;
+			Unknown_5 = -1;
+			SwitchtoCheck = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17236,6 +19287,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ItemPickupFlag = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17280,6 +19337,13 @@ namespace WindEditor
 		public swpropeller(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -17343,6 +19407,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17387,6 +19459,13 @@ namespace WindEditor
 		public swtdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -17444,6 +19523,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17499,6 +19585,13 @@ namespace WindEditor
 		public tag_etc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -17621,6 +19714,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoSet = -1;
+			EnableSpawnSwitch = -1;
+			Event = null;
+			EnableSpawnEventBit = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17691,6 +19793,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			SwitchtoSet = -1;
+			EventBittoCheck = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17735,6 +19844,13 @@ namespace WindEditor
 		public tag_ghostship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 
@@ -17865,6 +19981,18 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			MessageID = -1;
+			Unknown_7 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -17926,6 +20054,14 @@ namespace WindEditor
 		public tag_island(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -18006,6 +20142,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18033,6 +20178,12 @@ namespace WindEditor
 		public tag_kf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -18175,6 +20326,18 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18254,6 +20417,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			MessageID = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18315,6 +20487,14 @@ namespace WindEditor
 		public tag_mk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -18428,6 +20608,17 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			MessageID = -1;
+			Unknown_6 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18456,6 +20647,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18483,6 +20680,12 @@ namespace WindEditor
 		public tag_ret(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -18545,6 +20748,14 @@ namespace WindEditor
 		public tag_so(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
 		}
 	}
 
@@ -18625,6 +20836,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18653,6 +20873,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -18680,6 +20906,12 @@ namespace WindEditor
 		public tama(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -18810,6 +21042,18 @@ namespace WindEditor
 		public tbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
 		}
 	}
 
@@ -19020,6 +21264,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			GuardedAreaRadiusTens = -1;
+			Path = null;
+			EnableSpawnSwitch = -1;
+			DisableSpawnonDeathSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19065,6 +21318,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19103,6 +21363,12 @@ namespace WindEditor
 		public tornado(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -19366,6 +21632,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			ItemPickupFlag = -1;
+			Unknown_6 = -1;
+			EnableSpawnActivationSwitch = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19411,6 +21685,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19439,6 +21720,12 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19466,6 +21753,12 @@ namespace WindEditor
 		public warpf(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -19523,6 +21816,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19550,6 +21850,12 @@ namespace WindEditor
 		public warphr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -19630,6 +21936,15 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19657,6 +21972,12 @@ namespace WindEditor
 		public warpmj(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -19703,6 +22024,13 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -19741,6 +22069,12 @@ namespace WindEditor
 		public windmill(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -19889,6 +22223,19 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
+			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
+			Unknown_6 = -1;
+			Unknown_7 = -1;
+			Unknown_8 = -1;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -20030,6 +22377,14 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			DisableSpawnonDeathSwitch = -1;
+			EnableSpawnSwitch = -1;
+			Path = null;
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -20057,6 +22412,12 @@ namespace WindEditor
 		public ygcwp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
 		}
 	}
 
@@ -20102,6 +22463,13 @@ namespace WindEditor
 		public ykgr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+			Unknown_2 = -1;
 		}
 	}
 

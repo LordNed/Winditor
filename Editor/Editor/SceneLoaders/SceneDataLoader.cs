@@ -187,6 +187,9 @@ namespace WindEditor
         [JsonProperty("Hidden")]
         public bool IsHidden { get; set; }
 
+        [JsonProperty("Default")]
+        public object DefaultValue { get; set; }
+
         [JsonProperty("ToolTip")]
         public string ToolTip { get; set; }
 
@@ -210,7 +213,7 @@ namespace WindEditor
 
         [JsonConstructor]
         public ActorBitfieldDescriptor(
-            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, string Tip, string Type, Dictionary<int, string> Vals, bool BoolDefault, int[] BoolNonDefaults, bool UpdModel
+            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, object defaultVal, string Tip, string Type, Dictionary<int, string> Vals, bool BoolDefault, int[] BoolNonDefaults, bool UpdModel
         )
         {
             FieldName = Name;
@@ -219,6 +222,7 @@ namespace WindEditor
             BitShift = Shift;
             CategoryName = Category;
             IsHidden = Hidden;
+            DefaultValue = defaultVal;
             ToolTip = Tip;
             DataType = Type;
             EnumValues = Vals;

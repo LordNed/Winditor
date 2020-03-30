@@ -463,6 +463,7 @@ namespace WindEditor.Editor.Modes
                 return;
 
             newNode.Transform.Position = GetNewEntityPositionFromCamera();
+            newNode.PopulateDefaultProperties();
 
             WDOMNode[] entitiesToCreate = { newNode };
             WDOMNode[] parents = { newNode.Parent };

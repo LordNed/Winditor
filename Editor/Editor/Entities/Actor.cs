@@ -15,5 +15,11 @@ namespace WindEditor
         {
             base.PostLoad();
         }
+
+        public override void PopulateDefaultProperties()
+        {
+            base.PopulateDefaultProperties();
+            EnemyNumber = -1;
+        }
     }
 }

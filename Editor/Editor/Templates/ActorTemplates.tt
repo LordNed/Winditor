@@ -50,6 +50,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
     ActorDataDescriptor descriptor = JsonConvert.DeserializeObject<ActorDataDescriptor>(File.ReadAllText(file));
 	string className = descriptor.ClassName;
 	string parentClassName = string.IsNullOrEmpty(descriptor.ParentClassOverride) ? "Actor" : descriptor.ParentClassOverride;
+	List<string> defaultValueSetters = new List<string>();
 #>
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class <#= className #> : <#= parentClassName #>
@@ -93,6 +94,15 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 					boolCanonicalIntRepresentationOfFalse = i;
 					break;
 				}
+			}
+
+			object defaultValue = field.DefaultValue;
+			if (defaultValue != null) {
+				defaultValueSetters.Add($"{fieldName} = {defaultValue};");
+			} else if (field.DataType == "Integer") {
+				defaultValueSetters.Add($"{fieldName} = -1;");
+			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
+				defaultValueSetters.Add($"{fieldName} = null;");
 			}
 
 			string bitMaskHex;
@@ -304,6 +314,23 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		{
 			
 		}
+<#
+		if (defaultValueSetters.Count > 0) {
+#>
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+<#			foreach(var defaultValueSetter in defaultValueSetters)
+			{
+#>
+			<#= defaultValueSetter #>
+<#			}
+#>
+		}
+<#
+		}
+#>
 	}
 
 <#

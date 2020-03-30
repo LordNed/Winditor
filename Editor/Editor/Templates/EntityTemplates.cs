@@ -29,6 +29,9 @@ namespace WindEditor
 
 		// This is called before writing data to the disk. Use this if you need to pre-process the data to be saved.
 		public virtual void PreSave() {}
+		
+		// Called when the user creates a new entity. Use this to specify custom logic for setting property default values.
+		public virtual void PopulateDefaultProperties() {}
 
 		public virtual void Load(EndianBinaryReader stream) {}
 		public virtual void Save(EndianBinaryWriter stream) {}
