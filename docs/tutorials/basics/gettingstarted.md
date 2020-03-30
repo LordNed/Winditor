@@ -22,9 +22,11 @@ Right click on "Disc" and choose "Extract Entire Disc..."
   <img src="./gettinstarted_entiredisc.png" alignment="center">
 </p>
 
-Select a location for the extracted files to be placed; remember this location - you'll need it later. Once Dolphin has finished extracting the files, you're done with this section. If you go to where the files were extracted, you will see that Dolphin has created two folders - `files` and `sys`. The `files` folder contains the game's resources, such as models, text, and maps; `sys` contains the game's executable, `main.dol`, along with other metadata about the game's disc.
+Select a location for the extracted files to be placed. **Remember this location - you'll need it later**.
 
-**Note**: We recommomend making a copy of the extracted files and making edits to that copy. Having an unmodified version of the game will make restoring broken files much easier.
+Once Dolphin has finished extracting the files, you're done with this section. If you go to where the files were extracted, you will see that Dolphin has created two folders - `files` and `sys`. The `files` folder contains the game's resources, such as models, text, and maps; `sys` contains the game's executable, `main.dol`, along with other metadata about the game's disc.
+
+**Note**: We recommend making a copy of the extracted files and making edits to that copy. Having an unmodified version of the game will make restoring broken files much easier.
 
 ### Downloading Winditor
 The "Latest Release" button at the top of this website will start a download of the most up-to-date version of Winditor. It will be in a typical ZIP file, which can be extracted in any way you wish.
