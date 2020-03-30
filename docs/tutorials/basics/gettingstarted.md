@@ -19,7 +19,7 @@ In the Properties dialog that pops up, click on the "Filesystem" tab on the far 
 Right click on "Disc" and choose "Extract Entire Disc..."
 
 <p align="center">
-  <img src="./gettingstarted_entiredisc.png" alignment="center">
+  <img src="./gettinstarted_entiredisc.png" alignment="center">
 </p>
 
 Select a location for the extracted files to be placed; remember this location - you'll need it later. Once Dolphin has finished extracting the files, you're done with this section. If you go to where the files were extracted, you will see that Dolphin has created two folders - `files` and `sys`. The `files` folder contains the game's resources, such as models, text, and maps; `sys` contains the game's executable, `main.dol`, along with other metadata about the game's disc.
