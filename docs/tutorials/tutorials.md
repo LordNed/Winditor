@@ -14,11 +14,13 @@ The [Terminology](basics/terminology.html) guide lists some common terms used in
 ### Importing a Visual Mesh
 The [Importing a Visual Mesh](basics/import_visual.html) tutorial explains how to import a visual mesh into the map.
 
+## Collision
+
+### Collision Editor
+The [Collision Editor](collision/collision.html) tutorial explains how to use Winditor's collision editor.
+
 ### Importing a Collision Mesh
 The [Importing a Collision Mesh](basics/import_collision.html) tutorial explains how to import a collision mesh into the map.
-
-## Collision Editing
-The [Collision Editor](collision/collision.html) tutorial explains how to use Winditor's collision editor.
 
 ## Other Tools
 
