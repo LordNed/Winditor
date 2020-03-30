@@ -22,7 +22,7 @@ Right click on "Disc" and choose "Extract Entire Disc..."
   <img src="./gettinstarted_entiredisc.png" alignment="center">
 </p>
 
-Select a location for the extracted files to be placed. **Remember this location - you'll need it later**.
+Select a location for the extracted files to be placed. **Remember this location - you'll need it later**. We recommend creating a new folder to store the extracted files.
 
 Once Dolphin has finished extracting the files, you're done with this section. If you go to where the files were extracted, you will see that Dolphin has created two folders - `files` and `sys`. The `files` folder contains the game's resources, such as models, text, and maps; `sys` contains the game's executable, `main.dol`, along with other metadata about the game's disc.
 
@@ -50,7 +50,7 @@ When you open Winditor, it should look like the image above. Before you start us
 The options that we are interested in are the first two:
 
 * **Game Root**: This is the path to the folder containing the game's `files` and `sys` directories, as extracted in the "Extracting the Files" section above. **Note that any edits are saved to this copy of the files**.
-* **Dolphin**: This is the path to an installation of Dolphin 5.0. There is no known restriction on versions, but we recommend using the latest nightly version.
+* **Dolphin**: This is the path to an installation of Dolphin 5.0. There is no known restriction on version, but we recommend using the latest nightly version.
 
 Setting both of these will allow you access to playtesting and any tools in the Tools menu. It will also allow Winditor to display actors with their proper models instead of displaying them as cubes. Click the "..." buttons by each option to open a folder selection window, then use it to choose the appropriate folders.
 
