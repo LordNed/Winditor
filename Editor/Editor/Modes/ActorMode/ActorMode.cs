@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Converters;
 using WindEditor.Serialization;
+using WindEditor.Collision;
+using OpenTK;
 
 namespace WindEditor.Editor.Modes
 {
@@ -460,6 +462,8 @@ namespace WindEditor.Editor.Modes
             if (newNode == null)
                 return;
 
+            newNode.Transform.Position = GetNewEntityPositionFromCamera();
+
             WDOMNode[] entitiesToCreate = { newNode };
             WDOMNode[] parents = { newNode.Parent };
 
@@ -478,11 +482,85 @@ namespace WindEditor.Editor.Modes
             if (EditorSelection.PrimarySelectedObject != null)
             {
                 var entity = EditorSelection.PrimarySelectedObject;
-                OpenTK.Vector3 entityPos = entity.Transform.Position;
+                Vector3 entityPos = entity.Transform.Position;
                 WCamera camera = World.GetFocusedSceneView().ViewCamera;
-                OpenTK.Vector3 newCameraPos = entityPos + OpenTK.Vector3.Transform(new OpenTK.Vector3(0.0f, 0.0f, 1000.0f), camera.Transform.Rotation);
+                Vector3 newCameraPos = entityPos + Vector3.Transform(new Vector3(0.0f, 0.0f, 1000.0f), camera.Transform.Rotation);
                 camera.Transform.Position = newCameraPos;
             }
+        }
+
+        private Vector3 GetNewEntityPositionFromCamera()
+        {
+            float distance = GetCollisionDistanceFromCamera();
+
+            if (distance < 0)
+            {
+                // If the camera is not looking at any collision triangle, use a sane default distance from the camera to spawn the actor at.
+                distance = 2000.0f;
+            }
+
+            WCamera camera = World.GetFocusedSceneView().ViewCamera;
+            Vector3 spawnPos = camera.Transform.Position + Vector3.Transform(new Vector3(0.0f, 0.0f, -distance), camera.Transform.Rotation);
+
+            return spawnPos;
+        }
+
+        private float GetCollisionDistanceFromCamera()
+        {
+            if (World.Map == null)
+                return -1;
+
+            List<WCollisionMesh> meshes;
+            if (World.Map.FocusedScene is WStage)
+            {
+                // If a stage is selected, raycast against the collision meshes for all rooms that are loaded.
+                meshes = new List<WCollisionMesh>();
+                foreach (var scene in World.Map.SceneList)
+                {
+                    meshes.AddRange(scene.GetChildrenOfType<WCollisionMesh>());
+                }
+            }
+            else
+            {
+                // If a room is selected, raycast against the collision mesh for only that room.
+                meshes = World.Map.FocusedScene.GetChildrenOfType<WCollisionMesh>();
+            }
+
+            if (meshes.Count == 0)
+                return -1;
+
+            WCamera camera = World.GetFocusedSceneView().ViewCamera;
+
+            Vector3 dir = Vector3.Transform(new Vector3(0.0f, 0.0f, -1.0f), camera.Transform.Rotation);
+            dir.Normalize();
+            FRay ray = new FRay(camera.Transform.Position, dir);
+
+            CollisionTriangle closestResult = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (var mesh in meshes)
+            {
+                foreach (var tri in mesh.Triangles)
+                {
+                    float dist = float.MaxValue;
+
+                    if (WMath.RayIntersectsTriangle(ray, tri.Vertices[1], tri.Vertices[0], tri.Vertices[2], true, out dist))
+                    {
+                        if (dist < closestDistance)
+                        {
+                            closestDistance = dist;
+                            closestResult = tri;
+                        }
+                    }
+                }
+            }
+
+            if (closestResult == null)
+            {
+                return -1.0f;
+            }
+
+            return closestDistance;
         }
 
         ~ActorMode()
