@@ -9,7 +9,7 @@
       "Type": "FixedLengthString",
       "Length": 8,
       "Category": "Spawn Properties",
-      "Editable": false
+      "Editable": true
     },
     {
       "Name": "Event Index",
@@ -21,7 +21,7 @@
       "Name": "Unknown 1",
       "Type": "Byte",
       "Category": "Unknowns",
-      "Editable": false
+      "Editable": true
     },
     {
       "Name": "Spawn Type",
@@ -47,7 +47,7 @@
       "Name": "Unknown 2",
       "Type": "Short",
       "Category": "Unknowns",
-      "Editable": "False"
+      "Editable": true
     },
     {
       "Name": "Y Rotation",
@@ -59,7 +59,7 @@
       "Name": "Unknown 3",
       "Type": "Byte",
       "Category": "Unknowns",
-      "Editable": "False"
+      "Editable": true
     },
     {
       "Name": "Spawn ID",
@@ -71,7 +71,7 @@
       "Name": "Unknown 4",
       "Type": "Short",
       "Category": "Unknowns",
-      "Editable": "False"
+      "Editable": true
     }
 	]
 }

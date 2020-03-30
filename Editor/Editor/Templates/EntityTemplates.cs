@@ -2645,7 +2645,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Spawn Properties", "Name", false)]
+		[WProperty("Spawn Properties", "Name", true)]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -2673,7 +2673,7 @@ namespace WindEditor
 
 		protected byte m_Unknown1;
 
-		[WProperty("Unknowns", "Unknown 1", false)]
+		[WProperty("Unknowns", "Unknown 1", true)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
@@ -2715,7 +2715,7 @@ namespace WindEditor
 
 		protected short m_Unknown2;
 
-		[WProperty("Unknowns", "Unknown 2", false)]
+		[WProperty("Unknowns", "Unknown 2", true)]
 		 public short Unknown2
 		{ 
 			get { return m_Unknown2; }
@@ -2729,7 +2729,7 @@ namespace WindEditor
 
 		protected byte m_Unknown3;
 
-		[WProperty("Unknowns", "Unknown 3", false)]
+		[WProperty("Unknowns", "Unknown 3", true)]
 		 public byte Unknown3
 		{ 
 			get { return m_Unknown3; }
@@ -2757,7 +2757,7 @@ namespace WindEditor
 
 		protected short m_Unknown4;
 
-		[WProperty("Unknowns", "Unknown 4", false)]
+		[WProperty("Unknowns", "Unknown 4", true)]
 		 public short Unknown4
 		{ 
 			get { return m_Unknown4; }
