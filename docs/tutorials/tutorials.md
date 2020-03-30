@@ -1,6 +1,9 @@
 ## Tutorials
 This page lists tutorials for varying aspects of Winditor, from actor placement to text editing.
 
+## Getting Started
+The [Getting Started](basics/gettingstarted.html) guide will help you set up Winditor.
+
 ## Basics
 The [Basics](basics/basics.html) tutorial will give you an overview of Winditor.
 
@@ -9,6 +12,9 @@ The [Importing a Visual Mesh](basics/import_visual.html) tutorial explains how t
 
 ### Importing a Collision Mesh
 The [Importing a Collision Mesh](basics/import_collision.html) tutorial explains how to import a collision mesh into the map.
+
+## Collision Editing
+The [Collision Editor](collision/collision.html) tutorial explains how to use Winditor's collision editor.
 
 <hr>
 <p align="center">
