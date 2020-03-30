@@ -24,7 +24,7 @@ The menu bar has three options:
   * **Save**: This saves the modified message data to the copy of the game specified by the Game Root property in the options menu. You can use the shortcut **ctrl + S** to quickly save the message data.
   * **Save as..**: This allows you to save your message data to another archive rather than replacing the original `bmgres.arc`.
 * **Edit**:
-  * **Add Message**: This adds a new message to the game's message list. It will use its own unique message ID and it will be placed in a location that does not change the indices in the list.
+  * **Add Message**: This adds a new message to the game's message list. It will use its own unique message ID and it will be placed in a location that does not change the order of the messages within the list.
 * **Help**
   
 **Note**: When there are changes to the data waiting to be saved, the file name in the window's title bar will have an asterisk (\*) in front of it.
