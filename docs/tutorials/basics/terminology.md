@@ -25,7 +25,7 @@ A flag is a type of variable in the game's memory used to indicate that somethin
 
 ## Parameters
 
-Although parameters are unique to each actor in the game, there are some common parameter that tend to be implemented for many different actors:
+Although parameters are unique to each actor in the game, there are some common types of parameters that tend to be implemented for many different actors:
 
 * **Death Switch**: The enemy will set this switch when it dies.
 * **Enable Spawn Switch**: The enemy will initially not spawn in, but once something sets this switch, the enemy will start to spawn.
