@@ -382,19 +382,10 @@ namespace WindEditor.Editor.Modes
 
             if (selected is SerializableDOMNode)
             {
-                SerializableDOMNode origNode = selected as SerializableDOMNode;
-                Type selType = selected.GetType();
-                newNode = (SerializableDOMNode)Activator.CreateInstance(selType, origNode.FourCC, World);
-                newNode.SetParent(selected.Parent);
-                newNode.Name = origNode.Name;
-                newNode.PostLoad();
-
-                if (origNode.Parent is WDOMLayeredGroupNode)
-                {
-                    newNode.Layer = origNode.Layer;
-                }
+                selected = selected.Parent;
             }
-            else if (selected is WDOMLayeredGroupNode)
+
+            if (selected is WDOMLayeredGroupNode)
             {
                 WActorCreatorWindow actorCreator = new WActorCreatorWindow();
 
