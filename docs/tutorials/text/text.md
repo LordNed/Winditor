@@ -27,7 +27,7 @@ The menu bar has three options:
   * **Add Message**: This adds a new message to the game's message list. It will use its own unique message ID and it will be placed in a location that does not change the order of the messages within the list.
 * **Help**
   
-**Note**: When there are changes to the data waiting to be saved, the file name in the window's title bar will have an asterisk (\*) in front of it.
+**Note**: When there are changes to the data waiting to be saved, the file name in the window's title bar will have an asterisk (\*) in front of it. Closing the text editor window without saving will not lose the changes you have made. They will be stored until you save them or try to close Winditor. Upon trying to exit Winditor, you will be presented with the option to save any lingering changes.
 
 ### Message View
 The Message View takes up the left side of the window, and consists of a search box and a message list. You can search for messages using the search box in three ways:
