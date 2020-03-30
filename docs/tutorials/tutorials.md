@@ -7,6 +7,9 @@ The [Getting Started](basics/gettingstarted.html) guide will help you set up Win
 ## Basics
 The [Basics](basics/basics.html) tutorial will give you an overview of Winditor.
 
+### Terminology
+The [Terminology](basics/terminology.html) guide lists some common terms used in creating maps for Wind Waker.
+
 ### Importing a Visual Mesh
 The [Importing a Visual Mesh](basics/import_visual.html) tutorial explains how to import a visual mesh into the map.
 
