@@ -5,7 +5,7 @@ This page lists tutorials for varying aspects of Winditor, from actor placement 
 The [Getting Started](basics/gettingstarted.html) guide will help you set up Winditor.
 
 ## Basics
-#### Overview
+### Overview
 The [Overview](basics/basics.html) guide will walk you through Winditor's main interface.
 
 ### Terminology
