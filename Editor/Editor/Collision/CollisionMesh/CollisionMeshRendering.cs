@@ -83,7 +83,7 @@ namespace WindEditor.Collision
             // EBO
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_ebo);
 
-            GL.DepthMask(false);
+            GL.DepthMask(true);
 
             DrawTris();
             DrawLines();
