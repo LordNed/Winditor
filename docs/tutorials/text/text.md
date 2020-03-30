@@ -15,7 +15,19 @@ To open the editor, go to Tools -> Text Editor:
   <img src="./texteditor.png" alignment="center">
 </p>
 
-The text editor is a single window with three components: the Message View, the Message Properties panel, and the Text Box.
+The text editor is a single window with four components: the menu bar, the Message View, the Message Properties panel, and the Text Box.
+
+### Menu Bar
+The menu bar has three options:
+
+* **File**
+  * **Save**: This saves the modified message data to the copy of the game specified by the Game Root property in the options menu. You can use the shortcut **ctrl + S** to quickly save the message data.
+  * **Save as..**: This allows you to save your message data to another archive rather than replacing the original `bmgres.arc`.
+* **Edit**:
+  * **Add Message**: This adds a new message to the game's message list. It will use its own unique message ID and it will be placed in a location that does not change the indices in the list.
+* **Help**
+  
+**Note**: When there are changes to the data waiting to be saved, the file name in the window's title bar will have an asterisk (\*) in front of it.
 
 ### Message View
 The Message View takes up the left side of the window, and consists of a search box and a message list. You can search for messages using the search box in three ways:
