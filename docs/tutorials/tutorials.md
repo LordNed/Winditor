@@ -19,6 +19,11 @@ The [Importing a Collision Mesh](basics/import_collision.html) tutorial explains
 ## Collision Editing
 The [Collision Editor](collision/collision.html) tutorial explains how to use Winditor's collision editor.
 
+## Other Tools
+
+### Text Editor
+[This guide](text/text.html) talks about Winditor's text editor.
+
 <hr>
 <p align="center">
   <a href="../index.html">Back</a>
