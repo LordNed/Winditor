@@ -40,6 +40,9 @@ namespace WindEditor
         public ICommand ExportCollisionCommand { get { return new RelayCommand(x => OnRequestExportCollision(), X => !(MainWorld.Map == null)); ; } }
         public ICommand ExportVisualMeshCommand { get { return new RelayCommand(x => OnRequestExportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
         public ICommand ImportIslandCommand { get { return new RelayCommand(x => OnRequestImportIsland(), X => !(MainWorld.Map == null)); ; } }
+        public ICommand TutorialsCommand { get { return new RelayCommand(x => OnRequestOpenTutorials()); ; } }
+        public ICommand IssuesCommand { get { return new RelayCommand(x => OnRequestReportIssue()); ; } }
+        public ICommand AboutCommand { get { return new RelayCommand(x => OnRequestReportIssue()); ; } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -849,6 +852,16 @@ namespace WindEditor
 
                 MainWorld.Map.SceneList.Add(newRoom);
             }
+        }
+
+        private void OnRequestOpenTutorials()
+        {
+            System.Diagnostics.Process.Start("https://lordned.github.io/Winditor/tutorials/tutorials.html");
+        }
+
+        private void OnRequestReportIssue()
+        {
+            System.Diagnostics.Process.Start("https://github.com/LordNed/Winditor/issues");
         }
     }
 }

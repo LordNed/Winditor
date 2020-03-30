@@ -65,7 +65,7 @@ namespace WindEditor.Minitors.Text
             {
                 string[] split_tag = tag.Split('=');
 
-                if (split_tag.Length < 2)
+                if (split_tag.Length < 2 || split_tag[1] == "")
                 {
                     return false;
                 }

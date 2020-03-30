@@ -38,6 +38,7 @@
                     <MenuItem Header="Add Message" Command="{Binding AddMessageCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Help">
+                    <MenuItem Header="Tutorial" Command="{Binding OpenTutorialCommand}"/>
                 </MenuItem>
             </Menu>
         </DockPanel>

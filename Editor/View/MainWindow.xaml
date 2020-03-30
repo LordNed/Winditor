@@ -154,6 +154,12 @@
                 <MenuItem Header="Inventory Settings"/>
             </MenuItem>
             <MenuItem Name="ToolsMenu" Header="_Tools"/>
+            <MenuItem Header="Help">
+                <MenuItem Header="Tutorials" Command="{Binding Path=WindEditor.TutorialsCommand}"/>
+                <MenuItem Header="Report an Issue" Command="{Binding Path=WindEditor.IssuesCommand}"/>
+                <Separator/>
+                <MenuItem Header="About Winditor" Command="{Binding Path=WindEditor.AboutCommand}"/>
+            </MenuItem>
         </Menu>
 
         <Menu Grid.Row="1">

@@ -105,6 +105,7 @@ namespace WindEditor.Minitors
         public ICommand SaveMessageDataCommand { get { return new RelayCommand(x => OnRequestSaveMessageData()); } }
         public ICommand SaveMessageDataAsCommand { get { return new RelayCommand(x => OnRequestSaveMessageDataAs()); } }
         public ICommand AddMessageCommand { get { return new RelayCommand(x => OnRequestAddMessage()); } }
+        public ICommand OpenTutorialCommand { get { return new RelayCommand(x => OnRequestOpenTutorial()); } }
 
         public List<Message> Messages
         {
@@ -308,6 +309,11 @@ namespace WindEditor.Minitors
 
             m_MinitorWindow.TextListView.SelectedItem = new_message;
             m_MinitorWindow.TextListView.ScrollIntoView(new_message);
+        }
+
+        private void OnRequestOpenTutorial()
+        {
+            System.Diagnostics.Process.Start("https://lordned.github.io/Winditor/tutorials/text/text.html");
         }
 
         private ushort GetHighestID()
