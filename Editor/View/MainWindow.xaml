@@ -26,7 +26,7 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.DeleteSelectionCommand}" Key="Delete"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}" Key="D" Modifiers="Shift"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}" Key="D" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.StartPlaytestCommand}" Key="P" Modifiers="Ctrl"/>
     </Window.InputBindings>
     <Window.DataContext>
