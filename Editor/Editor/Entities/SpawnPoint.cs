@@ -201,7 +201,7 @@ namespace WindEditor
                 Room = room.RoomIndex;
             }
 
-            // Automatically it the first unused spawn ID in this scene.
+            // Automatically assign it the first unused spawn ID in this scene.
             List<int> possibleSpawnIDs = Enumerable.Range(0, 256).ToList();
             List<SpawnPoint> otherSpawns = scene.GetChildrenOfType<SpawnPoint>();
             foreach (var spawn in otherSpawns)
