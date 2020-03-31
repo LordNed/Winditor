@@ -84,9 +84,6 @@
     <Reference Include="AssimpNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d51b391f59f42a6, processorArchitecture=MSIL">
       <HintPath>..\packages\AssimpNet.4.1.0\lib\net40\AssimpNet.dll</HintPath>
     </Reference>
-    <Reference Include="GameFormatReader">
-      <HintPath>..\lib\GameFormatReader.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <Private>True</Private>
@@ -1878,6 +1875,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\GameFormatReader\GameFormatReader.csproj">
+      <Project>{afce536d-92ff-4ee5-8536-731d2cd5fbca}</Project>
+      <Name>GameFormatReader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JStudio\JStudio.csproj">
       <Project>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</Project>
       <Name>JStudio</Name>

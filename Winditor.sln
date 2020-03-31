@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkDataProcessingScripts",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperBMDLib", "SuperBMDLib\SuperBMDLib.csproj", "{828BE5E5-9E98-46C9-B63E-D2D03322A825}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFormatReader", "GameFormatReader\GameFormatReader.csproj", "{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,22 @@ Global
 		{828BE5E5-9E98-46C9-B63E-D2D03322A825}.Release|x64.Build.0 = Release|Any CPU
 		{828BE5E5-9E98-46C9-B63E-D2D03322A825}.Release|x86.ActiveCfg = Release|Any CPU
 		{828BE5E5-9E98-46C9-B63E-D2D03322A825}.Release|x86.Build.0 = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|x64.Build.0 = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Debug|x86.Build.0 = Debug|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|x64.ActiveCfg = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|x64.Build.0 = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFCE536D-92FF-4EE5-8536-731D2CD5FBCA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
