@@ -26,7 +26,7 @@ namespace WindEditor.Editor.Modes
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
-        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity()); } }
+        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity(EntityFourCC as string)); } }
         public ICommand GoToObjectCommand { get { return new RelayCommand(x => GoToEntity()); } }
 
         private DockPanel m_ModeControlsDock;
@@ -372,48 +372,79 @@ namespace WindEditor.Editor.Modes
             ClearSelection();
         }
 
-        public void CreateEntity()
+        public void CreateEntity(string fourccStr)
         {
-            if (!EditorSelection.SingleObjectSelected)
+            if (fourccStr == null && !EditorSelection.SingleObjectSelected)
                 return;
 
-            WDOMNode selected = EditorSelection.PrimarySelectedObject;
             SerializableDOMNode newNode = null;
+            WDOMNode parentNode = null;
+            WDOMNode selected = EditorSelection.PrimarySelectedObject;
 
-            if (selected is SerializableDOMNode)
+            if (fourccStr != null)
             {
-                selected = selected.Parent;
-            }
-
-            if (selected is WDOMLayeredGroupNode)
-            {
-                WActorCreatorWindow actorCreator = new WActorCreatorWindow();
-
-                if (actorCreator.ShowDialog() == true && actorCreator.Descriptor != null)
+                // Creating an entity via the top menu.
+                FourCC fourcc = FourCCConversion.GetEnumFromString(fourccStr);
+                if (fourcc == FourCC.ACTR || fourcc == FourCC.SCOB || fourcc == FourCC.TRES)
                 {
-                    string actorName = actorCreator.Descriptor.ActorName;
-                    if (actorName == "")
-                        return;
-
-                    Type actorType = WResourceManager.GetTypeByName(actorName);
-                    if (actorType == typeof(Actor))
-                        return;
-
-                    WDOMLayeredGroupNode lyrNode = selected as WDOMLayeredGroupNode;
-                    string unlayedFourCC = lyrNode.FourCC.ToString();
-                    MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
-                    FourCC enumVal = FourCCConversion.GetEnumFromString(unlayedFourCC);
-
-                    newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, enumVal, World);
-                    newNode.SetParent(lyrNode);
-                    newNode.Name = actorName;
-                    newNode.Layer = layer;
-                    newNode.PostLoad();
+                    parentNode = World.Map.FocusedScene.GetChildrenOfType<WDOMLayeredGroupNode>().Find(x => x.FourCC == fourcc);
+                }
+                else
+                {
+                    parentNode = World.Map.FocusedScene.GetChildrenOfType<WDOMGroupNode>().Find(x => x.FourCC == fourcc);
                 }
             }
-            else if (selected is WDOMGroupNode)
+            else if (selected is SerializableDOMNode)
             {
-                WDOMGroupNode grpNode = selected as WDOMGroupNode;
+                // Creating an entity with an existing entity selected.
+                parentNode = selected.Parent;
+            } else
+            {
+                // Creating an entity with a group node selected.
+                parentNode = selected;
+            }
+
+            if (parentNode is WDOMLayeredGroupNode)
+            {
+                WDOMLayeredGroupNode lyrNode = parentNode as WDOMLayeredGroupNode;
+                Type actorType = null;
+                string actorName = null;
+
+                if (lyrNode.FourCC.ToString().StartsWith("TRE"))
+                {
+                    // Only allow treasure chests in TRES.
+                    actorType = typeof(TreasureChest);
+                    actorName = "takara";
+                } else
+                {
+                    WActorCreatorWindow actorCreator = new WActorCreatorWindow();
+
+                    if (actorCreator.ShowDialog() == true && actorCreator.Descriptor != null)
+                    {
+                        actorName = actorCreator.Descriptor.ActorName;
+                        if (actorName == "")
+                            return;
+
+                        actorType = WResourceManager.GetTypeByName(actorName);
+                    }
+                }
+
+                if (actorType == null || actorType == typeof(Actor))
+                    return;
+
+                string unlayedFourCC = lyrNode.FourCC.ToString();
+                MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
+                FourCC fourcc = FourCCConversion.GetEnumFromString(unlayedFourCC);
+
+                newNode = (SerializableDOMNode)Activator.CreateInstance(actorType, fourcc, World);
+                newNode.SetParent(lyrNode);
+                newNode.Name = actorName;
+                newNode.Layer = layer;
+                newNode.PostLoad();
+            }
+            else if (parentNode is WDOMGroupNode)
+            {
+                WDOMGroupNode grpNode = parentNode as WDOMGroupNode;
 
                 if (grpNode.FourCC == FourCC.ACTR || grpNode.FourCC == FourCC.SCOB || grpNode.FourCC == FourCC.TRES)
                     return;
