@@ -150,7 +150,7 @@ namespace WindEditor
             m_currentMap.LoadFromDirectory(folderPath, sourcePath);
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
 
-            m_ActorMode.OnBecomeActive();
+            SwitchToActorMode();
         }
 
         public void SaveMapToDirectory(string directory)
