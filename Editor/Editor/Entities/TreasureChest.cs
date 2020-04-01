@@ -47,7 +47,7 @@ namespace WindEditor
 
         private byte m_OpenFlagId;
 
-        [WProperty("Flags", "Open Flag ID", false)]
+        [WProperty("Flags", "Open Flag ID", true)]
         public byte OpenFlagId
         {
             get { return m_OpenFlagId; }
