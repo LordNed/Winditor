@@ -1,4 +1,4 @@
-﻿// 
+﻿
 using GameFormatReader.Common;
 using OpenTK;
 using System.ComponentModel;

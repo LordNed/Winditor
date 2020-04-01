@@ -1,7 +1,7 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="Newtonsoft.Json"#>
-// <#@ assembly name="$(ProjectDir)/../WCommon/lib/GameFormatReader.dll"#>
+<#@ assembly name="$(SolutionDir)/bin/Debug/x86/Winditor/GameFormatReader.dll"#>
 <#@ assembly name="$(TargetPath)"#>
 <#@ import namespace="Newtonsoft.Json" #>
 <#@ import namespace="WindEditor" #>
