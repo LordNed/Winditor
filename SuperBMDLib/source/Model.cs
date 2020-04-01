@@ -108,7 +108,7 @@ namespace SuperBMDLib
 
         public Model(Scene scene, Arguments args)
         {
-            EnsureOneMaterialPerMesh(scene);
+            EnsureOneMaterialPerMeshAndOneMeshPerMaterial(scene);
             SortMeshesByObjectNames(scene);
 
             if (args.rotate_model)
@@ -674,8 +674,9 @@ namespace SuperBMDLib
             }
         }
 
-        private void EnsureOneMaterialPerMesh(Scene scene)
+        private void EnsureOneMaterialPerMeshAndOneMeshPerMaterial(Scene scene)
         {
+            List<int> usedMaterialIndexes = new List<int>();
             foreach (Mesh mesh1 in scene.Meshes)
             {
                 foreach (Mesh mesh2 in scene.Meshes)
@@ -685,6 +686,12 @@ namespace SuperBMDLib
                         throw new Exception($"Mesh \"{mesh1.Name}\" has more than one material assigned to it. Currently only one material per mesh is supported.");
                     }
                 }
+
+                if (usedMaterialIndexes.Contains(mesh1.MaterialIndex))
+                {
+                    throw new Exception($"Material \"{scene.Materials[mesh1.MaterialIndex].Name}\" is used by more than one mesh. Each mesh must have a unique material. Try merging meshes that share a material.");
+                }
+                usedMaterialIndexes.Add(mesh1.MaterialIndex);
             }
         }
 

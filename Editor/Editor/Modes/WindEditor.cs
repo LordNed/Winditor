@@ -525,13 +525,21 @@ namespace WindEditor
                     return;
                 }
 
-                if (window.SceneNumber == 0)
+                try
                 {
-                    ImportVisualMeshToStage(window);
+                    if (window.SceneNumber == 0)
+                    {
+                        ImportVisualMeshToStage(window);
+                    }
+                    else
+                    {
+                        ImportVisualMeshToRoom(window);
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    ImportVisualMeshToRoom(window);
+                    MessageBox.Show(e.Message, "Mesh Import Error");
+                    return;
                 }
             }
         }
