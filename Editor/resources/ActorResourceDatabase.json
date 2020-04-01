@@ -1541,6 +1541,28 @@
     ]
   },
   {
+    "Name": "Big Octo",
+    "Archive": "Daiocta",
+    "Models": [
+      {
+        "Path": "bdlm/do_main1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.53333333333333333333333333333333
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Bubble",
     "Archive": "Bl",
     "Models": [

@@ -33,7 +33,7 @@
       "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "gy",
+      "Category": "Bomb Flower",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -43,7 +43,7 @@
       "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
-      "Category": "gy",
+      "Category": "Bomb Flower",
       "ToolTip": "",
       "DataType": "Integer"
     }

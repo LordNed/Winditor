@@ -2550,25 +2550,32 @@ namespace WindEditor
 	public partial class daiocta : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("daiocta", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public enum NumberofEyesEnum
+		{
+			Four_eyes = 0,
+			Eight_eyes = 1,
+			Twelve_eyes = 2,
+		}
+
+		[WProperty("Big Octo", "Number of Eyes", true, "", SourceScene.Room)]
+		public NumberofEyesEnum NumberofEyes
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (NumberofEyesEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("NumberofEyes");
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Big Octo", "Sight Range (Hundreds)", true, "The range within it will see the player and start the fight (not counting vertical distance).\nIf this is 255, it will default to 50 (5000 units) instead.\nIf this is less than 50, it will default to 50 (5000 units) instead.", SourceScene.Room)]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -2580,12 +2587,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Big Octo", "Post-Loss Spawn ID", true, "If the player loses the fight against the Big Octo, this spawn ID will be where in this room the player respawns from.\nIf this is 255, the normal behavior for respawning the player is used instead.", SourceScene.Room)]
+		public int PostLossSpawnID
 		{ 
 			get
 			{
@@ -2597,12 +2604,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("PostLossSpawnID");
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Big Octo", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -2614,24 +2621,29 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
-		[WProperty("daiocta", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Big Octo", "Death Event Waits for Great Fairy", true, "If this is checked, the cutscene played after the Big Octo is defeated will not end normally, and will instead wait for the Great Fairy's cutscene to start.\nIf there is no Great Fairy set up properly here, the game will softlock with no way to end the cutscene.", SourceScene.Room)]
+		public bool DeathEventWaitsforGreatFairy
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 1) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 0 : 1;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DeathEventWaitsforGreatFairy");
 			}
 		}
 
@@ -2644,11 +2656,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
+			SightRangeHundreds = -1;
+			PostLossSpawnID = -1;
+			DisableSpawnonDeathSwitch = -1;
 		}
 	}
 
