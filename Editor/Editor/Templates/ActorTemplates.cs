@@ -2438,6 +2438,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ColorType");
+				UpdateModel();
 			}
 		}
 

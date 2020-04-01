@@ -40,7 +40,8 @@
         13: "Dark and attacks instantly",
         14: "Yellow and attacks instantly",
         15: "Red and attacks instantly and more vulnerabilities",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Sight Range (Tens)",
