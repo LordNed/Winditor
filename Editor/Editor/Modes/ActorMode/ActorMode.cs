@@ -467,6 +467,8 @@ namespace WindEditor.Editor.Modes
             EditorSelection.ClearSelection();
             EditorSelection.AddToSelection(newNode);
             World.UndoStack.EndMacro();
+
+            OnSelectionChanged(); // Update the right sidebar to show the new entity's properties
         }
 
         public void GoToEntity()
