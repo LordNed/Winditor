@@ -3027,11 +3027,303 @@
     ]
   },
   {
+    "Name": "Piece of Heart",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdlm/vhkal.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Heart Container",
     "Archive": "Always",
     "Models": [
       {
         "Path": "bdlm/vhutl.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Recovery Fairy",
+    "Archive": "Always",
+    "Models": [
+      {
+        "Path": "bdl/fa.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Town Flower",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Sea Flower",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj01.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Exotic Flower",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj02.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Hero's Flag",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj03.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Big Catch Flag",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj04.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Big Sale Flag",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj05.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Pinwheel",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj06.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Sickle Moon Flag",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj07.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Skull Tower Idol",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj08.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Fountain Idol",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj09.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Postman Statue",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj10.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Shop Guru Statue",
+    "Archive": "Fdai",
+    "Models": [
+      {
+        "Path": "bdl/fdai.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      },
+      {
+        "Path": "bdl/fobj11.bdl",
         "Offset": {
           "X": 0.0,
           "Y": 0.0,
