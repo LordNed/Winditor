@@ -17,6 +17,7 @@ using WindEditor.Editor;
 using WindEditor.Editor.Modes;
 using System.Windows;
 using WindEditor.Collision;
+using System.Text.RegularExpressions;
 
 namespace WindEditor
 {
@@ -115,7 +116,9 @@ namespace WindEditor
 
                     foreach (var arc in files)
                     {
-                        if (!arc.EndsWith(".arc"))
+                        var filename = Path.GetFileName(arc);
+                        Regex reg = new Regex(@"Room\d+.arc", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                        if (!reg.IsMatch(filename))
                             continue;
 
                         VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
