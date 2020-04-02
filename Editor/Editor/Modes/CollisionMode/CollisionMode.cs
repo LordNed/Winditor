@@ -289,7 +289,7 @@ namespace WindEditor.Editor.Modes
 
         public void Update(WSceneView view)
         {
-            if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
+            if (WInput.GetMouseButton(0) && !WInput.GetMouseButton(1))
             {
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 var addedActor = Raycast(mouseRay);

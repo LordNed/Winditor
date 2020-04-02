@@ -15,9 +15,9 @@ namespace WindEditor
 
         public FAABox(Vector3 min, Vector3 max)
         {
-            Debug.Assert(min.X <= max.X);
-            Debug.Assert(min.Y <= max.Y);
-            Debug.Assert(min.Z <= max.Z);
+            //Debug.Assert(min.X <= max.X);
+            //Debug.Assert(min.Y <= max.Y);
+            //Debug.Assert(min.Z <= max.Z);
 
             m_min = min;
             m_max = max;
