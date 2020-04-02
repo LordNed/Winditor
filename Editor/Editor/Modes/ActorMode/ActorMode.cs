@@ -334,6 +334,8 @@ namespace WindEditor.Editor.Modes
                 EditorSelection.ClearSelection();
                 EditorSelection.AddToSelection(pastedEntities);
                 World.UndoStack.EndMacro();
+
+                OnSelectionChanged(); // Update the right sidebar to show the new entity's properties
             }
             foreach (SerializableDOMNode node in pastedEntities) {
                 node.IsSelected = true;
