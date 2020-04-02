@@ -117,7 +117,7 @@ namespace WindEditor
                     foreach (var arc in files)
                     {
                         var filename = Path.GetFileName(arc);
-                        Regex reg = new Regex(@"Room\d+.arc", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                        Regex reg = new Regex(@"(Stage|Room\d+).arc", RegexOptions.Compiled | RegexOptions.IgnoreCase);
                         if (!reg.IsMatch(filename))
                             continue;
 
