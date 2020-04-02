@@ -342,7 +342,7 @@ namespace WindEditor.Editor.Modes
 
         private void DeleteSelection()
         {
-            WDOMNode[] entitiesToDelete = EditorSelection.SelectedObjects.ToArray();
+            WDOMNode[] entitiesToDelete = EditorSelection.SelectedObjects.Where(x => x is SerializableDOMNode).ToArray();
 
             World.UndoStack.BeginMacro($"Delete entities");
             var undoAction = new WDeleteEntitiesAction(entitiesToDelete);
