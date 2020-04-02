@@ -160,6 +160,37 @@ namespace WindEditor.Serialization
                             prop.SetValue(newNode, path);
                         }
                     }
+                    else if (prop.PropertyType == typeof(ExitData))
+                    {
+                        int exitIndex = (int)jsonValue;
+
+                        WScene scene;
+                        SourceScene source_scene = (SourceScene)prop.CustomAttributes.ToArray()[0].ConstructorArguments[4].Value;
+                        if (source_scene == SourceScene.Stage)
+                        {
+                            scene = m_world.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WScene;
+                        }
+                        else
+                        {
+                            WDOMNode cur_object = m_parent;
+                            while (cur_object.Parent != null)
+                            {
+                                cur_object = cur_object.Parent;
+                            }
+                            scene = cur_object as WScene;
+                        }
+                        List<ExitData> exitsList = scene.GetChildrenOfType<ExitData>();
+
+                        if (exitIndex < 0)
+                        {
+                            prop.SetValue(newNode, null);
+                        }
+                        else if (exitIndex < exitsList.Count)
+                        {
+                            ExitData exit = exitsList[exitIndex];
+                            prop.SetValue(newNode, exit);
+                        }
+                    }
                     else
                     {
                         var value = Convert.ChangeType(jsonValue, prop.PropertyType);
@@ -213,6 +244,25 @@ namespace WindEditor.Serialization
                     List<Path_v2> pathsList = cur_object.GetChildrenOfType<Path_v2>();
 
                     propValue = pathsList.IndexOf(propValue as Path_v2);
+                } else if (prop.PropertyType == typeof(ExitData))
+                {
+                    WScene scene;
+                    SourceScene source_scene = (SourceScene)prop.CustomAttributes.ToArray()[0].ConstructorArguments[4].Value;
+                    if (source_scene == SourceScene.Stage)
+                    {
+                        scene = m_world.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WScene;
+                    } else
+                    {
+                        WDOMNode cur_object = node;
+                        while (cur_object.Parent != null)
+                        {
+                            cur_object = cur_object.Parent;
+                        }
+                        scene = cur_object as WScene;
+                    }
+                    List<ExitData> exitsList = scene.GetChildrenOfType<ExitData>();
+
+                    propValue = exitsList.IndexOf(propValue as ExitData);
                 }
 
                 objPropsDict[prop.Name] = propValue;
