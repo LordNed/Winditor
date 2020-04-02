@@ -115,7 +115,7 @@
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectAllCommand}"/>
-                <MenuItem Header="Select _None" InputGestureText="Shift + D" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}"/>
+                <MenuItem Header="Select _None" InputGestureText="Ctrl + D" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}"/>
             </MenuItem>
             <MenuItem Header="Create">
                 <MenuItem Header="Actor" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="ACTR"/>
