@@ -14,7 +14,7 @@ namespace WindEditor
 		// Shit that's actually type safe
 		public Action OnSelectionChanged;
 
-		public T PrimarySelectedObject { get { if (SelectedObjects.Count == 1) { return SelectedObjects[0]; } return default(T); } }
+		public T PrimarySelectedObject { get { if (SelectedObjects.Count >= 1) { return SelectedObjects[0]; } return default(T); } }
 		public List<T> SelectedObjects { get; protected set; }
 		public bool SingleObjectSelected { get { return SelectedObjects.Count == 1; } }
 
