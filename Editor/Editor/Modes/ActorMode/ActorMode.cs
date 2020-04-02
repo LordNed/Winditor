@@ -344,7 +344,17 @@ namespace WindEditor.Editor.Modes
 
         private void DeleteSelection()
         {
-            WDOMNode[] entitiesToDelete = EditorSelection.SelectedObjects.Where(x => x is SerializableDOMNode).ToArray();
+            WDOMNode[] entitiesToDelete;
+            if (EditorSelection.SingleObjectSelected && EditorSelection.PrimarySelectedObject is WDOMGroupNode)
+            {
+                // If a group and nothing else is selected, delete all children in the group.
+                entitiesToDelete = EditorSelection.PrimarySelectedObject.GetChildrenOfType<SerializableDOMNode>().ToArray();
+            }
+            else
+            {
+                // Otherwise delete all selected entities.
+                entitiesToDelete = EditorSelection.SelectedObjects.Where(x => x is SerializableDOMNode).ToArray();
+            }
 
             World.UndoStack.BeginMacro($"Delete entities");
             var undoAction = new WDeleteEntitiesAction(entitiesToDelete);
