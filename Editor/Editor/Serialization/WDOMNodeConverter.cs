@@ -150,9 +150,14 @@ namespace WindEditor.Serialization
                         }
                         List<Path_v2> pathsList = cur_object.GetChildrenOfType<Path_v2>();
 
-                        if (pathIndex < pathsList.Count)
+                        if (pathIndex < 0)
+                        {
+                            prop.SetValue(newNode, null);
+                        }
+                        else if (pathIndex < pathsList.Count)
                         {
                             Path_v2 path = pathsList[pathIndex];
+                            prop.SetValue(newNode, path);
                         }
                     }
                     else
