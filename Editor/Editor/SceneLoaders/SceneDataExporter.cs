@@ -185,8 +185,10 @@ namespace WindEditor
             if (actorCategories.ContainsKey(FourCC.PATH))
             {
                 var v1_paths = actorCategories[FourCC.PATH];
-                var v1_points = new List<SerializableDOMNode>();
+                List<SerializableDOMNode> v1_points;
                 actorCategories.TryGetValue(FourCC.PPNT, out v1_points);
+                if (v1_points == null)
+                    v1_points = new List<SerializableDOMNode>();
 
                 foreach (WDOMNode path_v1 in v1_paths)
                 {
@@ -198,8 +200,10 @@ namespace WindEditor
             if (actorCategories.ContainsKey(FourCC.RPAT))
             {
                 var v2_paths = actorCategories[FourCC.RPAT];
-                var v2_points = new List<SerializableDOMNode>();
+                List<SerializableDOMNode> v2_points;
                 actorCategories.TryGetValue(FourCC.RPPN, out v2_points);
+                if (v2_points == null)
+                    v2_points = new List<SerializableDOMNode>();
 
                 foreach (WDOMNode path_v2 in v2_paths)
                 {
