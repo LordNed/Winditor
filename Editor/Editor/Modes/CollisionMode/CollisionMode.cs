@@ -301,6 +301,9 @@ namespace WindEditor.Editor.Modes
                 bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
                 bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
 
+                if (ctrlPressed && !WInput.GetMouseButtonDown(0))
+                    return;
+
                 if (!ctrlPressed & !shiftPressed)
                 {
                     ClearSelection();
