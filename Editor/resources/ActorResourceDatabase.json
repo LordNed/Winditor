@@ -495,6 +495,34 @@
     ]
   },
   {
+    "Name": "Pulley Lift",
+    "Archive": "Klft",
+    "Models": [
+      {
+        "Path": "bdlm/lift_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Pulley Lift Control",
+    "Archive": "Klft",
+    "Models": [
+      {
+        "Path": "bdlm/vpbot_00.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Breakable Jug",
     "Archive": "Mshokki",
     "Models": [
