@@ -345,7 +345,7 @@ namespace WindEditor.Editor.Modes
         private void DeleteSelection()
         {
             WDOMNode[] entitiesToDelete;
-            if (EditorSelection.SingleObjectSelected && EditorSelection.PrimarySelectedObject is WDOMGroupNode)
+            if (EditorSelection.SingleObjectSelected && (EditorSelection.PrimarySelectedObject is WDOMGroupNode || EditorSelection.PrimarySelectedObject is WDOMLayeredGroupNode))
             {
                 // If a group and nothing else is selected, delete all children in the group.
                 entitiesToDelete = EditorSelection.PrimarySelectedObject.GetChildrenOfType<SerializableDOMNode>().ToArray();
