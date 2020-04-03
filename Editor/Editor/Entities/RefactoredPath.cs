@@ -71,6 +71,22 @@ namespace WindEditor
             }
         }
 
+        public List<PathPoint_v2> GetPoints()
+        {
+            List<PathPoint_v2> points = new List<PathPoint_v2>();
+
+            PathPoint_v2 nextPoint = FirstNode;
+            while (nextPoint != null)
+            {
+                points.Add(nextPoint);
+                nextPoint = nextPoint.NextNode;
+                if (nextPoint == FirstNode)
+                    break; // Prevent infinite loops
+            }
+
+            return points;
+        }
+
         public void SetNodeOffset(List<SerializableDOMNode> points)
         {
         	int first_index = points.IndexOf(FirstNode);
@@ -82,15 +98,7 @@ namespace WindEditor
 
             m_FirstEntryOffset = first_index * 16;
 
-            m_NumberofPoints = 0;
-            PathPoint_v2 nextPoint = (PathPoint_v2)FirstNode;
-            while (nextPoint != null)
-            {
-                m_NumberofPoints++;
-                nextPoint = nextPoint.NextNode;
-                if (nextPoint == FirstNode)
-                    break; // Prevent infinite loops
-            }
+            m_NumberofPoints = (short)GetPoints().Count;
         }
     }
 }
