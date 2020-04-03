@@ -86,7 +86,8 @@
         61: "Unknown 61",
         62: "Unknown 62",
         63: "Normal",
-      }
+      },
+      "Default": "Normal"
     },
     {
       "Name": "Unknown_3",

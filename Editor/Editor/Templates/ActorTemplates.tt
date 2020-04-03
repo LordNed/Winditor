@@ -96,15 +96,6 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				}
 			}
 
-			object defaultValue = field.DefaultValue;
-			if (defaultValue != null) {
-				defaultValueSetters.Add($"{fieldName} = {defaultValue};");
-			} else if (field.DataType == "Integer") {
-				defaultValueSetters.Add($"{fieldName} = -1;");
-			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
-				defaultValueSetters.Add($"{fieldName} = null;");
-			}
-
 			string bitMaskHex;
 			string valueSourceType;
 			if (valueSource.Contains("Auxillary")) {
@@ -178,6 +169,19 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				default:
 					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 					break;
+			}
+
+			object defaultValue = field.DefaultValue;
+			if (defaultValue != null) {
+				if (field.DataType == "Enum") {
+					defaultValueSetters.Add($"{fieldName} = {dataType}.{defaultValue};");
+				} else {
+					defaultValueSetters.Add($"{fieldName} = {defaultValue};");
+				}
+			} else if (field.DataType == "Integer") {
+				defaultValueSetters.Add($"{fieldName} = -1;");
+			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
+				defaultValueSetters.Add($"{fieldName} = null;");
 			}
 #>
 <#		 // We hide padding and other fields that the user doesn't need to see/change.

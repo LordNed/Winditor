@@ -21760,6 +21760,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
+			BehaviorType = BehaviorTypeEnum.Normal;
 			ItemPickupFlag = -1;
 			Unknown_6 = -1;
 			EnableSpawnActivationSwitch = -1;
