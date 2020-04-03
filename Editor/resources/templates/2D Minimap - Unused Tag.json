@@ -13,6 +13,6 @@
 		{"Name" : "Unknown", "Type" : "Byte"},
 		{"Name" : "Map Image Index", "Type" : "Byte"},
 		{"Name" : "Unknown 2", "Type" : "Byte"},
-		{"Name" : "Padding", "Type" : "Byte"}
+		{"Name" : "Unknown 3", "Type" : "Byte"}
 	]
 }

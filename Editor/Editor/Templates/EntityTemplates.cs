@@ -189,16 +189,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding;
+		protected byte m_Unknown3;
 
-		[WProperty("Misc.", "Padding", true)]
-		 public byte Padding
+		[WProperty("Misc.", "Unknown 3", true)]
+		 public byte Unknown3
 		{ 
-			get { return m_Padding; }
+			get { return m_Unknown3; }
 			set
 			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
+				m_Unknown3 = value;
+				OnPropertyChanged("Unknown3");
 			}
 		}
 				
@@ -217,7 +217,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -232,7 +232,7 @@ namespace WindEditor
 			m_Unknown = stream.ReadByte(); 
 			m_MapImageIndex = stream.ReadByte(); 
 			m_Unknown2 = stream.ReadByte(); 
-			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			m_Unknown3 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -251,7 +251,7 @@ namespace WindEditor
 			stream.Write((byte)Unknown);
 			stream.Write((byte)MapImageIndex);
 			stream.Write((byte)Unknown2);
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown3);
 		}
 	}
 
@@ -399,16 +399,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding;
+		protected byte m_Unknown3;
 
-		[WProperty("Misc.", "Padding", true)]
-		 public byte Padding
+		[WProperty("Misc.", "Unknown 3", true)]
+		 public byte Unknown3
 		{ 
-			get { return m_Padding; }
+			get { return m_Unknown3; }
 			set
 			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
+				m_Unknown3 = value;
+				OnPropertyChanged("Unknown3");
 			}
 		}
 				
@@ -427,7 +427,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -442,7 +442,7 @@ namespace WindEditor
 			m_Unknown = stream.ReadByte(); 
 			m_MapImageIndex = stream.ReadByte(); 
 			m_Unknown2 = stream.ReadByte(); 
-			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			m_Unknown3 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -461,7 +461,7 @@ namespace WindEditor
 			stream.Write((byte)Unknown);
 			stream.Write((byte)MapImageIndex);
 			stream.Write((byte)Unknown2);
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown3);
 		}
 	}
 
@@ -552,13 +552,25 @@ namespace WindEditor
 	public partial class CameraViewpoint_v1 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected short m_Padding;
+		protected short m_Unknown1;
+
+		[WProperty("Misc.", "Unknown 1", true)]
+		 public short Unknown1
+		{ 
+			get { return m_Unknown1; }
+			set
+			{
+				m_Unknown1 = value;
+				OnPropertyChanged("Unknown1");
+			}
+		}
 				
 
 
 		// Constructor
 		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -567,7 +579,7 @@ namespace WindEditor
 			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
-			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+			m_Unknown1 = stream.ReadInt16(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -580,7 +592,7 @@ namespace WindEditor
 			stream.Write(WMath.RotationFloatToShort(originalRot.X));
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
-			stream.Write((short)0); // Padding
+			stream.Write((short)Unknown1);
 		}
 	}
 
@@ -588,13 +600,25 @@ namespace WindEditor
 	public partial class CameraViewpoint_v2 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected short m_Padding;
+		protected short m_Unknown1;
+
+		[WProperty("Misc.", "Unknown 1", true)]
+		 public short Unknown1
+		{ 
+			get { return m_Unknown1; }
+			set
+			{
+				m_Unknown1 = value;
+				OnPropertyChanged("Unknown1");
+			}
+		}
 				
 
 
 		// Constructor
 		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -603,7 +627,7 @@ namespace WindEditor
 			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
-			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+			m_Unknown1 = stream.ReadInt16(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -616,7 +640,7 @@ namespace WindEditor
 			stream.Write(WMath.RotationFloatToShort(originalRot.X));
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
-			stream.Write((short)0); // Padding
+			stream.Write((short)Unknown1);
 		}
 	}
 
@@ -652,20 +676,6 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding1;
-
-		[WProperty("Misc.", "Padding 1", true)]
-		 public byte Padding1
-		{ 
-			get { return m_Padding1; }
-			set
-			{
-				m_Padding1 = value;
-				OnPropertyChanged("Padding1");
-			}
-		}
-				
-
 		protected byte m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", true)]
@@ -680,22 +690,36 @@ namespace WindEditor
 		}
 				
 
+		protected byte m_Unknown2;
+
+		[WProperty("Misc.", "Unknown 2", true)]
+		 public byte Unknown2
+		{ 
+			get { return m_Unknown2; }
+			set
+			{
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
+			}
+		}
+				
+
 
 		// Constructor
 		public CameraType_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Type", TargetProperties = new string[] { "CameraType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_CameraType = stream.ReadString(16).Trim(new[] { '\0' }); 
 			m_CameraPointIndex = stream.ReadInt16(); 
-			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
 			m_Unknown1 = stream.ReadByte(); 
+			m_Unknown2 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -706,8 +730,8 @@ namespace WindEditor
 
 			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((short)CameraPointIndex);
-			stream.Write((byte)0); // Padding
 			stream.Write((byte)Unknown1);
+			stream.Write((byte)Unknown2);
 		}
 	}
 
@@ -1721,30 +1745,30 @@ namespace WindEditor
 		protected byte m_SkyboxPaletteIndex;
 				
 
-		protected byte m_Padding1;
+		protected byte m_Unknown4;
 
-		[WProperty("Misc.", "Padding 1", true)]
-		 public byte Padding1
+		[WProperty("Misc.", "Unknown 4", true)]
+		 public byte Unknown4
 		{ 
-			get { return m_Padding1; }
+			get { return m_Unknown4; }
 			set
 			{
-				m_Padding1 = value;
-				OnPropertyChanged("Padding1");
+				m_Unknown4 = value;
+				OnPropertyChanged("Unknown4");
 			}
 		}
 				
 
-		protected byte m_Padding2;
+		protected byte m_Unknown5;
 
-		[WProperty("Misc.", "Padding 2", true)]
-		 public byte Padding2
+		[WProperty("Misc.", "Unknown 5", true)]
+		 public byte Unknown5
 		{ 
-			get { return m_Padding2; }
+			get { return m_Unknown5; }
 			set
 			{
-				m_Padding2 = value;
-				OnPropertyChanged("Padding2");
+				m_Unknown5 = value;
+				OnPropertyChanged("Unknown5");
 			}
 		}
 				
@@ -1792,8 +1816,8 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Door Backfill", TargetProperties = new string[] { "DoorBackfill"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Color", TargetProperties = new string[] { "FogColor"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Far Plane", TargetProperties = new string[] { "FogFarPlane"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Near Plane", TargetProperties = new string[] { "FogNearPlane"} });
 		}
@@ -1812,8 +1836,8 @@ namespace WindEditor
 			m_Unknown3 = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
 			m_FogColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
 			m_SkyboxPaletteIndex = stream.ReadByte(); 
-			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
-			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
+			m_Unknown4 = stream.ReadByte(); 
+			m_Unknown5 = stream.ReadByte(); 
 			m_FogFarPlane = stream.ReadSingle(); 
 			m_FogNearPlane = stream.ReadSingle(); 
 		}
@@ -1836,8 +1860,8 @@ namespace WindEditor
 			stream.Write((byte)(Unknown3.R*255)); stream.Write((byte)(Unknown3.G*255)); stream.Write((byte)(Unknown3.B*255));
 			stream.Write((byte)(FogColor.R*255)); stream.Write((byte)(FogColor.G*255)); stream.Write((byte)(FogColor.B*255));
 			stream.Write((byte)m_SkyboxPaletteIndex);
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown4);
+			stream.Write((byte)Unknown5);
 			stream.Write((float)FogFarPlane);
 			stream.Write((float)FogNearPlane);
 		}
@@ -1973,44 +1997,44 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding1;
+		protected byte m_Unknown5;
 
-		[WProperty("Misc.", "Padding 1", true)]
-		 public byte Padding1
+		[WProperty("Misc.", "Unknown 5", true)]
+		 public byte Unknown5
 		{ 
-			get { return m_Padding1; }
+			get { return m_Unknown5; }
 			set
 			{
-				m_Padding1 = value;
-				OnPropertyChanged("Padding1");
+				m_Unknown5 = value;
+				OnPropertyChanged("Unknown5");
 			}
 		}
 				
 
-		protected byte m_Padding2;
+		protected byte m_Unknown6;
 
-		[WProperty("Misc.", "Padding 2", true)]
-		 public byte Padding2
+		[WProperty("Misc.", "Unknown 6", true)]
+		 public byte Unknown6
 		{ 
-			get { return m_Padding2; }
+			get { return m_Unknown6; }
 			set
 			{
-				m_Padding2 = value;
-				OnPropertyChanged("Padding2");
+				m_Unknown6 = value;
+				OnPropertyChanged("Unknown6");
 			}
 		}
 				
 
-		protected byte m_Padding3;
+		protected byte m_Unknown7;
 
-		[WProperty("Misc.", "Padding 3", true)]
-		 public byte Padding3
+		[WProperty("Misc.", "Unknown 7", true)]
+		 public byte Unknown7
 		{ 
-			get { return m_Padding3; }
+			get { return m_Unknown7; }
 			set
 			{
-				m_Padding3 = value;
-				OnPropertyChanged("Padding3");
+				m_Unknown7 = value;
+				OnPropertyChanged("Unknown7");
 			}
 		}
 				
@@ -2028,9 +2052,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Sky Color", TargetProperties = new string[] { "SkyColor"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "False Sea Color", TargetProperties = new string[] { "FalseSeaColor"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Horizon Color", TargetProperties = new string[] { "HorizonColor"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2044,9 +2068,9 @@ namespace WindEditor
 			m_SkyColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
 			m_FalseSeaColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
 			m_HorizonColor = new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f); 
-			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
-			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
-			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+			m_Unknown5 = stream.ReadByte(); 
+			m_Unknown6 = stream.ReadByte(); 
+			m_Unknown7 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -2064,9 +2088,9 @@ namespace WindEditor
 			stream.Write((byte)(SkyColor.R*255)); stream.Write((byte)(SkyColor.G*255)); stream.Write((byte)(SkyColor.B*255));
 			stream.Write((byte)(FalseSeaColor.R*255)); stream.Write((byte)(FalseSeaColor.G*255)); stream.Write((byte)(FalseSeaColor.B*255));
 			stream.Write((byte)(HorizonColor.R*255)); stream.Write((byte)(HorizonColor.G*255)); stream.Write((byte)(HorizonColor.B*255));
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown5);
+			stream.Write((byte)Unknown6);
+			stream.Write((byte)Unknown7);
 		}
 	}
 
@@ -2247,44 +2271,44 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding1;
+		protected byte m_Unknown6;
 
-		[WProperty("Misc.", "Padding 1", true)]
-		 public byte Padding1
+		[WProperty("Misc.", "Unknown 6", true)]
+		 public byte Unknown6
 		{ 
-			get { return m_Padding1; }
+			get { return m_Unknown6; }
 			set
 			{
-				m_Padding1 = value;
-				OnPropertyChanged("Padding1");
+				m_Unknown6 = value;
+				OnPropertyChanged("Unknown6");
 			}
 		}
 				
 
-		protected byte m_Padding2;
+		protected byte m_Unknown7;
 
-		[WProperty("Misc.", "Padding 2", true)]
-		 public byte Padding2
+		[WProperty("Misc.", "Unknown 7", true)]
+		 public byte Unknown7
 		{ 
-			get { return m_Padding2; }
+			get { return m_Unknown7; }
 			set
 			{
-				m_Padding2 = value;
-				OnPropertyChanged("Padding2");
+				m_Unknown7 = value;
+				OnPropertyChanged("Unknown7");
 			}
 		}
 				
 
-		protected byte m_Padding3;
+		protected byte m_Unknown8;
 
-		[WProperty("Misc.", "Padding 3", true)]
-		 public byte Padding3
+		[WProperty("Misc.", "Unknown 8", true)]
+		 public byte Unknown8
 		{ 
-			get { return m_Padding3; }
+			get { return m_Unknown8; }
 			set
 			{
-				m_Padding3 = value;
-				OnPropertyChanged("Padding3");
+				m_Unknown8 = value;
+				OnPropertyChanged("Unknown8");
 			}
 		}
 				
@@ -2300,9 +2324,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Number", TargetProperties = new string[] { "RoomNumber"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 8", TargetProperties = new string[] { "Unknown8"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2314,9 +2338,9 @@ namespace WindEditor
 			m_Unknown4 = stream.ReadByte(); 
 			m_Unknown5 = stream.ReadByte(); 
 			m_RoomNumber = stream.ReadByte(); 
-			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
-			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
-			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+			m_Unknown6 = stream.ReadByte(); 
+			m_Unknown7 = stream.ReadByte(); 
+			m_Unknown8 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -2332,9 +2356,9 @@ namespace WindEditor
 			stream.Write((byte)Unknown4);
 			stream.Write((byte)Unknown5);
 			stream.Write((byte)RoomNumber);
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown6);
+			stream.Write((byte)Unknown7);
+			stream.Write((byte)Unknown8);
 		}
 	}
 
@@ -2398,16 +2422,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding;
+		protected byte m_Unknown1;
 
-		[WProperty("Misc.", "Padding", true)]
-		 public byte Padding
+		[WProperty("Misc.", "Unknown 1", true)]
+		 public byte Unknown1
 		{ 
-			get { return m_Padding; }
+			get { return m_Unknown1; }
 			set
 			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
+				m_Unknown1 = value;
+				OnPropertyChanged("Unknown1");
 			}
 		}
 				
@@ -2420,7 +2444,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Spawn ID", TargetProperties = new string[] { "SpawnID"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fade Out Type", TargetProperties = new string[] { "FadeOutType"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2429,7 +2453,7 @@ namespace WindEditor
 			m_SpawnID = stream.ReadByte(); 
 			m_RoomIndex = stream.ReadByte(); 
 			m_FadeOutType = stream.ReadByte(); 
-			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			m_Unknown1 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -2442,7 +2466,7 @@ namespace WindEditor
 			stream.Write((byte)SpawnID);
 			stream.Write((byte)RoomIndex);
 			stream.Write((byte)FadeOutType);
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown1);
 		}
 	}
 
@@ -3241,44 +3265,44 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Padding1;
+		protected byte m_Unknown4;
 
-		[WProperty("Misc.", "Padding 1", true)]
-		 public byte Padding1
+		[WProperty("Misc.", "Unknown 4", true)]
+		 public byte Unknown4
 		{ 
-			get { return m_Padding1; }
+			get { return m_Unknown4; }
 			set
 			{
-				m_Padding1 = value;
-				OnPropertyChanged("Padding1");
+				m_Unknown4 = value;
+				OnPropertyChanged("Unknown4");
 			}
 		}
 				
 
-		protected byte m_Padding2;
+		protected byte m_Unknown5;
 
-		[WProperty("Misc.", "Padding 2", true)]
-		 public byte Padding2
+		[WProperty("Misc.", "Unknown 5", true)]
+		 public byte Unknown5
 		{ 
-			get { return m_Padding2; }
+			get { return m_Unknown5; }
 			set
 			{
-				m_Padding2 = value;
-				OnPropertyChanged("Padding2");
+				m_Unknown5 = value;
+				OnPropertyChanged("Unknown5");
 			}
 		}
 				
 
-		protected byte m_Padding3;
+		protected byte m_Unknown6;
 
-		[WProperty("Misc.", "Padding 3", true)]
-		 public byte Padding3
+		[WProperty("Misc.", "Unknown 6", true)]
+		 public byte Unknown6
 		{ 
-			get { return m_Padding3; }
+			get { return m_Unknown6; }
 			set
 			{
-				m_Padding3 = value;
-				OnPropertyChanged("Padding3");
+				m_Unknown6 = value;
+				OnPropertyChanged("Unknown6");
 			}
 		}
 				
@@ -3293,9 +3317,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Sound ID", TargetProperties = new string[] { "SoundID"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Index", TargetProperties = new string[] { "PathIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 1", TargetProperties = new string[] { "Padding1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 2", TargetProperties = new string[] { "Padding2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding 3", TargetProperties = new string[] { "Padding3"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3307,9 +3331,9 @@ namespace WindEditor
 			m_Unknown3 = stream.ReadByte(); 
 			m_SoundID = stream.ReadByte(); 
 			m_PathIndex = stream.ReadByte(); 
-			m_Padding1 = stream.ReadByte(); Trace.Assert(m_Padding1 == 0xFF || m_Padding1== 0); // Padding
-			m_Padding2 = stream.ReadByte(); Trace.Assert(m_Padding2 == 0xFF || m_Padding2== 0); // Padding
-			m_Padding3 = stream.ReadByte(); Trace.Assert(m_Padding3 == 0xFF || m_Padding3== 0); // Padding
+			m_Unknown4 = stream.ReadByte(); 
+			m_Unknown5 = stream.ReadByte(); 
+			m_Unknown6 = stream.ReadByte(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -3325,9 +3349,9 @@ namespace WindEditor
 			stream.Write((byte)Unknown3);
 			stream.Write((byte)SoundID);
 			stream.Write((byte)PathIndex);
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
-			stream.Write((byte)0); // Padding
+			stream.Write((byte)Unknown4);
+			stream.Write((byte)Unknown5);
+			stream.Write((byte)Unknown6);
 		}
 	}
 
@@ -3616,16 +3640,16 @@ namespace WindEditor
 		}
 				
 
-		protected short m_Padding;
+		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Padding", true)]
-		 public short Padding
+		[WProperty("Misc.", "Enemy Number", true)]
+		 public short EnemyNumber
 		{ 
-			get { return m_Padding; }
+			get { return m_EnemyNumber; }
 			set
 			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
 			}
 		}
 				
@@ -3636,7 +3660,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3647,7 +3671,7 @@ namespace WindEditor
 			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
-			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -3662,7 +3686,7 @@ namespace WindEditor
 			stream.Write(WMath.RotationFloatToShort(originalRot.X));
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
-			stream.Write((short)0); // Padding
+			stream.Write((short)EnemyNumber);
 		}
 	}
 
@@ -3792,7 +3816,18 @@ namespace WindEditor
 		protected short m_AuxParameters2;
 				
 
-		protected short m_Padding;
+		protected short m_EnemyNumber;
+
+		[WProperty("Misc.", "Enemy Number", true)]
+		 public short EnemyNumber
+		{ 
+			get { return m_EnemyNumber; }
+			set
+			{
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
+			}
+		}
 				
 
 
@@ -3800,6 +3835,7 @@ namespace WindEditor
 		public TreasureChest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3810,7 +3846,7 @@ namespace WindEditor
 			m_AuxParameters1 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_AuxParameters2 = stream.ReadInt16(); 
-			m_Padding = stream.ReadInt16(); Trace.Assert((ushort)m_Padding == 0xFFFF || m_Padding== 0); // Padding
+			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -3825,7 +3861,7 @@ namespace WindEditor
 			stream.Write((short)m_AuxParameters1);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((short)m_AuxParameters2);
-			stream.Write((short)0); // Padding
+			stream.Write((short)EnemyNumber);
 		}
 	}
 

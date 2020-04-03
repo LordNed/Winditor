@@ -7,6 +7,6 @@
 		{ "Name" : "Spawn ID", "Type" : "Byte"},
 		{ "Name" : "Room Index", "Type" : "Byte"},
 		{ "Name" : "Fade Out Type", "Type" : "Byte"},
-		{ "Name" : "Padding", "Type" : "Byte"}
+		{ "Name" : "Unknown 1", "Type" : "Byte"}
 	]
 }

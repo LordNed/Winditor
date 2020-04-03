@@ -33,9 +33,9 @@
       "Hidden": true
     },
     {
-      "Name": "Padding",
+      "Name": "Enemy Number",
       "Type": "Short",
-      "Hidden":  true
+      "Hidden":  false
     }
   ]
 }

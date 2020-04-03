@@ -60,12 +60,12 @@
     },
 		{"Name" : "Skybox Palette Index", "Type" : "Byte", "Hidden": true},
     {
-      "Name": "Padding 1",
+      "Name": "Unknown 4",
       "Type": "Byte",
       "Editable": true
     },
     {
-      "Name": "Padding 2",
+      "Name": "Unknown 5",
       "Type": "Byte",
       "Editable": true
     },

@@ -10,6 +10,6 @@
 		{"Name" : "X Rotation", "Type" : "XRotation"},
 		{"Name" : "Y Rotation", "Type" : "YRotation"},
 		{"Name" : "Z Rotation", "Type" : "ZRotation"},
-		{"Name" : "Padding", "Type" : "Short"}
+		{"Name" : "Enemy Number", "Type" : "Short"}
 	]
 }

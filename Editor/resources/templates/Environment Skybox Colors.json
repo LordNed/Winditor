@@ -48,8 +48,8 @@
       "Type": "Color24",
       "Editable": true
     },
-		{"Name" : "Padding 1", "Type" : "Byte"},
-		{"Name" : "Padding 2", "Type" : "Byte"},
-		{"Name" : "Padding 3", "Type" : "Byte"}
+		{"Name" : "Unknown 5", "Type" : "Byte"},
+		{"Name" : "Unknown 6", "Type" : "Byte"},
+		{"Name" : "Unknown 7", "Type" : "Byte"}
 	]
 }
