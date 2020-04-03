@@ -9,14 +9,17 @@ namespace WindEditor
     {
         private WDOMNode[] m_deletedEntities;
         private WDOMNode[] m_originalParents;
+        private int[] m_originalOrderIndexes;
 
         public WDeleteEntitiesAction(WDOMNode[] deletedEntities)
         {
             m_deletedEntities = deletedEntities;
             m_originalParents = new WDOMNode[m_deletedEntities.Length];
+            m_originalOrderIndexes = new int[m_deletedEntities.Length];
             for (int i = 0; i < m_deletedEntities.Length; i++)
             {
                 m_originalParents[i] = m_deletedEntities[i].Parent;
+                m_originalOrderIndexes[i] = m_originalParents[i].Children.IndexOf(m_deletedEntities[i]);
             }
         }
 
@@ -44,8 +47,14 @@ namespace WindEditor
             {
                 var entity = m_deletedEntities[i];
                 var parent = m_originalParents[i];
+                int originalIndex = m_originalOrderIndexes[i];
+
                 entity.IsSelected = true;
                 entity.Undestroy(parent);
+
+                // Properly re-insert the entity at the correct spot in the list.
+                parent.Children.Remove(entity);
+                parent.Children.Insert(originalIndex, entity);
             }
         }
     }
