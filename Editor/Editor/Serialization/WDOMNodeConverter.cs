@@ -191,6 +191,23 @@ namespace WindEditor.Serialization
                             prop.SetValue(newNode, exit);
                         }
                     }
+                    else if (prop.PropertyType == typeof(MapEvent))
+                    {
+                        int eventIndex = (int)jsonValue;
+
+                        WStage stage = m_world.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+                        List<MapEvent> eventsList = stage.GetChildrenOfType<MapEvent>();
+
+                        if (eventIndex < 0)
+                        {
+                            prop.SetValue(newNode, null);
+                        }
+                        else if (eventIndex < eventsList.Count)
+                        {
+                            MapEvent evnt = eventsList[eventIndex];
+                            prop.SetValue(newNode, evnt);
+                        }
+                    }
                     else
                     {
                         var value = Convert.ChangeType(jsonValue, prop.PropertyType);
@@ -263,6 +280,13 @@ namespace WindEditor.Serialization
                     List<ExitData> exitsList = scene.GetChildrenOfType<ExitData>();
 
                     propValue = exitsList.IndexOf(propValue as ExitData);
+                }
+                else if (prop.PropertyType == typeof(MapEvent))
+                {
+                    WStage stage = m_world.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+                    List<MapEvent> eventsList = stage.GetChildrenOfType<MapEvent>();
+
+                    propValue = eventsList.IndexOf(propValue as MapEvent);
                 }
 
                 objPropsDict[prop.Name] = propValue;
