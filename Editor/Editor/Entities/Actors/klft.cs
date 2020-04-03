@@ -33,7 +33,7 @@ namespace WindEditor
         {
             base.Draw(view);
 
-            if (m_liftControlMesh == null)
+            if (m_liftControlMesh == null || Path == null)
                 return;
 
             for (int i = 0; i < 4; i++)
@@ -61,6 +61,9 @@ namespace WindEditor
         public override float GetBoundingRadius()
         {
             float radius = base.GetBoundingRadius();
+
+            if (m_liftControlMesh == null || Path == null)
+                return radius;
 
             var points = Path.GetPoints();
             for (int pathPointIndex = 2; pathPointIndex < 4; pathPointIndex++)
