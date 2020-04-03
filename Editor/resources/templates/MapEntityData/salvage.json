@@ -9,12 +9,12 @@
       "Shift": 28,
       "Hidden": false,
       "Category": "Salvage Point",
-      "ToolTip": "'Needs Chart' are the important pillar of light salvage points that won't appear until you have the relevant Treasure Chart or Triforce Chart.\n'Appears When Enemy Defeated' are salvage points dropped by a Gunboat or Big Octo.\n'Normal Light Ring' are light rings that always appear.\n'Night Only' are light rings that only appear at night.\n'Octorok Vase' are invisible salvage points that will cause the player to fish up an old vase, and then spawn a Saltwater Octorok next to them.\n'Full Moon Night Only' are light rings that only appear at night when the full moon is out.",
+      "ToolTip": "'Needs Chart' are the important pillar of light salvage points that won't appear until you have the relevant Treasure Chart or Triforce Chart.\n'Checks Switch' only appear once a certain switch is set, such as Big Octo salvage points.\n'Normal Light Ring' are light rings that always appear.\n'Night Only' are light rings that only appear at night.\n'Octorok Vase' are invisible salvage points that will cause the player to fish up an old vase, and then spawn a Saltwater Octorok next to them.\n'Full Moon Night Only' are light rings that only appear at night when the full moon is out.",
       "DataType": "Enum",
       "EnumValues": {
         0: "Needs Chart",
         1: "Unused",
-        2: "Appears When Enemy Defeated",
+        2: "Checks Switch",
         3: "Normal Light Ring",
         4: "Night Only",
         5: "Octorok Vase",
@@ -29,17 +29,65 @@
       "Hidden": false,
       "Category": "Salvage Point",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "ItemID"
     },
     {
-      "Name": "Unknown 1",
+      "Name": "Salvaged Object Type",
       "ValueSource": "Parameters",
-      "Mask": 0x0FF00000,
-      "Shift": 20,
+      "Mask": 0x0000000F,
+      "Shift": 0,
       "Hidden": false,
       "Category": "Salvage Point",
       "ToolTip": "",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Chart",
+      "ValueSource": "Parameters",
+      "Mask": 0x0FF00000,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "Chart Salvage Point",
+      "ToolTip": "Affects which chart reveals this salvage point.\nOnly works for 'Needs Chart' type salvage points.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Salvage Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x0FF00000,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "Light Ring Salvage Point",
+      "ToolTip": "Which salvage flag in this sector to use for this salvage point. Can be from 0-15.\nOr set this to 31 if you want the salvage point to reappear every time the player exits and re-enters the sector.\nOnly works for 'Checks Switch', 'Normal Light Ring', and 'Night Only' type salvage points.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Salvaged Event Bit",
+      "ValueSource": "Parameters",
+      "Mask": 0x0FF00000,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "Full Moon Salvage Point",
+      "ToolTip": "This event bit will be set when the player salvages it, and the salvage point will not appear as long as it's set.\nAll sixteen of these are cleared once per ingame week, on Friday.\nOnly works for 'Full Moon Night Only' type salvage points.",
+      "DataType": "Enum",
+      "EnumValues": {
+         0: "Event bit 0x2080",
+         1: "Event bit 0x2004",
+         2: "Event bit 0x2002",
+         3: "Event bit 0x2804",
+         4: "Event bit 0x2802",
+         5: "Event bit 0x2801",
+         6: "Event bit 0x2980",
+         7: "Event bit 0x2940",
+         8: "Event bit 0x3B01",
+         9: "Event bit 0x3C80",
+        10: "Event bit 0x3C40",
+        11: "Event bit 0x3C20",
+        12: "Event bit 0x3C10",
+        13: "Event bit 0x3C08",
+        14: "Event bit 0x3C04",
+        15: "Event bit 0x3C02",
+      }
     },
     {
       "Name": "Duplicate Placement ID",
@@ -48,7 +96,17 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Chart Salvage Point",
-      "ToolTip": "When placing a salvage point that needs a chart to see, you should actually place 4 in the same sector in different placements, with the only difference being that this ID should be 0, 1, 2, or 3, one for each.\nWhen the player starts a new save file, the game will randomly pick one of these different placements from 0-2, and only that placement of chart salvages will appear on that save file.\nIn Second Quest, only the ones with placement ID 3 will appear.\nNo effect on salvage points that don't need a chart to see.",
+      "ToolTip": "When placing a salvage point that needs a chart to see, you should actually place 4 in the same sector in different placements, with the only difference being that this ID should be 0, 1, 2, or 3, one for each.\nWhen the player starts a new save file, the game will randomly pick one of these different placements from 0-2, and only that placement of chart salvages will appear on that save file.\nIn Second Quest, only the ones with placement ID 3 will appear.\nOnly works for 'Needs Chart' type salvage points.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Switch to Check",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x00FF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Switch Salvage Point",
+      "ToolTip": "The salvage point will not appear until this switch is set.\nOnly works for 'Checks Switch' type salvage points.",
       "DataType": "Integer"
     }
   ]

@@ -5830,42 +5830,66 @@ namespace WindEditor
 	public partial class klft : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum Unknown_1Enum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_0_B = 4,
+			Unknown_0_C = 255,
+		}
+
 		[WProperty("klft", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public Unknown_1Enum Unknown_1
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				return (Unknown_1Enum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
 
-		[WProperty("klft", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("klft", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("klft", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("klft", "At Point 1 Switch", true, "The lift will use this switch to remember which end of the pulley rope it was last left on.\nIt will start at point 0. When the player leaves the room, it will set this switch if it's at point 1, or unset it if it's at point 0.\nIf this switch is 255 or 0, it will be ignored and not set/unset, the lift will always start at point 0.", SourceScene.Room)]
+		public int AtPoint1Switch
 		{ 
 			get
 			{
@@ -5877,7 +5901,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("AtPoint1Switch");
 			}
 		}
 
@@ -5890,9 +5914,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			Path = null;
+			AtPoint1Switch = -1;
 		}
 	}
 
@@ -17676,14 +17699,14 @@ namespace WindEditor
 		{
 			Needs_Chart = 0,
 			Unused = 1,
-			Appears_When_Enemy_Defeated = 2,
+			Checks_Switch = 2,
 			Normal_Light_Ring = 3,
 			Night_Only = 4,
 			Octorok_Vase = 5,
 			Full_Moon_Night_Only = 6,
 		}
 
-		[WProperty("Salvage Point", "Type", true, "'Needs Chart' are the important pillar of light salvage points that won't appear until you have the relevant Treasure Chart or Triforce Chart.\n'Appears When Enemy Defeated' are salvage points dropped by a Gunboat or Big Octo.\n'Normal Light Ring' are light rings that always appear.\n'Night Only' are light rings that only appear at night.\n'Octorok Vase' are invisible salvage points that will cause the player to fish up an old vase, and then spawn a Saltwater Octorok next to them.\n'Full Moon Night Only' are light rings that only appear at night when the full moon is out.", SourceScene.Room)]
+		[WProperty("Salvage Point", "Type", true, "'Needs Chart' are the important pillar of light salvage points that won't appear until you have the relevant Treasure Chart or Triforce Chart.\n'Checks Switch' only appear once a certain switch is set, such as Big Octo salvage points.\n'Normal Light Ring' are light rings that always appear.\n'Night Only' are light rings that only appear at night.\n'Octorok Vase' are invisible salvage points that will cause the player to fish up an old vase, and then spawn a Saltwater Octorok next to them.\n'Full Moon Night Only' are light rings that only appear at night when the full moon is out.", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -17701,24 +17724,41 @@ namespace WindEditor
 		}
 
 		[WProperty("Salvage Point", "Item ID", true, "", SourceScene.Room)]
-		public int ItemID
+		public ItemID ItemID
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
+				return (ItemID)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
+				OnPropertyChanged("ItemID");
+			}
+		}
+
+		[WProperty("Salvage Point", "Salvaged Object Type", true, "", SourceScene.Room)]
+		public int SalvagedObjectType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
-				OnPropertyChanged("ItemID");
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				OnPropertyChanged("SalvagedObjectType");
 			}
 		}
 
-		[WProperty("Salvage Point", "Unknown 1", true, "", SourceScene.Room)]
-		public int Unknown1
+		[WProperty("Chart Salvage Point", "Chart", true, "Affects which chart reveals this salvage point.\nOnly works for 'Needs Chart' type salvage points.", SourceScene.Room)]
+		public int Chart
 		{ 
 			get
 			{
@@ -17730,11 +17770,65 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("Unknown1");
+				OnPropertyChanged("Chart");
 			}
 		}
 
-		[WProperty("Chart Salvage Point", "Duplicate Placement ID", true, "When placing a salvage point that needs a chart to see, you should actually place 4 in the same sector in different placements, with the only difference being that this ID should be 0, 1, 2, or 3, one for each.\nWhen the player starts a new save file, the game will randomly pick one of these different placements from 0-2, and only that placement of chart salvages will appear on that save file.\nIn Second Quest, only the ones with placement ID 3 will appear.\nNo effect on salvage points that don't need a chart to see.", SourceScene.Room)]
+		[WProperty("Light Ring Salvage Point", "Salvage Flag", true, "Which salvage flag in this sector to use for this salvage point. Can be from 0-15.\nOr set this to 31 if you want the salvage point to reappear every time the player exits and re-enters the sector.\nOnly works for 'Checks Switch', 'Normal Light Ring', and 'Night Only' type salvage points.", SourceScene.Room)]
+		public int SalvageFlag
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("SalvageFlag");
+			}
+		}
+
+		public enum SalvagedEventBitEnum
+		{
+			Event_bit_0x2080 = 0,
+			Event_bit_0x2004 = 1,
+			Event_bit_0x2002 = 2,
+			Event_bit_0x2804 = 3,
+			Event_bit_0x2802 = 4,
+			Event_bit_0x2801 = 5,
+			Event_bit_0x2980 = 6,
+			Event_bit_0x2940 = 7,
+			Event_bit_0x3B01 = 8,
+			Event_bit_0x3C80 = 9,
+			Event_bit_0x3C40 = 10,
+			Event_bit_0x3C20 = 11,
+			Event_bit_0x3C10 = 12,
+			Event_bit_0x3C08 = 13,
+			Event_bit_0x3C04 = 14,
+			Event_bit_0x3C02 = 15,
+		}
+
+		[WProperty("Full Moon Salvage Point", "Salvaged Event Bit", true, "This event bit will be set when the player salvages it, and the salvage point will not appear as long as it's set.\nAll sixteen of these are cleared once per ingame week, on Friday.\nOnly works for 'Full Moon Night Only' type salvage points.", SourceScene.Room)]
+		public SalvagedEventBitEnum SalvagedEventBit
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				return (SalvagedEventBitEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("SalvagedEventBit");
+			}
+		}
+
+		[WProperty("Chart Salvage Point", "Duplicate Placement ID", true, "When placing a salvage point that needs a chart to see, you should actually place 4 in the same sector in different placements, with the only difference being that this ID should be 0, 1, 2, or 3, one for each.\nWhen the player starts a new save file, the game will randomly pick one of these different placements from 0-2, and only that placement of chart salvages will appear on that save file.\nIn Second Quest, only the ones with placement ID 3 will appear.\nOnly works for 'Needs Chart' type salvage points.", SourceScene.Room)]
 		public int DuplicatePlacementID
 		{ 
 			get
@@ -17751,6 +17845,23 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Switch Salvage Point", "Switch to Check", true, "The salvage point will not appear until this switch is set.\nOnly works for 'Checks Switch' type salvage points.", SourceScene.Room)]
+		public int SwitchtoCheck
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("SwitchtoCheck");
+			}
+		}
+
 		// Constructor
 		public salvage(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17760,9 +17871,11 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			ItemID = -1;
-			Unknown1 = -1;
+			SalvagedObjectType = -1;
+			Chart = -1;
+			SalvageFlag = -1;
 			DuplicatePlacementID = -1;
+			SwitchtoCheck = -1;
 		}
 	}
 
