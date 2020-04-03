@@ -96,7 +96,10 @@ namespace WindEditor
 
         private void GlControlHost_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            m_viewModel.WindEditor.OnViewportResized((int)e.NewSize.Width, (int)e.NewSize.Height);
+            double dpi_factor = System.Windows.PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11;
+            int newWidth = (int)(e.NewSize.Width * dpi_factor);
+            int newHeight = (int)(e.NewSize.Height * dpi_factor);
+            m_viewModel.WindEditor.OnViewportResized(newWidth, newHeight);
         }
 
         private static System.Windows.Input.MouseButton WinFormToWPFMouseButton(System.Windows.Forms.MouseEventArgs e)
