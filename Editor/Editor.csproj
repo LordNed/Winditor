@@ -856,6 +856,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
+    <Content Include="Editor\Templates\ParameterTemplates.tt" />
     <Content Include="resources\editor\T_DevCheckersBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
