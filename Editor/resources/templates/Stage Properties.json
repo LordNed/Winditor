@@ -10,5 +10,94 @@
 		{"Name" : "Parameters2", "Type" : "Short", "IsHidden": true},
 		{"Name" : "Parameters3", "Type" : "Int"},
 		{"Name" : "Parameters4", "Type" : "Int"},
+  ],
+  "ParameterFields":
+  [
+    {
+      "Name": "Is Dungeon",
+      "ValueSource": "Parameters1",
+      "Mask": 0x01,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "",
+      "DataType": "Boolean"
+    },
+    {
+      "Name": "Stage Save Info ID",
+      "ValueSource": "Parameters1",
+      "Mask": 0xFE,
+      "Shift": 1,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "The index of which stage save info in the save file this stage should use to store its variables.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Minimap Type",
+      "ValueSource": "Parameters2",
+      "Mask": 0x0003,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Sea chart",
+        1: "Dungeon map",
+        2: "Unknown 1",
+        3: "Unknown 2",
+      }
+    },
+    {
+      "Name": "Unknown 2",
+      "ValueSource": "Parameters2",
+      "Mask": 0x0004,
+      "Shift": 2,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "",
+      "DataType": "Boolean"
+    },
+    {
+      "Name": "Particle Bank",
+      "ValueSource": "Parameters2",
+      "Mask": 0x07F8,
+      "Shift": 3,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "Which particle bank number to load for this stage, from the res/Particle folder.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown 3",
+      "ValueSource": "Parameters2",
+      "Mask": 0xF800,
+      "Shift": 11,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Stage Type",
+      "ValueSource": "Parameters3",
+      "Mask": 0x00070000,
+      "Shift": 16,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Dungeon",
+        2: "Indoors",
+        3: "Boss room",
+        4: "Cave",
+        5: "Unknown 5",
+        6: "Miniboss room",
+        7: "Sea",
+      }
+    },
   ]
 }
