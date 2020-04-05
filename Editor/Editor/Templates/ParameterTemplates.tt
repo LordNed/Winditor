@@ -1,0 +1,271 @@
+﻿		<#
+		string EscapeIdentifier(string input)
+		{
+			return Regex.Replace(input, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+		}
+		string EscapeStringLiteral(string input)
+		{
+			string output = Regex.Replace(input, @"([""\\])", @"\$1"); // Escape quotes and backslashes
+			output = Regex.Replace(output, @"([\n])", "\\n", RegexOptions.IgnoreCase);
+			output = Regex.Replace(output, @"([\0\a\b\f\r\t\v])", "", RegexOptions.IgnoreCase);
+			return "\"" + output + "\"";
+		}
+
+		List<string> defaultValueSetters = new List<string>();
+
+		//if (descriptor.ParameterFields == null)
+		//	descriptor.ParameterFields = new ActorBitfieldDescriptor[0];
+		foreach(var field in descriptor.Fields)
+		{
+			if(skippedFields.Contains(field.FieldName.Replace(" ", "")))
+				continue; 
+
+			string fieldName = EscapeIdentifier(field.FieldName);
+			string valueSource = String.IsNullOrEmpty(field.ValueSource) ? "Parameters" : field.ValueSource;
+			valueSource = "m_" + valueSource;
+			string privateFieldName = "m_" + fieldName;
+			string overrideName = field.FieldName == "Name" ? "override" : "";
+			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
+
+			bool defaultBooleanValue = field.BooleanDefaultValue;
+			int[] boolNonDefaults = new int[] {0, 0xFF};
+			if (field.BooleanNonDefaults != null) {
+				boolNonDefaults = field.BooleanNonDefaults;
+			}
+			int boolCanonicalIntRepresentationOfTrue = 1;
+			int boolCanonicalIntRepresentationOfFalse = 0;
+			if (defaultBooleanValue == true) {
+				boolCanonicalIntRepresentationOfFalse = boolNonDefaults[0];
+				for (int i = 0; i <= 0xFF; i++) {
+					if (boolNonDefaults.Contains(i))
+						continue;
+					boolCanonicalIntRepresentationOfTrue = i;
+					break;
+				}
+			} else {
+				boolCanonicalIntRepresentationOfTrue = boolNonDefaults[0];
+				for (int i = 0; i <= 0xFF; i++) {
+					if (boolNonDefaults.Contains(i))
+						continue;
+					boolCanonicalIntRepresentationOfFalse = i;
+					break;
+				}
+			}
+
+			string bitMaskHex;
+			string valueSourceType;
+			if (valueSource.Contains("Auxillary")) {
+				bitMaskHex = String.Format("0x{0:X4}", field.BitMask);
+				valueSourceType = "short";
+			} else {
+				bitMaskHex = String.Format("0x{0:X8}", field.BitMask);
+				valueSourceType = "int";
+			}
+			string sourceScene;
+			switch (field.DataType)
+			{
+				case "Event":
+				case "StageExit":
+					sourceScene = "SourceScene.Stage";
+					break;
+				default:
+					sourceScene = "SourceScene.Room";
+					break;
+			}
+			string dataType;
+			switch (field.DataType)
+			{
+				case "Integer":
+					dataType = "int";
+					break;
+				case "Boolean":
+					dataType = "bool";
+					break;
+				case "Path":
+					dataType = "Path_v2";
+					break;
+				case "Exit":
+				case "StageExit":
+					dataType = "ExitData";
+					break;
+				case "Event":
+					dataType = "MapEvent";
+					break;
+				case "Enum":
+					dataType = fieldName + "Enum";
+
+					if (field.EnumValues == null)
+					{
+						throw new ArgumentException($"Field \"{field.FieldName}\" in file \"{file}\" specifies Enum data type, but does not list any EnumValues");
+					}
+#>
+		public enum <#= dataType #>
+		{
+<#
+					foreach (var item in field.EnumValues)
+					{
+						string sanitizedValue = item.Value.Replace(" ", "_");
+						sanitizedValue = EscapeIdentifier(sanitizedValue);
+#>
+			<#= sanitizedValue #> = <#= item.Key #>,
+<#
+					}
+#>
+		}
+
+<#
+
+					break;
+				case "ItemID":
+					dataType = "ItemID";
+					break;
+				case "DroppedItemID":
+					dataType = "DroppedItemID";
+					break;
+				default:
+					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
+					break;
+			}
+
+			object defaultValue = field.DefaultValue;
+			if (defaultValue != null) {
+				if (field.DataType == "Enum") {
+					defaultValueSetters.Add($"{fieldName} = {dataType}.{defaultValue};");
+				} else {
+					defaultValueSetters.Add($"{fieldName} = {defaultValue};");
+				}
+			} else if (field.DataType == "Integer") {
+				defaultValueSetters.Add($"{fieldName} = -1;");
+			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
+				defaultValueSetters.Add($"{fieldName} = null;");
+			}
+#>
+<#		 // We hide padding and other fields that the user doesn't need to see/change.
+		if(!field.IsHidden)
+		{
+#>
+
+		[WProperty("<#= categoryName #>", "<#= field.FieldName #>", true, <#= field.ToolTip == null ? "\"\"" : EscapeStringLiteral(field.ToolTip) #>, <#= sourceScene #>)]
+<# 
+		}
+#>
+		<#= overrideName #>public <#= dataType #> <#= fieldName #>
+		{ 
+			get
+			{
+				int value_as_int = (int)((<#= valueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>);
+<#
+				switch (field.DataType)
+				{
+					case "Integer":
+#>
+				return value_as_int;
+<#
+						break;
+					case "Boolean":
+						bool onFirst = true;
+						foreach (int non_default_val in boolNonDefaults) {
+#>
+				<#= onFirst ? "" : "} else " #>if (value_as_int == <#= non_default_val #>) {
+					return <#= defaultBooleanValue ? "false" : "true" #>;
+<#
+							onFirst = false;
+						}
+#>
+				} else {
+					return <#= defaultBooleanValue ? "true" : "false" #>;
+				}
+				
+<#
+						break;
+					case "Path":
+					case "Exit":
+#>
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<<#= dataType #>> list = cur_object.GetChildrenOfType<<#= dataType #>>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+<#
+						break;
+					case "Event":
+					case "StageExit":
+#>
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<<#= dataType #>> list = stage.GetChildrenOfType<<#= dataType #>>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+<#
+						break;
+					case "Enum":
+					case "ItemID":
+					case "DroppedItemID":
+#>
+				return (<#= dataType #>)value_as_int;
+<#
+						break;
+				}
+#>
+			}
+
+			set
+			{
+<#
+				switch (field.DataType)
+				{
+					case "Integer":
+#>
+				int value_as_int = value;
+<#
+						break;
+					case "Boolean":
+#>
+				int value_as_int = value ? <#= boolCanonicalIntRepresentationOfTrue #> : <#= boolCanonicalIntRepresentationOfFalse #>;
+<#
+						break;
+					case "Path":
+					case "Exit":
+#>
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<<#= dataType #>> list = cur_object.GetChildrenOfType<<#= dataType #>>();
+				int value_as_int = list.IndexOf(value);
+<#
+						break;
+					case "Event":
+					case "StageExit":
+#>
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<<#= dataType #>> list = stage.GetChildrenOfType<<#= dataType #>>();
+				int value_as_int = list.IndexOf(value);
+<#
+						break;
+					case "Enum":
+					case "ItemID":
+					case "DroppedItemID":
+#>
+				int value_as_int = (int)value;
+<#
+						break;
+				}
+#>
+				<#= valueSource #> = (<#= valueSourceType #>)(<#= valueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= field.BitShift #> & <#= bitMaskHex #>));
+				OnPropertyChanged("<#=fieldName#>");
+<#
+				if (field.UpdateModel) {
+#>
+				UpdateModel();
+<#
+				}
+#>
+			}
+		}
+<#		}#>
