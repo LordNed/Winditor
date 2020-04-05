@@ -15317,8 +15317,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_stair", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Falling Stair", "Disable Spawn Switch", true, "Once this switch is set, the stair will no longer appear.", SourceScene.Room)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -15330,7 +15330,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
@@ -15343,7 +15343,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DisableSpawnSwitch = -1;
 		}
 	}
 

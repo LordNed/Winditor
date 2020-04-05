@@ -4432,4 +4432,18 @@
       }
     ]
   },
+  {
+    "Name": "Falling Stair",
+    "Archive": "Mkdan",
+    "Models": [
+      {
+        "Path": "bdl/mkdan1.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
 ]
