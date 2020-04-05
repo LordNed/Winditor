@@ -142,7 +142,7 @@ namespace WindEditor
             set
             {
                 int value_as_int = (int)value;
-                m_Parameters3 = (short)(m_Parameters3 & ~0x00070000 | (value_as_int << 16 & 0x00070000));
+                m_Parameters3 = (int)(m_Parameters3 & ~0x00070000 | (value_as_int << 16 & 0x00070000));
                 OnPropertyChanged("StageType");
             }
         }
