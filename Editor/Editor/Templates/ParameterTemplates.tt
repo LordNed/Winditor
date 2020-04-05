@@ -22,7 +22,7 @@
 
 			string fieldName = EscapeIdentifier(field.FieldName);
 			string valueSource = String.IsNullOrEmpty(field.ValueSource) ? "Parameters" : field.ValueSource;
-			valueSource = "m_" + valueSource;
+			string privateValueSource = "m_" + valueSource;
 			string privateFieldName = "m_" + fieldName;
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
@@ -52,14 +52,14 @@
 				}
 			}
 
-			string bitMaskHex;
-			string valueSourceType;
-			if (valueSource.Contains("Auxillary")) {
-				bitMaskHex = String.Format("0x{0:X4}", field.BitMask);
-				valueSourceType = "short";
-			} else {
+			string valueSourceType = fieldNameToOutputDataType[valueSource];
+			string bitMaskHex = null;
+			if (valueSourceType == "int") {
 				bitMaskHex = String.Format("0x{0:X8}", field.BitMask);
-				valueSourceType = "int";
+			} else if (valueSourceType == "short") {
+				bitMaskHex = String.Format("0x{0:X4}", field.BitMask);
+			} else if (valueSourceType == "byte") {
+				bitMaskHex = String.Format("0x{0:X2}", field.BitMask);
 			}
 			string sourceScene;
 			switch (field.DataType)
@@ -153,7 +153,7 @@
 		{ 
 			get
 			{
-				int value_as_int = (int)((<#= valueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>);
+				int value_as_int = (int)((<#= privateValueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>);
 <#
 				switch (field.DataType)
 				{
@@ -257,7 +257,7 @@
 						break;
 				}
 #>
-				<#= valueSource #> = (<#= valueSourceType #>)(<#= valueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= field.BitShift #> & <#= bitMaskHex #>));
+				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= field.BitShift #> & <#= bitMaskHex #>));
 				OnPropertyChanged("<#=fieldName#>");
 <#
 				if (field.UpdateModel) {
