@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using WindEditor.Editor.Modes;
+using System.Globalization;
+using System.Threading;
 
 namespace WindEditor
 {
@@ -25,6 +27,9 @@ namespace WindEditor
 
         public MainWindow()
         {
+            // Prevents issues with reading/writing floats on European systems.
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("", false);
+
             InitializeComponent();
             WindowsFormsHost.EnableWindowsFormsInterop();
         }
