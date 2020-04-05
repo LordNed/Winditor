@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_rforce",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

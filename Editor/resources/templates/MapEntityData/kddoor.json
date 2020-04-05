@@ -1,7 +1,7 @@
 {
   "ClassName": "kddoor",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Switch Bit",
       "ValueSource": "Parameters",

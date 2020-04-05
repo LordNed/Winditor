@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_swpush",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Event to Start",
       "ValueSource": "Parameters",

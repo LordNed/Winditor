@@ -1,5 +1,5 @@
 {
   "ClassName": "warpfout",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

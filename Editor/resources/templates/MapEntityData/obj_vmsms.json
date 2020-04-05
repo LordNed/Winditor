@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_vmsms",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

@@ -1,7 +1,7 @@
 {
   "ClassName": "tag_evsw",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Switch to Set",
       "ValueSource": "Parameters",

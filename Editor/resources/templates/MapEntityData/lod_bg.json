@@ -1,5 +1,5 @@
 {
   "ClassName": "lod_bg",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

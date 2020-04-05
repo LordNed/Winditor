@@ -1,5 +1,5 @@
 {
   "ClassName": "kaji",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

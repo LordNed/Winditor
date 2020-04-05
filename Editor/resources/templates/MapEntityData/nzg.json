@@ -1,7 +1,7 @@
 {
   "ClassName": "nzg",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Sight Range (Fives)",
       "ValueSource": "Parameters",

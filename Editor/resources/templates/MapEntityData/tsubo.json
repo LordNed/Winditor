@@ -1,7 +1,7 @@
 {
   "ClassName": "tsubo",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Dropped Item",
       "ValueSource": "Parameters",

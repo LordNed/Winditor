@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_gnndemotakis",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

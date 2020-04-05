@@ -1,7 +1,7 @@
 {
   "ClassName": "switem",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "What Triggers It",
       "ValueSource": "Parameters",

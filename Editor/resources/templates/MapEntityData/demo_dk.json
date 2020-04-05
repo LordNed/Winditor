@@ -1,5 +1,5 @@
 {
   "ClassName": "demo_dk",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

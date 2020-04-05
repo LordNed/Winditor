@@ -1,7 +1,7 @@
 {
   "ClassName": "mo2",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Type",
       "ValueSource": "Parameters",

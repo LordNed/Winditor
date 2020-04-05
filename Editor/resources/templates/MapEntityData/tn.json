@@ -1,7 +1,7 @@
 {
   "ClassName": "tn",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Behavior Type",
       "ValueSource": "Parameters",

@@ -1,5 +1,5 @@
 {
   "ClassName": "bgn3",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

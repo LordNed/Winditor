@@ -1,5 +1,5 @@
 {
   "ClassName": "fallrock",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

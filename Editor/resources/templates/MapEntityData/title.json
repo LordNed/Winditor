@@ -1,5 +1,5 @@
 {
   "ClassName": "title",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

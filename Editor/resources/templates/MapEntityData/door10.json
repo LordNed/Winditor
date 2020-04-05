@@ -1,7 +1,7 @@
 {
   "ClassName": "door10",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Switch 1",
       "ValueSource": "Parameters",

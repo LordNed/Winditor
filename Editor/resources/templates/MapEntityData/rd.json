@@ -1,7 +1,7 @@
 {
   "ClassName": "rd",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Idle Animation",
       "ValueSource": "Parameters",

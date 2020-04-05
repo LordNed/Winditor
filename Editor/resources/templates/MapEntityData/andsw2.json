@@ -1,7 +1,7 @@
 {
   "ClassName": "andsw2",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Num Switches to Check",
       "ValueSource": "Parameters",

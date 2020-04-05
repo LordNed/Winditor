@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_pbco",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

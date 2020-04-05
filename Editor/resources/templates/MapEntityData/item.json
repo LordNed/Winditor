@@ -1,7 +1,7 @@
 {
   "ClassName": "item",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Item ID",
       "ValueSource": "Parameters",

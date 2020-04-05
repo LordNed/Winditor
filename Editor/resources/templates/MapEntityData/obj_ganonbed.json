@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_ganonbed",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

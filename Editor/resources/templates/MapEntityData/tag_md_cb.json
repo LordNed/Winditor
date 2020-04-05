@@ -1,7 +1,7 @@
 {
   "ClassName": "tag_md_cb",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "MessageID",
       "ValueSource": "Parameters",

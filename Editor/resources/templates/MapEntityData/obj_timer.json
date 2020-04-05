@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_timer",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Time Limit (Half Seconds)",
       "ValueSource": "Parameters",

@@ -1,7 +1,7 @@
 {
   "ClassName": "bflower",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Flower Type",
       "ValueSource": "Parameters",

@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_gaship",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

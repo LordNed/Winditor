@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_swhammer",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Switch to Unset",
       "ValueSource": "Parameters",

@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_wood",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

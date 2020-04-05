@@ -1,7 +1,7 @@
 {
   "ClassName": "gy",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "X Rotation",
       "ValueSource": "AuxillaryParameters1",

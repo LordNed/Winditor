@@ -1,7 +1,7 @@
 {
   "ClassName": "swc00",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Switch to Set",
       "ValueSource": "Parameters",

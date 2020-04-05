@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_htetu1",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",

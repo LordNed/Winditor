@@ -1,5 +1,5 @@
 {
   "ClassName": "daiocta_eye",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

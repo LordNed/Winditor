@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_pbka",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

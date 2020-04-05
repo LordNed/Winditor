@@ -1,7 +1,7 @@
 {
   "ClassName": "bk",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Type",
       "ValueSource": "Parameters",

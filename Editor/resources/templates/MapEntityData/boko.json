@@ -1,7 +1,7 @@
 {
   "ClassName": "boko",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",

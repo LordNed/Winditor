@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_leaves",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",

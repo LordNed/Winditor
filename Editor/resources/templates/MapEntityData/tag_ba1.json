@@ -1,5 +1,5 @@
 {
   "ClassName": "tag_ba1",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

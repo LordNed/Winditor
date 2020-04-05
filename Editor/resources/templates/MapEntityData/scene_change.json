@@ -1,5 +1,5 @@
 {
   "ClassName": "scene_change",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

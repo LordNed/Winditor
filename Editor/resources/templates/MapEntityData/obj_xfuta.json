@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_xfuta",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

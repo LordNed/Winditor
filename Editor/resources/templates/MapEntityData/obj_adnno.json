@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_adnno",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

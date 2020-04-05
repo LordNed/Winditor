@@ -1,7 +1,7 @@
 {
   "ClassName": "bst",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Component Type",
       "ValueSource": "Parameters",

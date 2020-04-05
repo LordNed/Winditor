@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_aygr",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Has Ladder",
       "ValueSource": "Parameters",

@@ -1,5 +1,5 @@
 {
   "ClassName": "mmusic",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

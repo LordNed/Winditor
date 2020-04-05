@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_pfall",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

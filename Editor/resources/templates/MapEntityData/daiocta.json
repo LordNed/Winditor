@@ -1,7 +1,7 @@
 {
   "ClassName": "daiocta",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Number of Eyes",
       "ValueSource": "Parameters",

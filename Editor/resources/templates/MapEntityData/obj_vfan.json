@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_vfan",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",

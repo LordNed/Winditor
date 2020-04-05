@@ -1,5 +1,5 @@
 {
   "ClassName": "dr2",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

@@ -1,7 +1,7 @@
 {
   "ClassName": "deku_item",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",

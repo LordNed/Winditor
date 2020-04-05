@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_warpt",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Type",
       "ValueSource": "Parameters",

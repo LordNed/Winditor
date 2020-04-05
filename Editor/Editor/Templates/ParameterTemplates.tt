@@ -15,7 +15,7 @@
 
 		//if (descriptor.ParameterFields == null)
 		//	descriptor.ParameterFields = new ActorBitfieldDescriptor[0];
-		foreach(var field in descriptor.Fields)
+		foreach(var field in descriptor.ParameterFields)
 		{
 			if(skippedFields.Contains(field.FieldName.Replace(" ", "")))
 				continue; 

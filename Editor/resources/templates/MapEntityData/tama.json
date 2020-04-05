@@ -1,7 +1,7 @@
 {
   "ClassName": "tama",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Unknown_1",
       "ValueSource": "AuxillaryParameters1",

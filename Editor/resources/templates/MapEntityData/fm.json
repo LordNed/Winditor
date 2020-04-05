@@ -1,7 +1,7 @@
 {
   "ClassName": "fm",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Link Captured Exit",
       "ValueSource": "Parameters",

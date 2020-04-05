@@ -1,7 +1,7 @@
 {
   "ClassName": "obj_shmrgrd",
   "ParentClassOverride": "Actor",
-  "Fields": [
+  "ParameterFields": [
     {
       "Name": "Switch to Set",
       "ValueSource": "Parameters",

@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_vgnfd",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }

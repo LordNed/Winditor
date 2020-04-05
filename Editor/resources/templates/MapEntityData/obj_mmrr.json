@@ -1,5 +1,5 @@
 {
   "ClassName": "obj_mmrr",
   "ParentClassOverride": "Actor",
-  "Fields": []
+  "ParameterFields": []
 }
