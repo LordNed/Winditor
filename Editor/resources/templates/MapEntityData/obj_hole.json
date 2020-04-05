@@ -3,14 +3,14 @@
   "ParentClassOverride": "Actor",
   "Fields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Exit",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_hole",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Exit"
     },
     {
       "Name": "Has Visible Hole",
@@ -25,13 +25,13 @@
       "BooleanNonDefaults": [0]
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Scale",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0xFFFF,
       "Shift": 0,
       "Hidden": false,
       "Category": "obj_hole",
-      "ToolTip": "",
+      "ToolTip": "If this is not 65535, this number divided by 10 is the scale of the hole.",
       "DataType": "Integer"
     }
   ]

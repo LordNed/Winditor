@@ -12458,20 +12458,34 @@ namespace WindEditor
 	public partial class obj_hole : Actor
 	{
 		// Auto-Generated Properties from Templates
-		[WProperty("obj_hole", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_hole", "Exit", true, "", SourceScene.Room)]
+		public ExitData Exit
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Exit");
 			}
 		}
 
@@ -12497,8 +12511,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hole", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("obj_hole", "Scale", true, "If this is not 65535, this number divided by 10 is the scale of the hole.", SourceScene.Room)]
+		public int Scale
 		{ 
 			get
 			{
@@ -12510,7 +12524,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Scale");
 			}
 		}
 
@@ -12523,8 +12537,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_3 = -1;
+			Exit = null;
+			Scale = -1;
 		}
 	}
 
