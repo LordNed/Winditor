@@ -127,6 +127,7 @@ namespace WindEditor
 		public string ClassName;
 		public string ParentClassOverride;
         public DataDescriptorField[] Fields;
+        public ActorBitfieldDescriptor[] ParameterFields;
     }
 
     public class DataDescriptorField
