@@ -8,29 +8,33 @@
       "Mask": 0x0000000F,
       "Shift": 0,
       "Hidden": false,
-      "Category": "obj_pirateship",
+      "Category": "Pirate Ship",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Door Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Shift": 8,
       "Hidden": false,
-      "Category": "obj_pirateship",
+      "Category": "Pirate Ship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Requires password"
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "obj_pirateship",
+      "Category": "Pirate Ship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
       "Name": "Unknown_4",
@@ -38,7 +42,7 @@
       "Mask": 0xFF000000,
       "Shift": 24,
       "Hidden": false,
-      "Category": "obj_pirateship",
+      "Category": "Pirate Ship",
       "ToolTip": "",
       "DataType": "Integer"
     }

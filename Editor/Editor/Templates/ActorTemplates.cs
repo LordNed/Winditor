@@ -14790,7 +14790,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_pirateship", "Unknown_1", true, "", SourceScene.Room)]
+		[WProperty("Pirate Ship", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
 			get
@@ -14806,42 +14806,62 @@ namespace WindEditor
 				OnPropertyChanged("Unknown_1");
 			}
 		}
+		public enum DoorTypeEnum
+		{
+			Normal = 0,
+			Requires_password = 1,
+		}
 
-		[WProperty("obj_pirateship", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Pirate Ship", "Door Type", true, "", SourceScene.Room)]
+		public DoorTypeEnum DoorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				return (DoorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("DoorType");
 			}
 		}
 
-		[WProperty("obj_pirateship", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Pirate Ship", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("obj_pirateship", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Pirate Ship", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -14868,8 +14888,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			Path = null;
 			Unknown_4 = -1;
 		}
 	}

@@ -4446,4 +4446,18 @@
       }
     ]
   },
+  {
+    "Name": "Pirate Ship",
+    "Archive": "Kaizokusen",
+    "Models": [
+      {
+        "Path": "bdl/oba_kaizoku_a.bdl",
+        "Offset": {
+          "X": 0.0,
+          "Y": 0.0,
+          "Z": 0.0
+        }
+      }
+    ]
+  },
 ]
