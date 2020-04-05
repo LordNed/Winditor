@@ -37,5 +37,27 @@ namespace WindEditor
                     break;
             }
         }
+
+        public override void PopulateDefaultProperties()
+        {
+            Name = "takara";
+            EnemyNumber = -1;
+            AppearConditionSwitch = -1;
+            ChestOpenFlag = -1;
+            OpenSwitch = -1;
+
+            // Try to assign the room index automatically if this is a room chest.
+            WDOMNode cur_object = this;
+            while (cur_object.Parent != null)
+            {
+                cur_object = cur_object.Parent;
+            }
+            WScene scene = cur_object as WScene;
+            if (scene is WRoom)
+            {
+                WRoom room = scene as WRoom;
+                RoomNumber = room.RoomIndex;
+            }
+        }
     }
 }
