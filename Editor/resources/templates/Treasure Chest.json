@@ -19,7 +19,7 @@
       "Type": "Vector3"
     },
     {
-      "Name": "Aux Parameters 1",
+      "Name": "Auxillary Parameters 1",
       "Type": "Short",
       "Hidden":  true
     },
@@ -28,7 +28,7 @@
       "Type": "YRotation"
     },
     {
-      "Name": "Aux Parameters 2",
+      "Name": "Auxillary Parameters 2",
       "Type": "Short",
       "Hidden": true
     },
@@ -37,5 +37,95 @@
       "Type": "Short",
       "Hidden":  false
     }
+  ],
+  "ParameterFields": [
+    {
+      "Name": "Behavior Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000007F,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Treasure Chest",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Spawn when a switch is set",
+        2: "Spawn when all enemies dead",
+        3: "Visible but unopenable until a switch is set",
+        4: "Transparent until a switch is set",
+        5: "Apply gravity",
+        6: "Spawn on Triforce emblem when a switch is set",
+        7: "Uses Stage Save Info 1",
+        8: "Uses Stage Save Info 1 and spawns when a switch is set",
+      }
+    },
+    {
+      "Name": "Chest Open Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000F80,
+      "Shift": 7,
+      "Hidden": false,
+      "Category": "Treasure Chest Flags",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Appear Condition Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000FF000,
+      "Shift": 12,
+      "Hidden": false,
+      "Category": "Treasure Chest Flags",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Appearance Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x00F00000,
+      "Shift": 20,
+      "Hidden": false,
+      "Category": "Treasure Chest",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Light wood",
+        1: "Dark wood",
+        2: "Metal",
+        3: "Big Key",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Room Number",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0x003F,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Treasure Chest",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Open Switch",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x00FF,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Treasure Chest Flags",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Item",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0xFF00,
+      "Shift": 0,
+      "Hidden": false,
+      "Category": "Treasure Chest",
+      "ToolTip": "",
+      "DataType": "ItemID"
+    },
   ]
 }

@@ -29,27 +29,6 @@ namespace WindEditor
         Debug = 15
     }
 
-    public enum ChestType
-    {
-        Light_wood,
-        Dark_wood,
-        Metal,
-        Big_Key
-    }
-
-    public enum ChestBehavior
-    {
-        Normal,
-        Spawn_when_a_switch_is_set,
-        Spawn_when_all_enemies_are_defeated,
-        Visible_but_unopenable_until_a_switch_is_set,
-        Transparent_until_a_switch_is_set,
-        Apply_gravity,
-        Spawn_when_a_Wind_Waker_song_is_played,
-        Uses_extra_open_flag,
-        Uses_extra_open_flag_and_spawns_when_a_switch_is_set
-    }
-
     public enum FoliageType
     {
         Grass,
