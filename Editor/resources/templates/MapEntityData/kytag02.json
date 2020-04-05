@@ -3,14 +3,14 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Shift": 16,
       "Hidden": false,
-      "Category": "kytag02",
+      "Category": "Wind Direction Setter",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }
