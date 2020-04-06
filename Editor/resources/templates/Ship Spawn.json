@@ -4,9 +4,9 @@
 	"FourCC" : "SHIP",
 	"Fields" :
 	[
-		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "Rotation", "Type" : "YRotation"},
-		{"Name" : "Ship Id", "Type" : "Byte"},
-		{"Name" : "Unknown 1", "Type" : "Byte"}
+		{"Name" : "Position", "Type" : "Vector3", "Category": "Ship Spawn Properties"},
+		{"Name" : "Rotation", "Type" : "YRotation", "Category": "Ship Spawn Properties"},
+		{"Name" : "Ship Id", "Type" : "Byte", "Category": "Ship Spawn Properties"},
+		{"Name" : "Unknown 1", "Type" : "Byte", "Category": "Ship Spawn Properties"}
 	]
 }

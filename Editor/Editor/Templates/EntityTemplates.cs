@@ -3107,7 +3107,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected float /*single axis rotation */ m_Rotation;
 
-		[WProperty("Misc.", "Rotation", true)]
+		[WProperty("Ship Spawn Properties", "Rotation", true)]
 		 public float /*single axis rotation */ Rotation
 		{ 
 			get { return m_Rotation; }
@@ -3121,7 +3121,7 @@ namespace WindEditor
 
 		protected byte m_ShipId;
 
-		[WProperty("Misc.", "Ship Id", true)]
+		[WProperty("Ship Spawn Properties", "Ship Id", true)]
 		 public byte ShipId
 		{ 
 			get { return m_ShipId; }
@@ -3135,7 +3135,7 @@ namespace WindEditor
 
 		protected byte m_Unknown1;
 
-		[WProperty("Misc.", "Unknown 1", true)]
+		[WProperty("Ship Spawn Properties", "Unknown 1", true)]
 		 public byte Unknown1
 		{ 
 			get { return m_Unknown1; }
