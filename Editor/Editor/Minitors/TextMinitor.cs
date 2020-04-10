@@ -363,7 +363,7 @@ namespace WindEditor.Minitors
                 }
                 else
                 {
-                    return mes.Text.IndexOf(SearchFilter, StringComparison.OrdinalIgnoreCase) >= 0;
+                    return mes.Text.Replace("\n", " ").IndexOf(SearchFilter, StringComparison.OrdinalIgnoreCase) >= 0;
                 }
             }
         }
