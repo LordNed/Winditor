@@ -612,6 +612,7 @@
     <Compile Include="Editor\Modes\ActorMode\ActorMode.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode_Gizmo.cs" />
     <Compile Include="Editor\Modes\CollisionMode\CollisionMode.cs" />
+    <Compile Include="Editor\Modes\EventMode\EventMode.cs" />
     <Compile Include="Editor\Modes\IEditorMode.cs" />
     <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />

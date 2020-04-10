@@ -38,6 +38,7 @@ namespace WindEditor
         private IEditorMode m_CurrentMode;
         private ActorMode m_ActorMode;
         private CollisionMode m_CollisionMode;
+        private EventMode m_EventMode;
 
         public WWorld()
         {
@@ -48,6 +49,7 @@ namespace WindEditor
 
             m_ActorMode = new ActorMode(this);
             m_CollisionMode = new CollisionMode(this);
+            m_EventMode = new EventMode(this);
 
             CurrentMode = m_ActorMode;
 
@@ -261,6 +263,11 @@ namespace WindEditor
         public void SwitchToCollisionMode()
         {
             CurrentMode = m_CollisionMode;
+        }
+
+        public void SwitchToEventMode()
+        {
+            CurrentMode = m_EventMode;
         }
 
         #region INotifyPropertyChanged Support
