@@ -158,6 +158,11 @@
     <Compile Include="Editor\Entities\LightVector.cs" />
     <Compile Include="Editor\Entities\RoomProperties.cs" />
     <Compile Include="Editor\Entities\StageProperties.cs" />
+    <Compile Include="Editor\Events\BaseSubstance.cs" />
+    <Compile Include="Editor\Events\Cut.cs" />
+    <Compile Include="Editor\Events\Event.cs" />
+    <Compile Include="Editor\Events\EventList.cs" />
+    <Compile Include="Editor\Events\Staff.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
