@@ -5,7 +5,7 @@ This guide will cover various terms used in Wind Waker hacking.
 
 * **Stage**: A collection of rooms. For example, `sea` for the Great Sea, or `M_NewD2` for Dragon Roost Cavern. Stages themselves have no collision, but have a skybox, and may or may not have actors. Any actors placed in the stage will always be loaded for that stage no matter what room the player is in, which may be desirable for e.g. treasure chests, if you want them to appear on the dungeon map even when the player is not in the same room as them.
 * **Room**: An individual room map, with its own collision mesh, visual mesh, and actors in it.
-* **Stage Save Info**: A part of the save file that stores flags different stages, as well as other variables like the number of small keys the player currently has in this stage. Note that each and every stage does **not** have its own stage save info - the save file only has 16 stage save infos in it, and all stages in the game must use one of them, so many stages will need to share a single set of flags. Which one is used by a stage can be changed by editing the Stage Save Info ID of the STAG (Stage Settings) for the stage in question.
+* **Stage Save Info**: A part of the save file that stores flags for different stages, as well as other variables like the number of small keys the player currently has in this stage. Note that each and every stage does **not** have its own stage save info - the save file only has 16 stage save infos in it, and all stages in the game must use one of them, so many stages will need to share a single set of flags. Which one is used by a stage can be changed by editing the Stage Save Info ID of the STAG (Stage Settings) for the stage in question.
 
 ## Flags
 
