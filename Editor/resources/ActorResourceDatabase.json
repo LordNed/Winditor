@@ -1079,6 +1079,11 @@
       },
       {
         "Path": "bdlm/php.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 50,
+          "Z": 0
+        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1891,10 +1896,10 @@
     "Models": [
       {
         "Path": "bdlm/bo_ue1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 5.0,
-          "Z": 0.0
+        "Position": {
+          "X": 0,
+          "Y": 100,
+          "Z": 0
         },
         "Animations": [
           {
@@ -2912,10 +2917,10 @@
     "Models": [
       {
         "Path": "bdlm/vlocb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 230.0,
-          "Z": 20.0
+        "Position": {
+          "X": 0,
+          "Y": 230,
+          "Z": 20
         }
       }
     ]
@@ -2926,10 +2931,10 @@
     "Models": [
       {
         "Path": "bdlm/vlocn.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 150.0,
-          "Z": 20.0
+        "Position": {
+          "X": 0,
+          "Y": 150,
+          "Z": 20
         }
       }
     ]
