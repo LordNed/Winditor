@@ -1025,14 +1025,112 @@
         "Animations": [
           {
             "Anim Type": "bck",
-            "Path": "bck/await1.bck",
+            "Path": "bck/atate_on1.bck",
             "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bck",
+            "Path": "bck/aniou1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_main.brk",
+            "Paused on Load": true,
             "Start Time": 0
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Body Armor",
+    "Archive": "Tn",
+    "Models": [
       {
         "Path": "bmdm/tn_yoroi1.bmd",
+        "Position": {
+          "X": -120,
+          "Y": 0,
+          "Z": 0
+        },
+        "Rotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 270
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_yoroi1.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Basic Helmet",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_kabuto1.bmd",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_kabuto1.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Full Helmet",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_kabuto2.bmd",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_kabuto2.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Sword",
+    "Archive": "Tkwn",
+    "Models": [
+      {
+        "Path": "bdlc/tn_ken1.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 0,
+          "Z": 85
+        },
+        "Rotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 180
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Shield",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_tate1.bmd",
       }
     ]
   },

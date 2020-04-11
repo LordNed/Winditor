@@ -21681,6 +21681,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Color");
+				UpdateModel();
 			}
 		}
 
@@ -21721,6 +21722,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("FrozeninTimePose");
+				UpdateModel();
 			}
 		}
 
@@ -21797,6 +21799,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00E0 | (value_as_int << 5 & 0x00E0));
 				OnPropertyChanged("ExtraEquipment");
+				UpdateModel();
 			}
 		}
 

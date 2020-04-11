@@ -36,7 +36,8 @@
         4: "Black and brown",
         5: "Red and gold",
         15: "Red and gold B",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Guarded Area Radius (Tens)",
@@ -60,7 +61,8 @@
       "EnumValues": {
         0: "Walking pose",
         1: "Attacking pose",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Path",
@@ -99,7 +101,8 @@
         4: "Shield and cape",
         5: "Helmet shield and cape",
         7: "Helmet shield and cape B",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Disable Spawn on Death Switch",
