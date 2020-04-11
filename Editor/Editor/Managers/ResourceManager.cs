@@ -66,8 +66,14 @@ namespace WindEditor
             [JsonProperty("Path")]
             public string Path;
 
-            [JsonProperty("Offset")]
-            public Vector3 Offset;
+            [JsonProperty("Position")]
+            public Vector3? Position;
+
+            [JsonProperty("Rotation")]
+            public Vector3? Rotation;
+
+            [JsonProperty("Scale")]
+            public Vector3? Scale;
 
             [JsonProperty("Animations")]
             public AnimationResource[] Animations;
@@ -247,6 +253,19 @@ namespace WindEditor
             j3d = new J3D(archiveFile.Name);
             using (EndianBinaryReader reader = new EndianBinaryReader(j3dData, Endian.Big))
                 j3d.LoadFromStream(reader, WSettingsManager.GetSettings().DumpTextures, WSettingsManager.GetSettings().DumpShaders);
+
+            if (res.Position != null)
+            {
+                j3d.SetOffsetTranslation((Vector3)res.Position);
+            }
+            if (res.Rotation != null)
+            {
+                j3d.SetOffsetRotation((Vector3)res.Rotation);
+            }
+            if (res.Scale != null)
+            {
+                j3d.SetOffsetScale((Vector3)res.Scale);
+            }
 
             // If there are no animations specified, we can stop here and return the model
             if (res.Animations == null)
