@@ -66,6 +66,9 @@ namespace WindEditor
             [JsonProperty("Path")]
             public string Path;
 
+            [JsonProperty("Parent Joint")]
+            public string ParentJointName;
+
             [JsonProperty("Position")]
             public Vector3? Position;
 
@@ -77,6 +80,9 @@ namespace WindEditor
 
             [JsonProperty("Animations")]
             public AnimationResource[] Animations;
+
+            [JsonProperty("Child Models")]
+            public ModelResource[] ChildModels;
         }
 
         [JsonProperty("Name")]
@@ -173,18 +179,12 @@ namespace WindEditor
                 if (loaded_model == null)
                     continue;
 
-                loaded_model.SetHardwareLight(0, m_mainLight);
-                loaded_model.SetHardwareLight(1, m_secondaryLight);
-                loaded_model.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
-                loaded_model.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
-
                 existRef = new TSharedRef<J3D>();
                 existRef.FilePath = arc_and_file_path;
                 existRef.Asset = loaded_model;
                 existRef.ReferenceCount++;
 
                 m_j3dList.Add(existRef);
-                loaded_model.Tick(1/ (float)60);
 
                 models.Add(loaded_model);
             }
@@ -267,11 +267,15 @@ namespace WindEditor
                 j3d.SetOffsetScale((Vector3)res.Scale);
             }
 
-            // If there are no animations specified, we can stop here and return the model
-            if (res.Animations == null)
-                return j3d;
+            j3d.SetHardwareLight(0, m_mainLight);
+            j3d.SetHardwareLight(1, m_secondaryLight);
+            j3d.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+            j3d.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
 
-            foreach(var anim in res.Animations)
+            if (res.Animations == null)
+                res.Animations = new WActorResource.AnimationResource[0];
+
+            foreach (var anim in res.Animations)
             {
                 VirtualFilesystemDirectory anim_arc = model_arc;
 
@@ -369,6 +373,16 @@ namespace WindEditor
             }
 
             j3d.Tick(1 / (float)60);
+
+            if (res.ChildModels == null)
+                res.ChildModels = new WActorResource.ModelResource[0];
+
+            foreach (var childRes in res.ChildModels)
+            {
+                var childJ3d = LoadModelFromResource(childRes, archive);
+                j3d.AddChildModel(childJ3d, childRes.ParentJointName);
+            }
+
             return j3d;
         }
 
