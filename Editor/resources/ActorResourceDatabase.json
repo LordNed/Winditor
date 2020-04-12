@@ -1139,7 +1139,113 @@
     "Archive": "St",
     "Models": [
       {
-        "Path": "bdlm/st_head.bdl",
+        "Path": "bdlm/st.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/st_hara.bdl",
+            "Parent Joint": "hara"
+          },
+          {
+            "Path": "bdlm/st_mune.bdl",
+            "Parent Joint": "mune"
+          },
+          {
+            "Path": "bdlm/st_katal.bdl",
+            "Parent Joint": "kataL"
+          },
+          {
+            "Path": "bdlm/st_udel.bdl",
+            "Parent Joint": "udeL"
+          },
+          {
+            "Path": "bdlm/st_handl.bdl",
+            "Parent Joint": "handL"
+          },
+          {
+            "Path": "bdlm/st_yubi1l.bdl",
+            "Parent Joint": "yubi1L"
+          },
+          {
+            "Path": "bdlm/st_yubi2l.bdl",
+            "Parent Joint": "yubi2L"
+          },
+          {
+            "Path": "bdlm/st_katar.bdl",
+            "Parent Joint": "kataR"
+          },
+          {
+            "Path": "bdlm/st_uder.bdl",
+            "Parent Joint": "udeR"
+          },
+          {
+            "Path": "bdlm/st_handr.bdl",
+            "Parent Joint": "handR"
+          },
+          {
+            "Path": "bdlm/st_buki.bdl",
+            "Parent Joint": "buki"
+          },
+          {
+            "Path": "bdlm/st_yubi1r.bdl",
+            "Parent Joint": "yubi1R"
+          },
+          {
+            "Path": "bdlm/st_yubi2r.bdl",
+            "Parent Joint": "yubi2R"
+          },
+          {
+            "Path": "bdlm/st_kubi.bdl",
+            "Parent Joint": "kubi"
+          },
+          {
+            "Path": "bdlm/st_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdlm/st_ago.bdl",
+            "Parent Joint": "ago"
+          },
+          {
+            "Path": "bdlm/st_hat.bdl",
+            "Parent Joint": "hat"
+          },
+          {
+            "Path": "bdlm/st_kotuban.bdl",
+            "Parent Joint": "kotuban"
+          },
+          {
+            "Path": "bdlm/st_momol.bdl",
+            "Parent Joint": "momoL"
+          },
+          {
+            "Path": "bdlm/st_sunel.bdl",
+            "Parent Joint": "suneL"
+          },
+          {
+            "Path": "bdlm/st_asil.bdl",
+            "Parent Joint": "asiL"
+          },
+          {
+            "Path": "bdlm/st_momor.bdl",
+            "Parent Joint": "momoR"
+          },
+          {
+            "Path": "bdlm/st_suner.bdl",
+            "Parent Joint": "suneR"
+          },
+          {
+            "Path": "bdlm/st_asir.bdl",
+            "Parent Joint": "asiR"
+          }
+        ]
       }
     ]
   },
