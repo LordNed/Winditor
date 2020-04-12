@@ -20,7 +20,7 @@
       "Shift": 0,
       "Hidden": false,
       "Category": "Stage Properties",
-      "ToolTip": "",
+      "ToolTip": "This option enables the dungeon UI and makes small keys work.",
       "DataType": "Boolean"
     },
     {

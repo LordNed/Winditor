@@ -3436,7 +3436,7 @@ namespace WindEditor
 				
 
 		
-		[WProperty("Stage Properties", "Is Dungeon", true, "", SourceScene.Room)]
+		[WProperty("Stage Properties", "Is Dungeon", true, "This option enables the dungeon UI and makes small keys work.", SourceScene.Room)]
 		public bool IsDungeon
 		{ 
 			get
