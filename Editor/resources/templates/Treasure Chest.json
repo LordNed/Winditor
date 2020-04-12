@@ -121,7 +121,7 @@
       "Name": "Item",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0xFF00,
-      "Shift": 0,
+      "Shift": 8,
       "Hidden": false,
       "Category": "Treasure Chest",
       "ToolTip": "",

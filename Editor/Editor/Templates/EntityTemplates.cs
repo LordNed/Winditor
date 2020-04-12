@@ -4113,14 +4113,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 0);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
 				return (ItemID)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 0 & 0xFF00));
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Item");
 			}
 		}
