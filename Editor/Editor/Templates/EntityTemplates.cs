@@ -2243,16 +2243,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Unknown5;
+		protected byte m_SwitchtoSet;
 
-		[WProperty("Misc.", "Unknown 5", true)]
-		 public byte Unknown5
+		[WProperty("Misc.", "Switch to Set", true)]
+		 public byte SwitchtoSet
 		{ 
-			get { return m_Unknown5; }
+			get { return m_SwitchtoSet; }
 			set
 			{
-				m_Unknown5 = value;
-				OnPropertyChanged("Unknown5");
+				m_SwitchtoSet = value;
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 				
@@ -2322,7 +2322,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Switch to Set", TargetProperties = new string[] { "SwitchtoSet"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Number", TargetProperties = new string[] { "RoomNumber"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
@@ -2336,7 +2336,7 @@ namespace WindEditor
 			m_Unknown2 = stream.ReadByte(); 
 			m_Unknown3 = stream.ReadByte(); 
 			m_Unknown4 = stream.ReadByte(); 
-			m_Unknown5 = stream.ReadByte(); 
+			m_SwitchtoSet = stream.ReadByte(); 
 			m_RoomNumber = stream.ReadByte(); 
 			m_Unknown6 = stream.ReadByte(); 
 			m_Unknown7 = stream.ReadByte(); 
@@ -2354,7 +2354,7 @@ namespace WindEditor
 			stream.Write((byte)Unknown2);
 			stream.Write((byte)Unknown3);
 			stream.Write((byte)Unknown4);
-			stream.Write((byte)Unknown5);
+			stream.Write((byte)SwitchtoSet);
 			stream.Write((byte)RoomNumber);
 			stream.Write((byte)Unknown6);
 			stream.Write((byte)Unknown7);
