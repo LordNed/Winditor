@@ -23,9 +23,10 @@ namespace WindEditor
 
         public override float GetBoundingRadius()
         {
-            var mainModel = m_actorMeshes[0];
-            if (mainModel == null)
+            if (m_actorMeshes.Count == 0)
                 return base.GetBoundingRadius();
+
+			var mainModel = m_actorMeshes[0];
 
 			Vector3 lScale = Transform.LocalScale;
 			float largestMax = lScale[0];
