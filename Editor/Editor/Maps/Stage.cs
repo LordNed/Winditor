@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using WArchiveTools.FileSystem;
 using JStudio.J3D;
+using WindEditor.Events;
 
 namespace WindEditor
 {
@@ -36,6 +37,20 @@ namespace WindEditor
                     case "bdl":
                         {
                             LoadStageModels(folder);
+                        }
+                        break;
+                    case "dat":
+                        {
+                            string fileName = Path.Combine(folder, "event_list.dat");
+                            if (File.Exists(fileName))
+                            {
+                                WEventList evlist = new WEventList(m_world, fileName);
+
+                                CategoryDOMNode evCategory = new CategoryDOMNode("Event List", m_world);
+                                evCategory.SetParent(this);
+
+                                evlist.SetParent(evCategory);
+                            }
                         }
                         break;
                 }
