@@ -148,16 +148,20 @@ namespace WindEditor
         [DefaultValue(true)]
         public bool IsEditable { get; set; }
 
+        [JsonProperty("ToolTip")]
+        public string ToolTip { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
-        public DataDescriptorField(string Name, PropertyValueType Type, bool IsHidden, string Category, bool Editable)
+        public DataDescriptorField(string Name, PropertyValueType Type, bool IsHidden, string Category, bool Editable, string Tip)
         {
             FieldName = Name;
             FieldType = Type;
             CategoryName = Category;
             Hidden = IsHidden;
             IsEditable = Editable;
+            ToolTip = Tip;
         }
     }
 

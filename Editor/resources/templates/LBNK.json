@@ -3,6 +3,6 @@
 	"FourCC" : "LBNK",
 	"Fields" :
 	[
-		{"Name" : "Unknown", "Type" : "Byte"}
+		{"Name" : "Cutscene Archive Number", "Type" : "Byte", "ToolTip": "Which cutscene archive file to load for this layer.\ne.g. 1 for this would load files/res/Object/Demo01.arc."}
 	]
 }
