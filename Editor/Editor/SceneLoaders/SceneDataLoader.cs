@@ -179,9 +179,6 @@ namespace WindEditor
         [JsonProperty("Mask")]
         public uint BitMask { get; set; }
 
-        [JsonProperty("Shift")]
-        public uint BitShift { get; set; }
-
         [JsonProperty("Category")]
         public string CategoryName { get; set; }
 
@@ -220,7 +217,6 @@ namespace WindEditor
             FieldName = Name;
             ValueSource = Source;
             BitMask = Mask;
-            BitShift = Shift;
             CategoryName = Category;
             IsHidden = Hidden;
             DefaultValue = defaultVal;

@@ -6,7 +6,6 @@
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0xF0000000,
-      "Shift": 28,
       "Hidden": false,
       "Category": "warpf",
       "ToolTip": "",

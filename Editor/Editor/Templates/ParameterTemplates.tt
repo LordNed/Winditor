@@ -27,6 +27,14 @@
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
 
+			int bitShift = 0;
+			for (int i = 0; i < 32; i++) {
+				if ((field.BitMask & (1 << i)) != 0) {
+					bitShift = i;
+					break;
+				}
+			}
+
 			bool defaultBooleanValue = field.BooleanDefaultValue;
 			int[] boolNonDefaults = new int[] {0, 0xFF};
 			if (field.BooleanNonDefaults != null) {
@@ -153,7 +161,7 @@
 		{ 
 			get
 			{
-				int value_as_int = (int)((<#= privateValueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>);
+				int value_as_int = (int)((<#= privateValueSource #> & <#= bitMaskHex #>) >> <#= bitShift #>);
 <#
 				switch (field.DataType)
 				{
@@ -257,7 +265,7 @@
 						break;
 				}
 #>
-				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= field.BitShift #> & <#= bitMaskHex #>));
+				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= bitShift #> & <#= bitMaskHex #>));
 				OnPropertyChanged("<#=fieldName#>");
 <#
 				if (field.UpdateModel) {
