@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Melted Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_ice",
-      "ToolTip": "",
+      "Category": "Chunk of Ice",
+      "ToolTip": "Switch to set once this chunk of ice has been melted.",
       "DataType": "Integer"
     }
   ]

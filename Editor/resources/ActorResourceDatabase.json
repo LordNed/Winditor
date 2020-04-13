@@ -703,6 +703,15 @@
     ]
   },
   {
+    "Name": "Chunk of Ice",
+    "Archive": "Ikori",
+    "Models": [
+      {
+        "Path": "bdl/vice.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Flying Kargaroc",
     "Archive": "Bb",
     "Models": [

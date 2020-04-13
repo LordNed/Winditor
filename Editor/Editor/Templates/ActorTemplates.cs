@@ -13049,8 +13049,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_ice", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Chunk of Ice", "Melted Switch", true, "Switch to set once this chunk of ice has been melted.", SourceScene.Room)]
+		public int MeltedSwitch
 		{ 
 			get
 			{
@@ -13062,7 +13062,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("MeltedSwitch");
 			}
 		}
 
@@ -13075,7 +13075,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			MeltedSwitch = -1;
 		}
 	}
 
