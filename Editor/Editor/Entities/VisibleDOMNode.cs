@@ -152,10 +152,10 @@ namespace WindEditor
                 {
                     // Convert the hit point back to world space...
                     Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
-                    localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation);
+                    Vector3 globalHitPoint = Transform.Position + Vector3.Transform(localHitPoint, Transform.Rotation);
 
                     // Now get the distance from the original ray origin and the new worldspace hit point.
-                    closestDistance = (localHitPoint - ray.Origin).Length;
+                    closestDistance = (globalHitPoint - ray.Origin).Length;
                 }
             }
 
