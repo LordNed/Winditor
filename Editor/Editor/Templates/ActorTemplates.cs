@@ -6974,10 +6974,47 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
+		[WProperty("Magma", "Bubbles Path", true, "The magma's bubbles will appear on this path's points.", SourceScene.Room)]
+		public Path_v2 BubblesPath
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				OnPropertyChanged("BubblesPath");
+			}
+		}
+
 		// Constructor
 		public magma(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			BubblesPath = null;
 		}
 	}
 
