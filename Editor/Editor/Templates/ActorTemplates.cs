@@ -13422,20 +13422,28 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_kanoke", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_kanoke", "Is Upright", true, "", SourceScene.Room)]
+		public bool IsUpright
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("IsUpright");
+				UpdateModel();
 			}
 		}
 
@@ -13516,7 +13524,6 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;

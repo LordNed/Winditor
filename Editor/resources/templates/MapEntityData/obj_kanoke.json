@@ -3,13 +3,14 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Is Upright",
       "ValueSource": "Parameters",
       "Mask": 0x00000001,
       "Hidden": false,
       "Category": "obj_kanoke",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_2",
