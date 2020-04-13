@@ -14,7 +14,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="Auto" MinWidth="5"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -27,19 +27,19 @@
                 </Menu>
 
                 <!-- Actor Properties -->
-                <StackPanel Grid.Column="0" Grid.Row="1" Width="200">
+                <DockPanel Grid.Column="0" Grid.Row="1" LastChildFill="True">
                     <GroupBox Header="Actor Properties">
                         <local:WDetailsView x:Name="ActorPropertiesView"/>
                     </GroupBox>
-                </StackPanel>
+                </DockPanel>
 
                 <!-- Splitter -->
                 <GridSplitter Grid.Column="1" Grid.Row="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
 
                 <!-- Nodegraph Tabs -->
-                <StackPanel Grid.Column="2" Grid.Row="1">
+                <DockPanel Grid.Column="2" Grid.Row="1" LastChildFill="True">
                     <TabControl Name="ActorTabControl"/>
-                </StackPanel>
+                </DockPanel>
             </Grid>
         </DockPanel>
     </Grid>

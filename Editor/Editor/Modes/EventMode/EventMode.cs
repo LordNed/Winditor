@@ -9,6 +9,9 @@ using System.ComponentModel;
 using WindEditor.View;
 using WindEditor.ViewModel;
 using WindEditor.Events;
+using NodeNetwork.Views;
+using NodeNetwork.ViewModels;
+using NodeNetwork.Toolkit.Layout.ForceDirected;
 
 namespace WindEditor.Editor.Modes
 {
@@ -260,8 +263,62 @@ namespace WindEditor.Editor.Modes
 
         private TabItem GenerateActorTabItem(Staff staff)
         {
-            TabItem new_tab = new TabItem() { Header = staff.Name };
+            // Create view model for node network.
+            NetworkViewModel model = new NetworkViewModel();
 
+            // Create the begin node for the actor and add it to the network.
+            NodeViewModel begin_node = new NodeViewModel() { Name = staff.Name };
+            model.Nodes.Edit(x => x.Add(begin_node));
+
+            // Add an output to the begin node labelled "Begin".
+            NodeOutputViewModel begin_output = new NodeOutputViewModel() { Name = "Begin" };
+            begin_node.Outputs.Edit(x => x.Add(begin_output));
+
+            // If this actor has at least one cut...
+            if (staff.FirstCut != null)
+            {
+                // Add the first cut to the node network.
+                model.Nodes.Edit(x => x.Add(staff.FirstCut.NodeViewModel));
+
+                // Create a connection between the output of the begin node and the input of the first cut.
+                ConnectionViewModel first_to_begin = new ConnectionViewModel(
+                    model,
+                    staff.FirstCut.NodeViewModel.Inputs.Items.First(),
+                    begin_output);
+                // Add the connection to the node network.
+                model.Connections.Edit(x => x.Add(first_to_begin));
+
+                // Iterating through the linked list of cuts...
+                Cut c = staff.FirstCut;
+                while (c.NextCut != null)
+                {
+                    c.AddPropertiesToNode(model);
+
+                    // Create a connection between this cut and the next cut in the list.
+                    ConnectionViewModel next_cut_connection = new ConnectionViewModel(
+                        model,
+                        c.NextCut.NodeViewModel.Inputs.Items.First(),
+                        c.NodeViewModel.Outputs.Items.First());
+
+                    // Add the connection to the node network.
+                    model.Connections.Edit(x => x.Add(next_cut_connection));
+
+                    // Grab the next cut and add it to the node network.
+                    c = c.NextCut;
+                    model.Nodes.Edit(x => x.Add(c.NodeViewModel));
+                }
+            }
+
+            // Create the visual component of the node network.
+            NetworkView v = new NetworkView()
+            {
+                HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
+                VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
+                ViewModel = model
+            };
+
+            // Finally, create the new tab.
+            TabItem new_tab = new TabItem() { Header = staff.Name, Content = v };
             return new_tab;
         }
 

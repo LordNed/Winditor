@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using WindEditor.Properties;
 using GameFormatReader.Common;
+using NodeNetwork.ViewModels;
+using NodeNetwork.Views;
 
 namespace WindEditor.Events
 {
@@ -29,6 +31,8 @@ namespace WindEditor.Events
 
         private Cut m_NextCut;
 
+        private NodeViewModel m_NodeViewModel;
+
         public Cut NextCut
         {
             get { return m_NextCut; }
@@ -38,6 +42,19 @@ namespace WindEditor.Events
                 {
                     m_NextCut = value;
                     OnPropertyChanged("NextCut");
+                }
+            }
+        }
+
+        public NodeViewModel NodeViewModel
+        {
+            get { return m_NodeViewModel; }
+            set
+            {
+                if (value != m_NodeViewModel)
+                {
+                    m_NodeViewModel = value;
+                    OnPropertyChanged("NodeViewModel");
                 }
             }
         }
@@ -62,6 +79,8 @@ namespace WindEditor.Events
 
             Name = "new_cut";
             NextCut = null;
+
+            CreateNodeViewModel();
         }
 
         public Cut(EndianBinaryReader reader)
@@ -84,6 +103,16 @@ namespace WindEditor.Events
             m_NextCutIndex = reader.ReadInt32();
 
             reader.Skip(16);
+
+            CreateNodeViewModel();
+        }
+
+        private void CreateNodeViewModel()
+        {
+            NodeViewModel = new NodeViewModel() { Name = this.Name };
+
+            NodeViewModel.Inputs.Edit(x => x.Add(new NodeInputViewModel()));
+            NodeViewModel.Outputs.Edit(x => x.Add(new NodeOutputViewModel()));
         }
 
         public void AssignNextCutAndSubstances(List<Cut> cut_list, List<BaseSubstance> substance_list)
@@ -102,6 +131,27 @@ namespace WindEditor.Events
                     Properties.Add(subs);
                     subs = subs.NextSubstance;
                 }
+            }
+        }
+
+        public void AddPropertiesToNode(NetworkViewModel model)
+        {
+            foreach (BaseSubstance s in Properties)
+            {
+                NodeInputViewModel new_prop_input = new NodeInputViewModel();
+                NodeViewModel.Inputs.Edit(x => x.Add(new_prop_input));
+
+                NodeViewModel temp_node = new NodeViewModel() { Name = s.Name };
+                model.Nodes.Edit(x => x.Add(temp_node));
+
+                NodeOutputViewModel temp_output = new NodeOutputViewModel();
+                temp_node.Outputs.Edit(x => x.Add(temp_output));
+
+                ConnectionViewModel first_to_begin = new ConnectionViewModel(
+                    model,
+                    new_prop_input,
+                    temp_output);
+                model.Connections.Edit(x => x.Add(first_to_begin));
             }
         }
 
