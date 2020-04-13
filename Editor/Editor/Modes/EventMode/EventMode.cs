@@ -15,21 +15,39 @@ namespace WindEditor.Editor.Modes
     public class EventMode : IEditorMode
     {
         private DockPanel m_ModeControlsDock;
-        private WDetailsViewViewModel m_DetailsViewModel;
         private ComboBox m_EventCombo;
+
+        private WDetailsViewViewModel m_EventDetailsViewModel;
+        private WDetailsViewViewModel m_ActorDetailsViewModel;
+
+        private EventNodeWindow m_NodeWindow;
 
         private WEventList m_EventList;
         private Event m_SelectedEvent;
+        private Staff m_SelectedStaff;
 
-        public WDetailsViewViewModel DetailsViewModel
+        public WDetailsViewViewModel EventDetailsViewModel
         {
-            get { return m_DetailsViewModel; }
+            get { return m_EventDetailsViewModel; }
             set
             {
-                if (value != m_DetailsViewModel)
+                if (value != m_EventDetailsViewModel)
                 {
-                    m_DetailsViewModel = value;
-                    OnPropertyChanged("DetailsViewModel");
+                    m_EventDetailsViewModel = value;
+                    OnPropertyChanged("EventDetailsViewModel");
+                }
+            }
+        }
+
+        public WDetailsViewViewModel ActorDetailsViewModel
+        {
+            get { return m_ActorDetailsViewModel; }
+            set
+            {
+                if (value != m_ActorDetailsViewModel)
+                {
+                    m_ActorDetailsViewModel = value;
+                    OnPropertyChanged("ActorDetailsViewModel");
                 }
             }
         }
@@ -73,6 +91,19 @@ namespace WindEditor.Editor.Modes
             }
         }
 
+        public Staff SelectedStaff
+        {
+            get { return m_SelectedStaff; }
+            set
+            {
+                if (value != m_SelectedStaff)
+                {
+                    m_SelectedStaff = value;
+                    OnPropertyChanged("SelectedStaff");
+                }
+            }
+        }
+
         public WWorld World { get; }
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
@@ -80,9 +111,14 @@ namespace WindEditor.Editor.Modes
         public EventMode(WWorld world)
         {
             World = world;
-            DetailsViewModel = new WDetailsViewViewModel();
+            EventDetailsViewModel = new WDetailsViewViewModel();
+            ActorDetailsViewModel = new WDetailsViewViewModel();
 
             ModeControlsDock = CreateUI();
+
+            m_NodeWindow = new EventNodeWindow();
+            m_NodeWindow.ActorPropertiesView.DataContext = ActorDetailsViewModel;
+            m_NodeWindow.ActorTabControl.SelectionChanged += OnSelectedActorChanged;
         }
 
         /// <summary>
@@ -120,7 +156,7 @@ namespace WindEditor.Editor.Modes
                 DisplayMemberPath = "Name"
             };
 
-            m_EventCombo.SelectionChanged += M_EventCombo_SelectionChanged;
+            m_EventCombo.SelectionChanged += OnEventSelectionChanged;
 
             Grid.SetRow(m_EventCombo, 0);
 
@@ -129,7 +165,7 @@ namespace WindEditor.Editor.Modes
                 Name = "Details",
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
-                DataContext = DetailsViewModel
+                DataContext = EventDetailsViewModel
             };
 
             GroupBox actor_prop_box = new GroupBox()
@@ -153,10 +189,33 @@ namespace WindEditor.Editor.Modes
             return event_dock_panel;
         }
 
-        private void M_EventCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnEventSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedEvent = EventList.Events[m_EventCombo.SelectedIndex];
-            m_DetailsViewModel.ReflectObject(SelectedEvent);
+            m_EventDetailsViewModel.ReflectObject(SelectedEvent);
+
+            m_NodeWindow.ActorTabControl.Items.Clear();
+
+            foreach (Staff s in SelectedEvent.Actors)
+            {
+                m_NodeWindow.ActorTabControl.Items.Add(GenerateActorTabItem(s));
+            }
+
+            m_NodeWindow.ActorTabControl.SelectedIndex = 0;
+        }
+
+        private void OnSelectedActorChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (m_NodeWindow.ActorTabControl.SelectedIndex == -1)
+            {
+                SelectedStaff = null;
+            }
+            else
+            {
+                SelectedStaff = SelectedEvent.Actors[m_NodeWindow.ActorTabControl.SelectedIndex];
+            }
+
+            ActorDetailsViewModel.ReflectObject(SelectedStaff);
         }
 
         public void BroadcastUndoEventGenerated(WUndoCommand command)
@@ -185,16 +244,25 @@ namespace WindEditor.Editor.Modes
 
             m_EventCombo.ItemsSource = EventList.Events;
             m_EventCombo.SelectedIndex = 0;
+
+            m_NodeWindow.Show();
         }
 
         public void OnBecomeInactive()
         {
-            //throw new NotImplementedException();
+            m_NodeWindow.Hide();
         }
 
         public void Update(WSceneView view)
         {
             //throw new NotImplementedException();
+        }
+
+        private TabItem GenerateActorTabItem(Staff staff)
+        {
+            TabItem new_tab = new TabItem() { Header = staff.Name };
+
+            return new_tab;
         }
 
         #region INotifyPropertyChanged Support
