@@ -140,7 +140,13 @@ namespace WindEditor
 			}
 			else
 			{
-				bHit = WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+                if (m_objRender.FaceCullingEnabled && m_objRender.GetAABB().Contains(localRay.Origin))
+                {
+                    // If the camera is inside an OBJ render that has backface culling on, the actor won't actually be visible, so don't select it.
+                    return false;
+                }
+
+                bHit = WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
 
                 if (bHit)
                 {
