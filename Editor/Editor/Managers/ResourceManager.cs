@@ -199,6 +199,24 @@ namespace WindEditor
                 models[0].SetColorWriteOverride("eyeRdamB", false);
                 models[0].SetColorWriteOverride("mayuRdamA", false);
                 models[0].SetColorWriteOverride("mayuRdamB", false);
+
+                models[0].SetColorWriteOverride("m_pz_eyeLdamA", false);
+                models[0].SetColorWriteOverride("m_pz_eyeLdamB", false);
+                models[0].SetColorWriteOverride("m_pz_eyeRdamA", false);
+                models[0].SetColorWriteOverride("m_pz_eyeRdamB", false);
+                models[0].SetColorWriteOverride("m_pz_mayuLdamA", false);
+                models[0].SetColorWriteOverride("m_pz_mayuLdamB", false);
+                models[0].SetColorWriteOverride("m_pz_mayuRdamA", false);
+                models[0].SetColorWriteOverride("m_pz_mayuRdamB", false);
+
+                foreach (var material in models[0].MAT3Tag.MaterialList)
+                {
+                    if (material.BlendModeIndex.SourceFactor == GXBlendModeControl.DstAlpha && material.BlendModeIndex.DestinationFactor == GXBlendModeControl.InverseDstAlpha)
+                    {
+                        material.BlendModeIndex.SourceFactor = GXBlendModeControl.SrcAlpha;
+                        material.BlendModeIndex.DestinationFactor = GXBlendModeControl.InverseSrcAlpha;
+                    }
+                }
             }
 
             return models;
