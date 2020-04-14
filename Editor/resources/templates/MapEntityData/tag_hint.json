@@ -1,6 +1,6 @@
 {
   "ClassName": "tag_hint",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",

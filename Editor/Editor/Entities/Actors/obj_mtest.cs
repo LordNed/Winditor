@@ -10,9 +10,9 @@ namespace WindEditor
 	public partial class obj_mtest
 	{
 		public override void PostLoad()
-		{
-			base.PostLoad();
-		}
+        {
+            m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 1f, 1f, 1f), true, false);
+        }
 
 		public override void PreSave()
 		{

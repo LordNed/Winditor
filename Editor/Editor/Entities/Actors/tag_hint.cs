@@ -31,7 +31,7 @@ namespace WindEditor
         public override void PostLoad()
         {
             Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X);
-            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(1f, 1f, 0f, 1f), true);
+            m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(1f, 1f, 0f, 1f), true, false);
 
             m_MessageReference = new MessageReference((ushort)MessageID);
         }
@@ -39,11 +39,6 @@ namespace WindEditor
         public override void PreSave()
         {
             MessageID = MessageReference.MessageID;
-        }
-
-        public override void AddToRenderer(WSceneView view)
-        {
-            view.AddTransparentMesh(this);
         }
     }
 }

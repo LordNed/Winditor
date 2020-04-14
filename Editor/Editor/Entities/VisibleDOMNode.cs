@@ -94,6 +94,8 @@ namespace WindEditor
         protected List<J3D> m_actorMeshes;
 		public TevColorOverride ColorOverrides { get; protected set; }
 
+        protected bool DisableRotationAndScaleForRaycasting = false;
+
 		public override void OnConstruction()
 		{
 			base.OnConstruction();
@@ -123,8 +125,12 @@ namespace WindEditor
 
 		public bool Raycast(FRay ray, out float closestDistance)
 		{
-			// Convert the ray to local space of this node since all of our raycasts are local.
-			FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
+            // Convert the ray to local space of this node since all of our raycasts are local.
+            FRay localRay;
+            if (DisableRotationAndScaleForRaycasting)
+                localRay = WMath.TransformRay(ray, Transform.Position, Vector3.One, Quaternion.Identity);
+            else
+                localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
             closestDistance = float.MaxValue;
 			bool bHit = false;
 

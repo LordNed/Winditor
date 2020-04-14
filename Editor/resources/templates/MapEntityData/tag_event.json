@@ -1,6 +1,6 @@
 {
   "ClassName": "tag_event",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Type",

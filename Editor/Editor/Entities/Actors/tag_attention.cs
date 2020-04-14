@@ -15,23 +15,18 @@ namespace WindEditor
             if (Name == "AttTag")
             {
                 Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X);
-                m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 0.75f, 1f, 1f), true);
+                m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 0.75f, 1f, 1f), true, false);
             }
             else if (Name == "AttTagB")
             {
                 Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X);
-                m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 0.75f, 1f, 1f), true);
+                m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 0.75f, 1f, 1f), true, false);
             }
         }
 
         public override void PreSave()
         {
 
-        }
-
-        public override void AddToRenderer(WSceneView view)
-        {
-            view.AddTransparentMesh(this);
         }
     }
 }

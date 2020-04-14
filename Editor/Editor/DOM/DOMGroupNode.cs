@@ -9,10 +9,6 @@
             FourCC = fourCC;
             IsVisible = true;
             IsRendered = true;
-            if (FourCC == FourCC.SCOB)
-            {
-                IsRendered = false;
-            }
         }
 
         public override string ToString()

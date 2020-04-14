@@ -1,6 +1,6 @@
 {
   "ClassName": "tag_attention",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",

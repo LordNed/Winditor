@@ -158,6 +158,7 @@
     <Compile Include="Editor\Entities\LightVector.cs" />
     <Compile Include="Editor\Entities\RoomProperties.cs" />
     <Compile Include="Editor\Entities\StageProperties.cs" />
+    <Compile Include="Editor\Entities\TriggerRegion.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />

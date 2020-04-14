@@ -1,6 +1,6 @@
 {
   "ClassName": "obj_mtest",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",

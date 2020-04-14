@@ -14509,7 +14509,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class obj_mtest : Actor
+	public partial class obj_mtest : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		
@@ -19573,7 +19573,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class swc00 : Actor
+	public partial class swc00 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		
@@ -20061,7 +20061,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_attention : Actor
+	public partial class tag_attention : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		
@@ -20179,7 +20179,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_event : Actor
+	public partial class tag_event : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 				public enum TypeEnum
@@ -20441,7 +20441,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_hint : Actor
+	public partial class tag_hint : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		

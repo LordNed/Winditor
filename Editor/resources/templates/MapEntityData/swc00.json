@@ -1,6 +1,6 @@
 {
   "ClassName": "swc00",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Switch to Set",
