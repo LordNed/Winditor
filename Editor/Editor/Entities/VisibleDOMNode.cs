@@ -221,7 +221,7 @@ namespace WindEditor
 			float boundingSphere = 86f; // Default Editor Cube
 			if (m_actorMeshes.Count > 0)
 				boundingSphere = m_actorMeshes[0].BoundingSphere.Radius;
-            if (m_objRender != null)
+            else if (m_objRender != null)
                 boundingSphere = m_objRender.GetAABB().Extents.Length;
             return largestMax * boundingSphere;
 		}
