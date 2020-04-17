@@ -114,6 +114,10 @@
 					{
 						string sanitizedValue = item.Value.Replace(" ", "_");
 						sanitizedValue = EscapeIdentifier(sanitizedValue);
+						if (Char.IsDigit(sanitizedValue[0])) {
+							// Identifiers can't start with a number.
+							sanitizedValue = "_" + sanitizedValue;
+						}
 #>
 			<#= sanitizedValue #> = <#= item.Key #>,
 <#
