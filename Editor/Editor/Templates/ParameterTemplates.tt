@@ -134,6 +134,9 @@
 				case "DroppedItemID":
 					dataType = "DroppedItemID";
 					break;
+				case "OnlyRandomDroppedItemID":
+					dataType = "OnlyRandomDroppedItemID";
+					break;
 				default:
 					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 					break;
@@ -217,9 +220,13 @@
 					case "Enum":
 					case "ItemID":
 					case "DroppedItemID":
+					case "OnlyRandomDroppedItemID":
 #>
 				return (<#= dataType #>)value_as_int;
 <#
+						break;
+					default:
+						throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 						break;
 				}
 #>
@@ -263,9 +270,13 @@
 					case "Enum":
 					case "ItemID":
 					case "DroppedItemID":
+					case "OnlyRandomDroppedItemID":
 #>
 				int value_as_int = (int)value;
 <#
+						break;
+					default:
+						throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 						break;
 				}
 #>

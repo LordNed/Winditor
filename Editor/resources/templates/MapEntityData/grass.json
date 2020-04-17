@@ -3,31 +3,48 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000000F,
-      "Hidden": false,
-      "Category": "grass",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000030,
       "Hidden": false,
-      "Category": "grass",
+      "Category": "Foliage",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Grass",
+        1: "Tree",
+        2: "White Flower",
+        3: "Pink Flower",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Spawn Pattern",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000000F,
+      "Hidden": false,
+      "Category": "Foliage",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Single",
+        1: "7 Grass Bunches",
+        2: "21 Grass Bunches",
+        3: "3 Trees",
+        4: "7 White Flowers",
+        5: "17 White Flowers",
+        6: "7 Pink Flowers",
+        7: "5 Trees",
+      }
+    },
+    {
+      "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x00000FC0,
       "Hidden": false,
-      "Category": "grass",
+      "Category": "Grass and Flowers",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "OnlyRandomDroppedItemID"
     }
   ]
 }

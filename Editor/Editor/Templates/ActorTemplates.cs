@@ -4337,55 +4337,76 @@ namespace WindEditor
 	public partial class grass : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("grass", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
-			}
+				public enum TypeEnum
+		{
+			Grass = 0,
+			Tree = 1,
+			White_Flower = 2,
+			Pink_Flower = 3,
 		}
 
-		[WProperty("grass", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Foliage", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000030) >> 4);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000030 | (value_as_int << 4 & 0x00000030));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+		public enum SpawnPatternEnum
+		{
+			Single = 0,
+			_7_Grass_Bunches = 1,
+			_21_Grass_Bunches = 2,
+			_3_Trees = 3,
+			_7_White_Flowers = 4,
+			_17_White_Flowers = 5,
+			_7_Pink_Flowers = 6,
+			_5_Trees = 7,
+		}
+
+
+		[WProperty("Foliage", "Spawn Pattern", true, "", SourceScene.Room)]
+		public SpawnPatternEnum SpawnPattern
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
+				return (SpawnPatternEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				OnPropertyChanged("SpawnPattern");
 			}
 		}
 
-		[WProperty("grass", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Grass and Flowers", "Dropped Item", true, "", SourceScene.Room)]
+		public OnlyRandomDroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000FC0) >> 6);
-				return value_as_int;
+				return (OnlyRandomDroppedItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000FC0 | (value_as_int << 6 & 0x00000FC0));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("DroppedItem");
 			}
 		}
 
@@ -4393,14 +4414,6 @@ namespace WindEditor
 		public grass(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
 		}
 	}
 
