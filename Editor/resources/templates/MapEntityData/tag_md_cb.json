@@ -1,6 +1,6 @@
 {
   "ClassName": "tag_md_cb",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "MessageID",

@@ -46,7 +46,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class agbsw0 : Actor
+	public partial class agbsw0 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		
@@ -20932,7 +20932,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_md_cb : Actor
+	public partial class tag_md_cb : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		

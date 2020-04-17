@@ -1,6 +1,6 @@
 {
   "ClassName": "agbsw0",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",
