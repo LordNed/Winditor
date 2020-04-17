@@ -2979,7 +2979,30 @@
     ]
   },
   {
-    "Name": "Light Beam Warp",
+    "Name": "Pink Light Beam Warp",
+    "Archive": "Ywarp00",
+    "Models": [
+      {
+        "Path": "bmdm/ywarp00.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/ywarp00.bck",
+            "Paused on Load": true,
+            "Start Time": 0.96666666666666666666666666666667
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/ywarp00.brk",
+            "Paused on Load": true,
+            "Start Time": 0.96666666666666666666666666666667
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "White Light Beam Warp",
     "Archive": "Ysdls00",
     "Models": [
       {
