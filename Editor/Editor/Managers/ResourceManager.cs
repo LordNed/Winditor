@@ -219,6 +219,14 @@ namespace WindEditor
                 }
             }
 
+            if (models.Count > 0 && (name == "Wizzrobe"))
+            {
+                foreach (var material in models[0].MAT3Tag.MaterialList)
+                {
+                    material.ZModeIndex.UpdateEnable = true;
+                }
+            }
+
             return models;
         }
 
