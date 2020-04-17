@@ -3380,6 +3380,15 @@
     ]
   },
   {
+    "Name": "Earth Temple Stair",
+    "Archive": "Msdan",
+    "Models": [
+      {
+        "Path": "bdl/msdan.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Pirate Ship",
     "Archive": "Kaizokusen",
     "Models": [
