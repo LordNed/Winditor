@@ -22,6 +22,16 @@ namespace WindEditor
             5,
             6,
         };
+        private static readonly int[] kFoliageSpawnPatternNumModels = {
+            1,
+            7,
+            15,
+            3,
+            7,
+            11,
+            7,
+            5,
+        };
 
         private static readonly Vector3[][] kGrassSpawnOffsets = new Vector3[][] {
             new Vector3[] {
@@ -183,8 +193,11 @@ namespace WindEditor
             m_objRender = WResourceManager.LoadObjResource(model_path, new OpenTK.Vector4(1, 1, 1, 1), true, false, TextureWrapMode.MirroredRepeat);
         }
 
-        private Vector3[] GetSpawnOffsets()
+        public override void Draw(WSceneView view)
         {
+            var bbox = GetBoundingBox();
+            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+
             int spawnPatternIndex = Unknown_1;
             if (spawnPatternIndex > 7)
             {
@@ -193,19 +206,10 @@ namespace WindEditor
                 spawnPatternIndex = 0;
             }
             int groupIndex = kFoliageSpawnPatternGroupIndexes[spawnPatternIndex];
+            int numModels = kFoliageSpawnPatternNumModels[spawnPatternIndex];
             Vector3[] offsetsForGroup = kGrassSpawnOffsets[groupIndex];
 
-            return offsetsForGroup;
-        }
-
-        public override void Draw(WSceneView view)
-        {
-            var bbox = GetBoundingBox();
-            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
-
-            var offsetsForGroup = GetSpawnOffsets();
-
-            for (int i = 0; i < offsetsForGroup.Length; i++)
+            for (int i = 0; i < numModels; i++)
             {
                 Vector3 modelOffset = offsetsForGroup[i];
 
@@ -224,11 +228,6 @@ namespace WindEditor
 
                 m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }
-        }
-
-        public override float GetBoundingRadius()
-        {
-            return 200f;
         }
     }
 }
