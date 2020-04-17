@@ -23,7 +23,8 @@ namespace WindEditor
 			Matrix4 trs = Matrix4.CreateScale(VisualScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 			Matrix4 centerPointTrs = Matrix4.CreateTranslation(Transform.Position);
 
-			m_objRender.Render(view.ViewMatrix, view.ProjMatrix, centerPointTrs);
+			if (m_objRender != null)
+				m_objRender.Render(view.ViewMatrix, view.ProjMatrix, centerPointTrs);
 
 			if (IsSelected)
 			{

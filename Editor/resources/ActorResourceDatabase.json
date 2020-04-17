@@ -2814,11 +2814,20 @@
     ]
   },
   {
-    "Name": "Torch",
+    "Name": "Wooden Torch",
     "Archive": "Ep",
     "Models": [
       {
         "Path": "bdl/obm_shokudai1.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Golden Torch",
+    "Archive": "Ep",
+    "Models": [
+      {
+        "Path": "bdl/vktsd.bdl",
       }
     ]
   },

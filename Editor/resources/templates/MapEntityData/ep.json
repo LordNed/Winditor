@@ -1,6 +1,6 @@
 {
   "ClassName": "ep",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Type",
@@ -15,7 +15,9 @@
         1: "Does not have brazier 1",
         2: "Does not have brazier 2",
         3: "Has brazier 2",
-      }
+        63: "Has brazier 1 B",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Has Fireflies?",
@@ -33,7 +35,8 @@
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold.",
-      "DataType": "Boolean"
+      "DataType": "Boolean",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_4",

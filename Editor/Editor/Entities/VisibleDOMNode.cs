@@ -96,7 +96,7 @@ namespace WindEditor
 
         protected bool DisableRotationAndScaleForRaycasting = false;
         protected Vector3 VisualScaleMultiplier = Vector3.One;
-        protected Vector3 VisualScale
+        protected virtual Vector3 VisualScale
         {
             get { return  Vector3.Multiply(Transform.LocalScale, VisualScaleMultiplier); }
         }

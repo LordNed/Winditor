@@ -3242,7 +3242,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class ep : Actor
+	public partial class ep : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 				public enum TypeEnum
@@ -3251,6 +3251,7 @@ namespace WindEditor
 			Does_not_have_brazier_1 = 1,
 			Does_not_have_brazier_2 = 2,
 			Has_brazier_2 = 3,
+			Has_brazier_1_B = 63,
 		}
 
 
@@ -3268,6 +3269,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -3316,6 +3318,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("IsWooden");
+				UpdateModel();
 			}
 		}
 
