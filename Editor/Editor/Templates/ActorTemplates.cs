@@ -20792,21 +20792,29 @@ namespace WindEditor
 	public partial class tag_light : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("tag_light", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum TypeEnum
+		{
+			Invisible_Light_Region = 0,
+			Light_Beam = 1,
+			Light_Detector = 2,
+		}
+
+
+		[WProperty("tag_light", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
-				return value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -20858,6 +20866,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00003C00 | (value_as_int << 10 & 0x00003C00));
 				OnPropertyChanged("Unknown_4");
+				UpdateModel();
 			}
 		}
 
@@ -20921,7 +20930,6 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;

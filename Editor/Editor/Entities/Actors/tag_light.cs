@@ -25,7 +25,7 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
-            if (Unknown_1 == 1)
+            if (Type == TypeEnum.Light_Beam)
             {
                 // TODO: model needs to be visually scaled twice as tall, without affecting the actual SCOB's scale
                 //Transform.LocalScale = new Vector3(Transform.LocalScale.X, 2 * Transform.LocalScale.Y, Transform.LocalScale.Z);
@@ -43,5 +43,17 @@ namespace WindEditor
                 m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
             }
         }
-	}
+
+        public override void AddToRenderer(WSceneView view)
+        {
+            if (Type == TypeEnum.Light_Beam)
+            {
+                view.AddTransparentMesh(this);
+            }
+            else
+            {
+                view.AddOpaqueMesh(this);
+            }
+        }
+    }
 }

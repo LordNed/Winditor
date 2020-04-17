@@ -3456,17 +3456,17 @@
   },
   {
     "Actor Name": "LTag0",
-    "English Name": "tag_light",
+    "English Name": "Invisible Light Region",
     "ActorClassType": "tag_light"
   },
   {
     "Actor Name": "LTag1",
-    "English Name": "tag_light",
+    "English Name": "Light Beam",
     "ActorClassType": "tag_light"
   },
   {
     "Actor Name": "LTagR0",
-    "English Name": "tag_light",
+    "English Name": "Light Detector",
     "ActorClassType": "tag_light"
   },
   {

@@ -3,13 +3,19 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000003,
       "Hidden": false,
       "Category": "tag_light",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Invisible Light Region",
+        1: "Light Beam",
+        2: "Light Detector",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_2",
@@ -36,7 +42,8 @@
       "Hidden": false,
       "Category": "tag_light",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_5",
