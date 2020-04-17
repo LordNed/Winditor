@@ -28,7 +28,7 @@ namespace WindEditor
 
 			var mainModel = m_actorMeshes[0];
 
-			Vector3 lScale = Transform.LocalScale;
+			Vector3 lScale = VisualScale;
 			float largestMax = lScale[0];
 			for (int i = 1; i < 3; i++)
 				if (lScale[i] > largestMax)

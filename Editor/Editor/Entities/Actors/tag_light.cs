@@ -25,10 +25,10 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
+            VisualScaleMultiplier = Vector3.One;
             if (Type == TypeEnum.Light_Beam)
             {
-                // TODO: model needs to be visually scaled twice as tall, without affecting the actual SCOB's scale
-                //Transform.LocalScale = new Vector3(Transform.LocalScale.X, 2 * Transform.LocalScale.Y, Transform.LocalScale.Z);
+                VisualScaleMultiplier = new Vector3(1f, 2f, 1f);
                 if (Unknown_4 >= 9)
                 {
                     m_actorMeshes = WResourceManager.LoadActorResource("Light Ray Cylinder");

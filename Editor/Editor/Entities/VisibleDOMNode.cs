@@ -95,6 +95,11 @@ namespace WindEditor
 		public TevColorOverride ColorOverrides { get; protected set; }
 
         protected bool DisableRotationAndScaleForRaycasting = false;
+        protected Vector3 VisualScaleMultiplier = Vector3.One;
+        protected Vector3 VisualScale
+        {
+            get { return  Vector3.Multiply(Transform.LocalScale, VisualScaleMultiplier); }
+        }
 
 		public override void OnConstruction()
 		{
@@ -118,7 +123,7 @@ namespace WindEditor
 		public override FAABox GetBoundingBox()
 		{
 			FAABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMeshes[0].BoundingBox;
-			modelABB.ScaleBy(Transform.LocalScale);
+			modelABB.ScaleBy(VisualScale);
 
 			return new FAABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
 		}
@@ -130,7 +135,7 @@ namespace WindEditor
             if (DisableRotationAndScaleForRaycasting)
                 localRay = WMath.TransformRay(ray, Transform.Position, Vector3.One, Quaternion.Identity);
             else
-                localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
+                localRay = WMath.TransformRay(ray, Transform.Position, VisualScale, Transform.Rotation.Inverted());
             closestDistance = float.MaxValue;
 			bool bHit = false;
 
@@ -182,7 +187,7 @@ namespace WindEditor
 
 		virtual public void Draw(WSceneView view)
 		{
-			Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+            Matrix4 trs = Matrix4.CreateScale(VisualScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 
 			if (m_actorMeshes.Count > 0)
 			{
@@ -218,7 +223,7 @@ namespace WindEditor
 
 		virtual public float GetBoundingRadius()
 		{
-			Vector3 lScale = Transform.LocalScale;
+			Vector3 lScale = VisualScale;
 			float largestMax = lScale[0];
 			for (int i = 1; i < 3; i++)
 				if (lScale[i] > largestMax)
