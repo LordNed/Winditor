@@ -278,7 +278,10 @@ namespace WindEditor
                 return;
 
             // Update camera distance to our camera.
-            m_cameraDistance = (view.GetCameraPos() - m_position).Length;
+            if ((!m_isTransforming) || (m_mode != FTransformMode.Translation))
+            {
+                m_cameraDistance = (view.GetCameraPos() - m_position).Length;
+            }
 
             WLinearColor[] gizmoColors = new[]
             {
