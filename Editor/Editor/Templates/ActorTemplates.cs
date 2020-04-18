@@ -222,7 +222,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -480,7 +480,6 @@ namespace WindEditor
 			Check_for_unset_after_set = 1,
 			Time_limit_check = 2,
 			Normal_with_65_frames_delayed_set = 3,
-			Normal_B = 255,
 		}
 
 
@@ -490,7 +489,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -628,7 +627,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -882,7 +881,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -1259,7 +1258,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(FlowerTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(FlowerTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (FlowerTypeEnum)value_as_int;
 			}
@@ -1512,7 +1511,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -1588,7 +1587,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(WeaponEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(WeaponEnum), value_as_int))
 					value_as_int = 0;
 				return (WeaponEnum)value_as_int;
 			}
@@ -1719,7 +1718,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -1955,7 +1954,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -2455,7 +2454,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -2489,7 +2488,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ColorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(ColorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (ColorTypeEnum)value_as_int;
 			}
@@ -2628,7 +2627,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(NumberofEyesEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(NumberofEyesEnum), value_as_int))
 					value_as_int = 0;
 				return (NumberofEyesEnum)value_as_int;
 			}
@@ -2927,7 +2926,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -3099,7 +3098,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -3279,7 +3278,6 @@ namespace WindEditor
 			Does_not_have_brazier_1 = 1,
 			Does_not_have_brazier_2 = 2,
 			Has_brazier_2 = 3,
-			Has_brazier_1_B = 63,
 		}
 
 
@@ -3289,7 +3287,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -3609,7 +3607,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -3932,7 +3930,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -3958,7 +3956,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000C00) >> 10);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TargetingBehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TargetingBehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TargetingBehaviorTypeEnum)value_as_int;
 			}
@@ -4391,7 +4389,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000030) >> 4);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -4423,7 +4421,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(SpawnPatternEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(SpawnPatternEnum), value_as_int))
 					value_as_int = 0;
 				return (SpawnPatternEnum)value_as_int;
 			}
@@ -4442,7 +4440,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000FC0) >> 6);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(OnlyRandomDroppedItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(OnlyRandomDroppedItemID), value_as_int))
 					value_as_int = 0;
 				return (OnlyRandomDroppedItemID)value_as_int;
 			}
@@ -4491,7 +4489,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -5114,7 +5112,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
 					value_as_int = 0;
 				return (ItemID)value_as_int;
 			}
@@ -5176,7 +5174,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -5212,7 +5210,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFC000000) >> 26);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ItemActionEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(ItemActionEnum), value_as_int))
 					value_as_int = 0;
 				return (ItemActionEnum)value_as_int;
 			}
@@ -5804,7 +5802,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -5822,7 +5820,6 @@ namespace WindEditor
 			_800 = 1,
 			_1500 = 2,
 			_3000 = 3,
-			_3000_B = 127,
 		}
 
 
@@ -5832,8 +5829,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00007F00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(SightRangeEnum), value_as_int))
-					value_as_int = 0;
+				if (!Enum.IsDefined(typeof(SightRangeEnum), value_as_int))
+					value_as_int = 3;
 				return (SightRangeEnum)value_as_int;
 			}
 
@@ -5994,8 +5991,6 @@ namespace WindEditor
 			Unknown_1 = 1,
 			Unknown_2 = 2,
 			Unknown_3 = 3,
-			Unknown_0_B = 4,
-			Unknown_0_C = 255,
 		}
 
 
@@ -6005,7 +6000,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(Unknown_1Enum), value_as_int))
+				if (!Enum.IsDefined(typeof(Unknown_1Enum), value_as_int))
 					value_as_int = 0;
 				return (Unknown_1Enum)value_as_int;
 			}
@@ -6267,7 +6262,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -7437,7 +7432,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -7462,7 +7457,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(FrozeninTimePoseEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(FrozeninTimePoseEnum), value_as_int))
 					value_as_int = 0;
 				return (FrozeninTimePoseEnum)value_as_int;
 			}
@@ -9101,7 +9096,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -9988,7 +9983,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -10045,7 +10040,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(WhichKillerBeeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(WhichKillerBeeEnum), value_as_int))
 					value_as_int = 0;
 				return (WhichKillerBeeEnum)value_as_int;
 			}
@@ -10353,7 +10348,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -13257,7 +13252,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -14951,7 +14946,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(DoorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(DoorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (DoorTypeEnum)value_as_int;
 			}
@@ -15222,7 +15217,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(Unknown_1Enum), value_as_int))
+				if (!Enum.IsDefined(typeof(Unknown_1Enum), value_as_int))
 					value_as_int = 0;
 				return (Unknown_1Enum)value_as_int;
 			}
@@ -15243,7 +15238,6 @@ namespace WindEditor
 			Unknown_4 = 4,
 			Unknown_5 = 5,
 			Unknown_6 = 6,
-			Unknown_0_B = 255,
 		}
 
 
@@ -15253,7 +15247,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(Unknown_2Enum), value_as_int))
+				if (!Enum.IsDefined(typeof(Unknown_2Enum), value_as_int))
 					value_as_int = 0;
 				return (Unknown_2Enum)value_as_int;
 			}
@@ -15835,7 +15829,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -16761,7 +16755,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -16790,7 +16784,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(UnlockedRegisterEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(UnlockedRegisterEnum), value_as_int))
 					value_as_int = 0;
 				return (UnlockedRegisterEnum)value_as_int;
 			}
@@ -17259,7 +17253,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -17285,7 +17279,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ProjectileTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(ProjectileTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (ProjectileTypeEnum)value_as_int;
 			}
@@ -17523,7 +17517,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -17604,7 +17598,6 @@ namespace WindEditor
 		{
 			Respawning = 0,
 			Nonrespawning = 1,
-			Nonrespawning_B = 15,
 		}
 
 
@@ -17614,8 +17607,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 1;
 				return (TypeEnum)value_as_int;
 			}
 
@@ -17669,7 +17662,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000E0) >> 5);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(RespawnDelayEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(RespawnDelayEnum), value_as_int))
 					value_as_int = 0;
 				return (RespawnDelayEnum)value_as_int;
 			}
@@ -17786,7 +17779,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -17839,7 +17832,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FE00) >> 9);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ColorEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(ColorEnum), value_as_int))
 					value_as_int = 0;
 				return (ColorEnum)value_as_int;
 			}
@@ -18038,7 +18031,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000001) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(IdleAnimationEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(IdleAnimationEnum), value_as_int))
 					value_as_int = 0;
 				return (IdleAnimationEnum)value_as_int;
 			}
@@ -18257,7 +18250,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -18276,7 +18269,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
 					value_as_int = 0;
 				return (ItemID)value_as_int;
 			}
@@ -18366,7 +18359,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(SalvagedEventBitEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(SalvagedEventBitEnum), value_as_int))
 					value_as_int = 0;
 				return (SalvagedEventBitEnum)value_as_int;
 			}
@@ -19185,7 +19178,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(SFXTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(SFXTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (SFXTypeEnum)value_as_int;
 			}
@@ -19266,7 +19259,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -19752,7 +19745,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00030000) >> 16);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -19830,7 +19823,6 @@ namespace WindEditor
 			Unknown_2 = 2,
 			Unknown_3 = 3,
 			Unknown_4 = 4,
-			Unknown_4_B = 15,
 		}
 
 
@@ -19840,8 +19832,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 4;
 				return (TypeEnum)value_as_int;
 			}
 
@@ -19944,7 +19936,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(WhatTriggersItEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(WhatTriggersItEnum), value_as_int))
 					value_as_int = 0;
 				return (WhatTriggersItEnum)value_as_int;
 			}
@@ -19963,7 +19955,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00003F00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
 					value_as_int = 0;
 				return (DroppedItemID)value_as_int;
 			}
@@ -20343,7 +20335,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -20488,8 +20480,6 @@ namespace WindEditor
 		{
 			Set_and_Unset = 0,
 			Only_Set = 1,
-			Set_and_Unset_B = 2,
-			Set_and_Unset_C = 3,
 		}
 
 
@@ -20499,7 +20489,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -20945,7 +20935,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -21838,7 +21828,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -21858,7 +21848,6 @@ namespace WindEditor
 			White_and_silver = 3,
 			Black_and_brown = 4,
 			Red_and_gold = 5,
-			Red_and_gold_B = 15,
 		}
 
 
@@ -21868,8 +21857,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ColorEnum), value_as_int))
-					value_as_int = 0;
+				if (!Enum.IsDefined(typeof(ColorEnum), value_as_int))
+					value_as_int = 5;
 				return (ColorEnum)value_as_int;
 			}
 
@@ -21911,7 +21900,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(FrozeninTimePoseEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(FrozeninTimePoseEnum), value_as_int))
 					value_as_int = 0;
 				return (FrozeninTimePoseEnum)value_as_int;
 			}
@@ -21980,7 +21969,6 @@ namespace WindEditor
 			Helmet_and_shield = 3,
 			Shield_and_cape = 4,
 			Helmet_shield_and_cape = 5,
-			Helmet_shield_and_cape_B = 7,
 		}
 
 
@@ -21990,8 +21978,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00E0) >> 5);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(ExtraEquipmentEnum), value_as_int))
-					value_as_int = 0;
+				if (!Enum.IsDefined(typeof(ExtraEquipmentEnum), value_as_int))
+					value_as_int = 5;
 				return (ExtraEquipmentEnum)value_as_int;
 			}
 
@@ -22160,7 +22148,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
 					value_as_int = 0;
 				return (DroppedItemID)value_as_int;
 			}
@@ -22247,7 +22235,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00003F00) >> 8);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -22274,7 +22262,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000C000) >> 14);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(Unknown_3Enum), value_as_int))
+				if (!Enum.IsDefined(typeof(Unknown_3Enum), value_as_int))
 					value_as_int = 0;
 				return (Unknown_3Enum)value_as_int;
 			}
@@ -22330,7 +22318,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -22658,7 +22646,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
 			}
@@ -23067,7 +23055,6 @@ namespace WindEditor
 			Fireball = 10,
 			Spawner_Orb_1 = 12,
 			Spawner_Orb_2 = 13,
-			Shoots_Fireballs_B = 255,
 		}
 
 
@@ -23077,7 +23064,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
@@ -23180,7 +23167,7 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				if (value_as_int == 255 && !Enum.IsDefined(typeof(EnemySummonTableEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(EnemySummonTableEnum), value_as_int))
 					value_as_int = 0;
 				return (EnemySummonTableEnum)value_as_int;
 			}

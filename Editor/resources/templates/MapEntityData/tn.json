@@ -33,8 +33,8 @@
         3: "White and silver",
         4: "Black and brown",
         5: "Red and gold",
-        15: "Red and gold B",
       },
+      "EnumDefaultValue": 5,
       "UpdateModel": true
     },
     {
@@ -93,8 +93,8 @@
         3: "Helmet and shield",
         4: "Shield and cape",
         5: "Helmet shield and cape",
-        7: "Helmet shield and cape B",
       },
+      "EnumDefaultValue": 5,
       "UpdateModel": true
     },
     {

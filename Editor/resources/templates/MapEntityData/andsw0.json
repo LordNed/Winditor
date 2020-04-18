@@ -24,7 +24,6 @@
         1: "Check for unset after set",
         2: "Time limit check",
         3: "Normal with 65 frames delayed set",
-        255: "Normal B",
       }
     },
     {

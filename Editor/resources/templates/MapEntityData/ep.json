@@ -15,7 +15,6 @@
         1: "Does not have brazier 1",
         2: "Does not have brazier 2",
         3: "Has brazier 2",
-        63: "Has brazier 1 B",
       },
       "UpdateModel": true
     },

@@ -13,8 +13,8 @@
       "EnumValues": {
         0: "Respawning",
         1: "Nonrespawning",
-        15: "Nonrespawning B",
-      }
+      },
+      "EnumDefaultValue": 1,
     },
     {
       "Name": "Initial Miniblin Won't Spawn Onscreen?",

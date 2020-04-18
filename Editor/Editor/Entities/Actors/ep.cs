@@ -33,7 +33,7 @@ namespace WindEditor
 
         protected bool HasBrazier()
         {
-            return Type == TypeEnum.Has_brazier_1 || Type == TypeEnum.Has_brazier_2 || Type == TypeEnum.Has_brazier_1_B;
+            return Type == TypeEnum.Has_brazier_1 || Type == TypeEnum.Has_brazier_2;
         }
 
         public void UpdateModel()

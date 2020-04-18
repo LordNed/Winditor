@@ -34,8 +34,8 @@
         2: "Unknown 2",
         3: "Unknown 3",
         4: "Unknown 4",
-        15: "Unknown 4 B",
-      }
+      },
+      "EnumDefaultValue": 4,
     },
     {
       "Name": "Time Limit (Half Seconds)",
