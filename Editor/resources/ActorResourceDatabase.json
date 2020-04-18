@@ -306,6 +306,11 @@
     "Models": [
       {
         "Path": "bdl/kmi_02.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 50,
+          "Z": 0,
+        }
       }
     ]
   },
