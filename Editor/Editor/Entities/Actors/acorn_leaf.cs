@@ -12,7 +12,6 @@ namespace WindEditor
 		public override void PostLoad()
 		{
             m_actorMeshes = WResourceManager.LoadActorResource("Nut Generator");
-            m_actorMeshes.AddRange(WResourceManager.LoadActorResource("Nut"));
 		}
 
 		public override void PreSave()

@@ -283,6 +283,11 @@
     "Models": [
       {
         "Path": "bdlm/kmi_00x.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 50,
+          "Z": 0
+        },
       }
     ]
   },
@@ -1369,6 +1374,49 @@
           {
             "Anim Type": "bck",
             "Path": "bck/pfly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Freshwater Octorok",
+    "Archive": "Oq",
+    "Models": [
+      {
+        "Path": "bmdm/oq.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/nom_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Freshwater Octorok Rock",
+    "Archive": "Oq",
+    "Models": [
+      {
+        "Path": "bdlm/isi.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Saltwater Octorok",
+    "Archive": "Oq",
+    "Models": [
+      {
+        "Path": "bmdm/red_oq.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/umi_new_wait.bck",
             "Paused on Load": false,
             "Start Time": 0
           }
@@ -2666,7 +2714,16 @@
     "Models": [
       {
         "Path": "bdl/vigah.bdl",
-      }
+      },
+      {
+        "Archive": "Kmi00x",
+        "Path": "bdlm/kmi_00x.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 65,
+          "Z": 0
+        },
+      },
     ]
   },
   {
@@ -3426,6 +3483,15 @@
     "Models": [
       {
         "Path": "bdl/oba_kaizoku_a.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Giant Hanging Flower",
+    "Archive": "Kokiie",
+    "Models": [
+      {
+        "Path": "bdl/koki_00.bdl",
       }
     ]
   },

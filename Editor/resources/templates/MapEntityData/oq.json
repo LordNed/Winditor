@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "oq",
+      "Category": "Octorok",
       "ToolTip": "The 'Spawned saltwater Octorok' type does not appear when manually placed, it's just for the spawner to create.",
       "DataType": "Enum",
       "EnumValues": {
@@ -18,14 +18,15 @@
         4: "Saltwater Octorok that shoots after a certain delay",
         5: "Spawned saltwater Octorok",
         6: "Rock shot by a freshwater Octorok",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Projectile Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "oq",
+      "Category": "Freshwater Octorok",
       "ToolTip": "This only affects what freshwater Octoroks shoot, not saltwater ones.",
       "DataType": "Enum",
       "EnumValues": {
@@ -38,7 +39,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "oq",
+      "Category": "Saltwater Octorok Spawner",
       "ToolTip": "For the 'Saltwater Octorok spawner' type, this number multiplied by 1000 is the range within it will notice the player and start spawning saltwater Octoroks.\nNo effect on other types besides the spawner.",
       "DataType": "Integer"
     }

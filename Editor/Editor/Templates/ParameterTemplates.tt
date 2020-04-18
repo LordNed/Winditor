@@ -35,6 +35,8 @@
 				}
 			}
 
+			int defaultEnumValue = field.EnumDefaultValue;
+
 			bool defaultBooleanValue = field.BooleanDefaultValue;
 			int[] boolNonDefaults = new int[] {0, 0xFF};
 			if (field.BooleanNonDefaults != null) {
@@ -222,6 +224,8 @@
 					case "DroppedItemID":
 					case "OnlyRandomDroppedItemID":
 #>
+				if (value_as_int == 255 && !Enum.IsDefined(typeof(<#= dataType #>), value_as_int))
+					value_as_int = <#= defaultEnumValue #>;
 				return (<#= dataType #>)value_as_int;
 <#
 						break;

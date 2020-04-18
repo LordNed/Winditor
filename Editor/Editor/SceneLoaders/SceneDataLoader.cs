@@ -201,6 +201,10 @@ namespace WindEditor
         [JsonProperty("EnumValues")]
         public Dictionary<int, string> EnumValues { get; set; }
 
+        [JsonProperty("EnumDefaultValue", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [DefaultValueAttribute(0)]
+        public int EnumDefaultValue { get; set; }
+
         [JsonProperty("BooleanDefaultValue", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         [DefaultValueAttribute(true)]
         public bool BooleanDefaultValue { get; set; }
@@ -215,7 +219,7 @@ namespace WindEditor
 
         [JsonConstructor]
         public ActorBitfieldDescriptor(
-            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, object defaultVal, string Tip, string Type, Dictionary<int, string> Vals, bool BoolDefault, int[] BoolNonDefaults, bool UpdModel
+            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, object defaultVal, string Tip, string Type, Dictionary<int, string> Vals, int EnumDefault, bool BoolDefault, int[] BoolNonDefaults, bool UpdModel
         )
         {
             FieldName = Name;
@@ -227,6 +231,7 @@ namespace WindEditor
             ToolTip = Tip;
             DataType = Type;
             EnumValues = Vals;
+            EnumDefaultValue = EnumDefault;
             BooleanDefaultValue = BoolDefault;
             BooleanNonDefaults = BoolNonDefaults;
             UpdateModel = UpdModel;

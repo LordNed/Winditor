@@ -63,6 +63,9 @@ namespace WindEditor
 
         public struct ModelResource
         {
+            [JsonProperty("Archive")]
+            public string ArchiveName;
+
             [JsonProperty("Path")]
             public string Path;
 
@@ -163,7 +166,18 @@ namespace WindEditor
 
             foreach (var model in res.Models)
             {
-                string arc_and_file_path = Path.Combine(res.ArchiveName, model.Path);
+                string model_arc_name = res.ArchiveName;
+
+                if (!string.IsNullOrEmpty(model.ArchiveName))
+                {
+                    model_arc_name = model.ArchiveName;
+                    string model_arc_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res/Object/", model_arc_name + ".arc");
+
+                    if (!File.Exists(model_arc_path))
+                        continue;
+                }
+
+                string arc_and_file_path = Path.Combine(model_arc_name, model.Path);
 
                 TSharedRef<J3D> existRef = null;//m_j3dList.Find(x => string.Compare(x.FilePath, arc_and_file_path, StringComparison.InvariantCultureIgnoreCase) == 0);
                 if (existRef != null)
@@ -174,7 +188,7 @@ namespace WindEditor
                     continue;
                 }
 
-                J3D loaded_model = LoadModelFromResource(model, res.ArchiveName);
+                J3D loaded_model = LoadModelFromResource(model, model_arc_name);
 
                 if (loaded_model == null)
                     continue;
