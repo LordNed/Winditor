@@ -392,6 +392,7 @@ namespace WindEditor.Editor.Modes
             SerializableDOMNode newNode = null;
             WDOMNode parentNode = null;
             WDOMNode selected = EditorSelection.PrimarySelectedObject;
+            WDOMNode previousSibling = null;
 
             if (fourccStr != null)
             {
@@ -410,6 +411,7 @@ namespace WindEditor.Editor.Modes
             {
                 // Creating an entity with an existing entity selected.
                 parentNode = selected.Parent;
+                previousSibling = selected;
             } else
             {
                 // Creating an entity with a group node selected.
@@ -501,11 +503,12 @@ namespace WindEditor.Editor.Modes
 
             WDOMNode[] entitiesToCreate = { newNode };
             WDOMNode[] parents = { newNode.Parent };
+            WDOMNode[] previousSiblings = { previousSibling };
 
             newNode.Parent.IsExpanded = true;
 
             World.UndoStack.BeginMacro($"Create {newNode.Name}");
-            var undoAction = new WCreateEntitiesAction(entitiesToCreate, parents);
+            var undoAction = new WCreateEntitiesAction(entitiesToCreate, parents, previousSiblings);
             BroadcastUndoEventGenerated(undoAction);
             EditorSelection.ClearSelection();
             EditorSelection.AddToSelection(newNode);
