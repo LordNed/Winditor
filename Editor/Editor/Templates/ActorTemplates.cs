@@ -14187,43 +14187,106 @@ namespace WindEditor
 	public partial class obj_movebox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("obj_movebox", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum TypeEnum
+		{
+			Breakable_Wooden_Crate = 0,
+			Black_Box_A = 1,
+			Black_Box_With_Statue_on_Top = 2,
+			Big_Black_Box = 3,
+			Unbreakable_Wooden_Crate_A = 4,
+			Golden_Crate = 5,
+			Metal_Box = 6,
+			Metal_Box_With_Spring = 7,
+			Unbreakable_Wooden_Crate_B = 8,
+			Unbreakable_Wooden_Crate_C = 9,
+			Mirror = 10,
+			Black_Box_B = 11,
+			Mossy_Black_Box = 12,
+		}
+
+
+		[WProperty("Movable Box", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Movable Box", "Disable Flag on Top", true, "", SourceScene.Room)]
+		public bool DisableFlagonTop
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
+				OnPropertyChanged("DisableFlagonTop");
+			}
+		}
+
+		[WProperty("Movable Box", "Unknown_7", true, "For the \"Black Box With Statue on Top\" type, this will be passed as parameter Unknown_1 to the statue entity (obj_mkie) spawned on top of the box.", SourceScene.Room)]
+		public int Unknown_7
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("Unknown_7");
+			}
+		}
+
+		[WProperty("Movable Box Item", "Dropped Item", true, "", SourceScene.Room)]
+		public DroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+					value_as_int = 0;
+				return (DroppedItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DroppedItem");
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
-			}
-		}
-
-		[WProperty("obj_movebox", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Movable Box Item", "Dropped Item Pickup Flag", true, "", SourceScene.Room)]
+		public int DroppedItemPickupFlag
 		{ 
 			get
 			{
@@ -14235,58 +14298,96 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("DroppedItemPickupFlag");
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
-				OnPropertyChanged("Unknown_4");
-			}
-		}
-
-		[WProperty("obj_movebox", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Movable Box Stay Moved Options", "Do Not Stay Moved After Reload", true, "", SourceScene.Room)]
+		public bool DoNotStayMovedAfterReload
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DoNotStayMovedAfterReload");
 			}
 		}
 
-		[WProperty("obj_movebox", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Movable Box Stay Moved Options", "Stay Moved to Path", true, "", SourceScene.Room)]
+		public Path_v2 StayMovedtoPath
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("StayMovedtoPath");
+			}
+		}
+
+		[WProperty("Movable Box Stay Moved Options", "Stay Moved Switch 1", true, "The switch to keep track of the box being moved to point 1 on its path.", SourceScene.Room)]
+		public int StayMovedSwitch1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
-				OnPropertyChanged("Unknown_6");
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("StayMovedSwitch1");
+			}
+		}
+
+		[WProperty("Movable Box Stay Moved Options", "Stay Moved Switch 2", true, "The switch to keep track of the box being moved to point 2 on its path.", SourceScene.Room)]
+		public int StayMovedSwitch2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				OnPropertyChanged("StayMovedSwitch2");
 			}
 		}
 
@@ -14299,12 +14400,11 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
-			Unknown_6 = -1;
+			Unknown_7 = -1;
+			DroppedItemPickupFlag = -1;
+			StayMovedtoPath = null;
+			StayMovedSwitch1 = -1;
+			StayMovedSwitch2 = -1;
 		}
 	}
 

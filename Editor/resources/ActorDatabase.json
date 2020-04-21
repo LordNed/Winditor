@@ -1176,7 +1176,7 @@
   },
   {
     "Actor Name": "lwood",
-    "English Name": "lwood",
+    "English Name": "Large Tree",
     "ActorClassType": "lwood"
   },
   {
@@ -2411,57 +2411,57 @@
   },
   {
     "Actor Name": "osiBLK0",
-    "English Name": "Pushable Black Box",
+    "English Name": "Movable Black Box A",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "osiBLK1",
-    "English Name": "Pushable Black Box With Statue",
+    "English Name": "Movable Black Box With Statue on Top",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Kkiba",
-    "English Name": "obj_movebox",
+    "English Name": "Movable Breakable Wooden Crate",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Hseki2",
-    "English Name": "obj_movebox",
+    "English Name": "Movable Unbreakable Wooden Crate B",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Hseki7",
-    "English Name": "obj_movebox",
+    "English Name": "Movable Unbreakable Wooden Crate C",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Mmrr",
-    "English Name": "Large Pushable Mirror",
+    "English Name": "Movable Mirror",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "MkieBB",
-    "English Name": "obj_movebox",
+    "English Name": "Movable Black Box B",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Ecube",
-    "English Name": "Pushable Mossy Black Box",
+    "English Name": "Movable Mossy Black Box",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Hjump1",
-    "English Name": "Pushable Metal Box With Spring",
+    "English Name": "Movable Metal Box With Spring",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "Hbox1",
-    "English Name": "Pushable Metal Box",
+    "English Name": "Movable Metal Box",
     "ActorClassType": "obj_movebox"
   },
   {
     "Actor Name": "MpwrB",
-    "English Name": "obj_movebox",
+    "English Name": "Movable Big Black Box",
     "ActorClassType": "obj_movebox"
   },
   {
@@ -2481,7 +2481,7 @@
   },
   {
     "Actor Name": "Hbox2",
-    "English Name": "obj_movebox",
+    "English Name": "Movable Golden Crate",
     "ActorClassType": "obj_movebox"
   },
   {

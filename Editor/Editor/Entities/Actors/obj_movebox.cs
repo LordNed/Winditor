@@ -24,37 +24,37 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
-            switch (Unknown_4)
+            switch (Type)
             {
-                case 0:
-                case 4:
-                case 8:
-                case 9:
+                case TypeEnum.Breakable_Wooden_Crate:
+                case TypeEnum.Unbreakable_Wooden_Crate_A:
+                case TypeEnum.Unbreakable_Wooden_Crate_B:
+                case TypeEnum.Unbreakable_Wooden_Crate_C:
                     m_actorMeshes = WResourceManager.LoadActorResource("Wooden Crate");
                     break;
-                case 1:
-                case 11:
+                case TypeEnum.Black_Box_A:
+                case TypeEnum.Black_Box_B:
                     m_actorMeshes = WResourceManager.LoadActorResource("Black Box");
                     break;
-                case 2:
+                case TypeEnum.Black_Box_With_Statue_on_Top:
                     m_actorMeshes = WResourceManager.LoadActorResource("Black Box With Statue on Top");
                     break;
-                case 3:
+                case TypeEnum.Big_Black_Box:
                     m_actorMeshes = WResourceManager.LoadActorResource("Big Black Box");
                     break;
-                case 5:
+                case TypeEnum.Golden_Crate:
                     m_actorMeshes = WResourceManager.LoadActorResource("Golden Crate");
                     break;
-                case 6:
+                case TypeEnum.Metal_Box:
                     m_actorMeshes = WResourceManager.LoadActorResource("Pushable Metal Box");
                     break;
-                case 7:
+                case TypeEnum.Metal_Box_With_Spring:
                     m_actorMeshes = WResourceManager.LoadActorResource("Pushable Metal Box With Spring");
                     break;
-                case 10:
+                case TypeEnum.Mirror:
                     m_actorMeshes = WResourceManager.LoadActorResource("Mirror");
                     break;
-                case 12:
+                case TypeEnum.Mossy_Black_Box:
                     m_actorMeshes = WResourceManager.LoadActorResource("Mossy Black Box");
                     break;
                 default:
