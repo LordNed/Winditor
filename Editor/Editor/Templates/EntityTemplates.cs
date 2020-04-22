@@ -3491,6 +3491,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters2 & 0x0003) >> 0);
+				if (!Enum.IsDefined(typeof(MinimapTypeEnum), value_as_int))
+					value_as_int = 0;
 				return (MinimapTypeEnum)value_as_int;
 			}
 
@@ -3578,6 +3580,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters3 & 0x00070000) >> 16);
+				if (!Enum.IsDefined(typeof(StageTypeEnum), value_as_int))
+					value_as_int = 0;
 				return (StageTypeEnum)value_as_int;
 			}
 
@@ -4003,6 +4007,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000007F) >> 0);
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+					value_as_int = 0;
 				return (BehaviorTypeEnum)value_as_int;
 			}
 
@@ -4062,6 +4068,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
+				if (!Enum.IsDefined(typeof(AppearanceTypeEnum), value_as_int))
+					value_as_int = 0;
 				return (AppearanceTypeEnum)value_as_int;
 			}
 
@@ -4114,6 +4122,8 @@ namespace WindEditor
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+					value_as_int = 0;
 				return (ItemID)value_as_int;
 			}
 
