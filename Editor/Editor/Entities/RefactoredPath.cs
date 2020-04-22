@@ -10,7 +10,7 @@ namespace WindEditor
 {
     public partial class Path_v2
     {
-        [WProperty("Path", "Name", true)]
+        [WProperty("Path Properties", "Name", true)]
         override public string Name
         {
             get { return m_Name; }
@@ -23,7 +23,7 @@ namespace WindEditor
 
         private string m_Name;
 
-        [WProperty("Path", "First Point", true)]
+        [WProperty("Path Properties", "First Point", true)]
         public PathPoint_v2 FirstNode
         {
             get { return m_FirstNode; }

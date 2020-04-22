@@ -3,11 +3,23 @@
 	"FourCC" : "RPAT",
 	"Fields" :
 	[
-		{"Name" : "Number of Points", "Type" : "Short"},
-		{"Name" : "Next Path Index", "Type" : "Short", "Description" : "If not 0xFF, specifies the next path. Appears paths can be made of multiple non-connected RPAT segments."},
-		{"Name" : "Unknown 2", "Type" : "Byte"},
+		{"Name" : "Number of Points", "Type" : "Short", "Hidden": true},
+		{"Name" : "Next Path Index", "Type" : "Short", "Hidden": true},
+		{"Name" : "Unknown 1", "Type" : "Byte"},
 		{"Name" : "Path Loops", "Type" : "Byte"},
-		{"Name" : "Unknown 4", "Type" : "Short"},
-		{"Name" : "First Entry Offset", "Type" : "Int"},
-	]
+		{"Name" : "Unknown 2", "Type" : "Byte"},
+		{"Name" : "Unknown 3", "Type" : "Byte"},
+		{"Name" : "First Entry Offset", "Type" : "Int", "Hidden": true},
+	],
+  "ParameterFields": [
+    {
+      "Name": "Next Path",
+      "ValueSource": "NextPathIndex",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Path Properties",
+      "ToolTip": "",
+      "DataType": "Path"
+    },
+  ]
 }

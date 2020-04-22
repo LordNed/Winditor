@@ -10,7 +10,6 @@
     {
       "Name": "Next Path Index",
       "Type": "Short",
-      "Description": "If not 0xFF, specifies the next path. Appears paths can be made of multiple non-connected PATH segments.",
       "Hidden": true
     },
     {
@@ -33,5 +32,16 @@
       "Type": "Int",
       "Hidden": true
     }
+  ],
+  "ParameterFields": [
+    {
+      "Name": "Next Path",
+      "ValueSource": "NextPathIndex",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Path Properties",
+      "ToolTip": "",
+      "DataType": "Path"
+    },
   ]
 }

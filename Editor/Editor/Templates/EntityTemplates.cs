@@ -4,6 +4,8 @@ using OpenTK;
 using System.ComponentModel;
 using System.Diagnostics;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using WindEditor.ViewModel;
 
 namespace WindEditor
@@ -4225,6 +4227,37 @@ namespace WindEditor
 				
 
 		
+		[WProperty("Path Properties", "Next Path", true, "", SourceScene.Room)]
+		public Path_v2 NextPath
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_NextPathIndex & 0xFFFF) >> 0);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_NextPathIndex = (short)(m_NextPathIndex & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("NextPath");
+			}
+		}
+
 		// Constructor
 		public Path_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -4263,43 +4296,21 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		protected short m_NumberofPoints;
-
-		[WProperty("Misc.", "Number of Points", true, "")]
-		 public short NumberofPoints
-		{ 
-			get { return m_NumberofPoints; }
-			set
-			{
-				m_NumberofPoints = value;
-				OnPropertyChanged("NumberofPoints");
-			}
-		}
 				
 
 		protected short m_NextPathIndex;
-
-		[WProperty("Misc.", "Next Path Index", true, "")]
-		 public short NextPathIndex
-		{ 
-			get { return m_NextPathIndex; }
-			set
-			{
-				m_NextPathIndex = value;
-				OnPropertyChanged("NextPathIndex");
-			}
-		}
 				
 
-		protected byte m_Unknown2;
+		protected byte m_Unknown1;
 
-		[WProperty("Misc.", "Unknown 2", true, "")]
-		 public byte Unknown2
+		[WProperty("Misc.", "Unknown 1", true, "")]
+		 public byte Unknown1
 		{ 
-			get { return m_Unknown2; }
+			get { return m_Unknown1; }
 			set
 			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
+				m_Unknown1 = value;
+				OnPropertyChanged("Unknown1");
 			}
 		}
 				
@@ -4318,53 +4329,86 @@ namespace WindEditor
 		}
 				
 
-		protected short m_Unknown4;
+		protected byte m_Unknown2;
 
-		[WProperty("Misc.", "Unknown 4", true, "")]
-		 public short Unknown4
+		[WProperty("Misc.", "Unknown 2", true, "")]
+		 public byte Unknown2
 		{ 
-			get { return m_Unknown4; }
+			get { return m_Unknown2; }
 			set
 			{
-				m_Unknown4 = value;
-				OnPropertyChanged("Unknown4");
+				m_Unknown2 = value;
+				OnPropertyChanged("Unknown2");
+			}
+		}
+				
+
+		protected byte m_Unknown3;
+
+		[WProperty("Misc.", "Unknown 3", true, "")]
+		 public byte Unknown3
+		{ 
+			get { return m_Unknown3; }
+			set
+			{
+				m_Unknown3 = value;
+				OnPropertyChanged("Unknown3");
 			}
 		}
 				
 
 		protected int m_FirstEntryOffset;
-
-		[WProperty("Misc.", "First Entry Offset", true, "")]
-		 public int FirstEntryOffset
-		{ 
-			get { return m_FirstEntryOffset; }
-			set
-			{
-				m_FirstEntryOffset = value;
-				OnPropertyChanged("FirstEntryOffset");
-			}
-		}
 				
 
 		
+		[WProperty("Path Properties", "Next Path", true, "", SourceScene.Room)]
+		public Path_v2 NextPath
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_NextPathIndex & 0xFFFF) >> 0);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_NextPathIndex = (short)(m_NextPathIndex & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("NextPath");
+			}
+		}
+
 		// Constructor
 		public Path_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Number of Points", TargetProperties = new string[] { "NumberofPoints"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Next Path Index", TargetProperties = new string[] { "NextPathIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "First Entry Offset", TargetProperties = new string[] { "FirstEntryOffset"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_NumberofPoints = stream.ReadInt16(); 
 			m_NextPathIndex = stream.ReadInt16(); 
-			m_Unknown2 = stream.ReadByte(); 
+			m_Unknown1 = stream.ReadByte(); 
 			m_PathLoops = stream.ReadByte(); 
-			m_Unknown4 = stream.ReadInt16(); 
+			m_Unknown2 = stream.ReadByte(); 
+			m_Unknown3 = stream.ReadByte(); 
 			m_FirstEntryOffset = stream.ReadInt32(); 
 		}
 
@@ -4374,12 +4418,13 @@ namespace WindEditor
             Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
-			stream.Write((short)NumberofPoints);
-			stream.Write((short)NextPathIndex);
-			stream.Write((byte)Unknown2);
+			stream.Write((short)m_NumberofPoints);
+			stream.Write((short)m_NextPathIndex);
+			stream.Write((byte)Unknown1);
 			stream.Write((byte)PathLoops);
-			stream.Write((short)Unknown4);
-			stream.Write((int)FirstEntryOffset);
+			stream.Write((byte)Unknown2);
+			stream.Write((byte)Unknown3);
+			stream.Write((int)m_FirstEntryOffset);
 		}
 	}
 
@@ -4431,7 +4476,7 @@ namespace WindEditor
 
 		protected byte m_ActionType;
 
-		[WProperty("Misc.", "Action Type", true, "")]
+		[WProperty("Path Point Properties", "Action Type", true, "")]
 		 public byte ActionType
 		{ 
 			get { return m_ActionType; }
@@ -4524,7 +4569,7 @@ namespace WindEditor
 
 		protected byte m_ActionType;
 
-		[WProperty("Misc.", "Action Type", true, "")]
+		[WProperty("Path Point Properties", "Action Type", true, "")]
 		 public byte ActionType
 		{ 
 			get { return m_ActionType; }

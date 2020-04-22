@@ -10,7 +10,7 @@ namespace WindEditor
 {
 	public partial class Path_v1
 	{
-        [WProperty("Path", "Name", true)]
+        [WProperty("Path Properties", "Name", true)]
         override public string Name
         {
             get { return m_Name; }
