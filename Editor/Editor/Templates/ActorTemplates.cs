@@ -2191,9 +2191,7 @@ namespace WindEditor
 	public partial class bridge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("bridge", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public int TypeBitfield
 		{ 
 			get
 			{
@@ -2205,11 +2203,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("TypeBitfield");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("bridge", "Unknown_2", true, "", SourceScene.Room)]
+		[WProperty("Plank Bridge", "Unknown_2", true, "", SourceScene.Room)]
 		public int Unknown_2
 		{ 
 			get
@@ -2226,7 +2225,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("bridge", "Path", true, "The path for the bridge to be stretched along.", SourceScene.Room)]
+		[WProperty("Plank Bridge", "Path", true, "The path for the bridge to be stretched along.", SourceScene.Room)]
 		public Path_v2 Path
 		{ 
 			get
@@ -2266,7 +2265,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			TypeBitfield = -1;
 			Unknown_2 = -1;
 			Path = null;
 		}
