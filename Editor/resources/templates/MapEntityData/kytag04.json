@@ -1,6 +1,6 @@
 {
   "ClassName": "kytag04",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",

@@ -1,6 +1,6 @@
 {
   "ClassName": "tag_kb_item",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",

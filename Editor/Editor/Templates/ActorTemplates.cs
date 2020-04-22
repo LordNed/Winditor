@@ -6686,7 +6686,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class kytag04 : Actor
+	public partial class kytag04 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		
@@ -20013,7 +20013,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class switem : Actor
+	public partial class switem : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 				public enum WhatTriggersItEnum
@@ -20881,7 +20881,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_kb_item : Actor
+	public partial class tag_kb_item : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		
@@ -21330,7 +21330,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_msg : Actor
+	public partial class tag_msg : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		

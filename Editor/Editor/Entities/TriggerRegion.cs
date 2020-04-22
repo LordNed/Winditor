@@ -14,7 +14,7 @@ namespace WindEditor
 		// Constructor
 		public TriggerRegion(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1, 1, 1, 1));
+			m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1, 1, 1, 1), true, false);
 			DisableRotationAndScaleForRaycasting = true;
 		}
 

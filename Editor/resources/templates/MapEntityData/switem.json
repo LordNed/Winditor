@@ -1,6 +1,6 @@
 {
   "ClassName": "switem",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "What Triggers It",
