@@ -12,6 +12,7 @@ namespace WindEditor
 		public override void PostLoad()
 		{
 			base.PostLoad();
+			m_actorMeshes = WResourceManager.LoadActorResource("Palm Tree");
 		}
 
 		public override void PreSave()

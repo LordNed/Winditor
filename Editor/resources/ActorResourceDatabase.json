@@ -753,6 +753,15 @@
     ]
   },
   {
+    "Name": "Palm Tree",
+    "Archive": "Oyashi",
+    "Models": [
+      {
+        "Path": "bdl/oyashi.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Chunk of Ice",
     "Archive": "Ikori",
     "Models": [
