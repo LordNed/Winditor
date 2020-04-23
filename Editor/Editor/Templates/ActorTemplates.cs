@@ -9551,7 +9551,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("npc_people", "Unknown_1", true, "", SourceScene.Room)]
+		[WProperty("Windfall Townsperson", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
 			get
@@ -9568,35 +9568,56 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_people", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Windfall Townsperson", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Path");
 			}
 		}
 
-		[WProperty("npc_people", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Windfall Townsperson", "Unknown_3", true, "", SourceScene.Room)]
+		public bool Unknown_3
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
 			}
@@ -9612,8 +9633,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			Path = null;
 		}
 	}
 

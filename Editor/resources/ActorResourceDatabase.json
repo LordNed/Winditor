@@ -2005,11 +2005,14 @@
             "Paused on Load": false,
             "Start Time": 0
           }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ukhead_b.bdl",
+            "Parent Joint": "head"
+          },
         ]
       },
-      {
-        "Path": "bdl/ukhead_b.bdl",
-      }
     ]
   },
   {
@@ -2031,11 +2034,14 @@
             "Paused on Load": false,
             "Start Time": 0
           }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ukhead_c.bdl",
+            "Parent Joint": "head"
+          },
         ]
       },
-      {
-        "Path": "bdlm/ukhead_c.bdl",
-      }
     ]
   },
   {
@@ -2057,11 +2063,708 @@
             "Paused on Load": false,
             "Start Time": 0
           }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ukhead_d.bdl",
+            "Parent Joint": "head"
+          },
         ]
       },
+    ]
+  },
+  {
+    "Name": "Sam",
+    "Archive": "Uo",
+    "Models": [
       {
-        "Path": "bdl/ukhead_d.bdl",
-      }
+        "Path": "bdl/uo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uo_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uo01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Gossack",
+    "Archive": "Uo",
+    "Models": [
+      {
+        "Path": "bdl/uo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uo_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uo02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uo02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Garrickson",
+    "Archive": "Uo",
+    "Models": [
+      {
+        "Path": "bdl/uo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uo_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uo03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uo03_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/uo_letter.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Vera",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ub02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Pompie",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ub03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Missy",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ub04.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Minenco",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub04_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Gillian",
+    "Archive": "Uw",
+    "Models": [
+      {
+        "Path": "bdl/uw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uw_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uw01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Linda",
+    "Archive": "Uw",
+    "Models": [
+      {
+        "Path": "bdl/uw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uw_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uw02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uw02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Kreeb",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/um02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Anton",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Kamo",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/um03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Kamo",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait04.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/um03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um03_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/um_scope.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Loot",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa01_head.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/sa01head_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Loot",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa01_head.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/sa01head_cwait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Gummy",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Kane",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Kane",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait03.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Candy",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa05.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa05_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Candy",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait05.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa05.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa05_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/sa_cup05.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Dampa",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa04.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa04_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Dampa",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait04.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa04.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa04_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/sa_cup04.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Potova",
+    "Archive": "Ug",
+    "Models": [
+      {
+        "Path": "bdl/ug.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ug_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ug01_head.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/ug01head_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Joanna",
+    "Archive": "Ug",
+    "Models": [
+      {
+        "Path": "bdl/ug.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ug_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ug02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ug02_head.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      },
     ]
   },
   {
