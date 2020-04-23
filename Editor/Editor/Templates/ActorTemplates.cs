@@ -10450,7 +10450,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class obj_akabe : Actor
+	public partial class obj_akabe : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		

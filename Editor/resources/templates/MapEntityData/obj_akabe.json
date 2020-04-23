@@ -1,6 +1,6 @@
 {
   "ClassName": "obj_akabe",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",
