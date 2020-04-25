@@ -414,6 +414,78 @@
     ]
   },
   {
+    "Name": "Earth Temple Door",
+    "Archive": "door12",
+    "Models": [
+      {
+        "Path": "bdl/door12_gl.bdl",
+      },
+      {
+        "Path": "bdl/door12_gr.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Earth Temple Miniboss Door",
+    "Archive": "door12",
+    "Models": [
+      {
+        "Path": "bdl/door12m_l.bdl",
+      },
+      {
+        "Path": "bdl/door12m_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Earth Temple Boss Door",
+    "Archive": "door12",
+    "Models": [
+      {
+        "Path": "bdl/door12b_l.bdl",
+      },
+      {
+        "Path": "bdl/door12b_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Wind Temple Door",
+    "Archive": "door13",
+    "Models": [
+      {
+        "Path": "bdl/door13_l.bdl",
+      },
+      {
+        "Path": "bdl/door13_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Wind Temple Miniboss Door",
+    "Archive": "door13",
+    "Models": [
+      {
+        "Path": "bdl/door13m_l.bdl",
+      },
+      {
+        "Path": "bdl/door13m_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Wind Temple Boss Door",
+    "Archive": "door13",
+    "Models": [
+      {
+        "Path": "bdl/door13b_l.bdl",
+      },
+      {
+        "Path": "bdl/door13b_r.bdl",
+      },
+    ]
+  },
+  {
     "Name": "Lamp",
     "Archive": "Lamp",
     "Models": [

@@ -3064,8 +3064,67 @@ namespace WindEditor
 	public partial class door12 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
+				public enum BehaviorTypeEnum
+		{
+			Normal = 0,
+			Locked = 1,
+			Barred_until_all_enemies_dead = 2,
+			Boss_Locked = 3,
+			Unknown_5 = 4,
+		}
+
+
+		[WProperty("ET/WT Door", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (BehaviorTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				OnPropertyChanged("BehaviorType");
+				UpdateModel();
+			}
+		}
+		public enum AppearanceTypeEnum
+		{
+			Earth_Temple_Normal = 7,
+			Earth_Temple_Miniboss = 8,
+			Earth_Temple_Boss = 9,
+			Wind_Temple_Normal = 10,
+			Wind_Temple_Miniboss = 11,
+			Wind_Temple_Boss = 12,
+		}
+
+
+		[WProperty("ET/WT Door", "Appearance Type", true, "", SourceScene.Room)]
+		public AppearanceTypeEnum AppearanceType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				if (!Enum.IsDefined(typeof(AppearanceTypeEnum), value_as_int))
+					value_as_int = 7;
+				return (AppearanceTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				OnPropertyChanged("AppearanceType");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("ET/WT Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
 		public int Switch1
 		{ 
 			get
@@ -3079,55 +3138,11 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Switch1");
-			}
-		}
-		public enum TypeEnum
-		{
-			Normal = 0,
-			Boss = 1,
-			Barred_until_all_enemies_dead = 2,
-			Unknown_3 = 3,
-			Locked = 4,
-		}
-
-
-		[WProperty("Door", "Type", true, "", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
-				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("Door", "Event ID", true, "", SourceScene.Room)]
-		public int EventID
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("EventID");
-			}
-		}
-
-		[WProperty("Door", "Switch 2", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "Switch 2", true, "", SourceScene.Room)]
 		public int Switch2
 		{ 
 			get
@@ -3141,10 +3156,11 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("Switch2");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("Door", "From Room Number", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "From Room Number", true, "", SourceScene.Room)]
 		public int FromRoomNumber
 		{ 
 			get
@@ -3161,7 +3177,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "To Room Number", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "To Room Number", true, "", SourceScene.Room)]
 		public int ToRoomNumber
 		{ 
 			get
@@ -3178,7 +3194,24 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Ship ID", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "Event ID", true, "", SourceScene.Room)]
+		public int EventID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
+				OnPropertyChanged("EventID");
+			}
+		}
+
+		[WProperty("ET/WT Door", "Ship ID", true, "", SourceScene.Room)]
 		public int ShipID
 		{ 
 			get
@@ -3195,23 +3228,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Arg 1", true, "", SourceScene.Room)]
-		public int Arg1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Arg1");
-			}
-		}
-
 		// Constructor
 		public door12(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3222,12 +3238,11 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Switch1 = -1;
-			EventID = -1;
 			Switch2 = -1;
 			FromRoomNumber = -1;
 			ToRoomNumber = -1;
+			EventID = -1;
 			ShipID = -1;
-			Arg1 = -1;
 		}
 	}
 

@@ -396,42 +396,42 @@
   },
   {
     "Actor Name": "door12",
-    "English Name": "door12",
+    "English Name": "Earth Temple Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "door12M",
-    "English Name": "door12",
+    "English Name": "Earth Temple Miniboss Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "door12B",
-    "English Name": "door12",
+    "English Name": "Earth Temple Boss Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "door13",
-    "English Name": "door12",
+    "English Name": "Wind Temple Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "door13M",
-    "English Name": "door12",
+    "English Name": "Wind Temple Miniboss Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "door13B",
-    "English Name": "door12",
+    "English Name": "Wind Temple Boss Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "keyS12",
-    "English Name": "door12",
+    "English Name": "Locked ET/WT Door",
     "ActorClassType": "door12"
   },
   {
     "Actor Name": "ZenS12",
-    "English Name": "door12",
+    "English Name": "Barred ET/WT Door",
     "ActorClassType": "door12"
   },
   {
