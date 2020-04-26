@@ -4116,7 +4116,7 @@
     ]
   },
   {
-    "Name": "Small Pillar of Flames",
+    "Name": "Medium Magma Jet",
     "Archive": "Yfire_00",
     "Models": [
       {
@@ -4139,7 +4139,7 @@
     ]
   },
   {
-    "Name": "Large Pillar of Flames",
+    "Name": "Large Magma Jet",
     "Archive": "Yfire_00",
     "Models": [
       {
@@ -4281,6 +4281,15 @@
     "Models": [
       {
         "Path": "bdl/koki_00.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Ganon's Tower Destructible Door",
+    "Archive": "Vfan",
+    "Models": [
+      {
+        "Path": "bdl/v_fan_00.bdl",
       }
     ]
   },

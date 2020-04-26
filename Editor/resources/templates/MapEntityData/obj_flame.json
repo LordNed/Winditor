@@ -3,29 +3,45 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x30000000,
+      "Hidden": false,
+      "Category": "Magma Jet",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Medium Jet",
+        1: "Large Jet",
+        2: "Very Large Jet",
+        3: "Small Jet",
+      },
+      "UpdateModel": true
+    },
+    {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Unknown_2", // higher causes more fire keese to spawn?
       "ValueSource": "Parameters",
       "Mask": 0x00001F00,
       "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Unknown_3", // lower causes more fire keese to spawn?
       "ValueSource": "Parameters",
       "Mask": 0x00006000,
       "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -34,16 +50,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "obj_flame",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_5",
-      "ValueSource": "Parameters",
-      "Mask": 0x30000000,
-      "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -52,7 +59,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
       "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -61,7 +68,7 @@
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -70,7 +77,7 @@
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "obj_flame",
+      "Category": "Magma Jet",
       "ToolTip": "",
       "DataType": "Integer"
     }

@@ -12077,8 +12077,36 @@ namespace WindEditor
 	public partial class obj_flame : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("obj_flame", "Unknown_1", true, "", SourceScene.Room)]
+				public enum TypeEnum
+		{
+			Medium_Jet = 0,
+			Large_Jet = 1,
+			Very_Large_Jet = 2,
+			Small_Jet = 3,
+		}
+
+
+		[WProperty("Magma Jet", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x30000000) >> 28);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Magma Jet", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
 			get
@@ -12095,7 +12123,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_2", true, "", SourceScene.Room)]
+		[WProperty("Magma Jet", "Unknown_2", true, "", SourceScene.Room)]
 		public int Unknown_2
 		{ 
 			get
@@ -12112,7 +12140,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Magma Jet", "Unknown_3", true, "", SourceScene.Room)]
 		public int Unknown_3
 		{ 
 			get
@@ -12129,7 +12157,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Magma Jet", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -12146,24 +12174,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_flame", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x30000000) >> 28);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
-				OnPropertyChanged("Unknown_5");
-			}
-		}
-
-		[WProperty("obj_flame", "Unknown_6", true, "", SourceScene.Room)]
+		[WProperty("Magma Jet", "Unknown_6", true, "", SourceScene.Room)]
 		public int Unknown_6
 		{ 
 			get
@@ -12193,7 +12204,6 @@ namespace WindEditor
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
-			Unknown_5 = -1;
 			Unknown_6 = -1;
 		}
 	}
@@ -14729,26 +14739,40 @@ namespace WindEditor
 	public partial class obj_mtest : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("obj_mtest", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Water_Splashes = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+			Unknown_7 = 7,
+		}
+
+
+		[WProperty("obj_mtest", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("obj_mtest", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_mtest", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -14760,24 +14784,33 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
+		public enum ConditionTypeEnum
+		{
+			Appear_if_switch_is_set = 0,
+			Appear_if_switch_is_not_set = 1,
+			Always_appear = 2,
+		}
 
-		[WProperty("obj_mtest", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+
+		[WProperty("obj_mtest", "Condition Type", true, "", SourceScene.Room)]
+		public ConditionTypeEnum ConditionType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ConditionTypeEnum), value_as_int))
+					value_as_int = 2;
+				return (ConditionTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("ConditionType");
 			}
 		}
 
@@ -14807,9 +14840,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoCheck = -1;
 			Unknown_4 = -1;
 		}
 	}
@@ -16651,8 +16682,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_vfan", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Ganon's Tower Destructible Door", "Destroyed Switch", true, "", SourceScene.Room)]
+		public int DestroyedSwitch
 		{ 
 			get
 			{
@@ -16664,7 +16695,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DestroyedSwitch");
 			}
 		}
 
@@ -16677,7 +16708,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DestroyedSwitch = -1;
 		}
 	}
 

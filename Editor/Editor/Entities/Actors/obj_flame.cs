@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindEditor.ViewModel;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -22,16 +23,23 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            switch (Unknown_5)
+            VisualScaleMultiplier = new Vector3(1f, 1f, 1f);
+            switch (Type)
             {
-                case 0:
-                case 3:
-                default:
-                    m_actorMeshes = WResourceManager.LoadActorResource("Small Pillar of Flames");
+                case TypeEnum.Small_Jet:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Medium Magma Jet");
+                    VisualScaleMultiplier = new Vector3(0.5f, 0.5f, 0.5f);
                     break;
-                case 1:
-                case 2:
-                    m_actorMeshes = WResourceManager.LoadActorResource("Large Pillar of Flames");
+                case TypeEnum.Medium_Jet:
+                default:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Medium Magma Jet");
+                    break;
+                case TypeEnum.Large_Jet:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Large Magma Jet");
+                    VisualScaleMultiplier = new Vector3(1f, 0.815f, 1f);
+                    break;
+                case TypeEnum.Very_Large_Jet:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Large Magma Jet");
                     break;
             }
         }
