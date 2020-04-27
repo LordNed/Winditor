@@ -22,7 +22,7 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            if (Unknown_2 == 0)
+            if (Type == TypeEnum.Large_Stone_Head)
             {
                 m_actorMeshes = WResourceManager.LoadActorResource("Large Stone Head");
             }

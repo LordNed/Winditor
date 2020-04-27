@@ -3,47 +3,67 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 0x0000007F,
+      "Mask": 0x00000100,
       "Hidden": false,
-      "Category": "obj_homen",
+      "Category": "Stone Head",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Large Stone Head",
+        1: "Small Stone Head",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x00000F00,
-      "Hidden": false,
-      "Category": "obj_homen",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
+      "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x0003F000,
       "Hidden": false,
-      "Category": "obj_homen",
+      "Category": "Stone Head",
+      "ToolTip": "",
+      "DataType": "DroppedItemID"
+    },
+    {
+      "Name": "Item Pickup Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000007F,
+      "Hidden": false,
+      "Category": "Stone Head",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Enemy to Spawn",
       "ValueSource": "Parameters",
       "Mask": 0x003C0000,
       "Hidden": false,
-      "Category": "obj_homen",
+      "Category": "Stone Head",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Blue Bokoblin with Unlit Torch",
+        1: "Green Bokoblin with Unlit Torch",
+        2: "Blue Bokoblin with Machete",
+        3: "Green Bokoblin with with Machete",
+        4: "Blue Bokoblin with Lit Torch",
+        5: "Green Bokoblin with Lit Torch",
+        6: "Green ChuChu",
+        7: "Red ChuChu",
+        8: "Blue ChuChu",
+        9: "Dark ChuChu",
+        10: "Yellow ChuChu",
+        15: "No Enemy",
+      },
+      "EnumDefaultValue": 15
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "obj_homen",
+      "Category": "Stone Head",
       "ToolTip": "",
       "DataType": "Integer"
     }
