@@ -122,6 +122,12 @@ namespace WindEditor.Editor.Modes
             m_NodeWindow = new EventNodeWindow();
             m_NodeWindow.ActorPropertiesView.DataContext = ActorDetailsViewModel;
             m_NodeWindow.ActorTabControl.SelectionChanged += OnSelectedActorChanged;
+            m_NodeWindow.Closing += M_NodeWindow_Closing;
+        }
+
+        private void M_NodeWindow_Closing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
         }
 
         /// <summary>
@@ -194,7 +200,15 @@ namespace WindEditor.Editor.Modes
 
         private void OnEventSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectedEvent = EventList.Events[m_EventCombo.SelectedIndex];
+            if (m_EventCombo.SelectedIndex == -1)
+            {
+                SelectedEvent = m_EventList.Events[0];
+            }
+            else
+            {
+                SelectedEvent = EventList.Events[m_EventCombo.SelectedIndex];
+            }
+
             m_EventDetailsViewModel.ReflectObject(SelectedEvent);
 
             m_NodeWindow.ActorTabControl.Items.Clear();
@@ -271,12 +285,17 @@ namespace WindEditor.Editor.Modes
             model.Nodes.Edit(x => x.Add(begin_node));
 
             // Add an output to the begin node labelled "Begin".
-            NodeOutputViewModel begin_output = new NodeOutputViewModel() { Name = "Begin" };
+            NodeOutputViewModel begin_output = new NodeOutputViewModel() { Name = "Begin", Port = new ExecPortViewModel { PortType = PortType.Execution } };
             begin_node.Outputs.Edit(x => x.Add(begin_output));
 
             // If this actor has at least one cut...
             if (staff.FirstCut != null)
             {
+                int x_offset = 400;
+
+                System.Windows.Point node_location = begin_node.Position;
+                node_location.X += x_offset - begin_node.Size.Width;
+
                 // Add the first cut to the node network.
                 model.Nodes.Edit(x => x.Add(staff.FirstCut.NodeViewModel));
 
@@ -292,6 +311,10 @@ namespace WindEditor.Editor.Modes
                 Cut c = staff.FirstCut;
                 while (c.NextCut != null)
                 {
+                    // Offset the position of the node so they're not on top of each other
+                    c.NodeViewModel.Position = node_location;
+                    node_location.X += c.NodeViewModel.Size.Width + x_offset;
+
                     c.AddPropertiesToNode(model);
 
                     // Create a connection between this cut and the next cut in the list.
@@ -307,6 +330,12 @@ namespace WindEditor.Editor.Modes
                     c = c.NextCut;
                     model.Nodes.Edit(x => x.Add(c.NodeViewModel));
                 }
+
+                // Catch the last node, which didn't go through the while loop
+                c.NodeViewModel.Position = node_location;
+                node_location.X += c.NodeViewModel.Size.Width + x_offset;
+
+                c.AddPropertiesToNode(model);
             }
 
             // Create the visual component of the node network.

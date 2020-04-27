@@ -47,36 +47,50 @@ namespace WindEditor.Events
             reader.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
         }
 
-        public int[] GetIntData(int starting_index, int count)
+        public IntWrapper[] GetIntData(int starting_index, int count)
         {
-            int[] data = new int[count];
-            IntegerBank.CopyTo(starting_index, data, 0, count);
+            IntWrapper[] wrap_data = new IntWrapper[count];
 
-            return data;
+            for (int i = 0; i < count; i++)
+            {
+                wrap_data[i] = new IntWrapper(IntegerBank[starting_index + i]);
+            }
+
+            return wrap_data;
         }
 
-        public int AddIntData(int[] int_data)
+        public int AddIntData(IntWrapper[] int_data)
         {
             int new_offset = IntegerBank.Count;
 
-            IntegerBank.AddRange(int_data);
+            for (int i = 0; i < int_data.Length; i++)
+            {
+                IntegerBank.Add(int_data[i].IntValue);
+            }
 
             return new_offset;
         }
 
-        public float[] GetFloatData(int starting_index, int count)
+        public FloatWrapper[] GetFloatData(int starting_index, int count)
         {
-            float[] data = new float[count];
-            FloatBank.CopyTo(starting_index, data, 0, count);
+            FloatWrapper[] wrap_data = new FloatWrapper[count];
 
-            return data;
+            for (int i = 0; i < count; i++)
+            {
+                wrap_data[i] = new FloatWrapper(FloatBank[starting_index + i]);
+            }
+
+            return wrap_data;
         }
 
-        public int AddFloatData(float[] float_data)
+        public int AddFloatData(FloatWrapper[] float_data)
         {
             int new_offset = FloatBank.Count;
 
-            FloatBank.AddRange(float_data);
+            for (int i = 0; i < float_data.Length; i++)
+            {
+                FloatBank.Add(float_data[i].FloatValue);
+            }
 
             return new_offset;
         }

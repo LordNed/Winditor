@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameFormatReader.Common;
+using NodeNetwork.Toolkit.ValueNode;
+using NodeNetwork.ViewModels;
 
 namespace WindEditor.Events
 {
@@ -38,6 +40,12 @@ namespace WindEditor.Events
         {
             m_ElementIndex = data.AddStringData(StringData);
             m_ElementCount = StringData.Length;
+        }
+
+        public override void AddSubstanceEditor(NodeViewModel view_model)
+        {
+            ValueNodeOutputViewModel<int?> int_output = new ValueNodeOutputViewModel<int?>();
+            view_model.Outputs.Edit(x => x.Add(int_output));
         }
     }
 }

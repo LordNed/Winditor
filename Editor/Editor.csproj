@@ -223,6 +223,22 @@
     <Compile Include="Editor\Entities\LightVector.cs" />
     <Compile Include="Editor\Entities\RoomProperties.cs" />
     <Compile Include="Editor\Entities\StageProperties.cs" />
+    <Compile Include="Editor\Events\CutNodeView.xaml.cs">
+      <DependentUpon>CutNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\CutNodeViewModel.cs" />
+    <Compile Include="Editor\Events\ExecPortView.xaml.cs">
+      <DependentUpon>ExecPortView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\ExecPortViewModel.cs" />
+    <Compile Include="Editor\Events\FloatValueEditorView.xaml.cs">
+      <DependentUpon>FloatValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\FloatValueEditorViewModel.cs" />
+    <Compile Include="Editor\Events\IntegerValueEditorView.xaml.cs">
+      <DependentUpon>IntegerValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\IntegerValueEditorViewModel.cs" />
     <Compile Include="Editor\Events\Substance\BaseSubstance.cs" />
     <Compile Include="Editor\Events\Cut.cs" />
     <Compile Include="Editor\Events\Event.cs" />
@@ -775,6 +791,22 @@
     <Compile Include="View\WTransformControl.xaml.cs">
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Editor\Events\CutNodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\ExecPortView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\FloatValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\IntegerValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

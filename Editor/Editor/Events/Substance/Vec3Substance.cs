@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameFormatReader.Common;
+using NodeNetwork.Toolkit.ValueNode;
+using NodeNetwork.ViewModels;
 using OpenTK;
 
 namespace WindEditor.Events
@@ -39,6 +41,12 @@ namespace WindEditor.Events
         {
             m_ElementIndex = data.AddVec3Data(Vec3Data);
             m_ElementCount = Vec3Data.Length;
+        }
+
+        public override void AddSubstanceEditor(NodeViewModel view_model)
+        {
+            ValueNodeOutputViewModel<int?> int_output = new ValueNodeOutputViewModel<int?>();
+            view_model.Outputs.Edit(x => x.Add(int_output));
         }
     }
 }

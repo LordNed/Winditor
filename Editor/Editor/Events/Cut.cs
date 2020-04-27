@@ -31,7 +31,7 @@ namespace WindEditor.Events
 
         private Cut m_NextCut;
 
-        private NodeViewModel m_NodeViewModel;
+        private CutNodeViewModel m_NodeViewModel;
 
         public Cut NextCut
         {
@@ -46,7 +46,7 @@ namespace WindEditor.Events
             }
         }
 
-        public NodeViewModel NodeViewModel
+        public CutNodeViewModel NodeViewModel
         {
             get { return m_NodeViewModel; }
             set
@@ -109,10 +109,14 @@ namespace WindEditor.Events
 
         private void CreateNodeViewModel()
         {
-            NodeViewModel = new NodeViewModel() { Name = this.Name };
+            NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
 
-            NodeViewModel.Inputs.Edit(x => x.Add(new NodeInputViewModel()));
-            NodeViewModel.Outputs.Edit(x => x.Add(new NodeOutputViewModel()));
+            NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
+            NodeViewModel.Inputs.Edit(x => x.Add(exec_input));
+
+            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
+
+            NodeViewModel.Outputs.Edit(x => x.Add(exec_output));
         }
 
         public void AssignNextCutAndSubstances(List<Cut> cut_list, List<BaseSubstance> substance_list)
@@ -136,21 +140,23 @@ namespace WindEditor.Events
 
         public void AddPropertiesToNode(NetworkViewModel model)
         {
+            System.Windows.Point prop_offset = new System.Windows.Point(NodeViewModel.Position.X - 200, NodeViewModel.Position.Y + 100);
+
             foreach (BaseSubstance s in Properties)
             {
                 NodeInputViewModel new_prop_input = new NodeInputViewModel();
                 NodeViewModel.Inputs.Edit(x => x.Add(new_prop_input));
 
-                NodeViewModel temp_node = new NodeViewModel() { Name = s.Name };
+                NodeViewModel temp_node = new NodeViewModel() { Name = s.Name, Position = prop_offset };
+                s.AddSubstanceEditor(temp_node);
                 model.Nodes.Edit(x => x.Add(temp_node));
 
-                NodeOutputViewModel temp_output = new NodeOutputViewModel();
-                temp_node.Outputs.Edit(x => x.Add(temp_output));
+                prop_offset.Y += 100;
 
                 ConnectionViewModel first_to_begin = new ConnectionViewModel(
                     model,
                     new_prop_input,
-                    temp_output);
+                    temp_node.Outputs.Items.First());
                 model.Connections.Edit(x => x.Add(first_to_begin));
             }
         }

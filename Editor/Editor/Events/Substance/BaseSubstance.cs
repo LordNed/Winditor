@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using WindEditor.Properties;
 using GameFormatReader.Common;
+using NodeNetwork.ViewModels;
 
 namespace WindEditor.Events
 {
@@ -81,6 +82,8 @@ namespace WindEditor.Events
         public abstract void ReadValue(SubstanceData data);
 
         public abstract void WriteValue(SubstanceData data);
+
+        public abstract void AddSubstanceEditor(NodeViewModel input_view_model);
 
         public void AssignNextSubstance(List<BaseSubstance> substance_list)
         {
