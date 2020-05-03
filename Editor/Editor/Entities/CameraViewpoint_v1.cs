@@ -12,7 +12,7 @@ namespace WindEditor
     {
         public override void PostLoad()
         {
-            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new Vector4(0, 0, 1, 1), true);
+            m_objRender = WResourceManager.LoadObjResource("resources/editor/Camera.obj", new Vector4(1, 1, 1, 1), true);
         }
 
         public override void PreSave()

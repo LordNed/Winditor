@@ -858,6 +858,9 @@
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Editor\Templates\ParameterTemplates.tt" />
+    <Content Include="resources\editor\CamTex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\editor\T_DevCheckersBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -865,6 +868,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\editor\T_DevCheckersOrange_trans.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\Camera.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\Camera.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\editor_icon.ico" />
