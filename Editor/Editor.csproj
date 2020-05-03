@@ -1894,7 +1894,7 @@
       <Project>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</Project>
       <Name>JStudio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SuperBMDLib\SuperBMDLib.csproj">
+    <ProjectReference Include="..\SuperBMD\SuperBMDLib\SuperBMDLib.csproj">
       <Project>{828be5e5-9e98-46c9-b63e-d2d03322a825}</Project>
       <Name>SuperBMDLib</Name>
     </ProjectReference>
