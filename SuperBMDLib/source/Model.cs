@@ -236,6 +236,24 @@ namespace SuperBMDLib
                     test.WriteLine(line);
                     test.Flush();
                 }
+                else if (line.Contains("<material id=\""))
+                {
+                    Regex reg = new Regex("^    <material id=\"(m(\\d+)[^\"]+)\" name=\"[^\"]+\">$");
+                    Match match = reg.Match(line);
+                    if (match.Success)
+                    {
+                        string mat_id = match.Groups[1].Value;
+                        int mat_index = Int32.Parse(match.Groups[2].Value);
+                        string mat_name = Materials.m_Materials[mat_index].Name;
+                        string matLine = $"    <material id=\"{mat_id}\" name=\"{mat_name}\">";
+                        test.WriteLine(matLine);
+                    }
+                    else
+                    {
+                        test.WriteLine(line);
+                    }
+                    test.Flush();
+                }
                 else if (line.Contains("<node"))
                 {
                     string[] testLn = line.Split('\"');
