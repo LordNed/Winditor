@@ -130,6 +130,20 @@ namespace WindEditor
             }
         }
 
+        [WProperty("Debugging", "Display Free Memory During Playtests", true, "When checked, the amount of free memory in each memory heap will be displayed while playtesting.")]
+        public bool HeapDisplay
+        {
+            get { return m_HeapDisplay; }
+            set
+            {
+                if (value != m_HeapDisplay)
+                {
+                    m_HeapDisplay = value;
+                    OnPropertyChanged("HeapDisplay");
+                }
+            }
+        }
+
         [WProperty("Advanced", "Dump Textures", true, "When checked, dumps the textures of loaded meshes to file.")]
         public bool DumpTextures
         {
@@ -169,6 +183,7 @@ namespace WindEditor
         private FileReference m_LastStagePath;
         private FileReference m_LastCollisionDaePath;
         private FileReference m_LastScriptArchivePath;
+        private bool m_HeapDisplay;
         private bool m_DumpTextures;
         private bool m_DumpShaders;
 

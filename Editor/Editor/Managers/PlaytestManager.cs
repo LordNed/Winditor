@@ -16,8 +16,7 @@ namespace WindEditor
         private Process m_DolphinInstance;
         private ProcessStartInfo m_DolphinStartInfo;
 
-        string m_DolPath;
-        string m_BackupDolPath;
+        List<string> m_BackedUpFilePaths;
 
         public PlaytestManager()
         {
@@ -49,30 +48,44 @@ namespace WindEditor
             string map_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", map.MapName);
             map.ExportToDirectory(map_path);
 
-            string dol_dir = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "sys");
-            m_DolPath = Path.Combine(dol_dir, "main.dol");
-            m_BackupDolPath = Path.Combine(dol_dir, "main_backup.dol");
+            List<string> filesToBackUp = new List<string> { "sys/main.dol" };
+            if (WSettingsManager.GetSettings().HeapDisplay)
+            {
+                filesToBackUp.Add("sys/boot.bin");
+            }
+
+            m_BackedUpFilePaths = new List<string>();
+            foreach (string filePath in filesToBackUp)
+            {
+                string fullPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, filePath);
+                m_BackedUpFilePaths.Add(fullPath);
+            }
+
+            string dolPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "sys", "main.dol");
 
             m_DolphinStartInfo = new ProcessStartInfo(dolphinPath);
-            m_DolphinStartInfo.Arguments = $"-b -e \"{ m_DolPath }\"";
+            m_DolphinStartInfo.Arguments = $"-b -e \"{ dolPath }\"";
 
             int room_no = 0;
             int spawn_id = 0;
 
             GetRoomAndSpawnID(map.FocusedScene, out room_no, out spawn_id);
 
-            if (!File.Exists(m_DolPath))
+            if (!File.Exists(dolPath))
             {
                 Console.WriteLine("ISO root has no executable!");
                 return;
             }
 
-            if (File.Exists(m_BackupDolPath))
+            foreach (string filePath in m_BackedUpFilePaths)
             {
-                File.Delete(m_BackupDolPath);
+                string backupPath = filePath + ".bak";
+                if (File.Exists(backupPath))
+                {
+                    File.Delete(backupPath);
+                }
+                File.Copy(filePath, backupPath);
             }
-
-            File.Copy(m_DolPath, m_BackupDolPath);
 
             Patch testRoomPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\test_room_diff.json"));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022CFF8, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
@@ -87,6 +100,12 @@ namespace WindEditor
             Patch particleIdsPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\missing_particle_ids_diff.json"));
             particleIdsPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
 
+            if (WSettingsManager.GetSettings().HeapDisplay)
+            {
+                Patch heapDisplayPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\heap_display_diff.json"));
+                heapDisplayPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
+            }
+
             m_DolphinInstance = Process.Start(m_DolphinStartInfo);
 
             m_DolphinInstance.EnableRaisingEvents = true;
@@ -98,13 +117,17 @@ namespace WindEditor
             m_DolphinInstance.Exited -= OnDolphinExited;
             m_DolphinInstance = null;
 
-            if (File.Exists(m_DolPath))
+            foreach (string filePath in m_BackedUpFilePaths)
             {
-                File.Delete(m_DolPath);
-            }
+                string backupPath = filePath + ".bak";
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
 
-            File.Copy(m_BackupDolPath, m_DolPath);
-            File.Delete(m_BackupDolPath);
+                File.Copy(backupPath, filePath);
+                File.Delete(backupPath);
+            }
         }
 
         private byte GetRoomNumberFromSceneName(string name)

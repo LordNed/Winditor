@@ -1,0 +1,35 @@
+{
+	"Name": "Show Game Memory Heaps",
+	"Description": "Patches the main executable so that the amount of free memory in each memory heap will always be shown onscreen.",
+	"Files":
+	[
+		{
+			"FileName": "sys/boot.bin",
+			"Patchlets":
+			[
+				{
+					"Offset": 0x007,
+					"Data": [0x91]
+				}
+			]
+		},
+		{
+			"FileName": "sys/main.dol",
+			"Patchlets":
+			[
+				{
+					"Offset": 0x800063E7,
+					"Data": [0x01]
+				},
+				{
+					"Offset": 0x803F60E8,
+					"Data": [0x01]
+				},
+				{
+					"Offset": 0x800084A0,
+					"Data": [0x60, 0x00, 0x00, 0x00]
+				}
+			]
+		}
+	]
+}

@@ -963,6 +963,9 @@
     <Content Include="resources\models\foliage\grass_Vmori_l_matDL.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\patches\heap_display_diff.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />
     <None Include="resources\templates\MapEntityData\agbsw0.json" />
     <None Include="resources\templates\MapEntityData\alldie.json" />
