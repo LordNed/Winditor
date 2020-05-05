@@ -34,6 +34,13 @@
 					break;
 				}
 			}
+			
+			int bitMaskSize = 0;
+			for (int i = 0; i < 32; i++) {
+				if ((field.BitMask & (1 << i)) != 0) {
+					bitMaskSize++;
+				}
+			}
 
 			int defaultEnumValue = field.EnumDefaultValue;
 
@@ -86,6 +93,7 @@
 			switch (field.DataType)
 			{
 				case "Integer":
+				case "SignedInteger":
 					dataType = "int";
 					break;
 				case "Boolean":
@@ -151,7 +159,7 @@
 				} else {
 					defaultValueSetters.Add($"{fieldName} = {defaultValue};");
 				}
-			} else if (field.DataType == "Integer") {
+			} else if (field.DataType == "Integer" || field.DataType == "SignedInteger") {
 				defaultValueSetters.Add($"{fieldName} = -1;");
 			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
 				defaultValueSetters.Add($"{fieldName} = null;");
@@ -177,6 +185,15 @@
 					case "Integer":
 #>
 				return value_as_int;
+<#
+						break;
+					case "SignedInteger":
+#>
+				if (value_as_int > <#= (1 << (bitMaskSize - 1)) - 1 #>) {
+					return value_as_int - <#= 1 << bitMaskSize #>;
+				} else {
+					return value_as_int;
+				}
 <#
 						break;
 					case "Boolean":
@@ -242,6 +259,7 @@
 				switch (field.DataType)
 				{
 					case "Integer":
+					case "SignedInteger":
 #>
 				int value_as_int = value;
 <#
