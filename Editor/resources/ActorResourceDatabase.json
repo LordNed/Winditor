@@ -1949,6 +1949,76 @@
     ]
   },
   {
+    "Name": "Blue Beamos",
+    "Archive": "Hmos",
+    "Models": [
+      {
+        "Path": "bdl/hmos1.bdl",
+      },
+      {
+        "Path": "bdl/hmosup1.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 260,
+          "Z": 0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmosup1.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Red Beamos",
+    "Archive": "Hmos",
+    "Models": [
+      {
+        "Path": "bdl/hmos2.bdl",
+      },
+      {
+        "Path": "bdl/hmosup2.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 260,
+          "Z": 0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmosup2.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ]
+      },
+      {
+        "Path": "bdlm/hmos2t.bdl",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmos2t.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Laser Barrier",
+    "Archive": "Hmos",
+    "Models": [
+      {
+        "Path": "bdl/hmos3.bdl",
+      },
+    ]
+  },
+  {
     "Name": "Phantom Ganon",
     "Archive": "Fganon",
     "Models": [

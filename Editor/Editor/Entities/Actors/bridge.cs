@@ -192,6 +192,7 @@ namespace WindEditor
                 m_plankMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }
         }
+
         public override float GetBoundingRadius()
         {
             float radius = base.GetBoundingRadius();

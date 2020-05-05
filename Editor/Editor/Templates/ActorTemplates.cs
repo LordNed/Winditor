@@ -11057,9 +11057,36 @@ namespace WindEditor
 	public partial class obj_bemos : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("obj_bemos", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum TypeEnum
+		{
+			Blue_Beamos = 0,
+			Red_Beamos = 1,
+			Laser_Barrier = 2,
+		}
+
+
+		[WProperty("Beamos / Laser Barrier", "Type", true, "Blue Beamos always fire at a specific spot.\nRed Beamos track the player with their laser.\nLaser Barriers fire a laser along a path to block the player.", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Beamos", "Sight Range (Hundreds)", true, "This number multiplied by 100 and added to 500 is the range within it will notice the player and start firing a laser.", SourceScene.Room)]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -11071,80 +11098,126 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Laser Barrier", "Deactivation Switch", true, "It will stop firing a laser once this switch is set.", SourceScene.Room)]
+		public int DeactivationSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("DeactivationSwitch");
+			}
+		}
+
+		[WProperty("Red Beamos", "Head Rotation Speed", true, "The speed the Red Beamos rotates its head at.", SourceScene.Room)]
+		public int HeadRotationSpeed
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (value_as_int > 127) {
+					return value_as_int - 256;
+				} else {
+					return value_as_int;
+				}
 			}
 
 			set
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("HeadRotationSpeed");
+			}
+		}
+		public enum BehaviorTypeEnum
+		{
+			Normal = 0,
+			Only_fires_if_Servant_present = 1,
+			Lasers_are_not_solid = 2,
+		}
+
+
+		[WProperty("Laser Barrier", "Behavior Type", true, "\"Only fires if Servant present\" types won't start firing their laser unless a Servant of the Tower is in the room.\n\"Lasers are not solid\" types fire lasers that don't have solid collision - they still damage the player and knock them back, but the player can walk through the lasers with iframes.", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (BehaviorTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Laser Barrier", "Laser Path", true, "The path for the laser to go along.\nIf this is not set, this will only be half of a laser barrier, and it won't follow any path.", SourceScene.Room)]
+		public Path_v2 LaserPath
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("LaserPath");
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
-				OnPropertyChanged("Unknown_4");
-			}
-		}
-
-		[WProperty("obj_bemos", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Beamos", "Dropped Item", true, "", SourceScene.Room)]
+		public DroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+					value_as_int = 0;
+				return (DroppedItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DroppedItem");
 			}
 		}
 
-		[WProperty("obj_bemos", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Beamos", "Dropped Item Pickup Flag", true, "", SourceScene.Room)]
+		public int DroppedItemPickupFlag
 		{ 
 			get
 			{
@@ -11156,7 +11229,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("DroppedItemPickupFlag");
 			}
 		}
 
@@ -11169,12 +11242,11 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
-			Unknown_6 = -1;
+			SightRangeHundreds = -1;
+			DeactivationSwitch = -1;
+			HeadRotationSpeed = -1;
+			LaserPath = null;
+			DroppedItemPickupFlag = -1;
 		}
 	}
 
