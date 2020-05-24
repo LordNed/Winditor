@@ -21,7 +21,7 @@ namespace WindEditor.View
     {
         public string FileName { get { return FileSelector.FileName; } }
 
-        public int RoomNumber { get { return RoomCombo.SelectedIndex; } }
+        public int SceneNumber { get { return RoomCombo.SelectedIndex; } }
 
         public CollisionImportWindow(WMap map)
         {

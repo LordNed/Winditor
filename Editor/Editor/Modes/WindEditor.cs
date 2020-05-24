@@ -472,7 +472,7 @@ namespace WindEditor
                     return;
                 }
 
-                if (window.RoomNumber == -1 || window.RoomNumber > MainWorld.Map.SceneList.Count - 1)
+                if (window.SceneNumber == -1 || window.SceneNumber > MainWorld.Map.SceneList.Count - 1)
                 {
                     MessageBox.Show("Invalid room number entered!", "Collision Import Error");
                     return;
@@ -485,7 +485,7 @@ namespace WindEditor
                     return;
                 }
 
-                WRoom room = GetRoomFromIndex(window.RoomNumber);
+                WRoom room = GetRoomFromDropdownIndex(window.SceneNumber);
 
                 CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
                 WCollisionMesh newMesh = new WCollisionMesh(MainWorld, window.FileName);
@@ -590,7 +590,7 @@ namespace WindEditor
 
         private void ImportVisualMeshToRoom(View.VisualMeshImportWindow importWindow)
         {
-            WRoom room = GetRoomFromIndex(importWindow.SceneNumber - 1);
+            WRoom room = GetRoomFromDropdownIndex(importWindow.SceneNumber - 1);
             CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
 
             string newMeshName = "model";
@@ -659,16 +659,17 @@ namespace WindEditor
             return loadFilename;
         }
 
-        private WRoom GetRoomFromIndex(int index)
+        private WRoom GetRoomFromDropdownIndex(int index)
         {
+            int i = 0;
             foreach (WScene scene in MainWorld.Map.SceneList)
             {
                 if (scene is WRoom)
                 {
-                    WRoom room = scene as WRoom;
-
-                    if (room.RoomIndex == index)
+                    if (i == index)
                         return scene as WRoom;
+
+                    i += 1;
                 }
             }
 
@@ -707,13 +708,13 @@ namespace WindEditor
                     return;
                 }
                 
-                if (window.RoomNumber == -1 || window.RoomNumber > MainWorld.Map.SceneList.Count - 1)
+                if (window.SceneNumber == -1 || window.SceneNumber > MainWorld.Map.SceneList.Count - 1)
                 {
                     MessageBox.Show("Invalid room number entered!", "Collision Export Error");
                     return;
                 }
                 
-                WRoom room = GetRoomFromIndex(window.RoomNumber);
+                WRoom room = GetRoomFromDropdownIndex(window.SceneNumber);
                 
                 CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
                 WCollisionMesh mesh = colCategory.Children[0] as WCollisionMesh;
@@ -764,7 +765,7 @@ namespace WindEditor
 
         public void ExportVisualMeshFromRoom(View.VisualMeshExportWindow exportWindow)
         {
-            WRoom room = GetRoomFromIndex(exportWindow.SceneNumber - 1);
+            WRoom room = GetRoomFromDropdownIndex(exportWindow.SceneNumber - 1);
             CategoryDOMNode meshCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Models");
 
             string newMeshName = "model";
@@ -819,13 +820,13 @@ namespace WindEditor
                     return;
                 }
 
-                if (window.RoomNumber == -1)
+                if (window.SceneNumber == -1)
                 {
                     MessageBox.Show("Invalid room number entered!", "Island Import Error");
                     return;
                 }
 
-                WRoom oldRoom = GetRoomFromIndex(window.RoomNumber + 1);
+                WRoom oldRoom = GetRoomFromDropdownIndex(window.SceneNumber);
                 if (oldRoom != null)
                 {
                     MainWorld.Map.SceneList.Remove(oldRoom);
@@ -852,13 +853,13 @@ namespace WindEditor
 
                 DumpContents(archiveRoot, tempArcPath);
 
-                WRoom newRoom = new WRoom(MainWorld, window.RoomNumber + 1);
+                WRoom newRoom = new WRoom(MainWorld, window.SceneNumber + 1);
                 newRoom.Load(tempArcPath);
                 newRoom.RoomTransform = oldRoom.RoomTransform;
                 newRoom.ApplyTransformToObjects();
 
-                newRoom.Name = "room" + (window.RoomNumber + 1);
-                archiveRoot.Name = "room" + (window.RoomNumber + 1);
+                newRoom.Name = "room" + (window.SceneNumber + 1);
+                archiveRoot.Name = "room" + (window.SceneNumber + 1);
                 newRoom.SourceDirectory = archiveRoot;
 
                 MainWorld.Map.SceneList.Add(newRoom);
