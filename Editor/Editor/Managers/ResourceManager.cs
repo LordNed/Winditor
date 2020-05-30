@@ -27,6 +27,18 @@ namespace WindEditor
         [JsonProperty("English Name")]
         public string Description { get; set; }
 
+        [JsonProperty("Tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("Explanation")]
+        public string Explanation { get; set; }
+
+        [JsonProperty("Locations")]
+        public string[] Locations { get; set; }
+
+        [JsonProperty("ImagePath")]
+        public string ImagePath { get; set; }
+
         [JsonProperty("Main Model")]
         public string ModelPath;
 

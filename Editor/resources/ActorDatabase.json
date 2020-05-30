@@ -72,17 +72,53 @@
   {
     "Actor Name": "ALLdie",
     "English Name": "All Enemies Dead Switch Setter",
-    "ActorClassType": "alldie"
+    "ActorClassType": "alldie",
+    "Tags": [
+      "switch",
+      "enemy",
+      "puzzle",
+      "dungeon"
+    ],
+    "Locations": [
+      "Dungeons", "Mini-Dungeons"
+    ],
+    "Explanation": "When all the enemies in the room containing this object are dead, it will set a given switch value. Useful for forcing the player to clear a room before proceeding."
   },
   {
     "Actor Name": "amos",
     "English Name": "Armos Knight",
-    "ActorClassType": "am"
+    "ActorClassType": "am",
+    "Tags": [
+      "enemy",
+      "bombs",
+      "bow",
+      "tower of the gods",
+      "wind temple",
+      "dungeon"
+    ],
+    "Locations": [
+      "Tower of the Gods",
+      "Wind Temple"
+    ],
+    "Explanation": "Large Armos statues with spiked bases. When Link approaches, they spring to life and hop towards him. They can only be defeated by throwing a bomb into their mouths when they stop hopping."
   },
   {
     "Actor Name": "amos2",
     "English Name": "Armos",
-    "ActorClassType": "am2"
+    "ActorClassType": "am2",
+    "Tags": [
+      "enemy",
+      "sword",
+      "bow",
+      "puzzle",
+      "tower of the gods",
+      "wind temple"
+    ],
+    "Locations": [
+      "Tower of the Gods",
+      "Wind Temple"
+    ],
+    "Explanation": "Small statues with a single large eye in the center of their faces. When Link approaches, they spring to life and hop towards him. They can only be defeated by damaging the pink crystal on their behinds after they have been stunned, usually by firing an arrow at their eye.\n\nThere are variants that do not come to life that serve as decorations or puzzle elements."
   },
   {
     "Actor Name": "Hami1",
