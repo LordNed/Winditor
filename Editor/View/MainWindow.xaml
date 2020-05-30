@@ -266,7 +266,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- 3D Viewport -->
-                    <WindowsFormsHost Grid.Row="0" x:Name="glControlHost"/>
+                    <WindowsFormsHost Grid.Row="0" x:Name="glControlHost" LostFocus="glControlHost_LostFocus"/>
 
                     <!-- Viewport Controls -->
                     <DockPanel Grid.Row="1">
