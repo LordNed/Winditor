@@ -46,7 +46,7 @@
                         <TextBlock Margin="10,10,-10,-10" FontWeight="Bold" Grid.ColumnSpan="2">Name</TextBlock>
                         <TextBlock x:Name="EngNameBlock" Margin="10,30,3,108" Grid.ColumnSpan="2"></TextBlock>
                         <TextBlock Margin="10,56,-10,-56" FontWeight="Bold" Grid.ColumnSpan="2">Vanilla Location</TextBlock>
-                        <TextBlock x:Name="LocBlock" Margin="10,80,3,56" Grid.ColumnSpan="2"></TextBlock>
+                        <TextBlock x:Name="LocBlock" Margin="10,80,3,56" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
                         <TextBlock Margin="10,108,-10,-108" FontWeight="Bold" Grid.ColumnSpan="2">Tags</TextBlock>
                         <TextBlock x:Name="TagsBlock" Margin="10,130,3,0" TextWrapping="Wrap" Grid.ColumnSpan="2"></TextBlock>
                     </Grid>

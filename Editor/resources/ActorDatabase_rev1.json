@@ -1,0 +1,3948 @@
+[
+  {
+    "Actor Name": "VigaH",
+    "English Name": "acorn_leaf",
+    "ActorClassType": "acorn_leaf"
+  },
+  {
+    "Actor Name": "agbA",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbAT",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbA2",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbF",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbF2",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbMARK",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbMW",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbCSW",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbTBOX",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbR",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbB",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbD",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "agbFA",
+    "English Name": "agbsw0",
+    "ActorClassType": "agbsw0"
+  },
+  {
+    "Actor Name": "ALLdie",
+    "English Name": "All Enemies Dead Switch Setter",
+    "ActorClassType": "alldie",
+    "Tags": [
+      "switch",
+      "enemy",
+      "puzzle",
+      "dungeon"
+    ],
+    "Locations": [
+      "Dungeons", "Mini-Dungeons"
+    ],
+    "Explanation": "When all the enemies in the room containing this object are dead, it will set a given switch value. Useful for forcing the player to clear a room before proceeding."
+  },
+  {
+    "Actor Name": "amos",
+    "English Name": "Armos Knight",
+    "ActorClassType": "am",
+    "Tags": [
+      "enemy",
+      "bombs",
+      "bow",
+      "tower of the gods",
+      "wind temple",
+      "dungeon"
+    ],
+    "Locations": [
+      "Tower of the Gods",
+      "Wind Temple"
+    ],
+    "Explanation": "Large Armos statues with spiked bases. When Link approaches, they spring to life and hop towards him. They can only be defeated by throwing a bomb into their mouths when they stop hopping."
+  },
+  {
+    "Actor Name": "amos2",
+    "English Name": "Armos",
+    "ActorClassType": "am2",
+    "Tags": [
+      "enemy",
+      "sword",
+      "bow",
+      "puzzle",
+      "tower of the gods",
+      "wind temple"
+    ],
+    "Locations": [
+      "Tower of the Gods",
+      "Wind Temple"
+    ],
+    "Explanation": "Small statues with a single large eye in the center of their faces. When Link approaches, they spring to life and hop towards him. They can only be defeated by damaging the pink crystal on their behinds after they have been stunned, usually by firing an arrow at their eye.\n\nThere are variants that do not come to life that serve as decorations or puzzle elements."
+  },
+  {
+    "Actor Name": "Hami1",
+    "English Name": "amiprop",
+    "ActorClassType": "amiprop"
+  },
+  {
+    "Actor Name": "HamiY",
+    "English Name": "amiprop",
+    "ActorClassType": "amiprop"
+  },
+  {
+    "Actor Name": "AND_SW0",
+    "English Name": "Switch AND Operator (Type 0?)",
+    "ActorClassType": "andsw0"
+  },
+  {
+    "Actor Name": "AND_SW2",
+    "English Name": "Switch AND Operator (Type 2?)",
+    "ActorClassType": "andsw2"
+  },
+  {
+    "Actor Name": "Arrow_i",
+    "English Name": "Cone Around Fire/Ice Arrows",
+    "ActorClassType": "arrow_iceeff"
+  },
+  {
+    "Actor Name": "Arrow_l",
+    "English Name": "Cone Around Light Arrows",
+    "ActorClassType": "arrow_lighteff"
+  },
+  {
+    "Actor Name": "ATdoor",
+    "English Name": "atdoor",
+    "ActorClassType": "atdoor"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "att",
+    "ActorClassType": "att"
+  },
+  {
+    "Actor Name": "Auction",
+    "English Name": "auction",
+    "ActorClassType": "auction"
+  },
+  {
+    "Actor Name": "Bb",
+    "English Name": "Kargaroc",
+    "ActorClassType": "bb"
+  },
+  {
+    "Actor Name": "Bdk",
+    "English Name": "Helmaroc King",
+    "ActorClassType": "bdk"
+  },
+  {
+    "Actor Name": "Bdkobj",
+    "English Name": "bdkobj",
+    "ActorClassType": "bdkobj"
+  },
+  {
+    "Actor Name": "Ylesr00",
+    "English Name": "Beam Fired by TotG Laser Barrier or Moblin Statue",
+    "ActorClassType": "beam"
+  },
+  {
+    "Actor Name": "BFlower",
+    "English Name": "Ripe Bomb Flower",
+    "ActorClassType": "bflower"
+  },
+  {
+    "Actor Name": "VbakH",
+    "English Name": "Dried Bomb Flower",
+    "ActorClassType": "bflower"
+  },
+  {
+    "Actor Name": "Bgn",
+    "English Name": "Puppet Ganon",
+    "ActorClassType": "bgn"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "Puppet Ganon as Spider?",
+    "ActorClassType": "bgn2"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "Puppet Ganon as Snake?",
+    "ActorClassType": "bgn3"
+  },
+  {
+    "Actor Name": "BigElf",
+    "English Name": "Great Fairy",
+    "ActorClassType": "bigelf"
+  },
+  {
+    "Actor Name": "Bita",
+    "English Name": "bita",
+    "ActorClassType": "bita"
+  },
+  {
+    "Actor Name": "Bk",
+    "English Name": "Bokoblin",
+    "ActorClassType": "bk"
+  },
+  {
+    "Actor Name": "bable",
+    "English Name": "Red/Blue Bubble",
+    "ActorClassType": "bl"
+  },
+  {
+    "Actor Name": "bable_r",
+    "English Name": "bl",
+    "ActorClassType": "bl"
+  },
+  {
+    "Actor Name": "Bkm",
+    "English Name": "Kalle Demos",
+    "ActorClassType": "bmd"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "bmdfoot",
+    "ActorClassType": "bmdfoot"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "bmdhand",
+    "ActorClassType": "bmdhand"
+  },
+  {
+    "Actor Name": "bbaba",
+    "English Name": "Boko Baba",
+    "ActorClassType": "bo"
+  },
+  {
+    "Actor Name": "Boko",
+    "English Name": "boko",
+    "ActorClassType": "boko"
+  },
+  {
+    "Actor Name": "Boko",
+    "English Name": "Dropped Enemy Weapon",
+    "ActorClassType": "boko"
+  },
+  {
+    "Actor Name": "Bitem",
+    "English Name": "Boss Heart Container Item",
+    "ActorClassType": "boss_item"
+  },
+  {
+    "Actor Name": "big_pow",
+    "English Name": "Jalhalla",
+    "ActorClassType": "bpw"
+  },
+  {
+    "Actor Name": "Branch",
+    "English Name": "branch",
+    "ActorClassType": "branch"
+  },
+  {
+    "Actor Name": "bridge",
+    "English Name": "Plank Bridge",
+    "ActorClassType": "bridge"
+  },
+  {
+    "Actor Name": "Bst",
+    "English Name": "Gohdan",
+    "ActorClassType": "bst"
+  },
+  {
+    "Actor Name": "Btd",
+    "English Name": "Gohma",
+    "ActorClassType": "btd"
+  },
+  {
+    "Actor Name": "Bwd",
+    "English Name": "Molgera",
+    "ActorClassType": "bwd"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "bwdg",
+    "ActorClassType": "bwdg"
+  },
+  {
+    "Actor Name": "Bwds",
+    "English Name": "Molgera Child",
+    "ActorClassType": "bwds"
+  },
+  {
+    "Actor Name": "Canon",
+    "English Name": "canon",
+    "ActorClassType": "canon"
+  },
+  {
+    "Actor Name": "c_green",
+    "English Name": "Green ChuChu",
+    "ActorClassType": "cc"
+  },
+  {
+    "Actor Name": "c_red",
+    "English Name": "Red ChuChu",
+    "ActorClassType": "cc"
+  },
+  {
+    "Actor Name": "c_blue",
+    "English Name": "Blue ChuChu",
+    "ActorClassType": "cc"
+  },
+  {
+    "Actor Name": "c_black",
+    "English Name": "Dark ChuChu",
+    "ActorClassType": "cc"
+  },
+  {
+    "Actor Name": "c_kiiro",
+    "English Name": "Yellow ChuChu",
+    "ActorClassType": "cc"
+  },
+  {
+    "Actor Name": "Com_B",
+    "English Name": "coming2",
+    "ActorClassType": "coming2"
+  },
+  {
+    "Actor Name": "Com_C",
+    "English Name": "coming3",
+    "ActorClassType": "coming3"
+  },
+  {
+    "Actor Name": "Fdai",
+    "English Name": "Windfall Island Decorative Item Pedestal",
+    "ActorClassType": "dai"
+  },
+  {
+    "Actor Name": "Daiocta",
+    "English Name": "Big Octo",
+    "ActorClassType": "daiocta"
+  },
+  {
+    "Actor Name": "Daioeye",
+    "English Name": "Big Octo Eye",
+    "ActorClassType": "daiocta_eye"
+  },
+  {
+    "Actor Name": "itemDek",
+    "English Name": "Deku Leaf Item",
+    "ActorClassType": "deku_item"
+  },
+  {
+    "Actor Name": "Demo_Dk",
+    "English Name": "Helmaroc King (Cutscenes)",
+    "ActorClassType": "demo_dk"
+  },
+  {
+    "Actor Name": "Ditem",
+    "English Name": "demo_item",
+    "ActorClassType": "demo_item"
+  },
+  {
+    "Actor Name": "DmKmm",
+    "English Name": "demo_kmm",
+    "ActorClassType": "demo_kmm"
+  },
+  {
+    "Actor Name": "DmKmm2",
+    "English Name": "demo_kmm",
+    "ActorClassType": "demo_kmm"
+  },
+  {
+    "Actor Name": "Dk",
+    "English Name": "dk",
+    "ActorClassType": "dk"
+  },
+  {
+    "Actor Name": "door10",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "door11",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "door20",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "door21",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "Zenshut",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "keyshut",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "K_Zshut",
+    "English Name": "door10",
+    "ActorClassType": "door10"
+  },
+  {
+    "Actor Name": "door12",
+    "English Name": "Earth Temple Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "door12M",
+    "English Name": "Earth Temple Miniboss Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "door12B",
+    "English Name": "Earth Temple Boss Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "door13",
+    "English Name": "Wind Temple Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "door13M",
+    "English Name": "Wind Temple Miniboss Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "door13B",
+    "English Name": "Wind Temple Boss Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "keyS12",
+    "English Name": "Locked ET/WT Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "ZenS12",
+    "English Name": "Barred ET/WT Door",
+    "ActorClassType": "door12"
+  },
+  {
+    "Actor Name": "dragon",
+    "English Name": "dr",
+    "ActorClassType": "dr"
+  },
+  {
+    "Actor Name": "Dr2",
+    "English Name": "dr2",
+    "ActorClassType": "dr2"
+  },
+  {
+    "Actor Name": "TagD1",
+    "English Name": "dummy",
+    "ActorClassType": "dummy"
+  },
+  {
+    "Actor Name": "TagD2",
+    "English Name": "dummy",
+    "ActorClassType": "dummy"
+  },
+  {
+    "Actor Name": "TagD3",
+    "English Name": "dummy",
+    "ActorClassType": "dummy"
+  },
+  {
+    "Actor Name": "TagD4",
+    "English Name": "dummy",
+    "ActorClassType": "dummy"
+  },
+  {
+    "Actor Name": "bonbori",
+    "English Name": "Torch",
+    "ActorClassType": "ep"
+  },
+  {
+    "Actor Name": "fallrck",
+    "English Name": "fallrock",
+    "ActorClassType": "fallrock"
+  },
+  {
+    "Actor Name": "frock",
+    "English Name": "fallrock_tag",
+    "ActorClassType": "fallrock_tag"
+  },
+  {
+    "Actor Name": "Hsen1",
+    "English Name": "fan",
+    "ActorClassType": "fan"
+  },
+  {
+    "Actor Name": "Hsen2",
+    "English Name": "fan",
+    "ActorClassType": "fan"
+  },
+  {
+    "Actor Name": "Hsen3",
+    "English Name": "fan",
+    "ActorClassType": "fan"
+  },
+  {
+    "Actor Name": "ho",
+    "English Name": "Firefly",
+    "ActorClassType": "ff"
+  },
+  {
+    "Actor Name": "Fganon",
+    "English Name": "Phantom Ganon",
+    "ActorClassType": "fganon"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "Phantom Ganon's Magic Projectile",
+    "ActorClassType": "fgmahou"
+  },
+  {
+    "Actor Name": "Fire",
+    "English Name": "Ring of Flames",
+    "ActorClassType": "fire"
+  },
+  {
+    "Actor Name": "Zenfire",
+    "English Name": "Ring of Flames (Checks all enemies dead)",
+    "ActorClassType": "fire"
+  },
+  {
+    "Actor Name": "Hhyu1",
+    "English Name": "floor",
+    "ActorClassType": "floor"
+  },
+  {
+    "Actor Name": "Fmaster",
+    "English Name": "Stalking Floormaster",
+    "ActorClassType": "fm"
+  },
+  {
+    "Actor Name": "Fmastr1",
+    "English Name": "Path-Following Floormaster",
+    "ActorClassType": "fm"
+  },
+  {
+    "Actor Name": "Fmastr2",
+    "English Name": "Non-Path-Following Floormaster",
+    "ActorClassType": "fm"
+  },
+  {
+    "Actor Name": "Ayush",
+    "English Name": "Ghost Ship",
+    "ActorClassType": "ghostship"
+  },
+  {
+    "Actor Name": "gmos",
+    "English Name": "Mothula",
+    "ActorClassType": "gm"
+  },
+  {
+    "Actor Name": "gmos_g",
+    "English Name": "gm",
+    "ActorClassType": "gm"
+  },
+  {
+    "Actor Name": "gmos_f",
+    "English Name": "gm",
+    "ActorClassType": "gm"
+  },
+  {
+    "Actor Name": "Gnd",
+    "English Name": "Ganondorf",
+    "ActorClassType": "gnd"
+  },
+  {
+    "Actor Name": "Gflag",
+    "English Name": "goal_flag",
+    "ActorClassType": "goal_flag"
+  },
+  {
+    "Actor Name": "kusax1",
+    "English Name": "1 Grass Bunch",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "kusax7",
+    "English Name": "7 Grass Bunches",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "kusax21",
+    "English Name": "21 Grass Bunches",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "flower",
+    "English Name": "1 White Flower",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "flwr7",
+    "English Name": "7 White Flowers",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "flwr17",
+    "English Name": "17 White Flowers",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "pflower",
+    "English Name": "1 Pink Flower",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "pflwrx7",
+    "English Name": "7 Pink Flowers",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "swood",
+    "English Name": "1 Tree",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "swood3",
+    "English Name": "3 Trees",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "swood5",
+    "English Name": "5 Trees",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "Grass",
+    "English Name": "grass",
+    "ActorClassType": "grass"
+  },
+  {
+    "Actor Name": "Gy",
+    "English Name": "Gyorg",
+    "ActorClassType": "gy"
+  },
+  {
+    "Actor Name": "GyCtrl",
+    "English Name": "Cross-Sector Gyorg Spawner",
+    "ActorClassType": "gy_ctrl"
+  },
+  {
+    "Actor Name": "GyCtrlB",
+    "English Name": "Single-Sector Gyorg Spawner",
+    "ActorClassType": "gy_ctrl"
+  },
+  {
+    "Actor Name": "RopeR",
+    "English Name": "himo3",
+    "ActorClassType": "himo3"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "hitobj",
+    "ActorClassType": "hitobj"
+  },
+  {
+    "Actor Name": "Hmlif",
+    "English Name": "hmlif",
+    "ActorClassType": "hmlif"
+  },
+  {
+    "Actor Name": "Hyuf1",
+    "English Name": "hmlif",
+    "ActorClassType": "hmlif"
+  },
+  {
+    "Actor Name": "Hyuf2",
+    "English Name": "hmlif",
+    "ActorClassType": "hmlif"
+  },
+  {
+    "Actor Name": "HFloor",
+    "English Name": "hot_floor",
+    "ActorClassType": "hot_floor"
+  },
+  {
+    "Actor Name": "Hys",
+    "English Name": "hys",
+    "ActorClassType": "hys"
+  },
+  {
+    "Actor Name": "Hys2",
+    "English Name": "hys",
+    "ActorClassType": "hys"
+  },
+  {
+    "Actor Name": "Ylsic",
+    "English Name": "icelift",
+    "ActorClassType": "icelift"
+  },
+  {
+    "Actor Name": "Yllic",
+    "English Name": "icelift",
+    "ActorClassType": "icelift"
+  },
+  {
+    "Actor Name": "Ylkic",
+    "English Name": "icelift",
+    "ActorClassType": "icelift"
+  },
+  {
+    "Actor Name": "Ikari",
+    "English Name": "ikari",
+    "ActorClassType": "ikari"
+  },
+  {
+    "Actor Name": "jbaba",
+    "English Name": "jbo",
+    "ActorClassType": "jbo"
+  },
+  {
+    "Actor Name": "Kaji",
+    "English Name": "kaji",
+    "ActorClassType": "kaji"
+  },
+  {
+    "Actor Name": "Kamome",
+    "English Name": "kamome",
+    "ActorClassType": "kamome"
+  },
+  {
+    "Actor Name": "Kanban",
+    "English Name": "kanban",
+    "ActorClassType": "kanban"
+  },
+  {
+    "Actor Name": "Kantera",
+    "English Name": "kantera",
+    "ActorClassType": "kantera"
+  },
+  {
+    "Actor Name": "Pig",
+    "English Name": "Pig",
+    "ActorClassType": "kb"
+  },
+  {
+    "Actor Name": "doorKD",
+    "English Name": "kddoor",
+    "ActorClassType": "kddoor"
+  },
+  {
+    "Actor Name": "ZenshKD",
+    "English Name": "kddoor",
+    "ActorClassType": "kddoor"
+  },
+  {
+    "Actor Name": "K_ZshKD",
+    "English Name": "kddoor",
+    "ActorClassType": "kddoor"
+  },
+  {
+    "Actor Name": "doorSH",
+    "English Name": "kddoor",
+    "ActorClassType": "kddoor"
+  },
+  {
+    "Actor Name": "doorSZ",
+    "English Name": "kddoor",
+    "ActorClassType": "kddoor"
+  },
+  {
+    "Actor Name": "keeth",
+    "English Name": "Keese",
+    "ActorClassType": "ki"
+  },
+  {
+    "Actor Name": "Fkeeth",
+    "English Name": "Fire Keese",
+    "ActorClassType": "ki"
+  },
+  {
+    "Actor Name": "Kita",
+    "English Name": "kita",
+    "ActorClassType": "kita"
+  },
+  {
+    "Actor Name": "Klft",
+    "English Name": "Pulley Lift",
+    "ActorClassType": "klft"
+  },
+  {
+    "Actor Name": "Kmon",
+    "English Name": "kmon",
+    "ActorClassType": "kmon"
+  },
+  {
+    "Actor Name": "kani",
+    "English Name": "kn",
+    "ActorClassType": "kn"
+  },
+  {
+    "Actor Name": "KNOB00",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB01",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB02",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB03",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB00D",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB01D",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB02D",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "KNOB03D",
+    "English Name": "knob00",
+    "ActorClassType": "knob00"
+  },
+  {
+    "Actor Name": "Kokiie",
+    "English Name": "kokiie",
+    "ActorClassType": "kokiie"
+  },
+  {
+    "Actor Name": "Yfrlt00",
+    "English Name": "komore",
+    "ActorClassType": "komore"
+  },
+  {
+    "Actor Name": "kuro_s",
+    "English Name": "Chasing Morths",
+    "ActorClassType": "ks"
+  },
+  {
+    "Actor Name": "kuro_t",
+    "English Name": "Stationary Morths",
+    "ActorClassType": "ks"
+  },
+  {
+    "Actor Name": "kt",
+    "English Name": "kt",
+    "ActorClassType": "kt"
+  },
+  {
+    "Actor Name": "Kui",
+    "English Name": "Grapple Point",
+    "ActorClassType": "kui"
+  },
+  {
+    "Actor Name": "ky_tag0",
+    "English Name": "kytag00",
+    "ActorClassType": "kytag00"
+  },
+  {
+    "Actor Name": "kytag00",
+    "English Name": "kytag00",
+    "ActorClassType": "kytag00"
+  },
+  {
+    "Actor Name": "ky00you",
+    "English Name": "kytag00",
+    "ActorClassType": "kytag00"
+  },
+  {
+    "Actor Name": "ky_tag1",
+    "English Name": "kytag01",
+    "ActorClassType": "kytag01"
+  },
+  {
+    "Actor Name": "ky_tag2",
+    "English Name": "Wind Direction Setter",
+    "ActorClassType": "kytag02"
+  },
+  {
+    "Actor Name": "ky_tag3",
+    "English Name": "kytag03",
+    "ActorClassType": "kytag03"
+  },
+  {
+    "Actor Name": "kytag4",
+    "English Name": "kytag04",
+    "ActorClassType": "kytag04"
+  },
+  {
+    "Actor Name": "kytag5",
+    "English Name": "kytag05",
+    "ActorClassType": "kytag05"
+  },
+  {
+    "Actor Name": "kytag6",
+    "English Name": "kytag06",
+    "ActorClassType": "kytag06"
+  },
+  {
+    "Actor Name": "kytag7",
+    "English Name": "kytag07",
+    "ActorClassType": "kytag07"
+  },
+  {
+    "Actor Name": "Lamp",
+    "English Name": "lamp",
+    "ActorClassType": "lamp"
+  },
+  {
+    "Actor Name": "Gbrg00",
+    "English Name": "lbridge",
+    "ActorClassType": "lbridge"
+  },
+  {
+    "Actor Name": "Olift",
+    "English Name": "leaflift",
+    "ActorClassType": "leaflift"
+  },
+  {
+    "Actor Name": "LOD01",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD02",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD03",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD04",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD05",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD06",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD07",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD08",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD09",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD10",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD11",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD12",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD13",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD14",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD15",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD16",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD17",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD18",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD19",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD20",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD21",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD22",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD23",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD24",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD25",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD26",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD27",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD28",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD29",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD30",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD31",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD32",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD33",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD34",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD35",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD36",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD37",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD38",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD39",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD40",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD41",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD42",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD43",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD44",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD45",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD46",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD47",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD48",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "LOD49",
+    "English Name": "lod_bg",
+    "ActorClassType": "lod_bg"
+  },
+  {
+    "Actor Name": "Gkai00",
+    "English Name": "lstair",
+    "ActorClassType": "lstair"
+  },
+  {
+    "Actor Name": "lwood",
+    "English Name": "Large Tree",
+    "ActorClassType": "lwood"
+  },
+  {
+    "Actor Name": "Hkikai1",
+    "English Name": "machine",
+    "ActorClassType": "machine"
+  },
+  {
+    "Actor Name": "magma",
+    "English Name": "Magma",
+    "ActorClassType": "magma"
+  },
+  {
+    "Actor Name": "MjFlag",
+    "English Name": "majuu_flag",
+    "ActorClassType": "majuu_flag"
+  },
+  {
+    "Actor Name": "MtFlag",
+    "English Name": "majuu_flag",
+    "ActorClassType": "majuu_flag"
+  },
+  {
+    "Actor Name": "HcFlag",
+    "English Name": "majuu_flag",
+    "ActorClassType": "majuu_flag"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "mant",
+    "ActorClassType": "mant"
+  },
+  {
+    "Actor Name": "SMBdor",
+    "English Name": "mbdoor",
+    "ActorClassType": "mbdoor"
+  },
+  {
+    "Actor Name": "KGBdor",
+    "English Name": "mbdoor",
+    "ActorClassType": "mbdoor"
+  },
+  {
+    "Actor Name": "Mori1",
+    "English Name": "mdoor",
+    "ActorClassType": "mdoor"
+  },
+  {
+    "Actor Name": "Mflft",
+    "English Name": "mflft",
+    "ActorClassType": "mflft"
+  },
+  {
+    "Actor Name": "GBoard",
+    "English Name": "mgameboard",
+    "ActorClassType": "mgameboard"
+  },
+  {
+    "Actor Name": "Mmusic",
+    "English Name": "mmusic",
+    "ActorClassType": "mmusic"
+  },
+  {
+    "Actor Name": "mo2",
+    "English Name": "Moblin",
+    "ActorClassType": "mo2"
+  },
+  {
+    "Actor Name": "mp",
+    "English Name": "movie_player",
+    "ActorClassType": "movie_player"
+  },
+  {
+    "Actor Name": "moZOU",
+    "English Name": "Moblin Statue",
+    "ActorClassType": "mozo"
+  },
+  {
+    "Actor Name": "Mswing",
+    "English Name": "msw",
+    "ActorClassType": "msw"
+  },
+  {
+    "Actor Name": "magtail",
+    "English Name": "Magtail",
+    "ActorClassType": "mt"
+  },
+  {
+    "Actor Name": "SMtoge",
+    "English Name": "mtoge",
+    "ActorClassType": "mtoge"
+  },
+  {
+    "Actor Name": "Ac1",
+    "English Name": "npc_ac1",
+    "ActorClassType": "npc_ac1"
+  },
+  {
+    "Actor Name": "Ah",
+    "English Name": "npc_ah",
+    "ActorClassType": "npc_ah"
+  },
+  {
+    "Actor Name": "Aj1",
+    "English Name": "npc_aj1",
+    "ActorClassType": "npc_aj1"
+  },
+  {
+    "Actor Name": "Auc7",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc1",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc2",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc3",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc4",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc5",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc6",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Auc0",
+    "English Name": "npc_auction",
+    "ActorClassType": "npc_auction"
+  },
+  {
+    "Actor Name": "Ba1",
+    "English Name": "npc_ba1",
+    "ActorClassType": "npc_ba1"
+  },
+  {
+    "Actor Name": "Bj1",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj2",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj3",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj4",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj5",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj6",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj7",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj8",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bj9",
+    "English Name": "npc_bj1",
+    "ActorClassType": "npc_bj1"
+  },
+  {
+    "Actor Name": "Bm1",
+    "English Name": "npc_bm1",
+    "ActorClassType": "npc_bm1"
+  },
+  {
+    "Actor Name": "Bm2",
+    "English Name": "npc_bm1",
+    "ActorClassType": "npc_bm1"
+  },
+  {
+    "Actor Name": "Bm3",
+    "English Name": "npc_bm1",
+    "ActorClassType": "npc_bm1"
+  },
+  {
+    "Actor Name": "Bm4",
+    "English Name": "npc_bm1",
+    "ActorClassType": "npc_bm1"
+  },
+  {
+    "Actor Name": "Bm5",
+    "English Name": "npc_bm1",
+    "ActorClassType": "npc_bm1"
+  },
+  {
+    "Actor Name": "Bmcon1",
+    "English Name": "npc_bmcon1",
+    "ActorClassType": "npc_bmcon1"
+  },
+  {
+    "Actor Name": "Bmcon2",
+    "English Name": "npc_bmcon1",
+    "ActorClassType": "npc_bmcon1"
+  },
+  {
+    "Actor Name": "Bms1",
+    "English Name": "npc_bms1",
+    "ActorClassType": "npc_bms1"
+  },
+  {
+    "Actor Name": "Bms2",
+    "English Name": "npc_bms1",
+    "ActorClassType": "npc_bms1"
+  },
+  {
+    "Actor Name": "Bmsw",
+    "English Name": "npc_bmsw",
+    "ActorClassType": "npc_bmsw"
+  },
+  {
+    "Actor Name": "Bs1",
+    "English Name": "npc_bs1",
+    "ActorClassType": "npc_bs1"
+  },
+  {
+    "Actor Name": "Bs2",
+    "English Name": "npc_bs1",
+    "ActorClassType": "npc_bs1"
+  },
+  {
+    "Actor Name": "Btsw",
+    "English Name": "npc_btsw",
+    "ActorClassType": "npc_btsw"
+  },
+  {
+    "Actor Name": "Btsw2",
+    "English Name": "npc_btsw2",
+    "ActorClassType": "npc_btsw2"
+  },
+  {
+    "Actor Name": "Cb1",
+    "English Name": "Makar",
+    "ActorClassType": "npc_cb1"
+  },
+  {
+    "Actor Name": "Co1",
+    "English Name": "npc_co1",
+    "ActorClassType": "npc_co1"
+  },
+  {
+    "Actor Name": "De1",
+    "English Name": "npc_de1",
+    "ActorClassType": "npc_de1"
+  },
+  {
+    "Actor Name": "Ds1",
+    "English Name": "npc_ds1",
+    "ActorClassType": "npc_ds1"
+  },
+  {
+    "Actor Name": "Gk1",
+    "English Name": "npc_gk1",
+    "ActorClassType": "npc_gk1"
+  },
+  {
+    "Actor Name": "Gp1",
+    "English Name": "npc_gp1",
+    "ActorClassType": "npc_gp1"
+  },
+  {
+    "Actor Name": "Hi1",
+    "English Name": "npc_hi1",
+    "ActorClassType": "npc_hi1"
+  },
+  {
+    "Actor Name": "Ho",
+    "English Name": "Mrs. Marie",
+    "ActorClassType": "npc_ho"
+  },
+  {
+    "Actor Name": "Hr",
+    "English Name": "npc_hr",
+    "ActorClassType": "npc_hr"
+  },
+  {
+    "Actor Name": "Hr2",
+    "English Name": "npc_hr",
+    "ActorClassType": "npc_hr"
+  },
+  {
+    "Actor Name": "Jb1",
+    "English Name": "npc_jb1",
+    "ActorClassType": "npc_jb1"
+  },
+  {
+    "Actor Name": "Ji1",
+    "English Name": "npc_ji1",
+    "ActorClassType": "npc_ji1"
+  },
+  {
+    "Actor Name": "HyoiKam",
+    "English Name": "npc_kamome",
+    "ActorClassType": "npc_kamome"
+  },
+  {
+    "Actor Name": "Kf1",
+    "English Name": "npc_kf1",
+    "ActorClassType": "npc_kf1"
+  },
+  {
+    "Actor Name": "Kg1",
+    "English Name": "npc_kg1",
+    "ActorClassType": "npc_kg1"
+  },
+  {
+    "Actor Name": "Kg2",
+    "English Name": "npc_kg2",
+    "ActorClassType": "npc_kg2"
+  },
+  {
+    "Actor Name": "Kk1",
+    "English Name": "npc_kk1",
+    "ActorClassType": "npc_kk1"
+  },
+  {
+    "Actor Name": "Km1",
+    "English Name": "npc_km1",
+    "ActorClassType": "npc_km1"
+  },
+  {
+    "Actor Name": "Ko1",
+    "English Name": "npc_ko1",
+    "ActorClassType": "npc_ko1"
+  },
+  {
+    "Actor Name": "Ko2",
+    "English Name": "npc_ko1",
+    "ActorClassType": "npc_ko1"
+  },
+  {
+    "Actor Name": "Kp1",
+    "English Name": "npc_kp1",
+    "ActorClassType": "npc_kp1"
+  },
+  {
+    "Actor Name": "Ls1",
+    "English Name": "Aryll",
+    "ActorClassType": "npc_ls1"
+  },
+  {
+    "Actor Name": "Md1",
+    "English Name": "Medli",
+    "ActorClassType": "npc_md"
+  },
+  {
+    "Actor Name": "Mk",
+    "English Name": "Ivan",
+    "ActorClassType": "npc_mk"
+  },
+  {
+    "Actor Name": "Mk2",
+    "English Name": "npc_mk",
+    "ActorClassType": "npc_mk"
+  },
+  {
+    "Actor Name": "Mn",
+    "English Name": "npc_mn",
+    "ActorClassType": "npc_mn"
+  },
+  {
+    "Actor Name": "Mt",
+    "English Name": "npc_mt",
+    "ActorClassType": "npc_mt"
+  },
+  {
+    "Actor Name": "NpcNz",
+    "English Name": "npc_nz",
+    "ActorClassType": "npc_nz"
+  },
+  {
+    "Actor Name": "Ob1",
+    "English Name": "npc_ob1",
+    "ActorClassType": "npc_ob1"
+  },
+  {
+    "Actor Name": "Os",
+    "English Name": "npc_os",
+    "ActorClassType": "npc_os"
+  },
+  {
+    "Actor Name": "Os1",
+    "English Name": "npc_os",
+    "ActorClassType": "npc_os"
+  },
+  {
+    "Actor Name": "Os2",
+    "English Name": "npc_os",
+    "ActorClassType": "npc_os"
+  },
+  {
+    "Actor Name": "P1a",
+    "English Name": "npc_p1",
+    "ActorClassType": "npc_p1"
+  },
+  {
+    "Actor Name": "P1b",
+    "English Name": "npc_p1",
+    "ActorClassType": "npc_p1"
+  },
+  {
+    "Actor Name": "P1c",
+    "English Name": "npc_p1",
+    "ActorClassType": "npc_p1"
+  },
+  {
+    "Actor Name": "P2a",
+    "English Name": "npc_p2",
+    "ActorClassType": "npc_p2"
+  },
+  {
+    "Actor Name": "P2b",
+    "English Name": "npc_p2",
+    "ActorClassType": "npc_p2"
+  },
+  {
+    "Actor Name": "P2c",
+    "English Name": "npc_p2",
+    "ActorClassType": "npc_p2"
+  },
+  {
+    "Actor Name": "Uo1",
+    "English Name": "Sam",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Uo2",
+    "English Name": "Gossack",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Uo3",
+    "English Name": "Garrickson",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Ub1",
+    "English Name": "Vera",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Ub2",
+    "English Name": "Pompie",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Ub3",
+    "English Name": "Missy",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Ub4",
+    "English Name": "Minenco",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Uw1",
+    "English Name": "Gillian",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Uw2",
+    "English Name": "Linda",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Um1",
+    "English Name": "Kreeb",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Um2",
+    "English Name": "Anton",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Um3",
+    "English Name": "Kamo",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Sa1",
+    "English Name": "Loot (NPC)",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Sa2",
+    "English Name": "Gummy",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Sa3",
+    "English Name": "Kane",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Sa4",
+    "English Name": "Candy (NPC)",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Sa5",
+    "English Name": "Dampa",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Ug1",
+    "English Name": "Potova",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Ug2",
+    "English Name": "Joanna",
+    "ActorClassType": "npc_people"
+  },
+  {
+    "Actor Name": "Pf1",
+    "English Name": "npc_pf1",
+    "ActorClassType": "npc_pf1"
+  },
+  {
+    "Actor Name": "Po",
+    "English Name": "npc_photo",
+    "ActorClassType": "npc_photo"
+  },
+  {
+    "Actor Name": "Pm1",
+    "English Name": "npc_pm1",
+    "ActorClassType": "npc_pm1"
+  },
+  {
+    "Actor Name": "RotenA",
+    "English Name": "npc_roten",
+    "ActorClassType": "npc_roten"
+  },
+  {
+    "Actor Name": "RotenB",
+    "English Name": "npc_roten",
+    "ActorClassType": "npc_roten"
+  },
+  {
+    "Actor Name": "RotenC",
+    "English Name": "npc_roten",
+    "ActorClassType": "npc_roten"
+  },
+  {
+    "Actor Name": "Rsh1",
+    "English Name": "npc_rsh1",
+    "ActorClassType": "npc_rsh1"
+  },
+  {
+    "Actor Name": "Sarace",
+    "English Name": "npc_sarace",
+    "ActorClassType": "npc_sarace"
+  },
+  {
+    "Actor Name": "NpcSo",
+    "English Name": "Fishman",
+    "ActorClassType": "npc_so"
+  },
+  {
+    "Actor Name": "Sv0",
+    "English Name": "npc_sv",
+    "ActorClassType": "npc_sv"
+  },
+  {
+    "Actor Name": "Sv1",
+    "English Name": "npc_sv",
+    "ActorClassType": "npc_sv"
+  },
+  {
+    "Actor Name": "Sv2",
+    "English Name": "npc_sv",
+    "ActorClassType": "npc_sv"
+  },
+  {
+    "Actor Name": "Sv3",
+    "English Name": "npc_sv",
+    "ActorClassType": "npc_sv"
+  },
+  {
+    "Actor Name": "Tc",
+    "English Name": "npc_tc",
+    "ActorClassType": "npc_tc"
+  },
+  {
+    "Actor Name": "Tt",
+    "English Name": "npc_tt",
+    "ActorClassType": "npc_tt"
+  },
+  {
+    "Actor Name": "UkB",
+    "English Name": "npc_uk",
+    "ActorClassType": "npc_uk"
+  },
+  {
+    "Actor Name": "UkC",
+    "English Name": "npc_uk",
+    "ActorClassType": "npc_uk"
+  },
+  {
+    "Actor Name": "UkD",
+    "English Name": "npc_uk",
+    "ActorClassType": "npc_uk"
+  },
+  {
+    "Actor Name": "UkB2",
+    "English Name": "npc_uk",
+    "ActorClassType": "npc_uk"
+  },
+  {
+    "Actor Name": "UkC2",
+    "English Name": "npc_uk",
+    "ActorClassType": "npc_uk"
+  },
+  {
+    "Actor Name": "UkD2",
+    "English Name": "npc_uk",
+    "ActorClassType": "npc_uk"
+  },
+  {
+    "Actor Name": "Ym1",
+    "English Name": "npc_ym1",
+    "ActorClassType": "npc_ym1"
+  },
+  {
+    "Actor Name": "Ym2",
+    "English Name": "npc_ym1",
+    "ActorClassType": "npc_ym1"
+  },
+  {
+    "Actor Name": "Yw1",
+    "English Name": "npc_yw1",
+    "ActorClassType": "npc_yw1"
+  },
+  {
+    "Actor Name": "Zk1",
+    "English Name": "npc_zk1",
+    "ActorClassType": "npc_zk1"
+  },
+  {
+    "Actor Name": "Zl1",
+    "English Name": "Tetra",
+    "ActorClassType": "npc_zl1"
+  },
+  {
+    "Actor Name": "nezumi",
+    "English Name": "Rat",
+    "ActorClassType": "nz"
+  },
+  {
+    "Actor Name": "nezuana",
+    "English Name": "Rat Spawning Hole",
+    "ActorClassType": "nzg"
+  },
+  {
+    "Actor Name": "Adnno",
+    "English Name": "obj_adnno",
+    "ActorClassType": "obj_adnno"
+  },
+  {
+    "Actor Name": "Ajav",
+    "English Name": "obj_ajav",
+    "ActorClassType": "obj_ajav"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "obj_ajavw",
+    "ActorClassType": "obj_ajavw"
+  },
+  {
+    "Actor Name": "Akabe",
+    "English Name": "Invisible Wall",
+    "ActorClassType": "obj_akabe"
+  },
+  {
+    "Actor Name": "Akabe10",
+    "English Name": "obj_akabe",
+    "ActorClassType": "obj_akabe"
+  },
+  {
+    "Actor Name": "NBOX",
+    "English Name": "obj_akabe",
+    "ActorClassType": "obj_akabe"
+  },
+  {
+    "Actor Name": "NBOX10",
+    "English Name": "obj_akabe",
+    "ActorClassType": "obj_akabe"
+  },
+  {
+    "Actor Name": "Apzl",
+    "English Name": "Sliding Puzzle",
+    "ActorClassType": "obj_apzl"
+  },
+  {
+    "Actor Name": "Ashut",
+    "English Name": "obj_ashut",
+    "ActorClassType": "obj_ashut"
+  },
+  {
+    "Actor Name": "Auzu",
+    "English Name": "Whirlpool",
+    "ActorClassType": "obj_auzu"
+  },
+  {
+    "Actor Name": "Aygr",
+    "English Name": "Lookout Platform",
+    "ActorClassType": "obj_aygr"
+  },
+  {
+    "Actor Name": "Blift",
+    "English Name": "obj_balancelift",
+    "ActorClassType": "obj_balancelift"
+  },
+  {
+    "Actor Name": "Ktarux",
+    "English Name": "obj_barrel",
+    "ActorClassType": "obj_barrel"
+  },
+  {
+    "Actor Name": "Ktarur",
+    "English Name": "obj_barrel2",
+    "ActorClassType": "obj_barrel2"
+  },
+  {
+    "Actor Name": "Ycage00",
+    "English Name": "Hyrule Barrier",
+    "ActorClassType": "obj_barrier"
+  },
+  {
+    "Actor Name": "Hmos1",
+    "English Name": "Blue Beamos (Barrier)",
+    "ActorClassType": "obj_bemos"
+  },
+  {
+    "Actor Name": "Hmos2",
+    "English Name": "Red Beamos (Tracking)",
+    "ActorClassType": "obj_bemos"
+  },
+  {
+    "Actor Name": "Hmos3",
+    "English Name": "Tower of the Gods Laser Barrier",
+    "ActorClassType": "obj_bemos"
+  },
+  {
+    "Actor Name": "Ptco",
+    "English Name": "obj_bscurtain",
+    "ActorClassType": "obj_bscurtain"
+  },
+  {
+    "Actor Name": "Ptcu",
+    "English Name": "obj_bscurtain",
+    "ActorClassType": "obj_bscurtain"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "obj_buoyflag",
+    "ActorClassType": "obj_buoyflag"
+  },
+  {
+    "Actor Name": "Buoyr",
+    "English Name": "obj_buoyrace",
+    "ActorClassType": "obj_buoyrace"
+  },
+  {
+    "Actor Name": "Cafelmp",
+    "English Name": "obj_cafelmp",
+    "ActorClassType": "obj_cafelmp"
+  },
+  {
+    "Actor Name": "Ocanon",
+    "English Name": "Wall-Mounted Cannon",
+    "ActorClassType": "obj_canon"
+  },
+  {
+    "Actor Name": "Com_A",
+    "English Name": "obj_coming",
+    "ActorClassType": "obj_coming"
+  },
+  {
+    "Actor Name": "BLK_CR",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrS3",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrS4",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrS5",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrM1",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrM2",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrGr",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "CrTrBl",
+    "English Name": "obj_correct",
+    "ActorClassType": "obj_correct"
+  },
+  {
+    "Actor Name": "Ktaruo",
+    "English Name": "obj_demo_barrel",
+    "ActorClassType": "obj_demo_barrel"
+  },
+  {
+    "Actor Name": "dmgroom",
+    "English Name": "obj_dmgroom",
+    "ActorClassType": "obj_dmgroom"
+  },
+  {
+    "Actor Name": "Doguu",
+    "English Name": "Sealed Goddess Statue",
+    "ActorClassType": "obj_doguu"
+  },
+  {
+    "Actor Name": "MegamiD",
+    "English Name": "Din Goddess Statue",
+    "ActorClassType": "obj_doguu"
+  },
+  {
+    "Actor Name": "MegamiF",
+    "English Name": "Farore Goddess Statue",
+    "ActorClassType": "obj_doguu"
+  },
+  {
+    "Actor Name": "MegamiN",
+    "English Name": "Nayru Goddess Statue",
+    "ActorClassType": "obj_doguu"
+  },
+  {
+    "Actor Name": "DoguuD",
+    "English Name": "Goddess Statue (Cutscenes)",
+    "ActorClassType": "obj_doguu_demo"
+  },
+  {
+    "Actor Name": "Qdghd",
+    "English Name": "obj_dragonhead",
+    "ActorClassType": "obj_dragonhead"
+  },
+  {
+    "Actor Name": "Kryu00",
+    "English Name": "obj_drift",
+    "ActorClassType": "obj_drift"
+  },
+  {
+    "Actor Name": "Eayogn",
+    "English Name": "obj_eayogn",
+    "ActorClassType": "obj_eayogn"
+  },
+  {
+    "Actor Name": "Ebomzo",
+    "English Name": "Rito Statue",
+    "ActorClassType": "obj_ebomzo"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "obj_eff",
+    "ActorClassType": "obj_eff"
+  },
+  {
+    "Actor Name": "Ekskz",
+    "English Name": "obj_ekskz",
+    "ActorClassType": "obj_ekskz"
+  },
+  {
+    "Actor Name": "Eskban",
+    "English Name": "Large Bombable Rock from DRC Entrance",
+    "ActorClassType": "obj_eskban"
+  },
+  {
+    "Actor Name": "Skanran",
+    "English Name": "Windfall Ferris Wheel",
+    "ActorClassType": "obj_ferris"
+  },
+  {
+    "Actor Name": "Figure",
+    "English Name": "Nintendo Gallery Figurine",
+    "ActorClassType": "obj_figure"
+  },
+  {
+    "Actor Name": "Yswdr00",
+    "English Name": "obj_firewall",
+    "ActorClassType": "obj_firewall"
+  },
+  {
+    "Actor Name": "Yfire00",
+    "English Name": "Magma Jet",
+    "ActorClassType": "obj_flame"
+  },
+  {
+    "Actor Name": "FTree",
+    "English Name": "Korok Tree",
+    "ActorClassType": "obj_ftree"
+  },
+  {
+    "Actor Name": "Gbed",
+    "English Name": "obj_ganonbed",
+    "ActorClassType": "obj_ganonbed"
+  },
+  {
+    "Actor Name": "Gaship1",
+    "English Name": "obj_gaship",
+    "ActorClassType": "obj_gaship"
+  },
+  {
+    "Actor Name": "Gaship2",
+    "English Name": "obj_gaship2",
+    "ActorClassType": "obj_gaship2"
+  },
+  {
+    "Actor Name": "Gnbtaki",
+    "English Name": "obj_gnnbtltaki",
+    "ActorClassType": "obj_gnnbtltaki"
+  },
+  {
+    "Actor Name": "Gntakie",
+    "English Name": "obj_gnndemotakie",
+    "ActorClassType": "obj_gnndemotakie"
+  },
+  {
+    "Actor Name": "Gntakis",
+    "English Name": "obj_gnndemotakis",
+    "ActorClassType": "obj_gnndemotakis"
+  },
+  {
+    "Actor Name": "Vdora",
+    "English Name": "obj_gong",
+    "ActorClassType": "obj_gong"
+  },
+  {
+    "Actor Name": "Gryw00",
+    "English Name": "obj_gryw00",
+    "ActorClassType": "obj_gryw00"
+  },
+  {
+    "Actor Name": "Gtaki",
+    "English Name": "obj_gtaki",
+    "ActorClassType": "obj_gtaki"
+  },
+  {
+    "Actor Name": "Hami2",
+    "English Name": "obj_hami2",
+    "ActorClassType": "obj_hami2"
+  },
+  {
+    "Actor Name": "Hami3",
+    "English Name": "obj_hami3",
+    "ActorClassType": "obj_hami3"
+  },
+  {
+    "Actor Name": "Hami4",
+    "English Name": "obj_hami4",
+    "ActorClassType": "obj_hami4"
+  },
+  {
+    "Actor Name": "RoHat",
+    "English Name": "obj_hat",
+    "ActorClassType": "obj_hat"
+  },
+  {
+    "Actor Name": "Hbrf1",
+    "English Name": "obj_hbrf1",
+    "ActorClassType": "obj_hbrf1"
+  },
+  {
+    "Actor Name": "Hcbh",
+    "English Name": "obj_hcbh",
+    "ActorClassType": "obj_hcbh"
+  },
+  {
+    "Actor Name": "Hfuck1",
+    "English Name": "Hookshot Target",
+    "ActorClassType": "obj_hfuck1"
+  },
+  {
+    "Actor Name": "Hha",
+    "English Name": "obj_hha",
+    "ActorClassType": "obj_hha"
+  },
+  {
+    "Actor Name": "Hlift",
+    "English Name": "obj_hlift",
+    "ActorClassType": "obj_hlift"
+  },
+  {
+    "Actor Name": "Hliftb",
+    "English Name": "obj_hlift",
+    "ActorClassType": "obj_hlift"
+  },
+  {
+    "Actor Name": "Ypit00",
+    "English Name": "obj_hole",
+    "ActorClassType": "obj_hole"
+  },
+  {
+    "Actor Name": "Pitfall",
+    "English Name": "Grotto Entrance Hole",
+    "ActorClassType": "obj_hole"
+  },
+  {
+    "Actor Name": "Homen1",
+    "English Name": "Large Stone Head with Hookshot Target",
+    "ActorClassType": "obj_homen"
+  },
+  {
+    "Actor Name": "Homen2",
+    "English Name": "Small Stone Head with Hookshot Target",
+    "ActorClassType": "obj_homen"
+  },
+  {
+    "Actor Name": "Omensmk",
+    "English Name": "obj_homensmoke",
+    "ActorClassType": "obj_homensmoke"
+  },
+  {
+    "Actor Name": "Hsh",
+    "English Name": "Command Melody Stone",
+    "ActorClassType": "obj_hsehi1"
+  },
+  {
+    "Actor Name": "Hsh2",
+    "English Name": "Tower of the Gods Instruction Stone",
+    "ActorClassType": "obj_hsehi1"
+  },
+  {
+    "Actor Name": "Htetu1",
+    "English Name": "obj_htetu1",
+    "ActorClassType": "obj_htetu1"
+  },
+  {
+    "Actor Name": "Ikori",
+    "English Name": "Chunk of Ice",
+    "ActorClassType": "obj_ice"
+  },
+  {
+    "Actor Name": "GiceL",
+    "English Name": "obj_iceisland",
+    "ActorClassType": "obj_iceisland"
+  },
+  {
+    "Actor Name": "Ikada",
+    "English Name": "Raft",
+    "ActorClassType": "obj_ikada"
+  },
+  {
+    "Actor Name": "ikada_h",
+    "English Name": "Beedle's Shop Ship",
+    "ActorClassType": "obj_ikada"
+  },
+  {
+    "Actor Name": "ikadaS",
+    "English Name": "Submarine",
+    "ActorClassType": "obj_ikada"
+  },
+  {
+    "Actor Name": "ikada_u",
+    "English Name": "Beedle's Special Shop Ship",
+    "ActorClassType": "obj_ikada"
+  },
+  {
+    "Actor Name": "Svsp",
+    "English Name": "Salvage Corp Ship",
+    "ActorClassType": "obj_ikada"
+  },
+  {
+    "Actor Name": "Itnak",
+    "English Name": "obj_Itnak",
+    "ActorClassType": "obj_Itnak"
+  },
+  {
+    "Actor Name": "Hjump2",
+    "English Name": "obj_jump",
+    "ActorClassType": "obj_jump"
+  },
+  {
+    "Actor Name": "Kanat",
+    "English Name": "obj_kanat",
+    "ActorClassType": "obj_kanat"
+  },
+  {
+    "Actor Name": "MKanoke",
+    "English Name": "obj_kanoke",
+    "ActorClassType": "obj_kanoke"
+  },
+  {
+    "Actor Name": "MKanok2",
+    "English Name": "obj_kanoke",
+    "ActorClassType": "obj_kanoke"
+  },
+  {
+    "Actor Name": "Mhsg6",
+    "English Name": "obj_ladder",
+    "ActorClassType": "obj_ladder"
+  },
+  {
+    "Actor Name": "Mhsg9",
+    "English Name": "obj_ladder",
+    "ActorClassType": "obj_ladder"
+  },
+  {
+    "Actor Name": "Mhsg12",
+    "English Name": "obj_ladder",
+    "ActorClassType": "obj_ladder"
+  },
+  {
+    "Actor Name": "Mhsg15",
+    "English Name": "obj_ladder",
+    "ActorClassType": "obj_ladder"
+  },
+  {
+    "Actor Name": "Mhsg4h",
+    "English Name": "obj_ladder",
+    "ActorClassType": "obj_ladder"
+  },
+  {
+    "Actor Name": "Vochi",
+    "English Name": "obj_leaves",
+    "ActorClassType": "obj_leaves"
+  },
+  {
+    "Actor Name": "Stoudai",
+    "English Name": "Lighthouse",
+    "ActorClassType": "obj_light"
+  },
+  {
+    "Actor Name": "Oyashi",
+    "English Name": "Palm Tree",
+    "ActorClassType": "obj_lpalm"
+  },
+  {
+    "Actor Name": "Magrock",
+    "English Name": "obj_magmarock",
+    "ActorClassType": "obj_magmarock"
+  },
+  {
+    "Actor Name": "MjDoor",
+    "English Name": "obj_majyuu_door",
+    "ActorClassType": "obj_majyuu_door"
+  },
+  {
+    "Actor Name": "MkieBA",
+    "English Name": "obj_mkie",
+    "ActorClassType": "obj_mkie"
+  },
+  {
+    "Actor Name": "MkieBAB",
+    "English Name": "obj_mkie",
+    "ActorClassType": "obj_mkie"
+  },
+  {
+    "Actor Name": "MkieK",
+    "English Name": "obj_mkiek",
+    "ActorClassType": "obj_mkiek"
+  },
+  {
+    "Actor Name": "MknjD",
+    "English Name": "obj_mknjd",
+    "ActorClassType": "obj_mknjd"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "obj_mmrr",
+    "ActorClassType": "obj_mmrr"
+  },
+  {
+    "Actor Name": "Esekh",
+    "English Name": "obj_monument",
+    "ActorClassType": "obj_monument"
+  },
+  {
+    "Actor Name": "Esekh2",
+    "English Name": "obj_monument",
+    "ActorClassType": "obj_monument"
+  },
+  {
+    "Actor Name": "osiBLK0",
+    "English Name": "Movable Black Box A",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "osiBLK1",
+    "English Name": "Movable Black Box With Statue on Top",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Kkiba",
+    "English Name": "Movable Breakable Wooden Crate",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Hseki2",
+    "English Name": "Movable Unbreakable Wooden Crate B",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Hseki7",
+    "English Name": "Movable Unbreakable Wooden Crate C",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Mmrr",
+    "English Name": "Movable Mirror",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "MkieBB",
+    "English Name": "Movable Black Box B",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Ecube",
+    "English Name": "Movable Mossy Black Box",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Hjump1",
+    "English Name": "Movable Metal Box With Spring",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Hbox1",
+    "English Name": "Movable Metal Box",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "MpwrB",
+    "English Name": "Movable Big Black Box",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "DBLK0",
+    "English Name": "obj_movebox",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "DBLK1",
+    "English Name": "obj_movebox",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "DKkiba",
+    "English Name": "obj_movebox",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Hbox2",
+    "English Name": "Movable Golden Crate",
+    "ActorClassType": "obj_movebox"
+  },
+  {
+    "Actor Name": "Msdan",
+    "English Name": "Earth Temple Staircase",
+    "ActorClassType": "obj_msdan"
+  },
+  {
+    "Actor Name": "Msdan2",
+    "English Name": "obj_msdan2",
+    "ActorClassType": "obj_msdan2"
+  },
+  {
+    "Actor Name": "MsdanSb",
+    "English Name": "obj_msdan_sub",
+    "ActorClassType": "obj_msdan_sub"
+  },
+  {
+    "Actor Name": "MsdanS2",
+    "English Name": "obj_msdan_sub2",
+    "ActorClassType": "obj_msdan_sub2"
+  },
+  {
+    "Actor Name": "MPot",
+    "English Name": "obj_mshokki",
+    "ActorClassType": "obj_mshokki"
+  },
+  {
+    "Actor Name": "MOsara",
+    "English Name": "obj_mshokki",
+    "ActorClassType": "obj_mshokki"
+  },
+  {
+    "Actor Name": "MKoppu",
+    "English Name": "obj_mshokki",
+    "ActorClassType": "obj_mshokki"
+  },
+  {
+    "Actor Name": "Mcube",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "Mcyln",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "Mcube10",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "Mcyln10",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "MwtrSB",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "MygnSB",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "Owater",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "Astop",
+    "English Name": "obj_mtest",
+    "ActorClassType": "obj_mtest"
+  },
+  {
+    "Actor Name": "MtoriSU",
+    "English Name": "obj_nest",
+    "ActorClassType": "obj_nest"
+  },
+  {
+    "Actor Name": "Ohatch",
+    "English Name": "obj_ohatch",
+    "ActorClassType": "obj_ohatch"
+  },
+  {
+    "Actor Name": "Ojtree",
+    "English Name": "obj_ojtree",
+    "ActorClassType": "obj_ojtree"
+  },
+  {
+    "Actor Name": "Ospbox",
+    "English Name": "obj_ospbox",
+    "ActorClassType": "obj_ospbox"
+  },
+  {
+    "Actor Name": "Otble",
+    "English Name": "obj_otble",
+    "ActorClassType": "obj_otble"
+  },
+  {
+    "Actor Name": "OtbleL",
+    "English Name": "obj_otble",
+    "ActorClassType": "obj_otble"
+  },
+  {
+    "Actor Name": "Paper",
+    "English Name": "obj_paper",
+    "ActorClassType": "obj_paper"
+  },
+  {
+    "Actor Name": "Ppos",
+    "English Name": "obj_paper",
+    "ActorClassType": "obj_paper"
+  },
+  {
+    "Actor Name": "Piwa",
+    "English Name": "Stone Tablet",
+    "ActorClassType": "obj_paper"
+  },
+  {
+    "Actor Name": "Pbco",
+    "English Name": "obj_pbco",
+    "ActorClassType": "obj_pbco"
+  },
+  {
+    "Actor Name": "Pbka",
+    "English Name": "obj_pbka",
+    "ActorClassType": "obj_pbka"
+  },
+  {
+    "Actor Name": "Nzfall",
+    "English Name": "Rat Trap",
+    "ActorClassType": "obj_pfall"
+  },
+  {
+    "Actor Name": "Pirates",
+    "English Name": "Pirate Ship",
+    "ActorClassType": "obj_pirateship"
+  },
+  {
+    "Actor Name": "Plant",
+    "English Name": "obj_plant",
+    "ActorClassType": "obj_plant"
+  },
+  {
+    "Actor Name": "Quake",
+    "English Name": "obj_quake",
+    "ActorClassType": "obj_quake"
+  },
+  {
+    "Actor Name": "Rcloud",
+    "English Name": "obj_rcloud",
+    "ActorClassType": "obj_rcloud"
+  },
+  {
+    "Actor Name": "Ocloud",
+    "English Name": "obj_rcloud",
+    "ActorClassType": "obj_rcloud"
+  },
+  {
+    "Actor Name": "Rflw",
+    "English Name": "obj_rflw",
+    "ActorClassType": "obj_rflw"
+  },
+  {
+    "Actor Name": "Rforce",
+    "English Name": "obj_rforce",
+    "ActorClassType": "obj_rforce"
+  },
+  {
+    "Actor Name": "Roten2",
+    "English Name": "obj_roten",
+    "ActorClassType": "obj_roten"
+  },
+  {
+    "Actor Name": "Roten3",
+    "English Name": "obj_roten",
+    "ActorClassType": "obj_roten"
+  },
+  {
+    "Actor Name": "Roten4",
+    "English Name": "obj_roten",
+    "ActorClassType": "obj_roten"
+  },
+  {
+    "Actor Name": "Otana",
+    "English Name": "Wooden Shelf",
+    "ActorClassType": "obj_shelf"
+  },
+  {
+    "Actor Name": "OtanaG",
+    "English Name": "obj_shelf",
+    "ActorClassType": "obj_shelf"
+  },
+  {
+    "Actor Name": "Shmrgrd",
+    "English Name": "Spiked Hammer Button",
+    "ActorClassType": "obj_shmrgrd"
+  },
+  {
+    "Actor Name": "Qtkhd",
+    "English Name": "obj_smplbg",
+    "ActorClassType": "obj_smplbg"
+  },
+  {
+    "Actor Name": "Mkdan1",
+    "English Name": "obj_stair",
+    "ActorClassType": "obj_stair"
+  },
+  {
+    "Actor Name": "Hfbot1A",
+    "English Name": "obj_swflat",
+    "ActorClassType": "obj_swflat"
+  },
+  {
+    "Actor Name": "Hfbot1B",
+    "English Name": "obj_swflat",
+    "ActorClassType": "obj_swflat"
+  },
+  {
+    "Actor Name": "Hfbot1C",
+    "English Name": "obj_swflat",
+    "ActorClassType": "obj_swflat"
+  },
+  {
+    "Actor Name": "MhmrSW0",
+    "English Name": "Hammer Button",
+    "ActorClassType": "obj_swhammer"
+  },
+  {
+    "Actor Name": "Hhbot1",
+    "English Name": "obj_swheavy",
+    "ActorClassType": "obj_swheavy"
+  },
+  {
+    "Actor Name": "Hhbot1N",
+    "English Name": "obj_swheavy",
+    "ActorClassType": "obj_swheavy"
+  },
+  {
+    "Actor Name": "MsuSW",
+    "English Name": "obj_swlight",
+    "ActorClassType": "obj_swlight"
+  },
+  {
+    "Actor Name": "MsuSWB",
+    "English Name": "obj_swlight",
+    "ActorClassType": "obj_swlight"
+  },
+  {
+    "Actor Name": "Kbota_A",
+    "English Name": "Button (Press Once)",
+    "ActorClassType": "obj_swpush"
+  },
+  {
+    "Actor Name": "Kbota_B",
+    "English Name": "Button (Hold Down)",
+    "ActorClassType": "obj_swpush"
+  },
+  {
+    "Actor Name": "KbotaC",
+    "English Name": "Button (Press Once Inverted)",
+    "ActorClassType": "obj_swpush"
+  },
+  {
+    "Actor Name": "Table",
+    "English Name": "obj_table",
+    "ActorClassType": "obj_table"
+  },
+  {
+    "Actor Name": "Mcrtn",
+    "English Name": "obj_tapestry",
+    "ActorClassType": "obj_tapestry"
+  },
+  {
+    "Actor Name": "Tenmado",
+    "English Name": "obj_tenmado",
+    "ActorClassType": "obj_tenmado"
+  },
+  {
+    "Actor Name": "Humi0z",
+    "English Name": "obj_tide",
+    "ActorClassType": "obj_tide"
+  },
+  {
+    "Actor Name": "Humi4z",
+    "English Name": "obj_tide",
+    "ActorClassType": "obj_tide"
+  },
+  {
+    "Actor Name": "Humi5z",
+    "English Name": "obj_tide",
+    "ActorClassType": "obj_tide"
+  },
+  {
+    "Actor Name": "Tide3",
+    "English Name": "obj_tide",
+    "ActorClassType": "obj_tide"
+  },
+  {
+    "Actor Name": "Humi2z",
+    "English Name": "obj_tide",
+    "ActorClassType": "obj_tide"
+  },
+  {
+    "Actor Name": "Humi3z",
+    "English Name": "obj_tide",
+    "ActorClassType": "obj_tide"
+  },
+  {
+    "Actor Name": "ObjTime",
+    "English Name": "obj_timer",
+    "ActorClassType": "obj_timer"
+  },
+  {
+    "Actor Name": "TnTrap",
+    "English Name": "Hyrule Castle Laser Barrier",
+    "ActorClassType": "obj_tntrap"
+  },
+  {
+    "Actor Name": "FgTrap",
+    "English Name": "Forsaken Fortress Laser Barrier (During Phantom Ganon Fight)",
+    "ActorClassType": "obj_tntrap"
+  },
+  {
+    "Actor Name": "CmTrap",
+    "English Name": "Savage Labyrinth Laser Barrier",
+    "ActorClassType": "obj_tntrap"
+  },
+  {
+    "Actor Name": "Tpost",
+    "English Name": "Postbox",
+    "ActorClassType": "obj_toripost"
+  },
+  {
+    "Actor Name": "Touseki",
+    "English Name": "obj_tousekiki",
+    "ActorClassType": "obj_tousekiki"
+  },
+  {
+    "Actor Name": "X_tower",
+    "English Name": "Tower of the Gods",
+    "ActorClassType": "obj_tower"
+  },
+  {
+    "Actor Name": "Trap",
+    "English Name": "obj_trap",
+    "ActorClassType": "obj_trap"
+  },
+  {
+    "Actor Name": "MtryB",
+    "English Name": "obj_tribox",
+    "ActorClassType": "obj_tribox"
+  },
+  {
+    "Actor Name": "MtryBCr",
+    "English Name": "obj_tribox",
+    "ActorClassType": "obj_tribox"
+  },
+  {
+    "Actor Name": "Hseki1",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki6",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki3",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki4",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki5",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hmon1",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hmon1d",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hmon2",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hmon2d",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki31",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki41",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki51",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki32",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki42",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Hseki52",
+    "English Name": "obj_try",
+    "ActorClassType": "obj_try"
+  },
+  {
+    "Actor Name": "Usovmc",
+    "English Name": "obj_usovmc",
+    "ActorClassType": "obj_usovmc"
+  },
+  {
+    "Actor Name": "Vds",
+    "English Name": "obj_Vds",
+    "ActorClassType": "obj_Vds"
+  },
+  {
+    "Actor Name": "Vfan",
+    "English Name": "Ganon's Tower Destructible Door",
+    "ActorClassType": "obj_vfan"
+  },
+  {
+    "Actor Name": "VgnFD",
+    "English Name": "obj_vgnfd",
+    "ActorClassType": "obj_vgnfd"
+  },
+  {
+    "Actor Name": "VmcBS",
+    "English Name": "Makar Seed-Planting Spot",
+    "ActorClassType": "obj_vmc"
+  },
+  {
+    "Actor Name": "VmsDZ",
+    "English Name": "obj_vmsdz",
+    "ActorClassType": "obj_vmsdz"
+  },
+  {
+    "Actor Name": "VmsMS",
+    "English Name": "obj_vmsms",
+    "ActorClassType": "obj_vmsms"
+  },
+  {
+    "Actor Name": "Ykzyg",
+    "English Name": "obj_volcano",
+    "ActorClassType": "obj_volcano"
+  },
+  {
+    "Actor Name": "Vteng",
+    "English Name": "obj_Vteng",
+    "ActorClassType": "obj_Vteng"
+  },
+  {
+    "Actor Name": "Vtil1",
+    "English Name": "obj_vtil",
+    "ActorClassType": "obj_vtil"
+  },
+  {
+    "Actor Name": "Vtil2",
+    "English Name": "obj_vtil",
+    "ActorClassType": "obj_vtil"
+  },
+  {
+    "Actor Name": "Vtil3",
+    "English Name": "obj_vtil",
+    "ActorClassType": "obj_vtil"
+  },
+  {
+    "Actor Name": "Vtil4",
+    "English Name": "obj_vtil",
+    "ActorClassType": "obj_vtil"
+  },
+  {
+    "Actor Name": "Vtil5",
+    "English Name": "obj_vtil",
+    "ActorClassType": "obj_vtil"
+  },
+  {
+    "Actor Name": "Vyasi",
+    "English Name": "obj_vyasi",
+    "ActorClassType": "obj_vyasi"
+  },
+  {
+    "Actor Name": "Warpt",
+    "English Name": "Locked Noncyclic Warp Pot",
+    "ActorClassType": "obj_warpt"
+  },
+  {
+    "Actor Name": "Warpnt",
+    "English Name": "Unlocked Noncyclic Warp Pot",
+    "ActorClassType": "obj_warpt"
+  },
+  {
+    "Actor Name": "Warpts1",
+    "English Name": "Cyclic Warp Pot 1",
+    "ActorClassType": "obj_warpt"
+  },
+  {
+    "Actor Name": "Warpts2",
+    "English Name": "Cyclic Warp Pot 2",
+    "ActorClassType": "obj_warpt"
+  },
+  {
+    "Actor Name": "Warpts3",
+    "English Name": "Cyclic Warp Pot 3",
+    "ActorClassType": "obj_warpt"
+  },
+  {
+    "Actor Name": "woodb",
+    "English Name": "obj_wood",
+    "ActorClassType": "obj_wood"
+  },
+  {
+    "Actor Name": "woodbx",
+    "English Name": "obj_wood",
+    "ActorClassType": "obj_wood"
+  },
+  {
+    "Actor Name": "Xfuta",
+    "English Name": "obj_xfuta",
+    "ActorClassType": "obj_xfuta"
+  },
+  {
+    "Actor Name": "Yboil00",
+    "English Name": "obj_Yboil",
+    "ActorClassType": "obj_Yboil"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "obj_ygush00",
+    "ActorClassType": "obj_ygush00"
+  },
+  {
+    "Actor Name": "YLzou",
+    "English Name": "Hero of Time Statue",
+    "ActorClassType": "obj_YLzou"
+  },
+  {
+    "Actor Name": "zouK",
+    "English Name": "obj_zouK",
+    "ActorClassType": "obj_zouK"
+  },
+  {
+    "Actor Name": "zouK1",
+    "English Name": "obj_zouK",
+    "ActorClassType": "obj_zouK"
+  },
+  {
+    "Actor Name": "zouK2",
+    "English Name": "obj_zouK",
+    "ActorClassType": "obj_zouK"
+  },
+  {
+    "Actor Name": "zouK3",
+    "English Name": "obj_zouK",
+    "ActorClassType": "obj_zouK"
+  },
+  {
+    "Actor Name": "zouK4",
+    "English Name": "obj_zouK",
+    "ActorClassType": "obj_zouK"
+  },
+  {
+    "Actor Name": "Oq",
+    "English Name": "Freshwater Octorok",
+    "ActorClassType": "oq"
+  },
+  {
+    "Actor Name": "Oqw",
+    "English Name": "Saltwater Octorok",
+    "ActorClassType": "oq"
+  },
+  {
+    "Actor Name": "Oship",
+    "English Name": "Gunboat",
+    "ActorClassType": "oship"
+  },
+  {
+    "Actor Name": "Hdai1",
+    "English Name": "pedestal",
+    "ActorClassType": "pedestal"
+  },
+  {
+    "Actor Name": "Hdai2",
+    "English Name": "pedestal",
+    "ActorClassType": "pedestal"
+  },
+  {
+    "Actor Name": "Hdai3",
+    "English Name": "pedestal",
+    "ActorClassType": "pedestal"
+  },
+  {
+    "Actor Name": "p_hat",
+    "English Name": "Peahat",
+    "ActorClassType": "ph"
+  },
+  {
+    "Actor Name": "sea_hat",
+    "English Name": "Seahat",
+    "ActorClassType": "ph"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "pirate_flag",
+    "ActorClassType": "pirate_flag"
+  },
+  {
+    "Actor Name": "Puti",
+    "English Name": "Miniblin",
+    "ActorClassType": "pt"
+  },
+  {
+    "Actor Name": "pow",
+    "English Name": "Poe",
+    "ActorClassType": "pw"
+  },
+  {
+    "Actor Name": "p_zelda",
+    "English Name": "Princess Zelda",
+    "ActorClassType": "pz"
+  },
+  {
+    "Actor Name": "Ritem",
+    "English Name": "race_item",
+    "ActorClassType": "race_item"
+  },
+  {
+    "Actor Name": "Rdead1",
+    "English Name": "Standing ReDead",
+    "ActorClassType": "rd"
+  },
+  {
+    "Actor Name": "Rdead2",
+    "English Name": "Sitting ReDead",
+    "ActorClassType": "rd"
+  },
+  {
+    "Actor Name": "hotest",
+    "English Name": "Blank Test Actor",
+    "ActorClassType": "rectangle"
+  },
+  {
+    "Actor Name": "Psail",
+    "English Name": "sail",
+    "ActorClassType": "sail"
+  },
+  {
+    "Actor Name": "Ksaku",
+    "English Name": "Weak Boarded Up Wall",
+    "ActorClassType": "saku"
+  },
+  {
+    "Actor Name": "Dsaku",
+    "English Name": "Sturdy Boarded Up Wall",
+    "ActorClassType": "saku"
+  },
+  {
+    "Actor Name": "Salvage",
+    "English Name": "Chart Salvage Point",
+    "ActorClassType": "salvage"
+  },
+  {
+    "Actor Name": "SwSlvg",
+    "English Name": "Gunboat/Big Octo Salvage Point",
+    "ActorClassType": "salvage"
+  },
+  {
+    "Actor Name": "Salvag2",
+    "English Name": "Normal Light Ring Salvage Point",
+    "ActorClassType": "salvage"
+  },
+  {
+    "Actor Name": "SalvagN",
+    "English Name": "Nighttime Salvage Point",
+    "ActorClassType": "salvage"
+  },
+  {
+    "Actor Name": "SalvagE",
+    "English Name": "Octorok Vase Salvage Point",
+    "ActorClassType": "salvage"
+  },
+  {
+    "Actor Name": "SalvFM",
+    "English Name": "Full Moon Salvage Point",
+    "ActorClassType": "salvage"
+  },
+  {
+    "Actor Name": "STBox",
+    "English Name": "salvage_tbox",
+    "ActorClassType": "salvage_tbox"
+  },
+  {
+    "Actor Name": "tkrSlv",
+    "English Name": "sbox",
+    "ActorClassType": "sbox"
+  },
+  {
+    "Actor Name": "ScnChg",
+    "English Name": "scene_change",
+    "ActorClassType": "scene_change"
+  },
+  {
+    "Actor Name": "Seatag",
+    "English Name": "seatag",
+    "ActorClassType": "seatag"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "shand",
+    "ActorClassType": "shand"
+  },
+  {
+    "Actor Name": "Ship",
+    "English Name": "ship",
+    "ActorClassType": "ship"
+  },
+  {
+    "Actor Name": "Sitem",
+    "English Name": "shop_item",
+    "ActorClassType": "shop_item"
+  },
+  {
+    "Actor Name": "Htobi1",
+    "English Name": "shutter",
+    "ActorClassType": "shutter"
+  },
+  {
+    "Actor Name": "Htobi2",
+    "English Name": "shutter",
+    "ActorClassType": "shutter"
+  },
+  {
+    "Actor Name": "Htobi3",
+    "English Name": "shutter2",
+    "ActorClassType": "shutter2"
+  },
+  {
+    "Actor Name": "SieFlag",
+    "English Name": "sie_flag",
+    "ActorClassType": "sie_flag"
+  },
+  {
+    "Actor Name": "Sitem",
+    "English Name": "sitem",
+    "ActorClassType": "sitem"
+  },
+  {
+    "Actor Name": "Turu",
+    "English Name": "sk",
+    "ActorClassType": "sk"
+  },
+  {
+    "Actor Name": "Turu2",
+    "English Name": "sk2",
+    "ActorClassType": "sk2"
+  },
+  {
+    "Actor Name": "Turu3",
+    "English Name": "sk2",
+    "ActorClassType": "sk2"
+  },
+  {
+    "Actor Name": "spotbox",
+    "English Name": "spotbox",
+    "ActorClassType": "spotbox"
+  },
+  {
+    "Actor Name": "spotbx1",
+    "English Name": "spotbox",
+    "ActorClassType": "spotbox"
+  },
+  {
+    "Actor Name": "Ss",
+    "English Name": "ss",
+    "ActorClassType": "ss"
+  },
+  {
+    "Actor Name": "s_turu",
+    "English Name": "ssk",
+    "ActorClassType": "ssk"
+  },
+  {
+    "Actor Name": "Sss",
+    "English Name": "Dexivine",
+    "ActorClassType": "sss"
+  },
+  {
+    "Actor Name": "Stal",
+    "English Name": "Stalfos",
+    "ActorClassType": "st"
+  },
+  {
+    "Actor Name": "Ystm0",
+    "English Name": "steam_tag",
+    "ActorClassType": "steam_tag"
+  },
+  {
+    "Actor Name": "Ystm1",
+    "English Name": "steam_tag",
+    "ActorClassType": "steam_tag"
+  },
+  {
+    "Actor Name": "koisi1",
+    "English Name": "stone",
+    "ActorClassType": "stone"
+  },
+  {
+    "Actor Name": "koisi2",
+    "English Name": "stone",
+    "ActorClassType": "stone"
+  },
+  {
+    "Actor Name": "Ebrock",
+    "English Name": "Large Bombable Rock",
+    "ActorClassType": "stone2"
+  },
+  {
+    "Actor Name": "Ekao",
+    "English Name": "Large Stone Face (Liftable with Power Bracelets)",
+    "ActorClassType": "stone2"
+  },
+  {
+    "Actor Name": "Ebrock2",
+    "English Name": "Small Bombable Rock",
+    "ActorClassType": "stone2"
+  },
+  {
+    "Actor Name": "SWat00",
+    "English Name": "swattack",
+    "ActorClassType": "swattack"
+  },
+  {
+    "Actor Name": "SW_C00",
+    "English Name": "Switch Setter Trigger Region",
+    "ActorClassType": "swc00"
+  },
+  {
+    "Actor Name": "SW_HIT0",
+    "English Name": "swhit0",
+    "ActorClassType": "swhit0"
+  },
+  {
+    "Actor Name": "ITat00",
+    "English Name": "Hidden Item Pickup",
+    "ActorClassType": "switem"
+  },
+  {
+    "Actor Name": "Hpbot1",
+    "English Name": "swpropeller",
+    "ActorClassType": "swpropeller"
+  },
+  {
+    "Actor Name": "Vpbot",
+    "English Name": "swpropeller",
+    "ActorClassType": "swpropeller"
+  },
+  {
+    "Actor Name": "SWtact",
+    "English Name": "swtact",
+    "ActorClassType": "swtact"
+  },
+  {
+    "Actor Name": "SWtactB",
+    "English Name": "swtact",
+    "ActorClassType": "swtact"
+  },
+  {
+    "Actor Name": "SWTdoor",
+    "English Name": "swtdoor",
+    "ActorClassType": "swtdoor"
+  },
+  {
+    "Actor Name": "SYAN",
+    "English Name": "E3 Chandelier",
+    "ActorClassType": "syan"
+  },
+  {
+    "Actor Name": "AttTag",
+    "English Name": "tag_attention",
+    "ActorClassType": "tag_attention"
+  },
+  {
+    "Actor Name": "AttTagB",
+    "English Name": "tag_attention",
+    "ActorClassType": "tag_attention"
+  },
+  {
+    "Actor Name": "TagBa1",
+    "English Name": "tag_ba1",
+    "ActorClassType": "tag_ba1"
+  },
+  {
+    "Actor Name": "TagMd",
+    "English Name": "tag_etc",
+    "ActorClassType": "tag_etc"
+  },
+  {
+    "Actor Name": "TagEv",
+    "English Name": "Event Trigger Region",
+    "ActorClassType": "tag_event"
+  },
+  {
+    "Actor Name": "Evsw",
+    "English Name": "Event Bit Switch Setter",
+    "ActorClassType": "tag_evsw"
+  },
+  {
+    "Actor Name": "PScnChg",
+    "English Name": "tag_ghostship",
+    "ActorClassType": "tag_ghostship"
+  },
+  {
+    "Actor Name": "TagHt",
+    "English Name": "Hint Trigger Region 1",
+    "ActorClassType": "tag_hint"
+  },
+  {
+    "Actor Name": "TagHt2",
+    "English Name": "Hint Trigger Region 2",
+    "ActorClassType": "tag_hint"
+  },
+  {
+    "Actor Name": "TagIsl",
+    "English Name": "tag_island",
+    "ActorClassType": "tag_island"
+  },
+  {
+    "Actor Name": "TagKb",
+    "English Name": "Pig Item Dig Region",
+    "ActorClassType": "tag_kb_item"
+  },
+  {
+    "Actor Name": "TagKf1",
+    "English Name": "tag_kf1",
+    "ActorClassType": "tag_kf1"
+  },
+  {
+    "Actor Name": "TagKk1",
+    "English Name": "tag_kk1",
+    "ActorClassType": "tag_kk1"
+  },
+  {
+    "Actor Name": "LTag0",
+    "English Name": "Invisible Light Region",
+    "ActorClassType": "tag_light"
+  },
+  {
+    "Actor Name": "LTag1",
+    "English Name": "Light Beam",
+    "ActorClassType": "tag_light"
+  },
+  {
+    "Actor Name": "LTagR0",
+    "English Name": "Light Detector",
+    "ActorClassType": "tag_light"
+  },
+  {
+    "Actor Name": "TagMd1",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagCb1",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMd11",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMd12",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMd13",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMd14",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMd15",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMd16",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagCb11",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagCb12",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagCb13",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagCb14",
+    "English Name": "tag_md_cb",
+    "ActorClassType": "tag_md_cb"
+  },
+  {
+    "Actor Name": "TagMk",
+    "English Name": "Joy Pendant Hidden in a Tree",
+    "ActorClassType": "tag_mk"
+  },
+  {
+    "Actor Name": "TagWp",
+    "English Name": "tag_mk",
+    "ActorClassType": "tag_mk"
+  },
+  {
+    "Actor Name": "TagDM",
+    "English Name": "tag_mk",
+    "ActorClassType": "tag_mk"
+  },
+  {
+    "Actor Name": "TagTy",
+    "English Name": "tag_mk",
+    "ActorClassType": "tag_mk"
+  },
+  {
+    "Actor Name": "TagMsg",
+    "English Name": "tag_msg",
+    "ActorClassType": "tag_msg"
+  },
+  {
+    "Actor Name": "TagMsg2",
+    "English Name": "tag_msg",
+    "ActorClassType": "tag_msg"
+  },
+  {
+    "Actor Name": "TagPo",
+    "English Name": "tag_photo",
+    "ActorClassType": "tag_photo"
+  },
+  {
+    "Actor Name": "ReTag0",
+    "English Name": "tag_ret",
+    "ActorClassType": "tag_ret"
+  },
+  {
+    "Actor Name": "TagSo",
+    "English Name": "tag_so",
+    "ActorClassType": "tag_so"
+  },
+  {
+    "Actor Name": "TagMSo",
+    "English Name": "tag_so",
+    "ActorClassType": "tag_so"
+  },
+  {
+    "Actor Name": "VolTag",
+    "English Name": "Kill Trigger for Ice Ring Isle/Fire Mountain",
+    "ActorClassType": "tag_volcano"
+  },
+  {
+    "Actor Name": "WLvTag",
+    "English Name": "tag_waterlevel",
+    "ActorClassType": "tag_waterlevel"
+  },
+  {
+    "Actor Name": "Tama",
+    "English Name": "tama",
+    "ActorClassType": "tama"
+  },
+  {
+    "Actor Name": "takara",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara2",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara3",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara4",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara5",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara6",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara7",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takara8",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takaraK",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takaraI",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "takaraM",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrASw",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrAGc",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrAKd",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrAIk",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrBMs",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrCTf",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrAOc",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "tkrAOs",
+    "English Name": "tbox",
+    "ActorClassType": "tbox"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "title",
+    "ActorClassType": "title"
+  },
+  {
+    "Actor Name": "Tn",
+    "English Name": "Darknut",
+    "ActorClassType": "tn"
+  },
+  {
+    "Actor Name": "Htoge1",
+    "English Name": "toge",
+    "ActorClassType": "toge"
+  },
+  {
+    "Actor Name": "TrFlag",
+    "English Name": "tori_flag",
+    "ActorClassType": "tori_flag"
+  },
+  {
+    "Actor Name": "Ytrnd00",
+    "English Name": "tornado",
+    "ActorClassType": "tornado"
+  },
+  {
+    "Actor Name": "Tpota",
+    "English Name": "tpota",
+    "ActorClassType": "tpota"
+  },
+  {
+    "Actor Name": "kotubo",
+    "English Name": "Small Pot",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "ootubo1",
+    "English Name": "Large Pot",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Kmtub",
+    "English Name": "Water Pot",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Ktaru",
+    "English Name": "Barrel",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Ostool",
+    "English Name": "Stool",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Odokuro",
+    "English Name": "Skull",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Okioke",
+    "English Name": "Bucket",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Kmi02",
+    "English Name": "Seed",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Ptubo",
+    "English Name": "Fancy Pot",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "KkibaB",
+    "English Name": "Wooden Crate",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Kmi00",
+    "English Name": "Nut",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Hbox2S",
+    "English Name": "Golden Crate",
+    "ActorClassType": "tsubo"
+  },
+  {
+    "Actor Name": "Wall",
+    "English Name": "wall",
+    "ActorClassType": "wall"
+  },
+  {
+    "Actor Name": "Gdemo20",
+    "English Name": "warpdm20",
+    "ActorClassType": "warpdm20"
+  },
+  {
+    "Actor Name": "Warpf",
+    "English Name": "warpf",
+    "ActorClassType": "warpf"
+  },
+  {
+    "Actor Name": "Warpfo",
+    "English Name": "warpfout",
+    "ActorClassType": "warpfout"
+  },
+  {
+    "Actor Name": "Warpgn",
+    "English Name": "warpgn",
+    "ActorClassType": "warpgn"
+  },
+  {
+    "Actor Name": "Ghrwp",
+    "English Name": "warphr",
+    "ActorClassType": "warphr"
+  },
+  {
+    "Actor Name": "Ywarp00",
+    "English Name": "Pink Light Beam Warp",
+    "ActorClassType": "warpls"
+  },
+  {
+    "Actor Name": "Ysdls00",
+    "English Name": "White Light Beam Warp",
+    "ActorClassType": "warpls"
+  },
+  {
+    "Actor Name": "Warpmj",
+    "English Name": "warpmj",
+    "ActorClassType": "warpmj"
+  },
+  {
+    "Actor Name": "Yswtr00",
+    "English Name": "waterfall",
+    "ActorClassType": "waterfall"
+  },
+  {
+    "Actor Name": "WBird",
+    "English Name": "wbird",
+    "ActorClassType": "wbird"
+  },
+  {
+    "Actor Name": "Hpu1",
+    "English Name": "windmill",
+    "ActorClassType": "windmill"
+  },
+  {
+    "Actor Name": "Hpu2",
+    "English Name": "windmill",
+    "ActorClassType": "windmill"
+  },
+  {
+    "Actor Name": "WindTag",
+    "English Name": "wind_tag",
+    "ActorClassType": "wind_tag"
+  },
+  {
+    "Actor Name": "Ybgaf00",
+    "English Name": "wind_tag",
+    "ActorClassType": "wind_tag"
+  },
+  {
+    "Actor Name": "wiz_r",
+    "English Name": "Wizzrobe",
+    "ActorClassType": "wz"
+  },
+  {
+    "Actor Name": "wiz_s",
+    "English Name": "wz",
+    "ActorClassType": "wz"
+  },
+  {
+    "Actor Name": "wiz_m",
+    "English Name": "wz",
+    "ActorClassType": "wz"
+  },
+  {
+    "Actor Name": "wiz_o",
+    "English Name": "wz",
+    "ActorClassType": "wz"
+  },
+  {
+    "Actor Name": "Ygcwp",
+    "English Name": "ygcwp",
+    "ActorClassType": "ygcwp"
+  },
+  {
+    "Actor Name": "YkgrON",
+    "English Name": "ykgr",
+    "ActorClassType": "ykgr"
+  },
+  {
+    "Actor Name": "YkgrOFF",
+    "English Name": "ykgr",
+    "ActorClassType": "ykgr"
+  },
+  {
+    "Actor Name": "yg_awa",
+    "English Name": "yougan",
+    "ActorClassType": "yougan"
+  },
+  {
+    "Actor Name": "",
+    "English Name": "f_pc_profile_lst",
+    "ActorClassType": "f_pc_profile_lst"
+  },
+  {
+    "Actor Name": "item",
+    "English Name": "Item Pickup",
+    "ActorClassType": "item"
+  },
+  {
+    "Actor Name": "Search",
+    "English Name": "Searchlight",
+    "ActorClassType": "obj_search"
+  }
+]

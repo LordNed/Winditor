@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using System;
 using WindEditor;
+using System.IO;
 
 namespace BulkDataProcessingScripts
 {
@@ -8,13 +9,16 @@ namespace BulkDataProcessingScripts
     {
         static void Main(string[] args)
         {
+            ActorInfoTxtsToLocation run = new ActorInfoTxtsToLocation(@"D:\Github\Winditor\BulkDataProcessingScripts",
+                @"D:\Github\Winditor\Editor\resources");
+
             //new ArchiveResourceToCSV(@"E:\New_Data_Drive\WindwakerModding\new_object_extract\res\extracted_archives\Object");
             //new ArcExtractorDebugging(@"E:\New_Data_Drive\WindwakerModding\root\res\Object\ff.arc");
             //Quaternion negQuat = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(-0)) * Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(-179)) * Quaternion.FromAxisAngle(new Vector3(0, 1, 0), -3.1415f) * Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(-179));
             //Quaternion negQuat = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(-165));
             //Console.WriteLine("Yaw: {0}", WMath.RadiansToDegrees(YawFromQuat(negQuat)));
 
-            for(int i = 180; i >= -180; i-=5)
+            /*for(int i = 180; i >= -180; i-=5)
             {
                 //Quaternion quat = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(i));
                 Quaternion xQuat = FromEulerAngles(new Vector3(i, 0, 0));
@@ -22,7 +26,7 @@ namespace BulkDataProcessingScripts
                 Quaternion zQuat = FromEulerAngles(new Vector3(0, 0, i));
                 //Console.WriteLine("In: {0} Out: {1:0},{2:0},{3:0}", i, WMath.RadiansToDegrees(PitchFromQuat(zQuat)), WMath.RadiansToDegrees(YawFromQuat(yQuat)), WMath.RadiansToDegrees(RollFromQuat(xQuat)));
                 Console.WriteLine("In: {0} Out: {1:0},{2:0},{3:0}", i, WMath.RadiansToDegrees(PitchFromQuat(yQuat)), WMath.RadiansToDegrees(YawFromQuat(yQuat)), WMath.RadiansToDegrees(RollFromQuat(yQuat)));
-            }
+            }*/
 
             //negQuat = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(28));
             //Console.WriteLine("Yaw: {0}", WMath.RadiansToDegrees(YawFromQuat(negQuat)));
