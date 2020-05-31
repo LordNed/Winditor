@@ -112,7 +112,7 @@ namespace WindEditor.View
 
             if (Descriptor.Locations != null)
             {
-                LocBlock.Text = string.Join(", ", Descriptor.Locations);
+                LocBlock.Text = string.Join("\n", Descriptor.Locations);
             }
             else
                 LocBlock.Text = "";

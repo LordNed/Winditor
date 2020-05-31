@@ -7,18 +7,18 @@
         xmlns:local="clr-namespace:WindEditor.View"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Create an Actor" Height="526" Width="898">
+        Title="Create an Actor" Height="576" Width="898">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="396*"/>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="286*"/>
+            <ColumnDefinition Width="424*"/>
+            <ColumnDefinition Width="251*"/>
+            <ColumnDefinition Width="217*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="292*"/>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="49"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="393*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="42"/>
         </Grid.RowDefinitions>
 
         <sc:WatermarkTextBox x:Name="SearchTextBox" Watermark="Type to search..." Margin="5,3" TextWrapping="Wrap" Text="{Binding SearchFilter, UpdateSourceTrigger=PropertyChanged}" TextChanged="SearchTextBox_TextChanged"/>
@@ -31,28 +31,31 @@
             </ListView.View>
         </ListView>
 
-        <Button IsDefault="True" Content="Create" x:Name="create_button" Grid.Column="2" Grid.Row="3" Margin="0,16,150,4" HorizontalAlignment="Right" Width="114" Click="create_button_Click"/>
-        <Button IsCancel="True" Content="Cancel" x:Name="cancel_button" Grid.Column="2" Grid.Row="3" Margin="0,16,10,4" HorizontalAlignment="Right" Width="114"/>
+        <Button IsDefault="True" Content="Create" x:Name="create_button" Grid.Column="1" Grid.Row="3" Margin="0,0,150,4" HorizontalAlignment="Right" Width="114" Click="create_button_Click" Height="29" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <Button IsCancel="True" Content="Cancel" x:Name="cancel_button" Grid.Column="2" Grid.Row="3" Margin="0,0,10,4" HorizontalAlignment="Right" Width="114" Height="29" VerticalAlignment="Bottom"/>
 
         <DockPanel x:Name="details_panel" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2" LastChildFill="True" Margin="0,3,10,0">
             <Grid>
                 <Image x:Name="image_box" Margin="0,10,0,0" Source="../resources/ui/actors/default_img.png" Stretch="Fill" Width="200" Height="200" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-                <GroupBox Header="Details" Margin="0,0,205,0" Height="210" VerticalAlignment="Top">
+                <GroupBox Header="Details" Margin="0,0,205,0" Height="122" VerticalAlignment="Top">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="29*"/>
                             <ColumnDefinition Width="366*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Margin="10,10,-10,-10" FontWeight="Bold" Grid.ColumnSpan="2">Name</TextBlock>
-                        <TextBlock x:Name="EngNameBlock" Margin="10,30,3,108" Grid.ColumnSpan="2"></TextBlock>
-                        <TextBlock Margin="10,56,-10,-56" FontWeight="Bold" Grid.ColumnSpan="2">Vanilla Location</TextBlock>
-                        <TextBlock x:Name="LocBlock" Margin="10,80,3,56" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
-                        <TextBlock Margin="10,108,-10,-108" FontWeight="Bold" Grid.ColumnSpan="2">Tags</TextBlock>
-                        <TextBlock x:Name="TagsBlock" Margin="10,130,3,0" TextWrapping="Wrap" Grid.ColumnSpan="2"></TextBlock>
+                        <TextBlock Margin="3,0,10,0" FontWeight="Bold" Grid.ColumnSpan="2" Height="20" VerticalAlignment="Top">Name</TextBlock>
+                        <TextBlock x:Name="EngNameBlock" Margin="3,15,10,0" Grid.ColumnSpan="2" TextWrapping="Wrap" Height="20" VerticalAlignment="Top"/>
+                        <TextBlock Margin="3,40,10,0" FontWeight="Bold" Grid.ColumnSpan="2" Height="22" VerticalAlignment="Top">Tags</TextBlock>
+                        <TextBlock x:Name="TagsBlock" Margin="3,55,7,0" TextWrapping="Wrap" Grid.ColumnSpan="2"/>
                     </Grid>
                 </GroupBox>
-                <GroupBox Header="Description" Height="223" VerticalAlignment="Bottom">
+                <GroupBox Header="Description" Margin="0,127,205,0">
                     <TextBlock x:Name="ExplanationBlock" TextWrapping="Wrap"></TextBlock>
+                </GroupBox>
+                <GroupBox Margin="0,215,0,0" Header="Locations" HorizontalAlignment="Right" Width="200">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,-2,0" RenderTransformOrigin="1.944,0.455" Grid.ColumnSpan="2">
+                        <TextBlock x:Name="LocBlock" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
+                    </ScrollViewer>
                 </GroupBox>
             </Grid>
         </DockPanel>

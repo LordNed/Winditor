@@ -504,7 +504,7 @@
       "tower of the gods",
       "wind temple"
     ],
-    "Explanation": "Small statues with a single large eye in the center of their faces. When Link approaches, they spring to life and hop towards him. They can only be defeated by damaging the pink crystal on their behinds after they have been stunned, usually by firing an arrow at their eye.\n\nThere are variants that do not come to life that serve as decorations or puzzle elements.",
+    "Explanation": "Small statues with a single large eye in the center of their faces. When Link approaches, they spring to life and hop towards him. They can only be defeated by damaging the pink crystal on their behinds.\n\nThere are variants that do not come to life that serve as decorations or puzzle elements.",
     "Locations": [
       "Unused (Amos_T)",
       "Unused (Cave08)",
@@ -556,9 +556,12 @@
     "ActorClassType": "andsw0",
     "Wait Animations": null,
     "Actor Name": "AND_SW0",
-    "English Name": "Switch AND Operator (Type 0?)",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Switch Logical AND Type 0",
+    "Tags": [
+      "switch",
+      "puzzle"
+    ],
+    "Explanation": "This object waits for a given number of switches to be activated before activating a switch itself.\n\nIt is currently unknown how this version differs from the other version, Type 2.",
     "Locations": [
       "Outset Island Fairy Woods (A_mori)",
       "Bomb Island Cave (Cave01)",
@@ -591,9 +594,12 @@
     "ActorClassType": "andsw2",
     "Wait Animations": null,
     "Actor Name": "AND_SW2",
-    "English Name": "Switch AND Operator (Type 2?)",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Switch Logical AND Type 2",
+    "Tags": [
+      "switch",
+      "puzzle"
+    ],
+    "Explanation": "This object waits for a given number of switches to be activated before activating a switch itself.\n\nIt is currently unknown how this version differs from the other version, Type 0.",
     "Locations": [
       "Submarines (Abship)",
       "Star Island Cave (Cave02)",
@@ -653,7 +659,7 @@
     "ActorClassType": "arrow_iceeff",
     "Wait Animations": null,
     "Actor Name": "Arrow_i",
-    "English Name": "Cone Around Fire/Ice Arrows",
+    "English Name": "Fire and Ice Arrow Cone",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -668,7 +674,7 @@
     "ActorClassType": "arrow_lighteff",
     "Wait Animations": null,
     "Actor Name": "Arrow_l",
-    "English Name": "Cone Around Light Arrows",
+    "English Name": "Light Arrow Cone",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -734,8 +740,10 @@
     "Wait Animations": null,
     "Actor Name": "Bb",
     "English Name": "Kargaroc",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "enemy"
+    ],
+    "Explanation": "A large bird that attacks Link by pecking at him. It can be damaged by any weaponry, and it produces Golden Feathers.\n\nKargarocs can be spawned flying around or perching. They can also carry other enemies into battle.",
     "Locations": [
       "Outset Island Fairy Woods (A_mori)",
       "Unused (I_SubAN)",
@@ -767,8 +775,11 @@
     "Wait Animations": null,
     "Actor Name": "Bdk",
     "English Name": "Helmaroc King",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "enemy",
+      "boss"
+    ],
+    "Explanation": "A monstrous bird that kicks off the game's events. It wears a mask that must be broken by hitting it with the Skull Hammer. Once the mask is removed, the Helmaroc King can be damaged by any weaponry.",
     "Locations": [
       "Forsaken Fortress Tower (2nd visit) (M2tower)"
     ],
@@ -781,9 +792,9 @@
     "ActorClassType": "bdkobj",
     "Wait Animations": null,
     "Actor Name": "Bdkobj",
-    "English Name": "bdkobj",
+    "English Name": "Helmaroc King Objects",
     "Tags": null,
-    "Explanation": null,
+    "Explanation": "A set of objects used as set pieces during the fight with the Helmaroc King. It contains some wooden beams, the wooden bridges that the Helmaroc King can break, and some stone pieces.",
     "Locations": [
       "Forsaken Fortress Tower (2nd visit) (M2tower)",
       "Forsaken Fortress Tower (1st visit) (Mjtower)"
@@ -813,8 +824,11 @@
     "Wait Animations": null,
     "Actor Name": "BFlower",
     "English Name": "Ripe Bomb Flower",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "puzzle",
+      "bombs"
+    ],
+    "Explanation": "These bomb flowers give Link an infinite source of bombs.",
     "Locations": [
       "Submarines (Abship)",
       "Dragon Roost Cavern Entrance (Adanmae)",
@@ -838,8 +852,11 @@
     "Wait Animations": null,
     "Actor Name": "VbakH",
     "English Name": "Dried Bomb Flower",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "puzzle",
+      "bombs"
+    ],
+    "Explanation": "These bomb flowers are withered, and require Link to sprinkle them with water in order to use the bombs they produce.",
     "Locations": [
       "Dragon Roost Cavern Entrance (Adanmae)",
       "Unused (K_Testc)"
@@ -854,8 +871,10 @@
     "Wait Animations": null,
     "Actor Name": "Bgn",
     "English Name": "Puppet Ganon",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "boss"
+    ],
+    "Explanation": "This monstruous puppet is a form of Ganon. Ganondorf forces Link to fight it to prove that he really is the Hero of Time reborn.",
     "Locations": [
       "Ganon's Tower Puppet Ganon (GanonK)"
     ],
@@ -899,8 +918,11 @@
     "Wait Animations": null,
     "Actor Name": "BigElf",
     "English Name": "Great Fairy",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "fairy",
+      "items"
+    ],
+    "Explanation": "These fairies impart Link with divine gifts such as more magic and a bigger wallet.\n\nThe item handed out depends on the fairy's type and can't be modified from the object's properties.",
     "Locations": [
       "Northern Fairy Island Fairy Fountain (Fairy01)",
       "Eastern Fairy Island Fairy Fountain (Fairy02)",
@@ -920,9 +942,9 @@
     "ActorClassType": "bita",
     "Wait Animations": null,
     "Actor Name": "Bita",
-    "English Name": "bita",
+    "English Name": "Wooden Platform",
     "Tags": null,
-    "Explanation": null,
+    "Explanation": "This wooden platform is used in the boss room of Dragon Roost Cavern. It can be burned by Gohma's fire breath, but Link cannot destroy it himself. Unlike most wooden objects, it is not a hookshot target.",
     "Locations": [
       "Dragon Roost Cavern Gohma Boss Room (M_DragB)",
       "Gohma Rematch (Xboss0)"
@@ -937,8 +959,10 @@
     "Wait Animations": null,
     "Actor Name": "Bk",
     "English Name": "Bokoblin",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "enemy"
+    ],
+    "Explanation": "These creatures are one of the most common enemies in the game. They come in a variety of colors and they have a variety of behaviors.\n\nThey can stand still, or they can patrol a path; they can also be hidden inside jars.",
     "Locations": [
       "Outset Island Fairy Woods (A_mori)",
       "Unused (A_nami)",
@@ -1001,9 +1025,11 @@
     "ActorClassType": "bl",
     "Wait Animations": null,
     "Actor Name": "bable",
-    "English Name": "Red/Blue Bubble",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Red and Blue Bubble",
+    "Tags": [
+      "enemy"
+    ],
+    "Explanation": "These enemies are floating skulls wreathed in flames. The red variant can burn Link, while the blue one curses him and makes him unable to use his items. The Blue Bubble is invincible until Link blows its flames away.",
     "Locations": [
       "Savage Labyrinth (Cave09)",
       "Savage Labyrinth (Cave11)",
@@ -1048,8 +1074,10 @@
     "Wait Animations": null,
     "Actor Name": "Bkm",
     "English Name": "Kalle Demos",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "boss"
+    ],
+    "Explanation": "The boss of the Forbidden Woods. It holds Makar captive.",
     "Locations": [
       "Kalle Demos Rematch (Xboss1)",
       "Forbidden Woods Kalle Demos Boss Room (kinBOSS)"
@@ -1094,8 +1122,10 @@
     "Wait Animations": null,
     "Actor Name": "bbaba",
     "English Name": "Boko Baba",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "enemy"
+    ],
+    "Explanation": "These are evil plants that bite (and sometimes try to swallow) Link. They can produce Boko Sticks when they're killed.",
     "Locations": [
       "Cliff Plateau Isles Cave (Cave03)",
       "Savage Labyrinth (Cave10)",
@@ -1144,9 +1174,11 @@
     "ActorClassType": "boss_item",
     "Wait Animations": null,
     "Actor Name": "Bitem",
-    "English Name": "Boss Heart Container Item",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Heart Container",
+    "Tags": [
+      "item"
+    ],
+    "Explanation": "This object spawns a Heart Container when the proper flags have been set, which usually include the defeat of the boss that guards it.",
     "Locations": [
       "Forsaken Fortress Tower (2nd visit) (M2tower)",
       "Earth Temple Jalhalla Boss Room (M_DaiB)",
@@ -1166,8 +1198,10 @@
     "Wait Animations": null,
     "Actor Name": "big_pow",
     "English Name": "Jalhalla",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "boss"
+    ],
+    "Explanation": "The boss of the Earth Temple. It is composed of several Poes. Link must hit him with a beam of light to solidify him, and then pick him and and roll him towards a large spike wall. He will then burst into Poes, which Link can then dispatch./n/nNote that Link requires the Power Bracelets to lift Jalhalla.",
     "Locations": [
       "Earth Temple Jalhalla Boss Room (M_DaiB)",
       "Jalhalla Rematch (Xboss2)"
@@ -1181,9 +1215,9 @@
     "ActorClassType": "branch",
     "Wait Animations": null,
     "Actor Name": "Branch",
-    "English Name": "branch",
+    "English Name": "Tree Branch",
     "Tags": null,
-    "Explanation": null,
+    "Explanation": "The tree branch that Tetra is hanging on when she lands in Outset Island's forest.",
     "Locations": [
       "Outset Island Fairy Woods (A_mori)"
     ],
@@ -1197,8 +1231,10 @@
     "Wait Animations": null,
     "Actor Name": "bridge",
     "English Name": "Plank Bridge",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "bridge"
+    ],
+    "Explanation": "A bridge made of wooden planks and dynamic lengths of rope. The object is laid out along the points of a path.",
     "Locations": [
       "Ganon's Tower Entrance (GanonA)",
       "Unused (KATA_HB)",
@@ -1218,8 +1254,10 @@
     "Wait Animations": null,
     "Actor Name": "Bst",
     "English Name": "Gohdan",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "boss"
+    ],
+    "Explanation": "The boss of the Tower of the Gods.",
     "Locations": [
       "Tower of the Gods Boss Room (SirenB)"
     ],
@@ -1233,8 +1271,10 @@
     "Wait Animations": null,
     "Actor Name": "Btd",
     "English Name": "Gohma",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "boss"
+    ],
+    "Explanation": "The boss of Dragon Roost Cavern.",
     "Locations": [
       "Dragon Roost Cavern Gohma Boss Room (M_DragB)",
       "Gohma Rematch (Xboss0)"
@@ -1249,8 +1289,10 @@
     "Wait Animations": null,
     "Actor Name": "Bwd",
     "English Name": "Molgera",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "boss"
+    ],
+    "Explanation": "The boss of the Wind Temple.",
     "Locations": [
       "Molgera Rematch (Xboss3)",
       "Wind Temple Molgera Boss Room (kazeB)"
@@ -1280,8 +1322,10 @@
     "Wait Animations": null,
     "Actor Name": "Bwds",
     "English Name": "Molgera Child",
-    "Tags": null,
-    "Explanation": null,
+    "Tags": [
+      "enemy"
+    ],
+    "Explanation": "Molgera will spawn these miniature versions of itself at the end of each phase of the battle. They hinder Link's attempts to hookshot Molgera's tongue.\n\nWhile they can be spawned in the Wind Temple boss room, they cannot be spawned anywhere else because they rely on the sand object that is created by Molgera's actor.",
     "Locations": [
       "N/A"
     ],
