@@ -22,11 +22,11 @@ namespace WindEditor.Editor.Modes
     {
         public ICommand CutSelectionCommand { get { return new RelayCommand(x => CutSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
         public ICommand CopySelectionCommand { get { return new RelayCommand(x => CopySelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
-        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => true); } }
+        public ICommand PasteSelectionCommand { get { return new RelayCommand(x => PasteSelection(), (x) => World.Map != null); } }
         public ICommand DeleteSelectionCommand { get { return new RelayCommand(x => DeleteSelection(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
-        public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => true); } }
+        public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => World.Map != null); } }
         public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => EditorSelection.SelectedObjects.Count > 0); } }
-        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity(EntityFourCC as string)); } }
+        public ICommand CreateEntityCommand { get { return new RelayCommand(EntityFourCC => CreateEntity(EntityFourCC as string), EntityFourCC => World.Map != null); } }
         public ICommand GoToObjectCommand { get { return new RelayCommand(x => GoToEntity()); } }
 
         private DockPanel m_ModeControlsDock;
