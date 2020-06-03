@@ -98,6 +98,16 @@ namespace WindEditor.View
 
         private void ActorTypeView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (Descriptor == null)
+            {
+                EngNameBlock.Text = "";
+                ExplanationBlock.Text = "";
+                LocBlock.Text = "";
+                TagsBlock.Text = "";
+                image_box.Source = new BitmapImage(new Uri("pack://application:,,,/Winditor;component/resources/ui/actors/default_img.png"));
+                return;
+            }
+
             if (Descriptor.ImagePath != null)
             {
                 image_box.Source = new BitmapImage(new Uri($"pack://application:,,,/Winditor;component/resources/ui/actors/{ Descriptor.ImagePath }"));
