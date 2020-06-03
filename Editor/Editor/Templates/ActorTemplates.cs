@@ -49,7 +49,80 @@ namespace WindEditor
 	public partial class agbsw0 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+				public enum TypeEnum
+		{
+			agbA = 0,
+			agbAT = 1,
+			agbMARK = 2,
+			agbA2 = 3,
+			agbF2 = 4,
+			agbF = 5,
+			Tingle_Bomb_Trigger = 6,
+			agbMW = 7,
+			agbCSW = 8,
+			agbR = 9,
+			agbB = 10,
+			agbD = 11,
+			agbFA = 12,
+			Unknown_13 = 13,
+			Unknown_14 = 14,
+		}
+
+
+		[WProperty("Tingle Tuner Region", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Tingle Bomb Trigger", "GBA Message to Send After Bombed", true, "", SourceScene.Room)]
+		public int GBAMessagetoSendAfterBombed
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				OnPropertyChanged("GBAMessagetoSendAfterBombed");
+			}
+		}
+
+		[WProperty("Tingle Bomb Trigger", "Bombed Switch", true, "When this region is bombed with a Tingle Bomb, it will set this switch.", SourceScene.Room)]
+		public int BombedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("BombedSwitch");
+			}
+		}
+
 		[WProperty("agbsw0", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -135,23 +208,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
-			}
-		}
-
 		// Constructor
 		public agbsw0(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -161,12 +217,13 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
+			GBAMessagetoSendAfterBombed = -1;
+			BombedSwitch = -1;
 			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
-			Unknown_6 = -1;
 		}
 	}
 
