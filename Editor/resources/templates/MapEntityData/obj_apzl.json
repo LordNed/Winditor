@@ -3,13 +3,17 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_apzl",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Sliding Puzzle",
+      "ToolTip": "Determines how the sliding puzzle acts.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unsolved",
+        1: "Solved" 
+      }
     }
   ]
 }

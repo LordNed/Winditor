@@ -3,31 +3,39 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "swtact",
-      "ToolTip": "",
+      "Category": "Wind Waker Switch",
+      "ToolTip": "The switch to set when the proper Wind Waker song has been played.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Wind Waker Song Trigger",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "swtact",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Wind Waker Switch",
+      "ToolTip": "The song to play on the Wind Waker to trigger the switch.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Wind's Requiem",
+        1: "Ballad of Gales",
+        2: "Song of Passing",
+        3: "Command Melody",
+        4: "Earth God's Lyric",
+        5: "Wind God's Aria"
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Show Wind Emblem Model",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
       "Hidden": false,
-      "Category": "swtact",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Wind Waker Switch",
+      "ToolTip": "Determines if the wind crest is shown where the trigger is. The emblem model scales with the object.",
+      "DataType": "Boolean"
     }
   ]
 }

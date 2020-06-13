@@ -3,13 +3,18 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000003,
       "Hidden": false,
-      "Category": "obj_mshokki",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Tableware Spawner",
+      "ToolTip": "The kind of tableware that will spawn.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Pitcher",
+        1: "Plate",
+        2: "Cup"
+      }
     }
   ]
 }

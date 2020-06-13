@@ -6433,25 +6433,36 @@ namespace WindEditor
 	public partial class kui : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("kui", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum ModelTypeEnum
+		{
+			Wooden_Beam = 0,
+			Invisible = 1,
+			Dragon_Roost_Cavern_Grapple_Switch = 2,
+			Tower_of_the_Gods_Bell = 3,
+			Cabana_Grapple_Switch = 4,
+		}
+
+
+		[WProperty("Grapple Point", "Model Type", true, "Determines the grapple point's model (or lack thereof).", SourceScene.Room)]
+		public ModelTypeEnum ModelType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ModelTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (ModelTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ModelType");
 			}
 		}
 
-		[WProperty("kui", "Unknown_2", true, "", SourceScene.Room)]
+		[WProperty("Unknown", "Unknown_2", true, "", SourceScene.Room)]
 		public int Unknown_2
 		{ 
 			get
@@ -6468,7 +6479,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kui", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Unknown", "Unknown_3", true, "", SourceScene.Room)]
 		public int Unknown_3
 		{ 
 			get
@@ -6485,8 +6496,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kui", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Grapple Point", "Switch to Activate", true, "The switch to set when Link grapples the object.", SourceScene.Room)]
+		public int SwitchtoActivate
 		{ 
 			get
 			{
@@ -6498,7 +6509,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("SwitchtoActivate");
 			}
 		}
 
@@ -6511,10 +6522,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
-			Unknown_4 = -1;
+			SwitchtoActivate = -1;
 		}
 	}
 
@@ -6914,21 +6924,29 @@ namespace WindEditor
 	public partial class lamp : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("lamp", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum AmountofSwingEnum
+		{
+			Large = 0,
+			Small = 1,
+		}
+
+
+		[WProperty("Lantern", "Amount of Swing", true, "", SourceScene.Room)]
+		public AmountofSwingEnum AmountofSwing
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(AmountofSwingEnum), value_as_int))
+					value_as_int = 0;
+				return (AmountofSwingEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("AmountofSwing");
 			}
 		}
 
@@ -6936,12 +6954,6 @@ namespace WindEditor
 		public lamp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 		}
 	}
 
@@ -10634,21 +10646,29 @@ namespace WindEditor
 	public partial class obj_apzl : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("obj_apzl", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum TypeEnum
+		{
+			Unsolved = 0,
+			Solved = 1,
+		}
+
+
+		[WProperty("Sliding Puzzle", "Type", true, "Determines how the sliding puzzle acts.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
@@ -10656,12 +10676,6 @@ namespace WindEditor
 		public obj_apzl(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 		}
 	}
 
@@ -11962,8 +11976,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_ebomzo", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Bombable Rito Statue", "Bombed Switch", true, "Switch that determines whether the statue has been bombed.", SourceScene.Room)]
+		public int BombedSwitch
 		{ 
 			get
 			{
@@ -11975,7 +11989,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BombedSwitch");
 			}
 		}
 
@@ -11988,7 +12002,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			BombedSwitch = -1;
 		}
 	}
 
@@ -12067,8 +12081,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_eskban", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Bomb Rock (Bomb Flower Only)", "Destroyed Switch", true, "The switch to set when the rock is destroyed.", SourceScene.Room)]
+		public int DestroyedSwitch
 		{ 
 			get
 			{
@@ -12080,7 +12094,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DestroyedSwitch");
 			}
 		}
 
@@ -12093,7 +12107,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DestroyedSwitch = -1;
 		}
 	}
 
@@ -12484,8 +12498,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("obj_gryw00", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Lake Outside Dragon Roost Cavern", "Activation Switch", true, "The switch that must be set for the lake to become active.", SourceScene.Room)]
+		public int ActivationSwitch
 		{ 
 			get
 			{
@@ -12497,7 +12511,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ActivationSwitch");
 			}
 		}
 
@@ -12510,7 +12524,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			ActivationSwitch = -1;
 		}
 	}
 
@@ -14859,21 +14873,30 @@ namespace WindEditor
 	public partial class obj_mshokki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("obj_mshokki", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum TypeEnum
+		{
+			Pitcher = 0,
+			Plate = 1,
+			Cup = 2,
+		}
+
+
+		[WProperty("Tableware Spawner", "Type", true, "The kind of tableware that will spawn.", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
@@ -14881,12 +14904,6 @@ namespace WindEditor
 		public obj_mshokki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 		}
 	}
 
@@ -20376,8 +20393,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 		
-		[WProperty("swtact", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Wind Waker Switch", "Switch to Set", true, "The switch to set when the proper Wind Waker song has been played.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -20389,41 +20406,60 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
+		public enum WindWakerSongTriggerEnum
+		{
+			Winds_Requiem = 0,
+			Ballad_of_Gales = 1,
+			Song_of_Passing = 2,
+			Command_Melody = 3,
+			Earth_Gods_Lyric = 4,
+			Wind_Gods_Aria = 5,
+		}
 
-		[WProperty("swtact", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Wind Waker Switch", "Wind Waker Song Trigger", true, "The song to play on the Wind Waker to trigger the switch.", SourceScene.Room)]
+		public WindWakerSongTriggerEnum WindWakerSongTrigger
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(WindWakerSongTriggerEnum), value_as_int))
+					value_as_int = 0;
+				return (WindWakerSongTriggerEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("WindWakerSongTrigger");
 			}
 		}
 
-		[WProperty("swtact", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Wind Waker Switch", "Show Wind Emblem Model", true, "Determines if the wind crest is shown where the trigger is. The emblem model scales with the object.", SourceScene.Room)]
+		public bool ShowWindEmblemModel
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("ShowWindEmblemModel");
 			}
 		}
 
@@ -20436,9 +20472,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoSet = -1;
 		}
 	}
 

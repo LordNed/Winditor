@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Bombed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_ebomzo",
-      "ToolTip": "",
+      "Category": "Bombable Rito Statue",
+      "ToolTip": "Switch that determines whether the statue has been bombed.",
       "DataType": "Integer"
     }
   ]

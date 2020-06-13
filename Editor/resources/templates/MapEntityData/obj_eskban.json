@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_eskban",
-      "ToolTip": "",
+      "Category": "Bomb Rock (Bomb Flower Only)",
+      "ToolTip": "The switch to set when the rock is destroyed.",
       "DataType": "Integer"
     }
   ]

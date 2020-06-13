@@ -3,20 +3,27 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Model Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
-      "Category": "kui",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Grapple Point",
+      "ToolTip": "Determines the grapple point's model (or lack thereof).",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Wooden Beam",
+        1: "Invisible",
+        2: "Dragon Roost Cavern Grapple Switch",
+        3: "Tower of the Gods Bell",
+        4: "Cabana Grapple Switch"
+      }
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Hidden": false,
-      "Category": "kui",
+      "Category": "Unknown",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -25,17 +32,17 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "kui",
+      "Category": "Unknown",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Switch to Activate",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "kui",
-      "ToolTip": "",
+      "Category": "Grapple Point",
+      "ToolTip": "The switch to set when Link grapples the object.",
       "DataType": "Integer"
     }
   ]

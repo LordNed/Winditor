@@ -22,16 +22,16 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            switch (Unknown_1)
+            switch (Type)
             {
-                case 0:
+                case TypeEnum.Pitcher:
                 default:
                     m_actorMeshes = WResourceManager.LoadActorResource("Breakable Jug");
                     break;
-                case 1:
+                case TypeEnum.Plate:
                     m_actorMeshes = WResourceManager.LoadActorResource("Breakable Plate");
                     break;
-                case 2:
+                case TypeEnum.Cup:
                     m_actorMeshes = WResourceManager.LoadActorResource("Breakable Cup");
                     break;
             }
