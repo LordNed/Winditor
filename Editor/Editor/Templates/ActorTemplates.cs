@@ -6532,43 +6532,76 @@ namespace WindEditor
 	public partial class kytag00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("kytag00", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum ColoEntryEnum
+		{
+			None = 255,
+			Sunny = 0,
+			Overcast = 1,
+			_2 = 2,
+			_3 = 3,
+			_4 = 4,
+			_5 = 5,
+			_6 = 6,
+			_7 = 7,
+		}
+
+
+		[WProperty("Weather Trigger", "Colo Entry", true, "", SourceScene.Room)]
+		public ColoEntryEnum ColoEntry
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ColoEntryEnum), value_as_int))
+					value_as_int = 0;
+				return (ColoEntryEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ColoEntry");
 			}
 		}
+		public enum EffectTypeEnum
+		{
+			None = 0,
+			Rain = 1,
+			Snow = 2,
+			Rolling_Smoke = 3,
+			Rising_Smoke = 4,
+			Rolling_Smoke_2 = 5,
+			Forest_Particles = 6,
+			Thunder = 7,
+			Thunder_and_Rain = 8,
+			Thunder_Rain_and_Rolling_Smoke = 9,
+			Steam_1_Unused = 10,
+			Steam_2 = 11,
+		}
 
-		[WProperty("kytag00", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Weather Trigger", "Effect Type", true, "", SourceScene.Room)]
+		public EffectTypeEnum EffectType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(EffectTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (EffectTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("EffectType");
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Weather Trigger", "Fade Radius", true, "", SourceScene.Room)]
+		public int FadeRadius
 		{ 
 			get
 			{
@@ -6580,12 +6613,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("FadeRadius");
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Weather Trigger", "Fade Height", true, "", SourceScene.Room)]
+		public int FadeHeight
 		{ 
 			get
 			{
@@ -6597,12 +6630,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("FadeHeight");
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Weather Trigger", "Switch ID", true, "", SourceScene.Room)]
+		public int SwitchID
 		{ 
 			get
 			{
@@ -6614,24 +6647,31 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("SwitchID");
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Weather Trigger", "Invert Position Checks", true, "When this is checked, the weather effect will trigger OUTSIDE the cylinder of this object rather than INSIDE, meaning that the inside has 'normal' weather.", SourceScene.Room)]
+		public bool InvertPositionChecks
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("InvertPositionChecks");
 			}
 		}
 
@@ -6661,12 +6701,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
-			Unknown_6 = -1;
+			FadeRadius = -1;
+			FadeHeight = -1;
+			SwitchID = -1;
 			Unknown_7 = -1;
 		}
 	}
