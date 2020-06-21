@@ -1,6 +1,6 @@
 {
   "ClassName": "kytag00",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Colo Entry",
@@ -86,9 +86,10 @@
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Hidden": false,
-      "Category": "kytag00",
+      "Category": "Weather Trigger",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanNonDefaults": [0]
     }
   ]
 }

@@ -6529,7 +6529,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class kytag00 : Actor
+	public partial class kytag00 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 				public enum ColoEntryEnum
@@ -6675,18 +6675,23 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kytag00", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("Weather Trigger", "Unknown_7", true, "", SourceScene.Room)]
+		public bool Unknown_7
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else {
+					return true;
+				}
+				
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
@@ -6704,7 +6709,6 @@ namespace WindEditor
 			FadeRadius = -1;
 			FadeHeight = -1;
 			SwitchID = -1;
-			Unknown_7 = -1;
 		}
 	}
 

@@ -876,6 +876,12 @@
     <Content Include="resources\editor\Camera.obj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\editor\EditorCylinderBottomOrigin.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorCylinderBottomOrigin.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\editor_icon.ico" />
     <None Include="resources\icons\baton.png" />
     <None Include="resources\icons\baton.ico" />
