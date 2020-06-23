@@ -23,13 +23,20 @@ namespace WindEditor.View
 
         public int SceneNumber { get { return RoomCombo.SelectedIndex; } }
 
-        public IslandImportWindow()
+        public IslandImportWindow(WMap map)
         {
             InitializeComponent();
 
-            for (int i = 1; i < 50; i++)
+            foreach (WScene scene in map.SceneList)
             {
-                RoomCombo.Items.Add($"Room { i }");
+                if (scene is WStage)
+                    continue;
+
+                byte room_no = 0;
+                string room_removed = scene.Name.ToLowerInvariant().Replace("room", "");
+                byte.TryParse(room_removed, out room_no);
+
+                RoomCombo.Items.Add($"Room { room_no }");
             }
         }
 

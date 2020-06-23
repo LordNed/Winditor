@@ -808,7 +808,7 @@ namespace WindEditor
 
         private void OnRequestImportIsland()
         {
-            View.IslandImportWindow window = new View.IslandImportWindow();
+            View.IslandImportWindow window = new View.IslandImportWindow(MainWorld.Map);
             window.FileSelector.IsFilePicker = true;
             window.FileSelector.FileExtension = "arc";
 
@@ -853,13 +853,13 @@ namespace WindEditor
 
                 DumpContents(archiveRoot, tempArcPath);
 
-                WRoom newRoom = new WRoom(MainWorld, window.SceneNumber + 1);
+                WRoom newRoom = new WRoom(MainWorld, oldRoom.RoomIndex);
                 newRoom.Load(tempArcPath);
                 newRoom.RoomTransform = oldRoom.RoomTransform;
                 newRoom.ApplyTransformToObjects();
 
-                newRoom.Name = "room" + (window.SceneNumber + 1);
-                archiveRoot.Name = "room" + (window.SceneNumber + 1);
+                newRoom.Name = "room" + oldRoom.RoomIndex;
+                archiveRoot.Name = "room" + oldRoom.RoomIndex;
                 newRoom.SourceDirectory = archiveRoot;
 
                 MainWorld.Map.SceneList.Add(newRoom);
