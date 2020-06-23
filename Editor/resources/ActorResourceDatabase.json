@@ -4363,4 +4363,22 @@
       }
     ]
   },
+  {
+    "Name": "Lenzo",
+    "Archive": "Po",
+    "Models": [
+      {
+        "Path": "bdlm/po.bdl",
+        "Animations":
+          [
+            {
+              "Anim Type": "bck",
+              "Path": "bcks/wait01.bck",
+              "Paused on Load": false,
+              "Start Time": 0.00
+            }
+          ]
+      }
+    ]
+  }
 ]
