@@ -44,8 +44,18 @@ namespace WindEditor.Events
 
         public override void AddSubstanceEditor(NodeViewModel view_model)
         {
-            ValueNodeOutputViewModel<int?> int_output = new ValueNodeOutputViewModel<int?>();
+            ValueNodeOutputViewModel<string> int_output = new ValueNodeOutputViewModel<string>();
+            int_output.Editor = new StringValueEditorViewModel() { Value = m_Data };
+
             view_model.Outputs.Edit(x => x.Add(int_output));
+
+            int_output.Editor.PropertyChanged += Editor_PropertyChanged;
+        }
+
+        private void Editor_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            StringValueEditorViewModel v = sender as StringValueEditorViewModel;
+            m_Data = v.Value;
         }
     }
 }

@@ -239,6 +239,10 @@
       <DependentUpon>IntegerValueEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\Events\IntegerValueEditorViewModel.cs" />
+    <Compile Include="Editor\Events\StringValueEditorView.xaml.cs">
+      <DependentUpon>StringValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\StringValueEditorViewModel.cs" />
     <Compile Include="Editor\Events\Substance\BaseSubstance.cs" />
     <Compile Include="Editor\Events\Cut.cs" />
     <Compile Include="Editor\Events\Event.cs" />
@@ -804,6 +808,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\Events\IntegerValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\StringValueEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -114,6 +114,12 @@ namespace WindEditor.Events
             NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
             NodeViewModel.Inputs.Edit(x => x.Add(exec_input));
 
+            exec_input.Connections.Connect()
+                .Subscribe(change => {
+                    var test = change.ToArray();
+                    Console.WriteLine(test[0].Reason);
+                });
+
             NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
 
             NodeViewModel.Outputs.Edit(x => x.Add(exec_output));
@@ -142,20 +148,33 @@ namespace WindEditor.Events
         {
             System.Windows.Point prop_offset = new System.Windows.Point(NodeViewModel.Position.X - 200, NodeViewModel.Position.Y + 100);
 
-            foreach (BaseSubstance s in Properties)
+            for (int i = 0; i < Properties.Count; i++)
             {
-                NodeInputViewModel new_prop_input = new NodeInputViewModel();
-                NodeViewModel.Inputs.Edit(x => x.Add(new_prop_input));
+                BaseSubstance s = Properties[i];
 
+                // If we have enough node inputs already, just grab the one corresponding to this property;
+                // Otherwise, add a new input to the input view model.
+                NodeInputViewModel prop_input = new NodeInputViewModel();
+                if (NodeViewModel.Inputs.Count > i + 1)
+                {
+                    prop_input = NodeViewModel.Inputs.Items.ElementAt(i + 1);
+                }
+                else
+                {
+                    NodeViewModel.Inputs.Edit(x => x.Add(prop_input));
+                }
+
+                // Create a node for the property and add the property's relevant substance editor.
                 NodeViewModel temp_node = new NodeViewModel() { Name = s.Name, Position = prop_offset };
                 s.AddSubstanceEditor(temp_node);
                 model.Nodes.Edit(x => x.Add(temp_node));
 
                 prop_offset.Y += 100;
 
+                // Connect the property node to the cut node.
                 ConnectionViewModel first_to_begin = new ConnectionViewModel(
                     model,
-                    new_prop_input,
+                    prop_input,
                     temp_node.Outputs.Items.First());
                 model.Connections.Edit(x => x.Add(first_to_begin));
             }

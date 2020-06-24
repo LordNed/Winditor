@@ -6,17 +6,17 @@
              xmlns:local="clr-namespace:WindEditor.Events"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             Height="250" Width="150" HorizontalAlignment="Left">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="17*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <ItemsControl x:Name="iStack" Grid.Row="0" Grid.Column="0">
+        <ItemsControl x:Name="iStack" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel/>
@@ -25,7 +25,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <xctk:SingleUpDown Value="{Binding Path=FloatValue}" Margin="4,4,4,4"/>
+                        <xctk:SingleUpDown Value="{Binding Path=FloatValue}"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
