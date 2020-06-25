@@ -307,6 +307,7 @@ namespace WindEditor.Editor.Modes
                 // Add the connection to the node network.
                 model.Connections.Edit(x => x.Add(first_to_begin));
 
+                int index = 0;
                 // Iterating through the linked list of cuts...
                 Cut c = staff.FirstCut;
                 while (c.NextCut != null)
@@ -329,6 +330,11 @@ namespace WindEditor.Editor.Modes
                     // Grab the next cut and add it to the node network.
                     c = c.NextCut;
                     model.Nodes.Edit(x => x.Add(c.NodeViewModel));
+
+                    if (index > 16)
+                        continue;
+                    else
+                        index++;
                 }
 
                 // Catch the last node, which didn't go through the while loop

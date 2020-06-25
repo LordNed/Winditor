@@ -85,7 +85,7 @@ namespace WindEditor.Events
         public override void AddSubstanceEditor(NodeViewModel view_model)
         {
             ValueNodeOutputViewModel<ObservableCollection<IntWrapper>> int_output = new ValueNodeOutputViewModel<ObservableCollection<IntWrapper>>();
-            int_output.Editor = new IntegerValueEditorViewModel() { Value = m_Data };
+            int_output.Editor = new IntegerValueEditorViewModel() { Value = new ObservableCollection<IntWrapper>() };//m_Data };
 
             view_model.Outputs.Edit(x => x.Add(int_output));
 

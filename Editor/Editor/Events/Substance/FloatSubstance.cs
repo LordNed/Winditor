@@ -48,6 +48,7 @@ namespace WindEditor.Events
 
     public class FloatSubstance : BaseSubstance
     {
+        static int test = 0;
         private ObservableCollection<FloatWrapper> m_Data;
 
         public ObservableCollection<FloatWrapper> FloatData
@@ -84,9 +85,17 @@ namespace WindEditor.Events
             ValueNodeOutputViewModel<ObservableCollection<FloatWrapper>> int_output = new ValueNodeOutputViewModel<ObservableCollection<FloatWrapper>>();
             int_output.Editor = new FloatValueEditorViewModel() { Value = m_Data };
 
+            if (m_Data == null)
+            {
+                int i = 0;
+            }
+
             view_model.Outputs.Edit(x => x.Add(int_output));
 
             int_output.Editor.PropertyChanged += Editor_PropertyChanged;
+
+            test++;
+            Console.WriteLine(test);
         }
 
         private void Editor_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

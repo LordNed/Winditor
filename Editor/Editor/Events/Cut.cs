@@ -167,6 +167,7 @@ namespace WindEditor.Events
                 // Create a node for the property and add the property's relevant substance editor.
                 NodeViewModel temp_node = new NodeViewModel() { Name = s.Name, Position = prop_offset };
                 s.AddSubstanceEditor(temp_node);
+
                 model.Nodes.Edit(x => x.Add(temp_node));
 
                 prop_offset.Y += 100;

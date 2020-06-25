@@ -56,6 +56,14 @@ namespace WindEditor.Events
             ViewModel.Value.Add(new FloatWrapper(0.0f));
             ViewModel.Value = new ObservableCollection<FloatWrapper>(ViewModel.Value.ToArray());
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Button t = e.Source as Button;
+
+            ViewModel.Value.RemoveAt((int)t.Tag);
+            ViewModel.Value = new ObservableCollection<FloatWrapper>(ViewModel.Value.ToArray());
+        }
     }
 
     public class ObservableFloatCollectionToIEnumerableConverter : IBindingTypeConverter
