@@ -37,7 +37,7 @@ namespace WindEditor.Collision
 
         private TerrainType m_Terrain;
 
-        private short m_RoomNum;
+        private short m_RoomNum = -1;
         private byte m_RoomTableIndex;
 
         [WProperty("Group Settings", "Terrain Type", true, "Whether the surface is solid, water, or lava.")]
