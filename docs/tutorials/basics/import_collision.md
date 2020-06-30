@@ -17,6 +17,16 @@ Here are a few things to keep in mind when importing collision:
   * In Blender, this can be achieved by having an empty object as the root with empties as children representing the categories. Each category can then have the meshes in the model as children.
   * **If the model is not structured like this, water and lava WILL NOT work correctly!**
 
+### A note on exporting collision meshes from Blender
+
+When exporting a collision mesh from Blender to DAE, make sure you change the option that says "Y Forward" to "Z Forward" and the option that says "Z Up" to "-Y Up", and also tick the checkbox that says "Apply Global Orientation".
+
+<p align="center">
+  <img src="./blender_export_dae_settings.png" alignment="center">
+</p>
+
+If you do not change all three of these settings in the DAE export options from their default values, the collision mesh may be rotated 90 degrees once you import it into Winditor.
+
 ## Where to Look
 The Import Collision Mesh option can be found in the File menu, at File -> Import -> Collision Mesh.
 
