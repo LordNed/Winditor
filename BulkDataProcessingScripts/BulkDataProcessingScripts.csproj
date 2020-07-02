@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="ArcExtractorDebugging.cs" />
     <Compile Include="ArchiveResourceToCSV.cs" />
+    <Compile Include="EventDataGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

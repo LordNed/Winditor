@@ -19,5 +19,15 @@ namespace WindEditor
         {
             m_persistentLines.DrawBox(center, extents, rotation, color, lifetime, thickness);
         }
+
+        public void DebugDrawQuad(string texture_name, Vector3 position, Vector3 scale, WLinearColor color, float lifetime)
+        {
+            m_persistentQuads.DrawQuad(texture_name, position, scale, color, lifetime);
+        }
+
+        public void DebugDrawBillboard(string texture_name, Vector3 position, Vector3 scale, WLinearColor color, float lifetime)
+        {
+            m_persistentQuads.DrawBillboard(texture_name, position, scale, color, lifetime);
+        }
     }
 }

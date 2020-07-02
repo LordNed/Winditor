@@ -728,6 +728,7 @@
     <Compile Include="Editor\PropertyCustomization\UShortTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\WDOMNodeTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\WTransformTypeCustomization.cs" />
+    <Compile Include="Editor\Rendering\QuadBatcher.cs" />
     <Compile Include="Editor\Serialization\WDOMNodeConverter.cs" />
     <Compile Include="Editor\UI\Selection.cs" />
     <Compile Include="Editor\Managers\SettingsManager.cs" />

@@ -33,6 +33,7 @@ namespace WindEditor
         private WUndoStack m_undoStack;
         //private WActorEditor m_actorEditor;
         private WLineBatcher m_persistentLines;
+        private WQuadBatcher m_persistentQuads;
         private WMap m_currentMap;
 
         private IEditorMode m_CurrentMode;
@@ -44,6 +45,11 @@ namespace WindEditor
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
+            m_persistentQuads = new WQuadBatcher();
+
+            m_persistentQuads.DrawQuad("test", new OpenTK.Vector3(), new OpenTK.Vector3(1000, 1000, 1000), WLinearColor.Green, -1.0f);
+            m_persistentQuads.DrawBillboard("test", new OpenTK.Vector3(0.0f, 10.0f, 0.0f), new OpenTK.Vector3(1000, 1000, 1000), WLinearColor.Red, -1.0f);
+
             m_undoStack = new WUndoStack();
             //m_actorEditor = new WActorEditor(this);
 
@@ -67,6 +73,7 @@ namespace WindEditor
             UpdateSceneViews();
 
             m_persistentLines.Tick(deltaTime);
+            m_persistentQuads.Tick(deltaTime);
 
             if(m_currentMap != null)
             {
@@ -104,6 +111,7 @@ namespace WindEditor
                 // Add our Actor Editor and Persistent Lines.
                 m_CurrentMode.Update(view);
                 m_persistentLines.AddToRenderer(view);
+                m_persistentQuads.AddToRenderer(view);
 
                 view.DrawFrame();
             }
@@ -193,6 +201,7 @@ namespace WindEditor
 
             // Clear persistent lines from the last map as well.
             m_persistentLines.Clear();
+            m_persistentQuads.Clear();
 
             m_currentMap = null;
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
@@ -223,6 +232,7 @@ namespace WindEditor
             m_ActorMode.Dispose();
 
             m_persistentLines.Dispose();
+            m_persistentQuads.Dispose();
         }
 
         private void SwitchMode(IEditorMode old_mode, IEditorMode new_mode)
