@@ -20,18 +20,31 @@ namespace WindEditor.Events
 
         private int m_DuplicateID;
 
-        private int m_CheckFlag1;
-        private int m_CheckFlag2;
-        private int m_CheckFlag3;
-
+        private int[] m_CheckFlags = new int[3];
         private int m_Flag;
 
         private int m_FirstSubstanceIndex;
         private int m_NextCutIndex;
 
+        private Staff m_ParentActor;
+
         private Cut m_NextCut;
+        private Cut[] m_BlockingCuts = new Cut[3];
 
         private CutNodeViewModel m_NodeViewModel;
+
+        public Staff ParentActor
+        {
+            get { return m_ParentActor; }
+            set
+            {
+                if (value != m_ParentActor)
+                {
+                    m_ParentActor = value;
+                    OnPropertyChanged("ParentActor");
+                }
+            }
+        }
 
         public Cut NextCut
         {
@@ -46,12 +59,25 @@ namespace WindEditor.Events
             }
         }
 
+        public Cut[] BlockingCuts
+        {
+            get { return m_BlockingCuts; }
+            set
+            {
+                if (value != m_BlockingCuts)
+                {
+                    m_BlockingCuts = value;
+                    OnPropertyChanged("BlockingCuts");
+                }
+            }
+        }
+
         public CutNodeViewModel NodeViewModel
         {
             get { return m_NodeViewModel; }
             set
             {
-                if (value != m_NodeViewModel)
+                if (m_NodeViewModel != value)
                 {
                     m_NodeViewModel = value;
                     OnPropertyChanged("NodeViewModel");
@@ -67,7 +93,7 @@ namespace WindEditor.Events
             {
                 if (value != m_Name)
                 {
-                    m_Name = value;
+                    m_Name = $"{value}";
                     OnPropertyChanged("Name");
                 }
             }
@@ -80,10 +106,10 @@ namespace WindEditor.Events
             Name = "new_cut";
             NextCut = null;
 
-            CreateNodeViewModel();
+            NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
         }
 
-        public Cut(EndianBinaryReader reader)
+        public Cut(EndianBinaryReader reader, List<BaseSubstance> substances)
         {
             Properties = new List<BaseSubstance>();
             NextCut = null;
@@ -93,9 +119,9 @@ namespace WindEditor.Events
 
             reader.SkipInt32();
 
-            m_CheckFlag1 = reader.ReadInt32();
-            m_CheckFlag2 = reader.ReadInt32();
-            m_CheckFlag3 = reader.ReadInt32();
+            m_CheckFlags[0] = reader.ReadInt32();
+            m_CheckFlags[1] = reader.ReadInt32();
+            m_CheckFlags[2] = reader.ReadInt32();
 
             m_Flag = reader.ReadInt32();
 
@@ -104,37 +130,11 @@ namespace WindEditor.Events
 
             reader.Skip(16);
 
-            CreateNodeViewModel();
-        }
-
-        private void CreateNodeViewModel()
-        {
             NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
-
-            NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
-            NodeViewModel.Inputs.Edit(x => x.Add(exec_input));
-
-            exec_input.Connections.Connect()
-                .Subscribe(change => {
-                    var test = change.ToArray();
-                    Console.WriteLine(test[0].Reason);
-                });
-
-            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
-
-            NodeViewModel.Outputs.Edit(x => x.Add(exec_output));
-        }
-
-        public void AssignNextCutAndSubstances(List<Cut> cut_list, List<BaseSubstance> substance_list)
-        {
-            if (m_NextCutIndex != -1)
-            {
-                NextCut = cut_list[m_NextCutIndex];
-            }
 
             if (m_FirstSubstanceIndex != -1)
             {
-                BaseSubstance subs = substance_list[m_FirstSubstanceIndex];
+                BaseSubstance subs = substances[m_FirstSubstanceIndex];
 
                 while (subs != null)
                 {
@@ -144,40 +144,19 @@ namespace WindEditor.Events
             }
         }
 
-        public void AddPropertiesToNode(NetworkViewModel model)
+        public void AssignCutReferences(List<Cut> cut_list)
         {
-            System.Windows.Point prop_offset = new System.Windows.Point(NodeViewModel.Position.X - 200, NodeViewModel.Position.Y + 100);
-
-            for (int i = 0; i < Properties.Count; i++)
+            if (m_NextCutIndex != -1)
             {
-                BaseSubstance s = Properties[i];
+                NextCut = cut_list[m_NextCutIndex];
+            }
 
-                // If we have enough node inputs already, just grab the one corresponding to this property;
-                // Otherwise, add a new input to the input view model.
-                NodeInputViewModel prop_input = new NodeInputViewModel();
-                if (NodeViewModel.Inputs.Count > i + 1)
+            for (int i = 0; i < 3; i++)
+            {
+                if (m_CheckFlags[i] != -1)
                 {
-                    prop_input = NodeViewModel.Inputs.Items.ElementAt(i + 1);
+                    BlockingCuts[i] = cut_list.Find(x => x.m_Flag == m_CheckFlags[i]);
                 }
-                else
-                {
-                    NodeViewModel.Inputs.Edit(x => x.Add(prop_input));
-                }
-
-                // Create a node for the property and add the property's relevant substance editor.
-                NodeViewModel temp_node = new NodeViewModel() { Name = s.Name, Position = prop_offset };
-                s.AddSubstanceEditor(temp_node);
-
-                model.Nodes.Edit(x => x.Add(temp_node));
-
-                prop_offset.Y += 100;
-
-                // Connect the property node to the cut node.
-                ConnectionViewModel first_to_begin = new ConnectionViewModel(
-                    model,
-                    prop_input,
-                    temp_node.Outputs.Items.First());
-                model.Connections.Edit(x => x.Add(first_to_begin));
             }
         }
 

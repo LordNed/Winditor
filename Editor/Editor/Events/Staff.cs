@@ -36,7 +36,22 @@ namespace WindEditor.Events
         private StaffType m_StaffType;
         private int m_FirstCutIndex;
 
+        private Event m_ParentEvent;
+
         private Cut m_FirstCut;
+
+        public Event ParentEvent
+        {
+            get { return m_ParentEvent; }
+            set
+            {
+                if (value != m_ParentEvent)
+                {
+                    m_ParentEvent = value;
+                    OnPropertyChanged("ParentEvent");
+                }
+            }
+        }
 
         public Cut FirstCut
         {
@@ -90,7 +105,7 @@ namespace WindEditor.Events
             m_FirstCut = null;
         }
 
-        public Staff(EndianBinaryReader reader)
+        public Staff(EndianBinaryReader reader, List<Cut> cuts)
         {
             Name = new string(reader.ReadChars(32)).Trim('\0');
             m_DuplicateID = reader.ReadInt32();
@@ -102,13 +117,19 @@ namespace WindEditor.Events
             m_FirstCutIndex = reader.ReadInt32();
 
             reader.Skip(28);
-        }
 
-        public void AssignFirstCut(List<Cut> cut_list)
-        {
             if (m_FirstCutIndex != -1)
             {
-                FirstCut = cut_list[m_FirstCutIndex];
+                FirstCut = cuts[m_FirstCutIndex];
+                FirstCut.ParentActor = this;
+
+                Cut next_cut = FirstCut.NextCut;
+
+                while (next_cut != null)
+                {
+                    next_cut.ParentActor = this;
+                    next_cut = next_cut.NextCut;
+                }
             }
         }
 

@@ -97,7 +97,7 @@ namespace WindEditor.Events
             PlayJingle = false;
         }
 
-        public Event(EndianBinaryReader reader)
+        public Event(EndianBinaryReader reader, List<Staff> staffs)
         {
             Actors = new List<Staff>();
             m_ActorIndices = new int[20];
@@ -126,10 +126,7 @@ namespace WindEditor.Events
             PlayJingle = Convert.ToBoolean(reader.ReadByte());
 
             reader.Skip(27);
-        }
 
-        public void AssignStaff(List<Staff> staff_list)
-        {
             for (int i = 0; i < 20; i++)
             {
                 if (m_ActorIndices[i] == -1)
@@ -137,7 +134,8 @@ namespace WindEditor.Events
                     break;
                 }
 
-                Actors.Add(staff_list[m_ActorIndices[i]]);
+                staffs[m_ActorIndices[i]].ParentEvent = this;
+                Actors.Add(staffs[m_ActorIndices[i]]);
             }
         }
 

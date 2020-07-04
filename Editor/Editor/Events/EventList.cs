@@ -13,6 +13,7 @@ namespace WindEditor.Events
     public class WEventList : WDOMNode
     {
         private BindingList<Event> m_Events;
+
         private List<Staff> m_Staffs;
         private List<Cut> m_Cuts;
         private List<BaseSubstance> m_Substances;
@@ -118,28 +119,25 @@ namespace WindEditor.Events
         private void ReadCuts(EndianBinaryReader reader, int cut_offset, int cut_count)
         {
             reader.BaseStream.Seek(cut_offset, SeekOrigin.Begin);
+
             for (int i = 0; i < cut_count; i++)
             {
-                m_Cuts.Add(new Cut(reader));
+                m_Cuts.Add(new Cut(reader, m_Substances));
             }
 
             foreach (Cut c in m_Cuts)
             {
-                c.AssignNextCutAndSubstances(m_Cuts, m_Substances);
+                c.AssignCutReferences(m_Cuts);
             }
         }
 
         private void ReadStaffs(EndianBinaryReader reader, int staff_offset, int staff_count)
         {
             reader.BaseStream.Seek(staff_offset, SeekOrigin.Begin);
+
             for (int i = 0; i < staff_count; i++)
             {
-                m_Staffs.Add(new Staff(reader));
-            }
-
-            foreach (Staff s in m_Staffs)
-            {
-                s.AssignFirstCut(m_Cuts);
+                m_Staffs.Add(new Staff(reader, m_Cuts));
             }
         }
 
@@ -148,12 +146,7 @@ namespace WindEditor.Events
             reader.BaseStream.Seek(event_offset, SeekOrigin.Begin);
             for (int i = 0; i < event_count; i++)
             {
-                Events.Add(new Event(reader));
-            }
-
-            foreach (Event e in Events)
-            {
-                e.AssignStaff(m_Staffs);
+                Events.Add(new Event(reader, m_Staffs));
             }
         }
 

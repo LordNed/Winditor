@@ -316,7 +316,7 @@ namespace WindEditor.Editor.Modes
                     c.NodeViewModel.Position = node_location;
                     node_location.X += c.NodeViewModel.Size.Width + x_offset;
 
-                    c.AddPropertiesToNode(model);
+                    c.NodeViewModel.AddPropertiesToNode();
 
                     // Create a connection between this cut and the next cut in the list.
                     ConnectionViewModel next_cut_connection = new ConnectionViewModel(
@@ -341,7 +341,7 @@ namespace WindEditor.Editor.Modes
                 c.NodeViewModel.Position = node_location;
                 node_location.X += c.NodeViewModel.Size.Width + x_offset;
 
-                c.AddPropertiesToNode(model);
+                c.NodeViewModel.AddPropertiesToNode();
             }
 
             // Create the visual component of the node network.

@@ -223,6 +223,10 @@
     <Compile Include="Editor\Entities\LightVector.cs" />
     <Compile Include="Editor\Entities\RoomProperties.cs" />
     <Compile Include="Editor\Entities\StageProperties.cs" />
+    <Compile Include="Editor\Events\BlockingCutNodeView.xaml.cs">
+      <DependentUpon>BlockingCutNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\BlockingCutNodeViewModel.cs" />
     <Compile Include="Editor\Events\CutNodeView.xaml.cs">
       <DependentUpon>CutNodeView.xaml</DependentUpon>
     </Compile>
@@ -796,6 +800,10 @@
     <Compile Include="View\WTransformControl.xaml.cs">
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Editor\Events\BlockingCutNodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\Events\CutNodeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
