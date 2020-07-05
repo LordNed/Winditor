@@ -160,6 +160,11 @@ namespace WindEditor.Events
             }
         }
 
+        public bool IsBlocked()
+        {
+            return m_BlockingCuts[0] != null || m_BlockingCuts[1] != null || m_BlockingCuts[2] != null;
+        }
+
         public override string ToString()
         {
             return $"Name: \"{ Name }\", Property Count: { Properties.Count }";

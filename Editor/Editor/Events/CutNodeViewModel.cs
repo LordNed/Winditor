@@ -54,9 +54,104 @@ namespace WindEditor.Events
                 });
         }
 
+        public void CreateNodesRecursive(NetworkViewModel model, Cut previous_cut)
+        {
+            // Add ourselves to the node network
+            model.Nodes.Edit(x => x.Add(this));
+
+            // If this is the first node in the chain, create the "Begin" node.
+            if (previous_cut == null)
+            {
+                Position = new System.Windows.Point(Position.X + 400, Position.Y);
+
+                CreateBeginNode(model);
+            }
+            else
+            {
+                Position = new System.Windows.Point(previous_cut.NodeViewModel.Position.X + 400, previous_cut.NodeViewModel.Position.Y);
+
+                // If this node is blocked, create a blocking node and insert it between the previous node and this node.
+                if (Cut.IsBlocked())
+                {
+                    CreateBlockingNode(model, previous_cut.NodeViewModel);
+                }
+                // Otherwise, just connect the previous to this node.
+                else
+                {
+                    // Create a connection between this cut and the next cut in the list.
+                    ConnectionViewModel cut_connection = new ConnectionViewModel(
+                        model,
+                        Inputs.Items.First(),
+                        previous_cut.NodeViewModel.Outputs.Items.First());
+
+                    // Add the connection to the node network.
+                    model.Connections.Edit(x => x.Add(cut_connection));
+                }
+            }
+
+            // Now that our position is finalized, we can add our property nodes to the graph.
+            AddPropertiesToNode();
+
+            if (Cut.NextCut != null)
+                Cut.NextCut.NodeViewModel.CreateNodesRecursive(model, Cut);
+        }
+
+        private void CreateBeginNode(NetworkViewModel model)
+        {
+            // Create the begin node for the actor and add it to the network.
+            NodeViewModel begin_node = new NodeViewModel() { Name = Cut.ParentActor.Name };
+            model.Nodes.Edit(x => x.Add(begin_node));
+
+            // Add an output to the begin node labelled "Begin".
+            NodeOutputViewModel begin_output = new NodeOutputViewModel() { Name = "Begin", Port = new ExecPortViewModel { PortType = PortType.Execution } };
+            begin_node.Outputs.Edit(x => x.Add(begin_output));
+
+            if (Cut.IsBlocked())
+            {
+                CreateBlockingNode(model, begin_node);
+            }
+            else
+            {
+                ConnectionViewModel connection = new ConnectionViewModel(
+                    model,
+                    Inputs.Items.First(),
+                    begin_output);
+
+                // Add the connection to the node network.
+                model.Connections.Edit(x => x.Add(connection));
+            }
+        }
+
+        private void CreateBlockingNode(NetworkViewModel model, NodeViewModel previous_node)
+        {
+            // Create blocking node and add it to the graph
+            BlockingCutNodeViewModel blocking_node = new BlockingCutNodeViewModel(Cut);
+            model.Nodes.Edit(x => x.Add(blocking_node));
+
+            // Set the blocking node's position to where this cut node was
+            blocking_node.Position = Position;
+
+            // Move this cut node forward to not overlap the blocking node
+            Position = new System.Windows.Point(Position.X + 500, Position.Y);
+
+            ConnectionViewModel previous_to_blocking = new ConnectionViewModel(
+                model,
+                blocking_node.Inputs.Items.First(),
+                previous_node.Outputs.Items.First());
+
+            ConnectionViewModel blocking_to_current = new ConnectionViewModel(
+                model,
+                Inputs.Items.First(),
+                blocking_node.Outputs.Items.First());
+
+            // Add the connections to the node network.
+            model.Connections.Edit(x => x.Add(previous_to_blocking));
+            model.Connections.Edit(x => x.Add(blocking_to_current));
+        }
+
         public void AddPropertiesToNode()
         {
-            System.Windows.Point prop_offset = new System.Windows.Point(Position.X - 200, Position.Y + 150);
+            System.Windows.Point prop_offset = new System.Windows.Point(Position.X - 200, Position.Y + 70);
 
             for (int i = 0; i < Cut.Properties.Count; i++)
             {

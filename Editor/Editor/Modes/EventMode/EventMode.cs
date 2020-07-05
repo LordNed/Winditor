@@ -280,68 +280,10 @@ namespace WindEditor.Editor.Modes
             // Create view model for node network.
             NetworkViewModel model = new NetworkViewModel();
 
-            // Create the begin node for the actor and add it to the network.
-            NodeViewModel begin_node = new NodeViewModel() { Name = staff.Name };
-            model.Nodes.Edit(x => x.Add(begin_node));
-
-            // Add an output to the begin node labelled "Begin".
-            NodeOutputViewModel begin_output = new NodeOutputViewModel() { Name = "Begin", Port = new ExecPortViewModel { PortType = PortType.Execution } };
-            begin_node.Outputs.Edit(x => x.Add(begin_output));
-
             // If this actor has at least one cut...
             if (staff.FirstCut != null)
             {
-                int x_offset = 400;
-
-                System.Windows.Point node_location = begin_node.Position;
-                node_location.X += x_offset - begin_node.Size.Width;
-
-                // Add the first cut to the node network.
-                model.Nodes.Edit(x => x.Add(staff.FirstCut.NodeViewModel));
-
-                // Create a connection between the output of the begin node and the input of the first cut.
-                ConnectionViewModel first_to_begin = new ConnectionViewModel(
-                    model,
-                    staff.FirstCut.NodeViewModel.Inputs.Items.First(),
-                    begin_output);
-                // Add the connection to the node network.
-                model.Connections.Edit(x => x.Add(first_to_begin));
-
-                int index = 0;
-                // Iterating through the linked list of cuts...
-                Cut c = staff.FirstCut;
-                while (c.NextCut != null)
-                {
-                    // Offset the position of the node so they're not on top of each other
-                    c.NodeViewModel.Position = node_location;
-                    node_location.X += c.NodeViewModel.Size.Width + x_offset;
-
-                    c.NodeViewModel.AddPropertiesToNode();
-
-                    // Create a connection between this cut and the next cut in the list.
-                    ConnectionViewModel next_cut_connection = new ConnectionViewModel(
-                        model,
-                        c.NextCut.NodeViewModel.Inputs.Items.First(),
-                        c.NodeViewModel.Outputs.Items.First());
-
-                    // Add the connection to the node network.
-                    model.Connections.Edit(x => x.Add(next_cut_connection));
-
-                    // Grab the next cut and add it to the node network.
-                    c = c.NextCut;
-                    model.Nodes.Edit(x => x.Add(c.NodeViewModel));
-
-                    if (index > 16)
-                        continue;
-                    else
-                        index++;
-                }
-
-                // Catch the last node, which didn't go through the while loop
-                c.NodeViewModel.Position = node_location;
-                node_location.X += c.NodeViewModel.Size.Width + x_offset;
-
-                c.NodeViewModel.AddPropertiesToNode();
+                staff.FirstCut.NodeViewModel.CreateNodesRecursive(model, null);
             }
 
             // Create the visual component of the node network.

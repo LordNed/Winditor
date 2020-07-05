@@ -34,6 +34,7 @@ namespace WindEditor.Events
         public BlockingCutNodeViewModel(Cut cut)
         {
             Cut = cut;
+            Name = "Blocking Actions";
 
             // Create exec input node
             NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
