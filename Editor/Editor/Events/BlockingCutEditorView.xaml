@@ -25,9 +25,9 @@
                 <ComboBox x:Name="ActorNameCombo3" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Path=Value.ParentActor.ParentEvent.Actors}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingStaff3}" Margin="0,0,5,0"/>
                 
                 <!-- Cut names -->
-                <ComboBox x:Name="CutNameCombo1" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Path=BlockingStaff1.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=Value.BlockingCuts[0]}" SelectionChanged="CutNameCombo1_SelectionChanged" Margin="0,0,0,5"/>
-                <ComboBox x:Name="CutNameCombo2" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=BlockingStaff2.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=Value.BlockingCuts[1]}" Margin="0,0,0,5"/>
-                <ComboBox x:Name="CutNameCombo3" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Path=BlockingStaff3.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=Value.BlockingCuts[2]}"/>
+                <ComboBox x:Name="CutNameCombo1" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Path=BlockingStaff1.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingCut1}" SelectionChanged="CutNameCombo1_SelectionChanged" Margin="0,0,0,5"/>
+                <ComboBox x:Name="CutNameCombo2" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=BlockingStaff2.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingCut2}" Margin="0,0,0,5"/>
+                <ComboBox x:Name="CutNameCombo3" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Path=BlockingStaff3.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingCut3}"/>
             </Grid>
         </DockPanel>
     </Grid>

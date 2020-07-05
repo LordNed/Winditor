@@ -12,7 +12,6 @@ namespace WindEditor.Events
     public class BlockingCutNodeViewModel : NodeViewModel
     {
         private Cut m_Cut;
-        private bool m_EnableConnectionUpdates;
 
         public Cut Cut
         {
@@ -26,6 +25,8 @@ namespace WindEditor.Events
             }
         }
 
+        public BlockingCutEditorViewModel BlockingCutEditor { get; private set; }
+
         static BlockingCutNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new BlockingCutNodeView(), typeof(IViewFor<BlockingCutNodeViewModel>));
@@ -35,9 +36,10 @@ namespace WindEditor.Events
         {
             Cut = cut;
             Name = "Blocking Actions";
+            BlockingCutEditor = new BlockingCutEditorViewModel(cut);
 
             // Create exec input node
-            NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
+            NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, MaxConnections = 1 };
             Inputs.Edit(x => x.Add(exec_input));
 
             exec_input.Connections.Connect()
@@ -46,7 +48,7 @@ namespace WindEditor.Events
                 });
 
             // Create exec output node
-            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, Editor = new BlockingCutEditorViewModel(cut) };
+            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, MaxConnections = 1, Editor = BlockingCutEditor };
             Outputs.Edit(x => x.Add(exec_output));
 
             exec_output.Connections.Connect()
@@ -57,9 +59,6 @@ namespace WindEditor.Events
 
         private void OnExecInputChanged(DynamicData.IChangeSet<ConnectionViewModel> connection_change)
         {
-            if (!m_EnableConnectionUpdates)
-                return;
-
             Change<ConnectionViewModel>[] changes_array = connection_change.ToArray();
 
             if (changes_array.Length <= 0)
@@ -82,7 +81,10 @@ namespace WindEditor.Events
 
         private void ProcessExecInputAdd(ItemChange<ConnectionViewModel> change)
         {
-
+            if (change.Current.Output.Parent is CutNodeViewModel cv)
+            {
+                cv.Cut.NextCut = Cut;
+            }
         }
 
         private void ProcessExecInputRemove(ItemChange<ConnectionViewModel> change)
@@ -92,9 +94,6 @@ namespace WindEditor.Events
 
         private void OnExecOutputChanged(DynamicData.IChangeSet<ConnectionViewModel> connection_change)
         {
-            if (!m_EnableConnectionUpdates)
-                return;
-
             Change<ConnectionViewModel>[] changes_array = connection_change.ToArray();
 
             if (changes_array.Length <= 0)
@@ -117,12 +116,48 @@ namespace WindEditor.Events
 
         private void ProcessExecOutputAdd(ItemChange<ConnectionViewModel> change)
         {
+            if (change.Current.Input.Parent is CutNodeViewModel c)
+            {
+                Cut = c.Cut;
+                BlockingCutEditor.Value = Cut;
 
+                Cut.BlockingCuts[0] = BlockingCutEditor.BlockingCut1;
+                Cut.BlockingCuts[1] = BlockingCutEditor.BlockingCut2;
+                Cut.BlockingCuts[2] = BlockingCutEditor.BlockingCut3;
+
+                if (Inputs.Items.First().Connections.Count > 0)
+                {
+                    ConnectionViewModel a = Inputs.Items.First().Connections.Items.First();
+
+                    if (a.Output.Parent is CutNodeViewModel prev_c)
+                    {
+                        prev_c.Cut.NextCut = Cut;
+                    }
+                }
+            }
         }
 
         private void ProcessExecOutputRemove(ItemChange<ConnectionViewModel> change)
         {
+            if (change.Current.Input.Parent is CutNodeViewModel c)
+            {
+                Cut.BlockingCuts[0] = null;
+                Cut.BlockingCuts[1] = null;
+                Cut.BlockingCuts[2] = null;
 
+                Cut = null;
+                BlockingCutEditor.Value = null;
+
+                if (Inputs.Items.First().Connections.Count > 0)
+                {
+                    ConnectionViewModel a = Inputs.Items.First().Connections.Items.First();
+
+                    if (a.Output.Parent is CutNodeViewModel prev_c)
+                    {
+                        prev_c.Cut.NextCut = null;
+                    }
+                }
+            }
         }
     }
 }

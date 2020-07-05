@@ -36,7 +36,7 @@ namespace WindEditor.Events
             Cut = cut;
 
             // Create exec input node
-            NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
+            NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, MaxConnections = 1 };
             Inputs.Edit(x => x.Add(exec_input));
 
             exec_input.Connections.Connect()
@@ -45,7 +45,7 @@ namespace WindEditor.Events
                 });
 
             // Create exec output node
-            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
+            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, MaxConnections = 1 };
             Outputs.Edit(x => x.Add(exec_output));
 
             exec_output.Connections.Connect()
@@ -258,12 +258,15 @@ namespace WindEditor.Events
 
         private void ProcessExecOutputAdd(ItemChange<ConnectionViewModel> change)
         {
-
+            if (change.Current.Input.Parent is CutNodeViewModel cv)
+            {
+                Cut.NextCut = cv.Cut;
+            }
         }
 
         private void ProcessExecOutputRemove(ItemChange<ConnectionViewModel> change)
         {
-
+            Cut.NextCut = null;
         }
 
         private void OnPropertyInputChanged(DynamicData.IChangeSet<ConnectionViewModel> connection_change)
