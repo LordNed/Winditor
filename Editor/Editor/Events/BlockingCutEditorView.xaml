@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="WindEditor.Events.BlockingCutEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WindEditor.Events"
+             mc:Ignorable="d">
+    <Grid>
+        <DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <!-- Actor names -->
+                <ComboBox x:Name="ActorNameCombo1" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Path=Value.ParentActor.ParentEvent.Actors}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingStaff1}" Margin="0,0,5,5"/>
+                <ComboBox x:Name="ActorNameCombo2" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Path=Value.ParentActor.ParentEvent.Actors}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingStaff2}" Margin="0,0,5,5"/>
+                <ComboBox x:Name="ActorNameCombo3" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Path=Value.ParentActor.ParentEvent.Actors}" DisplayMemberPath="Name" SelectedValue="{Binding Path=BlockingStaff3}" Margin="0,0,5,0"/>
+                
+                <!-- Cut names -->
+                <ComboBox x:Name="CutNameCombo1" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Path=BlockingStaff1.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=Value.BlockingCuts[0]}" SelectionChanged="CutNameCombo1_SelectionChanged" Margin="0,0,0,5"/>
+                <ComboBox x:Name="CutNameCombo2" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=BlockingStaff2.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=Value.BlockingCuts[1]}" Margin="0,0,0,5"/>
+                <ComboBox x:Name="CutNameCombo3" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Path=BlockingStaff3.Cuts}" DisplayMemberPath="Name" SelectedValue="{Binding Path=Value.BlockingCuts[2]}"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

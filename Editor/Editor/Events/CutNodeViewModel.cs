@@ -129,10 +129,10 @@ namespace WindEditor.Events
             model.Nodes.Edit(x => x.Add(blocking_node));
 
             // Set the blocking node's position to where this cut node was
-            blocking_node.Position = Position;
+            blocking_node.Position = (System.Windows.Point)(Position - new System.Windows.Point(150, 0));
 
             // Move this cut node forward to not overlap the blocking node
-            Position = new System.Windows.Point(Position.X + 500, Position.Y);
+            Position = new System.Windows.Point(Position.X + 450, Position.Y);
 
             ConnectionViewModel previous_to_blocking = new ConnectionViewModel(
                 model,

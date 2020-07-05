@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using WindEditor.Properties;
 using GameFormatReader.Common;
+using System.Collections.ObjectModel;
 
 namespace WindEditor.Events
 {
@@ -28,7 +29,20 @@ namespace WindEditor.Events
         private int m_EndFlag2;
         private int m_EndFlag3;
 
-        public List<Staff> Actors { get; private set; }
+        private ObservableCollection<Staff> m_Actors;
+
+        public ObservableCollection<Staff> Actors
+        { 
+            get { return m_Actors; }
+            set
+            {
+                if (value != m_Actors)
+                {
+                    m_Actors = value;
+                    OnPropertyChanged("Actors");
+                }
+            }
+        }
 
         [WProperty("Event", "Name", true, "Name of the event, typically referenced by the EVNT data in the Stage setup.")]
         public string Name
@@ -88,7 +102,7 @@ namespace WindEditor.Events
 
         public Event()
         {
-            Actors = new List<Staff>();
+            Actors = new ObservableCollection<Staff>();
             m_ActorIndices = new int[20];
 
             Name = "new_event";
@@ -99,7 +113,7 @@ namespace WindEditor.Events
 
         public Event(EndianBinaryReader reader, List<Staff> staffs)
         {
-            Actors = new List<Staff>();
+            Actors = new ObservableCollection<Staff>();
             m_ActorIndices = new int[20];
 
             Name = new string(reader.ReadChars(32)).Trim('\0');

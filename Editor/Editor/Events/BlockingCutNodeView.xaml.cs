@@ -24,6 +24,7 @@ namespace WindEditor.Events
     /// </summary>
     public partial class BlockingCutNodeView : UserControl, IViewFor<BlockingCutNodeViewModel>
     {
+        #region ViewModel
         public static readonly DependencyProperty ViewModelProperty =
                 DependencyProperty.Register(nameof(ViewModel), typeof(BlockingCutNodeViewModel), typeof(BlockingCutNodeView), new PropertyMetadata(null));
 
@@ -38,6 +39,7 @@ namespace WindEditor.Events
             get => ViewModel;
             set => ViewModel = (BlockingCutNodeViewModel)value;
         }
+        #endregion
 
         public BlockingCutNodeView()
         {

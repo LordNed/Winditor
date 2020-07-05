@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using WindEditor.Properties;
 using GameFormatReader.Common;
+using System.Collections.ObjectModel;
 
 namespace WindEditor.Events
 {
@@ -39,6 +40,21 @@ namespace WindEditor.Events
         private Event m_ParentEvent;
 
         private Cut m_FirstCut;
+
+        private ObservableCollection<Cut> m_Cuts;
+
+        public ObservableCollection<Cut> Cuts
+        {
+            get { return m_Cuts; }
+            set
+            {
+                if (value != m_Cuts)
+                {
+                    m_Cuts = value;
+                    OnPropertyChanged("Cuts");
+                }
+            }
+        }
 
         public Event ParentEvent
         {
@@ -103,6 +119,7 @@ namespace WindEditor.Events
             m_FirstCutIndex = -1;
 
             m_FirstCut = null;
+            Cuts = new ObservableCollection<Cut>();
         }
 
         public Staff(EndianBinaryReader reader, List<Cut> cuts)
@@ -118,15 +135,21 @@ namespace WindEditor.Events
 
             reader.Skip(28);
 
+            Cuts = new ObservableCollection<Cut>();
+
             if (m_FirstCutIndex != -1)
             {
                 FirstCut = cuts[m_FirstCutIndex];
                 FirstCut.ParentActor = this;
 
+                Cuts.Add(FirstCut);
+
                 Cut next_cut = FirstCut.NextCut;
 
                 while (next_cut != null)
                 {
+                    Cuts.Add(next_cut);
+
                     next_cut.ParentActor = this;
                     next_cut = next_cut.NextCut;
                 }

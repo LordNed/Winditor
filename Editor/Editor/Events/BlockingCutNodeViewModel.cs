@@ -46,7 +46,7 @@ namespace WindEditor.Events
                 });
 
             // Create exec output node
-            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution } };
+            NodeOutputViewModel exec_output = new NodeOutputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, Editor = new BlockingCutEditorViewModel(cut) };
             Outputs.Edit(x => x.Add(exec_output));
 
             exec_output.Connections.Connect()
