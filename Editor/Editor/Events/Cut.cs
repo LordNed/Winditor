@@ -160,9 +160,49 @@ namespace WindEditor.Events
             }
         }
 
+        public void AssignID(ref int id)
+        {
+            m_Flag = id++;
+            id += Properties.Count;
+        }
+
+        public void PrepareCutData(List<Cut> cuts, List<BaseSubstance> substances)
+        {
+            m_NextCutIndex = NextCut != null ? cuts.IndexOf(NextCut) : -1;
+
+            m_FirstSubstanceIndex = Properties.Count > 0 ? substances.Count : -1;
+
+            substances.AddRange(Properties);
+        }
+
+        public void AssignBlockingIDs(List<Cut> cuts)
+        {
+            m_CheckFlags[0] = BlockingCuts[0] != null ? cuts[cuts.IndexOf(BlockingCuts[0])].m_Flag : -1;
+            m_CheckFlags[1] = BlockingCuts[1] != null ? cuts[cuts.IndexOf(BlockingCuts[1])].m_Flag : -1;
+            m_CheckFlags[2] = BlockingCuts[2] != null ? cuts[cuts.IndexOf(BlockingCuts[2])].m_Flag : -1;
+        }
+
         public bool IsBlocked()
         {
             return m_BlockingCuts[0] != null || m_BlockingCuts[1] != null || m_BlockingCuts[2] != null;
+        }
+
+        public void Write(EndianBinaryWriter writer, ref int index)
+        {
+            writer.WriteFixedString(Name, 32);
+            writer.Write(m_DuplicateID);
+            writer.Write(index++);
+
+            writer.Write(m_CheckFlags[0]);
+            writer.Write(m_CheckFlags[1]);
+            writer.Write(m_CheckFlags[2]);
+
+            writer.Write(m_Flag);
+
+            writer.Write(m_FirstSubstanceIndex);
+            writer.Write(m_NextCutIndex);
+
+            writer.Write(new byte[16]);
         }
 
         public override string ToString()

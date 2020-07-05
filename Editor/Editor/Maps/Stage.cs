@@ -169,6 +169,15 @@ namespace WindEditor
             m_skybox.SetColors(curLight.SkyboxPalette);
         }
 
+        public override void SaveToDirectory(string directory)
+        {
+            base.SaveToDirectory(directory);
+
+            Console.WriteLine("Writing event_list.dat...");
+            SaveEventListToDirectory(directory);
+            Console.WriteLine("Finished saving event_list.dat.");
+        }
+
         public override void SaveEntitiesToDirectory(string directory)
         {
             string dzsDirectory = string.Format("{0}/dzs", directory);
@@ -185,6 +194,21 @@ namespace WindEditor
 
         public override void SaveCollisionToDirectory(string directory)
         {
+        }
+
+        public void SaveEventListToDirectory(string directory)
+        {
+            string datDirectory = string.Format("{0}/dat", directory);
+            if (!Directory.Exists(datDirectory))
+                Directory.CreateDirectory(datDirectory);
+
+            WEventList eventlist = GetChildrenOfType<WEventList>()[0];
+
+            string filePath = string.Format("{0}/event_list.dat", datDirectory);
+            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+            {
+                eventlist.ExportToStream(writer);
+            }
         }
 
         public override VirtualFilesystemDirectory ExportToVFS()

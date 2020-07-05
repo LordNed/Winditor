@@ -153,6 +153,63 @@ namespace WindEditor.Events
             }
         }
 
+        public void PrepareEventData(ref int id, List<Staff> global_staff, List<Cut> global_cuts)
+        {
+            List<Cut> event_cuts = new List<Cut>();
+
+            m_StartFlag1 = id++;
+            m_StartFlag2 = id++;
+
+            // We have to explicitly set unused actor slots to -1, so this is my solution.
+            for (int i = 0; i < 20; i++)
+            {
+                if (i < Actors.Count)
+                {
+                    Actors[i].AssignIDs(ref id, event_cuts);
+
+                    m_ActorIndices[i] = global_staff.Count;
+                    global_staff.Add(Actors[i]);
+                }
+                else
+                {
+                    m_ActorIndices[i] = -1;
+                }
+            }
+
+            foreach (Cut c in event_cuts)
+            {
+                c.AssignBlockingIDs(event_cuts);
+            }
+
+            global_cuts.AddRange(event_cuts);
+        }
+
+        public void Write(EndianBinaryWriter writer, ref int index)
+        {
+            writer.WriteFixedString(Name, 32);
+            writer.Write(index++);
+            writer.Write(m_Unknown1);
+            writer.Write(Priority);
+
+            foreach (int i in m_ActorIndices)
+            {
+                writer.Write(i);
+            }
+
+            writer.Write(Actors.Count);
+
+            writer.Write(m_StartFlag1);
+            writer.Write(m_StartFlag2);
+
+            writer.Write(m_EndFlag1);
+            writer.Write(m_EndFlag2);
+            writer.Write(m_EndFlag3);
+
+            writer.Write(Convert.ToByte(m_PlayJingle));
+
+            writer.Write(new byte[27]);
+        }
+
         public override string ToString()
         {
             return $"Name: \"{ Name }\", Staff Count: { Actors.Count }";

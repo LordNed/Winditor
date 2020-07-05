@@ -85,6 +85,13 @@ namespace WindEditor.Events
 
         public abstract void AddSubstanceEditor(NodeViewModel input_view_model);
 
+        public void Write(EndianBinaryWriter writer, ref int index)
+        {
+            writer.WriteFixedString(Name, 32);
+            writer.Write(index++);
+            writer.Write((int)SubstanceType);
+        }
+
         public void AssignNextSubstance(List<BaseSubstance> substance_list)
         {
             if (m_NextSubstanceIndex != -1)

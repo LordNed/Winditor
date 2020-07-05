@@ -150,6 +150,74 @@ namespace WindEditor.Events
             }
         }
 
+        public void ExportToStream(EndianBinaryWriter writer)
+        {
+            // We're going to rebuild our global lists of data.
+            m_Staffs.Clear();
+            m_Cuts.Clear();
+            m_Substances.Clear();
+
+            int id = 0;
+
+            foreach (Event ev in Events)
+                ev.PrepareEventData(ref id, m_Staffs, m_Cuts);
+
+            foreach (Staff st in m_Staffs)
+                st.PrepareStaffData(m_Cuts);
+
+            foreach (Cut c in m_Cuts)
+                c.PrepareCutData(m_Cuts, m_Substances);
+
+            Write(writer);
+        }
+
+        private void Write(EndianBinaryWriter writer)
+        {
+            // Write header
+            writer.Write(new byte[64]);
+
+            // Event data
+            int index = 0;
+            // Write event data offset + count
+            writer.BaseStream.Seek(0, SeekOrigin.Begin);
+            writer.Write(64);
+            writer.Write(Events.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (Event ev in Events)
+                ev.Write(writer, ref index);
+
+            // Staff data
+            index = 0;
+            // Write staff data offset + count
+            writer.BaseStream.Seek(8, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.Write(m_Staffs.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (Staff st in m_Staffs)
+                st.Write(writer, ref index);
+
+            // Cut data
+            index = 0;
+            // Write cut data offset + count
+            writer.BaseStream.Seek(16, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.Write(m_Cuts.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            // Substance data
+            index = 0;
+            // Write cut data offset + count
+            writer.BaseStream.Seek(24, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.Write(m_Substances.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (BaseSubstance sub in m_Substances)
+                sub.Write(writer, ref index);
+        }
+
         public override string Name
         { 
             get { return "event_list.dat"; }

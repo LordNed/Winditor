@@ -208,7 +208,7 @@ namespace GameFormatReader.Common
             if (length < 0)
                 throw new ArgumentException("Cannot write a negative length string.");
 
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < length; i++)
             {
                 Write((i < str.Length) ? str[i] : '\0');
             }

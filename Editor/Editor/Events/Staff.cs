@@ -156,6 +156,39 @@ namespace WindEditor.Events
             }
         }
 
+        public void AssignIDs(ref int id, List<Cut> cuts)
+        {
+            m_Flag = id++;
+
+            Cut c = FirstCut;
+
+            while (c != null)
+            {
+                c.AssignID(ref id);
+                cuts.Add(c);
+
+                c = c.NextCut;
+            }
+        }
+
+        public void PrepareStaffData(List<Cut> cuts)
+        {
+            m_FirstCutIndex = cuts.IndexOf(FirstCut);
+        }
+
+        public void Write(EndianBinaryWriter writer, ref int index)
+        {
+            writer.WriteFixedString(Name, 32);
+            writer.Write(m_DuplicateID);
+            writer.Write(index++);
+
+            writer.Write(m_Flag);
+            writer.Write((int)m_StaffType);
+            writer.Write(m_FirstCutIndex);
+
+            writer.Write(new byte[28]);
+        }
+
         public override string ToString()
         {
             string cut_name = FirstCut != null ? FirstCut.Name : "null";
