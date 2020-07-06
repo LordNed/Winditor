@@ -16,7 +16,7 @@ namespace WindEditor.Events
 
         private List<Staff> m_Staffs;
         private List<Cut> m_Cuts;
-        private List<BaseSubstance> m_Substances;
+        private List<Substance.Substance> m_Substances;
 
         private SubstanceData m_SubstanceData;
 
@@ -43,7 +43,7 @@ namespace WindEditor.Events
             Events = new BindingList<Event>();
             m_Staffs = new List<Staff>();
             m_Cuts = new List<Cut>();
-            m_Substances = new List<BaseSubstance>();
+            m_Substances = new List<Substance.Substance>();
 
             using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(file_name), Endian.Big))
             {
@@ -83,34 +83,28 @@ namespace WindEditor.Events
                 SubstanceType sub_type = (SubstanceType)reader.ReadInt32();
                 reader.BaseStream.Seek(-40, SeekOrigin.Current);
 
-                BaseSubstance new_substance = null;
-
                 switch (sub_type)
                 {
                     case SubstanceType.Float:
-                        new_substance = new FloatSubstance(reader);
+                        Substance.Substance<float> float_sub = new Substance.Substance<float>(reader);
+                        m_Substances.Add(float_sub);
                         break;
                     case SubstanceType.Int:
-                        new_substance = new IntSubstance(reader);
+                        Substance.Substance<int> int_sub = new Substance.Substance<int>(reader);
+                        m_Substances.Add(int_sub);
                         break;
                     case SubstanceType.String:
-                        new_substance = new StringSubstance(reader);
+                        Substance.Substance<string> string_sub = new Substance.Substance<string>(reader, m_SubstanceData.GetStringData);
+                        m_Substances.Add(string_sub);
                         break;
                     case SubstanceType.Vec3:
-                        new_substance = new Vec3Substance(reader);
+                        Substance.Substance<BindingVector3> vec3_sub = new Substance.Substance<BindingVector3>(reader);
+                        m_Substances.Add(vec3_sub);
                         break;
                 }
-
-                if (new_substance == null)
-                {
-                    throw new Exception("EventList substance was unknown type!");
-                }
-
-                new_substance.ReadValue(m_SubstanceData);
-                m_Substances.Add(new_substance);
             }
 
-            foreach (BaseSubstance s in m_Substances)
+            foreach (Substance.Substance s in m_Substances)
             {
                 s.AssignNextSubstance(m_Substances);
             }

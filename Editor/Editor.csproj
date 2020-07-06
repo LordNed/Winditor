@@ -259,6 +259,7 @@
     <Compile Include="Editor\Events\Substance\FloatSubstance.cs" />
     <Compile Include="Editor\Events\Substance\IntSubstance.cs" />
     <Compile Include="Editor\Events\Substance\StringSubstance.cs" />
+    <Compile Include="Editor\Events\Substance\Substance.cs" />
     <Compile Include="Editor\Events\Substance\SubstanceData.cs" />
     <Compile Include="Editor\Events\Substance\Vec3Substance.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
