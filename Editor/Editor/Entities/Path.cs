@@ -47,6 +47,8 @@ namespace WindEditor
         public void SetNodes(List<WDOMNode> points)
         {
             int first_index = m_FirstEntryOffset / 16;
+            if (first_index >= points.Count)
+                return;
 
             FirstNode = (PathPoint_v1)points[first_index];
             FirstNode.Name = Name + $"_{0}";
@@ -56,6 +58,9 @@ namespace WindEditor
             for (int i = 1; i < m_NumberofPoints; i++)
             {
                 int next_index = first_index + i;
+                if (next_index >= points.Count)
+                    break;
+
                 cur_node.NextNode = (PathPoint_v1)points[next_index];
                 cur_node.NextNode.Name = Name + $"_{i}";
                 cur_node = cur_node.NextNode;
