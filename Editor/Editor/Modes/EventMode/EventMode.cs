@@ -214,7 +214,12 @@ namespace WindEditor.Editor.Modes
 
             foreach (Staff s in SelectedEvent.Actors)
             {
-                m_NodeWindow.ActorTabControl.Items.Add(GenerateActorTabItem(s));
+                if (s.StaffNodeGraph == null)
+                {
+                    s.StaffNodeGraph = GenerateActorTabItem(s);
+                }
+
+                m_NodeWindow.ActorTabControl.Items.Add(s.StaffNodeGraph);
             }
 
             m_NodeWindow.ActorTabControl.SelectedIndex = 0;

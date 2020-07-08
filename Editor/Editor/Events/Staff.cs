@@ -7,6 +7,7 @@ using System.ComponentModel;
 using WindEditor.Properties;
 using GameFormatReader.Common;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace WindEditor.Events
 {
@@ -81,6 +82,8 @@ namespace WindEditor.Events
                 }
             }
         }
+
+        public TabItem StaffNodeGraph { get; set; }
 
         [WProperty("Staff", "Name", true, "Name of the actor.")]
         public string Name
