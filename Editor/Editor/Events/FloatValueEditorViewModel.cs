@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WindEditor.Events
 {
-    public class FloatValueEditorViewModel : ValueEditorViewModel<ObservableCollection<FloatWrapper>>
+    public class FloatValueEditorViewModel : ValueEditorViewModel<ObservableCollection<PrimitiveBinding<float>>>
     {
         static FloatValueEditorViewModel()
         {
@@ -18,7 +18,7 @@ namespace WindEditor.Events
 
         public FloatValueEditorViewModel()
         {
-            Value = new ObservableCollection<FloatWrapper>();
+            Value = new ObservableCollection<PrimitiveBinding<float>>();
         }
     }
 }

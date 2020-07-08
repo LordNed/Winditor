@@ -8,7 +8,7 @@ using ReactiveUI;
 
 namespace WindEditor.Events
 {
-    public class StringValueEditorViewModel : ValueEditorViewModel<string>
+    public class StringValueEditorViewModel : ValueEditorViewModel<PrimitiveBinding<string>>
     {
         static StringValueEditorViewModel()
         {
@@ -17,7 +17,7 @@ namespace WindEditor.Events
 
         public StringValueEditorViewModel()
         {
-            Value = "";
+            Value = new PrimitiveBinding<string>("");
         }
     }
 }

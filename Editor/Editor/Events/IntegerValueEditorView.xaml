@@ -6,19 +6,42 @@
              xmlns:local="clr-namespace:WindEditor.Events"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <ItemsControl x:Name="iStack">
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <StackPanel/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <StackPanel>
-                    <xctk:IntegerUpDown Value="{Binding Path=IntValue}"/>
-                </StackPanel>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+             Width="150" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" LastChildFill="True" VerticalAlignment="Stretch">
+            <Grid>
+                <ItemsControl x:Name="iStack" Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" VerticalAlignment="Stretch" AlternationCount="1000" ItemsSource="{Binding Path=Value}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Click="Button_Click_1" Tag="{Binding Path=(ItemsControl.AlternationIndex), 
+                                    RelativeSource={RelativeSource TemplatedParent}, 
+                                    StringFormat={}{0}}" Margin="0,0,5,5" Grid.Column="0">X</Button>
+                                <xctk:IntegerUpDown Value="{Binding Path=Value}" Grid.Column="1" Margin="0,0,0,5"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </DockPanel>
+        <DockPanel Name="docky" LastChildFill="True" Grid.Row="1">
+            <Button Name="buttona" Click="Button_Click" Grid.Column="0">Add</Button>
+        </DockPanel>
+    </Grid>
 </UserControl>

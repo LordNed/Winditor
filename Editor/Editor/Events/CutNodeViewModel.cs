@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NodeNetwork.ViewModels;
 using ReactiveUI;
 using DynamicData;
+using System.Collections.ObjectModel;
+using NodeNetwork.Toolkit.ValueNode;
 
 namespace WindEditor.Events
 {
@@ -155,7 +157,7 @@ namespace WindEditor.Events
 
             for (int i = 0; i < Cut.Properties.Count; i++)
             {
-                BaseSubstance s = Cut.Properties[i];
+                Substance s = Cut.Properties[i];
 
                 // If we have enough node inputs already, just grab the one corresponding to this property;
                 // Otherwise, add a new input to the input view model.
@@ -179,7 +181,37 @@ namespace WindEditor.Events
 
                 // Create a node for the property and add the property's relevant substance editor.
                 NodeViewModel temp_node = new NodeViewModel() { Name = s.Name, Position = prop_offset };
-                s.AddSubstanceEditor(temp_node);
+                
+                switch (s)
+                {
+                    case Substance<ObservableCollection<PrimitiveBinding<float>>> float_sub:
+                        ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<float>>> float_output = new ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<float>>>();
+                        float_output.Editor = new FloatValueEditorViewModel() { Value = float_sub.Data };
+
+                        temp_node.Outputs.Edit(x => x.Add(float_output));
+                        break;
+                    case Substance<ObservableCollection<PrimitiveBinding<int>>> int_sub:
+                        ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<int>>> int_output = new ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<int>>>();
+                        int_output.Editor = new IntegerValueEditorViewModel() { Value = int_sub.Data };
+
+                        temp_node.Outputs.Edit(x => x.Add(int_output));
+                        break;
+                    case Substance<ObservableCollection<BindingVector3>> vec_sub:
+                        ValueNodeOutputViewModel<ObservableCollection<BindingVector3>> vec_output = new ValueNodeOutputViewModel<ObservableCollection<BindingVector3>>();
+                        vec_output.Editor = new VectorValueEditorViewModel() { Value = vec_sub.Data };
+
+                        temp_node.Outputs.Edit(x => x.Add(vec_output));
+                        break;
+                    case Substance<PrimitiveBinding<string>> string_sub:
+                        ValueNodeOutputViewModel<PrimitiveBinding<string>> string_output = new ValueNodeOutputViewModel<PrimitiveBinding<string>>();
+                        string_output.Editor = new StringValueEditorViewModel() { Value = string_sub.Data };
+
+                        temp_node.Outputs.Edit(x => x.Add(string_output));
+                        break;
+                    default:
+                        temp_node.Outputs.Edit(x => x.Add(new NodeOutputViewModel()));
+                        break;
+                }
 
                 Parent.Nodes.Edit(x => x.Add(temp_node));
 

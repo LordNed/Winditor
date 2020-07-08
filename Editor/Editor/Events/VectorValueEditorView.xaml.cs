@@ -17,34 +17,49 @@ using ReactiveUI;
 namespace WindEditor.Events
 {
     /// <summary>
-    /// Interaction logic for StringValueEditorView.xaml
+    /// Interaction logic for VectorValueEditorView.xaml
     /// </summary>
-    public partial class StringValueEditorView : UserControl, IViewFor<StringValueEditorViewModel>
+    public partial class VectorValueEditorView : UserControl, IViewFor<VectorValueEditorViewModel>
     {
         #region ViewModel
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
-            typeof(StringValueEditorViewModel), typeof(StringValueEditorView), new PropertyMetadata(null));
+            typeof(VectorValueEditorViewModel), typeof(VectorValueEditorView), new PropertyMetadata(null));
 
-        public StringValueEditorViewModel ViewModel
+        public VectorValueEditorViewModel ViewModel
         {
-            get => (StringValueEditorViewModel)GetValue(ViewModelProperty);
+            get => (VectorValueEditorViewModel)GetValue(ViewModelProperty);
             set => SetValue(ViewModelProperty, value);
         }
 
         object IViewFor.ViewModel
         {
             get => ViewModel;
-            set => ViewModel = (StringValueEditorViewModel)value;
+            set => ViewModel = (VectorValueEditorViewModel)value;
         }
         #endregion
 
-        public StringValueEditorView()
+        public VectorValueEditorView()
         {
             InitializeComponent();
 
             this.WhenActivated(d => {
                 DataContext = ViewModel; //this.Bind(ViewModel, vm => vm.Value.ParentActor.ParentEvent.Actors, v => v.ActorNameCombo1.ItemsSource).DisposeWith(d);
             });
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Value.Add(new BindingVector3(new OpenTK.Vector3()));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Value.Count > 1)
+            {
+                Button t = e.Source as Button;
+
+                ViewModel.Value.RemoveAt((int)t.Tag);
+            }
         }
     }
 }

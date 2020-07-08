@@ -14,7 +14,7 @@ namespace WindEditor.Events
     [HideCategories()]
     public class Cut : INotifyPropertyChanged
     {
-        public List<BaseSubstance> Properties { get; private set; }
+        public List<Substance> Properties { get; private set; }
 
         private string m_Name;
 
@@ -101,7 +101,7 @@ namespace WindEditor.Events
 
         public Cut()
         {
-            Properties = new List<BaseSubstance>();
+            Properties = new List<Substance>();
 
             Name = "new_cut";
             NextCut = null;
@@ -109,9 +109,9 @@ namespace WindEditor.Events
             NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
         }
 
-        public Cut(EndianBinaryReader reader, List<BaseSubstance> substances)
+        public Cut(EndianBinaryReader reader, List<Substance> substances)
         {
-            Properties = new List<BaseSubstance>();
+            Properties = new List<Substance>();
             NextCut = null;
 
             Name = new string(reader.ReadChars(32)).Trim('\0');
@@ -134,7 +134,7 @@ namespace WindEditor.Events
 
             if (m_FirstSubstanceIndex != -1)
             {
-                BaseSubstance subs = substances[m_FirstSubstanceIndex];
+                Substance subs = substances[m_FirstSubstanceIndex];
 
                 while (subs != null)
                 {
@@ -166,7 +166,7 @@ namespace WindEditor.Events
             id += Properties.Count;
         }
 
-        public void PrepareCutData(List<Cut> cuts, List<BaseSubstance> substances)
+        public void PrepareCutData(List<Cut> cuts, List<Substance> substances)
         {
             m_NextCutIndex = NextCut != null ? cuts.IndexOf(NextCut) : -1;
 

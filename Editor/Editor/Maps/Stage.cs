@@ -267,6 +267,20 @@ namespace WindEditor
                 }
             }
 
+            VirtualFilesystemFile dat_file = SourceDirectory.GetFileAtPath("dat/event_list.dat");
+            WEventList eventlist = GetChildrenOfType<WEventList>()[0];
+
+            using (MemoryStream ev_strm = new MemoryStream())
+            {
+                using (EndianBinaryWriter writer = new EndianBinaryWriter(ev_strm, Endian.Big))
+                {
+                    eventlist.ExportToStream(writer);
+                    writer.Flush();
+
+                    dat_file.Data = ev_strm.ToArray();
+                }
+            }
+
             return new_dir;
         }
 

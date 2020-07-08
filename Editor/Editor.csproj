@@ -251,17 +251,16 @@
       <DependentUpon>StringValueEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\Events\StringValueEditorViewModel.cs" />
-    <Compile Include="Editor\Events\Substance\BaseSubstance.cs" />
     <Compile Include="Editor\Events\Cut.cs" />
     <Compile Include="Editor\Events\Event.cs" />
     <Compile Include="Editor\Events\EventList.cs" />
     <Compile Include="Editor\Events\Staff.cs" />
-    <Compile Include="Editor\Events\Substance\FloatSubstance.cs" />
-    <Compile Include="Editor\Events\Substance\IntSubstance.cs" />
-    <Compile Include="Editor\Events\Substance\StringSubstance.cs" />
     <Compile Include="Editor\Events\Substance\Substance.cs" />
     <Compile Include="Editor\Events\Substance\SubstanceData.cs" />
-    <Compile Include="Editor\Events\Substance\Vec3Substance.cs" />
+    <Compile Include="Editor\Events\VectorValueEditorView.xaml.cs">
+      <DependentUpon>VectorValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\VectorValueEditorViewModel.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
@@ -830,6 +829,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\Events\StringValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\VectorValueEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -2030,7 +2033,7 @@
       <Name>SuperBMDLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj">
-      <Project>{B715685D-1603-4CE3-8EA1-552B01C2BA4B}</Project>
+      <Project>{b715685d-1603-4ce3-8ea1-552b01c2ba4b}</Project>
       <Name>ArchiveToolsLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\WCommon\WCommon.csproj">

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameFormatReader.Common;
+using System.IO;
 using OpenTK;
 
 namespace WindEditor.Events
@@ -47,72 +49,72 @@ namespace WindEditor.Events
             reader.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
         }
 
-        public IntWrapper[] GetIntData(int starting_index, int count)
+        public ObservableCollection<PrimitiveBinding<int>> GetIntData(int starting_index, int count)
         {
-            IntWrapper[] wrap_data = new IntWrapper[count];
+            ObservableCollection<PrimitiveBinding<int>> data = new ObservableCollection<PrimitiveBinding<int>>();
 
             for (int i = 0; i < count; i++)
             {
-                wrap_data[i] = new IntWrapper(IntegerBank[starting_index + i]);
-            }
-
-            return wrap_data;
-        }
-
-        public int AddIntData(IntWrapper[] int_data)
-        {
-            int new_offset = IntegerBank.Count;
-
-            for (int i = 0; i < int_data.Length; i++)
-            {
-                IntegerBank.Add(int_data[i].IntValue);
-            }
-
-            return new_offset;
-        }
-
-        public FloatWrapper[] GetFloatData(int starting_index, int count)
-        {
-            FloatWrapper[] wrap_data = new FloatWrapper[count];
-
-            for (int i = 0; i < count; i++)
-            {
-                wrap_data[i] = new FloatWrapper(FloatBank[starting_index + i]);
-            }
-
-            return wrap_data;
-        }
-
-        public int AddFloatData(FloatWrapper[] float_data)
-        {
-            int new_offset = FloatBank.Count;
-
-            for (int i = 0; i < float_data.Length; i++)
-            {
-                FloatBank.Add(float_data[i].FloatValue);
-            }
-
-            return new_offset;
-        }
-
-        public Vector3[] GetVec3Data(int starting_index, int count)
-        {
-            Vector3[] data = new Vector3[count];
-
-            for (int i = 0; i < count; i++)
-            {
-                int base_index = starting_index + (i * 3);
-                data[i] = new Vector3(FloatBank[base_index], FloatBank[base_index + 1], FloatBank[base_index + 2]);
+                data.Add(new PrimitiveBinding<int>(IntegerBank[starting_index + i]));
             }
 
             return data;
         }
 
-        public int AddVec3Data(Vector3[] vec3_data)
+        public int AddIntData(ObservableCollection<PrimitiveBinding<int>> int_data)
+        {
+            int new_offset = IntegerBank.Count;
+
+            for (int i = 0; i < int_data.Count; i++)
+            {
+                IntegerBank.Add(int_data[i].Value);
+            }
+
+            return new_offset;
+        }
+
+        public ObservableCollection<PrimitiveBinding<float>> GetFloatData(int starting_index, int count)
+        {
+            ObservableCollection<PrimitiveBinding<float>> data = new ObservableCollection<PrimitiveBinding<float>>();
+
+            for (int i = 0; i < count; i++)
+            {
+                data.Add(new PrimitiveBinding<float>(FloatBank[starting_index + i]));
+            }
+
+            return data;
+        }
+
+        public int AddFloatData(ObservableCollection<PrimitiveBinding<float>> float_data)
         {
             int new_offset = FloatBank.Count;
 
-            foreach (Vector3 v in vec3_data)
+            for (int i = 0; i < float_data.Count; i++)
+            {
+                FloatBank.Add(float_data[i].Value);
+            }
+
+            return new_offset;
+        }
+
+        public ObservableCollection<BindingVector3> GetVec3Data(int starting_index, int count)
+        {
+            ObservableCollection<BindingVector3> data = new ObservableCollection<BindingVector3>();
+
+            for (int i = 0; i < count; i++)
+            {
+                int base_index = starting_index + (i * 3);
+                data.Add(new BindingVector3(new Vector3(FloatBank[base_index], FloatBank[base_index + 1], FloatBank[base_index + 2])));
+            }
+
+            return data;
+        }
+
+        public int AddVec3Data(ObservableCollection<BindingVector3> vec3_data)
+        {
+            int new_offset = FloatBank.Count;
+
+            foreach (BindingVector3 v in vec3_data)
             {
                 FloatBank.Add(v.X);
                 FloatBank.Add(v.Y);
@@ -122,21 +124,88 @@ namespace WindEditor.Events
             return new_offset;
         }
 
-        public string GetStringData(int starting_index, int count)
+        public PrimitiveBinding<string> GetStringData(int starting_index, int count)
         {
             char[] data = new char[count];
             CharBank.CopyTo(starting_index, data, 0, count);
 
-            return new string(data);
+            return new PrimitiveBinding<string>(new string(data).Trim('\0'));
         }
 
-        public int AddStringData(string string_data)
+        public int AddStringData(PrimitiveBinding<string> string_data)
         {
+            string dat = string_data.Value;
             int new_offset = CharBank.Count;
 
-            CharBank.AddRange(Encoding.ASCII.GetChars(Encoding.ASCII.GetBytes(string_data)));
+            // Formula: (x + (n-1)) & ~(n-1)
+            int nextAligned = (dat.Length + 0x7) & ~0x7;
+            int delta = nextAligned - dat.Length;
+
+            CharBank.AddRange(Encoding.ASCII.GetChars(Encoding.ASCII.GetBytes(dat)));
+
+            for (int i = 0; i < delta; i++)
+                CharBank.Add('\0');
 
             return new_offset;
+        }
+
+        public void CompileData(List<Substance> substances)
+        {
+            IntegerBank.Clear();
+            FloatBank.Clear();
+            CharBank.Clear();
+
+            foreach (Substance sub in substances)
+            {
+                switch (sub)
+                {
+                    case Substance<ObservableCollection<PrimitiveBinding<float>>> float_sub:
+                        float_sub.UpdateSubstanceDataForExport(float_sub.Data.Count, AddFloatData);
+                        break;
+                    case Substance<ObservableCollection<PrimitiveBinding<int>>> int_sub:
+                        int_sub.UpdateSubstanceDataForExport(int_sub.Data.Count, AddIntData);
+                        break;
+                    case Substance<ObservableCollection<BindingVector3>> vec_sub:
+                        vec_sub.UpdateSubstanceDataForExport(vec_sub.Data.Count, AddVec3Data);
+                        break;
+                    case Substance<PrimitiveBinding<string>> string_sub:
+                        if (!string_sub.Data.Value.EndsWith("\0"))
+                            string_sub.Data.Value += '\0';
+
+                        string_sub.UpdateSubstanceDataForExport(string_sub.Data.Value.Length, AddStringData);
+                        break;
+                }
+            }
+        }
+
+        public void Write(EndianBinaryWriter writer)
+        {
+            // Write float bank data offset + count
+            writer.BaseStream.Seek(32, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.Write(FloatBank.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (float f in FloatBank)
+                writer.Write(f);
+
+            // Write int bank data offset + count
+            writer.BaseStream.Seek(40, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.Write(IntegerBank.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (int i in IntegerBank)
+                writer.Write(i);
+
+            // Write char bank data offset + count
+            writer.BaseStream.Seek(48, SeekOrigin.Begin);
+            writer.Write((int)writer.BaseStream.Length);
+            writer.Write(CharBank.Count);
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+
+            foreach (char ch in CharBank)
+                writer.Write(ch);
         }
     }
 }

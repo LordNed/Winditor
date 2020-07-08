@@ -16,7 +16,7 @@ namespace WindEditor.Events
 
         private List<Staff> m_Staffs;
         private List<Cut> m_Cuts;
-        private List<Substance.Substance> m_Substances;
+        private List<Substance> m_Substances;
 
         private SubstanceData m_SubstanceData;
 
@@ -43,7 +43,7 @@ namespace WindEditor.Events
             Events = new BindingList<Event>();
             m_Staffs = new List<Staff>();
             m_Cuts = new List<Cut>();
-            m_Substances = new List<Substance.Substance>();
+            m_Substances = new List<Substance>();
 
             using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(file_name), Endian.Big))
             {
@@ -86,25 +86,25 @@ namespace WindEditor.Events
                 switch (sub_type)
                 {
                     case SubstanceType.Float:
-                        Substance.Substance<float> float_sub = new Substance.Substance<float>(reader);
+                        Substance<ObservableCollection<PrimitiveBinding<float>>> float_sub = new Substance<ObservableCollection<PrimitiveBinding<float>>>(reader, m_SubstanceData.GetFloatData);
                         m_Substances.Add(float_sub);
                         break;
                     case SubstanceType.Int:
-                        Substance.Substance<int> int_sub = new Substance.Substance<int>(reader);
+                        Substance<ObservableCollection<PrimitiveBinding<int>>> int_sub = new Substance<ObservableCollection<PrimitiveBinding<int>>>(reader, m_SubstanceData.GetIntData);
                         m_Substances.Add(int_sub);
                         break;
                     case SubstanceType.String:
-                        Substance.Substance<string> string_sub = new Substance.Substance<string>(reader, m_SubstanceData.GetStringData);
+                        Substance<PrimitiveBinding<string>> string_sub = new Substance<PrimitiveBinding<string>>(reader, m_SubstanceData.GetStringData);
                         m_Substances.Add(string_sub);
                         break;
                     case SubstanceType.Vec3:
-                        Substance.Substance<BindingVector3> vec3_sub = new Substance.Substance<BindingVector3>(reader);
+                        Substance<ObservableCollection<BindingVector3>> vec3_sub = new Substance<ObservableCollection<BindingVector3>>(reader, m_SubstanceData.GetVec3Data);
                         m_Substances.Add(vec3_sub);
                         break;
                 }
             }
 
-            foreach (Substance.Substance s in m_Substances)
+            foreach (Substance s in m_Substances)
             {
                 s.AssignNextSubstance(m_Substances);
             }
@@ -162,6 +162,8 @@ namespace WindEditor.Events
             foreach (Cut c in m_Cuts)
                 c.PrepareCutData(m_Cuts, m_Substances);
 
+            m_SubstanceData.CompileData(m_Substances);
+
             Write(writer);
         }
 
@@ -200,6 +202,9 @@ namespace WindEditor.Events
             writer.Write(m_Cuts.Count);
             writer.BaseStream.Seek(0, SeekOrigin.End);
 
+            foreach (Cut cut in m_Cuts)
+                cut.Write(writer, ref index);
+
             // Substance data
             index = 0;
             // Write cut data offset + count
@@ -208,8 +213,10 @@ namespace WindEditor.Events
             writer.Write(m_Substances.Count);
             writer.BaseStream.Seek(0, SeekOrigin.End);
 
-            foreach (BaseSubstance sub in m_Substances)
+            foreach (Substance sub in m_Substances)
                 sub.Write(writer, ref index);
+
+            m_SubstanceData.Write(writer);
         }
 
         public override string Name

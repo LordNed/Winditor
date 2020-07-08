@@ -44,25 +44,24 @@ namespace WindEditor.Events
         {
             InitializeComponent();
 
-            this.WhenActivated(d => d(
-                this.Bind(ViewModel, vm => vm.Value, v => v.iStack.ItemsSource,
-                vmToViewConverterOverride: new ObservableFloatCollectionToIEnumerableConverter(),
-                viewToVMConverterOverride: new ObservableFloatCollectionToIEnumerableConverter())
-            ));
+            this.WhenActivated(d => {
+                DataContext = ViewModel; //this.Bind(ViewModel, vm => vm.Value.ParentActor.ParentEvent.Actors, v => v.ActorNameCombo1.ItemsSource).DisposeWith(d);
+            });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Value.Add(new FloatWrapper(0.0f));
-            ViewModel.Value = new ObservableCollection<FloatWrapper>(ViewModel.Value.ToArray());
+            ViewModel.Value.Add(new PrimitiveBinding<float>(0.0f));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Button t = e.Source as Button;
+            if (ViewModel.Value.Count > 1)
+            {
+                Button t = e.Source as Button;
 
-            ViewModel.Value.RemoveAt((int)t.Tag);
-            ViewModel.Value = new ObservableCollection<FloatWrapper>(ViewModel.Value.ToArray());
+                ViewModel.Value.RemoveAt((int)t.Tag);
+            }
         }
     }
 
@@ -81,10 +80,10 @@ namespace WindEditor.Events
             }
             else if (toType == typeof(IEnumerable))
             {
-                ObservableCollection<FloatWrapper> list = from as ObservableCollection<FloatWrapper>;
+                ObservableCollection<PrimitiveBinding<float>> list = from as ObservableCollection<PrimitiveBinding<float>>;
                 if (list == null)
                 {
-                    result = new List<FloatWrapper>() { new FloatWrapper(0.0f) };
+                    result = new List<float>() { 0.0f };
                 }
                 else
                 {

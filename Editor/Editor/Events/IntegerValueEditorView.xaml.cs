@@ -44,11 +44,24 @@ namespace WindEditor.Events
         {
             InitializeComponent();
 
-            this.WhenActivated(d => d(
-                this.Bind(ViewModel, vm => vm.Value, v => v.iStack.ItemsSource, 
-                vmToViewConverterOverride: new ObservableIntCollectionToIEnumerableConverter(),
-                viewToVMConverterOverride: new ObservableIntCollectionToIEnumerableConverter())
-            ));
+            this.WhenActivated(d => {
+                DataContext = ViewModel; //this.Bind(ViewModel, vm => vm.Value.ParentActor.ParentEvent.Actors, v => v.ActorNameCombo1.ItemsSource).DisposeWith(d);
+            });
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Value.Add(new PrimitiveBinding<int>(0));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Value.Count > 1)
+            {
+                Button t = e.Source as Button;
+
+                ViewModel.Value.RemoveAt((int)t.Tag);
+            }
         }
     }
 
@@ -67,10 +80,10 @@ namespace WindEditor.Events
             }
             else if (toType == typeof(IEnumerable))
             {
-                ObservableCollection<IntWrapper> list = from as ObservableCollection<IntWrapper>;
+                ObservableCollection<PrimitiveBinding<int>> list = from as ObservableCollection<PrimitiveBinding<int>>;
                 if (list == null)
                 {
-                    result = new List<IntWrapper>() { new IntWrapper(0) };
+                    result = new List<int>() { 0 };
                 }
                 else
                 {

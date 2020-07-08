@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameFormatReader.Common;
 
-namespace WindEditor.Events.Substance
+namespace WindEditor.Events
 {
     public enum SubstanceType
     {
@@ -17,10 +17,44 @@ namespace WindEditor.Events.Substance
         String
     }
 
+    public class PrimitiveBinding<T> : INotifyPropertyChanged
+    {
+        private T m_Value;
+
+        public T Value
+        {
+            get { return m_Value; }
+            set
+            {
+                if (m_Value == null || !m_Value.Equals(value))
+                {
+                    m_Value = value;
+                    OnPropertyChanged("Value");
+                }
+            }
+        }
+
+        public PrimitiveBinding(T value)
+        {
+            Value = value;
+        }
+
+        #region INotifyPropertyChanged Support
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+    }
+
     public abstract class Substance : INotifyPropertyChanged
     {
         protected string m_Name;
-        protected SubstanceType m_Type;
 
         protected int m_ElementIndex;
         protected int m_ElementCount;
@@ -54,13 +88,15 @@ namespace WindEditor.Events.Substance
             }
         }
 
+        public SubstanceType Type { get; private set; }
+
         public Substance(EndianBinaryReader reader)
         {
             Name = new string(reader.ReadChars(32)).Trim('\0');
 
             reader.SkipInt32();
 
-            m_Type = (SubstanceType)reader.ReadInt32();
+            Type = (SubstanceType)reader.ReadInt32();
 
             m_ElementIndex = reader.ReadInt32();
             m_ElementCount = reader.ReadInt32();
@@ -99,7 +135,7 @@ namespace WindEditor.Events.Substance
             get { return m_Data; }
             set
             {
-                if (!m_Data.Equals(value))
+                if (m_Data == null || !m_Data.Equals(value))
                 {
                     m_Data = value;
                     OnPropertyChanged("Data");
@@ -112,11 +148,17 @@ namespace WindEditor.Events.Substance
             Data = loader.Invoke(m_ElementIndex, m_ElementCount);
         }
 
+        public void UpdateSubstanceDataForExport(int count, Func<T, int> prep_func)
+        {
+            m_ElementCount = count;
+            m_ElementIndex = prep_func.Invoke(Data);
+        }
+
         public override void Write(EndianBinaryWriter writer, ref int index)
         {
             writer.WriteFixedString(Name, 32);
             writer.Write(index++);
-            writer.Write((int)m_Type);
+            writer.Write((int)Type);
 
             writer.Write(m_ElementIndex);
             writer.Write(m_ElementCount);

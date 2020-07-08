@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.ComponentModel;
 using WindEditor.View;
 using WindEditor.ViewModel;
 using WindEditor.Events;

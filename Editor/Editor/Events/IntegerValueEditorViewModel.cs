@@ -11,7 +11,7 @@ using DynamicData.Binding;
 
 namespace WindEditor.Events
 {
-    public class IntegerValueEditorViewModel : ValueEditorViewModel<ObservableCollection<IntWrapper>>
+    public class IntegerValueEditorViewModel : ValueEditorViewModel<ObservableCollection<PrimitiveBinding<int>>>
     {
         static IntegerValueEditorViewModel()
         {
@@ -20,7 +20,7 @@ namespace WindEditor.Events
 
         public IntegerValueEditorViewModel()
         {
-            Value = new ObservableCollection<IntWrapper>();
+            Value = new ObservableCollection<PrimitiveBinding<int>>();
         }
     }
 }

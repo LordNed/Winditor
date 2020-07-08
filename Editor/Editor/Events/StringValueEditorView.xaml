@@ -6,6 +6,6 @@
              xmlns:local="clr-namespace:WindEditor.Events"
              mc:Ignorable="d" Width="150" Height="20" HorizontalAlignment="Left">
     <Grid>
-        <TextBox x:Name="StringSubBox" Height="100" />
+        <TextBox x:Name="StringSubBox" Text="{Binding Path=Value.Value}" Height="100" />
     </Grid>
 </UserControl>
