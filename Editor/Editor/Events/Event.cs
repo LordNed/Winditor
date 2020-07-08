@@ -25,11 +25,10 @@ namespace WindEditor.Events
         private int m_StartFlag1;
         private int m_StartFlag2;
 
-        private int m_EndFlag1;
-        private int m_EndFlag2;
-        private int m_EndFlag3;
+        private int[] m_EndFlags;
 
         private ObservableCollection<Staff> m_Actors;
+        private Cut[] m_EndCuts;
 
         public ObservableCollection<Staff> Actors
         { 
@@ -40,6 +39,19 @@ namespace WindEditor.Events
                 {
                     m_Actors = value;
                     OnPropertyChanged("Actors");
+                }
+            }
+        }
+
+        public Cut[] EndCuts
+        {
+            get { return m_EndCuts; }
+            set
+            {
+                if (m_EndCuts != value)
+                {
+                    m_EndCuts = value;
+                    OnPropertyChanged("EndCuts");
                 }
             }
         }
@@ -104,6 +116,8 @@ namespace WindEditor.Events
         {
             Actors = new ObservableCollection<Staff>();
             m_ActorIndices = new int[20];
+            m_EndFlags = new int[3];
+            EndCuts = new Cut[3];
 
             Name = "new_event";
             Priority = 0;
@@ -111,7 +125,7 @@ namespace WindEditor.Events
             PlayJingle = false;
         }
 
-        public Event(EndianBinaryReader reader, List<Staff> staffs)
+        public Event(EndianBinaryReader reader, List<Staff> staffs, List<Cut> cuts)
         {
             Actors = new ObservableCollection<Staff>();
             m_ActorIndices = new int[20];
@@ -133,9 +147,11 @@ namespace WindEditor.Events
             m_StartFlag1 = reader.ReadInt32();
             m_StartFlag2 = reader.ReadInt32();
 
-            m_EndFlag1 = reader.ReadInt32();
-            m_EndFlag2 = reader.ReadInt32();
-            m_EndFlag3 = reader.ReadInt32();
+            m_EndFlags = new int[3];
+
+            m_EndFlags[0] = reader.ReadInt32();
+            m_EndFlags[1] = reader.ReadInt32();
+            m_EndFlags[2] = reader.ReadInt32();
 
             PlayJingle = Convert.ToBoolean(reader.ReadByte());
 
@@ -150,6 +166,16 @@ namespace WindEditor.Events
 
                 staffs[m_ActorIndices[i]].ParentEvent = this;
                 Actors.Add(staffs[m_ActorIndices[i]]);
+            }
+
+            EndCuts = new Cut[3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (m_EndFlags[i] != -1)
+                {
+                    EndCuts[i] = cuts.Find(x => x.Flag == m_EndFlags[i]);
+                }
             }
         }
 
@@ -181,6 +207,18 @@ namespace WindEditor.Events
                 c.AssignBlockingIDs(event_cuts);
             }
 
+            for (int i = 0; i < 3; i++)
+            {
+                if (EndCuts[i] != null && event_cuts.Contains(EndCuts[i]))
+                {
+                    m_EndFlags[i] = EndCuts[i].Flag;
+                }
+                else
+                {
+                    m_EndFlags[i] = -1;
+                }
+            }
+
             global_cuts.AddRange(event_cuts);
         }
 
@@ -201,9 +239,9 @@ namespace WindEditor.Events
             writer.Write(m_StartFlag1);
             writer.Write(m_StartFlag2);
 
-            writer.Write(m_EndFlag1);
-            writer.Write(m_EndFlag2);
-            writer.Write(m_EndFlag3);
+            writer.Write(m_EndFlags[0]);
+            writer.Write(m_EndFlags[1]);
+            writer.Write(m_EndFlags[2]);
 
             writer.Write(Convert.ToByte(m_PlayJingle));
 

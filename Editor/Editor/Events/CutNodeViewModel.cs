@@ -101,12 +101,8 @@ namespace WindEditor.Events
         private void CreateBeginNode(NetworkViewModel model)
         {
             // Create the begin node for the actor and add it to the network.
-            NodeViewModel begin_node = new NodeViewModel() { Name = Cut.ParentActor.Name };
+            BeginNodeViewModel begin_node = new BeginNodeViewModel(Cut.ParentActor);
             model.Nodes.Edit(x => x.Add(begin_node));
-
-            // Add an output to the begin node labelled "Begin".
-            NodeOutputViewModel begin_output = new NodeOutputViewModel() { Name = "Begin", Port = new ExecPortViewModel { PortType = PortType.Execution } };
-            begin_node.Outputs.Edit(x => x.Add(begin_output));
 
             if (Cut.IsBlocked())
             {
@@ -117,7 +113,7 @@ namespace WindEditor.Events
                 ConnectionViewModel connection = new ConnectionViewModel(
                     model,
                     Inputs.Items.First(),
-                    begin_output);
+                    begin_node.Outputs.Items.First());
 
                 // Add the connection to the node network.
                 model.Connections.Edit(x => x.Add(connection));

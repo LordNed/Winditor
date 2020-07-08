@@ -133,6 +133,10 @@ namespace WindEditor.Events
                     {
                         prev_c.Cut.NextCut = Cut;
                     }
+                    else if (a.Output.Parent is BeginNodeViewModel begin)
+                    {
+                        begin.Actor.FirstCut = Cut;
+                    }
                 }
             }
         }
@@ -155,6 +159,10 @@ namespace WindEditor.Events
                     if (a.Output.Parent is CutNodeViewModel prev_c)
                     {
                         prev_c.Cut.NextCut = null;
+                    }
+                    else if (a.Output.Parent is BeginNodeViewModel begin)
+                    {
+                        begin.Actor.FirstCut = null;
                     }
                 }
             }

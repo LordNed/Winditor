@@ -111,6 +111,18 @@ namespace WindEditor.Events
                 NextSubstance = substances[m_NextSubstanceIndex];
         }
 
+        public void PrepareSubstance(List<Substance> substances)
+        {
+            if (NextSubstance != null && substances.Contains(NextSubstance))
+            {
+                m_NextSubstanceIndex = substances.IndexOf(NextSubstance);
+            }
+            else
+            {
+                m_NextSubstanceIndex = -1;
+            }
+        }
+
         public abstract void Write(EndianBinaryWriter writer, ref int index);
 
         #region INotifyPropertyChanged Support

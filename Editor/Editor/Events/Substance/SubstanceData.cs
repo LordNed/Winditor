@@ -157,6 +157,8 @@ namespace WindEditor.Events
 
             foreach (Substance sub in substances)
             {
+                sub.PrepareSubstance(substances);
+
                 switch (sub)
                 {
                     case Substance<ObservableCollection<PrimitiveBinding<float>>> float_sub:

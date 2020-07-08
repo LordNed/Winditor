@@ -21,7 +21,6 @@ namespace WindEditor.Events
         private int m_DuplicateID;
 
         private int[] m_CheckFlags = new int[3];
-        private int m_Flag;
 
         private int m_FirstSubstanceIndex;
         private int m_NextCutIndex;
@@ -99,6 +98,8 @@ namespace WindEditor.Events
             }
         }
 
+        public int Flag { get; private set; }
+
         public Cut()
         {
             Properties = new List<Substance>();
@@ -123,7 +124,7 @@ namespace WindEditor.Events
             m_CheckFlags[1] = reader.ReadInt32();
             m_CheckFlags[2] = reader.ReadInt32();
 
-            m_Flag = reader.ReadInt32();
+            Flag = reader.ReadInt32();
 
             m_FirstSubstanceIndex = reader.ReadInt32();
             m_NextCutIndex = reader.ReadInt32();
@@ -155,21 +156,20 @@ namespace WindEditor.Events
             {
                 if (m_CheckFlags[i] != -1)
                 {
-                    BlockingCuts[i] = cut_list.Find(x => x.m_Flag == m_CheckFlags[i]);
+                    BlockingCuts[i] = cut_list.Find(x => x.Flag == m_CheckFlags[i]);
                 }
             }
         }
 
         public void AssignID(ref int id)
         {
-            m_Flag = id++;
+            Flag = id++;
             id += Properties.Count;
         }
 
         public void PrepareCutData(List<Cut> cuts, List<Substance> substances)
         {
             m_NextCutIndex = NextCut != null ? cuts.IndexOf(NextCut) : -1;
-
             m_FirstSubstanceIndex = Properties.Count > 0 ? substances.Count : -1;
 
             substances.AddRange(Properties);
@@ -177,9 +177,18 @@ namespace WindEditor.Events
 
         public void AssignBlockingIDs(List<Cut> cuts)
         {
-            m_CheckFlags[0] = BlockingCuts[0] != null ? cuts[cuts.IndexOf(BlockingCuts[0])].m_Flag : -1;
-            m_CheckFlags[1] = BlockingCuts[1] != null ? cuts[cuts.IndexOf(BlockingCuts[1])].m_Flag : -1;
-            m_CheckFlags[2] = BlockingCuts[2] != null ? cuts[cuts.IndexOf(BlockingCuts[2])].m_Flag : -1;
+            for (int i = 0; i < 3; i++)
+            {
+                if (BlockingCuts[i] != null)
+                {
+                    int index = cuts.IndexOf(BlockingCuts[i]);
+                    m_CheckFlags[i] = index != -1 ? cuts[index].Flag : -1;
+                }
+                else
+                {
+                    m_CheckFlags[i] = -1;
+                }
+            }
         }
 
         public bool IsBlocked()
@@ -197,7 +206,7 @@ namespace WindEditor.Events
             writer.Write(m_CheckFlags[1]);
             writer.Write(m_CheckFlags[2]);
 
-            writer.Write(m_Flag);
+            writer.Write(Flag);
 
             writer.Write(m_FirstSubstanceIndex);
             writer.Write(m_NextCutIndex);

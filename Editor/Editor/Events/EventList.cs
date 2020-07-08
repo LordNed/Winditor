@@ -140,7 +140,7 @@ namespace WindEditor.Events
             reader.BaseStream.Seek(event_offset, SeekOrigin.Begin);
             for (int i = 0; i < event_count; i++)
             {
-                Events.Add(new Event(reader, m_Staffs));
+                Events.Add(new Event(reader, m_Staffs, m_Cuts));
             }
         }
 
