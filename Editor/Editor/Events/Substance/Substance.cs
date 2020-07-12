@@ -90,6 +90,12 @@ namespace WindEditor.Events
 
         public SubstanceType Type { get; private set; }
 
+        public Substance(string name, SubstanceType type)
+        {
+            Name = name;
+            Type = type;
+        }
+
         public Substance(EndianBinaryReader reader)
         {
             Name = new string(reader.ReadChars(32)).Trim('\0');
@@ -153,6 +159,11 @@ namespace WindEditor.Events
                     OnPropertyChanged("Data");
                 }
             }
+        }
+
+        public Substance(string name, SubstanceType type) : base(name, type)
+        {
+
         }
 
         public Substance(EndianBinaryReader reader, Func<int, int, T> loader) : base(reader)
