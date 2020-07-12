@@ -100,14 +100,12 @@ namespace WindEditor.Events
 
         public int Flag { get; private set; }
 
-        public Cut()
+        public Cut(string name)
         {
             Properties = new List<Substance>();
 
-            Name = "new_cut";
+            Name = name;
             NextCut = null;
-
-            NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
         }
 
         public Cut(EndianBinaryReader reader, List<Substance> substances)

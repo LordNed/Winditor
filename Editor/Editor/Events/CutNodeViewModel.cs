@@ -36,6 +36,7 @@ namespace WindEditor.Events
         public CutNodeViewModel(Cut cut)
         {
             Cut = cut;
+            cut.NodeViewModel = this;
 
             // Create exec input node
             NodeInputViewModel exec_input = new NodeInputViewModel() { Port = new ExecPortViewModel() { PortType = PortType.Execution }, MaxConnections = 1 };
@@ -58,6 +59,8 @@ namespace WindEditor.Events
 
         public void CreateNodesRecursive(NetworkViewModel model, Cut previous_cut)
         {
+            Name = EventDefinitionManager.GetCutDisplayName(Cut.ParentActor.Name, Cut.Name);
+
             // Add ourselves to the node network
             model.Nodes.Edit(x => x.Add(this));
 

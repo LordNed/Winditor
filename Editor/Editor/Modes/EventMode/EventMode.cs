@@ -126,6 +126,7 @@ namespace WindEditor.Editor.Modes
 
         private void M_NodeWindow_Closing(object sender, CancelEventArgs e)
         {
+            m_NodeWindow.Hide();
             e.Cancel = true;
         }
 
@@ -263,8 +264,11 @@ namespace WindEditor.Editor.Modes
             WStage stage = (WStage)World.Map.SceneList.First(x => x.GetType() == typeof(WStage));
             EventList = stage.GetChildrenOfType<WEventList>()[0];
 
-            m_EventCombo.ItemsSource = EventList.Events;
-            m_EventCombo.SelectedIndex = 0;
+            if (m_EventCombo.ItemsSource != EventList.Events)
+            {
+                m_EventCombo.ItemsSource = EventList.Events;
+                m_EventCombo.SelectedIndex = 0;
+            }
 
             m_NodeWindow.Show();
         }
@@ -297,6 +301,8 @@ namespace WindEditor.Editor.Modes
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
                 ViewModel = model
             };
+
+            v.ContextMenu = new ActorTabContextMenu(staff);
 
             // Finally, create the new tab.
             TabItem new_tab = new TabItem() { Header = staff.Name, Content = v };

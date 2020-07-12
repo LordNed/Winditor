@@ -125,7 +125,14 @@ namespace WindEditor.Events
 
         public BlockingCutEditorViewModel(Cut cut)
         {
+            ValueChanged.Subscribe(d => {
+                OnPropertyChanged("Value");
+            });
+
             Value = cut;
+
+            if (cut == null)
+                return;
 
             if (cut.BlockingCuts[0] != null)
             {

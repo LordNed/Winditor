@@ -262,6 +262,7 @@
       <DependentUpon>VectorValueEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\Events\VectorValueEditorViewModel.cs" />
+    <Compile Include="Editor\Managers\EventDataManager.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
@@ -716,6 +717,7 @@
     <Compile Include="Editor\Modes\ActorMode\ActorMode.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode_Gizmo.cs" />
     <Compile Include="Editor\Modes\CollisionMode\CollisionMode.cs" />
+    <Compile Include="Editor\Modes\EventMode\ActorTabContextMenu.cs" />
     <Compile Include="Editor\Modes\EventMode\EventMode.cs" />
     <Compile Include="Editor\Modes\IEditorMode.cs" />
     <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
@@ -1012,8 +1014,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\editor_icon.ico" />
+    <Content Include="resources\EventDefinitionDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\icons\baton.png" />
     <None Include="resources\icons\baton.ico" />
+    <Resource Include="resources\icons\3dcube.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\icons\lightning.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\icons\triangle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="resources\models\foliage\flower.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
