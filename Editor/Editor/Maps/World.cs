@@ -78,9 +78,9 @@ namespace WindEditor
 
                 if (Map != null)
                 {
-                    if (Map.FocusedScene != null)
+                    foreach (WScene scene in Map.SceneList)
                     {
-                        foreach (WDOMNode node in Map.FocusedScene.Children)
+                        foreach (WDOMNode node in scene.Children)
                         {
                             if (node.GetType() == typeof(WSkyboxNode))
                             {
