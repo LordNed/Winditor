@@ -1338,7 +1338,7 @@
     "ActorClassType": "canon",
     "Wait Animations": null,
     "Actor Name": "Canon",
-    "English Name": "canon",
+    "English Name": "Spectacle Island Cannon",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11233,7 +11233,7 @@
     "ActorClassType": "obj_wood",
     "Wait Animations": null,
     "Actor Name": "woodb",
-    "English Name": "obj_wood",
+    "English Name": "Bush",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11265,7 +11265,7 @@
     "ActorClassType": "obj_wood",
     "Wait Animations": null,
     "Actor Name": "woodbx",
-    "English Name": "obj_wood",
+    "English Name": "Bush",
     "Tags": null,
     "Explanation": null,
     "Locations": [
