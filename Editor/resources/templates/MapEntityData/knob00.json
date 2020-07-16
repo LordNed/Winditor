@@ -5,7 +5,7 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": "0xF0000000",
+      "Mask": 0xF0000000,
       "Hidden": false,
       "Category": "knob00",
       "ToolTip": "",
@@ -14,7 +14,7 @@
     {
       "Name": "Style",
       "ValueSource": "Parameters",
-      "Mask": "0x0FF00000",
+      "Mask": 0x0FF00000,
       "Hidden": false,
       "Category": "Door",
       "ToolTip": "",
@@ -33,7 +33,7 @@
     {
       "Name": "Message ID",
       "ValueSource": "AuxillaryParameters2",
-      "Mask": "0xFFFF",
+      "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Door",
       "ToolTip": "",

@@ -6232,6 +6232,54 @@ namespace WindEditor
 				OnPropertyChanged("Unknown_1");
 			}
 		}
+		public enum StyleEnum
+		{
+			Outset = 0,
+			Pirate_Ship = 1,
+			Windfall = 2,
+			Dragon_Roost = 3,
+			Private_Oasis = 4,
+			Forsaken_Fortress = 5,
+			Nintendo_Gallery = 6,
+			Fancy = 7,
+		}
+
+
+		[WProperty("Door", "Style", true, "", SourceScene.Room)]
+		public StyleEnum Style
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				if (!Enum.IsDefined(typeof(StyleEnum), value_as_int))
+					value_as_int = 0;
+				return (StyleEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("Style");
+			}
+		}
+
+		[WProperty("Door", "Message ID", true, "", SourceScene.Room)]
+		public int MessageID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("MessageID");
+			}
+		}
 
 		// Constructor
 		public knob00(FourCC fourCC, WWorld world) : base(fourCC, world)
@@ -6243,6 +6291,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
+			MessageID = -1;
 		}
 	}
 
