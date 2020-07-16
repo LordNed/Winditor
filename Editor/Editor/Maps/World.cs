@@ -47,9 +47,6 @@ namespace WindEditor
             m_persistentLines = new WLineBatcher();
             m_persistentQuads = new WQuadBatcher();
 
-            m_persistentQuads.DrawQuad("test", new OpenTK.Vector3(), new OpenTK.Vector3(1000, 1000, 1000), WLinearColor.Green, -1.0f);
-            m_persistentQuads.DrawBillboard("test", new OpenTK.Vector3(0.0f, 10.0f, 0.0f), new OpenTK.Vector3(1000, 1000, 1000), WLinearColor.Red, -1.0f);
-
             m_undoStack = new WUndoStack();
             //m_actorEditor = new WActorEditor(this);
 

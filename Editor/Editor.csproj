@@ -1684,7 +1684,7 @@
     <Content Include="resources\shaders\UnlitColor.vert">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\shaders\UnlitTexture.frag">
+    <Content Include="resources\shaders\UnlitTextureQuad.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\shaders\UnlitTexture.vert">
@@ -1885,7 +1885,7 @@
     <Content Include="resources\shaders\UnlitTexture.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\shaders\UnlitTexture.vert">
+    <Content Include="resources\shaders\UnlitTextureQuad.vert">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\shaders\UnselectedCollision.frag">
@@ -2003,6 +2003,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\templates\Waypoint Point %28v2%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\textures\eye.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\textures\target.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\textures\ZAtoon.png">

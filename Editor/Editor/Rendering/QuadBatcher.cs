@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.IO;
+using System.Drawing;
 using OpenTK.Graphics.OpenGL;
 using JStudio.OpenGL;
 
@@ -28,9 +29,12 @@ namespace WindEditor
     public class WQuadBatcher : IRenderable, IDisposable
     {
         private Dictionary<string, List<WBatchedQuad>> m_batchedQuads;
+        private Dictionary<string, Bitmap> m_Textures;
 
         private Shader m_primitiveShader;
         private int m_vbo;
+        private int m_uvs;
+        private int m_Tex;
         private int m_vertColors;
         private bool m_renderStateDirty;
 
@@ -40,15 +44,22 @@ namespace WindEditor
         public WQuadBatcher()
         {
             m_batchedQuads = new Dictionary<string, List<WBatchedQuad>>();
+            m_Textures = new Dictionary<string, Bitmap>();
 
             m_primitiveShader = new Shader("UnlitColor");
-            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnlitColor.vert"), ShaderType.VertexShader);
-            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnlitColor.frag"), ShaderType.FragmentShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnlitTextureQuad.vert"), ShaderType.VertexShader);
+            m_primitiveShader.CompileSource(File.ReadAllText("resources/shaders/UnlitTextureQuad.frag"), ShaderType.FragmentShader);
             m_primitiveShader.LinkShader();
+
+            m_Textures.Add("ZBtoonEX.png", new Bitmap("resources/textures/ZBtoonEX.png"));
+            m_Textures.Add("eye.png", new Bitmap("resources/textures/eye.png"));
+            m_Textures.Add("target.png", new Bitmap("resources/textures/target.png"));
 
             // Allocate our buffers now as they get reused a lot.
             m_vbo = GL.GenBuffer();
+            m_uvs = GL.GenBuffer();
             m_vertColors = GL.GenBuffer();
+            m_Tex = GL.GenTexture();
         }
 
         private List<WBatchedQuad> GetTextureList(string texture_name)
@@ -146,12 +157,14 @@ namespace WindEditor
         {
             foreach (string s in m_batchedQuads.Keys)
             {
+                Bitmap texture = m_Textures[s];
                 List<WBatchedQuad> quads = m_batchedQuads[s];
 
                 if (m_renderStateDirty)
                 {
                     // We've changed what we want to draw since we last rendered, so we'll re-calculate the mesh and upload.
                     Vector3[] quadVerts = new Vector3[quads.Count * 4];
+                    Vector2[] quadUVs = new Vector2[quads.Count * 4];
                     WLinearColor[] quadColors = new WLinearColor[quads.Count * 4];
 
                     for (int i = 0; i < quads.Count; i++)
@@ -159,27 +172,27 @@ namespace WindEditor
                         WBatchedQuad batchedQuad = quads[i];
 
                         // Top left
-                        quadVerts[(i * 4) + 0] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(-0.5f, 0.5f, 0.0f))
-                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(-0.5f, 0.5f, 0.0f));
+                        quadVerts[(i * 4) + 0] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(-0.5f * batchedQuad.Scale.X, 0.5f * batchedQuad.Scale.Y, 0.0f))
+                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(-0.5f * batchedQuad.Scale.X, 0.5f * batchedQuad.Scale.Y, 0.0f));
                         // Top right
-                        quadVerts[(i * 4) + 1] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(0.5f, 0.5f, 0.0f))
-                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(0.5f, 0.5f, 0.0f));
+                        quadVerts[(i * 4) + 1] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(0.5f * batchedQuad.Scale.X, 0.5f * batchedQuad.Scale.Y, 0.0f))
+                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(0.5f * batchedQuad.Scale.X, 0.5f * batchedQuad.Scale.Y, 0.0f));
                         // Bottom left
-                        quadVerts[(i * 4) + 3] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(-0.5f, -0.5f, 0.0f))
-                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(-0.5f, -0.5f, 0.0f));
+                        quadVerts[(i * 4) + 3] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(-0.5f * batchedQuad.Scale.X, -0.5f * batchedQuad.Scale.Y, 0.0f))
+                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(-0.5f * batchedQuad.Scale.X, -0.5f * batchedQuad.Scale.Y, 0.0f));
                         // Bottom right
-                        quadVerts[(i * 4) + 2] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(0.5f, -0.5f, 0.0f))
-                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(0.5f, -0.5f, 0.0f));
-
-                        quadVerts[(i * 4) + 0].Scale(batchedQuad.Scale);
-                        quadVerts[(i * 4) + 1].Scale(batchedQuad.Scale);
-                        quadVerts[(i * 4) + 2].Scale(batchedQuad.Scale);
-                        quadVerts[(i * 4) + 3].Scale(batchedQuad.Scale);
+                        quadVerts[(i * 4) + 2] = batchedQuad.IsBillboard ? CalculateBillboardVertex(view, batchedQuad.Position, new Vector3(0.5f * batchedQuad.Scale.X, -0.5f * batchedQuad.Scale.Y, 0.0f))
+                            : CalculateQuadVertex(batchedQuad.Position, new Vector3(0.5f * batchedQuad.Scale.X, -0.5f * batchedQuad.Scale.Y, 0.0f));
 
                         quadColors[(i * 4) + 0] = batchedQuad.Color;
                         quadColors[(i * 4) + 1] = batchedQuad.Color;
                         quadColors[(i * 4) + 2] = batchedQuad.Color;
                         quadColors[(i * 4) + 3] = batchedQuad.Color;
+
+                        quadUVs[(i * 4) + 0] = new Vector2(0, 0);
+                        quadUVs[(i * 4) + 1] = new Vector2(1, 0);
+                        quadUVs[(i * 4) + 2] = new Vector2(1, 1);
+                        quadUVs[(i * 4) + 3] = new Vector2(0, 1);
                     }
 
 
@@ -187,19 +200,37 @@ namespace WindEditor
                     GL.BindBuffer(BufferTarget.ArrayBuffer, m_vbo);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(12 * quadVerts.Length), quadVerts, BufferUsageHint.DynamicDraw);
 
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, m_uvs);
+                    GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(8 * quadUVs.Length), quadUVs, BufferUsageHint.DynamicDraw);
+
                     GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertColors);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(16 * quadColors.Length), quadColors, BufferUsageHint.DynamicDraw);
+
+                    GL.BindTexture(TextureTarget.Texture2D, m_Tex);
+                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Clamp);
+                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Clamp);
+                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+                    GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+
+                    System.Drawing.Imaging.BitmapData tex_data = texture.LockBits(new System.Drawing.Rectangle(0, 0, texture.Width, texture.Height),
+                        System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+                    GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, texture.Width, texture.Height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, tex_data.Scan0);
+
+                    texture.UnlockBits(tex_data);
 
                     //m_renderStateDirty = false;
                 }
 
                 // Draw the mesh.
                 GL.FrontFace(FrontFaceDirection.Ccw);
-                GL.Enable(EnableCap.CullFace);
+                GL.Disable(EnableCap.CullFace);
                 GL.Enable(EnableCap.DepthTest);
-                GL.Disable(EnableCap.Blend);
+                GL.Enable(EnableCap.Blend);
                 GL.DepthMask(true);
-                //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+
+                GL.Enable(EnableCap.AlphaTest);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
                 Matrix4 modelMatrix = Matrix4.Identity;
                 Matrix4 viewMatrix = view.ViewMatrix;
@@ -215,16 +246,33 @@ namespace WindEditor
                 GL.EnableVertexAttribArray((int)ShaderAttributeIds.Position);
                 GL.VertexAttribPointer((int)ShaderAttributeIds.Position, 3, VertexAttribPointerType.Float, false, 12, 0);
 
+                // UVs
+                GL.BindBuffer(BufferTarget.ArrayBuffer, m_uvs);
+                GL.EnableVertexAttribArray((int)ShaderAttributeIds.Tex0);
+                GL.VertexAttribPointer((int)ShaderAttributeIds.Tex0, 2, VertexAttribPointerType.Float, false, 8, 0);
+
                 // Color
                 GL.BindBuffer(BufferTarget.ArrayBuffer, m_vertColors);
                 GL.EnableVertexAttribArray((int)ShaderAttributeIds.Color0);
                 GL.VertexAttribPointer((int)ShaderAttributeIds.Color0, 4, VertexAttribPointerType.Float, true, 16, 0);
 
+                GL.ActiveTexture(TextureUnit.Texture0);
+                GL.BindTexture(TextureTarget.Texture2D, m_Tex);
+
                 // Draw!
                 GL.DrawArrays(PrimitiveType.Quads, 0, quads.Count * 4);
 
+                GL.FrontFace(FrontFaceDirection.Cw);
+                GL.Enable(EnableCap.CullFace);
+                GL.Disable (EnableCap.DepthTest);
+                GL.Disable(EnableCap.Blend);
+                GL.Disable(EnableCap.AlphaTest);
+                GL.DepthMask(false);
+
                 GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
+                GL.DisableVertexAttribArray((int)ShaderAttributeIds.Tex0);
                 GL.DisableVertexAttribArray((int)ShaderAttributeIds.Color0);
+                GL.BindTexture(TextureTarget.Texture2D, -1);
             }
         }
 

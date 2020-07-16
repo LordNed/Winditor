@@ -11,6 +11,7 @@ using WindEditor.Events;
 using NodeNetwork.Views;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
+using System.Collections.ObjectModel;
 
 namespace WindEditor.Editor.Modes
 {
@@ -257,6 +258,44 @@ namespace WindEditor.Editor.Modes
                 foreach (var renderable in scene.GetChildrenOfType<IRenderable>())
                     renderable.AddToRenderer(view);
             }
+
+            Staff camera = (Staff)SelectedEvent.Actors.ToList().Find(x => x.StaffType == StaffType.Camera);
+
+            if (camera != null)
+            {
+                Cut c = camera.FirstCut;
+
+                while (c != null)
+                {
+                    OpenTK.Vector3 eye_pos = new OpenTK.Vector3();
+                    OpenTK.Vector3 target_pos = new OpenTK.Vector3();
+
+                    Substance eye = c.Properties.Find(x => x.Name.ToLower() == "eye");
+                    if (eye != null)
+                    {
+                        Substance<ObservableCollection<BindingVector3>> eye_vec = eye as Substance<ObservableCollection<BindingVector3>>;
+                        eye_pos = eye_vec.Data[0].BackingVector;
+
+                        world.DebugDrawBillboard("eye.png", eye_pos, new OpenTK.Vector3(100, 100, 100), WLinearColor.White, 0.03f);
+                    }
+
+                    Substance target = c.Properties.Find(x => x.Name.ToLower() == "center");
+                    if (target != null)
+                    {
+                        Substance<ObservableCollection<BindingVector3>> target_vec = target as Substance<ObservableCollection<BindingVector3>>;
+                        target_pos = target_vec.Data[0].BackingVector;
+
+                        world.DebugDrawBillboard("target.png", target_pos, new OpenTK.Vector3(100, 100, 100), WLinearColor.White, 0.03f);
+                    }
+
+                    if (eye != null && target != null)
+                    {
+                        world.DebugDrawLine(eye_pos, target_pos, WLinearColor.Black, 100000.0f, 0.35f);
+                    }
+
+                    c = c.NextCut;
+                }
+            }
         }
 
         public void OnBecomeActive()
@@ -304,9 +343,16 @@ namespace WindEditor.Editor.Modes
 
             v.ContextMenu = new ActorTabContextMenu(staff);
 
+            model.SelectedNodes.Connect().Subscribe(d => { OnSelectedNodesChanged(d); });
+
             // Finally, create the new tab.
             TabItem new_tab = new TabItem() { Header = staff.Name, Content = v };
             return new_tab;
+        }
+
+        private void OnSelectedNodesChanged(DynamicData.IChangeSet<NodeViewModel> change)
+        {
+
         }
 
         #region INotifyPropertyChanged Support
