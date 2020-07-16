@@ -19888,21 +19888,33 @@ namespace WindEditor
 				OnPropertyChanged("Unknown_4");
 			}
 		}
+		public enum TypeEnum
+		{
+			Small_Rock = 0,
+			Small_Black_Rock = 1,
+			Boulder = 2,
+			Head_Boulder = 3,
+			Small_Boulder = 4,
+		}
 
-		[WProperty("stone", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+
+		[WProperty("stone", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -19936,7 +19948,6 @@ namespace WindEditor
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
-			Unknown_5 = -1;
 			Unknown_6 = -1;
 		}
 	}
