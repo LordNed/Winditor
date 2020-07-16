@@ -5508,7 +5508,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			Unknown_1 = 0;
 			MessageID = -1;
 		}
 	}
