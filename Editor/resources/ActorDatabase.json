@@ -3475,7 +3475,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3509,7 +3509,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3525,7 +3525,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3540,7 +3540,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3555,7 +3555,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3583,7 +3583,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3600,7 +3600,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3615,7 +3615,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3632,7 +3632,7 @@
     "ActorClassType": "kokiie",
     "Wait Animations": null,
     "Actor Name": "Kokiie",
-    "English Name": "kokiie",
+    "English Name": "Giant Hanging Flower",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5201,7 +5201,7 @@
     "ActorClassType": "npc_aj1",
     "Wait Animations": null,
     "Actor Name": "Aj1",
-    "English Name": "npc_aj1",
+    "English Name": "Sturgeon",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9921,7 +9921,7 @@
     "ActorClassType": "obj_plant",
     "Wait Animations": null,
     "Actor Name": "Plant",
-    "English Name": "obj_plant",
+    "English Name": "Potted Plant",
     "Tags": null,
     "Explanation": null,
     "Locations": [

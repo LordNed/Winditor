@@ -2910,6 +2910,52 @@
     ]
   },
   {
+    "Name": "Sue-Belle",
+    "Archive": "Yw",
+    "Models": [
+      {
+        "Path": "bdl/yw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ywhead01.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Sturgeon",
+    "Archive": "Aj",
+    "Models": [
+      {
+        "Path": "bdlm/aj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/aj_stick.bdl",
+            "Parent Joint": "handL"
+          },
+        ]
+      },
+    ]
+  },
+  {
     "Name": "Gohdan Head",
     "Archive": "Bst",
     "Models": [
@@ -3600,6 +3646,142 @@
     "Models": [
       {
         "Path": "bdl/mori2.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Outset Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_a.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Pirate Ship Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_b.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Windfall Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_c.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rito Aerie Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_d.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Private Oasis Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_e.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Forsaken Fortress Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_f.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Nintendo Gallery Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_g.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Fancy Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_h.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
       }
     ]
   },
@@ -4378,20 +4560,45 @@
     ]
   },
   {
+    "Name": "Postbox",
+    "Archive": "Toripost",
+    "Models": [
+      {
+        "Path": "bdl/vpost.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/post_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Potted Plant",
+    "Archive": "Plant",
+    "Models": [
+      {
+        "Path": "bdl/yrmwd.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Lenzo",
     "Archive": "Po",
     "Models": [
       {
         "Path": "bdlm/po.bdl",
-        "Animations":
-          [
-            {
-              "Anim Type": "bck",
-              "Path": "bcks/wait01.bck",
-              "Paused on Load": false,
-              "Start Time": 0.00
-            }
-          ]
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
       }
     ]
   }

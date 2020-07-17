@@ -20,15 +20,16 @@
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
-        "0": "Outset",
-        "1": "Pirate Ship",
-        "2": "Windfall",
-        "3": "Dragon Roost",
-        "4": "Private Oasis",
-        "5": "Forsaken Fortress",
-        "6": "Nintendo Gallery",
-        "7": "Fancy"
-      }
+        0: "Outset",
+        1: "Pirate Ship",
+        2: "Windfall",
+        3: "Rito Aerie",
+        4: "Private Oasis",
+        5: "Forsaken Fortress",
+        6: "Nintendo Gallery",
+        7: "Fancy"
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Message ID",
