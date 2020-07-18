@@ -190,6 +190,8 @@ namespace WindEditor
 
             GL.DepthMask(true);
 
+            GL.ColorMask(true, true, true, true);
+
             Shader curShader = Highlighted ? m_highlightedShader : m_unhighlightedShader;
             curShader.Bind();
 
