@@ -48,5 +48,10 @@ namespace WindEditor.Events
                 this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.NodeView.ViewModel).DisposeWith(d);
             });
         }
+
+        private void NodeView_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ViewModel.AddProperty();
+        }
     }
 }

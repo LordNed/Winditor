@@ -7,5 +7,5 @@
              xmlns:nodeview="clr-namespace:NodeNetwork.Views;assembly=NodeNetwork"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <nodeview:NodeView x:Name="NodeView" EndpointsStackingOrientation="Horizontal"/>
+    <nodeview:NodeView x:Name="NodeView" EndpointsStackingOrientation="Horizontal" MouseUp="NodeView_MouseUp"/>
 </UserControl>

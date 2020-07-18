@@ -382,6 +382,8 @@ namespace WindEditor.Editor.Modes
             Change<NodeViewModel> change = changeset.First();
 
             NodeViewModel view = change.Item.Current;
+            if (view == null)
+                return;
 
             if (view.Outputs.Count > 0 && view.Outputs.Items.First().Editor is VectorValueEditorViewModel vec_model)
             {

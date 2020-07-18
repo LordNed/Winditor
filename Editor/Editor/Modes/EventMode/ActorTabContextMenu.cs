@@ -94,47 +94,38 @@ namespace WindEditor.Events
         {
             NetworkView view = PlacementTarget as NetworkView;
 
-            NodeViewModel temp_node = new NodeViewModel() { Name = args.Key, Position = GetMouseLocation(view) };
+            Substance new_sub = null;
 
             switch (args.Value)
             {
                 case SubstanceType.Float:
-                    Substance<ObservableCollection<PrimitiveBinding<float>>> float_sub = new Substance<ObservableCollection<PrimitiveBinding<float>>>(args.Key, args.Value);
-                    float_sub.Data = new ObservableCollection<PrimitiveBinding<float>>() { new PrimitiveBinding<float>(0.0f) };
-
-                    ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<float>>> float_output = new ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<float>>>();
-                    float_output.Editor = new FloatValueEditorViewModel() { Value = float_sub.Data };
-
-                    temp_node.Outputs.Edit(x => x.Add(float_output));
+                    new_sub = new Substance<ObservableCollection<PrimitiveBinding<float>>>(args.Key, args.Value)
+                    {
+                        Data = new ObservableCollection<PrimitiveBinding<float>>() { new PrimitiveBinding<float>(0.0f) }
+                    };
                     break;
                 case SubstanceType.Int:
-                    Substance<ObservableCollection<PrimitiveBinding<int>>> int_sub = new Substance<ObservableCollection<PrimitiveBinding<int>>>(args.Key, args.Value);
-                    int_sub.Data = new ObservableCollection<PrimitiveBinding<int>>() { new PrimitiveBinding<int>(0) };
-
-                    ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<int>>> int_output = new ValueNodeOutputViewModel<ObservableCollection<PrimitiveBinding<int>>>();
-                    int_output.Editor = new IntegerValueEditorViewModel() { Value = int_sub.Data };
-
-                    temp_node.Outputs.Edit(x => x.Add(int_output));
+                    new_sub = new Substance<ObservableCollection<PrimitiveBinding<int>>>(args.Key, args.Value)
+                    {
+                        Data = new ObservableCollection<PrimitiveBinding<int>>() { new PrimitiveBinding<int>(0) }
+                    };
                     break;
                 case SubstanceType.String:
-                    Substance<PrimitiveBinding<string>> string_sub = new Substance<PrimitiveBinding<string>>(args.Key, args.Value);
-                    string_sub.Data = new PrimitiveBinding<string>("");
-
-                    ValueNodeOutputViewModel<PrimitiveBinding<string>> string_output = new ValueNodeOutputViewModel<PrimitiveBinding<string>>();
-                    string_output.Editor = new StringValueEditorViewModel() { Value = string_sub.Data };
-
-                    temp_node.Outputs.Edit(x => x.Add(string_output));
+                    new_sub = new Substance<PrimitiveBinding<string>>(args.Key, args.Value)
+                    {
+                        Data = new PrimitiveBinding<string>("")
+                    };
                     break;
                 case SubstanceType.Vec3:
-                    Substance<ObservableCollection<BindingVector3>> vec_sub = new Substance<ObservableCollection<BindingVector3>>(args.Key, args.Value);
-                    vec_sub.Data = new ObservableCollection<BindingVector3>() { new BindingVector3(new OpenTK.Vector3(0, 0, 0)) };
-
-                    ValueNodeOutputViewModel<ObservableCollection<BindingVector3>> vec_output = new ValueNodeOutputViewModel<ObservableCollection<BindingVector3>>();
-                    vec_output.Editor = new VectorValueEditorViewModel() { Value = vec_sub.Data };
-
-                    temp_node.Outputs.Edit(x => x.Add(vec_output));
+                    new_sub = new Substance<ObservableCollection<BindingVector3>>(args.Key, args.Value)
+                    {
+                        Data = new ObservableCollection<BindingVector3>() { new BindingVector3(new OpenTK.Vector3(0, 0, 0)) }
+                    };
                     break;
             }
+
+            SubstanceNodeViewModel temp_node = new SubstanceNodeViewModel(new_sub);
+            temp_node.Position = GetMouseLocation(view);
 
             view.ViewModel.Nodes.Edit(x => x.Add(temp_node));
         }
