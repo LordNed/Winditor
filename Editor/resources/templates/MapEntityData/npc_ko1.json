@@ -3,22 +3,49 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Zill Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "npc_ko1",
+      "Category": "Zill (Ko1)",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Chasing Zill",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Standing Zill",
+        4: "Sleeping Zill",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Joel Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Joel (Ko2)",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Joel with Stick",
+        1: "Unknown 1",
+        2: "Standing Joel",
+        3: "Sleeping Joel",
+        4: "Unknown 4",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "npc_ko1",
+      "Category": "Zill and Joel",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }

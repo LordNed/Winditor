@@ -4601,5 +4601,312 @@
         ]
       }
     ]
-  }
+  },
+  {
+    "Name": "Zill",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead01.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              }
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sleeping Zill",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_sleep03.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead01.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead01_sleep03.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              }
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Joel",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ko02.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead02_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Joel with Stick",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ko02.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead02_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              },
+            ]
+          },
+          {
+            "Path": "bdl/koeda.bdl",
+            "Parent Joint": "armR2",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sleeping Joel",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_sleep01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ko02.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead02_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rose",
+    "Archive": "Ob",
+    "Models": [
+      {
+        "Path": "bdl/ob.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/oba_head.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mesa",
+    "Archive": "Ym",
+    "Models": [
+      {
+        "Path": "bdlm/ym.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ymhead01.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Abe",
+    "Archive": "Ym",
+    "Models": [
+      {
+        "Path": "bdlm/ym.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ym2.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ymhead02.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Pink Pig",
+    "Archive": "Kb",
+    "Models": [
+      {
+        "Path": "bdlm/pg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pg_pink.bmt"
+          }
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Speckled Pig",
+    "Archive": "Kb",
+    "Models": [
+      {
+        "Path": "bdlm/pg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pg_buti.bmt"
+          }
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Black Pig",
+    "Archive": "Kb",
+    "Models": [
+      {
+        "Path": "bdlm/pg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pg_kuro.bmt"
+          }
+        ],
+      }
+    ]
+  },
 ]

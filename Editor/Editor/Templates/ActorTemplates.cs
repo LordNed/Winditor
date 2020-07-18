@@ -5588,26 +5588,36 @@ namespace WindEditor
 	public partial class kb : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("kb", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum ColorEnum
+		{
+			Pink = 0,
+			Speckled = 1,
+			Black = 2,
+		}
+
+
+		[WProperty("kb", "Color", true, "", SourceScene.Room)]
+		public ColorEnum Color
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ColorEnum), value_as_int))
+					value_as_int = 0;
+				return (ColorEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Color");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("kb", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("kb", "Sight Range (Hundreds)", true, "", SourceScene.Room)]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -5619,7 +5629,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
@@ -5640,20 +5650,34 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kb", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("kb", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Path");
 			}
 		}
 
@@ -5683,10 +5707,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SightRangeHundreds = -1;
 			Unknown_3 = -1;
-			Unknown_4 = -1;
+			Path = null;
 			Unknown_5 = -1;
 		}
 	}
@@ -9174,38 +9197,95 @@ namespace WindEditor
 	public partial class npc_ko1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
-		[WProperty("npc_ko1", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+				public enum ZillTypeEnum
+		{
+			Chasing_Zill = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Standing_Zill = 3,
+			Sleeping_Zill = 4,
+			Unknown_255 = 255,
+		}
+
+
+		[WProperty("Zill (Ko1)", "Zill Type", true, "", SourceScene.Room)]
+		public ZillTypeEnum ZillType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ZillTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (ZillTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ZillType");
+				UpdateModel();
+			}
+		}
+		public enum JoelTypeEnum
+		{
+			Joel_with_Stick = 0,
+			Unknown_1 = 1,
+			Standing_Joel = 2,
+			Sleeping_Joel = 3,
+			Unknown_4 = 4,
+			Unknown_255 = 255,
+		}
+
+
+		[WProperty("Joel (Ko2)", "Joel Type", true, "", SourceScene.Room)]
+		public JoelTypeEnum JoelType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (!Enum.IsDefined(typeof(JoelTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (JoelTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("JoelType");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("npc_ko1", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Zill and Joel", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Path");
 			}
 		}
 
@@ -9218,8 +9298,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			Path = null;
 		}
 	}
 
@@ -21649,7 +21728,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_mk : Actor
+	public partial class tag_mk : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 		

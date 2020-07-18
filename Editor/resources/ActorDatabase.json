@@ -6073,8 +6073,10 @@
     "ActorClassType": "npc_ko1",
     "Wait Animations": null,
     "Actor Name": "Ko1",
-    "English Name": "npc_ko1",
-    "Tags": null,
+    "English Name": "Zill",
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Unused (K_Test3)",
@@ -6090,8 +6092,10 @@
     "ActorClassType": "npc_ko1",
     "Wait Animations": null,
     "Actor Name": "Ko2",
-    "English Name": "npc_ko1",
-    "Tags": null,
+    "English Name": "Joel",
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Rose's House (Onobuta)",
@@ -6123,7 +6127,9 @@
     "Wait Animations": null,
     "Actor Name": "Ls1",
     "English Name": "Aryll",
-    "Tags": null,
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Ending (ENDumi)",
@@ -6251,8 +6257,10 @@
     "ActorClassType": "npc_ob1",
     "Wait Animations": null,
     "Actor Name": "Ob1",
-    "English Name": "npc_ob1",
-    "Tags": null,
+    "English Name": "Rose",
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Rose's House (Onobuta)",

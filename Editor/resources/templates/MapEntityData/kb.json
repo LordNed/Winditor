@@ -3,16 +3,22 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Color",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
       "Category": "kb",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Pink",
+        1: "Speckled",
+        2: "Black",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Sight Range (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Hidden": false,
@@ -30,13 +36,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "kb",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
       "Name": "Unknown_5",
