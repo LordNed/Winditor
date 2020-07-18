@@ -12,10 +12,11 @@ using NodeNetwork.Views;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
 using System.Collections.ObjectModel;
+using DynamicData;
 
 namespace WindEditor.Editor.Modes
 {
-    public class EventMode : IEditorMode
+    public partial class EventMode : IEditorMode
     {
         private DockPanel m_ModeControlsDock;
         private ComboBox m_EventCombo;
@@ -28,6 +29,8 @@ namespace WindEditor.Editor.Modes
         private WEventList m_EventList;
         private Event m_SelectedEvent;
         private Staff m_SelectedStaff;
+
+        private Selection<BindingVector3> m_EditorSelection;
 
         public WDetailsViewViewModel EventDetailsViewModel
         {
@@ -107,6 +110,19 @@ namespace WindEditor.Editor.Modes
             }
         }
 
+        public Selection<BindingVector3> EditorSelection
+        {
+            get { return m_EditorSelection; }
+            set
+            {
+                if (m_EditorSelection != value)
+                {
+                    m_EditorSelection = value;
+                    OnPropertyChanged("EditorSelection");
+                }
+            }
+        }
+
         public WWorld World { get; }
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
@@ -117,12 +133,17 @@ namespace WindEditor.Editor.Modes
             EventDetailsViewModel = new WDetailsViewViewModel();
             ActorDetailsViewModel = new WDetailsViewViewModel();
 
+            TransformGizmo = new WTransformGizmo(world);
+
             ModeControlsDock = CreateUI();
 
             m_NodeWindow = new EventNodeWindow();
             m_NodeWindow.ActorPropertiesView.DataContext = ActorDetailsViewModel;
             m_NodeWindow.ActorTabControl.SelectionChanged += OnSelectedActorChanged;
             m_NodeWindow.Closing += M_NodeWindow_Closing;
+
+            EditorSelection = new Selection<BindingVector3>(this);
+            EditorSelection.OnSelectionChanged += OnSelectionChanged;
         }
 
         private void M_NodeWindow_Closing(object sender, CancelEventArgs e)
@@ -243,7 +264,7 @@ namespace WindEditor.Editor.Modes
 
         public void BroadcastUndoEventGenerated(WUndoCommand command)
         {
-            //throw new NotImplementedException();
+            GenerateUndoEvent?.Invoke(this, new GenerateUndoEventArgs(command));
         }
 
         public void ClearSelection()
@@ -319,7 +340,13 @@ namespace WindEditor.Editor.Modes
 
         public void Update(WSceneView view)
         {
-            //throw new NotImplementedException();
+            UpdateSelectionGizmo(view);
+
+            // Add our gizmo to the renderer this frame.
+            if (TransformGizmo != null)
+                ((IRenderable)TransformGizmo).AddToRenderer(view);
+
+            UpdateGizmoTransform();
         }
 
         private TabItem GenerateActorTabItem(Staff staff)
@@ -350,9 +377,30 @@ namespace WindEditor.Editor.Modes
             return new_tab;
         }
 
-        private void OnSelectedNodesChanged(DynamicData.IChangeSet<NodeViewModel> change)
+        private void OnSelectedNodesChanged(IChangeSet<NodeViewModel> changeset)
         {
+            Change<NodeViewModel> change = changeset.First();
 
+            NodeViewModel view = change.Item.Current;
+
+            if (view.Outputs.Count > 0 && view.Outputs.Items.First().Editor is VectorValueEditorViewModel vec_model)
+            {
+                switch(change.Reason)
+                {
+                    case ListChangeReason.Add:
+                        EditorSelection.AddToSelection(vec_model.Value[0]);
+                        break;
+                    case ListChangeReason.Remove:
+                        EditorSelection.RemoveFromSelection(vec_model.Value[0]);
+                        break;
+                }
+            }
+        }
+
+        private void OnSelectionChanged()
+        {
+            // This will get invoked when an Undo happens which allows the gizmo to fix itself.
+            UpdateGizmoTransform();
         }
 
         #region INotifyPropertyChanged Support
@@ -377,7 +425,8 @@ namespace WindEditor.Editor.Modes
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    // Dispose managed state (managed objects).
+                    TransformGizmo.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
