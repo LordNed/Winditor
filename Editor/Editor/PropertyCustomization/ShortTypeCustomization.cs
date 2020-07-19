@@ -26,7 +26,7 @@ namespace WindEditor.Editor
 
             Binding tbind = new Binding(property.Name);
             tbind.Source = source;
-            tbind.Mode = BindingMode.TwoWay;
+            tbind.Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay;
             tbind.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
             shortupdown.SetBinding(ShortUpDown.ValueProperty, tbind);
