@@ -209,7 +209,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MinimapSettings_Unused(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -419,7 +419,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MinimapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -512,7 +512,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public Actor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -572,7 +572,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -620,7 +620,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -710,7 +710,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraType_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -815,7 +815,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraType_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -968,7 +968,7 @@ namespace WindEditor
 		protected byte m_Padding;
 				
 
-		
+
 		// Constructor
 		public Door_DOOR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1259,7 +1259,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public DungeonFloorSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1389,7 +1389,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public DungeonMapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1452,7 +1452,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public LightSource(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1551,7 +1551,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingConditions(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1807,7 +1807,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingPalette(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2045,7 +2045,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingSkyboxPalette(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2139,7 +2139,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingTimesOfDay(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2319,7 +2319,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MapEvent(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2442,7 +2442,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public ExitData(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2494,7 +2494,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CutsceneIndexBank(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2548,7 +2548,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public LightVector(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2607,7 +2607,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MemoryCO(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2650,7 +2650,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomMemoryManagement(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2724,7 +2724,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public SpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2792,7 +2792,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomProperties(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2863,7 +2863,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomModelTranslation(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2911,7 +2911,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomTable(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3052,7 +3052,7 @@ namespace WindEditor
 		protected byte m_Padding;
 				
 
-		
+
 		// Constructor
 		public ScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3153,7 +3153,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public ShipSpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3313,7 +3313,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public SoundEffect(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3441,7 +3441,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		[WProperty("Stage Properties", "Is Dungeon", true, "This option enables the dungeon UI and makes small keys work.", SourceScene.Room)]
 		public bool IsDungeon
 		{ 
@@ -3724,7 +3724,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3817,7 +3817,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public TagObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3913,7 +3913,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public TagScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3993,7 +3993,7 @@ namespace WindEditor
 		}
 				
 
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Normal = 0,
 			Spawn_when_a_switch_is_set = 1,
@@ -4230,7 +4230,7 @@ namespace WindEditor
 		protected int m_FirstEntryOffset;
 				
 
-		
+
 		[WProperty("Path Properties", "Next Path", true, "", SourceScene.Room)]
 		public Path_v2 NextPath
 		{ 
@@ -4364,7 +4364,7 @@ namespace WindEditor
 		protected int m_FirstEntryOffset;
 				
 
-		
+
 		[WProperty("Path Properties", "Next Path", true, "", SourceScene.Room)]
 		public Path_v2 NextPath
 		{ 
@@ -4492,7 +4492,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public PathPoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -4585,7 +4585,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public PathPoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{

@@ -14,7 +14,7 @@ namespace WindEditor
 	public partial class acorn_leaf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("acorn_leaf", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -49,7 +49,7 @@ namespace WindEditor
 	public partial class agbsw0 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			agbA = 0,
 			agbAT = 1,
@@ -231,7 +231,7 @@ namespace WindEditor
 	public partial class alldie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("alldie", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -266,7 +266,7 @@ namespace WindEditor
 	public partial class am : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Wandering = 0,
 			Guards_an_area = 1,
@@ -368,7 +368,7 @@ namespace WindEditor
 	public partial class am2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public int Unused_1
+		public int Unused_1
 		{ 
 			get
 			{
@@ -461,7 +461,7 @@ namespace WindEditor
 	public partial class amiprop : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("amiprop", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -514,7 +514,7 @@ namespace WindEditor
 	public partial class andsw0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("andsw0", "Num Switches to Check", true, "How many switches to check.", SourceScene.Room)]
 		public int NumSwitchestoCheck
 		{ 
@@ -654,7 +654,7 @@ namespace WindEditor
 	public partial class andsw2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("andsw2", "Num Switches to Check", true, "", SourceScene.Room)]
 		public int NumSwitchestoCheck
 		{ 
@@ -792,7 +792,7 @@ namespace WindEditor
 	public partial class arrow_iceeff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public arrow_iceeff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -804,7 +804,7 @@ namespace WindEditor
 	public partial class arrow_lighteff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("arrow_lighteff", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -839,7 +839,7 @@ namespace WindEditor
 	public partial class atdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("atdoor", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -874,7 +874,7 @@ namespace WindEditor
 	public partial class att : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("att", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -909,7 +909,7 @@ namespace WindEditor
 	public partial class auction : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public auction(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -921,7 +921,7 @@ namespace WindEditor
 	public partial class bb : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Flying_around = 0,
 			Instantly_targets_Link = 3,
@@ -1053,7 +1053,7 @@ namespace WindEditor
 	public partial class bdk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bdk", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1088,7 +1088,7 @@ namespace WindEditor
 	public partial class bdkobj : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bdkobj", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1141,7 +1141,7 @@ namespace WindEditor
 	public partial class beam : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("beam", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1302,7 +1302,7 @@ namespace WindEditor
 	public partial class bflower : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum FlowerTypeEnum
+		public enum FlowerTypeEnum
 		{
 			Ripe = 0,
 			Withered = 1,
@@ -1363,7 +1363,7 @@ namespace WindEditor
 	public partial class bgn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bgn", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1398,7 +1398,7 @@ namespace WindEditor
 	public partial class bgn2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public bgn2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1410,7 +1410,7 @@ namespace WindEditor
 	public partial class bgn3 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public bgn3(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1422,7 +1422,7 @@ namespace WindEditor
 	public partial class bigelf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bigelf", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1493,7 +1493,7 @@ namespace WindEditor
 	public partial class bita : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bita", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1546,7 +1546,7 @@ namespace WindEditor
 	public partial class bk : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Wandering = 0,
 			Unknown_1 = 1,
@@ -1759,7 +1759,7 @@ namespace WindEditor
 	public partial class bl : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Red_Bubble = 0,
 			Blue_Bubble = 1,
@@ -1878,7 +1878,7 @@ namespace WindEditor
 	public partial class bmd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public bmd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1890,7 +1890,7 @@ namespace WindEditor
 	public partial class bmdfoot : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bmdfoot", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1925,7 +1925,7 @@ namespace WindEditor
 	public partial class bmdhand : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bmdhand", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -1996,7 +1996,7 @@ namespace WindEditor
 	public partial class bo : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Normal = 0,
 			Bud_dying = 1,
@@ -2059,7 +2059,7 @@ namespace WindEditor
 	public partial class boko : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("boko", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2130,7 +2130,7 @@ namespace WindEditor
 	public partial class boss_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("boss_item", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2165,7 +2165,7 @@ namespace WindEditor
 	public partial class bpw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bpw", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2236,7 +2236,7 @@ namespace WindEditor
 	public partial class branch : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public branch(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2248,7 +2248,7 @@ namespace WindEditor
 	public partial class bridge : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public int TypeBitfield
+		public int TypeBitfield
 		{ 
 			get
 			{
@@ -2332,7 +2332,7 @@ namespace WindEditor
 	public partial class bst : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public int ComponentType
+		public int ComponentType
 		{ 
 			get
 			{
@@ -2365,7 +2365,7 @@ namespace WindEditor
 	public partial class btd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public btd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2377,7 +2377,7 @@ namespace WindEditor
 	public partial class bwd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bwd", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2412,7 +2412,7 @@ namespace WindEditor
 	public partial class bwdg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public bwdg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2424,7 +2424,7 @@ namespace WindEditor
 	public partial class bwds : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("bwds", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2459,7 +2459,7 @@ namespace WindEditor
 	public partial class canon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("canon", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2494,7 +2494,7 @@ namespace WindEditor
 	public partial class cc : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Normal = 0,
 			Falls_from_ceiling = 1,
@@ -2610,7 +2610,7 @@ namespace WindEditor
 	public partial class coming2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public coming2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2622,7 +2622,7 @@ namespace WindEditor
 	public partial class coming3 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public coming3(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2634,7 +2634,7 @@ namespace WindEditor
 	public partial class dai : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("dai", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2669,7 +2669,7 @@ namespace WindEditor
 	public partial class daiocta : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum NumberofEyesEnum
+		public enum NumberofEyesEnum
 		{
 			Four_eyes = 0,
 			Eight_eyes = 1,
@@ -2788,7 +2788,7 @@ namespace WindEditor
 	public partial class daiocta_eye : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public daiocta_eye(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2800,7 +2800,7 @@ namespace WindEditor
 	public partial class deku_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Deku Leaf Pickup", "Item Pickup Flag", true, "", SourceScene.Room)]
 		public int ItemPickupFlag
 		{ 
@@ -2835,7 +2835,7 @@ namespace WindEditor
 	public partial class demo_dk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public demo_dk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2847,7 +2847,7 @@ namespace WindEditor
 	public partial class demo_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("demo_item", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2900,7 +2900,7 @@ namespace WindEditor
 	public partial class demo_kmm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public demo_kmm(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2912,7 +2912,7 @@ namespace WindEditor
 	public partial class dk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("dk", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -2947,7 +2947,7 @@ namespace WindEditor
 	public partial class door10 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
 		public int Switch1
 		{ 
@@ -3121,7 +3121,7 @@ namespace WindEditor
 	public partial class door12 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Normal = 0,
 			Locked = 1,
@@ -3307,7 +3307,7 @@ namespace WindEditor
 	public partial class dr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public dr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3319,7 +3319,7 @@ namespace WindEditor
 	public partial class dr2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public dr2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3331,7 +3331,7 @@ namespace WindEditor
 	public partial class dummy : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public dummy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3343,7 +3343,7 @@ namespace WindEditor
 	public partial class ep : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Has_brazier_1 = 0,
 			Does_not_have_brazier_1 = 1,
@@ -3491,7 +3491,7 @@ namespace WindEditor
 	public partial class fallrock : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public fallrock(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3503,7 +3503,7 @@ namespace WindEditor
 	public partial class fallrock_tag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("fallrock_tag", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -3538,7 +3538,7 @@ namespace WindEditor
 	public partial class fan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("fan", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -3591,7 +3591,7 @@ namespace WindEditor
 	public partial class ff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ff", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -3662,7 +3662,7 @@ namespace WindEditor
 	public partial class fganon : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Forsaken_Fortress_Encounter = 0,
 			Maze_Encounter = 1,
@@ -3779,7 +3779,7 @@ namespace WindEditor
 	public partial class fgmahou : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("fgmahou", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -3814,7 +3814,7 @@ namespace WindEditor
 	public partial class fire : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("fire", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -3921,7 +3921,7 @@ namespace WindEditor
 	public partial class floor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("floor", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -3956,7 +3956,7 @@ namespace WindEditor
 	public partial class fm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("fm", "Link Captured Exit", true, "Which exit this Floormaster takes Link through when it captures him.", SourceScene.Room)]
 		public ExitData LinkCapturedExit
 		{ 
@@ -4167,7 +4167,7 @@ namespace WindEditor
 	public partial class f_pc_profile_lst : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public f_pc_profile_lst(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -4179,7 +4179,7 @@ namespace WindEditor
 	public partial class ghostship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ghostship", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4232,7 +4232,7 @@ namespace WindEditor
 	public partial class gm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("gm", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4339,7 +4339,7 @@ namespace WindEditor
 	public partial class gnd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("gnd", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4392,7 +4392,7 @@ namespace WindEditor
 	public partial class goal_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("goal_flag", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4445,7 +4445,7 @@ namespace WindEditor
 	public partial class grass : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Grass = 0,
 			Tree = 1,
@@ -4535,7 +4535,7 @@ namespace WindEditor
 	public partial class gy : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public gy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -4547,7 +4547,7 @@ namespace WindEditor
 	public partial class gy_ctrl : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Follows_you_across_sectors = 0,
 			Stays_in_sector = 1,
@@ -4643,7 +4643,7 @@ namespace WindEditor
 	public partial class himo3 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("himo3", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4750,7 +4750,7 @@ namespace WindEditor
 	public partial class hitobj : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("hitobj", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4785,7 +4785,7 @@ namespace WindEditor
 	public partial class hmlif : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("hmlif", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4946,7 +4946,7 @@ namespace WindEditor
 	public partial class hot_floor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("hot_floor", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -4999,7 +4999,7 @@ namespace WindEditor
 	public partial class hys : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("hys", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5052,7 +5052,7 @@ namespace WindEditor
 	public partial class icelift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("icelift", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5123,7 +5123,7 @@ namespace WindEditor
 	public partial class ikari : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ikari", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5176,7 +5176,7 @@ namespace WindEditor
 	public partial class item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Item Pickup", "Item ID", true, "", SourceScene.Room)]
 		public ItemID ItemID
 		{ 
@@ -5330,7 +5330,7 @@ namespace WindEditor
 	public partial class jbo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("jbo", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5365,7 +5365,7 @@ namespace WindEditor
 	public partial class kaji : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public kaji(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -5377,7 +5377,7 @@ namespace WindEditor
 	public partial class kamome : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kamome", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5466,7 +5466,7 @@ namespace WindEditor
 	public partial class kanban : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kanban", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5517,7 +5517,7 @@ namespace WindEditor
 	public partial class kantera : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kantera", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -5588,7 +5588,7 @@ namespace WindEditor
 	public partial class kb : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum ColorEnum
+		public enum ColorEnum
 		{
 			Pink = 0,
 			Speckled = 1,
@@ -5718,7 +5718,7 @@ namespace WindEditor
 	public partial class kddoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Door", "Switch Bit", true, "", SourceScene.Room)]
 		public int SwitchBit
 		{ 
@@ -5879,7 +5879,7 @@ namespace WindEditor
 	public partial class ki : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Hanging_from_ceiling = 0,
 			Flying_around = 1,
@@ -6026,7 +6026,7 @@ namespace WindEditor
 	public partial class kita : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kita", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6079,7 +6079,7 @@ namespace WindEditor
 	public partial class klft : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum Unknown_1Enum
+		public enum Unknown_1Enum
 		{
 			Unknown_0 = 0,
 			Unknown_1 = 1,
@@ -6173,7 +6173,7 @@ namespace WindEditor
 	public partial class kmon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public kmon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -6185,7 +6185,7 @@ namespace WindEditor
 	public partial class kn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kn", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6238,7 +6238,7 @@ namespace WindEditor
 	public partial class knob00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("knob00", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6323,7 +6323,7 @@ namespace WindEditor
 	public partial class kokiie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kokiie", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6376,7 +6376,7 @@ namespace WindEditor
 	public partial class komore : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public komore(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -6388,7 +6388,7 @@ namespace WindEditor
 	public partial class ks : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Group_that_chases_player = 0,
 			Group_that_stays_put = 1,
@@ -6471,7 +6471,7 @@ namespace WindEditor
 	public partial class kt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kt", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6506,7 +6506,7 @@ namespace WindEditor
 	public partial class kui : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum ModelTypeEnum
+		public enum ModelTypeEnum
 		{
 			Wooden_Beam = 0,
 			Invisible = 1,
@@ -6605,7 +6605,7 @@ namespace WindEditor
 	public partial class kytag00 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-				public enum ColoEntryEnum
+		public enum ColoEntryEnum
 		{
 			None = 255,
 			Sunny = 0,
@@ -6789,7 +6789,7 @@ namespace WindEditor
 	public partial class kytag01 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public kytag01(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -6801,7 +6801,7 @@ namespace WindEditor
 	public partial class kytag02 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Wind Direction Setter", "Path", true, "", SourceScene.Room)]
 		public Path_v2 Path
 		{ 
@@ -6850,7 +6850,7 @@ namespace WindEditor
 	public partial class kytag03 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kytag03", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6885,7 +6885,7 @@ namespace WindEditor
 	public partial class kytag04 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kytag04", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6956,7 +6956,7 @@ namespace WindEditor
 	public partial class kytag05 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kytag05", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -6991,7 +6991,7 @@ namespace WindEditor
 	public partial class kytag06 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public kytag06(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -7003,7 +7003,7 @@ namespace WindEditor
 	public partial class kytag07 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("kytag07", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7038,7 +7038,7 @@ namespace WindEditor
 	public partial class lamp : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum AmountofSwingEnum
+		public enum AmountofSwingEnum
 		{
 			Large = 0,
 			Small = 1,
@@ -7075,7 +7075,7 @@ namespace WindEditor
 	public partial class lbridge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("lbridge", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7110,7 +7110,7 @@ namespace WindEditor
 	public partial class leaflift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("leaflift", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7145,7 +7145,7 @@ namespace WindEditor
 	public partial class lod_bg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public lod_bg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -7157,7 +7157,7 @@ namespace WindEditor
 	public partial class lstair : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("lstair", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7192,7 +7192,7 @@ namespace WindEditor
 	public partial class lwood : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public lwood(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -7204,7 +7204,7 @@ namespace WindEditor
 	public partial class machine : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("machine", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7239,7 +7239,7 @@ namespace WindEditor
 	public partial class magma : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Magma", "Bubbles Path", true, "The magma's bubbles will appear on this path's points.", SourceScene.Room)]
 		public Path_v2 BubblesPath
 		{ 
@@ -7288,7 +7288,7 @@ namespace WindEditor
 	public partial class majuu_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("majuu_flag", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7341,7 +7341,7 @@ namespace WindEditor
 	public partial class mant : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mant", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7376,7 +7376,7 @@ namespace WindEditor
 	public partial class mbdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mbdoor", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7447,7 +7447,7 @@ namespace WindEditor
 	public partial class mdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mdoor", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7536,7 +7536,7 @@ namespace WindEditor
 	public partial class mflft : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mflft", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7589,7 +7589,7 @@ namespace WindEditor
 	public partial class mgameboard : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public mgameboard(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -7601,7 +7601,7 @@ namespace WindEditor
 	public partial class mmusic : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public mmusic(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -7613,7 +7613,7 @@ namespace WindEditor
 	public partial class mo2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Blue_skin_without_lantern = 0,
 			Brown_skin_with_lantern = 1,
@@ -7751,7 +7751,7 @@ namespace WindEditor
 	public partial class movie_player : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public movie_player(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -7763,7 +7763,7 @@ namespace WindEditor
 	public partial class mozo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mozo", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7798,7 +7798,7 @@ namespace WindEditor
 	public partial class msw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("msw", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7833,7 +7833,7 @@ namespace WindEditor
 	public partial class mt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mt", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7958,7 +7958,7 @@ namespace WindEditor
 	public partial class mtoge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("mtoge", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -7993,7 +7993,7 @@ namespace WindEditor
 	public partial class npc_ac1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_ac1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8046,7 +8046,7 @@ namespace WindEditor
 	public partial class npc_ah : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_ah", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8099,7 +8099,7 @@ namespace WindEditor
 	public partial class npc_aj1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Unknown_0 = 0,
 			Unknown_1 = 1,
@@ -8161,7 +8161,7 @@ namespace WindEditor
 	public partial class npc_auction : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_auction(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8173,7 +8173,7 @@ namespace WindEditor
 	public partial class npc_ba1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_ba1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8208,7 +8208,7 @@ namespace WindEditor
 	public partial class npc_bj1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_bj1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8261,7 +8261,7 @@ namespace WindEditor
 	public partial class npc_bm1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_bm1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8332,7 +8332,7 @@ namespace WindEditor
 	public partial class npc_bmcon1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_bmcon1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8367,7 +8367,7 @@ namespace WindEditor
 	public partial class npc_bms1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_bms1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8402,7 +8402,7 @@ namespace WindEditor
 	public partial class npc_bmsw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_bmsw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8414,7 +8414,7 @@ namespace WindEditor
 	public partial class npc_bs1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_bs1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8467,7 +8467,7 @@ namespace WindEditor
 	public partial class npc_btsw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_btsw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8479,7 +8479,7 @@ namespace WindEditor
 	public partial class npc_btsw2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_btsw2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8514,7 +8514,7 @@ namespace WindEditor
 	public partial class npc_cb1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_cb1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8549,7 +8549,7 @@ namespace WindEditor
 	public partial class npc_co1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_co1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8584,7 +8584,7 @@ namespace WindEditor
 	public partial class npc_de1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_de1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8619,7 +8619,7 @@ namespace WindEditor
 	public partial class npc_ds1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_ds1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8654,7 +8654,7 @@ namespace WindEditor
 	public partial class npc_gk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_gk1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8689,7 +8689,7 @@ namespace WindEditor
 	public partial class npc_gp1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_gp1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8742,7 +8742,7 @@ namespace WindEditor
 	public partial class npc_hi1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_hi1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8777,7 +8777,7 @@ namespace WindEditor
 	public partial class npc_ho : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_ho(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8789,7 +8789,7 @@ namespace WindEditor
 	public partial class npc_hr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_hr", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8860,7 +8860,7 @@ namespace WindEditor
 	public partial class npc_jb1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_jb1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8895,7 +8895,7 @@ namespace WindEditor
 	public partial class npc_ji1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_ji1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8907,7 +8907,7 @@ namespace WindEditor
 	public partial class npc_kamome : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_kamome", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -8960,7 +8960,7 @@ namespace WindEditor
 	public partial class npc_kf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_kf1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9049,7 +9049,7 @@ namespace WindEditor
 	public partial class npc_kg1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_kg1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -9061,7 +9061,7 @@ namespace WindEditor
 	public partial class npc_kg2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_kg2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -9073,7 +9073,7 @@ namespace WindEditor
 	public partial class npc_kk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_kk1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9162,7 +9162,7 @@ namespace WindEditor
 	public partial class npc_km1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_km1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9197,7 +9197,7 @@ namespace WindEditor
 	public partial class npc_ko1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum ZillTypeEnum
+		public enum ZillTypeEnum
 		{
 			Chasing_Zill = 0,
 			Unknown_1 = 1,
@@ -9306,7 +9306,7 @@ namespace WindEditor
 	public partial class npc_kp1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_kp1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9341,7 +9341,7 @@ namespace WindEditor
 	public partial class npc_ls1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Looking_Out_of_Lookout = 0,
 			Captured_in_FF1_on_Floor = 1,
@@ -9382,7 +9382,7 @@ namespace WindEditor
 	public partial class npc_md : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_md", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9453,7 +9453,7 @@ namespace WindEditor
 	public partial class npc_mk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_mk", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9506,7 +9506,7 @@ namespace WindEditor
 	public partial class npc_mn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_mn", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9577,7 +9577,7 @@ namespace WindEditor
 	public partial class npc_mt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_mt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -9589,7 +9589,7 @@ namespace WindEditor
 	public partial class npc_nz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_nz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -9601,7 +9601,7 @@ namespace WindEditor
 	public partial class npc_ob1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_ob1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9654,7 +9654,7 @@ namespace WindEditor
 	public partial class npc_os : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_os", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9689,7 +9689,7 @@ namespace WindEditor
 	public partial class npc_p1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_p1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9742,7 +9742,7 @@ namespace WindEditor
 	public partial class npc_p2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_p2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9813,7 +9813,7 @@ namespace WindEditor
 	public partial class npc_people : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Windfall Townsperson", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9904,7 +9904,7 @@ namespace WindEditor
 	public partial class npc_pf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_pf1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -9957,7 +9957,7 @@ namespace WindEditor
 	public partial class npc_photo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_photo", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10010,7 +10010,7 @@ namespace WindEditor
 	public partial class npc_pm1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_pm1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10045,7 +10045,7 @@ namespace WindEditor
 	public partial class npc_roten : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_roten", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10098,7 +10098,7 @@ namespace WindEditor
 	public partial class npc_rsh1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_rsh1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10151,7 +10151,7 @@ namespace WindEditor
 	public partial class npc_sarace : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_sarace(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -10163,7 +10163,7 @@ namespace WindEditor
 	public partial class npc_so : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_so(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -10175,7 +10175,7 @@ namespace WindEditor
 	public partial class npc_sv : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_sv(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -10187,7 +10187,7 @@ namespace WindEditor
 	public partial class npc_tc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_tc", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10240,7 +10240,7 @@ namespace WindEditor
 	public partial class npc_tt : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public npc_tt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -10252,7 +10252,7 @@ namespace WindEditor
 	public partial class npc_uk : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Normal = 1,
 			Hiding = 2,
@@ -10353,7 +10353,7 @@ namespace WindEditor
 	public partial class npc_ym1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_ym1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10388,7 +10388,7 @@ namespace WindEditor
 	public partial class npc_yw1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Unknown_0 = 0,
 			Unknown_1 = 1,
@@ -10465,7 +10465,7 @@ namespace WindEditor
 	public partial class npc_zk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_zk1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10500,7 +10500,7 @@ namespace WindEditor
 	public partial class npc_zl1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("npc_zl1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10535,7 +10535,7 @@ namespace WindEditor
 	public partial class nz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("nz", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10606,7 +10606,7 @@ namespace WindEditor
 	public partial class nzg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("nzg", "Sight Range (Fives)", true, "This number multiplied by 5 is the range around the hole it will notice the player and start spawning Rats and/or Bombchus.", SourceScene.Room)]
 		public int SightRangeFives
 		{ 
@@ -10701,7 +10701,7 @@ namespace WindEditor
 	public partial class obj_adnno : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_adnno(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -10713,7 +10713,7 @@ namespace WindEditor
 	public partial class obj_ajav : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ajav", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10748,7 +10748,7 @@ namespace WindEditor
 	public partial class obj_ajavw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_ajavw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -10760,7 +10760,7 @@ namespace WindEditor
 	public partial class obj_akabe : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_akabe", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10849,7 +10849,7 @@ namespace WindEditor
 	public partial class obj_apzl : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Unsolved = 0,
 			Solved = 1,
@@ -10886,7 +10886,7 @@ namespace WindEditor
 	public partial class obj_ashut : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ashut", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -10939,7 +10939,7 @@ namespace WindEditor
 	public partial class obj_auzu : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_auzu", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11028,7 +11028,7 @@ namespace WindEditor
 	public partial class obj_aygr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_aygr", "Has Ladder", true, "", SourceScene.Room)]
 		public bool HasLadder
 		{ 
@@ -11065,7 +11065,7 @@ namespace WindEditor
 	public partial class obj_balancelift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_balancelift", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11100,7 +11100,7 @@ namespace WindEditor
 	public partial class obj_barrel : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_barrel", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11153,7 +11153,7 @@ namespace WindEditor
 	public partial class obj_barrel2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_barrel2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11278,7 +11278,7 @@ namespace WindEditor
 	public partial class obj_barrier : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_barrier", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11331,7 +11331,7 @@ namespace WindEditor
 	public partial class obj_bemos : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Blue_Beamos = 0,
 			Red_Beamos = 1,
@@ -11528,7 +11528,7 @@ namespace WindEditor
 	public partial class obj_bscurtain : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_bscurtain", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11563,7 +11563,7 @@ namespace WindEditor
 	public partial class obj_buoyflag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_buoyflag", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11634,7 +11634,7 @@ namespace WindEditor
 	public partial class obj_buoyrace : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_buoyrace", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11687,7 +11687,7 @@ namespace WindEditor
 	public partial class obj_cafelmp : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_cafelmp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -11699,7 +11699,7 @@ namespace WindEditor
 	public partial class obj_canon : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_canon", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11788,7 +11788,7 @@ namespace WindEditor
 	public partial class obj_coming : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_coming", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -11913,7 +11913,7 @@ namespace WindEditor
 	public partial class obj_correct : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_correct", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12002,7 +12002,7 @@ namespace WindEditor
 	public partial class obj_demo_barrel : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_demo_barrel(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12014,7 +12014,7 @@ namespace WindEditor
 	public partial class obj_dmgroom : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_dmgroom(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12026,7 +12026,7 @@ namespace WindEditor
 	public partial class obj_doguu : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_doguu", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12061,7 +12061,7 @@ namespace WindEditor
 	public partial class obj_doguu_demo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_doguu_demo", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12096,7 +12096,7 @@ namespace WindEditor
 	public partial class obj_dragonhead : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_dragonhead", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12131,7 +12131,7 @@ namespace WindEditor
 	public partial class obj_drift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_drift", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12166,7 +12166,7 @@ namespace WindEditor
 	public partial class obj_eayogn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_eayogn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12178,7 +12178,7 @@ namespace WindEditor
 	public partial class obj_ebomzo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Bombable Rito Statue", "Bombed Switch", true, "Switch that determines whether the statue has been bombed.", SourceScene.Room)]
 		public int BombedSwitch
 		{ 
@@ -12213,7 +12213,7 @@ namespace WindEditor
 	public partial class obj_eff : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_eff", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12248,7 +12248,7 @@ namespace WindEditor
 	public partial class obj_ekskz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ekskz", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12283,7 +12283,7 @@ namespace WindEditor
 	public partial class obj_eskban : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Bomb Rock (Bomb Flower Only)", "Destroyed Switch", true, "The switch to set when the rock is destroyed.", SourceScene.Room)]
 		public int DestroyedSwitch
 		{ 
@@ -12318,7 +12318,7 @@ namespace WindEditor
 	public partial class obj_ferris : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ferris", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12353,7 +12353,7 @@ namespace WindEditor
 	public partial class obj_figure : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_figure", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12388,7 +12388,7 @@ namespace WindEditor
 	public partial class obj_firewall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_firewall", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12423,7 +12423,7 @@ namespace WindEditor
 	public partial class obj_flame : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Medium_Jet = 0,
 			Large_Jet = 1,
@@ -12558,7 +12558,7 @@ namespace WindEditor
 	public partial class obj_ftree : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ftree", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12593,7 +12593,7 @@ namespace WindEditor
 	public partial class obj_ganonbed : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_ganonbed(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12605,7 +12605,7 @@ namespace WindEditor
 	public partial class obj_gaship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_gaship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12617,7 +12617,7 @@ namespace WindEditor
 	public partial class obj_gaship2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_gaship2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12629,7 +12629,7 @@ namespace WindEditor
 	public partial class obj_gnnbtltaki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_gnnbtltaki", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12664,7 +12664,7 @@ namespace WindEditor
 	public partial class obj_gnndemotakie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_gnndemotakie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12676,7 +12676,7 @@ namespace WindEditor
 	public partial class obj_gnndemotakis : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_gnndemotakis(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12688,7 +12688,7 @@ namespace WindEditor
 	public partial class obj_gong : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_gong(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12700,7 +12700,7 @@ namespace WindEditor
 	public partial class obj_gryw00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Lake Outside Dragon Roost Cavern", "Activation Switch", true, "The switch that must be set for the lake to become active.", SourceScene.Room)]
 		public int ActivationSwitch
 		{ 
@@ -12735,7 +12735,7 @@ namespace WindEditor
 	public partial class obj_gtaki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_gtaki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -12747,7 +12747,7 @@ namespace WindEditor
 	public partial class obj_hami2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hami2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12782,7 +12782,7 @@ namespace WindEditor
 	public partial class obj_hami3 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hami3", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12853,7 +12853,7 @@ namespace WindEditor
 	public partial class obj_hami4 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hami4", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12888,7 +12888,7 @@ namespace WindEditor
 	public partial class obj_hat : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hat", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12923,7 +12923,7 @@ namespace WindEditor
 	public partial class obj_hbrf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hbrf1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -12994,7 +12994,7 @@ namespace WindEditor
 	public partial class obj_hcbh : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hcbh", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13065,7 +13065,7 @@ namespace WindEditor
 	public partial class obj_hfuck1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_hfuck1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -13077,7 +13077,7 @@ namespace WindEditor
 	public partial class obj_hha : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hha", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13130,7 +13130,7 @@ namespace WindEditor
 	public partial class obj_hlift : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hlift", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13219,7 +13219,7 @@ namespace WindEditor
 	public partial class obj_hole : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hole", "Exit", true, "", SourceScene.Room)]
 		public ExitData Exit
 		{ 
@@ -13308,7 +13308,7 @@ namespace WindEditor
 	public partial class obj_homen : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Large_Stone_Head = 0,
 			Small_Stone_Head = 1,
@@ -13441,7 +13441,7 @@ namespace WindEditor
 	public partial class obj_homensmoke : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_homensmoke", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13494,7 +13494,7 @@ namespace WindEditor
 	public partial class obj_hsehi1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_hsehi1", "Switch to Set", true, "", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
@@ -13547,7 +13547,7 @@ namespace WindEditor
 	public partial class obj_htetu1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_htetu1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13582,7 +13582,7 @@ namespace WindEditor
 	public partial class obj_ice : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Chunk of Ice", "Melted Switch", true, "Switch to set once this chunk of ice has been melted.", SourceScene.Room)]
 		public int MeltedSwitch
 		{ 
@@ -13617,7 +13617,7 @@ namespace WindEditor
 	public partial class obj_iceisland : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_iceisland", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13652,7 +13652,7 @@ namespace WindEditor
 	public partial class obj_ikada : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Raft = 0,
 			Beedles_Shop_Ship = 1,
@@ -13834,7 +13834,7 @@ namespace WindEditor
 	public partial class obj_Itnak : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_Itnak", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13887,7 +13887,7 @@ namespace WindEditor
 	public partial class obj_jump : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_jump", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13922,7 +13922,7 @@ namespace WindEditor
 	public partial class obj_kanat : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_kanat", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -13957,7 +13957,7 @@ namespace WindEditor
 	public partial class obj_kanoke : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_kanoke", "Is Upright", true, "", SourceScene.Room)]
 		public bool IsUpright
 		{ 
@@ -14071,7 +14071,7 @@ namespace WindEditor
 	public partial class obj_ladder : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ladder", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14142,7 +14142,7 @@ namespace WindEditor
 	public partial class obj_leaves : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_leaves", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14213,7 +14213,7 @@ namespace WindEditor
 	public partial class obj_light : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_light(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -14225,7 +14225,7 @@ namespace WindEditor
 	public partial class obj_lpalm : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_lpalm(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -14237,7 +14237,7 @@ namespace WindEditor
 	public partial class obj_magmarock : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_magmarock", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14290,7 +14290,7 @@ namespace WindEditor
 	public partial class obj_majyuu_door : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_majyuu_door", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14325,7 +14325,7 @@ namespace WindEditor
 	public partial class obj_mkie : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_mkie", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14432,7 +14432,7 @@ namespace WindEditor
 	public partial class obj_mkiek : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_mkiek", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14485,7 +14485,7 @@ namespace WindEditor
 	public partial class obj_mknjd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_mknjd", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14538,7 +14538,7 @@ namespace WindEditor
 	public partial class obj_mmrr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_mmrr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -14550,7 +14550,7 @@ namespace WindEditor
 	public partial class obj_monument : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_monument", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14603,7 +14603,7 @@ namespace WindEditor
 	public partial class obj_movebox : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Breakable_Wooden_Crate = 0,
 			Black_Box_A = 1,
@@ -14828,7 +14828,7 @@ namespace WindEditor
 	public partial class obj_msdan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_msdan", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14917,7 +14917,7 @@ namespace WindEditor
 	public partial class obj_msdan2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_msdan2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -14952,7 +14952,7 @@ namespace WindEditor
 	public partial class obj_msdan_sub : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_msdan_sub", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15023,7 +15023,7 @@ namespace WindEditor
 	public partial class obj_msdan_sub2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_msdan_sub2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15076,7 +15076,7 @@ namespace WindEditor
 	public partial class obj_mshokki : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Pitcher = 0,
 			Plate = 1,
@@ -15114,7 +15114,7 @@ namespace WindEditor
 	public partial class obj_mtest : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Unknown_0 = 0,
 			Unknown_1 = 1,
@@ -15224,7 +15224,7 @@ namespace WindEditor
 	public partial class obj_nest : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_nest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15236,7 +15236,7 @@ namespace WindEditor
 	public partial class obj_ohatch : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ohatch", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15271,7 +15271,7 @@ namespace WindEditor
 	public partial class obj_ojtree : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_ojtree(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15283,7 +15283,7 @@ namespace WindEditor
 	public partial class obj_ospbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ospbox", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15336,7 +15336,7 @@ namespace WindEditor
 	public partial class obj_otble : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_otble", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15371,7 +15371,7 @@ namespace WindEditor
 	public partial class obj_paper : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public int MessageID
+		public int MessageID
 		{ 
 			get
 			{
@@ -15420,7 +15420,7 @@ namespace WindEditor
 	public partial class obj_pbco : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_pbco(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15432,7 +15432,7 @@ namespace WindEditor
 	public partial class obj_pbka : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_pbka(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15444,7 +15444,7 @@ namespace WindEditor
 	public partial class obj_pfall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_pfall(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15456,7 +15456,7 @@ namespace WindEditor
 	public partial class obj_pirateship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Pirate Ship", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15566,7 +15566,7 @@ namespace WindEditor
 	public partial class obj_plant : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_plant(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15578,7 +15578,7 @@ namespace WindEditor
 	public partial class obj_quake : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_quake", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15649,7 +15649,7 @@ namespace WindEditor
 	public partial class obj_rcloud : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_rcloud", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15684,7 +15684,7 @@ namespace WindEditor
 	public partial class obj_rflw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_rflw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15696,7 +15696,7 @@ namespace WindEditor
 	public partial class obj_rforce : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_rforce(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -15708,7 +15708,7 @@ namespace WindEditor
 	public partial class obj_roten : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_roten", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15743,7 +15743,7 @@ namespace WindEditor
 	public partial class obj_search : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum Unknown_1Enum
+		public enum Unknown_1Enum
 		{
 			Unknown_0 = 0,
 			Unknown_1 = 1,
@@ -15884,7 +15884,7 @@ namespace WindEditor
 	public partial class obj_shelf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_shelf", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -15937,7 +15937,7 @@ namespace WindEditor
 	public partial class obj_shmrgrd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Spiked Hammer Button", "Switch to Set", true, "This switch will be set when the button is pressed.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
@@ -15972,7 +15972,7 @@ namespace WindEditor
 	public partial class obj_smplbg : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_smplbg", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16007,7 +16007,7 @@ namespace WindEditor
 	public partial class obj_stair : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Falling Stair", "Disable Spawn Switch", true, "Once this switch is set, the stair will no longer appear.", SourceScene.Room)]
 		public int DisableSpawnSwitch
 		{ 
@@ -16042,7 +16042,7 @@ namespace WindEditor
 	public partial class obj_swflat : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_swflat", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16113,7 +16113,7 @@ namespace WindEditor
 	public partial class obj_swhammer : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Hammer Button", "Switch to Unset", true, "This switch will be unset when the button is pressed.", SourceScene.Room)]
 		public int SwitchtoUnset
 		{ 
@@ -16166,7 +16166,7 @@ namespace WindEditor
 	public partial class obj_swheavy : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_swheavy", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16219,7 +16219,7 @@ namespace WindEditor
 	public partial class obj_swlight : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_swlight", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16290,7 +16290,7 @@ namespace WindEditor
 	public partial class obj_swpush : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Button", "Event to Start", true, "", SourceScene.Stage)]
 		public MapEvent EventtoStart
 		{ 
@@ -16442,7 +16442,7 @@ namespace WindEditor
 	public partial class obj_table : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_table", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16477,7 +16477,7 @@ namespace WindEditor
 	public partial class obj_tapestry : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_tapestry", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16530,7 +16530,7 @@ namespace WindEditor
 	public partial class obj_tenmado : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_tenmado", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16583,7 +16583,7 @@ namespace WindEditor
 	public partial class obj_tide : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_tide", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16636,7 +16636,7 @@ namespace WindEditor
 	public partial class obj_timer : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_timer", "Time Limit (Half Seconds)", true, "This number multiplied by 15 frames is how long to wait before unsetting the switch.", SourceScene.Room)]
 		public int TimeLimitHalfSeconds
 		{ 
@@ -16689,7 +16689,7 @@ namespace WindEditor
 	public partial class obj_tntrap : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_tntrap", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16778,7 +16778,7 @@ namespace WindEditor
 	public partial class obj_toripost : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_toripost(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -16790,7 +16790,7 @@ namespace WindEditor
 	public partial class obj_tousekiki : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_tousekiki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -16802,7 +16802,7 @@ namespace WindEditor
 	public partial class obj_tower : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_tower(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -16814,7 +16814,7 @@ namespace WindEditor
 	public partial class obj_trap : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_trap", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16867,7 +16867,7 @@ namespace WindEditor
 	public partial class obj_tribox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_tribox", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -16920,7 +16920,7 @@ namespace WindEditor
 	public partial class obj_try : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_try", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17009,7 +17009,7 @@ namespace WindEditor
 	public partial class obj_usovmc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_usovmc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17021,7 +17021,7 @@ namespace WindEditor
 	public partial class obj_Vds : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_Vds", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17056,7 +17056,7 @@ namespace WindEditor
 	public partial class obj_vfan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Ganon's Tower Destructible Door", "Destroyed Switch", true, "", SourceScene.Room)]
 		public int DestroyedSwitch
 		{ 
@@ -17091,7 +17091,7 @@ namespace WindEditor
 	public partial class obj_vgnfd : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_vgnfd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17103,7 +17103,7 @@ namespace WindEditor
 	public partial class obj_vmc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_vmc", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17138,7 +17138,7 @@ namespace WindEditor
 	public partial class obj_vmsdz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_vmsdz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17150,7 +17150,7 @@ namespace WindEditor
 	public partial class obj_vmsms : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_vmsms(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17162,7 +17162,7 @@ namespace WindEditor
 	public partial class obj_volcano : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_volcano", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17197,7 +17197,7 @@ namespace WindEditor
 	public partial class obj_Vteng : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_Vteng(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17209,7 +17209,7 @@ namespace WindEditor
 	public partial class obj_vtil : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_vtil", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17244,7 +17244,7 @@ namespace WindEditor
 	public partial class obj_vyasi : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_vyasi", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17279,7 +17279,7 @@ namespace WindEditor
 	public partial class obj_warpt : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Locked_noncyclic_pot = 0,
 			Unlocked_noncyclic_pot = 1,
@@ -17611,7 +17611,7 @@ namespace WindEditor
 	public partial class obj_wood : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_wood(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17623,7 +17623,7 @@ namespace WindEditor
 	public partial class obj_xfuta : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public obj_xfuta(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -17635,7 +17635,7 @@ namespace WindEditor
 	public partial class obj_Yboil : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_Yboil", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17670,7 +17670,7 @@ namespace WindEditor
 	public partial class obj_ygush00 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_ygush00", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17705,7 +17705,7 @@ namespace WindEditor
 	public partial class obj_YLzou : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_YLzou", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17740,7 +17740,7 @@ namespace WindEditor
 	public partial class obj_zouK : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("obj_zouK", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -17775,7 +17775,7 @@ namespace WindEditor
 	public partial class oq : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Freshwater_Octorok = 0,
 			Saltwater_Octorok_that_shoots_at_a_certain_range = 1,
@@ -17866,7 +17866,7 @@ namespace WindEditor
 	public partial class oship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("oship", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -18009,7 +18009,7 @@ namespace WindEditor
 	public partial class pedestal : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("pedestal", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -18044,7 +18044,7 @@ namespace WindEditor
 	public partial class ph : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Peahat = 0,
 			Seahat = 1,
@@ -18122,7 +18122,7 @@ namespace WindEditor
 	public partial class pirate_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public pirate_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -18134,7 +18134,7 @@ namespace WindEditor
 	public partial class pt : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Respawning = 0,
 			Nonrespawning = 1,
@@ -18303,7 +18303,7 @@ namespace WindEditor
 	public partial class pw : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Wandering = 0,
 			Invisible_until_seeing_Link = 1,
@@ -18452,7 +18452,7 @@ namespace WindEditor
 	public partial class pz : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("pz", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -18487,7 +18487,7 @@ namespace WindEditor
 	public partial class race_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("race_item", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -18558,7 +18558,7 @@ namespace WindEditor
 	public partial class rd : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum IdleAnimationEnum
+		public enum IdleAnimationEnum
 		{
 			Standing = 0,
 			Sitting = 1,
@@ -18659,7 +18659,7 @@ namespace WindEditor
 	public partial class rectangle : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public rectangle(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -18671,7 +18671,7 @@ namespace WindEditor
 	public partial class sail : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public sail(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -18683,7 +18683,7 @@ namespace WindEditor
 	public partial class saku : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("saku", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -18772,7 +18772,7 @@ namespace WindEditor
 	public partial class salvage : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Needs_Chart = 0,
 			Unused = 1,
@@ -18967,7 +18967,7 @@ namespace WindEditor
 	public partial class salvage_tbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("salvage_tbox", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19020,7 +19020,7 @@ namespace WindEditor
 	public partial class sbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public sbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -19032,7 +19032,7 @@ namespace WindEditor
 	public partial class scene_change : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public scene_change(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -19044,7 +19044,7 @@ namespace WindEditor
 	public partial class seatag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public seatag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -19056,7 +19056,7 @@ namespace WindEditor
 	public partial class shand : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("shand", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19091,7 +19091,7 @@ namespace WindEditor
 	public partial class ship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ship", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19162,7 +19162,7 @@ namespace WindEditor
 	public partial class shop_item : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("shop_item", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19215,7 +19215,7 @@ namespace WindEditor
 	public partial class shutter : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("shutter", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19268,7 +19268,7 @@ namespace WindEditor
 	public partial class shutter2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("shutter2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19303,7 +19303,7 @@ namespace WindEditor
 	public partial class sie_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public sie_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -19315,7 +19315,7 @@ namespace WindEditor
 	public partial class sitem : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("sitem", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19404,7 +19404,7 @@ namespace WindEditor
 	public partial class sk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("sk", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19457,7 +19457,7 @@ namespace WindEditor
 	public partial class sk2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("sk2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19528,7 +19528,7 @@ namespace WindEditor
 	public partial class spotbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("spotbox", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19563,7 +19563,7 @@ namespace WindEditor
 	public partial class ss : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ss", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19634,7 +19634,7 @@ namespace WindEditor
 	public partial class ssk : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ssk", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19705,7 +19705,7 @@ namespace WindEditor
 	public partial class sss : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum SFXTypeEnum
+		public enum SFXTypeEnum
 		{
 			SFX_58F7 = 0,
 			SFX_58F8 = 1,
@@ -19783,7 +19783,7 @@ namespace WindEditor
 	public partial class st : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Normal = 0,
 			Underground = 1,
@@ -19898,7 +19898,7 @@ namespace WindEditor
 	public partial class steam_tag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("steam_tag", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -19933,7 +19933,7 @@ namespace WindEditor
 	public partial class stone : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("stone", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20069,7 +20069,7 @@ namespace WindEditor
 	public partial class stone2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("stone2", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20194,7 +20194,7 @@ namespace WindEditor
 	public partial class swattack : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("swattack", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20247,7 +20247,7 @@ namespace WindEditor
 	public partial class swc00 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Switch Setter Trigger Region", "Switch to Set", true, "", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
@@ -20327,7 +20327,7 @@ namespace WindEditor
 	public partial class swhit0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("swhit0", "Switch to Set", true, "Switch to set when hit.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
@@ -20468,7 +20468,7 @@ namespace WindEditor
 	public partial class switem : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-				public enum WhatTriggersItEnum
+		public enum WhatTriggersItEnum
 		{
 			Sword_or_Enemy_Weapon = 0,
 			Bombs = 1,
@@ -20553,7 +20553,7 @@ namespace WindEditor
 	public partial class swpropeller : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("swpropeller", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20606,7 +20606,7 @@ namespace WindEditor
 	public partial class swtact : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Wind Waker Switch", "Switch to Set", true, "The switch to set when the proper Wind Waker song has been played.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
@@ -20694,7 +20694,7 @@ namespace WindEditor
 	public partial class swtdoor : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("swtdoor", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20747,7 +20747,7 @@ namespace WindEditor
 	public partial class syan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public syan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -20759,7 +20759,7 @@ namespace WindEditor
 	public partial class tag_attention : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_attention", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20812,7 +20812,7 @@ namespace WindEditor
 	public partial class tag_ba1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public tag_ba1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -20824,7 +20824,7 @@ namespace WindEditor
 	public partial class tag_etc : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_etc", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -20877,7 +20877,7 @@ namespace WindEditor
 	public partial class tag_event : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Unknown_1 = 0,
 			Unknown_2 = 1,
@@ -21010,7 +21010,7 @@ namespace WindEditor
 	public partial class tag_evsw : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("Event Bit Switch Setter", "Switch to Set", true, "", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
@@ -21088,7 +21088,7 @@ namespace WindEditor
 	public partial class tag_ghostship : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_ghostship", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21141,7 +21141,7 @@ namespace WindEditor
 	public partial class tag_hint : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_hint", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21282,7 +21282,7 @@ namespace WindEditor
 	public partial class tag_island : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_island", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21353,7 +21353,7 @@ namespace WindEditor
 	public partial class tag_kb_item : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_kb_item", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21442,7 +21442,7 @@ namespace WindEditor
 	public partial class tag_kf1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_kf1", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21477,7 +21477,7 @@ namespace WindEditor
 	public partial class tag_kk1 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public tag_kk1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -21489,7 +21489,7 @@ namespace WindEditor
 	public partial class tag_light : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Invisible_Light_Region = 0,
 			Light_Beam = 1,
@@ -21642,7 +21642,7 @@ namespace WindEditor
 	public partial class tag_md_cb : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_md_cb", "MessageID", true, "", SourceScene.Room)]
 		public int MessageID
 		{ 
@@ -21731,7 +21731,7 @@ namespace WindEditor
 	public partial class tag_mk : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_mk", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21802,7 +21802,7 @@ namespace WindEditor
 	public partial class tag_msg : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_msg", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21925,7 +21925,7 @@ namespace WindEditor
 	public partial class tag_photo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_photo", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21960,7 +21960,7 @@ namespace WindEditor
 	public partial class tag_ret : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_ret", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -21995,7 +21995,7 @@ namespace WindEditor
 	public partial class tag_so : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_so", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22066,7 +22066,7 @@ namespace WindEditor
 	public partial class tag_volcano : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_volcano", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22155,7 +22155,7 @@ namespace WindEditor
 	public partial class tag_waterlevel : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tag_waterlevel", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22190,7 +22190,7 @@ namespace WindEditor
 	public partial class tama : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tama", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22225,7 +22225,7 @@ namespace WindEditor
 	public partial class tbox : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tbox", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22368,7 +22368,7 @@ namespace WindEditor
 	public partial class title : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public title(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -22380,7 +22380,7 @@ namespace WindEditor
 	public partial class tn : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Wandering = 0,
 			Guards_an_area = 4,
@@ -22597,7 +22597,7 @@ namespace WindEditor
 	public partial class toge : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("toge", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22650,7 +22650,7 @@ namespace WindEditor
 	public partial class tori_flag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public tori_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -22662,7 +22662,7 @@ namespace WindEditor
 	public partial class tornado : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tornado", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -22697,7 +22697,7 @@ namespace WindEditor
 	public partial class tpota : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public tpota(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -22709,7 +22709,7 @@ namespace WindEditor
 	public partial class tsubo : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("tsubo", "Dropped Item", true, "", SourceScene.Room)]
 		public DroppedItemID DroppedItem
 		{ 
@@ -22978,7 +22978,7 @@ namespace WindEditor
 	public partial class wall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("wall", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23031,7 +23031,7 @@ namespace WindEditor
 	public partial class warpdm20 : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("warpdm20", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23066,7 +23066,7 @@ namespace WindEditor
 	public partial class warpf : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("warpf", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23101,7 +23101,7 @@ namespace WindEditor
 	public partial class warpfout : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public warpfout(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -23113,7 +23113,7 @@ namespace WindEditor
 	public partial class warpgn : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("warpgn", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23166,7 +23166,7 @@ namespace WindEditor
 	public partial class warphr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("warphr", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23201,7 +23201,7 @@ namespace WindEditor
 	public partial class warpls : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum TypeEnum
+		public enum TypeEnum
 		{
 			Pink_Warp = 0,
 			White_Warp = 1,
@@ -23318,7 +23318,7 @@ namespace WindEditor
 	public partial class warpmj : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("warpmj", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23353,7 +23353,7 @@ namespace WindEditor
 	public partial class waterfall : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("waterfall", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23406,7 +23406,7 @@ namespace WindEditor
 	public partial class wbird : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public wbird(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -23418,7 +23418,7 @@ namespace WindEditor
 	public partial class windmill : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("windmill", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23453,7 +23453,7 @@ namespace WindEditor
 	public partial class wind_tag : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("wind_tag", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23614,7 +23614,7 @@ namespace WindEditor
 	public partial class wz : Actor
 	{
 		// Auto-Generated Properties from Templates
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Shoots_Fireballs = 0,
 			Spawns_Enemies_and_Shoots_Fireballs = 1,
@@ -23767,7 +23767,7 @@ namespace WindEditor
 	public partial class ygcwp : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ygcwp", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23802,7 +23802,7 @@ namespace WindEditor
 	public partial class ykgr : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		[WProperty("ykgr", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
@@ -23855,7 +23855,7 @@ namespace WindEditor
 	public partial class yougan : Actor
 	{
 		// Auto-Generated Properties from Templates
-		
+
 		// Constructor
 		public yougan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{

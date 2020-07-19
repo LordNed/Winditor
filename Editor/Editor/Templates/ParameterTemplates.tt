@@ -1,4 +1,4 @@
-﻿		<#
+﻿<#
 		string EscapeIdentifier(string input)
 		{
 			return Regex.Replace(input, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
