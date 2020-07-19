@@ -1620,7 +1620,7 @@
     "ActorClassType": "demo_kmm",
     "Wait Animations": null,
     "Actor Name": "DmKmm",
-    "English Name": "demo_kmm",
+    "English Name": "Cutscene Seagull",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1636,7 +1636,7 @@
     "ActorClassType": "demo_kmm",
     "Wait Animations": null,
     "Actor Name": "DmKmm2",
-    "English Name": "demo_kmm",
+    "English Name": "Cutscene Seagull",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1651,7 +1651,7 @@
     "ActorClassType": "dk",
     "Wait Animations": null,
     "Actor Name": "Dk",
-    "English Name": "dk",
+    "English Name": "Helmaroc King",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5512,8 +5512,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm1",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Quill",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5530,8 +5533,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm2",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Skett and Akoot",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5547,8 +5553,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm3",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Basht and Bisht and Hoskit",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Dragon Roost Cavern Entrance (Adanmae)",
@@ -5563,8 +5572,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm4",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Ilari and Pashli",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5581,8 +5593,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm5",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Namali and Kogoli",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5933,7 +5948,7 @@
     "ActorClassType": "npc_kamome",
     "Wait Animations": null,
     "Actor Name": "HyoiKam",
-    "English Name": "npc_kamome",
+    "English Name": "Hyoi Pear Seagull Region",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6149,7 +6164,10 @@
     "Wait Animations": null,
     "Actor Name": "Md1",
     "English Name": "Medli",
-    "Tags": null,
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Dragon Roost Cavern Entrance (Adanmae)",
@@ -7171,8 +7189,11 @@
     "ActorClassType": "npc_zk1",
     "Wait Animations": null,
     "Actor Name": "Zk1",
-    "English Name": "Rito Cheftain",
-    "Tags": null,
+    "English Name": "Rito Chieftain",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",

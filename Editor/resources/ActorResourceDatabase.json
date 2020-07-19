@@ -2064,6 +2064,23 @@
     ]
   },
   {
+    "Name": "Helmaroc King",
+    "Archive": "Dk",
+    "Models": [
+      {
+        "Path": "bdl/dk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/fly1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.23333333333333333333333333333333
+          }
+        ],
+      },
+    ]
+  },
+  {
     "Name": "Small Rock",
     "Archive": "Always",
     "Models": [
@@ -2952,6 +2969,482 @@
             "Parent Joint": "handL"
           },
         ]
+      },
+    ]
+  },
+  {
+    "Name": "Quill",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead01.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Skett and Akoot",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bm02.bmt"
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Basht and Bisht",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bm02.bmt"
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead07.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Hoskit",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bm02.bmt"
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead05.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Ilari",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead04.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Pashli",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead09.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Namali",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead06.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Kogoli",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead03.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
       },
     ]
   },

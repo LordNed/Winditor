@@ -3,31 +3,111 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Quill Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "npc_bm1",
+      "Category": "Quill (Bm1)",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Skett and Akoot Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Skett and Akoot (Bm2)",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Skett",
+        1: "Akoot",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Basht and Bisht and Hoskit Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Basht and Bisht and Hoskit (Bm3)",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Basht",
+        1: "Bisht",
+        2: "Hoskit",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Ilari and Pashli Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Ilari and Pashli (Bm4)",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Ilari 0",
+        1: "Ilari 1",
+        2: "Ilari 2",
+        3: "Pashli",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Namali and Kogoli Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Namali and Kogoli (Bm5)",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Namali",
+        1: "Kogoli",
+        255: "Unknown 255",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Spawn Condition",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "npc_bm1",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Din's Pearl not owned",
+        1: "Got Din's Pearl, haven't left DRI yet",
+        2: "Got Din's Pearl, left DRI, is daytime",
+        3: "Got Din's Pearl, left DRI, is nighttime",
+        255: "Always spawns",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "npc_bm1",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }

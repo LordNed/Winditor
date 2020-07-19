@@ -8261,55 +8261,205 @@ namespace WindEditor
 	public partial class npc_bm1 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum QuillTypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_255 = 255,
+		}
 
-		[WProperty("npc_bm1", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Quill (Bm1)", "Quill Type", true, "", SourceScene.Room)]
+		public QuillTypeEnum QuillType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(QuillTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (QuillTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("QuillType");
+				UpdateModel();
 			}
 		}
+		public enum SkettandAkootTypeEnum
+		{
+			Skett = 0,
+			Akoot = 1,
+			Unknown_255 = 255,
+		}
 
-		[WProperty("npc_bm1", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Skett and Akoot (Bm2)", "Skett and Akoot Type", true, "", SourceScene.Room)]
+		public SkettandAkootTypeEnum SkettandAkootType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (!Enum.IsDefined(typeof(SkettandAkootTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (SkettandAkootTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("SkettandAkootType");
+				UpdateModel();
+			}
+		}
+		public enum BashtandBishtandHoskitTypeEnum
+		{
+			Basht = 0,
+			Bisht = 1,
+			Hoskit = 2,
+			Unknown_255 = 255,
+		}
+
+
+		[WProperty("Basht and Bisht and Hoskit (Bm3)", "Basht and Bisht and Hoskit Type", true, "", SourceScene.Room)]
+		public BashtandBishtandHoskitTypeEnum BashtandBishtandHoskitType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (!Enum.IsDefined(typeof(BashtandBishtandHoskitTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (BashtandBishtandHoskitTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("BashtandBishtandHoskitType");
+				UpdateModel();
+			}
+		}
+		public enum IlariandPashliTypeEnum
+		{
+			Ilari_0 = 0,
+			Ilari_1 = 1,
+			Ilari_2 = 2,
+			Pashli = 3,
+			Unknown_255 = 255,
+		}
+
+
+		[WProperty("Ilari and Pashli (Bm4)", "Ilari and Pashli Type", true, "", SourceScene.Room)]
+		public IlariandPashliTypeEnum IlariandPashliType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (!Enum.IsDefined(typeof(IlariandPashliTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (IlariandPashliTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("IlariandPashliType");
+				UpdateModel();
+			}
+		}
+		public enum NamaliandKogoliTypeEnum
+		{
+			Namali = 0,
+			Kogoli = 1,
+			Unknown_255 = 255,
+		}
+
+
+		[WProperty("Namali and Kogoli (Bm5)", "Namali and Kogoli Type", true, "", SourceScene.Room)]
+		public NamaliandKogoliTypeEnum NamaliandKogoliType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (!Enum.IsDefined(typeof(NamaliandKogoliTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (NamaliandKogoliTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("NamaliandKogoliType");
+				UpdateModel();
+			}
+		}
+		public enum SpawnConditionEnum
+		{
+			Dins_Pearl_not_owned = 0,
+			Got_Dins_Pearl_havent_left_DRI_yet = 1,
+			Got_Dins_Pearl_left_DRI_is_daytime = 2,
+			Got_Dins_Pearl_left_DRI_is_nighttime = 3,
+			Always_spawns = 255,
+		}
+
+
+		[WProperty("npc_bm1", "Spawn Condition", true, "", SourceScene.Room)]
+		public SpawnConditionEnum SpawnCondition
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(SpawnConditionEnum), value_as_int))
+					value_as_int = 0;
+				return (SpawnConditionEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SpawnCondition");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("npc_bm1", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("npc_bm1", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
 
@@ -8322,9 +8472,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			Path = null;
 		}
 	}
 
@@ -8904,7 +9052,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class npc_kamome : Actor
+	public partial class npc_kamome : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 
