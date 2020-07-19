@@ -13,6 +13,8 @@ using NodeNetwork.ViewModels;
 using NodeNetwork.Toolkit.Layout.ForceDirected;
 using System.Collections.ObjectModel;
 using DynamicData;
+using System.Windows.Input;
+using OpenTK;
 
 namespace WindEditor.Editor.Modes
 {
@@ -297,7 +299,11 @@ namespace WindEditor.Editor.Modes
                         Substance<ObservableCollection<BindingVector3>> eye_vec = eye as Substance<ObservableCollection<BindingVector3>>;
                         eye_pos = eye_vec.Data[0].BackingVector;
 
-                        world.DebugDrawBillboard("eye.png", eye_pos, new OpenTK.Vector3(100, 100, 100), WLinearColor.White, 0.03f);
+                        WLinearColor draw_color = WLinearColor.White;
+                        if (EditorSelection.SelectedObjects.Contains(eye_vec.Data[0]))
+                            draw_color = WLinearColor.FromHexString("0xFF4F00FF");
+
+                        world.DebugDrawBillboard("eye.png", eye_pos, new OpenTK.Vector3(100, 100, 100), draw_color, 0.025f);
                     }
 
                     Substance target = c.Properties.Find(x => x.Name.ToLower() == "center");
@@ -306,12 +312,16 @@ namespace WindEditor.Editor.Modes
                         Substance<ObservableCollection<BindingVector3>> target_vec = target as Substance<ObservableCollection<BindingVector3>>;
                         target_pos = target_vec.Data[0].BackingVector;
 
-                        world.DebugDrawBillboard("target.png", target_pos, new OpenTK.Vector3(100, 100, 100), WLinearColor.White, 0.03f);
+                        WLinearColor draw_color = WLinearColor.White;
+                        if (EditorSelection.SelectedObjects.Contains(target_vec.Data[0]))
+                            draw_color = WLinearColor.FromHexString("0xFF4F00FF");
+
+                        world.DebugDrawBillboard("target.png", target_pos, new OpenTK.Vector3(100, 100, 100), draw_color, 0.025f);
                     }
 
                     if (eye != null && target != null)
                     {
-                        world.DebugDrawLine(eye_pos, target_pos, WLinearColor.Black, 100000.0f, 0.35f);
+                        world.DebugDrawLine(eye_pos, target_pos, WLinearColor.Black, 100000.0f, 0.025f);
                     }
 
                     c = c.NextCut;
@@ -346,7 +356,86 @@ namespace WindEditor.Editor.Modes
             if (TransformGizmo != null)
                 ((IRenderable)TransformGizmo).AddToRenderer(view);
 
+            // If we have a gizmo and we're transforming it, don't check for selection change.
+            if (TransformGizmo != null && TransformGizmo.IsTransforming)
+                return;
+            if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
+            {
+                FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
+                BindingVector3 addedVec = Raycast(mouseRay, view.ViewCamera);
+
+                // Check the behaviour of this click to determine appropriate selection modification behaviour.
+                // Click w/o Modifiers = Clear Selection, add result to selection
+                // Click /w Ctrl = Toggle Selection State
+                // Click /w Shift = Add to Selection
+                bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
+                bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
+
+                // Replace the previous selection with the current selection, if it's valid.
+                if (!ctrlPressed & !shiftPressed)
+                {
+                    EditorSelection.ClearSelection();
+
+                    if (addedVec != null)
+                    {
+                        EditorSelection.AddToSelection(addedVec);
+                    }
+                }
+                else if (addedVec != null && (ctrlPressed && !shiftPressed))
+                {
+                    if (EditorSelection.SelectedObjects.Contains(addedVec))
+                    {
+                        EditorSelection.RemoveFromSelection(addedVec);
+                    }
+                    else
+                    {
+                        EditorSelection.AddToSelection(addedVec);
+                    }
+                }
+                else if (addedVec != null && shiftPressed)
+                {
+                    if (!EditorSelection.SelectedObjects.Contains(addedVec))
+                    {
+                        EditorSelection.AddToSelection(addedVec);
+                    }
+                }
+            }
+            
             UpdateGizmoTransform();
+        }
+
+        private BindingVector3 Raycast(FRay ray, WCamera camera)
+        {
+            BindingVector3 selected_vec = null;
+            List<BindingVector3> vecs_to_raycast = GetCameraVectorProperties();
+            List<Tuple<float, BindingVector3>> results = new List<Tuple<float, BindingVector3>>();
+
+            foreach (BindingVector3 bv in vecs_to_raycast)
+            {
+                FPlane plane = new FPlane(ray.Direction.Normalized(), bv.BackingVector);
+
+                float dist = float.MaxValue;
+                plane.RayIntersectsPlane(ray, out dist);
+
+                Vector3 plane_intersect_point = camera.Transform.Position + (plane.Normal * dist);
+                float distance_from_billboard_center = (plane_intersect_point - bv.BackingVector).Length;
+
+                if (distance_from_billboard_center < 50.0f)
+                {
+                    float point_dist = (camera.Transform.Position - bv.BackingVector).Length;
+                    results.Add(new Tuple<float, BindingVector3>(point_dist, bv));
+                }
+            }
+
+            results.Sort(delegate(Tuple<float, BindingVector3> x, Tuple<float, BindingVector3> y)
+            {
+                return x.Item1.CompareTo(y.Item1);
+            });
+
+            if (results.Count > 0)
+                selected_vec = results[0].Item2;
+
+            return selected_vec;
         }
 
         private TabItem GenerateActorTabItem(Staff staff)
@@ -403,6 +492,42 @@ namespace WindEditor.Editor.Modes
         {
             // This will get invoked when an Undo happens which allows the gizmo to fix itself.
             UpdateGizmoTransform();
+        }
+
+        private List<BindingVector3> GetCameraVectorProperties()
+        {
+            List<BindingVector3> vecs = new List<BindingVector3>();
+
+            Staff camera = (Staff)SelectedEvent.Actors.ToList().Find(x => x.StaffType == StaffType.Camera);
+
+            if (camera != null)
+            {
+                Cut c = camera.FirstCut;
+
+                while (c != null)
+                {
+                    OpenTK.Vector3 eye_pos = new OpenTK.Vector3();
+                    OpenTK.Vector3 target_pos = new OpenTK.Vector3();
+
+                    Substance eye = c.Properties.Find(x => x.Name.ToLower() == "eye");
+                    if (eye != null)
+                    {
+                        Substance<ObservableCollection<BindingVector3>> eye_vec = eye as Substance<ObservableCollection<BindingVector3>>;
+                        vecs.Add(eye_vec.Data[0]);
+                    }
+
+                    Substance target = c.Properties.Find(x => x.Name.ToLower() == "center");
+                    if (target != null)
+                    {
+                        Substance<ObservableCollection<BindingVector3>> target_vec = target as Substance<ObservableCollection<BindingVector3>>;
+                        vecs.Add(target_vec.Data[0]);
+                    }
+
+                    c = c.NextCut;
+                }
+            }
+
+            return vecs;
         }
 
         #region INotifyPropertyChanged Support

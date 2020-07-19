@@ -170,6 +170,14 @@ namespace WindEditor.Events
             m_NextCutIndex = NextCut != null ? cuts.IndexOf(NextCut) : -1;
             m_FirstSubstanceIndex = Properties.Count > 0 ? substances.Count : -1;
 
+            for (int i = 0; i < Properties.Count; i++)
+            {
+                if (i + 1 < Properties.Count)
+                    Properties[i].NextSubstance = Properties[i + 1];
+                else
+                    Properties[i].NextSubstance = null;
+            }
+
             substances.AddRange(Properties);
         }
 

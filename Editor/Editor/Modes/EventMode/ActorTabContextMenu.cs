@@ -86,6 +86,7 @@ namespace WindEditor.Events
             CutNodeViewModel cv = new CutNodeViewModel(c);
             cv.Name = EventDefinitionManager.GetCutDisplayName(m_Actor.Name, cut_name);
             cv.Position = GetMouseLocation(view);
+            cv.EnableConnectionUpdates = true;
 
             view.ViewModel.Nodes.Edit(x => x.Add(cv));
         }

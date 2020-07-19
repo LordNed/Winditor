@@ -227,6 +227,7 @@ namespace WindEditor
                 view.Dispose();
 
             m_ActorMode.Dispose();
+            m_EventMode.Dispose();
 
             m_persistentLines.Dispose();
             m_persistentQuads.Dispose();

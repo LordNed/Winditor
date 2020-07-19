@@ -28,6 +28,15 @@ namespace WindEditor.Events
             }
         }
 
+        public bool EnableConnectionUpdates
+        {
+            get { return m_EnableConnectionUpdates; }
+            set
+            {
+                m_EnableConnectionUpdates = value;
+            }
+        }
+
         static CutNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new CutNodeView(), typeof(IViewFor<CutNodeViewModel>));
@@ -199,8 +208,8 @@ namespace WindEditor.Events
 
         private void OnExecInputChanged(DynamicData.IChangeSet<ConnectionViewModel> connection_change)
         {
-            if (!m_EnableConnectionUpdates)
-                return;
+            //if (!m_EnableConnectionUpdates)
+                //return;
 
             Change<ConnectionViewModel>[] changes_array = connection_change.ToArray();
 
@@ -220,6 +229,8 @@ namespace WindEditor.Events
                 default:
                     break;
             }
+
+            Cut.ParentActor.UpdateCutList();
         }
 
         private void ProcessExecInputAdd(ItemChange<ConnectionViewModel> change)
@@ -234,8 +245,8 @@ namespace WindEditor.Events
 
         private void OnExecOutputChanged(DynamicData.IChangeSet<ConnectionViewModel> connection_change)
         {
-            if (!m_EnableConnectionUpdates)
-                return;
+            //if (!m_EnableConnectionUpdates)
+                //return;
 
             Change<ConnectionViewModel>[] changes_array = connection_change.ToArray();
 
@@ -255,6 +266,8 @@ namespace WindEditor.Events
                 default:
                     break;
             }
+
+            Cut.ParentActor.UpdateCutList();
         }
 
         private void ProcessExecOutputAdd(ItemChange<ConnectionViewModel> change)
@@ -313,7 +326,7 @@ namespace WindEditor.Events
             int substance_index = Cut.Properties.IndexOf(sub_view.Substance);
 
             Inputs.Edit(x => x[substance_index + 1].Connections.Dispose());
-            Inputs.RemoveAt(substance_index + 1);
+            Inputs.Edit(x => x.RemoveAt(substance_index + 1));
 
             Cut.Properties.Remove(sub_view.Substance);
         }

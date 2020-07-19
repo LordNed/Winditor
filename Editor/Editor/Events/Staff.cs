@@ -179,6 +179,19 @@ namespace WindEditor.Events
             m_FirstCutIndex = cuts.IndexOf(FirstCut);
         }
 
+        public void UpdateCutList()
+        {
+            Cuts.Clear();
+
+            Cut c = FirstCut;
+
+            while (c != null)
+            {
+                Cuts.Add(c);
+                c = c.NextCut;
+            }
+        }
+
         public void Write(EndianBinaryWriter writer, ref int index)
         {
             writer.WriteFixedString(Name, 32);

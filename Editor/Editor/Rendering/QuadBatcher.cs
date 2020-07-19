@@ -140,6 +140,7 @@ namespace WindEditor
         {
             m_primitiveShader.Dispose();
             GL.DeleteBuffer(m_vbo);
+            GL.DeleteBuffer(m_uvs);
             GL.DeleteBuffer(m_vertColors);
         }
 
@@ -310,6 +311,7 @@ namespace WindEditor
 
                 // Free unmanaged resources (unmanaged objects) and override a finalizer below.
                 GL.DeleteBuffer(m_vbo);
+                GL.DeleteBuffer(m_uvs);
                 GL.DeleteBuffer(m_vertColors);
 
                 // Set large fields to null.
