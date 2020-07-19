@@ -485,6 +485,7 @@ namespace WindEditor
 			{
 				m_Name = value;
 				OnPropertyChanged("Name");
+				OnPropertyChanged("EnglishName");
 			}
 		}
 				
