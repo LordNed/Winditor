@@ -10,12 +10,16 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public abstract class SerializableDOMNode : WDOMNode
 	{
 		public readonly FourCC FourCC;
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
 
 		private MapLayer m_layer;
+		
+		[WProperty("Entity", "English Name", false, "", SourceScene.Room)]
+		public string EnglishName { get { return this.GetType().Name; } }
 
 		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
 		{
@@ -473,7 +477,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -496,7 +500,7 @@ namespace WindEditor
 
 		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Enemy Number", true, "")]
+		[WProperty("Actor", "Enemy Number", true, "")]
 		 public short EnemyNumber
 		{ 
 			get { return m_EnemyNumber; }
