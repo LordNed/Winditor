@@ -3454,7 +3454,7 @@
     "ActorClassType": "kn",
     "Wait Animations": null,
     "Actor Name": "kani",
-    "English Name": "kn",
+    "English Name": "Crab",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5672,9 +5672,12 @@
     "ActorClassType": "npc_bmsw",
     "Wait Animations": null,
     "Actor Name": "Bmsw",
-    "English Name": "npc_bmsw",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Koboli (Mail Sorter)",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
+    "Explanation": "Note that Koboli spawns Baito in his place automatically once you've reached all four of Koboli's quotas.",
     "Locations": [
       "Rito Aerie (Atorizk)"
     ],
@@ -5717,9 +5720,11 @@
     "ActorClassType": "npc_btsw",
     "Wait Animations": null,
     "Actor Name": "Btsw",
-    "English Name": "npc_btsw",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Baito (Mail Sorter)",
+    "Tags": [
+      "NPC",
+    ],
+    "Explanation": "Note that this version of Baito is spawned automatically by Koboli once you've reached all four of Koboli's quotas.",
     "Locations": [
       "N/A"
     ],
@@ -5732,8 +5737,10 @@
     "ActorClassType": "npc_btsw2",
     "Wait Animations": null,
     "Actor Name": "Btsw2",
-    "English Name": "npc_btsw2",
-    "Tags": null,
+    "English Name": "Baito (Outside)",
+    "Tags": [
+      "NPC",
+    ],
     "Explanation": null,
     "Locations": [
       "Dragon Roost Island (sea/Room13)"
@@ -8050,7 +8057,7 @@
     "ActorClassType": "obj_ebomzo",
     "Wait Animations": null,
     "Actor Name": "Ebomzo",
-    "English Name": "Rito Statue",
+    "English Name": "Bombable Rito Statue",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8317,7 +8324,7 @@
     "ActorClassType": "obj_gryw00",
     "Wait Animations": null,
     "Actor Name": "Gryw00",
-    "English Name": "obj_gryw00",
+    "English Name": "Lake Outside Dragon Roost Cavern",
     "Tags": null,
     "Explanation": null,
     "Locations": [

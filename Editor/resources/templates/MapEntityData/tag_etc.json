@@ -1,6 +1,6 @@
 {
   "ClassName": "tag_etc",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",
@@ -12,13 +12,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Event",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "tag_etc",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Event"
     }
   ]
 }

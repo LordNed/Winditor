@@ -78,6 +78,37 @@
     ]
   },
   {
+    "Name": "Ship",
+    "Archive": "Ship",
+    "Models": [
+      {
+        "Path": "bdl/fn_body.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fn_mast_off2.bck",
+            "Paused on Load": true,
+            "Start Time": 0.4
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/fn_head_h.bdl",
+            "Parent Joint": "j_fn_gattai",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bck/fn_talk_a.bck",
+                "Paused on Load": true,
+                "Start Time": 0
+              }
+            ],
+          },
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Tetra",
     "Archive": "Zl",
     "Models": [
@@ -193,6 +224,32 @@
             "Start Time": 0
           }
         ]
+      }
+    ]
+  },
+  {
+    "Name": "Crab",
+    "Archive": "KN",
+    "Models": [
+      {
+        "Path": "bdl/kn.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Withered Tree",
+    "Archive": "Vmr",
+    "Models": [
+      {
+        "Path": "bdlm/vmrto.bdl",
       }
     ]
   },
@@ -491,6 +548,15 @@
     "Models": [
       {
         "Path": "bmd/lamp_00.bmd",
+      }
+    ]
+  },
+  {
+    "Name": "Lamp Hanging From Rope",
+    "Archive": "Himo3",
+    "Models": [
+      {
+        "Path": "bmd/slamp_00.bmd",
       }
     ]
   },
@@ -2019,6 +2085,33 @@
     ]
   },
   {
+    "Name": "Gunboat",
+    "Archive": "Oship",
+    "Models": [
+      {
+        "Path": "bdl/vbtsp.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Golden Gunboat",
+    "Archive": "Oship",
+    "Models": [
+      {
+        "Path": "bdl/vbtst.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Wall-Mounted Cannon",
+    "Archive": "WallBom",
+    "Models": [
+      {
+        "Path": "bdl/wallbom.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Phantom Ganon",
     "Archive": "Fganon",
     "Models": [
@@ -3049,14 +3142,6 @@
           {
             "Path": "bdlm/bmhead02.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3116,14 +3201,6 @@
           {
             "Path": "bdlm/bmhead07.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3183,14 +3260,6 @@
           {
             "Path": "bdlm/bmhead05.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3246,14 +3315,6 @@
           {
             "Path": "bdlm/bmhead04.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3301,14 +3362,6 @@
           {
             "Path": "bdlm/bmhead09.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3356,14 +3409,6 @@
           {
             "Path": "bdlm/bmhead06.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3411,14 +3456,6 @@
           {
             "Path": "bdlm/bmhead03.bdl",
             "Parent Joint": "head",
-            "Animations": [
-              {
-                "Anim Type": "bck",
-                "Path": "bcks/bmhead01_wait01.bck",
-                "Paused on Load": false,
-                "Start Time": 0
-              },
-            ],
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3443,6 +3480,70 @@
                 "Start Time": 0
               },
             ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Koboli",
+    "Archive": "Bmsw",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead11.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Baito",
+    "Archive": "Btsw",
+    "Models": [
+      {
+        "Path": "bdlm/bn.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bn_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
           },
         ],
       },
@@ -4755,6 +4856,32 @@
     "Models": [
       {
         "Path": "bdl/mkieb.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Bombable Rito Statue",
+    "Archive": "Ebomzo",
+    "Models": [
+      {
+        "Path": "bdl/ebomzo.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Lake Outside Dragon Roost Cavern",
+    "Archive": "Gryw00",
+    "Models": [
+      {
+        "Path": "bdlm/gryw00.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/gryw00.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
       }
     ]
   },

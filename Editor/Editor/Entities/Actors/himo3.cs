@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			m_actorMeshes = WResourceManager.LoadActorResource("Lamp Hanging From Rope");
 			base.PostLoad();
 		}
 

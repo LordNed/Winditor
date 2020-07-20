@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "npc_btsw2",
+      "Category": "Baito (Outside)",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }

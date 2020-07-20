@@ -29,6 +29,7 @@ namespace WindEditor
 				switch (ZillType)
 				{
 					case ZillTypeEnum.Chasing_Zill:
+					case ZillTypeEnum.Unknown_1:
 					case ZillTypeEnum.Standing_Zill:
 						m_actorMeshes = WResourceManager.LoadActorResource("Zill");
 						break;

@@ -11,12 +11,24 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			if (IsGolden)
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Golden Gunboat");
+			} else
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Gunboat");
+			}
 		}
 	}
 }
