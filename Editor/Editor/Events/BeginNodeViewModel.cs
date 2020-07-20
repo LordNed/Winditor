@@ -66,6 +66,8 @@ namespace WindEditor.Events
                 default:
                     break;
             }
+
+            m_Actor.UpdateCutList();
         }
 
         private void ProcessExecOutputAdd(ItemChange<ConnectionViewModel> change)

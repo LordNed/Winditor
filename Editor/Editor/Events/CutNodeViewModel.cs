@@ -276,6 +276,10 @@ namespace WindEditor.Events
             {
                 Cut.NextCut = cv.Cut;
             }
+            else if (change.Current.Input.Parent is BlockingCutNodeViewModel bv)
+            {
+                Cut.NextCut = bv.Cut;
+            }
         }
 
         private void ProcessExecOutputRemove(ItemChange<ConnectionViewModel> change)

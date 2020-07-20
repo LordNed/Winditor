@@ -84,6 +84,9 @@ namespace WindEditor.Events
             if (change.Current.Output.Parent is CutNodeViewModel cv)
             {
                 cv.Cut.NextCut = Cut;
+
+                if (Cut != null)
+                    Cut.ParentActor.UpdateCutList();
             }
         }
 
@@ -138,6 +141,8 @@ namespace WindEditor.Events
                         begin.Actor.FirstCut = Cut;
                     }
                 }
+
+                Cut.ParentActor.UpdateCutList();
             }
         }
 

@@ -54,5 +54,10 @@ namespace WindEditor.Events
         {
 
         }
+
+        private void CutNameCombo3_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
     }
 }
