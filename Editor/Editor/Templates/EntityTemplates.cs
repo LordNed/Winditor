@@ -3456,7 +3456,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -3524,7 +3523,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set

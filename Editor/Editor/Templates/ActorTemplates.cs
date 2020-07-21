@@ -322,7 +322,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -414,7 +413,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -1595,7 +1593,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -1619,7 +1616,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -1849,7 +1845,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -2037,7 +2032,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -2758,7 +2752,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -3385,7 +3378,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -3409,7 +3401,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -5949,7 +5940,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -6737,7 +6727,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -6759,7 +6748,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -10037,7 +10025,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -11204,7 +11191,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -13424,7 +13410,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -14133,7 +14118,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -14816,7 +14800,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -14893,7 +14876,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -16506,7 +16488,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -16557,7 +16538,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -17620,7 +17600,6 @@ namespace WindEditor
 				} else {
 					return false;
 				}
-				
 			}
 
 			set
@@ -17642,7 +17621,6 @@ namespace WindEditor
 				} else {
 					return false;
 				}
-				
 			}
 
 			set
@@ -18165,7 +18143,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -18362,7 +18339,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -18534,7 +18510,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -18802,7 +18777,6 @@ namespace WindEditor
 				} else {
 					return false;
 				}
-				
 			}
 
 			set
@@ -20856,7 +20830,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -23145,7 +23118,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set

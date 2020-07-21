@@ -209,7 +209,6 @@
 				} else {
 					return <#= defaultBooleanValue ? "true" : "false" #>;
 				}
-				
 <#
 						break;
 					case "Path":
