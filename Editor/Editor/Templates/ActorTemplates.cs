@@ -23834,7 +23834,7 @@ namespace WindEditor
 			Shoots_Fireballs = 0,
 			Spawns_Enemies_and_Shoots_Fireballs = 1,
 			Miniboss = 2,
-			Unknown_1 = 3,
+			Shoots_Fireballs_Alt_Color = 3,
 			Fireball = 10,
 			Spawner_Orb_1 = 12,
 			Spawner_Orb_2 = 13,
@@ -23857,6 +23857,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				UpdateModel();
 			}
 		}
 

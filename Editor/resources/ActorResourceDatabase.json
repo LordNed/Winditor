@@ -1456,7 +1456,7 @@
     ]
   },
   {
-    "Name": "Wizzrobe",
+    "Name": "Fireball-Shooting Wizzrobe",
     "Archive": "Wz",
     "Models": [
       {
@@ -1467,7 +1467,110 @@
             "Path": "bck/s_demo_wait1.bck",
             "Paused on Load": false,
             "Start Time": 0
-          }
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Spawner Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0.03333333333333333333333333333333
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mini-boss Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0.06666666666666666666666666666667
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_kamen.bdl",
+            "Parent Joint": "wiz_atama_1"
+          },
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Alt Color Fireball Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0.9999999 // Should be keyframe 3 (0.1 seconds), but if we set that exactly it loops back to 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
         ]
       }
     ]

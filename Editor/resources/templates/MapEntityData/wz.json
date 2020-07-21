@@ -14,11 +14,12 @@
         0: "Shoots Fireballs",
         1: "Spawns Enemies and Shoots Fireballs",
         2: "Mini-boss",
-        3: "Unknown 1",
+        3: "Shoots Fireballs Alt Color",
         10: "Fireball",
         12: "Spawner Orb 1?",
         13: "Spawner Orb 2?",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Disable Spawn on Death Switch",

@@ -741,7 +741,7 @@
     "Actor Name": "Bb",
     "English Name": "Kargaroc",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "A large bird that attacks Link by pecking at him. It can be damaged by any weaponry, and it produces Golden Feathers.\n\nKargarocs can be spawned flying around or perching. They can also carry other enemies into battle.",
     "Locations": [
@@ -960,7 +960,7 @@
     "Actor Name": "Bk",
     "English Name": "Bokoblin",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "These creatures are one of the most common enemies in the game. They come in a variety of colors and they have a variety of behaviors.\n\nThey can stand still, or they can patrol a path; they can also be hidden inside jars.",
     "Locations": [
@@ -1027,7 +1027,7 @@
     "Actor Name": "bable",
     "English Name": "Red and Blue Bubble",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "These enemies are floating skulls wreathed in flames. The red variant can burn Link, while the blue one curses him and makes him unable to use his items. The Blue Bubble is invincible until Link blows its flames away.",
     "Locations": [
@@ -1123,7 +1123,7 @@
     "Actor Name": "bbaba",
     "English Name": "Boko Baba",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "These are evil plants that bite (and sometimes try to swallow) Link. They can produce Boko Sticks when they're killed.",
     "Locations": [
@@ -1323,7 +1323,7 @@
     "Actor Name": "Bwds",
     "English Name": "Molgera Child",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "Molgera will spawn these miniature versions of itself at the end of each phase of the battle. They hinder Link's attempts to hookshot Molgera's tongue.\n\nWhile they can be spawned in the Wind Temple boss room, they cannot be spawned anywhere else because they rely on the sand object that is created by Molgera's actor.",
     "Locations": [
@@ -7685,7 +7685,9 @@
     "Wait Animations": null,
     "Actor Name": "Ocanon",
     "English Name": "Wall-Mounted Cannon",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Unused (K_Testd)",
@@ -11492,7 +11494,9 @@
     "Wait Animations": null,
     "Actor Name": "Oship",
     "English Name": "Gunboat",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Northern Fairy Island (sea/Room3)",
@@ -11573,7 +11577,9 @@
     "Wait Animations": null,
     "Actor Name": "p_hat",
     "English Name": "Peahat",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Unused (Cave08)",
@@ -11632,7 +11638,9 @@
     "Wait Animations": null,
     "Actor Name": "Puti",
     "English Name": "Miniblin",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Submarines (Abship)",
@@ -14906,7 +14914,7 @@
     "ActorClassType": "wind_tag",
     "Wait Animations": null,
     "Actor Name": "WindTag",
-    "English Name": "wind_tag",
+    "English Name": "Small Cyclone",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14939,7 +14947,7 @@
     "ActorClassType": "wind_tag",
     "Wait Animations": null,
     "Actor Name": "Ybgaf00",
-    "English Name": "wind_tag",
+    "English Name": "Large Cyclone",
     "Tags": null,
     "Explanation": null,
     "Locations": [
