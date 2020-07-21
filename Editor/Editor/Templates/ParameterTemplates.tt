@@ -10,6 +10,15 @@
 			output = Regex.Replace(output, @"([\0\a\b\f\r\t\v])", "", RegexOptions.IgnoreCase);
 			return "\"" + output + "\"";
 		}
+		string EscapeEnumName(string input) {
+			string sanitizedValue = input.Replace(" ", "_");
+			sanitizedValue = EscapeIdentifier(sanitizedValue);
+			if (Char.IsDigit(sanitizedValue[0])) {
+				// Identifiers can't start with a number.
+				sanitizedValue = "_" + sanitizedValue;
+			}
+			return sanitizedValue;
+		}
 
 		List<string> defaultValueSetters = new List<string>();
 
@@ -122,12 +131,7 @@
 <#
 					foreach (var item in field.EnumValues)
 					{
-						string sanitizedValue = item.Value.Replace(" ", "_");
-						sanitizedValue = EscapeIdentifier(sanitizedValue);
-						if (Char.IsDigit(sanitizedValue[0])) {
-							// Identifiers can't start with a number.
-							sanitizedValue = "_" + sanitizedValue;
-						}
+						string sanitizedValue = EscapeEnumName(item.Value);
 #>
 			<#= sanitizedValue #> = <#= item.Key #>,
 <#
@@ -155,7 +159,7 @@
 			object defaultValue = field.DefaultValue;
 			if (defaultValue != null) {
 				if (field.DataType == "Enum") {
-					defaultValueSetters.Add($"{fieldName} = {dataType}.{defaultValue};");
+					defaultValueSetters.Add($"{fieldName} = {dataType}.{EscapeEnumName(defaultValue as string)};");
 				} else {
 					defaultValueSetters.Add($"{fieldName} = {defaultValue};");
 				}
