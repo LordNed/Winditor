@@ -1,34 +1,50 @@
 ﻿using System.Collections.Generic;
+using WindEditor.Collision;
 
 namespace WindEditor
 {
     class WSelectionChangedAction<T> : WUndoCommand
     {
-		private readonly T[] m_removedEntity;
-		private readonly T[] m_addedEntity;
+		private readonly T[] m_removedEntities;
+		private readonly T[] m_addedEntities;
 		private readonly Selection<T> m_selection;
 
 		public WSelectionChangedAction(Selection<T> parentSelection, T[] removedActors, T[] addedActors)
 		{
 			this.m_selection = parentSelection;
-			m_removedEntity = removedActors != null ? removedActors : new T[0];
-			m_addedEntity = addedActors != null ? addedActors : new T[0];
+			m_removedEntities = removedActors != null ? removedActors : new T[0];
+			m_addedEntities = addedActors != null ? addedActors : new T[0];
 		}
 
         public override void Redo()
         {
             base.Redo();
 
-			foreach(var entity in m_removedEntity)
+			foreach(var entity in m_removedEntities)
 			{
 				m_selection.SelectedObjects.Remove(entity);
-				//entity.IsSelected = false;
+
+				if (entity is WDOMNode)
+				{
+					(entity as WDOMNode).IsSelected = false;
+				} else if (entity is CollisionTriangle)
+				{
+					(entity as CollisionTriangle).Deselect();
+				}
 			}
 
-			foreach(var entity in m_addedEntity)
+			foreach(var entity in m_addedEntities)
 			{
 				m_selection.SelectedObjects.Add(entity);
-				//entity.IsSelected = true;
+
+				if (entity is WDOMNode)
+				{
+					(entity as WDOMNode).IsSelected = true;
+				}
+				else if (entity is CollisionTriangle)
+				{
+					(entity as CollisionTriangle).Select();
+				}
 			}
 		}
 
@@ -36,16 +52,32 @@ namespace WindEditor
         {
             base.Undo();
 
-			foreach (var entity in m_addedEntity)
+			foreach (var entity in m_addedEntities)
 			{
 				m_selection.SelectedObjects.Remove(entity);
-				//entity.IsSelected = false;
+
+				if (entity is WDOMNode)
+				{
+					(entity as WDOMNode).IsSelected = false;
+				}
+				else if (entity is CollisionTriangle)
+				{
+					(entity as CollisionTriangle).Deselect();
+				}
 			}
 
-			foreach (var entity in m_removedEntity)
+			foreach (var entity in m_removedEntities)
 			{
 				m_selection.SelectedObjects.Add(entity);
-				//entity.IsSelected = true;
+
+				if (entity is WDOMNode)
+				{
+					(entity as WDOMNode).IsSelected = true;
+				}
+				else if (entity is CollisionTriangle)
+				{
+					(entity as CollisionTriangle).Select();
+				}
 			}
         }
     }
