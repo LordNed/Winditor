@@ -161,6 +161,18 @@ namespace WindEditor.Collision
             }
         }
 
+        [WProperty("Misc.", "Unknown 1", true, "Purpose uncertain.")]
+        public int Unknown1
+        {
+            get { return (int)(m_Bitfield1 & 0xF8000000) >> 27; }
+            set
+            {
+                int value_as_int = value;
+                m_Bitfield1 = (int)(m_Bitfield1 & ~0xF8000000 | (value_as_int << 27 & 0xFF000000));
+                OnPropertyChanged("Unknown1");
+            }
+        }
+
         #endregion
 
         #region Bitfield 2
@@ -252,6 +264,18 @@ namespace WindEditor.Collision
 
                     OnPropertyChanged("GroundCode");
                 }
+            }
+        }
+
+        [WProperty("Misc.", "Unknown 2", true, "Purpose uncertain.")]
+        public int Unknown2
+        {
+            get { return (int)(m_Bitfield2 & 0xFC000000) >> 26; }
+            set
+            {
+                int value_as_int = value;
+                m_Bitfield2 = (int)(m_Bitfield2 & ~0xFC000000 | (value_as_int << 26 & 0xFC000000));
+                OnPropertyChanged("Unknown2");
             }
         }
 
