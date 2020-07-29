@@ -34,6 +34,12 @@ namespace WindEditor.Editor.Modes
 
         private Selection<BindingVector3> m_EditorSelection;
 
+        private bool m_bOverrideSceneCamera;
+        private WCamera m_SceneCameraOverride;
+        private WCamera m_OriginalSceneCamera;
+
+        private WSceneView m_View;
+
         public WDetailsViewViewModel EventDetailsViewModel
         {
             get { return m_EventDetailsViewModel; }
@@ -146,6 +152,10 @@ namespace WindEditor.Editor.Modes
 
             EditorSelection = new Selection<BindingVector3>(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
+
+            m_SceneCameraOverride = new WCamera();
+            m_SceneCameraOverride.bEnableUpdates = false;
+            m_SceneCameraOverride.AspectRatio = 1.28f;
         }
 
         private void M_NodeWindow_Closing(object sender, CancelEventArgs e)
@@ -276,6 +286,11 @@ namespace WindEditor.Editor.Modes
 
         public void FilterSceneForRenderer(WSceneView view, WWorld world)
         {
+            if (m_bOverrideSceneCamera)
+            {
+                view.OverrideSceneCamera(m_SceneCameraOverride);
+            }
+
             foreach (WScene scene in world.Map.SceneList)
             {
                 foreach (var renderable in scene.GetChildrenOfType<IRenderable>())
@@ -346,10 +361,12 @@ namespace WindEditor.Editor.Modes
         public void OnBecomeInactive()
         {
             m_NodeWindow.Hide();
+            RestoreSceneCamera(m_View);
         }
 
         public void Update(WSceneView view)
         {
+            m_View = view;
             UpdateSelectionGizmo(view);
 
             // Add our gizmo to the renderer this frame.
@@ -359,7 +376,7 @@ namespace WindEditor.Editor.Modes
             // If we have a gizmo and we're transforming it, don't check for selection change.
             if (TransformGizmo != null && TransformGizmo.IsTransforming)
                 return;
-            if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1))
+            if (WInput.GetMouseButtonDown(0) && !WInput.GetMouseButton(1) && !m_bOverrideSceneCamera)
             {
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 BindingVector3 addedVec = Raycast(mouseRay, view.ViewCamera);
@@ -400,8 +417,24 @@ namespace WindEditor.Editor.Modes
                     }
                 }
             }
+            if (WInput.GetMouseButton(1) && m_bOverrideSceneCamera)
+            {
+                RestoreSceneCamera(view);
+            }
             
             UpdateGizmoTransform();
+        }
+        
+        private void OverrideSceneCamera(WSceneView view)
+        {
+            m_bOverrideSceneCamera = true;
+            m_OriginalSceneCamera = view.ViewCamera;
+        }
+
+        private void RestoreSceneCamera(WSceneView view)
+        {
+            m_bOverrideSceneCamera = false;
+            view.OverrideSceneCamera(m_OriginalSceneCamera);
         }
 
         private BindingVector3 Raycast(FRay ray, WCamera camera)
@@ -486,6 +519,10 @@ namespace WindEditor.Editor.Modes
                         break;
                 }
             }
+            else if (view.Outputs.Items.First().Parent is CutNodeViewModel cut_model)
+            {
+                OnUserRequestPreviewShot(cut_model.Cut);
+            }
         }
 
         private void OnSelectionChanged()
@@ -497,6 +534,7 @@ namespace WindEditor.Editor.Modes
         private List<BindingVector3> GetCameraVectorProperties()
         {
             List<BindingVector3> vecs = new List<BindingVector3>();
+            bool test = false;
 
             Staff camera = (Staff)SelectedEvent.Actors.ToList().Find(x => x.StaffType == StaffType.Camera);
 
@@ -528,6 +566,38 @@ namespace WindEditor.Editor.Modes
             }
 
             return vecs;
+        }
+
+        private void OnUserRequestPreviewShot(Cut cut)
+        {
+            Substance eye = cut.Properties.Find(x => x.Name.ToLower() == "eye");
+            if (eye != null)
+            {
+                Substance<ObservableCollection<BindingVector3>> eye_vec = eye as Substance<ObservableCollection<BindingVector3>>;
+                m_SceneCameraOverride.Transform.Position = eye_vec.Data[0].BackingVector;
+            }
+
+            Substance target = cut.Properties.Find(x => x.Name.ToLower() == "center");
+            if (target != null)
+            {
+                Substance<ObservableCollection<BindingVector3>> target_vec = target as Substance<ObservableCollection<BindingVector3>>;
+                Matrix4 mat = Matrix4.LookAt(m_SceneCameraOverride.Transform.Position, target_vec.Data[0].BackingVector, -Vector3.UnitY);
+
+                m_SceneCameraOverride.Transform.Rotation = mat.ExtractRotation();
+            }
+
+            Substance fovy = cut.Properties.Find(x => x.Name.ToLower() == "fovy");
+            if (fovy != null)
+            {
+                Substance<ObservableCollection<PrimitiveBinding<float>>> fovy_sub = fovy as Substance<ObservableCollection<PrimitiveBinding<float>>>;
+                m_SceneCameraOverride.FieldOfView = fovy_sub.Data[0].Value;
+            }
+            else
+            {
+                m_SceneCameraOverride.FieldOfView = 60.0f;
+            }
+
+            OverrideSceneCamera(m_View);
         }
 
         #region INotifyPropertyChanged Support

@@ -65,20 +65,23 @@ namespace WindEditor
             }
         }
 
+        public bool bEnableUpdates { get; set; }
+
         private float m_nearClipPlane = 10f;
         private float m_farClipPlane = 100000000f;
-        private float m_fieldOfView = 45f;
+        private float m_fieldOfView = 60f;
         private float m_aspectRatio = 16 / 9f;
         private Matrix4 m_projectionMatrix;
 
         public WCamera()
         {
             Transform = new WTransform();
+            bEnableUpdates = true;
         }
 
         public void Tick(float deltaTime)
         {
-            if (!WInput.GetMouseButton(1))
+            if (!WInput.GetMouseButton(1) || !bEnableUpdates)
                 return;
 
             Vector3 moveDir = Vector3.Zero;

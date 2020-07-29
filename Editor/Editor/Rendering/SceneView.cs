@@ -150,6 +150,11 @@ namespace WindEditor
             m_viewCamera.Tick(deltaTime);
         }
 
+        public void OverrideSceneCamera(WCamera overridden_cam)
+        {
+            m_viewCamera = overridden_cam;
+        }
+
         private void ResetGraphicsState()
         {
             GL.Viewport(0, 0, m_viewWidth, m_viewHeight);
