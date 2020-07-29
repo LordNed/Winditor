@@ -12,13 +12,6 @@ using Assimp;
 
 namespace WindEditor.Collision
 {
-    public enum TerrainType
-    {
-        Solid,
-        Water,
-        Lava
-    }
-
     [HideCategories()]
     public class CollisionGroupNode : INotifyPropertyChanged
     {
@@ -27,6 +20,7 @@ namespace WindEditor.Collision
 
         private Vector3 m_Scale;
         private OpenTK.Quaternion m_Rotation;
+        private ushort m_Unknown1;
         private Vector3 m_Translation;
 
         private short m_ParentIndex;
@@ -35,22 +29,31 @@ namespace WindEditor.Collision
 
         public short FirstVertexIndex { get; set; }
 
-        private TerrainType m_Terrain;
-
         private short m_RoomNum = -1;
-        private byte m_RoomTableIndex;
 
-        [WProperty("Group Settings", "Terrain Type", true, "Whether the surface is solid, water, or lava.")]
-        public TerrainType Terrain
+        private int m_Bitfield;
+
+        [WProperty("Group Settings", "Is Water", true, "Whether the surface is water or not.")]
+        public bool IsWater
         {
-            get { return m_Terrain; }
+            get { return (m_Bitfield & 0x00000100) != 0 ? true : false; }
             set
             {
-                if (value != m_Terrain)
-                {
-                    m_Terrain = value;
-                    OnPropertyChanged("Terrain");
-                }
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield = (int)(m_Bitfield & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+                OnPropertyChanged("IsWater");
+            }
+        }
+
+        [WProperty("Group Settings", "Is Lava", true, "Whether the surface is lava or not.")]
+        public bool IsLava
+        {
+            get { return (m_Bitfield & 0x00000200) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield = (int)(m_Bitfield & ~0x00000200 | (value_as_int << 9 & 0x00000200));
+                OnPropertyChanged("IsLava");
             }
         }
 
@@ -71,14 +74,31 @@ namespace WindEditor.Collision
         [WProperty("Group Settings", "Room Table Index", true, "The index in the RTBL list to decide what rooms to load when the player is above this surface.")]
         public int RoomTableIndex
         {
-            get { return m_RoomTableIndex; }
+            get {
+                int value_as_int = (int)((m_Bitfield & 0x000000FF) >> 0);
+                return value_as_int;
+            }
             set
             {
-                if (value != m_RoomTableIndex)
-                {
-                    m_RoomTableIndex = (byte)value;
-                    OnPropertyChanged("RoomTableIndex");
-                }
+                int value_as_int = value;
+                m_Bitfield = (int)(m_Bitfield & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+                OnPropertyChanged("RoomTableIndex");
+            }
+        }
+
+        [WProperty("Group Settings", "Sound ID", true, "Unknown effect.")]
+        public int SoundID
+        {
+            get
+            {
+                int value_as_int = (int)((m_Bitfield & 0x0007F800) >> 11);
+                return value_as_int;
+            }
+            set
+            {
+                int value_as_int = value;
+                m_Bitfield = (int)(m_Bitfield & ~0x0007F800 | (value_as_int << 11 & 0x0007F800));
+                OnPropertyChanged("SoundID");
             }
         }
 
@@ -128,11 +148,15 @@ namespace WindEditor.Collision
 
             m_Scale = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
 
-            //m_Rotation =
-            reader.SkipInt16();
-            reader.SkipInt16();
-            reader.SkipInt16();
-            reader.SkipInt16();
+            Vector3 eulerRot = new Vector3();
+            for (int e = 0; e < 3; e++)
+                eulerRot[e] = WMath.RotationShortToFloat(reader.ReadInt16());
+            // ZYX order
+            m_Rotation = OpenTK.Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(eulerRot.Z)) *
+                         OpenTK.Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(eulerRot.Y)) *
+                         OpenTK.Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(eulerRot.X));
+
+            m_Unknown1 = reader.ReadUInt16();
 
             m_Translation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
 
@@ -145,10 +169,8 @@ namespace WindEditor.Collision
             FirstVertexIndex = reader.ReadInt16();
 
             reader.SkipInt16(); // Octree index, we don't need it for loading from dzb
-            reader.SkipInt16(); // unknown 2
 
-            Terrain = (TerrainType)reader.ReadByte();
-            m_RoomTableIndex = reader.ReadByte();
+            m_Bitfield = reader.ReadInt32();
         }
 
         public CollisionGroupNode(CollisionGroupNode root, string name)
@@ -282,7 +304,8 @@ namespace WindEditor.Collision
             writer.Write(WMath.RotationFloatToShort(rotation.X));
             writer.Write(WMath.RotationFloatToShort(rotation.Y));
             writer.Write(WMath.RotationFloatToShort(rotation.Z));
-            writer.Write((short)-1);
+
+            writer.Write(m_Unknown1);
 
             writer.Write(m_Translation.X);
             writer.Write(m_Translation.Y);
@@ -313,9 +336,7 @@ namespace WindEditor.Collision
             // The first octree object to have this group assigned to it is the root of its octree.
             writer.Write((short)octree.IndexOf(octree.Find(x => x.Group == this)));
 
-            writer.Write((short)0);
-            writer.Write((byte)Terrain);
-            writer.Write((byte)m_RoomTableIndex);
+            writer.Write(m_Bitfield);
         }
 
         public Node GetAssimpNodesRecursive(List<Mesh> meshes)
