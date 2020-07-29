@@ -164,13 +164,13 @@ namespace WindEditor
 
         private void DrawOrientationWidget(int viewportXOffset, int viewportYOffset, Matrix4 viewMatrix, Matrix4 projMatrix)
         {
-            GL.Viewport(viewportXOffset, viewportYOffset, 64, 64);
+            GL.Viewport(viewportXOffset, viewportYOffset, 128, 128);
             GL.Enable(EnableCap.DepthTest);
             GL.Clear(ClearBufferMask.DepthBufferBit);
 
             // Rotation only
             viewMatrix = viewMatrix.ClearTranslation();
-            projMatrix = Matrix4.CreateOrthographic(m_viewportRect.Width * m_viewWidth, m_viewportRect.Height * m_viewHeight, 0.01f, 250f);
+            projMatrix = Matrix4.CreateOrthographic(256, 256, 0.01f, 250f);
             Matrix4 modelMatrix = Matrix4.CreateScale(0.9f) * Matrix4.CreateTranslation(m_viewCamera.Transform.Forward * -100f);
 
             m_orientationWidget.Render(m_viewCamera.Transform.Rotation, viewMatrix, projMatrix, modelMatrix);
