@@ -95,7 +95,7 @@ namespace WindEditor.Collision
         Wood = 0x02,
         Stone = 0x03,
         Grass = 0x04,
-        Top_of_Giant_Hanging_Flower = 0x05,
+        Giant_Flower = 0x05,
         Lava = 0x06,
         Dirt_Packed = 0x07,
         Respawn_Generic = 0x08, // Unused
