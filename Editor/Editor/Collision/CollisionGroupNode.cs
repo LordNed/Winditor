@@ -86,19 +86,43 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Group Settings", "Sound ID", true, "Unknown effect.")]
-        public int SoundID
+        [WProperty("Group Settings", "Sea Floor Audio Room Number", true, "For the sea floor, this controls which room/sector the audio system considers this group to be a part of.\nShould be 0 if this group is not part of the sea floor.")]
+        public int SeaFloorAudioRoomNumber
         {
             get
             {
-                int value_as_int = (int)((m_Bitfield & 0x0007F800) >> 11);
+                int value_as_int = (int)((m_Bitfield & 0x0001F800) >> 11);
                 return value_as_int;
             }
             set
             {
                 int value_as_int = value;
-                m_Bitfield = (int)(m_Bitfield & ~0x0007F800 | (value_as_int << 11 & 0x0007F800));
-                OnPropertyChanged("SoundID");
+                m_Bitfield = (int)(m_Bitfield & ~0x0001F800 | (value_as_int << 11 & 0x0001F800));
+                OnPropertyChanged("SeaFloorAudioRoomNumber");
+            }
+        }
+
+        [WProperty("Group Settings", "Is Inner Sea Floor", true, "Whether this group is the inner part of the sea floor for this sector (the large central part).\nNot to be confused with the inner border of the sea floor around the sector.\nUsed by the audio system.")]
+        public bool IsInnerSeaFloor
+        {
+            get { return (m_Bitfield & 0x00020000) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield = (int)(m_Bitfield & ~0x00020000 | (value_as_int << 17 & 0x00020000));
+                OnPropertyChanged("IsInnerSeaFloor");
+            }
+        }
+
+        [WProperty("Group Settings", "Is Outer Edge of Sea Floor", true, "Whether this group is the outer border part of the sea floor around this sector.\nNot to be confused with the inner border of the sea floor around the sector.\nUsed by the audio system.")]
+        public bool IsOuterEdgeOfSeaFloor
+        {
+            get { return (m_Bitfield & 0x00040000) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield = (int)(m_Bitfield & ~0x00040000 | (value_as_int << 18 & 0x00040000));
+                OnPropertyChanged("IsOuterEdgeOfSeaFloor");
             }
         }
 
