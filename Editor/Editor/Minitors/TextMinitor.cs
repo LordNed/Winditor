@@ -104,6 +104,8 @@ namespace WindEditor.Minitors
             x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
         public ICommand SaveMessageDataCommand { get { return new RelayCommand(x => OnRequestSaveMessageData()); } }
         public ICommand SaveMessageDataAsCommand { get { return new RelayCommand(x => OnRequestSaveMessageDataAs()); } }
+
+        public ICommand SaveMessageDataAsOtherCommand { get { return new RelayCommand(x => OnRequestSaveOtherFormatMessageData()); } }
         public ICommand AddMessageCommand { get { return new RelayCommand(x => OnRequestAddMessage()); } }
         public ICommand OpenTutorialCommand { get { return new RelayCommand(x => OnRequestOpenTutorial()); } }
 
@@ -268,6 +270,29 @@ namespace WindEditor.Minitors
             if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 SaveMessageArchive(sfd.FileName);
+
+                WSettingsManager.GetSettings().LastScriptArchivePath.FilePath = Path.GetDirectoryName(sfd.FileName);
+                WSettingsManager.SaveSettings();
+            }
+        }
+
+        private void OnRequestSaveOtherFormatMessageData()
+        {
+            var sfd = new CommonSaveFileDialog()
+            {
+                Title = "Export Script Archive",
+                DefaultExtension = "txt",
+                AlwaysAppendDefaultExtension = true,
+            };
+            sfd.Filters.Add(new CommonFileDialogFilter("Archives", "txt"));
+            if (WSettingsManager.GetSettings().LastScriptArchivePath.FilePath != "")
+            {
+                sfd.InitialDirectory = WSettingsManager.GetSettings().LastScriptArchivePath.FilePath;
+            }
+
+            if (sfd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                SaveMessageOther(sfd.FileName);
 
                 WSettingsManager.GetSettings().LastScriptArchivePath.FilePath = Path.GetDirectoryName(sfd.FileName);
                 WSettingsManager.SaveSettings();
@@ -446,6 +471,21 @@ namespace WindEditor.Minitors
             SaveMessageData();
 
             ArchiveUtilities.WriteArchive(file_path, m_MessageArchive);
+        }
+
+        private void SaveMessageOther(string filename)
+        {
+            var rawText = new StringBuilder();
+
+            foreach(Message m in m_Messages)
+            {
+                rawText.Append(m.Index + "::: ");
+                rawText.Append(m.Text);
+                rawText.AppendLine("\n");
+            }
+
+            File.AppendAllText(filename, rawText.ToString());
+            rawText.Clear();
         }
 
         private void SaveMessageData()
