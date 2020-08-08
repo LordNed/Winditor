@@ -105,7 +105,7 @@ namespace WindEditor.Minitors
         public ICommand SaveMessageDataCommand { get { return new RelayCommand(x => OnRequestSaveMessageData()); } }
         public ICommand SaveMessageDataAsCommand { get { return new RelayCommand(x => OnRequestSaveMessageDataAs()); } }
 
-        public ICommand SaveMessageDataAsOtherCommand { get { return new RelayCommand(x => OnRequestSaveOtherFormatMessageData()); } }
+        public ICommand SaveMessageDataAsTxtCommand { get { return new RelayCommand(x => OnRequestSaveOtherFormatMessageData()); } }
         public ICommand AddMessageCommand { get { return new RelayCommand(x => OnRequestAddMessage()); } }
         public ICommand OpenTutorialCommand { get { return new RelayCommand(x => OnRequestOpenTutorial()); } }
 
@@ -477,7 +477,7 @@ namespace WindEditor.Minitors
         {
             var rawText = new StringBuilder();
 
-            foreach(Message m in m_Messages)
+            foreach (Message m in m_Messages)
             {
                 rawText.Append(m.Index + "::: ");
                 rawText.Append(m.Text);

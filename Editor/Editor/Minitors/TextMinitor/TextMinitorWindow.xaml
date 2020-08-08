@@ -33,7 +33,7 @@
                 <MenuItem Header="_File">
                     <MenuItem InputGestureText="Ctrl + S" Header="_Save" Command="{Binding SaveMessageDataCommand}"/>
                     <MenuItem Header="Repack (.arc)" Command="{Binding SaveMessageDataAsCommand}"/>
-                    <MenuItem Header="Save _As..." Command="{Binding SaveMessageDataAsOtherCommand}"/>
+                    <MenuItem Header="Save _As..." Command="{Binding SaveMessageDataAsTxtCommand}"/>
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="Add Message" Command="{Binding AddMessageCommand}"/>
