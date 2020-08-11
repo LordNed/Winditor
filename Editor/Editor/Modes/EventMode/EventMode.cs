@@ -39,6 +39,7 @@ namespace WindEditor.Editor.Modes
         private WCamera m_OriginalSceneCamera;
 
         private WSceneView m_View;
+        private List<NetworkView> m_StaffNodeViews;
 
         public WDetailsViewViewModel EventDetailsViewModel
         {
@@ -140,6 +141,7 @@ namespace WindEditor.Editor.Modes
             World = world;
             EventDetailsViewModel = new WDetailsViewViewModel();
             ActorDetailsViewModel = new WDetailsViewViewModel();
+            m_StaffNodeViews = new List<NetworkView>();
 
             TransformGizmo = new WTransformGizmo(world);
 
@@ -156,6 +158,41 @@ namespace WindEditor.Editor.Modes
             m_SceneCameraOverride = new WCamera();
             m_SceneCameraOverride.bEnableUpdates = false;
             m_SceneCameraOverride.AspectRatio = 1.28f;
+        }
+
+        private void ArrangeNodes(NetworkViewModel v)
+        {
+            System.Windows.Point offset = new System.Windows.Point();
+
+            NodeViewModel current_node = v.Nodes.Items.First(x => x is BeginNodeViewModel);
+
+            while (current_node != null)
+            {
+                current_node.Position = offset;
+                offset.X += current_node.Size.Width + 50;
+
+                System.Windows.Point input_offset = current_node.Position;
+                input_offset.Y += current_node.Size.Height + 50;
+
+                for (int i = 1; i < current_node.Inputs.Count; i++)
+                {
+                    NodeViewModel input_node = current_node.Inputs.Items.ElementAt(i).Connections.Items.First().Output.Parent;
+                    
+                    input_node.Position = input_offset;
+                    input_offset.Y += input_node.Size.Height + 50;
+
+                    if (input_offset.X + input_node.Size.Width + 50 > offset.X)
+                    {
+                        offset.X = input_offset.X + input_node.Size.Width + 50;
+                        current_node.Position = offset;
+                    }
+                }
+
+                if (current_node.Outputs.Items.First().Connections.Count == 0)
+                    current_node = null;
+                else
+                    current_node = current_node.Outputs.Items.First().Connections.Items.First().Input.Parent;
+            }
         }
 
         private void M_NodeWindow_Closing(object sender, CancelEventArgs e)
@@ -251,7 +288,7 @@ namespace WindEditor.Editor.Modes
             {
                 if (s.StaffNodeGraph == null)
                 {
-                    s.StaffNodeGraph = GenerateActorTabItem(s);
+                    //s.StaffNodeGraph = GenerateActorTabItem(s);
                 }
 
                 m_NodeWindow.ActorTabControl.Items.Add(s.StaffNodeGraph);
@@ -356,6 +393,20 @@ namespace WindEditor.Editor.Modes
             }
 
             m_NodeWindow.Show();
+
+            m_NodeWindow.ActorTabControl.Items.Clear();
+
+            foreach (Staff s in SelectedEvent.Actors)
+            {
+                if (s.StaffNodeGraph == null)
+                {
+                    s.StaffNodeGraph = GenerateActorTabItem(s);
+                }
+
+                m_NodeWindow.ActorTabControl.Items.Add(s.StaffNodeGraph);
+            }
+
+            m_NodeWindow.ActorTabControl.SelectedIndex = 0;
         }
 
         public void OnBecomeInactive()
@@ -427,14 +478,20 @@ namespace WindEditor.Editor.Modes
         
         private void OverrideSceneCamera(WSceneView view)
         {
+            if (m_bOverrideSceneCamera)
+                return;
+
             m_bOverrideSceneCamera = true;
             m_OriginalSceneCamera = view.ViewCamera;
         }
 
         private void RestoreSceneCamera(WSceneView view)
         {
-            m_bOverrideSceneCamera = false;
-            view.OverrideSceneCamera(m_OriginalSceneCamera);
+            if (m_bOverrideSceneCamera)
+            {
+                m_bOverrideSceneCamera = false;
+                view.OverrideSceneCamera(m_OriginalSceneCamera);
+            }
         }
 
         private BindingVector3 Raycast(FRay ray, WCamera camera)
@@ -487,16 +544,25 @@ namespace WindEditor.Editor.Modes
             {
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
-                ViewModel = model
+                ViewModel = model,
+                Visibility = System.Windows.Visibility.Hidden
             };
 
             v.ContextMenu = new ActorTabContextMenu(staff);
+            v.IsHitTestVisibleChanged += V_IsHitTestVisibleChanged;
 
             model.SelectedNodes.Connect().Subscribe(d => { OnSelectedNodesChanged(d); });
+
+            m_StaffNodeViews.Add(v);
 
             // Finally, create the new tab.
             TabItem new_tab = new TabItem() { Header = staff.Name, Content = v };
             return new_tab;
+        }
+
+        private void V_IsHitTestVisibleChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void OnSelectedNodesChanged(IChangeSet<NodeViewModel> changeset)

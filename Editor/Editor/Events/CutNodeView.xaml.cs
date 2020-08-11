@@ -46,6 +46,7 @@ namespace WindEditor.Events
             this.WhenActivated(d =>
             {
                 this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.NodeView.ViewModel).DisposeWith(d);
+                ContextMenu = ViewModel.CutContextMenu;
             });
         }
 

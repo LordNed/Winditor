@@ -8,11 +8,15 @@ using ReactiveUI;
 using DynamicData;
 using System.Collections.ObjectModel;
 using NodeNetwork.Toolkit.ValueNode;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WindEditor.Events
 {
     public class CutNodeViewModel : NodeViewModel
     {
+        public ICommand CreatePropertyCommand { get { return new RelayCommand(x => OnRequestCreatePropertyNode((KeyValuePair<string, SubstanceType>)x)); } }
+
         private Cut m_Cut;
         private bool m_EnableConnectionUpdates;
 
@@ -36,6 +40,8 @@ namespace WindEditor.Events
                 m_EnableConnectionUpdates = value;
             }
         }
+
+        public ContextMenu CutContextMenu { get; private set; }
 
         static CutNodeViewModel()
         {
@@ -64,11 +70,22 @@ namespace WindEditor.Events
                 .Subscribe(change => {
                     OnExecOutputChanged(change);
                 });
+
+            PropertyChanged += CutNodeViewModel_PropertyChanged;
+        }
+
+        private void CutNodeViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Size")
+            {
+                int a = 0;
+            }
         }
 
         public void CreateNodesRecursive(NetworkViewModel model, Cut previous_cut)
         {
             Name = EventDefinitionManager.GetCutDisplayName(Cut.ParentActor.Name, Cut.Name);
+            GenerateContextMenu();
 
             // Add ourselves to the node network
             model.Nodes.Edit(x => x.Add(this));
@@ -356,6 +373,74 @@ namespace WindEditor.Events
                 Parent,
                 new_prop_input,
                 sub_view.Outputs.Items.First());
+            Parent.Connections.Edit(x => x.Add(new_prop_connection));
+        }
+
+        public void GenerateContextMenu()
+        {
+            CutContextMenu = new ContextMenu();
+            Dictionary<string, string> properties = EventDefinitionManager.GetPropertiesForAction(Cut.ParentActor.Name, Cut.Name);
+
+            foreach (KeyValuePair<string, string> prop_str in properties)
+            {
+                CutContextMenu.Items.Add(new MenuItem()
+                {
+                    Header = prop_str.Key,
+                    Command = CreatePropertyCommand,
+                    CommandParameter = new KeyValuePair<string, SubstanceType>(prop_str.Value, EventDefinitionManager.GetPropertyType(Cut.ParentActor.Name, Cut.Name, prop_str.Key))
+                });
+            }
+        }
+
+        private void OnRequestCreatePropertyNode(KeyValuePair<string, SubstanceType> args)
+        {
+            Substance new_sub = null;
+
+            switch (args.Value)
+            {
+                case SubstanceType.Float:
+                    new_sub = new Substance<ObservableCollection<PrimitiveBinding<float>>>(args.Key, args.Value)
+                    {
+                        Data = new ObservableCollection<PrimitiveBinding<float>>() { new PrimitiveBinding<float>(0.0f) }
+                    };
+                    break;
+                case SubstanceType.Int:
+                    new_sub = new Substance<ObservableCollection<PrimitiveBinding<int>>>(args.Key, args.Value)
+                    {
+                        Data = new ObservableCollection<PrimitiveBinding<int>>() { new PrimitiveBinding<int>(0) }
+                    };
+                    break;
+                case SubstanceType.String:
+                    new_sub = new Substance<PrimitiveBinding<string>>(args.Key, args.Value)
+                    {
+                        Data = new PrimitiveBinding<string>("")
+                    };
+                    break;
+                case SubstanceType.Vec3:
+                    new_sub = new Substance<ObservableCollection<BindingVector3>>(args.Key, args.Value)
+                    {
+                        Data = new ObservableCollection<BindingVector3>() { new BindingVector3(new OpenTK.Vector3(0, 0, 0)) }
+                    };
+                    break;
+            }
+
+            SubstanceNodeViewModel temp_node = new SubstanceNodeViewModel(new_sub);
+            //temp_node.Position = GetMouseLocation(view);
+
+            Parent.Nodes.Edit(x => x.Add(temp_node));
+
+            NodeInputViewModel new_prop_input = new NodeInputViewModel();
+            new_prop_input.Connections.Connect()
+                .Subscribe(change => {
+                    OnPropertyInputChanged(change);
+                });
+
+            Inputs.Edit(x => x.Add(new_prop_input));
+
+            ConnectionViewModel new_prop_connection = new ConnectionViewModel(
+            Parent,
+            new_prop_input,
+            temp_node.Outputs.Items.First());
             Parent.Connections.Edit(x => x.Add(new_prop_connection));
         }
     }
