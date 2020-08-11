@@ -23,7 +23,7 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            Transform.LocalScale = new Vector3(1f, 1f, 1f);
+            VisualScaleMultiplier = new Vector3(1f, 1f, 1f);
             switch (Type)
             {
                 case TypeEnum.Small_pot:
@@ -51,7 +51,7 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Nut");
                     break;
                 case TypeEnum.Golden_crate:
-                    Transform.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
+                    VisualScaleMultiplier = new Vector3(0.4f, 0.4f, 0.4f);
                     m_actorMeshes = WResourceManager.LoadActorResource("Golden Crate");
                     break;
                 case TypeEnum.Seed:
@@ -61,7 +61,7 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Fancy Pot");
                     break;
                 case TypeEnum.Wooden_crate:
-                    Transform.LocalScale = new Vector3(0.5f, 0.5f, 0.5f);
+                    VisualScaleMultiplier = new Vector3(0.5f, 0.5f, 0.5f);
                     m_actorMeshes = WResourceManager.LoadActorResource("Wooden Crate");
                     break;
                 default:

@@ -1,3 +1,4 @@
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,22 @@ namespace WindEditor
 		public override void PreSave()
 		{
 
+        }
+
+        public override float GetBoundingRadius()
+        {
+            if (m_actorMeshes.Count == 0)
+                return base.GetBoundingRadius();
+
+			var mainModel = m_actorMeshes[0];
+
+			Vector3 lScale = VisualScale;
+			float largestMax = lScale[0];
+			for (int i = 1; i < 3; i++)
+				if (lScale[i] > largestMax)
+					largestMax = lScale[i];
+
+			return largestMax * 160f;
 		}
-	}
+    }
 }

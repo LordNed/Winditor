@@ -3,64 +3,101 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000003F,
-      "Shift": 0,
-      "Hidden": false,
-      "Category": "obj_movebox",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000FF00,
-      "Shift": 8,
-      "Hidden": false,
-      "Category": "obj_movebox",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
-      "ValueSource": "Parameters",
-      "Mask": 0x007F0000,
-      "Shift": 16,
-      "Hidden": false,
-      "Category": "obj_movebox",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0F000000,
-      "Shift": 24,
       "Hidden": false,
-      "Category": "obj_movebox",
+      "Category": "Movable Box",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Breakable Wooden Crate",
+        1: "Black Box A",
+        2: "Black Box With Statue on Top",
+        3: "Big Black Box",
+        4: "Unbreakable Wooden Crate A",
+        5: "Golden Crate",
+        6: "Metal Box",
+        7: "Metal Box With Spring",
+        8: "Unbreakable Wooden Crate B",
+        9: "Unbreakable Wooden Crate C",
+        10: "Mirror",
+        11: "Black Box B",
+        12: "Mossy Black Box",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_5",
-      "ValueSource": "Parameters",
-      "Mask": 0x40000000,
-      "Shift": 30,
-      "Hidden": false,
-      "Category": "obj_movebox",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_6",
+      "Name": "Disable Flag on Top",
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
-      "Shift": 31,
       "Hidden": false,
-      "Category": "obj_movebox",
+      "Category": "Movable Box",
+      "ToolTip": "",
+      "DataType": "Boolean"
+    },
+    {
+      "Name": "Unknown_7",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0x00FF,
+      "Hidden": false,
+      "Category": "Movable Box",
+      "ToolTip": "For the \"Black Box With Statue on Top\" type, this will be passed as parameter Unknown_1 to the statue entity (obj_mkie) spawned on top of the box.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Dropped Item",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000003F,
+      "Hidden": false,
+      "Category": "Movable Box Item",
+      "ToolTip": "",
+      "DataType": "DroppedItemID"
+    },
+    {
+      "Name": "Dropped Item Pickup Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x007F0000,
+      "Hidden": false,
+      "Category": "Movable Box Item",
       "ToolTip": "",
       "DataType": "Integer"
-    }
+    },
+    {
+      "Name": "Do Not Stay Moved After Reload",
+      "ValueSource": "Parameters",
+      "Mask": 0x40000000,
+      "Hidden": false,
+      "Category": "Movable Box Stay Moved Options",
+      "ToolTip": "",
+      "DataType": "Boolean"
+    },
+    {
+      "Name": "Stay Moved to Path",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x00FF,
+      "Hidden": false,
+      "Category": "Movable Box Stay Moved Options",
+      "ToolTip": "",
+      "DataType": "Path"
+    },
+    {
+      "Name": "Stay Moved Switch 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Hidden": false,
+      "Category": "Movable Box Stay Moved Options",
+      "ToolTip": "The switch to keep track of the box being moved to point 1 on its path.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Stay Moved Switch 2",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0xFF00,
+      "Hidden": false,
+      "Category": "Movable Box Stay Moved Options",
+      "ToolTip": "The switch to keep track of the box being moved to point 2 on its path.",
+      "DataType": "Integer"
+    },
   ]
 }

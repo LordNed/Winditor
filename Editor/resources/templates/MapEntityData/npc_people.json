@@ -6,31 +6,28 @@
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
       "Hidden": false,
-      "Category": "npc_people",
+      "Category": "Windfall Townsperson",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
-      "Shift": 16,
       "Hidden": false,
-      "Category": "npc_people",
+      "Category": "Windfall Townsperson",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
-      "Shift": 31,
       "Hidden": false,
-      "Category": "npc_people",
+      "Category": "Windfall Townsperson",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean"
     }
   ]
 }

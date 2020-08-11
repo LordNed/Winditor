@@ -1,12 +1,11 @@
 {
   "ClassName": "tag_md_cb",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "MessageID",
       "ValueSource": "Parameters",
       "Mask": 0x0000FFFF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "tag_md_cb",
       "ToolTip": "",
@@ -16,7 +15,6 @@
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
-      "Shift": 16,
       "Hidden": false,
       "Category": "tag_md_cb",
       "ToolTip": "",
@@ -26,7 +24,6 @@
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
-      "Shift": 24,
       "Hidden": false,
       "Category": "tag_md_cb",
       "ToolTip": "",
@@ -36,7 +33,6 @@
       "Name": "Unknown_4",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0x00FF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "tag_md_cb",
       "ToolTip": "",

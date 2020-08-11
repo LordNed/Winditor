@@ -1,5 +1,15 @@
 {
   "ClassName": "magma",
   "ParentClassOverride": "Actor",
-  "ParameterFields": []
+  "ParameterFields": [
+    {
+      "Name": "Bubbles Path",
+      "ValueSource": "Parameters",
+      "Mask": 0xFFFFFFFF,
+      "Hidden": false,
+      "Category": "Magma",
+      "ToolTip": "The magma's bubbles will appear on this path's points.",
+      "DataType": "Path"
+    }
+  ]
 }

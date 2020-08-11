@@ -6,7 +6,6 @@
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "shutter2",
       "ToolTip": "",

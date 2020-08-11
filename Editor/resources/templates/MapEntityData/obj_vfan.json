@@ -3,12 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
       "Hidden": false,
-      "Category": "obj_vfan",
+      "Category": "Ganon's Tower Destructible Door",
       "ToolTip": "",
       "DataType": "Integer"
     }

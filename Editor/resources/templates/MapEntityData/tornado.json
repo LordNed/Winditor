@@ -6,7 +6,6 @@
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0xFFFFFFFF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "tornado",
       "ToolTip": "",

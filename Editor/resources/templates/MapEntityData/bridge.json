@@ -3,22 +3,21 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type Bitfield",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
-      "Hidden": false,
-      "Category": "bridge",
+      "Hidden": true,
+      "Category": "Plank Bridge",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
-      "Shift": 8,
       "Hidden": false,
-      "Category": "bridge",
+      "Category": "Plank Bridge",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -26,9 +25,8 @@
       "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
-      "Shift": 16,
       "Hidden": false,
-      "Category": "bridge",
+      "Category": "Plank Bridge",
       "ToolTip": "The path for the bridge to be stretched along.",
       "DataType": "Path"
     }

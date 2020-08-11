@@ -25,10 +25,10 @@ namespace WindEditor
         private static readonly int[] kFoliageSpawnPatternNumModels = {
             1,
             7,
-            15,
+            21,
             3,
             7,
-            11,
+            17,
             7,
             5,
         };
@@ -118,22 +118,6 @@ namespace WindEditor
         };
         #endregion
 
-        [WProperty("Foliage", "Type", true)]
-        public FoliageType Type
-        {
-            get { return (FoliageType)Unknown_2; }
-            set
-            {
-                if ((int)value != Unknown_2)
-                {
-                    Unknown_2 = (int)value;
-                    OnPropertyChanged("Type");
-
-                    UpdateModel();
-                }
-            }
-        }
-
         public override void PostLoad()
         {
             UpdateModel();
@@ -157,7 +141,7 @@ namespace WindEditor
             string model_path;
             switch (Type)
             {
-                case FoliageType.Grass:
+                case TypeEnum.Grass:
                     if (currStageName.StartsWith("kin") || currStageName == "Xboss1")
                     {
                         // Forbidden Woods grass
@@ -168,13 +152,13 @@ namespace WindEditor
                         model_path = "resources/models/foliage/grass.obj";
                     }
                     break;
-                case FoliageType.Tree:
+                case TypeEnum.Tree:
                     model_path = "resources/models/foliage/tree.obj";
                     break;
-                case FoliageType.White_Flower:
+                case TypeEnum.White_Flower:
                     model_path = "resources/models/foliage/flower.obj";
                     break;
-                case FoliageType.Pink_Flower:
+                case TypeEnum.Pink_Flower:
                     if (currStageName == "sea" && currRoom.RoomIndex == 33)
                     {
                         // Private Oasis flowers
@@ -198,13 +182,7 @@ namespace WindEditor
             var bbox = GetBoundingBox();
             m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
 
-            int spawnPatternIndex = Unknown_1;
-            if (spawnPatternIndex > 7)
-            {
-                // Ingame, values above 7 would result in invalid data being read causing lots of foliage to be spawned practically randomly.
-                // But just display it as a single model here instead.
-                spawnPatternIndex = 0;
-            }
+            int spawnPatternIndex = (int)SpawnPattern;
             int groupIndex = kFoliageSpawnPatternGroupIndexes[spawnPatternIndex];
             int numModels = kFoliageSpawnPatternNumModels[spawnPatternIndex];
             Vector3[] offsetsForGroup = kGrassSpawnOffsets[groupIndex];
@@ -215,7 +193,7 @@ namespace WindEditor
 
                 WTransform transform = new WTransform();
                 
-                if (Type == FoliageType.Tree)
+                if (Type == TypeEnum.Tree)
                 {
                     // Only trees rotate, and they only rotate the positions of each tree model around the entity's center, not the individual trees themselves.
                     Quaternion rotation = Quaternion.Identity.FromEulerAngles(new Vector3(0, Transform.Rotation.ToEulerAngles().Y, 0));
@@ -228,6 +206,11 @@ namespace WindEditor
 
                 m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }
+        }
+
+        public override float GetBoundingRadius()
+        {
+            return 200f;
         }
     }
 }

@@ -27,6 +27,18 @@ namespace WindEditor
         [JsonProperty("English Name")]
         public string Description { get; set; }
 
+        [JsonProperty("Tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("Explanation")]
+        public string Explanation { get; set; }
+
+        [JsonProperty("Locations")]
+        public string[] Locations { get; set; }
+
+        [JsonProperty("ImagePath")]
+        public string ImagePath { get; set; }
+
         [JsonProperty("Main Model")]
         public string ModelPath;
 
@@ -63,14 +75,29 @@ namespace WindEditor
 
         public struct ModelResource
         {
+            [JsonProperty("Archive")]
+            public string ArchiveName;
+
             [JsonProperty("Path")]
             public string Path;
 
-            [JsonProperty("Offset")]
-            public Vector3 Offset;
+            [JsonProperty("Parent Joint")]
+            public string ParentJointName;
+
+            [JsonProperty("Position")]
+            public Vector3? Position;
+
+            [JsonProperty("Rotation")]
+            public Vector3? Rotation;
+
+            [JsonProperty("Scale")]
+            public Vector3? Scale;
 
             [JsonProperty("Animations")]
             public AnimationResource[] Animations;
+
+            [JsonProperty("Child Models")]
+            public ModelResource[] ChildModels;
         }
 
         [JsonProperty("Name")]
@@ -151,7 +178,18 @@ namespace WindEditor
 
             foreach (var model in res.Models)
             {
-                string arc_and_file_path = Path.Combine(res.ArchiveName, model.Path);
+                string model_arc_name = res.ArchiveName;
+
+                if (!string.IsNullOrEmpty(model.ArchiveName))
+                {
+                    model_arc_name = model.ArchiveName;
+                    string model_arc_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res/Object/", model_arc_name + ".arc");
+
+                    if (!File.Exists(model_arc_path))
+                        continue;
+                }
+
+                string arc_and_file_path = Path.Combine(model_arc_name, model.Path);
 
                 TSharedRef<J3D> existRef = null;//m_j3dList.Find(x => string.Compare(x.FilePath, arc_and_file_path, StringComparison.InvariantCultureIgnoreCase) == 0);
                 if (existRef != null)
@@ -162,15 +200,10 @@ namespace WindEditor
                     continue;
                 }
 
-                J3D loaded_model = LoadModelFromResource(model, res.ArchiveName);
+                J3D loaded_model = LoadModelFromResource(model, model_arc_name);
 
                 if (loaded_model == null)
                     continue;
-
-                loaded_model.SetHardwareLight(0, m_mainLight);
-                loaded_model.SetHardwareLight(1, m_secondaryLight);
-                loaded_model.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
-                loaded_model.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
 
                 existRef = new TSharedRef<J3D>();
                 existRef.FilePath = arc_and_file_path;
@@ -178,7 +211,6 @@ namespace WindEditor
                 existRef.ReferenceCount++;
 
                 m_j3dList.Add(existRef);
-                loaded_model.Tick(1/ (float)60);
 
                 models.Add(loaded_model);
             }
@@ -193,6 +225,32 @@ namespace WindEditor
                 models[0].SetColorWriteOverride("eyeRdamB", false);
                 models[0].SetColorWriteOverride("mayuRdamA", false);
                 models[0].SetColorWriteOverride("mayuRdamB", false);
+
+                models[0].SetColorWriteOverride("m_pz_eyeLdamA", false);
+                models[0].SetColorWriteOverride("m_pz_eyeLdamB", false);
+                models[0].SetColorWriteOverride("m_pz_eyeRdamA", false);
+                models[0].SetColorWriteOverride("m_pz_eyeRdamB", false);
+                models[0].SetColorWriteOverride("m_pz_mayuLdamA", false);
+                models[0].SetColorWriteOverride("m_pz_mayuLdamB", false);
+                models[0].SetColorWriteOverride("m_pz_mayuRdamA", false);
+                models[0].SetColorWriteOverride("m_pz_mayuRdamB", false);
+
+                foreach (var material in models[0].MAT3Tag.MaterialList)
+                {
+                    if (material.BlendModeIndex.SourceFactor == GXBlendModeControl.DstAlpha && material.BlendModeIndex.DestinationFactor == GXBlendModeControl.InverseDstAlpha)
+                    {
+                        material.BlendModeIndex.SourceFactor = GXBlendModeControl.SrcAlpha;
+                        material.BlendModeIndex.DestinationFactor = GXBlendModeControl.InverseSrcAlpha;
+                    }
+                }
+            }
+
+            if (models.Count > 0 && (name == "Wizzrobe"))
+            {
+                foreach (var material in models[0].MAT3Tag.MaterialList)
+                {
+                    material.ZModeIndex.UpdateEnable = true;
+                }
             }
 
             return models;
@@ -248,11 +306,28 @@ namespace WindEditor
             using (EndianBinaryReader reader = new EndianBinaryReader(j3dData, Endian.Big))
                 j3d.LoadFromStream(reader, WSettingsManager.GetSettings().DumpTextures, WSettingsManager.GetSettings().DumpShaders);
 
-            // If there are no animations specified, we can stop here and return the model
-            if (res.Animations == null)
-                return j3d;
+            if (res.Position != null)
+            {
+                j3d.SetOffsetTranslation((Vector3)res.Position);
+            }
+            if (res.Rotation != null)
+            {
+                j3d.SetOffsetRotation((Vector3)res.Rotation);
+            }
+            if (res.Scale != null)
+            {
+                j3d.SetOffsetScale((Vector3)res.Scale);
+            }
 
-            foreach(var anim in res.Animations)
+            j3d.SetHardwareLight(0, m_mainLight);
+            j3d.SetHardwareLight(1, m_secondaryLight);
+            j3d.SetTextureOverride("ZBtoonEX", "resources/textures/ZBtoonEX.png");
+            j3d.SetTextureOverride("ZAtoon", "resources/textures/ZAtoon.png");
+
+            if (res.Animations == null)
+                res.Animations = new WActorResource.AnimationResource[0];
+
+            foreach (var anim in res.Animations)
             {
                 VirtualFilesystemDirectory anim_arc = model_arc;
 
@@ -350,6 +425,16 @@ namespace WindEditor
             }
 
             j3d.Tick(1 / (float)60);
+
+            if (res.ChildModels == null)
+                res.ChildModels = new WActorResource.ModelResource[0];
+
+            foreach (var childRes in res.ChildModels)
+            {
+                var childJ3d = LoadModelFromResource(childRes, archive);
+                j3d.AddChildModel(childJ3d, childRes.ParentJointName);
+            }
+
             return j3d;
         }
 

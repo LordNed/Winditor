@@ -94,6 +94,13 @@ namespace WindEditor
         protected List<J3D> m_actorMeshes;
 		public TevColorOverride ColorOverrides { get; protected set; }
 
+        protected bool DisableRotationAndScaleForRaycasting = false;
+        protected Vector3 VisualScaleMultiplier = Vector3.One;
+        protected virtual Vector3 VisualScale
+        {
+            get { return  Vector3.Multiply(Transform.LocalScale, VisualScaleMultiplier); }
+        }
+
 		public override void OnConstruction()
 		{
 			base.OnConstruction();
@@ -116,15 +123,19 @@ namespace WindEditor
 		public override FAABox GetBoundingBox()
 		{
 			FAABox modelABB = m_objRender != null ? m_objRender.GetAABB() : m_actorMeshes[0].BoundingBox;
-			modelABB.ScaleBy(Transform.LocalScale);
+			modelABB.ScaleBy(VisualScale);
 
 			return new FAABox(modelABB.Min + Transform.Position, modelABB.Max + Transform.Position);
 		}
 
 		public bool Raycast(FRay ray, out float closestDistance)
 		{
-			// Convert the ray to local space of this node since all of our raycasts are local.
-			FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
+            // Convert the ray to local space of this node since all of our raycasts are local.
+            FRay localRay;
+            if (DisableRotationAndScaleForRaycasting)
+                localRay = WMath.TransformRay(ray, Transform.Position, Vector3.One, Quaternion.Identity);
+            else
+                localRay = WMath.TransformRay(ray, Transform.Position, VisualScale, Transform.Rotation.Inverted());
             closestDistance = float.MaxValue;
 			bool bHit = false;
 
@@ -140,16 +151,22 @@ namespace WindEditor
 			}
 			else
 			{
-				bHit = WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
+                if (m_objRender.FaceCullingEnabled && m_objRender.GetAABB().Contains(localRay.Origin))
+                {
+                    // If the camera is inside an OBJ render that has backface culling on, the actor won't actually be visible, so don't select it.
+                    return false;
+                }
+
+                bHit = WMath.RayIntersectsAABB(localRay, m_objRender.GetAABB().Min, m_objRender.GetAABB().Max, out closestDistance);
 
                 if (bHit)
                 {
                     // Convert the hit point back to world space...
                     Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
-                    localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation);
+                    Vector3 globalHitPoint = Transform.Position + Vector3.Transform(localHitPoint, Transform.Rotation);
 
                     // Now get the distance from the original ray origin and the new worldspace hit point.
-                    closestDistance = (localHitPoint - ray.Origin).Length;
+                    closestDistance = (globalHitPoint - ray.Origin).Length;
                 }
             }
 
@@ -170,7 +187,7 @@ namespace WindEditor
 
 		virtual public void Draw(WSceneView view)
 		{
-			Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+            Matrix4 trs = Matrix4.CreateScale(VisualScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
 
 			if (m_actorMeshes.Count > 0)
 			{
@@ -206,7 +223,7 @@ namespace WindEditor
 
 		virtual public float GetBoundingRadius()
 		{
-			Vector3 lScale = Transform.LocalScale;
+			Vector3 lScale = VisualScale;
 			float largestMax = lScale[0];
 			for (int i = 1; i < 3; i++)
 				if (lScale[i] > largestMax)
@@ -215,7 +232,9 @@ namespace WindEditor
 			float boundingSphere = 86f; // Default Editor Cube
 			if (m_actorMeshes.Count > 0)
 				boundingSphere = m_actorMeshes[0].BoundingSphere.Radius;
-			return largestMax * boundingSphere;
+            else if (m_objRender != null)
+                boundingSphere = m_objRender.GetAABB().Extents.Length;
+            return largestMax * boundingSphere;
 		}
 		#endregion
 	}

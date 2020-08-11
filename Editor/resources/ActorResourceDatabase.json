@@ -5,11 +5,6 @@
     "Models": [
       {
         "Path": "bdli/boxa.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -27,11 +22,6 @@
     "Models": [
       {
         "Path": "bdli/boxb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -49,11 +39,6 @@
     "Models": [
       {
         "Path": "bdli/boxc.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -71,11 +56,6 @@
     "Models": [
       {
         "Path": "bdlm/boxd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -85,11 +65,6 @@
     "Models": [
       {
         "Path": "bdl/cl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -108,11 +83,6 @@
     "Models": [
       {
         "Path": "bdlm/zl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -130,11 +100,6 @@
     "Models": [
       {
         "Path": "bdlm/pz.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -152,11 +117,6 @@
     "Models": [
       {
         "Path": "bdlm/kp.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -174,11 +134,6 @@
     "Models": [
       {
         "Path": "bdlm/gp.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -196,11 +151,6 @@
     "Models": [
       {
         "Path": "bdlm/co.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -218,11 +168,6 @@
     "Models": [
       {
         "Path": "bdlm/jb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -240,11 +185,6 @@
     "Models": [
       {
         "Path": "bdl/ka.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -262,11 +202,6 @@
     "Models": [
       {
         "Path": "bdl/obm_kotubo1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -276,11 +211,6 @@
     "Models": [
       {
         "Path": "bdl/obm_ootubo1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -290,11 +220,6 @@
     "Models": [
       {
         "Path": "bdl/kmtub_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -304,11 +229,6 @@
     "Models": [
       {
         "Path": "bdl/ktaru_01.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -318,11 +238,6 @@
     "Models": [
       {
         "Path": "bdl/ostool.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -332,11 +247,6 @@
     "Models": [
       {
         "Path": "bdl/otable.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -346,11 +256,6 @@
     "Models": [
       {
         "Path": "bdl/otablel.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -360,11 +265,6 @@
     "Models": [
       {
         "Path": "bdl/odokuro.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -374,11 +274,6 @@
     "Models": [
       {
         "Path": "bdl/okioke.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -388,11 +283,11 @@
     "Models": [
       {
         "Path": "bdlm/kmi_00x.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
+        "Position": {
+          "X": 0,
+          "Y": 50,
+          "Z": 0
+        },
       }
     ]
   },
@@ -402,11 +297,6 @@
     "Models": [
       {
         "Path": "bdl/hbox2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -416,10 +306,10 @@
     "Models": [
       {
         "Path": "bdl/kmi_02.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
+        "Position": {
+          "X": 0,
+          "Y": 50,
+          "Z": 0,
         }
       }
     ]
@@ -430,11 +320,6 @@
     "Models": [
       {
         "Path": "bdl/ptubo.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -444,11 +329,6 @@
     "Models": [
       {
         "Path": "bdl/kkiba_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -458,11 +338,6 @@
     "Models": [
       {
         "Path": "bdl/ospbox.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -472,11 +347,6 @@
     "Models": [
       {
         "Path": "bdl/hlift.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -486,11 +356,6 @@
     "Models": [
       {
         "Path": "bdl/hliftb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -500,11 +365,6 @@
     "Models": [
       {
         "Path": "bdlm/lift_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -514,11 +374,6 @@
     "Models": [
       {
         "Path": "bdlm/vpbot_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -528,11 +383,6 @@
     "Models": [
       {
         "Path": "bdl/pot.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -542,11 +392,6 @@
     "Models": [
       {
         "Path": "bdl/osara.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -556,11 +401,6 @@
     "Models": [
       {
         "Path": "bdl/koppu.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -570,12 +410,79 @@
     "Models": [
       {
         "Path": "bdl/ashut.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
+    ]
+  },
+  {
+    "Name": "Earth Temple Door",
+    "Archive": "door12",
+    "Models": [
+      {
+        "Path": "bdl/door12_gl.bdl",
+      },
+      {
+        "Path": "bdl/door12_gr.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Earth Temple Miniboss Door",
+    "Archive": "door12",
+    "Models": [
+      {
+        "Path": "bdl/door12m_l.bdl",
+      },
+      {
+        "Path": "bdl/door12m_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Earth Temple Boss Door",
+    "Archive": "door12",
+    "Models": [
+      {
+        "Path": "bdl/door12b_l.bdl",
+      },
+      {
+        "Path": "bdl/door12b_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Wind Temple Door",
+    "Archive": "door13",
+    "Models": [
+      {
+        "Path": "bdl/door13_l.bdl",
+      },
+      {
+        "Path": "bdl/door13_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Wind Temple Miniboss Door",
+    "Archive": "door13",
+    "Models": [
+      {
+        "Path": "bdl/door13m_l.bdl",
+      },
+      {
+        "Path": "bdl/door13m_r.bdl",
+      },
+    ]
+  },
+  {
+    "Name": "Wind Temple Boss Door",
+    "Archive": "door13",
+    "Models": [
+      {
+        "Path": "bdl/door13b_l.bdl",
+      },
+      {
+        "Path": "bdl/door13b_r.bdl",
+      },
     ]
   },
   {
@@ -584,11 +491,6 @@
     "Models": [
       {
         "Path": "bmd/lamp_00.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -598,11 +500,6 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -612,11 +509,6 @@
     "Models": [
       {
         "Path": "bdl/phana.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -626,43 +518,18 @@
     "Models": [
       {
         "Path": "bdl/hcbh1a.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/hcbh1b.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/hcbh1c.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/hcbh1d.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/hcbh2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
     ]
   },
@@ -672,11 +539,6 @@
     "Models": [
       {
         "Path": "bdlm/hmon1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -686,11 +548,6 @@
     "Models": [
       {
         "Path": "bdlm/hmon2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -700,11 +557,6 @@
     "Models": [
       {
         "Path": "bdl/x_tower.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -714,11 +566,6 @@
     "Models": [
       {
         "Path": "bdl/obi_ropetag.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -728,19 +575,9 @@
     "Models": [
       {
         "Path": "bdl/obi_ropetag.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/mropesw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -750,19 +587,9 @@
     "Models": [
       {
         "Path": "bdl/hkane1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/hkane2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -772,11 +599,6 @@
     "Models": [
       {
         "Path": "bdlm/mspocn.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -794,11 +616,6 @@
     "Models": [
       {
         "Path": "bdlm/mspocn.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -816,11 +633,6 @@
     "Models": [
       {
         "Path": "bdlm/mspot.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -838,11 +650,6 @@
     "Models": [
       {
         "Path": "bdlm/mmrr.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -860,11 +667,6 @@
     "Models": [
       {
         "Path": "bdlm/vdswt0.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -876,11 +678,6 @@
       },
       {
         "Path": "bdlm/vdswt1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -898,11 +695,6 @@
     "Models": [
       {
         "Path": "bdlm/msusw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -926,11 +718,6 @@
     "Models": [
       {
         "Path": "bdl/mkiek.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -940,11 +727,46 @@
     "Models": [
       {
         "Path": "bdl/moke1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
+      },
+      {
+        "Path": "bdl/moke2.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 75,
+          "Z": 0
+        },
+      },
+    ]
+  },
+  {
+    "Name": "Upright Coffin",
+    "Archive": "Mkanoke",
+    "Models": [
+      {
+        "Path": "bdl/moke1.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 200,
+          "Z": 0
+        },
+        "Rotation": {
+          "X": 90,
+          "Y": 0,
+          "Z": 0
+        },
+      },
+      {
+        "Path": "bdl/moke2.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 200,
+          "Z": 75
+        },
+        "Rotation": {
+          "X": 90,
+          "Y": 0,
+          "Z": 0
+        },
       }
     ]
   },
@@ -954,11 +776,6 @@
     "Models": [
       {
         "Path": "bdl/mhsg6.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -968,11 +785,6 @@
     "Models": [
       {
         "Path": "bdl/mhsg9.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -982,11 +794,6 @@
     "Models": [
       {
         "Path": "bdl/mhsg12.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -996,11 +803,6 @@
     "Models": [
       {
         "Path": "bdl/mhsg15.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -1010,11 +812,6 @@
     "Models": [
       {
         "Path": "bdl/mhsg4h.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -1024,11 +821,24 @@
     "Models": [
       {
         "Path": "bdl/alwd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
+      }
+    ]
+  },
+  {
+    "Name": "Palm Tree",
+    "Archive": "Oyashi",
+    "Models": [
+      {
+        "Path": "bdl/oyashi.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Chunk of Ice",
+    "Archive": "Ikori",
+    "Models": [
+      {
+        "Path": "bdl/vice.bdl",
       }
     ]
   },
@@ -1038,11 +848,6 @@
     "Models": [
       {
         "Path": "bdlm/bb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1060,11 +865,6 @@
     "Models": [
       {
         "Path": "bdlm/bb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1082,11 +882,6 @@
     "Models": [
       {
         "Path": "bdlm/bk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1104,11 +899,6 @@
     "Models": [
       {
         "Path": "bdlm/bk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1130,11 +920,6 @@
     "Models": [
       {
         "Path": "bdlm/bk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1156,11 +941,6 @@
     "Models": [
       {
         "Path": "bdlm/mo.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1178,11 +958,6 @@
     "Models": [
       {
         "Path": "bdlm/mo.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1206,11 +981,6 @@
     "Models": [
       {
         "Path": "bdlm/ks_body.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -1222,11 +992,6 @@
       },
       {
         "Path": "bdlm/ks_eye.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -1236,11 +1001,6 @@
     "Models": [
       {
         "Path": "bmdm/cc.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1264,11 +1024,6 @@
     "Models": [
       {
         "Path": "bmdm/cc.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1292,11 +1047,6 @@
     "Models": [
       {
         "Path": "bmdm/cc.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1320,11 +1070,6 @@
     "Models": [
       {
         "Path": "bmdm/cc.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1348,11 +1093,6 @@
     "Models": [
       {
         "Path": "bmdm/cc.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1376,11 +1116,6 @@
     "Models": [
       {
         "Path": "bdl/am.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1398,11 +1133,6 @@
     "Models": [
       {
         "Path": "bdlm/am2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1432,27 +1162,115 @@
     "Models": [
       {
         "Path": "bmdm/tn_main.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
-            "Path": "bck/await1.bck",
+            "Path": "bck/atate_on1.bck",
             "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bck",
+            "Path": "bck/aniou1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_main.brk",
+            "Paused on Load": true,
             "Start Time": 0
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Body Armor",
+    "Archive": "Tn",
+    "Models": [
       {
         "Path": "bmdm/tn_yoroi1.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
+        "Position": {
+          "X": -120,
+          "Y": 0,
+          "Z": 0
+        },
+        "Rotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 270
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_yoroi1.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Basic Helmet",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_kabuto1.bmd",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_kabuto1.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Full Helmet",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_kabuto2.bmd",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tn_kabuto2.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Sword",
+    "Archive": "Tkwn",
+    "Models": [
+      {
+        "Path": "bdlc/tn_ken1.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 0,
+          "Z": 85
+        },
+        "Rotation": {
+          "X": 0,
+          "Y": 0,
+          "Z": 180
         }
+      }
+    ]
+  },
+  {
+    "Name": "Darknut Shield",
+    "Archive": "Tn",
+    "Models": [
+      {
+        "Path": "bmdm/tn_tate1.bmd",
       }
     ]
   },
@@ -1461,12 +1279,113 @@
     "Archive": "St",
     "Models": [
       {
-        "Path": "bdlm/st_head.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
+        "Path": "bdlm/st.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/st_hara.bdl",
+            "Parent Joint": "hara"
+          },
+          {
+            "Path": "bdlm/st_mune.bdl",
+            "Parent Joint": "mune"
+          },
+          {
+            "Path": "bdlm/st_katal.bdl",
+            "Parent Joint": "kataL"
+          },
+          {
+            "Path": "bdlm/st_udel.bdl",
+            "Parent Joint": "udeL"
+          },
+          {
+            "Path": "bdlm/st_handl.bdl",
+            "Parent Joint": "handL"
+          },
+          {
+            "Path": "bdlm/st_yubi1l.bdl",
+            "Parent Joint": "yubi1L"
+          },
+          {
+            "Path": "bdlm/st_yubi2l.bdl",
+            "Parent Joint": "yubi2L"
+          },
+          {
+            "Path": "bdlm/st_katar.bdl",
+            "Parent Joint": "kataR"
+          },
+          {
+            "Path": "bdlm/st_uder.bdl",
+            "Parent Joint": "udeR"
+          },
+          {
+            "Path": "bdlm/st_handr.bdl",
+            "Parent Joint": "handR"
+          },
+          {
+            "Path": "bdlm/st_buki.bdl",
+            "Parent Joint": "buki"
+          },
+          {
+            "Path": "bdlm/st_yubi1r.bdl",
+            "Parent Joint": "yubi1R"
+          },
+          {
+            "Path": "bdlm/st_yubi2r.bdl",
+            "Parent Joint": "yubi2R"
+          },
+          {
+            "Path": "bdlm/st_kubi.bdl",
+            "Parent Joint": "kubi"
+          },
+          {
+            "Path": "bdlm/st_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdlm/st_ago.bdl",
+            "Parent Joint": "ago"
+          },
+          {
+            "Path": "bdlm/st_hat.bdl",
+            "Parent Joint": "hat"
+          },
+          {
+            "Path": "bdlm/st_kotuban.bdl",
+            "Parent Joint": "kotuban"
+          },
+          {
+            "Path": "bdlm/st_momol.bdl",
+            "Parent Joint": "momoL"
+          },
+          {
+            "Path": "bdlm/st_sunel.bdl",
+            "Parent Joint": "suneL"
+          },
+          {
+            "Path": "bdlm/st_asil.bdl",
+            "Parent Joint": "asiL"
+          },
+          {
+            "Path": "bdlm/st_momor.bdl",
+            "Parent Joint": "momoR"
+          },
+          {
+            "Path": "bdlm/st_suner.bdl",
+            "Parent Joint": "suneR"
+          },
+          {
+            "Path": "bdlm/st_asir.bdl",
+            "Parent Joint": "asiR"
+          }
+        ]
       }
     ]
   },
@@ -1476,11 +1395,6 @@
     "Models": [
       {
         "Path": "bdlm/wz.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1498,11 +1412,6 @@
     "Models": [
       {
         "Path": "bdlm/phb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1514,10 +1423,10 @@
       },
       {
         "Path": "bdlm/php.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
+        "Position": {
+          "X": 0,
+          "Y": 50,
+          "Z": 0
         },
         "Animations": [
           {
@@ -1536,11 +1445,6 @@
     "Models": [
       {
         "Path": "bmdm/shb.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1552,15 +1456,53 @@
       },
       {
         "Path": "bmdm/shp.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
             "Path": "bck/pfly.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Freshwater Octorok",
+    "Archive": "Oq",
+    "Models": [
+      {
+        "Path": "bmdm/oq.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/nom_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Freshwater Octorok Rock",
+    "Archive": "Oq",
+    "Models": [
+      {
+        "Path": "bdlm/isi.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Saltwater Octorok",
+    "Archive": "Oq",
+    "Models": [
+      {
+        "Path": "bmdm/red_oq.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/umi_new_wait.bck",
             "Paused on Load": false,
             "Start Time": 0
           }
@@ -1574,11 +1516,6 @@
     "Models": [
       {
         "Path": "bdlm/do_main1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1596,11 +1533,6 @@
     "Models": [
       {
         "Path": "bdlm/bl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1618,11 +1550,6 @@
     "Models": [
       {
         "Path": "bdl/fm.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1634,11 +1561,6 @@
       },
       {
         "Path": "bdlm/ypit00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -1648,11 +1570,6 @@
     "Models": [
       {
         "Path": "bmd/sss_hand.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -1662,11 +1579,6 @@
     "Models": [
       {
         "Path": "bdlm/nz.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1690,11 +1602,6 @@
     "Models": [
       {
         "Path": "bdlm/nz.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1718,11 +1625,6 @@
     "Models": [
       {
         "Path": "bdl/kana_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -1732,11 +1634,6 @@
     "Models": [
       {
         "Path": "bdlm/gm.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1754,11 +1651,6 @@
     "Models": [
       {
         "Path": "bdlm/gm.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1776,11 +1668,6 @@
     "Models": [
       {
         "Path": "bdlm/ki.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1798,11 +1685,6 @@
     "Models": [
       {
         "Path": "bdlm/ki.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1820,11 +1702,6 @@
     "Models": [
       {
         "Path": "bdlm/fk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1848,11 +1725,6 @@
     "Models": [
       {
         "Path": "bdlm/fk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1876,11 +1748,6 @@
     "Models": [
       {
         "Path": "bdlm/mg_head.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1898,11 +1765,6 @@
     "Models": [
       {
         "Path": "bdlm/pt.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1920,11 +1782,6 @@
     "Models": [
       {
         "Path": "bdlm/rd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1942,11 +1799,6 @@
     "Models": [
       {
         "Path": "bdlm/rd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1964,11 +1816,6 @@
     "Models": [
       {
         "Path": "bdlm/pw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -1992,11 +1839,6 @@
     "Models": [
       {
         "Path": "bdlm/pw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2020,11 +1862,6 @@
     "Models": [
       {
         "Path": "bdlm/pw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2048,11 +1885,6 @@
     "Models": [
       {
         "Path": "bdlm/pw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2076,11 +1908,6 @@
     "Models": [
       {
         "Path": "bdlm/pw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2104,11 +1931,6 @@
     "Models": [
       {
         "Path": "bdlm/pw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2127,16 +1949,81 @@
     ]
   },
   {
+    "Name": "Blue Beamos",
+    "Archive": "Hmos",
+    "Models": [
+      {
+        "Path": "bdl/hmos1.bdl",
+      },
+      {
+        "Path": "bdl/hmosup1.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 260,
+          "Z": 0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmosup1.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Red Beamos",
+    "Archive": "Hmos",
+    "Models": [
+      {
+        "Path": "bdl/hmos2.bdl",
+      },
+      {
+        "Path": "bdl/hmosup2.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 260,
+          "Z": 0
+        },
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmosup2.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ]
+      },
+      {
+        "Path": "bdlm/hmos2t.bdl",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmos2t.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Laser Barrier",
+    "Archive": "Hmos",
+    "Models": [
+      {
+        "Path": "bdl/hmos3.bdl",
+      },
+    ]
+  },
+  {
     "Name": "Phantom Ganon",
     "Archive": "Fganon",
     "Models": [
       {
         "Path": "bdlm/bpg.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2154,11 +2041,6 @@
     "Models": [
       {
         "Path": "bmdm/bkm.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2170,11 +2052,6 @@
       },
       {
         "Path": "bmdm/bkm_coa.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2192,11 +2069,6 @@
     "Models": [
       {
         "Path": "bdl/obm_koisi1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2206,11 +2078,6 @@
     "Models": [
       {
         "Path": "bdl/obm_koisi2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2220,11 +2087,6 @@
     "Models": [
       {
         "Path": "bdl/ebrock.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2234,11 +2096,6 @@
     "Models": [
       {
         "Path": "bdl/ebrock2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2248,11 +2105,6 @@
     "Models": [
       {
         "Path": "bdl/ekao.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2262,11 +2114,6 @@
     "Models": [
       {
         "Path": "bdl/eskban.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2276,11 +2123,6 @@
     "Models": [
       {
         "Path": "bdlm/md.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2298,11 +2140,6 @@
     "Models": [
       {
         "Path": "bdlm/uk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2310,16 +2147,14 @@
             "Paused on Load": false,
             "Start Time": 0
           }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ukhead_b.bdl",
+            "Parent Joint": "head"
+          },
         ]
       },
-      {
-        "Path": "bdl/ukhead_b.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
     ]
   },
   {
@@ -2328,11 +2163,6 @@
     "Models": [
       {
         "Path": "bdlm/uk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2346,16 +2176,14 @@
             "Paused on Load": false,
             "Start Time": 0
           }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ukhead_c.bdl",
+            "Parent Joint": "head"
+          },
         ]
       },
-      {
-        "Path": "bdlm/ukhead_c.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
     ]
   },
   {
@@ -2364,11 +2192,6 @@
     "Models": [
       {
         "Path": "bdlm/uk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2382,16 +2205,708 @@
             "Paused on Load": false,
             "Start Time": 0
           }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ukhead_d.bdl",
+            "Parent Joint": "head"
+          },
         ]
       },
+    ]
+  },
+  {
+    "Name": "Sam",
+    "Archive": "Uo",
+    "Models": [
       {
-        "Path": "bdl/ukhead_d.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
+        "Path": "bdl/uo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uo_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uo01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Gossack",
+    "Archive": "Uo",
+    "Models": [
+      {
+        "Path": "bdl/uo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uo_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uo02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uo02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Garrickson",
+    "Archive": "Uo",
+    "Models": [
+      {
+        "Path": "bdl/uo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uo_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uo03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uo03_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/uo_letter.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Vera",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ub02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Pompie",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ub03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Missy",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ub04.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Minenco",
+    "Archive": "Ub",
+    "Models": [
+      {
+        "Path": "bdl/ub.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ub_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ub04_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Gillian",
+    "Archive": "Uw",
+    "Models": [
+      {
+        "Path": "bdl/uw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uw_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uw01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Linda",
+    "Archive": "Uw",
+    "Models": [
+      {
+        "Path": "bdl/uw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/uw_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/uw02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/uw02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Kreeb",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/um02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Anton",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um01_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Kamo",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/um03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Kamo",
+    "Archive": "Um",
+    "Models": [
+      {
+        "Path": "bdl/um.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/um_wait04.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/um03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/um03_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/um_scope.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Loot",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa01_head.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/sa01head_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Loot",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa01_head.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/sa01head_cwait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Gummy",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa02_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Kane",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Kane",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait03.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa03.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa03_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Candy",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa05.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa05_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Candy",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait05.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa05.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa05_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/sa_cup05.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Daytime Dampa",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa04.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa04_head.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Nighttime Dampa",
+    "Archive": "Sa",
+    "Models": [
+      {
+        "Path": "bdl/sa.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sa_cwait04.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/sa04.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/sa04_head.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/sa_cup04.bdl",
+            "Parent Joint": "handR"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Potova",
+    "Archive": "Ug",
+    "Models": [
+      {
+        "Path": "bdl/ug.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ug_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ug01_head.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/ug01head_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Joanna",
+    "Archive": "Ug",
+    "Models": [
+      {
+        "Path": "bdl/ug.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ug_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ug02.bmt",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ug02_head.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      },
     ]
   },
   {
@@ -2400,19 +2915,9 @@
     "Models": [
       {
         "Path": "bdlm/bst.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdlm/mune.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2422,19 +2927,9 @@
     "Models": [
       {
         "Path": "bdlm/lhand.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdlm/udel.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2444,19 +2939,9 @@
     "Models": [
       {
         "Path": "bdlm/rhand.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdlm/uder.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2466,11 +2951,6 @@
     "Models": [
       {
         "Path": "bdlm/vlfdm.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2488,11 +2968,6 @@
     "Models": [
       {
         "Path": "bdl/de.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2510,11 +2985,6 @@
     "Models": [
       {
         "Path": "bdl/olift.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2524,11 +2994,6 @@
     "Models": [
       {
         "Path": "bdl/ojtree.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2538,11 +3003,6 @@
     "Models": [
       {
         "Path": "bmdm/jh.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2552,19 +3012,9 @@
     "Models": [
       {
         "Path": "bdl/turu_02.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/ktana_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2574,11 +3024,6 @@
     "Models": [
       {
         "Path": "bdl/ryu_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2588,11 +3033,6 @@
     "Models": [
       {
         "Path": "bdlm/ygstp00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -2616,10 +3056,10 @@
     "Models": [
       {
         "Path": "bdlm/bo_ue1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 5.0,
-          "Z": 0.0
+        "Position": {
+          "X": 0,
+          "Y": 100,
+          "Z": 0
         },
         "Animations": [
           {
@@ -2632,11 +3072,6 @@
       },
       {
         "Path": "bdlm/bo_sita1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2646,11 +3081,6 @@
     "Models": [
       {
         "Path": "bdl/knsak_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2660,11 +3090,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2688,11 +3113,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2716,11 +3136,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2744,11 +3159,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2772,11 +3182,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2800,11 +3205,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2828,11 +3228,6 @@
     "Models": [
       {
         "Path": "bdlm/vlupl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -2856,11 +3251,6 @@
     "Models": [
       {
         "Path": "bdl/vhrtl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2870,11 +3260,6 @@
     "Models": [
       {
         "Path": "bdlm/mpoda.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2884,11 +3269,6 @@
     "Models": [
       {
         "Path": "bdlm/mpodb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2898,11 +3278,6 @@
     "Models": [
       {
         "Path": "bdlm/bomb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2912,11 +3287,6 @@
     "Models": [
       {
         "Path": "bdl/vbomb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2926,11 +3296,6 @@
     "Models": [
       {
         "Path": "bdlm/mpoda.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2940,11 +3305,6 @@
     "Models": [
       {
         "Path": "bdl/vkeyl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2954,11 +3314,6 @@
     "Models": [
       {
         "Path": "bdl/vbell.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2968,11 +3323,6 @@
     "Models": [
       {
         "Path": "bdl/vhapl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2982,11 +3332,6 @@
     "Models": [
       {
         "Path": "bdl/vbokl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -2996,11 +3341,6 @@
     "Models": [
       {
         "Path": "bdlm/vhanl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3010,11 +3350,6 @@
     "Models": [
       {
         "Path": "bdl/vdokl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3024,11 +3359,6 @@
     "Models": [
       {
         "Path": "bdlm/vchul.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3038,11 +3368,6 @@
     "Models": [
       {
         "Path": "bdlm/vchul.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -3060,11 +3385,6 @@
     "Models": [
       {
         "Path": "bdlm/vchul.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -3082,11 +3402,6 @@
     "Models": [
       {
         "Path": "bdlm/vhkal.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3096,11 +3411,6 @@
     "Models": [
       {
         "Path": "bdlm/vhutl.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3110,11 +3420,6 @@
     "Models": [
       {
         "Path": "bdl/fa.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3124,19 +3429,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3146,19 +3441,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj01.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3168,19 +3453,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj02.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3190,19 +3465,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj03.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3212,19 +3477,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj04.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3234,19 +3489,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj05.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3256,19 +3501,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj06.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3278,19 +3513,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj07.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3300,19 +3525,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj08.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3322,19 +3537,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj09.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3344,19 +3549,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj10.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3366,19 +3561,9 @@
     "Models": [
       {
         "Path": "bdl/fdai.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdl/fobj11.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3388,12 +3573,16 @@
     "Models": [
       {
         "Path": "bdl/vigah.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
-      }
+      },
+      {
+        "Archive": "Kmi00x",
+        "Path": "bdlm/kmi_00x.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 65,
+          "Z": 0
+        },
+      },
     ]
   },
   {
@@ -3402,11 +3591,6 @@
     "Models": [
       {
         "Path": "bdl/mori1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3416,11 +3600,6 @@
     "Models": [
       {
         "Path": "bdl/mori2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3430,11 +3609,6 @@
     "Models": [
       {
         "Path": "bdl/mhmrsw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3444,11 +3618,6 @@
     "Models": [
       {
         "Path": "bdl/shmrgrd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3458,11 +3627,6 @@
     "Models": [
       {
         "Path": "bdl/kbota_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3472,11 +3636,6 @@
     "Models": [
       {
         "Path": "bdl/hhbot2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3486,11 +3645,6 @@
     "Models": [
       {
         "Path": "bdl/itubw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3500,11 +3654,6 @@
     "Models": [
       {
         "Path": "bdl/hami1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3514,11 +3663,6 @@
     "Models": [
       {
         "Path": "bdl/hami2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3528,11 +3672,6 @@
     "Models": [
       {
         "Path": "bdl/hami3.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3542,11 +3681,6 @@
     "Models": [
       {
         "Path": "bdl/htobi3.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3556,11 +3690,6 @@
     "Models": [
       {
         "Path": "bdl/hpbot1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3570,11 +3699,6 @@
     "Models": [
       {
         "Path": "bdl/vpbot_00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3584,11 +3708,6 @@
     "Models": [
       {
         "Path": "bdl/hpu1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3598,11 +3717,6 @@
     "Models": [
       {
         "Path": "bdl/hpu2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3612,25 +3726,24 @@
     "Models": [
       {
         "Path": "bdl/hbrf1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
   {
-    "Name": "Torch",
+    "Name": "Wooden Torch",
     "Archive": "Ep",
     "Models": [
       {
         "Path": "bdl/obm_shokudai1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
+      }
+    ]
+  },
+  {
+    "Name": "Golden Torch",
+    "Archive": "Ep",
+    "Models": [
+      {
+        "Path": "bdl/vktsd.bdl",
       }
     ]
   },
@@ -3640,11 +3753,6 @@
     "Models": [
       {
         "Path": "bdl/mknjh.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3654,11 +3762,6 @@
     "Models": [
       {
         "Path": "bdl/mknjd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3668,11 +3771,6 @@
     "Models": [
       {
         "Path": "bdl/mknjk.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3682,11 +3780,6 @@
     "Models": [
       {
         "Path": "bdl/homen1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3696,11 +3789,6 @@
     "Models": [
       {
         "Path": "bdl/homen2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3710,11 +3798,6 @@
     "Models": [
       {
         "Path": "bdl/hfuck1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3724,11 +3807,6 @@
     "Models": [
       {
         "Path": "bdl/hhyu1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3738,11 +3816,6 @@
     "Models": [
       {
         "Path": "bdl/htoge1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3752,11 +3825,6 @@
     "Models": [
       {
         "Path": "bdlm/htora1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3766,11 +3834,6 @@
     "Models": [
       {
         "Path": "bdl/obm_osihikiblk1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3780,11 +3843,6 @@
     "Models": [
       {
         "Path": "bdl/obm_osihikiblk2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3794,11 +3852,6 @@
     "Models": [
       {
         "Path": "bdl/mpwrb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3808,11 +3861,6 @@
     "Models": [
       {
         "Path": "bdl/ecube.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3822,11 +3870,6 @@
     "Models": [
       {
         "Path": "bdl/hbox1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3836,11 +3879,6 @@
     "Models": [
       {
         "Path": "bdl/hjump1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3850,11 +3888,6 @@
     "Models": [
       {
         "Path": "bdl/hjump2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3864,33 +3897,41 @@
     "Models": [
       {
         "Path": "bdl/vmcbs.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdlm/vmcwd.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
   {
-    "Name": "Light Beam Warp",
+    "Name": "Pink Light Beam Warp",
+    "Archive": "Ywarp00",
+    "Models": [
+      {
+        "Path": "bmdm/ywarp00.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/ywarp00.bck",
+            "Paused on Load": true,
+            "Start Time": 0.96666666666666666666666666666667
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/ywarp00.brk",
+            "Paused on Load": true,
+            "Start Time": 0.96666666666666666666666666666667
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "White Light Beam Warp",
     "Archive": "Ysdls00",
     "Models": [
       {
         "Path": "bdl/ysdls00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3900,11 +3941,6 @@
     "Models": [
       {
         "Path": "bdl/hsehi1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3914,11 +3950,6 @@
     "Models": [
       {
         "Path": "bdl/hsehi2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3928,11 +3959,6 @@
     "Models": [
       {
         "Path": "bdlm/obm_syougekisw.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -3956,11 +3982,6 @@
     "Models": [
       {
         "Path": "bdlm/ycage00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "btk",
@@ -3978,11 +3999,6 @@
     "Models": [
       {
         "Path": "bdl/obm_bridge.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -3992,11 +4008,6 @@
     "Models": [
       {
         "Path": "bdl/obm_bridge2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4006,11 +4017,6 @@
     "Models": [
       {
         "Path": "bdlm/vbakh.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -4022,11 +4028,6 @@
       },
       {
         "Path": "bdlm/vbakm.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "brk",
@@ -4044,19 +4045,9 @@
     "Models": [
       {
         "Path": "bdlm/vbakh.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       },
       {
         "Path": "bdlm/vbakm.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -4080,11 +4071,6 @@
     "Models": [
       {
         "Path": "bdl/ekskz.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4094,11 +4080,6 @@
     "Models": [
       {
         "Path": "bdl/mkieb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4108,11 +4089,6 @@
     "Models": [
       {
         "Path": "bdlm/ysbwp00.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           {
             "Anim Type": "bck",
@@ -4142,10 +4118,10 @@
     "Models": [
       {
         "Path": "bdlm/vlocb.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 230.0,
-          "Z": 20.0
+        "Position": {
+          "X": 0,
+          "Y": 230,
+          "Z": 20
         }
       }
     ]
@@ -4156,10 +4132,10 @@
     "Models": [
       {
         "Path": "bdlm/vlocn.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 150.0,
-          "Z": 20.0
+        "Position": {
+          "X": 0,
+          "Y": 150,
+          "Z": 20
         }
       }
     ]
@@ -4170,11 +4146,6 @@
     "Models": [
       {
         "Path": "bdl/opaper.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4184,11 +4155,6 @@
     "Models": [
       {
         "Path": "bdl/ppos.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4198,11 +4164,6 @@
     "Models": [
       {
         "Path": "bdl/piwa.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4212,11 +4173,6 @@
     "Models": [
       {
         "Path": "bdl/kanban.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4226,25 +4182,15 @@
     "Models": [
       {
         "Path": "bdl/mswng.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
   {
-    "Name": "Small Pillar of Flames",
+    "Name": "Medium Magma Jet",
     "Archive": "Yfire_00",
     "Models": [
       {
         "Path": "bmdm/yfire_00.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         "Animations": [
           //{
           //  "Anim Type": "brk",
@@ -4263,16 +4209,11 @@
     ]
   },
   {
-    "Name": "Large Pillar of Flames",
+    "Name": "Large Magma Jet",
     "Archive": "Yfire_00",
     "Models": [
       {
         "Path": "bmdm/yfirb_00.bmd",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
         //"Animations": [
         //  {
         //    "Anim Type": "btk",
@@ -4290,11 +4231,6 @@
     "Models": [
       {
         "Path": "bdl/mflft.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
       }
     ]
   },
@@ -4304,11 +4240,6 @@
     "Models": [
       {
         "Path": "bdl/otana.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
       }
     ]
   },
@@ -4318,11 +4249,6 @@
     "Models": [
       {
         "Path": "bdl/aygr.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
       }
     ]
   },
@@ -4332,19 +4258,9 @@
     "Models": [
       {
         "Path": "bdl/aygr.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
       },
       {
         "Path": "bdl/aygrh.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        },
       }
     ]
   },
@@ -4354,11 +4270,6 @@
     "Models": [
       {
         "Path": "bdl/s_search.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4368,11 +4279,6 @@
     "Models": [
       {
         "Path": "bdl/vikae.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4382,11 +4288,6 @@
     "Models": [
       {
         "Path": "bdl/vikah.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4396,11 +4297,6 @@
     "Models": [
       {
         "Path": "bdl/vsvsp.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4410,11 +4306,6 @@
     "Models": [
       {
         "Path": "bdl/vtsp.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4424,11 +4315,6 @@
     "Models": [
       {
         "Path": "bdl/vtsp2.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
@@ -4438,11 +4324,15 @@
     "Models": [
       {
         "Path": "bdl/mkdan1.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
+      }
+    ]
+  },
+  {
+    "Name": "Earth Temple Stair",
+    "Archive": "Msdan",
+    "Models": [
+      {
+        "Path": "bdl/msdan.bdl",
       }
     ]
   },
@@ -4452,12 +4342,43 @@
     "Models": [
       {
         "Path": "bdl/oba_kaizoku_a.bdl",
-        "Offset": {
-          "X": 0.0,
-          "Y": 0.0,
-          "Z": 0.0
-        }
       }
     ]
   },
+  {
+    "Name": "Giant Hanging Flower",
+    "Archive": "Kokiie",
+    "Models": [
+      {
+        "Path": "bdl/koki_00.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Ganon's Tower Destructible Door",
+    "Archive": "Vfan",
+    "Models": [
+      {
+        "Path": "bdl/v_fan_00.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Lenzo",
+    "Archive": "Po",
+    "Models": [
+      {
+        "Path": "bdlm/po.bdl",
+        "Animations":
+          [
+            {
+              "Anim Type": "bck",
+              "Path": "bcks/wait01.bck",
+              "Paused on Load": false,
+              "Start Time": 0.00
+            }
+          ]
+      }
+    ]
+  }
 ]

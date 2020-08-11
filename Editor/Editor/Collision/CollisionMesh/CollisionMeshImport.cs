@@ -92,21 +92,10 @@ namespace WindEditor.Collision
             COLLADA dae = COLLADA.Load(file_name);
             m_Nodes = new List<CollisionGroupNode>();
             Triangles = new List<CollisionTriangle>();
-            LoadFromCollada(dae);
-
-            // Automatically set the room number.
-            RootNode.RoomNumber = roomIndex;
-
-            // Copy the room table index used by the original collision mesh's root node to all of the groups loaded from the dae.
-            // This isn't perfect because some rooms (like dungeon hub rooms) have different collision groups use different room tables, and this method doesn't preserve that.
-            // But this does work much better than not setting the room table index at all.
-            foreach (CollisionGroupNode node in m_Nodes)
-            {
-                node.RoomTableIndex = origRootRoomTableIndex;
-            }
+            LoadFromCollada(dae, roomIndex, origRootRoomTableIndex);
         }
 
-        private void LoadFromCollada(COLLADA dae)
+        private void LoadFromCollada(COLLADA dae, int roomIndex, int roomTableIndex)
         {
             m_UpAxis = dae.asset.up_axis;
 
@@ -118,6 +107,17 @@ namespace WindEditor.Collision
             RootNode = LoadGroupsFromColladaRecursive(null, scene.node[0], geo.geometry);
 
             FinalizeLoad();
+
+            // Automatically set the room number.
+            RootNode.RoomNumber = roomIndex;
+
+            // Copy the room table index used by the original collision mesh's root node to all of the groups loaded from the dae.
+            // This isn't perfect because some rooms (like dungeon hub rooms) have different collision groups using different room tables, and this method doesn't preserve that.
+            // But this does work much better than not setting the room table index at all.
+            foreach (CollisionGroupNode node in m_Nodes)
+            {
+                node.RoomTableIndex = roomTableIndex;
+            }
         }
 
         private CollisionGroupNode LoadGroupsFromColladaRecursive(CollisionGroupNode parent, node dae_node, geometry[] meshes)

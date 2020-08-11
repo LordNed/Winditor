@@ -6,7 +6,6 @@
       "Name": "Has Ladder",
       "ValueSource": "Parameters",
       "Mask": 0x00000001,
-      "Shift": 0,
       "Hidden": false,
       "Category": "obj_aygr",
       "ToolTip": "",

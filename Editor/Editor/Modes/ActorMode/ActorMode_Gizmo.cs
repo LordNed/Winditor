@@ -92,6 +92,12 @@ namespace WindEditor.Editor.Modes
                 FRay mouseRay = view.ProjectScreenToWorld(WInput.MousePosition);
                 if (TransformGizmo.CheckSelectedAxes(mouseRay))
                 {
+                    if (WInput.GetKey(Key.LeftAlt))
+                    {
+                        CopySelection();
+                        PasteSelection();
+                    }
+
                     TransformGizmo.StartTransform();
                 }
             }

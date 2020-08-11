@@ -3,62 +3,85 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Shift": 0,
-      "Hidden": false,
-      "Category": "obj_bemos",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000FF00,
-      "Shift": 8,
-      "Hidden": false,
-      "Category": "obj_bemos",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
-      "ValueSource": "Parameters",
-      "Mask": 0x00FF0000,
-      "Shift": 16,
-      "Hidden": false,
-      "Category": "obj_bemos",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0xF0000000,
-      "Shift": 28,
       "Hidden": false,
-      "Category": "obj_bemos",
-      "ToolTip": "",
+      "Category": "Beamos / Laser Barrier",
+      "ToolTip": "Blue Beamos always fire at a specific spot.\nRed Beamos track the player with their laser.\nLaser Barriers fire a laser along a path to block the player.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Blue Beamos",
+        1: "Red Beamos",
+        2: "Laser Barrier",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Sight Range (Hundreds)",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Beamos",
+      "ToolTip": "This number multiplied by 100 and added to 500 is the range within it will notice the player and start firing a laser.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Deactivation Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Laser Barrier",
+      "ToolTip": "It will stop firing a laser once this switch is set.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Head Rotation Speed",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Hidden": false,
+      "Category": "Red Beamos",
+      "ToolTip": "The speed the Red Beamos rotates its head at.",
+      "DataType": "SignedInteger"
+    },
+    {
+      "Name": "Behavior Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Hidden": false,
+      "Category": "Laser Barrier",
+      "ToolTip": "\"Only fires if Servant present\" types won't start firing their laser unless a Servant of the Tower is in the room.\n\"Lasers are not solid\" types fire lasers that don't have solid collision - they still damage the player and knock them back, but the player can walk through the lasers with iframes.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal",
+        1: "Only fires if Servant present",
+        2: "Lasers are not solid",
+      }
+    },
+    {
+      "Name": "Laser Path",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Laser Barrier",
+      "ToolTip": "The path for the laser to go along.\nIf this is not set, this will only be half of a laser barrier, and it won't follow any path.",
+      "DataType": "Path"
+    },
+    {
+      "Name": "Dropped Item",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x003F,
-      "Shift": 0,
       "Hidden": false,
-      "Category": "obj_bemos",
+      "Category": "Beamos",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "DroppedItemID"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Dropped Item Pickup Flag",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x1FC0,
-      "Shift": 6,
       "Hidden": false,
-      "Category": "obj_bemos",
+      "Category": "Beamos",
       "ToolTip": "",
       "DataType": "Integer"
     }

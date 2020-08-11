@@ -6,7 +6,6 @@
       "Name": "Disable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "Falling Stair",
       "ToolTip": "Once this switch is set, the stair will no longer appear.",

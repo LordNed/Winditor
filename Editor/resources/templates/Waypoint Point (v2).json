@@ -7,7 +7,7 @@
 		{"Name" : "Unknown 1", "Type" : "Byte", "Editable": true},
 		{"Name" : "Unknown 2", "Type" : "Byte", "Editable": true},
 		{"Name" : "Unknown 3", "Type" : "Byte", "Editable": true},
-		{"Name" : "Action Type", "Type" : "Byte", "Editable": true},
+		{"Name" : "Action Type", "Type" : "Byte", "Editable": true, "Category": "Path Point Properties"},
 		{"Name" : "Position", "Type" : "Vector3"}
 	]
 }

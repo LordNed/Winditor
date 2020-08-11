@@ -1,72 +1,13 @@
-# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 05.07.2016 21:47:19
+# Blender MTL File: 'empty.blend'
+# Material Count: 1
 
 newmtl Material_001
-	Ns 94.1176
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 1.0000 1.0000 1.0000
-	Kd 0.0000 0.0000 0.0000
-	Ks 0.5000 0.5000 0.5000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka CamTexBlack.png
-	map_Kd CamTexBlack.png
-
-newmtl Material_006
-	Ns 96.0784
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 1.0000 1.0000 1.0000
-	Kd 0.6400 0.6400 0.6400
-	Ks 0.5000 0.5000 0.5000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka CamTex.png
-	map_Kd CamTex.png
-
-newmtl Material_002
-	Ns 94.1176
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 1.0000 1.0000 1.0000
-	Kd 0.0681 0.1177 0.6400
-	Ks 0.5000 0.5000 0.5000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka CamTex.png
-	map_Kd CamTex.png
-
-newmtl Material_007
-	Ns 96.0784
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 1.0000 1.0000 1.0000
-	Kd 0.6400 0.6400 0.6400
-	Ks 0.5000 0.5000 0.5000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka CamTex.png
-	map_Kd CamTex.png
-
-newmtl Material_003
-	Ns 94.1176
-	Ni 1.5000
-	d 1.0000
-	Tr 0.0000
-	Tf 1.0000 1.0000 1.0000 
-	illum 2
-	Ka 1.0000 1.0000 1.0000
-	Kd 0.1284 0.1688 0.8000
-	Ks 0.5000 0.5000 0.5000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka CamTex.png
-	map_Kd CamTex.png
+Ns 94.117609
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd CamTex.png

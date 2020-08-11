@@ -29,14 +29,6 @@ namespace WindEditor
         Debug = 15
     }
 
-    public enum FoliageType
-    {
-        Grass,
-        Tree,
-        White_Flower,
-        Pink_Flower
-    }
-
     public enum GohdanComponent
     {
         Head,
@@ -380,5 +372,75 @@ namespace WindEditor
         Random_Drop_Table_1E = 0x3E,
 
         No_item = 0x3F,
+    }
+
+    public enum OnlyRandomDroppedItemID
+    {
+        No_item = 0x00,
+        No_item_01 = 0x01,
+        No_item_02 = 0x02,
+        No_item_03 = 0x03,
+        No_item_04 = 0x04,
+        No_item_05 = 0x05,
+        No_item_06 = 0x06,
+        No_item_07 = 0x07,
+        No_item_08 = 0x08,
+        No_item_09 = 0x09,
+        No_item_0A = 0x0A,
+        No_item_0B = 0x0B,
+        No_item_0C = 0x0C,
+        No_item_0D = 0x0D,
+        No_item_0E = 0x0E,
+        No_item_0F = 0x0F,
+        No_item_10 = 0x10,
+        No_item_11 = 0x11,
+        No_item_12 = 0x12,
+        No_item_13 = 0x13,
+        No_item_14 = 0x14,
+        No_item_15 = 0x15,
+        No_item_16 = 0x16,
+        No_item_17 = 0x17,
+        No_item_18 = 0x18,
+        No_item_19 = 0x19,
+        No_item_1A = 0x1A,
+        No_item_1B = 0x1B,
+        No_item_1C = 0x1C,
+        No_item_1D = 0x1D,
+        No_item_1E = 0x1E,
+        No_item_1F = 0x1F,
+
+        Random_Drop_Table_00 = 0x20,
+        Random_Drop_Table_01 = 0x21,
+        Random_Drop_Table_02 = 0x22,
+        Random_Drop_Table_03 = 0x23,
+        Random_Drop_Table_04 = 0x24,
+        Random_Drop_Table_05 = 0x25,
+        Random_Drop_Table_06 = 0x26,
+        Random_Drop_Table_07 = 0x27,
+        Random_Drop_Table_08 = 0x28,
+        Random_Drop_Table_09 = 0x29,
+        Random_Drop_Table_0A = 0x2A,
+        Random_Drop_Table_0B = 0x2B,
+        Random_Drop_Table_0C = 0x2C,
+        Random_Drop_Table_0D = 0x2D,
+        Random_Drop_Table_0E = 0x2E,
+        Random_Drop_Table_0F = 0x2F,
+        Random_Drop_Table_10 = 0x30,
+        Random_Drop_Table_11 = 0x31,
+        Random_Drop_Table_12 = 0x32,
+        Random_Drop_Table_13 = 0x33,
+        Random_Drop_Table_14 = 0x34,
+        Random_Drop_Table_15 = 0x35,
+        Random_Drop_Table_16 = 0x36,
+        Random_Drop_Table_17 = 0x37,
+        Random_Drop_Table_18 = 0x38,
+        Random_Drop_Table_19 = 0x39,
+        Random_Drop_Table_1A = 0x3A,
+        Random_Drop_Table_1B = 0x3B,
+        Random_Drop_Table_1C = 0x3C,
+        Random_Drop_Table_1D = 0x3D,
+        Random_Drop_Table_1E = 0x3E,
+
+        No_item_3F = 0x3F,
     }
 }

@@ -6,7 +6,6 @@
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
-      "Shift": 8,
       "Hidden": false,
       "Category": "alldie",
       "ToolTip": "",

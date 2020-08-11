@@ -3,44 +3,45 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Shift": 0,
-      "Hidden": false,
-      "Category": "warpls",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000FF00,
-      "Shift": 8,
-      "Hidden": false,
-      "Category": "warpls",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
-      "ValueSource": "Parameters",
-      "Mask": 0x00FF0000,
-      "Shift": 16,
-      "Hidden": false,
-      "Category": "warpls",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0xF0000000,
-      "Shift": 28,
       "Hidden": false,
-      "Category": "warpls",
+      "Category": "Light Beam Warp",
       "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Pink Warp",
+        1: "White Warp",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Exit",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Hidden": false,
+      "Category": "Light Beam Warp",
+      "ToolTip": "",
+      "DataType": "Exit"
+    },
+    {
+      "Name": "Activation Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Light Beam Warp",
+      "ToolTip": "The warp will not appear and be active until this switch is set.",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Activated Event",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Light Beam Warp",
+      "ToolTip": "The event to start when activated.",
+      "DataType": "Event"
     }
   ]
 }

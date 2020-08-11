@@ -27,6 +27,23 @@
 			string overrideName = field.FieldName == "Name" ? "override" : "";
 			string categoryName = field.CategoryName != null ? field.CategoryName : "Misc.";
 
+			int bitShift = 0;
+			for (int i = 0; i < 32; i++) {
+				if ((field.BitMask & (1 << i)) != 0) {
+					bitShift = i;
+					break;
+				}
+			}
+			
+			int bitMaskSize = 0;
+			for (int i = 0; i < 32; i++) {
+				if ((field.BitMask & (1 << i)) != 0) {
+					bitMaskSize++;
+				}
+			}
+
+			int defaultEnumValue = field.EnumDefaultValue;
+
 			bool defaultBooleanValue = field.BooleanDefaultValue;
 			int[] boolNonDefaults = new int[] {0, 0xFF};
 			if (field.BooleanNonDefaults != null) {
@@ -76,6 +93,7 @@
 			switch (field.DataType)
 			{
 				case "Integer":
+				case "SignedInteger":
 					dataType = "int";
 					break;
 				case "Boolean":
@@ -106,6 +124,10 @@
 					{
 						string sanitizedValue = item.Value.Replace(" ", "_");
 						sanitizedValue = EscapeIdentifier(sanitizedValue);
+						if (Char.IsDigit(sanitizedValue[0])) {
+							// Identifiers can't start with a number.
+							sanitizedValue = "_" + sanitizedValue;
+						}
 #>
 			<#= sanitizedValue #> = <#= item.Key #>,
 <#
@@ -122,6 +144,9 @@
 				case "DroppedItemID":
 					dataType = "DroppedItemID";
 					break;
+				case "OnlyRandomDroppedItemID":
+					dataType = "OnlyRandomDroppedItemID";
+					break;
 				default:
 					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 					break;
@@ -134,7 +159,7 @@
 				} else {
 					defaultValueSetters.Add($"{fieldName} = {defaultValue};");
 				}
-			} else if (field.DataType == "Integer") {
+			} else if (field.DataType == "Integer" || field.DataType == "SignedInteger") {
 				defaultValueSetters.Add($"{fieldName} = -1;");
 			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
 				defaultValueSetters.Add($"{fieldName} = null;");
@@ -153,13 +178,22 @@
 		{ 
 			get
 			{
-				int value_as_int = (int)((<#= privateValueSource #> & <#= bitMaskHex #>) >> <#= field.BitShift #>);
+				int value_as_int = (int)((<#= privateValueSource #> & <#= bitMaskHex #>) >> <#= bitShift #>);
 <#
 				switch (field.DataType)
 				{
 					case "Integer":
 #>
 				return value_as_int;
+<#
+						break;
+					case "SignedInteger":
+#>
+				if (value_as_int > <#= (1 << (bitMaskSize - 1)) - 1 #>) {
+					return value_as_int - <#= 1 << bitMaskSize #>;
+				} else {
+					return value_as_int;
+				}
 <#
 						break;
 					case "Boolean":
@@ -205,9 +239,15 @@
 					case "Enum":
 					case "ItemID":
 					case "DroppedItemID":
+					case "OnlyRandomDroppedItemID":
 #>
+				if (!Enum.IsDefined(typeof(<#= dataType #>), value_as_int))
+					value_as_int = <#= defaultEnumValue #>;
 				return (<#= dataType #>)value_as_int;
 <#
+						break;
+					default:
+						throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 						break;
 				}
 #>
@@ -219,6 +259,7 @@
 				switch (field.DataType)
 				{
 					case "Integer":
+					case "SignedInteger":
 #>
 				int value_as_int = value;
 <#
@@ -251,13 +292,17 @@
 					case "Enum":
 					case "ItemID":
 					case "DroppedItemID":
+					case "OnlyRandomDroppedItemID":
 #>
 				int value_as_int = (int)value;
 <#
 						break;
+					default:
+						throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
+						break;
 				}
 #>
-				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= field.BitShift #> & <#= bitMaskHex #>));
+				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= bitShift #> & <#= bitMaskHex #>));
 				OnPropertyChanged("<#=fieldName#>");
 <#
 				if (field.UpdateModel) {

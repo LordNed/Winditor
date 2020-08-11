@@ -84,6 +84,21 @@ namespace WindEditor
             MouseScrollDelta = delta;
         }
 
+        public static void ClearInput()
+        {
+            for (int i = 0; i < 256; i++)
+            {
+                m_keysDown[i] = false;
+                m_prevKeysDown[i] = false;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                m_mouseBtnsDown[i] = false;
+                m_prevMouseBtnsDown[i] = false;
+            }
+        }
+
         private static int MouseButtonEnumToInt(MouseButton button)
         {
             switch (button)

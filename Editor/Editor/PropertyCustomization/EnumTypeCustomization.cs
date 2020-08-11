@@ -56,7 +56,9 @@ namespace WindEditor.Editor
 
             for (int i = 0; i < enum_values.Length; i++)
             {
-                cbox.Items.Add(enum_values.GetValue(i).ToString().Replace("_", " "));
+                string display_value = enum_values.GetValue(i).ToString();
+                display_value = display_value.Replace("_", " ").Trim();
+                cbox.Items.Add(display_value);
             }
 
             Binding tbind = new Binding(property.Name)

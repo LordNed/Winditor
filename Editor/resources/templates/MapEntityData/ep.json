@@ -1,12 +1,11 @@
 {
   "ClassName": "ep",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
-      "Shift": 0,
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "",
@@ -16,13 +15,13 @@
         1: "Does not have brazier 1",
         2: "Does not have brazier 2",
         3: "Has brazier 2",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Has Fireflies?",
       "ValueSource": "Parameters",
       "Mask": 0x00000040,
-      "Shift": 6,
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "",
@@ -32,17 +31,16 @@
       "Name": "Is Wooden?",
       "ValueSource": "Parameters",
       "Mask": 0x00000080,
-      "Shift": 7,
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "If this is true and the Torch Type is brazier, the brazier is wooden instead of gold.",
-      "DataType": "Boolean"
+      "DataType": "Boolean",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
-      "Shift": 8,
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "",
@@ -52,7 +50,6 @@
       "Name": "Unknown_5",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
-      "Shift": 16,
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "",
@@ -62,7 +59,6 @@
       "Name": "On Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
-      "Shift": 24,
       "Hidden": false,
       "Category": "Torch",
       "ToolTip": "The ID of the switch that, when set, lights the torch. If -1, the torch is lit by default.",

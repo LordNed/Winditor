@@ -91,12 +91,27 @@ namespace WindEditor
 
         private void GlControlHost_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            WInput.SetKeyboardState(e.Key, false);
+            System.Windows.Input.Key input_key = e.Key;
+
+            if (input_key == System.Windows.Input.Key.System)
+            {
+                input_key = e.SystemKey;
+                e.Handled = true;
+            }
+
+            WInput.SetKeyboardState(input_key, false);
         }
 
         private void GlControlHost_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            WInput.SetKeyboardState(e.Key, true);
+            System.Windows.Input.Key input_key = e.Key;
+
+            if (input_key == System.Windows.Input.Key.System)
+            {
+                input_key = e.SystemKey;
+            }
+
+            WInput.SetKeyboardState(input_key, true);
         }
 
         private void GlControlHost_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -251,6 +266,11 @@ namespace WindEditor
                     m_viewModel.WindEditor.ActiveLayer = MapLayer.LayerB;
                     break;
             }
+        }
+
+        private void glControlHost_LostFocus(object sender, RoutedEventArgs e)
+        {
+            WInput.ClearInput();
         }
     }
 

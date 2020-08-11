@@ -53,6 +53,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\lib\OpenTK.dll</HintPath>
     </Reference>
@@ -66,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorInfoTxtsToLocation.cs" />
     <Compile Include="ArcExtractorDebugging.cs" />
     <Compile Include="ArchiveResourceToCSV.cs" />
     <Compile Include="Program.cs" />
@@ -73,11 +77,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameFormatReader\GameFormatReader.csproj">
+    <ProjectReference Include="$(SolutionDir)\GameFormatReader\GameFormatReader\GameFormatReader.csproj">
       <Project>{afce536d-92ff-4ee5-8536-731d2cd5fbca}</Project>
       <Name>GameFormatReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Editor\Editor.csproj">
+      <Project>{25e6420d-72cf-4082-a0b4-0c7727d3a702}</Project>
+      <Name>Editor</Name>
     </ProjectReference>
     <ProjectReference Include="..\WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj">
       <Project>{b715685d-1603-4ce3-8ea1-552b01c2ba4b}</Project>

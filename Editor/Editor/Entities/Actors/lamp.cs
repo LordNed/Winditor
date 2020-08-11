@@ -12,7 +12,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
         {
-            Transform.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
+            VisualScaleMultiplier = new Vector3(0.4f, 0.4f, 0.4f);
             m_actorMeshes = WResourceManager.LoadActorResource("Lamp");
             base.PostLoad();
 		}

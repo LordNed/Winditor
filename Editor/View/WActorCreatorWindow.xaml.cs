@@ -76,6 +76,16 @@ namespace WindEditor.View
                 {
                     return true;
                 }
+                if (descriptor.Tags != null)
+                {
+                    foreach (string s in descriptor.Tags)
+                    {
+                        if (s.IndexOf(SearchFilter, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
 
                 return false;
             }
@@ -84,6 +94,45 @@ namespace WindEditor.View
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SearchFilter = SearchTextBox.Text;
+        }
+
+        private void ActorTypeView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Descriptor == null)
+            {
+                EngNameBlock.Text = "";
+                ExplanationBlock.Text = "";
+                LocBlock.Text = "";
+                TagsBlock.Text = "";
+                image_box.Source = new BitmapImage(new Uri("pack://application:,,,/Winditor;component/resources/ui/actors/default_img.png"));
+                return;
+            }
+
+            if (Descriptor.ImagePath != null)
+            {
+                image_box.Source = new BitmapImage(new Uri($"pack://application:,,,/Winditor;component/resources/ui/actors/{ Descriptor.ImagePath }"));
+            }
+            else
+            {
+                image_box.Source = new BitmapImage(new Uri("pack://application:,,,/Winditor;component/resources/ui/actors/default_img.png"));
+            }
+
+            EngNameBlock.Text = Descriptor.Description;
+            ExplanationBlock.Text = Descriptor.Explanation;
+
+            if (Descriptor.Locations != null)
+            {
+                LocBlock.Text = string.Join("\n", Descriptor.Locations);
+            }
+            else
+                LocBlock.Text = "";
+
+            if (Descriptor.Tags != null)
+            {
+                TagsBlock.Text = string.Join(", ", Descriptor.Tags);
+            }
+            else
+                TagsBlock.Text = "";
         }
     }
 }

@@ -12,6 +12,7 @@ namespace WindEditor
 		public override void PostLoad()
 		{
 			base.PostLoad();
+			m_actorMeshes = WResourceManager.LoadActorResource("Ganon's Tower Destructible Door");
 		}
 
 		public override void PreSave()

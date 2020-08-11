@@ -8,7 +8,7 @@
 		{"Name" : "Unknown 2", "Type" : "Byte"},
 		{"Name" : "Unknown 3", "Type" : "Byte"},
 		{"Name" : "Unknown 4", "Type" : "Byte"},
-		{"Name" : "Unknown 5", "Type" : "Byte"},
+		{"Name" : "Switch to Set", "Type" : "Byte"},
 		{"Name" : "Room Number", "Type" : "Byte"},
 		{"Name" : "Unknown 6", "Type" : "Byte"},
 		{"Name" : "Unknown 7", "Type" : "Byte"},

@@ -167,6 +167,55 @@ namespace WindEditor
             var curLight = envrData[0].Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
 
             m_skybox.SetColors(curLight.SkyboxPalette);
+
+
+            // Set color overrides for certain stage actors that have parameters specifying what room they belong in.
+            var childActors = GetChildrenOfType<VisibleDOMNode>();
+            foreach (var child in childActors)
+            {
+                var possibleRoomNums = new List<int>();
+
+                if (child is TreasureChest)
+                {
+                    var chest = child as TreasureChest;
+                    possibleRoomNums.Add(chest.RoomNumber);
+                }
+                else if (child is door10)
+                {
+                    var door = child as door10;
+                    possibleRoomNums.Add(door.FromRoomNumber);
+                    possibleRoomNums.Add(door.ToRoomNumber);
+                }
+                else if (child is door12)
+                {
+                    var door = child as door12;
+                    possibleRoomNums.Add(door.FromRoomNumber);
+                    possibleRoomNums.Add(door.ToRoomNumber);
+                }
+
+                if (possibleRoomNums.Count == 0)
+                    continue;
+
+                WRoom containingRoom = null;
+                foreach (var node in m_world.Map.SceneList)
+                {
+                    if (node is WRoom)
+                    {
+                        WRoom room = node as WRoom;
+                        if (possibleRoomNums.Contains(room.RoomIndex))
+                        {
+                            containingRoom = room;
+                        }
+                    }
+                }
+
+                if (containingRoom == null)
+                    continue;
+
+                var containingRoomLight = containingRoom.EnvironmentLighting.Lerp(EnvironmentLightingConditions.WeatherPreset.Default, true, timeOfDay);
+                child.ColorOverrides.SetTevColorOverride(0, containingRoomLight.ShadowColor);
+                child.ColorOverrides.SetTevkColorOverride(0, containingRoomLight.ActorAmbientColor);
+            }
         }
 
         public override void SaveToDirectory(string directory)

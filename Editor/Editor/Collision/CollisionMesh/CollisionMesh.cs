@@ -43,7 +43,7 @@ namespace WindEditor.Collision
         public bool PreviousRenderVisibility { get; set; }
 
         /// <summary>
-        /// Creates a collision mesh from the given file, handling both COLLADA DAE and DZB files.
+        /// Creates a collision mesh from the given file, handling DZB files only.
         /// </summary>
         /// <param name="world">World containing the collision mesh</param>
         /// <param name="file_name">File to load the model from</param>
@@ -52,17 +52,39 @@ namespace WindEditor.Collision
             Init();
             FileName = Path.GetFileNameWithoutExtension(file_name);
 
-            if (file_name.EndsWith(".dae"))
-            {
-                COLLADA dae = COLLADA.Load(file_name);
-                LoadFromCollada(dae);
-            }
-            else if (file_name.EndsWith(".dzb"))
+            if (file_name.EndsWith(".dzb"))
             {
                 using (EndianBinaryReader reader = new EndianBinaryReader(File.ReadAllBytes(file_name), Endian.Big))
                 {
                     LoadFromDZB(reader);
                 }
+            }
+            else
+            {
+                throw new Exception($"File is not a DZB: {file_name}");
+            }
+        }
+
+        /// <summary>
+        /// Creates a collision mesh from the given file, handling COLLADA DAE files only.
+        /// </summary>
+        /// <param name="world">World containing the collision mesh</param>
+        /// <param name="file_name">File to load the model from</param>
+        /// <param name="roomIndex">The room number to give to the new collision mesh</param>
+        /// <param name="roomTableIndex">The room table index to give to all collision groups in the new collision mesh (hack)</param>
+        public WCollisionMesh(WWorld world, string file_name, int roomIndex, int roomTableIndex) : base(world)
+        {
+            Init();
+            FileName = Path.GetFileNameWithoutExtension(file_name);
+
+            if (file_name.EndsWith(".dae"))
+            {
+                COLLADA dae = COLLADA.Load(file_name);
+                LoadFromCollada(dae, roomIndex, roomTableIndex);
+            }
+            else
+            {
+                throw new Exception($"File is not a DAE: {file_name}");
             }
         }
 

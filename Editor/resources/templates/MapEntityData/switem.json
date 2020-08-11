@@ -1,12 +1,11 @@
 {
   "ClassName": "switem",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "What Triggers It",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "Hidden Item Pickup",
       "ToolTip": "",
@@ -26,7 +25,6 @@
       "Name": "Spawned Item",
       "ValueSource": "Parameters",
       "Mask": 0x00003F00,
-      "Shift": 8,
       "Hidden": false,
       "Category": "Hidden Item Pickup",
       "ToolTip": "",
@@ -36,7 +34,6 @@
       "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",
       "Mask": 0x001FC000,
-      "Shift": 14,
       "Hidden": false,
       "Category": "Hidden Item Pickup",
       "ToolTip": "",

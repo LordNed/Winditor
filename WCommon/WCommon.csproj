@@ -87,7 +87,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameFormatReader\GameFormatReader.csproj">
+    <ProjectReference Include="..\GameFormatReader\GameFormatReader\GameFormatReader.csproj">
       <Project>{afce536d-92ff-4ee5-8536-731d2cd5fbca}</Project>
       <Name>GameFormatReader</Name>
     </ProjectReference>

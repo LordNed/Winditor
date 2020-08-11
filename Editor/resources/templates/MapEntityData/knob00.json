@@ -5,10 +5,37 @@
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
-      "Mask": 0xF0000000,
-      "Shift": 28,
+      "Mask": "0xF0000000",
       "Hidden": false,
       "Category": "knob00",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Style",
+      "ValueSource": "Parameters",
+      "Mask": "0x0FF00000",
+      "Hidden": false,
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        "0": "Outset",
+        "1": "Pirate Ship",
+        "2": "Windfall",
+        "3": "Dragon Roost",
+        "4": "Private Oasis",
+        "5": "Forsaken Fortress",
+        "6": "Nintendo Gallery",
+        "7": "Fancy"
+      }
+    },
+    {
+      "Name": "Message ID",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": "0xFFFF",
+      "Hidden": false,
+      "Category": "Door",
       "ToolTip": "",
       "DataType": "Integer"
     }

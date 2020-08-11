@@ -1,12 +1,11 @@
 {
   "ClassName": "tag_attention",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Shift": 0,
       "Hidden": false,
       "Category": "tag_attention",
       "ToolTip": "",
@@ -16,7 +15,6 @@
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
       "Mask": 0x00000300,
-      "Shift": 8,
       "Hidden": false,
       "Category": "tag_attention",
       "ToolTip": "",

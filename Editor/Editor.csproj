@@ -264,6 +264,7 @@
     </Compile>
     <Compile Include="Editor\Events\VectorValueEditorViewModel.cs" />
     <Compile Include="Editor\Managers\EventDataManager.cs" />
+    <Compile Include="Editor\Entities\TriggerRegion.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
@@ -1007,6 +1008,9 @@
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Editor\Templates\ParameterTemplates.tt" />
+    <Content Include="resources\editor\CamTex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\editor\T_DevCheckersBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1014,6 +1018,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\editor\T_DevCheckersOrange_trans.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\Camera.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\Camera.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorCylinderBottomOrigin.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorCylinderBottomOrigin.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\editor_icon.ico" />
@@ -1062,7 +1078,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\ActorResourceDatabase.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\editor\EditorSphere.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1113,6 +1129,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\models\foliage\grass_Vmori_l_matDL.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\patches\heap_display_diff.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />
@@ -2020,6 +2039,9 @@
     <Content Include="resources\textures\ZBtoonEX.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="resources\ui\actors\default_img.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="resources\ui\Copy_16x.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2044,7 +2066,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\GameFormatReader\GameFormatReader.csproj">
+    <ProjectReference Include="$(SolutionDir)\GameFormatReader\GameFormatReader\GameFormatReader.csproj">
       <Project>{afce536d-92ff-4ee5-8536-731d2cd5fbca}</Project>
       <Name>GameFormatReader</Name>
     </ProjectReference>
@@ -2052,7 +2074,7 @@
       <Project>{B90410AE-BB67-4D7A-B4F5-7209CB357A44}</Project>
       <Name>JStudio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SuperBMDLib\SuperBMDLib.csproj">
+    <ProjectReference Include="..\SuperBMD\SuperBMDLib\SuperBMDLib.csproj">
       <Project>{828be5e5-9e98-46c9-b63e-d2d03322a825}</Project>
       <Name>SuperBMDLib</Name>
     </ProjectReference>

@@ -31,7 +31,7 @@ namespace WindEditor
 		{
 			base.PostLoad();
 
-            m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f), true);
+            m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f), true, false);
 
             MessageReference = new MessageReference((ushort)MessageID);
 		}

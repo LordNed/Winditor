@@ -1,42 +1,54 @@
 {
   "ClassName": "obj_mtest",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000007,
-      "Shift": 0,
       "Hidden": false,
       "Category": "obj_mtest",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Water Splashes",
+        5: "Unknown 5",
+        6: "Unknown 6",
+        7: "Unknown 7",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
-      "Shift": 8,
       "Hidden": false,
       "Category": "obj_mtest",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Condition Type",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
-      "Shift": 16,
       "Hidden": false,
       "Category": "obj_mtest",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Appear if switch is set",
+        1: "Appear if switch is not set",
+        2: "Always appear",
+      },
+      "EnumDefaultValue": 2
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
       "Mask": 0x0F000000,
-      "Shift": 24,
       "Hidden": false,
       "Category": "obj_mtest",
       "ToolTip": "",
