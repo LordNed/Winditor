@@ -544,8 +544,7 @@ namespace WindEditor.Editor.Modes
             {
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
-                ViewModel = model,
-                Visibility = System.Windows.Visibility.Hidden
+                ViewModel = model
             };
 
             v.ContextMenu = new ActorTabContextMenu(staff);
