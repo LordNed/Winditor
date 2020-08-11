@@ -27,7 +27,7 @@ namespace WindEditor.Editor
             Binding tbind = new Binding(property.Name)
             {
                 Source = source,
-                Mode = BindingMode.TwoWay,
+                Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
 

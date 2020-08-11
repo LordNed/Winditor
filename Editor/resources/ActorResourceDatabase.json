@@ -78,6 +78,37 @@
     ]
   },
   {
+    "Name": "Ship",
+    "Archive": "Ship",
+    "Models": [
+      {
+        "Path": "bdl/fn_body.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/fn_mast_off2.bck",
+            "Paused on Load": true,
+            "Start Time": 0.4
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/fn_head_h.bdl",
+            "Parent Joint": "j_fn_gattai",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bck/fn_talk_a.bck",
+                "Paused on Load": true,
+                "Start Time": 0
+              }
+            ],
+          },
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Tetra",
     "Archive": "Zl",
     "Models": [
@@ -193,6 +224,32 @@
             "Start Time": 0
           }
         ]
+      }
+    ]
+  },
+  {
+    "Name": "Crab",
+    "Archive": "KN",
+    "Models": [
+      {
+        "Path": "bdl/kn.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Withered Tree",
+    "Archive": "Vmr",
+    "Models": [
+      {
+        "Path": "bdlm/vmrto.bdl",
       }
     ]
   },
@@ -491,6 +548,15 @@
     "Models": [
       {
         "Path": "bmd/lamp_00.bmd",
+      }
+    ]
+  },
+  {
+    "Name": "Lamp Hanging From Rope",
+    "Archive": "Himo3",
+    "Models": [
+      {
+        "Path": "bmd/slamp_00.bmd",
       }
     ]
   },
@@ -1390,7 +1456,7 @@
     ]
   },
   {
-    "Name": "Wizzrobe",
+    "Name": "Fireball-Shooting Wizzrobe",
     "Archive": "Wz",
     "Models": [
       {
@@ -1401,7 +1467,110 @@
             "Path": "bck/s_demo_wait1.bck",
             "Paused on Load": false,
             "Start Time": 0
-          }
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Spawner Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0.03333333333333333333333333333333
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mini-boss Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0.06666666666666666666666666666667
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_kamen.bdl",
+            "Parent Joint": "wiz_atama_1"
+          },
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Alt Color Fireball Wizzrobe",
+    "Archive": "Wz",
+    "Models": [
+      {
+        "Path": "bdlm/wz.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/s_demo_wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/wz.brk",
+            "Paused on Load": true,
+            "Start Time": 0.9999999 // Should be keyframe 3 (0.1 seconds), but if we set that exactly it loops back to 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/wz_stick.bdl",
+            "Parent Joint": "wiz_tekubi_r1"
+          },
         ]
       }
     ]
@@ -2019,6 +2188,33 @@
     ]
   },
   {
+    "Name": "Gunboat",
+    "Archive": "Oship",
+    "Models": [
+      {
+        "Path": "bdl/vbtsp.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Golden Gunboat",
+    "Archive": "Oship",
+    "Models": [
+      {
+        "Path": "bdl/vbtst.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Wall-Mounted Cannon",
+    "Archive": "WallBom",
+    "Models": [
+      {
+        "Path": "bdl/wallbom.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Phantom Ganon",
     "Archive": "Fganon",
     "Models": [
@@ -2061,6 +2257,23 @@
           }
         ]
       }
+    ]
+  },
+  {
+    "Name": "Helmaroc King",
+    "Archive": "Dk",
+    "Models": [
+      {
+        "Path": "bdl/dk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/fly1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.23333333333333333333333333333333
+          }
+        ],
+      },
     ]
   },
   {
@@ -2910,6 +3123,536 @@
     ]
   },
   {
+    "Name": "Sue-Belle",
+    "Archive": "Yw",
+    "Models": [
+      {
+        "Path": "bdl/yw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ywhead01.bdl",
+            "Parent Joint": "head"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Sturgeon",
+    "Archive": "Aj",
+    "Models": [
+      {
+        "Path": "bdlm/aj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/aj_stick.bdl",
+            "Parent Joint": "handL"
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "Name": "Quill",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead01.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmhead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Skett and Akoot",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bm02.bmt"
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead02.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Basht and Bisht",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bm02.bmt"
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead07.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Hoskit",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bm02.bmt"
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead05.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+              {
+                "Anim Type": "bmt",
+                "Path": "bmt/bmarm02.bmt"
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Ilari",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead04.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Pashli",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead09.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Namali",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead06.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Kogoli",
+    "Archive": "Bm",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead03.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Koboli",
+    "Archive": "Bmsw",
+    "Models": [
+      {
+        "Path": "bdlm/bm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bm_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bmhead11.bdl",
+            "Parent Joint": "head",
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armL",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+          {
+            "Path": "bdlm/bmarm.bdl",
+            "Parent Joint": "armR",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/bmarm_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  },
+  {
+    "Name": "Baito",
+    "Archive": "Btsw",
+    "Models": [
+      {
+        "Path": "bdlm/bn.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bn_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+      },
+    ]
+  },
+  {
     "Name": "Gohdan Head",
     "Archive": "Bst",
     "Models": [
@@ -3604,6 +4347,142 @@
     ]
   },
   {
+    "Name": "Outset Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_a.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Pirate Ship Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_b.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Windfall Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_c.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rito Aerie Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_d.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Private Oasis Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_e.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Forsaken Fortress Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_f.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Nintendo Gallery Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_g.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Fancy Door",
+    "Archive": "Knob",
+    "Models": [
+      {
+        "Path": "bdl/door_h.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/dooropenadoor.bck",
+            "Paused on Load": true,
+            "Start Time": 0
+          },
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Hammer Button",
     "Archive": "MhmrSW",
     "Models": [
@@ -4084,6 +4963,32 @@
     ]
   },
   {
+    "Name": "Bombable Rito Statue",
+    "Archive": "Ebomzo",
+    "Models": [
+      {
+        "Path": "bdl/ebomzo.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Lake Outside Dragon Roost Cavern",
+    "Archive": "Gryw00",
+    "Models": [
+      {
+        "Path": "bdlm/gryw00.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/gryw00.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+        ],
+      }
+    ]
+  },
+  {
     "Name": "Tower of the Gods Boss Warp",
     "Archive": "Ysbwp00",
     "Models": [
@@ -4364,21 +5269,367 @@
     ]
   },
   {
+    "Name": "Spectacle Island Cannon",
+    "Archive": "Bomber",
+    "Models": [
+      {
+        "Path": "bdl/vcank.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 100,
+          "Z": 0
+        },
+      }
+    ]
+  },
+  {
+    "Name": "Postbox",
+    "Archive": "Toripost",
+    "Models": [
+      {
+        "Path": "bdl/vpost.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/post_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Potted Plant",
+    "Archive": "Plant",
+    "Models": [
+      {
+        "Path": "bdl/yrmwd.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Lenzo",
     "Archive": "Po",
     "Models": [
       {
         "Path": "bdlm/po.bdl",
-        "Animations":
-          [
-            {
-              "Anim Type": "bck",
-              "Path": "bcks/wait01.bck",
-              "Paused on Load": false,
-              "Start Time": 0.00
-            }
-          ]
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
       }
     ]
-  }
+  },
+  {
+    "Name": "Zill",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead01.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead01_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              }
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sleeping Zill",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_sleep03.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead01.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead01_sleep03.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              }
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Joel",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ko02.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead02_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Joel with Stick",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ko02.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead02_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              },
+            ]
+          },
+          {
+            "Path": "bdl/koeda.bdl",
+            "Parent Joint": "armR2",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sleeping Joel",
+    "Archive": "Ko",
+    "Models": [
+      {
+        "Path": "bdlm/ko.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ko_sleep01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ko02.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kohead02.bdl",
+            "Parent Joint": "head",
+            "Animations": [
+              {
+                "Anim Type": "bck",
+                "Path": "bcks/kohead02_wait01.bck",
+                "Paused on Load": false,
+                "Start Time": 0.00
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rose",
+    "Archive": "Ob",
+    "Models": [
+      {
+        "Path": "bdl/ob.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/oba_head.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mesa",
+    "Archive": "Ym",
+    "Models": [
+      {
+        "Path": "bdlm/ym.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ymhead01.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Abe",
+    "Archive": "Ym",
+    "Models": [
+      {
+        "Path": "bdlm/ym.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ym2.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ymhead02.bdl",
+            "Parent Joint": "head",
+          },
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Pink Pig",
+    "Archive": "Kb",
+    "Models": [
+      {
+        "Path": "bdlm/pg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pg_pink.bmt"
+          }
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Speckled Pig",
+    "Archive": "Kb",
+    "Models": [
+      {
+        "Path": "bdlm/pg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pg_buti.bmt"
+          }
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Black Pig",
+    "Archive": "Kb",
+    "Models": [
+      {
+        "Path": "bdlm/pg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/pg_kuro.bmt"
+          }
+        ],
+      }
+    ]
+  },
 ]

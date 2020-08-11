@@ -3,13 +3,18 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "oship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+      }
     },
     {
       "Name": "Unknown_2",
@@ -30,16 +35,16 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "oship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
@@ -48,7 +53,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0x00FF,
       "Hidden": false,
@@ -57,13 +62,15 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_7",
+      "Name": "Is Golden",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "oship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanNonDefaults": [255],
+      "UpdateModel": true
     }
   ]
 }

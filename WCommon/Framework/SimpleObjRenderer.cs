@@ -237,6 +237,8 @@ namespace WindEditor
             // Disable all of our shit.
             GL.Disable(EnableCap.Blend);
             GL.Disable(EnableCap.DepthTest);
+            GL.Disable(EnableCap.AlphaTest);
+            GL.AlphaFunc(AlphaFunction.Always, 0f);
 
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Position);
             GL.DisableVertexAttribArray((int)ShaderAttributeIds.Tex0);

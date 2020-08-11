@@ -1,6 +1,6 @@
 {
   "ClassName": "npc_kamome",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
       "Name": "Unknown_1",

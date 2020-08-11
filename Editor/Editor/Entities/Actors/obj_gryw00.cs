@@ -11,6 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			// Commented out because using the actual model makes it hidden and hard to click
+			//m_actorMeshes = WResourceManager.LoadActorResource("Lake Outside Dragon Roost Cavern");
 			base.PostLoad();
 		}
 

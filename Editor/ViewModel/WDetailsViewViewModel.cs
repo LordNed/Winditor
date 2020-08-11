@@ -101,13 +101,7 @@ namespace WindEditor.ViewModel
                 // Only add the category to the view if it's not blacklisted by the HideCategories attribute.
                 if (!new_details.Contains(category_name) && (hidden_categories == null || !hidden_categories.CategoryHidden(category_name)))
                 {
-                    // Also, we want to force the Transform category to the top of the list.
-                    if (category_name == "Transform")
-                    {
-                        new_details.Insert(0, category_name, new WDetailsCategoryRowViewModel(category_name));
-                    }
-                    else
-                        new_details.Add(category_name, new WDetailsCategoryRowViewModel(category_name));
+                    new_details.Add(category_name, new WDetailsCategoryRowViewModel(category_name));
                 }
 
                 WDetailsCategoryRowViewModel current_category = null;
@@ -163,6 +157,17 @@ namespace WindEditor.ViewModel
 
                 current_category.PropertyRows.RaiseListChangedEvents = true;
                 current_category.PropertyRows.ResetBindings();
+            }
+
+            // We want to force certain categories to the top of the list, so reorder it at the end.
+            foreach (var cat_name in new string[] { "Actor", "Transform", "Entity" })
+            {
+                if (new_details.Contains(cat_name))
+                {
+                    var row = new_details[cat_name];
+                    new_details.Remove(cat_name);
+                    new_details.Insert(0, cat_name, row);
+                }
             }
 
             Categories = new_details;

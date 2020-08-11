@@ -248,6 +248,9 @@ namespace WindEditor.Editor.Modes
 
         public void OnBecomeInactive()
         {
+            if (ActiveCollisionMesh != null)
+                ActiveCollisionMesh.IsRendered = ActiveCollisionMesh.PreviousRenderVisibility;
+
             World.Map.PropertyChanged -= OnFocusedSceneChanged;
         }
 

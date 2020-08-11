@@ -12,6 +12,8 @@ namespace WindEditor
 		public override void PostLoad()
 		{
 			base.PostLoad();
+
+			m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f), true, false);
 		}
 
 		public override void PreSave()

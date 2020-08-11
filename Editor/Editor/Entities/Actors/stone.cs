@@ -24,21 +24,21 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
-            switch (Unknown_5)
+            switch (Type)
             {
-                case 0:
+                case TypeEnum.Small_Rock:
                     m_actorMeshes = WResourceManager.LoadActorResource("Small Rock");
                     break;
-                case 1:
+                case TypeEnum.Small_Black_Rock:
                     m_actorMeshes = WResourceManager.LoadActorResource("Small Black Rock");
                     break;
-                case 2:
+                case TypeEnum.Boulder:
                     m_actorMeshes = WResourceManager.LoadActorResource("Boulder");
                     break;
-                case 3:
+                case TypeEnum.Head_Boulder:
                     m_actorMeshes = WResourceManager.LoadActorResource("Head Boulder");
                     break;
-                case 4:
+                case TypeEnum.Small_Boulder:
                     m_actorMeshes = WResourceManager.LoadActorResource("Small Boulder");
                     break;
                 default:

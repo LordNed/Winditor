@@ -29,7 +29,7 @@ namespace WindEditor.Editor
             Binding pos_bind = new Binding("PositionBase")
             {
                 Source = transform,
-                Mode = BindingMode.TwoWay,
+                Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
 
@@ -38,7 +38,7 @@ namespace WindEditor.Editor
             Binding scale_bind = new Binding("ScaleBase")
             {
                 Source = transform,
-                Mode = BindingMode.TwoWay,
+                Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
 

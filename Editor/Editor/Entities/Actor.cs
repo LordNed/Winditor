@@ -5,8 +5,21 @@ using System;
 namespace WindEditor
 {
 	public partial class Actor
-	{
-		public override string ToString()
+    {
+        [WProperty("Entity", "English Name", false, "", SourceScene.Room)]
+        new public string EnglishName
+        {
+            get
+            {
+                if (WResourceManager.GetActorDescriptors().ContainsKey(Name))
+                {
+                    return WResourceManager.GetActorDescriptors()[Name].Description;
+                }
+                return "";
+            }
+        }
+
+        public override string ToString()
 		{
 			return Name;
 		}

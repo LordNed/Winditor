@@ -9,7 +9,8 @@
       "Hidden": false,
       "Category": "kanban",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "Default": 0
     },
     {
       "Name": "MessageID",

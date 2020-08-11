@@ -3,20 +3,26 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "npc_aj1",
+      "Category": "Sturgeon",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        255: "Unknown 255",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Unknown Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "npc_aj1",
+      "Category": "Sturgeon",
       "ToolTip": "",
       "DataType": "Integer"
     }

@@ -741,7 +741,7 @@
     "Actor Name": "Bb",
     "English Name": "Kargaroc",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "A large bird that attacks Link by pecking at him. It can be damaged by any weaponry, and it produces Golden Feathers.\n\nKargarocs can be spawned flying around or perching. They can also carry other enemies into battle.",
     "Locations": [
@@ -960,7 +960,7 @@
     "Actor Name": "Bk",
     "English Name": "Bokoblin",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "These creatures are one of the most common enemies in the game. They come in a variety of colors and they have a variety of behaviors.\n\nThey can stand still, or they can patrol a path; they can also be hidden inside jars.",
     "Locations": [
@@ -1027,7 +1027,7 @@
     "Actor Name": "bable",
     "English Name": "Red and Blue Bubble",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "These enemies are floating skulls wreathed in flames. The red variant can burn Link, while the blue one curses him and makes him unable to use his items. The Blue Bubble is invincible until Link blows its flames away.",
     "Locations": [
@@ -1123,7 +1123,7 @@
     "Actor Name": "bbaba",
     "English Name": "Boko Baba",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "These are evil plants that bite (and sometimes try to swallow) Link. They can produce Boko Sticks when they're killed.",
     "Locations": [
@@ -1323,7 +1323,7 @@
     "Actor Name": "Bwds",
     "English Name": "Molgera Child",
     "Tags": [
-      "enemy"
+      "enemy",
     ],
     "Explanation": "Molgera will spawn these miniature versions of itself at the end of each phase of the battle. They hinder Link's attempts to hookshot Molgera's tongue.\n\nWhile they can be spawned in the Wind Temple boss room, they cannot be spawned anywhere else because they rely on the sand object that is created by Molgera's actor.",
     "Locations": [
@@ -1338,7 +1338,7 @@
     "ActorClassType": "canon",
     "Wait Animations": null,
     "Actor Name": "Canon",
-    "English Name": "canon",
+    "English Name": "Spectacle Island Cannon",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1620,7 +1620,7 @@
     "ActorClassType": "demo_kmm",
     "Wait Animations": null,
     "Actor Name": "DmKmm",
-    "English Name": "demo_kmm",
+    "English Name": "Cutscene Seagull",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1636,7 +1636,7 @@
     "ActorClassType": "demo_kmm",
     "Wait Animations": null,
     "Actor Name": "DmKmm2",
-    "English Name": "demo_kmm",
+    "English Name": "Cutscene Seagull",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1651,7 +1651,7 @@
     "ActorClassType": "dk",
     "Wait Animations": null,
     "Actor Name": "Dk",
-    "English Name": "dk",
+    "English Name": "Helmaroc King",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3217,7 +3217,7 @@
     "ActorClassType": "kanban",
     "Wait Animations": null,
     "Actor Name": "Kanban",
-    "English Name": "kanban",
+    "English Name": "Sign",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3454,7 +3454,7 @@
     "ActorClassType": "kn",
     "Wait Animations": null,
     "Actor Name": "kani",
-    "English Name": "kn",
+    "English Name": "Crab",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3475,7 +3475,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3509,7 +3509,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3525,7 +3525,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3540,7 +3540,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3555,7 +3555,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3583,7 +3583,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3600,7 +3600,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3615,7 +3615,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03D",
-    "English Name": "knob00",
+    "English Name": "Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3632,7 +3632,7 @@
     "ActorClassType": "kokiie",
     "Wait Animations": null,
     "Actor Name": "Kokiie",
-    "English Name": "kokiie",
+    "English Name": "Giant Hanging Flower",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5201,7 +5201,7 @@
     "ActorClassType": "npc_aj1",
     "Wait Animations": null,
     "Actor Name": "Aj1",
-    "English Name": "npc_aj1",
+    "English Name": "Sturgeon",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5512,8 +5512,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm1",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Quill",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5530,8 +5533,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm2",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Skett and Akoot",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5547,8 +5553,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm3",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Basht and Bisht and Hoskit",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Dragon Roost Cavern Entrance (Adanmae)",
@@ -5563,8 +5572,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm4",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Ilari and Pashli",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5581,8 +5593,11 @@
     "ActorClassType": "npc_bm1",
     "Wait Animations": null,
     "Actor Name": "Bm5",
-    "English Name": "npc_bm1",
-    "Tags": null,
+    "English Name": "Namali and Kogoli",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -5657,9 +5672,12 @@
     "ActorClassType": "npc_bmsw",
     "Wait Animations": null,
     "Actor Name": "Bmsw",
-    "English Name": "npc_bmsw",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Koboli (Mail Sorter)",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
+    "Explanation": "Note that Koboli spawns Baito in his place automatically once you've reached all four of Koboli's quotas.",
     "Locations": [
       "Rito Aerie (Atorizk)"
     ],
@@ -5702,9 +5720,11 @@
     "ActorClassType": "npc_btsw",
     "Wait Animations": null,
     "Actor Name": "Btsw",
-    "English Name": "npc_btsw",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Baito (Mail Sorter)",
+    "Tags": [
+      "NPC",
+    ],
+    "Explanation": "Note that this version of Baito is spawned automatically by Koboli once you've reached all four of Koboli's quotas.",
     "Locations": [
       "N/A"
     ],
@@ -5717,8 +5737,10 @@
     "ActorClassType": "npc_btsw2",
     "Wait Animations": null,
     "Actor Name": "Btsw2",
-    "English Name": "npc_btsw2",
-    "Tags": null,
+    "English Name": "Baito (Outside)",
+    "Tags": [
+      "NPC",
+    ],
     "Explanation": null,
     "Locations": [
       "Dragon Roost Island (sea/Room13)"
@@ -5933,7 +5955,7 @@
     "ActorClassType": "npc_kamome",
     "Wait Animations": null,
     "Actor Name": "HyoiKam",
-    "English Name": "npc_kamome",
+    "English Name": "Hyoi Pear Seagull Region",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6073,8 +6095,10 @@
     "ActorClassType": "npc_ko1",
     "Wait Animations": null,
     "Actor Name": "Ko1",
-    "English Name": "npc_ko1",
-    "Tags": null,
+    "English Name": "Zill",
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Unused (K_Test3)",
@@ -6090,8 +6114,10 @@
     "ActorClassType": "npc_ko1",
     "Wait Animations": null,
     "Actor Name": "Ko2",
-    "English Name": "npc_ko1",
-    "Tags": null,
+    "English Name": "Joel",
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Rose's House (Onobuta)",
@@ -6123,7 +6149,9 @@
     "Wait Animations": null,
     "Actor Name": "Ls1",
     "English Name": "Aryll",
-    "Tags": null,
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Ending (ENDumi)",
@@ -6143,7 +6171,10 @@
     "Wait Animations": null,
     "Actor Name": "Md1",
     "English Name": "Medli",
-    "Tags": null,
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Dragon Roost Cavern Entrance (Adanmae)",
@@ -6251,8 +6282,10 @@
     "ActorClassType": "npc_ob1",
     "Wait Animations": null,
     "Actor Name": "Ob1",
-    "English Name": "npc_ob1",
-    "Tags": null,
+    "English Name": "Rose",
+    "Tags": [
+      "NPC"
+    ],
     "Explanation": null,
     "Locations": [
       "Rose's House (Onobuta)",
@@ -7163,8 +7196,11 @@
     "ActorClassType": "npc_zk1",
     "Wait Animations": null,
     "Actor Name": "Zk1",
-    "English Name": "Rito Cheftain",
-    "Tags": null,
+    "English Name": "Rito Chieftain",
+    "Tags": [
+      "NPC",
+      "Rito",
+    ],
     "Explanation": null,
     "Locations": [
       "Rito Aerie (Atorizk)",
@@ -7649,7 +7685,9 @@
     "Wait Animations": null,
     "Actor Name": "Ocanon",
     "English Name": "Wall-Mounted Cannon",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Unused (K_Testd)",
@@ -8021,7 +8059,7 @@
     "ActorClassType": "obj_ebomzo",
     "Wait Animations": null,
     "Actor Name": "Ebomzo",
-    "English Name": "Rito Statue",
+    "English Name": "Bombable Rito Statue",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8288,7 +8326,7 @@
     "ActorClassType": "obj_gryw00",
     "Wait Animations": null,
     "Actor Name": "Gryw00",
-    "English Name": "obj_gryw00",
+    "English Name": "Lake Outside Dragon Roost Cavern",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9921,7 +9959,7 @@
     "ActorClassType": "obj_plant",
     "Wait Animations": null,
     "Actor Name": "Plant",
-    "English Name": "obj_plant",
+    "English Name": "Potted Plant",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11233,7 +11271,7 @@
     "ActorClassType": "obj_wood",
     "Wait Animations": null,
     "Actor Name": "woodb",
-    "English Name": "obj_wood",
+    "English Name": "Bush",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11265,7 +11303,7 @@
     "ActorClassType": "obj_wood",
     "Wait Animations": null,
     "Actor Name": "woodbx",
-    "English Name": "obj_wood",
+    "English Name": "Bush",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11456,7 +11494,9 @@
     "Wait Animations": null,
     "Actor Name": "Oship",
     "English Name": "Gunboat",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Northern Fairy Island (sea/Room3)",
@@ -11537,7 +11577,9 @@
     "Wait Animations": null,
     "Actor Name": "p_hat",
     "English Name": "Peahat",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Unused (Cave08)",
@@ -11596,7 +11638,9 @@
     "Wait Animations": null,
     "Actor Name": "Puti",
     "English Name": "Miniblin",
-    "Tags": null,
+    "Tags": [
+      "enemy",
+    ],
     "Explanation": null,
     "Locations": [
       "Submarines (Abship)",
@@ -12424,7 +12468,7 @@
     "ActorClassType": "stone",
     "Wait Animations": null,
     "Actor Name": "koisi1",
-    "English Name": "stone",
+    "English Name": "Rock",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14870,7 +14914,7 @@
     "ActorClassType": "wind_tag",
     "Wait Animations": null,
     "Actor Name": "WindTag",
-    "English Name": "wind_tag",
+    "English Name": "Small Cyclone",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14903,7 +14947,7 @@
     "ActorClassType": "wind_tag",
     "Wait Animations": null,
     "Actor Name": "Ybgaf00",
-    "English Name": "wind_tag",
+    "English Name": "Large Cyclone",
     "Tags": null,
     "Explanation": null,
     "Locations": [

@@ -222,6 +222,7 @@
     <Compile Include="Editor\Entities\LightSource.cs" />
     <Compile Include="Editor\Entities\LightVector.cs" />
     <Compile Include="Editor\Entities\RoomProperties.cs" />
+    <Compile Include="Editor\Entities\ShipSpawnPoint.cs" />
     <Compile Include="Editor\Entities\StageProperties.cs" />
     <Compile Include="Editor\Events\BeginNodeViewModel.cs" />
     <Compile Include="Editor\Events\BlockingCutEditorViewModel.cs" />

@@ -31,7 +31,7 @@ namespace WindEditor.Editor
             Binding tbind = new Binding("FilePath")
             {
                 Source = thing,
-                Mode = BindingMode.TwoWay,
+                Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
 

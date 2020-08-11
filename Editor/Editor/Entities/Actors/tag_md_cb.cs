@@ -40,10 +40,5 @@ namespace WindEditor
 		{
             MessageID = MessageReference.MessageID;
         }
-
-        public override void AddToRenderer(WSceneView view)
-        {
-            view.AddTransparentMesh(this);
-        }
     }
 }

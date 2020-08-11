@@ -1,18 +1,28 @@
 {
   "ClassName": "tag_island",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "tag_island",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+        5: "Unknown 5",
+        6: "Unknown 6",
+        7: "Unknown 7",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
@@ -21,13 +31,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Event",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "tag_island",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Event"
     }
   ]
 }

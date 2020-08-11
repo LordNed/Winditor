@@ -11,12 +11,18 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			m_actorMeshes = WResourceManager.LoadActorResource("Spectacle Island Cannon");
 		}
 	}
 }

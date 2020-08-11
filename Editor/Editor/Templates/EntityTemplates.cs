@@ -10,12 +10,16 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public abstract class SerializableDOMNode : WDOMNode
 	{
 		public readonly FourCC FourCC;
 		public MapLayer Layer { get { return m_layer; } set { m_layer = value; OnPropertyChanged("Layer"); } }
 
 		private MapLayer m_layer;
+		
+		[WProperty("Entity", "English Name", false, "", SourceScene.Room)]
+		public string EnglishName { get { return this.GetType().Name; } }
 
 		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
 		{
@@ -205,7 +209,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MinimapSettings_Unused(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -415,7 +419,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MinimapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -473,7 +477,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -481,6 +485,7 @@ namespace WindEditor
 			{
 				m_Name = value;
 				OnPropertyChanged("Name");
+				OnPropertyChanged("EnglishName");
 			}
 		}
 				
@@ -496,7 +501,7 @@ namespace WindEditor
 
 		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Enemy Number", true, "")]
+		[WProperty("Actor", "Enemy Number", true, "")]
 		 public short EnemyNumber
 		{ 
 			get { return m_EnemyNumber; }
@@ -508,7 +513,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public Actor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -568,7 +573,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -616,7 +621,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -706,7 +711,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraType_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -811,7 +816,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CameraType_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -964,7 +969,7 @@ namespace WindEditor
 		protected byte m_Padding;
 				
 
-		
+
 		// Constructor
 		public Door_DOOR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1255,7 +1260,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public DungeonFloorSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1385,7 +1390,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public DungeonMapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1448,7 +1453,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public LightSource(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1547,7 +1552,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingConditions(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -1803,7 +1808,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingPalette(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2041,7 +2046,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingSkyboxPalette(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2135,7 +2140,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public EnvironmentLightingTimesOfDay(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2315,7 +2320,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MapEvent(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2438,7 +2443,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public ExitData(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2490,7 +2495,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public CutsceneIndexBank(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2544,7 +2549,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public LightVector(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2603,7 +2608,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public MemoryCO(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2646,7 +2651,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomMemoryManagement(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2720,7 +2725,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public SpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2788,7 +2793,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomProperties(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2859,7 +2864,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomModelTranslation(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -2907,7 +2912,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public RoomTable(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3048,7 +3053,7 @@ namespace WindEditor
 		protected byte m_Padding;
 				
 
-		
+
 		// Constructor
 		public ScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3149,7 +3154,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public ShipSpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3309,7 +3314,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public SoundEffect(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3437,7 +3442,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		[WProperty("Stage Properties", "Is Dungeon", true, "This option enables the dungeon UI and makes small keys work.", SourceScene.Room)]
 		public bool IsDungeon
 		{ 
@@ -3451,7 +3456,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -3519,7 +3523,6 @@ namespace WindEditor
 				} else {
 					return true;
 				}
-				
 			}
 
 			set
@@ -3720,7 +3723,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3813,7 +3816,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public TagObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3909,7 +3912,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public TagScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -3989,7 +3992,7 @@ namespace WindEditor
 		}
 				
 
-				public enum BehaviorTypeEnum
+		public enum BehaviorTypeEnum
 		{
 			Normal = 0,
 			Spawn_when_a_switch_is_set = 1,
@@ -4226,7 +4229,7 @@ namespace WindEditor
 		protected int m_FirstEntryOffset;
 				
 
-		
+
 		[WProperty("Path Properties", "Next Path", true, "", SourceScene.Room)]
 		public Path_v2 NextPath
 		{ 
@@ -4360,7 +4363,7 @@ namespace WindEditor
 		protected int m_FirstEntryOffset;
 				
 
-		
+
 		[WProperty("Path Properties", "Next Path", true, "", SourceScene.Room)]
 		public Path_v2 NextPath
 		{ 
@@ -4488,7 +4491,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public PathPoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -4581,7 +4584,7 @@ namespace WindEditor
 		}
 				
 
-		
+
 		// Constructor
 		public PathPoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{

@@ -127,7 +127,10 @@ namespace WindEditor
             }
 
             if (m_sceneList.Count > 0)
-                FocusedScene = m_sceneList[m_sceneList.Count - 1];
+            {
+                // Default to selecting the lowest-numbered room that is loaded (not the stage; that's the last item in the list).
+                FocusedScene = m_sceneList[0];
+            }
         }
 
         public void SaveToDirectory(string savePath)

@@ -39,13 +39,21 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x07000000,
       "Hidden": false,
       "Category": "stone",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Small Rock",
+        1: "Small Black Rock",
+        2: "Boulder",
+        3: "Head Boulder",
+        4: "Small Boulder",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_6",

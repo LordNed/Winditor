@@ -38,7 +38,7 @@ namespace WindEditor.Minitors.Text
             Binding tbind = new Binding("MessageID")
             {
                 Source = thing,
-                Mode = BindingMode.TwoWay,
+                Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
 

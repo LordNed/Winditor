@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_ashut",
-      "ToolTip": "",
+      "Category": "Barred Iron Door",
+      "ToolTip": "The door will be open for as long as this switch is set, and close if the switch is unset.\nNote that it will not close on top of the player even if the switch is unset when the player is under it.",
       "DataType": "Integer"
     },
     {
@@ -16,7 +16,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_ashut",
+      "Category": "Barred Iron Door",
       "ToolTip": "",
       "DataType": "Integer"
     }
