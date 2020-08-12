@@ -32,6 +32,9 @@ namespace WindEditor.Serialization
             SerializableDOMNode newNode;
             if (m_parent is WDOMLayeredGroupNode)
             {
+                if (actorName == null)
+                    return null;
+
                 WDOMLayeredGroupNode layerNode = m_parent as WDOMLayeredGroupNode;
                 string unlayedFourCC = layerNode.FourCC.ToString();
                 MapLayer layer = ChunkHeader.FourCCToLayer(ref unlayedFourCC);
@@ -54,6 +57,9 @@ namespace WindEditor.Serialization
 
                 if (fourcc == FourCC.TGDR || fourcc == FourCC.TGSC || fourcc == FourCC.TGOB)
                 {
+                    if (actorName == null)
+                        return null;
+
                     Type newObjType = WResourceManager.GetTypeByName(actorName);
                     if (newObjType == typeof(Actor))
                         return null;

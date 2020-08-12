@@ -5,6 +5,7 @@ using System.Windows.Data;
 using System.Globalization;
 using System.ComponentModel;
 using WindEditor.ViewModel;
+using Newtonsoft.Json;
 
 namespace WindEditor
 {
@@ -23,6 +24,7 @@ namespace WindEditor
 
         private string m_Name;
 
+        [JsonIgnore]
         [WProperty("Path Point Properties", "Next Point", true)]
 		public PathPoint_v1 NextNode
         {
