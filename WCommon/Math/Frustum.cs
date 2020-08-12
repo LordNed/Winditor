@@ -145,7 +145,7 @@ namespace WindEditor
             {
                 // This happens when the user points the camera directly down/up. For some reason this makes the program crash.
                 // This is a hack to just stop it from crashing, but it won't actually render correctly either.
-                // This hack causes it to just be a blank screen as long as the camera is point down/up.
+                // This hack causes it to just be a blank screen as long as the camera is pointed down/up.
                 view = Matrix4.Identity;
             }
             Matrix4 viewInv = Matrix4.Invert(view);
