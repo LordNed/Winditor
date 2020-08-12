@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WindEditor.ViewModel;
+using Newtonsoft.Json;
 
 namespace WindEditor
 {
@@ -18,6 +19,7 @@ namespace WindEditor
 
 		private MapLayer m_layer;
 		
+		[JsonIgnore]
 		[WProperty("Entity", "English Name", false, "", SourceScene.Room)]
 		public string EnglishName { get { return this.GetType().Name; } }
 
