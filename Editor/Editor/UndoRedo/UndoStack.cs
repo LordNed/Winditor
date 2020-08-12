@@ -22,6 +22,7 @@ namespace WindEditor
         private LimitedSizeStack<WUndoCommand> m_undoStack;
         private LimitedSizeStack<WUndoCommand> m_redoStack;
         private WUndoCommand m_macroParent;
+        private bool m_isUndoingOrRedoing;
 
         public WUndoStack()
         {
@@ -37,21 +38,22 @@ namespace WindEditor
                 return;
 
             WUndoCommand action = m_undoStack.Pop();
+            m_isUndoingOrRedoing = true;
             action.Undo();
+            m_isUndoingOrRedoing = false;
 
             m_redoStack.Push(action);
         }
 
-        private bool m_isRedoing;
         public void Redo()
         {
             if (!CanRedo)
                 return;
 
             WUndoCommand action = m_redoStack.Pop();
-            m_isRedoing = true;
+            m_isUndoingOrRedoing = true;
             action.Redo();
-            m_isRedoing = false;
+            m_isUndoingOrRedoing = false;
 
             m_undoStack.Push(action);
         }
@@ -96,8 +98,8 @@ namespace WindEditor
         /// <param name="command"></param>
         public void Push(WUndoCommand command)
         {
-            // Prevent creating any more undo actions while we're in the middle of redoing.
-            if (m_isRedoing)
+            // Prevent creating any more undo actions while we're in the middle of undoing/redoing.
+            if (m_isUndoingOrRedoing)
                 return;
 
             // If we have an open macro, we push it to the macro instead of the stack, and when the macro is ended, that is when it is finally pushed to the stack.
@@ -112,9 +114,9 @@ namespace WindEditor
             m_redoStack.Clear();
 
             // Call the Redo function to apply the state change encapsulated by the IAction.
-            m_isRedoing = true;
+            m_isUndoingOrRedoing = true;
             command.Redo();
-            m_isRedoing = false;
+            m_isUndoingOrRedoing = false;
 
             // Attempt to merge with our new action. If this fails, add our new action to the undo stack.
             WUndoCommand latestAction = m_undoStack.Peek();
