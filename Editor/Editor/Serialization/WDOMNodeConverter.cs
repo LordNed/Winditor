@@ -88,6 +88,9 @@ namespace WindEditor.Serialization
                     CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
                     if (wproperty_attribute == null)
                         return false;
+                    CustomAttributeData jsonignore_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "JsonIgnoreAttribute");
+                    if (jsonignore_attribute != null)
+                        return false;
                     return true;
                 });
 
@@ -248,6 +251,9 @@ namespace WindEditor.Serialization
                 CustomAttributeData[] custom_attributes = prop.CustomAttributes.ToArray();
                 CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
                 if (wproperty_attribute == null)
+                    return false;
+                CustomAttributeData jsonignore_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "JsonIgnoreAttribute");
+                if (jsonignore_attribute != null)
                     return false;
                 return true;
             });
