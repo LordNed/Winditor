@@ -28,7 +28,16 @@
         4: "Locked",
         5: "Locked and barred",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "door10": "Normal",
+        "door11": "Normal",
+        "door20": "Boss",
+        "door21": "Boss",
+        "Zenshut": "Barred until all enemies dead",
+        "keyshut": "Locked",
+        "K_Zshut": "Locked and barred",
+      }
     },
     {
       "Name": "Event ID",

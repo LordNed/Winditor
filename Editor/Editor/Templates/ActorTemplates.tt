@@ -17,10 +17,6 @@
 var ProjectDirPath = Host.ResolveAssemblyReference("$(ProjectDir)");
 var TemplatePath = ProjectDirPath + "resources/templates/MapEntityData";
 
-// Need to set the current directory like this for WResourceManager to work.
-Directory.SetCurrentDirectory(ProjectDirPath);
-var actorDescriptorsByClassName = WResourceManager.GetActorDescriptorsByClassName();
-
 #>
 using GameFormatReader.Common;
 using OpenTK;
@@ -65,16 +61,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			
 		}
 <#
-		bool hasAnySubtypeSpecificParams = false;
-		if (actorDescriptorsByClassName.ContainsKey(className)) {
-			foreach (WActorDescriptor actorDescriptor in actorDescriptorsByClassName[className]) {
-				if (actorDescriptor.SubtypeDefaultParams != null) {
-					hasAnySubtypeSpecificParams = true;
-					break;
-				}
-			}
-		}
-		if (defaultValueSetters.Count > 0 || hasAnySubtypeSpecificParams) {
+		if (defaultValueSetters.Count > 0 || nameSpecificDefaultValueSetters.Count > 0) {
 #>
 
 		override public void PopulateDefaultProperties()
@@ -86,27 +73,16 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			<#= defaultValueSetter #>
 <#			}
 #>
-<#			if (actorDescriptorsByClassName.ContainsKey(className)) {
-				foreach (WActorDescriptor actorDescriptor in actorDescriptorsByClassName[className]) {
-					if (actorDescriptor.SubtypeDefaultParams == null)
-						continue;
-
+<#			if (nameSpecificDefaultValueSetters.Count > 0) {
+				foreach (KeyValuePair<string, List<string>> entry in nameSpecificDefaultValueSetters) {
 #>
-			if (Name == "<#= actorDescriptor.ActorName #>") {
-<#					foreach (KeyValuePair<string, object> entry in actorDescriptor.SubtypeDefaultParams) {
-						string paramName = EscapeIdentifier(entry.Key);
-						string paramType = paramTypes[paramName];
-						if (paramType == "bool") {
-#>				<#= paramName #> = <#= (bool)entry.Value ? "true" : "false" #>;
-<#						} else if (paramType == "int") {
-#>				<#= paramName #> = <#= entry.Value #>;
-<#						} else { // Enum
-							string value = entry.Value as string;
-#>				<#= paramName #> = <#= paramType #>.<#= EscapeEnumName(value) #>;
-<#						}
+			if (Name == "<#= entry.Key #>") {
+<#					foreach (string defaultValueSetter in entry.Value) {
 #>
+				<#= defaultValueSetter #>
 <#					}
-#>			}
+#>
+			}
 <#				}
 			}
 #>

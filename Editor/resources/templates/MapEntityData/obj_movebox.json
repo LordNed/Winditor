@@ -25,7 +25,24 @@
         11: "Black Box B",
         12: "Mossy Black Box",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "osiBLK0": "Black Box A",
+        "osiBLK1": "Black Box With Statue on Top",
+        "Kkiba": "Breakable Wooden Crate",
+        "Hseki2": "Unbreakable Wooden Crate B",
+        "Hseki7": "Unbreakable Wooden Crate C",
+        "Mmrr": "Mirror",
+        "MkieBB": "Black Box B",
+        "Ecube": "Mossy Black Box",
+        "Hjump1": "Metal Box With Spring",
+        "Hbox1": "Metal Box",
+        "MpwrB": "Big Black Box",
+        "DBLK0": "Black Box A",
+        "DBLK1": "Black Box With Statue on Top",
+        "DKkiba": "Breakable Wooden Crate",
+        "Hbox2": "Golden Crate",
+      }
     },
     {
       "Name": "Disable Flag on Top",
@@ -70,7 +87,12 @@
       "Hidden": false,
       "Category": "Movable Box Stay Moved Options",
       "ToolTip": "",
-      "DataType": "Boolean"
+      "DataType": "Boolean",
+      "DefaultsByActorName": {
+        "DBLK0": true,
+        "DBLK1": true,
+        "DKkiba": true,
+      }
     },
     {
       "Name": "Stay Moved to Path",

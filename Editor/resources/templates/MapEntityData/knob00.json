@@ -18,6 +18,16 @@
         4: "Unknown 4",
         5: "Unknown 5",
         6: "Unknown 6",
+      },
+      "DefaultsByActorName": {
+        "KNOB00": "Unknown 0",
+        "KNOB01": "Unknown 1",
+        "KNOB02": "Unknown 2",
+        "KNOB03": "Unknown 3",
+        "KNOB00D": "Unknown 0",
+        "KNOB01D": "Unknown 1",
+        "KNOB02D": "Unknown 2",
+        "KNOB03D": "Unknown 3",
       }
     },
     {

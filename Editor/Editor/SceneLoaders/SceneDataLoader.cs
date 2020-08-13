@@ -215,11 +215,20 @@ namespace WindEditor
         [JsonProperty("UpdateModel")]
         public bool UpdateModel { get; set; }
 
+        [JsonProperty("DefaultsByActorName")]
+        public Dictionary<string, object> DefaultsByActorName { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
         public ActorBitfieldDescriptor(
-            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, object defaultVal, string Tip, string Type, Dictionary<int, string> Vals, int EnumDefault, bool BoolDefault, int[] BoolNonDefaults, bool UpdModel
+            string Name, string Source, uint Mask, uint Shift,
+            string Category, bool Hidden, object defaultVal,
+            string Tip, string Type,
+            Dictionary<int, string> Vals, int EnumDefault,
+            bool BoolDefault, int[] BoolNonDefaults,
+            bool UpdModel,
+            Dictionary<string, object> DefaultsByName
         )
         {
             FieldName = Name;
@@ -235,6 +244,7 @@ namespace WindEditor
             BooleanDefaultValue = BoolDefault;
             BooleanNonDefaults = BoolNonDefaults;
             UpdateModel = UpdModel;
+            DefaultsByActorName = DefaultsByName;
         }
     }
 #pragma warning restore 0649
