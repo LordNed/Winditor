@@ -13,6 +13,10 @@
       "EnumValues": {
         0: "Follows you across sectors",
         1: "Stays in sector",
+      },
+      "DefaultsByActorName": {
+        "GyCtrl": "Follows you across sectors",
+        "GyCtrlB": "Stays in sector",
       }
     },
     {

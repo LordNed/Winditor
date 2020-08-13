@@ -1393,6 +1393,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			WateredSwitch = -1;
+			if (Name == "BFlower") {
+				FlowerType = FlowerTypeEnum.Ripe;
+			}
+			if (Name == "VbakH") {
+				FlowerType = FlowerTypeEnum.Withered;
+			}
 		}
 	}
 
@@ -2636,6 +2642,21 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			SightRangeTens = -1;
 			DisableSpawnSwitch = -1;
+			if (Name == "c_green") {
+				ColorType = ColorTypeEnum.Green;
+			}
+			if (Name == "c_red") {
+				ColorType = ColorTypeEnum.Red;
+			}
+			if (Name == "c_blue") {
+				ColorType = ColorTypeEnum.Blue;
+			}
+			if (Name == "c_black") {
+				ColorType = ColorTypeEnum.Dark;
+			}
+			if (Name == "c_kiiro") {
+				ColorType = ColorTypeEnum.Yellow;
+			}
 		}
 	}
 
@@ -4241,6 +4262,15 @@ namespace WindEditor
 			LinkCapturedExit = null;
 			PartnerCapturedExit = null;
 			SightRangeHundreds = -1;
+			if (Name == "Fmaster") {
+				Type = TypeEnum.Stalker_unused;
+			}
+			if (Name == "Fmastr1") {
+				Type = TypeEnum.Follows_path;
+			}
+			if (Name == "Fmastr2") {
+				Type = TypeEnum.Doesnt_follow_path;
+			}
 		}
 	}
 
@@ -4766,6 +4796,12 @@ namespace WindEditor
 			NumberofGyorgs = -1;
 			SightRangeThousands = -1;
 			EnableSpawnSwitch = -1;
+			if (Name == "GyCtrl") {
+				Type = TypeEnum.Follows_you_across_sectors;
+			}
+			if (Name == "GyCtrlB") {
+				Type = TypeEnum.Stays_in_sector;
+			}
 		}
 	}
 
@@ -6148,6 +6184,12 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Path = null;
 			EnableSpawnSwitch = -1;
+			if (Name == "keeth") {
+				IsFireKeese = false;
+			}
+			if (Name == "Fkeeth") {
+				IsFireKeese = true;
+			}
 		}
 	}
 
@@ -11883,6 +11925,15 @@ namespace WindEditor
 			HeadRotationSpeed = -1;
 			LaserPath = null;
 			DroppedItemPickupFlag = -1;
+			if (Name == "Hmos1") {
+				Type = TypeEnum.Blue_Beamos;
+			}
+			if (Name == "Hmos2") {
+				Type = TypeEnum.Red_Beamos;
+			}
+			if (Name == "Hmos3") {
+				Type = TypeEnum.Laser_Barrier;
+			}
 		}
 	}
 
@@ -14188,6 +14239,21 @@ namespace WindEditor
 			Unknown_6 = -1;
 			PathtoFollow = null;
 			SalvageCorpPathtoFollow = null;
+			if (Name == "Ikada") {
+				Type = TypeEnum.Raft;
+			}
+			if (Name == "ikada_h") {
+				Type = TypeEnum.Beedles_Shop_Ship;
+			}
+			if (Name == "ikadaS") {
+				Type = TypeEnum.Submarine;
+			}
+			if (Name == "ikada_u") {
+				Type = TypeEnum.Beedles_Special_Shop_Ship;
+			}
+			if (Name == "Svsp") {
+				Type = TypeEnum.Salvage_Corp_Ship;
+			}
 		}
 	}
 
@@ -14319,7 +14385,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_kanoke", "Is Upright", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Is Upright", true, "", SourceScene.Room)]
 		public bool IsUpright
 		{ 
 			get
@@ -14343,7 +14409,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_2", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_2", true, "", SourceScene.Room)]
 		public int Unknown_2
 		{ 
 			get
@@ -14360,7 +14426,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_3", true, "", SourceScene.Room)]
 		public int Unknown_3
 		{ 
 			get
@@ -14377,7 +14443,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -14394,7 +14460,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -14424,6 +14490,12 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
+			if (Name == "MKanoke") {
+				IsUpright = false;
+			}
+			if (Name == "MKanok2") {
+				IsUpright = true;
+			}
 		}
 	}
 
@@ -14431,21 +14503,33 @@ namespace WindEditor
 	public partial class obj_ladder : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum LengthEnum
+		{
+			Short = 0,
+			Medium = 1,
+			Long = 2,
+			Very_Long = 3,
+			Very_Short = 4,
+		}
 
-		[WProperty("obj_ladder", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("obj_ladder", "Length", true, "", SourceScene.Room)]
+		public LengthEnum Length
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(LengthEnum), value_as_int))
+					value_as_int = 0;
+				return (LengthEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Length");
+				UpdateModel();
 			}
 		}
 
@@ -14492,9 +14576,23 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
+			if (Name == "Mhsg6") {
+				Length = LengthEnum.Short;
+			}
+			if (Name == "Mhsg9") {
+				Length = LengthEnum.Medium;
+			}
+			if (Name == "Mhsg12") {
+				Length = LengthEnum.Long;
+			}
+			if (Name == "Mhsg15") {
+				Length = LengthEnum.Very_Long;
+			}
+			if (Name == "Mhsg4h") {
+				Length = LengthEnum.Very_Short;
+			}
 		}
 	}
 
@@ -15549,6 +15647,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -15623,6 +15722,30 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			SwitchtoCheck = -1;
 			Unknown_4 = -1;
+			if (Name == "Mcube") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "Mcyln") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "Mcube10") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "Mcyln10") {
+				Type = TypeEnum.Unknown_3;
+			}
+			if (Name == "MwtrSB") {
+				Type = TypeEnum.Water_Splashes;
+			}
+			if (Name == "MygnSB") {
+				Type = TypeEnum.Unknown_5;
+			}
+			if (Name == "Owater") {
+				Type = TypeEnum.Unknown_6;
+			}
+			if (Name == "Astop") {
+				Type = TypeEnum.Unknown_7;
+			}
 		}
 	}
 
@@ -18030,6 +18153,21 @@ namespace WindEditor
 			ExittoDestinationPot = null;
 			ThisUnlockedSwitch = -1;
 			DestinationUnlockedSwitch = -1;
+			if (Name == "Warpt") {
+				Type = TypeEnum.Locked_noncyclic_pot;
+			}
+			if (Name == "Warpnt") {
+				Type = TypeEnum.Unlocked_noncyclic_pot;
+			}
+			if (Name == "Warpts1") {
+				Type = TypeEnum.First_in_cycle;
+			}
+			if (Name == "Warpts2") {
+				Type = TypeEnum.Second_in_cycle;
+			}
+			if (Name == "Warpts3") {
+				Type = TypeEnum.Third_in_cycle;
+			}
 		}
 	}
 
@@ -18285,6 +18423,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			SightRangeThousands = -1;
+			if (Name == "Oq") {
+				Type = TypeEnum.Freshwater_Octorok;
+			}
+			if (Name == "Oqw") {
+				Type = TypeEnum.Saltwater_Octorok_that_shoots_at_a_certain_range;
+			}
 		}
 	}
 
@@ -21141,6 +21285,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("ShowWindEmblemModel");
+				UpdateModel();
 			}
 		}
 
@@ -21154,6 +21299,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			SwitchtoSet = -1;
+			if (Name == "SWtact") {
+				ShowWindEmblemModel = false;
+			}
+			if (Name == "SWtactB") {
+				ShowWindEmblemModel = true;
+			}
 		}
 	}
 
@@ -22127,6 +22278,15 @@ namespace WindEditor
 			Unknown_5 = -1;
 			Unknown_6 = -1;
 			Unknown_7 = -1;
+			if (Name == "LTag0") {
+				Type = TypeEnum.Invisible_Light_Region;
+			}
+			if (Name == "LTag1") {
+				Type = TypeEnum.Light_Beam;
+			}
+			if (Name == "LTagR0") {
+				Type = TypeEnum.Light_Detector;
+			}
 		}
 	}
 

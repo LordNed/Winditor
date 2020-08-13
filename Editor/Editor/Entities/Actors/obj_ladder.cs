@@ -24,21 +24,21 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
-            switch (Unknown_1)
+            switch (Length)
             {
-                case 0:
+                case LengthEnum.Short:
                     m_actorMeshes = WResourceManager.LoadActorResource("Ladder 0");
                     break;
-                case 1:
+                case LengthEnum.Medium:
                     m_actorMeshes = WResourceManager.LoadActorResource("Ladder 1");
                     break;
-                case 2:
+                case LengthEnum.Long:
                     m_actorMeshes = WResourceManager.LoadActorResource("Ladder 2");
                     break;
-                case 3:
+                case LengthEnum.Very_Long:
                     m_actorMeshes = WResourceManager.LoadActorResource("Ladder 3");
                     break;
-                case 4:
+                case LengthEnum.Very_Short:
                     m_actorMeshes = WResourceManager.LoadActorResource("Ladder 4");
                     break;
                 default:

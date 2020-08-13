@@ -17,7 +17,14 @@
         3: "Beedle's Special Shop Ship",
         4: "Salvage Corp Ship",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Ikada": "Raft",
+        "ikada_h": "Beedle's Shop Ship",
+        "ikadaS": "Submarine",
+        "ikada_u": "Beedle's Special Shop Ship",
+        "Svsp": "Salvage Corp Ship",
+      }
     },
     {
       "Name": "Unknown_2",

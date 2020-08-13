@@ -11,12 +11,27 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			m_actorMeshes.Clear();
+			m_objRender = null;
+
+			if (ShowWindEmblemModel)
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Wind Crest");
+			} else
+			{
+				m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
+			}
 		}
 	}
 }

@@ -14,6 +14,11 @@
         0: "Stalker (unused)",
         1: "Follows path",
         2: "Doesn't follow path",
+      },
+      "DefaultsByActorName": {
+        "Fmaster": "Stalker (unused)",
+        "Fmastr1": "Follows path",
+        "Fmastr2": "Doesn't follow path",
       }
     },
     {

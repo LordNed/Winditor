@@ -8862,7 +8862,7 @@
     "ActorClassType": "obj_kanoke",
     "Wait Animations": null,
     "Actor Name": "MKanoke",
-    "English Name": "obj_kanoke",
+    "English Name": "Horizontal Coffin",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8881,7 +8881,7 @@
     "ActorClassType": "obj_kanoke",
     "Wait Animations": null,
     "Actor Name": "MKanok2",
-    "English Name": "obj_kanoke",
+    "English Name": "Upright Coffin",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12788,7 +12788,7 @@
     "ActorClassType": "swtact",
     "Wait Animations": null,
     "Actor Name": "SWtactB",
-    "English Name": "swtact",
+    "English Name": "Wind Waker Switch (With Floor Crest)",
     "Tags": null,
     "Explanation": null,
     "Locations": [

@@ -15,7 +15,12 @@
         1: "Light Beam",
         2: "Light Detector",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "LTag0": "Invisible Light Region",
+        "LTag1": "Light Beam",
+        "LTagR0": "Light Detector",
+      }
     },
     {
       "Name": "Unknown_2",

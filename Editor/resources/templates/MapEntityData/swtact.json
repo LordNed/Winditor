@@ -35,7 +35,12 @@
       "Hidden": false,
       "Category": "Wind Waker Switch",
       "ToolTip": "Determines if the wind crest is shown where the trigger is. The emblem model scales with the object.",
-      "DataType": "Boolean"
+      "DataType": "Boolean",
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "SWtact": false,
+        "SWtactB": true,
+      }
     }
   ]
 }
