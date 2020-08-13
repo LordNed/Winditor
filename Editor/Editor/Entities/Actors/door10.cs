@@ -36,16 +36,8 @@ namespace WindEditor
         {
             List<J3D> model_list = new List<J3D>();
 
-            VirtualFilesystemDirectory stage_dir = null;
-            WDOMNode node = Parent;
-
-            while (!(node is WStage))
-            {
-                node = node.Parent;
-            }
-
-            WStage stage_node = node as WStage;
-            stage_dir = stage_node.SourceDirectory;
+            WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+            VirtualFilesystemDirectory stage_dir = stage.SourceDirectory;
 
             if (Type == TypeEnum.Boss)
             {
