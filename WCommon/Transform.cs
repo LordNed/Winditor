@@ -110,6 +110,8 @@ namespace WindEditor
                 }
 
                 m_localRotation = transformedRot;
+
+                OnPropertyChanged("Rotation");
             }
         }
 
