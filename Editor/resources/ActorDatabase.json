@@ -1669,6 +1669,9 @@
     "Wait Animations": null,
     "Actor Name": "door10",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Normal",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1711,6 +1714,9 @@
     "Wait Animations": null,
     "Actor Name": "door11",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Normal",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1726,6 +1732,9 @@
     "Wait Animations": null,
     "Actor Name": "door20",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Boss",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1753,6 +1762,9 @@
     "Wait Animations": null,
     "Actor Name": "door21",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Boss",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1768,6 +1780,9 @@
     "Wait Animations": null,
     "Actor Name": "Zenshut",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Barred until all enemies dead",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1791,6 +1806,9 @@
     "Wait Animations": null,
     "Actor Name": "keyshut",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Locked",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1808,6 +1826,9 @@
     "Wait Animations": null,
     "Actor Name": "K_Zshut",
     "English Name": "door10",
+    "Subtype Default Params": {
+      "Type": "Locked and barred",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1823,6 +1844,10 @@
     "Wait Animations": null,
     "Actor Name": "door12",
     "English Name": "Earth Temple Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Normal",
+      "Appearance Type": "Earth Temple Normal",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1849,6 +1874,10 @@
     "Wait Animations": null,
     "Actor Name": "door12M",
     "English Name": "Earth Temple Miniboss Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Normal",
+      "Appearance Type": "Earth Temple Miniboss",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1864,6 +1893,10 @@
     "Wait Animations": null,
     "Actor Name": "door12B",
     "English Name": "Earth Temple Boss Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Normal",
+      "Appearance Type": "Earth Temple Boss",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1879,6 +1912,10 @@
     "Wait Animations": null,
     "Actor Name": "door13",
     "English Name": "Wind Temple Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Normal",
+      "Appearance Type": "Wind Temple Normal",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1894,6 +1931,10 @@
     "Wait Animations": null,
     "Actor Name": "door13M",
     "English Name": "Wind Temple Miniboss Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Normal",
+      "Appearance Type": "Wind Temple Miniboss",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1909,6 +1950,10 @@
     "Wait Animations": null,
     "Actor Name": "door13B",
     "English Name": "Wind Temple Boss Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Normal",
+      "Appearance Type": "Wind Temple Boss",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1924,6 +1969,9 @@
     "Wait Animations": null,
     "Actor Name": "keyS12",
     "English Name": "Locked ET/WT Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Locked",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1941,6 +1989,9 @@
     "Wait Animations": null,
     "Actor Name": "ZenS12",
     "English Name": "Barred ET/WT Door",
+    "Subtype Default Params": {
+      "Behavior Type": "Barred until all enemies dead",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2480,6 +2531,10 @@
     "Wait Animations": null,
     "Actor Name": "kusax1",
     "English Name": "1 Grass Bunch",
+    "Subtype Default Params": {
+      "Type": "Grass",
+      "Spawn Pattern": "Single",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2531,6 +2586,10 @@
     "Wait Animations": null,
     "Actor Name": "kusax7",
     "English Name": "7 Grass Bunches",
+    "Subtype Default Params": {
+      "Type": "Grass",
+      "Spawn Pattern": "7 Grass Bunches",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2577,6 +2636,10 @@
     "Wait Animations": null,
     "Actor Name": "kusax21",
     "English Name": "21 Grass Bunches",
+    "Subtype Default Params": {
+      "Type": "Grass",
+      "Spawn Pattern": "21 Grass Bunches",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2620,6 +2683,10 @@
     "Wait Animations": null,
     "Actor Name": "flower",
     "English Name": "1 White Flower",
+    "Subtype Default Params": {
+      "Type": "White Flower",
+      "Spawn Pattern": "Single",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2657,6 +2724,10 @@
     "Wait Animations": null,
     "Actor Name": "flwr7",
     "English Name": "7 White Flowers",
+    "Subtype Default Params": {
+      "Type": "White Flower",
+      "Spawn Pattern": "7 White Flowers",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2693,6 +2764,10 @@
     "Wait Animations": null,
     "Actor Name": "flwr17",
     "English Name": "17 White Flowers",
+    "Subtype Default Params": {
+      "Type": "White Flower",
+      "Spawn Pattern": "17 White Flowers",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2720,6 +2795,10 @@
     "Wait Animations": null,
     "Actor Name": "pflower",
     "English Name": "1 Pink Flower",
+    "Subtype Default Params": {
+      "Type": "Pink Flower",
+      "Spawn Pattern": "Single",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2743,6 +2822,10 @@
     "Wait Animations": null,
     "Actor Name": "pflwrx7",
     "English Name": "7 Pink Flowers",
+    "Subtype Default Params": {
+      "Type": "Pink Flower",
+      "Spawn Pattern": "7 Pink Flowers",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2771,6 +2854,10 @@
     "Wait Animations": null,
     "Actor Name": "swood",
     "English Name": "1 Tree",
+    "Subtype Default Params": {
+      "Type": "Tree",
+      "Spawn Pattern": "Single",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2808,6 +2895,10 @@
     "Wait Animations": null,
     "Actor Name": "swood3",
     "English Name": "3 Trees",
+    "Subtype Default Params": {
+      "Type": "Tree",
+      "Spawn Pattern": "3 Trees",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2835,6 +2926,10 @@
     "Wait Animations": null,
     "Actor Name": "swood5",
     "English Name": "5 Trees",
+    "Subtype Default Params": {
+      "Type": "Tree",
+      "Spawn Pattern": "5 Trees",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3475,7 +3570,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00",
-    "English Name": "Door",
+    "English Name": "Door KNOB00 (ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 0",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3509,7 +3607,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01",
-    "English Name": "Door",
+    "English Name": "Door KNOB01 (ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 1",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3525,7 +3626,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02",
-    "English Name": "Door",
+    "English Name": "Door KNOB02 (ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 2",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3540,7 +3644,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03",
-    "English Name": "Door",
+    "English Name": "Door KNOB03 (ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 3",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3555,7 +3662,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00D",
-    "English Name": "Door",
+    "English Name": "Door KNOB00 (Non-ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 0",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3583,7 +3693,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01D",
-    "English Name": "Door",
+    "English Name": "Door KNOB01 (Non-ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 1",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3600,7 +3713,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02D",
-    "English Name": "Door",
+    "English Name": "Door KNOB02 (Non-ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 2",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3615,7 +3731,10 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03D",
-    "English Name": "Door",
+    "English Name": "Door KNOB03 (Non-ACTR)",
+    "Subtype Default Params": {
+      "Type": "Unknown 3",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9203,6 +9322,9 @@
     "Wait Animations": null,
     "Actor Name": "osiBLK0",
     "English Name": "Movable Black Box A",
+    "Subtype Default Params": {
+      "Type": "Black Box A",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9223,6 +9345,9 @@
     "Wait Animations": null,
     "Actor Name": "osiBLK1",
     "English Name": "Movable Black Box With Statue on Top",
+    "Subtype Default Params": {
+      "Type": "Black Box With Statue on Top",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9240,6 +9365,9 @@
     "Wait Animations": null,
     "Actor Name": "Kkiba",
     "English Name": "Movable Breakable Wooden Crate",
+    "Subtype Default Params": {
+      "Type": "Breakable Wooden Crate",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9260,6 +9388,9 @@
     "Wait Animations": null,
     "Actor Name": "Hseki2",
     "English Name": "Movable Unbreakable Wooden Crate B",
+    "Subtype Default Params": {
+      "Type": "Unbreakable Wooden Crate B",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9275,6 +9406,9 @@
     "Wait Animations": null,
     "Actor Name": "Hseki7",
     "English Name": "Movable Unbreakable Wooden Crate C",
+    "Subtype Default Params": {
+      "Type": "Unbreakable Wooden Crate C",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9290,6 +9424,9 @@
     "Wait Animations": null,
     "Actor Name": "Mmrr",
     "English Name": "Movable Mirror",
+    "Subtype Default Params": {
+      "Type": "Mirror",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9306,6 +9443,9 @@
     "Wait Animations": null,
     "Actor Name": "MkieBB",
     "English Name": "Movable Black Box B",
+    "Subtype Default Params": {
+      "Type": "Black Box B",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9322,6 +9462,9 @@
     "Wait Animations": null,
     "Actor Name": "Ecube",
     "English Name": "Movable Mossy Black Box",
+    "Subtype Default Params": {
+      "Type": "Mossy Black Box",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9340,6 +9483,9 @@
     "Wait Animations": null,
     "Actor Name": "Hjump1",
     "English Name": "Movable Metal Box With Spring",
+    "Subtype Default Params": {
+      "Type": "Metal Box With Spring",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9356,6 +9502,9 @@
     "Wait Animations": null,
     "Actor Name": "Hbox1",
     "English Name": "Movable Metal Box",
+    "Subtype Default Params": {
+      "Type": "Metal Box",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9373,6 +9522,9 @@
     "Wait Animations": null,
     "Actor Name": "MpwrB",
     "English Name": "Movable Big Black Box",
+    "Subtype Default Params": {
+      "Type": "Big Black Box",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9389,6 +9541,10 @@
     "Wait Animations": null,
     "Actor Name": "DBLK0",
     "English Name": "obj_movebox",
+    "Subtype Default Params": {
+      "Type": "Black Box A",
+      "Do Not Stay Moved After Reload": true,
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9405,7 +9561,10 @@
     "Wait Animations": null,
     "Actor Name": "DBLK1",
     "English Name": "obj_movebox",
-    "Tags": null,
+    "Subtype Default Params": {
+      "Type": "Black Box With Statue on Top",
+      "Do Not Stay Moved After Reload": true,
+    },
     "Explanation": null,
     "Locations": [
       "N/A"
@@ -9420,6 +9579,10 @@
     "Wait Animations": null,
     "Actor Name": "DKkiba",
     "English Name": "obj_movebox",
+    "Subtype Default Params": {
+      "Type": "Breakable Wooden Crate",
+      "Do Not Stay Moved After Reload": true,
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9436,6 +9599,9 @@
     "Wait Animations": null,
     "Actor Name": "Hbox2",
     "English Name": "Movable Golden Crate",
+    "Subtype Default Params": {
+      "Type": "Golden Crate",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11831,6 +11997,9 @@
     "Wait Animations": null,
     "Actor Name": "Salvage",
     "English Name": "Chart Salvage Point",
+    "Subtype Default Params": {
+      "Type": "Needs Chart",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11894,6 +12063,9 @@
     "Wait Animations": null,
     "Actor Name": "SwSlvg",
     "English Name": "Gunboat/Big Octo Salvage Point",
+    "Subtype Default Params": {
+      "Type": "Checks Switch",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11955,6 +12127,9 @@
     "Wait Animations": null,
     "Actor Name": "Salvag2",
     "English Name": "Normal Light Ring Salvage Point",
+    "Subtype Default Params": {
+      "Type": "Normal Light Ring",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12018,6 +12193,9 @@
     "Wait Animations": null,
     "Actor Name": "SalvagN",
     "English Name": "Nighttime Salvage Point",
+    "Subtype Default Params": {
+      "Type": "Night Only",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12039,6 +12217,9 @@
     "Wait Animations": null,
     "Actor Name": "SalvagE",
     "English Name": "Octorok Vase Salvage Point",
+    "Subtype Default Params": {
+      "Type": "Octorok Vase",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12058,6 +12239,9 @@
     "Wait Animations": null,
     "Actor Name": "SalvFM",
     "English Name": "Full Moon Salvage Point",
+    "Subtype Default Params": {
+      "Type": "Full Moon Night Only",
+    },
     "Tags": null,
     "Explanation": null,
     "Locations": [

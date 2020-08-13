@@ -20,6 +20,7 @@
 			return sanitizedValue;
 		}
 
+		Dictionary<string, string> paramTypes = new Dictionary<string, string>();
 		List<string> defaultValueSetters = new List<string>();
 
 		if (descriptor.ParameterFields == null)
@@ -155,6 +156,8 @@
 					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 					break;
 			}
+
+			paramTypes[fieldName] = dataType;
 
 			object defaultValue = field.DefaultValue;
 			if (defaultValue != null) {

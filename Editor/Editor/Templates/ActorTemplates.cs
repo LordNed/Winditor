@@ -3107,6 +3107,27 @@ namespace WindEditor
 			ToRoomNumber = -1;
 			ShipID = -1;
 			Arg1 = -1;
+			if (Name == "door10") {
+				Type = TypeEnum.Normal;
+			}
+			if (Name == "door11") {
+				Type = TypeEnum.Normal;
+			}
+			if (Name == "door20") {
+				Type = TypeEnum.Boss;
+			}
+			if (Name == "door21") {
+				Type = TypeEnum.Boss;
+			}
+			if (Name == "Zenshut") {
+				Type = TypeEnum.Barred_until_all_enemies_dead;
+			}
+			if (Name == "keyshut") {
+				Type = TypeEnum.Locked;
+			}
+			if (Name == "K_Zshut") {
+				Type = TypeEnum.Locked_and_barred;
+			}
 		}
 	}
 
@@ -3293,6 +3314,36 @@ namespace WindEditor
 			ToRoomNumber = -1;
 			EventID = -1;
 			ShipID = -1;
+			if (Name == "door12") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Earth_Temple_Normal;
+			}
+			if (Name == "door12M") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Earth_Temple_Miniboss;
+			}
+			if (Name == "door12B") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Earth_Temple_Boss;
+			}
+			if (Name == "door13") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Wind_Temple_Normal;
+			}
+			if (Name == "door13M") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Wind_Temple_Miniboss;
+			}
+			if (Name == "door13B") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Wind_Temple_Boss;
+			}
+			if (Name == "keyS12") {
+				BehaviorType = BehaviorTypeEnum.Locked;
+			}
+			if (Name == "ZenS12") {
+				BehaviorType = BehaviorTypeEnum.Barred_until_all_enemies_dead;
+			}
 		}
 	}
 
@@ -4519,6 +4570,55 @@ namespace WindEditor
 		public grass(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			if (Name == "kusax1") {
+				Type = TypeEnum.Grass;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "kusax7") {
+				Type = TypeEnum.Grass;
+				SpawnPattern = SpawnPatternEnum._7_Grass_Bunches;
+			}
+			if (Name == "kusax21") {
+				Type = TypeEnum.Grass;
+				SpawnPattern = SpawnPatternEnum._21_Grass_Bunches;
+			}
+			if (Name == "flower") {
+				Type = TypeEnum.White_Flower;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "flwr7") {
+				Type = TypeEnum.White_Flower;
+				SpawnPattern = SpawnPatternEnum._7_White_Flowers;
+			}
+			if (Name == "flwr17") {
+				Type = TypeEnum.White_Flower;
+				SpawnPattern = SpawnPatternEnum._17_White_Flowers;
+			}
+			if (Name == "pflower") {
+				Type = TypeEnum.Pink_Flower;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "pflwrx7") {
+				Type = TypeEnum.Pink_Flower;
+				SpawnPattern = SpawnPatternEnum._7_Pink_Flowers;
+			}
+			if (Name == "swood") {
+				Type = TypeEnum.Tree;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "swood3") {
+				Type = TypeEnum.Tree;
+				SpawnPattern = SpawnPatternEnum._3_Trees;
+			}
+			if (Name == "swood5") {
+				Type = TypeEnum.Tree;
+				SpawnPattern = SpawnPatternEnum._5_Trees;
+			}
 		}
 	}
 
@@ -6228,21 +6328,34 @@ namespace WindEditor
 	public partial class knob00 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+		}
 
-		[WProperty("knob00", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("knob00", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
-				return value_as_int;
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
-				OnPropertyChanged("Unknown_1");
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				OnPropertyChanged("Type");
 			}
 		}
 		public enum StyleEnum
@@ -6295,6 +6408,44 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Door", "Room Number", true, "", SourceScene.Room)]
+		public int RoomNumber
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				OnPropertyChanged("RoomNumber");
+			}
+		}
+
+		[WProperty("knob00", "Type 2", true, "Unused, seems to just make it update its transformation (both visual and collision) every frame?", SourceScene.Room)]
+		public bool Type2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
+				if (value_as_int == 1) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				OnPropertyChanged("Type2");
+			}
+		}
+
 		// Constructor
 		public knob00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -6304,8 +6455,32 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			MessageID = -1;
+			RoomNumber = -1;
+			if (Name == "KNOB00") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "KNOB01") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "KNOB02") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "KNOB03") {
+				Type = TypeEnum.Unknown_3;
+			}
+			if (Name == "KNOB00D") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "KNOB01D") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "KNOB02D") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "KNOB03D") {
+				Type = TypeEnum.Unknown_3;
+			}
 		}
 	}
 
@@ -14965,6 +15140,54 @@ namespace WindEditor
 			StayMovedtoPath = null;
 			StayMovedSwitch1 = -1;
 			StayMovedSwitch2 = -1;
+			if (Name == "osiBLK0") {
+				Type = TypeEnum.Black_Box_A;
+			}
+			if (Name == "osiBLK1") {
+				Type = TypeEnum.Black_Box_With_Statue_on_Top;
+			}
+			if (Name == "Kkiba") {
+				Type = TypeEnum.Breakable_Wooden_Crate;
+			}
+			if (Name == "Hseki2") {
+				Type = TypeEnum.Unbreakable_Wooden_Crate_B;
+			}
+			if (Name == "Hseki7") {
+				Type = TypeEnum.Unbreakable_Wooden_Crate_C;
+			}
+			if (Name == "Mmrr") {
+				Type = TypeEnum.Mirror;
+			}
+			if (Name == "MkieBB") {
+				Type = TypeEnum.Black_Box_B;
+			}
+			if (Name == "Ecube") {
+				Type = TypeEnum.Mossy_Black_Box;
+			}
+			if (Name == "Hjump1") {
+				Type = TypeEnum.Metal_Box_With_Spring;
+			}
+			if (Name == "Hbox1") {
+				Type = TypeEnum.Metal_Box;
+			}
+			if (Name == "MpwrB") {
+				Type = TypeEnum.Big_Black_Box;
+			}
+			if (Name == "DBLK0") {
+				Type = TypeEnum.Black_Box_A;
+				DoNotStayMovedAfterReload = true;
+			}
+			if (Name == "DBLK1") {
+				Type = TypeEnum.Black_Box_With_Statue_on_Top;
+				DoNotStayMovedAfterReload = true;
+			}
+			if (Name == "DKkiba") {
+				Type = TypeEnum.Breakable_Wooden_Crate;
+				DoNotStayMovedAfterReload = true;
+			}
+			if (Name == "Hbox2") {
+				Type = TypeEnum.Golden_Crate;
+			}
 		}
 	}
 
@@ -19123,6 +19346,24 @@ namespace WindEditor
 			SalvageFlag = -1;
 			DuplicatePlacementID = -1;
 			SwitchtoCheck = -1;
+			if (Name == "Salvage") {
+				Type = TypeEnum.Needs_Chart;
+			}
+			if (Name == "SwSlvg") {
+				Type = TypeEnum.Checks_Switch;
+			}
+			if (Name == "Salvag2") {
+				Type = TypeEnum.Normal_Light_Ring;
+			}
+			if (Name == "SalvagN") {
+				Type = TypeEnum.Night_Only;
+			}
+			if (Name == "SalvagE") {
+				Type = TypeEnum.Octorok_Vase;
+			}
+			if (Name == "SalvFM") {
+				Type = TypeEnum.Full_Moon_Night_Only;
+			}
 		}
 	}
 

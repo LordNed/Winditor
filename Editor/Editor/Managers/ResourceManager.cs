@@ -27,6 +27,9 @@ namespace WindEditor
         [JsonProperty("English Name")]
         public string Description { get; set; }
 
+        [JsonProperty("Subtype Default Params")]
+        public Dictionary<string, object> SubtypeDefaultParams { get; set; }
+
         [JsonProperty("Tags")]
         public string[] Tags { get; set; }
 
@@ -125,6 +128,7 @@ namespace WindEditor
         private static List<TSharedRef<SimpleObjRenderer>> m_objList = new List<TSharedRef<SimpleObjRenderer>>();
 
         private static Dictionary<string, WActorDescriptor> m_actorDescriptors;
+        private static Dictionary<string, List<WActorDescriptor>> m_actorDescriptorsByClassName;
         private static Dictionary<string, WActorResource> m_actorResources;
         private static GXLight m_mainLight;
         private static GXLight m_secondaryLight;
@@ -137,6 +141,7 @@ namespace WindEditor
             // We're going to laod the actor descriptors from the json data, and then store them in a 
             // dictionary which is looked up by the Actor Name. This should give us a quick lookup time.
             m_actorDescriptors = new Dictionary<string, WActorDescriptor>();
+            m_actorDescriptorsByClassName = new Dictionary<string, List<WActorDescriptor>>();
             m_actorResources = new Dictionary<string, WActorResource>();
 
             string jsonData = File.ReadAllText("resources/ActorDatabase.json");
@@ -153,6 +158,10 @@ namespace WindEditor
                     continue;
 
                 m_actorDescriptors[descriptor.ActorName] = descriptor;
+
+                if (!m_actorDescriptorsByClassName.ContainsKey(descriptor.ActorClassType))
+                    m_actorDescriptorsByClassName[descriptor.ActorClassType] = new List<WActorDescriptor>();
+                m_actorDescriptorsByClassName[descriptor.ActorClassType].Add(descriptor);
             }
 
             string resource_json_data = File.ReadAllText("resources/ActorResourceDatabase.json");
@@ -542,6 +551,11 @@ namespace WindEditor
         public static Dictionary<string, WActorDescriptor> GetActorDescriptors()
         {
             return m_actorDescriptors;
+        }
+
+        public static Dictionary<string, List<WActorDescriptor>> GetActorDescriptorsByClassName()
+        {
+            return m_actorDescriptorsByClassName;
         }
     }
 }
