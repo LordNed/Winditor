@@ -775,7 +775,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Editor\Modes\ActorEditor.cs" />
     <Compile Include="Editor\Rendering\Camera.cs" />
     <Compile Include="Editor\Collision\CollisionMesh\CollisionMesh.cs" />
     <Compile Include="Editor\Rendering\DebugDrawing.cs" />

@@ -31,7 +31,6 @@ namespace WindEditor
         private List<WSceneView> m_sceneViews;
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
-        //private WActorEditor m_actorEditor;
         private WLineBatcher m_persistentLines;
         private WMap m_currentMap;
 
@@ -44,7 +43,6 @@ namespace WindEditor
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
             m_undoStack = new WUndoStack();
-            //m_actorEditor = new WActorEditor(this);
 
             m_ActorMode = new ActorMode(this);
             m_CollisionMode = new CollisionMode(this);
