@@ -22693,26 +22693,41 @@ namespace WindEditor
 	public partial class tbox : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum BehaviorTypeEnum
+		{
+			Normal = 0,
+			Spawn_when_a_switch_is_set = 1,
+			Spawn_when_all_enemies_dead = 2,
+			Visible_but_unopenable_until_a_switch_is_set = 3,
+			Transparent_until_a_switch_is_set = 4,
+			Apply_gravity = 5,
+			Spawn_on_Triforce_emblem_when_a_switch_is_set = 6,
+			Uses_Stage_Save_Info_1 = 7,
+			Uses_Stage_Save_Info_1_and_spawns_when_a_switch_is_set = 8,
+		}
 
-		[WProperty("tbox", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Treasure Chest", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000007F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Treasure Chest Flags", "Chest Open Flag", true, "", SourceScene.Room)]
+		public int ChestOpenFlag
 		{ 
 			get
 			{
@@ -22724,12 +22739,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ChestOpenFlag");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Treasure Chest Flags", "Appear Condition Switch", true, "", SourceScene.Room)]
+		public int AppearConditionSwitch
 		{ 
 			get
 			{
@@ -22741,29 +22756,40 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("AppearConditionSwitch");
 			}
 		}
+		public enum AppearanceTypeEnum
+		{
+			Light_wood = 0,
+			Dark_wood = 1,
+			Metal = 2,
+			Big_Key = 3,
+		}
 
-		[WProperty("tbox", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+
+		[WProperty("Treasure Chest", "Appearance Type", true, "", SourceScene.Room)]
+		public AppearanceTypeEnum AppearanceType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(AppearanceTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (AppearanceTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("AppearanceType");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("tbox", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Treasure Chest", "Room Number", true, "", SourceScene.Room)]
+		public int RoomNumber
 		{ 
 			get
 			{
@@ -22775,12 +22801,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("RoomNumber");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Treasure Chest Flags", "Open Switch", true, "", SourceScene.Room)]
+		public int OpenSwitch
 		{ 
 			get
 			{
@@ -22792,24 +22818,26 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("OpenSwitch");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("Treasure Chest", "Item", true, "", SourceScene.Room)]
+		public ItemID Item
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+					value_as_int = 0;
+				return (ItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("Item");
 			}
 		}
 
@@ -22822,13 +22850,10 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
-			Unknown_6 = -1;
-			Unknown_7 = -1;
+			ChestOpenFlag = -1;
+			AppearConditionSwitch = -1;
+			RoomNumber = -1;
+			OpenSwitch = -1;
 		}
 	}
 

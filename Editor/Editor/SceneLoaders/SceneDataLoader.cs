@@ -367,6 +367,19 @@ namespace WindEditor
                     case FourCC.ACT9:
                     case FourCC.ACTa:
                     case FourCC.ACTb:
+                    case FourCC.TRES:
+                    case FourCC.TRE0:
+                    case FourCC.TRE1:
+                    case FourCC.TRE2:
+                    case FourCC.TRE3:
+                    case FourCC.TRE4:
+                    case FourCC.TRE5:
+                    case FourCC.TRE6:
+                    case FourCC.TRE7:
+                    case FourCC.TRE8:
+                    case FourCC.TRE9:
+                    case FourCC.TREa:
+                    case FourCC.TREb:
                     case FourCC.TGOB:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {

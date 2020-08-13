@@ -427,8 +427,8 @@ namespace WindEditor.Editor.Modes
                 if (lyrNode.FourCC.ToString().StartsWith("TRE"))
                 {
                     // Only allow treasure chests in TRES.
-                    actorType = typeof(TreasureChest);
                     actorName = "takara";
+                    actorType = WResourceManager.GetTypeByName(actorName);
                 } else
                 {
                     WActorCreatorWindow actorCreator = new WActorCreatorWindow();

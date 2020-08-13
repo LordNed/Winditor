@@ -160,9 +160,9 @@ namespace WindEditor
             {
                 var possibleRoomNums = new List<int>();
 
-                if (child is TreasureChest)
+                if (child is tbox)
                 {
-                    var chest = child as TreasureChest;
+                    var chest = child as tbox;
                     possibleRoomNums.Add(chest.RoomNumber);
                 }
                 else if (child is door10)
