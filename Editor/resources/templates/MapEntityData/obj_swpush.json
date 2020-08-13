@@ -15,6 +15,11 @@
         1: "Hold Down",
         2: "Press Once Inverted",
         3: "Iron Boots Button Base",
+      },
+      "DefaultsByActorName": {
+        "Kbota_A": "Press Once",
+        "Kbota_B": "Hold Down",
+        "KbotaC": "Press Once Inverted",
       }
     },
     {

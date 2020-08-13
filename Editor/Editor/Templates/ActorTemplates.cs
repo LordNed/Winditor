@@ -16572,6 +16572,33 @@ namespace WindEditor
 	public partial class obj_swheavy : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+		}
+
+
+		[WProperty("obj_swheavy", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("obj_swheavy", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
@@ -16590,23 +16617,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swheavy", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Unknown_2");
-			}
-		}
-
 		// Constructor
 		public obj_swheavy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -16617,7 +16627,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
+			if (Name == "Hhbot1") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "Hhbot1N") {
+				Type = TypeEnum.Unknown_3;
+			}
 		}
 	}
 
@@ -16839,6 +16854,15 @@ namespace WindEditor
 			EventtoStart = null;
 			SwitchtoSet = -1;
 			DisabledSwitch = -1;
+			if (Name == "Kbota_A") {
+				Type = TypeEnum.Press_Once;
+			}
+			if (Name == "Kbota_B") {
+				Type = TypeEnum.Hold_Down;
+			}
+			if (Name == "KbotaC") {
+				Type = TypeEnum.Press_Once_Inverted;
+			}
 		}
 	}
 
@@ -22270,72 +22294,29 @@ namespace WindEditor
 	public partial class tag_msg : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("tag_msg", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
-				OnPropertyChanged("Unknown_1");
-			}
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
 		}
 
-		[WProperty("tag_msg", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("tag_msg", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
-			}
-		}
-
-		[WProperty("tag_msg", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("tag_msg", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+				OnPropertyChanged("Type");
 			}
 		}
 		public int MessageID
@@ -22354,8 +22335,25 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("tag_msg", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("EnableSpawnSwitch");
+			}
+		}
+
+		[WProperty("tag_msg", "Enable Spawn Event Bit", true, "", SourceScene.Room)]
+		public int EnableSpawnEventBit
 		{ 
 			get
 			{
@@ -22367,7 +22365,47 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("EnableSpawnEventBit");
+			}
+		}
+
+		[WProperty("tag_msg", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("SwitchtoSet");
+			}
+		}
+
+		[WProperty("tag_msg", "Event", true, "", SourceScene.Stage)]
+		public MapEvent Event
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("Event");
 			}
 		}
 
@@ -22380,12 +22418,17 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
 			MessageID = -1;
-			Unknown_6 = -1;
+			EnableSpawnSwitch = -1;
+			EnableSpawnEventBit = -1;
+			SwitchtoSet = -1;
+			Event = null;
+			if (Name == "TagMsg") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "TagMsg2") {
+				Type = TypeEnum.Unknown_1;
+			}
 		}
 	}
 

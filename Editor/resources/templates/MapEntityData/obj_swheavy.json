@@ -3,6 +3,25 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x07000000,
+      "Hidden": false,
+      "Category": "obj_swheavy",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+      },
+      "DefaultsByActorName": {
+        "Hhbot1": "Unknown 2",
+        "Hhbot1N": "Unknown 3",
+      }
+    },
+    {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
@@ -11,14 +30,5 @@
       "ToolTip": "",
       "DataType": "Integer"
     },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x07000000,
-      "Hidden": false,
-      "Category": "obj_swheavy",
-      "ToolTip": "",
-      "DataType": "Integer"
-    }
   ]
 }
