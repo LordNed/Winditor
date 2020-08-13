@@ -85,7 +85,8 @@ namespace WindEditor.Serialization
                 var wproperties = newNode.GetType().GetProperties().Where(prop =>
                 {
                     CustomAttributeData[] custom_attributes = prop.CustomAttributes.ToArray();
-                    if (custom_attributes.Length == 0 || custom_attributes[0].AttributeType.Name != "WProperty")
+                    CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                    if (wproperty_attribute == null)
                         return false;
                     return true;
                 });
@@ -171,7 +172,9 @@ namespace WindEditor.Serialization
                         int exitIndex = (int)jsonValue;
 
                         WScene scene;
-                        SourceScene source_scene = (SourceScene)prop.CustomAttributes.ToArray()[0].ConstructorArguments[4].Value;
+                        CustomAttributeData[] custom_attributes = prop.CustomAttributes.ToArray();
+                        CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                        SourceScene source_scene = (SourceScene)wproperty_attribute.ConstructorArguments[4].Value;
                         if (source_scene == SourceScene.Stage)
                         {
                             scene = m_world.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WScene;
@@ -243,7 +246,8 @@ namespace WindEditor.Serialization
             var wproperties = node.GetType().GetProperties().Where(prop =>
             {
                 CustomAttributeData[] custom_attributes = prop.CustomAttributes.ToArray();
-                if (custom_attributes.Length == 0 || custom_attributes[0].AttributeType.Name != "WProperty")
+                CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                if (wproperty_attribute == null)
                     return false;
                 return true;
             });
@@ -270,7 +274,9 @@ namespace WindEditor.Serialization
                 } else if (prop.PropertyType == typeof(ExitData))
                 {
                     WScene scene;
-                    SourceScene source_scene = (SourceScene)prop.CustomAttributes.ToArray()[0].ConstructorArguments[4].Value;
+                    CustomAttributeData[] custom_attributes = prop.CustomAttributes.ToArray();
+                    CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                    SourceScene source_scene = (SourceScene)wproperty_attribute.ConstructorArguments[4].Value;
                     if (source_scene == SourceScene.Stage)
                     {
                         scene = m_world.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WScene;
