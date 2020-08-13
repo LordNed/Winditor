@@ -72,9 +72,12 @@ namespace WindEditor
 
             Console.WriteLine("Loading map {0}...", m_mapName);
             
-            // Sort them alphabetically so we always load the Stage last.
+            // Sort them alphabetically to guarantee rooms are in order, then move the Stage folder to the start of the list so we always load it first.
             List<string> sortedScenes = new List<string>(Directory.GetDirectories(inPath));
             sortedScenes.Sort();
+            var stageFolder = sortedScenes[sortedScenes.Count - 1];
+            sortedScenes.RemoveAt(sortedScenes.Count - 1);
+            sortedScenes.Insert(0, stageFolder);
 
             WStage stage = null;
 
@@ -126,9 +129,13 @@ namespace WindEditor
                 stage.PostLoadProcessing(inPath, allRooms);
             }
 
-            if (m_sceneList.Count > 0)
+            if (m_sceneList.Count > 1)
             {
-                // Default to selecting the lowest-numbered room that is loaded (not the stage; that's the last item in the list).
+                // Default to selecting the second item in the list, which will be the lowest-numbered room.
+                FocusedScene = m_sceneList[1];
+            } else if (m_sceneList.Count > 0)
+            {
+                // If no rooms are loaded, select the stage by default instead.
                 FocusedScene = m_sceneList[0];
             }
         }
