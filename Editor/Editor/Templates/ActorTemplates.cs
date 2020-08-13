@@ -224,6 +224,45 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
+			if (Name == "agbA") {
+				Type = TypeEnum.agbA;
+			}
+			if (Name == "agbAT") {
+				Type = TypeEnum.agbAT;
+			}
+			if (Name == "agbMARK") {
+				Type = TypeEnum.agbMARK;
+			}
+			if (Name == "agbA2") {
+				Type = TypeEnum.agbA2;
+			}
+			if (Name == "agbF2") {
+				Type = TypeEnum.agbF2;
+			}
+			if (Name == "agbF") {
+				Type = TypeEnum.agbF;
+			}
+			if (Name == "agbTBOX") {
+				Type = TypeEnum.Tingle_Bomb_Trigger;
+			}
+			if (Name == "agbMW") {
+				Type = TypeEnum.agbMW;
+			}
+			if (Name == "agbCSW") {
+				Type = TypeEnum.agbCSW;
+			}
+			if (Name == "agbR") {
+				Type = TypeEnum.agbR;
+			}
+			if (Name == "agbB") {
+				Type = TypeEnum.agbB;
+			}
+			if (Name == "agbD") {
+				Type = TypeEnum.agbD;
+			}
+			if (Name == "agbFA") {
+				Type = TypeEnum.agbFA;
+			}
 		}
 	}
 
@@ -23399,6 +23438,42 @@ namespace WindEditor
 			ItemPickupFlag = -1;
 			Unknown_6 = -1;
 			EnableSpawnActivationSwitch = -1;
+			if (Name == "kotubo") {
+				Type = TypeEnum.Small_pot;
+			}
+			if (Name == "ootubo1") {
+				Type = TypeEnum.Large_pot;
+			}
+			if (Name == "Kmtub") {
+				Type = TypeEnum.Water_pot;
+			}
+			if (Name == "Ktaru") {
+				Type = TypeEnum.Barrel;
+			}
+			if (Name == "Ostool") {
+				Type = TypeEnum.Stool;
+			}
+			if (Name == "Odokuro") {
+				Type = TypeEnum.Skull;
+			}
+			if (Name == "Okioke") {
+				Type = TypeEnum.Bucket;
+			}
+			if (Name == "Kmi02") {
+				Type = TypeEnum.Seed;
+			}
+			if (Name == "Ptubo") {
+				Type = TypeEnum.Fancy_pot;
+			}
+			if (Name == "KkibaB") {
+				Type = TypeEnum.Wooden_crate;
+			}
+			if (Name == "Kmi00") {
+				Type = TypeEnum.Nut;
+			}
+			if (Name == "Hbox2S") {
+				Type = TypeEnum.Golden_crate;
+			}
 		}
 	}
 

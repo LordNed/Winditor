@@ -28,7 +28,21 @@
         14: "Fancy pot",
         15: "Wooden crate",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "kotubo": "Small pot",
+        "ootubo1": "Large pot",
+        "Kmtub": "Water pot",
+        "Ktaru": "Barrel",
+        "Ostool": "Stool",
+        "Odokuro": "Skull",
+        "Okioke": "Bucket",
+        "Kmi02": "Seed",
+        "Ptubo": "Fancy pot",
+        "KkibaB": "Wooden crate",
+        "Kmi00": "Nut",
+        "Hbox2S": "Golden crate",
+      }
     },
     {
       "Name": "Behavior Type",
