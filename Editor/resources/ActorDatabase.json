@@ -7,6 +7,7 @@
     "Wait Animations": null,
     "Actor Name": "VigaH",
     "English Name": "acorn_leaf",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -24,6 +25,7 @@
     "Wait Animations": null,
     "Actor Name": "agbA",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -50,6 +52,7 @@
     "Wait Animations": null,
     "Actor Name": "agbAT",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -69,6 +72,7 @@
     "Wait Animations": null,
     "Actor Name": "agbA2",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -131,6 +135,7 @@
     "Wait Animations": null,
     "Actor Name": "agbF",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -156,6 +161,7 @@
     "Wait Animations": null,
     "Actor Name": "agbF2",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -171,6 +177,7 @@
     "Wait Animations": null,
     "Actor Name": "agbMARK",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -238,6 +245,7 @@
     "Wait Animations": null,
     "Actor Name": "agbMW",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -257,6 +265,7 @@
     "Wait Animations": null,
     "Actor Name": "agbCSW",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -322,6 +331,7 @@
     "Wait Animations": null,
     "Actor Name": "agbTBOX",
     "English Name": "Tingle Bomb Trigger",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -346,6 +356,7 @@
     "Wait Animations": null,
     "Actor Name": "agbR",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -367,6 +378,7 @@
     "Wait Animations": null,
     "Actor Name": "agbB",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -391,6 +403,7 @@
     "Wait Animations": null,
     "Actor Name": "agbD",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -409,6 +422,7 @@
     "Wait Animations": null,
     "Actor Name": "agbFA",
     "English Name": "agbsw0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -435,6 +449,7 @@
     "Wait Animations": null,
     "Actor Name": "ALLdie",
     "English Name": "All Enemies Dead Switch Setter",
+    "Subtype Default Params": null,
     "Tags": [
       "switch",
       "enemy",
@@ -464,6 +479,7 @@
     "Wait Animations": null,
     "Actor Name": "amos",
     "English Name": "Armos Knight",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
       "bombs",
@@ -496,6 +512,7 @@
     "Wait Animations": null,
     "Actor Name": "amos2",
     "English Name": "Armos",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
       "sword",
@@ -526,6 +543,7 @@
     "Wait Animations": null,
     "Actor Name": "Hami1",
     "English Name": "amiprop",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -542,6 +560,7 @@
     "Wait Animations": null,
     "Actor Name": "HamiY",
     "English Name": "amiprop",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -557,6 +576,7 @@
     "Wait Animations": null,
     "Actor Name": "AND_SW0",
     "English Name": "Switch Logical AND Type 0",
+    "Subtype Default Params": null,
     "Tags": [
       "switch",
       "puzzle"
@@ -595,6 +615,7 @@
     "Wait Animations": null,
     "Actor Name": "AND_SW2",
     "English Name": "Switch Logical AND Type 2",
+    "Subtype Default Params": null,
     "Tags": [
       "switch",
       "puzzle"
@@ -660,6 +681,7 @@
     "Wait Animations": null,
     "Actor Name": "Arrow_i",
     "English Name": "Fire and Ice Arrow Cone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -675,6 +697,7 @@
     "Wait Animations": null,
     "Actor Name": "Arrow_l",
     "English Name": "Light Arrow Cone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -690,6 +713,7 @@
     "Wait Animations": null,
     "Actor Name": "ATdoor",
     "English Name": "Barred Wooden Door",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -710,6 +734,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "att",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -725,6 +750,7 @@
     "Wait Animations": null,
     "Actor Name": "Auction",
     "English Name": "auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -740,6 +766,7 @@
     "Wait Animations": null,
     "Actor Name": "Bb",
     "English Name": "Kargaroc",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -775,6 +802,7 @@
     "Wait Animations": null,
     "Actor Name": "Bdk",
     "English Name": "Helmaroc King",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
       "boss"
@@ -793,6 +821,7 @@
     "Wait Animations": null,
     "Actor Name": "Bdkobj",
     "English Name": "Helmaroc King Objects",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": "A set of objects used as set pieces during the fight with the Helmaroc King. It contains some wooden beams, the wooden bridges that the Helmaroc King can break, and some stone pieces.",
     "Locations": [
@@ -809,6 +838,7 @@
     "Wait Animations": null,
     "Actor Name": "Ylesr00",
     "English Name": "Beam Fired by TotG Laser Barrier or Moblin Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -824,6 +854,7 @@
     "Wait Animations": null,
     "Actor Name": "BFlower",
     "English Name": "Ripe Bomb Flower",
+    "Subtype Default Params": null,
     "Tags": [
       "puzzle",
       "bombs"
@@ -852,6 +883,7 @@
     "Wait Animations": null,
     "Actor Name": "VbakH",
     "English Name": "Dried Bomb Flower",
+    "Subtype Default Params": null,
     "Tags": [
       "puzzle",
       "bombs"
@@ -871,6 +903,7 @@
     "Wait Animations": null,
     "Actor Name": "Bgn",
     "English Name": "Puppet Ganon",
+    "Subtype Default Params": null,
     "Tags": [
       "boss"
     ],
@@ -888,6 +921,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "Puppet Ganon as Spider?",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -903,6 +937,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "Puppet Ganon as Snake?",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -918,6 +953,7 @@
     "Wait Animations": null,
     "Actor Name": "BigElf",
     "English Name": "Great Fairy",
+    "Subtype Default Params": null,
     "Tags": [
       "fairy",
       "items"
@@ -943,6 +979,7 @@
     "Wait Animations": null,
     "Actor Name": "Bita",
     "English Name": "Wooden Platform",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": "This wooden platform is used in the boss room of Dragon Roost Cavern. It can be burned by Gohma's fire breath, but Link cannot destroy it himself. Unlike most wooden objects, it is not a hookshot target.",
     "Locations": [
@@ -959,6 +996,7 @@
     "Wait Animations": null,
     "Actor Name": "Bk",
     "English Name": "Bokoblin",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -1026,6 +1064,7 @@
     "Wait Animations": null,
     "Actor Name": "bable",
     "English Name": "Red and Blue Bubble",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -1059,6 +1098,7 @@
     "Wait Animations": null,
     "Actor Name": "bable_r",
     "English Name": "bl",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1074,6 +1114,7 @@
     "Wait Animations": null,
     "Actor Name": "Bkm",
     "English Name": "Kalle Demos",
+    "Subtype Default Params": null,
     "Tags": [
       "boss"
     ],
@@ -1092,6 +1133,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "bmdfoot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1107,6 +1149,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "bmdhand",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1122,6 +1165,7 @@
     "Wait Animations": null,
     "Actor Name": "bbaba",
     "English Name": "Boko Baba",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -1145,6 +1189,7 @@
     "Wait Animations": null,
     "Actor Name": "Boko",
     "English Name": "boko",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1160,6 +1205,7 @@
     "Wait Animations": null,
     "Actor Name": "Boko",
     "English Name": "Dropped Enemy Weapon",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1175,6 +1221,7 @@
     "Wait Animations": null,
     "Actor Name": "Bitem",
     "English Name": "Heart Container",
+    "Subtype Default Params": null,
     "Tags": [
       "item"
     ],
@@ -1198,6 +1245,7 @@
     "Wait Animations": null,
     "Actor Name": "big_pow",
     "English Name": "Jalhalla",
+    "Subtype Default Params": null,
     "Tags": [
       "boss"
     ],
@@ -1216,6 +1264,7 @@
     "Wait Animations": null,
     "Actor Name": "Branch",
     "English Name": "Tree Branch",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": "The tree branch that Tetra is hanging on when she lands in Outset Island's forest.",
     "Locations": [
@@ -1231,6 +1280,7 @@
     "Wait Animations": null,
     "Actor Name": "bridge",
     "English Name": "Plank Bridge",
+    "Subtype Default Params": null,
     "Tags": [
       "bridge"
     ],
@@ -1254,6 +1304,7 @@
     "Wait Animations": null,
     "Actor Name": "Bst",
     "English Name": "Gohdan",
+    "Subtype Default Params": null,
     "Tags": [
       "boss"
     ],
@@ -1271,6 +1322,7 @@
     "Wait Animations": null,
     "Actor Name": "Btd",
     "English Name": "Gohma",
+    "Subtype Default Params": null,
     "Tags": [
       "boss"
     ],
@@ -1289,6 +1341,7 @@
     "Wait Animations": null,
     "Actor Name": "Bwd",
     "English Name": "Molgera",
+    "Subtype Default Params": null,
     "Tags": [
       "boss"
     ],
@@ -1307,6 +1360,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "bwdg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1322,6 +1376,7 @@
     "Wait Animations": null,
     "Actor Name": "Bwds",
     "English Name": "Molgera Child",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -1339,6 +1394,7 @@
     "Wait Animations": null,
     "Actor Name": "Canon",
     "English Name": "Spectacle Island Cannon",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1355,6 +1411,7 @@
     "Wait Animations": null,
     "Actor Name": "c_green",
     "English Name": "Green ChuChu",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1379,6 +1436,7 @@
     "Wait Animations": null,
     "Actor Name": "c_red",
     "English Name": "Red ChuChu",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1406,6 +1464,7 @@
     "Wait Animations": null,
     "Actor Name": "c_blue",
     "English Name": "Blue ChuChu",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1445,6 +1504,7 @@
     "Wait Animations": null,
     "Actor Name": "c_black",
     "English Name": "Dark ChuChu",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1465,6 +1525,7 @@
     "Wait Animations": null,
     "Actor Name": "c_kiiro",
     "English Name": "Yellow ChuChu",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1485,6 +1546,7 @@
     "Wait Animations": null,
     "Actor Name": "Com_B",
     "English Name": "coming2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1500,6 +1562,7 @@
     "Wait Animations": null,
     "Actor Name": "Com_C",
     "English Name": "coming3",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1516,6 +1579,7 @@
     "Wait Animations": null,
     "Actor Name": "Fdai",
     "English Name": "Windfall Island Decorative Item Pedestal",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1540,6 +1604,7 @@
     "Wait Animations": null,
     "Actor Name": "Daiocta",
     "English Name": "Big Octo",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1560,6 +1625,7 @@
     "Wait Animations": null,
     "Actor Name": "Daioeye",
     "English Name": "Big Octo Eye",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1575,6 +1641,7 @@
     "Wait Animations": null,
     "Actor Name": "itemDek",
     "English Name": "Deku Leaf Item",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1591,6 +1658,7 @@
     "Wait Animations": null,
     "Actor Name": "Demo_Dk",
     "English Name": "Helmaroc King (Cutscenes)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1606,6 +1674,7 @@
     "Wait Animations": null,
     "Actor Name": "Ditem",
     "English Name": "demo_item",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1621,6 +1690,7 @@
     "Wait Animations": null,
     "Actor Name": "DmKmm",
     "English Name": "Cutscene Seagull",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1637,6 +1707,7 @@
     "Wait Animations": null,
     "Actor Name": "DmKmm2",
     "English Name": "Cutscene Seagull",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1652,6 +1723,7 @@
     "Wait Animations": null,
     "Actor Name": "Dk",
     "English Name": "Helmaroc King",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2009,6 +2081,7 @@
     "Wait Animations": null,
     "Actor Name": "dragon",
     "English Name": "dr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2026,6 +2099,7 @@
     "Wait Animations": null,
     "Actor Name": "Dr2",
     "English Name": "dr2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2042,6 +2116,7 @@
     "Wait Animations": null,
     "Actor Name": "TagD1",
     "English Name": "dummy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2057,6 +2132,7 @@
     "Wait Animations": null,
     "Actor Name": "TagD2",
     "English Name": "dummy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2072,6 +2148,7 @@
     "Wait Animations": null,
     "Actor Name": "TagD3",
     "English Name": "dummy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2087,6 +2164,7 @@
     "Wait Animations": null,
     "Actor Name": "TagD4",
     "English Name": "dummy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2102,6 +2180,7 @@
     "Wait Animations": null,
     "Actor Name": "bonbori",
     "English Name": "Torch",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2184,6 +2263,7 @@
     "Wait Animations": null,
     "Actor Name": "fallrck",
     "English Name": "fallrock",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2199,6 +2279,7 @@
     "Wait Animations": null,
     "Actor Name": "frock",
     "English Name": "fallrock_tag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2215,6 +2296,7 @@
     "Wait Animations": null,
     "Actor Name": "Hsen1",
     "English Name": "fan",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2232,6 +2314,7 @@
     "Wait Animations": null,
     "Actor Name": "Hsen2",
     "English Name": "fan",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2247,6 +2330,7 @@
     "Wait Animations": null,
     "Actor Name": "Hsen3",
     "English Name": "fan",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2262,6 +2346,7 @@
     "Wait Animations": null,
     "Actor Name": "ho",
     "English Name": "Firefly",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2280,6 +2365,7 @@
     "Wait Animations": null,
     "Actor Name": "Fganon",
     "English Name": "Phantom Ganon",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2299,6 +2385,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "Phantom Ganon's Magic Projectile",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2314,6 +2401,7 @@
     "Wait Animations": null,
     "Actor Name": "Fire",
     "English Name": "Ring of Flames",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2338,6 +2426,7 @@
     "Wait Animations": null,
     "Actor Name": "Zenfire",
     "English Name": "Ring of Flames (Checks all enemies dead)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2355,6 +2444,7 @@
     "Wait Animations": null,
     "Actor Name": "Hhyu1",
     "English Name": "floor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2372,6 +2462,7 @@
     "Wait Animations": null,
     "Actor Name": "Fmaster",
     "English Name": "Stalking Floormaster",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2387,6 +2478,7 @@
     "Wait Animations": null,
     "Actor Name": "Fmastr1",
     "English Name": "Path-Following Floormaster",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2405,6 +2497,7 @@
     "Wait Animations": null,
     "Actor Name": "Fmastr2",
     "English Name": "Non-Path-Following Floormaster",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2425,6 +2518,7 @@
     "Wait Animations": null,
     "Actor Name": "Ayush",
     "English Name": "Ghost Ship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2446,6 +2540,7 @@
     "Wait Animations": null,
     "Actor Name": "gmos",
     "English Name": "Mothula",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2468,6 +2563,7 @@
     "Wait Animations": null,
     "Actor Name": "gmos_g",
     "English Name": "gm",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2483,6 +2579,7 @@
     "Wait Animations": null,
     "Actor Name": "gmos_f",
     "English Name": "gm",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2498,6 +2595,7 @@
     "Wait Animations": null,
     "Actor Name": "Gnd",
     "English Name": "Ganondorf",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2514,6 +2612,7 @@
     "Wait Animations": null,
     "Actor Name": "Gflag",
     "English Name": "goal_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2948,6 +3047,7 @@
     "Wait Animations": null,
     "Actor Name": "Grass",
     "English Name": "grass",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2963,6 +3063,7 @@
     "Wait Animations": null,
     "Actor Name": "Gy",
     "English Name": "Gyorg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2978,6 +3079,7 @@
     "Wait Animations": null,
     "Actor Name": "GyCtrl",
     "English Name": "Cross-Sector Gyorg Spawner",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2993,6 +3095,7 @@
     "Wait Animations": null,
     "Actor Name": "GyCtrlB",
     "English Name": "Single-Sector Gyorg Spawner",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3011,6 +3114,7 @@
     "Wait Animations": null,
     "Actor Name": "RopeR",
     "English Name": "himo3",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3030,6 +3134,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "hitobj",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3045,6 +3150,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmlif",
     "English Name": "hmlif",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3063,6 +3169,7 @@
     "Wait Animations": null,
     "Actor Name": "Hyuf1",
     "English Name": "hmlif",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3079,6 +3186,7 @@
     "Wait Animations": null,
     "Actor Name": "Hyuf2",
     "English Name": "hmlif",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3095,6 +3203,7 @@
     "Wait Animations": null,
     "Actor Name": "HFloor",
     "English Name": "hot_floor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3110,6 +3219,7 @@
     "Wait Animations": null,
     "Actor Name": "Hys",
     "English Name": "hys",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3127,6 +3237,7 @@
     "Wait Animations": null,
     "Actor Name": "Hys2",
     "English Name": "hys",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3144,6 +3255,7 @@
     "Wait Animations": null,
     "Actor Name": "Ylsic",
     "English Name": "icelift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3160,6 +3272,7 @@
     "Wait Animations": null,
     "Actor Name": "Yllic",
     "English Name": "icelift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3176,6 +3289,7 @@
     "Wait Animations": null,
     "Actor Name": "Ylkic",
     "English Name": "icelift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3191,6 +3305,7 @@
     "Wait Animations": null,
     "Actor Name": "Ikari",
     "English Name": "ikari",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3210,6 +3325,7 @@
     "Wait Animations": null,
     "Actor Name": "jbaba",
     "English Name": "jbo",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3229,6 +3345,7 @@
     "Wait Animations": null,
     "Actor Name": "Kaji",
     "English Name": "kaji",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3244,6 +3361,7 @@
     "Wait Animations": null,
     "Actor Name": "Kamome",
     "English Name": "kamome",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3313,6 +3431,7 @@
     "Wait Animations": null,
     "Actor Name": "Kanban",
     "English Name": "Sign",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3346,6 +3465,7 @@
     "Wait Animations": null,
     "Actor Name": "Kantera",
     "English Name": "kantera",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3361,6 +3481,7 @@
     "Wait Animations": null,
     "Actor Name": "Pig",
     "English Name": "Pig",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3378,6 +3499,7 @@
     "Wait Animations": null,
     "Actor Name": "doorKD",
     "English Name": "kddoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3393,6 +3515,7 @@
     "Wait Animations": null,
     "Actor Name": "ZenshKD",
     "English Name": "kddoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3408,6 +3531,7 @@
     "Wait Animations": null,
     "Actor Name": "K_ZshKD",
     "English Name": "kddoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3423,6 +3547,7 @@
     "Wait Animations": null,
     "Actor Name": "doorSH",
     "English Name": "kddoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3438,6 +3563,7 @@
     "Wait Animations": null,
     "Actor Name": "doorSZ",
     "English Name": "kddoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3453,6 +3579,7 @@
     "Wait Animations": null,
     "Actor Name": "keeth",
     "English Name": "Keese",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3482,6 +3609,7 @@
     "Wait Animations": null,
     "Actor Name": "Fkeeth",
     "English Name": "Fire Keese",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3503,6 +3631,7 @@
     "Wait Animations": null,
     "Actor Name": "Kita",
     "English Name": "kita",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3519,6 +3648,7 @@
     "Wait Animations": null,
     "Actor Name": "Klft",
     "English Name": "Pulley Lift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3535,6 +3665,7 @@
     "Wait Animations": null,
     "Actor Name": "Kmon",
     "English Name": "kmon",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3550,6 +3681,7 @@
     "Wait Animations": null,
     "Actor Name": "kani",
     "English Name": "Crab",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3752,6 +3884,7 @@
     "Wait Animations": null,
     "Actor Name": "Kokiie",
     "English Name": "Giant Hanging Flower",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3767,6 +3900,7 @@
     "Wait Animations": null,
     "Actor Name": "Yfrlt00",
     "English Name": "komore",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3783,6 +3917,7 @@
     "Wait Animations": null,
     "Actor Name": "kuro_s",
     "English Name": "Chasing Morths",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3802,6 +3937,7 @@
     "Wait Animations": null,
     "Actor Name": "kuro_t",
     "English Name": "Stationary Morths",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3822,6 +3958,7 @@
     "Wait Animations": null,
     "Actor Name": "kt",
     "English Name": "kt",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3837,6 +3974,7 @@
     "Wait Animations": null,
     "Actor Name": "Kui",
     "English Name": "Grapple Point",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3873,6 +4011,7 @@
     "Wait Animations": null,
     "Actor Name": "ky_tag0",
     "English Name": "kytag00",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3937,6 +4076,7 @@
     "Wait Animations": null,
     "Actor Name": "kytag00",
     "English Name": "kytag00",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3954,6 +4094,7 @@
     "Wait Animations": null,
     "Actor Name": "ky00you",
     "English Name": "kytag00",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3969,6 +4110,7 @@
     "Wait Animations": null,
     "Actor Name": "ky_tag1",
     "English Name": "kytag01",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4009,6 +4151,7 @@
     "Wait Animations": null,
     "Actor Name": "ky_tag2",
     "English Name": "Wind Direction Setter",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4035,6 +4178,7 @@
     "Wait Animations": null,
     "Actor Name": "ky_tag3",
     "English Name": "kytag03",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4051,6 +4195,7 @@
     "Wait Animations": null,
     "Actor Name": "kytag4",
     "English Name": "kytag04",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4067,6 +4212,7 @@
     "Wait Animations": null,
     "Actor Name": "kytag5",
     "English Name": "kytag05",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4082,6 +4228,7 @@
     "Wait Animations": null,
     "Actor Name": "kytag6",
     "English Name": "kytag06",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4097,6 +4244,7 @@
     "Wait Animations": null,
     "Actor Name": "kytag7",
     "English Name": "kytag07",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4113,6 +4261,7 @@
     "Wait Animations": null,
     "Actor Name": "Lamp",
     "English Name": "lamp",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4138,6 +4287,7 @@
     "Wait Animations": null,
     "Actor Name": "Gbrg00",
     "English Name": "lbridge",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4153,6 +4303,7 @@
     "Wait Animations": null,
     "Actor Name": "Olift",
     "English Name": "leaflift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4169,6 +4320,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD01",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4184,6 +4336,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD02",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4199,6 +4352,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD03",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4214,6 +4368,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD04",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4229,6 +4384,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD05",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4244,6 +4400,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD06",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4259,6 +4416,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD07",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4274,6 +4432,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD08",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4289,6 +4448,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD09",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4304,6 +4464,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD10",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4319,6 +4480,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD11",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4334,6 +4496,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD12",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4349,6 +4512,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD13",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4364,6 +4528,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD14",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4379,6 +4544,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD15",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4394,6 +4560,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD16",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4409,6 +4576,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD17",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4424,6 +4592,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD18",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4439,6 +4608,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD19",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4454,6 +4624,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD20",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4469,6 +4640,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD21",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4484,6 +4656,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD22",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4499,6 +4672,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD23",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4514,6 +4688,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD24",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4529,6 +4704,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD25",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4544,6 +4720,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD26",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4559,6 +4736,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD27",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4574,6 +4752,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD28",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4589,6 +4768,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD29",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4604,6 +4784,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD30",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4619,6 +4800,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD31",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4634,6 +4816,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD32",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4649,6 +4832,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD33",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4664,6 +4848,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD34",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4679,6 +4864,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD35",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4694,6 +4880,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD36",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4709,6 +4896,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD37",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4724,6 +4912,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD38",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4739,6 +4928,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD39",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4754,6 +4944,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD40",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4769,6 +4960,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD41",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4784,6 +4976,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD42",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4799,6 +4992,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD43",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4814,6 +5008,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD44",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4829,6 +5024,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD45",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4844,6 +5040,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD46",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4859,6 +5056,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD47",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4874,6 +5072,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD48",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4889,6 +5088,7 @@
     "Wait Animations": null,
     "Actor Name": "LOD49",
     "English Name": "lod_bg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4904,6 +5104,7 @@
     "Wait Animations": null,
     "Actor Name": "Gkai00",
     "English Name": "lstair",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4920,6 +5121,7 @@
     "Wait Animations": null,
     "Actor Name": "lwood",
     "English Name": "Large Tree",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4946,6 +5148,7 @@
     "Wait Animations": null,
     "Actor Name": "Hkikai1",
     "English Name": "machine",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4962,6 +5165,7 @@
     "Wait Animations": null,
     "Actor Name": "magma",
     "English Name": "Magma",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4986,6 +5190,7 @@
     "Wait Animations": null,
     "Actor Name": "MjFlag",
     "English Name": "majuu_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5005,6 +5210,7 @@
     "Wait Animations": null,
     "Actor Name": "MtFlag",
     "English Name": "majuu_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5021,6 +5227,7 @@
     "Wait Animations": null,
     "Actor Name": "HcFlag",
     "English Name": "majuu_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5036,6 +5243,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "mant",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5051,6 +5259,7 @@
     "Wait Animations": null,
     "Actor Name": "SMBdor",
     "English Name": "mbdoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5072,6 +5281,7 @@
     "Wait Animations": null,
     "Actor Name": "KGBdor",
     "English Name": "mbdoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5087,6 +5297,7 @@
     "Wait Animations": null,
     "Actor Name": "Mori1",
     "English Name": "mdoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5107,6 +5318,7 @@
     "Wait Animations": null,
     "Actor Name": "Mflft",
     "English Name": "mflft",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5122,6 +5334,7 @@
     "Wait Animations": null,
     "Actor Name": "GBoard",
     "English Name": "mgameboard",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5137,6 +5350,7 @@
     "Wait Animations": null,
     "Actor Name": "Mmusic",
     "English Name": "mmusic",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5153,6 +5367,7 @@
     "Wait Animations": null,
     "Actor Name": "mo2",
     "English Name": "Moblin",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5189,6 +5404,7 @@
     "Wait Animations": null,
     "Actor Name": "mp",
     "English Name": "movie_player",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5204,6 +5420,7 @@
     "Wait Animations": null,
     "Actor Name": "moZOU",
     "English Name": "Moblin Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5226,6 +5443,7 @@
     "Wait Animations": null,
     "Actor Name": "Mswing",
     "English Name": "msw",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5243,6 +5461,7 @@
     "Wait Animations": null,
     "Actor Name": "magtail",
     "English Name": "Magtail",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5266,6 +5485,7 @@
     "Wait Animations": null,
     "Actor Name": "SMtoge",
     "English Name": "mtoge",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5281,6 +5501,7 @@
     "Wait Animations": null,
     "Actor Name": "Ac1",
     "English Name": "npc_ac1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5296,6 +5517,7 @@
     "Wait Animations": null,
     "Actor Name": "Ah",
     "English Name": "npc_ah",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5321,6 +5543,7 @@
     "Wait Animations": null,
     "Actor Name": "Aj1",
     "English Name": "Sturgeon",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5339,6 +5562,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc7",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5354,6 +5578,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc1",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5369,6 +5594,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc2",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5384,6 +5610,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc3",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5399,6 +5626,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc4",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5414,6 +5642,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc5",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5429,6 +5658,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc6",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5444,6 +5674,7 @@
     "Wait Animations": null,
     "Actor Name": "Auc0",
     "English Name": "npc_auction",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5459,6 +5690,7 @@
     "Wait Animations": null,
     "Actor Name": "Ba1",
     "English Name": "npc_ba1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5476,6 +5708,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj1",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5494,6 +5727,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj2",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5511,6 +5745,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj3",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5528,6 +5763,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj4",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5545,6 +5781,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj5",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5563,6 +5800,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj6",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5580,6 +5818,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj7",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5597,6 +5836,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj8",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5615,6 +5855,7 @@
     "Wait Animations": null,
     "Actor Name": "Bj9",
     "English Name": "npc_bj1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5632,6 +5873,7 @@
     "Wait Animations": null,
     "Actor Name": "Bm1",
     "English Name": "Quill",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -5653,6 +5895,7 @@
     "Wait Animations": null,
     "Actor Name": "Bm2",
     "English Name": "Skett and Akoot",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -5673,6 +5916,7 @@
     "Wait Animations": null,
     "Actor Name": "Bm3",
     "English Name": "Basht and Bisht and Hoskit",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -5692,6 +5936,7 @@
     "Wait Animations": null,
     "Actor Name": "Bm4",
     "English Name": "Ilari and Pashli",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -5713,6 +5958,7 @@
     "Wait Animations": null,
     "Actor Name": "Bm5",
     "English Name": "Namali and Kogoli",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -5732,6 +5978,7 @@
     "Wait Animations": null,
     "Actor Name": "Bmcon1",
     "English Name": "npc_bmcon1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5747,6 +5994,7 @@
     "Wait Animations": null,
     "Actor Name": "Bmcon2",
     "English Name": "npc_bmcon1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5762,6 +6010,7 @@
     "Wait Animations": null,
     "Actor Name": "Bms1",
     "English Name": "npc_bms1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5777,6 +6026,7 @@
     "Wait Animations": null,
     "Actor Name": "Bms2",
     "English Name": "npc_bms1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5792,6 +6042,7 @@
     "Wait Animations": null,
     "Actor Name": "Bmsw",
     "English Name": "Koboli (Mail Sorter)",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -5810,6 +6061,7 @@
     "Wait Animations": null,
     "Actor Name": "Bs1",
     "English Name": "npc_bs1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5825,6 +6077,7 @@
     "Wait Animations": null,
     "Actor Name": "Bs2",
     "English Name": "npc_bs1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5840,6 +6093,7 @@
     "Wait Animations": null,
     "Actor Name": "Btsw",
     "English Name": "Baito (Mail Sorter)",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
     ],
@@ -5857,6 +6111,7 @@
     "Wait Animations": null,
     "Actor Name": "Btsw2",
     "English Name": "Baito (Outside)",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
     ],
@@ -5874,6 +6129,7 @@
     "Wait Animations": null,
     "Actor Name": "Cb1",
     "English Name": "Makar",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5899,6 +6155,7 @@
     "Wait Animations": null,
     "Actor Name": "Co1",
     "English Name": "npc_co1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5915,6 +6172,7 @@
     "Wait Animations": null,
     "Actor Name": "De1",
     "English Name": "npc_de1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5930,6 +6188,7 @@
     "Wait Animations": null,
     "Actor Name": "Ds1",
     "English Name": "npc_ds1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5945,6 +6204,7 @@
     "Wait Animations": null,
     "Actor Name": "Gk1",
     "English Name": "npc_gk1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5962,6 +6222,7 @@
     "Wait Animations": null,
     "Actor Name": "Gp1",
     "English Name": "npc_gp1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5978,6 +6239,7 @@
     "Wait Animations": null,
     "Actor Name": "Hi1",
     "English Name": "npc_hi1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5993,6 +6255,7 @@
     "Wait Animations": null,
     "Actor Name": "Ho",
     "English Name": "Mrs. Marie",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6009,6 +6272,7 @@
     "Wait Animations": null,
     "Actor Name": "Hr",
     "English Name": "npc_hr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6025,6 +6289,7 @@
     "Wait Animations": null,
     "Actor Name": "Hr2",
     "English Name": "npc_hr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6043,6 +6308,7 @@
     "Wait Animations": null,
     "Actor Name": "Jb1",
     "English Name": "npc_jb1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6058,6 +6324,7 @@
     "Wait Animations": null,
     "Actor Name": "Ji1",
     "English Name": "npc_ji1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6075,6 +6342,7 @@
     "Wait Animations": null,
     "Actor Name": "HyoiKam",
     "English Name": "Hyoi Pear Seagull Region",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6138,6 +6406,7 @@
     "Wait Animations": null,
     "Actor Name": "Kf1",
     "English Name": "npc_kf1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6154,6 +6423,7 @@
     "Wait Animations": null,
     "Actor Name": "Kg1",
     "English Name": "npc_kg1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6169,6 +6439,7 @@
     "Wait Animations": null,
     "Actor Name": "Kg2",
     "English Name": "npc_kg2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6184,6 +6455,7 @@
     "Wait Animations": null,
     "Actor Name": "Kk1",
     "English Name": "npc_kk1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6200,6 +6472,7 @@
     "Wait Animations": null,
     "Actor Name": "Km1",
     "English Name": "npc_km1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6215,6 +6488,7 @@
     "Wait Animations": null,
     "Actor Name": "Ko1",
     "English Name": "Zill",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -6234,6 +6508,7 @@
     "Wait Animations": null,
     "Actor Name": "Ko2",
     "English Name": "Joel",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -6252,6 +6527,7 @@
     "Wait Animations": null,
     "Actor Name": "Kp1",
     "English Name": "npc_kp1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6268,6 +6544,7 @@
     "Wait Animations": null,
     "Actor Name": "Ls1",
     "English Name": "Aryll",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -6290,6 +6567,7 @@
     "Wait Animations": null,
     "Actor Name": "Md1",
     "English Name": "Medli",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -6316,6 +6594,7 @@
     "Wait Animations": null,
     "Actor Name": "Mk",
     "English Name": "Ivan",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6332,6 +6611,7 @@
     "Wait Animations": null,
     "Actor Name": "Mk2",
     "English Name": "npc_mk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6347,6 +6627,7 @@
     "Wait Animations": null,
     "Actor Name": "Mn",
     "English Name": "npc_mn",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6371,6 +6652,7 @@
     "Wait Animations": null,
     "Actor Name": "Mt",
     "English Name": "npc_mt",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6387,6 +6669,7 @@
     "Wait Animations": null,
     "Actor Name": "NpcNz",
     "English Name": "npc_nz",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6402,6 +6685,7 @@
     "Wait Animations": null,
     "Actor Name": "Ob1",
     "English Name": "Rose",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -6420,6 +6704,7 @@
     "Wait Animations": null,
     "Actor Name": "Os",
     "English Name": "npc_os",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6436,6 +6721,7 @@
     "Wait Animations": null,
     "Actor Name": "Os1",
     "English Name": "npc_os",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6452,6 +6738,7 @@
     "Wait Animations": null,
     "Actor Name": "Os2",
     "English Name": "npc_os",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6468,6 +6755,7 @@
     "Wait Animations": null,
     "Actor Name": "P1a",
     "English Name": "npc_p1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6489,6 +6777,7 @@
     "Wait Animations": null,
     "Actor Name": "P1b",
     "English Name": "npc_p1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6507,6 +6796,7 @@
     "Wait Animations": null,
     "Actor Name": "P1c",
     "English Name": "npc_p1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6523,6 +6813,7 @@
     "Wait Animations": null,
     "Actor Name": "P2a",
     "English Name": "npc_p2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6538,6 +6829,7 @@
     "Wait Animations": null,
     "Actor Name": "P2b",
     "English Name": "npc_p2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6555,6 +6847,7 @@
     "Wait Animations": null,
     "Actor Name": "P2c",
     "English Name": "npc_p2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6570,6 +6863,7 @@
     "Wait Animations": null,
     "Actor Name": "Uo1",
     "English Name": "Sam",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6586,6 +6880,7 @@
     "Wait Animations": null,
     "Actor Name": "Uo2",
     "English Name": "Gossack",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6602,6 +6897,7 @@
     "Wait Animations": null,
     "Actor Name": "Uo3",
     "English Name": "Garrickson",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6618,6 +6914,7 @@
     "Wait Animations": null,
     "Actor Name": "Ub1",
     "English Name": "Vera",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6634,6 +6931,7 @@
     "Wait Animations": null,
     "Actor Name": "Ub2",
     "English Name": "Pompie",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6650,6 +6948,7 @@
     "Wait Animations": null,
     "Actor Name": "Ub3",
     "English Name": "Missy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6666,6 +6965,7 @@
     "Wait Animations": null,
     "Actor Name": "Ub4",
     "English Name": "Minenco",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6683,6 +6983,7 @@
     "Wait Animations": null,
     "Actor Name": "Uw1",
     "English Name": "Gillian",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6699,6 +7000,7 @@
     "Wait Animations": null,
     "Actor Name": "Uw2",
     "English Name": "Linda",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6716,6 +7018,7 @@
     "Wait Animations": null,
     "Actor Name": "Um1",
     "English Name": "Kreeb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6732,6 +7035,7 @@
     "Wait Animations": null,
     "Actor Name": "Um2",
     "English Name": "Anton",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6749,6 +7053,7 @@
     "Wait Animations": null,
     "Actor Name": "Um3",
     "English Name": "Kamo",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6765,6 +7070,7 @@
     "Wait Animations": null,
     "Actor Name": "Sa1",
     "English Name": "Loot (NPC)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6781,6 +7087,7 @@
     "Wait Animations": null,
     "Actor Name": "Sa2",
     "English Name": "Gummy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6797,6 +7104,7 @@
     "Wait Animations": null,
     "Actor Name": "Sa3",
     "English Name": "Kane",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6814,6 +7122,7 @@
     "Wait Animations": null,
     "Actor Name": "Sa4",
     "English Name": "Candy (NPC)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6831,6 +7140,7 @@
     "Wait Animations": null,
     "Actor Name": "Sa5",
     "English Name": "Dampa",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6848,6 +7158,7 @@
     "Wait Animations": null,
     "Actor Name": "Ug1",
     "English Name": "Potova",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6865,6 +7176,7 @@
     "Wait Animations": null,
     "Actor Name": "Ug2",
     "English Name": "Joanna",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6882,6 +7194,7 @@
     "Wait Animations": null,
     "Actor Name": "Pf1",
     "English Name": "npc_pf1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6898,6 +7211,7 @@
     "Wait Animations": null,
     "Actor Name": "Po",
     "English Name": "Lenzo",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6913,6 +7227,7 @@
     "Wait Animations": null,
     "Actor Name": "Pm1",
     "English Name": "npc_pm1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6928,6 +7243,7 @@
     "Wait Animations": null,
     "Actor Name": "RotenA",
     "English Name": "npc_roten",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6945,6 +7261,7 @@
     "Wait Animations": null,
     "Actor Name": "RotenB",
     "English Name": "npc_roten",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6962,6 +7279,7 @@
     "Wait Animations": null,
     "Actor Name": "RotenC",
     "English Name": "npc_roten",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6979,6 +7297,7 @@
     "Wait Animations": null,
     "Actor Name": "Rsh1",
     "English Name": "npc_rsh1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6994,6 +7313,7 @@
     "Wait Animations": null,
     "Actor Name": "Sarace",
     "English Name": "npc_sarace",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7010,6 +7330,7 @@
     "Wait Animations": null,
     "Actor Name": "NpcSo",
     "English Name": "Fishman",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7073,6 +7394,7 @@
     "Wait Animations": null,
     "Actor Name": "Sv0",
     "English Name": "npc_sv",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7088,6 +7410,7 @@
     "Wait Animations": null,
     "Actor Name": "Sv1",
     "English Name": "npc_sv",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7103,6 +7426,7 @@
     "Wait Animations": null,
     "Actor Name": "Sv2",
     "English Name": "npc_sv",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7118,6 +7442,7 @@
     "Wait Animations": null,
     "Actor Name": "Sv3",
     "English Name": "npc_sv",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7133,6 +7458,7 @@
     "Wait Animations": null,
     "Actor Name": "Tc",
     "English Name": "Tingle",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -7151,6 +7477,7 @@
     "Wait Animations": null,
     "Actor Name": "Tt",
     "English Name": "npc_tt",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7166,6 +7493,7 @@
     "Wait Animations": null,
     "Actor Name": "UkB",
     "English Name": "npc_uk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7181,6 +7509,7 @@
     "Wait Animations": null,
     "Actor Name": "UkC",
     "English Name": "npc_uk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7196,6 +7525,7 @@
     "Wait Animations": null,
     "Actor Name": "UkD",
     "English Name": "npc_uk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7211,6 +7541,7 @@
     "Wait Animations": null,
     "Actor Name": "UkB2",
     "English Name": "npc_uk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7226,6 +7557,7 @@
     "Wait Animations": null,
     "Actor Name": "UkC2",
     "English Name": "npc_uk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7241,6 +7573,7 @@
     "Wait Animations": null,
     "Actor Name": "UkD2",
     "English Name": "npc_uk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7256,6 +7589,7 @@
     "Wait Animations": null,
     "Actor Name": "Ym1",
     "English Name": "Mesa",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -7276,6 +7610,7 @@
     "Wait Animations": null,
     "Actor Name": "Ym2",
     "English Name": "Abe",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -7297,6 +7632,7 @@
     "Wait Animations": null,
     "Actor Name": "Yw1",
     "English Name": "Sue-Belle",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC"
     ],
@@ -7316,6 +7652,7 @@
     "Wait Animations": null,
     "Actor Name": "Zk1",
     "English Name": "Rito Chieftain",
+    "Subtype Default Params": null,
     "Tags": [
       "NPC",
       "Rito",
@@ -7335,6 +7672,7 @@
     "Wait Animations": null,
     "Actor Name": "Zl1",
     "English Name": "Tetra",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7364,6 +7702,7 @@
     "Wait Animations": null,
     "Actor Name": "nezumi",
     "English Name": "Rat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7383,6 +7722,7 @@
     "Wait Animations": null,
     "Actor Name": "nezuana",
     "English Name": "Rat Spawning Hole",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7404,6 +7744,7 @@
     "Wait Animations": null,
     "Actor Name": "Adnno",
     "English Name": "obj_adnno",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7419,6 +7760,7 @@
     "Wait Animations": null,
     "Actor Name": "Ajav",
     "English Name": "obj_ajav",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7434,6 +7776,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "obj_ajavw",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7449,6 +7792,7 @@
     "Wait Animations": null,
     "Actor Name": "Akabe",
     "English Name": "Invisible Wall",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7478,6 +7822,7 @@
     "Wait Animations": null,
     "Actor Name": "Akabe10",
     "English Name": "obj_akabe",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7494,6 +7839,7 @@
     "Wait Animations": null,
     "Actor Name": "NBOX",
     "English Name": "obj_akabe",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7514,6 +7860,7 @@
     "Wait Animations": null,
     "Actor Name": "NBOX10",
     "English Name": "obj_akabe",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7529,6 +7876,7 @@
     "Wait Animations": null,
     "Actor Name": "Apzl",
     "English Name": "Sliding Puzzle",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": "The sliding block puzzle that Link can solve for Rupees. It isn't customizable.",
     "Locations": [
@@ -7545,6 +7893,7 @@
     "Wait Animations": null,
     "Actor Name": "Ashut",
     "English Name": "Barred Iron Door",
+    "Subtype Default Params": null,
     "Tags": [
       "puzzle",
       "door",
@@ -7565,6 +7914,7 @@
     "Wait Animations": null,
     "Actor Name": "Auzu",
     "English Name": "Whirlpool",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7580,6 +7930,7 @@
     "Wait Animations": null,
     "Actor Name": "Aygr",
     "English Name": "Lookout Platform",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7614,6 +7965,7 @@
     "Wait Animations": null,
     "Actor Name": "Blift",
     "English Name": "obj_balancelift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7630,6 +7982,7 @@
     "Wait Animations": null,
     "Actor Name": "Ktarux",
     "English Name": "obj_barrel",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7646,6 +7999,7 @@
     "Wait Animations": null,
     "Actor Name": "Ktarur",
     "English Name": "obj_barrel2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7663,6 +8017,7 @@
     "Wait Animations": null,
     "Actor Name": "Ycage00",
     "English Name": "Hyrule Barrier",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7679,6 +8034,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmos1",
     "English Name": "Blue Beamos (Barrier)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7695,6 +8051,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmos2",
     "English Name": "Red Beamos (Tracking)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7711,6 +8068,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmos3",
     "English Name": "Tower of the Gods Laser Barrier",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7727,6 +8085,7 @@
     "Wait Animations": null,
     "Actor Name": "Ptco",
     "English Name": "obj_bscurtain",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7742,6 +8101,7 @@
     "Wait Animations": null,
     "Actor Name": "Ptcu",
     "English Name": "obj_bscurtain",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7757,6 +8117,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "obj_buoyflag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7772,6 +8133,7 @@
     "Wait Animations": null,
     "Actor Name": "Buoyr",
     "English Name": "obj_buoyrace",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7787,6 +8149,7 @@
     "Wait Animations": null,
     "Actor Name": "Cafelmp",
     "English Name": "obj_cafelmp",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7804,6 +8167,7 @@
     "Wait Animations": null,
     "Actor Name": "Ocanon",
     "English Name": "Wall-Mounted Cannon",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -7841,6 +8205,7 @@
     "Wait Animations": null,
     "Actor Name": "Com_A",
     "English Name": "obj_coming",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7903,6 +8268,7 @@
     "Wait Animations": null,
     "Actor Name": "BLK_CR",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7918,6 +8284,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrS3",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7933,6 +8300,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrS4",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7948,6 +8316,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrS5",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7963,6 +8332,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrM1",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7979,6 +8349,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrM2",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7995,6 +8366,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrGr",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8010,6 +8382,7 @@
     "Wait Animations": null,
     "Actor Name": "CrTrBl",
     "English Name": "obj_correct",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8025,6 +8398,7 @@
     "Wait Animations": null,
     "Actor Name": "Ktaruo",
     "English Name": "obj_demo_barrel",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8040,6 +8414,7 @@
     "Wait Animations": null,
     "Actor Name": "dmgroom",
     "English Name": "obj_dmgroom",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8056,6 +8431,7 @@
     "Wait Animations": null,
     "Actor Name": "Doguu",
     "English Name": "Sealed Goddess Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8073,6 +8449,7 @@
     "Wait Animations": null,
     "Actor Name": "MegamiD",
     "English Name": "Din Goddess Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8088,6 +8465,7 @@
     "Wait Animations": null,
     "Actor Name": "MegamiF",
     "English Name": "Farore Goddess Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8103,6 +8481,7 @@
     "Wait Animations": null,
     "Actor Name": "MegamiN",
     "English Name": "Nayru Goddess Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8118,6 +8497,7 @@
     "Wait Animations": null,
     "Actor Name": "DoguuD",
     "English Name": "Goddess Statue (Cutscenes)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8133,6 +8513,7 @@
     "Wait Animations": null,
     "Actor Name": "Qdghd",
     "English Name": "obj_dragonhead",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8148,6 +8529,7 @@
     "Wait Animations": null,
     "Actor Name": "Kryu00",
     "English Name": "obj_drift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8164,6 +8546,7 @@
     "Wait Animations": null,
     "Actor Name": "Eayogn",
     "English Name": "obj_eayogn",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8179,6 +8562,7 @@
     "Wait Animations": null,
     "Actor Name": "Ebomzo",
     "English Name": "Bombable Rito Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8195,6 +8579,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "obj_eff",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8210,6 +8595,7 @@
     "Wait Animations": null,
     "Actor Name": "Ekskz",
     "English Name": "obj_ekskz",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8226,6 +8612,7 @@
     "Wait Animations": null,
     "Actor Name": "Eskban",
     "English Name": "Large Bombable Rock from DRC Entrance",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8241,6 +8628,7 @@
     "Wait Animations": null,
     "Actor Name": "Skanran",
     "English Name": "Windfall Ferris Wheel",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8256,6 +8644,7 @@
     "Wait Animations": null,
     "Actor Name": "Figure",
     "English Name": "Nintendo Gallery Figurine",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8278,6 +8667,7 @@
     "Wait Animations": null,
     "Actor Name": "Yswdr00",
     "English Name": "obj_firewall",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8293,6 +8683,7 @@
     "Wait Animations": null,
     "Actor Name": "Yfire00",
     "English Name": "Magma Jet",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8311,6 +8702,7 @@
     "Wait Animations": null,
     "Actor Name": "FTree",
     "English Name": "Korok Tree",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8335,6 +8727,7 @@
     "Wait Animations": null,
     "Actor Name": "Gbed",
     "English Name": "obj_ganonbed",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8350,6 +8743,7 @@
     "Wait Animations": null,
     "Actor Name": "Gaship1",
     "English Name": "obj_gaship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8366,6 +8760,7 @@
     "Wait Animations": null,
     "Actor Name": "Gaship2",
     "English Name": "obj_gaship2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8382,6 +8777,7 @@
     "Wait Animations": null,
     "Actor Name": "Gnbtaki",
     "English Name": "obj_gnnbtltaki",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8398,6 +8794,7 @@
     "Wait Animations": null,
     "Actor Name": "Gntakie",
     "English Name": "obj_gnndemotakie",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8414,6 +8811,7 @@
     "Wait Animations": null,
     "Actor Name": "Gntakis",
     "English Name": "obj_gnndemotakis",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8430,6 +8828,7 @@
     "Wait Animations": null,
     "Actor Name": "Vdora",
     "English Name": "obj_gong",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8446,6 +8845,7 @@
     "Wait Animations": null,
     "Actor Name": "Gryw00",
     "English Name": "Lake Outside Dragon Roost Cavern",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8461,6 +8861,7 @@
     "Wait Animations": null,
     "Actor Name": "Gtaki",
     "English Name": "obj_gtaki",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8477,6 +8878,7 @@
     "Wait Animations": null,
     "Actor Name": "Hami2",
     "English Name": "obj_hami2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8493,6 +8895,7 @@
     "Wait Animations": null,
     "Actor Name": "Hami3",
     "English Name": "obj_hami3",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8509,6 +8912,7 @@
     "Wait Animations": null,
     "Actor Name": "Hami4",
     "English Name": "obj_hami4",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8526,6 +8930,7 @@
     "Wait Animations": null,
     "Actor Name": "RoHat",
     "English Name": "obj_hat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8541,6 +8946,7 @@
     "Wait Animations": null,
     "Actor Name": "Hbrf1",
     "English Name": "obj_hbrf1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8558,6 +8964,7 @@
     "Wait Animations": null,
     "Actor Name": "Hcbh",
     "English Name": "obj_hcbh",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8579,6 +8986,7 @@
     "Wait Animations": null,
     "Actor Name": "Hfuck1",
     "English Name": "Hookshot Target",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8600,6 +9008,7 @@
     "Wait Animations": null,
     "Actor Name": "Hha",
     "English Name": "obj_hha",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8615,6 +9024,7 @@
     "Wait Animations": null,
     "Actor Name": "Hlift",
     "English Name": "obj_hlift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8630,6 +9040,7 @@
     "Wait Animations": null,
     "Actor Name": "Hliftb",
     "English Name": "obj_hlift",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8645,6 +9056,7 @@
     "Wait Animations": null,
     "Actor Name": "Ypit00",
     "English Name": "obj_hole",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8660,6 +9072,7 @@
     "Wait Animations": null,
     "Actor Name": "Pitfall",
     "English Name": "Grotto Entrance Hole",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8697,6 +9110,7 @@
     "Wait Animations": null,
     "Actor Name": "Homen1",
     "English Name": "Large Stone Head with Hookshot Target",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8714,6 +9128,7 @@
     "Wait Animations": null,
     "Actor Name": "Homen2",
     "English Name": "Small Stone Head with Hookshot Target",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8731,6 +9146,7 @@
     "Wait Animations": null,
     "Actor Name": "Omensmk",
     "English Name": "obj_homensmoke",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8746,6 +9162,7 @@
     "Wait Animations": null,
     "Actor Name": "Hsh",
     "English Name": "Command Melody Stone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8761,6 +9178,7 @@
     "Wait Animations": null,
     "Actor Name": "Hsh2",
     "English Name": "Tower of the Gods Instruction Stone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8776,6 +9194,7 @@
     "Wait Animations": null,
     "Actor Name": "Htetu1",
     "English Name": "obj_htetu1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8791,6 +9210,7 @@
     "Wait Animations": null,
     "Actor Name": "Ikori",
     "English Name": "Chunk of Ice",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8811,6 +9231,7 @@
     "Wait Animations": null,
     "Actor Name": "GiceL",
     "English Name": "obj_iceisland",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8826,6 +9247,7 @@
     "Wait Animations": null,
     "Actor Name": "Ikada",
     "English Name": "Raft",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8850,6 +9272,7 @@
     "Wait Animations": null,
     "Actor Name": "ikada_h",
     "English Name": "Beedle's Shop Ship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8877,6 +9300,7 @@
     "Wait Animations": null,
     "Actor Name": "ikadaS",
     "English Name": "Submarine",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8898,6 +9322,7 @@
     "Wait Animations": null,
     "Actor Name": "ikada_u",
     "English Name": "Beedle's Special Shop Ship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8913,6 +9338,7 @@
     "Wait Animations": null,
     "Actor Name": "Svsp",
     "English Name": "Salvage Corp Ship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8932,6 +9358,7 @@
     "Wait Animations": null,
     "Actor Name": "Itnak",
     "English Name": "obj_Itnak",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8947,6 +9374,7 @@
     "Wait Animations": null,
     "Actor Name": "Hjump2",
     "English Name": "obj_jump",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8966,6 +9394,7 @@
     "Wait Animations": null,
     "Actor Name": "Kanat",
     "English Name": "obj_kanat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8982,6 +9411,7 @@
     "Wait Animations": null,
     "Actor Name": "MKanoke",
     "English Name": "obj_kanoke",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9001,6 +9431,7 @@
     "Wait Animations": null,
     "Actor Name": "MKanok2",
     "English Name": "obj_kanoke",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9024,6 +9455,7 @@
     "Wait Animations": null,
     "Actor Name": "Mhsg6",
     "English Name": "obj_ladder",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9041,6 +9473,7 @@
     "Wait Animations": null,
     "Actor Name": "Mhsg9",
     "English Name": "obj_ladder",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9057,6 +9490,7 @@
     "Wait Animations": null,
     "Actor Name": "Mhsg12",
     "English Name": "obj_ladder",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9073,6 +9507,7 @@
     "Wait Animations": null,
     "Actor Name": "Mhsg15",
     "English Name": "obj_ladder",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9089,6 +9524,7 @@
     "Wait Animations": null,
     "Actor Name": "Mhsg4h",
     "English Name": "obj_ladder",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9109,6 +9545,7 @@
     "Wait Animations": null,
     "Actor Name": "Vochi",
     "English Name": "obj_leaves",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9127,6 +9564,7 @@
     "Wait Animations": null,
     "Actor Name": "Stoudai",
     "English Name": "Lighthouse",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9142,6 +9580,7 @@
     "Wait Animations": null,
     "Actor Name": "Oyashi",
     "English Name": "Palm Tree",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9175,6 +9614,7 @@
     "Wait Animations": null,
     "Actor Name": "Magrock",
     "English Name": "obj_magmarock",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9191,6 +9631,7 @@
     "Wait Animations": null,
     "Actor Name": "MjDoor",
     "English Name": "obj_majyuu_door",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9207,6 +9648,7 @@
     "Wait Animations": null,
     "Actor Name": "MkieBA",
     "English Name": "obj_mkie",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9223,6 +9665,7 @@
     "Wait Animations": null,
     "Actor Name": "MkieBAB",
     "English Name": "obj_mkie",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9240,6 +9683,7 @@
     "Wait Animations": null,
     "Actor Name": "MkieK",
     "English Name": "obj_mkiek",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9256,6 +9700,7 @@
     "Wait Animations": null,
     "Actor Name": "MknjD",
     "English Name": "obj_mknjd",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9275,6 +9720,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "obj_mmrr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9290,6 +9736,7 @@
     "Wait Animations": null,
     "Actor Name": "Esekh",
     "English Name": "obj_monument",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9306,6 +9753,7 @@
     "Wait Animations": null,
     "Actor Name": "Esekh2",
     "English Name": "obj_monument",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9618,6 +10066,7 @@
     "Wait Animations": null,
     "Actor Name": "Msdan",
     "English Name": "Earth Temple Staircase",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9635,6 +10084,7 @@
     "Wait Animations": null,
     "Actor Name": "Msdan2",
     "English Name": "obj_msdan2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9651,6 +10101,7 @@
     "Wait Animations": null,
     "Actor Name": "MsdanSb",
     "English Name": "obj_msdan_sub",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9666,6 +10117,7 @@
     "Wait Animations": null,
     "Actor Name": "MsdanS2",
     "English Name": "obj_msdan_sub2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9681,6 +10133,7 @@
     "Wait Animations": null,
     "Actor Name": "MPot",
     "English Name": "obj_mshokki",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9705,6 +10158,7 @@
     "Wait Animations": null,
     "Actor Name": "MOsara",
     "English Name": "obj_mshokki",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9726,6 +10180,7 @@
     "Wait Animations": null,
     "Actor Name": "MKoppu",
     "English Name": "obj_mshokki",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9751,6 +10206,7 @@
     "Wait Animations": null,
     "Actor Name": "Mcube",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9771,6 +10227,7 @@
     "Wait Animations": null,
     "Actor Name": "Mcyln",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9788,6 +10245,7 @@
     "Wait Animations": null,
     "Actor Name": "Mcube10",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9805,6 +10263,7 @@
     "Wait Animations": null,
     "Actor Name": "Mcyln10",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9820,6 +10279,7 @@
     "Wait Animations": null,
     "Actor Name": "MwtrSB",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9839,6 +10299,7 @@
     "Wait Animations": null,
     "Actor Name": "MygnSB",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9854,6 +10315,7 @@
     "Wait Animations": null,
     "Actor Name": "Owater",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9869,6 +10331,7 @@
     "Wait Animations": null,
     "Actor Name": "Astop",
     "English Name": "obj_mtest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9884,6 +10347,7 @@
     "Wait Animations": null,
     "Actor Name": "MtoriSU",
     "English Name": "obj_nest",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9902,6 +10366,7 @@
     "Wait Animations": null,
     "Actor Name": "Ohatch",
     "English Name": "obj_ohatch",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9918,6 +10383,7 @@
     "Wait Animations": null,
     "Actor Name": "Ojtree",
     "English Name": "obj_ojtree",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9933,6 +10399,7 @@
     "Wait Animations": null,
     "Actor Name": "Ospbox",
     "English Name": "obj_ospbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9953,6 +10420,7 @@
     "Wait Animations": null,
     "Actor Name": "Otble",
     "English Name": "obj_otble",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9977,6 +10445,7 @@
     "Wait Animations": null,
     "Actor Name": "OtbleL",
     "English Name": "obj_otble",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9997,6 +10466,7 @@
     "Wait Animations": null,
     "Actor Name": "Paper",
     "English Name": "obj_paper",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10024,6 +10494,7 @@
     "Wait Animations": null,
     "Actor Name": "Ppos",
     "English Name": "obj_paper",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10040,6 +10511,7 @@
     "Wait Animations": null,
     "Actor Name": "Piwa",
     "English Name": "Stone Tablet",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10059,6 +10531,7 @@
     "Wait Animations": null,
     "Actor Name": "Pbco",
     "English Name": "obj_pbco",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10074,6 +10547,7 @@
     "Wait Animations": null,
     "Actor Name": "Pbka",
     "English Name": "obj_pbka",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10090,6 +10564,7 @@
     "Wait Animations": null,
     "Actor Name": "Nzfall",
     "English Name": "Rat Trap",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10105,6 +10580,7 @@
     "Wait Animations": null,
     "Actor Name": "Pirates",
     "English Name": "Pirate Ship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10126,6 +10602,7 @@
     "Wait Animations": null,
     "Actor Name": "Plant",
     "English Name": "Potted Plant",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10144,6 +10621,7 @@
     "Wait Animations": null,
     "Actor Name": "Quake",
     "English Name": "obj_quake",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10161,6 +10639,7 @@
     "Wait Animations": null,
     "Actor Name": "Rcloud",
     "English Name": "obj_rcloud",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10180,6 +10659,7 @@
     "Wait Animations": null,
     "Actor Name": "Ocloud",
     "English Name": "obj_rcloud",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10195,6 +10675,7 @@
     "Wait Animations": null,
     "Actor Name": "Rflw",
     "English Name": "obj_rflw",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10211,6 +10692,7 @@
     "Wait Animations": null,
     "Actor Name": "Rforce",
     "English Name": "obj_rforce",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10228,6 +10710,7 @@
     "Wait Animations": null,
     "Actor Name": "Roten2",
     "English Name": "obj_roten",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10243,6 +10726,7 @@
     "Wait Animations": null,
     "Actor Name": "Roten3",
     "English Name": "obj_roten",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10258,6 +10742,7 @@
     "Wait Animations": null,
     "Actor Name": "Roten4",
     "English Name": "obj_roten",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10273,6 +10758,7 @@
     "Wait Animations": null,
     "Actor Name": "Otana",
     "English Name": "Wooden Shelf",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10295,6 +10781,7 @@
     "Wait Animations": null,
     "Actor Name": "OtanaG",
     "English Name": "obj_shelf",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10310,6 +10797,7 @@
     "Wait Animations": null,
     "Actor Name": "Shmrgrd",
     "English Name": "Spiked Hammer Button",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10327,6 +10815,7 @@
     "Wait Animations": null,
     "Actor Name": "Qtkhd",
     "English Name": "obj_smplbg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10342,6 +10831,7 @@
     "Wait Animations": null,
     "Actor Name": "Mkdan1",
     "English Name": "obj_stair",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10357,6 +10847,7 @@
     "Wait Animations": null,
     "Actor Name": "Hfbot1A",
     "English Name": "obj_swflat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10373,6 +10864,7 @@
     "Wait Animations": null,
     "Actor Name": "Hfbot1B",
     "English Name": "obj_swflat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10389,6 +10881,7 @@
     "Wait Animations": null,
     "Actor Name": "Hfbot1C",
     "English Name": "obj_swflat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10405,6 +10898,7 @@
     "Wait Animations": null,
     "Actor Name": "MhmrSW0",
     "English Name": "Hammer Button",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10431,6 +10925,7 @@
     "Wait Animations": null,
     "Actor Name": "Hhbot1",
     "English Name": "obj_swheavy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10447,6 +10942,7 @@
     "Wait Animations": null,
     "Actor Name": "Hhbot1N",
     "English Name": "obj_swheavy",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10465,6 +10961,7 @@
     "Wait Animations": null,
     "Actor Name": "MsuSW",
     "English Name": "obj_swlight",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10481,6 +10978,7 @@
     "Wait Animations": null,
     "Actor Name": "MsuSWB",
     "English Name": "obj_swlight",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10496,6 +10994,7 @@
     "Wait Animations": null,
     "Actor Name": "Kbota_A",
     "English Name": "Button (Press Once)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10530,6 +11029,7 @@
     "Wait Animations": null,
     "Actor Name": "Kbota_B",
     "English Name": "Button (Hold Down)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10556,6 +11056,7 @@
     "Wait Animations": null,
     "Actor Name": "KbotaC",
     "English Name": "Button (Press Once Inverted)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10573,6 +11074,7 @@
     "Wait Animations": null,
     "Actor Name": "Table",
     "English Name": "obj_table",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10589,6 +11091,7 @@
     "Wait Animations": null,
     "Actor Name": "Mcrtn",
     "English Name": "obj_tapestry",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10605,6 +11108,7 @@
     "Wait Animations": null,
     "Actor Name": "Tenmado",
     "English Name": "obj_tenmado",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10621,6 +11125,7 @@
     "Wait Animations": null,
     "Actor Name": "Humi0z",
     "English Name": "obj_tide",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10636,6 +11141,7 @@
     "Wait Animations": null,
     "Actor Name": "Humi4z",
     "English Name": "obj_tide",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10651,6 +11157,7 @@
     "Wait Animations": null,
     "Actor Name": "Humi5z",
     "English Name": "obj_tide",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10666,6 +11173,7 @@
     "Wait Animations": null,
     "Actor Name": "Tide3",
     "English Name": "obj_tide",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10681,6 +11189,7 @@
     "Wait Animations": null,
     "Actor Name": "Humi2z",
     "English Name": "obj_tide",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10696,6 +11205,7 @@
     "Wait Animations": null,
     "Actor Name": "Humi3z",
     "English Name": "obj_tide",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10711,6 +11221,7 @@
     "Wait Animations": null,
     "Actor Name": "ObjTime",
     "English Name": "obj_timer",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10728,6 +11239,7 @@
     "Wait Animations": null,
     "Actor Name": "TnTrap",
     "English Name": "Hyrule Castle Laser Barrier",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10743,6 +11255,7 @@
     "Wait Animations": null,
     "Actor Name": "FgTrap",
     "English Name": "Forsaken Fortress Laser Barrier (During Phantom Ganon Fight)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10758,6 +11271,7 @@
     "Wait Animations": null,
     "Actor Name": "CmTrap",
     "English Name": "Savage Labyrinth Laser Barrier",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10774,6 +11288,7 @@
     "Wait Animations": null,
     "Actor Name": "Tpost",
     "English Name": "Postbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10809,6 +11324,7 @@
     "Wait Animations": null,
     "Actor Name": "Touseki",
     "English Name": "obj_tousekiki",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10824,6 +11340,7 @@
     "Wait Animations": null,
     "Actor Name": "X_tower",
     "English Name": "Tower of the Gods",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10840,6 +11357,7 @@
     "Wait Animations": null,
     "Actor Name": "Trap",
     "English Name": "obj_trap",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10857,6 +11375,7 @@
     "Wait Animations": null,
     "Actor Name": "MtryB",
     "English Name": "obj_tribox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10873,6 +11392,7 @@
     "Wait Animations": null,
     "Actor Name": "MtryBCr",
     "English Name": "obj_tribox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10888,6 +11408,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki1",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10903,6 +11424,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki6",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10919,6 +11441,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki3",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10934,6 +11457,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki4",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10949,6 +11473,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki5",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10964,6 +11489,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmon1",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10980,6 +11506,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmon1d",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10995,6 +11522,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmon2",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11011,6 +11539,7 @@
     "Wait Animations": null,
     "Actor Name": "Hmon2d",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11026,6 +11555,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki31",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11041,6 +11571,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki41",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11056,6 +11587,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki51",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11071,6 +11603,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki32",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11086,6 +11619,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki42",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11101,6 +11635,7 @@
     "Wait Animations": null,
     "Actor Name": "Hseki52",
     "English Name": "obj_try",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11116,6 +11651,7 @@
     "Wait Animations": null,
     "Actor Name": "Usovmc",
     "English Name": "obj_usovmc",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11131,6 +11667,7 @@
     "Wait Animations": null,
     "Actor Name": "Vds",
     "English Name": "obj_Vds",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11146,6 +11683,7 @@
     "Wait Animations": null,
     "Actor Name": "Vfan",
     "English Name": "Ganon's Tower Destructible Door",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11161,6 +11699,7 @@
     "Wait Animations": null,
     "Actor Name": "VgnFD",
     "English Name": "obj_vgnfd",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11177,6 +11716,7 @@
     "Wait Animations": null,
     "Actor Name": "VmcBS",
     "English Name": "Makar Seed-Planting Spot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11195,6 +11735,7 @@
     "Wait Animations": null,
     "Actor Name": "VmsDZ",
     "English Name": "obj_vmsdz",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11210,6 +11751,7 @@
     "Wait Animations": null,
     "Actor Name": "VmsMS",
     "English Name": "obj_vmsms",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11225,6 +11767,7 @@
     "Wait Animations": null,
     "Actor Name": "Ykzyg",
     "English Name": "obj_volcano",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11240,6 +11783,7 @@
     "Wait Animations": null,
     "Actor Name": "Vteng",
     "English Name": "obj_Vteng",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11256,6 +11800,7 @@
     "Wait Animations": null,
     "Actor Name": "Vtil1",
     "English Name": "obj_vtil",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11271,6 +11816,7 @@
     "Wait Animations": null,
     "Actor Name": "Vtil2",
     "English Name": "obj_vtil",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11286,6 +11832,7 @@
     "Wait Animations": null,
     "Actor Name": "Vtil3",
     "English Name": "obj_vtil",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11301,6 +11848,7 @@
     "Wait Animations": null,
     "Actor Name": "Vtil4",
     "English Name": "obj_vtil",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11316,6 +11864,7 @@
     "Wait Animations": null,
     "Actor Name": "Vtil5",
     "English Name": "obj_vtil",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11331,6 +11880,7 @@
     "Wait Animations": null,
     "Actor Name": "Vyasi",
     "English Name": "obj_vyasi",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11346,6 +11896,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpt",
     "English Name": "Locked Noncyclic Warp Pot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11363,6 +11914,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpnt",
     "English Name": "Unlocked Noncyclic Warp Pot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11380,6 +11932,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpts1",
     "English Name": "Cyclic Warp Pot 1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11399,6 +11952,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpts2",
     "English Name": "Cyclic Warp Pot 2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11419,6 +11973,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpts3",
     "English Name": "Cyclic Warp Pot 3",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11438,6 +11993,7 @@
     "Wait Animations": null,
     "Actor Name": "woodb",
     "English Name": "Bush",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11470,6 +12026,7 @@
     "Wait Animations": null,
     "Actor Name": "woodbx",
     "English Name": "Bush",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11488,6 +12045,7 @@
     "Wait Animations": null,
     "Actor Name": "Xfuta",
     "English Name": "obj_xfuta",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11503,6 +12061,7 @@
     "Wait Animations": null,
     "Actor Name": "Yboil00",
     "English Name": "obj_Yboil",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11518,6 +12077,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "obj_ygush00",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11533,6 +12093,7 @@
     "Wait Animations": null,
     "Actor Name": "YLzou",
     "English Name": "Hero of Time Statue",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11548,6 +12109,7 @@
     "Wait Animations": null,
     "Actor Name": "zouK",
     "English Name": "obj_zouK",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11564,6 +12126,7 @@
     "Wait Animations": null,
     "Actor Name": "zouK1",
     "English Name": "obj_zouK",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11579,6 +12142,7 @@
     "Wait Animations": null,
     "Actor Name": "zouK2",
     "English Name": "obj_zouK",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11594,6 +12158,7 @@
     "Wait Animations": null,
     "Actor Name": "zouK3",
     "English Name": "obj_zouK",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11609,6 +12174,7 @@
     "Wait Animations": null,
     "Actor Name": "zouK4",
     "English Name": "obj_zouK",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11624,6 +12190,7 @@
     "Wait Animations": null,
     "Actor Name": "Oq",
     "English Name": "Freshwater Octorok",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11641,6 +12208,7 @@
     "Wait Animations": null,
     "Actor Name": "Oqw",
     "English Name": "Saltwater Octorok",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11660,6 +12228,7 @@
     "Wait Animations": null,
     "Actor Name": "Oship",
     "English Name": "Gunboat",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -11697,6 +12266,7 @@
     "Wait Animations": null,
     "Actor Name": "Hdai1",
     "English Name": "pedestal",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11713,6 +12283,7 @@
     "Wait Animations": null,
     "Actor Name": "Hdai2",
     "English Name": "pedestal",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11728,6 +12299,7 @@
     "Wait Animations": null,
     "Actor Name": "Hdai3",
     "English Name": "pedestal",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11743,6 +12315,7 @@
     "Wait Animations": null,
     "Actor Name": "p_hat",
     "English Name": "Peahat",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -11774,6 +12347,7 @@
     "Wait Animations": null,
     "Actor Name": "sea_hat",
     "English Name": "Seahat",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11789,6 +12363,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "pirate_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11804,6 +12379,7 @@
     "Wait Animations": null,
     "Actor Name": "Puti",
     "English Name": "Miniblin",
+    "Subtype Default Params": null,
     "Tags": [
       "enemy",
     ],
@@ -11833,6 +12409,7 @@
     "Wait Animations": null,
     "Actor Name": "pow",
     "English Name": "Poe",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11854,6 +12431,7 @@
     "Wait Animations": null,
     "Actor Name": "p_zelda",
     "English Name": "Princess Zelda",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11871,6 +12449,7 @@
     "Wait Animations": null,
     "Actor Name": "Ritem",
     "English Name": "race_item",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11886,6 +12465,7 @@
     "Wait Animations": null,
     "Actor Name": "Rdead1",
     "English Name": "Standing ReDead",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11909,6 +12489,7 @@
     "Wait Animations": null,
     "Actor Name": "Rdead2",
     "English Name": "Sitting ReDead",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11927,6 +12508,7 @@
     "Wait Animations": null,
     "Actor Name": "hotest",
     "English Name": "Blank Test Actor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11942,6 +12524,7 @@
     "Wait Animations": null,
     "Actor Name": "Psail",
     "English Name": "sail",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11957,6 +12540,7 @@
     "Wait Animations": null,
     "Actor Name": "Ksaku",
     "English Name": "Weak Boarded Up Wall",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11978,6 +12562,7 @@
     "Wait Animations": null,
     "Actor Name": "Dsaku",
     "English Name": "Sturdy Boarded Up Wall",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12261,6 +12846,7 @@
     "Wait Animations": null,
     "Actor Name": "STBox",
     "English Name": "salvage_tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12276,6 +12862,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrSlv",
     "English Name": "sbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12291,6 +12878,7 @@
     "Wait Animations": null,
     "Actor Name": "ScnChg",
     "English Name": "scene_change",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12306,6 +12894,7 @@
     "Wait Animations": null,
     "Actor Name": "Seatag",
     "English Name": "seatag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12321,6 +12910,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "shand",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12336,6 +12926,7 @@
     "Wait Animations": null,
     "Actor Name": "Ship",
     "English Name": "ship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12364,6 +12955,7 @@
     "Wait Animations": null,
     "Actor Name": "Sitem",
     "English Name": "shop_item",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12381,6 +12973,7 @@
     "Wait Animations": null,
     "Actor Name": "Htobi1",
     "English Name": "shutter",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12396,6 +12989,7 @@
     "Wait Animations": null,
     "Actor Name": "Htobi2",
     "English Name": "shutter",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12412,6 +13006,7 @@
     "Wait Animations": null,
     "Actor Name": "Htobi3",
     "English Name": "shutter2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12427,6 +13022,7 @@
     "Wait Animations": null,
     "Actor Name": "SieFlag",
     "English Name": "sie_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12447,6 +13043,7 @@
     "Wait Animations": null,
     "Actor Name": "Sitem",
     "English Name": "sitem",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12464,6 +13061,7 @@
     "Wait Animations": null,
     "Actor Name": "Turu",
     "English Name": "sk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12480,6 +13078,7 @@
     "Wait Animations": null,
     "Actor Name": "Turu2",
     "English Name": "sk2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12496,6 +13095,7 @@
     "Wait Animations": null,
     "Actor Name": "Turu3",
     "English Name": "sk2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12511,6 +13111,7 @@
     "Wait Animations": null,
     "Actor Name": "spotbox",
     "English Name": "spotbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12526,6 +13127,7 @@
     "Wait Animations": null,
     "Actor Name": "spotbx1",
     "English Name": "spotbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12541,6 +13143,7 @@
     "Wait Animations": null,
     "Actor Name": "Ss",
     "English Name": "ss",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12557,6 +13160,7 @@
     "Wait Animations": null,
     "Actor Name": "s_turu",
     "English Name": "ssk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12576,6 +13180,7 @@
     "Wait Animations": null,
     "Actor Name": "Sss",
     "English Name": "Dexivine",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12593,6 +13198,7 @@
     "Wait Animations": null,
     "Actor Name": "Stal",
     "English Name": "Stalfos",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12620,6 +13226,7 @@
     "Wait Animations": null,
     "Actor Name": "Ystm0",
     "English Name": "steam_tag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12637,6 +13244,7 @@
     "Wait Animations": null,
     "Actor Name": "Ystm1",
     "English Name": "steam_tag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12653,6 +13261,7 @@
     "Wait Animations": null,
     "Actor Name": "koisi1",
     "English Name": "Rock",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12688,6 +13297,7 @@
     "Wait Animations": null,
     "Actor Name": "koisi2",
     "English Name": "stone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12703,6 +13313,7 @@
     "Wait Animations": null,
     "Actor Name": "Ebrock",
     "English Name": "Large Bombable Rock",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12727,6 +13338,7 @@
     "Wait Animations": null,
     "Actor Name": "Ekao",
     "English Name": "Large Stone Face (Liftable with Power Bracelets)",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12750,6 +13362,7 @@
     "Wait Animations": null,
     "Actor Name": "Ebrock2",
     "English Name": "Small Bombable Rock",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12772,6 +13385,7 @@
     "Wait Animations": null,
     "Actor Name": "SWat00",
     "English Name": "swattack",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12789,6 +13403,7 @@
     "Wait Animations": null,
     "Actor Name": "SW_C00",
     "English Name": "Switch Setter Trigger Region",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12866,6 +13481,7 @@
     "Wait Animations": null,
     "Actor Name": "SW_HIT0",
     "English Name": "swhit0",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12896,6 +13512,7 @@
     "Wait Animations": null,
     "Actor Name": "ITat00",
     "English Name": "Hidden Item Pickup",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12915,6 +13532,7 @@
     "Wait Animations": null,
     "Actor Name": "Hpbot1",
     "English Name": "swpropeller",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12932,6 +13550,7 @@
     "Wait Animations": null,
     "Actor Name": "Vpbot",
     "English Name": "swpropeller",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12948,6 +13567,7 @@
     "Wait Animations": null,
     "Actor Name": "SWtact",
     "English Name": "Wind Waker Switch",
+    "Subtype Default Params": null,
     "Tags": [
       "Wind Waker",
       "Puzzle",
@@ -12974,6 +13594,7 @@
     "Wait Animations": null,
     "Actor Name": "SWtactB",
     "English Name": "swtact",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12993,6 +13614,7 @@
     "Wait Animations": null,
     "Actor Name": "SWTdoor",
     "English Name": "swtdoor",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13008,6 +13630,7 @@
     "Wait Animations": null,
     "Actor Name": "SYAN",
     "English Name": "E3 Chandelier",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13023,6 +13646,7 @@
     "Wait Animations": null,
     "Actor Name": "AttTag",
     "English Name": "Attention Radius",
+    "Subtype Default Params": null,
     "Tags": [
       "Link",
       "Attention"
@@ -13080,6 +13704,7 @@
     "Wait Animations": null,
     "Actor Name": "AttTagB",
     "English Name": "tag_attention",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13108,6 +13733,7 @@
     "Wait Animations": null,
     "Actor Name": "TagBa1",
     "English Name": "tag_ba1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13123,6 +13749,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd",
     "English Name": "tag_etc",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13138,6 +13765,7 @@
     "Wait Animations": null,
     "Actor Name": "TagEv",
     "English Name": "Event Trigger Region",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13187,6 +13815,7 @@
     "Wait Animations": null,
     "Actor Name": "Evsw",
     "English Name": "Event Bit Switch Setter",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13207,6 +13836,7 @@
     "Wait Animations": null,
     "Actor Name": "PScnChg",
     "English Name": "tag_ghostship",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13224,6 +13854,7 @@
     "Wait Animations": null,
     "Actor Name": "TagHt",
     "English Name": "Hint Trigger Region 1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13254,6 +13885,7 @@
     "Wait Animations": null,
     "Actor Name": "TagHt2",
     "English Name": "Hint Trigger Region 2",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13272,6 +13904,7 @@
     "Wait Animations": null,
     "Actor Name": "TagIsl",
     "English Name": "tag_island",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13293,6 +13926,7 @@
     "Wait Animations": null,
     "Actor Name": "TagKb",
     "English Name": "Pig Item Dig Region",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13308,6 +13942,7 @@
     "Wait Animations": null,
     "Actor Name": "TagKf1",
     "English Name": "tag_kf1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13323,6 +13958,7 @@
     "Wait Animations": null,
     "Actor Name": "TagKk1",
     "English Name": "tag_kk1",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13338,6 +13974,7 @@
     "Wait Animations": null,
     "Actor Name": "LTag0",
     "English Name": "Invisible Light Region",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13353,6 +13990,7 @@
     "Wait Animations": null,
     "Actor Name": "LTag1",
     "English Name": "Light Beam",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13385,6 +14023,7 @@
     "Wait Animations": null,
     "Actor Name": "LTagR0",
     "English Name": "Light Detector",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13403,6 +14042,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd1",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13418,6 +14058,7 @@
     "Wait Animations": null,
     "Actor Name": "TagCb1",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13433,6 +14074,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd11",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13448,6 +14090,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd12",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13463,6 +14106,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd13",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13478,6 +14122,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd14",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13493,6 +14138,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd15",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13508,6 +14154,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMd16",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13523,6 +14170,7 @@
     "Wait Animations": null,
     "Actor Name": "TagCb11",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13539,6 +14187,7 @@
     "Wait Animations": null,
     "Actor Name": "TagCb12",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13555,6 +14204,7 @@
     "Wait Animations": null,
     "Actor Name": "TagCb13",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13571,6 +14221,7 @@
     "Wait Animations": null,
     "Actor Name": "TagCb14",
     "English Name": "tag_md_cb",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13587,6 +14238,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMk",
     "English Name": "Joy Pendant Hidden in a Tree",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13602,6 +14254,7 @@
     "Wait Animations": null,
     "Actor Name": "TagWp",
     "English Name": "tag_mk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13617,6 +14270,7 @@
     "Wait Animations": null,
     "Actor Name": "TagDM",
     "English Name": "tag_mk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13632,6 +14286,7 @@
     "Wait Animations": null,
     "Actor Name": "TagTy",
     "English Name": "tag_mk",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13647,6 +14302,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMsg",
     "English Name": "tag_msg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13672,6 +14328,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMsg2",
     "English Name": "tag_msg",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13687,6 +14344,7 @@
     "Wait Animations": null,
     "Actor Name": "TagPo",
     "English Name": "tag_photo",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13702,6 +14360,7 @@
     "Wait Animations": null,
     "Actor Name": "ReTag0",
     "English Name": "tag_ret",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13717,6 +14376,7 @@
     "Wait Animations": null,
     "Actor Name": "TagSo",
     "English Name": "tag_so",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13780,6 +14440,7 @@
     "Wait Animations": null,
     "Actor Name": "TagMSo",
     "English Name": "tag_so",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13843,6 +14504,7 @@
     "Wait Animations": null,
     "Actor Name": "VolTag",
     "English Name": "Kill Trigger for Ice Ring Isle/Fire Mountain",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13861,6 +14523,7 @@
     "Wait Animations": null,
     "Actor Name": "WLvTag",
     "English Name": "tag_waterlevel",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13876,6 +14539,7 @@
     "Wait Animations": null,
     "Actor Name": "Tama",
     "English Name": "tama",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13891,6 +14555,7 @@
     "Wait Animations": null,
     "Actor Name": "takara",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13922,6 +14587,7 @@
     "Wait Animations": null,
     "Actor Name": "takara2",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13960,6 +14626,7 @@
     "Wait Animations": null,
     "Actor Name": "takara3",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13996,6 +14663,7 @@
     "Wait Animations": null,
     "Actor Name": "takara4",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14017,6 +14685,7 @@
     "Wait Animations": null,
     "Actor Name": "takara5",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14049,6 +14718,7 @@
     "Wait Animations": null,
     "Actor Name": "takara6",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14074,6 +14744,7 @@
     "Wait Animations": null,
     "Actor Name": "takara7",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14093,6 +14764,7 @@
     "Wait Animations": null,
     "Actor Name": "takara8",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14115,6 +14787,7 @@
     "Wait Animations": null,
     "Actor Name": "takaraK",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14131,6 +14804,7 @@
     "Wait Animations": null,
     "Actor Name": "takaraI",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14147,6 +14821,7 @@
     "Wait Animations": null,
     "Actor Name": "takaraM",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14165,6 +14840,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrASw",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14188,6 +14864,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrAGc",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14206,6 +14883,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrAKd",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14222,6 +14900,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrAIk",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14240,6 +14919,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrBMs",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14257,6 +14937,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrCTf",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14280,6 +14961,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrAOc",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14303,6 +14985,7 @@
     "Wait Animations": null,
     "Actor Name": "tkrAOs",
     "English Name": "tbox",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14330,6 +15013,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "title",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14345,6 +15029,7 @@
     "Wait Animations": null,
     "Actor Name": "Tn",
     "English Name": "Darknut",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14378,6 +15063,7 @@
     "Wait Animations": null,
     "Actor Name": "Htoge1",
     "English Name": "toge",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14394,6 +15080,7 @@
     "Wait Animations": null,
     "Actor Name": "TrFlag",
     "English Name": "tori_flag",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14412,6 +15099,7 @@
     "Wait Animations": null,
     "Actor Name": "Ytrnd00",
     "English Name": "tornado",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14429,6 +15117,7 @@
     "Wait Animations": null,
     "Actor Name": "Tpota",
     "English Name": "tpota",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14444,6 +15133,7 @@
     "Wait Animations": null,
     "Actor Name": "kotubo",
     "English Name": "Small Pot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14526,6 +15216,7 @@
     "Wait Animations": null,
     "Actor Name": "ootubo1",
     "English Name": "Large Pot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14616,6 +15307,7 @@
     "Wait Animations": null,
     "Actor Name": "Kmtub",
     "English Name": "Water Pot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14636,6 +15328,7 @@
     "Wait Animations": null,
     "Actor Name": "Ktaru",
     "English Name": "Barrel",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14683,6 +15376,7 @@
     "Wait Animations": null,
     "Actor Name": "Ostool",
     "English Name": "Stool",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14712,6 +15406,7 @@
     "Wait Animations": null,
     "Actor Name": "Odokuro",
     "English Name": "Skull",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14749,6 +15444,7 @@
     "Wait Animations": null,
     "Actor Name": "Okioke",
     "English Name": "Bucket",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14768,6 +15464,7 @@
     "Wait Animations": null,
     "Actor Name": "Kmi02",
     "English Name": "Seed",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14788,6 +15485,7 @@
     "Wait Animations": null,
     "Actor Name": "Ptubo",
     "English Name": "Fancy Pot",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14804,6 +15502,7 @@
     "Wait Animations": null,
     "Actor Name": "KkibaB",
     "English Name": "Wooden Crate",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14821,6 +15520,7 @@
     "Wait Animations": null,
     "Actor Name": "Kmi00",
     "English Name": "Nut",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14836,6 +15536,7 @@
     "Wait Animations": null,
     "Actor Name": "Hbox2S",
     "English Name": "Golden Crate",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14852,6 +15553,7 @@
     "Wait Animations": null,
     "Actor Name": "Wall",
     "English Name": "wall",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14868,6 +15570,7 @@
     "Wait Animations": null,
     "Actor Name": "Gdemo20",
     "English Name": "warpdm20",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14884,6 +15587,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpf",
     "English Name": "warpf",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14903,6 +15607,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpfo",
     "English Name": "warpfout",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14922,6 +15627,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpgn",
     "English Name": "warpgn",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14937,6 +15643,7 @@
     "Wait Animations": null,
     "Actor Name": "Ghrwp",
     "English Name": "warphr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14953,6 +15660,7 @@
     "Wait Animations": null,
     "Actor Name": "Ywarp00",
     "English Name": "Pink Light Beam Warp",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14970,6 +15678,7 @@
     "Wait Animations": null,
     "Actor Name": "Ysdls00",
     "English Name": "White Light Beam Warp",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15021,6 +15730,7 @@
     "Wait Animations": null,
     "Actor Name": "Warpmj",
     "English Name": "warpmj",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15036,6 +15746,7 @@
     "Wait Animations": null,
     "Actor Name": "Yswtr00",
     "English Name": "waterfall",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15051,6 +15762,7 @@
     "Wait Animations": null,
     "Actor Name": "WBird",
     "English Name": "wbird",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15066,6 +15778,7 @@
     "Wait Animations": null,
     "Actor Name": "Hpu1",
     "English Name": "windmill",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15082,6 +15795,7 @@
     "Wait Animations": null,
     "Actor Name": "Hpu2",
     "English Name": "windmill",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15099,6 +15813,7 @@
     "Wait Animations": null,
     "Actor Name": "WindTag",
     "English Name": "Small Cyclone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15132,6 +15847,7 @@
     "Wait Animations": null,
     "Actor Name": "Ybgaf00",
     "English Name": "Large Cyclone",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15148,6 +15864,7 @@
     "Wait Animations": null,
     "Actor Name": "wiz_r",
     "English Name": "Wizzrobe",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15181,6 +15898,7 @@
     "Wait Animations": null,
     "Actor Name": "wiz_s",
     "English Name": "wz",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15196,6 +15914,7 @@
     "Wait Animations": null,
     "Actor Name": "wiz_m",
     "English Name": "wz",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15211,6 +15930,7 @@
     "Wait Animations": null,
     "Actor Name": "wiz_o",
     "English Name": "wz",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15226,6 +15946,7 @@
     "Wait Animations": null,
     "Actor Name": "Ygcwp",
     "English Name": "ygcwp",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15243,6 +15964,7 @@
     "Wait Animations": null,
     "Actor Name": "YkgrON",
     "English Name": "ykgr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15266,6 +15988,7 @@
     "Wait Animations": null,
     "Actor Name": "YkgrOFF",
     "English Name": "ykgr",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15281,6 +16004,7 @@
     "Wait Animations": null,
     "Actor Name": "yg_awa",
     "English Name": "yougan",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15296,6 +16020,7 @@
     "Wait Animations": null,
     "Actor Name": "",
     "English Name": "f_pc_profile_lst",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15311,6 +16036,7 @@
     "Wait Animations": null,
     "Actor Name": "item",
     "English Name": "Item Pickup",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -15361,6 +16087,7 @@
     "Wait Animations": null,
     "Actor Name": "Search",
     "English Name": "Searchlight",
+    "Subtype Default Params": null,
     "Tags": null,
     "Explanation": null,
     "Locations": [
