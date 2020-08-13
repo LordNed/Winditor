@@ -26,15 +26,6 @@
       "UpdateModel": true
     },
     {
-      "Name": "Switch Spawns Bokoblin",
-      "ValueSource": "Parameters",
-      "Mask": 0x00000010,
-      "Hidden": false,
-      "Category": "Bokoblin",
-      "ToolTip": "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.",
-      "DataType": "Boolean"
-    },
-    {
       "Name": "Is Green",
       "ValueSource": "Parameters",
       "Mask": 0x00000020,
@@ -75,6 +66,15 @@
       "Category": "Bokoblin",
       "ToolTip": "The path that the Bokoblin follows.",
       "DataType": "Path"
+    },
+    {
+      "Name": "Switch Spawns Bokoblin",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000010,
+      "Hidden": false,
+      "Category": "Bokoblin",
+      "ToolTip": "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.",
+      "DataType": "Boolean"
     },
     {
       "Name": "Enable Spawn Switch",

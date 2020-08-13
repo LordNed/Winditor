@@ -3,20 +3,39 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Dropped Item",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 0x0000003F,
+      "Mask": 0x0F000000,
       "Hidden": false,
-      "Category": "tsubo",
+      "Category": "Pots",
       "ToolTip": "",
-      "DataType": "DroppedItemID"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Small pot",
+        1: "Large pot",
+        2: "Water pot",
+        3: "Barrel",
+        4: "Stool",
+        5: "Skull",
+        6: "Bucket",
+        7: "Nut",
+        8: "Golden crate",
+        9: "TotG Pillar Statue A",
+        10: "TotG Pillar Statue B",
+        11: "TotG Pillar Statue C",
+        12: "TotG Pillar Statue D",
+        13: "Seed",
+        14: "Fancy pot",
+        15: "Wooden crate",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Behavior Type",
       "ValueSource": "Parameters",
       "Mask": 0x00003F00,
       "Hidden": false,
-      "Category": "tsubo",
+      "Category": "Pots",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -88,11 +107,29 @@
       "Default": "Normal"
     },
     {
+      "Name": "Dropped Item",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000003F,
+      "Hidden": false,
+      "Category": "Pots",
+      "ToolTip": "",
+      "DataType": "DroppedItemID"
+    },
+    {
+      "Name": "Item Pickup Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x007F0000,
+      "Hidden": false,
+      "Category": "Pots",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
       "Mask": 0x0000C000,
       "Hidden": false,
-      "Category": "tsubo",
+      "Category": "Pots",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -103,48 +140,11 @@
       }
     },
     {
-      "Name": "Item Pickup Flag",
-      "ValueSource": "Parameters",
-      "Mask": 0x007F0000,
-      "Hidden": false,
-      "Category": "tsubo",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x0F000000,
-      "Hidden": false,
-      "Category": "tsubo",
-      "ToolTip": "",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Small pot",
-        1: "Large pot",
-        2: "Water pot",
-        3: "Barrel",
-        4: "Stool",
-        5: "Skull",
-        6: "Bucket",
-        7: "Nut",
-        8: "Golden crate",
-        9: "TotG Pillar Statue A",
-        10: "TotG Pillar Statue B",
-        11: "TotG Pillar Statue C",
-        12: "TotG Pillar Statue D",
-        13: "Seed",
-        14: "Fancy pot",
-        15: "Wooden crate",
-      },
-      "UpdateModel": true
-    },
-    {
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
       "Mask": 0x70000000,
       "Hidden": false,
-      "Category": "tsubo",
+      "Category": "Pots",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -153,7 +153,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
       "Hidden": false,
-      "Category": "tsubo",
+      "Category": "Pots",
       "ToolTip": "Normally, pots will teleport themselves to the nearest ground when they are spawned.\nIf this is checked, the pot will instead float where it was placed.\nFor Nuts, this also causes it to not start to rot away automatically on spawn.",
       "DataType": "Boolean"
     },
@@ -162,7 +162,7 @@
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Hidden": false,
-      "Category": "tsubo",
+      "Category": "Pots",
       "ToolTip": "If the pot's behavior is set to 'Spawns When Switch is Set' and this switch is valid, the pot will not appear until this switch is set.\nIf the pot's behavior is set to 'Inactive Until Switch is Set' and this switch is valid, the pot will be visible, but cannot be broken, and picking it up will be strange and buggy, until this switch is set.\nNo effect on other behaviors.",
       "DataType": "Integer"
     }

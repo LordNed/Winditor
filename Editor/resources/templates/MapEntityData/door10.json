@@ -3,16 +3,6 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Switch 1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "Door",
-      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.",
-      "DataType": "Integer",
-      "UpdateModel": true
-    },
-    {
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000F00,
@@ -38,6 +28,16 @@
         "keyshut": "Locked",
         "K_Zshut": "Locked and barred",
       }
+    },
+    {
+      "Name": "Switch 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Door",
+      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.",
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Event ID",

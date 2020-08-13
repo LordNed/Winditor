@@ -3,6 +3,21 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x07000000,
+      "Hidden": false,
+      "Category": "Button",
+      "ToolTip": "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Press Once",
+        1: "Hold Down",
+        2: "Press Once Inverted",
+        3: "Iron Boots Button Base",
+      }
+    },
+    {
       "Name": "Event to Start",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
@@ -28,21 +43,6 @@
       "Category": "Button",
       "ToolTip": "This param seems like it was intended to change the visual model of the button.\nHowever, all 4 types of button have the same model specified for their normal and alternative models, so this has no effect.",
       "DataType": "Boolean"
-    },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x07000000,
-      "Hidden": false,
-      "Category": "Button",
-      "ToolTip": "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Press Once",
-        1: "Hold Down",
-        2: "Press Once Inverted",
-        3: "Iron Boots Button Base",
-      }
     },
     {
       "Name": "Should Use Disabled Switch",

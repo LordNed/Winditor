@@ -3,6 +3,23 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x000F0000,
+      "Hidden": false,
+      "Category": "swhit0",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+      },
+      "EnumDefaultValue": 4,
+    },
+    {
       "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
@@ -19,23 +36,6 @@
       "Category": "swhit0",
       "ToolTip": "The event to start when hit? (Only for type 'Unknown 3'.)",
       "DataType": "Event"
-    },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x000F0000,
-      "Hidden": false,
-      "Category": "swhit0",
-      "ToolTip": "",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Unknown 0",
-        1: "Unknown 1",
-        2: "Unknown 2",
-        3: "Unknown 3",
-        4: "Unknown 4",
-      },
-      "EnumDefaultValue": 4,
     },
     {
       "Name": "Time Limit (Half Seconds)",

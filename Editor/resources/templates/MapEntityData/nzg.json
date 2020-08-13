@@ -3,6 +3,20 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "nzg",
+      "ToolTip": "The type that spawns just Rats also has the Rat Shopkeeper in it.\nThe type that spawns both Rats and Bombchus has a random 50% chance of which to spawn each time it spawns one.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Spawns Rats",
+        1: "Spawns Bombchus",
+        2: "Spawns Rats and Bombchus",
+      }
+    },
+    {
       "Name": "Sight Range (Fives)",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
@@ -19,20 +33,6 @@
       "Category": "nzg",
       "ToolTip": "",
       "DataType": "Integer"
-    },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x00FF0000,
-      "Hidden": false,
-      "Category": "nzg",
-      "ToolTip": "The type that spawns just Rats also has the Rat Shopkeeper in it.\nThe type that spawns both Rats and Bombchus has a random 50% chance of which to spawn each time it spawns one.",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Spawns Rats",
-        1: "Spawns Bombchus",
-        2: "Spawns Rats and Bombchus",
-      }
     },
     {
       "Name": "Unused",

@@ -3,6 +3,19 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x03000000,
+      "Hidden": false,
+      "Category": "Event Bit Switch Setter",
+      "ToolTip": "'Set and Unset' will set the switch if the event bit is set, and unset it if it's not.\n'Only Set' will set the switch if the event bit is set, but will never unset it.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Set and Unset",
+        1: "Only Set",
+      }
+    },
+    {
       "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
@@ -20,18 +33,5 @@
       "ToolTip": "",
       "DataType": "Integer"
     },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x03000000,
-      "Hidden": false,
-      "Category": "Event Bit Switch Setter",
-      "ToolTip": "'Set and Unset' will set the switch if the event bit is set, and unset it if it's not.\n'Only Set' will set the switch if the event bit is set, but will never unset it.",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Set and Unset",
-        1: "Only Set",
-      }
-    }
   ]
 }

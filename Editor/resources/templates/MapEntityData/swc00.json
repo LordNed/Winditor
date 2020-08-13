@@ -3,6 +3,21 @@
   "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x00030000,
+      "Hidden": false,
+      "Category": "Switch Setter Trigger Region",
+      "ToolTip": "'Set and Unset' will set its 'Switch to Set' when the player enters the region, and unset it when the player leaves the region.\n'Only Set' will set it, but never unset it.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Set and Unset",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Only Set",
+      }
+    },
+    {
       "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
@@ -20,20 +35,5 @@
       "ToolTip": "If this is not set to 255, then this switch must be set before this trigger region becomes active.",
       "DataType": "Integer"
     },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x00030000,
-      "Hidden": false,
-      "Category": "Switch Setter Trigger Region",
-      "ToolTip": "'Set and Unset' will set its 'Switch to Set' when the player enters the region, and unset it when the player leaves the region.\n'Only Set' will set it, but never unset it.",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Set and Unset",
-        1: "Unknown 1",
-        2: "Unknown 2",
-        3: "Only Set",
-      }
-    }
   ]
 }

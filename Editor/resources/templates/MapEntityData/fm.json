@@ -3,15 +3,6 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Link Captured Exit",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "fm",
-      "ToolTip": "Which exit this Floormaster takes Link through when it captures him.",
-      "DataType": "Exit"
-    },
-    {
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000300,
@@ -65,6 +56,15 @@
       "Category": "fm",
       "ToolTip": "",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Link Captured Exit",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "fm",
+      "ToolTip": "Which exit this Floormaster takes Link through when it captures him.",
+      "DataType": "Exit"
     },
     {
       "Name": "Partner Captured Exit",
