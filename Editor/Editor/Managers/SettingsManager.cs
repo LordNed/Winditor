@@ -44,7 +44,7 @@ namespace WindEditor
         }
     }
 
-    [HideCategories(new string[] { })]
+    [HideCategories(new string[] { "Hidden Paths" })]
     public class WSettingsContainer : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Interface
@@ -85,8 +85,7 @@ namespace WindEditor
             }
         }
 
-        [HideCategoriesAttribute()]
-        [WProperty("Paths", "Last Stage Path", true, "")]
+        [WProperty("Hidden Paths", "Last Stage Path", true, "")]
         public FileReference LastStagePath
         {
             get { return m_LastStagePath; }
@@ -100,8 +99,7 @@ namespace WindEditor
             }
         }
 
-        [HideCategoriesAttribute()]
-        [WProperty("Paths", "Last Collision Dae Path", true, "")]
+        [WProperty("Hidden Paths", "Last Collision Dae Path", true, "")]
         public FileReference LastCollisionDaePath
         {
             get { return m_LastCollisionDaePath; }
@@ -115,8 +113,7 @@ namespace WindEditor
             }
         }
 
-        [HideCategoriesAttribute()]
-        [WProperty("Paths", "Last Script Archive Path", true, "")]
+        [WProperty("Hidden Paths", "Last Script Archive Path", true, "")]
         public FileReference LastScriptArchivePath
         {
             get { return m_LastScriptArchivePath; }
