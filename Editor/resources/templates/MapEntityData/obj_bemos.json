@@ -15,7 +15,12 @@
         1: "Red Beamos",
         2: "Laser Barrier",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Hmos1": "Blue Beamos",
+        "Hmos2": "Red Beamos",
+        "Hmos3": "Laser Barrier",
+      }
     },
     {
       "Name": "Sight Range (Hundreds)",

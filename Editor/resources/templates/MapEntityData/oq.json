@@ -19,7 +19,11 @@
         5: "Spawned saltwater Octorok",
         6: "Rock shot by a freshwater Octorok",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Oq": "Freshwater Octorok",
+        "Oqw": "Saltwater Octorok that shoots at a certain range",
+      }
     },
     {
       "Name": "Projectile Type",

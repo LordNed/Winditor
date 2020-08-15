@@ -19,6 +19,17 @@
         5: "Unknown 5",
         6: "Unknown 6",
         7: "Unknown 7",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Mcube": "Unknown 0",
+        "Mcyln": "Unknown 1",
+        "Mcube10": "Unknown 2",
+        "Mcyln10": "Unknown 3",
+        "MwtrSB": "Water Splashes",
+        "MygnSB": "Unknown 5",
+        "Owater": "Unknown 6",
+        "Astop": "Unknown 7",
       }
     },
     {

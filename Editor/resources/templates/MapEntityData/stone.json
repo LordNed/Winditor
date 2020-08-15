@@ -3,6 +3,23 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x07000000,
+      "Hidden": false,
+      "Category": "stone",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Small Rock",
+        1: "Small Black Rock",
+        2: "Boulder",
+        3: "Head Boulder",
+        4: "Small Boulder",
+      },
+      "UpdateModel": true
+    },
+    {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
@@ -37,23 +54,6 @@
       "Category": "stone",
       "ToolTip": "",
       "DataType": "Integer"
-    },
-    {
-      "Name": "Type",
-      "ValueSource": "Parameters",
-      "Mask": 0x07000000,
-      "Hidden": false,
-      "Category": "stone",
-      "ToolTip": "",
-      "DataType": "Enum",
-      "EnumValues": {
-        0: "Small Rock",
-        1: "Small Black Rock",
-        2: "Boulder",
-        3: "Head Boulder",
-        4: "Small Boulder",
-      },
-      "UpdateModel": true
     },
     {
       "Name": "Unknown_6",

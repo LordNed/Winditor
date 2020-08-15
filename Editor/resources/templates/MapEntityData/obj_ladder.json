@@ -3,13 +3,28 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Length",
       "ValueSource": "Parameters",
       "Mask": 0x00000007,
       "Hidden": false,
       "Category": "obj_ladder",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Short",
+        1: "Medium",
+        2: "Long",
+        3: "Very Long",
+        4: "Very Short",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Mhsg6": "Short",
+        "Mhsg9": "Medium",
+        "Mhsg12": "Long",
+        "Mhsg15": "Very Long",
+        "Mhsg4h": "Very Short",
+      }
     },
     {
       "Name": "Unknown_2",

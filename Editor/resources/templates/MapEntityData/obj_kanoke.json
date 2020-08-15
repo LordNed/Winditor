@@ -7,17 +7,21 @@
       "ValueSource": "Parameters",
       "Mask": 0x00000001,
       "Hidden": false,
-      "Category": "obj_kanoke",
+      "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Boolean",
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "MKanoke": false,
+        "MKanok2": true,
+      }
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
       "Mask": 0x0000003E,
       "Hidden": false,
-      "Category": "obj_kanoke",
+      "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -26,7 +30,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00000040,
       "Hidden": false,
-      "Category": "obj_kanoke",
+      "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -35,7 +39,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_kanoke",
+      "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -44,7 +48,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "obj_kanoke",
+      "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -53,7 +57,7 @@
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "obj_kanoke",
+      "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Integer"
     },

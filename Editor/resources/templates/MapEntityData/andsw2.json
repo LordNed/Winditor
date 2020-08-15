@@ -3,15 +3,6 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Num Switches to Check",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "andsw2",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
@@ -25,21 +16,30 @@
       }
     },
     {
-      "Name": "Switch to Set",
-      "ValueSource": "Parameters",
-      "Mask": 0x00FF0000,
-      "Hidden": false,
-      "Category": "andsw2",
-      "ToolTip": "The switch to be set once all the switches to check have been set.",
-      "DataType": "Integer"
-    },
-    {
       "Name": "First Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "andsw2",
       "ToolTip": "The first switch index to check. The other switches it checks are after this one sequentially.\nFor example, if this is 5 and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Num Switches to Check",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "andsw2",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Switch to Set",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "andsw2",
+      "ToolTip": "The switch to be set once all the switches to check have been set.",
       "DataType": "Integer"
     },
     {

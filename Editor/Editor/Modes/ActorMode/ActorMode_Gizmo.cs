@@ -45,6 +45,10 @@ namespace WindEditor.Editor.Modes
             {
                 // Hide the Transform Gizmo.
                 TransformGizmo.Enabled = false;
+                if (TransformGizmo.IsTransforming)
+                {
+                    TransformGizmo.EndTransform();
+                }
             }
 
             if (!TransformGizmo.Enabled)

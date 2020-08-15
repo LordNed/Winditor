@@ -215,11 +215,20 @@ namespace WindEditor
         [JsonProperty("UpdateModel")]
         public bool UpdateModel { get; set; }
 
+        [JsonProperty("DefaultsByActorName")]
+        public Dictionary<string, object> DefaultsByActorName { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
         public ActorBitfieldDescriptor(
-            string Name, string Source, uint Mask, uint Shift, string Category, bool Hidden, object defaultVal, string Tip, string Type, Dictionary<int, string> Vals, int EnumDefault, bool BoolDefault, int[] BoolNonDefaults, bool UpdModel
+            string Name, string Source, uint Mask, uint Shift,
+            string Category, bool Hidden, object defaultVal,
+            string Tip, string Type,
+            Dictionary<int, string> Vals, int EnumDefault,
+            bool BoolDefault, int[] BoolNonDefaults,
+            bool UpdModel,
+            Dictionary<string, object> DefaultsByName
         )
         {
             FieldName = Name;
@@ -235,6 +244,7 @@ namespace WindEditor
             BooleanDefaultValue = BoolDefault;
             BooleanNonDefaults = BoolNonDefaults;
             UpdateModel = UpdModel;
+            DefaultsByActorName = DefaultsByName;
         }
     }
 #pragma warning restore 0649
@@ -357,6 +367,19 @@ namespace WindEditor
                     case FourCC.ACT9:
                     case FourCC.ACTa:
                     case FourCC.ACTb:
+                    case FourCC.TRES:
+                    case FourCC.TRE0:
+                    case FourCC.TRE1:
+                    case FourCC.TRE2:
+                    case FourCC.TRE3:
+                    case FourCC.TRE4:
+                    case FourCC.TRE5:
+                    case FourCC.TRE6:
+                    case FourCC.TRE7:
+                    case FourCC.TRE8:
+                    case FourCC.TRE9:
+                    case FourCC.TREa:
+                    case FourCC.TREb:
                     case FourCC.TGOB:
                         for (int i = 0; i < chunk.ElementCount; i++)
                         {

@@ -71,16 +71,8 @@ namespace WindEditor
                 isLocked = true;
             }
 
-            VirtualFilesystemDirectory stage_dir = null;
-            WDOMNode node = Parent;
-
-            while (!(node is WStage))
-            {
-                node = node.Parent;
-            }
-
-            WStage stage_node = node as WStage;
-            stage_dir = stage_node.SourceDirectory;
+            WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+            VirtualFilesystemDirectory stage_dir = stage.SourceDirectory;
 
             if (Switch2 != 255 || (!isLocked && Switch1 != 255))
             {

@@ -19,8 +19,19 @@
 			}
 			return sanitizedValue;
 		}
+		string GetDefaultValueSetter(string fieldName, object defaultValue, string jsonDataType, string codeDataType) {
+			if (jsonDataType == "Enum") {
+				return $"{fieldName} = {codeDataType}.{EscapeEnumName(defaultValue as string)};";
+			} else if (jsonDataType == "Boolean") {
+				return $"{fieldName} = {((bool)defaultValue ? "true" : "false")};";
+			} else {
+				return $"{fieldName} = {defaultValue};";
+			}
+		}
 
+		Dictionary<string, string> paramTypes = new Dictionary<string, string>();
 		List<string> defaultValueSetters = new List<string>();
+		Dictionary<string, List<string>> nameSpecificDefaultValueSetters = new Dictionary<string, List<string>>();
 
 		if (descriptor.ParameterFields == null)
 			descriptor.ParameterFields = new ActorBitfieldDescriptor[0];
@@ -156,17 +167,24 @@
 					break;
 			}
 
+			paramTypes[fieldName] = dataType;
+
 			object defaultValue = field.DefaultValue;
 			if (defaultValue != null) {
-				if (field.DataType == "Enum") {
-					defaultValueSetters.Add($"{fieldName} = {dataType}.{EscapeEnumName(defaultValue as string)};");
-				} else {
-					defaultValueSetters.Add($"{fieldName} = {defaultValue};");
-				}
+				defaultValueSetters.Add(GetDefaultValueSetter(fieldName, defaultValue, field.DataType, dataType));
 			} else if (field.DataType == "Integer" || field.DataType == "SignedInteger") {
 				defaultValueSetters.Add($"{fieldName} = -1;");
 			} else if (field.DataType == "Path" || field.DataType == "Exit" || field.DataType == "StageExit" || field.DataType == "Event") {
 				defaultValueSetters.Add($"{fieldName} = null;");
+			}
+
+			if (field.DefaultsByActorName != null) {
+				foreach (KeyValuePair<string, object> entry in field.DefaultsByActorName) {
+					if (!nameSpecificDefaultValueSetters.ContainsKey(entry.Key))
+						nameSpecificDefaultValueSetters[entry.Key] = new List<string>();
+
+					nameSpecificDefaultValueSetters[entry.Key].Add(GetDefaultValueSetter(fieldName, entry.Value, field.DataType, dataType));
+				}
 			}
 #>
 <#		 // We hide padding and other fields that the user doesn't need to see/change.

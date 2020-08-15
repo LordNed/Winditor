@@ -224,6 +224,45 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
+			if (Name == "agbA") {
+				Type = TypeEnum.agbA;
+			}
+			if (Name == "agbAT") {
+				Type = TypeEnum.agbAT;
+			}
+			if (Name == "agbMARK") {
+				Type = TypeEnum.agbMARK;
+			}
+			if (Name == "agbA2") {
+				Type = TypeEnum.agbA2;
+			}
+			if (Name == "agbF2") {
+				Type = TypeEnum.agbF2;
+			}
+			if (Name == "agbF") {
+				Type = TypeEnum.agbF;
+			}
+			if (Name == "agbTBOX") {
+				Type = TypeEnum.Tingle_Bomb_Trigger;
+			}
+			if (Name == "agbMW") {
+				Type = TypeEnum.agbMW;
+			}
+			if (Name == "agbCSW") {
+				Type = TypeEnum.agbCSW;
+			}
+			if (Name == "agbR") {
+				Type = TypeEnum.agbR;
+			}
+			if (Name == "agbB") {
+				Type = TypeEnum.agbB;
+			}
+			if (Name == "agbD") {
+				Type = TypeEnum.agbD;
+			}
+			if (Name == "agbFA") {
+				Type = TypeEnum.agbFA;
+			}
 		}
 	}
 
@@ -512,23 +551,6 @@ namespace WindEditor
 	public partial class andsw0 : Actor
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("andsw0", "Num Switches to Check", true, "How many switches to check.", SourceScene.Room)]
-		public int NumSwitchestoCheck
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("NumSwitchestoCheck");
-			}
-		}
 		public enum TypeEnum
 		{
 			Normal = 0,
@@ -571,6 +593,23 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("FirstSwitchtoCheck");
+			}
+		}
+
+		[WProperty("andsw0", "Num Switches to Check", true, "How many switches to check.", SourceScene.Room)]
+		public int NumSwitchestoCheck
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("NumSwitchestoCheck");
 			}
 		}
 
@@ -640,8 +679,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			NumSwitchestoCheck = -1;
 			FirstSwitchtoCheck = -1;
+			NumSwitchestoCheck = -1;
 			SwitchtoSet = -1;
 			Event = null;
 			TimeLimitHalfSeconds = -1;
@@ -652,23 +691,6 @@ namespace WindEditor
 	public partial class andsw2 : Actor
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("andsw2", "Num Switches to Check", true, "", SourceScene.Room)]
-		public int NumSwitchestoCheck
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("NumSwitchestoCheck");
-			}
-		}
 		public enum TypeEnum
 		{
 			Unknown_0 = 0,
@@ -695,23 +717,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "Switch to Set", true, "The switch to be set once all the switches to check have been set.", SourceScene.Room)]
-		public int SwitchtoSet
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("SwitchtoSet");
-			}
-		}
-
 		[WProperty("andsw2", "First Switch to Check", true, "The first switch index to check. The other switches it checks are after this one sequentially.\nFor example, if this is 5 and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.", SourceScene.Room)]
 		public int FirstSwitchtoCheck
 		{ 
@@ -726,6 +731,40 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FirstSwitchtoCheck");
+			}
+		}
+
+		[WProperty("andsw2", "Num Switches to Check", true, "", SourceScene.Room)]
+		public int NumSwitchestoCheck
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("NumSwitchestoCheck");
+			}
+		}
+
+		[WProperty("andsw2", "Switch to Set", true, "The switch to be set once all the switches to check have been set.", SourceScene.Room)]
+		public int SwitchtoSet
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -778,9 +817,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
+			FirstSwitchtoCheck = -1;
 			NumSwitchestoCheck = -1;
 			SwitchtoSet = -1;
-			FirstSwitchtoCheck = -1;
 			Event = null;
 			TimeLimitHalfSeconds = -1;
 		}
@@ -1354,6 +1393,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			WateredSwitch = -1;
+			if (Name == "BFlower") {
+				FlowerType = FlowerTypeEnum.Ripe;
+			}
+			if (Name == "VbakH") {
+				FlowerType = FlowerTypeEnum.Withered;
+			}
 		}
 	}
 
@@ -1580,29 +1625,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Bokoblin", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.", SourceScene.Room)]
-		public bool SwitchSpawnsBokoblin
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
-				if (value_as_int == 0) {
-					return false;
-				} else if (value_as_int == 255) {
-					return false;
-				} else {
-					return true;
-				}
-			}
-
-			set
-			{
-				int value_as_int = value ? 1 : 0;
-				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
-				OnPropertyChanged("SwitchSpawnsBokoblin");
-			}
-		}
-
 		[WProperty("Bokoblin", "Is Green", true, "If this is set, the Bokoblin is green. However, this is overriden by the Pink Bokoblin with Telescope type.", SourceScene.Room)]
 		public bool IsGreen
 		{ 
@@ -1698,6 +1720,29 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+			}
+		}
+
+		[WProperty("Bokoblin", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.", SourceScene.Room)]
+		public bool SwitchSpawnsBokoblin
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
+				OnPropertyChanged("SwitchSpawnsBokoblin");
 			}
 		}
 
@@ -2597,6 +2642,21 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			SightRangeTens = -1;
 			DisableSpawnSwitch = -1;
+			if (Name == "c_green") {
+				ColorType = ColorTypeEnum.Green;
+			}
+			if (Name == "c_red") {
+				ColorType = ColorTypeEnum.Red;
+			}
+			if (Name == "c_blue") {
+				ColorType = ColorTypeEnum.Blue;
+			}
+			if (Name == "c_black") {
+				ColorType = ColorTypeEnum.Dark;
+			}
+			if (Name == "c_kiiro") {
+				ColorType = ColorTypeEnum.Yellow;
+			}
 		}
 	}
 
@@ -2940,24 +3000,6 @@ namespace WindEditor
 	public partial class door10 : Actor
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
-		public int Switch1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Switch1");
-				UpdateModel();
-			}
-		}
 		public enum TypeEnum
 		{
 			Normal = 0,
@@ -2985,6 +3027,24 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
+		public int Switch1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("Switch1");
 				UpdateModel();
 			}
 		}
@@ -3107,6 +3167,27 @@ namespace WindEditor
 			ToRoomNumber = -1;
 			ShipID = -1;
 			Arg1 = -1;
+			if (Name == "door10") {
+				Type = TypeEnum.Normal;
+			}
+			if (Name == "door11") {
+				Type = TypeEnum.Normal;
+			}
+			if (Name == "door20") {
+				Type = TypeEnum.Boss;
+			}
+			if (Name == "door21") {
+				Type = TypeEnum.Boss;
+			}
+			if (Name == "Zenshut") {
+				Type = TypeEnum.Barred_until_all_enemies_dead;
+			}
+			if (Name == "keyshut") {
+				Type = TypeEnum.Locked;
+			}
+			if (Name == "K_Zshut") {
+				Type = TypeEnum.Locked_and_barred;
+			}
 		}
 	}
 
@@ -3293,6 +3374,36 @@ namespace WindEditor
 			ToRoomNumber = -1;
 			EventID = -1;
 			ShipID = -1;
+			if (Name == "door12") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Earth_Temple_Normal;
+			}
+			if (Name == "door12M") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Earth_Temple_Miniboss;
+			}
+			if (Name == "door12B") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Earth_Temple_Boss;
+			}
+			if (Name == "door13") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Wind_Temple_Normal;
+			}
+			if (Name == "door13M") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Wind_Temple_Miniboss;
+			}
+			if (Name == "door13B") {
+				BehaviorType = BehaviorTypeEnum.Normal;
+				AppearanceType = AppearanceTypeEnum.Wind_Temple_Boss;
+			}
+			if (Name == "keyS12") {
+				BehaviorType = BehaviorTypeEnum.Locked;
+			}
+			if (Name == "ZenS12") {
+				BehaviorType = BehaviorTypeEnum.Barred_until_all_enemies_dead;
+			}
 		}
 	}
 
@@ -3947,37 +4058,6 @@ namespace WindEditor
 	public partial class fm : Actor
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("fm", "Link Captured Exit", true, "Which exit this Floormaster takes Link through when it captures him.", SourceScene.Room)]
-		public ExitData LinkCapturedExit
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (value_as_int == 0xFF) { return null; }
-				WDOMNode cur_object = this;
-				while (cur_object.Parent != null)
-				{
-					cur_object = cur_object.Parent;
-				}
-				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
-				if (value_as_int >= list.Count) { return null; }
-				return list[value_as_int];
-			}
-
-			set
-			{
-				WDOMNode cur_object = this;
-				while (cur_object.Parent != null)
-				{
-					cur_object = cur_object.Parent;
-				}
-				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
-				int value_as_int = list.IndexOf(value);
-				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("LinkCapturedExit");
-			}
-		}
 		public enum TypeEnum
 		{
 			Stalker_unused = 0,
@@ -4096,6 +4176,37 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("fm", "Link Captured Exit", true, "Which exit this Floormaster takes Link through when it captures him.", SourceScene.Room)]
+		public ExitData LinkCapturedExit
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<ExitData> list = cur_object.GetChildrenOfType<ExitData>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("LinkCapturedExit");
+			}
+		}
+
 		[WProperty("fm", "Partner Captured Exit", true, "Which stage exit this Floormaster takes Medli/Makar through when it captures them.", SourceScene.Stage)]
 		public ExitData PartnerCapturedExit
 		{ 
@@ -4145,12 +4256,21 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			LinkCapturedExit = null;
 			Path = null;
 			EnableSpawnSwitch = -1;
 			DisableSpawnSwitch = -1;
+			LinkCapturedExit = null;
 			PartnerCapturedExit = null;
 			SightRangeHundreds = -1;
+			if (Name == "Fmaster") {
+				Type = TypeEnum.Stalker_unused;
+			}
+			if (Name == "Fmastr1") {
+				Type = TypeEnum.Follows_path;
+			}
+			if (Name == "Fmastr2") {
+				Type = TypeEnum.Doesnt_follow_path;
+			}
 		}
 	}
 
@@ -4520,6 +4640,55 @@ namespace WindEditor
 		{
 			
 		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			if (Name == "kusax1") {
+				Type = TypeEnum.Grass;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "kusax7") {
+				Type = TypeEnum.Grass;
+				SpawnPattern = SpawnPatternEnum._7_Grass_Bunches;
+			}
+			if (Name == "kusax21") {
+				Type = TypeEnum.Grass;
+				SpawnPattern = SpawnPatternEnum._21_Grass_Bunches;
+			}
+			if (Name == "flower") {
+				Type = TypeEnum.White_Flower;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "flwr7") {
+				Type = TypeEnum.White_Flower;
+				SpawnPattern = SpawnPatternEnum._7_White_Flowers;
+			}
+			if (Name == "flwr17") {
+				Type = TypeEnum.White_Flower;
+				SpawnPattern = SpawnPatternEnum._17_White_Flowers;
+			}
+			if (Name == "pflower") {
+				Type = TypeEnum.Pink_Flower;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "pflwrx7") {
+				Type = TypeEnum.Pink_Flower;
+				SpawnPattern = SpawnPatternEnum._7_Pink_Flowers;
+			}
+			if (Name == "swood") {
+				Type = TypeEnum.Tree;
+				SpawnPattern = SpawnPatternEnum.Single;
+			}
+			if (Name == "swood3") {
+				Type = TypeEnum.Tree;
+				SpawnPattern = SpawnPatternEnum._3_Trees;
+			}
+			if (Name == "swood5") {
+				Type = TypeEnum.Tree;
+				SpawnPattern = SpawnPatternEnum._5_Trees;
+			}
+		}
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
@@ -4627,6 +4796,12 @@ namespace WindEditor
 			NumberofGyorgs = -1;
 			SightRangeThousands = -1;
 			EnableSpawnSwitch = -1;
+			if (Name == "GyCtrl") {
+				Type = TypeEnum.Follows_you_across_sectors;
+			}
+			if (Name == "GyCtrlB") {
+				Type = TypeEnum.Stays_in_sector;
+			}
 		}
 	}
 
@@ -6009,6 +6184,12 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Path = null;
 			EnableSpawnSwitch = -1;
+			if (Name == "keeth") {
+				IsFireKeese = false;
+			}
+			if (Name == "Fkeeth") {
+				IsFireKeese = true;
+			}
 		}
 	}
 
@@ -6228,21 +6409,34 @@ namespace WindEditor
 	public partial class knob00 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+		}
 
-		[WProperty("knob00", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("knob00", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
-				return value_as_int;
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
-				OnPropertyChanged("Unknown_1");
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				OnPropertyChanged("Type");
 			}
 		}
 		public enum StyleEnum
@@ -6295,6 +6489,44 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Door", "Room Number", true, "", SourceScene.Room)]
+		public int RoomNumber
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				OnPropertyChanged("RoomNumber");
+			}
+		}
+
+		[WProperty("knob00", "Type 2", true, "Unused, seems to just make it update its transformation (both visual and collision) every frame?", SourceScene.Room)]
+		public bool Type2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xF0000000) >> 28);
+				if (value_as_int == 1) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+				OnPropertyChanged("Type2");
+			}
+		}
+
 		// Constructor
 		public knob00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -6304,8 +6536,32 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			MessageID = -1;
+			RoomNumber = -1;
+			if (Name == "KNOB00") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "KNOB01") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "KNOB02") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "KNOB03") {
+				Type = TypeEnum.Unknown_3;
+			}
+			if (Name == "KNOB00D") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "KNOB01D") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "KNOB02D") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "KNOB03D") {
+				Type = TypeEnum.Unknown_3;
+			}
 		}
 	}
 
@@ -10755,6 +11011,32 @@ namespace WindEditor
 	public partial class nzg : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Spawns_Rats = 0,
+			Spawns_Bombchus = 1,
+			Spawns_Rats_and_Bombchus = 2,
+		}
+
+
+		[WProperty("nzg", "Type", true, "The type that spawns just Rats also has the Rat Shopkeeper in it.\nThe type that spawns both Rats and Bombchus has a random 50% chance of which to spawn each time it spawns one.", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("nzg", "Sight Range (Fives)", true, "This number multiplied by 5 is the range around the hole it will notice the player and start spawning Rats and/or Bombchus.", SourceScene.Room)]
 		public int SightRangeFives
@@ -10787,32 +11069,6 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("MaximumNumberofRats");
-			}
-		}
-		public enum TypeEnum
-		{
-			Spawns_Rats = 0,
-			Spawns_Bombchus = 1,
-			Spawns_Rats_and_Bombchus = 2,
-		}
-
-
-		[WProperty("nzg", "Type", true, "The type that spawns just Rats also has the Rat Shopkeeper in it.\nThe type that spawns both Rats and Bombchus has a random 50% chance of which to spawn each time it spawns one.", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Type");
 			}
 		}
 		public int Unused
@@ -11669,6 +11925,15 @@ namespace WindEditor
 			HeadRotationSpeed = -1;
 			LaserPath = null;
 			DroppedItemPickupFlag = -1;
+			if (Name == "Hmos1") {
+				Type = TypeEnum.Blue_Beamos;
+			}
+			if (Name == "Hmos2") {
+				Type = TypeEnum.Red_Beamos;
+			}
+			if (Name == "Hmos3") {
+				Type = TypeEnum.Laser_Barrier;
+			}
 		}
 	}
 
@@ -13974,6 +14239,21 @@ namespace WindEditor
 			Unknown_6 = -1;
 			PathtoFollow = null;
 			SalvageCorpPathtoFollow = null;
+			if (Name == "Ikada") {
+				Type = TypeEnum.Raft;
+			}
+			if (Name == "ikada_h") {
+				Type = TypeEnum.Beedles_Shop_Ship;
+			}
+			if (Name == "ikadaS") {
+				Type = TypeEnum.Submarine;
+			}
+			if (Name == "ikada_u") {
+				Type = TypeEnum.Beedles_Special_Shop_Ship;
+			}
+			if (Name == "Svsp") {
+				Type = TypeEnum.Salvage_Corp_Ship;
+			}
 		}
 	}
 
@@ -14105,7 +14385,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_kanoke", "Is Upright", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Is Upright", true, "", SourceScene.Room)]
 		public bool IsUpright
 		{ 
 			get
@@ -14129,7 +14409,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_2", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_2", true, "", SourceScene.Room)]
 		public int Unknown_2
 		{ 
 			get
@@ -14146,7 +14426,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_3", true, "", SourceScene.Room)]
 		public int Unknown_3
 		{ 
 			get
@@ -14163,7 +14443,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -14180,7 +14460,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_kanoke", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Coffin", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -14210,6 +14490,12 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
+			if (Name == "MKanoke") {
+				IsUpright = false;
+			}
+			if (Name == "MKanok2") {
+				IsUpright = true;
+			}
 		}
 	}
 
@@ -14217,21 +14503,33 @@ namespace WindEditor
 	public partial class obj_ladder : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum LengthEnum
+		{
+			Short = 0,
+			Medium = 1,
+			Long = 2,
+			Very_Long = 3,
+			Very_Short = 4,
+		}
 
-		[WProperty("obj_ladder", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("obj_ladder", "Length", true, "", SourceScene.Room)]
+		public LengthEnum Length
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000007) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(LengthEnum), value_as_int))
+					value_as_int = 0;
+				return (LengthEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Length");
+				UpdateModel();
 			}
 		}
 
@@ -14278,9 +14576,23 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
+			if (Name == "Mhsg6") {
+				Length = LengthEnum.Short;
+			}
+			if (Name == "Mhsg9") {
+				Length = LengthEnum.Medium;
+			}
+			if (Name == "Mhsg12") {
+				Length = LengthEnum.Long;
+			}
+			if (Name == "Mhsg15") {
+				Length = LengthEnum.Very_Long;
+			}
+			if (Name == "Mhsg4h") {
+				Length = LengthEnum.Very_Short;
+			}
 		}
 	}
 
@@ -14965,6 +15277,54 @@ namespace WindEditor
 			StayMovedtoPath = null;
 			StayMovedSwitch1 = -1;
 			StayMovedSwitch2 = -1;
+			if (Name == "osiBLK0") {
+				Type = TypeEnum.Black_Box_A;
+			}
+			if (Name == "osiBLK1") {
+				Type = TypeEnum.Black_Box_With_Statue_on_Top;
+			}
+			if (Name == "Kkiba") {
+				Type = TypeEnum.Breakable_Wooden_Crate;
+			}
+			if (Name == "Hseki2") {
+				Type = TypeEnum.Unbreakable_Wooden_Crate_B;
+			}
+			if (Name == "Hseki7") {
+				Type = TypeEnum.Unbreakable_Wooden_Crate_C;
+			}
+			if (Name == "Mmrr") {
+				Type = TypeEnum.Mirror;
+			}
+			if (Name == "MkieBB") {
+				Type = TypeEnum.Black_Box_B;
+			}
+			if (Name == "Ecube") {
+				Type = TypeEnum.Mossy_Black_Box;
+			}
+			if (Name == "Hjump1") {
+				Type = TypeEnum.Metal_Box_With_Spring;
+			}
+			if (Name == "Hbox1") {
+				Type = TypeEnum.Metal_Box;
+			}
+			if (Name == "MpwrB") {
+				Type = TypeEnum.Big_Black_Box;
+			}
+			if (Name == "DBLK0") {
+				Type = TypeEnum.Black_Box_A;
+				DoNotStayMovedAfterReload = true;
+			}
+			if (Name == "DBLK1") {
+				Type = TypeEnum.Black_Box_With_Statue_on_Top;
+				DoNotStayMovedAfterReload = true;
+			}
+			if (Name == "DKkiba") {
+				Type = TypeEnum.Breakable_Wooden_Crate;
+				DoNotStayMovedAfterReload = true;
+			}
+			if (Name == "Hbox2") {
+				Type = TypeEnum.Golden_Crate;
+			}
 		}
 	}
 
@@ -15287,6 +15647,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
@@ -15361,6 +15722,30 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			SwitchtoCheck = -1;
 			Unknown_4 = -1;
+			if (Name == "Mcube") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "Mcyln") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "Mcube10") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "Mcyln10") {
+				Type = TypeEnum.Unknown_3;
+			}
+			if (Name == "MwtrSB") {
+				Type = TypeEnum.Water_Splashes;
+			}
+			if (Name == "MygnSB") {
+				Type = TypeEnum.Unknown_5;
+			}
+			if (Name == "Owater") {
+				Type = TypeEnum.Unknown_6;
+			}
+			if (Name == "Astop") {
+				Type = TypeEnum.Unknown_7;
+			}
 		}
 	}
 
@@ -16310,6 +16695,33 @@ namespace WindEditor
 	public partial class obj_swheavy : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+		}
+
+
+		[WProperty("obj_swheavy", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("obj_swheavy", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
@@ -16328,23 +16740,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swheavy", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Unknown_2");
-			}
-		}
-
 		// Constructor
 		public obj_swheavy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -16355,7 +16750,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
+			if (Name == "Hhbot1") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "Hhbot1N") {
+				Type = TypeEnum.Unknown_3;
+			}
 		}
 	}
 
@@ -16434,6 +16834,33 @@ namespace WindEditor
 	public partial class obj_swpush : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Press_Once = 0,
+			Hold_Down = 1,
+			Press_Once_Inverted = 2,
+			Iron_Boots_Button_Base = 3,
+		}
+
+
+		[WProperty("Button", "Type", true, "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("Button", "Event to Start", true, "", SourceScene.Stage)]
 		public MapEvent EventtoStart
@@ -16497,33 +16924,6 @@ namespace WindEditor
 				OnPropertyChanged("AltModelNoEffect");
 			}
 		}
-		public enum TypeEnum
-		{
-			Press_Once = 0,
-			Hold_Down = 1,
-			Press_Once_Inverted = 2,
-			Iron_Boots_Button_Base = 3,
-		}
-
-
-		[WProperty("Button", "Type", true, "'Press Once' buttons stay down once you've pressed them. They only unpress themselves if something else unsets their switch.\n'Hold Down' buttons must be held down by something or they will unpress themselves automatically.\n'Press Once Inverted' buttons start off pressed down, and only unpress themselves when something else sets their switch. When one is pressed, it unsets its switch instead of setting it.\n'Iron Boots Button Base' is unused and doesn't appear to work.", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Type");
-			}
-		}
 
 		[WProperty("Button", "Should Use Disabled Switch", true, "For 'Hold Down' type buttons, this must be checked for 'Disabled Switch' to work. No effect on other types.", SourceScene.Room)]
 		public bool ShouldUseDisabledSwitch
@@ -16577,6 +16977,15 @@ namespace WindEditor
 			EventtoStart = null;
 			SwitchtoSet = -1;
 			DisabledSwitch = -1;
+			if (Name == "Kbota_A") {
+				Type = TypeEnum.Press_Once;
+			}
+			if (Name == "Kbota_B") {
+				Type = TypeEnum.Hold_Down;
+			}
+			if (Name == "KbotaC") {
+				Type = TypeEnum.Press_Once_Inverted;
+			}
 		}
 	}
 
@@ -17744,6 +18153,21 @@ namespace WindEditor
 			ExittoDestinationPot = null;
 			ThisUnlockedSwitch = -1;
 			DestinationUnlockedSwitch = -1;
+			if (Name == "Warpt") {
+				Type = TypeEnum.Locked_noncyclic_pot;
+			}
+			if (Name == "Warpnt") {
+				Type = TypeEnum.Unlocked_noncyclic_pot;
+			}
+			if (Name == "Warpts1") {
+				Type = TypeEnum.First_in_cycle;
+			}
+			if (Name == "Warpts2") {
+				Type = TypeEnum.Second_in_cycle;
+			}
+			if (Name == "Warpts3") {
+				Type = TypeEnum.Third_in_cycle;
+			}
 		}
 	}
 
@@ -17999,6 +18423,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			SightRangeThousands = -1;
+			if (Name == "Oq") {
+				Type = TypeEnum.Freshwater_Octorok;
+			}
+			if (Name == "Oqw") {
+				Type = TypeEnum.Saltwater_Octorok_that_shoots_at_a_certain_range;
+			}
 		}
 	}
 
@@ -19123,6 +19553,24 @@ namespace WindEditor
 			SalvageFlag = -1;
 			DuplicatePlacementID = -1;
 			SwitchtoCheck = -1;
+			if (Name == "Salvage") {
+				Type = TypeEnum.Needs_Chart;
+			}
+			if (Name == "SwSlvg") {
+				Type = TypeEnum.Checks_Switch;
+			}
+			if (Name == "Salvag2") {
+				Type = TypeEnum.Normal_Light_Ring;
+			}
+			if (Name == "SalvagN") {
+				Type = TypeEnum.Night_Only;
+			}
+			if (Name == "SalvagE") {
+				Type = TypeEnum.Octorok_Vase;
+			}
+			if (Name == "SalvFM") {
+				Type = TypeEnum.Full_Moon_Night_Only;
+			}
 		}
 	}
 
@@ -20096,6 +20544,35 @@ namespace WindEditor
 	public partial class stone : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Small_Rock = 0,
+			Small_Black_Rock = 1,
+			Boulder = 2,
+			Head_Boulder = 3,
+			Small_Boulder = 4,
+		}
+
+
+		[WProperty("stone", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
 
 		[WProperty("stone", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
@@ -20162,35 +20639,6 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
-			}
-		}
-		public enum TypeEnum
-		{
-			Small_Rock = 0,
-			Small_Black_Rock = 1,
-			Boulder = 2,
-			Head_Boulder = 3,
-			Small_Boulder = 4,
-		}
-
-
-		[WProperty("stone", "Type", true, "", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Type");
-				UpdateModel();
 			}
 		}
 
@@ -20410,6 +20858,33 @@ namespace WindEditor
 	public partial class swc00 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Set_and_Unset = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Only_Set = 3,
+		}
+
+
+		[WProperty("Switch Setter Trigger Region", "Type", true, "'Set and Unset' will set its 'Switch to Set' when the player enters the region, and unset it when the player leaves the region.\n'Only Set' will set it, but never unset it.", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00030000) >> 16);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("Switch Setter Trigger Region", "Switch to Set", true, "", SourceScene.Room)]
 		public int SwitchtoSet
@@ -20444,33 +20919,6 @@ namespace WindEditor
 				OnPropertyChanged("PrerequisiteSwitch");
 			}
 		}
-		public enum TypeEnum
-		{
-			Set_and_Unset = 0,
-			Unknown_1 = 1,
-			Unknown_2 = 2,
-			Only_Set = 3,
-		}
-
-
-		[WProperty("Switch Setter Trigger Region", "Type", true, "'Set and Unset' will set its 'Switch to Set' when the player enters the region, and unset it when the player leaves the region.\n'Only Set' will set it, but never unset it.", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00030000) >> 16);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
-				OnPropertyChanged("Type");
-			}
-		}
 
 		// Constructor
 		public swc00(FourCC fourCC, WWorld world) : base(fourCC, world)
@@ -20490,6 +20938,34 @@ namespace WindEditor
 	public partial class swhit0 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+		}
+
+
+		[WProperty("swhit0", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 4;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("swhit0", "Switch to Set", true, "Switch to set when hit.", SourceScene.Room)]
 		public int SwitchtoSet
@@ -20528,34 +21004,6 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Event");
-			}
-		}
-		public enum TypeEnum
-		{
-			Unknown_0 = 0,
-			Unknown_1 = 1,
-			Unknown_2 = 2,
-			Unknown_3 = 3,
-			Unknown_4 = 4,
-		}
-
-
-		[WProperty("swhit0", "Type", true, "", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 4;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
-				OnPropertyChanged("Type");
 			}
 		}
 
@@ -20837,6 +21285,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("ShowWindEmblemModel");
+				UpdateModel();
 			}
 		}
 
@@ -20850,6 +21299,12 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			SwitchtoSet = -1;
+			if (Name == "SWtact") {
+				ShowWindEmblemModel = false;
+			}
+			if (Name == "SWtactB") {
+				ShowWindEmblemModel = true;
+			}
 		}
 	}
 
@@ -21179,6 +21634,31 @@ namespace WindEditor
 	public partial class tag_evsw : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Set_and_Unset = 0,
+			Only_Set = 1,
+		}
+
+
+		[WProperty("Event Bit Switch Setter", "Type", true, "'Set and Unset' will set the switch if the event bit is set, and unset it if it's not.\n'Only Set' will set the switch if the event bit is set, but will never unset it.", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
+				OnPropertyChanged("Type");
+			}
+		}
 
 		[WProperty("Event Bit Switch Setter", "Switch to Set", true, "", SourceScene.Room)]
 		public int SwitchtoSet
@@ -21211,31 +21691,6 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("EventBittoCheck");
-			}
-		}
-		public enum TypeEnum
-		{
-			Set_and_Unset = 0,
-			Only_Set = 1,
-		}
-
-
-		[WProperty("Event Bit Switch Setter", "Type", true, "'Set and Unset' will set the switch if the event bit is set, and unset it if it's not.\n'Only Set' will set the switch if the event bit is set, but will never unset it.", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x03000000) >> 24);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
-				OnPropertyChanged("Type");
 			}
 		}
 
@@ -21823,6 +22278,15 @@ namespace WindEditor
 			Unknown_5 = -1;
 			Unknown_6 = -1;
 			Unknown_7 = -1;
+			if (Name == "LTag0") {
+				Type = TypeEnum.Invisible_Light_Region;
+			}
+			if (Name == "LTag1") {
+				Type = TypeEnum.Light_Beam;
+			}
+			if (Name == "LTagR0") {
+				Type = TypeEnum.Light_Detector;
+			}
 		}
 	}
 
@@ -21990,72 +22454,29 @@ namespace WindEditor
 	public partial class tag_msg : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("tag_msg", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
-				OnPropertyChanged("Unknown_1");
-			}
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
 		}
 
-		[WProperty("tag_msg", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("tag_msg", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
-			}
-		}
-
-		[WProperty("tag_msg", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("tag_msg", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+				OnPropertyChanged("Type");
 			}
 		}
 		public int MessageID
@@ -22074,8 +22495,25 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_msg", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("tag_msg", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("EnableSpawnSwitch");
+			}
+		}
+
+		[WProperty("tag_msg", "Enable Spawn Event Bit", true, "", SourceScene.Room)]
+		public int EnableSpawnEventBit
 		{ 
 			get
 			{
@@ -22087,7 +22525,47 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("EnableSpawnEventBit");
+			}
+		}
+
+		[WProperty("tag_msg", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("SwitchtoSet");
+			}
+		}
+
+		[WProperty("tag_msg", "Event", true, "", SourceScene.Stage)]
+		public MapEvent Event
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("Event");
 			}
 		}
 
@@ -22100,12 +22578,17 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
 			MessageID = -1;
-			Unknown_6 = -1;
+			EnableSpawnSwitch = -1;
+			EnableSpawnEventBit = -1;
+			SwitchtoSet = -1;
+			Event = null;
+			if (Name == "TagMsg") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "TagMsg2") {
+				Type = TypeEnum.Unknown_1;
+			}
 		}
 	}
 
@@ -22413,26 +22896,41 @@ namespace WindEditor
 	public partial class tbox : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum BehaviorTypeEnum
+		{
+			Normal = 0,
+			Spawn_when_a_switch_is_set = 1,
+			Spawn_when_all_enemies_dead = 2,
+			Visible_but_unopenable_until_a_switch_is_set = 3,
+			Transparent_until_a_switch_is_set = 4,
+			Apply_gravity = 5,
+			Spawn_on_Triforce_emblem_when_a_switch_is_set = 6,
+			Uses_Stage_Save_Info_1 = 7,
+			Uses_Stage_Save_Info_1_and_spawns_when_a_switch_is_set = 8,
+		}
 
-		[WProperty("tbox", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Treasure Chest", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000007F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BehaviorType");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Treasure Chest Flags", "Chest Open Flag", true, "", SourceScene.Room)]
+		public int ChestOpenFlag
 		{ 
 			get
 			{
@@ -22444,12 +22942,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ChestOpenFlag");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Treasure Chest Flags", "Appear Condition Switch", true, "", SourceScene.Room)]
+		public int AppearConditionSwitch
 		{ 
 			get
 			{
@@ -22461,29 +22959,40 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("AppearConditionSwitch");
 			}
 		}
+		public enum AppearanceTypeEnum
+		{
+			Light_wood = 0,
+			Dark_wood = 1,
+			Metal = 2,
+			Big_Key = 3,
+		}
 
-		[WProperty("tbox", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+
+		[WProperty("Treasure Chest", "Appearance Type", true, "", SourceScene.Room)]
+		public AppearanceTypeEnum AppearanceType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(AppearanceTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (AppearanceTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("AppearanceType");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("tbox", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Treasure Chest", "Room Number", true, "", SourceScene.Room)]
+		public int RoomNumber
 		{ 
 			get
 			{
@@ -22495,12 +23004,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("RoomNumber");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Treasure Chest Flags", "Open Switch", true, "", SourceScene.Room)]
+		public int OpenSwitch
 		{ 
 			get
 			{
@@ -22512,24 +23021,26 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("OpenSwitch");
 			}
 		}
 
-		[WProperty("tbox", "Unknown_7", true, "", SourceScene.Room)]
-		public int Unknown_7
+		[WProperty("Treasure Chest", "Item", true, "", SourceScene.Room)]
+		public ItemID Item
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+					value_as_int = 0;
+				return (ItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("Item");
 			}
 		}
 
@@ -22542,13 +23053,10 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
-			Unknown_6 = -1;
-			Unknown_7 = -1;
+			ChestOpenFlag = -1;
+			AppearConditionSwitch = -1;
+			RoomNumber = -1;
+			OpenSwitch = -1;
 		}
 	}
 
@@ -22897,23 +23405,44 @@ namespace WindEditor
 	public partial class tsubo : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Small_pot = 0,
+			Large_pot = 1,
+			Water_pot = 2,
+			Barrel = 3,
+			Stool = 4,
+			Skull = 5,
+			Bucket = 6,
+			Nut = 7,
+			Golden_crate = 8,
+			TotG_Pillar_Statue_A = 9,
+			TotG_Pillar_Statue_B = 10,
+			TotG_Pillar_Statue_C = 11,
+			TotG_Pillar_Statue_D = 12,
+			Seed = 13,
+			Fancy_pot = 14,
+			Wooden_crate = 15,
+		}
 
-		[WProperty("tsubo", "Dropped Item", true, "", SourceScene.Room)]
-		public DroppedItemID DroppedItem
+
+		[WProperty("Pots", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
-				return (DroppedItemID)value_as_int;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
-				OnPropertyChanged("DroppedItem");
+				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 		public enum BehaviorTypeEnum
@@ -22985,7 +23514,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("tsubo", "Behavior Type", true, "", SourceScene.Room)]
+		[WProperty("Pots", "Behavior Type", true, "", SourceScene.Room)]
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -23003,6 +23532,42 @@ namespace WindEditor
 				OnPropertyChanged("BehaviorType");
 			}
 		}
+
+		[WProperty("Pots", "Dropped Item", true, "", SourceScene.Room)]
+		public DroppedItemID DroppedItem
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+					value_as_int = 0;
+				return (DroppedItemID)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				OnPropertyChanged("DroppedItem");
+			}
+		}
+
+		[WProperty("Pots", "Item Pickup Flag", true, "", SourceScene.Room)]
+		public int ItemPickupFlag
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
+				OnPropertyChanged("ItemPickupFlag");
+			}
+		}
 		public enum Unknown_3Enum
 		{
 			Unknown_0 = 0,
@@ -23012,7 +23577,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("tsubo", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Pots", "Unknown_3", true, "", SourceScene.Room)]
 		public Unknown_3Enum Unknown_3
 		{ 
 			get
@@ -23031,64 +23596,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Item Pickup Flag", true, "", SourceScene.Room)]
-		public int ItemPickupFlag
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x007F0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
-				OnPropertyChanged("ItemPickupFlag");
-			}
-		}
-		public enum TypeEnum
-		{
-			Small_pot = 0,
-			Large_pot = 1,
-			Water_pot = 2,
-			Barrel = 3,
-			Stool = 4,
-			Skull = 5,
-			Bucket = 6,
-			Nut = 7,
-			Golden_crate = 8,
-			TotG_Pillar_Statue_A = 9,
-			TotG_Pillar_Statue_B = 10,
-			TotG_Pillar_Statue_C = 11,
-			TotG_Pillar_Statue_D = 12,
-			Seed = 13,
-			Fancy_pot = 14,
-			Wooden_crate = 15,
-		}
-
-
-		[WProperty("tsubo", "Type", true, "", SourceScene.Room)]
-		public TypeEnum Type
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
-					value_as_int = 0;
-				return (TypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
-				OnPropertyChanged("Type");
-				UpdateModel();
-			}
-		}
-
-		[WProperty("tsubo", "Unknown_6", true, "", SourceScene.Room)]
+		[WProperty("Pots", "Unknown_6", true, "", SourceScene.Room)]
 		public int Unknown_6
 		{ 
 			get
@@ -23105,7 +23613,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Do Not Ground On Spawn", true, "Normally, pots will teleport themselves to the nearest ground when they are spawned.\nIf this is checked, the pot will instead float where it was placed.\nFor Nuts, this also causes it to not start to rot away automatically on spawn.", SourceScene.Room)]
+		[WProperty("Pots", "Do Not Ground On Spawn", true, "Normally, pots will teleport themselves to the nearest ground when they are spawned.\nIf this is checked, the pot will instead float where it was placed.\nFor Nuts, this also causes it to not start to rot away automatically on spawn.", SourceScene.Room)]
 		public bool DoNotGroundOnSpawn
 		{ 
 			get
@@ -23128,7 +23636,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tsubo", "Enable Spawn/Activation Switch", true, "If the pot's behavior is set to 'Spawns When Switch is Set' and this switch is valid, the pot will not appear until this switch is set.\nIf the pot's behavior is set to 'Inactive Until Switch is Set' and this switch is valid, the pot will be visible, but cannot be broken, and picking it up will be strange and buggy, until this switch is set.\nNo effect on other behaviors.", SourceScene.Room)]
+		[WProperty("Pots", "Enable Spawn/Activation Switch", true, "If the pot's behavior is set to 'Spawns When Switch is Set' and this switch is valid, the pot will not appear until this switch is set.\nIf the pot's behavior is set to 'Inactive Until Switch is Set' and this switch is valid, the pot will be visible, but cannot be broken, and picking it up will be strange and buggy, until this switch is set.\nNo effect on other behaviors.", SourceScene.Room)]
 		public int EnableSpawnActivationSwitch
 		{ 
 			get
@@ -23158,6 +23666,42 @@ namespace WindEditor
 			ItemPickupFlag = -1;
 			Unknown_6 = -1;
 			EnableSpawnActivationSwitch = -1;
+			if (Name == "kotubo") {
+				Type = TypeEnum.Small_pot;
+			}
+			if (Name == "ootubo1") {
+				Type = TypeEnum.Large_pot;
+			}
+			if (Name == "Kmtub") {
+				Type = TypeEnum.Water_pot;
+			}
+			if (Name == "Ktaru") {
+				Type = TypeEnum.Barrel;
+			}
+			if (Name == "Ostool") {
+				Type = TypeEnum.Stool;
+			}
+			if (Name == "Odokuro") {
+				Type = TypeEnum.Skull;
+			}
+			if (Name == "Okioke") {
+				Type = TypeEnum.Bucket;
+			}
+			if (Name == "Kmi02") {
+				Type = TypeEnum.Seed;
+			}
+			if (Name == "Ptubo") {
+				Type = TypeEnum.Fancy_pot;
+			}
+			if (Name == "KkibaB") {
+				Type = TypeEnum.Wooden_crate;
+			}
+			if (Name == "Kmi00") {
+				Type = TypeEnum.Nut;
+			}
+			if (Name == "Hbox2S") {
+				Type = TypeEnum.Golden_crate;
+			}
 		}
 	}
 

@@ -42,7 +42,11 @@
       "Hidden": false,
       "Category": "ki",
       "ToolTip": "",
-      "DataType": "Boolean"
+      "DataType": "Boolean",
+      "DefaultsByActorName": {
+        "keeth": false,
+        "Fkeeth": true,
+      }
     },
     {
       "Name": "Path",

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WindEditor.ViewModel;
+using Newtonsoft.Json;
 
 namespace WindEditor
 {
@@ -18,6 +19,7 @@ namespace WindEditor
 
 		private MapLayer m_layer;
 		
+		[JsonIgnore]
 		[WProperty("Entity", "English Name", false, "", SourceScene.Room)]
 		public string EnglishName { get { return this.GetType().Name; } }
 
@@ -3992,153 +3994,6 @@ namespace WindEditor
 		}
 				
 
-		public enum BehaviorTypeEnum
-		{
-			Normal = 0,
-			Spawn_when_a_switch_is_set = 1,
-			Spawn_when_all_enemies_dead = 2,
-			Visible_but_unopenable_until_a_switch_is_set = 3,
-			Transparent_until_a_switch_is_set = 4,
-			Apply_gravity = 5,
-			Spawn_on_Triforce_emblem_when_a_switch_is_set = 6,
-			Uses_Stage_Save_Info_1 = 7,
-			Uses_Stage_Save_Info_1_and_spawns_when_a_switch_is_set = 8,
-		}
-
-
-		[WProperty("Treasure Chest", "Behavior Type", true, "", SourceScene.Room)]
-		public BehaviorTypeEnum BehaviorType
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0000007F) >> 0);
-				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
-					value_as_int = 0;
-				return (BehaviorTypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
-				OnPropertyChanged("BehaviorType");
-			}
-		}
-
-		[WProperty("Treasure Chest Flags", "Chest Open Flag", true, "", SourceScene.Room)]
-		public int ChestOpenFlag
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00000F80) >> 7);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
-				OnPropertyChanged("ChestOpenFlag");
-			}
-		}
-
-		[WProperty("Treasure Chest Flags", "Appear Condition Switch", true, "", SourceScene.Room)]
-		public int AppearConditionSwitch
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000FF000) >> 12);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("AppearConditionSwitch");
-			}
-		}
-		public enum AppearanceTypeEnum
-		{
-			Light_wood = 0,
-			Dark_wood = 1,
-			Metal = 2,
-			Big_Key = 3,
-		}
-
-
-		[WProperty("Treasure Chest", "Appearance Type", true, "", SourceScene.Room)]
-		public AppearanceTypeEnum AppearanceType
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
-				if (!Enum.IsDefined(typeof(AppearanceTypeEnum), value_as_int))
-					value_as_int = 0;
-				return (AppearanceTypeEnum)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
-				OnPropertyChanged("AppearanceType");
-				UpdateModel();
-			}
-		}
-
-		[WProperty("Treasure Chest", "Room Number", true, "", SourceScene.Room)]
-		public int RoomNumber
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("RoomNumber");
-			}
-		}
-
-		[WProperty("Treasure Chest Flags", "Open Switch", true, "", SourceScene.Room)]
-		public int OpenSwitch
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("OpenSwitch");
-			}
-		}
-
-		[WProperty("Treasure Chest", "Item", true, "", SourceScene.Room)]
-		public ItemID Item
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
-				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
-					value_as_int = 0;
-				return (ItemID)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Item");
-			}
-		}
 
 		// Constructor
 		public TreasureChest(FourCC fourCC, WWorld world) : base(fourCC, world)

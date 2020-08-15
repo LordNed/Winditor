@@ -60,6 +60,15 @@
     ]
   },
   {
+    "Name": "Wind Crest",
+    "Archive": "Itact",
+    "Models": [
+      {
+        "Path": "bdl/itact.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Link",
     "Archive": "Link",
     "Models": [

@@ -15,6 +15,7 @@
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Z" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.OpenRoomsCommand}" Key="O" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.SaveProjectCommand}" Key="S" Modifiers="Ctrl"/>

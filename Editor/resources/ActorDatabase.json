@@ -3475,7 +3475,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00",
-    "English Name": "Door",
+    "English Name": "Door KNOB00 (ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3509,7 +3509,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01",
-    "English Name": "Door",
+    "English Name": "Door KNOB01 (ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3525,7 +3525,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02",
-    "English Name": "Door",
+    "English Name": "Door KNOB02 (ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3540,7 +3540,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03",
-    "English Name": "Door",
+    "English Name": "Door KNOB03 (ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3555,7 +3555,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB00D",
-    "English Name": "Door",
+    "English Name": "Door KNOB00 (Non-ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3583,7 +3583,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB01D",
-    "English Name": "Door",
+    "English Name": "Door KNOB01 (Non-ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3600,7 +3600,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB02D",
-    "English Name": "Door",
+    "English Name": "Door KNOB02 (Non-ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3615,7 +3615,7 @@
     "ActorClassType": "knob00",
     "Wait Animations": null,
     "Actor Name": "KNOB03D",
-    "English Name": "Door",
+    "English Name": "Door KNOB03 (Non-ACTR)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8862,7 +8862,7 @@
     "ActorClassType": "obj_kanoke",
     "Wait Animations": null,
     "Actor Name": "MKanoke",
-    "English Name": "obj_kanoke",
+    "English Name": "Horizontal Coffin",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8881,7 +8881,7 @@
     "ActorClassType": "obj_kanoke",
     "Wait Animations": null,
     "Actor Name": "MKanok2",
-    "English Name": "obj_kanoke",
+    "English Name": "Upright Coffin",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9405,7 +9405,6 @@
     "Wait Animations": null,
     "Actor Name": "DBLK1",
     "English Name": "obj_movebox",
-    "Tags": null,
     "Explanation": null,
     "Locations": [
       "N/A"
@@ -12789,7 +12788,7 @@
     "ActorClassType": "swtact",
     "Wait Animations": null,
     "Actor Name": "SWtactB",
-    "English Name": "swtact",
+    "English Name": "Wind Waker Switch (With Floor Crest)",
     "Tags": null,
     "Explanation": null,
     "Locations": [

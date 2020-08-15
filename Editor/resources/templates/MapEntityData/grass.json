@@ -16,7 +16,20 @@
         2: "White Flower",
         3: "Pink Flower",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "kusax1": "Grass",
+        "kusax7": "Grass",
+        "kusax21": "Grass",
+        "flower": "White Flower",
+        "flwr7": "White Flower",
+        "flwr17": "White Flower",
+        "pflower": "Pink Flower",
+        "pflwrx7": "Pink Flower",
+        "swood": "Tree",
+        "swood3": "Tree",
+        "swood5": "Tree",
+      }
     },
     {
       "Name": "Spawn Pattern",
@@ -35,6 +48,19 @@
         5: "17 White Flowers",
         6: "7 Pink Flowers",
         7: "5 Trees",
+      },
+      "DefaultsByActorName": {
+        "kusax1": "Single",
+        "kusax7": "7 Grass Bunches",
+        "kusax21": "21 Grass Bunches",
+        "flower": "Single",
+        "flwr7": "7 White Flowers",
+        "flwr17": "17 White Flowers",
+        "pflower": "Single",
+        "pflwrx7": "7 Pink Flowers",
+        "swood": "Single",
+        "swood3": "3 Trees",
+        "swood5": "5 Trees",
       }
     },
     {

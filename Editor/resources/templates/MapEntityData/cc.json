@@ -39,7 +39,14 @@
         14: "Yellow and attacks instantly",
         15: "Red and attacks instantly and more vulnerabilities",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "c_green": "Green",
+        "c_red": "Red",
+        "c_blue": "Blue",
+        "c_black": "Dark",
+        "c_kiiro": "Yellow",
+      }
     },
     {
       "Name": "Sight Range (Tens)",

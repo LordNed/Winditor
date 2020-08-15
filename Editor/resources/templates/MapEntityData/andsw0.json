@@ -3,15 +3,6 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Num Switches to Check",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "andsw0",
-      "ToolTip": "How many switches to check.",
-      "DataType": "Integer"
-    },
-    {
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
@@ -33,6 +24,15 @@
       "Hidden": false,
       "Category": "andsw0",
       "ToolTip": "The first switch index to check. If this is 0, use (Switch to Set + 1) as the first switch to check instead.\nThe other switches it checks are sequential after the first one. For example, if the first switch is 5, and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Num Switches to Check",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "andsw0",
+      "ToolTip": "How many switches to check.",
       "DataType": "Integer"
     },
     {

@@ -14,7 +14,11 @@
         0: "Ripe",
         1: "Withered"
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "BFlower": "Ripe",
+        "VbakH": "Withered",
+      }
     },
     {
       "Name": "Watered Switch",

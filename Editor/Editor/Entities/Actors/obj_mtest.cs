@@ -12,13 +12,28 @@ namespace WindEditor
 	{
 		public override void PostLoad()
         {
-            m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 1f, 1f, 1f), true, false);
-			VisualScaleMultiplier = new Vector3(5f, 10f, 5f);
+			UpdateModel();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			switch (Type)
+			{
+				case TypeEnum.Water_Splashes:
+					m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 1f, 1f, 1f), true, false);
+					VisualScaleMultiplier = new Vector3(5f, 10f, 5f);
+					break;
+				// TODO
+				default:
+					m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(0.5f, 1f, 1f, 1f), true, false);
+					VisualScaleMultiplier = new Vector3(5f, 10f, 5f);
+					break;
+			}
 		}
 	}
 }

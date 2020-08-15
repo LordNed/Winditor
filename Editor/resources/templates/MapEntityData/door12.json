@@ -18,7 +18,17 @@
         4: "Unknown 4",
         4: "Unknown 5",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "door12": "Normal",
+        "door12M": "Normal",
+        "door12B": "Normal",
+        "door13": "Normal",
+        "door13M": "Normal",
+        "door13B": "Normal",
+        "keyS12": "Locked",
+        "ZenS12": "Barred until all enemies dead",
+      }
     },
     {
       "Name": "Appearance Type",
@@ -37,7 +47,15 @@
         12: "Wind Temple Boss",
       },
       "EnumDefaultValue": 7,
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "door12": "Earth Temple Normal",
+        "door12M": "Earth Temple Miniboss",
+        "door12B": "Earth Temple Boss",
+        "door13": "Wind Temple Normal",
+        "door13M": "Wind Temple Miniboss",
+        "door13B": "Wind Temple Boss",
+      }
     },
     {
       "Name": "Switch 1",

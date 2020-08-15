@@ -18,6 +18,14 @@
         4: "Night Only",
         5: "Octorok Vase",
         6: "Full Moon Night Only",
+      },
+      "DefaultsByActorName": {
+        "Salvage": "Needs Chart",
+        "SwSlvg": "Checks Switch",
+        "Salvag2": "Normal Light Ring",
+        "SalvagN": "Night Only",
+        "SalvagE": "Octorok Vase",
+        "SalvFM": "Full Moon Night Only",
       }
     },
     {

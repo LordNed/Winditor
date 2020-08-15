@@ -97,7 +97,7 @@ namespace WindEditor.Editor.Modes
                 bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
                 bool shiftPressed = WInput.GetKey(Key.LeftShift) || WInput.GetKey(Key.RightShift);
 
-                if (!ctrlPressed & !shiftPressed)
+                if (!ctrlPressed && !shiftPressed)
                 {
                     foreach (WDOMNode node in EditorSelection.SelectedObjects)
                     {
@@ -427,8 +427,8 @@ namespace WindEditor.Editor.Modes
                 if (lyrNode.FourCC.ToString().StartsWith("TRE"))
                 {
                     // Only allow treasure chests in TRES.
-                    actorType = typeof(TreasureChest);
                     actorName = "takara";
+                    actorType = WResourceManager.GetTypeByName(actorName);
                 } else
                 {
                     WActorCreatorWindow actorCreator = new WActorCreatorWindow();

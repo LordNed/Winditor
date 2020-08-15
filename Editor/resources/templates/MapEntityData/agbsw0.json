@@ -17,7 +17,7 @@
         3: "agbA2",
         4: "agbF2",
         5: "agbF",
-        6: "Tingle Bomb Trigger", // agbTBOX
+        6: "Tingle Bomb Trigger",
         7: "agbMW",
         8: "agbCSW",
         9: "agbR",
@@ -27,7 +27,22 @@
         13: "Unknown 13",
         14: "Unknown 14",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "agbA": "agbA",
+        "agbAT": "agbAT",
+        "agbMARK": "agbMARK",
+        "agbA2": "agbA2",
+        "agbF2": "agbF2",
+        "agbF": "agbF",
+        "agbTBOX": "Tingle Bomb Trigger",
+        "agbMW": "agbMW",
+        "agbCSW": "agbCSW",
+        "agbR": "agbR",
+        "agbB": "agbB",
+        "agbD": "agbD",
+        "agbFA": "agbFA",
+      }
     },
     
     {

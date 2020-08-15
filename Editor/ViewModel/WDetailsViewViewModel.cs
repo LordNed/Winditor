@@ -81,15 +81,16 @@ namespace WindEditor.ViewModel
             {
                 // We want to ignore all properties that are not marked with the WProperty attribute.
                 CustomAttributeData[] custom_attributes = p.CustomAttributes.ToArray();
-                if (custom_attributes.Length == 0 || custom_attributes[0].AttributeType.Name != "WProperty")
+                CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                if (wproperty_attribute == null)
                     continue;
-
+                
                 // Grab our custom attribute data for use
-                string category_name = (string)custom_attributes[0].ConstructorArguments[0].Value;
-                string property_name = (string)custom_attributes[0].ConstructorArguments[1].Value;
-                bool is_editable     =   (bool)custom_attributes[0].ConstructorArguments[2].Value;
-                string tool_tip      = (string)custom_attributes[0].ConstructorArguments[3].Value;
-                SourceScene source_scene = (SourceScene)custom_attributes[0].ConstructorArguments[4].Value;
+                string category_name = (string)wproperty_attribute.ConstructorArguments[0].Value;
+                string property_name = (string)wproperty_attribute.ConstructorArguments[1].Value;
+                bool is_editable     =   (bool)wproperty_attribute.ConstructorArguments[2].Value;
+                string tool_tip      = (string)wproperty_attribute.ConstructorArguments[3].Value;
+                SourceScene source_scene = (SourceScene)wproperty_attribute.ConstructorArguments[4].Value;
 
                 // Get the base type for possible use later
                 Type base_type = p.PropertyType;

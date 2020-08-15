@@ -3,40 +3,21 @@
   "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 0x000000C0,
+      "Mask": 0x00000040,
       "Hidden": false,
       "Category": "tag_msg",
       "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000FF00,
-      "Hidden": false,
-      "Category": "tag_msg",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
-      "ValueSource": "Parameters",
-      "Mask": 0x00FF0000,
-      "Hidden": false,
-      "Category": "tag_msg",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
-      "ValueSource": "Parameters",
-      "Mask": 0xFF000000,
-      "Hidden": false,
-      "Category": "tag_msg",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+      },
+      "DefaultsByActorName": {
+        "TagMsg": "Unknown 0",
+        "TagMsg2": "Unknown 1",
+      }
     },
     {
       "Name": "MessageID",
@@ -48,13 +29,40 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Enable Spawn Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "tag_msg",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Enable Spawn Event Bit",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "tag_msg",
       "ToolTip": "",
       "DataType": "Integer"
-    }
+    },
+    {
+      "Name": "Switch to Set",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FF00,
+      "Hidden": false,
+      "Category": "tag_msg",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Event",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "tag_msg",
+      "ToolTip": "",
+      "DataType": "Event"
+    },
   ]
 }

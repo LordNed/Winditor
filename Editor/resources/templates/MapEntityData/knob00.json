@@ -3,13 +3,32 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 0xF0000000,
+      "Mask": 0x00000F00,
       "Hidden": false,
       "Category": "knob00",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+        5: "Unknown 5",
+        6: "Unknown 6",
+      },
+      "DefaultsByActorName": {
+        "KNOB00": "Unknown 0",
+        "KNOB01": "Unknown 1",
+        "KNOB02": "Unknown 2",
+        "KNOB03": "Unknown 3",
+        "KNOB00D": "Unknown 0",
+        "KNOB01D": "Unknown 1",
+        "KNOB02D": "Unknown 2",
+        "KNOB03D": "Unknown 3",
+      }
     },
     {
       "Name": "Style",
@@ -39,6 +58,26 @@
       "Category": "Door",
       "ToolTip": "",
       "DataType": "Integer"
-    }
+    },
+    {
+      "Name": "Room Number",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0x003F,
+      "Hidden": false,
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Type 2",
+      "ValueSource": "Parameters",
+      "Mask": 0xF0000000,
+      "Hidden": false,
+      "Category": "knob00",
+      "ToolTip": "Unused, seems to just make it update its transformation (both visual and collision) every frame?",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [1]
+    },
   ]
 }

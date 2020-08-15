@@ -16,6 +16,13 @@
         2: "First in cycle",
         3: "Second in cycle",
         4: "Third in cycle"
+      },
+      "DefaultsByActorName": {
+        "Warpt": "Locked noncyclic pot",
+        "Warpnt": "Unlocked noncyclic pot",
+        "Warpts1": "First in cycle",
+        "Warpts2": "Second in cycle",
+        "Warpts3": "Third in cycle",
       }
     },
     {
