@@ -425,7 +425,7 @@ namespace WindEditor.Events
             }
 
             SubstanceNodeViewModel temp_node = new SubstanceNodeViewModel(new_sub);
-            //temp_node.Position = GetMouseLocation(view);
+            temp_node.Position = Position;
 
             Parent.Nodes.Edit(x => x.Add(temp_node));
 

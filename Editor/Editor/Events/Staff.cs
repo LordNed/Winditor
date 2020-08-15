@@ -95,6 +95,17 @@ namespace WindEditor.Events
                 {
                     m_Name = value;
                     OnPropertyChanged("Name");
+
+                    if (StaffNodeGraph != null)
+                    {
+                        StaffNodeGraph.Header = Name;
+
+                        NodeNetwork.Views.NetworkView n = StaffNodeGraph.Content as NodeNetwork.Views.NetworkView;
+                        n.ContextMenu = new ActorTabContextMenu(this);
+
+                        BeginNodeViewModel bvm = (BeginNodeViewModel)n.ViewModel.Nodes.Items.First(x => x is BeginNodeViewModel);
+                        bvm.Name = Name;
+                    }
                 }
             }
         }

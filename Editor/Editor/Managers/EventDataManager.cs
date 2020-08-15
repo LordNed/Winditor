@@ -53,6 +53,9 @@ namespace WindEditor.Events
         {
             Dictionary<string, string> cut_names = new Dictionary<string, string>();
 
+            if (!m_EventActorDefinitions.ContainsKey(actor_name))
+                return cut_names;
+
             EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
             if (def == null)

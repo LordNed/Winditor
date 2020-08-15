@@ -22,7 +22,8 @@
                 <!-- Menu Bar -->
                 <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                     <MenuItem Header="File"/>
-                    <MenuItem Header="Edit"/>
+                    <MenuItem x:Name="EditMenu" Header="Edit">
+                    </MenuItem>
                     <MenuItem Header="Help"/>
                 </Menu>
 
