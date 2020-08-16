@@ -124,13 +124,15 @@ namespace WindEditor.Events
             }
         }
 
-        public Staff()
+        public Staff(Event parent)
         {
             m_Name = "new_staff";
 
             m_Flag = 0;
             m_StaffType = StaffType.Normal;
             m_FirstCutIndex = -1;
+
+            m_ParentEvent = parent;
 
             m_FirstCut = null;
             Cuts = new ObservableCollection<Cut>();

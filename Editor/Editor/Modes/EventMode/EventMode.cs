@@ -20,6 +20,10 @@ namespace WindEditor.Editor.Modes
 {
     public partial class EventMode : IEditorMode
     {
+        public ICommand CreateEventCommand { get { return new RelayCommand(x => OnRequestAddEvent()); } }
+        public ICommand RemoveEventCommand { get { return new RelayCommand(x => OnRequestRemoveEvent()); } }
+        public ICommand AddStaffCommand { get { return new RelayCommand(x => OnRequestAddStaff()); } }
+
         private DockPanel m_ModeControlsDock;
         private ComboBox m_EventCombo;
 
@@ -151,6 +155,7 @@ namespace WindEditor.Editor.Modes
             m_NodeWindow.ActorPropertiesView.DataContext = ActorDetailsViewModel;
             m_NodeWindow.ActorTabControl.SelectionChanged += OnSelectedActorChanged;
             m_NodeWindow.Closing += M_NodeWindow_Closing;
+            m_NodeWindow.EditMenu.Items.Add(new MenuItem() { Header = "Add Actor", Command = AddStaffCommand });
 
             EditorSelection = new Selection<BindingVector3>(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
@@ -218,27 +223,46 @@ namespace WindEditor.Editor.Modes
             };
 
             RowDefinition combo_row = new RowDefinition();
+            RowDefinition buttons_row = new RowDefinition();
             RowDefinition properties_row = new RowDefinition();
+
+            ColumnDefinition col_A = new ColumnDefinition();
+            ColumnDefinition col_B = new ColumnDefinition();
 
             combo_row.Height = System.Windows.GridLength.Auto;
             combo_row.MaxHeight = 500;
             combo_row.MinHeight = 10;
+            buttons_row.MaxHeight = 300;
+            buttons_row.MinHeight = 10;
             properties_row.Height = System.Windows.GridLength.Auto;
             //properties_row.MinHeight = 80;
 
             Grid ev_grid = new Grid();
             ev_grid.RowDefinitions.Add(combo_row);
+            ev_grid.RowDefinitions.Add(buttons_row);
             ev_grid.RowDefinitions.Add(properties_row);
+            ev_grid.ColumnDefinitions.Add(col_A);
+            ev_grid.ColumnDefinitions.Add(col_B);
 
             m_EventCombo = new ComboBox()
             {
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
-                DisplayMemberPath = "Name"
+                DisplayMemberPath = "Name",
+                Margin = new System.Windows.Thickness(5)
             };
 
             m_EventCombo.SelectionChanged += OnEventSelectionChanged;
 
             Grid.SetRow(m_EventCombo, 0);
+            Grid.SetColumnSpan(m_EventCombo, 2);
+
+            Button add_event = new Button() { Content = "Add", Command = CreateEventCommand, Height = 25, Margin = new System.Windows.Thickness(5) };
+            Button remove_event = new Button() { Content = "Remove", Command = RemoveEventCommand, Height = 25, Margin = new System.Windows.Thickness(5) };
+
+            Grid.SetRow(add_event, 1);
+            Grid.SetColumn(add_event, 0);
+            Grid.SetRow(remove_event, 1);
+            Grid.SetColumn(remove_event, 1);
 
             WDetailsView actor_details = new WDetailsView()
             {
@@ -256,9 +280,12 @@ namespace WindEditor.Editor.Modes
                 Content = actor_details,
             };
 
-            Grid.SetRow(actor_prop_box, 1);
+            Grid.SetRow(actor_prop_box, 2);
+            Grid.SetColumnSpan(actor_prop_box, 2);
 
             ev_grid.Children.Add(m_EventCombo);
+            ev_grid.Children.Add(add_event);
+            ev_grid.Children.Add(remove_event);
             ev_grid.Children.Add(actor_prop_box);
 
             DockPanel.SetDock(event_stack_panel, Dock.Top);
@@ -288,7 +315,7 @@ namespace WindEditor.Editor.Modes
             {
                 if (s.StaffNodeGraph == null)
                 {
-                    //s.StaffNodeGraph = GenerateActorTabItem(s);
+                    s.StaffNodeGraph = GenerateActorTabItem(s);
                 }
 
                 m_NodeWindow.ActorTabControl.Items.Add(s.StaffNodeGraph);
@@ -309,6 +336,35 @@ namespace WindEditor.Editor.Modes
             }
 
             ActorDetailsViewModel.ReflectObject(SelectedStaff);
+        }
+
+        private void OnRequestAddEvent()
+        {
+            Event new_event = new Event();
+
+            m_EventList.Events.Add(new_event);
+            m_EventCombo.SelectedItem = new_event;
+
+            OnEventSelectionChanged(null, null);
+        }
+
+        private void OnRequestRemoveEvent()
+        {
+            Event removed_event = SelectedEvent;
+
+            m_EventList.Events.Remove(removed_event);
+            m_EventCombo.SelectedIndex = 0;
+        }
+
+        private void OnRequestAddStaff()
+        {
+            Staff new_staff = new Staff(SelectedEvent);
+            SelectedEvent.Actors.Add(new_staff);
+
+            TabItem t = GenerateActorTabItem(new_staff);
+            new_staff.StaffNodeGraph = t;
+
+            m_NodeWindow.ActorTabControl.Items.Add(t);
         }
 
         public void BroadcastUndoEventGenerated(WUndoCommand command)
@@ -393,18 +449,6 @@ namespace WindEditor.Editor.Modes
             }
 
             m_NodeWindow.Show();
-
-            m_NodeWindow.ActorTabControl.Items.Clear();
-
-            foreach (Staff s in SelectedEvent.Actors)
-            {
-                if (s.StaffNodeGraph == null)
-                {
-                    s.StaffNodeGraph = GenerateActorTabItem(s);
-                }
-
-                m_NodeWindow.ActorTabControl.Items.Add(s.StaffNodeGraph);
-            }
 
             m_NodeWindow.ActorTabControl.SelectedIndex = 0;
         }
@@ -537,6 +581,11 @@ namespace WindEditor.Editor.Modes
             if (staff.FirstCut != null)
             {
                 staff.FirstCut.NodeViewModel.CreateNodesRecursive(model, null);
+            }
+            else
+            {
+                BeginNodeViewModel begin_node = new BeginNodeViewModel(staff);
+                model.Nodes.Edit(x => x.Add(begin_node));
             }
 
             // Create the visual component of the node network.
