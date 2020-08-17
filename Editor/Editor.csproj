@@ -730,6 +730,7 @@
     <Compile Include="Editor\PropertyCustomization\Attributes.cs" />
     <Compile Include="Editor\PropertyCustomization\BooleanTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\ByteTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\CutTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\EnumTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\FileReferenceTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\IntegerTypeCustomization.cs" />
@@ -769,6 +770,9 @@
     <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
     <Compile Include="View\CollisionExportWindow.xaml.cs">
       <DependentUpon>CollisionExportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CutReferenceControl.xaml.cs">
+      <DependentUpon>CutReferenceControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EventNodeWindow.xaml.cs">
       <DependentUpon>EventNodeWindow.xaml</DependentUpon>
@@ -855,6 +859,10 @@
     <Page Include="View\CollisionExportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CutReferenceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EventNodeWindow.xaml">
       <SubType>Designer</SubType>

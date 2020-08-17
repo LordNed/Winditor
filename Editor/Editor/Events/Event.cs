@@ -28,7 +28,9 @@ namespace WindEditor.Events
         private int[] m_EndFlags;
 
         private ObservableCollection<Staff> m_Actors;
-        private Cut[] m_EndCuts;
+        private Cut m_EndCut1;
+        private Cut m_EndCut2;
+        private Cut m_EndCut3;
 
         public ObservableCollection<Staff> Actors
         { 
@@ -39,19 +41,6 @@ namespace WindEditor.Events
                 {
                     m_Actors = value;
                     OnPropertyChanged("Actors");
-                }
-            }
-        }
-
-        public Cut[] EndCuts
-        {
-            get { return m_EndCuts; }
-            set
-            {
-                if (m_EndCuts != value)
-                {
-                    m_EndCuts = value;
-                    OnPropertyChanged("EndCuts");
                 }
             }
         }
@@ -112,12 +101,53 @@ namespace WindEditor.Events
             }
         }
 
+        [WProperty("Event", "Ending Cut 1", true, "This event will end only once all three Ending Cuts have been executed. Leave unused slots blank.")]
+        public Cut EndCut1
+        {
+            get { return m_EndCut1; }
+            set
+            {
+                if (m_EndCut1 != value)
+                {
+                    m_EndCut1 = value;
+                    OnPropertyChanged("EndCut1");
+                }
+            }
+        }
+
+        [WProperty("Event", "Ending Cut 2", true, "This event will end only once all three Ending Cuts have been executed. Leave unused slots blank.")]
+        public Cut EndCut2
+        {
+            get { return m_EndCut2; }
+            set
+            {
+                if (m_EndCut2 != value)
+                {
+                    m_EndCut2 = value;
+                    OnPropertyChanged("EndCut2");
+                }
+            }
+        }
+
+        [WProperty("Event", "Ending Cut 3", true, "This event will end only once all three Ending Cuts have been executed. Leave unused slots blank.")]
+        public Cut EndCut3
+        {
+            get { return m_EndCut3; }
+            set
+            {
+                if (m_EndCut3 != value)
+                {
+                    m_EndCut3 = value;
+                    OnPropertyChanged("EndCut3");
+                }
+            }
+        }
+
         public Event()
         {
             Actors = new ObservableCollection<Staff>();
             m_ActorIndices = new int[20];
             m_EndFlags = new int[3];
-            EndCuts = new Cut[3];
 
             Name = "new_event";
             Priority = 0;
@@ -168,14 +198,19 @@ namespace WindEditor.Events
                 Actors.Add(staffs[m_ActorIndices[i]]);
             }
 
-            EndCuts = new Cut[3];
-
-            for (int i = 0; i < 3; i++)
+            if (m_EndFlags[0] != -1)
             {
-                if (m_EndFlags[i] != -1)
-                {
-                    EndCuts[i] = cuts.Find(x => x.Flag == m_EndFlags[i]);
-                }
+                EndCut1 = cuts.Find(x => x.Flag == m_EndFlags[0]);
+            }
+
+            if (m_EndFlags[1] != -1)
+            {
+                EndCut2 = cuts.Find(x => x.Flag == m_EndFlags[1]);
+            }
+
+            if (m_EndFlags[2] != -1)
+            {
+                EndCut3 = cuts.Find(x => x.Flag == m_EndFlags[2]);
             }
         }
 
@@ -207,16 +242,31 @@ namespace WindEditor.Events
                 c.AssignBlockingIDs(event_cuts);
             }
 
-            for (int i = 0; i < 3; i++)
+            if (EndCut1 != null && event_cuts.Contains(EndCut1))
             {
-                if (EndCuts[i] != null && event_cuts.Contains(EndCuts[i]))
-                {
-                    m_EndFlags[i] = EndCuts[i].Flag;
-                }
-                else
-                {
-                    m_EndFlags[i] = -1;
-                }
+                m_EndFlags[0] = EndCut1.Flag;
+            }
+            else
+            {
+                m_EndFlags[0] = -1;
+            }
+
+            if (EndCut2 != null && event_cuts.Contains(EndCut2))
+            {
+                m_EndFlags[1] = EndCut2.Flag;
+            }
+            else
+            {
+                m_EndFlags[1] = -1;
+            }
+
+            if (EndCut3 != null && event_cuts.Contains(EndCut3))
+            {
+                m_EndFlags[2] = EndCut3.Flag;
+            }
+            else
+            {
+                m_EndFlags[2] = -1;
             }
 
             global_cuts.AddRange(event_cuts);
