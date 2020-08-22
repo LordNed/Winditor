@@ -289,7 +289,15 @@ namespace WindEditor
                 WSettingsManager.GetSettings().LastStagePath.FilePath = path;
             }
 
-            MainWorld.SaveMapToDirectory("");
+            try
+            {
+                MainWorld.SaveMapToDirectory("");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error saving project");
+                return;
+            }
         }
 
         public void OnApplicationRequestSaveAsProject()
@@ -298,7 +306,15 @@ namespace WindEditor
             if (path == null)
                 return;
 
-            MainWorld.SaveMapToDirectory(path);
+            try
+            {
+                MainWorld.SaveMapToDirectory(path);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error saving project");
+                return;
+            }
 
             WSettingsManager.GetSettings().LastStagePath.FilePath = path;
         }
@@ -309,7 +325,15 @@ namespace WindEditor
             if (path == null)
                 return;
 
-            MainWorld.Map.ExportToDirectory(path);
+            try
+            {
+                MainWorld.Map.ExportToDirectory(path);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error building project");
+                return;
+            }
 
             WSettingsManager.GetSettings().LastStagePath.FilePath = path;
         }
@@ -320,7 +344,15 @@ namespace WindEditor
             if (path == null)
                 return;
 
-            MainWorld.Map.ExportToDirectory(path);
+            try
+            {
+                MainWorld.Map.ExportToDirectory(path);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error building project");
+                return;
+            }
 
             WSettingsManager.GetSettings().LastStagePath.FilePath = path;
         }
@@ -415,7 +447,15 @@ namespace WindEditor
                 return;
             }
 
-            Playtester.RequestStartPlaytest(MainWorld.Map, ActiveLayer);
+            try
+            {
+                Playtester.RequestStartPlaytest(MainWorld.Map, ActiveLayer);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error building and playtesting project");
+                return;
+            }
         }
 
         public void InitMinitorModules()
