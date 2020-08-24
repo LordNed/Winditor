@@ -268,8 +268,30 @@ namespace WindEditor.Editor.Modes
             serial.Converters.Add(new WDOMNodeJsonConverter(World, EditorSelection.PrimarySelectedObject));
             serial.Formatting = Formatting.Indented;
 
+            List<WDOMNode> flattenedSelectedObjects = new List<WDOMNode>();
+            foreach (WDOMNode obj in EditorSelection.SelectedObjects)
+            {
+                if (obj is WDOMGroupNode || obj is WDOMLayeredGroupNode)
+                {
+                    flattenedSelectedObjects.AddRange(obj.GetChildrenOfType<SerializableDOMNode>());
+                } else if (obj is SerializableDOMNode)
+                {
+                    flattenedSelectedObjects.Add(obj);
+                } else
+                {
+                    string error = $"Copying class {obj.GetType().Name} to clipboard not implemented";
+                    System.Windows.Forms.MessageBox.Show(
+                        error,
+                        "Failed to copy entities",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error
+                    );
+                    return;
+                }
+            }
+
             StringWriter sw = new StringWriter();
-            serial.Serialize(sw, EditorSelection.SelectedObjects);
+            serial.Serialize(sw, flattenedSelectedObjects);
 
             Clipboard.SetText(sw.ToString());
         }
