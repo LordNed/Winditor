@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "kamome",
+      "Category": "Seagull",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -16,26 +16,26 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "kamome",
+      "Category": "Seagull",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "kamome",
+      "Category": "Seagull",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "kamome",
-      "ToolTip": "",
+      "Category": "Seagull",
+      "ToolTip": "This parameter was never used in the vanilla game. It probably changes the behavior of to seagull somehow.",
       "DataType": "Integer"
     }
   ]

@@ -3,7 +3,22 @@
   "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000300,
+      "Hidden": false,
+      "Category": "tag_attention",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+      }
+    },
+    {
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
@@ -11,14 +26,5 @@
       "ToolTip": "",
       "DataType": "Integer"
     },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x00000300,
-      "Hidden": false,
-      "Category": "tag_attention",
-      "ToolTip": "",
-      "DataType": "Integer"
-    }
   ]
 }

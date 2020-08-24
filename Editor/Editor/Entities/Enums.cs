@@ -376,7 +376,7 @@ namespace WindEditor
 
     public enum OnlyRandomDroppedItemID
     {
-        No_item = 0x00,
+        No_item_00 = 0x00,
         No_item_01 = 0x01,
         No_item_02 = 0x02,
         No_item_03 = 0x03,
@@ -441,6 +441,6 @@ namespace WindEditor
         Random_Drop_Table_1D = 0x3D,
         Random_Drop_Table_1E = 0x3E,
 
-        No_item_3F = 0x3F,
+        No_item = 0x3F,
     }
 }

@@ -5641,4 +5641,69 @@
       }
     ]
   },
+  {
+    "Name": "Pitfall",
+    "Archive": "Aana",
+    "Models": [
+      {
+        "Path": "bdl/aana.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Master Sword Chamber Knight Statue",
+    "Archive": "VzouK",
+    "Models": [
+      {
+        "Path": "bdl/vzouk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/vzouk.bck",
+            "Paused on Load": true,
+            "Start Time": 0.96666666666666666666666666666667
+          },
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Eye-Vine Chest Blocker",
+    "Archive": "Ss",
+    "Models": [
+      {
+        "Path": "bdl/sw.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait_open.bck",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          },
+        ],
+      }
+    ]
+  },
+  {
+    "Name": "Eye-Vine Door Blocker",
+    "Archive": "Ss",
+    "Models": [
+      {
+        "Path": "bdl/sw.bdl",
+        "Rotation": {
+          "X": 270,
+          "Y": 0,
+          "Z": 0
+        },
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait_open.bck",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          },
+        ],
+      }
+    ]
+  },
 ]

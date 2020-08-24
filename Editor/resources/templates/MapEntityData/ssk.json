@@ -3,29 +3,34 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "ssk",
+      "Category": "Spiked Tentacle Blockade",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Sight Range (Tens)",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "ssk",
+      "Category": "Spiked Tentacle Blockade",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "ssk",
+      "Category": "Spiked Tentacle Blockade",
       "ToolTip": "",
       "DataType": "Integer"
     }

@@ -11,12 +11,25 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			if (Type == TypeEnum.Blocks_Chest)
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Eye-Vine Chest Blocker");
+			}
+			else
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Eye-Vine Door Blocker");
+			}
 		}
 	}
 }

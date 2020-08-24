@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
@@ -18,10 +18,15 @@
       "Hidden": false,
       "Category": "fire",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Disable Spawn Chest Open Flag",
       "ValueSource": "Parameters",
       "Mask": 0x0001F000,
       "Hidden": false,
@@ -30,13 +35,21 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Disable Spawn Condition",
       "ValueSource": "Parameters",
       "Mask": 0x000E0000,
       "Hidden": false,
       "Category": "fire",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Checks for switch",
+        1: "Checks all enemies dead",
+      },
+      "DefaultsByActorName": {
+        "Fire": "Checks for switch",
+        "Zenfire": "Checks all enemies dead",
+      }
     },
     {
       "Name": "Unknown_5",

@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Hidden": false,
       "Category": "stone2",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "DroppedItemID"
     },
     {
       "Name": "Unknown_2",
@@ -21,7 +21,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Dropped Item Pickup Flag",
       "ValueSource": "Parameters",
       "Mask": 0x007F0000,
       "Hidden": false,
@@ -55,6 +55,15 @@
       "Category": "stone2",
       "ToolTip": "",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Destroyed Event",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x00FF,
+      "Hidden": false,
+      "Category": "stone2",
+      "ToolTip": "",
+      "DataType": "Event"
     }
   ]
 }

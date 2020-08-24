@@ -3,29 +3,34 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "ss",
+      "Category": "Eye-Vine Door/Chest Blocker",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Blocks Chest",
+        1: "Blocks Door",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_2",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "ss",
+      "Category": "Eye-Vine Door/Chest Blocker",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "ss",
+      "Category": "Eye-Vine Door/Chest Blocker",
       "ToolTip": "",
       "DataType": "Integer"
     }

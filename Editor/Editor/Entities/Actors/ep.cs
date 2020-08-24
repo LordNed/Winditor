@@ -85,7 +85,7 @@ namespace WindEditor
 
         protected override Vector3 VisualScale
         {
-            get { return Vector3.Mult(VisualScaleMultiplier, Transform.LocalScale.X); }
+            get { return Vector3.Multiply(VisualScaleMultiplier, Transform.LocalScale.X); }
         }
     }
 }

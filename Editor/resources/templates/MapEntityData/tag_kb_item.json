@@ -3,38 +3,40 @@
   "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Item",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "tag_kb_item",
+      "Category": "Pig Item Dig Region",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "ItemID"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "tag_kb_item",
+      "Category": "Pig Item Dig Region",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Should Set Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "tag_kb_item",
+      "Category": "Pig Item Dig Region",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanDefaultValue": true,
+      "BooleanNonDefaults": [0xFF]
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "tag_kb_item",
+      "Category": "Pig Item Dig Region",
       "ToolTip": "",
       "DataType": "Integer"
     }

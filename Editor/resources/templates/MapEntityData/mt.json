@@ -30,13 +30,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "mt",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
       "Name": "Unknown_5",

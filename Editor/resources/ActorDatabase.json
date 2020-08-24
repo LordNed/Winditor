@@ -2262,7 +2262,7 @@
     "ActorClassType": "fire",
     "Wait Animations": null,
     "Actor Name": "Fire",
-    "English Name": "Ring of Flames",
+    "English Name": "Ring of Flames (Checks for switch)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3148,7 +3148,7 @@
     "ActorClassType": "kamome",
     "Wait Animations": null,
     "Actor Name": "Kamome",
-    "English Name": "kamome",
+    "English Name": "Seagull",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8525,7 +8525,7 @@
     "ActorClassType": "obj_hole",
     "Wait Animations": null,
     "Actor Name": "Ypit00",
-    "English Name": "obj_hole",
+    "English Name": "Test Room Entrance Hole",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9765,7 +9765,7 @@
     "ActorClassType": "obj_ospbox",
     "Wait Animations": null,
     "Actor Name": "Ospbox",
-    "English Name": "obj_ospbox",
+    "English Name": "Pirate Ship Crate",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11380,7 +11380,7 @@
     "ActorClassType": "obj_zouK",
     "Wait Animations": null,
     "Actor Name": "zouK",
-    "English Name": "obj_zouK",
+    "English Name": "Master Sword Chamber Knight Statue 0",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11396,7 +11396,7 @@
     "ActorClassType": "obj_zouK",
     "Wait Animations": null,
     "Actor Name": "zouK1",
-    "English Name": "obj_zouK",
+    "English Name": "Master Sword Chamber Knight Statue 1",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11411,7 +11411,7 @@
     "ActorClassType": "obj_zouK",
     "Wait Animations": null,
     "Actor Name": "zouK2",
-    "English Name": "obj_zouK",
+    "English Name": "Master Sword Chamber Knight Statue 2",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11426,7 +11426,7 @@
     "ActorClassType": "obj_zouK",
     "Wait Animations": null,
     "Actor Name": "zouK3",
-    "English Name": "obj_zouK",
+    "English Name": "Master Sword Chamber Knight Statue 3",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11441,7 +11441,7 @@
     "ActorClassType": "obj_zouK",
     "Wait Animations": null,
     "Actor Name": "zouK4",
-    "English Name": "obj_zouK",
+    "English Name": "Master Sword Chamber Knight Statue 4",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12355,7 +12355,7 @@
     "ActorClassType": "ss",
     "Wait Animations": null,
     "Actor Name": "Ss",
-    "English Name": "ss",
+    "English Name": "Eye-Vine Door/Chest Blocker",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12371,7 +12371,7 @@
     "ActorClassType": "ssk",
     "Wait Animations": null,
     "Actor Name": "s_turu",
-    "English Name": "ssk",
+    "English Name": "Spiked Tentacle Blockade",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13705,7 +13705,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara",
-    "English Name": "tbox",
+    "English Name": "Dark Wood Treasure Chest",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13736,7 +13736,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara2",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13774,7 +13774,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara3",
-    "English Name": "tbox",
+    "English Name": "Metal Treasure Chest",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13810,7 +13810,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara4",
-    "English Name": "tbox",
+    "English Name": "Big Key Treasure Chest",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13831,7 +13831,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara5",
-    "English Name": "tbox",
+    "English Name": "Dark Wood Treasure Chest (Spawns When Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13863,7 +13863,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara6",
-    "English Name": "tbox",
+    "English Name": "Metal Treasure Chest (Spawns When Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13888,7 +13888,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara7",
-    "English Name": "tbox",
+    "English Name": "Dark Wood Treasure Chest (Spawns When Enemies Dead)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13907,7 +13907,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takara8",
-    "English Name": "tbox",
+    "English Name": "Metal Treasure Chest (Spawns When Enemies Dead)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13929,7 +13929,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takaraK",
-    "English Name": "tbox",
+    "English Name": "Dark Wood Treasure Chest (Unopenable Until Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13945,7 +13945,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takaraI",
-    "English Name": "tbox",
+    "English Name": "Dark Wood Treasure Chest (With Gravity)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13961,7 +13961,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "takaraM",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (Transparent Until Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13979,7 +13979,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrASw",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (Spawns When Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14002,7 +14002,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrAGc",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (Spawns When Enemies Dead)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14020,7 +14020,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrAKd",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (Unopenable Until Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14036,7 +14036,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrAIk",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (With Gravity)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14054,7 +14054,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrBMs",
-    "English Name": "tbox",
+    "English Name": "Dark Wood Treasure Chest (Transparent Until Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14071,7 +14071,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrCTf",
-    "English Name": "tbox",
+    "English Name": "Metal Treasure Chest (Spawns on Triforce Emblem When Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14094,7 +14094,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrAOc",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (Uses Alt Stage Save Info)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14117,7 +14117,7 @@
     "ActorClassType": "tbox",
     "Wait Animations": null,
     "Actor Name": "tkrAOs",
-    "English Name": "tbox",
+    "English Name": "Light Wood Treasure Chest (Uses Alt Stage Save Info and Spawns When Switch Set)",
     "Tags": null,
     "Explanation": null,
     "Locations": [

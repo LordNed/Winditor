@@ -20,16 +20,18 @@
       "ToolTip": "",
       "DataType": "Boolean",
       "BooleanDefaultValue": true,
-      "BooleanNonDefaults": [0]
+      "BooleanNonDefaults": [0],
+      "UpdateModel": true
     },
     {
-      "Name": "Scale",
+      "Name": "Hole Scale",
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "obj_hole",
-      "ToolTip": "If this is not 65535, this number divided by 10 is the scale of the hole.",
-      "DataType": "Integer"
+      "ToolTip": "If this is not 65535, this number divided by 6.5 is added to the scale of the hole.",
+      "DataType": "Integer",
+      "UpdateModel": true
     }
   ]
 }

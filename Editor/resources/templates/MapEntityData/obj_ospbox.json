@@ -3,22 +3,29 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000003F,
-      "Hidden": false,
-      "Category": "obj_ospbox",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
+      "Name": "What to Drop",
       "ValueSource": "Parameters",
       "Mask": 0x00000700,
       "Hidden": false,
-      "Category": "obj_ospbox",
+      "Category": "Pirate Ship Crate",
       "ToolTip": "",
-      "DataType": "Integer"
-    }
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Item",
+        1: "Pink Pig",
+        2: "Speckled Pig",
+        3: "Black Pig",
+      }
+    },
+    {
+      "Name": "Dropped Item ID",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000003F,
+      "Hidden": false,
+      "Category": "Pirate Ship Crate",
+      "ToolTip": "",
+      "DataType": "DroppedItemID",
+      "Default": "No item"
+    },
   ]
 }
