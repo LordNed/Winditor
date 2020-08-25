@@ -268,7 +268,12 @@ namespace WindEditor
             }
         }
 
-        private void glControlHost_LostFocus(object sender, RoutedEventArgs e)
+        private void GlControlHost_LostFocus(object sender, RoutedEventArgs e)
+        {
+            WInput.ClearInput();
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
         {
             WInput.ClearInput();
         }

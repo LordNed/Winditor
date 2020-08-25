@@ -11,7 +11,8 @@
         xmlns:sc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:wview="clr-namespace:WindEditor.View"
         mc:Ignorable="d"
-        Title="Winditor" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop" WindowState="Maximized">
+        Title="Winditor" Height="720" Width="1280" Loaded="Window_Loaded" AllowDrop="True" Drop="Window_Drop" WindowState="Maximized"
+        Deactivated="Window_Deactivated">
     <Window.InputBindings>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Y" Modifiers="Ctrl"/>
@@ -267,7 +268,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- 3D Viewport -->
-                    <WindowsFormsHost Grid.Row="0" x:Name="glControlHost" LostFocus="glControlHost_LostFocus"/>
+                    <WindowsFormsHost Grid.Row="0" x:Name="glControlHost" LostFocus="GlControlHost_LostFocus"/>
 
                     <!-- Viewport Controls -->
                     <DockPanel Grid.Row="1">
