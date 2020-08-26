@@ -20,6 +20,8 @@ namespace WindEditor.Editor.Modes
 {
     public class CollisionMode : IEditorMode
     {
+        public ICommand SelectAllCommand { get { return new RelayCommand(x => SelectAll(), (x) => World.Map != null); } }
+        public ICommand SelectNoneCommand { get { return new RelayCommand(x => SelectNone(), (x) => World.Map != null); } }
         public ICommand ExportToDAECommand { get { return new RelayCommand(x => ExportToDae()); } }
         public ICommand ImportFromDAECommand { get { return new RelayCommand(x => ImportFromDae()); } }
 
@@ -442,6 +444,16 @@ namespace WindEditor.Editor.Modes
                 DetailsViewModel.ReflectObject(EditorSelection.SelectedObjects[0].Properties);
             else
                 DetailsViewModel.Categories = new System.Collections.Specialized.OrderedDictionary();
+        }
+
+        public void SelectAll()
+        {
+            EditorSelection.AddToSelection(ActiveCollisionMesh.Triangles);
+        }
+
+        public void SelectNone()
+        {
+            ClearSelection();
         }
 
         public void ExportToDae()

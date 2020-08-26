@@ -27,8 +27,8 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.DeleteSelectionCommand}" Key="Delete"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}" Key="D" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.CurrentMode.SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.MainWorld.CurrentMode.SelectNoneCommand}" Key="D" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.StartPlaytestCommand}" Key="P" Modifiers="Ctrl"/>
     </Window.InputBindings>
     <Window.DataContext>
@@ -116,8 +116,8 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectAllCommand}"/>
-                <MenuItem Header="Select _None" InputGestureText="Ctrl + D" Command="{Binding Path=WindEditor.MainWorld.ActorMode.SelectNoneCommand}"/>
+                <MenuItem Header="Select _All" InputGestureText="Ctrl + A" Command="{Binding Path=WindEditor.MainWorld.CurrentMode.SelectAllCommand}"/>
+                <MenuItem Header="Select _None" InputGestureText="Ctrl + D" Command="{Binding Path=WindEditor.MainWorld.CurrentMode.SelectNoneCommand}"/>
             </MenuItem>
             <MenuItem Header="Create">
                 <MenuItem Header="Actor" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="ACTR"/>
