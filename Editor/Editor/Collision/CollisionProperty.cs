@@ -443,7 +443,7 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Passthrough", "Pass 6 Hookshot", true, "Allows the hookshot to pass through this surface.\n(Maybe also allow other things, such as Link's line-of-sight, to pass through...?)")]
+        [WProperty("Passthrough", "Pass 6 Hookshot", true, "Allows the hookshot to pass through this surface.\n(Maybe also allows other things, such as Link's line-of-sight, to pass through...?)")]
         public bool Pass6Hookshot
         {
             get { return (m_Bitfield4 & 0x00000080) != 0 ? true : false; }
