@@ -84,6 +84,7 @@ namespace WindEditor.Collision
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_ebo);
 
             GL.DepthMask(true);
+            GL.Enable(EnableCap.DepthTest);
 
             DrawTris();
             DrawLines();
