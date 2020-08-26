@@ -183,18 +183,7 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Unknown2;
-
-		[WProperty("Misc.", "Unknown 2", true, "")]
-		 public byte Unknown2
-		{ 
-			get { return m_Unknown2; }
-			set
-			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
-			}
-		}
+		protected byte m_SectorCoordinates;
 				
 
 		protected byte m_Unknown3;
@@ -212,6 +201,48 @@ namespace WindEditor
 				
 
 
+		[WProperty("Sector Coordinates", "Sector X Coordinate", true, "X coordinate on the sea stage of the sector this stage is inside of.\n0 refers to the center sector of the map. -3 refers to the westmost sector, and 3 refers to the eastmost sector.", SourceScene.Room)]
+		public int SectorXCoordinate
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_SectorCoordinates & 0x0F) >> 0);
+				if (value_as_int > 7) {
+					return value_as_int - 16;
+				} else {
+					return value_as_int;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0x0F | (value_as_int << 0 & 0x0F));
+				OnPropertyChanged("SectorXCoordinate");
+			}
+		}
+
+		[WProperty("Sector Coordinates", "Sector Y Coordinate", true, "Y coordinate on the sea stage of the sector this stage is inside of.\n0 refers to the center sector of the map. -3 refers to the northmost sector, and 3 refers to the southmost sector.", SourceScene.Room)]
+		public int SectorYCoordinate
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_SectorCoordinates & 0xF0) >> 4);
+				if (value_as_int > 7) {
+					return value_as_int - 16;
+				} else {
+					return value_as_int;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0xF0 | (value_as_int << 4 & 0xF0));
+				OnPropertyChanged("SectorYCoordinate");
+			}
+		}
+
 		// Constructor
 		public MinimapSettings_Unused(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -224,7 +255,6 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scale", TargetProperties = new string[] { "ZoomedMapScale"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 		}
 
@@ -239,7 +269,7 @@ namespace WindEditor
 			m_ZoomedMapScale = stream.ReadSingle(); 
 			m_Unknown = stream.ReadByte(); 
 			m_MapImageIndex = stream.ReadByte(); 
-			m_Unknown2 = stream.ReadByte(); 
+			m_SectorCoordinates = stream.ReadByte(); 
 			m_Unknown3 = stream.ReadByte(); 
 		}
 
@@ -258,7 +288,7 @@ namespace WindEditor
 			stream.Write((float)ZoomedMapScale);
 			stream.Write((byte)Unknown);
 			stream.Write((byte)MapImageIndex);
-			stream.Write((byte)Unknown2);
+			stream.Write((byte)m_SectorCoordinates);
 			stream.Write((byte)Unknown3);
 		}
 	}
@@ -393,18 +423,7 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Unknown2;
-
-		[WProperty("Misc.", "Unknown 2", true, "")]
-		 public byte Unknown2
-		{ 
-			get { return m_Unknown2; }
-			set
-			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
-			}
-		}
+		protected byte m_SectorCoordinates;
 				
 
 		protected byte m_Unknown3;
@@ -422,6 +441,48 @@ namespace WindEditor
 				
 
 
+		[WProperty("Sector Coordinates", "Sector X Coordinate", true, "X coordinate on the sea stage of the sector this stage is inside of.\n0 refers to the center sector of the map. -3 refers to the westmost sector, and 3 refers to the eastmost sector.", SourceScene.Room)]
+		public int SectorXCoordinate
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_SectorCoordinates & 0x0F) >> 0);
+				if (value_as_int > 7) {
+					return value_as_int - 16;
+				} else {
+					return value_as_int;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0x0F | (value_as_int << 0 & 0x0F));
+				OnPropertyChanged("SectorXCoordinate");
+			}
+		}
+
+		[WProperty("Sector Coordinates", "Sector Y Coordinate", true, "Y coordinate on the sea stage of the sector this stage is inside of.\n0 refers to the center sector of the map. -3 refers to the northmost sector, and 3 refers to the southmost sector.", SourceScene.Room)]
+		public int SectorYCoordinate
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_SectorCoordinates & 0xF0) >> 4);
+				if (value_as_int > 7) {
+					return value_as_int - 16;
+				} else {
+					return value_as_int;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0xF0 | (value_as_int << 4 & 0xF0));
+				OnPropertyChanged("SectorYCoordinate");
+			}
+		}
+
 		// Constructor
 		public MinimapSettings(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -434,7 +495,6 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Zoomed Map Scale", TargetProperties = new string[] { "ZoomedMapScale"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 		}
 
@@ -449,7 +509,7 @@ namespace WindEditor
 			m_ZoomedMapScale = stream.ReadSingle(); 
 			m_Unknown = stream.ReadByte(); 
 			m_MapImageIndex = stream.ReadByte(); 
-			m_Unknown2 = stream.ReadByte(); 
+			m_SectorCoordinates = stream.ReadByte(); 
 			m_Unknown3 = stream.ReadByte(); 
 		}
 
@@ -468,7 +528,7 @@ namespace WindEditor
 			stream.Write((float)ZoomedMapScale);
 			stream.Write((byte)Unknown);
 			stream.Write((byte)MapImageIndex);
-			stream.Write((byte)Unknown2);
+			stream.Write((byte)m_SectorCoordinates);
 			stream.Write((byte)Unknown3);
 		}
 	}

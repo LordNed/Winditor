@@ -1,6 +1,6 @@
 ﻿{
 	"ClassName" : "MinimapSettings",
-	"FourCC" : "MA2D",
+	"FourCC" : "_2DMA",
 	"Fields" :
 	[
 		{"Name" : "Full Map Image Scale", "Type" : "Vector2"},
@@ -12,7 +12,27 @@
 		{"Name" : "Zoomed Map Scale", "Type" : "Float"},
 		{"Name" : "Unknown", "Type" : "Byte"},
 		{"Name" : "Map Image Index", "Type" : "Byte"},
-		{"Name" : "Unknown 2", "Type" : "Byte"},
+		{"Name" : "Sector Coordinates", "Type" : "Byte", "Hidden": true},
 		{"Name" : "Unknown 3", "Type" : "Byte"}
-	]
+	],
+  "ParameterFields": [
+    {
+      "Name": "Sector X Coordinate",
+      "ValueSource": "Sector Coordinates",
+      "Mask": 0x0000000F,
+      "Hidden": false,
+      "Category": "Sector Coordinates",
+      "ToolTip": "X coordinate on the sea stage of the sector this stage is inside of.\n0 refers to the center sector of the map. -3 refers to the westmost sector, and 3 refers to the eastmost sector.",
+      "DataType": "SignedInteger"
+    },
+    {
+      "Name": "Sector Y Coordinate",
+      "ValueSource": "Sector Coordinates",
+      "Mask": 0x000000F0,
+      "Hidden": false,
+      "Category": "Sector Coordinates",
+      "ToolTip": "Y coordinate on the sea stage of the sector this stage is inside of.\n0 refers to the center sector of the map. -3 refers to the northmost sector, and 3 refers to the southmost sector.",
+      "DataType": "SignedInteger"
+    },
+  ]
 }

@@ -50,8 +50,8 @@ namespace WindEditor
         TREa,
         TREb,
 
-        MA2D,
-        ma2D,
+        _2DMA,
+        _2Dma,
         AROB,
         RARO,
         CAMR,
@@ -95,9 +95,9 @@ namespace WindEditor
             FourCC result = FourCC.NONE;
 
             if (fourcc == "2DMA")
-                return FourCC.MA2D;
+                return FourCC._2DMA;
             else if (fourcc == "2Dma")
-                return FourCC.ma2D;
+                return FourCC._2Dma;
 
             bool success = Enum.TryParse<FourCC>(fourcc, out result);
 
@@ -109,9 +109,9 @@ namespace WindEditor
 
         public static string GetStringFromEnum(FourCC fourcc)
         {
-            if (fourcc == FourCC.MA2D)
+            if (fourcc == FourCC._2DMA)
                 return "2DMA";
-            else if (fourcc == FourCC.ma2D)
+            else if (fourcc == FourCC._2Dma)
                 return "2Dma";
 
             return fourcc.ToString();
@@ -121,8 +121,10 @@ namespace WindEditor
         {
             switch (fourcc)
             {
-                case FourCC.MA2D:
-                    return "MA2D (Minimap)";
+                case FourCC._2DMA:
+                    return "2DMA (Minimap)";
+                case FourCC._2Dma:
+                    return "2Dma (Minimap Unused)";
                 case FourCC.ACTR:
                     return "Default Layer";
                 case FourCC.ACT0:
