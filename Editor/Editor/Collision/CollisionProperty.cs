@@ -14,22 +14,22 @@ namespace WindEditor.Collision
         private int m_Bitfield1;
         private int m_Bitfield2;
         private int m_Bitfield3;
-        private int m_CameraBehavior;
+        private int m_Bitfield4;
 
         public CollisionProperty(EndianBinaryReader reader)
         {
             m_Bitfield1 = reader.ReadInt32();
             m_Bitfield2 = reader.ReadInt32();
             m_Bitfield3 = reader.ReadInt32();
-            m_CameraBehavior = reader.ReadInt32();
+            m_Bitfield4 = reader.ReadInt32();
         }
 
-        public CollisionProperty(int b1, int b2, int b3, int cb)
+        public CollisionProperty(int b1, int b2, int b3, int b4)
         {
             m_Bitfield1 = b1;
             m_Bitfield2 = b2;
             m_Bitfield3 = b3;
-            m_CameraBehavior = cb;
+            m_Bitfield4 = b4;
         }
 
         public CollisionProperty()
@@ -56,7 +56,7 @@ namespace WindEditor.Collision
             writer.Write(m_Bitfield1);
             writer.Write(m_Bitfield2);
             writer.Write(m_Bitfield3);
-            writer.Write(m_CameraBehavior);
+            writer.Write(m_Bitfield4);
         }
 
         private int Clamp(int value, int max, int min = 0)
@@ -71,7 +71,7 @@ namespace WindEditor.Collision
 
         public CollisionProperty Clone()
         {
-            return new CollisionProperty(m_Bitfield1, m_Bitfield2, m_Bitfield3, m_CameraBehavior);
+            return new CollisionProperty(m_Bitfield1, m_Bitfield2, m_Bitfield3, m_Bitfield4);
         }
 
         public bool Equals(CollisionProperty other)
@@ -79,7 +79,7 @@ namespace WindEditor.Collision
             if (m_Bitfield1 == other.m_Bitfield1
                 && m_Bitfield2 == other.m_Bitfield2
                 && m_Bitfield3 == other.m_Bitfield3
-                && m_CameraBehavior == other.m_CameraBehavior)
+                && m_Bitfield4 == other.m_Bitfield4)
             {
                 return true;
             }
@@ -357,19 +357,105 @@ namespace WindEditor.Collision
 
         #endregion
 
-        [WProperty("Camera", "Camera Behavior", true, "Purpose uncertain.")]
-        public int CameraBehavior
+        #region Bitfield 4
+
+        [WProperty("Passthrough", "Pass 0 Normal", true, "Allows most objects to pass through this surface.")]
+        public bool Pass0Normal
         {
-            get { return m_CameraBehavior; }
+            get { return (m_Bitfield4 & 0x00000002) != 0 ? true : false; }
             set
             {
-                if (value != m_CameraBehavior)
-                {
-                    m_CameraBehavior = value;
-                    OnPropertyChanged("CameraBehavior");
-                }
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000002 | (value_as_int << 1 & 0x00000002));
+                OnPropertyChanged("Pass0Normal");
             }
         }
+
+        [WProperty("Passthrough", "Pass 1 Camera", true, "Allows the camera to pass through this surface.")]
+        public bool Pass1Camera
+        {
+            get { return (m_Bitfield4 & 0x00000001) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000001 | (value_as_int << 0 & 0x00000001));
+                OnPropertyChanged("Pass1Camera");
+            }
+        }
+
+        [WProperty("Passthrough", "Pass 2 Link", true, "Allows Link to pass through this surface.")]
+        public bool Pass2Link
+        {
+            get { return (m_Bitfield4 & 0x00000004) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000004 | (value_as_int << 2 & 0x00000004));
+                OnPropertyChanged("Pass2Link");
+            }
+        }
+
+        [WProperty("Passthrough", "Pass 3 Arrows and Light", true, "Allows arrows and reflected rays of light to pass through this surface.\nAlso prevents actor shadows from being drawn on this surface.")]
+        public bool Pass3ArrowsAndLight
+        {
+            get { return (m_Bitfield4 & 0x00000008) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000008 | (value_as_int << 3 & 0x00000008));
+                OnPropertyChanged("Pass3ArrowsAndLight");
+            }
+        }
+
+        [WProperty("Misc.", "Hookshottable", true, "Allows the hookshot to stick to this surface so the player can pull themself to it.")]
+        public bool Hookshottable
+        {
+            get { return (m_Bitfield4 & 0x00000010) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000010 | (value_as_int << 4 & 0x00000010));
+                OnPropertyChanged("Hookshottable");
+            }
+        }
+
+        [WProperty("Passthrough", "Pass 4 Bombs", true, "Allows bombs to pass through this surface.")]
+        public bool Pass4Bombs
+        {
+            get { return (m_Bitfield4 & 0x00000020) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000020 | (value_as_int << 5 & 0x00000020));
+                OnPropertyChanged("Pass4Bombs");
+            }
+        }
+
+        [WProperty("Passthrough", "Pass 5 Boomerang", true, "Allows the boomerang to pass through this surface.")]
+        public bool Pass5Boomerang
+        {
+            get { return (m_Bitfield4 & 0x00000040) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+                OnPropertyChanged("Pass5Boomerang");
+            }
+        }
+
+        [WProperty("Passthrough", "Pass 6 Hookshot", true, "Allows the hookshot to pass through this surface.\n(Maybe also allow other things, such as Link's line-of-sight, to pass through...?)")]
+        public bool Pass6Hookshot
+        {
+            get { return (m_Bitfield4 & 0x00000080) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield4 = (int)(m_Bitfield4 & ~0x00000080 | (value_as_int << 7 & 0x00000080));
+                OnPropertyChanged("Pass6Hookshot");
+            }
+        }
+
+        #endregion
 
         #region INotifyPropertyChanged Support
         public event PropertyChangedEventHandler PropertyChanged;
