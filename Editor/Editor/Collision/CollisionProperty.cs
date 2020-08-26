@@ -161,17 +161,31 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Misc.", "Unknown 1", true, "Purpose uncertain.")]
-        public int Unknown1
+        [WProperty("Misc.", "Disable Shadows", true, "Prevents actor shadows from being drawn on this surface.")]
+        public bool DisableShadows
         {
-            get { return (int)(m_Bitfield1 & 0xF8000000) >> 27; }
+            get { return (m_Bitfield1 & 0x08000000) != 0 ? true : false; }
+            set
+            {
+                int value_as_int = value ? 1 : 0;
+                m_Bitfield1 = (int)(m_Bitfield1 & ~0x08000000 | (value_as_int << 27 & 0x08000000));
+                OnPropertyChanged("DisableShadows");
+            }
+        }
+
+        /*
+        [WProperty("Misc.", "Unused 1", true, "")]
+        public int Unused1
+        {
+            get { return (int)(m_Bitfield1 & 0xF0000000) >> 28; }
             set
             {
                 int value_as_int = value;
-                m_Bitfield1 = (int)(m_Bitfield1 & ~0xF8000000 | (value_as_int << 27 & 0xFF000000));
-                OnPropertyChanged("Unknown1");
+                m_Bitfield1 = (int)(m_Bitfield1 & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
+                OnPropertyChanged("Unused1");
             }
         }
+        */
 
         #endregion
 
@@ -267,17 +281,19 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Misc.", "Unknown 2", true, "Purpose uncertain.")]
-        public int Unknown2
+        /*
+        [WProperty("Misc.", "Unused 2", true, "")]
+        public int Unused2
         {
             get { return (int)(m_Bitfield2 & 0xFC000000) >> 26; }
             set
             {
                 int value_as_int = value;
                 m_Bitfield2 = (int)(m_Bitfield2 & ~0xFC000000 | (value_as_int << 26 & 0xFC000000));
-                OnPropertyChanged("Unknown2");
+                OnPropertyChanged("Unused2");
             }
         }
+        */
 
         #endregion
 
