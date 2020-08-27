@@ -10533,6 +10533,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				UpdateModel();
 			}
 		}
 
@@ -14870,6 +14871,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
+				UpdateModel();
 			}
 		}
 
@@ -22267,7 +22269,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("tag_light", "Type", true, "", SourceScene.Room)]
+		[WProperty("Light Region/Detector", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -22356,8 +22358,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_light", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Light Region", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -22369,7 +22371,24 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("EnableSpawnSwitch");
+			}
+		}
+
+		[WProperty("Light Detector", "Switch to Set", true, "The switch to set when light is shone on this detector.", SourceScene.Room)]
+		public int SwitchtoSet
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -22403,7 +22422,8 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
-			Unknown_6 = -1;
+			EnableSpawnSwitch = -1;
+			SwitchtoSet = -1;
 			Unknown_7 = -1;
 			if (Name == "LTag0") {
 				Type = TypeEnum.Invisible_Light_Region;

@@ -18,7 +18,8 @@
       "Hidden": false,
       "Category": "obj_mkie",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_3",

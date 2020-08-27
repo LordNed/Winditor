@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindEditor.ViewModel;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -11,15 +12,22 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-            m_actorMeshes = WResourceManager.LoadActorResource("Big Elephant Statue");
-
-			if (Unknown_2 == 1)
-				Transform.ScaleBase.BackingVector *= 3;
+			UpdateModel();
         }
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			m_actorMeshes = WResourceManager.LoadActorResource("Big Elephant Statue");
+
+			if (Unknown_2 == 1)
+				VisualScaleMultiplier = new Vector3(3);
+			else
+				VisualScaleMultiplier = new Vector3(1);
 		}
 	}
 }

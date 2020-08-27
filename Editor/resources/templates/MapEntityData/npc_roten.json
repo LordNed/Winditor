@@ -18,7 +18,8 @@
       "Hidden": false,
       "Category": "npc_roten",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "UpdateModel": true
     }
   ]
 }

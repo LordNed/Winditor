@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00000003,
       "Hidden": false,
-      "Category": "tag_light",
+      "Category": "Light Region/Detector",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -60,12 +60,21 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "tag_light",
+      "Category": "Light Region",
       "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Switch to Set",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Light Detector",
+      "ToolTip": "The switch to set when light is shone on this detector.",
       "DataType": "Integer"
     },
     {
