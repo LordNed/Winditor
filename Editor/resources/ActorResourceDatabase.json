@@ -5951,5 +5951,167 @@
         ]
       }
     ]
+  },
+  {
+    "Name": "Moblin Statue",
+    "Archive": "Mozo",
+    "Models": [
+      {
+        "Path": "bdlm/moz.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Hyrule Warp",
+    "Archive": "Ghrwp",
+    "Models": [
+      {
+        "Path": "bdlm/ghrwpa00.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/ghrwpa00.btk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Light Plane",
+    "Archive": "frLt",
+    "Models": [
+      {
+        "Path": "bdlm/yfrlt00.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/yfrlt00.btk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "StpTetu",
+    "Archive": "StpTetu",
+    "Models": [
+      {
+        "Path": "bdl/stptetu.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Ganon's Tower Warp",
+    "Archive": "Ygcwp",
+    "Models": [
+      {
+        "Path": "bdlm/ygcwp00.bdl",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/ygcwp00_common.brk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Burning Forsaken Fortress Ship",
+    "Archive": "dmgroom",
+    "Models": [
+      {
+        "Path": "bdlm/dmgroom.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Ganon Battle Waterfall",
+    "Archive": "Gnnbtltaki",
+    "Models": [
+      {
+        "Path": "bdlm/gnn_btl_taki.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/gnn_btl_taki.btk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Ganon Waterfall E",
+    "Archive": "Gnndemotakie",
+    "Models": [
+      {
+        "Path": "bdlm/gnn_demo_taki_e.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/gnn_demo_taki_e.btk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Ganon Waterfall S",
+    "Archive": "Gnndemotakis",
+    "Models": [
+      {
+        "Path": "bdlm/gnn_demo_taki_s.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Ganon Waterfall",
+    "Archive": "Gtaki",
+    "Models": [
+      {
+        "Path": "bdli/gtaki.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/gtaki.btk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Forsaken Fortress Ship",
+    "Archive": "GaShip",
+    "Models": [
+      {
+        "Path": "bdl/gaship.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Ganon's Tower Boss Tablet",
+    "Archive": "VgnFD",
+    "Models": [
+      {
+        "Path": "bdlm/vgnfd5.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Puppet Ganon Chandelier",
+    "Archive": "Vteng",
+    "Models": [
+      {
+        "Path": "bdlm/vteng.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Nintendo Gallery Hatch",
+    "Archive": "Ohatch",
+    "Models": [
+      {
+        "Path": "bdl/ohatch.bdl"
+      }
+    ]
   }
 ]

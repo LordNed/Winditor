@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			m_actorMeshes = WResourceManager.LoadActorResource("Ganon's Tower Boss Tablet");
 			base.PostLoad();
 		}
 

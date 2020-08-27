@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			m_actorMeshes = WResourceManager.LoadActorResource("Burning Forsaken Fortress Ship");
 			base.PostLoad();
 		}
 
