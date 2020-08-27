@@ -26,8 +26,6 @@ namespace WindEditor
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
         public ICommand OpenProjectCommand { get { return new RelayCommand(x => OnApplicationRequestOpenProject()); } }
         public ICommand OpenRoomsCommand { get { return new RelayCommand(x => OnApplicationRequestOpenRooms()); } }
-        public ICommand SaveProjectCommand { get { return new RelayCommand(x => OnApplicationRequestSaveProject(), x => MainWorld.Map != null); } }
-        public ICommand SaveProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestSaveAsProject(), x => MainWorld.Map != null); } }
         public ICommand ExportProjectCommand { get { return new RelayCommand(x => OnApplicationRequestExportProject(), x => MainWorld.Map != null); } }
         public ICommand ExportProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestExportAsProject(), x => MainWorld.Map != null); } }
         public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
@@ -273,58 +271,9 @@ namespace WindEditor
             }
         }
 
-        public void OnApplicationRequestSaveProject()
-        {
-            // Data was loaded from archives to a temp folder. We need a new folder to copy this data to!
-            if (MainWorld.Map.SavePath == null)
-            {
-                string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
-                if (path == null)
-                    return;
-
-                string newMapDir = $"{ path }\\{ MainWorld.Map.MapName }";
-                CopyTempDataToPermanentDir(m_sourceDataPath, newMapDir);
-
-                MainWorld.Map.SavePath = newMapDir;
-
-                WSettingsManager.GetSettings().LastStagePath.FilePath = path;
-            }
-
-            try
-            {
-                MainWorld.SaveMapToDirectory("");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error saving project");
-                return;
-            }
-        }
-
-        public void OnApplicationRequestSaveAsProject()
-        {
-            string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
-            if (path == null)
-                return;
-
-            try
-            {
-                MainWorld.SaveMapToDirectory(path);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error saving project");
-                return;
-            }
-
-            WSettingsManager.GetSettings().LastStagePath.FilePath = path;
-        }
-
         public void OnApplicationRequestExportProject()
         {
-            string path = GetUserPath(WSettingsManager.GetSettings().LastStagePath.FilePath);
-            if (path == null)
-                return;
+            string path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", MainWorld.Map.MapName);
 
             try
             {

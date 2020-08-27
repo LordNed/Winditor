@@ -19,10 +19,8 @@
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.UndoStack.RedoCommand}" Key="Z" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.OpenProjectCommand}" Key="O" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.OpenRoomsCommand}" Key="O" Modifiers="Ctrl+Shift"/>
-        <KeyBinding Command="{Binding Path=WindEditor.SaveProjectCommand}" Key="S" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.SaveProjectAsCommand}" Key="S" Modifiers="Ctrl+Shift"/>
-        <KeyBinding Command="{Binding Path=WindEditor.ExportProjectCommand}" Key="E" Modifiers="Ctrl"/>
-        <KeyBinding Command="{Binding Path=WindEditor.ExportProjectAsCommand}" Key="E" Modifiers="Ctrl+Shift"/>
+        <KeyBinding Command="{Binding Path=WindEditor.ExportProjectCommand}" Key="S" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=WindEditor.ExportProjectAsCommand}" Key="S" Modifiers="Ctrl+Shift"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CutSelectionCommand}" Key="X" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.CopySelectionCommand}" Key="C" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding Path=WindEditor.MainWorld.ActorMode.PasteSelectionCommand}" Key="V" Modifiers="Ctrl"/>
@@ -67,8 +65,8 @@
                     <MenuItem Header="_Stage..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
                     <MenuItem Header="_Room(s)..." InputGestureText="Ctrl + Shift + O" Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
                 </MenuItem>
-                <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.SaveProjectCommand}"/>
-                <MenuItem Header="Save _As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.SaveProjectAsCommand}"/>
+                <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.ExportProjectCommand}" ToolTip="Outputs RARC archives ready to go into the game."/>
+                <MenuItem Header="Save As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.ExportProjectAsCommand}" ToolTip="Outputs RARC archives ready for the game to a specified location."/>
                 <Separator/>
                 <MenuItem Header="_Import">
                     <MenuItem Header="Visual Mesh" Command="{Binding Path=WindEditor.ImportVisualMeshCommand}"/>
@@ -127,10 +125,6 @@
                 <Separator/>
                 <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="TRES"/>
                 <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="SCLS"/>
-            </MenuItem>
-            <MenuItem Header="Build">
-                <MenuItem Header="_Build Stage" InputGestureText="Ctrl + B" Command="{Binding Path=WindEditor.ExportProjectCommand}"/>
-                <MenuItem Header="Build Stage to..." InputGestureText="Ctrl + Shift + B" Command="{Binding Path=WindEditor.ExportProjectAsCommand}"/>
             </MenuItem>
             <MenuItem Header="_Play" InputGestureText="Ctrl + P" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
             <MenuItem Padding="0" Width="15">
