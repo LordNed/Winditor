@@ -167,7 +167,8 @@
         <Menu Grid.Row="1">
             <MenuItem Header="Actor Editor" Command="{Binding WindEditor.SwitchToActorModeCommand}"/>
             <MenuItem Header="Collision Editor" Command="{Binding WindEditor.SwitchToCollisionModeCommand}"/>
-            <MenuItem Header="Event Editor" Command="{Binding WindEditor.SwitchToEventModeCommand}"/>
+            <!-- To be re-added when the event editor is complete. -->
+            <!--MenuItem Header="Event Editor" Command="{Binding WindEditor.SwitchToEventModeCommand}"/-->
         </Menu>
 
         <!-- Main Application Body -->
