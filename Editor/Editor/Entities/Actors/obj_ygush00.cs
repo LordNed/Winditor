@@ -12,6 +12,7 @@ namespace WindEditor
 		public override void PostLoad()
 		{
             m_actorMeshes = WResourceManager.LoadActorResource("Transparent Bubbling Spring");
+			base.PostLoad();
 		}
 
 		public override void PreSave()

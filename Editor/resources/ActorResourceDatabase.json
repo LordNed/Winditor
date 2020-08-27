@@ -5876,5 +5876,80 @@
         ]
       }
     ]
+  },
+  {
+    "Name": "Servant of the Tower",
+    "Archive": "Os",
+    "Models": [
+      {
+        "Path": "bdlm/os.bdl",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/tenmetu.brk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Leaf Pile",
+    "Archive": "Vochi",
+    "Models": [
+      {
+        "Path": "bdl/vochi.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Ceiling Fan",
+    "Archive": "Pbka",
+    "Models": [
+      {
+        "Path": "bdl/pbka.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Breakable Forbidden Woods Floor",
+    "Archive": "Kanat",
+    "Models": [
+      {
+        "Path": "bdl/kanat.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Curtain Rod",
+    "Archive": "Mcrtn",
+    "Models": [
+      {
+        "Path": "bdl/mcrtn1.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Makar Seed Plot",
+    "Archive": "Usovmc",
+    "Models": [
+      {
+        "Path": "bdl/vmcbx.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Swirling Clouds",
+    "Archive": "Bvkumo",
+    "Models": [
+      {
+        "Path": "bdlm/bvkumo.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/bvkumo.btk"
+          }
+        ]
+      }
+    ]
   }
 ]
