@@ -11,12 +11,24 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+            UpdateModel();
+            base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
 		}
-	}
+
+        private void UpdateModel()
+        {
+            m_actorMeshes.Clear();
+            m_objRender = null;
+
+            if (Name == "Sv0")
+                m_actorMeshes = WResourceManager.LoadActorResource("Standing Diving Man");
+            else
+                m_actorMeshes = WResourceManager.LoadActorResource("Sitting Diving Man");
+        }
+    }
 }

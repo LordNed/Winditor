@@ -55,7 +55,7 @@
     "Archive": "Dalways",
     "Models": [
       {
-        "Path": "bdlm/boxd.bdl",
+        "Path": "bdlm/boxd.bdl"
       }
     ]
   },
@@ -64,7 +64,7 @@
     "Archive": "Itact",
     "Models": [
       {
-        "Path": "bdl/itact.bdl",
+        "Path": "bdl/itact.bdl"
       }
     ]
   },
@@ -111,8 +111,8 @@
                 "Paused on Load": true,
                 "Start Time": 0
               }
-            ],
-          },
+            ]
+          }
         ]
       }
     ]
@@ -258,7 +258,7 @@
     "Archive": "Vmr",
     "Models": [
       {
-        "Path": "bdlm/vmrto.bdl",
+        "Path": "bdlm/vmrto.bdl"
       }
     ]
   },
@@ -267,7 +267,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/obm_kotubo1.bdl",
+        "Path": "bdl/obm_kotubo1.bdl"
       }
     ]
   },
@@ -276,7 +276,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/obm_ootubo1.bdl",
+        "Path": "bdl/obm_ootubo1.bdl"
       }
     ]
   },
@@ -285,7 +285,7 @@
     "Archive": "Kmtub_00",
     "Models": [
       {
-        "Path": "bdl/kmtub_00.bdl",
+        "Path": "bdl/kmtub_00.bdl"
       }
     ]
   },
@@ -294,7 +294,7 @@
     "Archive": "Ktaru_01",
     "Models": [
       {
-        "Path": "bdl/ktaru_01.bdl",
+        "Path": "bdl/ktaru_01.bdl"
       }
     ]
   },
@@ -303,7 +303,7 @@
     "Archive": "Okmono",
     "Models": [
       {
-        "Path": "bdl/ostool.bdl",
+        "Path": "bdl/ostool.bdl"
       }
     ]
   },
@@ -312,7 +312,7 @@
     "Archive": "Okmono",
     "Models": [
       {
-        "Path": "bdl/otable.bdl",
+        "Path": "bdl/otable.bdl"
       }
     ]
   },
@@ -321,7 +321,7 @@
     "Archive": "Okmono",
     "Models": [
       {
-        "Path": "bdl/otablel.bdl",
+        "Path": "bdl/otablel.bdl"
       }
     ]
   },
@@ -330,7 +330,7 @@
     "Archive": "Odokuro",
     "Models": [
       {
-        "Path": "bdl/odokuro.bdl",
+        "Path": "bdl/odokuro.bdl"
       }
     ]
   },
@@ -339,7 +339,7 @@
     "Archive": "Okioke",
     "Models": [
       {
-        "Path": "bdl/okioke.bdl",
+        "Path": "bdl/okioke.bdl"
       }
     ]
   },
@@ -353,7 +353,7 @@
           "X": 0,
           "Y": 50,
           "Z": 0
-        },
+        }
       }
     ]
   },
@@ -362,7 +362,7 @@
     "Archive": "Hbox2",
     "Models": [
       {
-        "Path": "bdl/hbox2.bdl",
+        "Path": "bdl/hbox2.bdl"
       }
     ]
   },
@@ -375,7 +375,7 @@
         "Position": {
           "X": 0,
           "Y": 50,
-          "Z": 0,
+          "Z": 0
         }
       }
     ]
@@ -385,7 +385,7 @@
     "Archive": "Ptubo",
     "Models": [
       {
-        "Path": "bdl/ptubo.bdl",
+        "Path": "bdl/ptubo.bdl"
       }
     ]
   },
@@ -394,7 +394,7 @@
     "Archive": "Kkiba_00",
     "Models": [
       {
-        "Path": "bdl/kkiba_00.bdl",
+        "Path": "bdl/kkiba_00.bdl"
       }
     ]
   },
@@ -403,7 +403,7 @@
     "Archive": "Ospbox",
     "Models": [
       {
-        "Path": "bdl/ospbox.bdl",
+        "Path": "bdl/ospbox.bdl"
       }
     ]
   },
@@ -412,7 +412,7 @@
     "Archive": "Hlift",
     "Models": [
       {
-        "Path": "bdl/hlift.bdl",
+        "Path": "bdl/hlift.bdl"
       }
     ]
   },
@@ -421,7 +421,7 @@
     "Archive": "Hlift",
     "Models": [
       {
-        "Path": "bdl/hliftb.bdl",
+        "Path": "bdl/hliftb.bdl"
       }
     ]
   },
@@ -430,7 +430,7 @@
     "Archive": "Klft",
     "Models": [
       {
-        "Path": "bdlm/lift_00.bdl",
+        "Path": "bdlm/lift_00.bdl"
       }
     ]
   },
@@ -439,7 +439,7 @@
     "Archive": "Klft",
     "Models": [
       {
-        "Path": "bdlm/vpbot_00.bdl",
+        "Path": "bdlm/vpbot_00.bdl"
       }
     ]
   },
@@ -448,7 +448,7 @@
     "Archive": "Mshokki",
     "Models": [
       {
-        "Path": "bdl/pot.bdl",
+        "Path": "bdl/pot.bdl"
       }
     ]
   },
@@ -457,7 +457,7 @@
     "Archive": "Mshokki",
     "Models": [
       {
-        "Path": "bdl/osara.bdl",
+        "Path": "bdl/osara.bdl"
       }
     ]
   },
@@ -466,7 +466,7 @@
     "Archive": "Mshokki",
     "Models": [
       {
-        "Path": "bdl/koppu.bdl",
+        "Path": "bdl/koppu.bdl"
       }
     ]
   },
@@ -475,7 +475,7 @@
     "Archive": "Ashut",
     "Models": [
       {
-        "Path": "bdl/ashut.bdl",
+        "Path": "bdl/ashut.bdl"
       }
     ]
   },
@@ -484,11 +484,11 @@
     "Archive": "door12",
     "Models": [
       {
-        "Path": "bdl/door12_gl.bdl",
+        "Path": "bdl/door12_gl.bdl"
       },
       {
-        "Path": "bdl/door12_gr.bdl",
-      },
+        "Path": "bdl/door12_gr.bdl"
+      }
     ]
   },
   {
@@ -496,11 +496,11 @@
     "Archive": "door12",
     "Models": [
       {
-        "Path": "bdl/door12m_l.bdl",
+        "Path": "bdl/door12m_l.bdl"
       },
       {
-        "Path": "bdl/door12m_r.bdl",
-      },
+        "Path": "bdl/door12m_r.bdl"
+      }
     ]
   },
   {
@@ -508,11 +508,11 @@
     "Archive": "door12",
     "Models": [
       {
-        "Path": "bdl/door12b_l.bdl",
+        "Path": "bdl/door12b_l.bdl"
       },
       {
-        "Path": "bdl/door12b_r.bdl",
-      },
+        "Path": "bdl/door12b_r.bdl"
+      }
     ]
   },
   {
@@ -520,11 +520,11 @@
     "Archive": "door13",
     "Models": [
       {
-        "Path": "bdl/door13_l.bdl",
+        "Path": "bdl/door13_l.bdl"
       },
       {
-        "Path": "bdl/door13_r.bdl",
-      },
+        "Path": "bdl/door13_r.bdl"
+      }
     ]
   },
   {
@@ -532,11 +532,11 @@
     "Archive": "door13",
     "Models": [
       {
-        "Path": "bdl/door13m_l.bdl",
+        "Path": "bdl/door13m_l.bdl"
       },
       {
-        "Path": "bdl/door13m_r.bdl",
-      },
+        "Path": "bdl/door13m_r.bdl"
+      }
     ]
   },
   {
@@ -544,11 +544,11 @@
     "Archive": "door13",
     "Models": [
       {
-        "Path": "bdl/door13b_l.bdl",
+        "Path": "bdl/door13b_l.bdl"
       },
       {
-        "Path": "bdl/door13b_r.bdl",
-      },
+        "Path": "bdl/door13b_r.bdl"
+      }
     ]
   },
   {
@@ -556,7 +556,7 @@
     "Archive": "Lamp",
     "Models": [
       {
-        "Path": "bmd/lamp_00.bmd",
+        "Path": "bmd/lamp_00.bmd"
       }
     ]
   },
@@ -565,7 +565,7 @@
     "Archive": "Himo3",
     "Models": [
       {
-        "Path": "bmd/slamp_00.bmd",
+        "Path": "bmd/slamp_00.bmd"
       }
     ]
   },
@@ -574,7 +574,7 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       }
     ]
   },
@@ -583,7 +583,7 @@
     "Archive": "Rflw",
     "Models": [
       {
-        "Path": "bdl/phana.bdl",
+        "Path": "bdl/phana.bdl"
       }
     ]
   },
@@ -592,20 +592,20 @@
     "Archive": "Hcbh",
     "Models": [
       {
-        "Path": "bdl/hcbh1a.bdl",
+        "Path": "bdl/hcbh1a.bdl"
       },
       {
-        "Path": "bdl/hcbh1b.bdl",
+        "Path": "bdl/hcbh1b.bdl"
       },
       {
-        "Path": "bdl/hcbh1c.bdl",
+        "Path": "bdl/hcbh1c.bdl"
       },
       {
-        "Path": "bdl/hcbh1d.bdl",
+        "Path": "bdl/hcbh1d.bdl"
       },
       {
-        "Path": "bdl/hcbh2.bdl",
-      },
+        "Path": "bdl/hcbh2.bdl"
+      }
     ]
   },
   {
@@ -613,7 +613,7 @@
     "Archive": "Hseki",
     "Models": [
       {
-        "Path": "bdlm/hmon1.bdl",
+        "Path": "bdlm/hmon1.bdl"
       }
     ]
   },
@@ -622,7 +622,7 @@
     "Archive": "Hseki",
     "Models": [
       {
-        "Path": "bdlm/hmon2.bdl",
+        "Path": "bdlm/hmon2.bdl"
       }
     ]
   },
@@ -631,7 +631,7 @@
     "Archive": "X_tower",
     "Models": [
       {
-        "Path": "bdl/x_tower.bdl",
+        "Path": "bdl/x_tower.bdl"
       }
     ]
   },
@@ -640,7 +640,7 @@
     "Archive": "Kui",
     "Models": [
       {
-        "Path": "bdl/obi_ropetag.bdl",
+        "Path": "bdl/obi_ropetag.bdl"
       }
     ]
   },
@@ -649,10 +649,10 @@
     "Archive": "Kui",
     "Models": [
       {
-        "Path": "bdl/obi_ropetag.bdl",
+        "Path": "bdl/obi_ropetag.bdl"
       },
       {
-        "Path": "bdl/mropesw.bdl",
+        "Path": "bdl/mropesw.bdl"
       }
     ]
   },
@@ -661,10 +661,10 @@
     "Archive": "Kui",
     "Models": [
       {
-        "Path": "bdl/hkane1.bdl",
+        "Path": "bdl/hkane1.bdl"
       },
       {
-        "Path": "bdl/hkane2.bdl",
+        "Path": "bdl/hkane2.bdl"
       }
     ]
   },
@@ -792,7 +792,7 @@
     "Archive": "MkieK",
     "Models": [
       {
-        "Path": "bdl/mkiek.bdl",
+        "Path": "bdl/mkiek.bdl"
       }
     ]
   },
@@ -801,7 +801,7 @@
     "Archive": "Mkanoke",
     "Models": [
       {
-        "Path": "bdl/moke1.bdl",
+        "Path": "bdl/moke1.bdl"
       },
       {
         "Path": "bdl/moke2.bdl",
@@ -809,8 +809,8 @@
           "X": 0,
           "Y": 75,
           "Z": 0
-        },
-      },
+        }
+      }
     ]
   },
   {
@@ -828,7 +828,7 @@
           "X": 90,
           "Y": 0,
           "Z": 0
-        },
+        }
       },
       {
         "Path": "bdl/moke2.bdl",
@@ -841,7 +841,7 @@
           "X": 90,
           "Y": 0,
           "Z": 0
-        },
+        }
       }
     ]
   },
@@ -850,7 +850,7 @@
     "Archive": "Mhsg",
     "Models": [
       {
-        "Path": "bdl/mhsg6.bdl",
+        "Path": "bdl/mhsg6.bdl"
       }
     ]
   },
@@ -859,7 +859,7 @@
     "Archive": "Mhsg",
     "Models": [
       {
-        "Path": "bdl/mhsg9.bdl",
+        "Path": "bdl/mhsg9.bdl"
       }
     ]
   },
@@ -868,7 +868,7 @@
     "Archive": "Mhsg",
     "Models": [
       {
-        "Path": "bdl/mhsg12.bdl",
+        "Path": "bdl/mhsg12.bdl"
       }
     ]
   },
@@ -877,7 +877,7 @@
     "Archive": "Mhsg",
     "Models": [
       {
-        "Path": "bdl/mhsg15.bdl",
+        "Path": "bdl/mhsg15.bdl"
       }
     ]
   },
@@ -886,7 +886,7 @@
     "Archive": "Mhsg",
     "Models": [
       {
-        "Path": "bdl/mhsg4h.bdl",
+        "Path": "bdl/mhsg4h.bdl"
       }
     ]
   },
@@ -895,7 +895,7 @@
     "Archive": "Lwood",
     "Models": [
       {
-        "Path": "bdl/alwd.bdl",
+        "Path": "bdl/alwd.bdl"
       }
     ]
   },
@@ -904,7 +904,7 @@
     "Archive": "Oyashi",
     "Models": [
       {
-        "Path": "bdl/oyashi.bdl",
+        "Path": "bdl/oyashi.bdl"
       }
     ]
   },
@@ -913,7 +913,7 @@
     "Archive": "Ikori",
     "Models": [
       {
-        "Path": "bdl/vice.bdl",
+        "Path": "bdl/vice.bdl"
       }
     ]
   },
@@ -1066,7 +1066,7 @@
         ]
       },
       {
-        "Path": "bdlm/ks_eye.bdl",
+        "Path": "bdlm/ks_eye.bdl"
       }
     ]
   },
@@ -1345,7 +1345,7 @@
     "Archive": "Tn",
     "Models": [
       {
-        "Path": "bmdm/tn_tate1.bmd",
+        "Path": "bmdm/tn_tate1.bmd"
       }
     ]
   },
@@ -1482,13 +1482,13 @@
             "Path": "brk/wz.brk",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/wz_stick.bdl",
             "Parent Joint": "wiz_tekubi_r1"
-          },
+          }
         ]
       }
     ]
@@ -1511,13 +1511,13 @@
             "Path": "brk/wz.brk",
             "Paused on Load": true,
             "Start Time": 0.03333333333333333333333333333333
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/wz_stick.bdl",
             "Parent Joint": "wiz_tekubi_r1"
-          },
+          }
         ]
       }
     ]
@@ -1540,7 +1540,7 @@
             "Path": "brk/wz.brk",
             "Paused on Load": true,
             "Start Time": 0.06666666666666666666666666666667
-          },
+          }
         ],
         "Child Models": [
           {
@@ -1550,7 +1550,7 @@
           {
             "Path": "bdlm/wz_stick.bdl",
             "Parent Joint": "wiz_tekubi_r1"
-          },
+          }
         ]
       }
     ]
@@ -1573,13 +1573,13 @@
             "Path": "brk/wz.brk",
             "Paused on Load": true,
             "Start Time": 0.9999999 // Should be keyframe 3 (0.1 seconds), but if we set that exactly it loops back to 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/wz_stick.bdl",
             "Parent Joint": "wiz_tekubi_r1"
-          },
+          }
         ]
       }
     ]
@@ -1738,7 +1738,7 @@
         ]
       },
       {
-        "Path": "bdlm/ypit00.bdl",
+        "Path": "bdlm/ypit00.bdl"
       }
     ]
   },
@@ -1747,7 +1747,7 @@
     "Archive": "Sss",
     "Models": [
       {
-        "Path": "bmd/sss_hand.bmd",
+        "Path": "bmd/sss_hand.bmd"
       }
     ]
   },
@@ -1802,7 +1802,7 @@
     "Archive": "Nzg",
     "Models": [
       {
-        "Path": "bdl/kana_00.bdl",
+        "Path": "bdl/kana_00.bdl"
       }
     ]
   },
@@ -2131,7 +2131,7 @@
     "Archive": "Hmos",
     "Models": [
       {
-        "Path": "bdl/hmos1.bdl",
+        "Path": "bdl/hmos1.bdl"
       },
       {
         "Path": "bdl/hmosup1.bdl",
@@ -2146,7 +2146,7 @@
             "Path": "brk/hmosup1.brk",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -2156,7 +2156,7 @@
     "Archive": "Hmos",
     "Models": [
       {
-        "Path": "bdl/hmos2.bdl",
+        "Path": "bdl/hmos2.bdl"
       },
       {
         "Path": "bdl/hmosup2.bdl",
@@ -2171,7 +2171,7 @@
             "Path": "brk/hmosup2.brk",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ]
       },
       {
@@ -2182,9 +2182,9 @@
             "Path": "brk/hmos2t.brk",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2192,8 +2192,8 @@
     "Archive": "Hmos",
     "Models": [
       {
-        "Path": "bdl/hmos3.bdl",
-      },
+        "Path": "bdl/hmos3.bdl"
+      }
     ]
   },
   {
@@ -2201,7 +2201,7 @@
     "Archive": "Oship",
     "Models": [
       {
-        "Path": "bdl/vbtsp.bdl",
+        "Path": "bdl/vbtsp.bdl"
       }
     ]
   },
@@ -2210,7 +2210,7 @@
     "Archive": "Oship",
     "Models": [
       {
-        "Path": "bdl/vbtst.bdl",
+        "Path": "bdl/vbtst.bdl"
       }
     ]
   },
@@ -2219,7 +2219,7 @@
     "Archive": "WallBom",
     "Models": [
       {
-        "Path": "bdl/wallbom.bdl",
+        "Path": "bdl/wallbom.bdl"
       }
     ]
   },
@@ -2281,8 +2281,8 @@
             "Paused on Load": false,
             "Start Time": 0.23333333333333333333333333333333
           }
-        ],
-      },
+        ]
+      }
     ]
   },
   {
@@ -2290,7 +2290,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/obm_koisi1.bdl",
+        "Path": "bdl/obm_koisi1.bdl"
       }
     ]
   },
@@ -2299,7 +2299,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/obm_koisi2.bdl",
+        "Path": "bdl/obm_koisi2.bdl"
       }
     ]
   },
@@ -2308,7 +2308,7 @@
     "Archive": "Ebrock",
     "Models": [
       {
-        "Path": "bdl/ebrock.bdl",
+        "Path": "bdl/ebrock.bdl"
       }
     ]
   },
@@ -2317,7 +2317,7 @@
     "Archive": "Ebrock",
     "Models": [
       {
-        "Path": "bdl/ebrock2.bdl",
+        "Path": "bdl/ebrock2.bdl"
       }
     ]
   },
@@ -2326,7 +2326,7 @@
     "Archive": "Ekao",
     "Models": [
       {
-        "Path": "bdl/ekao.bdl",
+        "Path": "bdl/ekao.bdl"
       }
     ]
   },
@@ -2335,7 +2335,7 @@
     "Archive": "Eskban",
     "Models": [
       {
-        "Path": "bdl/eskban.bdl",
+        "Path": "bdl/eskban.bdl"
       }
     ]
   },
@@ -2374,9 +2374,9 @@
           {
             "Path": "bdl/ukhead_b.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2403,9 +2403,9 @@
           {
             "Path": "bdlm/ukhead_c.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2432,9 +2432,9 @@
           {
             "Path": "bdl/ukhead_d.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2449,15 +2449,15 @@
             "Path": "bcks/uo_wait02.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/uo01_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2484,9 +2484,9 @@
           {
             "Path": "bdlm/uo02_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2517,9 +2517,9 @@
           {
             "Path": "bdl/uo_letter.bdl",
             "Parent Joint": "handR"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2546,9 +2546,9 @@
           {
             "Path": "bdlm/ub01_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2575,9 +2575,9 @@
           {
             "Path": "bdlm/ub02_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2604,9 +2604,9 @@
           {
             "Path": "bdlm/ub03_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2621,15 +2621,15 @@
             "Path": "bcks/ub_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/ub04_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2644,15 +2644,15 @@
             "Path": "bcks/uw_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/uw01_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2679,9 +2679,9 @@
           {
             "Path": "bdlm/uw02_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2708,9 +2708,9 @@
           {
             "Path": "bdlm/um02_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2725,15 +2725,15 @@
             "Path": "bcks/um_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/um01_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2760,9 +2760,9 @@
           {
             "Path": "bdlm/um03_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2793,9 +2793,9 @@
           {
             "Path": "bdl/um_scope.bdl",
             "Parent Joint": "handR"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2810,7 +2810,7 @@
             "Path": "bcks/sa_cwait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
@@ -2822,11 +2822,11 @@
                 "Path": "bcks/sa01head_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
+              }
+            ]
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2841,7 +2841,7 @@
             "Path": "bcks/sa_cwait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
@@ -2853,11 +2853,11 @@
                 "Path": "bcks/sa01head_cwait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
+              }
+            ]
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2884,9 +2884,9 @@
           {
             "Path": "bdlm/sa02_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2913,9 +2913,9 @@
           {
             "Path": "bdlm/sa03_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2942,9 +2942,9 @@
           {
             "Path": "bdlm/sa03_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -2971,9 +2971,9 @@
           {
             "Path": "bdlm/sa05_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3004,9 +3004,9 @@
           {
             "Path": "bdl/sa_cup05.bdl",
             "Parent Joint": "handR"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3033,9 +3033,9 @@
           {
             "Path": "bdlm/sa04_head.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3066,9 +3066,9 @@
           {
             "Path": "bdl/sa_cup04.bdl",
             "Parent Joint": "handR"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3083,7 +3083,7 @@
             "Path": "bcks/ug_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
@@ -3095,11 +3095,11 @@
                 "Path": "bcks/ug01head_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
+              }
+            ]
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3125,10 +3125,10 @@
         "Child Models": [
           {
             "Path": "bdlm/ug02_head.bdl",
-            "Parent Joint": "head",
-          },
+            "Parent Joint": "head"
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3143,15 +3143,15 @@
             "Path": "bcks/wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/ywhead01.bdl",
             "Parent Joint": "head"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3166,15 +3166,15 @@
             "Path": "bcks/wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdl/aj_stick.bdl",
             "Parent Joint": "handL"
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -3189,7 +3189,7 @@
             "Path": "bcks/bm_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
@@ -3201,8 +3201,8 @@
                 "Path": "bcks/bmhead01_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3213,8 +3213,8 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3225,11 +3225,11 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3248,12 +3248,12 @@
           {
             "Anim Type": "bmt",
             "Path": "bmt/bm02.bmt"
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead02.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3268,8 +3268,8 @@
               {
                 "Anim Type": "bmt",
                 "Path": "bmt/bmarm02.bmt"
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3284,11 +3284,11 @@
               {
                 "Anim Type": "bmt",
                 "Path": "bmt/bmarm02.bmt"
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3307,12 +3307,12 @@
           {
             "Anim Type": "bmt",
             "Path": "bmt/bm02.bmt"
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead07.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3327,8 +3327,8 @@
               {
                 "Anim Type": "bmt",
                 "Path": "bmt/bmarm02.bmt"
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3343,11 +3343,11 @@
               {
                 "Anim Type": "bmt",
                 "Path": "bmt/bmarm02.bmt"
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3366,12 +3366,12 @@
           {
             "Anim Type": "bmt",
             "Path": "bmt/bm02.bmt"
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead05.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3386,8 +3386,8 @@
               {
                 "Anim Type": "bmt",
                 "Path": "bmt/bmarm02.bmt"
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3402,11 +3402,11 @@
               {
                 "Anim Type": "bmt",
                 "Path": "bmt/bmarm02.bmt"
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3421,12 +3421,12 @@
             "Path": "bcks/bm_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead04.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3437,8 +3437,8 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3449,11 +3449,11 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3468,12 +3468,12 @@
             "Path": "bcks/bm_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead09.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3484,8 +3484,8 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3496,11 +3496,11 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3515,12 +3515,12 @@
             "Path": "bcks/bm_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead06.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3531,8 +3531,8 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3543,11 +3543,11 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3562,12 +3562,12 @@
             "Path": "bcks/bm_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead03.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3578,8 +3578,8 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3590,11 +3590,11 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3609,12 +3609,12 @@
             "Path": "bcks/bm_wait01.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
+          }
         ],
         "Child Models": [
           {
             "Path": "bdlm/bmhead11.bdl",
-            "Parent Joint": "head",
+            "Parent Joint": "head"
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3625,8 +3625,8 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
+              }
+            ]
           },
           {
             "Path": "bdlm/bmarm.bdl",
@@ -3637,11 +3637,11 @@
                 "Path": "bcks/bmarm_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0
-              },
-            ],
-          },
-        ],
-      },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -3656,9 +3656,9 @@
             "Path": "bcks/bn_wait02.bck",
             "Paused on Load": false,
             "Start Time": 0
-          },
-        ],
-      },
+          }
+        ]
+      }
     ]
   },
   {
@@ -3666,10 +3666,10 @@
     "Archive": "Bst",
     "Models": [
       {
-        "Path": "bdlm/bst.bdl",
+        "Path": "bdlm/bst.bdl"
       },
       {
-        "Path": "bdlm/mune.bdl",
+        "Path": "bdlm/mune.bdl"
       }
     ]
   },
@@ -3678,10 +3678,10 @@
     "Archive": "Bst",
     "Models": [
       {
-        "Path": "bdlm/lhand.bdl",
+        "Path": "bdlm/lhand.bdl"
       },
       {
-        "Path": "bdlm/udel.bdl",
+        "Path": "bdlm/udel.bdl"
       }
     ]
   },
@@ -3690,10 +3690,10 @@
     "Archive": "Bst",
     "Models": [
       {
-        "Path": "bdlm/rhand.bdl",
+        "Path": "bdlm/rhand.bdl"
       },
       {
-        "Path": "bdlm/uder.bdl",
+        "Path": "bdlm/uder.bdl"
       }
     ]
   },
@@ -3736,7 +3736,7 @@
     "Archive": "Olift",
     "Models": [
       {
-        "Path": "bdl/olift.bdl",
+        "Path": "bdl/olift.bdl"
       }
     ]
   },
@@ -3745,7 +3745,7 @@
     "Archive": "Ojtree",
     "Models": [
       {
-        "Path": "bdl/ojtree.bdl",
+        "Path": "bdl/ojtree.bdl"
       }
     ]
   },
@@ -3754,7 +3754,7 @@
     "Archive": "Jbo",
     "Models": [
       {
-        "Path": "bmdm/jh.bmd",
+        "Path": "bmdm/jh.bmd"
       }
     ]
   },
@@ -3763,10 +3763,10 @@
     "Archive": "Ssk",
     "Models": [
       {
-        "Path": "bdl/turu_02.bdl",
+        "Path": "bdl/turu_02.bdl"
       },
       {
-        "Path": "bdl/ktana_00.bdl",
+        "Path": "bdl/ktana_00.bdl"
       }
     ]
   },
@@ -3775,7 +3775,7 @@
     "Archive": "Kryu",
     "Models": [
       {
-        "Path": "bdl/ryu_00.bdl",
+        "Path": "bdl/ryu_00.bdl"
       }
     ]
   },
@@ -3823,7 +3823,7 @@
         ]
       },
       {
-        "Path": "bdlm/bo_sita1.bdl",
+        "Path": "bdlm/bo_sita1.bdl"
       }
     ]
   },
@@ -3832,7 +3832,7 @@
     "Archive": "Knsak_00",
     "Models": [
       {
-        "Path": "bdl/knsak_00.bdl",
+        "Path": "bdl/knsak_00.bdl"
       }
     ]
   },
@@ -4002,7 +4002,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/vhrtl.bdl",
+        "Path": "bdl/vhrtl.bdl"
       }
     ]
   },
@@ -4011,7 +4011,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/mpoda.bdl",
+        "Path": "bdlm/mpoda.bdl"
       }
     ]
   },
@@ -4020,7 +4020,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/mpodb.bdl",
+        "Path": "bdlm/mpodb.bdl"
       }
     ]
   },
@@ -4029,7 +4029,7 @@
     "Archive": "Link",
     "Models": [
       {
-        "Path": "bdlm/bomb.bdl",
+        "Path": "bdlm/bomb.bdl"
       }
     ]
   },
@@ -4038,7 +4038,7 @@
     "Archive": "Bomb_00",
     "Models": [
       {
-        "Path": "bdl/vbomb.bdl",
+        "Path": "bdl/vbomb.bdl"
       }
     ]
   },
@@ -4047,7 +4047,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/mpoda.bdl",
+        "Path": "bdlm/mpoda.bdl"
       }
     ]
   },
@@ -4056,7 +4056,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/vkeyl.bdl",
+        "Path": "bdl/vkeyl.bdl"
       }
     ]
   },
@@ -4065,7 +4065,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/vbell.bdl",
+        "Path": "bdl/vbell.bdl"
       }
     ]
   },
@@ -4074,7 +4074,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/vhapl.bdl",
+        "Path": "bdl/vhapl.bdl"
       }
     ]
   },
@@ -4083,7 +4083,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/vbokl.bdl",
+        "Path": "bdl/vbokl.bdl"
       }
     ]
   },
@@ -4092,7 +4092,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/vhanl.bdl",
+        "Path": "bdlm/vhanl.bdl"
       }
     ]
   },
@@ -4101,7 +4101,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/vdokl.bdl",
+        "Path": "bdl/vdokl.bdl"
       }
     ]
   },
@@ -4110,7 +4110,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/vchul.bdl",
+        "Path": "bdlm/vchul.bdl"
       }
     ]
   },
@@ -4153,7 +4153,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/vhkal.bdl",
+        "Path": "bdlm/vhkal.bdl"
       }
     ]
   },
@@ -4162,7 +4162,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdlm/vhutl.bdl",
+        "Path": "bdlm/vhutl.bdl"
       }
     ]
   },
@@ -4171,7 +4171,7 @@
     "Archive": "Always",
     "Models": [
       {
-        "Path": "bdl/fa.bdl",
+        "Path": "bdl/fa.bdl"
       }
     ]
   },
@@ -4180,10 +4180,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj00.bdl",
+        "Path": "bdl/fobj00.bdl"
       }
     ]
   },
@@ -4192,10 +4192,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj01.bdl",
+        "Path": "bdl/fobj01.bdl"
       }
     ]
   },
@@ -4204,10 +4204,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj02.bdl",
+        "Path": "bdl/fobj02.bdl"
       }
     ]
   },
@@ -4216,10 +4216,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj03.bdl",
+        "Path": "bdl/fobj03.bdl"
       }
     ]
   },
@@ -4228,10 +4228,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj04.bdl",
+        "Path": "bdl/fobj04.bdl"
       }
     ]
   },
@@ -4240,10 +4240,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj05.bdl",
+        "Path": "bdl/fobj05.bdl"
       }
     ]
   },
@@ -4252,10 +4252,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj06.bdl",
+        "Path": "bdl/fobj06.bdl"
       }
     ]
   },
@@ -4264,10 +4264,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj07.bdl",
+        "Path": "bdl/fobj07.bdl"
       }
     ]
   },
@@ -4276,10 +4276,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj08.bdl",
+        "Path": "bdl/fobj08.bdl"
       }
     ]
   },
@@ -4288,10 +4288,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj09.bdl",
+        "Path": "bdl/fobj09.bdl"
       }
     ]
   },
@@ -4300,10 +4300,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj10.bdl",
+        "Path": "bdl/fobj10.bdl"
       }
     ]
   },
@@ -4312,10 +4312,10 @@
     "Archive": "Fdai",
     "Models": [
       {
-        "Path": "bdl/fdai.bdl",
+        "Path": "bdl/fdai.bdl"
       },
       {
-        "Path": "bdl/fobj11.bdl",
+        "Path": "bdl/fobj11.bdl"
       }
     ]
   },
@@ -4324,7 +4324,7 @@
     "Archive": "VigaH",
     "Models": [
       {
-        "Path": "bdl/vigah.bdl",
+        "Path": "bdl/vigah.bdl"
       },
       {
         "Archive": "Kmi00x",
@@ -4333,8 +4333,8 @@
           "X": 0,
           "Y": 65,
           "Z": 0
-        },
-      },
+        }
+      }
     ]
   },
   {
@@ -4342,7 +4342,7 @@
     "Archive": "Mdoor",
     "Models": [
       {
-        "Path": "bdl/mori1.bdl",
+        "Path": "bdl/mori1.bdl"
       }
     ]
   },
@@ -4351,7 +4351,7 @@
     "Archive": "Mdoor",
     "Models": [
       {
-        "Path": "bdl/mori2.bdl",
+        "Path": "bdl/mori2.bdl"
       }
     ]
   },
@@ -4367,7 +4367,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4384,7 +4384,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4401,7 +4401,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4418,7 +4418,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4435,7 +4435,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4452,7 +4452,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4469,7 +4469,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4486,7 +4486,7 @@
             "Path": "bck/dooropenadoor.bck",
             "Paused on Load": true,
             "Start Time": 0
-          },
+          }
         ]
       }
     ]
@@ -4496,7 +4496,7 @@
     "Archive": "MhmrSW",
     "Models": [
       {
-        "Path": "bdl/mhmrsw.bdl",
+        "Path": "bdl/mhmrsw.bdl"
       }
     ]
   },
@@ -4505,7 +4505,7 @@
     "Archive": "Shmrgrd",
     "Models": [
       {
-        "Path": "bdl/shmrgrd.bdl",
+        "Path": "bdl/shmrgrd.bdl"
       }
     ]
   },
@@ -4514,7 +4514,7 @@
     "Archive": "Kbota_00",
     "Models": [
       {
-        "Path": "bdl/kbota_00.bdl",
+        "Path": "bdl/kbota_00.bdl"
       }
     ]
   },
@@ -4523,7 +4523,7 @@
     "Archive": "Hhbot",
     "Models": [
       {
-        "Path": "bdl/hhbot2.bdl",
+        "Path": "bdl/hhbot2.bdl"
       }
     ]
   },
@@ -4532,7 +4532,7 @@
     "Archive": "ltubw",
     "Models": [
       {
-        "Path": "bdl/itubw.bdl",
+        "Path": "bdl/itubw.bdl"
       }
     ]
   },
@@ -4541,7 +4541,7 @@
     "Archive": "Hami1",
     "Models": [
       {
-        "Path": "bdl/hami1.bdl",
+        "Path": "bdl/hami1.bdl"
       }
     ]
   },
@@ -4550,7 +4550,7 @@
     "Archive": "Hami2",
     "Models": [
       {
-        "Path": "bdl/hami2.bdl",
+        "Path": "bdl/hami2.bdl"
       }
     ]
   },
@@ -4559,7 +4559,7 @@
     "Archive": "Hami3",
     "Models": [
       {
-        "Path": "bdl/hami3.bdl",
+        "Path": "bdl/hami3.bdl"
       }
     ]
   },
@@ -4568,7 +4568,7 @@
     "Archive": "Htobi3",
     "Models": [
       {
-        "Path": "bdl/htobi3.bdl",
+        "Path": "bdl/htobi3.bdl"
       }
     ]
   },
@@ -4577,7 +4577,7 @@
     "Archive": "Hpbot1",
     "Models": [
       {
-        "Path": "bdl/hpbot1.bdl",
+        "Path": "bdl/hpbot1.bdl"
       }
     ]
   },
@@ -4586,7 +4586,7 @@
     "Archive": "Vpbot_00",
     "Models": [
       {
-        "Path": "bdl/vpbot_00.bdl",
+        "Path": "bdl/vpbot_00.bdl"
       }
     ]
   },
@@ -4595,7 +4595,7 @@
     "Archive": "Hpu1",
     "Models": [
       {
-        "Path": "bdl/hpu1.bdl",
+        "Path": "bdl/hpu1.bdl"
       }
     ]
   },
@@ -4604,7 +4604,7 @@
     "Archive": "Hpu2",
     "Models": [
       {
-        "Path": "bdl/hpu2.bdl",
+        "Path": "bdl/hpu2.bdl"
       }
     ]
   },
@@ -4613,7 +4613,7 @@
     "Archive": "Hbrf1",
     "Models": [
       {
-        "Path": "bdl/hbrf1.bdl",
+        "Path": "bdl/hbrf1.bdl"
       }
     ]
   },
@@ -4622,7 +4622,7 @@
     "Archive": "Ep",
     "Models": [
       {
-        "Path": "bdl/obm_shokudai1.bdl",
+        "Path": "bdl/obm_shokudai1.bdl"
       }
     ]
   },
@@ -4631,7 +4631,7 @@
     "Archive": "Ep",
     "Models": [
       {
-        "Path": "bdl/vktsd.bdl",
+        "Path": "bdl/vktsd.bdl"
       }
     ]
   },
@@ -4640,7 +4640,7 @@
     "Archive": "MknjD",
     "Models": [
       {
-        "Path": "bdl/mknjh.bdl",
+        "Path": "bdl/mknjh.bdl"
       }
     ]
   },
@@ -4649,7 +4649,7 @@
     "Archive": "MknjD",
     "Models": [
       {
-        "Path": "bdl/mknjd.bdl",
+        "Path": "bdl/mknjd.bdl"
       }
     ]
   },
@@ -4658,7 +4658,7 @@
     "Archive": "MknjD",
     "Models": [
       {
-        "Path": "bdl/mknjk.bdl",
+        "Path": "bdl/mknjk.bdl"
       }
     ]
   },
@@ -4667,7 +4667,7 @@
     "Archive": "Homen",
     "Models": [
       {
-        "Path": "bdl/homen1.bdl",
+        "Path": "bdl/homen1.bdl"
       }
     ]
   },
@@ -4676,7 +4676,7 @@
     "Archive": "Homen",
     "Models": [
       {
-        "Path": "bdl/homen2.bdl",
+        "Path": "bdl/homen2.bdl"
       }
     ]
   },
@@ -4685,7 +4685,7 @@
     "Archive": "Hfuck1",
     "Models": [
       {
-        "Path": "bdl/hfuck1.bdl",
+        "Path": "bdl/hfuck1.bdl"
       }
     ]
   },
@@ -4694,7 +4694,7 @@
     "Archive": "Hhyu1",
     "Models": [
       {
-        "Path": "bdl/hhyu1.bdl",
+        "Path": "bdl/hhyu1.bdl"
       }
     ]
   },
@@ -4703,7 +4703,7 @@
     "Archive": "Htoge1",
     "Models": [
       {
-        "Path": "bdl/htoge1.bdl",
+        "Path": "bdl/htoge1.bdl"
       }
     ]
   },
@@ -4712,7 +4712,7 @@
     "Archive": "Trap",
     "Models": [
       {
-        "Path": "bdlm/htora1.bdl",
+        "Path": "bdlm/htora1.bdl"
       }
     ]
   },
@@ -4721,7 +4721,7 @@
     "Archive": "Osiblk",
     "Models": [
       {
-        "Path": "bdl/obm_osihikiblk1.bdl",
+        "Path": "bdl/obm_osihikiblk1.bdl"
       }
     ]
   },
@@ -4730,7 +4730,7 @@
     "Archive": "Osiblk",
     "Models": [
       {
-        "Path": "bdl/obm_osihikiblk2.bdl",
+        "Path": "bdl/obm_osihikiblk2.bdl"
       }
     ]
   },
@@ -4739,7 +4739,7 @@
     "Archive": "MpwrB",
     "Models": [
       {
-        "Path": "bdl/mpwrb.bdl",
+        "Path": "bdl/mpwrb.bdl"
       }
     ]
   },
@@ -4748,7 +4748,7 @@
     "Archive": "Ecube",
     "Models": [
       {
-        "Path": "bdl/ecube.bdl",
+        "Path": "bdl/ecube.bdl"
       }
     ]
   },
@@ -4757,7 +4757,7 @@
     "Archive": "Hjump",
     "Models": [
       {
-        "Path": "bdl/hbox1.bdl",
+        "Path": "bdl/hbox1.bdl"
       }
     ]
   },
@@ -4766,7 +4766,7 @@
     "Archive": "Hjump",
     "Models": [
       {
-        "Path": "bdl/hjump1.bdl",
+        "Path": "bdl/hjump1.bdl"
       }
     ]
   },
@@ -4775,7 +4775,7 @@
     "Archive": "Hjump",
     "Models": [
       {
-        "Path": "bdl/hjump2.bdl",
+        "Path": "bdl/hjump2.bdl"
       }
     ]
   },
@@ -4784,10 +4784,10 @@
     "Archive": "Vmc",
     "Models": [
       {
-        "Path": "bdl/vmcbs.bdl",
+        "Path": "bdl/vmcbs.bdl"
       },
       {
-        "Path": "bdlm/vmcwd.bdl",
+        "Path": "bdlm/vmcwd.bdl"
       }
     ]
   },
@@ -4819,7 +4819,7 @@
     "Archive": "Ysdls00",
     "Models": [
       {
-        "Path": "bdl/ysdls00.bdl",
+        "Path": "bdl/ysdls00.bdl"
       }
     ]
   },
@@ -4828,7 +4828,7 @@
     "Archive": "Hsehi1",
     "Models": [
       {
-        "Path": "bdl/hsehi1.bdl",
+        "Path": "bdl/hsehi1.bdl"
       }
     ]
   },
@@ -4837,7 +4837,7 @@
     "Archive": "Hsehi2",
     "Models": [
       {
-        "Path": "bdl/hsehi2.bdl",
+        "Path": "bdl/hsehi2.bdl"
       }
     ]
   },
@@ -4886,7 +4886,7 @@
     "Archive": "Bridge",
     "Models": [
       {
-        "Path": "bdl/obm_bridge.bdl",
+        "Path": "bdl/obm_bridge.bdl"
       }
     ]
   },
@@ -4895,7 +4895,7 @@
     "Archive": "Bridge",
     "Models": [
       {
-        "Path": "bdl/obm_bridge2.bdl",
+        "Path": "bdl/obm_bridge2.bdl"
       }
     ]
   },
@@ -4932,7 +4932,7 @@
     "Archive": "VbakH",
     "Models": [
       {
-        "Path": "bdlm/vbakh.bdl",
+        "Path": "bdlm/vbakh.bdl"
       },
       {
         "Path": "bdlm/vbakm.bdl",
@@ -4958,7 +4958,7 @@
     "Archive": "Ekskz",
     "Models": [
       {
-        "Path": "bdl/ekskz.bdl",
+        "Path": "bdl/ekskz.bdl"
       }
     ]
   },
@@ -4967,7 +4967,7 @@
     "Archive": "MkieB",
     "Models": [
       {
-        "Path": "bdl/mkieb.bdl",
+        "Path": "bdl/mkieb.bdl"
       }
     ]
   },
@@ -4976,7 +4976,7 @@
     "Archive": "Ebomzo",
     "Models": [
       {
-        "Path": "bdl/ebomzo.bdl",
+        "Path": "bdl/ebomzo.bdl"
       }
     ]
   },
@@ -4992,8 +4992,8 @@
             "Path": "btk/gryw00.btk",
             "Paused on Load": false,
             "Start Time": 0
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -5059,7 +5059,7 @@
     "Archive": "Opaper",
     "Models": [
       {
-        "Path": "bdl/opaper.bdl",
+        "Path": "bdl/opaper.bdl"
       }
     ]
   },
@@ -5068,7 +5068,7 @@
     "Archive": "Ppos",
     "Models": [
       {
-        "Path": "bdl/ppos.bdl",
+        "Path": "bdl/ppos.bdl"
       }
     ]
   },
@@ -5077,7 +5077,7 @@
     "Archive": "Piwa",
     "Models": [
       {
-        "Path": "bdl/piwa.bdl",
+        "Path": "bdl/piwa.bdl"
       }
     ]
   },
@@ -5086,7 +5086,7 @@
     "Archive": "Kanban",
     "Models": [
       {
-        "Path": "bdl/kanban.bdl",
+        "Path": "bdl/kanban.bdl"
       }
     ]
   },
@@ -5095,7 +5095,7 @@
     "Archive": "Msw",
     "Models": [
       {
-        "Path": "bdl/mswng.bdl",
+        "Path": "bdl/mswng.bdl"
       }
     ]
   },
@@ -5127,7 +5127,7 @@
     "Archive": "Yfire_00",
     "Models": [
       {
-        "Path": "bmdm/yfirb_00.bmd",
+        "Path": "bmdm/yfirb_00.bmd"
         //"Animations": [
         //  {
         //    "Anim Type": "btk",
@@ -5144,7 +5144,7 @@
     "Archive": "Mflft",
     "Models": [
       {
-        "Path": "bdl/mflft.bdl",
+        "Path": "bdl/mflft.bdl"
       }
     ]
   },
@@ -5153,7 +5153,7 @@
     "Archive": "Otana",
     "Models": [
       {
-        "Path": "bdl/otana.bdl",
+        "Path": "bdl/otana.bdl"
       }
     ]
   },
@@ -5162,7 +5162,7 @@
     "Archive": "Aygr",
     "Models": [
       {
-        "Path": "bdl/aygr.bdl",
+        "Path": "bdl/aygr.bdl"
       }
     ]
   },
@@ -5171,10 +5171,10 @@
     "Archive": "Aygr",
     "Models": [
       {
-        "Path": "bdl/aygr.bdl",
+        "Path": "bdl/aygr.bdl"
       },
       {
-        "Path": "bdl/aygrh.bdl",
+        "Path": "bdl/aygrh.bdl"
       }
     ]
   },
@@ -5183,7 +5183,7 @@
     "Archive": "Search",
     "Models": [
       {
-        "Path": "bdl/s_search.bdl",
+        "Path": "bdl/s_search.bdl"
       }
     ]
   },
@@ -5192,7 +5192,7 @@
     "Archive": "IkadaH",
     "Models": [
       {
-        "Path": "bdl/vikae.bdl",
+        "Path": "bdl/vikae.bdl"
       }
     ]
   },
@@ -5201,7 +5201,7 @@
     "Archive": "IkadaH",
     "Models": [
       {
-        "Path": "bdl/vikah.bdl",
+        "Path": "bdl/vikah.bdl"
       }
     ]
   },
@@ -5210,7 +5210,7 @@
     "Archive": "IkadaH",
     "Models": [
       {
-        "Path": "bdl/vsvsp.bdl",
+        "Path": "bdl/vsvsp.bdl"
       }
     ]
   },
@@ -5219,7 +5219,7 @@
     "Archive": "IkadaH",
     "Models": [
       {
-        "Path": "bdl/vtsp.bdl",
+        "Path": "bdl/vtsp.bdl"
       }
     ]
   },
@@ -5228,7 +5228,7 @@
     "Archive": "IkadaH",
     "Models": [
       {
-        "Path": "bdl/vtsp2.bdl",
+        "Path": "bdl/vtsp2.bdl"
       }
     ]
   },
@@ -5237,7 +5237,7 @@
     "Archive": "Mkdan",
     "Models": [
       {
-        "Path": "bdl/mkdan1.bdl",
+        "Path": "bdl/mkdan1.bdl"
       }
     ]
   },
@@ -5246,7 +5246,7 @@
     "Archive": "Msdan",
     "Models": [
       {
-        "Path": "bdl/msdan.bdl",
+        "Path": "bdl/msdan.bdl"
       }
     ]
   },
@@ -5255,7 +5255,7 @@
     "Archive": "Kaizokusen",
     "Models": [
       {
-        "Path": "bdl/oba_kaizoku_a.bdl",
+        "Path": "bdl/oba_kaizoku_a.bdl"
       }
     ]
   },
@@ -5264,7 +5264,7 @@
     "Archive": "Kokiie",
     "Models": [
       {
-        "Path": "bdl/koki_00.bdl",
+        "Path": "bdl/koki_00.bdl"
       }
     ]
   },
@@ -5273,7 +5273,7 @@
     "Archive": "Vfan",
     "Models": [
       {
-        "Path": "bdl/v_fan_00.bdl",
+        "Path": "bdl/v_fan_00.bdl"
       }
     ]
   },
@@ -5287,7 +5287,7 @@
           "X": 0,
           "Y": 100,
           "Z": 0
-        },
+        }
       }
     ]
   },
@@ -5303,8 +5303,8 @@
             "Path": "bcks/post_wait.bck",
             "Paused on Load": false,
             "Start Time": 0.00
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -5313,7 +5313,7 @@
     "Archive": "Plant",
     "Models": [
       {
-        "Path": "bdl/yrmwd.bdl",
+        "Path": "bdl/yrmwd.bdl"
       }
     ]
   },
@@ -5360,7 +5360,7 @@
                 "Start Time": 0.00
               }
             ]
-          },
+          }
         ]
       }
     ]
@@ -5391,7 +5391,7 @@
                 "Start Time": 0.00
               }
             ]
-          },
+          }
         ]
       }
     ]
@@ -5424,9 +5424,9 @@
                 "Path": "bcks/kohead02_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0.00
-              },
+              }
             ]
-          },
+          }
         ]
       }
     ]
@@ -5459,13 +5459,13 @@
                 "Path": "bcks/kohead02_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0.00
-              },
+              }
             ]
           },
           {
             "Path": "bdl/koeda.bdl",
-            "Parent Joint": "armR2",
-          },
+            "Parent Joint": "armR2"
+          }
         ]
       }
     ]
@@ -5498,9 +5498,9 @@
                 "Path": "bcks/kohead02_wait01.bck",
                 "Paused on Load": false,
                 "Start Time": 0.00
-              },
+              }
             ]
-          },
+          }
         ]
       }
     ]
@@ -5522,8 +5522,8 @@
         "Child Models": [
           {
             "Path": "bdlm/oba_head.bdl",
-            "Parent Joint": "head",
-          },
+            "Parent Joint": "head"
+          }
         ]
       }
     ]
@@ -5545,8 +5545,8 @@
         "Child Models": [
           {
             "Path": "bdlm/ymhead01.bdl",
-            "Parent Joint": "head",
-          },
+            "Parent Joint": "head"
+          }
         ]
       }
     ]
@@ -5572,8 +5572,8 @@
         "Child Models": [
           {
             "Path": "bdlm/ymhead02.bdl",
-            "Parent Joint": "head",
-          },
+            "Parent Joint": "head"
+          }
         ]
       }
     ]
@@ -5595,7 +5595,7 @@
             "Anim Type": "bmt",
             "Path": "bmt/pg_pink.bmt"
           }
-        ],
+        ]
       }
     ]
   },
@@ -5616,7 +5616,7 @@
             "Anim Type": "bmt",
             "Path": "bmt/pg_buti.bmt"
           }
-        ],
+        ]
       }
     ]
   },
@@ -5637,7 +5637,7 @@
             "Anim Type": "bmt",
             "Path": "bmt/pg_kuro.bmt"
           }
-        ],
+        ]
       }
     ]
   },
@@ -5646,7 +5646,7 @@
     "Archive": "Aana",
     "Models": [
       {
-        "Path": "bdl/aana.bdl",
+        "Path": "bdl/aana.bdl"
       }
     ]
   },
@@ -5662,8 +5662,8 @@
             "Path": "bck/vzouk.bck",
             "Paused on Load": true,
             "Start Time": 0.96666666666666666666666666666667
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -5679,8 +5679,8 @@
             "Path": "bck/wait_open.bck",
             "Paused on Load": false,
             "Start Time": 0.0
-          },
-        ],
+          }
+        ]
       }
     ]
   },
@@ -5701,9 +5701,180 @@
             "Path": "bck/wait_open.bck",
             "Paused on Load": false,
             "Start Time": 0.0
-          },
-        ],
+          }
+        ]
       }
     ]
   },
+  {
+    "Name": "Old Man Ho-Ho",
+    "Archive": "Ah",
+    "Models": [
+      {
+        "Path": "bdlm/ah.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ah_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Figurine Stand",
+    "Archive": "Figure",
+    "Models": [
+      {
+        "Path": "bdlm/vf_bs.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Carlov",
+    "Archive": "Niten",
+    "Models": [
+      {
+        "Path": "bdlm/mt.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/mt_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Manny",
+    "Archive": "Mn",
+    "Models": [
+      {
+        "Path": "bdlm/mn.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/mn_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Standing Diving Man",
+    "Archive": "Sv",
+    "Models": [
+      {
+        "Path": "bdl/sv.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sv_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Sitting Diving Man",
+    "Archive": "Sv",
+    "Models": [
+      {
+        "Path": "bdl/sv.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/sv_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Goron A",
+    "Archive": "Ro",
+    "Models": [
+      {
+        "Path": "bdlm/ro.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ro_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ro_hat.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Goron B",
+    "Archive": "Ro",
+    "Models": [
+      {
+        "Path": "bdlm/ro.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ro_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ro2.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ro_hat2.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Goron C",
+    "Archive": "Ro",
+    "Models": [
+      {
+        "Path": "bdlm/ro.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ro_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/ro3.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/ro_hat3.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  }
 ]
