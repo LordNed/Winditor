@@ -12,6 +12,9 @@ namespace WindEditor
 		public override void PostLoad()
 		{
             m_actorMeshes = WResourceManager.LoadActorResource("Big Elephant Statue");
+
+			if (Unknown_2 == 1)
+				Transform.ScaleBase.BackingVector *= 3;
         }
 
 		public override void PreSave()
