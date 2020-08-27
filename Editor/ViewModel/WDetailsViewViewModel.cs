@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using WindEditor.Editor;
 using WindEditor.View;
+using WindEditor.Events;
 
 namespace WindEditor.ViewModel
 {
@@ -62,6 +63,7 @@ namespace WindEditor.ViewModel
             m_TypeCustomizations.Add(typeof(WTransform).Name, new WTransformTypeCustomization());
             m_TypeCustomizations.Add(typeof(WDOMNode).Name, new WDOMNodeTypeCustomization());
             m_TypeCustomizations.Add(typeof(FileReference).Name, new FileReferenceTypeCustomization());
+            m_TypeCustomizations.Add(typeof(Cut).Name, new CutTypeCustomization());
         }
 
         public void ReflectObject(object obj)

@@ -32,20 +32,25 @@ namespace WindEditor
         private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
         private WLineBatcher m_persistentLines;
+        private WQuadBatcher m_persistentQuads;
         private WMap m_currentMap;
 
         private IEditorMode m_CurrentMode;
         private ActorMode m_ActorMode;
         private CollisionMode m_CollisionMode;
+        private EventMode m_EventMode;
 
         public WWorld()
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
+            m_persistentQuads = new WQuadBatcher();
+
             m_undoStack = new WUndoStack();
 
             m_ActorMode = new ActorMode(this);
             m_CollisionMode = new CollisionMode(this);
+            m_EventMode = new EventMode(this);
 
             CurrentMode = m_ActorMode;
 
@@ -63,6 +68,7 @@ namespace WindEditor
             UpdateSceneViews();
 
             m_persistentLines.Tick(deltaTime);
+            m_persistentQuads.Tick(deltaTime);
 
             if(m_currentMap != null)
             {
@@ -100,6 +106,7 @@ namespace WindEditor
                 // Add our Actor Editor and Persistent Lines.
                 m_CurrentMode.Update(view);
                 m_persistentLines.AddToRenderer(view);
+                m_persistentQuads.AddToRenderer(view);
 
                 view.DrawFrame();
             }
@@ -189,6 +196,7 @@ namespace WindEditor
 
             // Clear persistent lines from the last map as well.
             m_persistentLines.Clear();
+            m_persistentQuads.Clear();
 
             m_currentMap = null;
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Map"));
@@ -217,8 +225,10 @@ namespace WindEditor
                 view.Dispose();
 
             m_ActorMode.Dispose();
+            m_EventMode.Dispose();
 
             m_persistentLines.Dispose();
+            m_persistentQuads.Dispose();
         }
 
         private void SwitchMode(IEditorMode old_mode, IEditorMode new_mode)
@@ -259,6 +269,11 @@ namespace WindEditor
         public void SwitchToCollisionMode()
         {
             CurrentMode = m_CollisionMode;
+        }
+
+        public void SwitchToEventMode()
+        {
+            CurrentMode = m_EventMode;
         }
 
         #region INotifyPropertyChanged Support

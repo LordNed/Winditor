@@ -35,6 +35,7 @@ namespace WindEditor
 
         public ICommand SwitchToActorModeCommand { get { return new RelayCommand(x => OnRequestSwitchToActorMode(), X => !(MainWorld.CurrentMode is ActorMode || MainWorld.Map == null)); } }
         public ICommand SwitchToCollisionModeCommand { get { return new RelayCommand(x => OnRequestSwitchToCollisionMode(), X => !(MainWorld.CurrentMode is CollisionMode || MainWorld.Map == null)); } }
+        public ICommand SwitchToEventModeCommand { get { return new RelayCommand(x => OnRequestSwitchToEventMode(), X => !(MainWorld.CurrentMode is EventMode || MainWorld.Map == null)); } }
 
         public ICommand ImportCollisionCommand { get { return new RelayCommand(x => OnRequestImportCollision(), X => !(MainWorld.Map == null)); ; } }
         public ICommand ImportVisualMeshCommand { get { return new RelayCommand(x => OnRequestImportVisualMesh(), X => !(MainWorld.Map == null)); ; } }
@@ -497,6 +498,11 @@ namespace WindEditor
         public void OnRequestSwitchToCollisionMode()
         {
             MainWorld.SwitchToCollisionMode();
+        }
+
+        public void OnRequestSwitchToEventMode()
+        {
+            MainWorld.SwitchToEventMode();
         }
 
         public void OnRequestImportCollision()

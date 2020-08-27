@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using WArchiveTools.FileSystem;
 using JStudio.J3D;
+using WindEditor.Events;
 
 namespace WindEditor
 {
@@ -36,6 +37,20 @@ namespace WindEditor
                     case "bdl":
                         {
                             LoadStageModels(folder);
+                        }
+                        break;
+                    case "dat":
+                        {
+                            string fileName = Path.Combine(folder, "event_list.dat");
+                            if (File.Exists(fileName))
+                            {
+                                WEventList evlist = new WEventList(m_world, fileName);
+
+                                CategoryDOMNode evCategory = new CategoryDOMNode("Event List", m_world);
+                                evCategory.SetParent(this);
+
+                                evlist.SetParent(evCategory);
+                            }
                         }
                         break;
                 }
@@ -203,6 +218,15 @@ namespace WindEditor
             }
         }
 
+        public override void SaveToDirectory(string directory)
+        {
+            base.SaveToDirectory(directory);
+
+            Console.WriteLine("Writing event_list.dat...");
+            SaveEventListToDirectory(directory);
+            Console.WriteLine("Finished saving event_list.dat.");
+        }
+
         public override void SaveEntitiesToDirectory(string directory)
         {
             string dzsDirectory = string.Format("{0}/dzs", directory);
@@ -219,6 +243,21 @@ namespace WindEditor
 
         public override void SaveCollisionToDirectory(string directory)
         {
+        }
+
+        public void SaveEventListToDirectory(string directory)
+        {
+            string datDirectory = string.Format("{0}/dat", directory);
+            if (!Directory.Exists(datDirectory))
+                Directory.CreateDirectory(datDirectory);
+
+            WEventList eventlist = GetChildrenOfType<WEventList>()[0];
+
+            string filePath = string.Format("{0}/event_list.dat", datDirectory);
+            using (EndianBinaryWriter writer = new EndianBinaryWriter(File.Open(filePath, FileMode.Create), Endian.Big))
+            {
+                eventlist.ExportToStream(writer);
+            }
         }
 
         public override VirtualFilesystemDirectory ExportToVFS()
@@ -274,6 +313,20 @@ namespace WindEditor
                     }
 
                     modelDir.Children.Add(new VirtualFilesystemFile(meshes[i].Name, $".{ modelExt }", data));
+                }
+            }
+
+            VirtualFilesystemFile dat_file = SourceDirectory.GetFileAtPath("dat/event_list.dat");
+            WEventList eventlist = GetChildrenOfType<WEventList>()[0];
+
+            using (MemoryStream ev_strm = new MemoryStream())
+            {
+                using (EndianBinaryWriter writer = new EndianBinaryWriter(ev_strm, Endian.Big))
+                {
+                    eventlist.ExportToStream(writer);
+                    writer.Flush();
+
+                    dat_file.Data = ev_strm.ToArray();
                 }
             }
 

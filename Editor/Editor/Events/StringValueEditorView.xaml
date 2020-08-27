@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="WindEditor.Events.StringValueEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WindEditor.Events"
+             mc:Ignorable="d" Width="150" Height="20" HorizontalAlignment="Left">
+    <Grid>
+        <TextBox x:Name="StringSubBox" Text="{Binding Path=Value.Value}" Height="100" />
+    </Grid>
+</UserControl>

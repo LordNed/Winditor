@@ -85,6 +85,13 @@
     <Reference Include="AssimpNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=0d51b391f59f42a6, processorArchitecture=MSIL">
       <HintPath>..\packages\AssimpNet.4.1.0\lib\net40\AssimpNet.dll</HintPath>
     </Reference>
+    <Reference Include="DynamicData, Version=6.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicData.6.15.1\lib\net461\DynamicData.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <Private>True</Private>
@@ -96,18 +103,75 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NodeNetwork, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodeNetwork.4.2.0\lib\net472\NodeNetwork.dll</HintPath>
+    </Reference>
+    <Reference Include="NodeNetworkToolkit, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodeNetworkToolkit.4.2.0\lib\net472\NodeNetworkToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\lib\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK.GLControl">
       <HintPath>..\lib\OpenTK.GLControl.dll</HintPath>
     </Reference>
+    <Reference Include="Pharmacist.Common, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pharmacist.Common.1.5.3\lib\netstandard2.0\Pharmacist.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReactiveUI, Version=11.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.11.4.17\lib\net461\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Events.WPF, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.Events.WPF.11.1.20\lib\net461\ReactiveUI.Events.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.WPF, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.WPF.11.1.20\lib\net461\ReactiveUI.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="SharpYaml, Version=1.6.5.0, Culture=neutral, PublicKeyToken=1ced8108e942bc02, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpYaml.1.6.5\lib\net45\SharpYaml.dll</HintPath>
     </Reference>
+    <Reference Include="Splat, Version=9.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Splat.9.4.5\lib\net461\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat.Drawing, Version=9.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Splat.Drawing.9.3.11\lib\net461\Splat.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=4.4.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.4.4.1\lib\net46\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -160,6 +224,47 @@
     <Compile Include="Editor\Entities\RoomProperties.cs" />
     <Compile Include="Editor\Entities\ShipSpawnPoint.cs" />
     <Compile Include="Editor\Entities\StageProperties.cs" />
+    <Compile Include="Editor\Events\BeginNodeViewModel.cs" />
+    <Compile Include="Editor\Events\BlockingCutEditorViewModel.cs" />
+    <Compile Include="Editor\Events\BlockingCutNodeView.xaml.cs">
+      <DependentUpon>BlockingCutNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\BlockingCutNodeViewModel.cs" />
+    <Compile Include="Editor\Events\BlockingCutEditorView.xaml.cs">
+      <DependentUpon>BlockingCutEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\CutNodeView.xaml.cs">
+      <DependentUpon>CutNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\CutNodeViewModel.cs" />
+    <Compile Include="Editor\Events\ExecPortView.xaml.cs">
+      <DependentUpon>ExecPortView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\ExecPortViewModel.cs" />
+    <Compile Include="Editor\Events\FloatValueEditorView.xaml.cs">
+      <DependentUpon>FloatValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\FloatValueEditorViewModel.cs" />
+    <Compile Include="Editor\Events\IntegerValueEditorView.xaml.cs">
+      <DependentUpon>IntegerValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\IntegerValueEditorViewModel.cs" />
+    <Compile Include="Editor\Events\StringValueEditorView.xaml.cs">
+      <DependentUpon>StringValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\StringValueEditorViewModel.cs" />
+    <Compile Include="Editor\Events\Cut.cs" />
+    <Compile Include="Editor\Events\Event.cs" />
+    <Compile Include="Editor\Events\EventList.cs" />
+    <Compile Include="Editor\Events\Staff.cs" />
+    <Compile Include="Editor\Events\SubstanceNodeViewModel.cs" />
+    <Compile Include="Editor\Events\Substance\Substance.cs" />
+    <Compile Include="Editor\Events\Substance\SubstanceData.cs" />
+    <Compile Include="Editor\Events\VectorValueEditorView.xaml.cs">
+      <DependentUpon>VectorValueEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Events\VectorValueEditorViewModel.cs" />
+    <Compile Include="Editor\Managers\EventDataManager.cs" />
     <Compile Include="Editor\Entities\TriggerRegion.cs" />
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
@@ -615,6 +720,9 @@
     <Compile Include="Editor\Modes\ActorMode\ActorMode.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode_Gizmo.cs" />
     <Compile Include="Editor\Modes\CollisionMode\CollisionMode.cs" />
+    <Compile Include="Editor\Modes\EventMode\ActorTabContextMenu.cs" />
+    <Compile Include="Editor\Modes\EventMode\EventMode.cs" />
+    <Compile Include="Editor\Modes\EventMode\EventMode_Gizmo.cs" />
     <Compile Include="Editor\Modes\IEditorMode.cs" />
     <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />
@@ -622,6 +730,7 @@
     <Compile Include="Editor\PropertyCustomization\Attributes.cs" />
     <Compile Include="Editor\PropertyCustomization\BooleanTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\ByteTypeCustomization.cs" />
+    <Compile Include="Editor\PropertyCustomization\CutTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\EnumTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\FileReferenceTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\IntegerTypeCustomization.cs" />
@@ -635,6 +744,7 @@
     <Compile Include="Editor\PropertyCustomization\UShortTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\WDOMNodeTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\WTransformTypeCustomization.cs" />
+    <Compile Include="Editor\Rendering\QuadBatcher.cs" />
     <Compile Include="Editor\Serialization\WDOMNodeConverter.cs" />
     <Compile Include="Editor\UI\Selection.cs" />
     <Compile Include="Editor\Managers\SettingsManager.cs" />
@@ -652,6 +762,7 @@
     <Compile Include="Editor\UndoRedo\CreateEntitiesAction.cs" />
     <Compile Include="Editor\UndoRedo\DeleteEntitiesAction.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
+    <Compile Include="Editor\UndoRedo\TranslateCameraPropertyAction.cs" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
@@ -659,6 +770,12 @@
     <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
     <Compile Include="View\CollisionExportWindow.xaml.cs">
       <DependentUpon>CollisionExportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CutReferenceControl.xaml.cs">
+      <DependentUpon>CutReferenceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EventNodeWindow.xaml.cs">
+      <DependentUpon>EventNodeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\IslandImportWindow.xaml.cs">
       <DependentUpon>IslandImportWindow.xaml</DependentUpon>
@@ -699,6 +816,38 @@
     <Compile Include="View\WTransformControl.xaml.cs">
       <DependentUpon>WTransformControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Editor\Events\BlockingCutNodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\BlockingCutEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\CutNodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\ExecPortView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\FloatValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\IntegerValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\StringValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Events\VectorValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -710,6 +859,14 @@
     <Page Include="View\CollisionExportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CutReferenceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EventNodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\IslandImportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -884,8 +1041,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\editor_icon.ico" />
+    <Content Include="resources\EventDefinitionDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\icons\baton.png" />
     <None Include="resources\icons\baton.ico" />
+    <Resource Include="resources\icons\3dcube.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\icons\lightning.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\icons\triangle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="resources\models\foliage\flower.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1545,7 +1714,7 @@
     <Content Include="resources\shaders\UnlitColor.vert">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\shaders\UnlitTexture.frag">
+    <Content Include="resources\shaders\UnlitTextureQuad.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\shaders\UnlitTexture.vert">
@@ -1746,7 +1915,7 @@
     <Content Include="resources\shaders\UnlitTexture.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\shaders\UnlitTexture.vert">
+    <Content Include="resources\shaders\UnlitTextureQuad.vert">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\shaders\UnselectedCollision.frag">
@@ -1866,6 +2035,12 @@
     <Content Include="resources\templates\Waypoint Point %28v2%29.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\textures\eye.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\textures\target.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\textures\ZAtoon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1912,7 +2087,7 @@
       <Name>SuperBMDLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\WArchive-Tools\ArchiveToolsLib\ArchiveToolsLib.csproj">
-      <Project>{B715685D-1603-4CE3-8EA1-552B01C2BA4B}</Project>
+      <Project>{b715685d-1603-4ce3-8ea1-552b01c2ba4b}</Project>
       <Name>ArchiveToolsLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\WCommon\WCommon.csproj">
