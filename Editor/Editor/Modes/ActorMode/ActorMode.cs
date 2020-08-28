@@ -31,6 +31,7 @@ namespace WindEditor.Editor.Modes
 
         private DockPanel m_ModeControlsDock;
         private WDetailsViewViewModel m_DetailsViewModel;
+        private List<WDOMNode> m_HiddenNodes;
 
         public DockPanel ModeControlsDock
         {
@@ -68,6 +69,8 @@ namespace WindEditor.Editor.Modes
 
             EditorSelection = new Selection<WDOMNode>(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
+
+            m_HiddenNodes = new List<WDOMNode>();
 
             DetailsViewModel = new WDetailsViewViewModel();
 
@@ -134,6 +137,31 @@ namespace WindEditor.Editor.Modes
                 }
 
                 UpdateGizmoTransform();
+            }
+            else if (WInput.GetKey(Key.H))
+            {
+                bool ctrlPressed = WInput.GetKey(Key.LeftCtrl) || WInput.GetKey(Key.RightCtrl);
+
+                if (ctrlPressed)
+                {
+                    EditorSelection.ClearSelection();
+
+                    foreach (var a in m_HiddenNodes)
+                    {
+                        a.IsRendered = true;
+                        EditorSelection.AddToSelection(a);
+                    }
+                }
+                else
+                {
+                    foreach (var a in EditorSelection.SelectedObjects)
+                    {
+                        a.IsRendered = false;
+                        m_HiddenNodes.Add(a);
+                    }
+
+                    EditorSelection.ClearSelection();
+                }
             }
         }
 
