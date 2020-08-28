@@ -11,12 +11,21 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			if (Unknown_1 == 1)
+				m_actorMeshes = WResourceManager.LoadActorResource("Cyclos");
+			else
+				m_actorMeshes = WResourceManager.LoadActorResource("Zephos");
 		}
 	}
 }

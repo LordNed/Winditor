@@ -6730,5 +6730,202 @@
         }
       }
     ]
+  },
+  {
+    "Name": "Rich Mila",
+    "Archive": "Km",
+    "Models": [
+      {
+        "Path": "bdlm/km.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/km_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Poor Maggie",
+    "Archive": "Pm",
+    "Models": [
+      {
+        "Path": "bdlm/pm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rich Mila's Father",
+    "Archive": "Kf",
+    "Models": [
+      {
+        "Path": "bdlm/kf.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/kf_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/kf_hair.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mrs. Marie",
+    "Archive": "Ho",
+    "Models": [
+      {
+        "Path": "bdlm/ho.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ho_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Rito Cheiftan",
+    "Archive": "Zk",
+    "Models": [
+      {
+        "Path": "bdlm/zk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/zk_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Poor Maggie's Father",
+    "Archive": "Pf",
+    "Models": [
+      {
+        "Path": "bdlm/pf.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Poor Mila",
+    "Archive": "Kk",
+    "Models": [
+      {
+        "Path": "bdlm/kk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/kk_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Poor Mila's Father",
+    "Archive": "Gk",
+    "Models": [
+      {
+        "Path": "bdlm/gk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/gk_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Ivan",
+    "Archive": "Mk",
+    "Models": [
+      {
+        "Path": "bdlm/mk.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/mk_wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Zephos",
+    "Archive": "Hr",
+    "Models": [
+      {
+        "Path": "bdlm/hr.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/h_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Cyclos",
+    "Archive": "Hr",
+    "Models": [
+      {
+        "Path": "bdlm/hr.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/r_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path":  "bmt/r_body.bmt"
+          }
+        ]
+      }
+    ]
   }
 ]
