@@ -37,7 +37,7 @@ namespace WindEditor
 						m_actorMeshes = WResourceManager.LoadActorResource("Sleeping Zill");
 						break;
 					default:
-						m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
+						m_actorMeshes = WResourceManager.LoadActorResource("Zill");
 						break;
 				}
 			} else if (Name == "Ko2")
@@ -54,7 +54,7 @@ namespace WindEditor
 						m_actorMeshes = WResourceManager.LoadActorResource("Sleeping Joel");
 						break;
 					default:
-						m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 1f, 1f, 1f));
+						m_actorMeshes = WResourceManager.LoadActorResource("Joel");
 						break;
 				}
 			} else

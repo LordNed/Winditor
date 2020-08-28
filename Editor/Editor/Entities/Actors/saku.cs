@@ -11,20 +11,34 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			switch(Name)
-            {
-                case "Dsaku":
-                    m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier");
-                    break;
-                default:
-                    base.PostLoad();
-                    break;
-            }
+			UpdateModel();
+			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			switch (Name)
+			{
+				case "Dsaku":
+					if (Unknown_1 == 1)
+						m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier 2x");
+					else
+						m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier 1x");
+					break;
+				case "Ksaku":
+					if (Unknown_1 == 1)
+						m_actorMeshes = WResourceManager.LoadActorResource("Weak Wooden Barrier 2x");
+					else
+						m_actorMeshes = WResourceManager.LoadActorResource("Weak Wooden Barrier 1x");
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }

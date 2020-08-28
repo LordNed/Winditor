@@ -3828,15 +3828,6 @@
     ]
   },
   {
-    "Name": "Strong Wooden Barrier",
-    "Archive": "Knsak_00",
-    "Models": [
-      {
-        "Path": "bdl/knsak_00.bdl"
-      }
-    ]
-  },
-  {
     "Name": "Green Rupee",
     "Archive": "Always",
     "Models": [
@@ -6111,6 +6102,632 @@
     "Models": [
       {
         "Path": "bdl/ohatch.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Great Fairy",
+    "Archive": "bigelf",
+    "Models": [
+      {
+        "Path": "bdlm/dy.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Grandma",
+    "Archive": "Ba",
+    "Models": [
+      {
+        "Path": "bdlm/ba.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Aryll",
+    "Archive": "Ls",
+    "Models": [
+      {
+        "Path": "bdlm/ls.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/ls_wait06.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Makar",
+    "Archive": "Cb",
+    "Models": [
+      {
+        "Path": "bdl/cb.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/cb_face.bdl",
+            "Parent Joint": "backbone"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Orca",
+    "Archive": "Ji",
+    "Models": [
+      {
+        "Path": "bdlm/ji.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/ji_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/ji_yari.bdl",
+            "Parent Joint": "handR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Zuko",
+    "Archive": "P2",
+    "Models": [
+      {
+        "Path": "bdl/p2.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/p2_zwait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/p2head01.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Nico",
+    "Archive": "P2",
+    "Models": [
+      {
+        "Path": "bdl/p2.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/p2_nicowait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/p2b.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/p2head02.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Mako",
+    "Archive": "P2",
+    "Models": [
+      {
+        "Path": "bdl/p2.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/p2_mwait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/p2c.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/p2head03.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/p2book.bdl",
+            "Parent Joint": "handL"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Gonzo",
+    "Archive": "P1",
+    "Models": [
+      {
+        "Path": "bdl/p1.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/p1a_head.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Senza",
+    "Archive": "P1",
+    "Models": [
+      {
+        "Path": "bdl/p1.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/p1b_body.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/p1b_head.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Nudge",
+    "Archive": "P1",
+    "Models": [
+      {
+        "Path": "bdl/p1.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/p1c_body.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/p1c_head.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj1",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj1_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj2",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bj2.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj2_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj3",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "bmt",
+            "Path": "bmt/bj3.bmt"
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj3_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj4",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj4_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj5",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj5_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj6",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj6_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj7",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj7_face.bdl",
+            "Parent Joint": "head"
+          },
+          {
+            "Path": "bdl/pl_al.bdl",
+            "Parent Joint": "armL2"
+          },
+          {
+            "Path": "bdl/pl_ar.bdl",
+            "Parent Joint": "armR2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj8",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj8_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bj9",
+    "Archive": "Bj",
+    "Models": [
+      {
+        "Path": "bdlm/bj.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdl/bj9_face.bdl",
+            "Parent Joint": "head"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Bombable Wall 1",
+    "Archive": "Hbw1",
+    "Models": [
+      {
+        "Path": "bdl/hbw1.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Bombable Wall 2",
+    "Archive": "Hbw2",
+    "Models": [
+      {
+        "Path": "bdl/hbw2.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Bombable Wall 3",
+    "Archive": "Htw1",
+    "Models": [
+      {
+        "Path": "bdl/htw1.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Bird Nest",
+    "Archive": "MtoriSU",
+    "Models": [
+      {
+        "Path": "bdl/mtorisu.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "E3 Chandelier",
+    "Archive": "Syan",
+    "Models": [
+      {
+        "Path": "bdl/syan.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Eye Switch",
+    "Archive": "Hys",
+    "Models": [
+      {
+        "Path": "bdlm/hys.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Moving Platform",
+    "Archive": "Hmlif",
+    "Models": [
+      {
+        "Path": "bdlm/hmlif.bdl",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hmlif.brk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Tentacle Nut",
+    "Archive": "Sitem",
+    "Models": [
+      {
+        "Path": "bdl/kmi_00.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Spiked Tentacle Nut",
+    "Archive": "Sitem",
+    "Models": [
+      {
+        "Path": "bdl/kmi_01.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Tentacle Pinecone",
+    "Archive": "Sitem",
+    "Models": [
+      {
+        "Path": "bdl/kmi_02.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Strong Wooden Barrier 1x",
+    "Archive": "Knsak_00",
+    "Models": [
+      {
+        "Path": "bdl/knsak_00.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Strong Wooden Barrier 2x",
+    "Archive": "Knsak_00",
+    "Models": [
+      {
+        "Path": "bdl/knsak_00.bdl"
+      },
+      {
+        "Path": "bdl/knsak_00.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 200,
+          "Z": 0
+        }
+      }
+    ]
+  },
+  {
+    "Name": "Weak Wooden Barrier 1x",
+    "Archive": "Ksaku_00",
+    "Models": [
+      {
+        "Path": "bdl/ksaku_00.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Weak Wooden Barrier 2x",
+    "Archive": "Ksaku_00",
+    "Models": [
+      {
+        "Path": "bdl/ksaku_00.bdl"
+      },
+      {
+        "Path": "bdl/ksaku_01.bdl",
+        "Position": {
+          "X": 0,
+          "Y": 200,
+          "Z": 0
+        }
       }
     ]
   }
