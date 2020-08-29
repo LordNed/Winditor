@@ -741,7 +741,7 @@
     "Actor Name": "Bb",
     "English Name": "Kargaroc",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": "A large bird that attacks Link by pecking at him. It can be damaged by any weaponry, and it produces Golden Feathers.\n\nKargarocs can be spawned flying around or perching. They can also carry other enemies into battle.",
     "Locations": [
@@ -960,7 +960,7 @@
     "Actor Name": "Bk",
     "English Name": "Bokoblin",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": "These creatures are one of the most common enemies in the game. They come in a variety of colors and they have a variety of behaviors.\n\nThey can stand still, or they can patrol a path; they can also be hidden inside jars.",
     "Locations": [
@@ -1027,7 +1027,7 @@
     "Actor Name": "bable",
     "English Name": "Red and Blue Bubble",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": "These enemies are floating skulls wreathed in flames. The red variant can burn Link, while the blue one curses him and makes him unable to use his items. The Blue Bubble is invincible until Link blows its flames away.",
     "Locations": [
@@ -1123,7 +1123,7 @@
     "Actor Name": "bbaba",
     "English Name": "Boko Baba",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": "These are evil plants that bite (and sometimes try to swallow) Link. They can produce Boko Sticks when they're killed.",
     "Locations": [
@@ -1323,7 +1323,7 @@
     "Actor Name": "Bwds",
     "English Name": "Molgera Child",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": "Molgera will spawn these miniature versions of itself at the end of each phase of the battle. They hinder Link's attempts to hookshot Molgera's tongue.\n\nWhile they can be spawned in the Wind Temple boss room, they cannot be spawned anywhere else because they rely on the sand object that is created by Molgera's actor.",
     "Locations": [
@@ -5515,7 +5515,7 @@
     "English Name": "Quill",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -5536,7 +5536,7 @@
     "English Name": "Skett and Akoot",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -5556,7 +5556,7 @@
     "English Name": "Basht and Bisht and Hoskit",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -5575,7 +5575,7 @@
     "English Name": "Ilari and Pashli",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -5596,7 +5596,7 @@
     "English Name": "Namali and Kogoli",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -5675,7 +5675,7 @@
     "English Name": "Koboli (Mail Sorter)",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": "Note that Koboli spawns Baito in his place automatically once you've reached all four of Koboli's quotas.",
     "Locations": [
@@ -5722,7 +5722,7 @@
     "Actor Name": "Btsw",
     "English Name": "Baito (Mail Sorter)",
     "Tags": [
-      "NPC",
+      "NPC"
     ],
     "Explanation": "Note that this version of Baito is spawned automatically by Koboli once you've reached all four of Koboli's quotas.",
     "Locations": [
@@ -5739,7 +5739,7 @@
     "Actor Name": "Btsw2",
     "English Name": "Baito (Outside)",
     "Tags": [
-      "NPC",
+      "NPC"
     ],
     "Explanation": null,
     "Locations": [
@@ -6173,7 +6173,7 @@
     "English Name": "Medli",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -7199,7 +7199,7 @@
     "English Name": "Rito Chieftain",
     "Tags": [
       "NPC",
-      "Rito",
+      "Rito"
     ],
     "Explanation": null,
     "Locations": [
@@ -7686,7 +7686,7 @@
     "Actor Name": "Ocanon",
     "English Name": "Wall-Mounted Cannon",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": null,
     "Locations": [
@@ -11494,7 +11494,7 @@
     "Actor Name": "Oship",
     "English Name": "Gunboat",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": null,
     "Locations": [
@@ -11577,7 +11577,7 @@
     "Actor Name": "p_hat",
     "English Name": "Peahat",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": null,
     "Locations": [
@@ -11638,7 +11638,7 @@
     "Actor Name": "Puti",
     "English Name": "Miniblin",
     "Tags": [
-      "enemy",
+      "enemy"
     ],
     "Explanation": null,
     "Locations": [
@@ -15184,6 +15184,20 @@
       "Forsaken Fortress Exterior (1st visit) (MajyuE)",
       "Forsaken Fortress Tower (1st visit) (Mjtower)",
       "Forsaken Fortress (sea/Room1)"
+    ],
+    "ImagePath": null
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "Sfairy",
+    "Wait Animations": null,
+    "Actor Name": "Sfairy",
+    "English Name": "Fairy",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
     ],
     "ImagePath": null
   }

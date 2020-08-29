@@ -11,12 +11,21 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			if (Name == "Ylsic")
+				m_actorMeshes = WResourceManager.LoadActorResource("Small Iceberg");
+			else
+				m_actorMeshes = WResourceManager.LoadActorResource("Large Iceberg");
 		}
 	}
 }

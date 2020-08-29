@@ -11,12 +11,21 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			if (Unknown_1 == 0)
+				m_actorMeshes = WResourceManager.LoadActorResource("Cafe Table");
+			else
+				m_actorMeshes = WResourceManager.LoadActorResource("Cafe Chair");
 		}
 	}
 }

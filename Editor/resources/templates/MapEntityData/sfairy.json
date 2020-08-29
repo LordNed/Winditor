@@ -1,0 +1,15 @@
+{
+  "ClassName": "Sfairy",
+  "ParentClassOverride": "Actor",
+  "ParameterFields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000000F,
+      "Hidden": false,
+      "Category": "sfairy",
+      "ToolTip": "",
+      "DataType": "Integer"
+    }
+  ]
+}

@@ -6922,9 +6922,90 @@
           },
           {
             "Anim Type": "bmt",
-            "Path":  "bmt/r_body.bmt"
+            "Path": "bmt/r_body.bmt"
           }
         ]
+      }
+    ]
+  },
+  {
+    "Name": "Small Wind Temple Fan",
+    "Archive": "Hsen1",
+    "Models": [
+      {
+        "Path": "bdlm/hsen1.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Tower of the Gods Button",
+    "Archive": "Hfbot",
+    "Models": [
+      {
+        "Path": "bdlm/hfbot1.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Small Iceberg",
+    "Archive": "Ylsic",
+    "Models": [
+      {
+        "Path": "bdl/ylsic.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Large Iceberg",
+    "Archive": "Yllic",
+    "Models": [
+      {
+        "Path": "bdl/yllic.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Cafe Lamp",
+    "Archive": "Cafelmp",
+    "Models": [
+      {
+        "Path": "bdl/ylamp.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Cafe Chair",
+    "Archive": "Table",
+    "Models": [
+      {
+        "Path": "bdl/qcfis.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Cafe Table",
+    "Archive": "Table",
+    "Models": [
+      {
+        "Path": "bdl/ytble.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Wind Column",
+    "Archive": "Yaflw00",
+    "Models": [
+      {
+        "Path": "bdlm/yaflw00.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Recovered Hero's Sword",
+    "Archive": "VswoN",
+    "Models": [
+      {
+        "Path": "bdl/vswon.bdl"
       }
     ]
   }

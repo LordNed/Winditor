@@ -11,6 +11,8 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			// This is the correct mesh, but it renders invisibly. So just use debug cubes for now.
+			//m_actorMeshes = WResourceManager.LoadActorResource("Wind Column");
 			base.PostLoad();
 		}
 

@@ -96,6 +96,9 @@ namespace WindEditor
                 case ItemID.Joy_Pendant:
                     m_actorMeshes = WResourceManager.LoadActorResource("Joy Pendant");
                     break;
+                case ItemID.Recovered_Heros_Sword:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Recovered Hero's Sword");
+                    break;
                 case ItemID.Golden_Feather:
                     m_actorMeshes = WResourceManager.LoadActorResource("Golden Feather");
                     break;

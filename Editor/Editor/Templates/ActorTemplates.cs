@@ -19736,6 +19736,41 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class Sfairy : Actor
+	{
+		// Auto-Generated Properties from Templates
+
+		[WProperty("sfairy", "Unknown_1", true, "", SourceScene.Room)]
+		public int Unknown_1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
+				OnPropertyChanged("Unknown_1");
+			}
+		}
+
+		// Constructor
+		public Sfairy(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
+	}
+
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class shand : Actor
 	{
 		// Auto-Generated Properties from Templates

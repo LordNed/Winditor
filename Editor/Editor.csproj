@@ -217,6 +217,7 @@
     <Compile Include="Editor\DOM\DOMOrganizerNode.cs" />
     <Compile Include="Editor\DOM\DOMRenderNode.cs" />
     <Compile Include="Editor\Entities\Actors\obj_search.cs" />
+    <Compile Include="Editor\Entities\Actors\Sfairy.cs" />
     <Compile Include="Editor\Entities\CameraViewpoint_v1.cs" />
     <Compile Include="Editor\Entities\CameraViewpoint_v2.cs" />
     <Compile Include="Editor\Entities\LightSource.cs" />
@@ -1488,6 +1489,7 @@
     <None Include="resources\templates\MapEntityData\sbox.json" />
     <None Include="resources\templates\MapEntityData\scene_change.json" />
     <None Include="resources\templates\MapEntityData\seatag.json" />
+    <None Include="resources\templates\MapEntityData\sfairy.json" />
     <None Include="resources\templates\MapEntityData\shand.json" />
     <None Include="resources\templates\MapEntityData\ship.json" />
     <None Include="resources\templates\MapEntityData\shop_item.json" />
