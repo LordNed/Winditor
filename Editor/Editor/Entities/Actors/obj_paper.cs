@@ -12,7 +12,7 @@ namespace WindEditor
 	{
         private MessageReference m_MessageReference;
 
-        [WProperty("Obj Paper", "Message ID", true, "The ID of the message to be displayed when the actor is interacted with.")]
+        [WProperty("obj_paper", "Message ID", true, "The ID of the message to be displayed when the actor is interacted with.")]
         public MessageReference MessageReference
         {
             get { return m_MessageReference; }
@@ -27,30 +27,17 @@ namespace WindEditor
             }
         }
 
-        public ObjPaperType PaperType
-        {
-            get { return (ObjPaperType)Type; }
-            set
-            {
-                if ((int)value != Type)
-                {
-                    Type = (int)value;
-                    OnPropertyChanged("PaperType");
-                }
-            }
-        }
-
 		public override void PostLoad()
 		{
-			switch (PaperType)
+			switch (Type)
             {
-                case ObjPaperType.Normal_Papers:
+                case TypeEnum.Normal_Papers:
                     m_actorMeshes = WResourceManager.LoadActorResource("Simple Papers");
                     break;
-                case ObjPaperType.Ornate_Papers:
+                case TypeEnum.Ornate_Papers:
                     m_actorMeshes = WResourceManager.LoadActorResource("Ornate Papers");
                     break;
-                case ObjPaperType.Stone:
+                case TypeEnum.Stone:
                     m_actorMeshes = WResourceManager.LoadActorResource("Stone Tablet");
                     break;
             }

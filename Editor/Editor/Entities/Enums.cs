@@ -36,13 +36,6 @@ namespace WindEditor
         Right_Hand
     }
 
-    public enum ObjPaperType
-    {
-        Normal_Papers,
-        Ornate_Papers,
-        Stone
-    }
-
     public enum ItemID
     {
         Heart = 0x00,

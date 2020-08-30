@@ -27,6 +27,8 @@ namespace WindEditor
 
 			if (Unknown_2 == 1)
 				VisualScaleMultiplier = new Vector3(2);
+			else
+				VisualScaleMultiplier = new Vector3(1);
 		}
 	}
 }

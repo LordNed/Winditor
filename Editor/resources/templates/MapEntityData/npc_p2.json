@@ -9,7 +9,8 @@
       "Hidden": false,
       "Category": "npc_p2",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_2",

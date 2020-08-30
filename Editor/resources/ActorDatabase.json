@@ -5176,7 +5176,7 @@
     "ActorClassType": "npc_ah",
     "Wait Animations": null,
     "Actor Name": "Ah",
-    "English Name": "npc_ah",
+    "English Name": "Old Man Ho-Ho",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6227,7 +6227,7 @@
     "ActorClassType": "npc_mn",
     "Wait Animations": null,
     "Actor Name": "Mn",
-    "English Name": "npc_mn",
+    "English Name": "Manny",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6251,7 +6251,7 @@
     "ActorClassType": "npc_mt",
     "Wait Animations": null,
     "Actor Name": "Mt",
-    "English Name": "npc_mt",
+    "English Name": "Carlov",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6808,7 +6808,7 @@
     "ActorClassType": "npc_roten",
     "Wait Animations": null,
     "Actor Name": "RotenA",
-    "English Name": "npc_roten",
+    "English Name": "Goron A",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6825,7 +6825,7 @@
     "ActorClassType": "npc_roten",
     "Wait Animations": null,
     "Actor Name": "RotenB",
-    "English Name": "npc_roten",
+    "English Name": "Goron B",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6842,7 +6842,7 @@
     "ActorClassType": "npc_roten",
     "Wait Animations": null,
     "Actor Name": "RotenC",
-    "English Name": "npc_roten",
+    "English Name": "Goron C",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6953,7 +6953,7 @@
     "ActorClassType": "npc_sv",
     "Wait Animations": null,
     "Actor Name": "Sv0",
-    "English Name": "npc_sv",
+    "English Name": "Salvage Corp Member 0",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6968,7 +6968,7 @@
     "ActorClassType": "npc_sv",
     "Wait Animations": null,
     "Actor Name": "Sv1",
-    "English Name": "npc_sv",
+    "English Name": "Salvage Corp Member 1",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6983,7 +6983,7 @@
     "ActorClassType": "npc_sv",
     "Wait Animations": null,
     "Actor Name": "Sv2",
-    "English Name": "npc_sv",
+    "English Name": "Salvage Corp Member 2",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6998,7 +6998,7 @@
     "ActorClassType": "npc_sv",
     "Wait Animations": null,
     "Actor Name": "Sv3",
-    "English Name": "npc_sv",
+    "English Name": "Salvage Corp Member 3",
     "Tags": null,
     "Explanation": null,
     "Locations": [

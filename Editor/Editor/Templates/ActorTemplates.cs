@@ -5202,6 +5202,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				UpdateModel();
 			}
 		}
 
@@ -9261,6 +9262,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				UpdateModel();
 			}
 		}
 
@@ -10161,6 +10163,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				UpdateModel();
 			}
 		}
 
@@ -10214,6 +10217,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
+				UpdateModel();
 			}
 		}
 
@@ -15984,17 +15988,28 @@ namespace WindEditor
 				OnPropertyChanged("MessageID");
 			}
 		}
-		public int Type
+		public enum TypeEnum
+		{
+			Normal_Papers = 0,
+			Ornate_Papers = 1,
+			Stone = 2,
+		}
+
+
+		[WProperty("obj_paper", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Type");
 			}
@@ -16010,7 +16025,6 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			MessageID = -1;
-			Type = -1;
 		}
 	}
 
@@ -20048,6 +20062,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				UpdateModel();
 			}
 		}
 
@@ -24001,6 +24016,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				UpdateModel();
 			}
 		}
 

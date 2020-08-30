@@ -15,10 +15,15 @@
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
-      "Hidden": true,
+      "Hidden": false,
       "Category": "obj_paper",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Normal Papers",
+        1: "Ornate Papers",
+        2: "Stone",
+      }
     }
   ]
 }

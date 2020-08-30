@@ -18,7 +18,8 @@
       "Hidden": false,
       "Category": "wall",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Integer",
+      "UpdateModel": true
     }
   ]
 }
