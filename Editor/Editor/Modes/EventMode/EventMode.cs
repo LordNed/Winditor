@@ -15,6 +15,9 @@ using System.Collections.ObjectModel;
 using DynamicData;
 using System.Windows.Input;
 using OpenTK;
+using DynamicData.Aggregation;
+using DynamicData.Alias;
+using System.Reactive.Linq;
 
 namespace WindEditor.Editor.Modes
 {
@@ -167,6 +170,9 @@ namespace WindEditor.Editor.Modes
 
         private void ArrangeNodes(NetworkViewModel v)
         {
+            int HorizontalNodeDistance = 100;
+            int VerticalNodeDistance = 50;
+
             System.Windows.Point offset = new System.Windows.Point();
 
             NodeViewModel current_node = v.Nodes.Items.First(x => x is BeginNodeViewModel);
@@ -174,23 +180,34 @@ namespace WindEditor.Editor.Modes
             while (current_node != null)
             {
                 current_node.Position = offset;
-                offset.X += current_node.Size.Width + 50;
+
+                if (current_node is BlockingCutNodeViewModel)
+                    offset.X += 370 + HorizontalNodeDistance;
+                else
+                    offset.X += current_node.Size.Width + HorizontalNodeDistance;
 
                 System.Windows.Point input_offset = current_node.Position;
-                input_offset.Y += current_node.Size.Height + 50;
+                input_offset.Y = VerticalNodeDistance + 50;
 
-                for (int i = 1; i < current_node.Inputs.Count; i++)
+                if (current_node.Inputs.Count > 1)
                 {
-                    NodeViewModel input_node = current_node.Inputs.Items.ElementAt(i).Connections.Items.First().Output.Parent;
-                    
-                    input_node.Position = input_offset;
-                    input_offset.Y += input_node.Size.Height + 50;
-
-                    if (input_offset.X + input_node.Size.Width + 50 > offset.X)
+                    for (int i = 1; i < current_node.Inputs.Count; i++)
                     {
-                        offset.X = input_offset.X + input_node.Size.Width + 50;
-                        current_node.Position = offset;
+                        NodeViewModel input_node = current_node.Inputs.Items.ElementAt(i).Connections.Items.First().Output.Parent;
+
+                        input_node.Position = input_offset;
+                        input_offset.Y += input_node.Size.Height + VerticalNodeDistance;
                     }
+
+                    NodeViewModel FirstInputModel = current_node.Inputs.Items.ElementAt(1).Connections.Items.First().Output.Parent;
+
+                    if (FirstInputModel.Outputs.Items.First().Editor is VectorValueEditorViewModel)
+                        offset.X = input_offset.X + 336 + VerticalNodeDistance;
+                    else
+                        offset.X = input_offset.X + 185 + VerticalNodeDistance;
+
+                    current_node.Position = offset;
+                    offset.X += current_node.Size.Width + HorizontalNodeDistance;
                 }
 
                 if (current_node.Outputs.Items.First().Connections.Count == 0)
@@ -597,20 +614,21 @@ namespace WindEditor.Editor.Modes
             };
 
             v.ContextMenu = new ActorTabContextMenu(staff);
-            v.IsHitTestVisibleChanged += V_IsHitTestVisibleChanged;
+            v.Events().LayoutUpdated
+                .Where(_ => v.ViewModel != null && v.ViewModel.Nodes.Count > 0)
+                .Select(_ => v.ViewModel.Nodes.Items.Last().Size)
+                .Where(size => size.Width > 0 && size.Height > 0)
+                .FirstAsync()
+                .Subscribe(size => { ArrangeNodes(model); });
 
             model.SelectedNodes.Connect().Subscribe(d => { OnSelectedNodesChanged(d); });
+            
 
             m_StaffNodeViews.Add(v);
 
             // Finally, create the new tab.
             TabItem new_tab = new TabItem() { Header = staff.Name, Content = v };
             return new_tab;
-        }
-
-        private void V_IsHitTestVisibleChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void OnSelectedNodesChanged(IChangeSet<NodeViewModel> changeset)
