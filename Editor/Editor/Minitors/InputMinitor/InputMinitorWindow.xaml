@@ -1,0 +1,97 @@
+﻿<Window x:Class="WindEditor.Minitors.Input.InputMinitorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:WindEditor.Minitors.Input"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Height="221" Width="608" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <DockPanel VerticalAlignment="Top" Height="20">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem InputGestureText="Ctrl + S" Header="_Save"/>
+                    <MenuItem Header="Repack (.arc)"/>
+                    <MenuItem Header="Save _As..."/>
+                </MenuItem>
+                <MenuItem Header="Patches">
+                    <MenuItem Header="Disable Song Playback" Command="{Binding ApplyPlaybackCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Tutorial"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <ComboBox ItemsSource="{Binding Songs}" SelectedItem="{Binding CurrentSong}" Margin="55,26,0,0" HorizontalAlignment="Left" Width="183" Height="25" VerticalAlignment="Top"/>
+        <ComboBox SelectedValue="{Binding CurrentSong.NoteCount}" Margin="414,26,10,0" Height="25" VerticalAlignment="Top">
+            <sys:Int32>3</sys:Int32>
+            <sys:Int32>4</sys:Int32>
+            <sys:Int32>6</sys:Int32>
+        </ComboBox>
+        <StackPanel x:Name="ImgHost" Margin="10,65,10,0" Orientation="Horizontal" Height="66" VerticalAlignment="Top" Grid.RowSpan="2">
+            <Image x:Name="NoteImg1" Source="..\..\..\resources\icons\WWMiddleNew.png" Width="96"/>
+            <Image x:Name="NoteImg2" Source="..\..\..\resources\icons\WWMiddleNew.png" Width="96"/>
+            <Image x:Name="NoteImg3" Source="..\..\..\resources\icons\WWMiddleNew.png" Width="96"/>
+            <Image x:Name="NoteImg4" Source="..\..\..\resources\icons\WWMiddleNew.png" Width="96"/>
+            <Image x:Name="NoteImg5" Source="..\..\..\resources\icons\WWMiddleNew.png" Width="96"/>
+            <Image x:Name="NoteImg6" Source="..\..\..\resources\icons\WWMiddleNew.png" Width="96"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,47,0,0" Height="28" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="572">
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[0]}">
+                <local:WindWakerNote>Up</local:WindWakerNote>
+                <local:WindWakerNote>Down</local:WindWakerNote>
+                <local:WindWakerNote>Left</local:WindWakerNote>
+                <local:WindWakerNote>Right</local:WindWakerNote>
+                <local:WindWakerNote>Middle</local:WindWakerNote>
+                <local:WindWakerNote>None</local:WindWakerNote>
+            </ComboBox>
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[1]}">
+                <local:WindWakerNote>Up</local:WindWakerNote>
+                <local:WindWakerNote>Down</local:WindWakerNote>
+                <local:WindWakerNote>Left</local:WindWakerNote>
+                <local:WindWakerNote>Right</local:WindWakerNote>
+                <local:WindWakerNote>Middle</local:WindWakerNote>
+                <local:WindWakerNote>None</local:WindWakerNote>
+            </ComboBox>
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[2]}">
+                <local:WindWakerNote>Up</local:WindWakerNote>
+                <local:WindWakerNote>Down</local:WindWakerNote>
+                <local:WindWakerNote>Left</local:WindWakerNote>
+                <local:WindWakerNote>Right</local:WindWakerNote>
+                <local:WindWakerNote>Middle</local:WindWakerNote>
+                <local:WindWakerNote>None</local:WindWakerNote>
+            </ComboBox>
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[3]}">
+                <local:WindWakerNote>Up</local:WindWakerNote>
+                <local:WindWakerNote>Down</local:WindWakerNote>
+                <local:WindWakerNote>Left</local:WindWakerNote>
+                <local:WindWakerNote>Right</local:WindWakerNote>
+                <local:WindWakerNote>Middle</local:WindWakerNote>
+                <local:WindWakerNote>None</local:WindWakerNote>
+            </ComboBox>
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[4]}">
+                <local:WindWakerNote>Up</local:WindWakerNote>
+                <local:WindWakerNote>Down</local:WindWakerNote>
+                <local:WindWakerNote>Left</local:WindWakerNote>
+                <local:WindWakerNote>Right</local:WindWakerNote>
+                <local:WindWakerNote>Middle</local:WindWakerNote>
+                <local:WindWakerNote>None</local:WindWakerNote>
+            </ComboBox>
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[5]}">
+                <local:WindWakerNote>Up</local:WindWakerNote>
+                <local:WindWakerNote>Down</local:WindWakerNote>
+                <local:WindWakerNote>Left</local:WindWakerNote>
+                <local:WindWakerNote>Right</local:WindWakerNote>
+                <local:WindWakerNote>Middle</local:WindWakerNote>
+                <local:WindWakerNote>None</local:WindWakerNote>
+            </ComboBox>
+        </StackPanel>
+        <Label Content="Song:" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
+        <Label Content="Note Count:" HorizontalAlignment="Left" Margin="335,25,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

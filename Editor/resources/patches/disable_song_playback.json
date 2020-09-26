@@ -1,0 +1,21 @@
+{
+	"Name": "Disable Wind Waker Song Playback",
+	"Description": "Patches the main executable to remove Wind Waker playback upon conducting a song.",
+	"Files":
+	[
+		{
+			"FileName": "sys/main.dol",
+			"Patchlets":
+			[
+				{
+					"Offset": 0x8014ECE0,
+					"Data": [0x60, 0x0, 0x0, 0x0]
+				},
+        {
+					"Offset": 0x8014EF28,
+					"Data": [0x60, 0x0, 0x0, 0x0]
+				}
+			]
+		}
+	]
+}
