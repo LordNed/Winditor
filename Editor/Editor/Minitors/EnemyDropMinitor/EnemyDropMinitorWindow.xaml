@@ -1,0 +1,81 @@
+﻿<Window x:Class="WindEditor.Minitors.EnemyDrop.EnemyDropMinitorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEditor.Minitors.EnemyDrop"
+        xmlns:sc="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Height="271" Width="898" ResizeMode="NoResize">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=SaveFileCommand}" Key="S" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=SaveAsFileCommand}" Key="S" Modifiers="Ctrl+Shift"/>
+    </Window.InputBindings>
+    <Grid>
+        <DockPanel VerticalAlignment="Top" Height="20" Grid.ColumnSpan="3">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem InputGestureText="Ctrl + S" Header="_Save" Command="{Binding SaveFileCommand}"/>
+                    <MenuItem InputGestureText="Ctrl + Shift + S" Header="Save _As..." Command="{Binding SaveAsFileCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Tutorial" Command="{Binding OpenTutorialCommand}"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Label Content="Actor:" Margin="10,29,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <ComboBox Margin="51,32,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164"/>
+        <Label Content="Arg:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="228,29,0,0" Height="28"/>
+        <sc:IntegerUpDown Width="175" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Margin="260,32,0,0"/>
+        <DockPanel Margin="10,60,0,0" Height="169" VerticalAlignment="Top" HorizontalAlignment="Left" Width="882">
+            <GroupBox Header="Individual Items" Width="425" Height="165" VerticalAlignment="Top">
+                <StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="398" Height="135">
+                    <StackPanel Width="408" Height="23" Orientation="Horizontal" Margin="0,0,0,10">
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90"/>
+                    </StackPanel>
+                    <StackPanel Width="408" Height="23" Orientation="Horizontal" Margin="0,0,0,10">
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90"/>
+                    </StackPanel>
+                    <StackPanel Width="408" Height="23" Orientation="Horizontal" Margin="0,0,0,10">
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90"/>
+                    </StackPanel>
+                    <StackPanel Width="408" Height="23" Orientation="Horizontal">
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90" Margin="0,0,10,0"/>
+                        <ComboBox Width="90"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Item Ball Settings" Width="424" Height="165" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,0,0,0">
+                <DockPanel Margin="10,0,-2,0">
+                    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="142" Width="398">
+                        <Label Content="% Chance of Spawn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-5,0,0,0"/>
+                        <sc:IntegerUpDown Width="278" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Margin="112,1,0,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,42,0,0" Height="24" VerticalAlignment="Top">
+                            <ComboBox Width="90" Margin="0,0,10,0"/>
+                            <ComboBox Width="90" Margin="0,0,10,0"/>
+                            <ComboBox Width="90" Margin="0,0,10,0"/>
+                            <ComboBox Width="90"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,76,0,0" Height="24" VerticalAlignment="Top">
+                            <ComboBox Width="90" Margin="0,0,10,0"/>
+                            <ComboBox Width="90" Margin="0,0,10,0"/>
+                            <ComboBox Width="90" Margin="0,0,10,0"/>
+                            <ComboBox Width="90"/>
+                        </StackPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </DockPanel>
+    </Grid>
+</Window>

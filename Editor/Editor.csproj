@@ -270,6 +270,10 @@
     <Compile Include="Editor\Events\VectorValueEditorViewModel.cs" />
     <Compile Include="Editor\Managers\EventDataManager.cs" />
     <Compile Include="Editor\Entities\TriggerRegion.cs" />
+    <Compile Include="Editor\Minitors\EnemyDropMinitor.cs" />
+    <Compile Include="Editor\Minitors\EnemyDropMinitor\EnemyDropMinitorWindow.xaml.cs">
+      <DependentUpon>EnemyDropMinitorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Minitors\IMinitor.cs" />
     <Compile Include="Editor\Minitors\InputMinitor\InputMinitorWindow.xaml.cs">
       <DependentUpon>InputMinitorWindow.xaml</DependentUpon>
@@ -854,6 +858,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\Events\VectorValueEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\Minitors\EnemyDropMinitor\EnemyDropMinitorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
