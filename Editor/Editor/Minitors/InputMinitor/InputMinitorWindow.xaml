@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:WindEditor.Minitors.Input"
+        xmlns:minitors="clr-namespace:WindEditor.Minitors"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" Height="221" Width="608" ResizeMode="NoResize">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=SaveFileCommand}" Key="S" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding Path=SaveAsFileCommand}" Key="S" Modifiers="Ctrl+Shift"/>
+    </Window.InputBindings>
+    <Window.Resources>
+        <minitors:NoteCountFourSixToBoolConverter x:Key="NoteCountConverterFourSix"/>
+        <minitors:NoteCountSixToBoolConverter x:Key="NoteCountConverterSix"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
@@ -15,9 +24,8 @@
         <DockPanel VerticalAlignment="Top" Height="20">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem InputGestureText="Ctrl + S" Header="_Save"/>
-                    <MenuItem Header="Repack (.arc)"/>
-                    <MenuItem Header="Save _As..."/>
+                    <MenuItem InputGestureText="Ctrl + S" Header="_Save" Command="{Binding SaveFileCommand}"/>
+                    <MenuItem InputGestureText="Ctrl + Shift + S" Header="Save _As..." Command="{Binding SaveAsFileCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Patches">
                     <MenuItem Header="Disable Song Playback" Command="{Binding ApplyPlaybackCommand}"/>
@@ -27,8 +35,8 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <ComboBox ItemsSource="{Binding Songs}" SelectedItem="{Binding CurrentSong}" Margin="55,26,0,0" HorizontalAlignment="Left" Width="183" Height="25" VerticalAlignment="Top"/>
-        <ComboBox SelectedValue="{Binding CurrentSong.NoteCount}" Margin="414,26,10,0" Height="25" VerticalAlignment="Top">
+        <ComboBox ItemsSource="{Binding Songs}" SelectedItem="{Binding CurrentSong}" DisplayMemberPath="Name" Margin="55,26,0,0" HorizontalAlignment="Left" Width="183" Height="25" VerticalAlignment="Top"/>
+        <ComboBox x:Name="NoteCountCombo" SelectedValue="{Binding CurrentSong.NoteCount}" Margin="414,26,10,0" Height="25" VerticalAlignment="Top">
             <sys:Int32>3</sys:Int32>
             <sys:Int32>4</sys:Int32>
             <sys:Int32>6</sys:Int32>
@@ -66,7 +74,7 @@
                 <local:WindWakerNote>Middle</local:WindWakerNote>
                 <local:WindWakerNote>None</local:WindWakerNote>
             </ComboBox>
-            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[3]}">
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[3]}" IsEnabled="{Binding CurrentSong.NoteCount, Converter={StaticResource NoteCountConverterFourSix}}">
                 <local:WindWakerNote>Up</local:WindWakerNote>
                 <local:WindWakerNote>Down</local:WindWakerNote>
                 <local:WindWakerNote>Left</local:WindWakerNote>
@@ -74,7 +82,7 @@
                 <local:WindWakerNote>Middle</local:WindWakerNote>
                 <local:WindWakerNote>None</local:WindWakerNote>
             </ComboBox>
-            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[4]}">
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[4]}" IsEnabled="{Binding CurrentSong.NoteCount, Converter={StaticResource NoteCountConverterSix}}">
                 <local:WindWakerNote>Up</local:WindWakerNote>
                 <local:WindWakerNote>Down</local:WindWakerNote>
                 <local:WindWakerNote>Left</local:WindWakerNote>
@@ -82,7 +90,7 @@
                 <local:WindWakerNote>Middle</local:WindWakerNote>
                 <local:WindWakerNote>None</local:WindWakerNote>
             </ComboBox>
-            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[5]}">
+            <ComboBox Width="91" Margin="0,0,5,0" SelectedValue="{Binding CurrentSong.Notes[5]}" IsEnabled="{Binding CurrentSong.NoteCount, Converter={StaticResource NoteCountConverterSix}}">
                 <local:WindWakerNote>Up</local:WindWakerNote>
                 <local:WindWakerNote>Down</local:WindWakerNote>
                 <local:WindWakerNote>Left</local:WindWakerNote>

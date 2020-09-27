@@ -1053,6 +1053,9 @@
     <Content Include="resources\editor\EditorCylinderBottomOrigin.mtl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\WindWakerSongNames.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\editor_icon.ico" />
     <Content Include="resources\EventDefinitionDatabase.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

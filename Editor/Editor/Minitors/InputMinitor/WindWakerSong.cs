@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,20 @@ namespace WindEditor.Minitors.Input
 
         public const int MAX_NOTES = 6;
 
-        public WindWakerNote[] Notes
+        public string Name
+        {
+            get { return m_Name; }
+            set
+            {
+                if (value != m_Name)
+                {
+                    m_Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
+        public ObservableCollection<WindWakerNote> Notes
         {
             get { return m_Notes; }
             set
@@ -58,17 +72,31 @@ namespace WindEditor.Minitors.Input
             }
         }
 
-        private WindWakerNote[] m_Notes;
+        private string m_Name;
+        private ObservableCollection<WindWakerNote> m_Notes;
         private int m_NoteCount;
 
         public WindWakerSong(EndianBinaryReader reader)
         {
-            Notes = new WindWakerNote[MAX_NOTES];
+            Notes = new ObservableCollection<WindWakerNote>();
             NoteCount = reader.ReadByte();
 
             for (int i = 0; i < MAX_NOTES; i++)
             {
-                Notes[i] = (WindWakerNote)reader.ReadByte();
+                Notes.Add((WindWakerNote)reader.ReadByte());
+            }
+        }
+
+        public void Write(EndianBinaryWriter writer)
+        {
+            writer.Write((byte)m_NoteCount);
+
+            for (int i = 0; i < MAX_NOTES; i++)
+            {
+                if (i < m_NoteCount)
+                    writer.Write((byte)m_Notes[i]);
+                else
+                    writer.Write((byte)WindWakerNote.None);
             }
         }
     }
