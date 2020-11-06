@@ -18,7 +18,7 @@
                 <Grid.Resources>
                     <vm:NullToBoolConverter x:Key="nullBullConverter" />
                 </Grid.Resources>
-                <ComboBox x:Name="actor_combo" Grid.Column="0" SelectedItem="{Binding ElementName=_this, Path=ActorReference}" ToolTip="Select new reference in current level" Margin="0,2"/>
+                <ComboBox x:Name="actor_combo" Grid.Column="0" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=_this, Path=ActorReference}" ToolTip="Select new reference in current level" Margin="0,2"/>
                 <Button x:Name="Replace_Button" Click="Select_Button_Click" Grid.Column="1" Margin="5,2" ToolTip="Select referenced object in viewport" VerticalAlignment="Center" IsEnabled="{Binding ElementName=_this, Path=ActorReference, Converter={StaticResource nullBullConverter}}" Height="22">
                     <Image Source="..\resources\icons\magnifier.png"/>
                 </Button>
