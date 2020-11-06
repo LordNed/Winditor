@@ -128,5 +128,13 @@ namespace WindEditor
 
             return cur_time.Lerp(t);
         }
+
+        public override string Name
+        {
+            get
+            {
+                return $"Environment Lighting {Parent.Children.IndexOf(this)}";
+            }
+        }
     }
 }

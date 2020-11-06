@@ -49,5 +49,13 @@ namespace WindEditor
 
             m_SkyboxPaletteIndex = SkyboxPalette != null ? (byte)skybox_palettes.IndexOf(SkyboxPalette) : (byte)0;
         }
+
+        public override string Name
+        {
+            get
+            {
+                return $"Palette {Parent.Children.IndexOf(this)}";
+            }
+        }
     }
 }

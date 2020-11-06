@@ -219,5 +219,13 @@ namespace WindEditor
 
             return interpPalette;
         }
+
+        public override string Name
+        {
+            get
+            {
+                return $"ToD Colors {Parent.Children.IndexOf(this)}";
+            }
+        }
     }
 }
