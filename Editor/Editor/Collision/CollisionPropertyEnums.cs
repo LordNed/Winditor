@@ -73,7 +73,7 @@ namespace WindEditor.Collision
         Force_Slide_2 = 0x2,
         No_Sidle = 0x3,
         Unknown_4 = 0x4,
-        Unknown_5 = 0x5,
+        Diggable_Black_Soil = 0x5,
         Unknown_6 = 0x6,
         Unknown_7 = 0x7,
         Unknown_8 = 0x8,
