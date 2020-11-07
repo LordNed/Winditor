@@ -355,9 +355,9 @@ namespace WindEditor.Editor.Modes
                 pastedEntities = serial.Deserialize<List<SerializableDOMNode>>(reader);
             } catch (Exception e)
             {
-                string error = "Failed to paste entities from the clipboard.\n\nFull error:\n\n";
-                error += e.GetType().FullName;
-                error += e.Message;
+                string error = "Failed to paste entities from the clipboard.\n\nFull error:\n";
+                error += e.GetType().FullName + "\n";
+                error += e.Message + "\n";
                 error += e.StackTrace;
                 System.Windows.Forms.MessageBox.Show(
                     error,

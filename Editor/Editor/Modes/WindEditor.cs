@@ -281,7 +281,11 @@ namespace WindEditor
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error building project");
+                string error = "";
+                error += e.GetType().FullName + "\n";
+                error += e.Message + "\n";
+                error += e.StackTrace;
+                MessageBox.Show(error, "Error building project");
                 return;
             }
 
@@ -300,7 +304,11 @@ namespace WindEditor
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error building project");
+                string error = "";
+                error += e.GetType().FullName + "\n";
+                error += e.Message + "\n";
+                error += e.StackTrace;
+                MessageBox.Show(error, "Error building project");
                 return;
             }
 
@@ -403,7 +411,11 @@ namespace WindEditor
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error building and playtesting project");
+                string error = "";
+                error += e.GetType().FullName + "\n";
+                error += e.Message + "\n";
+                error += e.StackTrace;
+                MessageBox.Show(error, "Error building and playtesting project");
                 return;
             }
         }
@@ -540,7 +552,11 @@ namespace WindEditor
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message, "Mesh Import Error");
+                    string error = "";
+                    error += e.GetType().FullName + "\n";
+                    error += e.Message + "\n";
+                    error += e.StackTrace;
+                    MessageBox.Show(error, "Mesh Import Error");
                     return;
                 }
             }
