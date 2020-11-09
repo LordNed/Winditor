@@ -19,6 +19,8 @@ namespace WindEditor.Events
     {
         public string ActionName { get; set; }
         public string ReadableName { get; set; }
+        public bool CanCopyFromViewport { get; set; }
+        public bool CanCopyStartFromViewport { get; set; }
         public EventPropertyDefinition[] Properties { get; set; }
     }
 
@@ -27,6 +29,7 @@ namespace WindEditor.Events
         public string PropertyName { get; set; }
         public string ReadableName { get; set; }
         public string Type { get; set; }
+        public string Default { get; set; }
     }
 
     public class EventDefinitionManager
@@ -69,6 +72,42 @@ namespace WindEditor.Events
             return cut_names;
         }
 
+        public static bool CanActionCopyFromViewport(string actor_name, string action_name)
+        {
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
+
+            if (def == null)
+                return false;
+
+            for (int i = 0; i < def.Actions.Length; i++)
+            {
+                if (def.Actions[i].ActionName == action_name)
+                {
+                    return def.Actions[i].CanCopyFromViewport;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool CanActionCopyStartFromViewport(string actor_name, string action_name)
+        {
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
+
+            if (def == null)
+                return false;
+
+            for (int i = 0; i < def.Actions.Length; i++)
+            {
+                if (def.Actions[i].ActionName == action_name)
+                {
+                    return def.Actions[i].CanCopyStartFromViewport;
+                }
+            }
+
+            return false;
+        }
+
         public static Dictionary<string, string> GetPropertiesForAction(string actor_name, string action_name)
         {
             Dictionary<string, string> prop_names = new Dictionary<string, string>();
@@ -95,8 +134,9 @@ namespace WindEditor.Events
             return prop_names;
         }
 
-        public static SubstanceType GetPropertyType(string actor_name, string action_name, string prop_name)
+        public static SubstanceType GetPropertyTypeAndDefaultValue(string actor_name, string action_name, string prop_name, out string default_value)
         {
+            default_value = "";
             SubstanceType sub = SubstanceType.Float;
 
             EventActorDefinition def = m_EventActorDefinitions[actor_name];
@@ -127,6 +167,8 @@ namespace WindEditor.Events
                                     sub = SubstanceType.String;
                                     break;
                             }
+
+                            default_value = p.Default;
                         }
                     }
 

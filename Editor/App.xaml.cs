@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System;
+using NodeNetwork;
 
 namespace WindEditor
 {
@@ -10,6 +11,12 @@ namespace WindEditor
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            NNViewRegistrar.RegisterSplat();
+        }
+
         /// <summary>
         /// Returns the dimensions of the user's primary screen.
         /// </summary>

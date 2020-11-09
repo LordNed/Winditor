@@ -22,7 +22,7 @@ namespace WindEditor.Minitors
             {
                 Header = "Enemy Drop Editor",
                 ToolTip = "Editor for the items that enemies can drop upon defeat.",
-                Command = OpenMinitorCommand,
+                //Command = OpenMinitorCommand,
             };
         }
 

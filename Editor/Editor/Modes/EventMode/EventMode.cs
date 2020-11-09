@@ -26,6 +26,7 @@ namespace WindEditor.Editor.Modes
         public ICommand CreateEventCommand { get { return new RelayCommand(x => OnRequestAddEvent()); } }
         public ICommand RemoveEventCommand { get { return new RelayCommand(x => OnRequestRemoveEvent()); } }
         public ICommand AddStaffCommand { get { return new RelayCommand(x => OnRequestAddStaff()); } }
+        public ICommand RemoveStaffCommand { get { return new RelayCommand(x => OnRequestRemoveStaff((Tuple<TabItem, Staff>)x)); } }
 
         private DockPanel m_ModeControlsDock;
         private ComboBox m_EventCombo;
@@ -47,6 +48,8 @@ namespace WindEditor.Editor.Modes
 
         private WSceneView m_View;
         private List<NetworkView> m_StaffNodeViews;
+
+        private CopyCameraFromViewportEventArgs m_CopyCameraRequest;
 
         public WDetailsViewViewModel EventDetailsViewModel
         {
@@ -315,14 +318,15 @@ namespace WindEditor.Editor.Modes
 
         private void OnEventSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (SelectedEvent != null)
+                SelectedEvent.CopyFromViewportRequested -= OnRequestCopyCameraFromViewport;
+
             if (m_EventCombo.SelectedIndex == -1)
-            {
                 SelectedEvent = m_EventList.Events[0];
-            }
             else
-            {
                 SelectedEvent = EventList.Events[m_EventCombo.SelectedIndex];
-            }
+
+            SelectedEvent.CopyFromViewportRequested += OnRequestCopyCameraFromViewport;
 
             m_EventDetailsViewModel.ReflectObject(SelectedEvent);
 
@@ -337,6 +341,8 @@ namespace WindEditor.Editor.Modes
 
                 m_NodeWindow.ActorTabControl.Items.Add(s.StaffNodeGraph);
             }
+
+
 
             m_NodeWindow.ActorTabControl.SelectedIndex = 0;
         }
@@ -373,6 +379,11 @@ namespace WindEditor.Editor.Modes
             m_EventCombo.SelectedIndex = 0;
         }
 
+        private void OnRequestCopyCameraFromViewport(object sender, CopyCameraFromViewportEventArgs e)
+        {
+            m_CopyCameraRequest = e;
+        }
+
         private void OnRequestAddStaff()
         {
             Staff new_staff = new Staff(SelectedEvent);
@@ -382,6 +393,15 @@ namespace WindEditor.Editor.Modes
             new_staff.StaffNodeGraph = t;
 
             m_NodeWindow.ActorTabControl.Items.Add(t);
+        }
+
+        private void OnRequestRemoveStaff(Tuple<TabItem, Staff> args)
+        {
+            m_NodeWindow.ActorTabControl.Items.Remove(args.Item1);
+            m_SelectedEvent.Actors.Remove(args.Item2);
+
+            if (m_SelectedStaff == args.Item2)
+                m_SelectedEvent.Actors.First();
         }
 
         public void BroadcastUndoEventGenerated(WUndoCommand command)
@@ -529,6 +549,11 @@ namespace WindEditor.Editor.Modes
                     }
                 }
             }
+            if (m_CopyCameraRequest != null)
+            {
+                m_CopyCameraRequest.RequestingCut.CopySettingsFromCamera(view.ViewCamera, m_CopyCameraRequest.IsStart);
+                m_CopyCameraRequest = null;
+            }
             if (WInput.GetMouseButton(1) && m_bOverrideSceneCamera)
             {
                 RestoreSceneCamera(view);
@@ -610,6 +635,8 @@ namespace WindEditor.Editor.Modes
             {
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
+                HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch,
+                VerticalContentAlignment = System.Windows.VerticalAlignment.Stretch,
                 ViewModel = model
             };
 
@@ -628,6 +655,11 @@ namespace WindEditor.Editor.Modes
 
             // Finally, create the new tab.
             TabItem new_tab = new TabItem() { Header = staff.Name, Content = v };
+
+            ContextMenu TabContext = new ContextMenu();
+            TabContext.Items.Add(new MenuItem() { Header = "Remove Actor", Command = RemoveStaffCommand, CommandParameter = new Tuple<TabItem, Staff>(new_tab, staff) });
+
+            new_tab.ContextMenu = TabContext;
             return new_tab;
         }
 
@@ -651,7 +683,7 @@ namespace WindEditor.Editor.Modes
                         break;
                 }
             }
-            else if (view.Outputs.Items.First().Parent is CutNodeViewModel cut_model)
+            else if (view.Outputs.Items.First().Parent is CutNodeViewModel cut_model && changeset.Removes == 0)
             {
                 OnUserRequestPreviewShot(cut_model.Cut);
             }
@@ -708,6 +740,10 @@ namespace WindEditor.Editor.Modes
                 Substance<ObservableCollection<BindingVector3>> eye_vec = eye as Substance<ObservableCollection<BindingVector3>>;
                 m_SceneCameraOverride.Transform.Position = eye_vec.Data[0].BackingVector;
             }
+            else
+            {
+                return;
+            }
 
             Substance target = cut.Properties.Find(x => x.Name.ToLower() == "center");
             if (target != null)
@@ -716,6 +752,10 @@ namespace WindEditor.Editor.Modes
                 Matrix4 mat = Matrix4.LookAt(m_SceneCameraOverride.Transform.Position, target_vec.Data[0].BackingVector, -Vector3.UnitY);
 
                 m_SceneCameraOverride.Transform.Rotation = mat.ExtractRotation();
+            }
+            else
+            {
+                return;
             }
 
             Substance fovy = cut.Properties.Find(x => x.Name.ToLower() == "fovy");

@@ -143,6 +143,8 @@ namespace WindEditor.Events
             }
         }
 
+        public event EventHandler<CopyCameraFromViewportEventArgs> CopyFromViewportRequested;
+
         public Event()
         {
             Actors = new ObservableCollection<Staff>();
@@ -296,6 +298,11 @@ namespace WindEditor.Events
             writer.Write(Convert.ToByte(m_PlayJingle));
 
             writer.Write(new byte[27]);
+        }
+
+        public void OnCutRequestCopyFromViewport(CopyCameraFromViewportEventArgs e)
+        {
+            CopyFromViewportRequested?.Invoke(this, e);
         }
 
         public override string ToString()

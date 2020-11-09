@@ -3451,6 +3451,7 @@
       },
       {
         "ActionName": "FIXEDFRM",
+        "CanCopyFromViewport": true,
         "Properties": [
           {
             "PropertyName": "AutoForcus",
@@ -3485,7 +3486,8 @@
           {
             "PropertyName": "Fovy",
             "ReadableName": "",
-            "Type": "Float"
+            "Type": "Float",
+            "Default": "65.0"
           },
           {
             "PropertyName": "RelActor",
@@ -3530,7 +3532,8 @@
           {
             "PropertyName": "fovy",
             "ReadableName": "",
-            "Type": "Float"
+            "Type": "Float",
+            "Default": "65.0"
           }
         ],
         "ReadableName": ""
@@ -3563,6 +3566,7 @@
       },
       {
         "ActionName": "FIXEDPOS",
+        "CanCopyFromViewport": true,
         "Properties": [
           {
             "PropertyName": "AutoForcus",
@@ -3831,6 +3835,7 @@
       },
       {
         "ActionName": "ROLLING",
+        "CanCopyFromViewport": true,
         "Properties": [
           {
             "PropertyName": "BGCheck",
@@ -4028,6 +4033,8 @@
       },
       {
         "ActionName": "UNIACCELE",
+        "CanCopyFromViewport": true,
+        "CanCopyStartFromViewport": true,
         "Properties": [
           {
             "PropertyName": "AcceleTimer",
@@ -4094,6 +4101,8 @@
       },
       {
         "ActionName": "UNIBRAKE",
+        "CanCopyFromViewport": true,
+        "CanCopyStartFromViewport": true,
         "Properties": [
           {
             "PropertyName": "AutoForcus",
@@ -4185,6 +4194,8 @@
       },
       {
         "ActionName": "UNITRANS",
+        "CanCopyFromViewport": true,
+        "CanCopyStartFromViewport": true,
         "Properties": [
           {
             "PropertyName": "AcceleTimer",
