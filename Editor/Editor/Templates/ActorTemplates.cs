@@ -1656,7 +1656,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("Bokoblin", "Weapon", true, "The weapon that the Bokoblin is holding when it spawns.", SourceScene.Room)]
+		[WProperty("Bokoblin", "Weapon", true, "The weapon that the Bokoblin is holding when it spawns.\nNote: In the A_mori stage, Bokoblins will never spawn with a weapon regardless of what you set this parameter to.", SourceScene.Room)]
 		public WeaponEnum Weapon
 		{ 
 			get
@@ -2098,43 +2098,38 @@ namespace WindEditor
 	public partial class boko : Actor
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("boko", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x3FFFFFFF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x3FFFFFFF | (value_as_int << 0 & 0x3FFFFFFF));
-				OnPropertyChanged("Unknown_1");
-			}
+		public enum Unknown_1Enum
+		{
+			Boko_stick = 0,
+			Bokoblin_scimitar = 1,
+			Stalfos_mace = 2,
+			Darknut_sword = 3,
+			Moblin_spear = 4,
+			Phantom_Ganon_sword = 5,
 		}
 
-		[WProperty("boko", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Dropped Enemy Weapon", "Unknown_1", true, "", SourceScene.Room)]
+		public Unknown_1Enum Unknown_1
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(Unknown_1Enum), value_as_int))
+					value_as_int = 0;
+				return (Unknown_1Enum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Unknown_1");
 			}
 		}
 
-		[WProperty("boko", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Dropped Enemy Weapon", "Unknown_2", true, "", SourceScene.Room)]
+		public int Unknown_2
 		{ 
 			get
 			{
@@ -2146,7 +2141,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Unknown_2");
 			}
 		}
 
@@ -2159,9 +2154,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
-			Unknown_3 = -1;
 		}
 	}
 
@@ -2614,8 +2607,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("cc", "Disable Spawn Switch", true, "", SourceScene.Room)]
-		public int DisableSpawnSwitch
+		[WProperty("cc", "Enable Spawn Switch", true, "For most behavior types, if this switch is not 255 it must be set before the ChuChu will appear.\nFor the 'Random movement' behavior type (intended for Blu ChuChus), this switch instead works completely differently: This switch index in stage save info ID 14 will be used to keep track of whether the Blu Chu Jelly dropped by this ChuChu has been picked up by the player or not. Once that switch is set, this ChuChu will no longer drop Blue Chu Jelly.", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -2627,7 +2620,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
@@ -2641,7 +2634,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			SightRangeTens = -1;
-			DisableSpawnSwitch = -1;
+			EnableSpawnSwitch = -1;
 			if (Name == "c_green") {
 				ColorType = ColorTypeEnum.Green;
 			}
@@ -12187,8 +12180,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_canon", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_canon", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -12200,7 +12193,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
@@ -12221,8 +12214,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_canon", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("obj_canon", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -12234,7 +12227,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
@@ -12248,9 +12241,9 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
+			EnableSpawnSwitch = -1;
 			Unknown_3 = -1;
-			Unknown_4 = -1;
+			DisableSpawnonDeathSwitch = -1;
 		}
 	}
 
@@ -12719,8 +12712,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_ekskz", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_ekskz", "Destroyed Switch", true, "", SourceScene.Room)]
+		public int DestroyedSwitch
 		{ 
 			get
 			{
@@ -12732,7 +12725,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DestroyedSwitch");
 			}
 		}
 
@@ -12745,7 +12738,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DestroyedSwitch = -1;
 		}
 	}
 
@@ -18283,8 +18276,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_Yboil", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Boiling Water Bubbles", "Disabled Switch", true, "", SourceScene.Room)]
+		public int DisabledSwitch
 		{ 
 			get
 			{
@@ -18296,7 +18289,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisabledSwitch");
 			}
 		}
 
@@ -18309,7 +18302,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DisabledSwitch = -1;
 		}
 	}
 
@@ -22969,8 +22962,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_volcano", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("tag_volcano", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -22982,7 +22975,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -23014,7 +23007,7 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
 			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoSet = -1;
 			Unknown_4 = -1;
 		}
 	}
@@ -23102,8 +23095,8 @@ namespace WindEditor
 			Transparent_until_a_switch_is_set = 4,
 			Apply_gravity = 5,
 			Spawn_on_Triforce_emblem_when_a_switch_is_set = 6,
-			Uses_Stage_Save_Info_1 = 7,
-			Uses_Stage_Save_Info_1_and_spawns_when_a_switch_is_set = 8,
+			Uses_Stage_Save_Info_1_open_flag = 7,
+			Uses_Stage_Save_Info_1_open_flag_and_spawns_when_a_switch_is_set = 8,
 		}
 
 
@@ -23143,7 +23136,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Treasure Chest Flags", "Appear Condition Switch", true, "", SourceScene.Room)]
+		[WProperty("Treasure Chest Flags", "Appear Condition Switch", true, "For the various behavior types that wait for a switch to be set, this is that switch.\nFor the \"Spawn when all enemies dead\" behavior type, the chest will instead set this switch when it appears, and use the switch to remember that it should spawn in on future room loads.", SourceScene.Room)]
 		public int AppearConditionSwitch
 		{ 
 			get
@@ -23324,11 +23317,11 @@ namespace WindEditor
 				AppearanceType = AppearanceTypeEnum.Metal;
 			}
 			if (Name == "tkrAOc") {
-				BehaviorType = BehaviorTypeEnum.Uses_Stage_Save_Info_1;
+				BehaviorType = BehaviorTypeEnum.Uses_Stage_Save_Info_1_open_flag;
 				AppearanceType = AppearanceTypeEnum.Light_wood;
 			}
 			if (Name == "tkrAOs") {
-				BehaviorType = BehaviorTypeEnum.Uses_Stage_Save_Info_1_and_spawns_when_a_switch_is_set;
+				BehaviorType = BehaviorTypeEnum.Uses_Stage_Save_Info_1_open_flag_and_spawns_when_a_switch_is_set;
 				AppearanceType = AppearanceTypeEnum.Light_wood;
 			}
 		}
@@ -24546,8 +24539,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("wind_tag", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("wind_tag", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -24559,7 +24552,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
@@ -24611,7 +24604,7 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
-			Unknown_6 = -1;
+			DisableSpawnSwitch = -1;
 			Unknown_7 = -1;
 			Unknown_8 = -1;
 		}

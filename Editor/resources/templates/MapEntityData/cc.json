@@ -58,12 +58,12 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Disable Spawn Switch",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "cc",
-      "ToolTip": "",
+      "ToolTip": "For most behavior types, if this switch is not 255 it must be set before the ChuChu will appear.\nFor the 'Random movement' behavior type (intended for Blu ChuChus), this switch instead works completely differently: This switch index in stage save info ID 14 will be used to keep track of whether the Blu Chu Jelly dropped by this ChuChu has been picked up by the player or not. Once that switch is set, this ChuChu will no longer drop Blue Chu Jelly.",
       "DataType": "Integer"
     }
   ]

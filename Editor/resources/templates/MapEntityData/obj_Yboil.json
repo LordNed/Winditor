@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Disabled Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_Yboil",
+      "Category": "Boiling Water Bubbles",
       "ToolTip": "",
       "DataType": "Integer"
     }

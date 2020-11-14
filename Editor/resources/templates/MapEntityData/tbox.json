@@ -18,8 +18,8 @@
         4: "Transparent until a switch is set",
         5: "Apply gravity",
         6: "Spawn on Triforce emblem when a switch is set",
-        7: "Uses Stage Save Info 1",
-        8: "Uses Stage Save Info 1 and spawns when a switch is set",
+        7: "Uses Stage Save Info 1 open flag",
+        8: "Uses Stage Save Info 1 open flag and spawns when a switch is set",
       },
       "DefaultsByActorName": {
         "takara": "Normal",
@@ -39,8 +39,8 @@
         "tkrAIk": "Apply gravity",
         "tkrBMs": "Transparent until a switch is set",
         "tkrCTf": "Spawn on Triforce emblem when a switch is set",
-        "tkrAOc": "Uses Stage Save Info 1",
-        "tkrAOs": "Uses Stage Save Info 1 and spawns when a switch is set",
+        "tkrAOc": "Uses Stage Save Info 1 open flag",
+        "tkrAOs": "Uses Stage Save Info 1 open flag and spawns when a switch is set",
       }
     },
     {
@@ -58,7 +58,7 @@
       "Mask": 0x000FF000,
       "Hidden": false,
       "Category": "Treasure Chest Flags",
-      "ToolTip": "",
+      "ToolTip": "For the various behavior types that wait for a switch to be set, this is that switch.\nFor the \"Spawn when all enemies dead\" behavior type, the chest will instead set this switch when it appears, and use the switch to remember that it should spawn in on future room loads.",
       "DataType": "Integer"
     },
     {
