@@ -177,7 +177,10 @@ namespace WindEditor
                 node.WriteLoadedRoomTable(writer);
             }
 
-            writer.Seek(0, SeekOrigin.End);
+            // Pad to 4 bytes
+            writer.BaseStream.Seek(0, SeekOrigin.End);
+            while (writer.BaseStream.Position % 4 != 0)
+                writer.Write((byte)0xFF);
         }
 
         public void SavePaths(Dictionary<FourCC, List<SerializableDOMNode>> actorCategories)

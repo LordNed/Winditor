@@ -8,6 +8,7 @@ using WindEditor.Properties;
 using GameFormatReader.Common;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Reflection;
 
 namespace WindEditor.Events
 {
@@ -91,6 +92,19 @@ namespace WindEditor.Events
             get { return m_Name; }
             set
             {
+                switch (StaffType)
+                {
+                    case StaffType.All:
+                    case StaffType.Camera:
+                    case StaffType.Director:
+                    case StaffType.Message:
+                    case StaffType.Package:
+                    case StaffType.Timekeeper:
+                    case StaffType.Create:
+                    case StaffType.Sounds:
+                        return;
+                }
+
                 if (value != m_Name)
                 {
                     m_Name = value;
@@ -118,6 +132,28 @@ namespace WindEditor.Events
             {
                 if (value != m_StaffType)
                 {
+                    switch (value)
+                    {
+                        case StaffType.All:
+                        case StaffType.Camera:
+                        case StaffType.Director:
+                        case StaffType.Message:
+                        case StaffType.Package:
+                        case StaffType.Timekeeper:
+                            Name = value.ToString().ToUpperInvariant();
+                            break;
+                        case StaffType.Create:
+                            Name = "CREATER";
+                            break;
+                        case StaffType.Sounds:
+                            Name = "SOUND";
+                            break;
+                    }
+
+                    PropertyInfo p = GetType().GetProperties().First(x => x.Name == "Name");
+                    CustomAttributeData[] custom_attributes = p.CustomAttributes.ToArray();
+                    CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+
                     m_StaffType = value;
                     OnPropertyChanged("StaffType");
                 }

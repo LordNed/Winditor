@@ -10,21 +10,71 @@ using GameFormatReader.Common;
 namespace WindEditor
 {
     [HideCategories(new string[] { "Transform" })]
-    public class RoomTableEntryNode : SerializableDOMNode
+    public class RoomTableRoomSettings
     {
-        private List<byte> m_LoadedRoomIndices;
+        private byte m_Bitfield;
 
-        private byte m_LoadedRoomCount;
-
-        public byte LoadedRoomCount
+        [WProperty("Room Settings", "Room Number", true, "The room number of the room this entry represents.")]
+        public byte RoomNumber
         {
-            get { return m_LoadedRoomCount; }
+            get { return (byte)(m_Bitfield & 0x3F); }
             set
             {
-                if (value != m_LoadedRoomCount)
+                m_Bitfield = (byte)((m_Bitfield & 0xC0) | value & 0x3F);
+            }
+        }
+
+        [WProperty("Room Settings", "Unk1", true, "")]
+        public bool Unk1
+        {
+            get { return (m_Bitfield & 0x80) != 0; }
+            set
+            {
+                if (value)
+                    m_Bitfield |= 0x80;
+                else
+                    m_Bitfield &= 0x7F;
+            }
+        }
+
+        [WProperty("Room Settings", "Unk2", true, "")]
+        public bool Unk2
+        {
+            get { return (m_Bitfield & 0x40) != 0; }
+            set
+            {
+                if (value)
+                    m_Bitfield |= 0x40;
+                else
+                    m_Bitfield &= 0xBF;
+            }
+        }
+
+        public RoomTableRoomSettings(EndianBinaryReader reader)
+        {
+            m_Bitfield = reader.ReadByte();
+        }
+
+        public void Save(EndianBinaryWriter writer)
+        {
+            writer.Write(m_Bitfield);
+        }
+    }
+
+    [HideCategories(new string[] { "Transform" })]
+    public class RoomTableEntryNode : SerializableDOMNode
+    {
+        private List<RoomTableRoomSettings> m_LoadedRoomEntries;
+
+        public List<RoomTableRoomSettings> LoadedRoomEntries
+        {
+            get { return m_LoadedRoomEntries; }
+            set
+            {
+                if (value != m_LoadedRoomEntries)
                 {
-                    m_LoadedRoomCount = value;
-                    OnPropertyChanged("LoadedRoomCount");
+                    m_LoadedRoomEntries = value;
+                    OnPropertyChanged("LoadedRoomEntries");
                 }
             }
         }
@@ -61,46 +111,34 @@ namespace WindEditor
             }
         }
 
-        private byte m_Unknown1;
-
-        [WProperty("Unknowns", "Unknown 1", true)]
-        public byte Unknown1
-        {
-            get { return m_Unknown1; }
-            set
-            {
-                if (value != m_Unknown1)
-                {
-                    m_Unknown1 = value;
-                    OnPropertyChanged("Unknown1");
-                }
-            }
-        }
-
         public RoomTableEntryNode(FourCC fourCC, WWorld world, EndianBinaryReader reader) : base(fourCC, world)
         {
-            m_LoadedRoomIndices = new List<byte>();
+            LoadedRoomEntries = new List<RoomTableRoomSettings>();
 
-            LoadedRoomCount = reader.ReadByte();
+            byte RoomCount = reader.ReadByte();
+
             ReverbAmount = reader.ReadByte();
             TimePasses = Convert.ToBoolean(reader.ReadByte());
-            Unknown1 = reader.ReadByte();
+            
+            reader.SkipByte(); // Padding byte
 
             int table_offset = reader.ReadInt32();
             reader.BaseStream.Seek(table_offset, System.IO.SeekOrigin.Begin);
 
-            for (int i = 0; i < LoadedRoomCount; i++)
+            for (int i = 0; i < RoomCount; i++)
             {
-                m_LoadedRoomIndices.Add(reader.ReadByte());
+                LoadedRoomEntries.Add(new RoomTableRoomSettings(reader));
             }
         }
 
         public override void Save(EndianBinaryWriter stream)
         {
-            stream.Write((byte)m_LoadedRoomIndices.Count);
+            stream.Write((byte)LoadedRoomEntries.Count);
             stream.Write((byte)m_ReverbAmount);
             stream.Write(Convert.ToByte(m_TimePasses));
-            stream.Write((byte)m_Unknown1);
+            
+            stream.Write((byte)0); // Padding byte
+            
             stream.Write((int)0);
         }
 
@@ -113,9 +151,9 @@ namespace WindEditor
 
             writer.Seek(0, System.IO.SeekOrigin.End);
 
-            foreach (byte b in m_LoadedRoomIndices)
+            foreach (RoomTableRoomSettings b in LoadedRoomEntries)
             {
-                writer.Write(b);
+                b.Save(writer);
             }
 
             writer.Seek(next_entry_position, System.IO.SeekOrigin.Begin);
