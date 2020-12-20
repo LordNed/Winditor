@@ -50,6 +50,11 @@ namespace WindEditor
             }
         }
 
+        public RoomTableRoomSettings()
+        {
+
+        }
+
         public RoomTableRoomSettings(EndianBinaryReader reader)
         {
             m_Bitfield = reader.ReadByte();
@@ -59,14 +64,20 @@ namespace WindEditor
         {
             writer.Write(m_Bitfield);
         }
+
+        public override string ToString()
+        {
+            return $"Settings for Room { RoomNumber }";
+        }
     }
 
     [HideCategories(new string[] { "Transform" })]
     public class RoomTableEntryNode : SerializableDOMNode
     {
-        private List<RoomTableRoomSettings> m_LoadedRoomEntries;
+        private AdvancedBindingList<RoomTableRoomSettings> m_LoadedRoomEntries;
 
-        public List<RoomTableRoomSettings> LoadedRoomEntries
+        [WProperty("Test", "Test", true, "Test")]
+        public AdvancedBindingList<RoomTableRoomSettings> LoadedRoomEntries
         {
             get { return m_LoadedRoomEntries; }
             set
@@ -111,9 +122,11 @@ namespace WindEditor
             }
         }
 
+        public int Index;
+
         public RoomTableEntryNode(FourCC fourCC, WWorld world, EndianBinaryReader reader) : base(fourCC, world)
         {
-            LoadedRoomEntries = new List<RoomTableRoomSettings>();
+            LoadedRoomEntries = new AdvancedBindingList<RoomTableRoomSettings>();
 
             byte RoomCount = reader.ReadByte();
 
@@ -127,7 +140,7 @@ namespace WindEditor
 
             for (int i = 0; i < RoomCount; i++)
             {
-                LoadedRoomEntries.Add(new RoomTableRoomSettings(reader));
+                LoadedRoomEntries.AddNew(new object[] { reader });
             }
         }
 
@@ -157,6 +170,11 @@ namespace WindEditor
             }
 
             writer.Seek(next_entry_position, System.IO.SeekOrigin.Begin);
+        }
+
+        public override string ToString()
+        {
+            return $"Room Table { Index }";
         }
     }
 }

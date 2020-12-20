@@ -13,7 +13,7 @@ namespace WindEditor.ViewModel
     public class WDetailsViewViewModel : INotifyPropertyChanged
     {
         private OrderedDictionary m_Categories;
-        private Dictionary<string, IPropertyTypeCustomization> m_TypeCustomizations;
+        private static Dictionary<string, IPropertyTypeCustomization> m_TypeCustomizations;
 
         public OrderedDictionary Categories
         {
@@ -41,16 +41,10 @@ namespace WindEditor.ViewModel
             }
         }
 
-        public WDetailsViewViewModel()
+        static WDetailsViewViewModel()
         {
-            m_Categories = new OrderedDictionary();
             m_TypeCustomizations = new Dictionary<string, IPropertyTypeCustomization>();
 
-            RegisterDefaultCustomizations();
-        }
-
-        private void RegisterDefaultCustomizations()
-        {
             m_TypeCustomizations.Add(typeof(string).Name, new StringTypeCustomization());
             m_TypeCustomizations.Add(typeof(int).Name, new IntegerTypeCustomization());
             m_TypeCustomizations.Add(typeof(uint).Name, new UIntegerTypeCustomization());
@@ -64,6 +58,11 @@ namespace WindEditor.ViewModel
             m_TypeCustomizations.Add(typeof(WDOMNode).Name, new WDOMNodeTypeCustomization());
             m_TypeCustomizations.Add(typeof(FileReference).Name, new FileReferenceTypeCustomization());
             m_TypeCustomizations.Add(typeof(Cut).Name, new CutTypeCustomization());
+        }
+
+        public WDetailsViewViewModel()
+        {
+            m_Categories = new OrderedDictionary();
         }
 
         public void ReflectObject(object obj)
@@ -131,6 +130,20 @@ namespace WindEditor.ViewModel
                     EnumTypeCustomization enu = new EnumTypeCustomization();
                     property_rows = enu.CustomizeHeader(p, property_name, is_editable, obj);
                 }
+                // Check if the type is an AndvancedBindingList.
+                else if (p.PropertyType.Name == typeof(AdvancedBindingList<object>).Name)
+                {
+                    Type underlying_type = p.PropertyType.GetGenericArguments().Single();
+                    Type type_from_generic = typeof(AdvancedBindingListTypeCustomization<>).MakeGenericType(underlying_type);
+
+                    IPropertyTypeCustomization adv_cus = Activator.CreateInstance(type_from_generic) as IPropertyTypeCustomization;
+                    property_rows = adv_cus.CustomizeHeader(p, property_name, is_editable, obj);
+
+                    WAdvancedBindingListControl base_ctrl = property_rows[0].PropertyControl as WAdvancedBindingListControl;
+                    base_ctrl.entry_combo.SelectedIndex = 0;
+                    property_rows.AddRange(base_ctrl.GenerateBoundFields());
+                    base_ctrl.OnEntryComboSelectionChanged();
+                }
                 // Failing the prior checks, we see if the base type of the property is WDOMNode,
                 // in which case we just use the WDOMNode customization to generate a control.
                 else if (base_type.Name == typeof(WDOMNode).Name)
@@ -174,6 +187,83 @@ namespace WindEditor.ViewModel
             }
 
             Categories = new_details;
+        }
+
+        public static List<WDetailSingleRowViewModel> GeneratePropertyRows(Type type)
+        {
+            List<WDetailSingleRowViewModel> property_rows = new List<WDetailSingleRowViewModel>();
+
+            HideCategoriesAttribute hidden_categories = (HideCategoriesAttribute)type.GetCustomAttribute(typeof(HideCategoriesAttribute));
+            PropertyInfo[] obj_properties = type.GetProperties();
+
+            foreach (PropertyInfo p in obj_properties)
+            {
+                // We want to ignore all properties that are not marked with the WProperty attribute.
+                CustomAttributeData[] custom_attributes = p.CustomAttributes.ToArray();
+                CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                if (wproperty_attribute == null)
+                    continue;
+
+                // Grab our custom attribute data for use
+                string category_name = (string)wproperty_attribute.ConstructorArguments[0].Value;
+                string property_name = (string)wproperty_attribute.ConstructorArguments[1].Value;
+                bool is_editable = (bool)wproperty_attribute.ConstructorArguments[2].Value;
+                string tool_tip = (string)wproperty_attribute.ConstructorArguments[3].Value;
+                SourceScene source_scene = (SourceScene)wproperty_attribute.ConstructorArguments[4].Value;
+
+                // Get the base type for possible use later
+                Type base_type = p.PropertyType;
+                while (base_type.BaseType != typeof(object))
+                {
+                    base_type = base_type.BaseType;
+                }
+
+                /* This is where we generate the control for the details view. */
+
+                // We first check if the type of the property has a customization registered.
+                // If it is, we just grab the customization and generate a control with it.
+                if (m_TypeCustomizations.ContainsKey(p.PropertyType.Name))
+                {
+                    property_rows.AddRange(m_TypeCustomizations[p.PropertyType.Name].CustomizeHeader(p, property_name, is_editable, null));
+                }
+                // If there is no customization registered, and the type is an enum, we
+                // use EnumTypeCustomization to generate a control.
+                else if (p.PropertyType.IsEnum)
+                {
+                    EnumTypeCustomization enu = new EnumTypeCustomization();
+                    property_rows.AddRange(enu.CustomizeHeader(p, property_name, is_editable, null));
+                }
+                // Check if the type is an AndvancedBindingList.
+                else if (p.PropertyType.Name == typeof(AdvancedBindingList<object>).Name)
+                {
+                    Type underlying_type = p.PropertyType.GetGenericArguments().Single();
+                    Type type_from_generic = typeof(AdvancedBindingListTypeCustomization<>).MakeGenericType(underlying_type);
+
+                    IPropertyTypeCustomization adv_cus = Activator.CreateInstance(type_from_generic) as IPropertyTypeCustomization;
+                    property_rows = adv_cus.CustomizeHeader(p, property_name, is_editable, null);
+
+                    WAdvancedBindingListControl base_ctrl = property_rows[0].PropertyControl as WAdvancedBindingListControl;
+                    property_rows.AddRange(base_ctrl.GenerateBoundFields());
+                }
+                // Failing the prior checks, we see if the base type of the property is WDOMNode,
+                // in which case we just use the WDOMNode customization to generate a control.
+                else if (base_type.Name == typeof(WDOMNode).Name)
+                {
+                    property_rows.AddRange(m_TypeCustomizations[typeof(WDOMNode).Name].CustomizeHeader(p, property_name, is_editable, null));
+
+                    WActorReferenceControl c = (WActorReferenceControl)property_rows[0].PropertyControl;
+                    c.Source = source_scene;
+                    c.FillComboBox();
+                }
+                // If the property type is completely unknown or unsupported, we create an empty row with
+                // just the property's name.
+                else
+                {
+                    property_rows.Add(new WDetailSingleRowViewModel(property_name));
+                }
+            }
+
+            return property_rows;
         }
 
         // WPF

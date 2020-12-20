@@ -404,6 +404,7 @@ namespace WindEditor
                             m_reader.BaseStream.Seek(entry_offset, SeekOrigin.Begin);
 
                             RoomTableEntryNode rtbl_entry = new RoomTableEntryNode(chunk.FourCC, m_world, m_reader);
+                            rtbl_entry.Index = i;
                             loadedActors.Add(rtbl_entry);
 
                             m_reader.BaseStream.Seek(next_offset, SeekOrigin.Begin);

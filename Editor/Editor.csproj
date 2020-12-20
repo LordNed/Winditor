@@ -648,6 +648,7 @@
     <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />
     <Compile Include="Editor\Managers\PlaytestManager.cs" />
+    <Compile Include="Editor\PropertyCustomization\AdvancedBindingListTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\Attributes.cs" />
     <Compile Include="Editor\PropertyCustomization\BooleanTypeCustomization.cs" />
     <Compile Include="Editor\PropertyCustomization\ByteTypeCustomization.cs" />
@@ -684,6 +685,7 @@
     <Compile Include="Editor\UndoRedo\DeleteEntitiesAction.cs" />
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="Editor\UndoRedo\TranslateCameraPropertyAction.cs" />
+    <Compile Include="ViewModel\AdvancedBindingList.cs" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
@@ -721,6 +723,9 @@
     </Compile>
     <Compile Include="View\WActorReferenceControl.xaml.cs">
       <DependentUpon>WActorReferenceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WAdvancedBindingListControl.xaml.cs">
+      <DependentUpon>WAdvancedBindingListControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WDetailCategoryRow.xaml.cs">
       <DependentUpon>WDetailCategoryRow.xaml</DependentUpon>
@@ -826,6 +831,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WActorReferenceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WAdvancedBindingListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
