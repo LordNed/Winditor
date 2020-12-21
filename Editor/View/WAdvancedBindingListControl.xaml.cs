@@ -27,27 +27,18 @@ namespace WindEditor.View
         public abstract List<WDetailSingleRowViewModel> GenerateBoundFields();
 
         public abstract void OnEntryComboSelectionChanged();
-        public abstract void OnAddButtonClicked();
-        public abstract void OnRemoveButtonClicked();
 
         private void entry_combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             OnEntryComboSelectionChanged();
         }
-
-        private void Add_Button_Click(object sender, RoutedEventArgs e)
-        {
-            OnAddButtonClicked();
-        }
-
-        private void Remove_Button_Click(object sender, RoutedEventArgs e)
-        {
-            OnRemoveButtonClicked();
-        }
     }
 
     public class WAdvancedBindingListControl<T> : WAdvancedBindingListControl
     {
+        public ICommand AddEntryCommand { get { return new RelayCommand(x => OnAddButtonClicked(), X => BoundList != null); } }
+        public ICommand RemoveEntryCommand { get { return new RelayCommand(x => OnRemoveButtonClicked(), X => BoundList != null && BoundList.Count > 1); } }
+
         private List<WDetailSingleRowViewModel> mBoundFields;
 
         public AdvancedBindingList<T> BoundList
@@ -64,6 +55,9 @@ namespace WindEditor.View
             InitializeComponent();
 
             mBoundFields = new List<WDetailSingleRowViewModel>();
+
+            Add_Button.Command = AddEntryCommand;
+            Remove_Button.Command = RemoveEntryCommand;
         }
 
         public override void OnEntryComboSelectionChanged()
@@ -71,7 +65,7 @@ namespace WindEditor.View
             UpdateBindings();
         }
 
-        public override void OnAddButtonClicked()
+        public void OnAddButtonClicked()
         {
             BoundList.AddNew();
             entry_combo.Items.Refresh();
@@ -79,15 +73,14 @@ namespace WindEditor.View
             entry_combo.SelectedItem = BoundList.Last();
         }
 
-        public override void OnRemoveButtonClicked()
+        public void OnRemoveButtonClicked()
         {
-            if (BoundList.Count > 0)
+            if (BoundList.Count > 1)
             {
                 BoundList.RemoveAt(entry_combo.SelectedIndex);
                 entry_combo.Items.Refresh();
 
-                if (BoundList.Count != 0)
-                    entry_combo.SelectedItem = BoundList.Last();
+                entry_combo.SelectedItem = BoundList.Last();
             }
         }
 

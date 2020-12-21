@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WindEditor.View"
              mc:Ignorable="d"
-             x:Name="_this">
+             x:Name="_this" Height="32.25">
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid>
@@ -14,11 +14,11 @@
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="entry_combo" Grid.Column="0" ItemsSource="{Binding ElementName=_this, Path=BoundList, UpdateSourceTrigger=PropertyChanged}" ToolTip="Select new reference in current level" Margin="0,2" SelectionChanged="entry_combo_SelectionChanged"/>
-                <Button x:Name="Add_Button" Click="Add_Button_Click" Grid.Column="1" Margin="5,2" ToolTip="Select referenced object in viewport" VerticalAlignment="Center" Height="22">
-                    <Image Source="..\resources\icons\magnifier.png"/>
+                <ComboBox x:Name="entry_combo" Grid.Column="0" ItemsSource="{Binding ElementName=_this, Path=BoundList, UpdateSourceTrigger=PropertyChanged}" ToolTip="Select new reference in current level" Margin="0,5,3,4" SelectionChanged="entry_combo_SelectionChanged"/>
+                <Button x:Name="Add_Button" Grid.Column="1" Margin="5,2" ToolTip="Add a new element" VerticalAlignment="Center" Height="28">
+                    <Image Source="..\resources\icons\plus-box-outline.png" Width="24" Height="24"/>
                 </Button>
-                <Button x:Name="Remove_Button" Click="Remove_Button_Click" Grid.Column="2" Margin="5,2" ToolTip="Clear reference to object" VerticalAlignment="Center" Height="22">
+                <Button x:Name="Remove_Button" Grid.Column="2" Margin="5,2" ToolTip="Remove the current element" VerticalAlignment="Center" Height="28">
                     <Image Source="..\resources\icons\cancel.png"/>
                 </Button>
             </Grid>

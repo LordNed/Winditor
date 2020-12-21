@@ -76,7 +76,7 @@ namespace WindEditor
     {
         private AdvancedBindingList<RoomTableRoomSettings> m_LoadedRoomEntries;
 
-        [WProperty("Test", "Test", true, "Test")]
+        [WProperty("Room Data", "Entry Select", true, "Test")]
         public AdvancedBindingList<RoomTableRoomSettings> LoadedRoomEntries
         {
             get { return m_LoadedRoomEntries; }
