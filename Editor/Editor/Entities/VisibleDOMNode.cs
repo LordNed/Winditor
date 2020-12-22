@@ -149,7 +149,7 @@ namespace WindEditor
                         break;
                 }
 			}
-			else
+			else if (m_objRender != null)
 			{
                 if (m_objRender.FaceCullingEnabled && m_objRender.GetAABB().Contains(localRay.Origin))
                 {
