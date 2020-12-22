@@ -122,9 +122,9 @@ namespace WindEditor
             switch (fourcc)
             {
                 case FourCC._2DMA:
-                    return "2DMA (Minimap)";
+                    return "2DMA\tMinimap Settings";
                 case FourCC._2Dma:
-                    return "2Dma (Minimap Unused)";
+                    return "2Dma\tMinimap Settings (Unused)";
                 case FourCC.ACTR:
                     return "Default Layer";
                 case FourCC.ACT0:
@@ -152,55 +152,55 @@ namespace WindEditor
                 case FourCC.ACTb:
                     return "Layer 11";
                 case FourCC.AROB:
-                    return "AROB (Camera POIs)";
+                    return "AROB\tCamera POIs";
                 case FourCC.RARO:
-                    return "RARO (Event Camera POIs)";
+                    return "RARO\tEvent Camera POIs";
                 case FourCC.CAMR:
-                    return "CAMR (Camera Behavior)";
+                    return "CAMR\tCamera Behavior";
                 case FourCC.RCAM:
-                    return "RCAM (Camera Behavior)";
+                    return "RCAM\tRefactored Camera Behavior";
                 case FourCC.EnvR:
-                    return "EnvR (Environment Lighting)";
+                    return "EnvR\tWeather-Based Lighting References";
                 case FourCC.Colo:
-                    return "Colo (EnvLighting ToD Colors)";
+                    return "Colo\tTime of Day-Based Lighting References";
                 case FourCC.Pale:
-                    return "Pale (EnvLighting Palette)";
+                    return "Pale\tEnvironment Lighting Palette Data";
                 case FourCC.Virt:
-                    return "Virt (Skybox Colors)";
+                    return "Virt\tSkybox Lighting Palette Data";
                 case FourCC.DMAP:
-                    return "DMAP (Dungeon Map)";
+                    return "DMAP\tDungeon Map Settings";
                 case FourCC.FLOR:
-                    return "FLOR (Dungeon Floors)";
+                    return "FLOR\tDungeon Floor Settings";
                 case FourCC.DOOR:
-                    return "DOOR (Doors)";
+                    return "DOOR\tDoors (Equivalent to TGDR)";
                 case FourCC.TGDR:
-                    return "TGDR (Doors)";
+                    return "TGDR\tDoors (Equivalent to DOOR)";
                 case FourCC.EVNT:
-                    return "EVNT (Events)";
+                    return "EVNT\tMap Event Data";
                 case FourCC.FILI:
-                    return "FILI (Room Properties)";
+                    return "FILI\tRoom Settings";
                 case FourCC.LGHT:
-                    return "LGHT (Interior Lights)";
+                    return "LGHT\tInterior Lights";
                 case FourCC.LBNK:
-                    return "LBNK (Layer Bank)";
+                    return "LBNK\tLayer-Based Cutscene Loader";
                 case FourCC.MECO:
-                    return "MECO (MECO)";
+                    return "MECO\tMECO";
                 case FourCC.MEMA:
-                    return "MEMA (MEMA)";
+                    return "MEMA\tMEMA";
                 case FourCC.MULT:
-                    return "MULT (Room Translation)";
+                    return "MULT\tRoom Mesh Orientation Data";
                 case FourCC.PATH:
-                    return "PATH (Paths)";
+                    return "PATH\tPaths";
                 case FourCC.RPAT:
-                    return "RPAT (Paths)";
+                    return "RPAT\tRefactored Paths";
                 case FourCC.PPNT:
-                    return "PPNT (Path Waypoints)";
+                    return "PPNT\tPath Waypoints";
                 case FourCC.RPPN:
-                    return "RPPN (Path Waypoints)";
+                    return "RPPN\tRefactored Path Waypoints";
                 case FourCC.RTBL:
-                    return "RTBL (Room Table)";
+                    return "RTBL\tAdjacent Room Loading Settings";
                 case FourCC.SCLS:
-                    return "SCLS (Exit List)";
+                    return "SCLS\tExit List";
                 case FourCC.SCOB:
                     return "Default Layer";
                 case FourCC.SCO0:
@@ -228,13 +228,13 @@ namespace WindEditor
                 case FourCC.SCOb:
                     return "Layer 11";
                 case FourCC.PLYR:
-                    return "PLYR (Player Spawns)";
+                    return "PLYR\tPlayer Spawn Points";
                 case FourCC.SHIP:
-                    return "SHIP (Ship Spawns)";
+                    return "SHIP\tShip Spawn Points";
                 case FourCC.SOND:
-                    return "SOND (Ambient Soundscape)";
+                    return "SOND\tAmbient Sound Settings";
                 case FourCC.STAG:
-                    return "STAG (Stage Settings)";
+                    return "STAG\tStage Settings";
                 case FourCC.TRES:
                     return "Default Layer";
                 case FourCC.TRE0:
@@ -262,11 +262,11 @@ namespace WindEditor
                 case FourCC.TREb:
                     return "Layer 11";
                 case FourCC.LGTV:
-                    return "LGTV (Shadow Cast Origin)";
+                    return "LGTV\tShadow Cast Origin";
                 case FourCC.TGSC:
-                    return "TGSC (TGSC)";
+                    return "TGSC\tScaleable Objects (Equivalent to SCOB)";
                 case FourCC.TGOB:
-                    return "TGOB (TGOB)";
+                    return "TGOB\tActors (Equivalent to ACTR)";
                 default:
                     return $"Unsupported FourCC ({ fourcc })";
             }

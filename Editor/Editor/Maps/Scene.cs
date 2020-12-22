@@ -15,6 +15,29 @@ namespace WindEditor
 
         protected Dictionary<FourCC, WDOMNode> m_fourCCGroups;
 
+        protected static Dictionary<FourCC, SourceScene> m_fourCCLocations;
+
+        static WScene()
+        {
+            m_fourCCLocations = new Dictionary<FourCC, SourceScene>();
+
+            m_fourCCLocations.Add(FourCC.EnvR, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.Colo, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.Pale, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.Virt, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.EVNT, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.RTBL, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.STAG, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.MEMA, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.MECO, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.FLOR, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.DMAP, SourceScene.Stage);
+            m_fourCCLocations.Add(FourCC.MULT, SourceScene.Stage);
+
+            m_fourCCLocations.Add(FourCC.FILI, SourceScene.Room);
+            m_fourCCLocations.Add(FourCC.LBNK, SourceScene.Room);
+        }
+
         public WScene(WWorld world) : base(world)
         {
             m_fourCCGroups = new Dictionary<FourCC, WDOMNode>();
@@ -29,7 +52,8 @@ namespace WindEditor
                     continue;
                 }
 
-                m_fourCCGroups[f] = new WDOMGroupNode(f, m_world);
+                if (!m_fourCCLocations.ContainsKey(f) || this is WStage && m_fourCCLocations[f] == SourceScene.Stage || this is WRoom && m_fourCCLocations[f] == SourceScene.Room)
+                    m_fourCCGroups[f] = new WDOMGroupNode(f, m_world);
             }
 
             // To handle the fact that actors/scaleable/treasure chests have layers, we're going to create DOM nodes using

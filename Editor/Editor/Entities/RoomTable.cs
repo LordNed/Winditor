@@ -24,7 +24,7 @@ namespace WindEditor
             }
         }
 
-        [WProperty("Room Settings", "Unk1", true, "")]
+        [WProperty("Room Settings", "Activate Room when Loaded", true, "If this is checked, the room this entry represents will be visible to the player in addition to the current room, and accessible\nby just walking into it, without using a dungeon door. Otherwise, the room will be hidden until the player transitions into it via a dungeon door.")]
         public bool Unk1
         {
             get { return (m_Bitfield & 0x80) != 0; }
@@ -76,7 +76,7 @@ namespace WindEditor
     {
         private AdvancedBindingList<RoomTableRoomSettings> m_LoadedRoomEntries;
 
-        [WProperty("Room Data", "Entry Select", true, "Test")]
+        [WProperty("Room Data", "Entry Select", true)]
         public AdvancedBindingList<RoomTableRoomSettings> LoadedRoomEntries
         {
             get { return m_LoadedRoomEntries; }

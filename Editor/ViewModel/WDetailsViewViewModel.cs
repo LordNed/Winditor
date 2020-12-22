@@ -168,7 +168,9 @@ namespace WindEditor.ViewModel
                 foreach (var row in property_rows)
                 {
                     current_category.PropertyRows.Add(row);
-                    row.PropertyToolTip = tool_tip;
+
+                    if (tool_tip != "")
+                        row.PropertyToolTip = tool_tip;
                 }
 
                 current_category.PropertyRows.RaiseListChangedEvents = true;
@@ -196,6 +198,8 @@ namespace WindEditor.ViewModel
             HideCategoriesAttribute hidden_categories = (HideCategoriesAttribute)type.GetCustomAttribute(typeof(HideCategoriesAttribute));
             PropertyInfo[] obj_properties = type.GetProperties();
 
+            List<string> tooltips = new List<string>();
+
             foreach (PropertyInfo p in obj_properties)
             {
                 // We want to ignore all properties that are not marked with the WProperty attribute.
@@ -210,6 +214,8 @@ namespace WindEditor.ViewModel
                 bool is_editable = (bool)wproperty_attribute.ConstructorArguments[2].Value;
                 string tool_tip = (string)wproperty_attribute.ConstructorArguments[3].Value;
                 SourceScene source_scene = (SourceScene)wproperty_attribute.ConstructorArguments[4].Value;
+
+                tooltips.Add(tool_tip);
 
                 // Get the base type for possible use later
                 Type base_type = p.PropertyType;
@@ -261,6 +267,11 @@ namespace WindEditor.ViewModel
                 {
                     property_rows.Add(new WDetailSingleRowViewModel(property_name));
                 }
+            }
+
+            for (int i = 0; i < property_rows.Count; i++)
+            {
+                property_rows[i].PropertyToolTip = tooltips[i];
             }
 
             return property_rows;

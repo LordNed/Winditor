@@ -3,6 +3,7 @@
     public class WDOMGroupNode : WDOMNode
     {
         public FourCC FourCC;
+        public SourceScene SceneLocation;
 
         public WDOMGroupNode(FourCC fourCC, WWorld world) : base(world)
         {
@@ -16,11 +17,11 @@
             switch (FourCC)
             {
                 case FourCC.ACTR:
-                    return "ACTR (Actors)";
+                    return "ACTR\tActors";
                 case FourCC.SCOB:
-                    return "SCOB (Scaleable Objects)";
+                    return "SCOB\tScaleable Objects";
                 case FourCC.TRES:
-                    return "TRES (Treasure Chests)";
+                    return "TRES\tTreasure Chests";
                 default:
                     return FourCCConversion.GetDescriptionFromEnum(FourCC);
             }
