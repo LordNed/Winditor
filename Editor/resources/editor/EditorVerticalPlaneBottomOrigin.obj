@@ -1,0 +1,17 @@
+# Blender v2.83.4 OBJ File: 'empty.blend'
+# www.blender.org
+mtllib EditorVerticalPlaneBottomOrigin.mtl
+o EditorCube
+v -50.000000 99.999985 0.000024
+v 50.000000 99.999985 0.000024
+v 50.000000 -0.000016 -0.000008
+v -50.000000 -0.000016 -0.000008
+vt 0.000000 0.000000
+vt 1.000000 0.000000
+vt 1.000000 1.000000
+vt 0.000000 1.000000
+vn 0.0000 -0.0000 1.0000
+usemtl Material__25
+s 1
+f 2/1/1 1/2/1 4/3/1
+f 4/3/1 3/4/1 2/1/1

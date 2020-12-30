@@ -984,6 +984,18 @@
     <Content Include="resources\WindWakerSongNames.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\editor\EditorCubeBottomOrigin.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorCubeBottomOrigin.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorVerticalPlaneBottomOrigin.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\editor\EditorVerticalPlaneBottomOrigin.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\editor_icon.ico" />
     <Content Include="resources\EventDefinitionDatabase.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
