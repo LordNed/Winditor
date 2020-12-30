@@ -7,16 +7,16 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
-	public partial class tbox
-	{
-		public override void PostLoad()
+    public partial class tbox
+    {
+        public override void PostLoad()
         {
             UpdateModel();
             base.PostLoad();
-		}
+        }
 
-		public override void PreSave()
-		{
+        public override void PreSave()
+        {
 
         }
 
