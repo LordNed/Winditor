@@ -39,5 +39,35 @@ namespace WindEditor
                     break;
             }
         }
+
+        public override void CalculateUsedSwitches()
+        {
+            List<int> usedSwitches = new List<int>();
+
+            usedSwitches.Add(OpenSwitch);
+
+            switch (BehaviorType)
+            {
+                case BehaviorTypeEnum.Spawn_when_a_switch_is_set:
+                case BehaviorTypeEnum.Visible_but_unopenable_until_a_switch_is_set:
+                case BehaviorTypeEnum.Transparent_until_a_switch_is_set:
+                case BehaviorTypeEnum.Spawn_on_Triforce_emblem_when_a_switch_is_set:
+                case BehaviorTypeEnum.Uses_Stage_Save_Info_1_open_flag_and_spawns_when_a_switch_is_set:
+                    usedSwitches.Add(AppearConditionSwitch);
+                    break;
+                case BehaviorTypeEnum.Spawn_when_all_enemies_dead:
+                    // Note: This type sets the switch instead of just checking it.
+                    usedSwitches.Add(AppearConditionSwitch);
+                    break;
+            }
+
+            usedSwitches.RemoveAll(x => x == 0xFF);
+            UsedSwitches = usedSwitches;
+        }
+
+        public override int GetRoomNum()
+        {
+            return RoomNumber;
+        }
     }
 }

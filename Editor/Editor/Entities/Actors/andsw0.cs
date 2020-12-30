@@ -24,5 +24,24 @@ namespace WindEditor
         {
             view.AddTransparentMesh(this);
         }
+
+        public override void CalculateUsedSwitches()
+        {
+            List<int> usedSwitches = new List<int>();
+
+            usedSwitches.Add(SwitchtoSet);
+
+            int firstSwitch = FirstSwitchtoCheck;
+            if (firstSwitch == 0 || firstSwitch == 255)
+                firstSwitch = SwitchtoSet + 1;
+
+            for (int i = 0; i < NumSwitchestoCheck; i++)
+            {
+                usedSwitches.Add(firstSwitch + i);
+            }
+
+            usedSwitches.RemoveAll(x => x >= 0xFF || x < 0);
+            UsedSwitches = usedSwitches;
+        }
     }
 }

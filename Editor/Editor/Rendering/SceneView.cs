@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace WindEditor
@@ -93,7 +94,10 @@ namespace WindEditor
                 }
             }
 
-            // Render all Opaque Geometry first.
+            // Draw the lines connecting entities with shared flags.
+            DrawFlagLinkLines();
+
+            // Render all Opaque Geometry.
             foreach (var mesh in m_renderablesInFrustum)
             {
                 if (mesh is WDOMNode)
@@ -179,6 +183,46 @@ namespace WindEditor
             Matrix4 modelMatrix = Matrix4.CreateScale(0.9f) * Matrix4.CreateTranslation(m_viewCamera.Transform.Forward * -100f);
 
             m_orientationWidget.Render(m_viewCamera.Transform.Rotation, viewMatrix, projMatrix, modelMatrix);
+        }
+
+        private void DrawFlagLinkLines()
+        {
+            var objs = m_opaqueRenderList.Concat(m_transparentRenderList).OfType<VisibleDOMNode>();
+            foreach (VisibleDOMNode obj in objs)
+            {
+                if (!obj.IsSelected)
+                    continue;
+
+                var usedSwitchValues = obj.GetUsedSwitches();
+                if (usedSwitchValues.Count == 0)
+                    return;
+
+                int curr_room_num = obj.GetRoomNum();
+
+                foreach (WScene other_scene in obj.World.Map.SceneList)
+                {
+                    foreach (var other_obj in other_scene.GetChildrenOfType<VisibleDOMNode>())
+                    {
+                        if (other_obj == obj)
+                            continue;
+
+                        int other_room_num = other_obj.GetRoomNum();
+
+                        var otherUsedSwitchValues = other_obj.GetUsedSwitches();
+
+                        var overlappingSwitches = usedSwitchValues.Intersect(otherUsedSwitchValues);
+                        if (curr_room_num != other_room_num)
+                        {
+                            // If the two objects we're comparing are in separate rooms, exclude room-specific switches.
+                            overlappingSwitches = overlappingSwitches.Where(x => x < 192);
+                        }
+                        if (overlappingSwitches.Any())
+                        {
+                            obj.World.DebugDrawLine(obj.Transform.Position, other_obj.Transform.Position, WLinearColor.Green, 2.5f, 0f);
+                        }
+                    }
+                }
+            }
         }
 
         private void GetViewAndProjMatrixForView(out Matrix4 viewMatrix, out Matrix4 projMatrix)

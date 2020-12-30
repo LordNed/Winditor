@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Windows.Data;
 using System.Globalization;
 using WindEditor.Collision;
+using System.Linq;
+using System.Reflection;
 
 namespace WindEditor
 {
@@ -101,6 +103,9 @@ namespace WindEditor
             get { return  Vector3.Multiply(Transform.LocalScale, VisualScaleMultiplier); }
         }
 
+        // This list will act as a cache of which switch values this object is currently using.
+        protected List<int> UsedSwitches = null;
+
 		public override void OnConstruction()
 		{
 			base.OnConstruction();
@@ -173,8 +178,52 @@ namespace WindEditor
 			return bHit;
 		}
 
+        public List<int> GetUsedSwitches()
+        {
+            if (UsedSwitches == null)
+                CalculateUsedSwitches();
+            return UsedSwitches;
+        }
+
+        public virtual void CalculateUsedSwitches()
+        {
+            List<int> usedSwitches = new List<int>();
+
+            PropertyInfo[] obj_properties = this.GetType().GetProperties();
+            foreach (PropertyInfo prop in obj_properties)
+            {
+                // We want to ignore all properties that are not marked with the WProperty attribute.
+                CustomAttributeData[] custom_attributes = prop.CustomAttributes.ToArray();
+                CustomAttributeData wproperty_attribute = custom_attributes.FirstOrDefault(x => x.AttributeType.Name == "WProperty");
+                if (wproperty_attribute == null)
+                    continue;
+
+                // TODO: Once it's possible to disable properties, disabled ones shouldn't be counted here (e.g. for Warp Pots).
+
+                string property_name = (string)wproperty_attribute.ConstructorArguments[1].Value;
+                if (prop.PropertyType != typeof(int))
+                    continue;
+                if (!property_name.Contains("Switch"))
+                    continue;
+                if (property_name.Contains("Num Switches"))
+                    continue;
+
+                int switchValue = (int)prop.GetValue(this, null);
+                if (switchValue == 255)
+                    continue;
+
+                usedSwitches.Add(switchValue);
+            }
+
+            UsedSwitches = usedSwitches;
+        }
+
         protected virtual void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            // Clear the cache of which switches this object uses any time any of its properties are changed so the list is recalculated.
+            // Most properties don't affect the switch list, but properties don't change that often so erring on the safe side is fine.
+            UsedSwitches = null;
+
             if (e.PropertyName == "Name")
                 PostLoad();
         }
