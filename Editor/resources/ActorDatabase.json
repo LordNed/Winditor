@@ -7358,7 +7358,7 @@
     "ActorClassType": "obj_akabe",
     "Wait Animations": null,
     "Actor Name": "Akabe10",
-    "English Name": "obj_akabe",
+    "English Name": "Large Invisible Wall",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7374,7 +7374,7 @@
     "ActorClassType": "obj_akabe",
     "Wait Animations": null,
     "Actor Name": "NBOX",
-    "English Name": "obj_akabe",
+    "English Name": "Invisible Box",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7394,7 +7394,7 @@
     "ActorClassType": "obj_akabe",
     "Wait Animations": null,
     "Actor Name": "NBOX10",
-    "English Name": "obj_akabe",
+    "English Name": "Large Invisible Box",
     "Tags": null,
     "Explanation": null,
     "Locations": [

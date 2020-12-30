@@ -18,15 +18,15 @@ namespace WindEditor
         {
             m_actorMeshes.Clear();
             m_objRender = null;
-            switch (Unknown_4)
+            switch (Type)
             {
-                case 2:
+                case TypeEnum.Boulder:
                     m_actorMeshes = WResourceManager.LoadActorResource("Boulder");
                     break;
-                case 3:
+                case TypeEnum.Head_Boulder:
                     m_actorMeshes = WResourceManager.LoadActorResource("Head Boulder");
                     break;
-                case 4:
+                case TypeEnum.Small_Boulder:
                     m_actorMeshes = WResourceManager.LoadActorResource("Small Boulder");
                     break;
                 default:

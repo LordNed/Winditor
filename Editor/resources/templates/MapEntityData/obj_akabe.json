@@ -3,40 +3,66 @@
   "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "obj_akabe",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
-      "ValueSource": "Parameters",
-      "Mask": 0x00000300,
-      "Hidden": false,
-      "Category": "obj_akabe",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
-      "ValueSource": "Parameters",
-      "Mask": 0x00001000,
-      "Hidden": false,
-      "Category": "obj_akabe",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
+      "Name": "Collision Archive",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
       "Hidden": false,
-      "Category": "obj_akabe",
-      "ToolTip": "",
+      "Category": "Invisible Wall",
+      "ToolTip": "Akabe: Flat. Blocks Link, bombs, and most normal objects.\nAkabeD: Flat. Blocks arrows, light, and most normal objects. Does not block Link.\nAkabeK: Flat. Blocks normal objects, but does not block Link, bombs, arrows, or light.\nNBOX: Cube. Only blocks Link, and only around the sides - the top and bottom can be passed through.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Akabe",
+        1: "AkabeD",
+        2: "AkabeK",
+        3: "NBOX",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Akabe": "Akabe",
+        "Akabe10": "Akabe",
+        "NBOX": "NBOX",
+        "NBOX10": "NBOX",
+      }
+    },
+    {
+      "Name": "Disable Spawn Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Invisible Wall",
+      "ToolTip": "The invisible wall will disappear once this switch is set (unless \"Always On\" is checked).\nIf this value is set to 255, the wall will instead disappear once the player owns any sword, instead of checking a switch.",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Scale Mode",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000300,
+      "Hidden": false,
+      "Category": "Invisible Wall",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Akabe",   // scale = (scale.x, scale.y, 1)
+        1: "Akabe10", // scale = (scale.x*10, scale.y*10, 1)
+        2: "NBOX",    // scale = scale
+        3: "NBOX10",  // scale = scale*10
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Akabe": "Akabe",
+        "Akabe10": "Akabe10",
+        "NBOX": "NBOX",
+        "NBOX10": "NBOX10",
+      }
+    },
+    {
+      "Name": "Always On",
+      "ValueSource": "Parameters",
+      "Mask": 0x00001000,
+      "Hidden": false,
+      "Category": "Invisible Wall",
+      "ToolTip": "If checked, the invisible wall will always exist. Otherwise, it disappear once its \"Disable Spawn Switch\" is set.",
+      "DataType": "Boolean"
     }
   ]
 }

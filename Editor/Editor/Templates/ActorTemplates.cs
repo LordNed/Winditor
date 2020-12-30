@@ -9959,8 +9959,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("npc_mn", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("npc_mn", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -9972,12 +9972,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
-		[WProperty("npc_mn", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("npc_mn", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -9989,24 +9989,38 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("npc_mn", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("npc_mn", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
 
@@ -10019,9 +10033,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoCheck = -1;
+			SwitchtoSet = -1;
+			Path = null;
 		}
 	}
 
@@ -11214,9 +11228,37 @@ namespace WindEditor
 	public partial class obj_akabe : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
+		public enum CollisionArchiveEnum
+		{
+			Akabe = 0,
+			AkabeD = 1,
+			AkabeK = 2,
+			NBOX = 3,
+		}
 
-		[WProperty("obj_akabe", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Invisible Wall", "Collision Archive", true, "Akabe: Flat. Blocks Link, bombs, and most normal objects.\nAkabeD: Flat. Blocks arrows, light, and most normal objects. Does not block Link.\nAkabeK: Flat. Blocks normal objects, but does not block Link, bombs, arrows, or light.\nNBOX: Cube. Only blocks Link, and only around the sides - the top and bottom can be passed through.", SourceScene.Room)]
+		public CollisionArchiveEnum CollisionArchive
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
+				if (!Enum.IsDefined(typeof(CollisionArchiveEnum), value_as_int))
+					value_as_int = 0;
+				return (CollisionArchiveEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
+				OnPropertyChanged("CollisionArchive");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Invisible Wall", "Disable Spawn Switch", true, "The invisible wall will disappear once this switch is set (unless \"Always On\" is checked).\nIf this value is set to 255, the wall will instead disappear once the player owns any sword, instead of checking a switch.", SourceScene.Room)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -11228,58 +11270,58 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
+		public enum ScaleModeEnum
+		{
+			Akabe = 0,
+			Akabe10 = 1,
+			NBOX = 2,
+			NBOX10 = 3,
+		}
 
-		[WProperty("obj_akabe", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Invisible Wall", "Scale Mode", true, "", SourceScene.Room)]
+		public ScaleModeEnum ScaleMode
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000300) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ScaleModeEnum), value_as_int))
+					value_as_int = 0;
+				return (ScaleModeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ScaleMode");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("obj_akabe", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Invisible Wall", "Always On", true, "If checked, the invisible wall will always exist. Otherwise, it disappear once its \"Disable Spawn Switch\" is set.", SourceScene.Room)]
+		public bool AlwaysOn
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00001000) >> 12);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("obj_akabe", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000F0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("AlwaysOn");
 			}
 		}
 
@@ -11292,10 +11334,23 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			DisableSpawnSwitch = -1;
+			if (Name == "Akabe") {
+				CollisionArchive = CollisionArchiveEnum.Akabe;
+				ScaleMode = ScaleModeEnum.Akabe;
+			}
+			if (Name == "Akabe10") {
+				CollisionArchive = CollisionArchiveEnum.Akabe;
+				ScaleMode = ScaleModeEnum.Akabe10;
+			}
+			if (Name == "NBOX") {
+				CollisionArchive = CollisionArchiveEnum.NBOX;
+				ScaleMode = ScaleModeEnum.NBOX;
+			}
+			if (Name == "NBOX10") {
+				CollisionArchive = CollisionArchiveEnum.NBOX;
+				ScaleMode = ScaleModeEnum.NBOX10;
+			}
 		}
 	}
 
@@ -14586,8 +14641,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ladder", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_ladder", "Switch to Check", true, "When this switch is set, the ladder will fall down.", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -14599,24 +14654,30 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
-		[WProperty("obj_ladder", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("obj_ladder", "Fall Event", true, "", SourceScene.Stage)]
+		public MapEvent FallEvent
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("FallEvent");
 			}
 		}
 
@@ -14629,8 +14690,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoCheck = -1;
+			FallEvent = null;
 			if (Name == "Mhsg6") {
 				Length = LengthEnum.Short;
 			}
@@ -15821,8 +15882,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_ohatch", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_ohatch", "Opened Switch", true, "", SourceScene.Room)]
+		public int OpenedSwitch
 		{ 
 			get
 			{
@@ -15834,7 +15895,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("OpenedSwitch");
 			}
 		}
 
@@ -15847,7 +15908,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			OpenedSwitch = -1;
 		}
 	}
 
@@ -20811,8 +20872,35 @@ namespace WindEditor
 	public partial class stone2 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Boulder = 2,
+			Head_Boulder = 3,
+			Small_Boulder = 4,
+		}
 
-		[WProperty("stone2", "Dropped Item", true, "", SourceScene.Room)]
+
+		[WProperty("Boulder", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Boulder", "Dropped Item", true, "", SourceScene.Room)]
 		public DroppedItemID DroppedItem
 		{ 
 			get
@@ -20831,8 +20919,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Boulder", "Destroyed Switch", true, "", SourceScene.Room)]
+		public int DestroyedSwitch
 		{ 
 			get
 			{
@@ -20844,11 +20932,11 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("DestroyedSwitch");
 			}
 		}
 
-		[WProperty("stone2", "Dropped Item Pickup Flag", true, "", SourceScene.Room)]
+		[WProperty("Boulder", "Dropped Item Pickup Flag", true, "", SourceScene.Room)]
 		public int DroppedItemPickupFlag
 		{ 
 			get
@@ -20865,24 +20953,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x07000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
-				OnPropertyChanged("Unknown_4");
-			}
-		}
-
-		[WProperty("stone2", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Boulder", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -20899,7 +20970,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Unknown_6", true, "", SourceScene.Room)]
+		[WProperty("Boulder", "Unknown_6", true, "", SourceScene.Room)]
 		public int Unknown_6
 		{ 
 			get
@@ -20916,7 +20987,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone2", "Destroyed Event", true, "", SourceScene.Stage)]
+		[WProperty("Boulder", "Destroyed Event", true, "", SourceScene.Stage)]
 		public MapEvent DestroyedEvent
 		{ 
 			get
@@ -20949,12 +21020,20 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			DroppedItem = DroppedItemID.No_item;
-			Unknown_2 = -1;
+			DestroyedSwitch = -1;
 			DroppedItemPickupFlag = -1;
-			Unknown_4 = -1;
 			Unknown_5 = -1;
 			Unknown_6 = -1;
 			DestroyedEvent = null;
+			if (Name == "Ebrock") {
+				Type = TypeEnum.Boulder;
+			}
+			if (Name == "Ekao") {
+				Type = TypeEnum.Head_Boulder;
+			}
+			if (Name == "Ebrock2") {
+				Type = TypeEnum.Small_Boulder;
+			}
 		}
 	}
 

@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
@@ -12,7 +12,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
@@ -21,13 +21,13 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "npc_mn",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }

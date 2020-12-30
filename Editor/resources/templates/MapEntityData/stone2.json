@@ -3,20 +3,40 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x07000000,
+      "Hidden": false,
+      "Category": "Boulder",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        2: "Boulder",
+        3: "Head Boulder",
+        4: "Small Boulder",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Ebrock": "Boulder",
+        "Ekao": "Head Boulder",
+        "Ebrock2": "Small Boulder",
+      }
+    },
+    {
       "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Hidden": false,
-      "Category": "stone2",
+      "Category": "Boulder",
       "ToolTip": "",
       "DataType": "DroppedItemID"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "stone2",
+      "Category": "Boulder",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -25,16 +45,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x007F0000,
       "Hidden": false,
-      "Category": "stone2",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
-      "ValueSource": "Parameters",
-      "Mask": 0x07000000,
-      "Hidden": false,
-      "Category": "stone2",
+      "Category": "Boulder",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -43,7 +54,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x70000000,
       "Hidden": false,
-      "Category": "stone2",
+      "Category": "Boulder",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -52,7 +63,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
       "Hidden": false,
-      "Category": "stone2",
+      "Category": "Boulder",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -61,7 +72,7 @@
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0x00FF,
       "Hidden": false,
-      "Category": "stone2",
+      "Category": "Boulder",
       "ToolTip": "",
       "DataType": "Event"
     }

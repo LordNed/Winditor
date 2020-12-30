@@ -27,22 +27,22 @@
       }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "obj_ladder",
-      "ToolTip": "",
+      "ToolTip": "When this switch is set, the ladder will fall down.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Fall Event",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "obj_ladder",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Event"
     }
   ]
 }
