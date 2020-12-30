@@ -307,7 +307,7 @@
     <Compile Include="Editor\Entities\Actors\kytag06.cs" />
     <Compile Include="Editor\Entities\Actors\kytag07.cs" />
     <Compile Include="Editor\Entities\Actors\lamp.cs" />
-    <Compile Include="Editor\Entities\Actors\LargeRock.cs" />
+    <Compile Include="Editor\Entities\Actors\stone2.cs" />
     <Compile Include="Editor\Entities\Actors\LargeTree.cs" />
     <Compile Include="Editor\Entities\Actors\lbridge.cs" />
     <Compile Include="Editor\Entities\Actors\leaflift.cs" />
