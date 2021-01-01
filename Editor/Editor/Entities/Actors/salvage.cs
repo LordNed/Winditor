@@ -18,5 +18,18 @@ namespace WindEditor
 		{
 
 		}
+
+		public override void CalculateUsedSwitches()
+		{
+			List<int> usedSwitches = new List<int>();
+
+			if (Type == TypeEnum.Checks_Switch)
+			{
+				usedSwitches.Add(SwitchtoCheck);
+			}
+
+			usedSwitches.RemoveAll(x => x == 0xFF);
+			UsedSwitches = usedSwitches;
+		}
 	}
 }
