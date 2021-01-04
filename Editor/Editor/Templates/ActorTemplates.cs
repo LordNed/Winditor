@@ -4631,14 +4631,14 @@ namespace WindEditor
 		}
 
 		[WProperty("Grass and Flowers", "Dropped Item", true, "", SourceScene.Room)]
-		public OnlyRandomDroppedItemID DroppedItem
+		public OnlyTableDroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000FC0) >> 6);
-				if (!Enum.IsDefined(typeof(OnlyRandomDroppedItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(OnlyTableDroppedItemID), value_as_int))
 					value_as_int = 0;
-				return (OnlyRandomDroppedItemID)value_as_int;
+				return (OnlyTableDroppedItemID)value_as_int;
 			}
 
 			set
@@ -4658,7 +4658,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			DroppedItem = OnlyRandomDroppedItemID.No_item;
+			DroppedItem = OnlyTableDroppedItemID.No_item;
 			if (Name == "kusax1") {
 				Type = TypeEnum.Grass;
 				SpawnPattern = SpawnPatternEnum.Single;

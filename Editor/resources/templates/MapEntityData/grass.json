@@ -70,7 +70,7 @@
       "Hidden": false,
       "Category": "Grass and Flowers",
       "ToolTip": "",
-      "DataType": "OnlyRandomDroppedItemID"
+      "DataType": "OnlyTableDroppedItemID"
     }
   ]
 }

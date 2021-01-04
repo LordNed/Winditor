@@ -1,5 +1,5 @@
 ﻿<#
-		string[] ItemEnumDataTypeNames = {"ItemID", "DroppedItemID", "OnlyRandomDroppedItemID"};
+		string[] ItemEnumDataTypeNames = {"ItemID", "DroppedItemID", "OnlyTableDroppedItemID"};
 		string EscapeIdentifier(string input)
 		{
 			return Regex.Replace(input, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
@@ -161,8 +161,8 @@
 				case "DroppedItemID":
 					dataType = "DroppedItemID";
 					break;
-				case "OnlyRandomDroppedItemID":
-					dataType = "OnlyRandomDroppedItemID";
+				case "OnlyTableDroppedItemID":
+					dataType = "OnlyTableDroppedItemID";
 					break;
 				default:
 					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
@@ -263,7 +263,7 @@
 					case "Enum":
 					case "ItemID":
 					case "DroppedItemID":
-					case "OnlyRandomDroppedItemID":
+					case "OnlyTableDroppedItemID":
 #>
 				if (!Enum.IsDefined(typeof(<#= dataType #>), value_as_int))
 					value_as_int = <#= defaultEnumValue #>;
@@ -315,7 +315,7 @@
 					case "Enum":
 					case "ItemID":
 					case "DroppedItemID":
-					case "OnlyRandomDroppedItemID":
+					case "OnlyTableDroppedItemID":
 #>
 				int value_as_int = (int)value;
 <#
