@@ -30,7 +30,6 @@ namespace WindEditor
             m_fourCCLocations.Add(FourCC.STAG, SourceScene.Stage);
             m_fourCCLocations.Add(FourCC.MEMA, SourceScene.Stage);
             m_fourCCLocations.Add(FourCC.MECO, SourceScene.Stage);
-            m_fourCCLocations.Add(FourCC.FLOR, SourceScene.Stage);
             m_fourCCLocations.Add(FourCC.DMAP, SourceScene.Stage);
             m_fourCCLocations.Add(FourCC.MULT, SourceScene.Stage);
 
