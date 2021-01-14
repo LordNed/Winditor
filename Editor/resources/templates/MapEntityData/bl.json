@@ -16,6 +16,10 @@
         2: "Path Following Red Bubble",
         3: "Path Following Blue Bubble",
         128: "Inanimate Skull",
+      },
+      "DefaultsByActorName": {
+        "bable_r": "Red Bubble",
+        "bable": "Blue Bubble",
       }
     },
     {

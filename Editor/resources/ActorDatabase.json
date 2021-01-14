@@ -6,7 +6,7 @@
     "ActorClassType": "acorn_leaf",
     "Wait Animations": null,
     "Actor Name": "VigaH",
-    "English Name": "acorn_leaf",
+    "English Name": "Nut Generator",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1025,14 +1025,13 @@
     "ActorClassType": "bl",
     "Wait Animations": null,
     "Actor Name": "bable",
-    "English Name": "Red and Blue Bubble",
+    "English Name": "Blue Bubble",
     "Tags": [
       "enemy"
     ],
-    "Explanation": "These enemies are floating skulls wreathed in flames. The red variant can burn Link, while the blue one curses him and makes him unable to use his items. The Blue Bubble is invincible until Link blows its flames away.",
+    "Explanation": "These enemies are floating skulls wreathed in red flames that can burn Link.",
     "Locations": [
       "Savage Labyrinth (Cave09)",
-      "Savage Labyrinth (Cave11)",
       "Ganon's Tower Before Gohma Rematch (GanonB)",
       "Ganon's Tower Before Jalhalla Rematch (GanonE)",
       "Unused (KATA_RM)",
@@ -1046,8 +1045,7 @@
       "Tower of the Gods (Siren)",
       "Unused (SubD45)",
       "Boating Course Cave (SubD71)",
-      "Jalhalla Rematch (Xboss2)",
-      "Wind Temple (kaze)"
+      "Jalhalla Rematch (Xboss2)"
     ],
     "ImagePath": null
   },
@@ -1058,11 +1056,19 @@
     "ActorClassType": "bl",
     "Wait Animations": null,
     "Actor Name": "bable_r",
-    "English Name": "bl",
-    "Tags": null,
-    "Explanation": null,
+    "English Name": "Red Bubble",
+    "Tags": [
+      "enemy"
+    ],
+    "Explanation": "These enemies are floating skulls wreathed in blue flames. They can curse Link and make him unable to use his items. They are invincible until Link blows its flames away.",
     "Locations": [
-      "N/A"
+      "Savage Labyrinth (Cave11)",
+      "Unused (KATA_RM)",
+      "Unused (K_Test4)",
+      "Earth Temple (M_Dai)",
+      "Unused (PShip2)",
+      "Unused (PShip3)",
+      "Wind Temple (kaze)"
     ],
     "ImagePath": null
   },
@@ -1091,7 +1097,7 @@
     "ActorClassType": "bmdfoot",
     "Wait Animations": null,
     "Actor Name": "",
-    "English Name": "bmdfoot",
+    "English Name": "Kalle Demos' Main Tentacles",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1106,7 +1112,7 @@
     "ActorClassType": "bmdhand",
     "Wait Animations": null,
     "Actor Name": "",
-    "English Name": "bmdhand",
+    "English Name": "Kalle Demos' Claws",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1134,21 +1140,6 @@
       "Unused (K_Test8)",
       "Forbidden Woods (kindan)",
       "Forest Haven (sea/Room41)"
-    ],
-    "ImagePath": null
-  },
-  {
-    "Archive Name": null,
-    "Main Model": null,
-    "Secondary Models": null,
-    "ActorClassType": "boko",
-    "Wait Animations": null,
-    "Actor Name": "Boko",
-    "English Name": "boko",
-    "Tags": null,
-    "Explanation": null,
-    "Locations": [
-      "N/A"
     ],
     "ImagePath": null
   },
@@ -1306,7 +1297,7 @@
     "ActorClassType": "bwdg",
     "Wait Animations": null,
     "Actor Name": "",
-    "English Name": "bwdg",
+    "English Name": "Molgera's Sand",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6064,7 +6055,7 @@
     "ActorClassType": "npc_kk1",
     "Wait Animations": null,
     "Actor Name": "Kk1",
-    "English Name": "npc_kk1",
+    "English Name": "Mila (Poor)",
     "Tags": null,
     "Explanation": null,
     "Locations": [

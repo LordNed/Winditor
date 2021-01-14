@@ -1911,6 +1911,12 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			EnableSpawnSwitch = -1;
 			Path = null;
+			if (Name == "bable_r") {
+				Type = TypeEnum.Red_Bubble;
+			}
+			if (Name == "bable") {
+				Type = TypeEnum.Blue_Bubble;
+			}
 		}
 	}
 
