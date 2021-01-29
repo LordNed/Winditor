@@ -19419,43 +19419,61 @@ namespace WindEditor
 	public partial class saku : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum HeightEnum
+		{
+			Single = 0,
+			Double = 1,
+		}
 
-		[WProperty("saku", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Boarded Up Wall", "Height", true, "", SourceScene.Room)]
+		public HeightEnum Height
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(HeightEnum), value_as_int))
+					value_as_int = 1;
+				return (HeightEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Height");
+				UpdateModel();
 			}
 		}
+		public enum StrengthEnum
+		{
+			Weak_Boarded_Up_Wall = 0,
+			Sturdy_Boarded_Up_Wall = 1,
+		}
 
-		[WProperty("saku", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Boarded Up Wall", "Strength", true, "", SourceScene.Room)]
+		public StrengthEnum Strength
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000F0) >> 4);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(StrengthEnum), value_as_int))
+					value_as_int = 0;
+				return (StrengthEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Strength");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("saku", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Boarded Up Wall", "Bottom Destroyed Switch", true, "", SourceScene.Room)]
+		public int BottomDestroyedSwitch
 		{ 
 			get
 			{
@@ -19467,12 +19485,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("BottomDestroyedSwitch");
 			}
 		}
 
-		[WProperty("saku", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Boarded Up Wall", "Top Destroyed Switch", true, "", SourceScene.Room)]
+		public int TopDestroyedSwitch
 		{ 
 			get
 			{
@@ -19484,7 +19502,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("TopDestroyedSwitch");
 			}
 		}
 
@@ -19497,10 +19515,14 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			BottomDestroyedSwitch = -1;
+			TopDestroyedSwitch = -1;
+			if (Name == "Ksaku") {
+				Strength = StrengthEnum.Weak_Boarded_Up_Wall;
+			}
+			if (Name == "Dsaku") {
+				Strength = StrengthEnum.Sturdy_Boarded_Up_Wall;
+			}
 		}
 	}
 

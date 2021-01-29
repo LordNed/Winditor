@@ -3,38 +3,53 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Height",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
-      "Category": "saku",
+      "Category": "Boarded Up Wall",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Single",
+        1: "Double",
+      },
+      "EnumDefaultValue": 1,
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Strength",
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Hidden": false,
-      "Category": "saku",
+      "Category": "Boarded Up Wall",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Weak Boarded Up Wall",
+        1: "Sturdy Boarded Up Wall",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Ksaku": "Weak Boarded Up Wall",
+        "Dsaku": "Sturdy Boarded Up Wall",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Bottom Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "saku",
+      "Category": "Boarded Up Wall",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Top Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "saku",
+      "Category": "Boarded Up Wall",
       "ToolTip": "",
       "DataType": "Integer"
     }

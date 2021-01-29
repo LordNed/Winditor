@@ -22,22 +22,18 @@ namespace WindEditor
 
 		private void UpdateModel()
 		{
-			switch (Name)
+			if (Strength == StrengthEnum.Weak_Boarded_Up_Wall)
 			{
-				case "Dsaku":
-					if (Unknown_1 == 1)
-						m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier 2x");
-					else
-						m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier 1x");
-					break;
-				case "Ksaku":
-					if (Unknown_1 == 1)
-						m_actorMeshes = WResourceManager.LoadActorResource("Weak Wooden Barrier 2x");
-					else
-						m_actorMeshes = WResourceManager.LoadActorResource("Weak Wooden Barrier 1x");
-					break;
-				default:
-					break;
+				if (Height == HeightEnum.Single)
+					m_actorMeshes = WResourceManager.LoadActorResource("Weak Wooden Barrier 1x");
+				else
+					m_actorMeshes = WResourceManager.LoadActorResource("Weak Wooden Barrier 2x");
+			} else
+			{
+				if (Height == HeightEnum.Single)
+					m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier 1x");
+				else
+					m_actorMeshes = WResourceManager.LoadActorResource("Strong Wooden Barrier 2x");
 			}
 		}
 	}
