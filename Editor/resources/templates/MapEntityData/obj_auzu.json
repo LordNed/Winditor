@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_auzu",
+      "Category": "Whirlpool",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -16,7 +16,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_auzu",
+      "Category": "Whirlpool",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -25,16 +25,16 @@
       "ValueSource": "Parameters",
       "Mask": 0x00010000,
       "Hidden": false,
-      "Category": "obj_auzu",
+      "Category": "Whirlpool",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean"
     },
     {
       "Name": "Unknown_4",
       "ValueSource": "Parameters",
       "Mask": 0x00F00000,
       "Hidden": false,
-      "Category": "obj_auzu",
+      "Category": "Whirlpool",
       "ToolTip": "",
       "DataType": "Integer"
     }

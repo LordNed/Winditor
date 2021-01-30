@@ -11188,8 +11188,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_ajav", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Jabun's Bombable Stone Wall", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -11201,7 +11201,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -11214,7 +11214,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 		}
 	}
 
@@ -11455,8 +11455,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_auzu", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Whirlpool", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -11468,11 +11468,11 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
-		[WProperty("obj_auzu", "Unknown_2", true, "", SourceScene.Room)]
+		[WProperty("Whirlpool", "Unknown_2", true, "", SourceScene.Room)]
 		public int Unknown_2
 		{ 
 			get
@@ -11489,24 +11489,30 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_auzu", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Whirlpool", "Unknown_3", true, "", SourceScene.Room)]
+		public bool Unknown_3
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
 
-		[WProperty("obj_auzu", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Whirlpool", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -11532,9 +11538,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DisableSpawnSwitch = -1;
 			Unknown_2 = -1;
-			Unknown_3 = -1;
 			Unknown_4 = -1;
 		}
 	}
@@ -22233,8 +22238,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_island", "Switch", true, "", SourceScene.Room)]
-		public int Switch
+		[WProperty("tag_island", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -22246,7 +22251,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Switch");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -22282,7 +22287,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Switch = -1;
+			SwitchtoSet = -1;
 			Event = null;
 		}
 	}

@@ -4833,6 +4833,47 @@
     ]
   },
   {
+    "Name": "Jabun's Bombable Stone Wall",
+    "Archive": "Ajav",
+    "Models": [
+      {
+        "Path": "bdl/ajava.bdl"
+      },
+      {
+        "Path": "bdl/ajavb.bdl"
+      },
+      {
+        "Path": "bdl/ajavc.bdl"
+      },
+      {
+        "Path": "bdl/ajavd.bdl"
+      },
+      {
+        "Path": "bdl/ajave.bdl"
+      },
+      {
+        "Path": "bdl/ajavf.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Whirlpool",
+    "Archive": "Auzu",
+    "Models": [
+      {
+        "Path": "bdlm/auzu.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/auzu.btk",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Crystal Switch",
     "Archive": "Always",
     "Models": [
