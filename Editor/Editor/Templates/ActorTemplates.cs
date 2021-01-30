@@ -5566,21 +5566,32 @@ namespace WindEditor
 	public partial class kamome : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+			Unknown_7 = 7,
+		}
 
-		[WProperty("Seagull", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Seagull", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
@@ -5632,8 +5643,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Seagull", "Switch to Check", true, "This parameter was never used in the vanilla game. It probably changes the behavior of to seagull somehow.", SourceScene.Room)]
-		public int SwitchtoCheck
+		[WProperty("Seagull", "Enable Spawn Switch", true, "The seagull will only appear once this switch is set.\nThis parameter was never used in the vanilla game.", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -5645,7 +5656,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
@@ -5658,10 +5669,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Path = null;
-			SwitchtoCheck = -1;
+			EnableSpawnSwitch = -1;
 		}
 	}
 
@@ -6990,8 +7000,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Weather Trigger", "Switch ID", true, "", SourceScene.Room)]
-		public int SwitchID
+		[WProperty("Weather Trigger", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -7003,7 +7013,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("SwitchID");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
@@ -7062,7 +7072,7 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			FadeRadius = -1;
 			FadeHeight = -1;
-			SwitchID = -1;
+			SwitchtoCheck = -1;
 		}
 	}
 
@@ -9265,8 +9275,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("npc_hr", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("npc_hr", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -9278,7 +9288,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -9309,7 +9319,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SwitchtoSet = -1;
 			Unknown_3 = -1;
 		}
 	}
@@ -14889,8 +14899,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_majyuu_door", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_majyuu_door", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -14902,7 +14912,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -14915,7 +14925,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 		}
 	}
 
@@ -16886,8 +16896,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swheavy", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_swheavy", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -16899,7 +16909,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -16912,7 +16922,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 			if (Name == "Hhbot1") {
 				Type = TypeEnum.Unknown_2;
 			}

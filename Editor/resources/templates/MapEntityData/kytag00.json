@@ -64,7 +64,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Switch ID",
+      "Name": "Switch to Check",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0x00FF,
       "Hidden": false,
