@@ -96,5 +96,15 @@ namespace WindEditor
 
             m_NumberofPoints = (short)GetPoints().Count;
         }
+
+        public override void Tick(float deltaTime)
+        {
+            base.Tick(deltaTime);
+
+            foreach (PathPoint_v1 point in GetPoints())
+            {
+                point.IsPathSelected = IsSelected;
+            }
+        }
     }
 }

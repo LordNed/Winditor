@@ -11,6 +11,8 @@ namespace WindEditor
 {
     public partial class PathPoint_v2
     {
+        public bool IsPathSelected;
+
         [WProperty("Path Point Properties", "Name", true)]
         override public string Name
         {
@@ -71,7 +73,10 @@ namespace WindEditor
 
             if (NextNode != null)
             {
-                m_world.DebugDrawLine(Transform.Position, NextNode.Transform.Position, WLinearColor.Black, 5f, 0f);
+                WLinearColor color = WLinearColor.Black;
+                if (IsPathSelected)
+                    color = WLinearColor.Green;
+                m_world.DebugDrawLine(Transform.Position, NextNode.Transform.Position, color, 5f, 0f);
             }
 
             bool test = this is WDOMNode;
