@@ -12224,8 +12224,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_canon", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Wall-Mounted Cannon", "Extra Scale", true, "Amount to add to this cannon's scale, in increments of 10%.\nFor example, setting this to 5 would make the cannon 1.5 times larger than normal.\n0 and 255 both do not add any extra scale.", SourceScene.Room)]
+		public int ExtraScale
 		{ 
 			get
 			{
@@ -12237,11 +12237,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ExtraScale");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("obj_canon", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Wall-Mounted Cannon", "Enable Spawn Switch", true, "", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -12258,24 +12259,38 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_canon", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Wall-Mounted Cannon", "Visible Area Path", true, "This cannon will only be able to see Link when he is inside the area of this path.", SourceScene.Room)]
+		public Path_v2 VisibleAreaPath
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("VisibleAreaPath");
 			}
 		}
 
-		[WProperty("obj_canon", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		[WProperty("Wall-Mounted Cannon", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
 		public int DisableSpawnonDeathSwitch
 		{ 
 			get
@@ -12301,9 +12316,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			ExtraScale = -1;
 			EnableSpawnSwitch = -1;
-			Unknown_3 = -1;
+			VisibleAreaPath = null;
 			DisableSpawnonDeathSwitch = -1;
 		}
 	}
@@ -22074,8 +22089,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("tag_hint", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -22087,12 +22102,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("tag_hint", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -22104,24 +22119,30 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("tag_hint", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("tag_hint", "Event", true, "", SourceScene.Stage)]
+		public MapEvent Event
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Event");
 			}
 		}
 		public int MessageID
@@ -22168,9 +22189,9 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
 			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
+			SwitchtoSet = -1;
+			EnableSpawnSwitch = -1;
+			Event = null;
 			MessageID = -1;
 			Unknown_7 = -1;
 		}

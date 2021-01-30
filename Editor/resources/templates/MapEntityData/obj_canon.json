@@ -3,38 +3,39 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Extra Scale",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_canon",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Wall-Mounted Cannon",
+      "ToolTip": "Amount to add to this cannon's scale, in increments of 10%.\nFor example, setting this to 5 would make the cannon 1.5 times larger than normal.\n0 and 255 both do not add any extra scale.",
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_canon",
+      "Category": "Wall-Mounted Cannon",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Visible Area Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "obj_canon",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Wall-Mounted Cannon",
+      "ToolTip": "This cannon will only be able to see Link when he is inside the area of this path.",
+      "DataType": "Path"
     },
     {
       "Name": "Disable Spawn on Death Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "obj_canon",
+      "Category": "Wall-Mounted Cannon",
       "ToolTip": "",
       "DataType": "Integer"
     }
