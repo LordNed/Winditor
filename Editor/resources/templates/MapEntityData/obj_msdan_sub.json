@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
@@ -12,7 +12,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Which Stair Index",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
@@ -21,13 +21,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Staircase Length",
       "ValueSource": "Parameters",
       "Mask": 0x00010000,
       "Hidden": false,
       "Category": "obj_msdan_sub",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "15 Stairs",
+        1: "31 Stairs",
+      }
     }
   ]
 }

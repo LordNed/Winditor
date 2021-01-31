@@ -40,5 +40,22 @@ namespace WindEditor
 		{
             MessageID = MessageReference.MessageID;
         }
+
+        public override void CalculateUsedSwitches()
+        {
+            List<int> usedSwitches = new List<int>();
+
+            usedSwitches.Add(DisableSpawnSwitch);
+
+            int firstSwitch = FirstSwitchtoCheck;
+
+            for (int i = 0; i < NumSwitchestoCheck; i++)
+            {
+                usedSwitches.Add(firstSwitch + i);
+            }
+
+            usedSwitches.RemoveAll(x => x >= 0xFF || x < 0);
+            UsedSwitches = usedSwitches;
+        }
     }
 }

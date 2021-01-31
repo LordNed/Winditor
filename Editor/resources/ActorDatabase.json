@@ -5330,7 +5330,7 @@
     "ActorClassType": "npc_ba1",
     "Wait Animations": null,
     "Actor Name": "Ba1",
-    "English Name": "npc_ba1",
+    "English Name": "Grandma",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10288,7 +10288,7 @@
     "ActorClassType": "obj_swlight",
     "Wait Animations": null,
     "Actor Name": "MsuSW",
-    "English Name": "obj_swlight",
+    "English Name": "Unpaired Sun Statue Eye",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10304,7 +10304,7 @@
     "ActorClassType": "obj_swlight",
     "Wait Animations": null,
     "Actor Name": "MsuSWB",
-    "English Name": "obj_swlight",
+    "English Name": "Paired Sun Statue Eye",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10954,7 +10954,7 @@
     "ActorClassType": "obj_Vds",
     "Wait Animations": null,
     "Actor Name": "Vds",
-    "English Name": "obj_Vds",
+    "English Name": "Sun Statue",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13300,7 +13300,7 @@
     "Actor Name": "TagMd15",
     "English Name": "tag_md_cb",
     "Tags": null,
-    "Explanation": null,
+    "Explanation": "Trigger region for a Medli event. Must own Mirror Shield for it to trigger. Will set event bit 0x3303 once its Disable Spawn Switch has been set.",
     "Locations": [
       "Earth Temple (M_Dai)"
     ],

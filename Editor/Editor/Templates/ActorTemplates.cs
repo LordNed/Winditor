@@ -7142,8 +7142,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("kytag03", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("kytag03", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -7155,7 +7155,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
@@ -7168,7 +7168,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoCheck = -1;
 		}
 	}
 
@@ -15485,8 +15485,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_msdan", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_msdan", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -15498,24 +15498,32 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
+		public enum StaircaseLengthEnum
+		{
+			_15_Stairs = 0,
+			_31_Stairs = 1,
+		}
 
-		[WProperty("obj_msdan", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("obj_msdan", "Staircase Length", true, "", SourceScene.Room)]
+		public StaircaseLengthEnum StaircaseLength
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(StaircaseLengthEnum), value_as_int))
+					value_as_int = 0;
+				return (StaircaseLengthEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("StaircaseLength");
 			}
 		}
 
@@ -15536,20 +15544,26 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("obj_msdan", "Event", true, "", SourceScene.Stage)]
+		public MapEvent Event
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Event");
 			}
 		}
 
@@ -15562,10 +15576,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SwitchtoCheck = -1;
 			Unknown_3 = -1;
-			Unknown_4 = -1;
+			Event = null;
 		}
 	}
 
@@ -15609,8 +15622,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_msdan_sub", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_msdan_sub", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -15622,12 +15635,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
-		[WProperty("obj_msdan_sub", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_msdan_sub", "Which Stair Index", true, "", SourceScene.Room)]
+		public int WhichStairIndex
 		{ 
 			get
 			{
@@ -15639,24 +15652,32 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("WhichStairIndex");
 			}
 		}
+		public enum StaircaseLengthEnum
+		{
+			_15_Stairs = 0,
+			_31_Stairs = 1,
+		}
 
-		[WProperty("obj_msdan_sub", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+
+		[WProperty("obj_msdan_sub", "Staircase Length", true, "", SourceScene.Room)]
+		public StaircaseLengthEnum StaircaseLength
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(StaircaseLengthEnum), value_as_int))
+					value_as_int = 0;
+				return (StaircaseLengthEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("StaircaseLength");
 			}
 		}
 
@@ -15669,9 +15690,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoCheck = -1;
+			WhichStairIndex = -1;
 		}
 	}
 
@@ -16937,8 +16957,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_swlight", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_swlight", "Switch to Set", true, "The switch to set when this eye has light shone on it.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -16950,12 +16970,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("obj_swlight", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_swlight", "Other Switch", true, "The switch that is set when the other eye this one is paired up with has light shone on it.", SourceScene.Room)]
+		public int OtherSwitch
 		{ 
 			get
 			{
@@ -16967,24 +16987,30 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("OtherSwitch");
 			}
 		}
 
-		[WProperty("obj_swlight", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("obj_swlight", "Is Paired", true, "", SourceScene.Room)]
+		public bool IsPaired
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("IsPaired");
 			}
 		}
 
@@ -16997,9 +17023,14 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoSet = -1;
+			OtherSwitch = -1;
+			if (Name == "MsuSW") {
+				IsPaired = false;
+			}
+			if (Name == "MsuSWB") {
+				IsPaired = true;
+			}
 		}
 	}
 
@@ -17746,8 +17777,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_Vds", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_Vds", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -17759,7 +17790,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
@@ -17772,7 +17803,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoCheck = -1;
 		}
 	}
 
@@ -22627,8 +22658,6 @@ namespace WindEditor
 	public partial class tag_md_cb : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-
-		[WProperty("tag_md_cb", "MessageID", true, "", SourceScene.Room)]
 		public int MessageID
 		{ 
 			get
@@ -22645,8 +22674,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_md_cb", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("tag_md_cb", "First Switch to Check", true, "", SourceScene.Room)]
+		public int FirstSwitchtoCheck
 		{ 
 			get
 			{
@@ -22658,12 +22687,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("FirstSwitchtoCheck");
 			}
 		}
 
-		[WProperty("tag_md_cb", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("tag_md_cb", "Num Switches to Check", true, "", SourceScene.Room)]
+		public int NumSwitchestoCheck
 		{ 
 			get
 			{
@@ -22675,12 +22704,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("NumSwitchestoCheck");
 			}
 		}
 
-		[WProperty("tag_md_cb", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("tag_md_cb", "Disable Spawn Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -22692,7 +22721,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
@@ -22706,9 +22735,9 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			MessageID = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			FirstSwitchtoCheck = -1;
+			NumSwitchestoCheck = -1;
+			DisableSpawnSwitch = -1;
 		}
 	}
 

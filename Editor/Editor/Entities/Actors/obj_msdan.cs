@@ -30,7 +30,7 @@ namespace WindEditor
 
         private int GetNumStairs()
         {
-            if (Unknown_2 == 0)
+            if (StaircaseLength == StaircaseLengthEnum._15_Stairs)
             {
                 return 15;
             }

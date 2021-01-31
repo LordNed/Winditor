@@ -3,31 +3,35 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "obj_swlight",
-      "ToolTip": "",
+      "ToolTip": "The switch to set when this eye has light shone on it.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Other Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "obj_swlight",
-      "ToolTip": "",
+      "ToolTip": "The switch that is set when the other eye this one is paired up with has light shone on it.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Is Paired",
       "ValueSource": "Parameters",
       "Mask": 0x00010000,
       "Hidden": false,
       "Category": "obj_swlight",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "DefaultsByActorName": {
+        "MsuSW": false,
+        "MsuSWB": true,
+      }
     }
   ]
 }

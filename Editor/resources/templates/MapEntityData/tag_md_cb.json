@@ -6,13 +6,13 @@
       "Name": "MessageID",
       "ValueSource": "Parameters",
       "Mask": 0x0000FFFF,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "tag_md_cb",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "First Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
@@ -21,7 +21,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Num Switches to Check",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
@@ -30,7 +30,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "AuxillaryParameters1",
       "Mask": 0x00FF,
       "Hidden": false,
