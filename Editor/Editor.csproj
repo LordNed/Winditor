@@ -191,6 +191,7 @@
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\MessageTextValidationRule.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\TextboxRendererViewModel.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\TextMinitorEnums.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml.cs">
       <DependentUpon>TextMinitorWindow.xaml</DependentUpon>
@@ -954,6 +955,9 @@
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Editor\Templates\ParameterTemplates.tt" />
+    <Content Include="freetype6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\editor\CamTex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -998,6 +1002,9 @@
     </Content>
     <None Include="resources\editor_icon.ico" />
     <Content Include="resources\EventDefinitionDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\font\RocknRollOne-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\icons\baton.png" />
@@ -2088,6 +2095,9 @@
     </PackageReference>
     <PackageReference Include="ReactiveUI.WPF">
       <Version>11.5.35</Version>
+    </PackageReference>
+    <PackageReference Include="SharpFont">
+      <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="SharpYaml">
       <Version>1.6.6</Version>
