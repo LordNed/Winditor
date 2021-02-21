@@ -73,7 +73,14 @@ namespace WindEditor.Events
 
         public CutNodeViewModel NodeViewModel
         {
-            get { return m_NodeViewModel; }
+            get
+            {
+                if (m_NodeViewModel == null)
+                {
+                    m_NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
+                }
+                return m_NodeViewModel;
+            }
             set
             {
                 if (m_NodeViewModel != value)
@@ -128,8 +135,6 @@ namespace WindEditor.Events
             m_NextCutIndex = reader.ReadInt32();
 
             reader.Skip(16);
-
-            NodeViewModel = new CutNodeViewModel(this) { Name = this.Name };
 
             if (m_FirstSubstanceIndex != -1)
             {
