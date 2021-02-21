@@ -3,22 +3,28 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Disable Spawn Treasure Chest Open Flag",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Hidden": false,
       "Category": "tag_volcano",
-      "ToolTip": "",
+      "ToolTip": "Will become permanently disabled once a treasure chest sets this open flag.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000C0,
       "Hidden": false,
       "Category": "tag_volcano",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Outside cave",
+        1: "Inside Fire Mountain",
+        2: "Inside Ice Ring",
+      },
+      "EnumDefaultValue": 2
     },
     {
       "Name": "Switch to Set",
@@ -26,16 +32,16 @@
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "tag_volcano",
-      "ToolTip": "",
+      "ToolTip": "This switch will be set when the timer starts and unset when the timer ends.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Timer Duration (Tens of Seconds)",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "tag_volcano",
-      "ToolTip": "",
+      "ToolTip": "This number times 10 seconds is how long the timer will last.",
       "DataType": "Integer"
     }
   ]

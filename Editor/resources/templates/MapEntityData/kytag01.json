@@ -1,5 +1,5 @@
 {
   "ClassName": "kytag01",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": []
 }

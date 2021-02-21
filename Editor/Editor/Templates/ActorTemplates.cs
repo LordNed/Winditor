@@ -4972,9 +4972,67 @@ namespace WindEditor
 	public partial class hmlif : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			No_Eye = 0,
+			Eye_on_Top = 1,
+			Eye_on_Bottom = 2,
+		}
 
-		[WProperty("hmlif", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Moving Platform", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x78000000) >> 27);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x78000000 | (value_as_int << 27 & 0x78000000));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("Moving Platform", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("Path");
+			}
+		}
+
+		[WProperty("Moving Platform", "Enable Movement Switch", true, "The platform will not start moving until this switch is set.\nIf this is 255, the platform will start moving from the start instead.", SourceScene.Room)]
+		public int EnableMovementSwitch
 		{ 
 			get
 			{
@@ -4986,28 +5044,28 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("EnableMovementSwitch");
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Moving Platform", "Eye Shot Switch", true, "This switch is set when the player shoots the eye target with an arrow.\nNo effect for 'No Eye' type platforms.", SourceScene.Room)]
+		public int EyeShotSwitch
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("EyeShotSwitch");
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Moving Platform", "Unknown_3", true, "", SourceScene.Room)]
 		public int Unknown_3
 		{ 
 			get
@@ -5024,7 +5082,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_4", true, "", SourceScene.Room)]
+		[WProperty("Moving Platform", "Unknown_4", true, "", SourceScene.Room)]
 		public int Unknown_4
 		{ 
 			get
@@ -5041,7 +5099,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Moving Platform", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -5058,24 +5116,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x78000000) >> 27);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x78000000 | (value_as_int << 27 & 0x78000000));
-				OnPropertyChanged("Unknown_6");
-			}
-		}
-
-		[WProperty("hmlif", "Unknown_7", true, "", SourceScene.Room)]
+		[WProperty("Moving Platform", "Unknown_7", true, "", SourceScene.Room)]
 		public int Unknown_7
 		{ 
 			get
@@ -5092,23 +5133,6 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("hmlif", "Unknown_8", true, "", SourceScene.Room)]
-		public int Unknown_8
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_8");
-			}
-		}
-
 		// Constructor
 		public hmlif(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -5118,14 +5142,22 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			Path = null;
+			EnableMovementSwitch = -1;
+			EyeShotSwitch = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
-			Unknown_6 = -1;
 			Unknown_7 = -1;
-			Unknown_8 = -1;
+			if (Name == "Hmlif") {
+				Type = TypeEnum.No_Eye;
+			}
+			if (Name == "Hyuf1") {
+				Type = TypeEnum.Eye_on_Top;
+			}
+			if (Name == "Hyuf2") {
+				Type = TypeEnum.Eye_on_Bottom;
+			}
 		}
 	}
 
@@ -6634,8 +6666,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("kokiie", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("kokiie", "Fallen Switch", true, "", SourceScene.Room)]
+		public int FallenSwitch
 		{ 
 			get
 			{
@@ -6647,7 +6679,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("FallenSwitch");
 			}
 		}
 
@@ -6661,7 +6693,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
+			FallenSwitch = -1;
 		}
 	}
 
@@ -7077,7 +7109,7 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class kytag01 : Actor
+	public partial class kytag01 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 
@@ -16764,26 +16796,35 @@ namespace WindEditor
 	public partial class obj_swflat : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Press_Once = 0,
+			Hold_Down = 1,
+			Hold_Down_and_Can_Be_Disabled = 2,
+		}
 
-		[WProperty("obj_swflat", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("TotG Button", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("obj_swflat", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("TotG Button", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -16795,12 +16836,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("obj_swflat", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("TotG Button", "Disabled Switch", true, "For 'Hold Down and Can Be Disabled' type buttons, they will stop automatically unpressing themselves once this switch is set by something else (even if they haven't been pressed once manually). No effect on other types.", SourceScene.Room)]
+		public int DisabledSwitch
 		{ 
 			get
 			{
@@ -16812,7 +16853,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("DisabledSwitch");
 			}
 		}
 
@@ -16825,9 +16866,17 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			SwitchtoSet = -1;
+			DisabledSwitch = -1;
+			if (Name == "Hfbot1A") {
+				Type = TypeEnum.Press_Once;
+			}
+			if (Name == "Hfbot1B") {
+				Type = TypeEnum.Hold_Down;
+			}
+			if (Name == "Hfbot1C") {
+				Type = TypeEnum.Hold_Down_and_Can_Be_Disabled;
+			}
 		}
 	}
 
@@ -23100,8 +23149,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("tag_volcano", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("tag_volcano", "Disable Spawn Treasure Chest Open Flag", true, "Will become permanently disabled once a treasure chest sets this open flag.", SourceScene.Room)]
+		public int DisableSpawnTreasureChestOpenFlag
 		{ 
 			get
 			{
@@ -23113,28 +23162,37 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisableSpawnTreasureChestOpenFlag");
 			}
 		}
+		public enum TypeEnum
+		{
+			Outside_cave = 0,
+			Inside_Fire_Mountain = 1,
+			Inside_Ice_Ring = 2,
+		}
 
-		[WProperty("tag_volcano", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("tag_volcano", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000C0) >> 6);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 2;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("tag_volcano", "Switch to Set", true, "", SourceScene.Room)]
+		[WProperty("tag_volcano", "Switch to Set", true, "This switch will be set when the timer starts and unset when the timer ends.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
@@ -23151,8 +23209,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("tag_volcano", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("tag_volcano", "Timer Duration (Tens of Seconds)", true, "This number times 10 seconds is how long the timer will last.", SourceScene.Room)]
+		public int TimerDurationTensofSeconds
 		{ 
 			get
 			{
@@ -23164,7 +23222,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("TimerDurationTensofSeconds");
 			}
 		}
 
@@ -23177,10 +23235,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			DisableSpawnTreasureChestOpenFlag = -1;
 			SwitchtoSet = -1;
-			Unknown_4 = -1;
+			TimerDurationTensofSeconds = -1;
 		}
 	}
 
@@ -24150,8 +24207,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("wall", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("wall", "Disable Spawn on Destroyed Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDestroyedSwitch
 		{ 
 			get
 			{
@@ -24163,7 +24220,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisableSpawnonDestroyedSwitch");
 			}
 		}
 
@@ -24194,7 +24251,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DisableSpawnonDestroyedSwitch = -1;
 			Unknown_2 = -1;
 		}
 	}

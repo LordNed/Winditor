@@ -3,30 +3,40 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000003,
       "Hidden": false,
-      "Category": "obj_swflat",
+      "Category": "TotG Button",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Press Once",
+        1: "Hold Down",
+        2: "Hold Down and Can Be Disabled",
+      },
+      "DefaultsByActorName": {
+        "Hfbot1A": "Press Once",
+        "Hfbot1B": "Hold Down",
+        "Hfbot1C": "Hold Down and Can Be Disabled",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_swflat",
+      "Category": "TotG Button",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Disabled Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "obj_swflat",
-      "ToolTip": "",
+      "Category": "TotG Button",
+      "ToolTip": "For 'Hold Down and Can Be Disabled' type buttons, they will stop automatically unpressing themselves once this switch is set by something else (even if they haven't been pressed once manually). No effect on other types.",
       "DataType": "Integer"
     }
   ]

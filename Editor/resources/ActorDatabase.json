@@ -2940,7 +2940,7 @@
     "ActorClassType": "hmlif",
     "Wait Animations": null,
     "Actor Name": "Hmlif",
-    "English Name": "hmlif",
+    "English Name": "Moving Platform",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2958,7 +2958,7 @@
     "ActorClassType": "hmlif",
     "Wait Animations": null,
     "Actor Name": "Hyuf1",
-    "English Name": "hmlif",
+    "English Name": "Moving Platform With Eye on Top",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2974,7 +2974,7 @@
     "ActorClassType": "hmlif",
     "Wait Animations": null,
     "Actor Name": "Hyuf2",
-    "English Name": "hmlif",
+    "English Name": "Moving Platform With Eye on Bottom",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3744,7 +3744,7 @@
     "ActorClassType": "kytag00",
     "Wait Animations": null,
     "Actor Name": "ky_tag0",
-    "English Name": "kytag00",
+    "English Name": "Weather Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3840,7 +3840,7 @@
     "ActorClassType": "kytag01",
     "Wait Animations": null,
     "Actor Name": "ky_tag1",
-    "English Name": "kytag01",
+    "English Name": "Wave Disabler",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10180,7 +10180,7 @@
     "ActorClassType": "obj_swflat",
     "Wait Animations": null,
     "Actor Name": "Hfbot1A",
-    "English Name": "obj_swflat",
+    "English Name": "TotG Button (Press Once)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10196,7 +10196,7 @@
     "ActorClassType": "obj_swflat",
     "Wait Animations": null,
     "Actor Name": "Hfbot1B",
-    "English Name": "obj_swflat",
+    "English Name": "TotG Button (Hold Down)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10212,7 +10212,7 @@
     "ActorClassType": "obj_swflat",
     "Wait Animations": null,
     "Actor Name": "Hfbot1C",
-    "English Name": "obj_swflat",
+    "English Name": "TotG Button (Hold Down and Can Be Disabled)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -14708,7 +14708,7 @@
     "ActorClassType": "warpfout",
     "Wait Animations": null,
     "Actor Name": "Warpfo",
-    "English Name": "warpfout",
+    "English Name": "Wind Warp In",
     "Tags": null,
     "Explanation": null,
     "Locations": [

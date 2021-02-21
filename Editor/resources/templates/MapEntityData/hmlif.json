@@ -3,21 +3,50 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
+      "Mask": 0x78000000,
       "Hidden": false,
-      "Category": "hmlif",
+      "Category": "Moving Platform",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "No Eye",
+        1: "Eye on Top",
+        2: "Eye on Bottom",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Hmlif": "No Eye",
+        "Hyuf1": "Eye on Top",
+        "Hyuf2": "Eye on Bottom",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "hmlif",
+      "Category": "Moving Platform",
       "ToolTip": "",
+      "DataType": "Path"
+    },
+    {
+      "Name": "Enable Movement Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Moving Platform",
+      "ToolTip": "The platform will not start moving until this switch is set.\nIf this is 255, the platform will start moving from the start instead.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Eye Shot Switch",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0x00FF,
+      "Hidden": false,
+      "Category": "Moving Platform",
+      "ToolTip": "This switch is set when the player shoots the eye target with an arrow.\nNo effect for 'No Eye' type platforms.",
       "DataType": "Integer"
     },
     {
@@ -25,7 +54,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
       "Hidden": false,
-      "Category": "hmlif",
+      "Category": "Moving Platform",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -34,7 +63,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00300000,
       "Hidden": false,
-      "Category": "hmlif",
+      "Category": "Moving Platform",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -43,16 +72,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x07C00000,
       "Hidden": false,
-      "Category": "hmlif",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_6",
-      "ValueSource": "Parameters",
-      "Mask": 0x78000000,
-      "Hidden": false,
-      "Category": "hmlif",
+      "Category": "Moving Platform",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -61,18 +81,9 @@
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
       "Hidden": false,
-      "Category": "hmlif",
+      "Category": "Moving Platform",
       "ToolTip": "",
       "DataType": "Integer"
     },
-    {
-      "Name": "Unknown_8",
-      "ValueSource": "AuxillaryParameters2",
-      "Mask": 0x00FF,
-      "Hidden": false,
-      "Category": "hmlif",
-      "ToolTip": "",
-      "DataType": "Integer"
-    }
   ]
 }

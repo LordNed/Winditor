@@ -6694,6 +6694,30 @@
     ]
   },
   {
+    "Name": "Moving Platform With Eye on Top",
+    "Archive": "Hyuf1",
+    "Models": [
+      {
+        "Path": "bdlm/hyuf1.bdl",
+        "Animations": [
+          {
+            "Anim Type": "brk",
+            "Path": "brk/hyuf1.brk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Moving Platform With Eye on Bottom",
+    "Archive": "Hyuf2",
+    "Models": [
+      {
+        "Path": "bdlm/hyuf2.bdl",
+      }
+    ]
+  },
+  {
     "Name": "Tentacle Nut",
     "Archive": "Sitem",
     "Models": [
