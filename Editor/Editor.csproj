@@ -227,7 +227,7 @@
     <Compile Include="Editor\Entities\Actors\bmdhand.cs" />
     <Compile Include="Editor\Entities\Actors\bo.cs" />
     <Compile Include="Editor\Entities\Actors\boko.cs" />
-    <Compile Include="Editor\Entities\Actors\Bokoblin.cs" />
+    <Compile Include="Editor\Entities\Actors\bk.cs" />
     <Compile Include="Editor\Entities\Actors\boss_item.cs" />
     <Compile Include="Editor\Entities\Actors\bpw.cs" />
     <Compile Include="Editor\Entities\Actors\branch.cs" />
@@ -263,13 +263,13 @@
     <Compile Include="Editor\Entities\Actors\fire.cs" />
     <Compile Include="Editor\Entities\Actors\floor.cs" />
     <Compile Include="Editor\Entities\Actors\fm.cs" />
-    <Compile Include="Editor\Entities\Actors\Foliage.cs" />
+    <Compile Include="Editor\Entities\Actors\grass.cs" />
     <Compile Include="Editor\Entities\Actors\f_pc_profile_lst.cs" />
     <Compile Include="Editor\Entities\Actors\ghostship.cs" />
     <Compile Include="Editor\Entities\Actors\gm.cs" />
     <Compile Include="Editor\Entities\Actors\gnd.cs" />
     <Compile Include="Editor\Entities\Actors\goal_flag.cs" />
-    <Compile Include="Editor\Entities\Actors\Gohdan.cs" />
+    <Compile Include="Editor\Entities\Actors\bst.cs" />
     <Compile Include="Editor\Entities\Actors\gy.cs" />
     <Compile Include="Editor\Entities\Actors\gy_ctrl.cs" />
     <Compile Include="Editor\Entities\Actors\himo3.cs" />
@@ -285,7 +285,7 @@
     <Compile Include="Editor\Entities\Actors\kamome.cs" />
     <Compile Include="Editor\Entities\Actors\kanban.cs" />
     <Compile Include="Editor\Entities\Actors\kantera.cs" />
-    <Compile Include="Editor\Entities\Actors\Kargaroc.cs" />
+    <Compile Include="Editor\Entities\Actors\bb.cs" />
     <Compile Include="Editor\Entities\Actors\kb.cs" />
     <Compile Include="Editor\Entities\Actors\kddoor.cs" />
     <Compile Include="Editor\Entities\Actors\ki.cs" />
@@ -309,7 +309,7 @@
     <Compile Include="Editor\Entities\Actors\kytag07.cs" />
     <Compile Include="Editor\Entities\Actors\lamp.cs" />
     <Compile Include="Editor\Entities\Actors\stone2.cs" />
-    <Compile Include="Editor\Entities\Actors\LargeTree.cs" />
+    <Compile Include="Editor\Entities\Actors\lwood.cs" />
     <Compile Include="Editor\Entities\Actors\lbridge.cs" />
     <Compile Include="Editor\Entities\Actors\leaflift.cs" />
     <Compile Include="Editor\Entities\Actors\lod_bg.cs" />
@@ -320,7 +320,7 @@
     <Compile Include="Editor\Entities\Actors\mant.cs" />
     <Compile Include="Editor\Entities\Actors\mbdoor.cs" />
     <Compile Include="Editor\Entities\Actors\mdoor.cs" />
-    <Compile Include="Editor\Entities\Actors\Medli.cs" />
+    <Compile Include="Editor\Entities\Actors\npc_md.cs" />
     <Compile Include="Editor\Entities\Actors\mflft.cs" />
     <Compile Include="Editor\Entities\Actors\mgameboard.cs" />
     <Compile Include="Editor\Entities\Actors\mmusic.cs" />
@@ -590,7 +590,7 @@
     <Compile Include="Editor\Entities\Actors\tag_waterlevel.cs" />
     <Compile Include="Editor\Entities\Actors\tama.cs" />
     <Compile Include="Editor\Entities\Actors\tbox.cs" />
-    <Compile Include="Editor\Entities\Actors\Tetra.cs" />
+    <Compile Include="Editor\Entities\Actors\npc_zl1.cs" />
     <Compile Include="Editor\Entities\Actors\title.cs" />
     <Compile Include="Editor\Entities\Actors\tn.cs" />
     <Compile Include="Editor\Entities\Actors\toge.cs" />
@@ -614,7 +614,7 @@
     <Compile Include="Editor\Entities\Actors\ygcwp.cs" />
     <Compile Include="Editor\Entities\Actors\ykgr.cs" />
     <Compile Include="Editor\Entities\Actors\yougan.cs" />
-    <Compile Include="Editor\Entities\Actors\Zelda.cs" />
+    <Compile Include="Editor\Entities\Actors\pz.cs" />
     <Compile Include="Editor\Entities\Door_DOOR.cs" />
     <Compile Include="Editor\Entities\Enums.cs" />
     <Compile Include="Editor\Entities\Lighting\EnvironmentLightingPalette.cs" />
