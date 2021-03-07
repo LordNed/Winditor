@@ -2843,7 +2843,7 @@
     "ActorClassType": "grass",
     "Wait Animations": null,
     "Actor Name": "Grass",
-    "English Name": "grass",
+    "English Name": "Grass",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10787,7 +10787,7 @@
     "ActorClassType": "obj_try",
     "Wait Animations": null,
     "Actor Name": "Hmon1",
-    "English Name": "obj_try",
+    "English Name": "Blue TotG Pillar Statue (Unplaced)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10803,7 +10803,7 @@
     "ActorClassType": "obj_try",
     "Wait Animations": null,
     "Actor Name": "Hmon1d",
-    "English Name": "obj_try",
+    "English Name": "Blue TotG Pillar Statue (Placed)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10818,7 +10818,7 @@
     "ActorClassType": "obj_try",
     "Wait Animations": null,
     "Actor Name": "Hmon2",
-    "English Name": "obj_try",
+    "English Name": "Red TotG Pillar Statue (Unplaced)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10834,7 +10834,7 @@
     "ActorClassType": "obj_try",
     "Wait Animations": null,
     "Actor Name": "Hmon2d",
-    "English Name": "obj_try",
+    "English Name": "Red TotG Pillar Statue (Placed)",
     "Tags": null,
     "Explanation": null,
     "Locations": [

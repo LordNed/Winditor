@@ -154,12 +154,12 @@
       }
     },
     {
-      "Name": "Unknown_6",
+      "Name": "Invincible When Off Camera",
       "ValueSource": "Parameters",
       "Mask": 0x70000000,
       "Hidden": false,
       "Category": "Pots",
-      "ToolTip": "",
+      "ToolTip": "If nonzero, and the pot is not in view of the camera, the pot will not check if it's being damaged every frame, making it invincible.\nIf zero, the pot will still be destroyable even when offscreen - this is recommended for pots with enemies hidden in them.",
       "DataType": "Integer"
     },
     {

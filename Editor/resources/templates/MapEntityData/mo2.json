@@ -16,7 +16,8 @@
         5: "Carried through the air",
         15: "Frozen in time",
         100: "Blue skin without lantern unused",
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Frozen in Time Pose",

@@ -3,40 +3,51 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type", // affects which type of obj_try to search for (or obj_movebox for type 0), TODO document the specifics
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
       "Category": "obj_correct",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0", // movebox
+        1: "Unknown 1", // tryColSun
+        2: "Unknown 2", // tryColMer
+        3: "Unknown 3", // tryColJup
+        4: "Unknown 4", // tryKeyGate
+        5: "Unknown 5", // tryKeyDoor
+        6: "Unknown 6", // tryColGreen
+        7: "Unknown 7", // tryColBlue
+      },
+      "DefaultsByActorName": {
+        "BLK_CR": "Unknown 0",
+        "CrTrS3": "Unknown 1",
+        "CrTrS4": "Unknown 2",
+        "CrTrS5": "Unknown 3",
+        "CrTrM1": "Unknown 4",
+        "CrTrM2": "Unknown 5",
+        "CrTrGr": "Unknown 6",
+        "CrTrBl": "Unknown 7",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "obj_correct",
-      "ToolTip": "",
+      "ToolTip": "The switch to set for as long as the desired actor is placed within range of this detector actor.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Event",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "obj_correct",
       "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
-      "ValueSource": "Parameters",
-      "Mask": 0x40000000,
-      "Hidden": false,
-      "Category": "obj_correct",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Event"
     }
   ]
 }

@@ -7962,6 +7962,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 		public enum FrozeninTimePoseEnum
@@ -12499,26 +12500,40 @@ namespace WindEditor
 	public partial class obj_correct : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+			Unknown_7 = 7,
+		}
 
-		[WProperty("obj_correct", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("obj_correct", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
 			}
 		}
 
-		[WProperty("obj_correct", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_correct", "Switch to Set", true, "The switch to set for as long as the desired actor is placed within range of this detector actor.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -12530,41 +12545,30 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("obj_correct", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("obj_correct", "Event", true, "", SourceScene.Stage)]
+		public MapEvent Event
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("obj_correct", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x40000000) >> 30);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Event");
 			}
 		}
 
@@ -12577,10 +12581,32 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			SwitchtoSet = -1;
+			Event = null;
+			if (Name == "BLK_CR") {
+				Type = TypeEnum.Unknown_0;
+			}
+			if (Name == "CrTrS3") {
+				Type = TypeEnum.Unknown_1;
+			}
+			if (Name == "CrTrS4") {
+				Type = TypeEnum.Unknown_2;
+			}
+			if (Name == "CrTrS5") {
+				Type = TypeEnum.Unknown_3;
+			}
+			if (Name == "CrTrM1") {
+				Type = TypeEnum.Unknown_4;
+			}
+			if (Name == "CrTrM2") {
+				Type = TypeEnum.Unknown_5;
+			}
+			if (Name == "CrTrGr") {
+				Type = TypeEnum.Unknown_6;
+			}
+			if (Name == "CrTrBl") {
+				Type = TypeEnum.Unknown_7;
+			}
 		}
 	}
 
@@ -17724,26 +17750,46 @@ namespace WindEditor
 	public partial class obj_try : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+			Unknown_7 = 7,
+			Unknown_8 = 8,
+			Unknown_9 = 9,
+			Unknown_10 = 10,
+			Unknown_11 = 11,
+			Unknown_12 = 12,
+		}
 
-		[WProperty("obj_try", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("TotG Pillar Statue", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("obj_try", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("TotG Pillar Statue", "Switch to Check", true, "Once something else sets this switch, this pillar will be considered set in place.", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -17755,41 +17801,32 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
+		public enum PlacedorUnplacedEnum
+		{
+			Unplaced = 0,
+			Placed = 1,
+		}
 
-		[WProperty("obj_try", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+
+		[WProperty("TotG Pillar Statue", "Placed or Unplaced", true, "", SourceScene.Room)]
+		public PlacedorUnplacedEnum PlacedorUnplaced
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x80000000) >> 31);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(PlacedorUnplacedEnum), value_as_int))
+					value_as_int = 0;
+				return (PlacedorUnplacedEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("obj_try", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0xFFFF00FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("PlacedorUnplaced");
 			}
 		}
 
@@ -17802,10 +17839,67 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			SwitchtoCheck = -1;
+			if (Name == "Hseki1") {
+				Type = TypeEnum.Unknown_0;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki6") {
+				Type = TypeEnum.Unknown_1;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki3") {
+				Type = TypeEnum.Unknown_2;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki4") {
+				Type = TypeEnum.Unknown_3;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki5") {
+				Type = TypeEnum.Unknown_4;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hmon1") {
+				Type = TypeEnum.Unknown_5;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hmon1d") {
+				Type = TypeEnum.Unknown_5;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Placed;
+			}
+			if (Name == "Hmon2") {
+				Type = TypeEnum.Unknown_6;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hmon2d") {
+				Type = TypeEnum.Unknown_6;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Placed;
+			}
+			if (Name == "Hseki31") {
+				Type = TypeEnum.Unknown_7;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki41") {
+				Type = TypeEnum.Unknown_8;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki51") {
+				Type = TypeEnum.Unknown_9;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki32") {
+				Type = TypeEnum.Unknown_10;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki42") {
+				Type = TypeEnum.Unknown_11;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
+			if (Name == "Hseki52") {
+				Type = TypeEnum.Unknown_12;
+				PlacedorUnplaced = PlacedorUnplacedEnum.Unplaced;
+			}
 		}
 	}
 
@@ -24092,8 +24186,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Pots", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("Pots", "Invincible When Off Camera", true, "If nonzero, and the pot is not in view of the camera, the pot will not check if it's being damaged every frame, making it invincible.\nIf zero, the pot will still be destroyable even when offscreen - this is recommended for pots with enemies hidden in them.", SourceScene.Room)]
+		public int InvincibleWhenOffCamera
 		{ 
 			get
 			{
@@ -24105,7 +24199,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("InvincibleWhenOffCamera");
 			}
 		}
 
@@ -24161,7 +24255,7 @@ namespace WindEditor
 			BehaviorType = BehaviorTypeEnum.Normal;
 			DroppedItem = DroppedItemID.No_item;
 			ItemPickupFlag = -1;
-			Unknown_6 = -1;
+			InvincibleWhenOffCamera = -1;
 			EnableSpawnActivationSwitch = -1;
 			if (Name == "kotubo") {
 				Type = TypeEnum.Small_pot;

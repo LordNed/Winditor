@@ -22,13 +22,14 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            if (Unknown_1 == 6)
+            switch (Type)
             {
-                m_actorMeshes = WResourceManager.LoadActorResource("Red Tower of the Gods Pillar Statue");
-            }
-            else
-            {
-                m_actorMeshes = WResourceManager.LoadActorResource("Blue Tower of the Gods Pillar Statue");
+                case TypeEnum.Unknown_6:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Red Tower of the Gods Pillar Statue");
+                    break;
+                default:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Blue Tower of the Gods Pillar Statue");
+                    break;
             }
         }
 	}
