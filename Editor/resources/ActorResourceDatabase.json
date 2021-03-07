@@ -3662,6 +3662,56 @@
     ]
   },
   {
+    "Name": "Salvatore (Squid Hunt)",
+    "Archive": "Kg",
+    "Models": [
+      {
+        "Path": "bdlm/kg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/kg_wait02.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Salvatore (Barrel Shooting)",
+    "Archive": "Kg",
+    "Models": [
+      {
+        "Path": "bdlm/kg.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/kg_kwait.bck",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/kg_plate.bdl",
+            "Parent Joint": "handL",
+            "Position": {
+              "X": 23.46,
+              "Y": -22.26,
+              "Z": -47.05
+            },
+            "Rotation": { // TODO: These rotation values look completely wrong in Winditor, even though I extracted them directly from the game's code.
+              "X": 44.0057373046875,
+              "Y": 248.90625,
+              "Z": 44.0057373046875
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Gohdan Head",
     "Archive": "Bst",
     "Models": [

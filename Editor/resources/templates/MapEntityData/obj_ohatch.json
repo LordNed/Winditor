@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_ohatch",
+      "Category": "Nintendo Gallery Hatch",
       "ToolTip": "",
       "DataType": "Integer"
     }

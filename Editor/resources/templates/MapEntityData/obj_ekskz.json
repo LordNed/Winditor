@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_ekskz",
+      "Category": "Octorok Wind Statue",
       "ToolTip": "",
       "DataType": "Integer"
     }

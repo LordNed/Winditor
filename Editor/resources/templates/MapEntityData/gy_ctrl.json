@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
-      "Category": "gy_ctrl",
+      "Category": "Gyorg Spawner",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -24,7 +24,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000F0,
       "Hidden": false,
-      "Category": "gy_ctrl",
+      "Category": "Gyorg Spawner",
       "ToolTip": "How many Gyorgs to spawn. 15 defaults to 1 Gyorg.",
       "DataType": "Integer"
     },
@@ -33,7 +33,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "gy_ctrl",
+      "Category": "Gyorg Spawner",
       "ToolTip": "This number multiplied by 1000 is the range it can see KoRL within and will start spawning Gyorgs.",
       "DataType": "Integer"
     },
@@ -42,7 +42,7 @@
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "gy_ctrl",
+      "Category": "Gyorg Spawner",
       "ToolTip": "If this switch is valid, the spawner will not start spawning Gyorgs until the switch is set.",
       "DataType": "Integer"
     },

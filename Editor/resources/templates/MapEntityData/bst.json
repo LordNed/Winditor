@@ -9,7 +9,13 @@
       "Hidden": true,
       "Category": "bst",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Head",
+        1: "Left Hand",
+        2: "Right Hand",
+      },
+      "UpdateModel": true
     }
   ]
 }

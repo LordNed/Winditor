@@ -2370,19 +2370,29 @@ namespace WindEditor
 	public partial class bst : Actor
 	{
 		// Auto-Generated Properties from Templates
-		public int ComponentType
+		public enum ComponentTypeEnum
+		{
+			Head = 0,
+			Left_Hand = 1,
+			Right_Hand = 2,
+		}
+
+		public ComponentTypeEnum ComponentType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ComponentTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (ComponentTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ComponentType");
+				UpdateModel();
 			}
 		}
 
@@ -2390,12 +2400,6 @@ namespace WindEditor
 		public bst(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			ComponentType = -1;
 		}
 	}
 
@@ -4735,7 +4739,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("gy_ctrl", "Type", true, "", SourceScene.Room)]
+		[WProperty("Gyorg Spawner", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -4754,7 +4758,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gy_ctrl", "Number of Gyorgs", true, "How many Gyorgs to spawn. 15 defaults to 1 Gyorg.", SourceScene.Room)]
+		[WProperty("Gyorg Spawner", "Number of Gyorgs", true, "How many Gyorgs to spawn. 15 defaults to 1 Gyorg.", SourceScene.Room)]
 		public int NumberofGyorgs
 		{ 
 			get
@@ -4771,7 +4775,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gy_ctrl", "Sight Range (Thousands)", true, "This number multiplied by 1000 is the range it can see KoRL within and will start spawning Gyorgs.", SourceScene.Room)]
+		[WProperty("Gyorg Spawner", "Sight Range (Thousands)", true, "This number multiplied by 1000 is the range it can see KoRL within and will start spawning Gyorgs.", SourceScene.Room)]
 		public int SightRangeThousands
 		{ 
 			get
@@ -4788,7 +4792,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("gy_ctrl", "Enable Spawn Switch", true, "If this switch is valid, the spawner will not start spawning Gyorgs until the switch is set.", SourceScene.Room)]
+		[WProperty("Gyorg Spawner", "Enable Spawn Switch", true, "If this switch is valid, the spawner will not start spawning Gyorgs until the switch is set.", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -12861,7 +12865,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_ekskz", "Destroyed Switch", true, "", SourceScene.Room)]
+		[WProperty("Octorok Wind Statue", "Destroyed Switch", true, "", SourceScene.Room)]
 		public int DestroyedSwitch
 		{ 
 			get
@@ -15996,7 +16000,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_ohatch", "Opened Switch", true, "", SourceScene.Room)]
+		[WProperty("Nintendo Gallery Hatch", "Opened Switch", true, "", SourceScene.Room)]
 		public int OpenedSwitch
 		{ 
 			get

@@ -724,7 +724,7 @@
     "ActorClassType": "auction",
     "Wait Animations": null,
     "Actor Name": "Auction",
-    "English Name": "auction",
+    "English Name": "Auction Controller",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1611,7 +1611,7 @@
     "ActorClassType": "demo_kmm",
     "Wait Animations": null,
     "Actor Name": "DmKmm",
-    "English Name": "Cutscene Seagull",
+    "English Name": "Cutscene Seagull 1",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1627,7 +1627,7 @@
     "ActorClassType": "demo_kmm",
     "Wait Animations": null,
     "Actor Name": "DmKmm2",
-    "English Name": "Cutscene Seagull",
+    "English Name": "Cutscene Seagull 2",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1981,7 +1981,7 @@
     "ActorClassType": "dummy",
     "Wait Animations": null,
     "Actor Name": "TagD1",
-    "English Name": "dummy",
+    "English Name": "Dummied Out Actor 1",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -1996,7 +1996,7 @@
     "ActorClassType": "dummy",
     "Wait Animations": null,
     "Actor Name": "TagD2",
-    "English Name": "dummy",
+    "English Name": "Dummied Out Actor 2",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2011,7 +2011,7 @@
     "ActorClassType": "dummy",
     "Wait Animations": null,
     "Actor Name": "TagD3",
-    "English Name": "dummy",
+    "English Name": "Dummied Out Actor 3",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -2026,7 +2026,7 @@
     "ActorClassType": "dummy",
     "Wait Animations": null,
     "Actor Name": "TagD4",
-    "English Name": "dummy",
+    "English Name": "Dummied Out Actor 4",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -4993,7 +4993,7 @@
     "ActorClassType": "mgameboard",
     "Wait Animations": null,
     "Actor Name": "GBoard",
-    "English Name": "mgameboard",
+    "English Name": "Squid Hunt Minigame Gameboard",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6025,7 +6025,7 @@
     "ActorClassType": "npc_kg1",
     "Wait Animations": null,
     "Actor Name": "Kg1",
-    "English Name": "npc_kg1",
+    "English Name": "Salvatore (Squid Hunt)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6040,7 +6040,7 @@
     "ActorClassType": "npc_kg2",
     "Wait Animations": null,
     "Actor Name": "Kg2",
-    "English Name": "npc_kg2",
+    "English Name": "Salvatore (Barrel Shooting)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8081,7 +8081,7 @@
     "ActorClassType": "obj_ekskz",
     "Wait Animations": null,
     "Actor Name": "Ekskz",
-    "English Name": "obj_ekskz",
+    "English Name": "Octorok Wind Statue",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9725,7 +9725,7 @@
     "ActorClassType": "obj_ohatch",
     "Wait Animations": null,
     "Actor Name": "Ohatch",
-    "English Name": "obj_ohatch",
+    "English Name": "Nintendo Gallery Hatch",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9897,7 +9897,7 @@
     "ActorClassType": "obj_pbka",
     "Wait Animations": null,
     "Actor Name": "Pbka",
-    "English Name": "obj_pbka",
+    "English Name": "Ceiling Fan",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10018,7 +10018,7 @@
     "ActorClassType": "obj_rflw",
     "Wait Animations": null,
     "Actor Name": "Rflw",
-    "English Name": "obj_rflw",
+    "English Name": "Fancy Potted Plant",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10984,7 +10984,7 @@
     "ActorClassType": "obj_vgnfd",
     "Wait Animations": null,
     "Actor Name": "VgnFD",
-    "English Name": "obj_vgnfd",
+    "English Name": "Ganon's Tower Boss Tablet",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11063,7 +11063,7 @@
     "ActorClassType": "obj_Vteng",
     "Wait Animations": null,
     "Actor Name": "Vteng",
-    "English Name": "obj_Vteng",
+    "English Name": "Puppet Ganon Chandelier",
     "Tags": null,
     "Explanation": null,
     "Locations": [

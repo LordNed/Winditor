@@ -6,36 +6,6 @@ using System.Threading.Tasks;
 
 namespace WindEditor
 {
-    public enum BokoblinHeldItem
-    {
-        Unlit_Torch,
-        Machete_1,
-        Lit_Torch,
-        Machete_2
-    }
-
-    public enum BokoblinType
-    {
-        Wandering,
-        Unknown_1,
-        Unknown_2,
-        Hiding_in_a_Pot,
-        Guarding,
-        Being_Carried_by_a_Kargaroc,
-        Search_Light_Operator,
-        Jumping,
-        Guarding_and_Yawning = 10,
-        Pink_Bokoblin_with_Telescope,
-        Debug = 15
-    }
-
-    public enum GohdanComponent
-    {
-        Head,
-        Left_Hand,
-        Right_Hand
-    }
-
     public enum ItemID
     {
         Heart = 0x00,
