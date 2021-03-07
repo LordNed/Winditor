@@ -271,8 +271,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("alldie", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("All Enemies Dead Switch Setter", "Switch to Set", true, "The switch that will be set once there are no living enemies left in the room.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -284,7 +284,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -297,7 +297,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 		}
 	}
 

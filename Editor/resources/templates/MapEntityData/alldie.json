@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "alldie",
-      "ToolTip": "",
+      "Category": "All Enemies Dead Switch Setter",
+      "ToolTip": "The switch that will be set once there are no living enemies left in the room.",
       "DataType": "Integer"
     }
   ]
