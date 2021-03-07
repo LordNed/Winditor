@@ -17032,7 +17032,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_swlight", "Switch to Set", true, "The switch to set when this eye has light shone on it.", SourceScene.Room)]
+		[WProperty("Sun Statue Eye", "Switch to Set", true, "The switch to set when this eye has light shone on it.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
@@ -17049,7 +17049,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swlight", "Other Switch", true, "The switch that is set when the other eye this one is paired up with has light shone on it.", SourceScene.Room)]
+		[WProperty("Sun Statue Eye", "Other Switch", true, "The switch that is set when the other eye this one is paired up with has light shone on it.", SourceScene.Room)]
 		public int OtherSwitch
 		{ 
 			get
@@ -17066,7 +17066,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_swlight", "Is Paired", true, "", SourceScene.Room)]
+		[WProperty("Sun Statue Eye", "Is Paired", true, "", SourceScene.Room)]
 		public bool IsPaired
 		{ 
 			get

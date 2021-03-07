@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_swlight",
+      "Category": "Sun Statue Eye",
       "ToolTip": "The switch to set when this eye has light shone on it.",
       "DataType": "Integer"
     },
@@ -16,7 +16,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_swlight",
+      "Category": "Sun Statue Eye",
       "ToolTip": "The switch that is set when the other eye this one is paired up with has light shone on it.",
       "DataType": "Integer"
     },
@@ -25,7 +25,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00010000,
       "Hidden": false,
-      "Category": "obj_swlight",
+      "Category": "Sun Statue Eye",
       "ToolTip": "",
       "DataType": "Boolean",
       "DefaultsByActorName": {

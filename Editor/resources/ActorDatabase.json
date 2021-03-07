@@ -5929,7 +5929,7 @@
     "ActorClassType": "npc_ji1",
     "Wait Animations": null,
     "Actor Name": "Ji1",
-    "English Name": "npc_ji1",
+    "English Name": "Orca",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7658,7 +7658,7 @@
     "ActorClassType": "obj_cafelmp",
     "Wait Animations": null,
     "Actor Name": "Cafelmp",
-    "English Name": "obj_cafelmp",
+    "English Name": "Cafe Lamp",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -9707,7 +9707,7 @@
     "ActorClassType": "obj_nest",
     "Wait Animations": null,
     "Actor Name": "MtoriSU",
-    "English Name": "obj_nest",
+    "English Name": "Bird Nest",
     "Tags": null,
     "Explanation": null,
     "Locations": [
