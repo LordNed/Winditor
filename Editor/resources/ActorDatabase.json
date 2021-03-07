@@ -8895,7 +8895,7 @@
     "ActorClassType": "obj_ladder",
     "Wait Animations": null,
     "Actor Name": "Mhsg6",
-    "English Name": "obj_ladder",
+    "English Name": "Short Ladder",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8912,7 +8912,7 @@
     "ActorClassType": "obj_ladder",
     "Wait Animations": null,
     "Actor Name": "Mhsg9",
-    "English Name": "obj_ladder",
+    "English Name": "Medium Ladder",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8928,7 +8928,7 @@
     "ActorClassType": "obj_ladder",
     "Wait Animations": null,
     "Actor Name": "Mhsg12",
-    "English Name": "obj_ladder",
+    "English Name": "Long Ladder",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8944,7 +8944,7 @@
     "ActorClassType": "obj_ladder",
     "Wait Animations": null,
     "Actor Name": "Mhsg15",
-    "English Name": "obj_ladder",
+    "English Name": "Very Long Ladder",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8960,7 +8960,7 @@
     "ActorClassType": "obj_ladder",
     "Wait Animations": null,
     "Actor Name": "Mhsg4h",
-    "English Name": "obj_ladder",
+    "English Name": "Very Short Ladder",
     "Tags": null,
     "Explanation": null,
     "Locations": [
