@@ -2853,7 +2853,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("Deku Leaf Pickup", "Item Pickup Flag", true, "", SourceScene.Room)]
+		[WProperty("Deku Leaf Item Pickup", "Item Pickup Flag", true, "", SourceScene.Room)]
 		public int ItemPickupFlag
 		{ 
 			get
@@ -17467,7 +17467,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_timer", "Time Limit (Half Seconds)", true, "This number multiplied by 15 frames is how long to wait before unsetting the switch.", SourceScene.Room)]
+		[WProperty("Countdown Timer", "Time Limit (Half Seconds)", true, "This number multiplied by 15 frames is how long to wait before unsetting the switch.", SourceScene.Room)]
 		public int TimeLimitHalfSeconds
 		{ 
 			get
@@ -17484,7 +17484,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_timer", "Switch to Unset", true, "When something else sets this switch, this timer object starts a countdown. When the countdown reaches zero, it unsets this switch.", SourceScene.Room)]
+		[WProperty("Countdown Timer", "Switch to Unset", true, "When something else sets this switch, this timer object starts a countdown. When the countdown reaches zero, it unsets this switch.", SourceScene.Room)]
 		public int SwitchtoUnset
 		{ 
 			get
@@ -20747,7 +20747,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("sss", "SFX Type", true, "The SFX to play when it comes out of the ground. There's no noticeable difference between the two, so this is a useless parameter.", SourceScene.Room)]
+		[WProperty("Dexivine", "SFX Type", true, "The SFX to play when it comes out of the ground. There's no noticeable difference between the two, so this is a useless parameter.", SourceScene.Room)]
 		public SFXTypeEnum SFXType
 		{ 
 			get
@@ -20766,7 +20766,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sss", "Sight Range (Tens)", true, "This number multiplied by 10 is used as a range within it notices Link and comes out of the ground. 255 will default to a range of 1000.", SourceScene.Room)]
+		[WProperty("Dexivine", "Sight Range (Tens)", true, "This number multiplied by 10 is used as a range within it notices Link and comes out of the ground. 255 will default to a range of 1000.", SourceScene.Room)]
 		public int SightRangeTens
 		{ 
 			get
@@ -20783,7 +20783,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("sss", "Enable Spawn Switch", true, "If this is not 0 or 255, the Dexivine will hide underground until this switch is set.", SourceScene.Room)]
+		[WProperty("Dexivine", "Enable Spawn Switch", true, "If this is not 0 or 255, the Dexivine will hide underground until this switch is set.", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get

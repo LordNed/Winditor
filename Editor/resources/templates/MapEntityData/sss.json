@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "sss",
+      "Category": "Dexivine",
       "ToolTip": "The SFX to play when it comes out of the ground. There's no noticeable difference between the two, so this is a useless parameter.",
       "DataType": "Enum",
       "EnumValues": {
@@ -20,7 +20,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "sss",
+      "Category": "Dexivine",
       "ToolTip": "This number multiplied by 10 is used as a range within it notices Link and comes out of the ground. 255 will default to a range of 1000.",
       "DataType": "Integer"
     },
@@ -29,7 +29,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "sss",
+      "Category": "Dexivine",
       "ToolTip": "If this is not 0 or 255, the Dexivine will hide underground until this switch is set.",
       "DataType": "Integer"
     }

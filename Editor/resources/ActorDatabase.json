@@ -1565,7 +1565,7 @@
     "ActorClassType": "deku_item",
     "Wait Animations": null,
     "Actor Name": "itemDek",
-    "English Name": "Deku Leaf Item",
+    "English Name": "Deku Leaf Item Pickup",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -10534,9 +10534,9 @@
     "ActorClassType": "obj_timer",
     "Wait Animations": null,
     "Actor Name": "ObjTime",
-    "English Name": "obj_timer",
+    "English Name": "Countdown Timer",
     "Tags": null,
-    "Explanation": null,
+    "Explanation": "This actor will start a countdown when its switch is set by another actor. When the countdown reaches zero, this actor will unset its switch.",
     "Locations": [
       "Pirate Ship Interior (Asoko)",
       "Unused (K_Test9)",

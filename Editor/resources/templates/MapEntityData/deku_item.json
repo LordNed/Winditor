@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "Deku Leaf Pickup",
+      "Category": "Deku Leaf Item Pickup",
       "ToolTip": "",
       "DataType": "Integer"
     }

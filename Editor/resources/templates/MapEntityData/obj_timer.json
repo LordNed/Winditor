@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_timer",
+      "Category": "Countdown Timer",
       "ToolTip": "This number multiplied by 15 frames is how long to wait before unsetting the switch.",
       "DataType": "Integer"
     },
@@ -16,7 +16,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "obj_timer",
+      "Category": "Countdown Timer",
       "ToolTip": "When something else sets this switch, this timer object starts a countdown. When the countdown reaches zero, it unsets this switch.",
       "DataType": "Integer"
     }
