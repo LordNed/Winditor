@@ -2169,8 +2169,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("boss_item", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Heart Container", "Stage Save Info ID", true, "The index of which stage save info in the save file this heart container should use.\nThis affects both which save info to use when checking if the boss is dead, and which save info to use for this heart container being picked up.\nDoes not need to be the same as the stage save info of the stage this heart container is placed in.", SourceScene.Room)]
+		public int StageSaveInfoID
 		{ 
 			get
 			{
@@ -2182,7 +2182,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("StageSaveInfoID");
 			}
 		}
 
@@ -2195,7 +2195,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			StageSaveInfoID = -1;
 		}
 	}
 
@@ -13832,7 +13832,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_hole", "Exit", true, "", SourceScene.Room)]
+		[WProperty("Entrance Hole", "Exit", true, "", SourceScene.Room)]
 		public ExitData Exit
 		{ 
 			get
@@ -13863,7 +13863,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hole", "Has Visible Hole", true, "", SourceScene.Room)]
+		[WProperty("Entrance Hole", "Has Visible Hole", true, "", SourceScene.Room)]
 		public bool HasVisibleHole
 		{ 
 			get
@@ -13885,7 +13885,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_hole", "Hole Scale", true, "If this is not 65535, this number divided by 6.5 is added to the scale of the hole.", SourceScene.Room)]
+		[WProperty("Entrance Hole", "Hole Scale", true, "If this is not 65535, this number divided by 6.5 is added to the scale of the hole.", SourceScene.Room)]
 		public int HoleScale
 		{ 
 			get
@@ -15680,7 +15680,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_msdan_sub", "Switch to Check", true, "", SourceScene.Room)]
+		[WProperty("Earth Temple Staircase Single Stair", "Switch to Check", true, "", SourceScene.Room)]
 		public int SwitchtoCheck
 		{ 
 			get
@@ -15697,7 +15697,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_msdan_sub", "Which Stair Index", true, "", SourceScene.Room)]
+		[WProperty("Earth Temple Staircase Single Stair", "Which Stair Index", true, "", SourceScene.Room)]
 		public int WhichStairIndex
 		{ 
 			get
@@ -15720,7 +15720,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("obj_msdan_sub", "Staircase Length", true, "", SourceScene.Room)]
+		[WProperty("Earth Temple Staircase Single Stair", "Staircase Length", true, "", SourceScene.Room)]
 		public StaircaseLengthEnum StaircaseLength
 		{ 
 			get

@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Stage Save Info ID",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "boss_item",
-      "ToolTip": "",
+      "Category": "Heart Container",
+      "ToolTip": "The index of which stage save info in the save file this heart container should use.\nThis affects both which save info to use when checking if the boss is dead, and which save info to use for this heart container being picked up.\nDoes not need to be the same as the stage save info of the stage this heart container is placed in.",
       "DataType": "Integer"
     }
   ]

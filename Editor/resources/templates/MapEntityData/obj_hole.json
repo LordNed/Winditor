@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_hole",
+      "Category": "Entrance Hole",
       "ToolTip": "",
       "DataType": "Exit"
     },
@@ -16,7 +16,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_hole",
+      "Category": "Entrance Hole",
       "ToolTip": "",
       "DataType": "Boolean",
       "BooleanDefaultValue": true,
@@ -28,7 +28,7 @@
       "ValueSource": "AuxillaryParameters2",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "obj_hole",
+      "Category": "Entrance Hole",
       "ToolTip": "If this is not 65535, this number divided by 6.5 is added to the scale of the hole.",
       "DataType": "Integer",
       "UpdateModel": true

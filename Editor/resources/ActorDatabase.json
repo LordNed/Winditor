@@ -1169,7 +1169,7 @@
     "Tags": [
       "item"
     ],
-    "Explanation": "This object spawns a Heart Container when the proper flags have been set, which usually include the defeat of the boss that guards it.",
+    "Explanation": "This object spawns a Heart Container when you enter the room if the specified boss death flag is already set.",
     "Locations": [
       "Forsaken Fortress Tower (2nd visit) (M2tower)",
       "Earth Temple Jalhalla Boss Room (M_DaiB)",
@@ -9474,7 +9474,7 @@
     "ActorClassType": "obj_msdan_sub",
     "Wait Animations": null,
     "Actor Name": "MsdanSb",
-    "English Name": "obj_msdan_sub",
+    "English Name": "Earth Temple Staircase Single Stair",
     "Tags": null,
     "Explanation": null,
     "Locations": [
