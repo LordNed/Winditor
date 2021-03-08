@@ -6861,6 +6861,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("ModelType");
+				UpdateModel();
 			}
 		}
 

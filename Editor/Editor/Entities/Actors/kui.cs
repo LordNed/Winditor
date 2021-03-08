@@ -22,13 +22,13 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            switch (m_Parameters & 0x0000000F)
+            switch (ModelType)
             {
-                case 2:
-                case 4:
+                case ModelTypeEnum.Dragon_Roost_Cavern_Grapple_Switch:
+                case ModelTypeEnum.Cabana_Grapple_Switch:
                     m_actorMeshes = WResourceManager.LoadActorResource("Grapple Device");
                     break;
-                case 3:
+                case ModelTypeEnum.Tower_of_the_Gods_Bell:
                     m_actorMeshes = WResourceManager.LoadActorResource("Tower of the Gods Bell");
                     break;
                 default:

@@ -16,7 +16,8 @@
         2: "Dragon Roost Cavern Grapple Switch",
         3: "Tower of the Gods Bell",
         4: "Cabana Grapple Switch"
-      }
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_2",
