@@ -9467,8 +9467,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("npc_kf1", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("npc_kf1", "Unused Type", true, "", SourceScene.Room)]
+		public int UnusedType
 		{ 
 			get
 			{
@@ -9480,12 +9480,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("UnusedType");
 			}
 		}
 
-		[WProperty("npc_kf1", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("npc_kf1", "Player Is Near Exit Switch", true, "The switch to check to know if the player is near the door leading out of the house. This is checked after the player destroys the fancy pots to know when they're trying to leave.", SourceScene.Room)]
+		public int PlayerIsNearExitSwitch
 		{ 
 			get
 			{
@@ -9497,39 +9497,61 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("PlayerIsNearExitSwitch");
 			}
 		}
 
-		[WProperty("npc_kf1", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("npc_kf1", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Path");
 			}
 		}
+		public enum Unknown_4Enum
+		{
+			Unknown_0 = 0,
+			Unknown_14 = 14,
+		}
+
 
 		[WProperty("npc_kf1", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		public Unknown_4Enum Unknown_4
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0F000000) >> 24);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(Unknown_4Enum), value_as_int))
+					value_as_int = 0;
+				return (Unknown_4Enum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
 			}
@@ -9544,10 +9566,9 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			UnusedType = -1;
+			PlayerIsNearExitSwitch = -1;
+			Path = null;
 		}
 	}
 

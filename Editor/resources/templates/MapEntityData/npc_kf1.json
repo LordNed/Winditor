@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Unused Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
@@ -12,31 +12,35 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Player Is Near Exit Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "npc_kf1",
-      "ToolTip": "",
+      "ToolTip": "The switch to check to know if the player is near the door leading out of the house. This is checked after the player destroys the fancy pots to know when they're trying to leave.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "npc_kf1",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Unknown_4", // This does something related to searching for the fancy pot actors. Always 0 in vanilla, unsure what 14 changes.
       "ValueSource": "Parameters",
       "Mask": 0x0F000000,
       "Hidden": false,
       "Category": "npc_kf1",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+         0: "Unknown 0",
+        14: "Unknown 14",
+      }
     }
   ]
 }

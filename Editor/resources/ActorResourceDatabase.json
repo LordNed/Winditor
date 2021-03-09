@@ -6897,7 +6897,17 @@
         "Child Models": [
           {
             "Path": "bdl/kf_hair.bdl",
-            "Parent Joint": "head"
+            "Parent Joint": "head",
+            "Position": {
+              "X": 33.87,
+              "Y": 3.26,
+              "Z": 0
+            },
+            "Rotation": { // TODO: These rotation values look completely wrong in Winditor, even though I extracted them directly from the game's code.
+              "X": -90,
+              "Y": -90,
+              "Z": 0
+            }
           }
         ]
       }
