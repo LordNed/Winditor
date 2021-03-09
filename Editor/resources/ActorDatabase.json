@@ -6009,7 +6009,7 @@
     "ActorClassType": "npc_kf1",
     "Wait Animations": null,
     "Actor Name": "Kf1",
-    "English Name": "npc_kf1",
+    "English Name": "Mila's Father (Rich)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6123,7 +6123,7 @@
     "ActorClassType": "npc_kp1",
     "Wait Animations": null,
     "Actor Name": "Kp1",
-    "English Name": "npc_kp1",
+    "English Name": "Maggie (Rich)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6753,7 +6753,7 @@
     "ActorClassType": "npc_pf1",
     "Wait Animations": null,
     "Actor Name": "Pf1",
-    "English Name": "npc_pf1",
+    "English Name": "Maggie's Father (Poor)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -6784,7 +6784,7 @@
     "ActorClassType": "npc_pm1",
     "Wait Animations": null,
     "Actor Name": "Pm1",
-    "English Name": "npc_pm1",
+    "English Name": "Maggie (Poor)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
