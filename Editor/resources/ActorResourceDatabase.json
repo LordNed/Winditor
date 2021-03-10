@@ -6914,6 +6914,51 @@
     ]
   },
   {
+    "Name": "Beedle",
+    "Archive": "Bs",
+    "Models": [
+      {
+        "Path": "bdlm/bs.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bs_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Masked Beedle",
+    "Archive": "Bs",
+    "Models": [
+      {
+        "Path": "bdlm/bs.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bcks/bs_wait01.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          }
+        ],
+        "Child Models": [
+          {
+            "Path": "bdlm/bs_met.bdl",
+            "Parent Joint": "head",
+            "Position": {
+              "X": 4,
+              "Y": 0,
+              "Z": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Mrs. Marie",
     "Archive": "Ho",
     "Models": [

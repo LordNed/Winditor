@@ -11,12 +11,25 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			UpdateModel();
 			base.PostLoad();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+		{
+			if (IsMaskedBeedle)
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Masked Beedle");
+			}
+			else
+			{
+				m_actorMeshes = WResourceManager.LoadActorResource("Beedle");
+			}
 		}
 	}
 }

@@ -5681,7 +5681,7 @@
     "ActorClassType": "npc_bs1",
     "Wait Animations": null,
     "Actor Name": "Bs1",
-    "English Name": "npc_bs1",
+    "English Name": "Beedle",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5696,7 +5696,7 @@
     "ActorClassType": "npc_bs1",
     "Wait Animations": null,
     "Actor Name": "Bs2",
-    "English Name": "npc_bs1",
+    "English Name": "Masked Beedle",
     "Tags": null,
     "Explanation": null,
     "Locations": [

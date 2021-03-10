@@ -3,22 +3,33 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Which Shop",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "npc_bs1",
+      "Category": "Beedle",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Bait Bag and Bait Shop A",
+        1: "Bait Bag and Bait Shop B",
+        2: "Arrows and Bait Shop",
+        3: "Arrows Bombs and Potion Shop",
+        255: "Invalid Shop",
+      },
+      "EnumDefaultValue": 3
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Is Masked Beedle",
       "ValueSource": "Parameters",
       "Mask": 0x00F00000,
       "Hidden": false,
-      "Category": "npc_bs1",
+      "Category": "Beedle",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [1],
+      "UpdateModel": true
     }
   ]
 }

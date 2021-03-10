@@ -8905,38 +8905,54 @@ namespace WindEditor
 	public partial class npc_bs1 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum WhichShopEnum
+		{
+			Bait_Bag_and_Bait_Shop_A = 0,
+			Bait_Bag_and_Bait_Shop_B = 1,
+			Arrows_and_Bait_Shop = 2,
+			Arrows_Bombs_and_Potion_Shop = 3,
+			Invalid_Shop = 255,
+		}
 
-		[WProperty("npc_bs1", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Beedle", "Which Shop", true, "", SourceScene.Room)]
+		public WhichShopEnum WhichShop
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(WhichShopEnum), value_as_int))
+					value_as_int = 3;
+				return (WhichShopEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("WhichShop");
 			}
 		}
 
-		[WProperty("npc_bs1", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Beedle", "Is Masked Beedle", true, "", SourceScene.Room)]
+		public bool IsMaskedBeedle
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00F00000) >> 20);
-				return value_as_int;
+				if (value_as_int == 1) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("IsMaskedBeedle");
+				UpdateModel();
 			}
 		}
 
@@ -8944,13 +8960,6 @@ namespace WindEditor
 		public npc_bs1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
 		}
 	}
 
