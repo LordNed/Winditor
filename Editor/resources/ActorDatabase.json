@@ -15191,5 +15191,19 @@
     "Locations": [
     ],
     "ImagePath": null
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "sea",
+    "Wait Animations": null,
+    "Actor Name": "sea",
+    "English Name": "The Great Sea",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
+    ],
+    "ImagePath": null
   }
 ]

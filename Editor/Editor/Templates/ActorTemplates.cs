@@ -20073,6 +20073,18 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class sea : Actor
+	{
+		// Auto-Generated Properties from Templates
+
+		// Constructor
+		public sea(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			
+		}
+	}
+
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class seatag : Actor
 	{
 		// Auto-Generated Properties from Templates
