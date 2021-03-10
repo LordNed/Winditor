@@ -707,11 +707,11 @@ namespace WindEditor
 
                     var rotationAABB = new[]
                     {
-                         // Y Axis (XZ Plane)
-                        new FAABox(new Vector3(-2, 0, 0), new Vector3(2, radius, radius)),
-                        // Z Axis (XY Plane)
-                        new FAABox(new Vector3(0, -2, 0), new Vector3(radius, 2, radius)),
                         // X Axis (YZ Plane)
+                        new FAABox(new Vector3(-2, 0, 0), new Vector3(2, radius, radius)),
+                        // Y Axis (XZ Plane)
+                        new FAABox(new Vector3(0, -2, 0), new Vector3(radius, 2, radius)),
+                        // Z Axis (XY Plane)
                         new FAABox(new Vector3(0, 0, -2), new Vector3(radius, radius, 2)),
                     };
 
