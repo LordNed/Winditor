@@ -11,6 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
+			m_actorMeshes = WResourceManager.LoadActorResource("Hero of Time Statue");
 			base.PostLoad();
 		}
 

@@ -5733,6 +5733,20 @@
     ]
   },
   {
+    "Name": "Hero of Time Statue",
+    "Archive": "YLzou",
+    "Models": [
+      {
+        "Path": "bdl/ylzou.bdl",
+        "Position": {
+          "X": 50,
+          "Y": 1550,
+          "Z": 1200
+        }
+      }
+    ]
+  },
+  {
     "Name": "Master Sword Chamber Knight Statue",
     "Archive": "VzouK",
     "Models": [
