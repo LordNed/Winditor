@@ -43,17 +43,17 @@ namespace WindEditor
 
         private static float PitchFromQuat(Quaternion q)
         {
-            return (float)Math.Atan2(2.0 * (q.W * q.X + q.Y * q.Z), 1.0 - Math.Min(1, (2.0 * (Math.Pow(q.X, 2.0) + Math.Pow(q.Y, 2.0)))));
+            return (float)Math.Atan2(2.0 * (q.W * q.X + q.Y * q.Z), 1.0 - (2.0 * (Math.Pow(q.X, 2.0) + Math.Pow(q.Y, 2.0))));
         }
 
         private static float YawFromQuat(Quaternion q)
         {
-            return (float)Math.Asin(Math.Min(1, Math.Max(-1, 2.0 * (q.W * q.Y) - q.X * q.Z)));
+            return (float)Math.Asin(Math.Min(1, Math.Max(-1, 2.0 * (q.W * q.Y - q.X * q.Z))));
         }
 
         private static float RollFromQuat(Quaternion q)
         {
-            return (float)Math.Atan2(2.0 * (q.W * q.Z + q.X * q.Y), 1.0 - Math.Min(1, (2.0 * (Math.Pow(q.Y, 2.0) + Math.Pow(q.Z, 2.0)))));
+            return (float)Math.Atan2(2.0 * (q.W * q.Z + q.X * q.Y), 1.0 - (2.0 * (Math.Pow(q.Y, 2.0) + Math.Pow(q.Z, 2.0))));
         }
 
 		public static float FindQuaternionTwist(this Quaternion quat, Vector3 axis)
