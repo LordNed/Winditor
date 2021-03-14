@@ -65,7 +65,7 @@
     },
     {
       "Name": "Switch to Check",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Weather Trigger",
@@ -74,7 +74,7 @@
     },
     {
       "Name": "Invert Position Checks",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Weather Trigger",
@@ -83,7 +83,7 @@
     },
     {
       "Name": "Unknown_7",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Weather Trigger",

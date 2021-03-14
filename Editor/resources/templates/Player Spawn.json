@@ -7,9 +7,9 @@
 		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
 		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
 		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "AuxillaryParameters1", "Type" : "Short", "Hidden": true},
-		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "AuxillaryParameters2", "Type" : "Short", "Hidden": true},
+		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
 	],
   "ParameterFields":
@@ -79,7 +79,7 @@
     },
     {
       "Name": "Spawn ID",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Spawn Properties",
@@ -88,7 +88,7 @@
     },
     {
       "Name": "Unknown 6",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Unknowns",

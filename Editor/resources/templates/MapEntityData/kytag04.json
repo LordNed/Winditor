@@ -22,7 +22,7 @@
     },
     {
       "Name": "Unknown_3",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "kytag04",

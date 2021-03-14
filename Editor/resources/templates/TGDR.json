@@ -3,63 +3,16 @@
 	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TGDR",
   "Fields": [
-    {
-      "Name": "Name",
-      "Type": "FixedLengthString",
-      "Length": 8,
-      "Default": ""
-    },
-    {
-      "Name": "Parameters",
-      "Type": "Int",
-      "Default": 0
-    },
-    {
-      "Name": "Position",
-      "Type": "Vector3",
-      "Default": {
-        "X": 0,
-        "Y": 0,
-        "Z": 0
-      }
-    },
-    {
-      "Name": "Auxillary Parameters 1",
-      "Type": "Short"
-    },
-    {
-      "Name": "Y Rotation",
-      "Type": "YRotation"
-    },
-    {
-      "Name": "Auxillary Parameters 2",
-      "Type": "Short",
-      "Default": 0
-    },
-    {
-      "Name": "Unknown 1",
-      "Type": "Short",
-      "Default": 0
-    },
-    {
-      "Name": "X Scale",
-      "Type": "Byte",
-      "Default": 1
-    },
-    {
-      "Name": "Y Scale",
-      "Type": "Byte",
-      "Default": 1
-    },
-    {
-      "Name": "Z Scale",
-      "Type": "Byte",
-      "Default": 1
-    },
-    {
-      "Name": "Padding",
-      "Type": "Byte",
-      "Default": -1
-    }
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
+		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
+		{"Name" : "X Scale", "Type" : "Byte"},
+		{"Name" : "Y Scale", "Type" : "Byte"},
+		{"Name" : "Z Scale", "Type" : "Byte"},
+		{"Name" : "Padding", "Type" : "Byte", "Hidden" : "True"},
   ]
 }

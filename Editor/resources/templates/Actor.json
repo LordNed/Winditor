@@ -7,9 +7,9 @@
 		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Default" : "", "Category": "Actor"},
 		{"Name" : "Parameters", "Type" : "Int", "Default" : 0, "Hidden": true},
 		{"Name" : "Position", "Type" : "Vector3", "Default" : {"X" : 0, "Y" : 0, "Z": 0}},
-		{"Name" : "Auxillary Parameters 1", "Type" : "Short", "Hidden": true},
+		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Auxillary Parameters 2", "Type" : "Short", "Default" : 0, "Hidden": true},
+		{"Name" : "Z Rotation", "Type" : "Short", "Default" : 0, "Hidden": true},
 		{"Name" : "Enemy Number", "Type" : "Short", "Default" : 0, "Category": "Actor"}
 	]
 }

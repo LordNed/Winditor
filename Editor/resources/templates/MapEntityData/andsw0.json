@@ -46,7 +46,7 @@
     },
     {
       "Name": "Event",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "andsw0",
@@ -55,7 +55,7 @@
     },
     {
       "Name": "Time Limit (Half Seconds)",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "andsw0",

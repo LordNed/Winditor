@@ -31,7 +31,7 @@
     },
     {
       "Name": "Disable Spawn Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "tag_md_cb",

@@ -45,7 +45,7 @@
     },
     {
       "Name": "X Rotation",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Big Octo",
@@ -54,7 +54,7 @@
     },
     {
       "Name": "Death Event Waits for Great Fairy",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Big Octo",

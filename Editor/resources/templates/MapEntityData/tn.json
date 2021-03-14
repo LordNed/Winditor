@@ -80,7 +80,7 @@
     },
     {
       "Name": "Extra Equipment",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00E0,
       "Hidden": false,
       "Category": "tn",
@@ -99,7 +99,7 @@
     },
     {
       "Name": "Disable Spawn on Death Switch",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "tn",

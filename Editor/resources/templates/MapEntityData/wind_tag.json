@@ -58,7 +58,7 @@
     },
     {
       "Name": "Unknown_7",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x000F,
       "Hidden": false,
       "Category": "wind_tag",
@@ -67,7 +67,7 @@
     },
     {
       "Name": "Unknown_8",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00F0,
       "Hidden": false,
       "Category": "wind_tag",

@@ -21,7 +21,7 @@
     },
     {
       "Name": "Unknown_2",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Dropped Enemy Weapon",

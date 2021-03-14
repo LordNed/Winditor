@@ -52,7 +52,7 @@
     },
     {
       "Name": "Message ID",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Door",
@@ -61,7 +61,7 @@
     },
     {
       "Name": "Room Number",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "Door",

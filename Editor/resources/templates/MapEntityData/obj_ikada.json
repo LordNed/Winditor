@@ -55,7 +55,7 @@
     },
     {
       "Name": "Unknown_6",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "obj_ikada",
@@ -64,7 +64,7 @@
     },
     {
       "Name": "Path to Follow",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "obj_ikada",

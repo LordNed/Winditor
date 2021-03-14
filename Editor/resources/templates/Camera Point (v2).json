@@ -5,9 +5,9 @@
 	"Fields" :
 	[
 		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "X Rotation", "Type" : "XRotation"},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Z Rotation", "Type" : "ZRotation"},
+		{"Name" : "X Rotation", "Type" : "XRotation", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Z Rotation", "Type" : "ZRotation", "Hidden": true},
 		{"Name" : "Unknown 1", "Type" : "Short"}
 	]
 }

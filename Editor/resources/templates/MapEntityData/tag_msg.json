@@ -21,7 +21,7 @@
     },
     {
       "Name": "MessageID",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": true,
       "Category": "tag_msg",
@@ -39,7 +39,7 @@
     },
     {
       "Name": "Enable Spawn Event Bit",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "tag_msg",

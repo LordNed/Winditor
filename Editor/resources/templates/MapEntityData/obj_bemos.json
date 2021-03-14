@@ -74,7 +74,7 @@
     },
     {
       "Name": "Dropped Item",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "Beamos",
@@ -83,7 +83,7 @@
     },
     {
       "Name": "Dropped Item Pickup Flag",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x1FC0,
       "Hidden": false,
       "Category": "Beamos",

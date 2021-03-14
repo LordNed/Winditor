@@ -54,7 +54,7 @@
     },
     {
       "Name": "Enable Spawn Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "oship",
@@ -63,7 +63,7 @@
     },
     {
       "Name": "Is Golden",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "oship",

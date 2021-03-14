@@ -93,7 +93,7 @@
     },
     {
       "Name": "Duplicate Placement ID",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x0003,
       "Hidden": false,
       "Category": "Chart Salvage Point",
@@ -102,7 +102,7 @@
     },
     {
       "Name": "Switch to Check",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Switch Salvage Point",

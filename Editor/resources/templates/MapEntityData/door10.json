@@ -59,7 +59,7 @@
     },
     {
       "Name": "From Room Number",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "Door",
@@ -68,7 +68,7 @@
     },
     {
       "Name": "To Room Number",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x0FC0,
       "Hidden": false,
       "Category": "Door",
@@ -77,7 +77,7 @@
     },
     {
       "Name": "Ship ID",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "Door",
@@ -86,7 +86,7 @@
     },
     {
       "Name": "Arg 1",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Door",

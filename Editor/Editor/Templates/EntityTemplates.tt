@@ -107,7 +107,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		// Auto-Generated Properties from Templates
 <#
 		// We skip these fields as they're pulled out in the load function and we don't want duplicate properties.
-		var skippedFields = new List<string>(new []{"Position", "XRotation", "YRotation", "ZRotation", "XScale", "YScale", "ZScale"});
+		var skippedFields = new List<string>(new []{"Position", "YRotation", "XScale", "YScale", "ZScale"});
 		var fieldNameToOutputDataType = new Dictionary<string, string>();
 		foreach(var field in descriptor.Fields)
 		{
@@ -183,19 +183,19 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				{
 					loadFunction = "Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());";
 				}
-				else if (fieldName == "XRotation")
+				else if (field.FieldType == PropertyValueType.XRotation)
 				{
 					loadFunction =  "float xRot = WMath.RotationShortToFloat(stream.ReadInt16());" + 
 									"Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));" +
 									"Transform.Rotation = Transform.Rotation * xRotQ;";
 				}
-				else if (fieldName == "YRotation")
+				else if (field.FieldType == PropertyValueType.YRotation)
 				{
 					loadFunction =  "float yRot = WMath.RotationShortToFloat(stream.ReadInt16());" +
 									"Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));" +
 									"Transform.Rotation = Transform.Rotation * yRotQ;";
 				}
-				else if(fieldName == "ZRotation")
+				else if (field.FieldType == PropertyValueType.ZRotation)
 				{
 					loadFunction =  "float zRot = WMath.RotationShortToFloat(stream.ReadInt16());" +
 									"Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));" +
@@ -255,15 +255,15 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				{
 					saveFunction = "stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);";
 				}
-				else if (fieldName == "XRotation")
+				else if (field.FieldType == PropertyValueType.XRotation)
 				{
 					saveFunction =  "stream.Write(WMath.RotationFloatToShort(originalRot.X));";
 				}
-				else if (fieldName == "YRotation")
+				else if (field.FieldType == PropertyValueType.YRotation)
 				{
 					saveFunction =  "stream.Write(WMath.RotationFloatToShort(originalRot.Y));";
 				}
-				else if(fieldName == "ZRotation")
+				else if (field.FieldType == PropertyValueType.ZRotation)
 				{
 					saveFunction =  "stream.Write(WMath.RotationFloatToShort(originalRot.Z));";
 				}

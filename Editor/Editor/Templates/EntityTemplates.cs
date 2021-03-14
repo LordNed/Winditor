@@ -574,10 +574,10 @@ namespace WindEditor
 		protected int m_Parameters;
 				
 
-		protected short m_AuxillaryParameters1;
+		protected short m_XRotation;
 				
 
-		protected short m_AuxillaryParameters2;
+		protected short m_ZRotation;
 				
 
 		protected short m_EnemyNumber;
@@ -607,9 +607,9 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_AuxillaryParameters1 = stream.ReadInt16(); 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_AuxillaryParameters2 = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
@@ -622,9 +622,9 @@ namespace WindEditor
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)m_AuxillaryParameters1);
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)m_AuxillaryParameters2);
+			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
             if ((FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb) || FourCC == FourCC.TGSC || FourCC == FourCC.TGDR)
             {
@@ -640,6 +640,12 @@ namespace WindEditor
 	public partial class CameraViewpoint_v1 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
+		protected float /*single axis rotation */ m_XRotation;
+				
+
+		protected float /*single axis rotation */ m_ZRotation;
+				
+
 		protected short m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", true, "")]
@@ -688,6 +694,12 @@ namespace WindEditor
 	public partial class CameraViewpoint_v2 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
+		protected float /*single axis rotation */ m_XRotation;
+				
+
+		protected float /*single axis rotation */ m_ZRotation;
+				
+
 		protected short m_Unknown1;
 
 		[WProperty("Misc.", "Unknown 1", true, "")]
@@ -937,7 +949,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -950,57 +962,24 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
-
-		[WProperty("Misc.", "Parameters", true, "")]
-		 public int Parameters
-		{ 
-			get { return m_Parameters; }
-			set
-			{
-				m_Parameters = value;
-				OnPropertyChanged("Parameters");
-			}
-		}
 				
 
-		protected short m_AuxiliaryParameters;
-
-		[WProperty("Misc.", "Auxiliary Parameters", true, "")]
-		 public short AuxiliaryParameters
-		{ 
-			get { return m_AuxiliaryParameters; }
-			set
-			{
-				m_AuxiliaryParameters = value;
-				OnPropertyChanged("AuxiliaryParameters");
-			}
-		}
+		protected short m_XRotation;
 				
 
-		protected short m_Unknown1;
-
-		[WProperty("Misc.", "Unknown 1", true, "")]
-		 public short Unknown1
-		{ 
-			get { return m_Unknown1; }
-			set
-			{
-				m_Unknown1 = value;
-				OnPropertyChanged("Unknown1");
-			}
-		}
+		protected short m_ZRotation;
 				
 
-		protected short m_Unknown2;
+		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Unknown 2", true, "")]
-		 public short Unknown2
+		[WProperty("Actor", "Enemy Number", true, "")]
+		 public short EnemyNumber
 		{ 
-			get { return m_Unknown2; }
+			get { return m_EnemyNumber; }
 			set
 			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
 			}
 		}
 				
@@ -1055,10 +1034,7 @@ namespace WindEditor
 		public Door_DOOR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameters", TargetProperties = new string[] { "AuxiliaryParameters"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Z", TargetProperties = new string[] { "ScaleZ"} });
@@ -1069,10 +1045,10 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_AuxiliaryParameters = stream.ReadInt16(); 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_Unknown1 = stream.ReadInt16(); 
-			m_Unknown2 = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
+			m_EnemyNumber = stream.ReadInt16(); 
 			m_ScaleX = stream.ReadByte(); 
 			m_ScaleY = stream.ReadByte(); 
 			m_ScaleZ = stream.ReadByte(); 
@@ -1086,12 +1062,12 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Parameters);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)AuxiliaryParameters);
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)Unknown1);
-			stream.Write((short)Unknown2);
+			stream.Write((short)m_ZRotation);
+			stream.Write((short)EnemyNumber);
 			stream.Write((byte)ScaleX);
 			stream.Write((byte)ScaleY);
 			stream.Write((byte)ScaleZ);
@@ -2775,10 +2751,10 @@ namespace WindEditor
 		protected int m_Parameters;
 				
 
-		protected short m_AuxillaryParameters1;
+		protected short m_XRotation;
 				
 
-		protected short m_AuxillaryParameters2;
+		protected short m_ZRotation;
 				
 
 		protected short m_EnemyNumber;
@@ -2938,14 +2914,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SpawnID");
 			}
 		}
@@ -2955,14 +2931,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown6");
 			}
 		}
@@ -2979,9 +2955,9 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_AuxillaryParameters1 = stream.ReadInt16(); 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_AuxillaryParameters2 = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
@@ -2994,9 +2970,9 @@ namespace WindEditor
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)m_AuxillaryParameters1);
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)m_AuxillaryParameters2);
+			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 		}
 	}
@@ -3180,7 +3156,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -3192,100 +3168,25 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_Parameter1;
-
-		[WProperty("Misc.", "Parameter 1", true, "")]
-		 public byte Parameter1
-		{ 
-			get { return m_Parameter1; }
-			set
-			{
-				m_Parameter1 = value;
-				OnPropertyChanged("Parameter1");
-			}
-		}
+		protected int m_Parameters;
 				
 
-		protected byte m_Parameter2;
-
-		[WProperty("Misc.", "Parameter 2", true, "")]
-		 public byte Parameter2
-		{ 
-			get { return m_Parameter2; }
-			set
-			{
-				m_Parameter2 = value;
-				OnPropertyChanged("Parameter2");
-			}
-		}
+		protected short m_XRotation;
 				
 
-		protected byte m_Parameter3;
-
-		[WProperty("Misc.", "Parameter 3", true, "")]
-		 public byte Parameter3
-		{ 
-			get { return m_Parameter3; }
-			set
-			{
-				m_Parameter3 = value;
-				OnPropertyChanged("Parameter3");
-			}
-		}
+		protected short m_ZRotation;
 				
 
-		protected byte m_Parameter4;
+		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Parameter 4", true, "")]
-		 public byte Parameter4
+		[WProperty("Actor", "Enemy Number", true, "")]
+		 public short EnemyNumber
 		{ 
-			get { return m_Parameter4; }
+			get { return m_EnemyNumber; }
 			set
 			{
-				m_Parameter4 = value;
-				OnPropertyChanged("Parameter4");
-			}
-		}
-				
-
-		protected short m_AuxiliaryParameter;
-
-		[WProperty("Misc.", "Auxiliary Parameter", true, "")]
-		 public short AuxiliaryParameter
-		{ 
-			get { return m_AuxiliaryParameter; }
-			set
-			{
-				m_AuxiliaryParameter = value;
-				OnPropertyChanged("AuxiliaryParameter");
-			}
-		}
-				
-
-		protected short m_Unknown1;
-
-		[WProperty("Misc.", "Unknown 1", true, "")]
-		 public short Unknown1
-		{ 
-			get { return m_Unknown1; }
-			set
-			{
-				m_Unknown1 = value;
-				OnPropertyChanged("Unknown1");
-			}
-		}
-				
-
-		protected short m_Unknown2;
-
-		[WProperty("Misc.", "Unknown 2", true, "")]
-		 public short Unknown2
-		{ 
-			get { return m_Unknown2; }
-			set
-			{
-				m_Unknown2 = value;
-				OnPropertyChanged("Unknown2");
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
 			}
 		}
 				
@@ -3298,27 +3199,18 @@ namespace WindEditor
 		public ScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 1", TargetProperties = new string[] { "Parameter1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 2", TargetProperties = new string[] { "Parameter2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 3", TargetProperties = new string[] { "Parameter3"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameter 4", TargetProperties = new string[] { "Parameter4"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxiliary Parameter", TargetProperties = new string[] { "AuxiliaryParameter"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
-			m_Parameter1 = stream.ReadByte(); 
-			m_Parameter2 = stream.ReadByte(); 
-			m_Parameter3 = stream.ReadByte(); 
-			m_Parameter4 = stream.ReadByte(); 
+			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_AuxiliaryParameter = stream.ReadInt16(); 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_Unknown1 = stream.ReadInt16(); 
-			m_Unknown2 = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
+			m_EnemyNumber = stream.ReadInt16(); 
 			float xScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z); 
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
@@ -3332,15 +3224,12 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((byte)Parameter1);
-			stream.Write((byte)Parameter2);
-			stream.Write((byte)Parameter3);
-			stream.Write((byte)Parameter4);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)AuxiliaryParameter);
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)Unknown1);
-			stream.Write((short)Unknown2);
+			stream.Write((short)m_ZRotation);
+			stream.Write((short)EnemyNumber);
 			stream.Write((byte)(Transform.LocalScale.X * 10));
 			stream.Write((byte)(Transform.LocalScale.Y * 10));
 			stream.Write((byte)(Transform.LocalScale.Z * 10));
@@ -3352,20 +3241,6 @@ namespace WindEditor
 	public partial class ShipSpawnPoint : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected float /*single axis rotation */ m_Rotation;
-
-		[WProperty("Ship Spawn Properties", "Rotation", true, "")]
-		 public float /*single axis rotation */ Rotation
-		{ 
-			get { return m_Rotation; }
-			set
-			{
-				m_Rotation = value;
-				OnPropertyChanged("Rotation");
-			}
-		}
-				
-
 		protected byte m_ShipId;
 
 		[WProperty("Ship Spawn Properties", "Ship Id", true, "")]
@@ -3398,7 +3273,6 @@ namespace WindEditor
 		// Constructor
 		public ShipSpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Rotation", TargetProperties = new string[] { "Rotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 		}
@@ -3406,7 +3280,7 @@ namespace WindEditor
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_Rotation = stream.ReadInt16(); 
+			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_ShipId = stream.ReadByte(); 
 			m_Unknown1 = stream.ReadByte(); 
 		}
@@ -3418,7 +3292,7 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)Rotation);
+			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((byte)ShipId);
 			stream.Write((byte)Unknown1);
 		}
@@ -3881,7 +3755,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -3894,73 +3768,29 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
-
-		[WProperty("Misc.", "Parameters", true, "")]
-		 public int Parameters
-		{ 
-			get { return m_Parameters; }
-			set
-			{
-				m_Parameters = value;
-				OnPropertyChanged("Parameters");
-			}
-		}
 				
 
-		protected short m_AuxillaryParameters1;
-
-		[WProperty("Misc.", "Auxillary Parameters 1", true, "")]
-		 public short AuxillaryParameters1
-		{ 
-			get { return m_AuxillaryParameters1; }
-			set
-			{
-				m_AuxillaryParameters1 = value;
-				OnPropertyChanged("AuxillaryParameters1");
-			}
-		}
+		protected short m_XRotation;
 				
 
-		protected short m_AuxillaryParameters2;
-
-		[WProperty("Misc.", "Auxillary Parameters 2", true, "")]
-		 public short AuxillaryParameters2
-		{ 
-			get { return m_AuxillaryParameters2; }
-			set
-			{
-				m_AuxillaryParameters2 = value;
-				OnPropertyChanged("AuxillaryParameters2");
-			}
-		}
+		protected short m_ZRotation;
 				
 
-		protected short m_Unknown1;
+		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Unknown 1", true, "")]
-		 public short Unknown1
+		[WProperty("Actor", "Enemy Number", true, "")]
+		 public short EnemyNumber
 		{ 
-			get { return m_Unknown1; }
+			get { return m_EnemyNumber; }
 			set
 			{
-				m_Unknown1 = value;
-				OnPropertyChanged("Unknown1");
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
 			}
 		}
 				
 
 		protected byte m_Padding;
-
-		[WProperty("Misc.", "Padding", true, "")]
-		 public byte Padding
-		{ 
-			get { return m_Padding; }
-			set
-			{
-				m_Padding = value;
-				OnPropertyChanged("Padding");
-			}
-		}
 				
 
 
@@ -3968,11 +3798,7 @@ namespace WindEditor
 		public TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 1", TargetProperties = new string[] { "AuxillaryParameters1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Auxillary Parameters 2", TargetProperties = new string[] { "AuxillaryParameters2"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Padding", TargetProperties = new string[] { "Padding"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3980,10 +3806,10 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_AuxillaryParameters1 = stream.ReadInt16(); 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_AuxillaryParameters2 = stream.ReadInt16(); 
-			m_Unknown1 = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
+			m_EnemyNumber = stream.ReadInt16(); 
 			float xScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z); 
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
@@ -3997,12 +3823,12 @@ namespace WindEditor
 			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
 
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Parameters);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)AuxillaryParameters1);
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)AuxillaryParameters2);
-			stream.Write((short)Unknown1);
+			stream.Write((short)m_ZRotation);
+			stream.Write((short)EnemyNumber);
 			stream.Write((byte)(Transform.LocalScale.X * 10));
 			stream.Write((byte)(Transform.LocalScale.Y * 10));
 			stream.Write((byte)(Transform.LocalScale.Z * 10));
@@ -4042,6 +3868,12 @@ namespace WindEditor
 		}
 				
 
+		protected short m_XRotation;
+				
+
+		protected short m_ZRotation;
+				
+
 		protected short m_EnemyNumber;
 
 		[WProperty("Misc.", "Enemy Number", true, "")]
@@ -4070,9 +3902,9 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
+			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
@@ -4085,9 +3917,9 @@ namespace WindEditor
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write(WMath.RotationFloatToShort(originalRot.X));
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
+			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 		}
 	}
@@ -4138,6 +3970,12 @@ namespace WindEditor
 		}
 				
 
+		protected short m_XRotation;
+				
+
+		protected short m_ZRotation;
+				
+
 		protected int m_Params2;
 
 		[WProperty("Misc.", "Params 2", true, "")]
@@ -4168,9 +4006,9 @@ namespace WindEditor
 			m_Params1 = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_RoomLoadingParams = stream.ReadInt16(); 
-			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
+			m_ZRotation = stream.ReadInt16(); 
 			m_Params2 = stream.ReadInt32(); 
 		}
 
@@ -4184,9 +4022,9 @@ namespace WindEditor
 			stream.Write((int)Params1);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((short)RoomLoadingParams);
-			stream.Write(WMath.RotationFloatToShort(originalRot.X));
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
+			stream.Write((short)m_ZRotation);
 			stream.Write((int)Params2);
 		}
 	}
@@ -4197,7 +4035,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Treasure Chest", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -4212,15 +4050,15 @@ namespace WindEditor
 		protected int m_Parameters;
 				
 
-		protected short m_AuxillaryParameters1;
+		protected short m_XRotation;
 				
 
-		protected short m_AuxillaryParameters2;
+		protected short m_ZRotation;
 				
 
 		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Enemy Number", true, "")]
+		[WProperty("Actor", "Enemy Number", true, "")]
 		 public short EnemyNumber
 		{ 
 			get { return m_EnemyNumber; }
@@ -4245,9 +4083,9 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_AuxillaryParameters1 = stream.ReadInt16(); 
+			m_XRotation = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			m_AuxillaryParameters2 = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
@@ -4260,9 +4098,9 @@ namespace WindEditor
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)m_AuxillaryParameters1);
+			stream.Write((short)m_XRotation);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write((short)m_AuxillaryParameters2);
+			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 		}
 	}

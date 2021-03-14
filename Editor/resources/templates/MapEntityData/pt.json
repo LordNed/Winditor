@@ -73,7 +73,7 @@
     },
     {
       "Name": "Initial Spawn Delay",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Miniblin",

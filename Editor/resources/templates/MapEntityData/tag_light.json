@@ -88,7 +88,7 @@
     },
     {
       "Name": "X Rotation",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "tag_light",
@@ -97,7 +97,7 @@
     },
     {
       "Name": "Z Rotation",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "tag_light",

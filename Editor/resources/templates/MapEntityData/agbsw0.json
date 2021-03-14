@@ -4,7 +4,7 @@
   "ParameterFields": [
     {
       "Name": "Type",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Tingle Tuner Region",
@@ -102,7 +102,7 @@
     },
     {
       "Name": "Unknown_5",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "agbsw0",

@@ -3,39 +3,12 @@
 	"ParentClassOverride" : "VisibleDOMNode",
 	"FourCC" : "TRES",
   "Fields": [
-    {
-      "Name": "Name",
-      "Type": "FixedLengthString",
-      "Length": 8,
-      "Category":  "Treasure Chest"
-    },
-    {
-      "Name": "Parameters",
-      "Type": "Int",
-      "Hidden":  true
-    },
-    {
-      "Name": "Position",
-      "Type": "Vector3"
-    },
-    {
-      "Name": "Auxillary Parameters 1",
-      "Type": "Short",
-      "Hidden":  true
-    },
-    {
-      "Name": "Y Rotation",
-      "Type": "YRotation"
-    },
-    {
-      "Name": "Auxillary Parameters 2",
-      "Type": "Short",
-      "Hidden": true
-    },
-    {
-      "Name": "Enemy Number",
-      "Type": "Short",
-      "Hidden":  false
-    }
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
+		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
   ],
 }

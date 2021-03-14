@@ -71,7 +71,7 @@
     },
     {
       "Name": "Top Unblocked Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Cyclic Warp Pot",
@@ -80,7 +80,7 @@
     },
     {
       "Name": "Play Unlocked Sound Effect",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Cyclic Warp Pot",
@@ -91,7 +91,7 @@
     },
     {
       "Name": "Is Locked",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Cyclic Warp Pot",
@@ -120,7 +120,7 @@
     },
     {
       "Name": "This Unlocked Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Noncyclic Warp Pot",
@@ -129,7 +129,7 @@
     },
     {
       "Name": "Destination Unlocked Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Noncyclic Warp Pot",

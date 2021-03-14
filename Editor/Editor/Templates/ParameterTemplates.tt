@@ -91,6 +91,9 @@
 				}
 			}
 
+			if (!fieldNameToOutputDataType.ContainsKey(valueSource)) {
+				throw new ArgumentException($"Invalid parameter value source: {valueSource}");
+			}
 			string valueSourceType = fieldNameToOutputDataType[valueSource];
 			string bitMaskHex = null;
 			if (valueSourceType == "int") {

@@ -74,7 +74,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
 					value_as_int = 0;
 				return (TypeEnum)value_as_int;
@@ -83,7 +83,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Type");
 				UpdateModel();
 			}
@@ -196,14 +196,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -635,7 +635,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
@@ -648,7 +648,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
 				int value_as_int = list.IndexOf(value);
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Event");
 			}
 		}
@@ -658,14 +658,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("TimeLimitHalfSeconds");
 			}
 		}
@@ -773,7 +773,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
@@ -786,7 +786,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
 				int value_as_int = list.IndexOf(value);
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Event");
 			}
 		}
@@ -796,14 +796,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("TimeLimitHalfSeconds");
 			}
 		}
@@ -1058,14 +1058,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
@@ -1303,14 +1303,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -1768,14 +1768,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
@@ -2139,14 +2139,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -2507,14 +2507,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -2809,7 +2809,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (value_as_int == 1) {
 					return false;
 				} else {
@@ -2820,7 +2820,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = value ? 0 : 1;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DeathEventWaitsforGreatFairy");
 			}
 		}
@@ -3091,14 +3091,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -3108,14 +3108,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x0FC0) >> 6);
+				int value_as_int = (int)((m_XRotation & 0x0FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -3125,14 +3125,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -3142,14 +3142,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
 			}
 		}
@@ -3243,7 +3243,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				if (!Enum.IsDefined(typeof(AppearanceTypeEnum), value_as_int))
 					value_as_int = 7;
 				return (AppearanceTypeEnum)value_as_int;
@@ -3252,7 +3252,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("AppearanceType");
 				UpdateModel();
 			}
@@ -3299,14 +3299,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -3316,14 +3316,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x0FC0) >> 6);
+				int value_as_int = (int)((m_XRotation & 0x0FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -3350,14 +3350,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -4188,14 +4188,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
@@ -4236,7 +4236,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_XRotation & 0xFF00) >> 8);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<ExitData> list = stage.GetChildrenOfType<ExitData>();
@@ -4249,7 +4249,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<ExitData> list = stage.GetChildrenOfType<ExitData>();
 				int value_as_int = list.IndexOf(value);
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("PartnerCapturedExit");
 			}
 		}
@@ -4259,14 +4259,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
@@ -4441,14 +4441,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -5057,14 +5057,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EyeShotSwitch");
 			}
 		}
@@ -5523,14 +5523,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableActivationSwitch");
 			}
 		}
@@ -5935,14 +5935,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -6041,14 +6041,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
 			}
 		}
@@ -6058,14 +6058,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x0FC0) >> 6);
+				int value_as_int = (int)((m_XRotation & 0x0FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
 			}
 		}
@@ -6075,14 +6075,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
 			}
 		}
@@ -6092,14 +6092,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
 			}
 		}
@@ -6397,14 +6397,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("AtPoint1Switch");
 			}
 		}
@@ -6560,14 +6560,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -6577,14 +6577,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("RoomNumber");
 			}
 		}
@@ -7042,14 +7042,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
@@ -7059,7 +7059,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_XRotation & 0xFF00) >> 8);
 				if (value_as_int == 0) {
 					return false;
 				} else if (value_as_int == 255) {
@@ -7072,7 +7072,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = value ? 1 : 0;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("InvertPositionChecks");
 			}
 		}
@@ -7082,7 +7082,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (value_as_int == 0) {
 					return false;
 				} else {
@@ -7093,7 +7093,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = value ? 1 : 0;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -7253,14 +7253,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -7744,14 +7744,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -8049,14 +8049,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
@@ -8267,14 +8267,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -9344,14 +9344,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -9428,14 +9428,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -9445,14 +9445,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -11734,14 +11734,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -12087,7 +12087,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x003F) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x003F) >> 0);
 				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
 					value_as_int = 0;
 				return (DroppedItemID)value_as_int;
@@ -12096,7 +12096,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("DroppedItem");
 			}
 		}
@@ -12106,14 +12106,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x1FC0) >> 6);
+				int value_as_int = (int)((m_ZRotation & 0x1FC0) >> 6);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
+				m_ZRotation = (short)(m_ZRotation & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
 				OnPropertyChanged("DroppedItemPickupFlag");
 			}
 		}
@@ -13939,14 +13939,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("HoleScale");
 				UpdateModel();
 			}
@@ -14401,14 +14401,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
 			}
 		}
@@ -14418,7 +14418,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_XRotation & 0xFF00) >> 8);
 				if (value_as_int == 0xFF) { return null; }
 				WDOMNode cur_object = this;
 				while (cur_object.Parent != null)
@@ -14439,7 +14439,7 @@ namespace WindEditor
 				}
 				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
 				int value_as_int = list.IndexOf(value);
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("PathtoFollow");
 			}
 		}
@@ -15385,14 +15385,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -15461,7 +15461,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (value_as_int == 0xFF) { return null; }
 				WDOMNode cur_object = this;
 				while (cur_object.Parent != null)
@@ -15482,7 +15482,7 @@ namespace WindEditor
 				}
 				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
 				int value_as_int = list.IndexOf(value);
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("StayMovedtoPath");
 			}
 		}
@@ -15509,14 +15509,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("StayMovedSwitch2");
 			}
 		}
@@ -16682,14 +16682,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_XRotation & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("SwitchtoSet");
 			}
 		}
@@ -16736,14 +16736,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
 			}
 		}
@@ -17281,14 +17281,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisabledSwitch");
 			}
 		}
@@ -18382,14 +18382,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("TopUnblockedSwitch");
 			}
 		}
@@ -18399,7 +18399,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (value_as_int == 255) {
 					return true;
 				} else {
@@ -18410,7 +18410,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = value ? 255 : 0;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("PlayUnlockedSoundEffect");
 			}
 		}
@@ -18420,7 +18420,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				if (value_as_int == 255) {
 					return true;
 				} else {
@@ -18431,7 +18431,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = value ? 255 : 0;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("IsLocked");
 			}
 		}
@@ -18503,14 +18503,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("ThisUnlockedSwitch");
 			}
 		}
@@ -18520,14 +18520,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_XRotation & 0xFF00) >> 8);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("DestinationUnlockedSwitch");
 			}
 		}
@@ -18946,14 +18946,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
@@ -18963,7 +18963,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_XRotation & 0xFF00) >> 8);
 				if (value_as_int == 255) {
 					return false;
 				} else {
@@ -18974,7 +18974,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = value ? 0 : 255;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("IsGolden");
 				UpdateModel();
 			}
@@ -19262,14 +19262,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("InitialSpawnDelay");
 			}
 		}
@@ -19928,14 +19928,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x0003) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x0003) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x0003 | (value_as_int << 0 & 0x0003));
+				m_ZRotation = (short)(m_ZRotation & ~0x0003 | (value_as_int << 0 & 0x0003));
 				OnPropertyChanged("DuplicatePlacementID");
 			}
 		}
@@ -19945,14 +19945,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
@@ -20210,14 +20210,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
 			}
 		}
@@ -20962,14 +20962,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
@@ -21285,7 +21285,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
@@ -21298,7 +21298,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
 				int value_as_int = list.IndexOf(value);
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DestroyedEvent");
 			}
 		}
@@ -21558,14 +21558,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
 			}
 		}
@@ -21575,14 +21575,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
@@ -22141,14 +22141,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("EnableSpawnEventBit");
 			}
 		}
@@ -22399,14 +22399,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -22416,14 +22416,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -22917,14 +22917,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
@@ -23049,14 +23049,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
 			}
 		}
@@ -23083,14 +23083,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("EnableSpawnEventBit");
 			}
 		}
@@ -23441,14 +23441,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0xFFFF) >> 0);
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
 			}
 		}
@@ -23570,14 +23570,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x003F) >> 0);
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x003F | (value_as_int << 0 & 0x003F));
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("RoomNumber");
 			}
 		}
@@ -23587,14 +23587,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("OpenSwitch");
 			}
 		}
@@ -23604,7 +23604,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
 				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
 					value_as_int = 0;
 				return (ItemID)value_as_int;
@@ -23613,7 +23613,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Item");
 			}
 		}
@@ -23892,7 +23892,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00E0) >> 5);
+				int value_as_int = (int)((m_XRotation & 0x00E0) >> 5);
 				if (!Enum.IsDefined(typeof(ExtraEquipmentEnum), value_as_int))
 					value_as_int = 5;
 				return (ExtraEquipmentEnum)value_as_int;
@@ -23901,7 +23901,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00E0 | (value_as_int << 5 & 0x00E0));
+				m_XRotation = (short)(m_XRotation & ~0x00E0 | (value_as_int << 5 & 0x00E0));
 				OnPropertyChanged("ExtraEquipment");
 				UpdateModel();
 			}
@@ -23912,14 +23912,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
@@ -24292,14 +24292,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableSpawnActivationSwitch");
 			}
 		}
@@ -24945,14 +24945,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x000F) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x000F) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x000F | (value_as_int << 0 & 0x000F));
+				m_ZRotation = (short)(m_ZRotation & ~0x000F | (value_as_int << 0 & 0x000F));
 				OnPropertyChanged("Unknown_7");
 			}
 		}
@@ -24962,14 +24962,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00F0) >> 4);
+				int value_as_int = (int)((m_ZRotation & 0x00F0) >> 4);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00F0 | (value_as_int << 4 & 0x00F0));
+				m_ZRotation = (short)(m_ZRotation & ~0x00F0 | (value_as_int << 4 & 0x00F0));
 				OnPropertyChanged("Unknown_8");
 			}
 		}
@@ -25119,7 +25119,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_AuxillaryParameters2 & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				if (!Enum.IsDefined(typeof(EnemySummonTableEnum), value_as_int))
 					value_as_int = 0;
 				return (EnemySummonTableEnum)value_as_int;
@@ -25128,7 +25128,7 @@ namespace WindEditor
 			set
 			{
 				int value_as_int = (int)value;
-				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnemySummonTable");
 			}
 		}

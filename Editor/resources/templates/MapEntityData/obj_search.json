@@ -54,7 +54,7 @@
     },
     {
       "Name": "Switch to Set",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Searchlight",

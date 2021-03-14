@@ -25,7 +25,7 @@
     },
     {
       "Name": "Hole Scale",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Entrance Hole",

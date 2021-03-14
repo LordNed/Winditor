@@ -71,7 +71,7 @@
     },
     {
       "Name": "Enable Activation Switch",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Item Pickup",

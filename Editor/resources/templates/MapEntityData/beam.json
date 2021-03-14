@@ -67,7 +67,7 @@
     },
     {
       "Name": "Unknown_8",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "beam",

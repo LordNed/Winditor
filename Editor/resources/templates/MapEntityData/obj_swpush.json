@@ -60,7 +60,7 @@
     },
     {
       "Name": "Disabled Switch",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Button",

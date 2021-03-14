@@ -55,7 +55,7 @@
     },
     {
       "Name": "Disable Spawn Switch",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "fm",
@@ -73,7 +73,7 @@
     },
     {
       "Name": "Partner Captured Exit",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "fm",
@@ -82,7 +82,7 @@
     },
     {
       "Name": "Sight Range (Hundreds)",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "fm",

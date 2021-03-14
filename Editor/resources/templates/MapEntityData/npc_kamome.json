@@ -4,7 +4,7 @@
   "ParameterFields": [
     {
       "Name": "Unknown_1",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "npc_kamome",
@@ -13,7 +13,7 @@
     },
     {
       "Name": "Unknown_2",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "npc_kamome",

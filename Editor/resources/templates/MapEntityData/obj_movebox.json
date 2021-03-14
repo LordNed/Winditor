@@ -55,7 +55,7 @@
     },
     {
       "Name": "Unknown_7",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Movable Box",
@@ -96,7 +96,7 @@
     },
     {
       "Name": "Stay Moved to Path",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Movable Box Stay Moved Options",
@@ -114,7 +114,7 @@
     },
     {
       "Name": "Stay Moved Switch 2",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Movable Box Stay Moved Options",

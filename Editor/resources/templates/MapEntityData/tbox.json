@@ -100,7 +100,7 @@
     },
     {
       "Name": "Room Number",
-      "ValueSource": "AuxillaryParameters1",
+      "ValueSource": "XRotation",
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "Treasure Chest",
@@ -109,7 +109,7 @@
     },
     {
       "Name": "Open Switch",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Treasure Chest Flags",
@@ -118,7 +118,7 @@
     },
     {
       "Name": "Item",
-      "ValueSource": "AuxillaryParameters2",
+      "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Treasure Chest",
