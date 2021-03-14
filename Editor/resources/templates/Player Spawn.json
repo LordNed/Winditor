@@ -4,48 +4,96 @@
 	"FourCC" : "PLYR",
 	"Fields" :
 	[
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
+		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
+		{"Name" : "Position", "Type" : "Vector3"},
+		{"Name" : "AuxillaryParameters1", "Type" : "Short", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "AuxillaryParameters2", "Type" : "Short", "Hidden": true},
+		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
+	],
+  "ParameterFields":
+  [
     {
-      "Name": "Name",
-      "Type": "FixedLengthString",
-      "Length": 8,
+      "Name": "Room",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000003F,
+      "Hidden": false,
       "Category": "Spawn Properties",
-      "Editable": true
+      "ToolTip": "",
+      "DataType": "Integer"
     },
     {
-      "Name": "Parameters",
-      "Type": "Int",
-      "Category": "Spawn Properties",
-      "Hidden": true
-    },
-    {
-      "Name": "Position",
-      "Type": "Vector3",
-      "Category": "Spawn Properties",
-      "Editable": true
-    },
-    {
-      "Name": "Unknown 5",
-      "Type": "Short",
+      "Name": "Unknown 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000040,
+      "Hidden": false,
       "Category": "Unknowns",
-      "Editable": true
+      "ToolTip": "",
+      "DataType": "Boolean"
     },
     {
-      "Name": "Y Rotation",
-      "Type": "YRotation",
-      "Category": "Spawn Properties",
-      "Editable": true
-    },
-    {
-      "Name": "AuxillaryParameters2",
-      "Type": "Short",
-      "Category": "Spawn Properties",
-      "Hidden": true
-    },
-    {
-      "Name": "Unknown 7",
-      "Type": "Short",
+      "Name": "Unknown 2",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000080,
+      "Hidden": false,
       "Category": "Unknowns",
-      "Editable": true
-    }
-	]
+      "ToolTip": "",
+      "DataType": "Boolean"
+    },
+    {
+      "Name": "Unknown 3",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000F00,
+      "Hidden": false,
+      "Category": "Unknowns",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Spawn Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000F000,
+      "Hidden": false,
+      "Category": "Spawn Properties",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown 4",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Unknowns",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Event",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Spawn Properties",
+      "ToolTip": "",
+      "DataType": "Event"
+    },
+    {
+      "Name": "Spawn ID",
+      "ValueSource": "AuxillaryParameters1",
+      "Mask": 0x00FF,
+      "Hidden": false,
+      "Category": "Spawn Properties",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown 6",
+      "ValueSource": "AuxillaryParameters2",
+      "Mask": 0xFF00,
+      "Hidden": false,
+      "Category": "Unknowns",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+  ]
 }

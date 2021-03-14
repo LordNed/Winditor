@@ -2760,7 +2760,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Spawn Properties", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -2775,44 +2775,203 @@ namespace WindEditor
 		protected int m_Parameters;
 				
 
-		protected short m_Unknown5;
-
-		[WProperty("Unknowns", "Unknown 5", true, "")]
-		 public short Unknown5
-		{ 
-			get { return m_Unknown5; }
-			set
-			{
-				m_Unknown5 = value;
-				OnPropertyChanged("Unknown5");
-			}
-		}
+		protected short m_AuxillaryParameters1;
 				
 
 		protected short m_AuxillaryParameters2;
 				
 
-		protected short m_Unknown7;
+		protected short m_EnemyNumber;
 
-		[WProperty("Unknowns", "Unknown 7", true, "")]
-		 public short Unknown7
+		[WProperty("Actor", "Enemy Number", true, "")]
+		 public short EnemyNumber
 		{ 
-			get { return m_Unknown7; }
+			get { return m_EnemyNumber; }
 			set
 			{
-				m_Unknown7 = value;
-				OnPropertyChanged("Unknown7");
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
 			}
 		}
 				
 
 
+		[WProperty("Spawn Properties", "Room", true, "", SourceScene.Room)]
+		public int Room
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
+				OnPropertyChanged("Room");
+			}
+		}
+
+		[WProperty("Unknowns", "Unknown 1", true, "", SourceScene.Room)]
+		public bool Unknown1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000040) >> 6);
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
+				OnPropertyChanged("Unknown1");
+			}
+		}
+
+		[WProperty("Unknowns", "Unknown 2", true, "", SourceScene.Room)]
+		public bool Unknown2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000080) >> 7);
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
+				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
+				OnPropertyChanged("Unknown2");
+			}
+		}
+
+		[WProperty("Unknowns", "Unknown 3", true, "", SourceScene.Room)]
+		public int Unknown3
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
+				OnPropertyChanged("Unknown3");
+			}
+		}
+
+		[WProperty("Spawn Properties", "Spawn Type", true, "", SourceScene.Room)]
+		public int SpawnType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000F000) >> 12);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000F000 | (value_as_int << 12 & 0x0000F000));
+				OnPropertyChanged("SpawnType");
+			}
+		}
+
+		[WProperty("Unknowns", "Unknown 4", true, "", SourceScene.Room)]
+		public int Unknown4
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("Unknown4");
+			}
+		}
+
+		[WProperty("Spawn Properties", "Event", true, "", SourceScene.Stage)]
+		public MapEvent Event
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
+			}
+
+			set
+			{
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
+				int value_as_int = list.IndexOf(value);
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("Event");
+			}
+		}
+
+		[WProperty("Spawn Properties", "Spawn ID", true, "", SourceScene.Room)]
+		public int SpawnID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters1 & 0x00FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters1 = (short)(m_AuxillaryParameters1 & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				OnPropertyChanged("SpawnID");
+			}
+		}
+
+		[WProperty("Unknowns", "Unknown 6", true, "", SourceScene.Room)]
+		public int Unknown6
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_AuxillaryParameters2 & 0xFF00) >> 8);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_AuxillaryParameters2 = (short)(m_AuxillaryParameters2 & ~0xFF00 | (value_as_int << 8 & 0xFF00));
+				OnPropertyChanged("Unknown6");
+			}
+		}
+
 		// Constructor
 		public SpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2820,10 +2979,10 @@ namespace WindEditor
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_Unknown5 = stream.ReadInt16(); 
+			m_AuxillaryParameters1 = stream.ReadInt16(); 
 			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
 			m_AuxillaryParameters2 = stream.ReadInt16(); 
-			m_Unknown7 = stream.ReadInt16(); 
+			m_EnemyNumber = stream.ReadInt16(); 
 		}
 
 		override public void Save(EndianBinaryWriter stream)
@@ -2835,10 +2994,10 @@ namespace WindEditor
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)Unknown5);
+			stream.Write((short)m_AuxillaryParameters1);
 			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
 			stream.Write((short)m_AuxillaryParameters2);
-			stream.Write((short)Unknown7);
+			stream.Write((short)EnemyNumber);
 		}
 	}
 
