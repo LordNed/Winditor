@@ -38,7 +38,18 @@ namespace WindEditor
         [JsonIgnore]
         public BindingVector3 PositionBase { get; set; }
         [JsonIgnore]
+        public BindingVector3 RotationBase { get; set; }
+        [JsonIgnore]
         public BindingVector3 ScaleBase { get; set; }
+
+        [JsonIgnore]
+        public bool UsesXRotation = true;
+        [JsonIgnore]
+        public bool UsesYRotation = true;
+        [JsonIgnore]
+        public bool UsesZRotation = true;
+        [JsonIgnore]
+        public string RotationOrder = "ZYX";
 
         /// <summary> Position of the object in global space. </summary>
         public Vector3 Position
@@ -110,9 +121,15 @@ namespace WindEditor
                 }
 
                 m_localRotation = transformedRot;
+                RotationBase.BackingVector = m_localRotation.ToIdealEulerAngles(RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
 
                 OnPropertyChanged("Rotation");
             }
+        }
+
+        public Vector3 RotationAsIdealEulerAngles()
+        {
+            return Rotation.ToIdealEulerAngles(RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
         }
 
         /// <summary> Local scale of the object. Global scale is not supported. </summary>
@@ -200,6 +217,7 @@ namespace WindEditor
         public WTransform()
         {
             PositionBase = new BindingVector3();
+            RotationBase = new BindingVector3();
             ScaleBase = new BindingVector3();
             LocalPosition = Vector3.Zero;
             LocalRotation = Quaternion.Identity;
@@ -207,12 +225,21 @@ namespace WindEditor
             Parent = null;
 
             m_children = new List<WTransform>();
+            
+            RotationBase.PropertyChanged += OnRotationBasePropertyChanged;
         }
 
         public void Rotate(Vector3 axis, float angleInDegrees)
         {
             Quaternion rotQuat = Quaternion.FromAxisAngle(axis, WMath.DegreesToRadians(angleInDegrees));
             Rotation = rotQuat * Rotation;
+        }
+
+        private void OnRotationBasePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Automatically update the quaternion rotation any time the euler rotation base is changed.
+            // TODO: This is buggy. Rotating actors with the rotation gizmo sometimes bugs out and rotates in a random direction.
+            //m_localRotation = Quaternion.Identity.FromEulerAnglesRobust(RotationBase.BackingVector, RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
         }
 
         //public IEnumerator GetEnumerator()

@@ -21,8 +21,8 @@ namespace WindEditor.Editor
         List<WDetailSingleRowViewModel> IPropertyTypeCustomization.CustomizeHeader(PropertyInfo property, string display_name, bool is_editable, object source)
         {
             WTransformControl pos_ctrl = new WTransformControl();
-            WTransformControl scale_ctrl = new WTransformControl();
             WTransformControl rot_ctrl = new WTransformControl();
+            WTransformControl scale_ctrl = new WTransformControl();
 
             WTransform transform = property.GetValue(source) as WTransform;
 
@@ -35,6 +35,15 @@ namespace WindEditor.Editor
 
             pos_ctrl.SetBinding(WTransformControl.Vector3Property, pos_bind);
 
+            Binding rot_bind = new Binding("RotationBase")
+            {
+                Source = transform,
+                Mode = is_editable ? BindingMode.TwoWay : BindingMode.OneWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            };
+
+            rot_ctrl.SetBinding(WTransformControl.Vector3Property, rot_bind);
+
             Binding scale_bind = new Binding("ScaleBase")
             {
                 Source = transform,
@@ -46,12 +55,12 @@ namespace WindEditor.Editor
 
             WDetailSingleRowViewModel pos_row = new WDetailSingleRowViewModel("Position");
             pos_row.PropertyControl = pos_ctrl;
-            //WDetailSingleRowViewModel rot_row = new WDetailSingleRowViewModel("Rotation");
-            //rot_row.PropertyControl = rot_ctrl;
+            WDetailSingleRowViewModel rot_row = new WDetailSingleRowViewModel("Rotation");
+            rot_row.PropertyControl = rot_ctrl;
             WDetailSingleRowViewModel scale_row = new WDetailSingleRowViewModel("Scale");
             scale_row.PropertyControl = scale_ctrl;
 
-            return new List<WDetailSingleRowViewModel>() { pos_row, scale_row };//, rot_row, scale_row };
+            return new List<WDetailSingleRowViewModel>() { pos_row, rot_row, scale_row };
         }
     }
 }
