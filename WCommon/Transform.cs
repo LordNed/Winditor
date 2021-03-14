@@ -120,8 +120,10 @@ namespace WindEditor
                     curParent = curParent.m_parent;
                 }
 
+                // Note: We have to set the RotationBase BindingVector3 *before* the m_localRotation quaternion.
+                // If we set the BindingVector3 afterwards, its property change notification would overwrite the quaternion with a conversion.
+                RotationBase.BackingVector = transformedRot.ToIdealEulerAngles(RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
                 m_localRotation = transformedRot;
-                RotationBase.BackingVector = m_localRotation.ToIdealEulerAngles(RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
 
                 OnPropertyChanged("Rotation");
             }
@@ -238,8 +240,7 @@ namespace WindEditor
         private void OnRotationBasePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Automatically update the quaternion rotation any time the euler rotation base is changed.
-            // TODO: This is buggy. Rotating actors with the rotation gizmo sometimes bugs out and rotates in a random direction.
-            //m_localRotation = Quaternion.Identity.FromEulerAnglesRobust(RotationBase.BackingVector, RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
+            m_localRotation = Quaternion.Identity.FromEulerAnglesRobust(RotationBase.BackingVector, RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
         }
 
         //public IEnumerator GetEnumerator()
