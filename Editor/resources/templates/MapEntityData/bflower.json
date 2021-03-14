@@ -1,6 +1,7 @@
 {
   "ClassName": "bflower",
   "ParentClassOverride": "Actor",
+  "RotationOrder": "YXZ",
   "ParameterFields": [
     {
       "Name": "Flower Type",
@@ -27,24 +28,6 @@
       "Hidden": false,
       "Category": "Bomb Flower",
       "ToolTip": "Withered bomb flowers will set this switch when you pour water on them. If the switch is still set when the room reloads, the withered bomb flower will still be ripe then.\nNo effect on bomb flowers that are ripe to begin with.",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "X Rotation",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "Bomb Flower",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Z Rotation",
-      "ValueSource": "ZRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "Bomb Flower",
-      "ToolTip": "",
       "DataType": "Integer"
     }
   ]

@@ -107,7 +107,8 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		// Auto-Generated Properties from Templates
 <#
 		// We skip these fields as they're pulled out in the load function and we don't want duplicate properties.
-		var skippedFields = new List<string>(new []{"Position", "YRotation", "XScale", "YScale", "ZScale"});
+		var skippedFields = new List<string>(new []{"Position", "XScale", "YScale", "ZScale"});
+		var rotationFields = new List<string>(new []{"XRotation", "YRotation", "ZRotation"});
 		var fieldNameToOutputDataType = new Dictionary<string, string>();
 		foreach(var field in descriptor.Fields)
 		{
@@ -169,11 +170,14 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				}
 			}
 #>
+			Transform.RotationOrder = "<#= descriptor.RotationOrder #>";
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
-<#			foreach(var field in descriptor.Fields)
+<#			
+			string rotationAxes = "";
+			foreach(var field in descriptor.Fields)
 			{
 				string fieldName = field.FieldName.Replace(" ", "");
 				string loadFunction = string.Empty;
@@ -182,24 +186,6 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				if(fieldName == "Position") 
 				{
 					loadFunction = "Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());";
-				}
-				else if (field.FieldType == PropertyValueType.XRotation)
-				{
-					loadFunction =  "float xRot = WMath.RotationShortToFloat(stream.ReadInt16());" + 
-									"Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));" +
-									"Transform.Rotation = Transform.Rotation * xRotQ;";
-				}
-				else if (field.FieldType == PropertyValueType.YRotation)
-				{
-					loadFunction =  "float yRot = WMath.RotationShortToFloat(stream.ReadInt16());" +
-									"Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));" +
-									"Transform.Rotation = Transform.Rotation * yRotQ;";
-				}
-				else if (field.FieldType == PropertyValueType.ZRotation)
-				{
-					loadFunction =  "float zRot = WMath.RotationShortToFloat(stream.ReadInt16());" +
-									"Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));" +
-									"Transform.Rotation = Transform.Rotation * zRotQ;";
 				}
 				else if(fieldName == "XScale")
 				{
@@ -231,21 +217,31 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 								assertFunction = "Trace.Assert((uint)m_" + fieldName + " == 0xFFFFFFFF || m_" + fieldName + "== 0); // Padding"; break;
 						}
 					}
+					else if (rotationFields.Contains(fieldName)) {
+						rotationAxes += fieldName[0];
+					}
 				}
 				#>
 			<#= loadFunction#> <#=assertFunction#>
 <#
 
 			}
+		
+			if (rotationAxes.Length > 0) {
+#>
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(<#= String.Join(", ", rotationAxes.Select(x => $"WMath.RotationShortToFloat(m_{x}Rotation)")) #>),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
+<#
+			}
 #>
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 <#			foreach(var field in descriptor.Fields)
 			{
 				string fieldName = field.FieldName.Replace(" ", "");
@@ -255,17 +251,20 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 				{
 					saveFunction = "stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);";
 				}
-				else if (field.FieldType == PropertyValueType.XRotation)
+				else if (fieldName == "XRotation")
 				{
-					saveFunction =  "stream.Write(WMath.RotationFloatToShort(originalRot.X));";
+					saveFunction = "if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }\r\n" +
+						"\t\t\t" + $"stream.Write((short)m_{fieldName});";
 				}
-				else if (field.FieldType == PropertyValueType.YRotation)
+				else if (fieldName == "YRotation")
 				{
-					saveFunction =  "stream.Write(WMath.RotationFloatToShort(originalRot.Y));";
+					saveFunction = "if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }\r\n" +
+						"\t\t\t" + $"stream.Write((short)m_{fieldName});";
 				}
-				else if (field.FieldType == PropertyValueType.ZRotation)
+				else if(fieldName == "ZRotation")
 				{
-					saveFunction =  "stream.Write(WMath.RotationFloatToShort(originalRot.Z));";
+					saveFunction = "if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }\r\n" +
+						"\t\t\t" + $"stream.Write((short)m_{fieldName});";
 				}
 				else if(fieldName == "XScale")
 				{
@@ -353,15 +352,11 @@ string PropertyValueToOutput(PropertyValueType type)
 			return "Vector2";
 		case PropertyValueType.Vector3:
 			return "Vector3";
-		case PropertyValueType.XRotation:
-		case PropertyValueType.YRotation:
-		case PropertyValueType.ZRotation:
-			return "float /*single axis rotation */";
 		case PropertyValueType.Color24:
 		case PropertyValueType.Color32:
 			return "WLinearColor";
 		default:
-			return "Unknown Enum to String Type";
+			throw new InvalidDataException($"Unknown PropertyValueType: \"{type}\"");
 	}
 }
 
@@ -387,16 +382,12 @@ string GetReadFunction(PropertyValueType type, uint Length = 0)
 		return "new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle());";
 			case PropertyValueType.Vector3:
 		return "new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle());";
-		case PropertyValueType.XRotation:
-		case PropertyValueType.YRotation:
-		case PropertyValueType.ZRotation:
-			return "stream.ReadInt16();";
 		case PropertyValueType.Color24:
 			return "new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f);";
 		case PropertyValueType.Color32:
 			return "new WLinearColor(stream.ReadByte() / 255f, stream.ReadByte() / 255f, stream.ReadByte()/255f, stream.ReadByte()/255f);";
 		default:
-			return "Unknown Enum to String Type";
+			throw new InvalidDataException($"Unknown PropertyValueType: \"{type}\"");
 	}
 }
 
@@ -422,16 +413,12 @@ string GetSaveFunction(PropertyValueType type, string varName, uint Length = 0)
 		return string.Format("stream.Write((float){0}.X); stream.Write((float){0}.Y);", varName);
 			case PropertyValueType.Vector3:
 		return string.Format("stream.Write((float){0}.X); stream.Write((float){0}.Y); stream.Write((float){0}.Z);", varName);
-		case PropertyValueType.XRotation:
-		case PropertyValueType.YRotation:
-		case PropertyValueType.ZRotation:
-			return string.Format("stream.Write((short){0});", varName);
 		case PropertyValueType.Color24:
 			return string.Format("stream.Write((byte)({0}.R*255)); stream.Write((byte)({0}.G*255)); stream.Write((byte)({0}.B*255));", varName);
 		case PropertyValueType.Color32:
 			return string.Format("stream.Write((byte)({0}.R*255)); stream.Write((byte)({0}.G*255)); stream.Write((byte)({0}.B*255)); stream.Write((byte)({0}.A*255));", varName);
 		default:
-			return "Unknown Enum to String Type";
+			throw new InvalidDataException($"Unknown PropertyValueType: \"{type}\"");
 	}
 }
 #>

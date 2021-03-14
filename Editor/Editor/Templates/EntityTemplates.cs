@@ -275,6 +275,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -294,10 +295,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)FullMapImageScale.X); stream.Write((float)FullMapImageScale.Y);
 			stream.Write((float)FullMapSpaceScale.X); stream.Write((float)FullMapSpaceScale.Y);
 			stream.Write((float)FullMapTranslation.X); stream.Write((float)FullMapTranslation.Y);
@@ -515,6 +514,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -534,10 +534,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)FullMapImageScale.X); stream.Write((float)FullMapImageScale.Y);
 			stream.Write((float)FullMapSpaceScale.X); stream.Write((float)FullMapSpaceScale.Y);
 			stream.Write((float)FullMapTranslation.X); stream.Write((float)FullMapTranslation.Y);
@@ -577,6 +575,9 @@ namespace WindEditor
 		protected short m_XRotation;
 				
 
+		protected short m_YRotation;
+				
+
 		protected short m_ZRotation;
 				
 
@@ -600,6 +601,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -608,22 +610,27 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
             if ((FourCC >= FourCC.SCOB && FourCC <= FourCC.SCOb) || FourCC == FourCC.TGSC || FourCC == FourCC.TGDR)
@@ -640,10 +647,13 @@ namespace WindEditor
 	public partial class CameraViewpoint_v1 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected float /*single axis rotation */ m_XRotation;
+		protected short m_XRotation;
 				
 
-		protected float /*single axis rotation */ m_ZRotation;
+		protected short m_YRotation;
+				
+
+		protected short m_ZRotation;
 				
 
 		protected short m_Unknown1;
@@ -665,27 +675,33 @@ namespace WindEditor
 		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
+			m_XRotation = stream.ReadInt16(); 
+			m_YRotation = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
 			m_Unknown1 = stream.ReadInt16(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write(WMath.RotationFloatToShort(originalRot.X));
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
+			stream.Write((short)m_XRotation);
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
+			stream.Write((short)m_ZRotation);
 			stream.Write((short)Unknown1);
 		}
 	}
@@ -694,10 +710,13 @@ namespace WindEditor
 	public partial class CameraViewpoint_v2 : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
-		protected float /*single axis rotation */ m_XRotation;
+		protected short m_XRotation;
 				
 
-		protected float /*single axis rotation */ m_ZRotation;
+		protected short m_YRotation;
+				
+
+		protected short m_ZRotation;
 				
 
 		protected short m_Unknown1;
@@ -719,27 +738,33 @@ namespace WindEditor
 		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			float xRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion xRotQ = Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(xRot));Transform.Rotation = Transform.Rotation * xRotQ; 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
-			float zRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion zRotQ = Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(zRot));Transform.Rotation = Transform.Rotation * zRotQ; 
+			m_XRotation = stream.ReadInt16(); 
+			m_YRotation = stream.ReadInt16(); 
+			m_ZRotation = stream.ReadInt16(); 
 			m_Unknown1 = stream.ReadInt16(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write(WMath.RotationFloatToShort(originalRot.X));
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
-			stream.Write(WMath.RotationFloatToShort(originalRot.Z));
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
+			stream.Write((short)m_XRotation);
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
+			stream.Write((short)m_ZRotation);
 			stream.Write((short)Unknown1);
 		}
 	}
@@ -812,6 +837,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -824,10 +850,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((short)CameraPointIndex);
 			stream.Write((byte)Unknown1);
@@ -918,6 +942,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -931,10 +956,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(CameraType.PadRight(16, '\0').ToCharArray());
 			stream.Write((byte)CameraPointIndex);
 			stream.Write((byte)Unknown1);
@@ -965,6 +988,9 @@ namespace WindEditor
 				
 
 		protected short m_XRotation;
+				
+
+		protected short m_YRotation;
 				
 
 		protected short m_ZRotation;
@@ -1038,6 +1064,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Z", TargetProperties = new string[] { "ScaleZ"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1046,26 +1073,31 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 			m_ScaleX = stream.ReadByte(); 
 			m_ScaleY = stream.ReadByte(); 
 			m_ScaleZ = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 			stream.Write((byte)ScaleX);
@@ -1338,6 +1370,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 12", TargetProperties = new string[] { "IncludedRoom12"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 13", TargetProperties = new string[] { "IncludedRoom13"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 14", TargetProperties = new string[] { "IncludedRoom14"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1363,10 +1396,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)LowerBoundaryYHeight);
 			stream.Write((byte)FloorNumber);
 			stream.Write((byte)IncludedRoom0);
@@ -1455,6 +1486,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size Y", TargetProperties = new string[] { "MapSizeY"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Scale Inverse", TargetProperties = new string[] { "MapScaleInverse"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1467,10 +1499,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)MapSizeX);
 			stream.Write((float)MapSizeY);
 			stream.Write((float)MapScaleInverse);
@@ -1516,6 +1546,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1527,10 +1558,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
 			stream.Write((byte)(Color.R*255)); stream.Write((byte)(Color.G*255)); stream.Write((byte)(Color.B*255)); stream.Write((byte)(Color.A*255));
@@ -1617,6 +1646,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1633,10 +1663,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)m_ClearIndex);
 			stream.Write((byte)m_RainingIndex);
 			stream.Write((byte)m_SnowingIndex);
@@ -1884,6 +1912,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Far Plane", TargetProperties = new string[] { "FogFarPlane"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Near Plane", TargetProperties = new string[] { "FogNearPlane"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1908,10 +1937,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)(ShadowColor.R*255)); stream.Write((byte)(ShadowColor.G*255)); stream.Write((byte)(ShadowColor.B*255));
 			stream.Write((byte)(ActorAmbientColor.R*255)); stream.Write((byte)(ActorAmbientColor.G*255)); stream.Write((byte)(ActorAmbientColor.B*255));
 			stream.Write((byte)(RoomLightColor.R*255)); stream.Write((byte)(RoomLightColor.G*255)); stream.Write((byte)(RoomLightColor.B*255));
@@ -2119,6 +2146,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2139,10 +2167,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)(Unknown1.R*255)); stream.Write((byte)(Unknown1.G*255)); stream.Write((byte)(Unknown1.B*255)); stream.Write((byte)(Unknown1.A*255));
 			stream.Write((byte)(Unknown2.R*255)); stream.Write((byte)(Unknown2.G*255)); stream.Write((byte)(Unknown2.B*255)); stream.Write((byte)(Unknown2.A*255));
 			stream.Write((byte)(Unknown3.R*255)); stream.Write((byte)(Unknown3.G*255)); stream.Write((byte)(Unknown3.B*255)); stream.Write((byte)(Unknown3.A*255));
@@ -2202,6 +2228,7 @@ namespace WindEditor
 		public EnvironmentLightingTimesOfDay(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2218,10 +2245,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)m_DawnIndex);
 			stream.Write((byte)m_MorningIndex);
 			stream.Write((byte)m_NoonIndex);
@@ -2391,6 +2416,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 8", TargetProperties = new string[] { "Unknown8"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2409,10 +2435,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)Unknown1);
 			stream.Write(Name.PadRight(15, '\0').ToCharArray());
 			stream.Write((byte)Unknown2);
@@ -2509,6 +2533,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fade Out Type", TargetProperties = new string[] { "FadeOutType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2522,10 +2547,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(MapName.PadRight(8, '\0').ToCharArray());
 			stream.Write((byte)SpawnID);
 			stream.Write((byte)RoomIndex);
@@ -2557,6 +2580,7 @@ namespace WindEditor
 		public CutsceneIndexBank(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Cutscene Archive Number", TargetProperties = new string[] { "CutsceneArchiveNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2566,10 +2590,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)CutsceneArchiveNumber);
 		}
 	}
@@ -2612,6 +2634,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2623,10 +2646,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((float)Radius.X); stream.Write((float)Radius.Y); stream.Write((float)Radius.Z);
 			stream.Write((byte)(Color.R*255)); stream.Write((byte)(Color.G*255)); stream.Write((byte)(Color.B*255)); stream.Write((byte)(Color.A*255));
@@ -2671,6 +2692,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Entry", TargetProperties = new string[] { "Entry"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2681,10 +2703,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)Room);
 			stream.Write((byte)Entry);
 		}
@@ -2713,6 +2733,7 @@ namespace WindEditor
 		public RoomMemoryManagement(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "SizeInBytes", TargetProperties = new string[] { "SizeInBytes"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2722,10 +2743,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((int)SizeInBytes);
 		}
 	}
@@ -2752,6 +2771,9 @@ namespace WindEditor
 				
 
 		protected short m_XRotation;
+				
+
+		protected short m_YRotation;
 				
 
 		protected short m_ZRotation;
@@ -2914,14 +2936,14 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_XRotation & 0x00FF) >> 0);
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
+				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SpawnID");
 			}
 		}
@@ -2948,6 +2970,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2956,22 +2979,27 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 		}
@@ -3015,6 +3043,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Y Height", TargetProperties = new string[] { "SkyboxYHeight"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3025,10 +3054,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((int)Parameters);
 			stream.Write((float)SkyboxYHeight);
 		}
@@ -3050,6 +3077,9 @@ namespace WindEditor
 				OnPropertyChanged("Translation");
 			}
 		}
+				
+
+		protected short m_YRotation;
 				
 
 		protected byte m_Room;
@@ -3087,24 +3117,28 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Translation", TargetProperties = new string[] { "Translation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Height Addition", TargetProperties = new string[] { "WaveHeightAddition"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Translation = new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle()); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_Room = stream.ReadByte(); 
 			m_WaveHeightAddition = stream.ReadByte(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_YRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)Translation.X); stream.Write((float)Translation.Y);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
 			stream.Write((byte)Room);
 			stream.Write((byte)WaveHeightAddition);
 		}
@@ -3133,6 +3167,7 @@ namespace WindEditor
 		public RoomTable(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Offset", TargetProperties = new string[] { "Offset"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3142,10 +3177,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((int)Offset);
 		}
 	}
@@ -3174,6 +3207,9 @@ namespace WindEditor
 		protected short m_XRotation;
 				
 
+		protected short m_YRotation;
+				
+
 		protected short m_ZRotation;
 				
 
@@ -3200,6 +3236,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3208,26 +3245,31 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 			float xScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z); 
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 			stream.Write((byte)(Transform.LocalScale.X * 10));
@@ -3241,6 +3283,9 @@ namespace WindEditor
 	public partial class ShipSpawnPoint : VisibleDOMNode
 	{
 		// Auto-Generated Properties from Templates
+		protected short m_YRotation;
+				
+
 		protected byte m_ShipId;
 
 		[WProperty("Ship Spawn Properties", "Ship Id", true, "")]
@@ -3275,24 +3320,28 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ShipId = stream.ReadByte(); 
 			m_Unknown1 = stream.ReadByte(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_YRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
 			stream.Write((byte)ShipId);
 			stream.Write((byte)Unknown1);
 		}
@@ -3441,6 +3490,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3459,10 +3509,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			stream.Write((byte)Unknown1);
@@ -3720,6 +3768,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters3", TargetProperties = new string[] { "Parameters3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters4", TargetProperties = new string[] { "Parameters4"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3735,10 +3784,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((float)ZDepthMin);
 			stream.Write((float)ZDepthMax);
 			stream.Write((byte)Unknown1);
@@ -3773,6 +3820,9 @@ namespace WindEditor
 		protected short m_XRotation;
 				
 
+		protected short m_YRotation;
+				
+
 		protected short m_ZRotation;
 				
 
@@ -3799,6 +3849,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3807,26 +3858,31 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
 			float xScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z); 
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 			stream.Write((byte)(Transform.LocalScale.X * 10));
@@ -3842,7 +3898,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -3855,20 +3911,12 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
-
-		[WProperty("Misc.", "Parameters", true, "")]
-		 public int Parameters
-		{ 
-			get { return m_Parameters; }
-			set
-			{
-				m_Parameters = value;
-				OnPropertyChanged("Parameters");
-			}
-		}
 				
 
 		protected short m_XRotation;
+				
+
+		protected short m_YRotation;
 				
 
 		protected short m_ZRotation;
@@ -3876,7 +3924,7 @@ namespace WindEditor
 
 		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Enemy Number", true, "")]
+		[WProperty("Actor", "Enemy Number", true, "")]
 		 public short EnemyNumber
 		{ 
 			get { return m_EnemyNumber; }
@@ -3893,8 +3941,8 @@ namespace WindEditor
 		public TagObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3903,22 +3951,27 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Parameters);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 		}
@@ -3930,7 +3983,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected string m_Name;
 
-		[WProperty("Misc.", "Name", true, "")]
+		[WProperty("Actor", "Name", true, "")]
 		override public string Name
 		{ 
 			get { return m_Name; }
@@ -3942,52 +3995,33 @@ namespace WindEditor
 		}
 				
 
-		protected int m_Params1;
-
-		[WProperty("Misc.", "Params 1", true, "")]
-		 public int Params1
-		{ 
-			get { return m_Params1; }
-			set
-			{
-				m_Params1 = value;
-				OnPropertyChanged("Params1");
-			}
-		}
-				
-
-		protected short m_RoomLoadingParams;
-
-		[WProperty("Misc.", "RoomLoadingParams", true, "")]
-		 public short RoomLoadingParams
-		{ 
-			get { return m_RoomLoadingParams; }
-			set
-			{
-				m_RoomLoadingParams = value;
-				OnPropertyChanged("RoomLoadingParams");
-			}
-		}
+		protected int m_Parameters;
 				
 
 		protected short m_XRotation;
 				
 
+		protected short m_YRotation;
+				
+
 		protected short m_ZRotation;
 				
 
-		protected int m_Params2;
+		protected short m_EnemyNumber;
 
-		[WProperty("Misc.", "Params 2", true, "")]
-		 public int Params2
+		[WProperty("Actor", "Enemy Number", true, "")]
+		 public short EnemyNumber
 		{ 
-			get { return m_Params2; }
+			get { return m_EnemyNumber; }
 			set
 			{
-				m_Params2 = value;
-				OnPropertyChanged("Params2");
+				m_EnemyNumber = value;
+				OnPropertyChanged("EnemyNumber");
 			}
 		}
+				
+
+		protected byte m_Padding;
 				
 
 
@@ -3995,37 +4029,47 @@ namespace WindEditor
 		public TagScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 1", TargetProperties = new string[] { "Params1"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "RoomLoadingParams", TargetProperties = new string[] { "RoomLoadingParams"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Params 2", TargetProperties = new string[] { "Params2"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
 		{
 			m_Name = stream.ReadString(8).Trim(new[] { '\0' }); 
-			m_Params1 = stream.ReadInt32(); 
+			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
-			m_RoomLoadingParams = stream.ReadInt16(); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
-			m_Params2 = stream.ReadInt32(); 
+			m_EnemyNumber = stream.ReadInt16(); 
+			float xScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(xScale, Transform.LocalScale.Y, Transform.LocalScale.Z); 
+			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
+			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
+			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)Params1);
+			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
-			stream.Write((short)RoomLoadingParams);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
-			stream.Write((int)Params2);
+			stream.Write((short)EnemyNumber);
+			stream.Write((byte)(Transform.LocalScale.X * 10));
+			stream.Write((byte)(Transform.LocalScale.Y * 10));
+			stream.Write((byte)(Transform.LocalScale.Z * 10));
+			stream.Write((byte)0); // Padding
 		}
 	}
 
@@ -4053,6 +4097,9 @@ namespace WindEditor
 		protected short m_XRotation;
 				
 
+		protected short m_YRotation;
+				
+
 		protected short m_ZRotation;
 				
 
@@ -4076,6 +4123,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4084,22 +4132,27 @@ namespace WindEditor
 			m_Parameters = stream.ReadInt32(); 
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_XRotation = stream.ReadInt16(); 
-			float yRot = WMath.RotationShortToFloat(stream.ReadInt16());Quaternion yRotQ = Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(yRot));Transform.Rotation = Transform.Rotation * yRotQ; 
+			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
+			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
+				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
+			);
 		}
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
 			stream.Write((int)m_Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
+			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
-			stream.Write(WMath.RotationFloatToShort(originalRot.Y));
+			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
+			stream.Write((short)m_YRotation);
+			if (Transform.UsesZRotation) { m_ZRotation = WMath.RotationFloatToShort(eulerRot.Z); }
 			stream.Write((short)m_ZRotation);
 			stream.Write((short)EnemyNumber);
 		}
@@ -4198,6 +4251,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4212,10 +4266,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((short)m_NumberofPoints);
 			stream.Write((short)m_NextPathIndex);
 			stream.Write((byte)Unknown2);
@@ -4333,6 +4385,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4348,10 +4401,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((short)m_NumberofPoints);
 			stream.Write((short)m_NextPathIndex);
 			stream.Write((byte)Unknown1);
@@ -4430,6 +4481,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Action Type", TargetProperties = new string[] { "ActionType"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4443,10 +4495,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)Unknown1);
 			stream.Write((byte)Unknown2);
 			stream.Write((byte)Unknown3);
@@ -4523,6 +4573,7 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Action Type", TargetProperties = new string[] { "ActionType"} });
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4536,10 +4587,8 @@ namespace WindEditor
 
 		override public void Save(EndianBinaryWriter stream)
 		{
-			// Just convert their rotation to Euler Angles now instead of doing it in parts later.
-            Vector3 eulerRot = Transform.Rotation.ToEulerAngles();
-			Vector3 originalRot = new Vector3(Transform.Rotation.FindQuaternionTwist(Vector3.UnitX) * Math.Sign(eulerRot.X),Transform.Rotation.FindQuaternionTwist(Vector3.UnitY) * Math.Sign(eulerRot.Y), Transform.Rotation.FindQuaternionTwist(Vector3.UnitZ) * Math.Sign(eulerRot.Z)); 
-
+			var eulerRot = Transform.RotationAsIdealEulerAngles();
+			
 			stream.Write((byte)Unknown1);
 			stream.Write((byte)Unknown2);
 			stream.Write((byte)Unknown3);

@@ -23,9 +23,6 @@ namespace WindEditor
         FixedLengthString,
         Vector2,
         Vector3,
-        XRotation,
-        YRotation,
-        ZRotation,
         Color24,
         Color32,
     }
@@ -124,9 +121,17 @@ namespace WindEditor
     public class MapActorDescriptor
     {
         public FourCC FourCC;
+
 		public string ClassName;
+
 		public string ParentClassOverride;
+
+        [JsonProperty("RotationOrder", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [DefaultValue("ZYX")]
+        public string RotationOrder;
+
         public DataDescriptorField[] Fields;
+
         public ActorBitfieldDescriptor[] ParameterFields;
     }
 
@@ -168,7 +173,13 @@ namespace WindEditor
     public class ActorDataDescriptor
     {
         public string ClassName;
+
         public string ParentClassOverride;
+
+        [JsonProperty("RotationOrder", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        [DefaultValue("ZYX")]
+        public string RotationOrder;
+
         public ActorBitfieldDescriptor[] ParameterFields;
     }
 

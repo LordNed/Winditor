@@ -8,7 +8,7 @@
 		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
 		{"Name" : "Position", "Type" : "Vector3"},
 		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
 	],
@@ -79,7 +79,7 @@
     },
     {
       "Name": "Spawn ID",
-      "ValueSource": "XRotation",
+      "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "Spawn Properties",

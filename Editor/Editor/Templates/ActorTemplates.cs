@@ -35,7 +35,10 @@ namespace WindEditor
 		// Constructor
 		public acorn_leaf(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -211,7 +214,10 @@ namespace WindEditor
 		// Constructor
 		public agbsw0(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -291,7 +297,10 @@ namespace WindEditor
 		// Constructor
 		public alldie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -391,7 +400,10 @@ namespace WindEditor
 		// Constructor
 		public am(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -482,7 +494,10 @@ namespace WindEditor
 		// Constructor
 		public am2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -536,7 +551,10 @@ namespace WindEditor
 		// Constructor
 		public amiprop(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -673,7 +691,10 @@ namespace WindEditor
 		// Constructor
 		public andsw0(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -811,7 +832,10 @@ namespace WindEditor
 		// Constructor
 		public andsw2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -833,7 +857,10 @@ namespace WindEditor
 		// Constructor
 		public arrow_iceeff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -862,7 +889,10 @@ namespace WindEditor
 		// Constructor
 		public arrow_lighteff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -897,7 +927,10 @@ namespace WindEditor
 		// Constructor
 		public atdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -932,7 +965,10 @@ namespace WindEditor
 		// Constructor
 		public att(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -950,7 +986,10 @@ namespace WindEditor
 		// Constructor
 		public auction(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -1073,7 +1112,10 @@ namespace WindEditor
 		// Constructor
 		public bb(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "YXZ";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1111,7 +1153,10 @@ namespace WindEditor
 		// Constructor
 		public bdk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1163,7 +1208,10 @@ namespace WindEditor
 		// Constructor
 		public bdkobj(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1318,7 +1366,10 @@ namespace WindEditor
 		// Constructor
 		public beam(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1386,7 +1437,10 @@ namespace WindEditor
 		// Constructor
 		public bflower(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "YXZ";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1427,7 +1481,10 @@ namespace WindEditor
 		// Constructor
 		public bgn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1445,7 +1502,10 @@ namespace WindEditor
 		// Constructor
 		public bgn2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -1457,7 +1517,10 @@ namespace WindEditor
 		// Constructor
 		public bgn3(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -1520,7 +1583,10 @@ namespace WindEditor
 		// Constructor
 		public bigelf(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1574,7 +1640,10 @@ namespace WindEditor
 		// Constructor
 		public bita(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1783,7 +1852,10 @@ namespace WindEditor
 		// Constructor
 		public bk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1903,7 +1975,10 @@ namespace WindEditor
 		// Constructor
 		public bl(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1928,7 +2003,10 @@ namespace WindEditor
 		// Constructor
 		public bmd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -1957,7 +2035,10 @@ namespace WindEditor
 		// Constructor
 		public bmdfoot(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2026,7 +2107,10 @@ namespace WindEditor
 		// Constructor
 		public bmdhand(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2096,7 +2180,10 @@ namespace WindEditor
 		// Constructor
 		public bo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2154,7 +2241,10 @@ namespace WindEditor
 		// Constructor
 		public boko(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2189,7 +2279,10 @@ namespace WindEditor
 		// Constructor
 		public boss_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2258,7 +2351,10 @@ namespace WindEditor
 		// Constructor
 		public bpw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2278,7 +2374,10 @@ namespace WindEditor
 		// Constructor
 		public branch(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2354,7 +2453,10 @@ namespace WindEditor
 		// Constructor
 		public bridge(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2399,7 +2501,10 @@ namespace WindEditor
 		// Constructor
 		public bst(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2411,7 +2516,10 @@ namespace WindEditor
 		// Constructor
 		public btd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2440,7 +2548,10 @@ namespace WindEditor
 		// Constructor
 		public bwd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2458,7 +2569,10 @@ namespace WindEditor
 		// Constructor
 		public bwdg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2487,7 +2601,10 @@ namespace WindEditor
 		// Constructor
 		public bwds(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2522,7 +2639,10 @@ namespace WindEditor
 		// Constructor
 		public canon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2637,7 +2757,10 @@ namespace WindEditor
 		// Constructor
 		public cc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2671,7 +2794,10 @@ namespace WindEditor
 		// Constructor
 		public coming2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2683,7 +2809,10 @@ namespace WindEditor
 		// Constructor
 		public coming3(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2712,7 +2841,10 @@ namespace WindEditor
 		// Constructor
 		public dai(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2828,7 +2960,10 @@ namespace WindEditor
 		// Constructor
 		public daiocta(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2848,7 +2983,10 @@ namespace WindEditor
 		// Constructor
 		public daiocta_eye(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2877,7 +3015,10 @@ namespace WindEditor
 		// Constructor
 		public deku_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2895,7 +3036,10 @@ namespace WindEditor
 		// Constructor
 		public demo_dk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2941,7 +3085,10 @@ namespace WindEditor
 		// Constructor
 		public demo_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2960,7 +3107,10 @@ namespace WindEditor
 		// Constructor
 		public demo_kmm(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -2989,7 +3139,10 @@ namespace WindEditor
 		// Constructor
 		public dk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3157,7 +3310,10 @@ namespace WindEditor
 		// Constructor
 		public door10(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3365,7 +3521,10 @@ namespace WindEditor
 		// Constructor
 		public door12(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3418,7 +3577,10 @@ namespace WindEditor
 		// Constructor
 		public dr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -3430,7 +3592,10 @@ namespace WindEditor
 		// Constructor
 		public dr2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -3442,7 +3607,10 @@ namespace WindEditor
 		// Constructor
 		public dummy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -3580,7 +3748,10 @@ namespace WindEditor
 		// Constructor
 		public ep(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3600,7 +3771,10 @@ namespace WindEditor
 		// Constructor
 		public fallrock(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -3629,7 +3803,10 @@ namespace WindEditor
 		// Constructor
 		public fallrock_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3681,7 +3858,10 @@ namespace WindEditor
 		// Constructor
 		public fan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3751,7 +3931,10 @@ namespace WindEditor
 		// Constructor
 		public ff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3867,7 +4050,10 @@ namespace WindEditor
 		// Constructor
 		public fganon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3905,7 +4091,10 @@ namespace WindEditor
 		// Constructor
 		public fgmahou(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4025,7 +4214,10 @@ namespace WindEditor
 		// Constructor
 		public fire(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4068,7 +4260,10 @@ namespace WindEditor
 		// Constructor
 		public floor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4274,7 +4469,10 @@ namespace WindEditor
 		// Constructor
 		public fm(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4306,7 +4504,10 @@ namespace WindEditor
 		// Constructor
 		public f_pc_profile_lst(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -4352,7 +4553,10 @@ namespace WindEditor
 		// Constructor
 		public ghostship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4456,7 +4660,10 @@ namespace WindEditor
 		// Constructor
 		public gm(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4512,7 +4719,10 @@ namespace WindEditor
 		// Constructor
 		public gnd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4565,7 +4775,10 @@ namespace WindEditor
 		// Constructor
 		public goal_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4662,7 +4875,10 @@ namespace WindEditor
 		// Constructor
 		public grass(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4724,7 +4940,10 @@ namespace WindEditor
 		// Constructor
 		public gy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -4812,7 +5031,10 @@ namespace WindEditor
 		// Constructor
 		public gy_ctrl(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4923,7 +5145,10 @@ namespace WindEditor
 		// Constructor
 		public himo3(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4962,7 +5187,10 @@ namespace WindEditor
 		// Constructor
 		public hitobj(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5140,7 +5368,10 @@ namespace WindEditor
 		// Constructor
 		public hmlif(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5207,7 +5438,10 @@ namespace WindEditor
 		// Constructor
 		public hot_floor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5261,7 +5495,10 @@ namespace WindEditor
 		// Constructor
 		public hys(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5331,7 +5568,10 @@ namespace WindEditor
 		// Constructor
 		public icelift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5385,7 +5625,10 @@ namespace WindEditor
 		// Constructor
 		public ikari(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5538,7 +5781,10 @@ namespace WindEditor
 		// Constructor
 		public item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5576,7 +5822,10 @@ namespace WindEditor
 		// Constructor
 		public jbo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5594,7 +5843,10 @@ namespace WindEditor
 		// Constructor
 		public kaji(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -5699,7 +5951,10 @@ namespace WindEditor
 		// Constructor
 		public kamome(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5751,7 +6006,10 @@ namespace WindEditor
 		// Constructor
 		public kanban(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5821,7 +6079,10 @@ namespace WindEditor
 		// Constructor
 		public kantera(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5950,7 +6211,10 @@ namespace WindEditor
 		// Constructor
 		public kb(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6107,7 +6371,10 @@ namespace WindEditor
 		// Constructor
 		public kddoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6259,7 +6526,10 @@ namespace WindEditor
 		// Constructor
 		public ki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6318,7 +6588,10 @@ namespace WindEditor
 		// Constructor
 		public kita(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6412,7 +6685,10 @@ namespace WindEditor
 		// Constructor
 		public klft(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6431,7 +6707,10 @@ namespace WindEditor
 		// Constructor
 		public kmon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -6477,7 +6756,10 @@ namespace WindEditor
 		// Constructor
 		public kn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6613,7 +6895,10 @@ namespace WindEditor
 		// Constructor
 		public knob00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6690,7 +6975,10 @@ namespace WindEditor
 		// Constructor
 		public kokiie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6709,7 +6997,10 @@ namespace WindEditor
 		// Constructor
 		public komore(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -6785,7 +7076,10 @@ namespace WindEditor
 		// Constructor
 		public ks(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6821,7 +7115,10 @@ namespace WindEditor
 		// Constructor
 		public kt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6919,7 +7216,10 @@ namespace WindEditor
 		// Constructor
 		public kui(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7101,7 +7401,10 @@ namespace WindEditor
 		// Constructor
 		public kytag00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7121,7 +7424,10 @@ namespace WindEditor
 		// Constructor
 		public kytag01(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -7164,7 +7470,10 @@ namespace WindEditor
 		// Constructor
 		public kytag02(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7199,7 +7508,10 @@ namespace WindEditor
 		// Constructor
 		public kytag03(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7268,7 +7580,10 @@ namespace WindEditor
 		// Constructor
 		public kytag04(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7305,7 +7620,10 @@ namespace WindEditor
 		// Constructor
 		public kytag05(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7323,7 +7641,10 @@ namespace WindEditor
 		// Constructor
 		public kytag06(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -7352,7 +7673,10 @@ namespace WindEditor
 		// Constructor
 		public kytag07(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7395,7 +7719,10 @@ namespace WindEditor
 		// Constructor
 		public lamp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -7424,7 +7751,10 @@ namespace WindEditor
 		// Constructor
 		public lbridge(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7459,7 +7789,10 @@ namespace WindEditor
 		// Constructor
 		public leaflift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7477,7 +7810,10 @@ namespace WindEditor
 		// Constructor
 		public lod_bg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -7506,7 +7842,10 @@ namespace WindEditor
 		// Constructor
 		public lstair(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7524,7 +7863,10 @@ namespace WindEditor
 		// Constructor
 		public lwood(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -7553,7 +7895,10 @@ namespace WindEditor
 		// Constructor
 		public machine(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7602,7 +7947,10 @@ namespace WindEditor
 		// Constructor
 		public magma(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7654,7 +8002,10 @@ namespace WindEditor
 		// Constructor
 		public majuu_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7690,7 +8041,10 @@ namespace WindEditor
 		// Constructor
 		public mant(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7759,7 +8113,10 @@ namespace WindEditor
 		// Constructor
 		public mbdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7847,7 +8204,10 @@ namespace WindEditor
 		// Constructor
 		public mdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7902,7 +8262,10 @@ namespace WindEditor
 		// Constructor
 		public mflft(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7921,7 +8284,10 @@ namespace WindEditor
 		// Constructor
 		public mgameboard(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -7933,7 +8299,10 @@ namespace WindEditor
 		// Constructor
 		public mmusic(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -8064,7 +8433,10 @@ namespace WindEditor
 		// Constructor
 		public mo2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8084,7 +8456,10 @@ namespace WindEditor
 		// Constructor
 		public movie_player(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -8113,7 +8488,10 @@ namespace WindEditor
 		// Constructor
 		public mozo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8148,7 +8526,10 @@ namespace WindEditor
 		// Constructor
 		public msw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8282,7 +8663,10 @@ namespace WindEditor
 		// Constructor
 		public mt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8322,7 +8706,10 @@ namespace WindEditor
 		// Constructor
 		public mtoge(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8374,7 +8761,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ac1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8427,7 +8817,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ah(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8490,7 +8883,10 @@ namespace WindEditor
 		// Constructor
 		public npc_aj1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8508,7 +8904,10 @@ namespace WindEditor
 		// Constructor
 		public npc_auction(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -8537,7 +8936,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ba1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8589,7 +8991,10 @@ namespace WindEditor
 		// Constructor
 		public npc_bj1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8809,7 +9214,10 @@ namespace WindEditor
 		// Constructor
 		public npc_bm1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8844,7 +9252,10 @@ namespace WindEditor
 		// Constructor
 		public npc_bmcon1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8879,7 +9290,10 @@ namespace WindEditor
 		// Constructor
 		public npc_bms1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8897,7 +9311,10 @@ namespace WindEditor
 		// Constructor
 		public npc_bmsw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -8959,7 +9376,10 @@ namespace WindEditor
 		// Constructor
 		public npc_bs1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -8971,7 +9391,10 @@ namespace WindEditor
 		// Constructor
 		public npc_btsw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -9014,7 +9437,10 @@ namespace WindEditor
 		// Constructor
 		public npc_btsw2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9049,7 +9475,10 @@ namespace WindEditor
 		// Constructor
 		public npc_cb1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9084,7 +9513,10 @@ namespace WindEditor
 		// Constructor
 		public npc_co1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9119,7 +9551,10 @@ namespace WindEditor
 		// Constructor
 		public npc_de1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9154,7 +9589,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ds1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9189,7 +9627,10 @@ namespace WindEditor
 		// Constructor
 		public npc_gk1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9241,7 +9682,10 @@ namespace WindEditor
 		// Constructor
 		public npc_gp1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9277,7 +9721,10 @@ namespace WindEditor
 		// Constructor
 		public npc_hi1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9295,7 +9742,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ho(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -9359,7 +9809,10 @@ namespace WindEditor
 		// Constructor
 		public npc_hr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9396,7 +9849,10 @@ namespace WindEditor
 		// Constructor
 		public npc_jb1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9414,7 +9870,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ji1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -9460,7 +9919,10 @@ namespace WindEditor
 		// Constructor
 		public npc_kamome(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9569,7 +10031,10 @@ namespace WindEditor
 		// Constructor
 		public npc_kf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9589,7 +10054,10 @@ namespace WindEditor
 		// Constructor
 		public npc_kg1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -9601,7 +10069,10 @@ namespace WindEditor
 		// Constructor
 		public npc_kg2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -9681,7 +10152,10 @@ namespace WindEditor
 		// Constructor
 		public npc_kk1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9719,7 +10193,10 @@ namespace WindEditor
 		// Constructor
 		public npc_km1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9828,7 +10305,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ko1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9863,7 +10343,10 @@ namespace WindEditor
 		// Constructor
 		public npc_kp1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9910,7 +10393,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ls1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -9973,7 +10459,10 @@ namespace WindEditor
 		// Constructor
 		public npc_md(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10027,7 +10516,10 @@ namespace WindEditor
 		// Constructor
 		public npc_mk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10111,7 +10603,10 @@ namespace WindEditor
 		// Constructor
 		public npc_mn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10131,7 +10626,10 @@ namespace WindEditor
 		// Constructor
 		public npc_mt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -10143,7 +10641,10 @@ namespace WindEditor
 		// Constructor
 		public npc_nz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -10189,7 +10690,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ob1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10225,7 +10729,10 @@ namespace WindEditor
 		// Constructor
 		public npc_os(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10278,7 +10785,10 @@ namespace WindEditor
 		// Constructor
 		public npc_p1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10349,7 +10859,10 @@ namespace WindEditor
 		// Constructor
 		public npc_p2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10440,7 +10953,10 @@ namespace WindEditor
 		// Constructor
 		public npc_people(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10507,7 +11023,10 @@ namespace WindEditor
 		// Constructor
 		public npc_pf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10560,7 +11079,10 @@ namespace WindEditor
 		// Constructor
 		public npc_photo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10596,7 +11118,10 @@ namespace WindEditor
 		// Constructor
 		public npc_pm1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10649,7 +11174,10 @@ namespace WindEditor
 		// Constructor
 		public npc_roten(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10702,7 +11230,10 @@ namespace WindEditor
 		// Constructor
 		public npc_rsh1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10721,7 +11252,10 @@ namespace WindEditor
 		// Constructor
 		public npc_sarace(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -10733,7 +11267,10 @@ namespace WindEditor
 		// Constructor
 		public npc_so(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -10745,7 +11282,10 @@ namespace WindEditor
 		// Constructor
 		public npc_sv(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -10791,7 +11331,10 @@ namespace WindEditor
 		// Constructor
 		public npc_tc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10810,7 +11353,10 @@ namespace WindEditor
 		// Constructor
 		public npc_tt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -10905,7 +11451,10 @@ namespace WindEditor
 		// Constructor
 		public npc_uk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10940,7 +11489,10 @@ namespace WindEditor
 		// Constructor
 		public npc_ym1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11017,7 +11569,10 @@ namespace WindEditor
 		// Constructor
 		public npc_yw1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11052,7 +11607,10 @@ namespace WindEditor
 		// Constructor
 		public npc_zk1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11087,7 +11645,10 @@ namespace WindEditor
 		// Constructor
 		public npc_zl1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11156,7 +11717,10 @@ namespace WindEditor
 		// Constructor
 		public nz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11251,7 +11815,10 @@ namespace WindEditor
 		// Constructor
 		public nzg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11271,7 +11838,10 @@ namespace WindEditor
 		// Constructor
 		public obj_adnno(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -11300,7 +11870,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ajav(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11318,7 +11891,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ajavw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -11426,7 +12002,10 @@ namespace WindEditor
 		// Constructor
 		public obj_akabe(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11485,7 +12064,10 @@ namespace WindEditor
 		// Constructor
 		public obj_apzl(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -11531,7 +12113,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ashut(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11624,7 +12209,10 @@ namespace WindEditor
 		// Constructor
 		public obj_auzu(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11668,7 +12256,10 @@ namespace WindEditor
 		// Constructor
 		public obj_aygr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -11697,7 +12288,10 @@ namespace WindEditor
 		// Constructor
 		public obj_balancelift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11749,7 +12343,10 @@ namespace WindEditor
 		// Constructor
 		public obj_barrel(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11870,7 +12467,10 @@ namespace WindEditor
 		// Constructor
 		public obj_barrel2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11927,7 +12527,10 @@ namespace WindEditor
 		// Constructor
 		public obj_barrier(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12121,7 +12724,10 @@ namespace WindEditor
 		// Constructor
 		public obj_bemos(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12170,7 +12776,10 @@ namespace WindEditor
 		// Constructor
 		public obj_bscurtain(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12239,7 +12848,10 @@ namespace WindEditor
 		// Constructor
 		public obj_buoyflag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12293,7 +12905,10 @@ namespace WindEditor
 		// Constructor
 		public obj_buoyrace(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12312,7 +12927,10 @@ namespace WindEditor
 		// Constructor
 		public obj_cafelmp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -12407,7 +13025,10 @@ namespace WindEditor
 		// Constructor
 		public obj_canon(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12530,7 +13151,10 @@ namespace WindEditor
 		// Constructor
 		public obj_coming(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12624,7 +13248,10 @@ namespace WindEditor
 		// Constructor
 		public obj_correct(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12667,7 +13294,10 @@ namespace WindEditor
 		// Constructor
 		public obj_demo_barrel(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -12679,7 +13309,10 @@ namespace WindEditor
 		// Constructor
 		public obj_dmgroom(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -12708,7 +13341,10 @@ namespace WindEditor
 		// Constructor
 		public obj_doguu(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12743,7 +13379,10 @@ namespace WindEditor
 		// Constructor
 		public obj_doguu_demo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12778,7 +13417,10 @@ namespace WindEditor
 		// Constructor
 		public obj_dragonhead(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12813,7 +13455,10 @@ namespace WindEditor
 		// Constructor
 		public obj_drift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12831,7 +13476,10 @@ namespace WindEditor
 		// Constructor
 		public obj_eayogn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -12860,7 +13508,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ebomzo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12895,7 +13546,10 @@ namespace WindEditor
 		// Constructor
 		public obj_eff(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12930,7 +13584,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ekskz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12965,7 +13622,10 @@ namespace WindEditor
 		// Constructor
 		public obj_eskban(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13000,7 +13660,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ferris(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13035,7 +13698,10 @@ namespace WindEditor
 		// Constructor
 		public obj_figure(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13070,7 +13736,10 @@ namespace WindEditor
 		// Constructor
 		public obj_firewall(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13201,7 +13870,10 @@ namespace WindEditor
 		// Constructor
 		public obj_flame(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "YXZ";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13240,7 +13912,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ftree(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13258,7 +13933,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ganonbed(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13270,7 +13948,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gaship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13282,7 +13963,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gaship2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13311,7 +13995,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gnnbtltaki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13329,7 +14016,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gnndemotakie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13341,7 +14031,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gnndemotakis(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13353,7 +14046,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gong(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13382,7 +14078,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gryw00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13400,7 +14099,10 @@ namespace WindEditor
 		// Constructor
 		public obj_gtaki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13429,7 +14131,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hami2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13498,7 +14203,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hami3(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13535,7 +14243,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hami4(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13570,7 +14281,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hat(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13639,7 +14353,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hbrf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13710,7 +14427,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hcbh(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13730,7 +14450,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hfuck1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -13776,7 +14499,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hha(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13863,7 +14589,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hlift(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13955,7 +14684,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hole(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14088,7 +14820,10 @@ namespace WindEditor
 		// Constructor
 		public obj_homen(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14142,7 +14877,10 @@ namespace WindEditor
 		// Constructor
 		public obj_homensmoke(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14195,7 +14933,10 @@ namespace WindEditor
 		// Constructor
 		public obj_hsehi1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14231,7 +14972,10 @@ namespace WindEditor
 		// Constructor
 		public obj_htetu1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14266,7 +15010,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ice(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14301,7 +15048,10 @@ namespace WindEditor
 		// Constructor
 		public obj_iceisland(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14478,7 +15228,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ikada(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14550,7 +15303,10 @@ namespace WindEditor
 		// Constructor
 		public obj_Itnak(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14586,7 +15342,10 @@ namespace WindEditor
 		// Constructor
 		public obj_jump(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14621,7 +15380,10 @@ namespace WindEditor
 		// Constructor
 		public obj_kanat(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14727,11 +15489,29 @@ namespace WindEditor
 				OnPropertyChanged("Unknown_5");
 			}
 		}
+		public int UnusedZRotation
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_ZRotation & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("UnusedZRotation");
+			}
+		}
 
 		// Constructor
 		public obj_kanoke(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14741,6 +15521,7 @@ namespace WindEditor
 			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
+			UnusedZRotation = -1;
 			if (Name == "MKanoke") {
 				IsUpright = false;
 			}
@@ -14827,7 +15608,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ladder(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14912,7 +15696,10 @@ namespace WindEditor
 		// Constructor
 		public obj_leaves(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14932,7 +15719,10 @@ namespace WindEditor
 		// Constructor
 		public obj_light(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -14944,7 +15734,10 @@ namespace WindEditor
 		// Constructor
 		public obj_lpalm(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -14990,7 +15783,10 @@ namespace WindEditor
 		// Constructor
 		public obj_magmarock(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15026,7 +15822,10 @@ namespace WindEditor
 		// Constructor
 		public obj_majyuu_door(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15130,7 +15929,10 @@ namespace WindEditor
 		// Constructor
 		public obj_mkie(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15186,7 +15988,10 @@ namespace WindEditor
 		// Constructor
 		public obj_mkiek(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15239,7 +16044,10 @@ namespace WindEditor
 		// Constructor
 		public obj_mknjd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15258,7 +16066,10 @@ namespace WindEditor
 		// Constructor
 		public obj_mmrr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -15304,7 +16115,10 @@ namespace WindEditor
 		// Constructor
 		public obj_monument(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15524,7 +16338,10 @@ namespace WindEditor
 		// Constructor
 		public obj_movebox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15677,7 +16494,10 @@ namespace WindEditor
 		// Constructor
 		public obj_msdan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15714,7 +16534,10 @@ namespace WindEditor
 		// Constructor
 		public obj_msdan2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15791,7 +16614,10 @@ namespace WindEditor
 		// Constructor
 		public obj_msdan_sub(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15844,7 +16670,10 @@ namespace WindEditor
 		// Constructor
 		public obj_msdan_sub2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15889,7 +16718,10 @@ namespace WindEditor
 		// Constructor
 		public obj_mshokki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -15993,7 +16825,10 @@ namespace WindEditor
 		// Constructor
 		public obj_mtest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16036,7 +16871,10 @@ namespace WindEditor
 		// Constructor
 		public obj_nest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16065,7 +16903,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ohatch(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16083,7 +16924,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ojtree(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16141,7 +16985,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ospbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16176,7 +17023,10 @@ namespace WindEditor
 		// Constructor
 		public obj_otble(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16235,7 +17085,10 @@ namespace WindEditor
 		// Constructor
 		public obj_paper(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16253,7 +17106,10 @@ namespace WindEditor
 		// Constructor
 		public obj_pbco(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16265,7 +17121,10 @@ namespace WindEditor
 		// Constructor
 		public obj_pbka(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16277,7 +17136,10 @@ namespace WindEditor
 		// Constructor
 		public obj_pfall(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16379,7 +17241,10 @@ namespace WindEditor
 		// Constructor
 		public obj_pirateship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16399,7 +17264,10 @@ namespace WindEditor
 		// Constructor
 		public obj_plant(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16462,7 +17330,10 @@ namespace WindEditor
 		// Constructor
 		public obj_quake(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16499,7 +17370,10 @@ namespace WindEditor
 		// Constructor
 		public obj_rcloud(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16517,7 +17391,10 @@ namespace WindEditor
 		// Constructor
 		public obj_rflw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16529,7 +17406,10 @@ namespace WindEditor
 		// Constructor
 		public obj_rforce(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -16558,7 +17438,10 @@ namespace WindEditor
 		// Constructor
 		public obj_roten(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16697,7 +17580,10 @@ namespace WindEditor
 		// Constructor
 		public obj_search(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16751,7 +17637,10 @@ namespace WindEditor
 		// Constructor
 		public obj_shelf(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16787,7 +17676,10 @@ namespace WindEditor
 		// Constructor
 		public obj_shmrgrd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16822,7 +17714,10 @@ namespace WindEditor
 		// Constructor
 		public obj_smplbg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16857,7 +17752,10 @@ namespace WindEditor
 		// Constructor
 		public obj_stair(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16935,7 +17833,10 @@ namespace WindEditor
 		// Constructor
 		public obj_swflat(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16997,7 +17898,10 @@ namespace WindEditor
 		// Constructor
 		public obj_swhammer(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17060,7 +17964,10 @@ namespace WindEditor
 		// Constructor
 		public obj_swheavy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17141,7 +18048,10 @@ namespace WindEditor
 		// Constructor
 		public obj_swlight(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17296,7 +18206,10 @@ namespace WindEditor
 		// Constructor
 		public obj_swpush(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17342,7 +18255,10 @@ namespace WindEditor
 		// Constructor
 		public obj_table(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17394,7 +18310,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tapestry(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17447,7 +18366,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tenmado(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17500,7 +18422,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tide(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17553,7 +18478,10 @@ namespace WindEditor
 		// Constructor
 		public obj_timer(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17640,7 +18568,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tntrap(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17661,7 +18592,10 @@ namespace WindEditor
 		// Constructor
 		public obj_toripost(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -17673,7 +18607,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tousekiki(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -17685,7 +18622,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tower(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -17731,7 +18671,10 @@ namespace WindEditor
 		// Constructor
 		public obj_trap(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17784,7 +18727,10 @@ namespace WindEditor
 		// Constructor
 		public obj_tribox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17882,7 +18828,10 @@ namespace WindEditor
 		// Constructor
 		public obj_try(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17960,7 +18909,10 @@ namespace WindEditor
 		// Constructor
 		public obj_usovmc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -17989,7 +18941,10 @@ namespace WindEditor
 		// Constructor
 		public obj_Vds(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18024,7 +18979,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vfan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18042,7 +19000,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vgnfd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -18071,7 +19032,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vmc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18089,7 +19053,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vmsdz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -18101,7 +19068,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vmsms(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -18130,7 +19100,10 @@ namespace WindEditor
 		// Constructor
 		public obj_volcano(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18148,7 +19121,10 @@ namespace WindEditor
 		// Constructor
 		public obj_Vteng(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -18177,7 +19153,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vtil(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18212,7 +19191,10 @@ namespace WindEditor
 		// Constructor
 		public obj_vyasi(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18535,7 +19517,10 @@ namespace WindEditor
 		// Constructor
 		public obj_warpt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18575,7 +19560,10 @@ namespace WindEditor
 		// Constructor
 		public obj_wood(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -18587,7 +19575,10 @@ namespace WindEditor
 		// Constructor
 		public obj_xfuta(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -18616,7 +19607,10 @@ namespace WindEditor
 		// Constructor
 		public obj_Yboil(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18651,7 +19645,10 @@ namespace WindEditor
 		// Constructor
 		public obj_ygush00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18686,7 +19683,10 @@ namespace WindEditor
 		// Constructor
 		public obj_YLzou(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18721,7 +19721,10 @@ namespace WindEditor
 		// Constructor
 		public obj_zouK(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18812,7 +19815,10 @@ namespace WindEditor
 		// Constructor
 		public oq(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18983,7 +19989,10 @@ namespace WindEditor
 		// Constructor
 		public oship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19022,7 +20031,10 @@ namespace WindEditor
 		// Constructor
 		public pedestal(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19099,7 +20111,10 @@ namespace WindEditor
 		// Constructor
 		public ph(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19118,7 +20133,10 @@ namespace WindEditor
 		// Constructor
 		public pirate_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -19277,7 +20295,10 @@ namespace WindEditor
 		// Constructor
 		public pt(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19427,7 +20448,10 @@ namespace WindEditor
 		// Constructor
 		public pw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19463,7 +20487,10 @@ namespace WindEditor
 		// Constructor
 		public pz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19532,7 +20559,10 @@ namespace WindEditor
 		// Constructor
 		public race_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19633,7 +20663,10 @@ namespace WindEditor
 		// Constructor
 		public rd(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19652,7 +20685,10 @@ namespace WindEditor
 		// Constructor
 		public rectangle(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -19664,7 +20700,10 @@ namespace WindEditor
 		// Constructor
 		public sail(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -19762,7 +20801,10 @@ namespace WindEditor
 		// Constructor
 		public saku(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19960,7 +21002,10 @@ namespace WindEditor
 		// Constructor
 		public salvage(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20037,7 +21082,10 @@ namespace WindEditor
 		// Constructor
 		public salvage_tbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20056,7 +21104,10 @@ namespace WindEditor
 		// Constructor
 		public sbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -20068,7 +21119,10 @@ namespace WindEditor
 		// Constructor
 		public scene_change(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -20080,7 +21134,10 @@ namespace WindEditor
 		// Constructor
 		public sea(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -20092,7 +21149,10 @@ namespace WindEditor
 		// Constructor
 		public seatag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -20121,7 +21181,10 @@ namespace WindEditor
 		// Constructor
 		public Sfairy(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20156,7 +21219,10 @@ namespace WindEditor
 		// Constructor
 		public shand(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20225,7 +21291,10 @@ namespace WindEditor
 		// Constructor
 		public ship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20279,7 +21348,10 @@ namespace WindEditor
 		// Constructor
 		public shop_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20332,7 +21404,10 @@ namespace WindEditor
 		// Constructor
 		public shutter(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20368,7 +21443,10 @@ namespace WindEditor
 		// Constructor
 		public shutter2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20386,7 +21464,10 @@ namespace WindEditor
 		// Constructor
 		public sie_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -20467,7 +21548,10 @@ namespace WindEditor
 		// Constructor
 		public sitem(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20522,7 +21606,10 @@ namespace WindEditor
 		// Constructor
 		public sk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20592,7 +21679,10 @@ namespace WindEditor
 		// Constructor
 		public sk2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20629,7 +21719,10 @@ namespace WindEditor
 		// Constructor
 		public spotbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20707,7 +21800,10 @@ namespace WindEditor
 		// Constructor
 		public ss(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20786,7 +21882,10 @@ namespace WindEditor
 		// Constructor
 		public ssk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20864,7 +21963,10 @@ namespace WindEditor
 		// Constructor
 		public sss(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20977,7 +22079,10 @@ namespace WindEditor
 		// Constructor
 		public st(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21015,7 +22120,10 @@ namespace WindEditor
 		// Constructor
 		public steam_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21147,7 +22255,10 @@ namespace WindEditor
 		// Constructor
 		public stone(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21306,7 +22417,10 @@ namespace WindEditor
 		// Constructor
 		public stone2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "YXZ";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21372,7 +22486,10 @@ namespace WindEditor
 		// Constructor
 		public swattack(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21452,7 +22569,10 @@ namespace WindEditor
 		// Constructor
 		public swc00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21590,7 +22710,10 @@ namespace WindEditor
 		// Constructor
 		public swhit0(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21680,7 +22803,10 @@ namespace WindEditor
 		// Constructor
 		public switem(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21733,7 +22859,10 @@ namespace WindEditor
 		// Constructor
 		public swpropeller(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21822,7 +22951,10 @@ namespace WindEditor
 		// Constructor
 		public swtact(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21880,7 +23012,10 @@ namespace WindEditor
 		// Constructor
 		public swtdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21899,7 +23034,10 @@ namespace WindEditor
 		// Constructor
 		public syan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -21955,7 +23093,10 @@ namespace WindEditor
 		// Constructor
 		public tag_attention(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21973,7 +23114,10 @@ namespace WindEditor
 		// Constructor
 		public tag_ba1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -22025,7 +23169,10 @@ namespace WindEditor
 		// Constructor
 		public tag_etc(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22156,7 +23303,10 @@ namespace WindEditor
 		// Constructor
 		public tag_event(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22236,7 +23386,10 @@ namespace WindEditor
 		// Constructor
 		public tag_evsw(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22289,7 +23442,10 @@ namespace WindEditor
 		// Constructor
 		public tag_ghostship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22431,7 +23587,10 @@ namespace WindEditor
 		// Constructor
 		public tag_hint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22526,7 +23685,10 @@ namespace WindEditor
 		// Constructor
 		public tag_island(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22619,7 +23781,10 @@ namespace WindEditor
 		// Constructor
 		public tag_kb_item(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22656,7 +23821,10 @@ namespace WindEditor
 		// Constructor
 		public tag_kf1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22674,7 +23842,10 @@ namespace WindEditor
 		// Constructor
 		public tag_kk1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -22833,7 +24004,10 @@ namespace WindEditor
 		// Constructor
 		public tag_light(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "YXZ";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22932,7 +24106,10 @@ namespace WindEditor
 		// Constructor
 		public tag_md_cb(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23004,7 +24181,10 @@ namespace WindEditor
 		// Constructor
 		public tag_mk(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23138,7 +24318,10 @@ namespace WindEditor
 		// Constructor
 		public tag_msg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23183,7 +24366,10 @@ namespace WindEditor
 		// Constructor
 		public tag_photo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23218,7 +24404,10 @@ namespace WindEditor
 		// Constructor
 		public tag_ret(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23287,7 +24476,10 @@ namespace WindEditor
 		// Constructor
 		public tag_so(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23384,7 +24576,10 @@ namespace WindEditor
 		// Constructor
 		public tag_volcano(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23421,7 +24616,10 @@ namespace WindEditor
 		// Constructor
 		public tag_waterlevel(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23456,7 +24654,10 @@ namespace WindEditor
 		// Constructor
 		public tama(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23621,7 +24822,10 @@ namespace WindEditor
 		// Constructor
 		public tbox(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23719,7 +24923,10 @@ namespace WindEditor
 		// Constructor
 		public title(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -23927,7 +25134,10 @@ namespace WindEditor
 		// Constructor
 		public tn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = false;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23982,7 +25192,10 @@ namespace WindEditor
 		// Constructor
 		public toge(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24001,7 +25214,10 @@ namespace WindEditor
 		// Constructor
 		public tori_flag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -24030,7 +25246,10 @@ namespace WindEditor
 		// Constructor
 		public tornado(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24048,7 +25267,10 @@ namespace WindEditor
 		// Constructor
 		public tpota(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -24307,7 +25529,10 @@ namespace WindEditor
 		// Constructor
 		public tsubo(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24400,7 +25625,10 @@ namespace WindEditor
 		// Constructor
 		public wall(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24436,7 +25664,10 @@ namespace WindEditor
 		// Constructor
 		public warpdm20(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24471,7 +25702,10 @@ namespace WindEditor
 		// Constructor
 		public warpf(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24489,7 +25723,10 @@ namespace WindEditor
 		// Constructor
 		public warpfout(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -24535,7 +25772,10 @@ namespace WindEditor
 		// Constructor
 		public warpgn(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24571,7 +25811,10 @@ namespace WindEditor
 		// Constructor
 		public warphr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24686,7 +25929,10 @@ namespace WindEditor
 		// Constructor
 		public warpls(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24723,7 +25969,10 @@ namespace WindEditor
 		// Constructor
 		public warpmj(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24775,7 +26024,10 @@ namespace WindEditor
 		// Constructor
 		public waterfall(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24794,7 +26046,10 @@ namespace WindEditor
 		// Constructor
 		public wbird(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 
@@ -24823,7 +26078,10 @@ namespace WindEditor
 		// Constructor
 		public windmill(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24977,7 +26235,10 @@ namespace WindEditor
 		// Constructor
 		public wind_tag(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25136,7 +26397,10 @@ namespace WindEditor
 		// Constructor
 		public wz(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25173,7 +26437,10 @@ namespace WindEditor
 		// Constructor
 		public ygcwp(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25225,7 +26492,10 @@ namespace WindEditor
 		// Constructor
 		public ykgr(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25244,7 +26514,10 @@ namespace WindEditor
 		// Constructor
 		public yougan(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
 		}
 	}
 

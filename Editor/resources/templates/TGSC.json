@@ -4,13 +4,16 @@
 	"FourCC" : "TGSC",
 	"Fields" :
 	[
-		{"Name" : "Name", "Type" : "FixedLengthString" , "Length" : 8},
-		{"Name" : "Params 1", "Type" : "Int"},
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
+		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
 		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "RoomLoadingParams", "Type" : "Short"},
 		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Params 2", "Type" : "Int"}
+		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
+		{"Name" : "X Scale", "Type" : "Byte"},
+		{"Name" : "Y Scale", "Type" : "Byte"},
+		{"Name" : "Z Scale", "Type" : "Byte"},
+		{"Name" : "Padding", "Type" : "Byte", "Hidden" : "True"},
 	]
 }

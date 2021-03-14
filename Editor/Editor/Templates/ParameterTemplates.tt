@@ -139,7 +139,7 @@
 
 					if (field.EnumValues == null)
 					{
-						throw new ArgumentException($"Field \"{field.FieldName}\" in file \"{file}\" specifies Enum data type, but does not list any EnumValues");
+						throw new InvalidDataException($"Field \"{field.FieldName}\" in file \"{file}\" specifies Enum data type, but does not list any EnumValues");
 					}
 #>
 		public enum <#= dataType #>
@@ -168,7 +168,7 @@
 					dataType = "OnlyTableDroppedItemID";
 					break;
 				default:
-					throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
+					throw new InvalidDataException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 			}
 
 			paramTypes[fieldName] = dataType;
@@ -274,7 +274,7 @@
 <#
 						break;
 					default:
-						throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
+						throw new InvalidDataException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 				}
 #>
 			}
@@ -324,7 +324,7 @@
 <#
 						break;
 					default:
-						throw new ArgumentException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
+						throw new InvalidDataException($"Invalid data type \"{field.DataType}\" specified for field \"{field.FieldName}\" in file \"{file}\"");
 				}
 #>
 				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= bitShift #> & <#= bitMaskHex #>));

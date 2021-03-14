@@ -4,12 +4,12 @@
 	"FourCC" : "ACTR",
 	"Fields" :
 	[
-		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Default" : "", "Category": "Actor"},
-		{"Name" : "Parameters", "Type" : "Int", "Default" : 0, "Hidden": true},
-		{"Name" : "Position", "Type" : "Vector3", "Default" : {"X" : 0, "Y" : 0, "Z": 0}},
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
+		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
+		{"Name" : "Position", "Type" : "Vector3"},
 		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Y Rotation", "Type" : "YRotation"},
-		{"Name" : "Z Rotation", "Type" : "Short", "Default" : 0, "Hidden": true},
-		{"Name" : "Enemy Number", "Type" : "Short", "Default" : 0, "Category": "Actor"}
+		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
 	]
 }

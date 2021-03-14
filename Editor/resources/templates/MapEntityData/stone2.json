@@ -1,6 +1,7 @@
 {
   "ClassName": "stone2",
   "ParentClassOverride": "Actor",
+  "RotationOrder": "YXZ",
   "ParameterFields": [
     {
       "Name": "Type",

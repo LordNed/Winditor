@@ -1,6 +1,7 @@
 {
   "ClassName": "bb",
   "ParentClassOverride": "Actor",
+  "RotationOrder": "YXZ",
   "ParameterFields": [
     {
       "Name": "Behavior Type",

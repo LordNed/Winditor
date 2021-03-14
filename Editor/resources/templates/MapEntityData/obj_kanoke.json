@@ -53,10 +53,10 @@
       "DataType": "Integer"
     },
     {
-      "Name": "X Rotation",
-      "ValueSource": "XRotation",
+      "Name": "Unused Z Rotation",
+      "ValueSource": "ZRotation",
       "Mask": 0xFFFF,
-      "Hidden": false,
+      "Hidden": true,
       "Category": "Coffin",
       "ToolTip": "",
       "DataType": "Integer"

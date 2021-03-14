@@ -1,6 +1,7 @@
 {
   "ClassName": "tag_light",
   "ParentClassOverride": "Actor",
+  "RotationOrder": "YXZ",
   "ParameterFields": [
     {
       "Name": "Type",
@@ -81,24 +82,6 @@
       "Name": "Unknown_7",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
-      "Hidden": false,
-      "Category": "tag_light",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "X Rotation",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "tag_light",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Z Rotation",
-      "ValueSource": "ZRotation",
-      "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "tag_light",
       "ToolTip": "",

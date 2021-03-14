@@ -44,15 +44,6 @@
       "DataType": "Integer"
     },
     {
-      "Name": "X Rotation",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "Big Octo",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
       "Name": "Death Event Waits for Great Fairy",
       "ValueSource": "ZRotation",
       "Mask": 0x00FF,

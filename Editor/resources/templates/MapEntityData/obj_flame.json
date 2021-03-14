@@ -1,6 +1,7 @@
 {
   "ClassName": "obj_flame",
   "ParentClassOverride": "Actor",
+  "RotationOrder": "YXZ",
   "ParameterFields": [
     {
       "Name": "Type",
@@ -58,24 +59,6 @@
       "Name": "Unknown_6",
       "ValueSource": "Parameters",
       "Mask": 0x80000000,
-      "Hidden": false,
-      "Category": "Magma Jet",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "X Rotation",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "Magma Jet",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Z Rotation",
-      "ValueSource": "ZRotation",
-      "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Magma Jet",
       "ToolTip": "",

@@ -4,12 +4,12 @@
 	"FourCC" : "TGOB",
 	"Fields" :
 	[
-		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8},
-		{"Name" : "Parameters", "Type" : "Int"},
+		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
+		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
 		{"Name" : "Position", "Type" : "Vector3"},
 		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Y Rotation", "Type" : "YRotation", "Hidden": true},
+		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Enemy Number", "Type" : "Short"}
+		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
 	]
 }

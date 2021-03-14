@@ -1,24 +1,5 @@
 {
   "ClassName": "gy",
   "ParentClassOverride": "Actor",
-  "ParameterFields": [
-    {
-      "Name": "X Rotation",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "gy",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Z Rotation",
-      "ValueSource": "ZRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "gy",
-      "ToolTip": "",
-      "DataType": "Integer"
-    }
-  ]
+  "ParameterFields": []
 }
