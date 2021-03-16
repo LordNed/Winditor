@@ -63,6 +63,12 @@ namespace WindEditor.Minitors
             };
         }
 
+        public void Tick(float DeltaTime)
+        {
+            if (m_RendererViewModel != null && m_RendererWindow.IsVisible == true && SelectedMessage != null)
+                m_RendererViewModel.Tick(DeltaTime, SelectedMessage);
+        }
+
         public void InitModule(WDetailsViewViewModel details_view_model)
         {
             details_view_model.TypeCustomizations.Add(typeof(MessageReference).Name, new MessageReferenceTypeCustomization(this));
@@ -201,6 +207,7 @@ namespace WindEditor.Minitors
         private WDetailsViewViewModel m_DetailsModel;
 
         private TextboxRendererViewModel m_RendererViewModel;
+        private TextboxRendererWindow m_RendererWindow;
 
         private List<Message> m_Messages;
         private Message m_SelectedMessage;
@@ -241,8 +248,6 @@ namespace WindEditor.Minitors
             m_MinitorWindow.DataContext = this;
             m_DetailsModel = (WDetailsViewViewModel)m_MinitorWindow.DetailsPanel.DataContext;
 
-            m_RendererViewModel = new TextboxRendererViewModel();
-
             SelectedMessage = Messages[0];
             m_MinitorWindow.Show();
 
@@ -250,6 +255,20 @@ namespace WindEditor.Minitors
             view.Filter = FilterMessages;
 
             SearchFilter = "";
+
+            if (m_RendererWindow != null)
+            {
+                m_RendererWindow.Top = m_MinitorWindow.Top;
+                m_RendererWindow.Left = m_MinitorWindow.Left + m_MinitorWindow.Width + 30;
+                m_RendererWindow.Show();
+                return;
+            }
+
+            m_RendererWindow = new TextboxRendererWindow();
+            m_RendererWindow.Top = m_MinitorWindow.Top;
+            m_RendererWindow.Left = m_MinitorWindow.Left + m_MinitorWindow.Width + 30;
+            m_RendererViewModel = m_RendererWindow.DataContext as TextboxRendererViewModel;
+            m_RendererWindow.Show();
         }
 
         private void OnRequestSaveMessageData()
@@ -343,6 +362,11 @@ namespace WindEditor.Minitors
         private void OnRequestOpenTutorial()
         {
             System.Diagnostics.Process.Start("https://lordned.github.io/Winditor/tutorials/text/text.html");
+        }
+
+        public void OnTextEditorWindowClosing()
+        {
+            m_RendererWindow.Hide();
         }
 
         private ushort GetHighestID()

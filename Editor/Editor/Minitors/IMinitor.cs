@@ -12,6 +12,8 @@ namespace WindEditor.Minitors
     {
         MenuItem GetMenuItem();
 
+        void Tick(float DeltaTime);
+
         void InitModule(WDetailsViewViewModel details_view_model);
         bool RequestCloseModule();
     }

@@ -29,7 +29,6 @@ namespace WindEditor
         }
 
         private List<WSceneView> m_sceneViews;
-        private System.Diagnostics.Stopwatch m_dtStopwatch;
         private WUndoStack m_undoStack;
         private WLineBatcher m_persistentLines;
         private WQuadBatcher m_persistentQuads;
@@ -42,7 +41,6 @@ namespace WindEditor
 
         public WWorld()
         {
-            m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
             m_persistentQuads = new WQuadBatcher();
 
@@ -60,25 +58,22 @@ namespace WindEditor
             m_sceneViews.AddRange(new[] { perspectiveView });
         }
 
-        public void ProcessTick()
+        public void ProcessTick(float DeltaTime)
         {
-            float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
-            m_dtStopwatch.Restart();
-
             UpdateSceneViews();
 
-            m_persistentLines.Tick(deltaTime);
-            m_persistentQuads.Tick(deltaTime);
+            m_persistentLines.Tick(DeltaTime);
+            m_persistentQuads.Tick(DeltaTime);
 
             if(m_currentMap != null)
             {
-                m_currentMap.Tick(deltaTime);
+                m_currentMap.Tick(DeltaTime);
                 
             }
 
             foreach (WSceneView view in m_sceneViews)
             {
-                view.UpdateSceneCamera(deltaTime);
+                view.UpdateSceneCamera(DeltaTime);
 
                 if (Map != null)
                 {

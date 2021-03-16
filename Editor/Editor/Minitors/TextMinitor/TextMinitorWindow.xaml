@@ -8,7 +8,7 @@
         xmlns:wv="clr-namespace:WindEditor.View"
         xmlns:wvm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="{Binding WindowTitle}" Height="650" Width="904">
+        Title="{Binding WindowTitle}" Height="650" Width="904" Closing="Window_Closing">
     <Window.Resources>
         <wvm:NullToBoolConverter x:Key="NullToBoolConverter"/>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>

@@ -92,7 +92,7 @@ namespace WindEditor.ViewModel
             mousePos.Y = WMath.Clamp(mousePos.Y, 0, m_glControl.Height);
             WInput.SetMousePosition(new Vector2(mousePos.X, mousePos.Y));
 
-            m_editor.ProcessTick();
+            m_editor.ProcessTick(m_glControl);
             WInput.Internal_UpdateInputState();
 
             m_glControl.SwapBuffers();

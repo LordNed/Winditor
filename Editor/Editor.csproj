@@ -189,9 +189,15 @@
     <Compile Include="Editor\Minitors\InputMinitor\WindWakerSong.cs" />
     <Compile Include="Editor\Minitors\SongInputMinitor.cs" />
     <Compile Include="Editor\Minitors\TextMinitor.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\BGTextboxRenderer.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\FontFormat.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\FontService.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\Message.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\MessageTextValidationRule.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\TextboxRendererViewModel.cs" />
+    <Compile Include="Editor\Minitors\TextMinitor\TextboxRendererWindow.xaml.cs">
+      <DependentUpon>TextboxRendererWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Minitors\TextMinitor\TextMinitorEnums.cs" />
     <Compile Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml.cs">
       <DependentUpon>TextMinitorWindow.xaml</DependentUpon>
@@ -783,6 +789,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Editor\Minitors\TextMinitor\TextboxRendererWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\Minitors\TextMinitor\TextMinitorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -985,6 +995,18 @@
     <Resource Include="resources\icons\plus-box-outline.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="resources\textures\bg_dialog.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\textures\bg_parchment.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\textures\bg_sign.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\textures\bg_stone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\WindWakerSongNames.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1124,6 +1146,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\patches\disable_song_playback.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Textbox.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\Textbox.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\TextboxBackground.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\shaders\TextboxBackground.vert">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />

@@ -108,5 +108,11 @@ namespace WindEditor.Minitors.Text
             TagListView.SelectedIndex = 0;
             TagListView.Focus();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextMinitor context = DataContext as TextMinitor;
+            context.OnTextEditorWindowClosing();
+        }
     }
 }

@@ -18,6 +18,7 @@ using WindEditor.Editor.Modes;
 using System.Windows;
 using WindEditor.Collision;
 using System.Text.RegularExpressions;
+using OpenTK;
 
 namespace WindEditor
 {
@@ -51,6 +52,7 @@ namespace WindEditor
         private string m_sourceDataPath;
 
         private List<IMinitor> m_RegisteredMinitors;
+        private System.Diagnostics.Stopwatch m_dtStopwatch;
 
         public WWindEditor()
         {
@@ -61,8 +63,10 @@ namespace WindEditor
 
             m_RegisteredMinitors = new List<IMinitor>();
 
-			// Load our global data
-			foreach (var file in Directory.GetFiles("resources/templates/"))
+            m_dtStopwatch = new System.Diagnostics.Stopwatch();
+
+            // Load our global data
+            foreach (var file in Directory.GetFiles("resources/templates/"))
 			{
 				MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
 				Globals.ActorDescriptors.Add(descriptor);
@@ -373,10 +377,20 @@ namespace WindEditor
             MainWorld.UnloadMap();
         }
 
-        public void ProcessTick()
+        public void ProcessTick(GLControl MainWindowRenderer)
         {
+            float deltaTime = m_dtStopwatch.ElapsedMilliseconds / 1000f;
+            m_dtStopwatch.Restart();
+
+            // Let any minitors render on their own
+            foreach (IMinitor minitor in m_RegisteredMinitors)
+                minitor.Tick(deltaTime);
+
+            // Make the main window the current GL context
+            MainWindowRenderer.MakeCurrent();
+
             foreach (WWorld world in m_editorWorlds)
-                world.ProcessTick();
+                world.ProcessTick(deltaTime);
 
             GL.Flush();
         }

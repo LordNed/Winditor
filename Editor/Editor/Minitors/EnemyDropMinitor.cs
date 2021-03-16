@@ -26,6 +26,11 @@ namespace WindEditor.Minitors
             };
         }
 
+        public void Tick(float DeltaTime)
+        {
+
+        }
+
         public void InitModule(WDetailsViewViewModel details_view_model)
         {
 

@@ -1,0 +1,15 @@
+﻿<Window x:Class="WindEditor.Minitors.Text.TextboxRendererWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEditor.Minitors.Text"
+        mc:Ignorable="d"
+        Title="Textbox Preview" Loaded="Window_Loaded" ResizeMode="NoResize" Height="477" Width="646" Closing="Window_Closing">
+    <Window.DataContext>
+        <local:TextboxRendererViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <WindowsFormsHost x:Name="glControlHost" Height="448" Width="640" Margin="0,0,54,23"/>
+    </Grid>
+</Window>
