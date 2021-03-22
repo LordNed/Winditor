@@ -3760,6 +3760,23 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Stage Properties", "Base Actor Draw Distance", true, "The distance away from the camera actors can get before they are no longer drawn.\nSome actors use this value multiplied to increase the distance for just themself.\nThis is not used when looking through the Telescope or Pictobox, and 'Z Depth Max' will be used instead in that case.", SourceScene.Room)]
+		public int BaseActorDrawDistance
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters4 & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters4 = (int)(m_Parameters4 & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				OnPropertyChanged("BaseActorDrawDistance");
+			}
+		}
+
 		// Constructor
 		public StageProperties(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
