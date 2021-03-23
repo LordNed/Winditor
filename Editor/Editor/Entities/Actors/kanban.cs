@@ -30,6 +30,7 @@ namespace WindEditor
         public override void PostLoad()
 		{
             m_actorMeshes = WResourceManager.LoadActorResource("Sign");
+            VisualScaleMultiplier = new OpenTK.Vector3(0.8f);
 
             MessageReference = new MessageReference((ushort)MessageID);
 		}
