@@ -3,15 +3,6 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "MessageID",
-      "ValueSource": "Parameters",
-      "Mask": 0x0000FFFF,
-      "Hidden": true,
-      "Category": "obj_paper",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
       "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
@@ -23,7 +14,22 @@
         0: "Normal Papers",
         1: "Ornate Papers",
         2: "Stone",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Paper": "Normal Papers",
+        "Ppos": "Ornate Papers",
+        "Piwa": "Stone",
       }
+    },
+    {
+      "Name": "MessageID",
+      "ValueSource": "Parameters",
+      "Mask": 0x0000FFFF,
+      "Hidden": true,
+      "Category": "obj_paper",
+      "ToolTip": "",
+      "DataType": "Integer"
     }
   ]
 }

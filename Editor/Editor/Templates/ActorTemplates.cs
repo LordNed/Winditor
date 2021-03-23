@@ -17040,21 +17040,6 @@ namespace WindEditor
 	public partial class obj_paper : Actor
 	{
 		// Auto-Generated Properties from Templates
-		public int MessageID
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
-				OnPropertyChanged("MessageID");
-			}
-		}
 		public enum TypeEnum
 		{
 			Normal_Papers = 0,
@@ -17079,6 +17064,22 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+		public int MessageID
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
+				OnPropertyChanged("MessageID");
 			}
 		}
 
@@ -17095,6 +17096,15 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			MessageID = -1;
+			if (Name == "Paper") {
+				Type = TypeEnum.Normal_Papers;
+			}
+			if (Name == "Ppos") {
+				Type = TypeEnum.Ornate_Papers;
+			}
+			if (Name == "Piwa") {
+				Type = TypeEnum.Stone;
+			}
 		}
 	}
 

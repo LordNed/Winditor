@@ -29,9 +29,21 @@ namespace WindEditor
 
 		public override void PostLoad()
 		{
-			switch (Type)
+            UpdateModel();
+            MessageReference = new MessageReference((ushort)MessageID);
+		}
+
+		public override void PreSave()
+		{
+            MessageID = MessageReference.MessageID;
+		}
+
+        private void UpdateModel()
+        {
+            switch (Type)
             {
                 case TypeEnum.Normal_Papers:
+                default:
                     m_actorMeshes = WResourceManager.LoadActorResource("Simple Papers");
                     break;
                 case TypeEnum.Ornate_Papers:
@@ -41,13 +53,6 @@ namespace WindEditor
                     m_actorMeshes = WResourceManager.LoadActorResource("Stone Tablet");
                     break;
             }
-
-            MessageReference = new MessageReference((ushort)MessageID);
-		}
-
-		public override void PreSave()
-		{
-            MessageID = MessageReference.MessageID;
-		}
+        }
 	}
 }
