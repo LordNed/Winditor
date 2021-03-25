@@ -34,7 +34,6 @@ namespace WindEditor
             m_fourCCLocations.Add(FourCC.MULT, SourceScene.Stage);
 
             m_fourCCLocations.Add(FourCC.FILI, SourceScene.Room);
-            m_fourCCLocations.Add(FourCC.LBNK, SourceScene.Room);
         }
 
         public WScene(WWorld world) : base(world)
