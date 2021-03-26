@@ -6103,6 +6103,19 @@ namespace WindEditor
 			Pink = 0,
 			Speckled = 1,
 			Black = 2,
+			Bugged_Face_Pink = 3,
+			Pink_B = 4,
+			Speckled_B = 5,
+			Black_B = 6,
+			Bugged_Face_Pink_B = 7,
+			Small_Big_Pink = 8,
+			Small_Big_Speckled = 9,
+			Small_Big_Black = 10,
+			Small_Big_Bugged_Face_Pink = 11,
+			Small_Big_Pink_B = 12,
+			Small_Big_Speckled_B = 13,
+			Small_Big_Black_B = 14,
+			Small_Big_Bugged_Face_Pink_B = 15,
 		}
 
 
