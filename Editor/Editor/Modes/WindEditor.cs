@@ -273,6 +273,15 @@ namespace WindEditor
 
         public void OnApplicationRequestExportProject()
         {
+            if (MainWorld.Map.MapName.Length > 7)
+            {
+                string error = "";
+                error += "The name of the stage you are currently saving is too long.\n";
+                error += "Stage names must be 7 characters or shorter.\n";
+                error += "The game will crash if you load this map without shortening its name.";
+                MessageBox.Show(error, "Warning");
+            }
+
             string path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", MainWorld.Map.MapName);
 
             try

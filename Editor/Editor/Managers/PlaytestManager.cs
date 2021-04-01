@@ -43,6 +43,17 @@ namespace WindEditor
                 return;
             }
 
+            if (map.MapName.Length > 7)
+            {
+                string error = "";
+                error += "The name of the stage you are trying to playtest is too long.\n";
+                error += "Stage names must be 7 characters or shorter.\n";
+                error += "The game would crash if you loaded this map without shortening its name.\n";
+                error += "Aborting playtest.";
+                MessageBox.Show(error, "Warning");
+                return;
+            }
+
             Console.WriteLine($"Stage name: { map.MapName }, Room Name: { map.FocusedSceneLabel }");
 
             string map_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", map.MapName);
