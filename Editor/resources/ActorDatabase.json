@@ -12671,9 +12671,9 @@
     "ActorClassType": "swhit0",
     "Wait Animations": null,
     "Actor Name": "SW_HIT0",
-    "English Name": "swhit0",
+    "English Name": "Hittable Crystal",
     "Tags": null,
-    "Explanation": null,
+    "Explanation": "A crystal that sets a switch when you hit it.",
     "Locations": [
       "Ganon's Tower Phantom Ganon (GanonM)",
       "Unused (ITest61)",
