@@ -275,6 +275,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -514,6 +517,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown", TargetProperties = new string[] { "Unknown"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Image Index", TargetProperties = new string[] { "MapImageIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -601,6 +607,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -675,6 +684,9 @@ namespace WindEditor
 		public CameraViewpoint_v1(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -738,6 +750,9 @@ namespace WindEditor
 		public CameraViewpoint_v2(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -837,6 +852,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Camera Point Index", TargetProperties = new string[] { "CameraPointIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -942,6 +960,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -1064,6 +1085,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Z", TargetProperties = new string[] { "ScaleZ"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -1370,6 +1394,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 12", TargetProperties = new string[] { "IncludedRoom12"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 13", TargetProperties = new string[] { "IncludedRoom13"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Included Room 14", TargetProperties = new string[] { "IncludedRoom14"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -1486,6 +1513,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Size Y", TargetProperties = new string[] { "MapSizeY"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Map Scale Inverse", TargetProperties = new string[] { "MapScaleInverse"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -1546,6 +1576,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -1646,6 +1679,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -1912,6 +1948,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Far Plane", TargetProperties = new string[] { "FogFarPlane"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fog Near Plane", TargetProperties = new string[] { "FogNearPlane"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2146,6 +2185,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2228,6 +2270,9 @@ namespace WindEditor
 		public EnvironmentLightingTimesOfDay(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2416,6 +2461,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 7", TargetProperties = new string[] { "Unknown7"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 8", TargetProperties = new string[] { "Unknown8"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2533,6 +2581,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room Index", TargetProperties = new string[] { "RoomIndex"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Fade Out Type", TargetProperties = new string[] { "FadeOutType"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2580,6 +2631,9 @@ namespace WindEditor
 		public CutsceneIndexBank(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Cutscene Archive Number", TargetProperties = new string[] { "CutsceneArchiveNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2634,6 +2688,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Radius", TargetProperties = new string[] { "Radius"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Color", TargetProperties = new string[] { "Color"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2692,6 +2749,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Entry", TargetProperties = new string[] { "Entry"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2733,6 +2793,9 @@ namespace WindEditor
 		public RoomMemoryManagement(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "SizeInBytes", TargetProperties = new string[] { "SizeInBytes"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -2970,6 +3033,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3043,6 +3109,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Skybox Y Height", TargetProperties = new string[] { "SkyboxYHeight"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3117,6 +3186,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Translation", TargetProperties = new string[] { "Translation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Height Addition", TargetProperties = new string[] { "WaveHeightAddition"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3167,6 +3239,9 @@ namespace WindEditor
 		public RoomTable(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Offset", TargetProperties = new string[] { "Offset"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3236,6 +3311,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3320,6 +3398,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3490,6 +3571,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 5", TargetProperties = new string[] { "Unknown5"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 6", TargetProperties = new string[] { "Unknown6"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3785,6 +3869,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters3", TargetProperties = new string[] { "Parameters3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters4", TargetProperties = new string[] { "Parameters4"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3866,6 +3953,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -3959,6 +4049,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -4047,6 +4140,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -4140,6 +4236,9 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -4268,6 +4367,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 4", TargetProperties = new string[] { "Unknown4"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -4402,6 +4504,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Path Loops", TargetProperties = new string[] { "PathLoops"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -4498,6 +4603,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Action Type", TargetProperties = new string[] { "ActionType"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
@@ -4590,6 +4698,9 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 2", TargetProperties = new string[] { "Unknown2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 3", TargetProperties = new string[] { "Unknown3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Action Type", TargetProperties = new string[] { "ActionType"} });
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 		}
 
