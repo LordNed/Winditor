@@ -10,8 +10,8 @@ namespace WindEditor
 	{
 		public override string ToString()
 		{
-			return Name;
-		}
+			return $"Player Spawn: { Name }, Room: { Room }, Spawn ID: { SpawnID }";
+        }
 
         public override void PostLoad()
         {
