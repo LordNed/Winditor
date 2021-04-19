@@ -3199,7 +3199,7 @@ namespace WindEditor
 			m_Room = stream.ReadByte(); 
 			m_WaveHeightAddition = stream.ReadByte(); 
 			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
-				new Vector3(WMath.RotationShortToFloat(m_YRotation)),
+				new Vector3(0, WMath.RotationShortToFloat(m_YRotation), 0),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
 		}
@@ -3411,7 +3411,7 @@ namespace WindEditor
 			m_ShipId = stream.ReadByte(); 
 			m_Unknown1 = stream.ReadByte(); 
 			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
-				new Vector3(WMath.RotationShortToFloat(m_YRotation)),
+				new Vector3(0, WMath.RotationShortToFloat(m_YRotation), 0),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
 		}
