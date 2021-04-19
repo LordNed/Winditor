@@ -357,7 +357,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Armos Knight", "Switch Activates Armos Knight?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.", SourceScene.Room)]
+		[WProperty("Armos Knight", "Switch Activates Armos Knight?", true, "If this is checked, the 'Disable Spawn Switch' parameter below instead causes the Armos Knight to become active and attack the player, rather than disabling the Armos Knight from spawning.", SourceScene.Room)]
 		public bool SwitchActivatesArmosKnight
 		{ 
 			get
@@ -451,7 +451,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Armos", "Switch Activates Armos?", true, "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos's Spawn.", SourceScene.Room)]
+		[WProperty("Armos", "Switch Activates Armos?", true, "If this is checked, the 'Disable Spawn Switch' parameter below instead causes the Armos to become active and attack the player, rather than disabling the Armos from spawning.", SourceScene.Room)]
 		public bool SwitchActivatesArmos
 		{ 
 			get
@@ -1792,8 +1792,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Bokoblin", "Switch Spawns Bokoblin", true, "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.", SourceScene.Room)]
-		public bool SwitchSpawnsBokoblin
+		[WProperty("Bokoblin", "Invert Spawn Condition Switch", true, "If this is checked, the 'Spawn Condition Switch' parameter acts as a 'Disable Spawn Switch'.\nIf this isn't checked, the 'Spawn Condition Switch' parameter acts as an 'Enable Spawn Switch'.", SourceScene.Room)]
+		public bool InvertSpawnConditionSwitch
 		{ 
 			get
 			{
@@ -1811,12 +1811,12 @@ namespace WindEditor
 			{
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
-				OnPropertyChanged("SwitchSpawnsBokoblin");
+				OnPropertyChanged("InvertSpawnConditionSwitch");
 			}
 		}
 
-		[WProperty("Bokoblin", "Enable Spawn Switch", true, "", SourceScene.Room)]
-		public int EnableSpawnSwitch
+		[WProperty("Bokoblin", "Spawn Condition Switch", true, "", SourceScene.Room)]
+		public int SpawnConditionSwitch
 		{ 
 			get
 			{
@@ -1828,7 +1828,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("SpawnConditionSwitch");
 			}
 		}
 
@@ -1863,7 +1863,7 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Unknown_5 = -1;
 			Path = null;
-			EnableSpawnSwitch = -1;
+			SpawnConditionSwitch = -1;
 			DisableSpawnonDeathSwitch = -1;
 		}
 	}
@@ -17172,17 +17172,23 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 
 		[WProperty("Pirate Ship", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		public bool Unknown_1
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
 			}
@@ -17243,19 +17249,31 @@ namespace WindEditor
 				OnPropertyChanged("Path");
 			}
 		}
+		public enum Unknown_4Enum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 255,
+		}
+
 
 		[WProperty("Pirate Ship", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		public Unknown_4Enum Unknown_4
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(Unknown_4Enum), value_as_int))
+					value_as_int = 255;
+				return (Unknown_4Enum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
 			}
@@ -17273,9 +17291,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 			Path = null;
-			Unknown_4 = -1;
 		}
 	}
 
@@ -22620,7 +22636,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("swhit0", "Type", true, "", SourceScene.Room)]
+		[WProperty("Hittable Crystal", "Type", true, "", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -22639,7 +22655,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Switch to Set", true, "Switch to set when hit.", SourceScene.Room)]
+		[WProperty("Hittable Crystal", "Switch to Set", true, "Switch to set when hit.", SourceScene.Room)]
 		public int SwitchtoSet
 		{ 
 			get
@@ -22656,7 +22672,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Event", true, "The event to start when hit? (Only for type 'Unknown 3'.)", SourceScene.Stage)]
+		[WProperty("Hittable Crystal", "Event", true, "The event to start when hit? (Only for type 'Unknown 3'.)", SourceScene.Stage)]
 		public MapEvent Event
 		{ 
 			get
@@ -22679,7 +22695,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Time Limit (Half Seconds)", true, "This number times 15 frames is how long the player has to hit all the crystals after the first crystal is hit.", SourceScene.Room)]
+		[WProperty("Hittable Crystal", "Time Limit (Half Seconds)", true, "This number times 15 frames is how long the player has to hit all the crystals after the first crystal is hit.", SourceScene.Room)]
 		public int TimeLimitHalfSeconds
 		{ 
 			get
@@ -22696,7 +22712,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Hittable Crystal", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -22713,7 +22729,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("swhit0", "Switch to Check", true, "Once this switch is set, the crystal will consider the puzzle finished and no longer be on a timer.", SourceScene.Room)]
+		[WProperty("Hittable Crystal", "Switch to Check", true, "Once this switch is set, the crystal will consider the puzzle finished and no longer be on a timer.", SourceScene.Room)]
 		public int SwitchtoCheck
 		{ 
 			get

@@ -68,16 +68,16 @@
       "DataType": "Path"
     },
     {
-      "Name": "Switch Spawns Bokoblin",
+      "Name": "Invert Spawn Condition Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00000010,
       "Hidden": false,
       "Category": "Bokoblin",
-      "ToolTip": "If this is set, the switch ID below is for spawning the Bokoblin, rather than a switch to set when it's killed.",
+      "ToolTip": "If this is checked, the 'Spawn Condition Switch' parameter acts as a 'Disable Spawn Switch'.\nIf this isn't checked, the 'Spawn Condition Switch' parameter acts as an 'Enable Spawn Switch'.",
       "DataType": "Boolean"
     },
     {
-      "Name": "Enable Spawn Switch",
+      "Name": "Spawn Condition Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,

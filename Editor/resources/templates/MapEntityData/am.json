@@ -30,7 +30,7 @@
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "Armos Knight",
-      "ToolTip": "If this is checked, the switch below is for activating the Armos Knight, rather than for disabling the Armos Knight's Spawn.",
+      "ToolTip": "If this is checked, the 'Disable Spawn Switch' parameter below instead causes the Armos Knight to become active and attack the player, rather than disabling the Armos Knight from spawning.",
       "DataType": "Boolean"
     },
     {

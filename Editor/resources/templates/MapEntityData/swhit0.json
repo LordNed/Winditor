@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000F0000,
       "Hidden": false,
-      "Category": "swhit0",
+      "Category": "Hittable Crystal",
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
@@ -24,7 +24,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "swhit0",
+      "Category": "Hittable Crystal",
       "ToolTip": "Switch to set when hit.",
       "DataType": "Integer"
     },
@@ -33,7 +33,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "swhit0",
+      "Category": "Hittable Crystal",
       "ToolTip": "The event to start when hit? (Only for type 'Unknown 3'.)",
       "DataType": "Event"
     },
@@ -42,7 +42,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x0FF00000,
       "Hidden": false,
-      "Category": "swhit0",
+      "Category": "Hittable Crystal",
       "ToolTip": "This number times 15 frames is how long the player has to hit all the crystals after the first crystal is hit.",
       "DataType": "Integer"
     },
@@ -51,7 +51,7 @@
       "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "swhit0",
+      "Category": "Hittable Crystal",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -60,7 +60,7 @@
       "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
-      "Category": "swhit0",
+      "Category": "Hittable Crystal",
       "ToolTip": "Once this switch is set, the crystal will consider the puzzle finished and no longer be on a timer.",
       "DataType": "Integer"
     }

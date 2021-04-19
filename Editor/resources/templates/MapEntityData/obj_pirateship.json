@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Unknown_1", // play a second SFX? unsure what
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
       "Category": "Pirate Ship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean"
     },
     {
       "Name": "Door Type",
@@ -34,13 +34,22 @@
       "DataType": "Path"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Unknown_4", // type? affects which pirates are spawned and other things
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "Pirate Ship",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0", // Outset
+        1: "Unknown 1", // Riding to FF1
+        2: "Unknown 2", // FF1
+        3: "Unknown 3", // Outset
+        4: "Unknown 4", // Outset
+        255: "Unknown 5", // Windfall
+      },
+      "EnumDefaultValue": 255,
     }
   ]
 }
