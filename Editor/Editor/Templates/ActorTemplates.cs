@@ -5513,43 +5513,66 @@ namespace WindEditor
 	public partial class icelift : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Short_Ice_Platform = 0,
+			Tall_Ice_Platform = 1,
+		}
 
-		[WProperty("icelift", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Ice Platform", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000000F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("icelift", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Ice Platform", "Path to Follow", true, "", SourceScene.Room)]
+		public Path_v2 PathtoFollow
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000FF0) >> 4);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("PathtoFollow");
 			}
 		}
 
-		[WProperty("icelift", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Ice Platform", "Do Not Freeze Player Switch", true, "If this switch is not 255, and it is also not set, this ice platform will modify its collision's attribute type to freeze the player.", SourceScene.Room)]
+		public int DoNotFreezePlayerSwitch
 		{ 
 			get
 			{
@@ -5561,7 +5584,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("DoNotFreezePlayerSwitch");
 			}
 		}
 
@@ -5577,9 +5600,14 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			PathtoFollow = null;
+			DoNotFreezePlayerSwitch = -1;
+			if (Name == "Ylsic") {
+				Type = TypeEnum.Short_Ice_Platform;
+			}
+			if (Name == "Yllic") {
+				Type = TypeEnum.Tall_Ice_Platform;
+			}
 		}
 	}
 

@@ -7131,7 +7131,7 @@
     ]
   },
   {
-    "Name": "Small Iceberg",
+    "Name": "Short Ice Platform",
     "Archive": "Ylsic",
     "Models": [
       {
@@ -7140,7 +7140,7 @@
     ]
   },
   {
-    "Name": "Large Iceberg",
+    "Name": "Tall Ice Platform",
     "Archive": "Yllic",
     "Models": [
       {

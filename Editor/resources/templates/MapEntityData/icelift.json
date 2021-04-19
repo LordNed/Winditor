@@ -3,30 +3,39 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,
-      "Category": "icelift",
+      "Category": "Ice Platform",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Short Ice Platform",
+        1: "Tall Ice Platform",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Ylsic": "Short Ice Platform",
+        "Yllic": "Tall Ice Platform",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Path to Follow",
       "ValueSource": "Parameters",
       "Mask": 0x00000FF0,
       "Hidden": false,
-      "Category": "icelift",
+      "Category": "Ice Platform",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Do Not Freeze Player Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000FF000,
       "Hidden": false,
-      "Category": "icelift",
-      "ToolTip": "",
+      "Category": "Ice Platform",
+      "ToolTip": "If this switch is not 255, and it is also not set, this ice platform will modify its collision's attribute type to freeze the player.",
       "DataType": "Integer"
     }
   ]
