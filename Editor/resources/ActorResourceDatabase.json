@@ -5036,6 +5036,29 @@
     ]
   },
   {
+    "Name": "Bomb from a Bomb Flower",
+    "Archive": "VbakH",
+    "Models": [
+      {
+        "Path": "bdlm/vbakm.bdl",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/vbamx.bck",
+            "Paused on Load": true,
+            "Start Time": 1.29
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/vbamx.brk",
+            "Paused on Load": true,
+            "Start Time": 1.12
+          }
+        ]
+      }
+    ]
+  },
+  {
     "Name": "Octorok Wind Statue",
     "Archive": "Ekskz",
     "Models": [

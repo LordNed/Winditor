@@ -127,6 +127,7 @@
     <Compile Include="Editor\DOM\DOMNode_New.cs" />
     <Compile Include="Editor\DOM\DOMOrganizerNode.cs" />
     <Compile Include="Editor\DOM\DOMRenderNode.cs" />
+    <Compile Include="Editor\Entities\Actors\bomb2.cs" />
     <Compile Include="Editor\Entities\Actors\obj_search.cs" />
     <Compile Include="Editor\Entities\Actors\sea.cs" />
     <Compile Include="Editor\Entities\Actors\Sfairy.cs" />

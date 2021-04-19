@@ -2255,6 +2255,68 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class bomb2 : Actor
+	{
+		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Explodes_instantly = 0,
+			Explodes_after_a_delay = 1,
+			Carried_by_the_player = 2,
+		}
+
+
+		[WProperty("bomb2", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000003) >> 0);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
+				OnPropertyChanged("Type");
+			}
+		}
+
+		[WProperty("bomb2", "Player Can Pick Up", true, "", SourceScene.Room)]
+		public bool PlayerCanPickUp
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
+				if (value_as_int == 0) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 0 : 1;
+				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
+				OnPropertyChanged("PlayerCanPickUp");
+			}
+		}
+
+		// Constructor
+		public bomb2(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
+		}
+	}
+
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class boss_item : Actor
 	{
 		// Auto-Generated Properties from Templates

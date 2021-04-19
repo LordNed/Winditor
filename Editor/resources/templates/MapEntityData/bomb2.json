@@ -1,0 +1,31 @@
+{
+  "ClassName": "bomb2",
+  "ParentClassOverride": "Actor",
+  "ParameterFields": [
+    {
+      "Name": "Type",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000003,
+      "Hidden": false,
+      "Category": "bomb2",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Explodes instantly",
+        1: "Explodes after a delay",
+        2: "Carried by the player",
+      }
+    },
+    {
+      "Name": "Player Can Pick Up",
+      "ValueSource": "Parameters",
+      "Mask": 0x00000100,
+      "Hidden": false,
+      "Category": "bomb2",
+      "ToolTip": "",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [0],
+    },
+  ]
+}

@@ -15205,5 +15205,19 @@
     "Locations": [
     ],
     "ImagePath": null
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "bomb2",
+    "Wait Animations": null,
+    "Actor Name": "Bomb2",
+    "English Name": "Bomb from a Bomb Flower",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
+    ],
+    "ImagePath": null
   }
 ]
