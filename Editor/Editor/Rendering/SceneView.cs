@@ -107,7 +107,7 @@ namespace WindEditor
                     {
                         float dist = (mesh.GetPosition() - GetCameraPos()).Length;
 
-                        if (dist < MaxDist || mesh.GetType() == typeof(J3DNode))
+                        if (dist < MaxDist || mesh.GetType() == typeof(J3DNode) || mesh.GetType() == typeof(PathPoint_v1) || mesh.GetType() == typeof(PathPoint_v2))
                             mesh.Draw(this);
                     }
                 }
