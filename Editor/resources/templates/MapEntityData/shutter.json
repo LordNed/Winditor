@@ -3,22 +3,31 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "shutter",
+      "Category": "Shutter",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Model",
       "ValueSource": "Parameters",
       "Mask": 0x00000F00,
       "Hidden": false,
-      "Category": "shutter",
+      "Category": "Shutter",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Large Shutter",
+        1: "Small Shutter",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Htobi1": "Large Shutter",
+        "Htobi2": "Small Shutter",
+      }
     }
   ]
 }

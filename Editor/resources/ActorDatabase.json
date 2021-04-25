@@ -2294,7 +2294,7 @@
     "ActorClassType": "floor",
     "Wait Animations": null,
     "Actor Name": "Hhyu1",
-    "English Name": "floor",
+    "English Name": "Cracked Floor",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3005,7 +3005,7 @@
     "ActorClassType": "hys",
     "Wait Animations": null,
     "Actor Name": "Hys",
-    "English Name": "hys",
+    "English Name": "Small Shootable Eye Target",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -3022,7 +3022,7 @@
     "ActorClassType": "hys",
     "Wait Animations": null,
     "Actor Name": "Hys2",
-    "English Name": "hys",
+    "English Name": "Large Shootable Eye Target",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12186,7 +12186,7 @@
     "ActorClassType": "shutter",
     "Wait Animations": null,
     "Actor Name": "Htobi1",
-    "English Name": "shutter",
+    "English Name": "Large Shutter",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12201,7 +12201,7 @@
     "ActorClassType": "shutter",
     "Wait Animations": null,
     "Actor Name": "Htobi2",
-    "English Name": "shutter",
+    "English Name": "Small Shutter",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12217,7 +12217,7 @@
     "ActorClassType": "shutter2",
     "Wait Animations": null,
     "Actor Name": "Htobi3",
-    "English Name": "shutter2",
+    "English Name": "Grating Door",
     "Tags": null,
     "Explanation": null,
     "Locations": [

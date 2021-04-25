@@ -4302,8 +4302,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("floor", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Cracked Floor", "Disable Spawn on Destroyed Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDestroyedSwitch
 		{ 
 			get
 			{
@@ -4315,7 +4315,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisableSpawnonDestroyedSwitch");
 			}
 		}
 
@@ -4331,7 +4331,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DisableSpawnonDestroyedSwitch = -1;
 		}
 	}
 
@@ -5519,8 +5519,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("hys", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Shootable Eye Target", "Switch to Set When Shot", true, "", SourceScene.Room)]
+		public int SwitchtoSetWhenShot
 		{ 
 			get
 			{
@@ -5532,25 +5532,33 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
-				UpdateModel();
+				OnPropertyChanged("SwitchtoSetWhenShot");
 			}
 		}
+		public enum SizeEnum
+		{
+			Small = 0,
+			Large = 1,
+		}
 
-		[WProperty("hys", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Shootable Eye Target", "Size", true, "", SourceScene.Room)]
+		public SizeEnum Size
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(SizeEnum), value_as_int))
+					value_as_int = 0;
+				return (SizeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Size");
+				UpdateModel();
 			}
 		}
 
@@ -5566,8 +5574,13 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SwitchtoSetWhenShot = -1;
+			if (Name == "Hys") {
+				Size = SizeEnum.Small;
+			}
+			if (Name == "Hys2") {
+				Size = SizeEnum.Large;
+			}
 		}
 	}
 
@@ -21496,8 +21509,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("shutter", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Shutter", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -21509,24 +21522,33 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
+		public enum ModelEnum
+		{
+			Large_Shutter = 0,
+			Small_Shutter = 1,
+		}
 
-		[WProperty("shutter", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Shutter", "Model", true, "", SourceScene.Room)]
+		public ModelEnum Model
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000F00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ModelEnum), value_as_int))
+					value_as_int = 0;
+				return (ModelEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Model");
+				UpdateModel();
 			}
 		}
 
@@ -21542,8 +21564,13 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SwitchtoCheck = -1;
+			if (Name == "Htobi1") {
+				Model = ModelEnum.Large_Shutter;
+			}
+			if (Name == "Htobi2") {
+				Model = ModelEnum.Small_Shutter;
+			}
 		}
 	}
 
@@ -21552,8 +21579,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("shutter2", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Grating Door", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -21565,7 +21592,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
@@ -21581,7 +21608,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoCheck = -1;
 		}
 	}
 

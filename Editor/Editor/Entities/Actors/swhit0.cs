@@ -11,7 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
         {
-            m_actorMeshes = WResourceManager.LoadActorResource("Crystal Switch");
+            m_actorMeshes = WResourceManager.LoadActorResource("Hittable Crystal");
             base.PostLoad();
 		}
 

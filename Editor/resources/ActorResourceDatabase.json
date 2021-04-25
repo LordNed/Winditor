@@ -4605,7 +4605,51 @@
     ]
   },
   {
-    "Name": "Grating Door 3",
+    "Name": "Large Shutter",
+    "Archive": "Htobi1",
+    "Models": [
+      {
+        "Path": "bdl/htobi1.bdl",
+        "Position": {
+          "X": 110,
+          "Y": 0,
+          "Z": 0
+        }
+      },
+      {
+        "Path": "bdl/htobi1.bdl",
+        "Position": {
+          "X": -110,
+          "Y": 0,
+          "Z": 0
+        }
+      },
+    ]
+  },
+  {
+    "Name": "Small Shutter",
+    "Archive": "Htobi2",
+    "Models": [
+      {
+        "Path": "bdl/htobi2.bdl",
+        "Position": {
+          "X": 41,
+          "Y": 0,
+          "Z": 0
+        }
+      },
+      {
+        "Path": "bdl/htobi2.bdl",
+        "Position": {
+          "X": -41,
+          "Y": 0,
+          "Z": 0
+        }
+      },
+    ]
+  },
+  {
+    "Name": "Grating Door",
     "Archive": "Htobi3",
     "Models": [
       {
@@ -4924,7 +4968,7 @@
     ]
   },
   {
-    "Name": "Crystal Switch",
+    "Name": "Hittable Crystal",
     "Archive": "Always",
     "Models": [
       {
@@ -6757,7 +6801,7 @@
     ]
   },
   {
-    "Name": "Eye Switch",
+    "Name": "Shootable Eye Target",
     "Archive": "Hys",
     "Models": [
       {

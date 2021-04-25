@@ -23,12 +23,17 @@ namespace WindEditor
 
 		private void UpdateModel()
 		{
-			m_actorMeshes = WResourceManager.LoadActorResource("Eye Switch");
+			m_actorMeshes = WResourceManager.LoadActorResource("Shootable Eye Target");
 
-			if (Unknown_2 == 1)
-				VisualScaleMultiplier = new Vector3(2);
-			else
-				VisualScaleMultiplier = new Vector3(1);
+			switch (Size)
+            {
+				case SizeEnum.Large:
+					VisualScaleMultiplier = new Vector3(2);
+					break;
+				default:
+					VisualScaleMultiplier = new Vector3(1);
+					break;
+			}
 		}
 	}
 }

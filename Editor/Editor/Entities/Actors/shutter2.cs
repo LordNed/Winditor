@@ -11,7 +11,7 @@ namespace WindEditor
 	{
 		public override void PostLoad()
         {
-            m_actorMeshes = WResourceManager.LoadActorResource("Grating Door 3");
+            m_actorMeshes = WResourceManager.LoadActorResource("Grating Door");
             base.PostLoad();
 		}
 

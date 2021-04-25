@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Disable Spawn on Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "floor",
+      "Category": "Cracked Floor",
       "ToolTip": "",
       "DataType": "Integer"
     }

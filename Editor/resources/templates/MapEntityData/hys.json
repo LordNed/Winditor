@@ -3,23 +3,31 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set When Shot",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "hys",
+      "Category": "Shootable Eye Target",
       "ToolTip": "",
-      "DataType": "Integer",
-      "UpdateModel": true
+      "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Size",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "hys",
+      "Category": "Shootable Eye Target",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Small",
+        1: "Large",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Hys": "Small",
+        "Hys2": "Large",
+      }
     }
   ]
 }
