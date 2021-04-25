@@ -21379,61 +21379,54 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("ship", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("ship", "Boundary Path", true, "This path in the Stage.arc sets the boundaries within which you are allowed to sail.\nThere should be four paths in total, connected via the \"Next Path\" field of the paths.\nThe ship will start out limited to the first path, then once hardcoded story conditions are met it will go onto the second, then third, and then the fourth path is the final one.", SourceScene.Room)]
+		public Path_v2 BoundaryPath
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<Path_v2> list = stage.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+				List<Path_v2> list = stage.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("BoundaryPath");
 			}
 		}
 
 		[WProperty("ship", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		public bool Unknown_2
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (value_as_int == 1) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
-			}
-		}
-
-		[WProperty("ship", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_3");
 			}
 		}
 
 		// Constructor
 		public ship(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			Transform.UsesXRotation = false;
+			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
@@ -21442,9 +21435,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			BoundaryPath = null;
 		}
 	}
 

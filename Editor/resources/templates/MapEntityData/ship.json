@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Boundary Path",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "ship",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "ToolTip": "This path in the Stage.arc sets the boundaries within which you are allowed to sail.\nThere should be four paths in total, connected via the \"Next Path\" field of the paths.\nThe ship will start out limited to the first path, then once hardcoded story conditions are met it will go onto the second, then third, and then the fourth path is the final one.",
+      "DataType": "StagePath"
     },
     {
       "Name": "Unknown_2",
@@ -18,16 +18,9 @@
       "Hidden": false,
       "Category": "ship",
       "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_3",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "ship",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [1]
     }
   ]
 }
