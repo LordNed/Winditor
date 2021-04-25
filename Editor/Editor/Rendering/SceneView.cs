@@ -211,9 +211,10 @@ namespace WindEditor
                         var otherUsedSwitchValues = other_obj.GetUsedSwitches();
 
                         var overlappingSwitches = usedSwitchValues.Intersect(otherUsedSwitchValues);
-                        if (curr_room_num != other_room_num)
+                        if (curr_room_num != other_room_num && curr_room_num != -1 && other_room_num != -1)
                         {
                             // If the two objects we're comparing are in separate rooms, exclude room-specific switches.
+                            // (Unless one of the actors is not tied to any specific room.)
                             overlappingSwitches = overlappingSwitches.Where(x => x < 192);
                         }
                         if (overlappingSwitches.Any())
