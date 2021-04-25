@@ -56,6 +56,8 @@ namespace WindEditor
 
         public override void PostLoad()
         {
+            base.PostLoad();
+
             m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorSphere.obj", new OpenTK.Vector4(1, 1, 1, 1));
         }
 
