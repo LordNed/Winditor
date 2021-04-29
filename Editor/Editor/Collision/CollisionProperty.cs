@@ -335,7 +335,7 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Camera", "RoomPathID", true, "Purpose uncertain.")]
+        [WProperty("Path", "Water Current Path", true, "Room path index for the water current to push the player in the direction of.")]
         public int RoomPathID
         {
             get { return (m_Bitfield3 & 0x00FF0000) >> 16; }
@@ -353,7 +353,7 @@ namespace WindEditor.Collision
             }
         }
 
-        [WProperty("Camera", "RoomPathPntNo", true, "Purpose uncertain.")]
+        [WProperty("Path", "Water Current Path Point", true, "Room path point index of the point the water current should move from.\nThis value plus one is the point index that the water current should move towards.")]
         public int RoomPathPntNo
         {
             get { return (int)(m_Bitfield3 & 0xFF000000) >> 24; }
