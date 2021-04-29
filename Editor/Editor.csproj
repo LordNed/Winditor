@@ -526,7 +526,7 @@
     <Compile Include="Editor\Entities\Actors\obj_wood.cs" />
     <Compile Include="Editor\Entities\Actors\obj_xfuta.cs" />
     <Compile Include="Editor\Entities\Actors\obj_Yboil.cs" />
-    <Compile Include="Editor\Entities\Actors\obj_ygush00.cs" />
+    <Compile Include="Editor\Entities\Actors\obj_Ygush00.cs" />
     <Compile Include="Editor\Entities\Actors\obj_YLzou.cs" />
     <Compile Include="Editor\Entities\Actors\obj_zouK.cs" />
     <Compile Include="Editor\Entities\Actors\oq.cs" />

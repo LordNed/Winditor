@@ -30,35 +30,7 @@
       }
     },
     {
-      "Name": "Switch 1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "Door",
-      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.",
-      "DataType": "Integer",
-      "UpdateModel": true
-    },
-    {
-      "Name": "Event ID",
-      "ValueSource": "Parameters",
-      "Mask": 0x000FF000,
-      "Hidden": false,
-      "Category": "Door",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Switch 2",
-      "ValueSource": "Parameters",
-      "Mask": 0x0FF00000,
-      "Hidden": false,
-      "Category": "Door",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "From Room Number",
+      "Name": "Front Room Number",
       "ValueSource": "XRotation",
       "Mask": 0x003F,
       "Hidden": false,
@@ -67,9 +39,37 @@
       "DataType": "Integer"
     },
     {
-      "Name": "To Room Number",
+      "Name": "Back Room Number",
       "ValueSource": "XRotation",
       "Mask": 0x0FC0,
+      "Hidden": false,
+      "Category": "Door",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Front Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Door",
+      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself on the front side once it's set.\nFor 'Barred until all enemies dead'-type doors, this is the switch it will set when all enemies in the front room are dead.",
+      "DataType": "Integer",
+      "UpdateModel": true
+    },
+    {
+      "Name": "Back Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x0FF00000,
+      "Hidden": false,
+      "Category": "Door",
+      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself on the back side once it's set.\nFor 'Locked and barred'-type doors, this is the switch it will set when all enemies in the back room are dead.\nUnlike with Front Switch, Back Switch doesn't do anything with the 'Barred until all enemies dead'-type doors.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Event ID",
+      "ValueSource": "Parameters",
+      "Mask": 0x000FF000,
       "Hidden": false,
       "Category": "Door",
       "ToolTip": "",

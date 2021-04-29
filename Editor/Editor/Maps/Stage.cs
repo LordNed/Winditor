@@ -183,8 +183,8 @@ namespace WindEditor
                 else if (child is door10)
                 {
                     var door = child as door10;
-                    possibleRoomNums.Add(door.FromRoomNumber);
-                    possibleRoomNums.Add(door.ToRoomNumber);
+                    possibleRoomNums.Add(door.FrontRoomNumber);
+                    possibleRoomNums.Add(door.BackRoomNumber);
                 }
                 else if (child is door12)
                 {

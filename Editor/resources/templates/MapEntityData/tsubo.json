@@ -8,7 +8,7 @@
       "Mask": 0x0F000000,
       "Hidden": false,
       "Category": "Pots",
-      "ToolTip": "",
+      "ToolTip": "Which model and behavior the pot should use.\nNote: The two crate types float along water currents, but the other types do not.",
       "DataType": "Enum",
       "EnumValues": {
         0: "Small pot",

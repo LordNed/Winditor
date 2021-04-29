@@ -60,11 +60,31 @@ namespace WindEditor
                 model_list.AddRange(WResourceManager.LoadActorResource("Small Key Lock"));
             }
 
-            if (Type == TypeEnum.Barred_until_all_enemies_dead || Type == TypeEnum.Locked_and_barred || (Type == TypeEnum.Normal && Switch1 < 255))
+            bool hasFrontBars = false;
+            bool hasBackBars = false;
+            if (Type == TypeEnum.Barred_until_all_enemies_dead)
             {
-                if (stage_dir.GetFileAtPath("bdl/stop10.bdl") != null)
+                hasFrontBars = true;
+            }
+            if (Type == TypeEnum.Normal || Type == TypeEnum.Locked_and_barred)
+            {
+                if (FrontSwitch != 255)
+                    hasFrontBars = true;
+                if (BackSwitch != 255)
+                    hasBackBars = true;
+            }
+            if (stage_dir.GetFileAtPath("bdl/stop10.bdl") != null)
+            {
+                if (hasFrontBars)
                 {
-                    model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl"));
+                    var bars = WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl");
+                    model_list.Add(bars);
+                }
+                if (hasBackBars)
+                {
+                    var bars = WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl");
+                    bars.SetOffsetRotation(new OpenTK.Vector3(0, 180, 0));
+                    model_list.Add(bars);
                 }
             }
 

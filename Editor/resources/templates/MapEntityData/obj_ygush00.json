@@ -1,5 +1,5 @@
 {
-  "ClassName": "obj_ygush00",
+  "ClassName": "obj_Ygush00",
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
@@ -7,7 +7,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00000007,
       "Hidden": false,
-      "Category": "obj_ygush00",
+      "Category": "obj_Ygush00",
       "ToolTip": "",
       "DataType": "Integer"
     }

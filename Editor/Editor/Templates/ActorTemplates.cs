@@ -3249,8 +3249,42 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
-		public int Switch1
+		[WProperty("Door", "Front Room Number", true, "", SourceScene.Room)]
+		public int FrontRoomNumber
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
+				OnPropertyChanged("FrontRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "Back Room Number", true, "", SourceScene.Room)]
+		public int BackRoomNumber
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0x0FC0) >> 6);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				OnPropertyChanged("BackRoomNumber");
+			}
+		}
+
+		[WProperty("Door", "Front Switch", true, "For normal-type doors, this is the switch it will check and unlock itself on the front side once it's set.\nFor 'Barred until all enemies dead'-type doors, this is the switch it will set when all enemies in the front room are dead.", SourceScene.Room)]
+		public int FrontSwitch
 		{ 
 			get
 			{
@@ -3262,8 +3296,25 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Switch1");
+				OnPropertyChanged("FrontSwitch");
 				UpdateModel();
+			}
+		}
+
+		[WProperty("Door", "Back Switch", true, "For normal-type doors, this is the switch it will check and unlock itself on the back side once it's set.\nFor 'Locked and barred'-type doors, this is the switch it will set when all enemies in the back room are dead.\nUnlike with Front Switch, Back Switch doesn't do anything with the 'Barred until all enemies dead'-type doors.", SourceScene.Room)]
+		public int BackSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("BackSwitch");
 			}
 		}
 
@@ -3281,57 +3332,6 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
-			}
-		}
-
-		[WProperty("Door", "Switch 2", true, "", SourceScene.Room)]
-		public int Switch2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("Switch2");
-			}
-		}
-
-		[WProperty("Door", "From Room Number", true, "", SourceScene.Room)]
-		public int FromRoomNumber
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("FromRoomNumber");
-			}
-		}
-
-		[WProperty("Door", "To Room Number", true, "", SourceScene.Room)]
-		public int ToRoomNumber
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_XRotation & 0x0FC0) >> 6);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
-				OnPropertyChanged("ToRoomNumber");
 			}
 		}
 
@@ -3381,11 +3381,11 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Switch1 = -1;
+			FrontRoomNumber = -1;
+			BackRoomNumber = -1;
+			FrontSwitch = -1;
+			BackSwitch = -1;
 			EventID = -1;
-			Switch2 = -1;
-			FromRoomNumber = -1;
-			ToRoomNumber = -1;
 			ShipID = -1;
 			Arg1 = -1;
 			if (Name == "door10") {
@@ -19763,11 +19763,11 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class obj_ygush00 : Actor
+	public partial class obj_Ygush00 : Actor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_ygush00", "Unknown_1", true, "", SourceScene.Room)]
+		[WProperty("obj_Ygush00", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
 			get
@@ -19785,7 +19785,7 @@ namespace WindEditor
 		}
 
 		// Constructor
-		public obj_ygush00(FourCC fourCC, WWorld world) : base(fourCC, world)
+		public obj_Ygush00(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
@@ -25446,7 +25446,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("Pots", "Type", true, "", SourceScene.Room)]
+		[WProperty("Pots", "Type", true, "Which model and behavior the pot should use.\nNote: The two crate types float along water currents, but the other types do not.", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get

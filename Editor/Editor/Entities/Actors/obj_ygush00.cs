@@ -7,7 +7,7 @@ using WindEditor.ViewModel;
 
 namespace WindEditor
 {
-	public partial class obj_ygush00
+	public partial class obj_Ygush00
 	{
 		public override void PostLoad()
 		{

@@ -11338,10 +11338,55 @@
     "Archive Name": null,
     "Main Model": null,
     "Secondary Models": null,
-    "ActorClassType": "obj_ygush00",
+    "ActorClassType": "obj_Ygush00",
     "Wait Animations": null,
-    "Actor Name": "",
-    "English Name": "obj_ygush00",
+    "Actor Name": "Ygush00",
+    "English Name": "obj_Ygush00",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
+      "N/A"
+    ],
+    "ImagePath": null
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "obj_Ygush00",
+    "Wait Animations": null,
+    "Actor Name": "Ygush01",
+    "English Name": "obj_Ygush00",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
+      "N/A"
+    ],
+    "ImagePath": null
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "obj_Ygush00",
+    "Wait Animations": null,
+    "Actor Name": "Ygstp00",
+    "English Name": "obj_Ygush00",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
+      "N/A"
+    ],
+    "ImagePath": null
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "obj_Ygush00",
+    "Wait Animations": null,
+    "Actor Name": "Ygush02",
+    "English Name": "obj_Ygush00",
     "Tags": null,
     "Explanation": null,
     "Locations": [
