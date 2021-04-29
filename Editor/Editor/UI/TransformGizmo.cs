@@ -3,6 +3,7 @@ using OpenTK;
 using System.Collections.Generic;
 using OpenTK.Graphics.OpenGL;
 using System.Windows.Input;
+using System.Linq;
 
 // http://pastebin.com/raw/p8EqPs8p
 // http://pastebin.com/raw/QRHEcsW2
@@ -88,6 +89,10 @@ namespace WindEditor
         private bool mFlipScaleX = false;
         private bool mFlipScaleY = false;
         private bool mFlipScaleZ = false;
+        /// <summary> Which of the rotation axes are currently visible.</summary>
+        private bool mShowRotX = true;
+        private bool mShowRotY = true;
+        private bool mShowRotZ = true;
 
         // Delta Transforms
         /// <summary> What is the delta translation for this frame. </summary>
@@ -184,7 +189,7 @@ namespace WindEditor
             m_currentRotation = Quaternion.Identity;
             m_totalScale = Vector3.One;
 
-            // Set the rotaiton direction.
+            // Set the rotation direction.
             if (m_mode == FTransformMode.Rotation)
             {
                 // We need to determine which side of the gizmo they are on, so that goes the expected direction when
@@ -373,6 +378,13 @@ namespace WindEditor
                         {
                             continue;
                         }
+
+                        if (i == 0 && !mShowRotX)
+                            continue;
+                        if (i == 1 && !mShowRotY)
+                            continue;
+                        if (i == 2 && !mShowRotZ)
+                            continue;
 
                         results.Add(new AxisDistanceResult((FSelectedAxes)(i + 1), intersectDist));
                     }
@@ -782,6 +794,61 @@ namespace WindEditor
             }
         }
 
+        public void UpdateVisibleRotationAxes()
+        {
+            mShowRotX = true;
+            mShowRotY = true;
+            mShowRotZ = true;
+
+            if (m_world.ActorMode.EditorSelection.PrimarySelectedObject == null)
+            {
+                return;
+            }
+
+            bool allUseX = m_world.ActorMode.EditorSelection.SelectedObjects.All(e => e.Transform.UsesXRotation);
+            bool allUseY = m_world.ActorMode.EditorSelection.SelectedObjects.All(e => e.Transform.UsesYRotation);
+            bool allUseZ = m_world.ActorMode.EditorSelection.SelectedObjects.All(e => e.Transform.UsesZRotation);
+            bool anyUseX = m_world.ActorMode.EditorSelection.SelectedObjects.Any(e => e.Transform.UsesXRotation);
+            bool anyUseY = m_world.ActorMode.EditorSelection.SelectedObjects.Any(e => e.Transform.UsesYRotation);
+            bool anyUseZ = m_world.ActorMode.EditorSelection.SelectedObjects.Any(e => e.Transform.UsesZRotation);
+
+            if (!anyUseX && !anyUseY && !anyUseZ)
+            {
+                // No rotation
+                mShowRotX = false;
+                mShowRotY = false;
+                mShowRotZ = false;
+                return;
+            }
+
+            if (m_transformSpace == FTransformSpace.World)
+            {
+                return;
+            }
+
+            if (allUseX && !anyUseY && !anyUseZ)
+            {
+                // Single axis X
+                mShowRotX = true;
+                mShowRotY = false;
+                mShowRotZ = false;
+            }
+            else if (allUseY && !anyUseX && !anyUseZ)
+            {
+                // Single axis Y
+                mShowRotX = false;
+                mShowRotY = true;
+                mShowRotZ = false;
+            }
+            else if (allUseZ && !anyUseX && !anyUseY)
+            {
+                // Single axis Z
+                mShowRotX = false;
+                mShowRotY = false;
+                mShowRotZ = true;
+            }
+        }
+
         #region IRenderable
         void IRenderable.AddToRenderer(WSceneView view)
         {
@@ -807,6 +874,15 @@ namespace WindEditor
             {
                 for (int j = 0; j < m_gizmoMeshes[gizmoIndex].Length; j++)
                 {
+                    if (m_mode == FTransformMode.Rotation)
+                    {
+                        if (j == 0 && !mShowRotX)
+                            continue;
+                        if (j == 1 && !mShowRotY)
+                            continue;
+                        if (j == 2 && !mShowRotZ)
+                            continue;
+                    }
                     m_gizmoMeshes[gizmoIndex][j].Render(view.ViewMatrix, view.ProjMatrix, modelMatrix);
                 }
             }

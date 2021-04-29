@@ -29,6 +29,7 @@ namespace WindEditor.Editor.Modes
 
             TransformGizmo.SetPosition(position);
             TransformGizmo.SetLocalRotation(localRotation);
+            TransformGizmo.UpdateVisibleRotationAxes();
         }
 
         private void UpdateSelectionGizmo(WSceneView view)
