@@ -82,6 +82,22 @@ namespace WindEditor
 
             GetRoomAndSpawnID(map.FocusedScene, out room_no, out spawn_id);
 
+            int numMatchingSpawns = 0;
+            foreach (var scn in map.SceneList)
+            {
+                numMatchingSpawns += scn.GetChildrenOfType<SpawnPoint>().Where(x => x.Room == room_no && x.SpawnID == spawn_id).Count();
+            }
+            if (numMatchingSpawns == 0)
+            {
+                MessageBox.Show($"No spawns found with room number {room_no} and spawn ID {spawn_id}.", "Warning");
+                return;
+            }
+            if (numMatchingSpawns > 1)
+            {
+                MessageBox.Show($"There are {numMatchingSpawns} duplicate spawns with room number {room_no} and spawn ID {spawn_id}.", "Warning");
+                return;
+            }
+
             if (!File.Exists(dolPath))
             {
                 Console.WriteLine("ISO root has no executable!");
