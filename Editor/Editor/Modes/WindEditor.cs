@@ -506,11 +506,19 @@ namespace WindEditor
                 CategoryDOMNode colCategory = room.GetChildrenOfType<CategoryDOMNode>().Find(x => x.Name == "Collision");
                 List<WCollisionMesh> originalMeshList = room.GetChildrenOfType<WCollisionMesh>();
 
-                int origRootRoomTableIndex = 0;
-                if (originalMeshList.Count > 0)
-                    origRootRoomTableIndex = originalMeshList[0].RootNode.RoomTableIndex;
-                WCollisionMesh newMesh = new WCollisionMesh(MainWorld, window.FileName, room.RoomIndex, origRootRoomTableIndex);
-                newMesh.Name = "room";
+                WCollisionMesh newMesh = null;
+
+                if (ext == ".dae")
+                {
+                    int origRootRoomTableIndex = 0;
+                    if (originalMeshList.Count > 0)
+                        origRootRoomTableIndex = originalMeshList[0].RootNode.RoomTableIndex;
+
+                    newMesh = new WCollisionMesh(MainWorld, window.FileName, room.RoomIndex, origRootRoomTableIndex);
+                    newMesh.Name = "room";
+                }
+                else
+                    newMesh = new WCollisionMesh(MainWorld, window.FileName);
 
                 if (originalMeshList.Count > 0)
                 {
