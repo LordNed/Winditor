@@ -455,7 +455,8 @@ namespace WindEditor
                 items.Add(e.GetMenuItem());
             }
 
-            items.Add(new MenuItem() { Name = "islandimporteritem", Header = "Island Importer", Command = ImportIslandCommand });
+            items.Add(new MenuItem() { Name = "islandimporteritem", Header = "Island Importer",
+                Command = ImportIslandCommand, VerticalContentAlignment = VerticalAlignment.Center, HorizontalContentAlignment = HorizontalAlignment.Stretch });
 
             return items;
         }
@@ -495,7 +496,7 @@ namespace WindEditor
                 }
 
                 string ext = Path.GetExtension(window.FileName);
-                if (ext != ".dae" && ext != ".dzb")
+                if (ext != ".dae" && ext != ".obj" && ext != ".dzb")
                 {
                     MessageBox.Show($"Input file { window.FileName } was not a supported format.", "Collision Import Error");
                     return;
@@ -508,7 +509,7 @@ namespace WindEditor
 
                 WCollisionMesh newMesh = null;
 
-                if (ext == ".dae")
+                if (ext == ".dae" || ext == ".obj")
                 {
                     int origRootRoomTableIndex = 0;
                     if (originalMeshList.Count > 0)

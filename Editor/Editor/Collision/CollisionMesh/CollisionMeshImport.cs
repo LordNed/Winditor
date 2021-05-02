@@ -120,6 +120,69 @@ namespace WindEditor.Collision
             }
         }
 
+        private void LoadFromObj(string[] lines, int roomIndex, int roomTableIndex)
+        {
+            RootNode = new CollisionGroupNode(null, string.Format("R{0}", roomTableIndex.ToString("D2")));
+            m_Nodes.Add(RootNode);
+
+            CollisionGroupNode CurrentCategory = null;
+            CollisionGroupNode CurrentGroup = null;
+
+            List<Vector3> Vertices = new List<Vector3>();
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] SplitLine = lines[i].Split(' ');
+
+                switch(SplitLine[0])
+                {
+                    case "o":
+                        CurrentCategory = new CollisionGroupNode(RootNode, $"C_{ SplitLine[1] }");
+                        CurrentGroup = new CollisionGroupNode(CurrentCategory, $"G_{ SplitLine[1] }");
+
+                        RootNode.Children.Add(CurrentCategory);
+                        CurrentCategory.Children.Add(CurrentGroup);
+
+                        m_Nodes.Add(CurrentCategory);
+                        m_Nodes.Add(CurrentGroup);
+                        break;
+                    case "v":
+                        // We've been burned by Europe before since they use , instead of . for marking decimal places. So this just makes sure that's not an issue.
+                        float XCoord = Convert.ToSingle(SplitLine[1].Replace(',', '.'));
+                        float YCoord = Convert.ToSingle(SplitLine[2].Replace(',', '.'));
+                        float ZCoord = Convert.ToSingle(SplitLine[3].Replace(',', '.'));
+
+                        Vertices.Add(new Vector3(XCoord, YCoord, ZCoord));
+                        break;
+                    case "f":
+                        int V1 = Convert.ToInt32(SplitLine[1].Split('/')[0]) - 1;
+                        int V2 = Convert.ToInt32(SplitLine[2].Split('/')[0]) - 1;
+                        int V3 = Convert.ToInt32(SplitLine[3].Split('/')[0]) - 1;
+
+                        CollisionTriangle NewTri = new CollisionTriangle(Vertices[V1], Vertices[V2], Vertices[V3], CurrentGroup);
+
+                        Triangles.Add(NewTri);
+                        CurrentGroup.Triangles.Add(NewTri);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            FinalizeLoad();
+
+            // Automatically set the room number.
+            RootNode.RoomNumber = roomIndex;
+
+            // Copy the room table index used by the original collision mesh's root node to all of the groups loaded from the dae.
+            // This isn't perfect because some rooms (like dungeon hub rooms) have different collision groups using different room tables, and this method doesn't preserve that.
+            // But this does work much better than not setting the room table index at all.
+            foreach (CollisionGroupNode node in m_Nodes)
+            {
+                node.RoomTableIndex = roomTableIndex;
+            }
+        }
+
         private CollisionGroupNode LoadGroupsFromColladaRecursive(CollisionGroupNode parent, node dae_node, geometry[] meshes)
         {
             CollisionGroupNode new_node = new CollisionGroupNode(parent, dae_node.name);
