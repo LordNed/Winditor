@@ -2976,7 +2976,7 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
 				if (value_as_int == 0xFF) { return null; }
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
@@ -2989,7 +2989,7 @@ namespace WindEditor
 				WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
 				List<MapEvent> list = stage.GetChildrenOfType<MapEvent>();
 				int value_as_int = list.IndexOf(value);
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
 			}
 		}

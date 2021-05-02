@@ -71,7 +71,7 @@
     {
       "Name": "Event",
       "ValueSource": "Parameters",
-      "Mask": 0x00FF0000,
+      "Mask": 0xFF000000,
       "Hidden": false,
       "Category": "Spawn Properties",
       "ToolTip": "",
