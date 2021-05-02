@@ -84,7 +84,7 @@ namespace WindEditor.Collision
             }
             else
             {
-                throw new Exception($"File is not a DAE: {file_name}");
+                LoadFromObj(File.ReadAllLines(file_name), roomIndex, roomTableIndex);
             }
         }
 

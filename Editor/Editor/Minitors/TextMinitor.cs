@@ -202,8 +202,6 @@ namespace WindEditor.Minitors
         private TextMinitorWindow m_MinitorWindow;
         private WDetailsViewViewModel m_DetailsModel;
 
-        private TextboxRendererViewModel m_RendererViewModel;
-
         private List<Message> m_Messages;
         private Message m_SelectedMessage;
         private VirtualFilesystemDirectory m_MessageArchive;
@@ -242,8 +240,6 @@ namespace WindEditor.Minitors
             m_MinitorWindow = new TextMinitorWindow();
             m_MinitorWindow.DataContext = this;
             m_DetailsModel = (WDetailsViewViewModel)m_MinitorWindow.DetailsPanel.DataContext;
-
-            m_RendererViewModel = new TextboxRendererViewModel();
 
             SelectedMessage = Messages[0];
             m_MinitorWindow.Show();
