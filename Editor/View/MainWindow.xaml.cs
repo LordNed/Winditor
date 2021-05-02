@@ -53,7 +53,8 @@ namespace WindEditor
             List<Control> tools_items = new List<Control>(m_viewModel.WindEditor.GetRegisteredEditorMenus());
 
             tools_items.Add(new Separator());
-            tools_items.Add(new MenuItem() { Header = "Options", Command = m_viewModel.SetDataRootCommand });
+            tools_items.Add(new MenuItem() { Header = "Options", Command = m_viewModel.SetDataRootCommand,
+                VerticalContentAlignment = VerticalAlignment.Center, HorizontalContentAlignment = HorizontalAlignment.Stretch });
 
             ToolsMenu.ItemsSource = tools_items;
         }

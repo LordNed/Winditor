@@ -60,6 +60,8 @@ namespace WindEditor.Minitors
                 Header = "Text Editor",
                 ToolTip = "Editor for the game's main text bank.",
                 Command = OpenMinitorCommand,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
             };
         }
 

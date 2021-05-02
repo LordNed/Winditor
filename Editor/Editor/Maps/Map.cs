@@ -57,7 +57,6 @@ namespace WindEditor
             m_world = parentWorld;
             m_sceneList = new ObservableCollection<WScene>();
             CollectionViewSource.GetDefaultView(m_sceneList).SortDescriptions.Add(new SortDescription("RoomIndex", ListSortDirection.Ascending));
-
             // Set us to mid-day lighting by default.
             TimeOfDay = 0.5f;
         }

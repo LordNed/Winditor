@@ -17,6 +17,8 @@ namespace WindEditor
 
         protected static Dictionary<FourCC, SourceScene> m_fourCCLocations;
 
+        public int RoomIndex { get; protected set; }
+
         static WScene()
         {
             m_fourCCLocations = new Dictionary<FourCC, SourceScene>();
@@ -38,6 +40,8 @@ namespace WindEditor
 
         public WScene(WWorld world) : base(world)
         {
+            RoomIndex = -1;
+
             m_fourCCGroups = new Dictionary<FourCC, WDOMNode>();
 
             // We're going to iterate through the enum values to create DOM nodes for them.

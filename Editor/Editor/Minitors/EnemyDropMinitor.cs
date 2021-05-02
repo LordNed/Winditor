@@ -22,6 +22,8 @@ namespace WindEditor.Minitors
             {
                 Header = "Enemy Drop Editor",
                 ToolTip = "Editor for the items that enemies can drop upon defeat.",
+                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
                 //Command = OpenMinitorCommand,
             };
         }

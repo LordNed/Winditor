@@ -67,7 +67,6 @@ namespace WindEditor
 
     public class WRoom : WScene
     {
-        public int RoomIndex { get; protected set; }
         public int MemoryAllocation { get; set; }
         public WRoomTransform RoomTransform { get; set; }
         public EnvironmentLightingConditions EnvironmentLighting { get; set; }

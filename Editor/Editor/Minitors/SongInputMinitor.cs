@@ -65,6 +65,8 @@ namespace WindEditor.Minitors
                 Header = "Song Input Editor",
                 ToolTip = "Editor for the inputs required to trigger a Wind Waker song.",
                 Command = OpenMinitorCommand,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
             };
         }
 
