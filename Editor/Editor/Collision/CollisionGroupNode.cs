@@ -33,6 +33,20 @@ namespace WindEditor.Collision
 
         private int m_Bitfield;
 
+        [WProperty("Group Settings", "Name", true, "The name of this group.")]
+        public string Name
+        {
+            get { return m_Name; }
+            set
+            {
+                if (value != m_Name)
+                {
+                    m_Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
         [WProperty("Group Settings", "Is Water", true, "Whether the surface is water or not.")]
         public bool IsWater
         {
@@ -123,19 +137,6 @@ namespace WindEditor.Collision
                 int value_as_int = value ? 1 : 0;
                 m_Bitfield = (int)(m_Bitfield & ~0x00040000 | (value_as_int << 18 & 0x00040000));
                 OnPropertyChanged("IsOuterEdgeOfSeaFloor");
-            }
-        }
-
-        public string Name
-        {
-            get { return m_Name; }
-            set
-            {
-                if (value != m_Name)
-                {
-                    m_Name = value;
-                    OnPropertyChanged("Name");
-                }
             }
         }
 
