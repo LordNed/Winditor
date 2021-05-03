@@ -147,13 +147,11 @@ namespace WindEditor
             foreach (string filePath in m_BackedUpFilePaths)
             {
                 string backupPath = filePath + ".bak";
-                if (File.Exists(filePath))
+                if (File.Exists(filePath) && File.Exists(backupPath))
                 {
                     File.Delete(filePath);
+                    File.Move(backupPath, filePath);
                 }
-
-                File.Copy(backupPath, filePath);
-                File.Delete(backupPath);
             }
         }
 
