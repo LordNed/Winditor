@@ -120,6 +120,9 @@ namespace WindEditor
                 case ItemID.Bombs:
                     m_actorMeshes = WResourceManager.LoadActorResource("Bombs Ability");
                     break;
+                case ItemID.Big_Key:
+                    m_actorMeshes = WResourceManager.LoadActorResource("Big Key");
+                    break;
                 case ItemID.Town_Flower:
                     m_actorMeshes = WResourceManager.LoadActorResource("Town Flower");
                     break;

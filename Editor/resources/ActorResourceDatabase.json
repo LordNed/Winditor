@@ -4102,6 +4102,28 @@
     ]
   },
   {
+    "Name": "Big Key",
+    "Archive": "key_01",
+    "Models": [
+      {
+        "Path": "bdlm/vkeyb.bdl",
+        "Animations": [
+          {
+            "Anim Type": "btk",
+            "Path": "btk/vkeyb.btk",
+            "Paused on Load": false,
+            "Start Time": 0.0
+          }
+        ],
+        "Position": {
+          "X": 0,
+          "Y": 23,
+          "Z": 0
+        }
+      }
+    ]
+  },
+  {
     "Name": "Knights Crest",
     "Archive": "Always",
     "Models": [
