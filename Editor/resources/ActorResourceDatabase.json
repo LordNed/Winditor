@@ -7339,5 +7339,34 @@
         "Path": "bdl/vswon.bdl"
       }
     ]
+  },
+  {
+    "Name": "Gohma",
+    "Archive": "Btd",
+    "Models": [
+      {
+        "Path": "bmdm/btd.bmd",
+        "Animations": [
+          {
+            "Anim Type": "bck",
+            "Path": "bck/wait1.bck",
+            "Paused on Load": false,
+            "Start Time": 0.00
+          },
+          {
+            "Anim Type": "btk",
+            "Path": "btk/btd.btk",
+            "Paused on Load": false,
+            "Start Time": 0
+          },
+          {
+            "Anim Type": "brk",
+            "Path": "brk/btd.brk",
+            "Paused on Load": false,
+            "Start Time": 0
+          }
+        ]
+      }
+    ]
   }
 ]

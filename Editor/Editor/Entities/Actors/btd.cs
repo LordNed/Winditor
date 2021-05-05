@@ -11,12 +11,17 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-			base.PostLoad();
+			UpdateModel();
 		}
 
 		public override void PreSave()
 		{
 
+		}
+
+		private void UpdateModel()
+        {
+			m_actorMeshes = WResourceManager.LoadActorResource("Gohma");
 		}
 	}
 }
