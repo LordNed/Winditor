@@ -60,10 +60,15 @@ namespace WindEditor
             }
 
             bool isLocked = false;
-            if (BehaviorType == BehaviorTypeEnum.Boss_Locked || AppearanceType == AppearanceTypeEnum.Earth_Temple_Boss || AppearanceType == AppearanceTypeEnum.Wind_Temple_Boss)
+            bool isBossLocked = false;
+            if (BehaviorType == BehaviorTypeEnum.Boss_locked || AppearanceType == AppearanceTypeEnum.Earth_Temple_Boss || AppearanceType == AppearanceTypeEnum.Wind_Temple_Boss)
             {
-                model_list.AddRange(WResourceManager.LoadActorResource("Boss Key Lock"));
-                isLocked = true;
+                if (FrontSwitch != 255)
+                {
+                    model_list.AddRange(WResourceManager.LoadActorResource("Boss Key Lock"));
+                    isLocked = true;
+                    isBossLocked = true;
+                }
             }
             else if (BehaviorType == BehaviorTypeEnum.Locked)
             {
@@ -74,11 +79,30 @@ namespace WindEditor
             WStage stage = World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
             VirtualFilesystemDirectory stage_dir = stage.SourceDirectory;
 
-            if (Switch2 != 255 || (!isLocked && Switch1 != 255))
+            bool hasFrontBars = false;
+            bool hasBackBars = false;
+            if (FrontSwitch != 255 && !isLocked)
+                hasFrontBars = true;
+            if (BackBarsSwitch != 255)
             {
-                if (stage_dir.GetFileAtPath("bdl/stop10.bdl") != null)
+                hasBackBars = true;
+                if (FrontSwitch != 255 && isLocked && !isBossLocked)
                 {
-                    model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl"));
+                    hasFrontBars = true;
+                }
+            }
+            if (stage_dir.GetFileAtPath("bdl/stop10.bdl") != null)
+            {
+                if (hasFrontBars)
+                {
+                    var bars = WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl");
+                    model_list.Add(bars);
+                }
+                if (hasBackBars)
+                {
+                    var bars = WResourceManager.LoadModelFromVFS(stage_dir, "bdl/stop10.bdl");
+                    bars.SetOffsetRotation(new OpenTK.Vector3(0, 180, 0));
+                    model_list.Add(bars);
                 }
             }
 

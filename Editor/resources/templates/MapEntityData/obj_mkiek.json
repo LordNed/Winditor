@@ -3,22 +3,22 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_mkiek",
-      "ToolTip": "",
+      "Category": "Dissolving Wall",
+      "ToolTip": "The switch to set when this wall is dissolved by light.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Do Not Play Jingle",
       "ValueSource": "Parameters",
       "Mask": 0x00000100,
       "Hidden": false,
-      "Category": "obj_mkiek",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Dissolving Wall",
+      "ToolTip": "If checked, dissolving this wall does not play the 'Puzzle Solved' jingle it normally would.",
+      "DataType": "Boolean"
     }
   ]
 }

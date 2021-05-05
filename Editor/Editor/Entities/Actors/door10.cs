@@ -45,33 +45,43 @@ namespace WindEditor
                 {
                     model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/door20.bdl"));
                 }
-                model_list.AddRange(WResourceManager.LoadActorResource("Boss Key Lock"));
-
-                return model_list;
             }
-
-            if (stage_dir.GetFileAtPath("bdl/door10.bdl") != null)
+            else
             {
-                model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/door10.bdl"));
+                if (stage_dir.GetFileAtPath("bdl/door10.bdl") != null)
+                {
+                    model_list.Add(WResourceManager.LoadModelFromVFS(stage_dir, "bdl/door10.bdl"));
+                }
             }
 
-            if (Type == TypeEnum.Locked || Type == TypeEnum.Locked_and_barred)
+            bool isLocked = false;
+            bool isBossLocked = false;
+            if (Type == TypeEnum.Boss)
+            {
+                if (FrontSwitch != 255)
+                {
+                    model_list.AddRange(WResourceManager.LoadActorResource("Boss Key Lock"));
+                    isLocked = true;
+                    isBossLocked = true;
+                }
+            }
+            else if (Type == TypeEnum.Locked || Type == TypeEnum.Locked_and_barred)
             {
                 model_list.AddRange(WResourceManager.LoadActorResource("Small Key Lock"));
+                isLocked = true;
             }
 
             bool hasFrontBars = false;
             bool hasBackBars = false;
-            if (Type == TypeEnum.Barred_until_all_enemies_dead)
-            {
+            if (FrontSwitch != 255 && !isLocked)
                 hasFrontBars = true;
-            }
-            if (Type == TypeEnum.Normal || Type == TypeEnum.Locked_and_barred)
+            if (BackBarsSwitch != 255)
             {
-                if (FrontSwitch != 255)
+                hasBackBars = true;
+                if (FrontSwitch != 255 && isLocked && !isBossLocked)
+                {
                     hasFrontBars = true;
-                if (BackSwitch != 255)
-                    hasBackBars = true;
+                }
             }
             if (stage_dir.GetFileAtPath("bdl/stop10.bdl") != null)
             {

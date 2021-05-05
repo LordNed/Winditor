@@ -788,6 +788,18 @@
     ]
   },
   {
+    "Name": "Skylight",
+    "Archive": "Tenmado",
+    "Models": [
+      {
+        "Path": "bdl/mmadol.bdl"
+      },
+      {
+        "Path": "bdl/mmador.bdl"
+      }
+    ]
+  },
+  {
     "Name": "Dissolving Wall",
     "Archive": "MkieK",
     "Models": [
@@ -1837,6 +1849,52 @@
             "Start Time": 0
           }
         ]
+      }
+    ]
+  },
+  {
+    "Name": "Mothula Lower Left Wing",
+    "Archive": "Gm",
+    "Models": [
+      {
+        "Path": "bdlm/hanesl.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Mothula Lower Right Wing",
+    "Archive": "Gm",
+    "Models": [
+      {
+        "Path": "bdlm/hanesl.bdl",
+        "Rotation": {
+          "X": 0,
+          "Y": 180,
+          "Z": 0
+        },
+      }
+    ]
+  },
+  {
+    "Name": "Mothula Upper Left Wing",
+    "Archive": "Gm",
+    "Models": [
+      {
+        "Path": "bdlm/haneul.bdl",
+      }
+    ]
+  },
+  {
+    "Name": "Mothula Upper Right Wing",
+    "Archive": "Gm",
+    "Models": [
+      {
+        "Path": "bdlm/haneul.bdl",
+        "Rotation": {
+          "X": 0,
+          "Y": 180,
+          "Z": 0
+        },
       }
     ]
   },

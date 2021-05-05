@@ -3,49 +3,82 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "gm",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "gm",
+      "Category": "Mothula or Mothula Wing",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Mothula",
+        1: "Wing that falls down spinning",
+        2: "Wing that floats down gently",
+      },
+      "UpdateModel": true
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Mothula Type",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "gm",
+      "Category": "Mothula",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Miniboss Winged Mothula",
+        1: "Wingless Mothula",
+        2: "Winged Mothula",
+      },
+      "UpdateModel": true,
+      "DefaultValue": "Winged Mothula"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Missing Wings",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": true,
+      "Category": "Mothula",
+      "ToolTip": "",
+      "DataType": "Integer",
+      "UpdateModel": true
+    },
+    {
+      "Name": "Disable Spawn on Death Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "gm",
+      "Category": "Mothula",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Which Wing",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "Mothula Wing",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Lower Right Wing",
+        2: "Lower Left Wing",
+        3: "Upper Right Wing",
+        4: "Upper Left Wing",
+      },
+      "UpdateModel": true
+    },
+    {
+      "Name": "Unknown_5", // always set in vanilla...?
       "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
       "Category": "gm",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanDefaultValue": true,
+      "BooleanNonDefaults": [0],
     }
   ]
 }

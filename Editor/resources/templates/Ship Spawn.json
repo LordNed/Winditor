@@ -6,7 +6,7 @@
 	[
 		{"Name" : "Position", "Type" : "Vector3", "Category": "Ship Spawn Properties"},
 		{"Name" : "Y Rotation", "Type" : "Short", "Category": "Ship Spawn Properties", "Hidden": true},
-		{"Name" : "Ship Id", "Type" : "Byte", "Category": "Ship Spawn Properties"},
+		{"Name" : "Ship ID", "Type" : "Byte", "Category": "Ship Spawn Properties"},
 		{"Name" : "Unknown 1", "Type" : "Byte", "Category": "Ship Spawn Properties"},
 	]
 }

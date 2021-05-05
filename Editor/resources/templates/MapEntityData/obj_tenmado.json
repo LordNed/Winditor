@@ -3,20 +3,20 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_tenmado",
+      "Category": "Skylight",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_tenmado",
+      "Category": "Skylight",
       "ToolTip": "",
       "DataType": "Integer"
     }

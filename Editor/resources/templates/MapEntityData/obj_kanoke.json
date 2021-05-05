@@ -35,7 +35,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Opened Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
@@ -44,7 +44,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Unused Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,

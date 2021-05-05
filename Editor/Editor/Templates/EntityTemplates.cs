@@ -3364,16 +3364,16 @@ namespace WindEditor
 		protected short m_YRotation;
 				
 
-		protected byte m_ShipId;
+		protected byte m_ShipID;
 
-		[WProperty("Ship Spawn Properties", "Ship Id", true, "")]
-		 public byte ShipId
+		[WProperty("Ship Spawn Properties", "Ship ID", true, "")]
+		 public byte ShipID
 		{ 
-			get { return m_ShipId; }
+			get { return m_ShipID; }
 			set
 			{
-				m_ShipId = value;
-				OnPropertyChanged("ShipId");
+				m_ShipID = value;
+				OnPropertyChanged("ShipID");
 			}
 		}
 				
@@ -3396,7 +3396,7 @@ namespace WindEditor
 		// Constructor
 		public ShipSpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship Id", TargetProperties = new string[] { "ShipId"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Ship ID", TargetProperties = new string[] { "ShipID"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
 			Transform.UsesXRotation = false;
 			Transform.UsesYRotation = true;
@@ -3408,7 +3408,7 @@ namespace WindEditor
 		{
 			Transform.Position = new OpenTK.Vector3(stream.ReadSingle(), stream.ReadSingle(), stream.ReadSingle()); 
 			m_YRotation = stream.ReadInt16(); 
-			m_ShipId = stream.ReadByte(); 
+			m_ShipID = stream.ReadByte(); 
 			m_Unknown1 = stream.ReadByte(); 
 			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
 				new Vector3(0, WMath.RotationShortToFloat(m_YRotation), 0),
@@ -3423,7 +3423,7 @@ namespace WindEditor
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
 			stream.Write((short)m_YRotation);
-			stream.Write((byte)ShipId);
+			stream.Write((byte)ShipID);
 			stream.Write((byte)Unknown1);
 		}
 	}

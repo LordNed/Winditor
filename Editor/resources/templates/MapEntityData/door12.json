@@ -8,15 +8,15 @@
       "Mask": 0x00000F00,
       "Hidden": false,
       "Category": "ET/WT Door",
-      "ToolTip": "",
+      "ToolTip": "How the door behaves in terms of preventing you from going through it with locks/bars.\nNote that the 'Boss locked'-type doors can never be entered via the back side, even if you have the big key or the door is already unlocked.\nAlso note that 'Locked'-type doors behave strangely if you set their 'Back Bars Switch' to anything besides 255.",
       "DataType": "Enum",
       "EnumValues": {
         0: "Normal",
         1: "Locked",
         2: "Barred until all enemies dead",
-        3: "Boss Locked",
-        4: "Unknown 4",
-        4: "Unknown 5",
+        3: "Boss locked",
+        4: "Unknown 4", // Same/similar to Normal?
+        5: "Unknown 5", // Same/similar to Normal?
       },
       "UpdateModel": true,
       "DefaultsByActorName": {
@@ -36,7 +36,7 @@
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "ET/WT Door",
-      "ToolTip": "",
+      "ToolTip": "Which model is used for the door.\nNote that the two 'Boss' models also force this door to behave like a 'Boss locked'-type door, regardless of what Behavior Type you set.",
       "DataType": "Enum",
       "EnumValues": {
         7: "Earth Temple Normal",
@@ -58,27 +58,7 @@
       }
     },
     {
-      "Name": "Switch 1",
-      "ValueSource": "Parameters",
-      "Mask": 0x000000FF,
-      "Hidden": false,
-      "Category": "ET/WT Door",
-      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.",
-      "DataType": "Integer",
-      "UpdateModel": true
-    },
-    {
-      "Name": "Switch 2",
-      "ValueSource": "Parameters",
-      "Mask": 0x0FF00000,
-      "Hidden": false,
-      "Category": "ET/WT Door",
-      "ToolTip": "",
-      "DataType": "Integer",
-      "UpdateModel": true
-    },
-    {
-      "Name": "From Room Number",
+      "Name": "Front Room Number",
       "ValueSource": "XRotation",
       "Mask": 0x003F,
       "Hidden": false,
@@ -87,13 +67,33 @@
       "DataType": "Integer"
     },
     {
-      "Name": "To Room Number",
+      "Name": "Back Room Number",
       "ValueSource": "XRotation",
       "Mask": 0x0FC0,
       "Hidden": false,
       "Category": "ET/WT Door",
       "ToolTip": "",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Front Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "ET/WT Door",
+      "ToolTip": "If this value is not 255, this door's front side will have some type of lock/bars on it, depending on the type of door.\nFor 'Normal'-type doors, it will have bars, and when something else sets this switch, the bars will open.\nFor 'Locked'-type doors, it will have a small key lock, and when the player unlocks it with a small key, the door will set this switch and use it to remember that the lock is gone.\nFor 'Barred until all enemies dead'-type doors, the door will set this switch once all the enemies in the room are dead.\nFor 'Boss locked'-type doors, it will have a big key lock, and when the player unlocks it with a big key, the door will set this switch and use it to remember that the lock is gone.",
+      "DataType": "Integer",
+      "UpdateModel": true
+    },
+    {
+      "Name": "Back Bars Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x0FF00000,
+      "Hidden": false,
+      "Category": "ET/WT Door",
+      "ToolTip": "If this value is not 255, this door's back side will have bars on it.\nThis is the switch it will check and unlock the bars once it's set.",
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Event ID",
@@ -110,7 +110,7 @@
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "ET/WT Door",
-      "ToolTip": "",
+      "ToolTip": "The ship spawn ID to place the ship at after passing through this door, or 63 for none.",
       "DataType": "Integer"
     },
   ]

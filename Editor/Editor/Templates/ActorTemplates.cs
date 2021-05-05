@@ -3223,13 +3223,13 @@ namespace WindEditor
 			Normal = 0,
 			Boss = 1,
 			Barred_until_all_enemies_dead = 2,
-			Unknown = 3,
+			Unknown_3 = 3,
 			Locked = 4,
 			Locked_and_barred = 5,
 		}
 
 
-		[WProperty("Door", "Type", true, "", SourceScene.Room)]
+		[WProperty("Door", "Type", true, "The type of door. Controls both the model and how it behaves in terms of preventing you from going through it with locks/bars.\nNote that the 'Boss'-type doors can never be entered via the back side, even if you have the big key or the door is already unlocked.\nAlso note that 'Locked'-type doors behave strangely if you set their 'Back Bars Switch' to anything besides 255.\n'Locked and barred'-type doors act like 'Locked' on the front and like 'Barred until all enemies dead' on the back, which means you'll always get the strange 'Locked' behavior mentioned above on the front if you want the back to work.", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -3283,7 +3283,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Front Switch", true, "For normal-type doors, this is the switch it will check and unlock itself on the front side once it's set.\nFor 'Barred until all enemies dead'-type doors, this is the switch it will set when all enemies in the front room are dead.", SourceScene.Room)]
+		[WProperty("Door", "Front Switch", true, "If this value is not 255, this door's front side will have some type of lock/bars on it, depending on the type of door.\nFor 'Normal'-type doors, it will have bars, and when something else sets this switch, the bars will open.\nFor 'Locked' and 'Locked and barred'-type doors, it will have a small key lock, and when the player unlocks it with a small key, the door will set this switch and use it to remember that the lock is gone. (If this switch is 255, it will still have a small key lock, but the lock will reappear after reloading the map the door is in.)\nFor 'Barred until all enemies dead'-type doors, the door will set this switch once all the enemies in the room are dead.\nFor 'Boss'-type doors, it will have a big key lock, and when the player unlocks it with a big key, the door will set this switch and use it to remember that the lock is gone.", SourceScene.Room)]
 		public int FrontSwitch
 		{ 
 			get
@@ -3301,8 +3301,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Back Switch", true, "For normal-type doors, this is the switch it will check and unlock itself on the back side once it's set.\nFor 'Locked and barred'-type doors, this is the switch it will set when all enemies in the back room are dead.\nUnlike with Front Switch, Back Switch doesn't do anything with the 'Barred until all enemies dead'-type doors.", SourceScene.Room)]
-		public int BackSwitch
+		[WProperty("Door", "Back Bars Switch", true, "If this value is not 255, this door's back side will have bars on it.\nThis is the switch it will check and unlock the bars once it's set.\nNote that for 'Locked and barred'-type doors, it will instead set this switch once all the enemies in the back room are dead.", SourceScene.Room)]
+		public int BackBarsSwitch
 		{ 
 			get
 			{
@@ -3314,7 +3314,8 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("BackSwitch");
+				OnPropertyChanged("BackBarsSwitch");
+				UpdateModel();
 			}
 		}
 
@@ -3335,7 +3336,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Door", "Ship ID", true, "", SourceScene.Room)]
+		[WProperty("Door", "Ship ID", true, "The ship spawn ID to place the ship at after passing through this door, or 63 for none.", SourceScene.Room)]
 		public int ShipID
 		{ 
 			get
@@ -3351,21 +3352,38 @@ namespace WindEditor
 				OnPropertyChanged("ShipID");
 			}
 		}
+		public enum SpecialTypeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_13 = 13,
+			Unknown_14 = 14,
+			Unknown_15 = 15,
+			Unknown_16 = 16,
+			Unknown_17 = 17,
+			Normal = 255,
+		}
 
-		[WProperty("Door", "Arg 1", true, "", SourceScene.Room)]
-		public int Arg1
+
+		[WProperty("Door", "Special Type", true, "", SourceScene.Room)]
+		public SpecialTypeEnum SpecialType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_ZRotation & 0xFF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(SpecialTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (SpecialTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Arg1");
+				OnPropertyChanged("SpecialType");
 			}
 		}
 
@@ -3384,10 +3402,9 @@ namespace WindEditor
 			FrontRoomNumber = -1;
 			BackRoomNumber = -1;
 			FrontSwitch = -1;
-			BackSwitch = -1;
+			BackBarsSwitch = -1;
 			EventID = -1;
 			ShipID = -1;
-			Arg1 = -1;
 			if (Name == "door10") {
 				Type = TypeEnum.Normal;
 			}
@@ -3421,12 +3438,13 @@ namespace WindEditor
 			Normal = 0,
 			Locked = 1,
 			Barred_until_all_enemies_dead = 2,
-			Boss_Locked = 3,
-			Unknown_5 = 4,
+			Boss_locked = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
 		}
 
 
-		[WProperty("ET/WT Door", "Behavior Type", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "Behavior Type", true, "How the door behaves in terms of preventing you from going through it with locks/bars.\nNote that the 'Boss locked'-type doors can never be entered via the back side, even if you have the big key or the door is already unlocked.\nAlso note that 'Locked'-type doors behave strangely if you set their 'Back Bars Switch' to anything besides 255.", SourceScene.Room)]
 		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
@@ -3456,7 +3474,7 @@ namespace WindEditor
 		}
 
 
-		[WProperty("ET/WT Door", "Appearance Type", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "Appearance Type", true, "Which model is used for the door.\nNote that the two 'Boss' models also force this door to behave like a 'Boss locked'-type door, regardless of what Behavior Type you set.", SourceScene.Room)]
 		public AppearanceTypeEnum AppearanceType
 		{ 
 			get
@@ -3476,44 +3494,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ET/WT Door", "Switch 1", true, "For normal-type doors, this is the switch it will check and unlock itself once it's set.\nFor barred-type doors, this is the switch it will set when all enemies are dead.", SourceScene.Room)]
-		public int Switch1
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Switch1");
-				UpdateModel();
-			}
-		}
-
-		[WProperty("ET/WT Door", "Switch 2", true, "", SourceScene.Room)]
-		public int Switch2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
-				OnPropertyChanged("Switch2");
-				UpdateModel();
-			}
-		}
-
-		[WProperty("ET/WT Door", "From Room Number", true, "", SourceScene.Room)]
-		public int FromRoomNumber
+		[WProperty("ET/WT Door", "Front Room Number", true, "", SourceScene.Room)]
+		public int FrontRoomNumber
 		{ 
 			get
 			{
@@ -3525,12 +3507,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("FromRoomNumber");
+				OnPropertyChanged("FrontRoomNumber");
 			}
 		}
 
-		[WProperty("ET/WT Door", "To Room Number", true, "", SourceScene.Room)]
-		public int ToRoomNumber
+		[WProperty("ET/WT Door", "Back Room Number", true, "", SourceScene.Room)]
+		public int BackRoomNumber
 		{ 
 			get
 			{
@@ -3542,7 +3524,43 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
-				OnPropertyChanged("ToRoomNumber");
+				OnPropertyChanged("BackRoomNumber");
+			}
+		}
+
+		[WProperty("ET/WT Door", "Front Switch", true, "If this value is not 255, this door's front side will have some type of lock/bars on it, depending on the type of door.\nFor 'Normal'-type doors, it will have bars, and when something else sets this switch, the bars will open.\nFor 'Locked'-type doors, it will have a small key lock, and when the player unlocks it with a small key, the door will set this switch and use it to remember that the lock is gone.\nFor 'Barred until all enemies dead'-type doors, the door will set this switch once all the enemies in the room are dead.\nFor 'Boss locked'-type doors, it will have a big key lock, and when the player unlocks it with a big key, the door will set this switch and use it to remember that the lock is gone.", SourceScene.Room)]
+		public int FrontSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("FrontSwitch");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("ET/WT Door", "Back Bars Switch", true, "If this value is not 255, this door's back side will have bars on it.\nThis is the switch it will check and unlock the bars once it's set.", SourceScene.Room)]
+		public int BackBarsSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0FF00000) >> 20);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
+				OnPropertyChanged("BackBarsSwitch");
+				UpdateModel();
 			}
 		}
 
@@ -3563,7 +3581,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ET/WT Door", "Ship ID", true, "", SourceScene.Room)]
+		[WProperty("ET/WT Door", "Ship ID", true, "The ship spawn ID to place the ship at after passing through this door, or 63 for none.", SourceScene.Room)]
 		public int ShipID
 		{ 
 			get
@@ -3592,10 +3610,10 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Switch1 = -1;
-			Switch2 = -1;
-			FromRoomNumber = -1;
-			ToRoomNumber = -1;
+			FrontRoomNumber = -1;
+			BackRoomNumber = -1;
+			FrontSwitch = -1;
+			BackBarsSwitch = -1;
 			EventID = -1;
 			ShipID = -1;
 			if (Name == "door12") {
@@ -4633,9 +4651,61 @@ namespace WindEditor
 	public partial class gm : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum TypeEnum
+		{
+			Mothula = 0,
+			Wing_that_falls_down_spinning = 1,
+			Wing_that_floats_down_gently = 2,
+		}
 
-		[WProperty("gm", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Mothula or Mothula Wing", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("Type");
+				UpdateModel();
+			}
+		}
+		public enum MothulaTypeEnum
+		{
+			Miniboss_Winged_Mothula = 0,
+			Wingless_Mothula = 1,
+			Winged_Mothula = 2,
+		}
+
+
+		[WProperty("Mothula", "Mothula Type", true, "", SourceScene.Room)]
+		public MothulaTypeEnum MothulaType
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				if (!Enum.IsDefined(typeof(MothulaTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (MothulaTypeEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("MothulaType");
+				UpdateModel();
+			}
+		}
+		public int MissingWings
 		{ 
 			get
 			{
@@ -4647,46 +4717,13 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("MissingWings");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("gm", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
-			}
-		}
-
-		[WProperty("gm", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
-			}
-		}
-
-		[WProperty("gm", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Mothula", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -4698,22 +4735,55 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
+		public enum WhichWingEnum
+		{
+			Unknown_0 = 0,
+			Lower_Right_Wing = 1,
+			Lower_Left_Wing = 2,
+			Upper_Right_Wing = 3,
+			Upper_Left_Wing = 4,
+		}
 
-		[WProperty("gm", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+
+		[WProperty("Mothula Wing", "Which Wing", true, "", SourceScene.Room)]
+		public WhichWingEnum WhichWing
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
-				return value_as_int;
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				if (!Enum.IsDefined(typeof(WhichWingEnum), value_as_int))
+					value_as_int = 0;
+				return (WhichWingEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("WhichWing");
+				UpdateModel();
+			}
+		}
+
+		[WProperty("gm", "Unknown_5", true, "", SourceScene.Room)]
+		public bool Unknown_5
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
+				if (value_as_int == 0) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 1 : 0;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
 			}
@@ -4731,11 +4801,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
+			MissingWings = -1;
+			DisableSpawnonDeathSwitch = -1;
 		}
 	}
 
@@ -8742,8 +8809,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("mt", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("mt", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -8755,12 +8822,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("mt", "Unknown_6", true, "", SourceScene.Room)]
-		public int Unknown_6
+		[WProperty("mt", "Disable Spawn on Death Switch", true, "", SourceScene.Room)]
+		public int DisableSpawnonDeathSwitch
 		{ 
 			get
 			{
@@ -8772,7 +8839,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("DisableSpawnonDeathSwitch");
 			}
 		}
 
@@ -8792,8 +8859,8 @@ namespace WindEditor
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Path = null;
-			Unknown_5 = -1;
-			Unknown_6 = -1;
+			EnableSpawnSwitch = -1;
+			DisableSpawnonDeathSwitch = -1;
 		}
 	}
 
@@ -15572,8 +15639,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Coffin", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Coffin", "Opened Switch", true, "", SourceScene.Room)]
+		public int OpenedSwitch
 		{ 
 			get
 			{
@@ -15585,12 +15652,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("OpenedSwitch");
 			}
 		}
 
-		[WProperty("Coffin", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Coffin", "Unused Switch", true, "", SourceScene.Room)]
+		public int UnusedSwitch
 		{ 
 			get
 			{
@@ -15602,7 +15669,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("UnusedSwitch");
 			}
 		}
 		public int UnusedZRotation
@@ -15635,8 +15702,8 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Unknown_2 = -1;
 			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
+			OpenedSwitch = -1;
+			UnusedSwitch = -1;
 			UnusedZRotation = -1;
 			if (Name == "MKanoke") {
 				IsUpright = false;
@@ -16025,8 +16092,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_mkie", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("obj_mkie", "Destroyed Switch", true, "", SourceScene.Room)]
+		public int DestroyedSwitch
 		{ 
 			get
 			{
@@ -16038,7 +16105,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("DestroyedSwitch");
 			}
 		}
 
@@ -16058,7 +16125,7 @@ namespace WindEditor
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
-			Unknown_5 = -1;
+			DestroyedSwitch = -1;
 		}
 	}
 
@@ -16067,8 +16134,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_mkiek", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Dissolving Wall", "Switch to Set", true, "The switch to set when this wall is dissolved by light.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -16080,24 +16147,30 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
-		[WProperty("obj_mkiek", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Dissolving Wall", "Do Not Play Jingle", true, "If checked, dissolving this wall does not play the 'Puzzle Solved' jingle it normally would.", SourceScene.Room)]
+		public bool DoNotPlayJingle
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else if (value_as_int == 255) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("DoNotPlayJingle");
 			}
 		}
 
@@ -16113,8 +16186,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SwitchtoSet = -1;
 		}
 	}
 
@@ -16123,8 +16195,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_mknjd", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_mknjd", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -16136,7 +16208,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -16169,7 +16241,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 			Unknown_2 = -1;
 		}
 	}
@@ -18471,8 +18543,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_tenmado", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Skylight", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -18484,12 +18556,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
-		[WProperty("obj_tenmado", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Skylight", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -18501,7 +18573,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -18517,8 +18589,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			SwitchtoCheck = -1;
+			SwitchtoSet = -1;
 		}
 	}
 
@@ -19154,8 +19226,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_vmc", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Makar Seed-Planting Spot", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -19167,7 +19239,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
@@ -19183,7 +19255,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 		}
 	}
 
@@ -25302,8 +25374,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("toge", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("toge", "Disabled Switch", true, "", SourceScene.Room)]
+		public int DisabledSwitch
 		{ 
 			get
 			{
@@ -25315,7 +25387,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DisabledSwitch");
 			}
 		}
 
@@ -25348,7 +25420,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DisabledSwitch = -1;
 			Unknown_2 = -1;
 		}
 	}

@@ -40,7 +40,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_5",
+      "Name": "Destroyed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,

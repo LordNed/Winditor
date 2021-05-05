@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_vmc",
+      "Category": "Makar Seed-Planting Spot",
       "ToolTip": "",
       "DataType": "Integer"
     }

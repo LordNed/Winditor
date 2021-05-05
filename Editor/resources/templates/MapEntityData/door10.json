@@ -8,13 +8,13 @@
       "Mask": 0x00000F00,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": "",
+      "ToolTip": "The type of door. Controls both the model and how it behaves in terms of preventing you from going through it with locks/bars.\nNote that the 'Boss'-type doors can never be entered via the back side, even if you have the big key or the door is already unlocked.\nAlso note that 'Locked'-type doors behave strangely if you set their 'Back Bars Switch' to anything besides 255.\n'Locked and barred'-type doors act like 'Locked' on the front and like 'Barred until all enemies dead' on the back, which means you'll always get the strange 'Locked' behavior mentioned above on the front if you want the back to work.",
       "DataType": "Enum",
       "EnumValues": {
         0: "Normal",
         1: "Boss",
         2: "Barred until all enemies dead",
-        3: "Unknown",
+        3: "Unknown 3",
         4: "Locked",
         5: "Locked and barred",
       },
@@ -53,18 +53,19 @@
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself on the front side once it's set.\nFor 'Barred until all enemies dead'-type doors, this is the switch it will set when all enemies in the front room are dead.",
+      "ToolTip": "If this value is not 255, this door's front side will have some type of lock/bars on it, depending on the type of door.\nFor 'Normal'-type doors, it will have bars, and when something else sets this switch, the bars will open.\nFor 'Locked' and 'Locked and barred'-type doors, it will have a small key lock, and when the player unlocks it with a small key, the door will set this switch and use it to remember that the lock is gone. (If this switch is 255, it will still have a small key lock, but the lock will reappear after reloading the map the door is in.)\nFor 'Barred until all enemies dead'-type doors, the door will set this switch once all the enemies in the room are dead.\nFor 'Boss'-type doors, it will have a big key lock, and when the player unlocks it with a big key, the door will set this switch and use it to remember that the lock is gone.",
       "DataType": "Integer",
       "UpdateModel": true
     },
     {
-      "Name": "Back Switch",
+      "Name": "Back Bars Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0FF00000,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": "For normal-type doors, this is the switch it will check and unlock itself on the back side once it's set.\nFor 'Locked and barred'-type doors, this is the switch it will set when all enemies in the back room are dead.\nUnlike with Front Switch, Back Switch doesn't do anything with the 'Barred until all enemies dead'-type doors.",
-      "DataType": "Integer"
+      "ToolTip": "If this value is not 255, this door's back side will have bars on it.\nThis is the switch it will check and unlock the bars once it's set.\nNote that for 'Locked and barred'-type doors, it will instead set this switch once all the enemies in the back room are dead.",
+      "DataType": "Integer",
+      "UpdateModel": true
     },
     {
       "Name": "Event ID",
@@ -81,17 +82,31 @@
       "Mask": 0x003F,
       "Hidden": false,
       "Category": "Door",
-      "ToolTip": "",
+      "ToolTip": "The ship spawn ID to place the ship at after passing through this door, or 63 for none.",
       "DataType": "Integer"
     },
     {
-      "Name": "Arg 1",
+      "Name": "Special Type",
       "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
       "Category": "Door",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+        13: "Unknown 13",
+        14: "Unknown 14",
+        15: "Unknown 15",
+        16: "Unknown 16",
+        17: "Unknown 17",
+        255: "Normal",
+      },
+      "DefaultValue": "Normal"
     }
   ]
 }
