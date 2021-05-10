@@ -41,5 +41,21 @@ namespace WindEditor
                 VisualScaleMultiplier = new Vector3(200f / 50f, 200f / 50f, 200f / 50f);
             }
         }
+
+        public override void CalculateUsedSwitches()
+        {
+            List<int> usedSwitches = new List<int>();
+
+            switch (Type)
+            {
+                case TypeEnum.Tingle_Bomb_Trigger:
+                    usedSwitches.Add(BombedSwitch);
+                    break;
+                // TODO: other types
+            }
+            
+            usedSwitches.RemoveAll(x => x == 0xFF);
+            UsedSwitches = usedSwitches;
+        }
     }
 }
