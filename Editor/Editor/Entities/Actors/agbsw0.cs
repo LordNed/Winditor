@@ -44,18 +44,22 @@ namespace WindEditor
 
         public override void CalculateUsedSwitches()
         {
-            List<int> usedSwitches = new List<int>();
+            List<int> inSwitches = new List<int>();
+            List<int> outSwitches = new List<int>();
 
             switch (Type)
             {
                 case TypeEnum.Tingle_Bomb_Trigger:
-                    usedSwitches.Add(BombedSwitch);
+                    inSwitches.Add(BombedSwitch);
+                    outSwitches.Add(BombedSwitch);
                     break;
                 // TODO: other types
             }
-            
-            usedSwitches.RemoveAll(x => x == 0xFF);
-            UsedSwitches = usedSwitches;
+
+            inSwitches.RemoveAll(x => x == 0xFF);
+            outSwitches.RemoveAll(x => x == 0xFF);
+            UsedInSwitches = inSwitches;
+            UsedOutSwitches = outSwitches;
         }
     }
 }

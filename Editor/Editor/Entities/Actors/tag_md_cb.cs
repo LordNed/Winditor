@@ -43,19 +43,22 @@ namespace WindEditor
 
         public override void CalculateUsedSwitches()
         {
-            List<int> usedSwitches = new List<int>();
+            List<int> inSwitches = new List<int>();
+            List<int> outSwitches = new List<int>();
 
-            usedSwitches.Add(DisableSpawnSwitch);
+            inSwitches.Add(DisableSpawnSwitch);
 
             int firstSwitch = FirstSwitchtoCheck;
 
             for (int i = 0; i < NumSwitchestoCheck; i++)
             {
-                usedSwitches.Add(firstSwitch + i);
+                inSwitches.Add(firstSwitch + i);
             }
 
-            usedSwitches.RemoveAll(x => x >= 0xFF || x < 0);
-            UsedSwitches = usedSwitches;
+            inSwitches.RemoveAll(x => x >= 0xFF || x < 0);
+            outSwitches.RemoveAll(x => x >= 0xFF || x < 0);
+            UsedInSwitches = inSwitches;
+            UsedOutSwitches = outSwitches;
         }
     }
 }

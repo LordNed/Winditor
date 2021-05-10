@@ -193,8 +193,9 @@ namespace WindEditor
                 if (!obj.IsSelected)
                     continue;
 
-                var usedSwitchValues = obj.GetUsedSwitches();
-                if (usedSwitchValues.Count == 0)
+                var usedInSwitchValues = obj.GetUsedInSwitches();
+                var usedOutSwitchValues = obj.GetUsedOutSwitches();
+                if (usedInSwitchValues.Count == 0 && usedOutSwitchValues.Count == 0)
                     return;
 
                 int curr_room_num = obj.GetRoomNum();
@@ -208,18 +209,34 @@ namespace WindEditor
 
                         int other_room_num = other_obj.GetRoomNum();
 
-                        var otherUsedSwitchValues = other_obj.GetUsedSwitches();
+                        var otherUsedInSwitchValues = other_obj.GetUsedInSwitches();
+                        var otherUsedOutSwitchValues = other_obj.GetUsedOutSwitches();
 
-                        var overlappingSwitches = usedSwitchValues.Intersect(otherUsedSwitchValues);
+                        var overlappingInOutSwitches = usedInSwitchValues.Intersect(otherUsedOutSwitchValues);
+                        var overlappingOutInSwitches = usedOutSwitchValues.Intersect(otherUsedInSwitchValues);
+                        var overlappingInInSwitches = usedInSwitchValues.Intersect(otherUsedInSwitchValues);
+                        var overlappingOutOutSwitches = usedOutSwitchValues.Intersect(otherUsedOutSwitchValues);
                         if (curr_room_num != other_room_num && curr_room_num != -1 && other_room_num != -1)
                         {
                             // If the two objects we're comparing are in separate rooms, exclude room-specific switches.
                             // (Unless one of the actors is not tied to any specific room.)
-                            overlappingSwitches = overlappingSwitches.Where(x => x < 192);
+                            overlappingInOutSwitches = overlappingInOutSwitches.Where(x => x < 192);
+                            overlappingOutInSwitches = overlappingOutInSwitches.Where(x => x < 192);
+                            overlappingInInSwitches = overlappingInInSwitches.Where(x => x < 192);
+                            overlappingOutOutSwitches = overlappingOutOutSwitches.Where(x => x < 192);
                         }
-                        if (overlappingSwitches.Any())
+                        if (overlappingOutInSwitches.Any() && overlappingInOutSwitches.Any())
+                        {
+                            obj.World.DebugDrawLine(obj.Transform.Position, other_obj.Transform.Position, WLinearColor.Blue, 2.5f, 0f);
+                        } else if (overlappingOutInSwitches.Any())
                         {
                             obj.World.DebugDrawLine(obj.Transform.Position, other_obj.Transform.Position, WLinearColor.Green, 2.5f, 0f);
+                        } else if (overlappingInOutSwitches.Any())
+                        {
+                            obj.World.DebugDrawLine(obj.Transform.Position, other_obj.Transform.Position, WLinearColor.Red, 2.5f, 0f);
+                        } else if (overlappingInInSwitches.Any() || overlappingOutOutSwitches.Any())
+                        {
+                            obj.World.DebugDrawLine(obj.Transform.Position, other_obj.Transform.Position, WLinearColor.Grey, 2.5f, 0f);
                         }
                     }
                 }

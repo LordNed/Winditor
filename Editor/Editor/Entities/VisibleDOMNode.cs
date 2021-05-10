@@ -103,8 +103,9 @@ namespace WindEditor
             get { return  Vector3.Multiply(Transform.LocalScale, VisualScaleMultiplier); }
         }
 
-        // This list will act as a cache of which switch values this object is currently using.
-        protected List<int> UsedSwitches = null;
+        // These lists will act as a cache of which switch values this object is currently using.
+        protected List<int> UsedInSwitches = null;
+        protected List<int> UsedOutSwitches = null;
 
 		public override void OnConstruction()
 		{
@@ -178,16 +179,24 @@ namespace WindEditor
 			return bHit;
 		}
 
-        public List<int> GetUsedSwitches()
+        public List<int> GetUsedInSwitches()
         {
-            if (UsedSwitches == null)
+            if (UsedInSwitches == null)
                 CalculateUsedSwitches();
-            return UsedSwitches;
+            return UsedInSwitches;
+        }
+
+        public List<int> GetUsedOutSwitches()
+        {
+            if (UsedOutSwitches == null)
+                CalculateUsedSwitches();
+            return UsedOutSwitches;
         }
 
         public virtual void CalculateUsedSwitches()
         {
-            List<int> usedSwitches = new List<int>();
+            List<int> inSwitches = new List<int>();
+            List<int> outSwitches = new List<int>();
 
             PropertyInfo[] obj_properties = this.GetType().GetProperties();
             foreach (PropertyInfo prop in obj_properties)
@@ -212,17 +221,30 @@ namespace WindEditor
                 if (switchValue == 255)
                     continue;
 
-                usedSwitches.Add(switchValue);
+                // TODO: Properly check whether the switch is in/out/both, this is just a hack.
+                if (property_name.Contains("Switch to Set"))
+                {
+                    outSwitches.Add(switchValue);
+                } else if (property_name.Contains("Switch to Check"))
+                {
+                    inSwitches.Add(switchValue);
+                } else
+                {
+                    inSwitches.Add(switchValue);
+                    outSwitches.Add(switchValue);
+                }
             }
 
-            UsedSwitches = usedSwitches;
+            UsedInSwitches = inSwitches;
+            UsedOutSwitches = outSwitches;
         }
 
         protected virtual void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             // Clear the cache of which switches this object uses any time any of its properties are changed so the list is recalculated.
             // Most properties don't affect the switch list, but properties don't change that often so erring on the safe side is fine.
-            UsedSwitches = null;
+            UsedInSwitches = null;
+            UsedOutSwitches = null;
 
             if (e.PropertyName == "Name")
                 PostLoad();

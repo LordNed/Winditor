@@ -27,23 +27,27 @@ namespace WindEditor
 
         public override void CalculateUsedSwitches()
         {
-            List<int> usedSwitches = new List<int>();
+            List<int> inSwitches = new List<int>();
+            List<int> outSwitches = new List<int>();
 
-            usedSwitches.Add(SwitchtoSet);
+            outSwitches.Add(SwitchtoSet);
 
             if (FirstSwitchtoCheck == 255 || NumSwitchestoCheck == 255)
             {
-                UsedSwitches = usedSwitches;
+                UsedInSwitches = inSwitches;
+                UsedOutSwitches = outSwitches;
                 return;
             }
 
             for (int i = 0; i < NumSwitchestoCheck; i++)
             {
-                usedSwitches.Add(FirstSwitchtoCheck + i);
+                inSwitches.Add(FirstSwitchtoCheck + i);
             }
 
-            usedSwitches.RemoveAll(x => x >= 0xFF || x < 0);
-            UsedSwitches = usedSwitches;
+            inSwitches.RemoveAll(x => x >= 0xFF || x < 0);
+            outSwitches.RemoveAll(x => x >= 0xFF || x < 0);
+            UsedInSwitches = inSwitches;
+            UsedOutSwitches = outSwitches;
         }
     }
 }

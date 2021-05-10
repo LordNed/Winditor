@@ -42,9 +42,10 @@ namespace WindEditor
 
         public override void CalculateUsedSwitches()
         {
-            List<int> usedSwitches = new List<int>();
+            List<int> inSwitches = new List<int>();
+            List<int> outSwitches = new List<int>();
 
-            usedSwitches.Add(OpenSwitch);
+            outSwitches.Add(OpenSwitch);
 
             switch (BehaviorType)
             {
@@ -53,16 +54,18 @@ namespace WindEditor
                 case BehaviorTypeEnum.Transparent_until_a_switch_is_set:
                 case BehaviorTypeEnum.Spawn_on_Triforce_emblem_when_a_switch_is_set:
                 case BehaviorTypeEnum.Uses_Stage_Save_Info_1_open_flag_and_spawns_when_a_switch_is_set:
-                    usedSwitches.Add(AppearConditionSwitch);
+                    inSwitches.Add(AppearConditionSwitch);
                     break;
                 case BehaviorTypeEnum.Spawn_when_all_enemies_dead:
                     // Note: This type sets the switch instead of just checking it.
-                    usedSwitches.Add(AppearConditionSwitch);
+                    outSwitches.Add(AppearConditionSwitch);
                     break;
             }
 
-            usedSwitches.RemoveAll(x => x == 0xFF);
-            UsedSwitches = usedSwitches;
+            inSwitches.RemoveAll(x => x == 0xFF);
+            outSwitches.RemoveAll(x => x == 0xFF);
+            UsedInSwitches = inSwitches;
+            UsedOutSwitches = outSwitches;
         }
 
         public override int GetRoomNum()

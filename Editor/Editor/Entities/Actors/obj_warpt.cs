@@ -22,21 +22,24 @@ namespace WindEditor
 
 		public override void CalculateUsedSwitches()
 		{
-			List<int> usedSwitches = new List<int>();
+			List<int> inSwitches = new List<int>();
+			List<int> outSwitches = new List<int>();
 
 			if (Type == TypeEnum.First_in_cycle || Type == TypeEnum.Second_in_cycle || Type == TypeEnum.Third_in_cycle)
 			{
 				// Cyclic
-				usedSwitches.Add(TopUnblockedSwitch);
+				inSwitches.Add(TopUnblockedSwitch);
 			} else
 			{
 				// Noncyclic
-				usedSwitches.Add(ThisUnlockedSwitch);
-				usedSwitches.Add(DestinationUnlockedSwitch);
+				outSwitches.Add(ThisUnlockedSwitch);
+				inSwitches.Add(DestinationUnlockedSwitch);
 			}
 
-			usedSwitches.RemoveAll(x => x == 0xFF);
-			UsedSwitches = usedSwitches;
+			inSwitches.RemoveAll(x => x == 0xFF);
+			outSwitches.RemoveAll(x => x == 0xFF);
+			UsedInSwitches = inSwitches;
+			UsedOutSwitches = outSwitches;
 		}
 	}
 }
