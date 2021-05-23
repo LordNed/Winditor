@@ -115,10 +115,11 @@ namespace WindEditor
             }
 
             Patch testRoomPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\test_room_diff.json"));
-            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022CFF8, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022D034, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E3, new List<byte>(new byte[] { (byte)spawn_id })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E7, new List<byte>(new byte[] { (byte)room_no })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531EB, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
+            // TODO: Starting items list is at 0x8022D03C and can contain a maximum of 256 item IDs
             testRoomPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
 
             Patch devModePatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\developer_mode_diff.json"));
