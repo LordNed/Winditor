@@ -8,6 +8,7 @@ using System.IO;
 using Newtonsoft.Json;
 using WindEditor.Editor.Modes;
 using System.Windows.Forms;
+using WindEditor.View;
 
 namespace WindEditor
 {
@@ -15,12 +16,21 @@ namespace WindEditor
     {
         private Process m_DolphinInstance;
         private ProcessStartInfo m_DolphinStartInfo;
+        private PlaytestInventoryWindow m_InventorySettings;
 
         List<string> m_BackedUpFilePaths;
 
         public PlaytestManager()
         {
             m_DolphinInstance = null;
+            m_InventorySettings = new PlaytestInventoryWindow();
+            m_InventorySettings.Closing += M_InventorySettings_Closing;
+        }
+
+        private void M_InventorySettings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            m_InventorySettings.Hide();
         }
 
         public void RequestStartPlaytest(WMap map, MapLayer active_layer)
@@ -32,6 +42,11 @@ namespace WindEditor
             }
 
             StartPlaytest(map, active_layer);
+        }
+
+        public void RequestShowInventorySettings()
+        {
+            m_InventorySettings.ShowDialog();
         }
 
         private void StartPlaytest(WMap map, MapLayer active_layer)
@@ -119,7 +134,17 @@ namespace WindEditor
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E3, new List<byte>(new byte[] { (byte)spawn_id })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E7, new List<byte>(new byte[] { (byte)room_no })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531EB, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
-            // TODO: Starting items list is at 0x8022D03C and can contain a maximum of 256 item IDs
+            
+            // Starting items list is at 0x8022D03C and can contain a maximum of 256 item IDs
+            List<byte> ItemIDs = m_InventorySettings.ViewModel.ItemIDs;
+            for (int i = 0; i < ItemIDs.Count; i++)
+            {
+                testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022D03C + i, new List<byte>(new byte[] { ItemIDs[i] })));
+            }
+
+            // Save slot
+            testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022CFDF, new List<byte>(new byte[] { m_InventorySettings.ViewModel.SaveFileIndex })));
+
             testRoomPatch.Apply(WSettingsManager.GetSettings().RootDirectoryPath);
 
             Patch devModePatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\developer_mode_diff.json"));

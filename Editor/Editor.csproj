@@ -691,6 +691,7 @@
     <Compile Include="ViewModel\AdvancedBindingList.cs" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
+    <Compile Include="ViewModel\PlaytestInventoryViewModel.cs" />
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailSingleRowViewModel.cs" />
     <Compile Include="ViewModel\WDetailsViewViewModel.cs" />
@@ -705,6 +706,9 @@
     </Compile>
     <Compile Include="View\IslandImportWindow.xaml.cs">
       <DependentUpon>IslandImportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlaytestInventoryWindow.xaml.cs">
+      <DependentUpon>PlaytestInventoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\VisualMeshExportWindow.xaml.cs">
       <DependentUpon>VisualMeshExportWindow.xaml</DependentUpon>
@@ -808,6 +812,10 @@
     <Page Include="View\IslandImportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PlaytestInventoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\VisualMeshExportWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

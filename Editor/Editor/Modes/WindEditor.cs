@@ -30,6 +30,7 @@ namespace WindEditor
         public ICommand ExportProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestExportAsProject(), x => MainWorld.Map != null); } }
         public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
         public ICommand StartPlaytestCommand { get { return new RelayCommand(x => OnApplicationRequestPlaytest(), x => MainWorld.Map != null); } }
+        public ICommand OpenPlaytestInventoryCommand { get { return new RelayCommand(x => OnApplicationRequestOpenPlaytestInventory(), x => MainWorld.Map != null); } }
 
         public ICommand SwitchToActorModeCommand { get { return new RelayCommand(x => OnRequestSwitchToActorMode(), X => !(MainWorld.CurrentMode is ActorMode || MainWorld.Map == null)); } }
         public ICommand SwitchToCollisionModeCommand { get { return new RelayCommand(x => OnRequestSwitchToCollisionMode(), X => !(MainWorld.CurrentMode is CollisionMode || MainWorld.Map == null)); } }
@@ -427,6 +428,11 @@ namespace WindEditor
                 MessageBox.Show(error, "Error building and playtesting project");
                 return;
             }
+        }
+
+        public void OnApplicationRequestOpenPlaytestInventory()
+        {
+            Playtester.RequestShowInventorySettings();
         }
 
         public void InitMinitorModules()

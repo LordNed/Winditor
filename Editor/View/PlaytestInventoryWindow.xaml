@@ -1,0 +1,189 @@
+﻿<Window x:Class="WindEditor.View.PlaytestInventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEditor.View"
+        xmlns:vm="clr-namespace:WindEditor.ViewModel"
+        mc:Ignorable="d"
+        Title="Playtest Inventory Manager" Height="376" Width="800" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <vm:PlaytestInventoryViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="136*"/>
+            <RowDefinition Height="177*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="115*"/>
+                <ColumnDefinition Width="597*"/>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="26" Margin="5,4,0,4" Width="82">Save File Slot:</Label>
+            <ComboBox x:Name="SaveFileIndexBox" Grid.Column="1" Margin="10,4,597,0" Height="24" VerticalAlignment="Top" Grid.ColumnSpan="2" SelectedIndex="{Binding SaveFileIndex}">
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="2"/>
+                <ComboBoxItem Content="3"/>
+            </ComboBox>
+        </Grid>
+        <GroupBox Grid.Row="1" Header="Inventory Settings" Margin="4,2,4,0" Height="130" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                    <ColumnDefinition Width="auto" MinWidth="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!-- Inventory Checkboxes -->
+                <!-- Row 1 -->
+                <CheckBox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="32" Height="15" Width="72" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Telescope</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="120" Height="15" Width="38" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Sail</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="34" Height="15" Width="85" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Wind Waker</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="37" Height="15" Width="104" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Grappling Hook</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="36" Height="15" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Spoils Bag</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="45" Height="15" Width="82" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Boomerang</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="52" Height="15" Width="73" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Deku Leaf</CheckBox>
+                <!-- Row 2 -->
+                <CheckBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="33" Height="16" Width="86" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Tingle Tuner</CheckBox>
+                <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,9,0,11" Width="85" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="None" Tag="255"/>
+                    <ComboBoxItem Content="Pictobox" Tag="35"/>
+                    <ComboBoxItem Content="Deluxe Pictobox" Tag="38"/>
+                </ComboBox>
+                <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="41" Height="16" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Iron Boots</CheckBox>
+                <CheckBox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="42" Height="16" Width="89" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Magic Armor</CheckBox>
+                <CheckBox Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="44" Height="16" Width="63" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Bait Bag</CheckBox>
+                <ComboBox Grid.Row="1" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,10,0,10" Width="85" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="None" Tag="255"/>
+                    <ComboBoxItem Content="Hero's Bow" Tag="39"/>
+                    <ComboBoxItem Content="Fire and Ice Arrows" Tag="53"/>
+                    <ComboBoxItem Content="Fire, Ice, and Light Arrows" Tag="54"/>
+                </ComboBox>
+                <CheckBox Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="32" Height="16" Width="56" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Bombs</CheckBox>
+                <!-- Row 3 -->
+                <ComboBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="8,8,10,8" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="(No Bottle)" Tag="255"/>
+                    <ComboBoxItem Content="Empty Bottle" Tag="80"/>
+                    <ComboBoxItem Content="Red Potion" Tag="81"/>
+                    <ComboBoxItem Content="Green Potion" Tag="82"/>
+                    <ComboBoxItem Content="Blue Potion" Tag="83"/>
+                    <ComboBoxItem Content="Elixir Soup" Tag="85"/>
+                    <ComboBoxItem Content="Water" Tag="86"/>
+                    <ComboBoxItem Content="Fairy" Tag="87"/>
+                    <ComboBoxItem Content="Forest Firefly" Tag="88"/>
+                    <ComboBoxItem Content="Forest Water" Tag="89"/>
+                </ComboBox>
+                <ComboBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="8,8,8,8" Tag="80" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="(No Bottle)" Tag="255"/>
+                    <ComboBoxItem Content="Empty Bottle" Tag="80"/>
+                    <ComboBoxItem Content="Red Potion" Tag="81"/>
+                    <ComboBoxItem Content="Green Potion" Tag="82"/>
+                    <ComboBoxItem Content="Blue Potion" Tag="83"/>
+                    <ComboBoxItem Content="Elixir Soup" Tag="85"/>
+                    <ComboBoxItem Content="Water" Tag="86"/>
+                    <ComboBoxItem Content="Fairy" Tag="87"/>
+                    <ComboBoxItem Content="Forest Firefly" Tag="88"/>
+                    <ComboBoxItem Content="Forest Water" Tag="89"/>
+                </ComboBox>
+                <ComboBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Width="85" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="(No Bottle)" Tag="255"/>
+                    <ComboBoxItem Content="Empty Bottle" Tag="80"/>
+                    <ComboBoxItem Content="Red Potion" Tag="81"/>
+                    <ComboBoxItem Content="Green Potion" Tag="82"/>
+                    <ComboBoxItem Content="Blue Potion" Tag="83"/>
+                    <ComboBoxItem Content="Elixir Soup" Tag="85"/>
+                    <ComboBoxItem Content="Water" Tag="86"/>
+                    <ComboBoxItem Content="Fairy" Tag="87"/>
+                    <ComboBoxItem Content="Forest Firefly" Tag="88"/>
+                    <ComboBoxItem Content="Forest Water" Tag="89"/>
+                </ComboBox>
+                <ComboBox Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Width="85" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="(No Bottle)" Tag="255"/>
+                    <ComboBoxItem Content="Empty Bottle" Tag="80"/>
+                    <ComboBoxItem Content="Red Potion" Tag="81"/>
+                    <ComboBoxItem Content="Green Potion" Tag="82"/>
+                    <ComboBoxItem Content="Blue Potion" Tag="83"/>
+                    <ComboBoxItem Content="Elixir Soup" Tag="85"/>
+                    <ComboBoxItem Content="Water" Tag="86"/>
+                    <ComboBoxItem Content="Fairy" Tag="87"/>
+                    <ComboBoxItem Content="Forest Firefly" Tag="88"/>
+                    <ComboBoxItem Content="Forest Water" Tag="89"/>
+                </ComboBox>
+                <CheckBox Grid.Row="2" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,11,0,11" Tag="48" Height="16" Width="86" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Delivery Bag</CheckBox>
+                <CheckBox Grid.Row="2" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,11,0,11" Tag="47" Height="16" Width="72" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Hookshot</CheckBox>
+                <CheckBox Grid.Row="2" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,11,0,11" Tag="51" Height="16" Width="94" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Skull Hammer</CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="Quest Item Settings" Margin="4,0,4,47" Height="126" VerticalAlignment="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MinWidth="125"/>
+                    <ColumnDefinition Width="auto" MinWidth="125"/>
+                    <ColumnDefinition Width="auto" MinWidth="125"/>
+                    <ColumnDefinition Width="auto" MinWidth="125"/>
+                    <ColumnDefinition Width="auto" MinWidth="125"/>
+                    <ColumnDefinition Width="auto" MinWidth="125"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!-- Quest Item Checkboxes -->
+                <!-- Row 1 -->
+                <CheckBox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="109" Height="16" Width="106" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Wind's Requiem</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="110" Height="16" Width="98" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Ballad of Gales</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="111" Height="16" Width="118" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Command Melody</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="112" Height="16" Width="107" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Earth God's Lyric</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="113" Height="16" Width="106" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Wind God's Aria</CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="114" Height="16" Width="104" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Song of Passing</CheckBox>
+                <!-- Row 2 -->
+                <ComboBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Width="105" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="None" Tag="255"/>
+                    <ComboBoxItem Content="Hero's Sword" Tag="56"/>
+                    <ComboBoxItem Content="Powerless Master Sword" Tag="57"/>
+                    <ComboBoxItem Content="Half-Power Master Sword" Tag="58"/>
+                    <ComboBoxItem Content="Full-Power Master Sword" Tag="62"/>
+                </ComboBox>
+                <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Width="105" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="None" Tag="255"/>
+                    <ComboBoxItem Content="Hero's Shield" Tag="59"/>
+                    <ComboBoxItem Content="Mirror Shield" Tag="60"/>
+                </ComboBox>
+                <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="40" Height="14" Width="103" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Power Bracelets</CheckBox>
+                <CheckBox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="66" Height="14" Width="96" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Pirate's Charm</CheckBox>
+                <CheckBox Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="50" Height="14" Width="108" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Hero's Clothes</CheckBox>
+                <CheckBox Grid.Row="1" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="67" Height="14" Width="92" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Hero's Charm</CheckBox>
+                <!-- Row 3 -->
+                <CheckBox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="106" Height="16" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Din's Pearl</CheckBox>
+                <CheckBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="107" Height="16" Width="90" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Farore's Pearl</CheckBox>
+                <CheckBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Tag="105" Height="16" Width="89" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Nayru's Pearl</CheckBox>
+                <Label Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,8" Height="26" Width="91">Triforce Shards:</Label>
+                <ComboBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,10,0,0" Width="143" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="0"/>
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="SaveButton" Grid.Row="2" Margin="530,0,145,10" Height="32" VerticalAlignment="Bottom">Save</Button>
+        <Button x:Name="CancelButton" Grid.Row="2" Margin="665,0,10,10" Height="32" VerticalAlignment="Bottom">Cancel</Button>
+    </Grid>
+</Window>

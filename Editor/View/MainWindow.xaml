@@ -126,12 +126,10 @@
                 <MenuItem Header="Treasure Chest" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="TRES"/>
                 <MenuItem Header="Exit Info" Command="{Binding Path=WindEditor.MainWorld.ActorMode.CreateEntityCommand}" CommandParameter="SCLS"/>
             </MenuItem>
-            <MenuItem Header="_Play" InputGestureText="Ctrl + P" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
-            <MenuItem Padding="0" Width="15">
-                <MenuItem.Header>
-                    <TextBlock Text="v" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3.75,0,0,0"/>
-                </MenuItem.Header>
-                <MenuItem Header="Active layer">
+            <MenuItem Header="Playtest">
+                <MenuItem Header="Start _Playtest" InputGestureText="Ctrl + P" Command="{Binding Path=WindEditor.StartPlaytestCommand}"/>
+                <MenuItem Header="Playtest Inventory Settings" Command="{Binding Path=WindEditor.OpenPlaytestInventoryCommand}"/>
+                <MenuItem Header="Active Layer">
                     <MenuItem x:Name="default" Header="Default Only" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click" IsChecked="True"/>
                     <MenuItem x:Name="layer_0" Header="Layer 0" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
                     <MenuItem x:Name="layer_1" Header="Layer 1" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
@@ -146,8 +144,6 @@
                     <MenuItem x:Name="layer_a" Header="Layer A" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
                     <MenuItem x:Name="layer_b" Header="Layer B" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
                 </MenuItem>
-                <Separator/>
-                <MenuItem Header="Inventory Settings"/>
             </MenuItem>
             <MenuItem Name="ToolsMenu" Header="_Tools"/>
             <MenuItem Header="Help">
