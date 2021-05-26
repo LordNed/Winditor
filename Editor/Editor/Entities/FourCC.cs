@@ -172,9 +172,9 @@ namespace WindEditor
                 case FourCC.FLOR:
                     return "FLOR\tDungeon Floor Settings";
                 case FourCC.DOOR:
-                    return "DOOR\tDoors (Equivalent to TGDR)";
+                    return "DOOR\tDoors";
                 case FourCC.TGDR:
-                    return "TGDR\tDoors (Equivalent to DOOR)";
+                    return "TGDR\tDoors";
                 case FourCC.EVNT:
                     return "EVNT\tMap Event Data";
                 case FourCC.FILI:
@@ -264,9 +264,9 @@ namespace WindEditor
                 case FourCC.LGTV:
                     return "LGTV\tShadow Cast Origin";
                 case FourCC.TGSC:
-                    return "TGSC\tScaleable Objects (Equivalent to SCOB)";
+                    return "TGSC\tScaleable Objects";
                 case FourCC.TGOB:
-                    return "TGOB\tActors (Equivalent to ACTR)";
+                    return "TGOB\tActors";
                 default:
                     return $"Unsupported FourCC ({ fourcc })";
             }
