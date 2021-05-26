@@ -165,7 +165,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <!-- Left Pane -->
-                    <ColumnDefinition MinWidth="200" Width="260"/>
+                    <ColumnDefinition MinWidth="200" Width="330"/>
                     <!-- Main Viewport -->
                     <ColumnDefinition MinWidth="200"/>
                     <!-- Right Pane -->
