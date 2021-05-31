@@ -36,33 +36,22 @@ namespace WindEditor
             var qz = quat.Z;
             var qw = quat.W;
 
-            // Convert the quaternion to a 3x3 matrix.
-            // We don't use OpenTK's Matrix3 class because it stores the values as single-precision floats, which loses information.
-            // By manually calculating the matrix elements as doubles, we can get the maximum amount of accuracy.
-            double m11 = 1.0 - 2.0 * (qy * qy + qz * qz);
-            double m12 =       2.0 * (qx * qy - qz * qw);
-            double m13 =       2.0 * (qx * qz + qy * qw);
-            double m21 =       2.0 * (qx * qy + qz * qw);
-            double m22 = 1.0 - 2.0 * (qx * qx + qz * qz);
-            double m23 =       2.0 * (qy * qz - qx * qw);
-            double m31 =       2.0 * (qx * qz - qy * qw);
-            double m32 =       2.0 * (qy * qz + qx * qw);
-            double m33 = 1.0 - 2.0 * (qx * qx + qy * qy);
+            var mat = Matrix3d.CreateFromQuaternion(quat).Inverted();
 
             double x, y, z;
 
             switch (rotationOrder)
             {
                 case "ZYX":
-                    y = Math.Asin(-Math.Min(1, Math.Max(-1, m31)));
-                    if (Math.Abs(m31) < 0.999999)
+                    y = Math.Asin(-Math.Min(1, Math.Max(-1, mat.M31)));
+                    if (Math.Abs(mat.M31) < 0.999999)
                     {
-                        x = Math.Atan2(m32, m33);
-                        z = Math.Atan2(m21, m11);
+                        x = Math.Atan2(mat.M32, mat.M33);
+                        z = Math.Atan2(mat.M21, mat.M11);
                     }
                     else
                     {
-                        x = Math.Atan2(-m12, m22);
+                        x = Math.Atan2(-mat.M12, mat.M22);
                         z = 0f;
                     }
                     representations.Add(new Vector3(
@@ -81,15 +70,15 @@ namespace WindEditor
                     ));
                     break;
                 case "YXZ":
-                    x = Math.Asin(-Math.Min(1, Math.Max(-1, m23)));
-                    if (Math.Abs(m23) < 0.999999)
+                    x = Math.Asin(-Math.Min(1, Math.Max(-1, mat.M23)));
+                    if (Math.Abs(mat.M23) < 0.999999)
                     {
-                        y = Math.Atan2(m13, m33);
-                        z = Math.Atan2(m21, m22);
+                        y = Math.Atan2(mat.M13, mat.M33);
+                        z = Math.Atan2(mat.M21, mat.M22);
                     }
                     else
                     {
-                        y = Math.Atan2(-m31, m11);
+                        y = Math.Atan2(-mat.M31, mat.M11);
                         z = 0f;
                     }
                     representations.Add(new Vector3(
