@@ -141,7 +141,7 @@ namespace WindEditor
             if (DisableRotationAndScaleForRaycasting)
                 localRay = WMath.TransformRay(ray, Transform.Position, Vector3.One, Quaternion.Identity);
             else
-                localRay = WMath.TransformRay(ray, Transform.Position, VisualScale, Transform.Rotation.Inverted());
+                localRay = WMath.TransformRay(ray, Transform.Position, VisualScale, Transform.Rotation.Inverted().ToSinglePrecision());
             closestDistance = float.MaxValue;
 			bool bHit = false;
 
@@ -169,7 +169,7 @@ namespace WindEditor
                 {
                     // Convert the hit point back to world space...
                     Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
-                    Vector3 globalHitPoint = Transform.Position + Vector3.Transform(localHitPoint, Transform.Rotation);
+                    Vector3 globalHitPoint = Transform.Position + Vector3.Transform(localHitPoint, Transform.Rotation.ToSinglePrecision());
 
                     // Now get the distance from the original ray origin and the new worldspace hit point.
                     closestDistance = (globalHitPoint - ray.Origin).Length;
@@ -258,7 +258,7 @@ namespace WindEditor
 
 		virtual public void Draw(WSceneView view)
 		{
-            Matrix4 trs = Matrix4.CreateScale(VisualScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+            Matrix4 trs = Matrix4.CreateScale(VisualScale) * Matrix4.CreateFromQuaternion(Transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(Transform.Position);
 
 			if (m_actorMeshes.Count > 0)
 			{

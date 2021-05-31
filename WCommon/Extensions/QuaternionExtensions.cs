@@ -15,6 +15,11 @@ namespace WindEditor
         /// <returns></returns>
         public static Vector3 ToEulerAngles(this Quaternion quat)
         {
+            return ToEulerAnglesRobust(quat.ToDoublePrecision(), "ZYX")[0];
+        }
+
+        public static Vector3 ToEulerAngles(this Quaterniond quat)
+        {
             return ToEulerAnglesRobust(quat, "ZYX")[0];
         }
 
@@ -22,7 +27,7 @@ namespace WindEditor
         /// Convert a Quaternion to all possible ways it can be represented as Euler Angles.
         /// Returns the angles in [-180, 180] space in degrees.
         /// </summary>
-        public static List<Vector3> ToEulerAnglesRobust(this Quaternion quat, string rotationOrder)
+        public static List<Vector3> ToEulerAnglesRobust(this Quaterniond quat, string rotationOrder)
         {
             var representations = new List<Vector3>();
 
@@ -109,7 +114,7 @@ namespace WindEditor
             return representations;
         }
 
-        public static Vector3 ToIdealEulerAngles(this Quaternion quat, string rotationOrder, bool usesX, bool usesY, bool usesZ)
+        public static Vector3 ToIdealEulerAngles(this Quaterniond quat, string rotationOrder, bool usesX, bool usesY, bool usesZ)
         {
             // First get all possible euler representations of this quaternion rotation.
             List<Vector3> eulerReps = quat.ToEulerAnglesRobust(rotationOrder);
@@ -167,9 +172,9 @@ namespace WindEditor
             return new Quaternion(x, y, z, w);
         }
 
-        public static Quaternion FromEulerAnglesRobust(this Quaternion quat, Vector3 eulerAngles, string rotationOrder, bool usesX, bool usesY, bool usesZ)
+        public static Quaterniond FromEulerAnglesRobust(this Quaterniond quat, Vector3 eulerAngles, string rotationOrder, bool usesX, bool usesY, bool usesZ)
         {
-            quat = Quaternion.Identity;
+            quat = Quaterniond.Identity;
 
             foreach (var axis in rotationOrder)
             {
@@ -177,8 +182,8 @@ namespace WindEditor
                 if (new[] { usesX, usesY, usesZ }[axisIndex])
                 {
                     float thisAxisRot = new[] { eulerAngles.X, eulerAngles.Y, eulerAngles.Z }[axisIndex];
-                    Vector3 axisUnitVector = new Vector3(axis == 'X' ? 1 : 0, axis == 'Y' ? 1 : 0, axis == 'Z' ? 1 : 0);
-                    Quaternion thisAxisRotQ = Quaternion.FromAxisAngle(axisUnitVector, WMath.DegreesToRadians(thisAxisRot));
+                    Vector3d axisUnitVector = new Vector3d(axis == 'X' ? 1 : 0, axis == 'Y' ? 1 : 0, axis == 'Z' ? 1 : 0);
+                    Quaterniond thisAxisRotQ = Quaterniond.FromAxisAngle(axisUnitVector, WMath.DegreesToRadians(thisAxisRot));
                     quat *= thisAxisRotQ;
                 };
             }
@@ -211,6 +216,16 @@ namespace WindEditor
 			// Get the angle between the original vector and projected transform to get angle around normal
 			float a = (float)Math.Acos((double)Vector3.Dot(orthoNormal1, flattened));
 			return WMath.RadiansToDegrees(a);
-		}
+        }
+
+        public static Quaternion ToSinglePrecision(this Quaterniond quat)
+        {
+            return new Quaternion((float)quat.X, (float)quat.Y, (float)quat.Z, (float)quat.W);
+        }
+
+        public static Quaterniond ToDoublePrecision(this Quaternion quat)
+        {
+            return new Quaterniond(quat.X, quat.Y, quat.Z, quat.W);
+        }
     }
 }

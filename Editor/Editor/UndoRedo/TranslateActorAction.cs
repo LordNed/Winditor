@@ -62,7 +62,7 @@ namespace WindEditor
                 }
                 else
                 {
-                    transformedDelta = Vector3.Transform(m_delta, m_affectedActors[i].Transform.Rotation);
+                    transformedDelta = (Vector3)Vector3d.Transform((Vector3d)m_delta, m_affectedActors[i].Transform.Rotation);
                 }
 
                 m_affectedActors[i].Transform.Position += transformedDelta;
@@ -83,7 +83,7 @@ namespace WindEditor
                 }
                 else
                 {
-                    transformedDelta = Vector3.Transform(m_delta, m_affectedActors[i].Transform.Rotation);
+                    transformedDelta = (Vector3)Vector3d.Transform((Vector3d)m_delta, m_affectedActors[i].Transform.Rotation);
                 }
                 m_affectedActors[i].Transform.Position -= transformedDelta;
             }

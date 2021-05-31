@@ -51,7 +51,7 @@ namespace WindEditor
         /// <summary> The amount of translation this frame the Gizmo has experienced in local space. </summary>
         public Vector3 DeltaTranslation { get { return m_deltaTranslation; } }
         /// <summary> The amount of rotation this frame the Gizmo has experienced in local space. </summary>
-        public Quaternion DeltaRotation { get { return m_deltaRotation; } }
+        public Quaterniond DeltaRotation { get { return m_deltaRotation; } }
         /// <summary> The amount of scale this frame the Gizmo has experienced in local space. </summary>
         public Vector3 DeltaScale { get { return m_deltaScale; } }
 
@@ -82,8 +82,8 @@ namespace WindEditor
 
         /// <summary> What is the current position of the gizmo. </summary>
         private Vector3 m_position = Vector3.Zero;
-        private Quaternion m_rotation = Quaternion.Identity;
-        private Quaternion m_localRotation = Quaternion.Identity;
+        private Quaterniond m_rotation = Quaterniond.Identity;
+        private Quaterniond m_localRotation = Quaterniond.Identity;
         /// <summary> Current scale of the gizmo, modified by the distance on screen.</summary>
         private Vector3 m_scale = Vector3.One;
         private bool mFlipScaleX = false;
@@ -100,9 +100,9 @@ namespace WindEditor
         /// <summary> The total translation of the gizmo since the gizmo started moving. Cleared the next time the gizmo is clicked. </summary>
         private Vector3 m_totalTranslation;
         /// <summary> The delta rotation as a <see cref="Quaternion"/> for this frame. </summary>
-        private Quaternion m_deltaRotation;
+        private Quaterniond m_deltaRotation;
         /// <summary> The total rotation of the gizmo since it was last clicked as a <see cref="Quaternion"/>. </summary>
-        private Quaternion m_currentRotation;
+        private Quaterniond m_currentRotation;
         /// <summary> The total rotation of the gizmo since it was last clicked as a <see cref="Vector3"/> for UI purposes. </summary>
         private Vector3 m_totalRotation;
         /// <summary> The delta in scale for this frame. Set to 1,1,1 when no change is made. </summary>
@@ -164,7 +164,7 @@ namespace WindEditor
             switch (mode)
             {
                 case FTransformMode.Translation:
-                    m_deltaRotation = Quaternion.Identity;
+                    m_deltaRotation = Quaterniond.Identity;
                     m_deltaScale = Vector3.One;
                     break;
                 case FTransformMode.Rotation:
@@ -173,7 +173,7 @@ namespace WindEditor
                     break;
                 case FTransformMode.Scale:
                     m_deltaTranslation = Vector3.Zero;
-                    m_deltaRotation = Quaternion.Identity;
+                    m_deltaRotation = Quaterniond.Identity;
                     break;
             }
         }
@@ -186,7 +186,7 @@ namespace WindEditor
             m_wrapOffset = Vector2.Zero;
             m_totalTranslation = Vector3.Zero;
             m_totalRotation = Vector3.Zero;
-            m_currentRotation = Quaternion.Identity;
+            m_currentRotation = Quaterniond.Identity;
             m_totalScale = Vector3.One;
 
             // Set the rotation direction.
@@ -209,15 +209,15 @@ namespace WindEditor
                 // If we're transforming only on one axis, then the directon is in the selected axis.
                 if(GetNumSelectedAxes() == 1)
                 {
-                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.X)) m_moveDir = Vector3.Transform(Vector3.UnitX, m_rotation);
-                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) m_moveDir = Vector3.Transform(Vector3.UnitY, m_rotation);
-                    else                                              m_moveDir = Vector3.Transform(Vector3.UnitZ, m_rotation);
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.X)) m_moveDir = Vector3.Transform(Vector3.UnitX, m_rotation.ToSinglePrecision());
+                    if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) m_moveDir = Vector3.Transform(Vector3.UnitY, m_rotation.ToSinglePrecision());
+                    else                                               m_moveDir = Vector3.Transform(Vector3.UnitZ, m_rotation.ToSinglePrecision());
                 }
                 // Two axes however, means interpolate between both.
                 if(GetNumSelectedAxes() == 2)
                 {
-                    Vector3 axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? Vector3.Transform(Vector3.UnitX, m_rotation) : Vector3.Transform(Vector3.UnitY, m_rotation);
-                    Vector3 axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Z) ? Vector3.Transform(Vector3.UnitZ, m_rotation) : Vector3.Transform(Vector3.UnitY, m_rotation);
+                    Vector3 axisA = ContainsAxis(m_selectedAxes, FSelectedAxes.X) ? Vector3.Transform(Vector3.UnitX, m_rotation.ToSinglePrecision()) : Vector3.Transform(Vector3.UnitY, m_rotation.ToSinglePrecision());
+                    Vector3 axisB = ContainsAxis(m_selectedAxes, FSelectedAxes.Z) ? Vector3.Transform(Vector3.UnitZ, m_rotation.ToSinglePrecision()) : Vector3.Transform(Vector3.UnitY, m_rotation.ToSinglePrecision());
                     m_moveDir = (axisA + axisB) / 2f;
                 }
             }
@@ -261,7 +261,7 @@ namespace WindEditor
             m_position = position;
         }
 
-        public void SetLocalRotation(Quaternion orientation)
+        public void SetLocalRotation(Quaterniond orientation)
         {
             m_localRotation = orientation;
             if (m_transformSpace == FTransformSpace.Local)
@@ -272,7 +272,7 @@ namespace WindEditor
         {
             m_transformSpace = space;
             if (space == FTransformSpace.World)
-                m_rotation = Quaternion.Identity;
+                m_rotation = Quaterniond.Identity;
             else
                 m_rotation = m_localRotation;
         }
@@ -339,8 +339,8 @@ namespace WindEditor
             // Convert the ray into local space so we can use axis-aligned checks, this solves the checking problem
             // when the gizmo is rotated due to being in Local mode.
             FRay localRay = new FRay();
-            localRay.Direction = Vector3.Transform(ray.Direction, m_rotation.Inverted());
-            localRay.Origin = Vector3.Transform(ray.Origin - m_position, m_rotation.Inverted());
+            localRay.Direction = Vector3.Transform(ray.Direction, m_rotation.Inverted().ToSinglePrecision());
+            localRay.Origin = Vector3.Transform(ray.Origin - m_position, m_rotation.Inverted().ToSinglePrecision());
 
             //m_lineBatcher.DrawLine(localRay.Origin, localRay.Origin + (localRay.Direction * 10000), WLinearColor.White, 25, 5);
             List<AxisDistanceResult> results = new List<AxisDistanceResult>();
@@ -420,7 +420,7 @@ namespace WindEditor
 
             // Store where the mouse hit on the first frame in world space. This means converting the ray back to worldspace.
             Vector3 localHitPoint = localRay.Origin + (localRay.Direction * results[0].Distance);
-            m_hitPoint = Vector3.Transform(localHitPoint, m_rotation) + m_position;
+            m_hitPoint = Vector3.Transform(localHitPoint, m_rotation.ToSinglePrecision()) + m_position;
             return true;
         }
 
@@ -463,16 +463,16 @@ namespace WindEditor
                 if (m_translationPlane.RayIntersectsPlane(ray, out intersectDist))
                 {
                     Vector3 hitPos = ray.Origin + (ray.Direction * intersectDist);
-                    Vector3 localDelta = Vector3.Transform(hitPos - m_position, m_rotation.Inverted());
+                    Vector3 localDelta = Vector3.Transform(hitPos - m_position, m_rotation.Inverted().ToSinglePrecision());
 
                     // Calculate a new position
                     Vector3 newPos = m_position;
                     if (ContainsAxis(m_selectedAxes, FSelectedAxes.X))
-                        newPos += Vector3.Transform(Vector3.UnitX, m_rotation) * localDelta.X;
+                        newPos += Vector3.Transform(Vector3.UnitX, m_rotation.ToSinglePrecision()) * localDelta.X;
                     if (ContainsAxis(m_selectedAxes, FSelectedAxes.Y))
-                        newPos += Vector3.Transform(Vector3.UnitY, m_rotation) * localDelta.Y;
+                        newPos += Vector3.Transform(Vector3.UnitY, m_rotation.ToSinglePrecision()) * localDelta.Y;
                     if (ContainsAxis(m_selectedAxes, FSelectedAxes.Z))
-                        newPos += Vector3.Transform(Vector3.UnitZ, m_rotation) * localDelta.Z;
+                        newPos += Vector3.Transform(Vector3.UnitZ, m_rotation.ToSinglePrecision()) * localDelta.Z;
 
                     if (shiftPressed)
                     {
@@ -501,14 +501,14 @@ namespace WindEditor
                     }
 
                     // Apply Translation
-                    m_deltaTranslation = Vector3.Transform(newPos - m_position + m_translateOffset, m_rotation.Inverted());
+                    m_deltaTranslation = Vector3.Transform(newPos - m_position + m_translateOffset, m_rotation.Inverted().ToSinglePrecision());
 
                     if (!ContainsAxis(m_selectedAxes, FSelectedAxes.X)) m_deltaTranslation.X = 0f;
                     if (!ContainsAxis(m_selectedAxes, FSelectedAxes.Y)) m_deltaTranslation.Y = 0f;
                     if (!ContainsAxis(m_selectedAxes, FSelectedAxes.Z)) m_deltaTranslation.Z = 0f;
 
                     m_totalTranslation += m_deltaTranslation;
-                    m_position += Vector3.Transform(m_deltaTranslation, m_rotation);
+                    m_position += Vector3.Transform(m_deltaTranslation, m_rotation.ToSinglePrecision());
 
                     if (!m_hasTransformed && (m_deltaTranslation != Vector3.Zero))
                         m_hasTransformed = true;
@@ -524,10 +524,10 @@ namespace WindEditor
             }
             else if (m_mode == FTransformMode.Rotation)
             {
-                Vector3 rotationAxis;
-                if (m_selectedAxes == FSelectedAxes.X) rotationAxis = Vector3.UnitX;
-                else if (m_selectedAxes == FSelectedAxes.Y) rotationAxis = Vector3.UnitY;
-                else rotationAxis = Vector3.UnitZ;
+                Vector3d rotationAxis;
+                if (m_selectedAxes == FSelectedAxes.X) rotationAxis = Vector3d.UnitX;
+                else if (m_selectedAxes == FSelectedAxes.Y) rotationAxis = Vector3d.UnitY;
+                else rotationAxis = Vector3d.UnitZ;
 
                 // Convert these from [0-1] to [-1, 1] to match our mouse coords.
                 Vector2 lineOrigin = (view.UnprojectWorldToViewport(m_hitPoint) * 2) - Vector2.One;
@@ -548,7 +548,7 @@ namespace WindEditor
                 if (!m_hasSetMouseOffset)
                 {
                     m_rotateOffset = -rotAmount;
-                    m_deltaRotation = Quaternion.Identity;
+                    m_deltaRotation = Quaterniond.Identity;
                     m_hasSetMouseOffset = true;
                     return false;
                 }
@@ -560,8 +560,8 @@ namespace WindEditor
                     // Round to nearest 45 degree increment while shift is held down.
                     rotAmount = (float)Math.Round(rotAmount / 45f) * 45f;
                 }
-                Quaternion oldRot = m_currentRotation;
-                m_currentRotation = Quaternion.FromAxisAngle(rotationAxis, WMath.DegreesToRadians(rotAmount));
+                Quaterniond oldRot = m_currentRotation;
+                m_currentRotation = Quaterniond.FromAxisAngle(rotationAxis, WMath.DegreesToRadians(rotAmount));
                 m_deltaRotation = m_currentRotation * oldRot.Inverted();
 
                 if(m_transformSpace == FTransformSpace.Local)
@@ -587,9 +587,9 @@ namespace WindEditor
                 // Determine the appropriate world space directoin using the selected axes and then conver this for use with
                 // screen-space controlls. This has to be done every frame because the axes can be flipped while the gizmo
                 // is transforming, so we can't pre-calculate this.
-                Vector3 dirX = Vector3.Transform(mFlipScaleX ? -Vector3.UnitX : Vector3.UnitX, m_rotation);
-                Vector3 dirY = Vector3.Transform(mFlipScaleY ? -Vector3.UnitY : Vector3.UnitY, m_rotation);
-                Vector3 dirZ = Vector3.Transform(mFlipScaleZ ? -Vector3.UnitZ : Vector3.UnitZ, m_rotation);
+                Vector3 dirX = Vector3.Transform(mFlipScaleX ? -Vector3.UnitX : Vector3.UnitX, m_rotation.ToSinglePrecision());
+                Vector3 dirY = Vector3.Transform(mFlipScaleY ? -Vector3.UnitY : Vector3.UnitY, m_rotation.ToSinglePrecision());
+                Vector3 dirZ = Vector3.Transform(mFlipScaleZ ? -Vector3.UnitZ : Vector3.UnitZ, m_rotation.ToSinglePrecision());
                 Vector2 lineDir;
 
                 // If there is only one axis, then the world space direction is the selected axis.
@@ -863,7 +863,7 @@ namespace WindEditor
             m_scale = Vector3.One * m_gizmoSize * (float)(Math.Sqrt(m_cameraDistance) / 2.5f);
 
             // Construct a model matrix for the gizmo mesh to render at.
-            Matrix4 modelMatrix = Matrix4.CreateScale(m_scale) * Matrix4.CreateFromQuaternion(m_rotation) * Matrix4.CreateTranslation(m_position);
+            Matrix4 modelMatrix = Matrix4.CreateScale(m_scale) * Matrix4.CreateFromQuaternion(m_rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(m_position);
 
             // Clear the depth buffer so the transform gizmo draws on top of everything else.
             // Note that we must clear it only before drawing the entire gizmo. Clearing it for each mesh would result in strange z-indexing between the multiple meshes.

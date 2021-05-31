@@ -19,7 +19,7 @@ namespace WindEditor.Collision
         private ObservableCollection<CollisionGroupNode> m_Children;
 
         private Vector3 m_Scale;
-        private OpenTK.Quaternion m_Rotation;
+        private OpenTK.Quaterniond m_Rotation;
         private ushort m_Unknown1;
         private Vector3 m_Translation;
 
@@ -177,9 +177,9 @@ namespace WindEditor.Collision
             for (int e = 0; e < 3; e++)
                 eulerRot[e] = WMath.RotationShortToFloat(reader.ReadInt16());
             // ZYX order
-            m_Rotation = OpenTK.Quaternion.FromAxisAngle(new Vector3(0, 0, 1), WMath.DegreesToRadians(eulerRot.Z)) *
-                         OpenTK.Quaternion.FromAxisAngle(new Vector3(0, 1, 0), WMath.DegreesToRadians(eulerRot.Y)) *
-                         OpenTK.Quaternion.FromAxisAngle(new Vector3(1, 0, 0), WMath.DegreesToRadians(eulerRot.X));
+            m_Rotation = Quaterniond.FromAxisAngle(new Vector3d(0, 0, 1), WMath.DegreesToRadians(eulerRot.Z)) *
+                         Quaterniond.FromAxisAngle(new Vector3d(0, 1, 0), WMath.DegreesToRadians(eulerRot.Y)) *
+                         Quaterniond.FromAxisAngle(new Vector3d(1, 0, 0), WMath.DegreesToRadians(eulerRot.X));
 
             m_Unknown1 = reader.ReadUInt16();
 

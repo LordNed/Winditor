@@ -114,7 +114,7 @@ namespace WindEditor
             float moveSpeed = WInput.GetKey(System.Windows.Input.Key.LeftShift) ? MoveSpeed * 3f : MoveSpeed;
 
             // Make it relative to the current rotation.
-            moveDir = Vector3.Transform(moveDir, Transform.Rotation);
+            moveDir = Vector3.Transform(moveDir, Transform.Rotation.ToSinglePrecision());
 
             // Do Q and E after we transform the moveDir so they're always in worldspace.
             if (WInput.GetKey(System.Windows.Input.Key.Q))

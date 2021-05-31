@@ -61,7 +61,7 @@ namespace WindEditor
                 WTransform curParent = m_parent;
                 while (curParent != null)
                 {
-                    transformedPoint = Vector3.Transform(transformedPoint, curParent.LocalRotation);
+                    transformedPoint = (Vector3)Vector3d.Transform((Vector3d)transformedPoint, curParent.LocalRotation);
                     transformedPoint += curParent.LocalPosition;
 
                     curParent = curParent.m_parent;
@@ -76,10 +76,10 @@ namespace WindEditor
                 while (curParent != null)
                 {
                     // Calculate the inverse of the parent's rotation so we can subtract that rotation.
-                    Quaternion inverseRot = curParent.LocalRotation.Inverted();
+                    Quaterniond inverseRot = curParent.LocalRotation.Inverted();
 
                     transformedPoint -= curParent.LocalPosition;
-                    transformedPoint = Vector3.Transform(transformedPoint, inverseRot);
+                    transformedPoint = (Vector3)Vector3d.Transform((Vector3d)transformedPoint, inverseRot);
 
                     curParent = curParent.m_parent;
                 }
@@ -91,12 +91,12 @@ namespace WindEditor
         }
 
         /// <summary> Rotation of the object in global space. </summary>
-        public Quaternion Rotation
+        public Quaterniond Rotation
         {
             get
             {
                 // Walk the tree until no more parents adding up the local rotations of each.
-                Quaternion transformedRot = LocalRotation;
+                Quaterniond transformedRot = LocalRotation;
                 WTransform curParent = m_parent;
                 while (curParent != null)
                 {
@@ -109,12 +109,12 @@ namespace WindEditor
             }
             set
             {
-                Quaternion transformedRot = value;
+                Quaterniond transformedRot = value;
                 WTransform curParent = m_parent;
                 while (curParent != null)
                 {
                     // Calculate the inverse of the parents rotation so we can subtract that rotation.
-                    Quaternion inverseRot = curParent.LocalRotation.Inverted();
+                    Quaterniond inverseRot = curParent.LocalRotation.Inverted();
                     transformedRot = inverseRot * transformedRot;
 
                     curParent = curParent.m_parent;
@@ -159,7 +159,7 @@ namespace WindEditor
 
         /// <summary> Local rotation relative to the parent. Equivelent to Rotation if parent is null. </summary>
         [JsonIgnore]
-        public Quaternion LocalRotation
+        public Quaterniond LocalRotation
         {
             get { return m_localRotation; }
             set
@@ -179,21 +179,21 @@ namespace WindEditor
         [JsonIgnore]
         public Vector3 Up
         {
-            get { return Vector3.Transform(Vector3.UnitY, Rotation); }
+            get { return (Vector3)Vector3d.Transform(Vector3d.UnitY, Rotation); }
         }
 
         /// <summary> The local right axis of this object as a direction in world space. </summary>
         [JsonIgnore]
         public Vector3 Right
         {
-            get { return Vector3.Transform(Vector3.UnitX, Rotation); }
+            get { return (Vector3)Vector3d.Transform(Vector3d.UnitX, Rotation); }
         }
 
         /// <summary> The local forward axis of this object as a direction in world space. </summary>
         [JsonIgnore]
         public Vector3 Forward
         {
-            get { return Vector3.Transform(Vector3.UnitZ, Rotation); }
+            get { return (Vector3)Vector3d.Transform(Vector3d.UnitZ, Rotation); }
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace WindEditor
         private WTransform m_parent;
         private Vector3 m_localPosition;
         private Vector3 m_localScale;
-        private Quaternion m_localRotation;
+        private Quaterniond m_localRotation;
 
         /// <summary> Children of this transform. It's marked as private and only accessible via GetEnumerator as we don't want people arbitrarily adding children. </summary>
         private List<WTransform> m_children;
@@ -222,7 +222,7 @@ namespace WindEditor
             RotationBase = new BindingVector3();
             ScaleBase = new BindingVector3();
             LocalPosition = Vector3.Zero;
-            LocalRotation = Quaternion.Identity;
+            LocalRotation = Quaterniond.Identity;
             LocalScale = Vector3.One;
             Parent = null;
 
@@ -233,14 +233,14 @@ namespace WindEditor
 
         public void Rotate(Vector3 axis, float angleInDegrees)
         {
-            Quaternion rotQuat = Quaternion.FromAxisAngle(axis, WMath.DegreesToRadians(angleInDegrees));
+            Quaterniond rotQuat = Quaterniond.FromAxisAngle((Vector3d)axis, WMath.DegreesToRadians(angleInDegrees));
             Rotation = rotQuat * Rotation;
         }
 
         private void OnRotationBasePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // Automatically update the quaternion rotation any time the euler rotation base is changed.
-            m_localRotation = Quaternion.Identity.FromEulerAnglesRobust(RotationBase.BackingVector, RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
+            m_localRotation = Quaterniond.Identity.FromEulerAnglesRobust(RotationBase.BackingVector, RotationOrder, UsesXRotation, UsesYRotation, UsesZRotation);
         }
 
         //public IEnumerator GetEnumerator()

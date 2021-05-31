@@ -180,7 +180,7 @@ namespace WindEditor
         public override void Draw(WSceneView view)
         {
             var bbox = GetBoundingBox();
-            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation.ToSinglePrecision(), (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
 
             int spawnPatternIndex = (int)SpawnPattern;
             int groupIndex = kFoliageSpawnPatternGroupIndexes[spawnPatternIndex];
@@ -202,7 +202,7 @@ namespace WindEditor
 
                 transform.Position = Transform.Position + modelOffset;
 
-                Matrix4 trs = Matrix4.CreateScale(transform.LocalScale) * Matrix4.CreateFromQuaternion(transform.Rotation) * Matrix4.CreateTranslation(transform.Position);
+                Matrix4 trs = Matrix4.CreateScale(transform.LocalScale) * Matrix4.CreateFromQuaternion(transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(transform.Position);
 
                 m_objRender.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }

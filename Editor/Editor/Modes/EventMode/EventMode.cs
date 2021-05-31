@@ -751,7 +751,7 @@ namespace WindEditor.Editor.Modes
                 Substance<ObservableCollection<BindingVector3>> target_vec = target as Substance<ObservableCollection<BindingVector3>>;
                 Matrix4 mat = Matrix4.LookAt(m_SceneCameraOverride.Transform.Position, target_vec.Data[0].BackingVector, -Vector3.UnitY);
 
-                m_SceneCameraOverride.Transform.Rotation = mat.ExtractRotation();
+                m_SceneCameraOverride.Transform.Rotation = mat.ExtractRotation().ToDoublePrecision();
             }
             else
             {

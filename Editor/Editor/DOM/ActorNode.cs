@@ -148,7 +148,7 @@ namespace WindEditor
         public bool Raycast(FRay ray, out float closestDistance)
         {
             // Convert the ray to local space of this node since all of our raycasts are local.
-            FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted());
+            FRay localRay = WMath.TransformRay(ray, Transform.Position, Transform.LocalScale, Transform.Rotation.Inverted().ToSinglePrecision());
             bool bHit = false;
             if (m_actorMesh != null)
             {
@@ -163,7 +163,7 @@ namespace WindEditor
             {
                 // Convert the hit point back to world space...
                 Vector3 localHitPoint = localRay.Origin + (localRay.Direction * closestDistance);
-                localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation);
+                localHitPoint = Vector3.Transform(localHitPoint + Transform.Position, Transform.Rotation.ToSinglePrecision());
 
                 // Now get the distance from the original ray origin and the new worldspace hit point.
                 closestDistance = (localHitPoint - ray.Origin).Length;
@@ -181,9 +181,9 @@ namespace WindEditor
         void IRenderable.Draw(WSceneView view)
         {
             var bbox = GetBoundingBox();
-            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation, (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
+            m_world.DebugDrawBox(bbox.Center, (bbox.Max - bbox.Min) / 2, Transform.Rotation.ToSinglePrecision(), (Flags & NodeFlags.Selected) == NodeFlags.Selected ? WLinearColor.White : WLinearColor.Black, 0, 0);
 
-            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(Transform.Position);
 
             if (m_actorMesh != null)
             {

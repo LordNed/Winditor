@@ -62,7 +62,7 @@ namespace WindEditor
             if (HasBrazier() && m_brazierModel != null)
             {
                 // Draw the brazier.
-                Matrix4 trs = Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+                Matrix4 trs = Matrix4.CreateFromQuaternion(Transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(Transform.Position);
 
                 for (int i = 0; i < 4; i++)
                 {

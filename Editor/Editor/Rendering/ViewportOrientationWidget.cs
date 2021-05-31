@@ -23,7 +23,7 @@ namespace WindEditor
             }
         }
 
-        public void Render(Quaternion viewportOrientation, Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
+        public void Render(Quaterniond viewportOrientation, Matrix4 viewMatrix, Matrix4 projMatrix, Matrix4 modelMatrix)
         {
             //Matrix4 modelMatrix = Matrix4.CreateFromQuaternion(Quaternion.Invert(viewportOrientation));
 

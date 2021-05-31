@@ -7,12 +7,12 @@ namespace WindEditor
     class WRotateActorAction : WUndoCommand
     {
         private List<WDOMNode> m_affectedActors;
-        private Quaternion m_delta;
+        private Quaterniond m_delta;
         private bool m_isDone;
         private FTransformSpace m_transformSpace;
         private IEditorModeGizmo m_mode;
 
-        public WRotateActorAction(IEnumerable<WDOMNode> actors, IEditorModeGizmo mode, Quaternion delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
+        public WRotateActorAction(IEnumerable<WDOMNode> actors, IEditorModeGizmo mode, Quaterniond delta, FTransformSpace transformSpace, bool isDone, WUndoCommand parent = null) : base("Rotate", parent)
         {
             m_affectedActors = new List<WDOMNode>(actors);
             m_mode = mode;
@@ -76,11 +76,11 @@ namespace WindEditor
             {
                 if (m_transformSpace == FTransformSpace.Local)
                 {
-                    m_affectedActors[i].Transform.Rotation *= Quaternion.Invert(m_delta);
+                    m_affectedActors[i].Transform.Rotation *= Quaterniond.Invert(m_delta);
                 }
                 else
                 {
-                    m_affectedActors[i].Transform.Rotation = Quaternion.Invert(m_delta) * m_affectedActors[i].Transform.Rotation;
+                    m_affectedActors[i].Transform.Rotation = Quaterniond.Invert(m_delta) * m_affectedActors[i].Transform.Rotation;
                 }
             }
 

@@ -192,7 +192,7 @@ namespace WindEditor
             foreach (J3DNode j3d_node in m_roomModelNodes)
             {
                 j3d_node.Transform.Position = new Vector3(RoomTransform.Translation.X, 0, RoomTransform.Translation.Y);
-                j3d_node.Transform.LocalRotation = Quaternion.FromAxisAngle(Vector3.UnitY, WMath.DegreesToRadians(RoomTransform.YRotation));
+                j3d_node.Transform.LocalRotation = Quaterniond.FromAxisAngle(Vector3d.UnitY, WMath.DegreesToRadians(RoomTransform.YRotation));
             }
         }
 

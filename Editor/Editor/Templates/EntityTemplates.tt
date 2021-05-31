@@ -232,7 +232,7 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 		
 			if (rotationAxes.Length > 0) {
 #>
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(<#= String.Join(", ", "XYZ".Select(x => rotationAxes.Contains(x) ? $"WMath.RotationShortToFloat(m_{x}Rotation)" : "0")) #>),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);

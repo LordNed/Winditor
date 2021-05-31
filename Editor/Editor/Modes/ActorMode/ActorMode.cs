@@ -574,7 +574,7 @@ namespace WindEditor.Editor.Modes
                 var entity = EditorSelection.PrimarySelectedObject;
                 Vector3 entityPos = entity.Transform.Position;
                 WCamera camera = World.GetFocusedSceneView().ViewCamera;
-                Vector3 newCameraPos = entityPos + Vector3.Transform(new Vector3(0.0f, 0.0f, 1000.0f), camera.Transform.Rotation);
+                Vector3 newCameraPos = entityPos + (Vector3)Vector3d.Transform(new Vector3d(0.0f, 0.0f, 1000.0f), camera.Transform.Rotation);
                 camera.Transform.Position = newCameraPos;
             }
         }
@@ -590,7 +590,7 @@ namespace WindEditor.Editor.Modes
             }
 
             WCamera camera = World.GetFocusedSceneView().ViewCamera;
-            Vector3 spawnPos = camera.Transform.Position + Vector3.Transform(new Vector3(0.0f, 0.0f, -distance), camera.Transform.Rotation);
+            Vector3 spawnPos = camera.Transform.Position + (Vector3)Vector3d.Transform(new Vector3d(0.0f, 0.0f, -distance), camera.Transform.Rotation);
 
             return spawnPos;
         }
@@ -621,7 +621,7 @@ namespace WindEditor.Editor.Modes
 
             WCamera camera = World.GetFocusedSceneView().ViewCamera;
 
-            Vector3 dir = Vector3.Transform(new Vector3(0.0f, 0.0f, -1.0f), camera.Transform.Rotation);
+            Vector3 dir = (Vector3)Vector3d.Transform(new Vector3d(0.0f, 0.0f, -1.0f), camera.Transform.Rotation);
             dir.Normalize();
             FRay ray = new FRay(camera.Transform.Position, dir);
 

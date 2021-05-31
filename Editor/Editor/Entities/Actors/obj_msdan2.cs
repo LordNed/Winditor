@@ -48,12 +48,12 @@ namespace WindEditor
             {
                 WTransform transform = new WTransform();
                 float yRot = Transform.Rotation.ToEulerAngles().Y;// + 180;
-                transform.Rotation = Quaternion.FromAxisAngle(Vector3.UnitY, (float)(yRot / 180f * Math.PI));
+                transform.Rotation = Quaterniond.FromAxisAngle(Vector3d.UnitY, yRot / 180f * Math.PI);
                 Vector3 positionOffset = new Vector3(0, 0, i * -50f);
-                positionOffset = Vector3.Transform(positionOffset, transform.Rotation);
+                positionOffset = Vector3.Transform(positionOffset, transform.Rotation.ToSinglePrecision());
                 transform.Position = Transform.Position + positionOffset;
 
-                Matrix4 trs = Matrix4.CreateScale(transform.LocalScale) * Matrix4.CreateFromQuaternion(transform.Rotation) * Matrix4.CreateTranslation(transform.Position);
+                Matrix4 trs = Matrix4.CreateScale(transform.LocalScale) * Matrix4.CreateFromQuaternion(transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(transform.Position);
 
                 m_stairMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }

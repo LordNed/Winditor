@@ -52,7 +52,7 @@ namespace WindEditor
                     break;
                 PathPoint_v2 point = points[pathPointIndex];
 
-                Matrix4 trs = Matrix4.CreateScale(point.Transform.LocalScale) * Matrix4.CreateFromQuaternion(point.Transform.Rotation) * Matrix4.CreateTranslation(point.Transform.Position);
+                Matrix4 trs = Matrix4.CreateScale(point.Transform.LocalScale) * Matrix4.CreateFromQuaternion(point.Transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(point.Transform.Position);
 
                 m_liftControlMesh.Render(view.ViewMatrix, view.ProjMatrix, trs);
             }

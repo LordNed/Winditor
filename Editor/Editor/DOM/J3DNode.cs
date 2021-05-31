@@ -63,7 +63,7 @@ namespace WindEditor
 
         void IRenderable.Draw(WSceneView view)
         {
-            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation) * Matrix4.CreateTranslation(Transform.Position);
+            Matrix4 trs = Matrix4.CreateScale(Transform.LocalScale) * Matrix4.CreateFromQuaternion(Transform.Rotation.ToSinglePrecision()) * Matrix4.CreateTranslation(Transform.Position);
             m_model.Render(view.ViewMatrix, view.ProjMatrix, trs);
         }
 

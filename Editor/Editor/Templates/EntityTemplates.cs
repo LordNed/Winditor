@@ -622,7 +622,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -697,7 +697,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_Unknown1 = stream.ReadInt16(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -763,7 +763,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_Unknown1 = stream.ReadInt16(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -1104,7 +1104,7 @@ namespace WindEditor
 			m_ScaleY = stream.ReadByte(); 
 			m_ScaleZ = stream.ReadByte(); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -3048,7 +3048,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -3198,7 +3198,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_Room = stream.ReadByte(); 
 			m_WaveHeightAddition = stream.ReadByte(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(0, WMath.RotationShortToFloat(m_YRotation), 0),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -3330,7 +3330,7 @@ namespace WindEditor
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -3410,7 +3410,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ShipID = stream.ReadByte(); 
 			m_Unknown1 = stream.ReadByte(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(0, WMath.RotationShortToFloat(m_YRotation), 0),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -3972,7 +3972,7 @@ namespace WindEditor
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -4064,7 +4064,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -4159,7 +4159,7 @@ namespace WindEditor
 			float yScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, yScale, Transform.LocalScale.Z); 
 			float zScale = stream.ReadByte() / 10f;Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, zScale); 
 			m_Padding = stream.ReadByte(); Trace.Assert(m_Padding == 0xFF || m_Padding== 0); // Padding
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);
@@ -4251,7 +4251,7 @@ namespace WindEditor
 			m_YRotation = stream.ReadInt16(); 
 			m_ZRotation = stream.ReadInt16(); 
 			m_EnemyNumber = stream.ReadInt16(); 
-			Transform.Rotation = Quaternion.Identity.FromEulerAnglesRobust(
+			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(WMath.RotationShortToFloat(m_XRotation), WMath.RotationShortToFloat(m_YRotation), WMath.RotationShortToFloat(m_ZRotation)),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
 			);

@@ -14,7 +14,7 @@ namespace WindEditor.Editor.Modes
         public void UpdateGizmoTransform()
         {
             OpenTK.Vector3 position = OpenTK.Vector3.Zero;
-            OpenTK.Quaternion localRotation = OpenTK.Quaternion.Identity;
+            OpenTK.Quaterniond localRotation = OpenTK.Quaterniond.Identity;
 
             foreach (var entity in EditorSelection.SelectedObjects)
             {
