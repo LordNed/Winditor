@@ -30,7 +30,7 @@ namespace WindEditor
         private void M_InventorySettings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            m_InventorySettings.Hide();
+            m_InventorySettings.ViewModel.OnCancelChanges();
         }
 
         public void RequestStartPlaytest(WMap map, MapLayer active_layer)

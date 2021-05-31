@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WindEditor.View"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="Playtest Inventory Manager" Height="376" Width="800" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Playtest Inventory Manager" Height="376" Width="800" ResizeMode="NoResize">
     <Window.DataContext>
         <vm:PlaytestInventoryViewModel/>
     </Window.DataContext>
@@ -70,7 +70,7 @@
                     <ComboBoxItem Content="Fire and Ice Arrows" Tag="53"/>
                     <ComboBoxItem Content="Fire, Ice, and Light Arrows" Tag="54"/>
                 </ComboBox>
-                <CheckBox Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="32" Height="16" Width="56" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Bombs</CheckBox>
+                <CheckBox Grid.Row="1" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,13,0,13" Tag="49" Height="16" Width="56" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Bombs</CheckBox>
                 <!-- Row 3 -->
                 <ComboBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="8,8,10,8" Height="22" SelectionChanged="ComboBox_SelectionChanged" SelectedIndex="0">
                     <ComboBoxItem Content="(No Bottle)" Tag="255"/>
@@ -183,7 +183,7 @@
                 </ComboBox>
             </Grid>
         </GroupBox>
-        <Button x:Name="SaveButton" Grid.Row="2" Margin="530,0,145,10" Height="32" VerticalAlignment="Bottom">Save</Button>
-        <Button x:Name="CancelButton" Grid.Row="2" Margin="665,0,10,10" Height="32" VerticalAlignment="Bottom">Cancel</Button>
+        <Button x:Name="SaveButton" Grid.Row="2" Margin="530,0,145,10" Height="32" VerticalAlignment="Bottom" Command="{Binding SaveChangesCommand}">Save</Button>
+        <Button x:Name="CancelButton" Grid.Row="2" Margin="665,0,10,10" Height="32" VerticalAlignment="Bottom" Command="{Binding CancelChangesCommand}">Cancel</Button>
     </Grid>
 </Window>
