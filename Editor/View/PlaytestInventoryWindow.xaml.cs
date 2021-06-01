@@ -66,5 +66,17 @@ namespace WindEditor.View
 
             ViewModel.OnComboBoxChanged(OldValue, NewValue);
         }
+
+        private void Triforce_ComboBox_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            if (ViewModel == null)
+                return;
+
+            if (ViewModel.TempTriforceBoxChanges == null)
+                ViewModel.TempTriforceBoxChanges = e;
+
+            ComboBox Cbox = sender as ComboBox;
+            ViewModel.OnTriforceCountChanged(Cbox.SelectedIndex);
+        }
     }
 }

@@ -45,6 +45,7 @@ namespace WindEditor.ViewModel
         public List<CheckBox> TempCheckedBoxes { get; private set; }
         public List<CheckBox> TempUncheckedBoxes { get; private set; }
         public List<SelectionChangedEventArgs> TempComboBoxChanges { get; private set; }
+        public SelectionChangedEventArgs TempTriforceBoxChanges { get; set; }
 
         public ICommand CheckboxCheckedCommand { get { return new RelayCommand(x => OnCheckboxChecked(0)); } }
         public ICommand OpenRootDirectoryCommand { get { return new RelayCommand(x => OnCheckboxUnchecked(0)); } }
@@ -59,6 +60,7 @@ namespace WindEditor.ViewModel
             TempCheckedBoxes = new List<CheckBox>();
             TempUncheckedBoxes = new List<CheckBox>();
             TempComboBoxChanges = new List<SelectionChangedEventArgs>();
+            TempTriforceBoxChanges = null;
         }
 
         public PlaytestInventoryViewModel(PlaytestInventoryWindow Parent)
@@ -71,6 +73,7 @@ namespace WindEditor.ViewModel
             TempCheckedBoxes = new List<CheckBox>();
             TempUncheckedBoxes = new List<CheckBox>();
             TempComboBoxChanges = new List<SelectionChangedEventArgs>();
+            TempTriforceBoxChanges = null;
         }
 
         public void OnCheckboxChecked(byte ItemID)
@@ -92,6 +95,25 @@ namespace WindEditor.ViewModel
                 m_TempIDs.Add(NewValue);
         }
 
+        public void OnTriforceCountChanged(int Count)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                byte TriID = (byte)(97 + i);
+
+                if (m_TempIDs.Contains(TriID))
+                    m_TempIDs.Remove(TriID);
+            }
+
+            for (int i = 0; i < Count; i++)
+            {
+                byte TriID = (byte)(97 + i);
+
+                if (!m_TempIDs.Contains(TriID))
+                    m_TempIDs.Add(TriID);
+            }
+        }
+
         public void OnSaveChanges()
         {
             ItemIDs = m_TempIDs;
@@ -100,6 +122,7 @@ namespace WindEditor.ViewModel
             TempCheckedBoxes.Clear();
             TempUncheckedBoxes.Clear();
             TempComboBoxChanges.Clear();
+            TempTriforceBoxChanges = null;
         }
 
         public void OnCancelChanges()
@@ -115,10 +138,16 @@ namespace WindEditor.ViewModel
                 ComboBox Cbox = S.Source as ComboBox;
                 Cbox.SelectedItem = S.RemovedItems[0];
             }
+            if (TempTriforceBoxChanges != null)
+            {
+                ComboBox Cbox = TempTriforceBoxChanges.Source as ComboBox;
+                Cbox.SelectedItem = TempTriforceBoxChanges.RemovedItems[0];
+            }
 
             TempCheckedBoxes.Clear();
             TempUncheckedBoxes.Clear();
             TempComboBoxChanges.Clear();
+            TempTriforceBoxChanges = null;
 
             ItemIDs = m_TempIDs;
         }
