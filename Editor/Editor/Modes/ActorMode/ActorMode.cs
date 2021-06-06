@@ -293,6 +293,9 @@ namespace WindEditor.Editor.Modes
             serial.Converters.Add(new Vector2Converter());
             serial.Converters.Add(new Vector3Converter());
             serial.Converters.Add(new QuaternionConverter());
+            serial.Converters.Add(new Vector2dConverter());
+            serial.Converters.Add(new Vector3dConverter());
+            serial.Converters.Add(new QuaterniondConverter());
             serial.Converters.Add(new WDOMNodeJsonConverter(World, EditorSelection.PrimarySelectedObject));
             serial.Formatting = Formatting.Indented;
 
@@ -343,6 +346,9 @@ namespace WindEditor.Editor.Modes
             serial.Converters.Add(new Vector2Converter());
             serial.Converters.Add(new Vector3Converter());
             serial.Converters.Add(new QuaternionConverter());
+            serial.Converters.Add(new Vector2dConverter());
+            serial.Converters.Add(new Vector3dConverter());
+            serial.Converters.Add(new QuaterniondConverter());
             serial.Converters.Add(new WDOMNodeJsonConverter(World, parent));
             serial.Formatting = Formatting.Indented;
 
