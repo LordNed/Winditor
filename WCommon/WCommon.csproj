@@ -59,6 +59,7 @@
     <Reference Include="System.Xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DOL.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\QuaternionExtensions.cs" />
     <Compile Include="Framework\ApplicationExtensions.cs" />

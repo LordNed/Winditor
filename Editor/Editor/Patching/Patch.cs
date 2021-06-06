@@ -53,7 +53,7 @@ namespace WindEditor
                         long offset = plet.Offset;
                         if (file_name.EndsWith(".dol"))
                         {
-                            offset = ConvertDOLAddressToOffset(plet.Offset, reader);
+                            offset = DOL.AddressToOffset(plet.Offset, reader);
                         }
                         writer.BaseStream.Seek(offset, SeekOrigin.Begin);
                         writer.Write(plet.Data.ToArray());
@@ -62,35 +62,6 @@ namespace WindEditor
                     strm.Flush();
                 }
             }
-        }
-
-        private long ConvertDOLAddressToOffset(long address, EndianBinaryReader reader)
-        {
-            // Check text sections
-            for (int i = 0; i < 7; i++)
-            {
-                uint startOff = reader.ReadUInt32At(0x00 + i * 4);
-                uint startAddr = reader.ReadUInt32At(0x48 + i * 4);
-                uint size = reader.ReadUInt32At(0x90 + i * 4);
-                if (address >= startAddr && address < (startAddr+size))
-                {
-                    return (address - startAddr) + startOff;
-                }
-            }
-
-            // Check data sections
-            for (int i = 0; i < 11; i++)
-            {
-                uint startOff = reader.ReadUInt32At(0x1C + i * 4);
-                uint startAddr = reader.ReadUInt32At(0x64 + i * 4);
-                uint size = reader.ReadUInt32At(0xAC + i * 4);
-                if (address >= startAddr && address < (startAddr + size))
-                {
-                    return (address - startAddr) + startOff;
-                }
-            }
-
-            throw new ArgumentException($"Address 0x{address:X} could not be found in the DOL.");
         }
     }
 }
