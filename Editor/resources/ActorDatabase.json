@@ -15264,5 +15264,19 @@
     "Locations": [
     ],
     "ImagePath": null
-  }
+  },
+  {
+    "Archive Name": null,
+    "Main Model": null,
+    "Secondary Models": null,
+    "ActorClassType": "spc_item",
+    "Wait Animations": null,
+    "Actor Name": "SPitem",
+    "English Name": "spc_item",
+    "Tags": null,
+    "Explanation": null,
+    "Locations": [
+    ],
+    "ImagePath": null
+  },
 ]

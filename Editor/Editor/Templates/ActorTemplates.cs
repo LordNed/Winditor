@@ -21914,6 +21914,44 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
+	public partial class spc_item : Actor
+	{
+		// Auto-Generated Properties from Templates
+
+		[WProperty("spc_item", "Unknown_1", true, "", SourceScene.Room)]
+		public int Unknown_1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
+				OnPropertyChanged("Unknown_1");
+			}
+		}
+
+		// Constructor
+		public spc_item(FourCC fourCC, WWorld world) : base(fourCC, world)
+		{
+			Transform.UsesXRotation = true;
+			Transform.UsesYRotation = true;
+			Transform.UsesZRotation = true;
+			Transform.RotationOrder = "ZYX";
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			Unknown_1 = -1;
+		}
+	}
+
+	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
 	public partial class spotbox : Actor
 	{
 		// Auto-Generated Properties from Templates

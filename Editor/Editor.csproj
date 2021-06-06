@@ -127,6 +127,7 @@
     <Compile Include="Editor\DOM\DOMNode_New.cs" />
     <Compile Include="Editor\DOM\DOMOrganizerNode.cs" />
     <Compile Include="Editor\DOM\DOMRenderNode.cs" />
+    <Compile Include="Editor\Entities\Actors\spc_item.cs" />
     <Compile Include="Editor\Entities\Actors\bomb2.cs" />
     <Compile Include="Editor\Entities\Actors\obj_search.cs" />
     <Compile Include="Editor\Entities\Actors\sea.cs" />
@@ -1139,6 +1140,7 @@
     <Content Include="resources\patches\disable_song_playback.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="resources\templates\MapEntityData\spc_item.json" />
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />
     <None Include="resources\templates\MapEntityData\agbsw0.json" />
     <None Include="resources\templates\MapEntityData\alldie.json" />

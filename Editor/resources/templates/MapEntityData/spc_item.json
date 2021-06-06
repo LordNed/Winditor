@@ -1,0 +1,15 @@
+{
+  "ClassName": "spc_item",
+  "ParentClassOverride": "Actor",
+  "ParameterFields": [
+    {
+      "Name": "Unknown_1",
+      "ValueSource": "Parameters",
+      "Mask": 0x000000FF,
+      "Hidden": false,
+      "Category": "spc_item",
+      "ToolTip": "",
+      "DataType": "Integer"
+    }
+  ]
+}
