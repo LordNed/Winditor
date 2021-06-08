@@ -279,6 +279,105 @@ namespace WindEditor
             return model;
         }
 
+        public static List<J3D> LoadModelForItem(ItemID itemID)
+        {
+            switch (itemID)
+            {
+                case ItemID.Heart:
+                    return LoadActorResource("Heart Pickup");
+                case ItemID.Green_Rupee:
+                    return LoadActorResource("Green Rupee");
+                case ItemID.Blue_Rupee:
+                    return LoadActorResource("Blue Rupee");
+                case ItemID.Yellow_Rupee:
+                case ItemID.Yellow_Rupee_Joke_Message:
+                    return LoadActorResource("Yellow Rupee");
+                case ItemID.Red_Rupee:
+                    return LoadActorResource("Red Rupee");
+                case ItemID.Purple_Rupee:
+                    return LoadActorResource("Purple Rupee");
+                case ItemID.Orange_Rupee:
+                    return LoadActorResource("Orange Rupee");
+                case ItemID.Piece_of_Heart:
+                case ItemID.Piece_of_Heart_Alternate_Message:
+                    return LoadActorResource("Piece of Heart");
+                case ItemID.Heart_Container:
+                    return LoadActorResource("Heart Container");
+                case ItemID.Silver_Rupee:
+                    return LoadActorResource("Silver Rupee");
+                case ItemID.Small_Key:
+                    return LoadActorResource("Small Key");
+                case ItemID.Fairy:
+                    return LoadActorResource("Recovery Fairy");
+                case ItemID.Small_Magic_Jar:
+                    return LoadActorResource("Small Magic Jar");
+                case ItemID.Large_Magic_Jar:
+                    return LoadActorResource("Large Magic Jar");
+                case ItemID.Bombs_5:
+                    return LoadActorResource("Bombs Pickup");
+                case ItemID.Bombs_10:
+                    return LoadActorResource("Bombs Pickup");
+                case ItemID.Bombs_20:
+                    return LoadActorResource("Bombs Pickup");
+                case ItemID.Bombs_30:
+                    return LoadActorResource("Bombs Pickup");
+                case ItemID.Arrows_10:
+                    return LoadActorResource("Arrows Pickup");
+                case ItemID.Arrows_20:
+                    return LoadActorResource("Arrows Pickup");
+                case ItemID.Arrows_30:
+                    return LoadActorResource("Arrows Pickup");
+                case ItemID.Knights_Crest:
+                    return LoadActorResource("Knights Crest");
+                case ItemID.Joy_Pendant:
+                    return LoadActorResource("Joy Pendant");
+                case ItemID.Recovered_Heros_Sword:
+                    return LoadActorResource("Recovered Hero's Sword");
+                case ItemID.Golden_Feather:
+                    return LoadActorResource("Golden Feather");
+                case ItemID.Boko_Baba_Seed:
+                    return LoadActorResource("Boko Baba Seed");
+                case ItemID.Skull_Necklace:
+                    return LoadActorResource("Skull Necklace");
+                case ItemID.Green_Chu_Jelly:
+                    return LoadActorResource("Green Chu Blob");
+                case ItemID.Blue_Chu_Jelly:
+                    return LoadActorResource("Blue Chu Blob");
+                case ItemID.Red_Chu_Jelly:
+                    return LoadActorResource("Red Chu Blob");
+                case ItemID.Bombs:
+                    return LoadActorResource("Bombs Ability");
+                case ItemID.Big_Key:
+                    return LoadActorResource("Big Key");
+                case ItemID.Town_Flower:
+                    return LoadActorResource("Town Flower");
+                case ItemID.Sea_Flower:
+                    return LoadActorResource("Sea Flower");
+                case ItemID.Exotic_Flower:
+                    return LoadActorResource("Exotic Flower");
+                case ItemID.Heros_Flag:
+                    return LoadActorResource("Hero's Flag");
+                case ItemID.Big_Catch_Flag:
+                    return LoadActorResource("Big Catch Flag");
+                case ItemID.Big_Sale_Flag:
+                    return LoadActorResource("Big Sale Flag");
+                case ItemID.Pinwheel:
+                    return LoadActorResource("Pinwheel");
+                case ItemID.Sickle_Moon_Flag:
+                    return LoadActorResource("Sickle Moon Flag");
+                case ItemID.Skull_Tower_Idol:
+                    return LoadActorResource("Skull Tower Idol");
+                case ItemID.Fountain_Idol:
+                    return LoadActorResource("Fountain Idol");
+                case ItemID.Postman_Statue:
+                    return LoadActorResource("Postman Statue");
+                case ItemID.Shop_Guru_Statue:
+                    return LoadActorResource("Shop Guru Statue");
+                default:
+                    return new List<J3D>();
+            }
+        }
+
         private static J3D LoadModelFromResource(WActorResource.ModelResource res, string archive)
         {
             J3D j3d = null;
