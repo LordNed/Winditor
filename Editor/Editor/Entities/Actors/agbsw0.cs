@@ -32,9 +32,14 @@ namespace WindEditor
             // Note: Not sure if all of the types are cylinders.
             m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new Vector4(1f, 1f, 1f, 1f), true, false);
 
+            // Note: Note sure if all these scales are right.
             if (Type == TypeEnum.agbCSW)
             {
                 VisualScaleMultiplier = new Vector3(8000f / 50f, 8000f / 50f, 8000f / 50f);
+            }
+            else if (Type == TypeEnum.agbB)
+            {
+                VisualScaleMultiplier = new Vector3(100f / 50f, 100f / 50f, 100f / 50f);
             }
             else
             {
