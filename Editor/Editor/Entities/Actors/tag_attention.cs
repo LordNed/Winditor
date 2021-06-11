@@ -15,12 +15,10 @@ namespace WindEditor
             m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new Vector4(0.5f, 0.75f, 1f, 1f));
             if (Name == "AttTag")
             {
-                Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X);
                 m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new Vector4(0.5f, 0.75f, 1f, 1f), true, false);
             }
             else if (Name == "AttTagB")
             {
-                Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X);
                 m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new Vector4(0.5f, 0.75f, 1f, 1f), true, false);
             }
         }
@@ -28,6 +26,11 @@ namespace WindEditor
         public override void PreSave()
         {
 
+        }
+
+        protected override Vector3 VisualScale
+        {
+            get { return Vector3.Multiply(new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X), VisualScaleMultiplier); }
         }
     }
 }

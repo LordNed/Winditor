@@ -12,14 +12,19 @@ namespace WindEditor
 	{
 		public override void PostLoad()
 		{
-            Transform.LocalScale = new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X);
-			m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1f, 0.5f, 1f, 1f), true, false);
-			m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new OpenTK.Vector4(1f, 0f, 1f, 1f), true, false);
-        }
+			m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new Vector4(1f, 0.5f, 1f, 1f), true, false);
+			m_RegionAreaModel = WResourceManager.LoadObjResource("resources/editor/EditorCylinder.obj", new Vector4(1f, 0f, 1f, 1f), true, false);
+			base.PostLoad();
+		}
 
 		public override void PreSave()
 		{
 
 		}
-    }
+
+		protected override Vector3 VisualScale
+		{
+			get { return Vector3.Multiply(new Vector3(Transform.LocalScale.X, Transform.LocalScale.Y, Transform.LocalScale.X), VisualScaleMultiplier); }
+		}
+	}
 }
