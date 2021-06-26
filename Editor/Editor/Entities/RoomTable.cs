@@ -25,7 +25,7 @@ namespace WindEditor
         }
 
         [WProperty("Room Settings", "Activate Room when Loaded", true, "If this is checked, the room this entry represents will be visible to the player in addition to the current room, and accessible\nby just walking into it, without using a dungeon door. Otherwise, the room will be hidden until the player transitions into it via a dungeon door.")]
-        public bool Unk1
+        public bool ActivateRoomWhenLoaded
         {
             get { return (m_Bitfield & 0x80) != 0; }
             set
@@ -123,6 +123,16 @@ namespace WindEditor
         }
 
         public int Index;
+
+        public RoomTableEntryNode(FourCC fourCC, WWorld world) : base(fourCC, world)
+        {
+            LoadedRoomEntries = new AdvancedBindingList<RoomTableRoomSettings>();
+
+            var room_entry = new RoomTableRoomSettings();
+            room_entry.ActivateRoomWhenLoaded = true;
+            room_entry.Unk2 = true;
+            LoadedRoomEntries.Add(room_entry);
+        }
 
         public RoomTableEntryNode(FourCC fourCC, WWorld world, EndianBinaryReader reader) : base(fourCC, world)
         {

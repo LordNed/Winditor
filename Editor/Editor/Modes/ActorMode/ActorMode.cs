@@ -539,6 +539,14 @@ namespace WindEditor.Editor.Modes
                         newNode.PostLoad();
                     }
                 }
+                else if (grpNode.FourCC == FourCC.RTBL)
+                {
+                    RoomTableEntryNode rtbl_entry = new RoomTableEntryNode(grpNode.FourCC, World);
+                    rtbl_entry.Index = grpNode.Count();
+                    newNode = rtbl_entry;
+                    newNode.SetParent(grpNode);
+                    newNode.PostLoad();
+                }
                 else
                 {
                     Type newObjType = FourCCConversion.GetTypeFromEnum(grpNode.FourCC);
