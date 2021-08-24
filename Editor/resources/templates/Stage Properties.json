@@ -74,6 +74,15 @@
       "DataType": "Integer"
     },
     {
+      "Name": "Default Time of Day",
+      "ValueSource": "Parameters3",
+      "Mask": 0x0000FF00,
+      "Hidden": false,
+      "Category": "Stage Properties",
+      "ToolTip": "This stage's default time of day, in hours (0-24).\nIf you don't want to specify a default time, set this to a negative number.\nValues from 25-127 are invalid, and will cause the stage's colors to look random and corrupted.",
+      "DataType": "SignedInteger"
+    },
+    {
       "Name": "Stage Type",
       "ValueSource": "Parameters3",
       "Mask": 0x00070000,

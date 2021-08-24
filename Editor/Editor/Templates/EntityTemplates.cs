@@ -3812,6 +3812,27 @@ namespace WindEditor
 				OnPropertyChanged("Unknown3");
 			}
 		}
+
+		[WProperty("Stage Properties", "Default Time of Day", true, "This stage's default time of day, in hours (0-24).\nIf you don't want to specify a default time, set this to a negative number.\nValues from 25-127 are invalid, and will cause the stage's colors to look random and corrupted.", SourceScene.Room)]
+		public int DefaultTimeofDay
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters3 & 0x0000FF00) >> 8);
+				if (value_as_int > 127) {
+					return value_as_int - 256;
+				} else {
+					return value_as_int;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters3 = (int)(m_Parameters3 & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("DefaultTimeofDay");
+			}
+		}
 		public enum StageTypeEnum
 		{
 			Unknown_0 = 0,
