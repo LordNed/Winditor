@@ -17,12 +17,12 @@
       }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Sight Range (Hundreds)",
       "ValueSource": "Parameters",
       "Mask": 0x0000003E,
       "Hidden": false,
       "Category": "Coffin",
-      "ToolTip": "",
+      "ToolTip": "This number multiplied by 100 is the range within it will notice Link and open up by itself. Can be set to 0 so it never opens up.",
       "DataType": "Integer"
     },
     {

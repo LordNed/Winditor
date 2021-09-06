@@ -2882,21 +2882,67 @@ namespace WindEditor
 	public partial class dai : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum EventRegisterforPlacedItemIDEnum
+		{
+			Event_register_0xF8FF = 0,
+			Event_register_0xF7FF = 1,
+			Event_register_0xF6FF = 2,
+			Event_register_0xF5FF = 3,
+			Event_register_0xF4FF = 4,
+			Event_register_0xF3FF = 5,
+			Event_register_0xF2FF = 6,
+			Event_register_0xF1FF = 7,
+			Event_register_0xF0FF = 8,
+			Event_register_0xEFFF = 9,
+			Event_register_0xEEFF = 10,
+			Event_register_0xEDFF = 11,
+			Event_register_0xECFF = 12,
+			Event_register_0xEBFF = 13,
+			Event_register_0xEAFF = 14,
+			Event_register_0xE9FF = 15,
+			Event_register_0xE8FF = 16,
+			Event_register_0xE7FF = 17,
+			Event_register_0xE6FF = 18,
+			Event_register_0xE5FF = 19,
+			Event_register_0xE4FF = 20,
+			Event_register_0xE3FF = 21,
+			Event_register_0xE2FF = 22,
+			Event_register_0xE1FF = 23,
+			Event_register_0xE0FF = 24,
+			Event_register_0xDFFF = 25,
+			Event_register_0xDEFF = 26,
+			Event_register_0xDDFF = 27,
+			Event_register_0xDCFF = 28,
+			Event_register_0xDBFF = 29,
+			Event_register_0xDAFF = 30,
+			Event_register_0xD9FF = 31,
+			Event_register_0xD8FF = 32,
+			Event_register_0xD7FF = 33,
+			Event_register_0xD6FF = 34,
+			Event_register_0xD5FF = 35,
+			Event_register_0xD4FF = 36,
+			Event_register_0xD3FF = 37,
+			Event_register_0xD2FF = 38,
+			Event_register_0xD1FF = 39,
+		}
 
-		[WProperty("dai", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Windfall Island Decorative Item Pedestal", "Event Register for Placed Item ID", true, "", SourceScene.Room)]
+		public EventRegisterforPlacedItemIDEnum EventRegisterforPlacedItemID
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(EventRegisterforPlacedItemIDEnum), value_as_int))
+					value_as_int = 0;
+				return (EventRegisterforPlacedItemIDEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("EventRegisterforPlacedItemID");
 			}
 		}
 
@@ -2907,12 +2953,6 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 		}
 	}
 
@@ -13860,21 +13900,162 @@ namespace WindEditor
 	public partial class obj_figure : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum WhichFigureEnum
+		{
+			Aryll = 0,
+			Links_Grandma = 1,
+			SueBelle = 2,
+			Sturgeon = 3,
+			Orca = 4,
+			Abe = 5,
+			Rose = 6,
+			Mesa = 7,
+			Joel = 8,
+			Zill = 9,
+			Jabun = 10,
+			Wild_Pig = 11,
+			Seagull = 12,
+			Crab = 13,
+			Tott = 14,
+			Mila = 15,
+			Milas_Father = 16,
+			Maggie = 17,
+			Maggies_Father = 18,
+			BombMaster_Cannon = 19,
+			The_Potion_Master_Doc_Bandam = 20,
+			The_Pictographer_Lenzo = 21,
+			The_Shop_Guru_Zunari = 22,
+			The_Joyful_Teacher_Mrs_Marie = 23,
+			Windfalls_Gang_of_Boys_The_Killer_Bees = 24,
+			Potova_and_Joanna = 25,
+			Anton = 26,
+			Kreeb = 27,
+			Kamo = 28,
+			Gillian = 29,
+			Linda = 30,
+			Sam = 31,
+			Gossack = 32,
+			Garrickson = 33,
+			Pompie_and_Vera = 34,
+			Missy = 35,
+			Minenco = 36,
+			Gummy_the_Sailor = 37,
+			Kane_the_Sailor = 38,
+			Dampa_the_Sailor = 39,
+			Candy_the_Sailor = 40,
+			Tetra = 41,
+			Gonzo = 42,
+			Senza = 43,
+			Nudge = 44,
+			Zuko = 45,
+			Niko = 46,
+			Mako = 47,
+			Tingle = 48,
+			Ankle = 49,
+			Knuckle = 50,
+			David_Jr = 51,
+			Fishman = 52,
+			Traveling_Merchants = 53,
+			Old_Man_Ho_Ho = 54,
+			Beedle = 55,
+			Salvatore = 56,
+			Loot_the_Sailor = 57,
+			Salvage_Corp = 58,
+			Fairy = 59,
+			Great_Fairy = 60,
+			Queen_of_Fairies = 61,
+			Princess_Zelda = 62,
+			King_of_Hyrule = 63,
+			Link_and_the_King_of_Red_Lions = 64,
+			Medli = 65,
+			Komali = 66,
+			The_Rito_Chieftain = 67,
+			Quill_the_Postman = 68,
+			Skett_and_Akoot = 69,
+			Kogoli = 70,
+			Ilari = 71,
+			Hoskit = 72,
+			Namali = 73,
+			Basht_and_Bisht = 74,
+			Obli = 75,
+			Willi = 76,
+			Koboli = 77,
+			Pashli = 78,
+			Baito = 79,
+			Valoo = 80,
+			Zephos_and_Cyclos = 81,
+			Laruto = 82,
+			Makar = 83,
+			Olivio = 84,
+			Aldo = 85,
+			Oakin = 86,
+			Drona = 87,
+			Irch = 88,
+			Rown = 89,
+			Hollo = 90,
+			Elma = 91,
+			Linder = 92,
+			Deku_Tree = 93,
+			Carlov_the_Sculptor = 94,
+			Manny = 95,
+			Fado = 96,
+			Bokoblin = 97,
+			Miniblin = 98,
+			ChuChu = 99,
+			Rat = 100,
+			Keese_and_Fire_Keese = 101,
+			Magtail = 102,
+			Kargaroc = 103,
+			Peahat = 104,
+			Boko_Baba = 105,
+			Morth = 106,
+			Red_Bubble_and_Blue_Bubble = 107,
+			Floor_Master = 108,
+			Armos = 109,
+			Armos_Knight = 110,
+			Poe = 111,
+			ReDead = 112,
+			Octorok = 113,
+			Seahat = 114,
+			Gyorg = 115,
+			Moblin = 116,
+			Mothula = 117,
+			Darknut = 118,
+			Shield_Darknut = 119,
+			Mighty_Darknut = 120,
+			Phantom_Ganon = 121,
+			Stalfos = 122,
+			Wizzrobe = 123,
+			Miniboss_Wizzrobe = 124,
+			Big_Octo = 125,
+			Gohma = 126,
+			Kalle_Demos = 127,
+			Gohdan_The_Great_Arbiter = 128,
+			The_Monstrous_Helmaroc_King = 129,
+			Jalhalla_Protector_of_the_Seal = 130,
+			Molgera_Protector_of_the_Seal = 131,
+			Puppet_Ganon = 132,
+			Ganondorf = 133,
+		}
 
-		[WProperty("obj_figure", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("obj_figure", "Which Figure", true, "", SourceScene.Room)]
+		public WhichFigureEnum WhichFigure
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(WhichFigureEnum), value_as_int))
+					value_as_int = 0;
+				return (WhichFigureEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("WhichFigure");
+				UpdateModel();
 			}
 		}
 
@@ -13885,12 +14066,6 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
 		}
 	}
 
@@ -15605,8 +15780,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Coffin", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Coffin", "Sight Range (Hundreds)", true, "This number multiplied by 100 is the range within it will notice Link and open up by itself. Can be set to 0 so it never opens up.", SourceScene.Room)]
+		public int SightRangeHundreds
 		{ 
 			get
 			{
@@ -15618,7 +15793,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003E | (value_as_int << 1 & 0x0000003E));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SightRangeHundreds");
 			}
 		}
 
@@ -15700,7 +15875,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_2 = -1;
+			SightRangeHundreds = -1;
 			Unknown_3 = -1;
 			OpenedSwitch = -1;
 			UnusedSwitch = -1;

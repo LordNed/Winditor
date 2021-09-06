@@ -256,19 +256,35 @@ namespace WindEditor
             return models;
         }
 
-        public static J3D LoadModelFromVFS(VirtualFilesystemDirectory fs, string path)
+        public static J3D LoadModelFromVFS(VirtualFilesystemDirectory fs, string path = null, ushort? fileID = null)
         {
+            if (path == null && fileID == null)
+            {
+                throw new ArgumentException("Must specify either file path or file ID when loading a model from an archive.", "path");
+            }
+
             TSharedRef<J3D> existRef = null;//m_j3dList.Find(x => string.Compare(x.FilePath, arc_and_file_path, StringComparison.InvariantCultureIgnoreCase) == 0);
 
-            J3D model = new J3D(path);
+            VirtualFilesystemFile file;
+            if (fileID != null)
+            {
+                file = fs.FindByID((ushort)fileID);
+            } else
+            {
+                file = fs.GetFileAtPath(path);
+            }
 
-            VirtualFilesystemFile file = fs.GetFileAtPath(path);
+            // This isn't actually a relative path, just the flat filename.
+            // Shouldn't actually matter though, filenames in RARCs must be unique even in completely different foldes.
+            string fileRelativePath = file.NameWithExtension;
+
+            J3D model = new J3D(fileRelativePath);
 
             using (EndianBinaryReader reader = new EndianBinaryReader(file.Data, Endian.Big))
                 model.LoadFromStream(reader);
 
             existRef = new TSharedRef<J3D>();
-            existRef.FilePath = fs.Name + '/' + path;
+            existRef.FilePath = fs.Name + '/' + fileRelativePath;
             existRef.Asset = model;
             existRef.ReferenceCount++;
 
