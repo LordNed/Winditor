@@ -2,7 +2,9 @@
 		string[] ItemEnumDataTypeNames = {"ItemID", "DroppedItemID", "OnlyTableDroppedItemID"};
 		string EscapeIdentifier(string input)
 		{
-			return Regex.Replace(input, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+			string output = Regex.Replace(input, @"&", "and", RegexOptions.IgnoreCase);
+			output = Regex.Replace(output, @"[^a-z0-9_]", "", RegexOptions.IgnoreCase);
+			return output;
 		}
 		string EscapeStringLiteral(string input)
 		{
