@@ -26,22 +26,23 @@
         "Svsp": "Salvage Corp Ship",
       }
     },
+    
     {
-      "Name": "Unknown_2",
+      "Name": "Interior Room Number",
       "ValueSource": "Parameters",
       "Mask": 0x000003F0,
       "Hidden": false,
-      "Category": "obj_ikada",
-      "ToolTip": "",
+      "Category": "Rafts, Beedle, and Submarines",
+      "ToolTip": "Which room of the destination stage to take the player into when they enter the ship.\n\nWhat the destination stage is depends on the Exit Index specified in the ship's DZB collision file.\nIf the Exit Index is 62, the destination stage will be 'Obshop' (Beedle's Shop Ship).\nIf the Exit Index is 59, the destination stage will be 'Abship' (Submarines).",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Interior Spawn ID",
       "ValueSource": "Parameters",
       "Mask": 0x0003FC00,
       "Hidden": false,
-      "Category": "obj_ikada",
-      "ToolTip": "",
+      "Category": "Rafts, Beedle, and Submarines",
+      "ToolTip": "Which spawn ID of the room in destination stage to spawn the player at when they enter the ship.\n\nWhat the destination stage is depends on the Exit Index specified in the ship's DZB collision file.\nIf the Exit Index is 62, the destination stage will be 'Obshop' (Beedle's Shop Ship).\nIf the Exit Index is 59, the destination stage will be 'Abship' (Submarines).",
       "DataType": "Integer"
     },
     {
@@ -49,7 +50,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x03FC0000,
       "Hidden": false,
-      "Category": "obj_ikada",
+      "Category": "Rafts, Beedle, and Submarines",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -58,7 +59,7 @@
       "ValueSource": "XRotation",
       "Mask": 0x00FF,
       "Hidden": false,
-      "Category": "obj_ikada",
+      "Category": "Rafts, Beedle, and Submarines",
       "ToolTip": "",
       "DataType": "Integer"
     },
@@ -67,10 +68,11 @@
       "ValueSource": "XRotation",
       "Mask": 0xFF00,
       "Hidden": false,
-      "Category": "obj_ikada",
+      "Category": "Rafts, Beedle, and Submarines",
       "ToolTip": "",
       "DataType": "Path"
     },
+    
     {
       "Name": "Salvage Corp Path to Follow",
       "ValueSource": "Parameters",

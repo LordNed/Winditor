@@ -58,7 +58,7 @@ namespace WindEditor
 			int modelFileID;
 			int modelArcIndex;
 
-			int figurineIndex = (int)WhichFigure;
+			int figurineIndex = (int)WhichFigurine;
 
 			string figurine_rel_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "rels/d_a_obj_figure.rel");
 			MemoryStream figurine_rel_data = null;

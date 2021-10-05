@@ -13900,7 +13900,7 @@ namespace WindEditor
 	public partial class obj_figure : Actor
 	{
 		// Auto-Generated Properties from Templates
-		public enum WhichFigureEnum
+		public enum WhichFigurineEnum
 		{
 			Aryll = 0,
 			Links_Grandma = 1,
@@ -14039,22 +14039,22 @@ namespace WindEditor
 		}
 
 
-		[WProperty("obj_figure", "Which Figure", true, "", SourceScene.Room)]
-		public WhichFigureEnum WhichFigure
+		[WProperty("Figurine", "Which Figurine", true, "", SourceScene.Room)]
+		public WhichFigurineEnum WhichFigurine
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				if (!Enum.IsDefined(typeof(WhichFigureEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(WhichFigurineEnum), value_as_int))
 					value_as_int = 0;
-				return (WhichFigureEnum)value_as_int;
+				return (WhichFigurineEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("WhichFigure");
+				OnPropertyChanged("WhichFigurine");
 				UpdateModel();
 			}
 		}
@@ -15453,8 +15453,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Rafts, Beedle, and Submarines", "Interior Room Number", true, "Which room of the destination stage to take the player into when they enter the ship.\n\nWhat the destination stage is depends on the Exit Index specified in the ship's DZB collision file.\nIf the Exit Index is 62, the destination stage will be 'Obshop' (Beedle's Shop Ship).\nIf the Exit Index is 59, the destination stage will be 'Abship' (Submarines).", SourceScene.Room)]
+		public int InteriorRoomNumber
 		{ 
 			get
 			{
@@ -15466,12 +15466,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000003F0 | (value_as_int << 4 & 0x000003F0));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("InteriorRoomNumber");
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Rafts, Beedle, and Submarines", "Interior Spawn ID", true, "Which spawn ID of the room in destination stage to spawn the player at when they enter the ship.\n\nWhat the destination stage is depends on the Exit Index specified in the ship's DZB collision file.\nIf the Exit Index is 62, the destination stage will be 'Obshop' (Beedle's Shop Ship).\nIf the Exit Index is 59, the destination stage will be 'Abship' (Submarines).", SourceScene.Room)]
+		public int InteriorSpawnID
 		{ 
 			get
 			{
@@ -15483,11 +15483,11 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("InteriorSpawnID");
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_5", true, "", SourceScene.Room)]
+		[WProperty("Rafts, Beedle, and Submarines", "Unknown_5", true, "", SourceScene.Room)]
 		public int Unknown_5
 		{ 
 			get
@@ -15504,7 +15504,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Unknown_6", true, "", SourceScene.Room)]
+		[WProperty("Rafts, Beedle, and Submarines", "Unknown_6", true, "", SourceScene.Room)]
 		public int Unknown_6
 		{ 
 			get
@@ -15521,7 +15521,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_ikada", "Path to Follow", true, "", SourceScene.Room)]
+		[WProperty("Rafts, Beedle, and Submarines", "Path to Follow", true, "", SourceScene.Room)]
 		public Path_v2 PathtoFollow
 		{ 
 			get
@@ -15595,8 +15595,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			InteriorRoomNumber = -1;
+			InteriorSpawnID = -1;
 			Unknown_5 = -1;
 			Unknown_6 = -1;
 			PathtoFollow = null;
@@ -18886,8 +18886,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_tntrap", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_tntrap", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		public int EnableSpawnSwitch
 		{ 
 			get
 			{
@@ -18899,12 +18899,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("EnableSpawnSwitch");
 			}
 		}
 
-		[WProperty("obj_tntrap", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_tntrap", "Switch to Set", true, "", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -18916,22 +18916,26 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SwitchtoSet");
 			}
 		}
 
 		[WProperty("obj_tntrap", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		public bool Unknown_3
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00010000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
 			}
@@ -18966,9 +18970,8 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
+			EnableSpawnSwitch = -1;
+			SwitchtoSet = -1;
 			Unknown_4 = -1;
 		}
 	}

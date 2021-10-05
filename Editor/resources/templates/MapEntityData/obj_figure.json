@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Which Figure",
+      "Name": "Which Figurine",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "obj_figure",
+      "Category": "Figurine",
       "ToolTip": "",
       "DataType": "Enum", // 134-255 all default to 0.
       "EnumValues": {

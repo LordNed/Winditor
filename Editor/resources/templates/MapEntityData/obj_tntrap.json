@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Enable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
@@ -12,7 +12,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
@@ -27,7 +27,8 @@
       "Hidden": false,
       "Category": "obj_tntrap",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Boolean",
+      "BooleanNonDefaults": [0]
     },
     {
       "Name": "Unknown_4",
