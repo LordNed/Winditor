@@ -1,7 +1,7 @@
 # Winditor
 A map editor for The Legend of Zelda: The Wind Waker!
 
-Winditor contains a map editor, text editor, event editor, and various other features. For more details about Winditor and how to use it, refer to [this site](https://github.com/LordNed/Winditor/).
+Winditor contains a map editor, text editor, event editor, and various other features. For more details about Winditor and how to use it, refer to [this site](https://lordned.github.io/Winditor/).
 
 Winditor currently only supports Microsoft Windows.
 
