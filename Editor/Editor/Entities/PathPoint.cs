@@ -50,6 +50,8 @@ namespace WindEditor
 
         override protected void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            base.VisibleDOMNode_PropertyChanged(sender, e);
+
             //if (e.PropertyName == "NextNode")
             //    PostLoad();
         }
