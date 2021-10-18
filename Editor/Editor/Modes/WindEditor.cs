@@ -174,6 +174,9 @@ namespace WindEditor
                 Multiselect = true,
                 ShowPlacesList = true
             };
+			ofd.Filters.Add(new CommonFileDialogFilter("RARC Archives", ".arc"));
+			ofd.Filters.Add(new CommonFileDialogFilter("All Files", ".*"));
+
             if (WSettingsManager.GetSettings().LastStagePath.FilePath != "")
             {
                 ofd.InitialDirectory = WSettingsManager.GetSettings().LastStagePath.FilePath;
