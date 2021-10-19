@@ -24,6 +24,13 @@
         "ikadaS": "Submarine",
         "ikada_u": "Beedle's Special Shop Ship",
         "Svsp": "Salvage Corp Ship",
+      },
+      "TypeSpecificCategories": {
+        "Raft": ["Rafts, Beedle, and Submarines"],
+        "Beedle's Shop Ship": ["Rafts, Beedle, and Submarines"],
+        "Submarine": ["Rafts, Beedle, and Submarines"],
+        "Beedle's Special Shop Ship": ["Rafts, Beedle, and Submarines"],
+        "Salvage Corp Ship": ["Salvage Corp Ship"],
       }
     },
     

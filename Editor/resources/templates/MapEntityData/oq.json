@@ -23,6 +23,10 @@
       "DefaultsByActorName": {
         "Oq": "Freshwater Octorok",
         "Oqw": "Saltwater Octorok that shoots at a certain range",
+      },
+      "TypeSpecificCategories": {
+        "Freshwater Octorok": ["Freshwater Octorok"],
+        "Saltwater Octorok spawner": ["Saltwater Octorok Spawner"],
       }
     },
     {

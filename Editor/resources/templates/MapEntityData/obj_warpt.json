@@ -23,6 +23,13 @@
         "Warpts1": "First in cycle",
         "Warpts2": "Second in cycle",
         "Warpts3": "Third in cycle",
+      },
+      "TypeSpecificCategories": {
+        "Locked noncyclic pot": ["Noncyclic Warp Pot"],
+        "Unlocked noncyclic pot": ["Noncyclic Warp Pot"],
+        "First in cycle": ["Cyclic Warp Pot"],
+        "Second in cycle": ["Cyclic Warp Pot"],
+        "Third in cycle": ["Cyclic Warp Pot"],
       }
     },
     {

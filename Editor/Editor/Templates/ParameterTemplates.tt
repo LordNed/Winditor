@@ -35,6 +35,7 @@
 		Dictionary<string, string> paramTypes = new Dictionary<string, string>();
 		List<string> defaultValueSetters = new List<string>();
 		Dictionary<string, List<string>> nameSpecificDefaultValueSetters = new Dictionary<string, List<string>>();
+		var typeSpecificCategories = new Dictionary<string, Dictionary<object, List<string>>>();
 
 		if (descriptor.ParameterFields == null)
 			descriptor.ParameterFields = new ActorBitfieldDescriptor[0];
@@ -193,6 +194,18 @@
 						nameSpecificDefaultValueSetters[entry.Key] = new List<string>();
 
 					nameSpecificDefaultValueSetters[entry.Key].Add(GetDefaultValueSetter(fieldName, entry.Value, field.DataType, dataType));
+				}
+			}
+
+			if (field.TypeSpecificCategories != null) {
+				if (!typeSpecificCategories.ContainsKey(fieldName)) {
+					typeSpecificCategories[fieldName] = new Dictionary<object, List<string>>();
+				}
+				foreach (var item in field.TypeSpecificCategories)
+				{
+					string typeName = EscapeEnumName(item.Key);
+					string[] catNames = item.Value;
+					typeSpecificCategories[fieldName][typeName] = catNames.ToList();
 				}
 			}
 #>

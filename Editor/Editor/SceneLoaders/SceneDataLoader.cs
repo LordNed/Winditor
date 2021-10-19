@@ -229,6 +229,9 @@ namespace WindEditor
         [JsonProperty("DefaultsByActorName")]
         public Dictionary<string, object> DefaultsByActorName { get; set; }
 
+        [JsonProperty("TypeSpecificCategories")]
+        public Dictionary<string, string[]> TypeSpecificCategories { get; set; }
+
         public uint Length;
 
         [JsonConstructor]
@@ -239,7 +242,8 @@ namespace WindEditor
             Dictionary<int, string> Vals, int EnumDefault,
             bool BoolDefault, int[] BoolNonDefaults,
             bool UpdModel,
-            Dictionary<string, object> DefaultsByName
+            Dictionary<string, object> DefaultsByName,
+            Dictionary<string, string[]> TypeSpecificCats
         )
         {
             FieldName = Name;
@@ -256,6 +260,7 @@ namespace WindEditor
             BooleanNonDefaults = BoolNonDefaults;
             UpdateModel = UpdModel;
             DefaultsByActorName = DefaultsByName;
+            TypeSpecificCategories = TypeSpecificCats;
         }
     }
 #pragma warning restore 0649

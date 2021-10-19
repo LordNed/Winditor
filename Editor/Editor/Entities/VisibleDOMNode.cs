@@ -1,12 +1,14 @@
 ﻿using JStudio.J3D;
 using OpenTK;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Data;
 using System.Globalization;
 using WindEditor.Collision;
 using System.Linq;
 using System.Reflection;
+using WindEditor.ViewModel;
 
 namespace WindEditor
 {
@@ -107,6 +109,8 @@ namespace WindEditor
         protected List<int> UsedInSwitches = null;
         protected List<int> UsedOutSwitches = null;
 
+        protected Dictionary<string, Dictionary<object, string[]>> TypeSpecificCategories;
+
 		public override void OnConstruction()
 		{
 			base.OnConstruction();
@@ -115,6 +119,8 @@ namespace WindEditor
             m_actorMeshes = new List<J3D>();
             PropertyChanged += VisibleDOMNode_PropertyChanged;
             IsRendered = true;
+
+            TypeSpecificCategories = new Dictionary<string, Dictionary<object, string[]>>();
 
             m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1, 1, 1, 1));
         }
@@ -239,6 +245,41 @@ namespace WindEditor
             UsedOutSwitches = outSwitches;
         }
 
+        public void HideTypeSpecificCategories()
+        {
+            // Hides category rows belonging to parameter categories not relevant for the current type parameter (and shows ones that are).
+            foreach (var entry in TypeSpecificCategories)
+            {
+                var typePropName = entry.Key;
+                var propValue = GetType().GetProperty(typePropName).GetValue(this, null);
+
+                var allCats = TypeSpecificCategories[typePropName].Values.SelectMany(x => x).Distinct();
+                string[] catNames;
+                if (TypeSpecificCategories[typePropName].ContainsKey(propValue))
+                    catNames = TypeSpecificCategories[typePropName][propValue];
+                else
+                    catNames = new string[0];
+
+                var catsNotForThisType = new List<string>(allCats);
+                foreach (string catName in catNames)
+                {
+                    catsNotForThisType.Remove(catName);
+                }
+
+                foreach (DictionaryEntry cat_entry in World.ActorMode.DetailsViewModel.Categories)
+                {
+                    var cat_name = cat_entry.Key;
+                    var cat_row = (WDetailsCategoryRowViewModel)cat_entry.Value;
+                    cat_row.IsVisible = !catsNotForThisType.Contains(cat_name);
+                }
+            }
+
+            // Force all properties to update.
+            // This is in case any parameters from one of the actor's types overlap those of a different one.
+            // We want the new type's parameters to match what the bitfield currently is, not what it originally was when loaded.
+            OnPropertyChanged(string.Empty);
+        }
+
         protected virtual void VisibleDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             // Clear the cache of which switches this object uses any time any of its properties are changed so the list is recalculated.
@@ -248,6 +289,8 @@ namespace WindEditor
 
             if (e.PropertyName == "Name")
                 PostLoad();
+            if (IsSelected && (e.PropertyName == "IsSelected" || TypeSpecificCategories.ContainsKey(e.PropertyName)))
+                HideTypeSpecificCategories();
         }
 
 		#region IRenderable

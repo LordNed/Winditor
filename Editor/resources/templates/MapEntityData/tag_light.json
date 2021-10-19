@@ -21,6 +21,11 @@
         "LTag0": "Invisible Light Region",
         "LTag1": "Light Beam",
         "LTagR0": "Light Detector",
+      },
+      "TypeSpecificCategories": {
+        "Invisible Light Region": ["Light Region"],
+        "Light Beam": [],
+        "Light Detector": ["Light Detector"],
       }
     },
     {

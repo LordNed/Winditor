@@ -189,6 +189,12 @@ namespace WindEditor.ViewModel
             }
 
             Categories = new_details;
+
+			if (obj is VisibleDOMNode)
+			{
+				var entity = (VisibleDOMNode)obj;
+				entity.HideTypeSpecificCategories();
+			}
         }
 
         public static List<WDetailSingleRowViewModel> GeneratePropertyRows(Type type)

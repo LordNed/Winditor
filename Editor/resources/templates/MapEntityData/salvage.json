@@ -26,6 +26,13 @@
         "SalvagN": "Night Only",
         "SalvagE": "Octorok Vase",
         "SalvFM": "Full Moon Night Only",
+      },
+      "TypeSpecificCategories": {
+        "Needs Chart": ["Chart Salvage Point"],
+        "Checks Switch": ["Switch Salvage Point", "Light Ring Salvage Point"],
+        "Normal Light Ring": ["Light Ring Salvage Point"],
+        "Night Only": ["Light Ring Salvage Point"],
+        "Full Moon Night Only": ["Full Moon Salvage Point"],
       }
     },
     {
@@ -38,7 +45,7 @@
       "DataType": "ItemID"
     },
     {
-      "Name": "Salvaged Object Type",
+      "Name": "Unknown Salvaged Object Type", // passed as param 0x0000FF00 to the STBox created for the chest
       "ValueSource": "Parameters",
       "Mask": 0x0000000F,
       "Hidden": false,

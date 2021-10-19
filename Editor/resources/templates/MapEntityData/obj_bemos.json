@@ -20,6 +20,11 @@
         "Hmos1": "Blue Beamos",
         "Hmos2": "Red Beamos",
         "Hmos3": "Laser Barrier",
+      },
+      "TypeSpecificCategories": {
+        "Blue Beamos": ["Beamos"],
+        "Red Beamos": ["Beamos", "Red Beamos"],
+        "Laser Barrier": ["Laser Barrier"],
       }
     },
     {

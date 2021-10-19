@@ -63,6 +63,27 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			Transform.UsesYRotation = <#= descriptor.ParameterFields.Any(x => x.ValueSource == "YRotation") ? "false" : "true" #>;
 			Transform.UsesZRotation = <#= descriptor.ParameterFields.Any(x => x.ValueSource == "ZRotation") ? "false" : "true" #>;
 			Transform.RotationOrder = "<#= descriptor.RotationOrder #>";
+<#
+				foreach (KeyValuePair<string, Dictionary<object, List<string>>> fieldEntry in typeSpecificCategories) {
+					var typeFieldName = fieldEntry.Key;
+					var typeValueCategories = fieldEntry.Value;
+#>
+			TypeSpecificCategories["<#= typeFieldName #>"] = new Dictionary<object, string[]>();
+<#
+					foreach (KeyValuePair<object, List<string>> typeValueEntry in typeValueCategories) {
+						var enumValName = typeValueEntry.Key;
+						var categoryNames = typeValueEntry.Value;
+
+						string list_initializer = "";
+						if (categoryNames.Count > 0) {
+							list_initializer = '"' + String.Join("\", \"", categoryNames) + '"';
+						}
+#>
+			TypeSpecificCategories["<#= typeFieldName #>"][<#= typeFieldName #>Enum.<#= enumValName #>] = new string[] { <#= list_initializer #> };
+<#
+					}
+				}
+#>
 		}
 <#
 		if (defaultValueSetters.Count > 0 || nameSpecificDefaultValueSetters.Count > 0) {

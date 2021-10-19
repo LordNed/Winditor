@@ -13,6 +13,13 @@ namespace WindEditor
 		{
 			UpdateModel();
 			base.PostLoad();
+
+            TypeSpecificCategories["Name"] = new Dictionary<object, string[]>();
+            TypeSpecificCategories["Name"]["Bm1"] = new string[] { "Quill (Bm1)" };
+            TypeSpecificCategories["Name"]["Bm2"] = new string[] { "Skett and Akoot (Bm2)" };
+            TypeSpecificCategories["Name"]["Bm3"] = new string[] { "Basht and Bisht and Hoskit (Bm3)" };
+            TypeSpecificCategories["Name"]["Bm4"] = new string[] { "Ilari and Pashli (Bm4)" };
+            TypeSpecificCategories["Name"]["Bm5"] = new string[] { "Namali and Kogoli (Bm5)" };
 		}
 
 		public override void PreSave()

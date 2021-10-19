@@ -12951,6 +12951,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Blue_Beamos] = new string[] { "Beamos" };
+			TypeSpecificCategories["Type"][TypeEnum.Red_Beamos] = new string[] { "Beamos", "Red Beamos" };
+			TypeSpecificCategories["Type"][TypeEnum.Laser_Barrier] = new string[] { "Laser Barrier" };
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15590,6 +15594,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Raft] = new string[] { "Rafts, Beedle, and Submarines" };
+			TypeSpecificCategories["Type"][TypeEnum.Beedles_Shop_Ship] = new string[] { "Rafts, Beedle, and Submarines" };
+			TypeSpecificCategories["Type"][TypeEnum.Submarine] = new string[] { "Rafts, Beedle, and Submarines" };
+			TypeSpecificCategories["Type"][TypeEnum.Beedles_Special_Shop_Ship] = new string[] { "Rafts, Beedle, and Submarines" };
+			TypeSpecificCategories["Type"][TypeEnum.Salvage_Corp_Ship] = new string[] { "Salvage Corp Ship" };
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19913,6 +19923,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Locked_noncyclic_pot] = new string[] { "Noncyclic Warp Pot" };
+			TypeSpecificCategories["Type"][TypeEnum.Unlocked_noncyclic_pot] = new string[] { "Noncyclic Warp Pot" };
+			TypeSpecificCategories["Type"][TypeEnum.First_in_cycle] = new string[] { "Cyclic Warp Pot" };
+			TypeSpecificCategories["Type"][TypeEnum.Second_in_cycle] = new string[] { "Cyclic Warp Pot" };
+			TypeSpecificCategories["Type"][TypeEnum.Third_in_cycle] = new string[] { "Cyclic Warp Pot" };
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20211,6 +20227,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Freshwater_Octorok] = new string[] { "Freshwater Octorok" };
+			TypeSpecificCategories["Type"][TypeEnum.Saltwater_Octorok_spawner] = new string[] { "Saltwater Octorok Spawner" };
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21267,8 +21286,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Salvage Point", "Salvaged Object Type", true, "", SourceScene.Room)]
-		public int SalvagedObjectType
+		[WProperty("Salvage Point", "Unknown Salvaged Object Type", true, "", SourceScene.Room)]
+		public int UnknownSalvagedObjectType
 		{ 
 			get
 			{
@@ -21280,7 +21299,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
-				OnPropertyChanged("SalvagedObjectType");
+				OnPropertyChanged("UnknownSalvagedObjectType");
 			}
 		}
 
@@ -21398,13 +21417,19 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Needs_Chart] = new string[] { "Chart Salvage Point" };
+			TypeSpecificCategories["Type"][TypeEnum.Checks_Switch] = new string[] { "Switch Salvage Point", "Light Ring Salvage Point" };
+			TypeSpecificCategories["Type"][TypeEnum.Normal_Light_Ring] = new string[] { "Light Ring Salvage Point" };
+			TypeSpecificCategories["Type"][TypeEnum.Night_Only] = new string[] { "Light Ring Salvage Point" };
+			TypeSpecificCategories["Type"][TypeEnum.Full_Moon_Night_Only] = new string[] { "Full Moon Salvage Point" };
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
 			ItemID = ItemID.No_item;
-			SalvagedObjectType = -1;
+			UnknownSalvagedObjectType = -1;
 			Chart = -1;
 			SalvageFlag = -1;
 			DuplicatePlacementID = -1;
@@ -24443,6 +24468,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "YXZ";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Invisible_Light_Region] = new string[] { "Light Region" };
+			TypeSpecificCategories["Type"][TypeEnum.Light_Beam] = new string[] {  };
+			TypeSpecificCategories["Type"][TypeEnum.Light_Detector] = new string[] { "Light Detector" };
 		}
 
 		override public void PopulateDefaultProperties()
