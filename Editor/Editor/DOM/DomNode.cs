@@ -151,6 +151,26 @@ namespace WindEditor
             get { return m_world; }
         }
 
+		public WScene Scene
+		{
+			get
+			{
+				WDOMNode curr_node = this;
+				while (curr_node.Parent != null)
+				{
+					curr_node = curr_node.Parent;
+				}
+				if (curr_node is WScene)
+				{
+					return curr_node as WScene;
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
+
         protected ObservableCollection<WDOMNode> m_children;
         protected WWorld m_world;
 
