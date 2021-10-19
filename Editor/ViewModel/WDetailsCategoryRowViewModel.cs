@@ -25,6 +25,32 @@ namespace WindEditor.ViewModel
             }
         }
 
+        public bool IsExpanded
+        {
+            get { return m_IsExpanded; }
+            set
+            {
+                if (value != IsExpanded)
+                {
+                    m_IsExpanded = value;
+                    OnPropertyChanged("IsExpanded");
+                }
+            }
+        }
+
+        public bool IsVisible
+        {
+            get { return m_IsVisible; }
+            set
+            {
+                if (value != IsVisible)
+                {
+                    m_IsVisible = value;
+                    OnPropertyChanged("IsVisible");
+                }
+            }
+        }
+
         public BindingList<WDetailSingleRowViewModel> PropertyRows
         {
             get { return m_PropertyRows; }
@@ -39,6 +65,8 @@ namespace WindEditor.ViewModel
         }
 
         private string m_CategoryName;
+        private bool m_IsExpanded;
+        private bool m_IsVisible;
         private BindingList<WDetailSingleRowViewModel> m_PropertyRows;
 
         public WDetailsCategoryRowViewModel()
@@ -49,6 +77,8 @@ namespace WindEditor.ViewModel
         public WDetailsCategoryRowViewModel(string name)
         {
             CategoryName = name.Replace("_", "__"); // Escape underscores so they're not interpreted access keys.
+            IsExpanded = true;
+            IsVisible = true;
 
             m_PropertyRows = new BindingList<WDetailSingleRowViewModel>();
         }

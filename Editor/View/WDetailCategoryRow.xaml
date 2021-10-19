@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:WindEditor.View"
              xmlns:vm="clr-namespace:WindEditor.ViewModel"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
-        <Expander Header="{Binding Path=CategoryName}" IsExpanded="True">
+        <Expander Header="{Binding Path=CategoryName}" IsExpanded="{Binding Path=IsExpanded}" Visibility="{Binding Path=IsVisible, Converter={StaticResource BoolToVisibilityConverter}}">
             <ItemsControl ItemsSource="{Binding Path=PropertyRows}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
