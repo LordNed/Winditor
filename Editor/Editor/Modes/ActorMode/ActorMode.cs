@@ -458,6 +458,36 @@ namespace WindEditor.Editor.Modes
                 {
                     parentNode = World.Map.FocusedScene.GetChildrenOfType<WDOMLayeredGroupNode>().Find(x => x.FourCC == fourcc);
                 }
+                else if (fourcc == FourCC.PLYR)
+                {
+                    WScene targetScene;
+                    WScene stage = World.Map.SceneList.First(x => x is WStage);
+                    var rooms = World.Map.SceneList.Where(x => x is WRoom);
+                    if (stage.GetChildrenOfType<SpawnPoint>().Count > 0)
+                    {
+                        // If the stage file has any spawns, then room spawns will not work. So always add to the stage in this case.
+                        targetScene = stage;
+                    }
+                    else if (rooms.Any(x => x.GetChildrenOfType<SpawnPoint>().Count > 0))
+                    {
+                        // If the stage has no spawns but at least one of the rooms does, we want to add the new spawn to a room.
+                        // Otherwise, if we added it to the stage, it would break all existing room spawns.
+                        if (World.Map.FocusedScene is WRoom)
+                        {
+                            targetScene = World.Map.FocusedScene;
+                        }
+                        else
+                        {
+                            targetScene = rooms.First();
+                        }
+                    }
+                    else
+                    {
+                        // Otherwise there must not be any spawns in the map yet, so just put it in the scene the player has selected.
+                        targetScene = World.Map.FocusedScene;
+                    }
+                    parentNode = targetScene.GetChildrenOfType<WDOMGroupNode>().Find(x => x.FourCC == fourcc);
+                }
                 else
                 {
                     parentNode = World.Map.FocusedScene.GetChildrenOfType<WDOMGroupNode>().Find(x => x.FourCC == fourcc);
@@ -578,6 +608,8 @@ namespace WindEditor.Editor.Modes
             EditorSelection.AddToSelection(newNode);
             World.UndoStack.EndMacro();
 
+            World.Map.FocusedScene = parentNode.Scene; // Focus the scene the new entity was added to (in case it's not the already focused scene).
+            
             OnSelectionChanged(); // Update the right sidebar to show the new entity's properties
         }
 
