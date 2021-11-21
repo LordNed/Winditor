@@ -8030,6 +8030,23 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
+		[WProperty("lod_bg", "Island Index", true, "", SourceScene.Room)]
+		public int IslandIndex
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
+				OnPropertyChanged("IslandIndex");
+			}
+		}
+
 		// Constructor
 		public lod_bg(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
@@ -8037,6 +8054,159 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+		}
+
+		override public void PopulateDefaultProperties()
+		{
+			base.PopulateDefaultProperties();
+			IslandIndex = -1;
+			if (Name == "LOD01") {
+				IslandIndex = 1;
+			}
+			if (Name == "LOD02") {
+				IslandIndex = 2;
+			}
+			if (Name == "LOD03") {
+				IslandIndex = 3;
+			}
+			if (Name == "LOD04") {
+				IslandIndex = 4;
+			}
+			if (Name == "LOD05") {
+				IslandIndex = 5;
+			}
+			if (Name == "LOD06") {
+				IslandIndex = 6;
+			}
+			if (Name == "LOD07") {
+				IslandIndex = 7;
+			}
+			if (Name == "LOD08") {
+				IslandIndex = 8;
+			}
+			if (Name == "LOD09") {
+				IslandIndex = 9;
+			}
+			if (Name == "LOD10") {
+				IslandIndex = 10;
+			}
+			if (Name == "LOD11") {
+				IslandIndex = 11;
+			}
+			if (Name == "LOD12") {
+				IslandIndex = 12;
+			}
+			if (Name == "LOD13") {
+				IslandIndex = 13;
+			}
+			if (Name == "LOD14") {
+				IslandIndex = 14;
+			}
+			if (Name == "LOD15") {
+				IslandIndex = 15;
+			}
+			if (Name == "LOD16") {
+				IslandIndex = 16;
+			}
+			if (Name == "LOD17") {
+				IslandIndex = 17;
+			}
+			if (Name == "LOD18") {
+				IslandIndex = 18;
+			}
+			if (Name == "LOD19") {
+				IslandIndex = 19;
+			}
+			if (Name == "LOD20") {
+				IslandIndex = 20;
+			}
+			if (Name == "LOD21") {
+				IslandIndex = 21;
+			}
+			if (Name == "LOD22") {
+				IslandIndex = 22;
+			}
+			if (Name == "LOD23") {
+				IslandIndex = 23;
+			}
+			if (Name == "LOD24") {
+				IslandIndex = 24;
+			}
+			if (Name == "LOD25") {
+				IslandIndex = 25;
+			}
+			if (Name == "LOD26") {
+				IslandIndex = 26;
+			}
+			if (Name == "LOD27") {
+				IslandIndex = 27;
+			}
+			if (Name == "LOD28") {
+				IslandIndex = 28;
+			}
+			if (Name == "LOD29") {
+				IslandIndex = 29;
+			}
+			if (Name == "LOD30") {
+				IslandIndex = 30;
+			}
+			if (Name == "LOD31") {
+				IslandIndex = 31;
+			}
+			if (Name == "LOD32") {
+				IslandIndex = 32;
+			}
+			if (Name == "LOD33") {
+				IslandIndex = 33;
+			}
+			if (Name == "LOD34") {
+				IslandIndex = 34;
+			}
+			if (Name == "LOD35") {
+				IslandIndex = 35;
+			}
+			if (Name == "LOD36") {
+				IslandIndex = 36;
+			}
+			if (Name == "LOD37") {
+				IslandIndex = 37;
+			}
+			if (Name == "LOD38") {
+				IslandIndex = 38;
+			}
+			if (Name == "LOD39") {
+				IslandIndex = 39;
+			}
+			if (Name == "LOD40") {
+				IslandIndex = 40;
+			}
+			if (Name == "LOD41") {
+				IslandIndex = 41;
+			}
+			if (Name == "LOD42") {
+				IslandIndex = 42;
+			}
+			if (Name == "LOD43") {
+				IslandIndex = 43;
+			}
+			if (Name == "LOD44") {
+				IslandIndex = 44;
+			}
+			if (Name == "LOD45") {
+				IslandIndex = 45;
+			}
+			if (Name == "LOD46") {
+				IslandIndex = 46;
+			}
+			if (Name == "LOD47") {
+				IslandIndex = 47;
+			}
+			if (Name == "LOD48") {
+				IslandIndex = 48;
+			}
+			if (Name == "LOD49") {
+				IslandIndex = 49;
+			}
 		}
 	}
 
