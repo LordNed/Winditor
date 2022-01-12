@@ -21254,6 +21254,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			GuardedAreaRadius = -1;
+			ShouldCheckSwitchToEnableSpawn = false;
 			EnableSpawnSwitch = -1;
 		}
 	}

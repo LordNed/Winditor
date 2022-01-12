@@ -107,7 +107,7 @@
       "Mask": 0x0000FFFF,
       "Hidden": false,
       "Category": "Stage Properties",
-      "ToolTip": "The distance away from the camera actors can get before they are no longer drawn.\nSome actors use this value multiplied to increase the distance for just themself.\nThis is not used when looking through the Telescope or Pictobox, and 'Z Depth Max' will be used instead in that case.",
+      "ToolTip": "The distance away from the camera actors can get before they are no longer drawn.\nSome actors use this value multiplied to increase the distance for just themselves.\nThis is not used when looking through the Telescope or Pictobox, and 'Z Depth Max' will be used instead in that case.",
       "DataType": "Integer"
     },
   ]

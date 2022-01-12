@@ -3865,7 +3865,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Stage Properties", "Base Actor Draw Distance", true, "The distance away from the camera actors can get before they are no longer drawn.\nSome actors use this value multiplied to increase the distance for just themself.\nThis is not used when looking through the Telescope or Pictobox, and 'Z Depth Max' will be used instead in that case.", SourceScene.Room)]
+		[WProperty("Stage Properties", "Base Actor Draw Distance", true, "The distance away from the camera actors can get before they are no longer drawn.\nSome actors use this value multiplied to increase the distance for just themselves.\nThis is not used when looking through the Telescope or Pictobox, and 'Z Depth Max' will be used instead in that case.", SourceScene.Room)]
 		public int BaseActorDrawDistance
 		{ 
 			get

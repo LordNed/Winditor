@@ -34,7 +34,8 @@
       "ToolTip": "If this is checked, the Enable Spawn Switch must be set for the ReDead to spawn.\nIf the Enable Spawn Switch is invalid, then unlike most enemies, this ReDead will never appear instead of always appearing.",
       "DataType": "Boolean",
       "BooleanDefaultValue": false,
-      "BooleanNonDefaults": [0]
+      "BooleanNonDefaults": [0],
+      "Default": false
     },
     {
       "Name": "Enable Spawn Switch",
