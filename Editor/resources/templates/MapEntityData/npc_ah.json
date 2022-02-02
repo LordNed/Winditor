@@ -3,21 +3,33 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Which Message ID",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "npc_ah",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Old Man Ho-Ho",
+      "ToolTip": "Affects which message Old Man Ho-Ho says when you talk to him.\nAlso affects whether Old Man Ho-Ho disappears once a switch is set - see Disable Spawn Switch's tooltip for more information.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Message ID 14001",
+        1: "Message ID 14002",
+        2: "Message ID 14003",
+        3: "Message ID 14004",
+        4: "Message ID 14005",
+        5: "Message ID 14006",
+        6: "Message ID 14007",
+        7: "Message ID 14008",
+        8: "Message ID 14009",
+        9: "Message ID 14010",
+      }
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Disable Spawn Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "npc_ah",
-      "ToolTip": "",
+      "Category": "Old Man Ho-Ho",
+      "ToolTip": "This parameter is only used for the Old Man Ho-Ho who says message 14010.\nThe one that says message 14003 uses a hardcoded disable spawn switch of 108.\nThe one that says message 14006 uses a hardcoded disable spawn switch of 16.",
       "DataType": "Integer"
     }
   ]

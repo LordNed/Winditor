@@ -9172,26 +9172,42 @@ namespace WindEditor
 	public partial class npc_ah : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum WhichMessageIDEnum
+		{
+			Message_ID_14001 = 0,
+			Message_ID_14002 = 1,
+			Message_ID_14003 = 2,
+			Message_ID_14004 = 3,
+			Message_ID_14005 = 4,
+			Message_ID_14006 = 5,
+			Message_ID_14007 = 6,
+			Message_ID_14008 = 7,
+			Message_ID_14009 = 8,
+			Message_ID_14010 = 9,
+		}
 
-		[WProperty("npc_ah", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Old Man Ho-Ho", "Which Message ID", true, "Affects which message Old Man Ho-Ho says when you talk to him.\nAlso affects whether Old Man Ho-Ho disappears once a switch is set - see Disable Spawn Switch's tooltip for more information.", SourceScene.Room)]
+		public WhichMessageIDEnum WhichMessageID
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(WhichMessageIDEnum), value_as_int))
+					value_as_int = 0;
+				return (WhichMessageIDEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("WhichMessageID");
 			}
 		}
 
-		[WProperty("npc_ah", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Old Man Ho-Ho", "Disable Spawn Switch", true, "This parameter is only used for the Old Man Ho-Ho who says message 14010.\nThe one that says message 14003 uses a hardcoded disable spawn switch of 108.\nThe one that says message 14006 uses a hardcoded disable spawn switch of 16.", SourceScene.Room)]
+		public int DisableSpawnSwitch
 		{ 
 			get
 			{
@@ -9203,7 +9219,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("DisableSpawnSwitch");
 			}
 		}
 
@@ -9219,8 +9235,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			DisableSpawnSwitch = -1;
 		}
 	}
 
