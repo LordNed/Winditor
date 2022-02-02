@@ -7,25 +7,30 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "nz",
+      "Category": "Rat",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Type",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "nz",
+      "Category": "Rat",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Rat",
+        1: "Bombchu",
+      },
+      "UpdateModel": true
     },
     {
       "Name": "Unknown_3",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "nz",
+      "Category": "Rat",
       "ToolTip": "",
       "DataType": "Integer"
     }

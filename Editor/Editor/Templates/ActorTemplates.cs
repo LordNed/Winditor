@@ -12071,7 +12071,7 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("nz", "Unknown_1", true, "", SourceScene.Room)]
+		[WProperty("Rat", "Unknown_1", true, "", SourceScene.Room)]
 		public int Unknown_1
 		{ 
 			get
@@ -12087,25 +12087,34 @@ namespace WindEditor
 				OnPropertyChanged("Unknown_1");
 			}
 		}
+		public enum TypeEnum
+		{
+			Rat = 0,
+			Bombchu = 1,
+		}
 
-		[WProperty("nz", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Rat", "Type", true, "", SourceScene.Room)]
+		public TypeEnum Type
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+					value_as_int = 0;
+				return (TypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Type");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("nz", "Unknown_3", true, "", SourceScene.Room)]
+		[WProperty("Rat", "Unknown_3", true, "", SourceScene.Room)]
 		public int Unknown_3
 		{ 
 			get
@@ -12135,7 +12144,6 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
 			Unknown_3 = -1;
 		}
 	}

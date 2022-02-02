@@ -22,7 +22,7 @@ namespace WindEditor
 
         private void UpdateModel()
         {
-            if (Unknown_2 == 1)
+            if (Type == TypeEnum.Bombchu)
             {
                 m_actorMeshes = WResourceManager.LoadActorResource("Bombchu");
             }
