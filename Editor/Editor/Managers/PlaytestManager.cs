@@ -176,12 +176,6 @@ namespace WindEditor
                     File.Copy(filePath, backupPath);
                 }
             }
-
-            foreach (string filePath in m_BackedUpFilePaths)
-            {
-                string backupPath = filePath + ".bak";
-
-            }
         }
 
         /// <summary>
