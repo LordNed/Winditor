@@ -159,7 +159,6 @@ namespace WindEditor
                 m_BackedUpFilePaths.Add(fullPath);
             }
 
-            
             foreach (string filePath in m_BackedUpFilePaths)
             {
                 string backupPath = filePath + ".bak";
