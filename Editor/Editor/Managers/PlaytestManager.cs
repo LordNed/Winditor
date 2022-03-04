@@ -74,18 +74,7 @@ namespace WindEditor
             string map_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", map.MapName);
             map.ExportToDirectory(map_path);
 
-            List<string> filesToBackUp = new List<string> { "sys/main.dol" };
-            if (WSettingsManager.GetSettings().HeapDisplay)
-            {
-                filesToBackUp.Add("sys/boot.bin");
-            }
-
-            m_BackedUpFilePaths = new List<string>();
-            foreach (string filePath in filesToBackUp)
-            {
-                string fullPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, filePath);
-                m_BackedUpFilePaths.Add(fullPath);
-            }
+            MakeBackupSystem();
 
             string dolPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "sys", "main.dol");
 
@@ -119,22 +108,12 @@ namespace WindEditor
                 return;
             }
 
-            foreach (string filePath in m_BackedUpFilePaths)
-            {
-                string backupPath = filePath + ".bak";
-                if (File.Exists(backupPath))
-                {
-                    File.Delete(backupPath);
-                }
-                File.Copy(filePath, backupPath);
-            }
-
             Patch testRoomPatch = JsonConvert.DeserializeObject<Patch>(File.ReadAllText(@"resources\patches\test_room_diff.json"));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x8022D034, new List<byte>(Encoding.ASCII.GetBytes(map.MapName))));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E3, new List<byte>(new byte[] { (byte)spawn_id })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531E7, new List<byte>(new byte[] { (byte)room_no })));
             testRoomPatch.Files[0].Patchlets.Add(new Patchlet(0x800531EB, new List<byte>(new byte[] { (byte)(active_layer - 1) })));
-            
+
             // Starting items list is at 0x8022D03C and can contain a maximum of 256 item IDs
             List<byte> ItemIDs = m_InventorySettings.ViewModel.ItemIDs;
             for (int i = 0; i < ItemIDs.Count; i++)
@@ -165,6 +144,49 @@ namespace WindEditor
             m_DolphinInstance.Exited += OnDolphinExited;
         }
 
+        /// <summary>
+        /// Make backup of system files. (decompiled .iso ROM)
+        /// </summary>
+        private void MakeBackupSystem()
+        {
+            // Make backup of system files
+            List<string> filesToBackUp = new List<string> { "sys/main.dol", "sys/boot.bin" };
+
+            m_BackedUpFilePaths = new List<string>();
+            foreach (string filePath in filesToBackUp)
+            {
+                string fullPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, filePath);
+                m_BackedUpFilePaths.Add(fullPath);
+            }
+
+            
+            foreach (string filePath in m_BackedUpFilePaths)
+            {
+                string backupPath = filePath + ".bak";
+
+                //Solve problem of only .bak existing 
+                if (!File.Exists(filePath) && File.Exists(backupPath))
+                {
+                    File.Move(backupPath, filePath);
+                }
+
+                // make backup
+                if (!File.Exists(backupPath))
+                {
+                    File.Copy(filePath, backupPath);
+                }
+            }
+
+            foreach (string filePath in m_BackedUpFilePaths)
+            {
+                string backupPath = filePath + ".bak";
+
+            }
+        }
+
+        /// <summary>
+        /// Cleanup after playtest
+        /// </summary>
         private void OnDolphinExited(object sender, EventArgs e)
         {
             m_DolphinInstance.Exited -= OnDolphinExited;
