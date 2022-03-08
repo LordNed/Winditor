@@ -74,7 +74,7 @@ namespace WindEditor
             string map_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "stage", map.MapName);
             map.ExportToDirectory(map_path);
 
-            MakeBackupSystem();
+            BackupSystemFiles();
 
             string dolPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "sys", "main.dol");
 
@@ -145,9 +145,9 @@ namespace WindEditor
         }
 
         /// <summary>
-        /// Make backup of system files. (decompiled .iso ROM)
+        /// Make a backup of system files.
         /// </summary>
-        private void MakeBackupSystem()
+        private void BackupSystemFiles()
         {
             // Make backup of system files
             List<string> filesToBackUp = new List<string> { "sys/main.dol", "sys/boot.bin" };
@@ -163,17 +163,18 @@ namespace WindEditor
             {
                 string backupPath = filePath + ".bak";
 
-                //Solve problem of only .bak existing 
+                // If something went wrong and the file got deleted but the backup remains, restore from the backup.
                 if (!File.Exists(filePath) && File.Exists(backupPath))
                 {
                     File.Move(backupPath, filePath);
                 }
 
-                // make backup
-                if (!File.Exists(backupPath))
+                // Make the backup.
+                if (File.Exists(backupPath))
                 {
-                    File.Copy(filePath, backupPath);
+                    File.Delete(backupPath);
                 }
+                File.Copy(filePath, backupPath);
             }
         }
 
