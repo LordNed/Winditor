@@ -37,6 +37,8 @@ namespace WindEditor.ViewModel
 
         public OptionsMenuViewModel()
         {
+            //Load the settings from file
+            WSettingsManager.LoadSettings();
             Settings = WSettingsManager.GetSettings();
         }
 
@@ -73,7 +75,7 @@ namespace WindEditor.ViewModel
 
             // Kind of a hack to reset the state of the settings to
             // before the user opened the window.
-            WSettingsManager.LoadSettings();
+            //WSettingsManager.LoadSettings();
         }
 
         private void CloseOptionsMenuWindow()

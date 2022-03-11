@@ -64,7 +64,7 @@
                 <MenuItem Header="_Open">
                     <MenuItem Header="_Stage..." InputGestureText="Ctrl + O" Command="{Binding Path=WindEditor.OpenProjectCommand}"/>
                     <MenuItem Header="_Room(s)..." InputGestureText="Ctrl + Shift + O" Command="{Binding Path=WindEditor.OpenRoomsCommand}"/>
-                </MenuItem>
+                </MenuItem> 
                 <MenuItem Header="_Save" InputGestureText="Ctrl + S" Command="{Binding Path=WindEditor.ExportProjectCommand}" ToolTip="Outputs RARC archives ready to go into the game."/>
                 <MenuItem Header="Save As..." InputGestureText="Ctrl + Shift + S" Command="{Binding Path=WindEditor.ExportProjectAsCommand}" ToolTip="Outputs RARC archives ready for the game to a specified location."/>
                 <Separator/>
@@ -79,7 +79,7 @@
                 <Separator/>
                 <MenuItem Header="_Close" Command="{Binding Path=WindEditor.CloseProjectCommand}"/>
                 <Separator/>
-                <MenuItem Header="E_xit" Command="{Binding Path=ExitApplicationCommand}"/>
+                <MenuItem Header="_Exit" Command="{Binding Path=ExitApplicationCommand}"/>
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Undo" InputGestureText="Ctrl + Z" Command="{Binding Path=WindEditor.MainWorld.UndoStack.UndoCommand}" >
@@ -145,7 +145,12 @@
                     <MenuItem x:Name="layer_b" Header="Layer B" local:MenuItemExtensions.GroupName="LayerSelect" Click="MenuItem_Click"/>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Name="ToolsMenu" Header="_Tools"/>
+            <MenuItem Name="ToolsMenu" Header="_Tools">
+            </MenuItem>
+            <MenuItem Name="Options" Header="Options">
+                <MenuItem Header="Options (System)" Click="OptionsSystemMenu_Click"/>
+                <MenuItem Header="Options (Input / Key)" Click="OptionsKeyMenu_Click"/>
+            </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Tutorials" Command="{Binding Path=WindEditor.TutorialsCommand}"/>
                 <MenuItem Header="Report an Issue" Command="{Binding Path=WindEditor.IssuesCommand}"/>

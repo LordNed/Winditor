@@ -166,7 +166,7 @@ namespace WindEditor.Editor.Modes
             EditorSelection = new Selection<BindingVector3>(this);
             EditorSelection.OnSelectionChanged += OnSelectionChanged;
 
-            m_SceneCameraOverride = new WCamera();
+            m_SceneCameraOverride = new WCamera(world.KeyProfileLib);
             m_SceneCameraOverride.bEnableUpdates = false;
             m_SceneCameraOverride.AspectRatio = 1.28f;
         }
@@ -558,10 +558,10 @@ namespace WindEditor.Editor.Modes
             {
                 RestoreSceneCamera(view);
             }
-            
+
             UpdateGizmoTransform();
         }
-        
+
         private void OverrideSceneCamera(WSceneView view)
         {
             if (m_bOverrideSceneCamera)
@@ -603,7 +603,7 @@ namespace WindEditor.Editor.Modes
                 }
             }
 
-            results.Sort(delegate(Tuple<float, BindingVector3> x, Tuple<float, BindingVector3> y)
+            results.Sort(delegate (Tuple<float, BindingVector3> x, Tuple<float, BindingVector3> y)
             {
                 return x.Item1.CompareTo(y.Item1);
             });
@@ -649,7 +649,7 @@ namespace WindEditor.Editor.Modes
                 .Subscribe(size => { ArrangeNodes(model); });
 
             model.SelectedNodes.Connect().Subscribe(d => { OnSelectedNodesChanged(d); });
-            
+
 
             m_StaffNodeViews.Add(v);
 
@@ -673,7 +673,7 @@ namespace WindEditor.Editor.Modes
 
             if (view.Outputs.Count > 0 && view.Outputs.Items.First().Editor is VectorValueEditorViewModel vec_model)
             {
-                switch(change.Reason)
+                switch (change.Reason)
                 {
                     case ListChangeReason.Add:
                         EditorSelection.AddToSelection(vec_model.Value[0]);
@@ -698,7 +698,6 @@ namespace WindEditor.Editor.Modes
         private List<BindingVector3> GetCameraVectorProperties()
         {
             List<BindingVector3> vecs = new List<BindingVector3>();
-            bool test = false;
 
             Staff camera = (Staff)SelectedEvent.Actors.ToList().Find(x => x.StaffType == StaffType.Camera);
 
@@ -708,8 +707,11 @@ namespace WindEditor.Editor.Modes
 
                 while (c != null)
                 {
+
+#pragma warning disable CS0219 
                     OpenTK.Vector3 eye_pos = new OpenTK.Vector3();
                     OpenTK.Vector3 target_pos = new OpenTK.Vector3();
+#pragma warning restore CS0219
 
                     Substance eye = c.Properties.Find(x => x.Name.ToLower() == "eye");
                     if (eye != null)

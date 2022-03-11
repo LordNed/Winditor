@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WindEditor.View"
         xmlns:vm="clr-namespace:WindEditor.ViewModel"
         mc:Ignorable="d"
-        Title="Options" Height="350" Width="366.667" Loaded="Window_Loaded">
+        Title="Options" Height="400" Width="380" Loaded="Window_Loaded">
     <Window.DataContext>
         <vm:OptionsMenuViewModel/>
     </Window.DataContext>

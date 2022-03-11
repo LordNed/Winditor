@@ -209,8 +209,8 @@ namespace WindEditor
         }
 
         private WTransform m_parent;
-        private Vector3 m_localPosition;
-        private Vector3 m_localScale;
+        //private Vector3 m_localPosition;
+        //private Vector3 m_localScale;
         private Quaterniond m_localRotation;
 
         /// <summary> Children of this transform. It's marked as private and only accessible via GetEnumerator as we don't want people arbitrarily adding children. </summary>

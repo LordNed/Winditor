@@ -1,13 +1,16 @@
 ﻿using OpenTK;
 using System;
+using WindEditor.Editor.KeyBindings;
+using WindEditor.ViewModel;
 
 namespace WindEditor
 {
     public class WCamera
     {
-        public float MoveSpeed = 1500f;
         public float MouseSensitivity = 20f;
         public WTransform Transform;
+        private readonly float startMoveSpeed = 2000f;
+        private int speedMultiplier;
 
         /// <summary> The far clipping plane distance. </summary>
         public float FarClipPlane
@@ -73,45 +76,42 @@ namespace WindEditor
         private float m_aspectRatio = 16 / 9f;
         private Matrix4 m_projectionMatrix;
 
-        public WCamera()
+        //Key Library
+        private KeyProfilesLibrary m_keyProfilesLib;
+        private KeyCameraProfile m_camProfile;
+
+        public WCamera(KeyProfilesLibrary lib)
         {
+            m_keyProfilesLib = lib;
+            m_camProfile = m_keyProfilesLib.CameraProfiles;
+
             Transform = new WTransform();
             bEnableUpdates = true;
         }
 
         public void Tick(float deltaTime)
         {
-            if (!WInput.GetMouseButton(1) || !bEnableUpdates)
+            if (!bEnableUpdates)
                 return;
 
-            Vector3 moveDir = Vector3.Zero;
-            if (WInput.GetKey(System.Windows.Input.Key.W))
-            {
-                moveDir -= Vector3.UnitZ;
-            }
-            if (WInput.GetKey(System.Windows.Input.Key.S))
-            {
-                moveDir += Vector3.UnitZ;
-            }
-            if (WInput.GetKey(System.Windows.Input.Key.D))
-            {
-                moveDir += Vector3.UnitX;
-            }
-            if (WInput.GetKey(System.Windows.Input.Key.A))
-            {
-                moveDir -= Vector3.UnitX;
-            }
+            // Set correct movement profile
+            m_camProfile.SetInputSettings();
 
-            // If they're holding down the shift key adjust their FOV when they scroll, otherwise adjust move speed.
-            MoveSpeed += WInput.MouseScrollDelta * 100 * deltaTime;
-            MoveSpeed = WMath.Clamp(MoveSpeed, 100, 8000);
+            // Get movement axis
+            Vector3 movementAxis = m_camProfile.Movement();
+
+            // Vars to calculate
+            Vector3 moveDir = Vector3.Zero;
+            float moveSpeed = 0.0f;
+
+            moveDir += movementAxis;
 
             if (WInput.GetMouseButton(1))
             {
                 Rotate(deltaTime, WInput.MouseDelta.X, WInput.MouseDelta.Y);
             }
 
-            float moveSpeed = WInput.GetKey(System.Windows.Input.Key.LeftShift) ? MoveSpeed * 3f : MoveSpeed;
+            moveSpeed = m_camProfile.MovementSpeed(startMoveSpeed);
 
             // Make it relative to the current rotation.
             moveDir = Vector3.Transform(moveDir, Transform.Rotation.ToSinglePrecision());

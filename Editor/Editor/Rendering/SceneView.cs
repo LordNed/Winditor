@@ -3,6 +3,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using WindEditor.Editor.KeyBindings;
 
 namespace WindEditor
 {
@@ -33,14 +34,14 @@ namespace WindEditor
         // To detect redundant calls
         private bool m_hasBeenDisposed = false;
 
-        public WSceneView()
+        public WSceneView(KeyProfilesLibrary lib)
         {
             m_opaqueRenderList = new List<IRenderable>();
             m_transparentRenderList = new List<IRenderable>();
             m_renderablesInFrustum = new List<IRenderable>();
 
             m_viewportRect = new FRect(0, 0, 1f, 1f);
-            m_viewCamera = new WCamera();
+            m_viewCamera = new WCamera(lib);
             m_orientationWidget = new WViewportOrientationWidget();
         }
 

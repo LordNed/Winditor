@@ -86,7 +86,9 @@ namespace WindEditor.Minitors
         private EnemyDropMinitorWindow m_MinitorWindow;
 
         private string m_WindowTitle;
+#pragma warning disable IDE0044 
         private bool m_IsDataDirty;
+#pragma warning restore IDE0044 
 
         private void OnRequestOpenEnemyDropEditor()
         {

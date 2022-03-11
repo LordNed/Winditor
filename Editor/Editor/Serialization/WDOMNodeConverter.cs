@@ -234,7 +234,7 @@ namespace WindEditor.Serialization
 
                 return newNode;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // Creating the entity failed, so remove it from the scene.
                 newNode.SetParent(null);
