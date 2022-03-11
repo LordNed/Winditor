@@ -80,16 +80,16 @@ namespace WindEditor.Events
                     OnExecOutputChanged(change);
                 });
 
-            PropertyChanged += CutNodeViewModel_PropertyChanged;
+            //PropertyChanged += CutNodeViewModel_PropertyChanged;
         }
 
-        private void CutNodeViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        /*private void CutNodeViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Size")
             {
                 int a = 0;
             }
-        }
+        }*/
 
         public void CreateNodesRecursive(NetworkViewModel model, Cut previous_cut)
         {

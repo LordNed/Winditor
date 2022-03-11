@@ -73,7 +73,7 @@ namespace WindEditor
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public event SelectedChangedEventHandler SelectedChanged;
-        public event RenderedChangedEventHandler RenderedChanged;
+        //public event RenderedChangedEventHandler RenderedChanged;
 
         public bool IsSelected
         {

@@ -12,16 +12,15 @@ using Newtonsoft.Json;
 using WindEditor.Minitors;
 using System.Windows.Controls;
 using System.Reflection;
-using WindEditor.ViewModel;
-using WindEditor.Editor;
-using WindEditor.Editor.Modes;
 using System.Windows;
 using WindEditor.Collision;
 using System.Text.RegularExpressions;
+using WindEditor.Editor.Managers;
+using WindEditor.Editor.Modes;
 
 namespace WindEditor
 {
-    class WWindEditor
+    public class WWindEditor
     {
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
         public ICommand OpenProjectCommand { get { return new RelayCommand(x => OnApplicationRequestOpenProject()); } }
@@ -44,6 +43,7 @@ namespace WindEditor
         public ICommand TutorialsCommand { get { return new RelayCommand(x => OnRequestOpenTutorials()); ; } }
         public ICommand IssuesCommand { get { return new RelayCommand(x => OnRequestReportIssue()); ; } }
         public ICommand AboutCommand { get { return new RelayCommand(x => OnRequestReportIssue()); ; } }
+        public InputProfileManager InputProfileManager { get { return inputProfileManager; } }
 
         public PlaytestManager Playtester { get; set; }
         public MapLayer ActiveLayer { get; set; }
@@ -53,17 +53,22 @@ namespace WindEditor
 
         private List<IMinitor> m_RegisteredMinitors;
 
+        private InputProfileManager inputProfileManager;
+
         public WWindEditor()
         {
+            //LoadSave for Input/Key profiles
+            inputProfileManager = new InputProfileManager();
+
             // Add the default Editor World.
-            m_editorWorlds.Add(new WWorld());
+            m_editorWorlds.Add(new WWorld(inputProfileManager));
 
             Playtester = new PlaytestManager();
 
             m_RegisteredMinitors = new List<IMinitor>();
 
-			// Load our global data
-			foreach (var file in Directory.GetFiles("resources/templates/"))
+            // Load our global data
+            foreach (var file in Directory.GetFiles("resources/templates/"))
 			{
 				MapActorDescriptor descriptor = JsonConvert.DeserializeObject<MapActorDescriptor>(File.ReadAllText(file));
 				Globals.ActorDescriptors.Add(descriptor);

@@ -5,16 +5,17 @@ namespace WindEditor
 {
     public static class WInput
     {
-        /// <summary> Mouse position in pixel coordinates. Read only. </summary>
+        // Mouse position in pixel coordinates. Read only. 
         public static Vector2 MousePosition { get; private set; }
-        /// <summary> Delta position in pixel coordinates between frames. Read only. </summary>
+        // Delta position in pixel coordinates between frames. Read only. 
         public static Vector2 MouseDelta { get; private set; }
-        /// <summary> Delta of the scroll wheel, one int per notch on wheel. </summary>
+        // Delta of the scroll wheel, one int per notch on wheel. 
         public static int MouseScrollDelta { get; private set; }
 
-        /// <summary> Keys currently down this frame. </summary>
+
+        // Keys currently down this frame. 
         private static readonly bool[] m_keysDown = new bool[256];
-        /// <summary> Keys that were down last frame. </summary>
+        // Keys that were down last frame. 
         private static readonly bool[] m_prevKeysDown = new bool[256];
 
         private static readonly bool[] m_mouseBtnsDown = new bool[3];

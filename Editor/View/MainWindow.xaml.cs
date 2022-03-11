@@ -15,6 +15,8 @@ using System.Linq;
 using WindEditor.Editor.Modes;
 using System.Globalization;
 using System.Threading;
+using System.Windows.Input;
+using WindEditor.ViewModel.CustomEvents;
 
 namespace WindEditor
 {
@@ -30,7 +32,10 @@ namespace WindEditor
             // Prevents issues with reading/writing floats on European systems.
             Thread.CurrentThread.CurrentCulture = new CultureInfo("", false);
 
+            this.FontFamily = new FontFamily("RocknRollOne-Regular");
+
             InitializeComponent();
+
             WindowsFormsHost.EnableWindowsFormsInterop();
         }
 
@@ -52,9 +57,20 @@ namespace WindEditor
             m_viewModel.WindEditor.InitMinitorModules();
             List<Control> tools_items = new List<Control>(m_viewModel.WindEditor.GetRegisteredEditorMenus());
 
-            tools_items.Add(new Separator());
-            tools_items.Add(new MenuItem() { Header = "Options", Command = m_viewModel.SetDataRootCommand,
-                VerticalContentAlignment = VerticalAlignment.Center, HorizontalContentAlignment = HorizontalAlignment.Stretch });
+            /*tools_items.Add(new MenuItem()
+            {
+                Header = "Options",
+                Command = m_viewModel.SetDataRootCommand,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
+            });
+            tools_items.Add(new MenuItem()
+            {
+                Header = "Options (Input Profiles)",
+                Command = m_viewModel.SetDataRootCommand,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
+            });*/
 
             ToolsMenu.ItemsSource = tools_items;
         }
@@ -73,6 +89,19 @@ namespace WindEditor
                     }
                 }
             }
+        }
+
+        //Event Handlers Options
+        private void OptionsSystemMenu_Click(object sender, RoutedEventArgs e)
+        {
+            WindEditor.View.OptionsMenu optionsMenu = new View.OptionsMenu();
+            optionsMenu.ShowDialog();
+        }
+
+        private void OptionsKeyMenu_Click(object sender, RoutedEventArgs e)
+        {
+            WindEditor.View.KeyOptionsMenu keyOptionsMenu = new View.KeyOptionsMenu();
+            keyOptionsMenu.ShowDialog();
         }
 
         private void GlControlHost_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
