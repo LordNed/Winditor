@@ -6,7 +6,7 @@
       "Name": "Component Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
-      "Hidden": true,
+      "Hidden": false,
       "Category": "bst",
       "ToolTip": "",
       "DataType": "Enum",

@@ -2541,6 +2541,8 @@ namespace WindEditor
 			Right_Hand = 2,
 		}
 
+
+		[WProperty("bst", "Component Type", true, "", SourceScene.Room)]
 		public ComponentTypeEnum ComponentType
 		{ 
 			get
