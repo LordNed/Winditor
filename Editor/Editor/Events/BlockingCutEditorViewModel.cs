@@ -152,7 +152,6 @@ namespace WindEditor.Events
         }
 
         #region INotifyPropertyChanged Support
-        //~Jen
         public event PropertyChangedEventHandler PropertyChangedBlockngCut;
 
         protected void OnPropertyChanged(string propertyName)

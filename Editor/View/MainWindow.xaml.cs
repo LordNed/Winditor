@@ -32,8 +32,6 @@ namespace WindEditor
             // Prevents issues with reading/writing floats on European systems.
             Thread.CurrentThread.CurrentCulture = new CultureInfo("", false);
 
-            this.FontFamily = new FontFamily("RocknRollOne-Regular");
-
             InitializeComponent();
 
             WindowsFormsHost.EnableWindowsFormsInterop();

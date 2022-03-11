@@ -213,7 +213,7 @@ namespace WindEditor
     {
         private static WSettingsContainer m_Settings;
 
-        static WSettingsManager() 
+        static WSettingsManager()
         {
             LoadSettings();
         }
