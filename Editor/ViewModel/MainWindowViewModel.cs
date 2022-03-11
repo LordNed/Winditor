@@ -4,25 +4,49 @@ using System.Windows.Input;
 using System;
 using System.Windows;
 using System.IO;
+using WindEditor.ViewModel.CustomEvents;
 
 namespace WindEditor.ViewModel
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public WWindEditor WindEditor { get { return m_editor; } }
-        public ICommand SetDataRootCommand { get { return new RelayCommand(x => OnUserSetDataRoot()); } }
+
+        //Close Command
+        public ICommand ExitApplicationCommand { get { return new RelayCommand(x => OnRequestCloseApplication()); } }
 
         private WWindEditor m_editor;
         private GLControl m_glControl;
         private bool m_editorIsShuttingDown;
 
+        private VmDataEvent vmDataEvent;
+        private EventHandler<WindEditorEventArgs> vmEvenHandler;
 
         public MainWindowViewModel()
         {
+            //Make sure the static class settings are invoked
+            WSettingsManager.LoadSettings();
+
             AppDomain.CurrentDomain.UnhandledException += (sender, e) => WriteUnhandledExceptionToCrashLog(e.ExceptionObject);
             App.Current.MainWindow.Closing += OnMainWindowClosed;
+
+            // CustomEvent between vm both directions.
+            vmDataEvent = VmDataEvent._VmInstance;
+            vmEvenHandler = new EventHandler<WindEditorEventArgs>(OnVMEvent);
+            // Event between VM.
+            if (vmDataEvent != null)
+                vmDataEvent.Subscribe(vmEvenHandler);
+        }
+
+        private void OnVMEvent(object source, WindEditorEventArgs args)
+        {
+            string name = args.ObjectToTransport as string;
+            if (!String.IsNullOrEmpty(name) && name == "KeyMenu") 
+            {
+                //send back event with WindEditor instance
+                if (vmDataEvent != null)
+                    vmDataEvent.Raise(this, new WindEditorEventArgs(m_editor));
+            }
         }
 
         private static void WriteUnhandledExceptionToCrashLog(object exceptionObject)
@@ -71,9 +95,9 @@ namespace WindEditor.ViewModel
             // Check the command line arguments to see if they've passed a folder, if so we'll try to open that.
             // This allows debugging through Visual Studio to open a map automatically.
             var cliArguments = Environment.GetCommandLineArgs();
-            if(cliArguments.Length > 1)
+            if (cliArguments.Length > 1)
             {
-                if(System.IO.Directory.Exists(cliArguments[1]))
+                if (System.IO.Directory.Exists(cliArguments[1]))
                 {
                     m_editor.LoadProject(cliArguments[1], cliArguments[1]);
                 }
@@ -96,13 +120,6 @@ namespace WindEditor.ViewModel
             WInput.Internal_UpdateInputState();
 
             m_glControl.SwapBuffers();
-        }
-
-        private void OnUserSetDataRoot()
-        {
-            // Violate dat MVVM.
-            WindEditor.View.OptionsMenu optionsMenu = new View.OptionsMenu();
-            optionsMenu.ShowDialog();
         }
 
         private void OnMainWindowClosed(object sender, CancelEventArgs e)
@@ -129,5 +146,20 @@ namespace WindEditor.ViewModel
 
             Application.Current.Shutdown();
         }
+
+        private void OnRequestCloseApplication()
+        {
+            App.Current.MainWindow.Close();
+        }
+
+        #region INotifyPropertyChanged Interface
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

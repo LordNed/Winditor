@@ -3,6 +3,8 @@ using System.ComponentModel;
 using WindEditor.Editor.Modes;
 using WindEditor.Minitors;
 using WindEditor.Collision;
+using WindEditor.Editor.KeyBindings;
+using WindEditor.Editor.Managers;
 
 namespace WindEditor
 {
@@ -40,13 +42,28 @@ namespace WindEditor
         private CollisionMode m_CollisionMode;
         private EventMode m_EventMode;
 
-        public WWorld()
+        //Input-key Profiles
+        public KeyProfilesLibrary KeyProfileLib { get; set; }
+
+        public WWorld(InputProfileManager inputProfileManager) 
+        {
+            Initialise(inputProfileManager);
+        }
+
+        private void Initialise(InputProfileManager inputProfileManager) 
         {
             m_dtStopwatch = new System.Diagnostics.Stopwatch();
             m_persistentLines = new WLineBatcher();
             m_persistentQuads = new WQuadBatcher();
 
             m_undoStack = new WUndoStack();
+
+            // Input-key library
+            KeyProfileLib = new KeyProfilesLibrary();
+            if (inputProfileManager != null)
+            {
+                KeyProfileLib.CameraProfiles.InputProfileManager = inputProfileManager;
+            }
 
             m_ActorMode = new ActorMode(this);
             m_CollisionMode = new CollisionMode(this);
@@ -56,7 +73,7 @@ namespace WindEditor
 
             m_sceneViews = new List<WSceneView>();
 
-            WSceneView perspectiveView = new WSceneView();
+            WSceneView perspectiveView = new WSceneView(KeyProfileLib);
             m_sceneViews.AddRange(new[] { perspectiveView });
         }
 

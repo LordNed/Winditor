@@ -8,6 +8,8 @@ using WindEditor.Editor;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.IO;
+using System.Windows;
+using static WindEditor.ViewModel.KeysMenuViewModel;
 
 namespace WindEditor
 {
@@ -218,19 +220,37 @@ namespace WindEditor
 
         public static void LoadSettings()
         {
-            if (!File.Exists("settings.json"))
+            string fileLocation = @"settings.json";
+
+            if (!File.Exists(fileLocation))
             {
                 m_Settings = new WSettingsContainer();
                 return;
             }
-
-            m_Settings = JsonConvert.DeserializeObject<WSettingsContainer>(File.ReadAllText("settings.json"));
+            else
+            {
+                try
+                {
+                    m_Settings = JsonConvert.DeserializeObject<WSettingsContainer>(File.ReadAllText(fileLocation));
+                }
+                catch
+                {
+                    MessageBox.Show("Can't find the settings.json file in root folder.");
+                }
+            }
         }
 
         public static void SaveSettings()
         {
-            string serialized_settings = JsonConvert.SerializeObject(m_Settings, Formatting.Indented);
-            File.WriteAllText("settings.json", serialized_settings);
+            try
+            {
+                string serialized_settings = JsonConvert.SerializeObject(m_Settings, Formatting.Indented);
+                File.WriteAllText("settings.json", serialized_settings);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Can't save to the settings.json file in root folder.");
+            }
         }
 
         public static WSettingsContainer GetSettings()

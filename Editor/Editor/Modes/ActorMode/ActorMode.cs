@@ -15,6 +15,7 @@ using Newtonsoft.Json.Converters;
 using WindEditor.Serialization;
 using WindEditor.Collision;
 using OpenTK;
+using WindEditor.Editor.KeyBindings;
 
 namespace WindEditor.Editor.Modes
 {
@@ -60,11 +61,16 @@ namespace WindEditor.Editor.Modes
         public Selection<WDOMNode> EditorSelection { get; set; }
         public WWorld World { get; }
 
+        //Key profiles
+        public KeyProfilesLibrary KeyProfilesLib { get; }
+
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
 
         public ActorMode(WWorld world)
         {
             World = world;
+            KeyProfilesLib = World.KeyProfileLib;
+
             TransformGizmo = new WTransformGizmo(world);
 
             EditorSelection = new Selection<WDOMNode>(this);

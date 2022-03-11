@@ -16,6 +16,21 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -644,12 +659,15 @@
     <Compile Include="Editor\Globals.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode.cs" />
     <Compile Include="Editor\Modes\ActorMode\ActorMode_Gizmo.cs" />
+    <Compile Include="Editor\Managers\LoadSave\InputProfileManager.cs" />
     <Compile Include="Editor\Modes\CollisionMode\CollisionMode.cs" />
     <Compile Include="Editor\Modes\EventMode\ActorTabContextMenu.cs" />
     <Compile Include="Editor\Modes\EventMode\EventMode.cs" />
     <Compile Include="Editor\Modes\EventMode\EventMode_Gizmo.cs" />
     <Compile Include="Editor\Modes\IEditorMode.cs" />
     <Compile Include="Editor\Modes\IEditorModeGizmo.cs" />
+    <Compile Include="Editor\KeyBindings\KeyProfilesLibrary.cs" />
+    <Compile Include="Editor\KeyBindings\KeyProfiles.cs" />
     <Compile Include="Editor\Patching\Patch.cs" />
     <Compile Include="Editor\Managers\PlaytestManager.cs" />
     <Compile Include="Editor\PropertyCustomization\AdvancedBindingListTypeCustomization.cs" />
@@ -675,8 +693,12 @@
     <Compile Include="Editor\Serialization\Vector2dConverter.cs" />
     <Compile Include="Editor\Serialization\Vector3dConverter.cs" />
     <Compile Include="Editor\Serialization\WDOMNodeConverter.cs" />
+    <Compile Include="ViewModel\KeysMenuData.cs" />
+    <Compile Include="ViewModel\CustomEvents\VmDataEvent.cs" />
+    <Compile Include="ViewModel\CustomEvents\CloseWindowEvent.cs" />
+    <Compile Include="ViewModel\Converter\RadioBoolToIntConverter.cs" />
     <Compile Include="Editor\UI\Selection.cs" />
-    <Compile Include="Editor\Managers\SettingsManager.cs" />
+    <Compile Include="Editor\Managers\LoadSave\SettingsManager.cs" />
     <Compile Include="Editor\Templates\ActorTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -693,7 +715,9 @@
     <Compile Include="Editor\UndoRedo\ScaleActorAction.cs" />
     <Compile Include="Editor\UndoRedo\TranslateCameraPropertyAction.cs" />
     <Compile Include="ViewModel\AdvancedBindingList.cs" />
+    <Compile Include="ViewModel\CustomEvents\CustomEvent.cs" />
     <Compile Include="ViewModel\NullToBoolConverter.cs" />
+    <Compile Include="ViewModel\KeysMenuViewModel.cs" />
     <Compile Include="ViewModel\OptionsMenuViewModel.cs" />
     <Compile Include="ViewModel\PlaytestInventoryViewModel.cs" />
     <Compile Include="ViewModel\WDetailsCategoryRowViewModel.cs" />
@@ -710,6 +734,9 @@
     </Compile>
     <Compile Include="View\IslandImportWindow.xaml.cs">
       <DependentUpon>IslandImportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KeyOptionsMenu.xaml.cs">
+      <DependentUpon>KeyOptionsMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PlaytestInventoryWindow.xaml.cs">
       <DependentUpon>PlaytestInventoryWindow.xaml</DependentUpon>
@@ -814,6 +841,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\IslandImportWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\KeyOptionsMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -936,8 +967,8 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\GridWidthCalculatorMulticonverter.cs" />
     <Compile Include="Editor\UI\RelayCommand.cs" />
-    <Compile Include="ViewModel\PropertyValueConverters.cs" />
-    <Compile Include="ViewModel\PropertyValueDataTemplateSelector.cs" />
+    <Compile Include="ViewModel\Converter\PropertyValueConverters.cs" />
+    <Compile Include="ViewModel\Converter\PropertyValueDataTemplateSelector.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -2180,6 +2211,19 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
