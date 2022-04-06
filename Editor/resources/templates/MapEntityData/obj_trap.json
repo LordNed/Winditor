@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "obj_trap",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     },
     {
       "Name": "Unknown_2",
