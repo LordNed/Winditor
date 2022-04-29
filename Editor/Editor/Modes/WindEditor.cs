@@ -689,13 +689,13 @@ namespace WindEditor
                 superBMDArgs.Add("-b");
             }
             string materials_path = Path.Combine(Path.GetDirectoryName(importWindow.FileName), "materials.json");
-            if (importWindow.GenerateMaterials)
-            {
-                superBMDArgs.Add("-glm");
-            } else if (File.Exists(materials_path))
+            if (File.Exists(materials_path))
             {
                 superBMDArgs.Add("--materialPresets");
                 superBMDArgs.Add(materials_path);
+            } else if (importWindow.GenerateMaterials)
+            {
+                superBMDArgs.Add("-glm");
             }
             string tex_headers_path = Path.Combine(Path.GetDirectoryName(importWindow.FileName), "tex_headers.json");
             if (File.Exists(tex_headers_path))
