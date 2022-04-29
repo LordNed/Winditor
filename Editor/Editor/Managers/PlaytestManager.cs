@@ -79,7 +79,15 @@ namespace WindEditor
             string dolPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "sys", "main.dol");
 
             m_DolphinStartInfo = new ProcessStartInfo(dolphinPath);
-            m_DolphinStartInfo.Arguments = $"-b -e \"{ dolPath }\"";
+            m_DolphinStartInfo.Arguments = $"-e \"{ dolPath }\"";
+
+            if (WSettingsManager.GetSettings().DolphinDebug)
+            {
+                m_DolphinStartInfo.Arguments += " -d"; // Debug mode
+            } else
+            {
+                m_DolphinStartInfo.Arguments += " -b"; // Batch mode, hides Dolphin's main UI window
+            }
 
             int room_no = 0;
             int spawn_id = 0;

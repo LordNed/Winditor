@@ -141,6 +141,20 @@ namespace WindEditor
             }
         }
 
+        [WProperty("Debugging", "Enable Dolphin Debug Mode", true, "When checked, playtesting will automatically enable Dolphin's debug mode.")]
+        public bool DolphinDebug
+        {
+            get { return m_DolphinDebug; }
+            set
+            {
+                if (value != m_DolphinDebug)
+                {
+                    m_DolphinDebug = value;
+                    OnPropertyChanged("DolphinDebug");
+                }
+            }
+        }
+
         [WProperty("Advanced", "Dump Textures", true, "When checked, dumps the textures of loaded meshes to file.")]
         public bool DumpTextures
         {
@@ -181,6 +195,7 @@ namespace WindEditor
         private FileReference m_LastCollisionDaePath;
         private FileReference m_LastScriptArchivePath;
         private bool m_HeapDisplay;
+        private bool m_DolphinDebug;
         private bool m_DumpTextures;
         private bool m_DumpShaders;
 
