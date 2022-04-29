@@ -688,9 +688,20 @@ namespace WindEditor
             {
                 superBMDArgs.Add("-b");
             }
+            string materials_path = Path.Combine(Path.GetDirectoryName(importWindow.FileName), "materials.json");
             if (importWindow.GenerateMaterials)
             {
                 superBMDArgs.Add("-glm");
+            } else if (File.Exists(materials_path))
+            {
+                superBMDArgs.Add("--materialPresets");
+                superBMDArgs.Add(materials_path);
+            }
+            string tex_headers_path = Path.Combine(Path.GetDirectoryName(importWindow.FileName), "tex_headers.json");
+            if (File.Exists(tex_headers_path))
+            {
+                superBMDArgs.Add("--texHeaders");
+                superBMDArgs.Add(tex_headers_path);
             }
 
             SuperBMDLib.Arguments args = new SuperBMDLib.Arguments(superBMDArgs.ToArray());
