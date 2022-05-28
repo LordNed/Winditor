@@ -181,6 +181,11 @@
     <Compile Include="Editor\Events\VectorValueEditorViewModel.cs" />
     <Compile Include="Editor\Managers\EventDataManager.cs" />
     <Compile Include="Editor\Entities\TriggerRegion.cs" />
+    <Compile Include="Editor\Minitors\BGMMinitor.cs" />
+    <Compile Include="Editor\Minitors\BGMMinitor\BGMEntry.cs" />
+    <Compile Include="Editor\Minitors\BGMMinitor\BGMMinitorWindow.xaml.cs">
+      <DependentUpon>BGMMinitorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Minitors\EnemyDropMinitor.cs" />
     <Compile Include="Editor\Minitors\EnemyDropMinitor\EnemyDropMinitorWindow.xaml.cs">
       <DependentUpon>EnemyDropMinitorWindow.xaml</DependentUpon>
@@ -785,6 +790,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Editor\Minitors\BGMMinitor\BGMMinitorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\Minitors\EnemyDropMinitor\EnemyDropMinitorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -999,6 +1008,9 @@
     <Resource Include="resources\icons\plus-box-outline.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="resources\IslandNamesDatabase.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\WindWakerSongNames.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2071,13 +2083,13 @@
       <Version>4.1.0</Version>
     </PackageReference>
     <PackageReference Include="DynamicData">
-      <Version>6.17.14</Version>
+      <Version>7.8.5</Version>
     </PackageReference>
     <PackageReference Include="Extended.Wpf.Toolkit">
-      <Version>4.0.1</Version>
+      <Version>4.3.0</Version>
     </PackageReference>
     <PackageReference Include="log4net">
-      <Version>2.0.11</Version>
+      <Version>2.0.14</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CSharp">
       <Version>4.7.0</Version>
@@ -2086,43 +2098,43 @@
       <Version>1.1.0</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="NodeNetwork">
-      <Version>5.0.0</Version>
+      <Version>6.0.0</Version>
     </PackageReference>
     <PackageReference Include="NodeNetworkToolkit">
-      <Version>5.0.0</Version>
+      <Version>6.0.0</Version>
     </PackageReference>
     <PackageReference Include="Pharmacist.Common">
-      <Version>1.8.1</Version>
+      <Version>2.0.8</Version>
     </PackageReference>
     <PackageReference Include="ReactiveUI">
-      <Version>11.5.35</Version>
+      <Version>18.0.10</Version>
     </PackageReference>
     <PackageReference Include="ReactiveUI.Events.WPF">
-      <Version>11.5.35</Version>
+      <Version>15.1.1</Version>
     </PackageReference>
     <PackageReference Include="ReactiveUI.WPF">
-      <Version>11.5.35</Version>
+      <Version>18.0.10</Version>
     </PackageReference>
     <PackageReference Include="SharpFont">
       <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="SharpYaml">
-      <Version>1.6.6</Version>
+      <Version>1.9.1</Version>
     </PackageReference>
     <PackageReference Include="Splat">
-      <Version>9.6.1</Version>
+      <Version>14.2.8</Version>
     </PackageReference>
     <PackageReference Include="Splat.Drawing">
-      <Version>9.6.1</Version>
+      <Version>14.2.8</Version>
     </PackageReference>
     <PackageReference Include="System.Buffers">
       <Version>4.5.1</Version>
     </PackageReference>
     <PackageReference Include="System.Collections.Immutable">
-      <Version>1.7.1</Version>
+      <Version>6.0.0</Version>
     </PackageReference>
     <PackageReference Include="System.Data.DataSetExtensions">
       <Version>4.5.0</Version>
@@ -2131,16 +2143,16 @@
       <Version>4.3.0</Version>
     </PackageReference>
     <PackageReference Include="System.Memory">
-      <Version>4.5.4</Version>
+      <Version>4.5.5</Version>
     </PackageReference>
     <PackageReference Include="System.Numerics.Vectors">
       <Version>4.5.0</Version>
     </PackageReference>
     <PackageReference Include="System.Reactive">
-      <Version>4.4.1</Version>
+      <Version>5.0.0</Version>
     </PackageReference>
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
-      <Version>4.7.1</Version>
+      <Version>6.0.0</Version>
     </PackageReference>
     <PackageReference Include="System.Threading.Tasks.Extensions">
       <Version>4.5.4</Version>
@@ -2152,7 +2164,7 @@
       <Version>1.1.2</Version>
     </PackageReference>
     <PackageReference Include="YamlDotNet">
-      <Version>8.1.2</Version>
+      <Version>11.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

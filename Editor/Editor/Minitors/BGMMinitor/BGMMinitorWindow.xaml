@@ -1,0 +1,83 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindEditor.Minitors.BGM"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="WindEditor.Minitors.BGM.BGMMinitorWindow"
+        mc:Ignorable="d"
+        Title="Scene BGM Editor" Height="450" Width="800">
+    <Grid>
+        <DockPanel VerticalAlignment="Top" Height="20">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem InputGestureText="Ctrl + S" Header="_Save" Command="{Binding SaveMessageDataCommand}"/>
+                    <MenuItem Header="Repack (.arc)" Command="{Binding SaveMessageDataAsCommand}"/>
+                    <MenuItem Header="Save _As..." Command="{Binding SaveMessageDataAsTxtCommand}"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="Add Message" Command="{Binding AddMessageCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Tutorial" Command="{Binding OpenTutorialCommand}"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <TabControl Margin="0,20,0,0">
+            <TabItem Header="Maps">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="38*"/>
+                        <ColumnDefinition Width="359*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="Map_ListBox" ItemsSource="{Binding MapEntries}" SelectedItem="{Binding SelectedMapEntry}" DisplayMemberPath="Name" Margin="10,10,649,39" Grid.ColumnSpan="2"/>
+                    <Button Content="Add" ToolTip="Adds a map entry to the BGM list." HorizontalAlignment="Left" Margin="10,352,0,0" VerticalAlignment="Top" Width="63" Height="24"/>
+                    <Button Content="Remove" ToolTip="Removes the selected map entry from the BGM list." HorizontalAlignment="Left" Margin="2,352,0,0" VerticalAlignment="Top" Width="67" Height="24" Grid.Column="1"/>
+
+                    <Label x:Name="Map_Name" Content="Map Name:" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="Map_TextBox" Text="{Binding SelectedMapEntry.Name}" HorizontalAlignment="Left" Margin="151,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" Height="21" Grid.Column="1"/>
+
+                    <Label Content="BGM Type:" HorizontalAlignment="Left" Margin="74,47,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox SelectedItem="{Binding SelectedMapEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="151,49,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1"/>
+
+                    <Label Content="BGM ID:" HorizontalAlignment="Left" Margin="74,84,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.ID}" HorizontalAlignment="Left" Margin="151,87,0,0" VerticalAlignment="Top" Width="127" Minimum="0" Maximum="32767" Grid.Column="1"/>
+
+                    <Label Content="Wave Bank 1:" HorizontalAlignment="Left" Margin="74,119,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank1}" HorizontalAlignment="Left" Margin="159,123,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="74,151,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank2}" HorizontalAlignment="Left" Margin="159,155,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <Label Content="Wave Bank 3:" HorizontalAlignment="Left" Margin="74,183,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank3}" HorizontalAlignment="Left" Margin="159,187,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="74,215,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank4}" HorizontalAlignment="Left" Margin="159,219,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Islands">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="38*"/>
+                        <ColumnDefinition Width="359*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="Island_ListBox" ItemsSource="{Binding IslandEntries}" SelectedItem="{Binding SelectedIslandEntry}" DisplayMemberPath="Name" Margin="10,10,649,10" Grid.ColumnSpan="2"/>
+
+                    <Label Content="BGM Type:" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox SelectedItem="{Binding SelectedIslandEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="151,15,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1"/>
+
+                    <Label Content="BGM ID:" HorizontalAlignment="Left" Margin="74,47,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.ID}" HorizontalAlignment="Left" Margin="151,49,0,0" VerticalAlignment="Top" Width="127" Minimum="0" Maximum="32767" Grid.Column="1"/>
+
+                    <Label Content="Wave Bank 1:" HorizontalAlignment="Left" Margin="74,84,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank1}" HorizontalAlignment="Left" Margin="159,87,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="74,119,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank2}" HorizontalAlignment="Left" Margin="159,123,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <Label Content="Wave Bank 3:" HorizontalAlignment="Left" Margin="74,151,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank3}" HorizontalAlignment="Left" Margin="159,155,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="74,183,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank4}" HorizontalAlignment="Left" Margin="159,187,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
