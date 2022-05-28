@@ -226,7 +226,9 @@ namespace WindEditor.Minitors
                 newEntry.WaveBank3 = reader.ReadByte();
                 newEntry.WaveBank4 = reader.ReadByte();
 
-                if (i != 0)
+                if (i == 0)
+                    newEntry.Name = "Default";
+                else
                 {
                     reader.BaseStream.Seek(spotNamesOffset + (4 * (i - 1)), SeekOrigin.Begin);
                     int nameOffset = reader.ReadInt32();
