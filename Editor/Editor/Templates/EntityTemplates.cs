@@ -3165,16 +3165,16 @@ namespace WindEditor
 		}
 				
 
-		protected byte m_WaveHeightAddition;
+		protected byte m_WaveHeightMaximum;
 
-		[WProperty("Misc.", "Wave Height Addition", true, "")]
-		 public byte WaveHeightAddition
+		[WProperty("Misc.", "Wave Height Maximum", true, "The maximum height of the ocean's waves in this sector.\nSet to 0 to disable the ocean for just this sector.")]
+		 public byte WaveHeightMaximum
 		{ 
-			get { return m_WaveHeightAddition; }
+			get { return m_WaveHeightMaximum; }
 			set
 			{
-				m_WaveHeightAddition = value;
-				OnPropertyChanged("WaveHeightAddition");
+				m_WaveHeightMaximum = value;
+				OnPropertyChanged("WaveHeightMaximum");
 			}
 		}
 				
@@ -3185,7 +3185,7 @@ namespace WindEditor
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Translation", TargetProperties = new string[] { "Translation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Room", TargetProperties = new string[] { "Room"} });
-			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Height Addition", TargetProperties = new string[] { "WaveHeightAddition"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Wave Height Maximum", TargetProperties = new string[] { "WaveHeightMaximum"} });
 			Transform.UsesXRotation = false;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
@@ -3197,7 +3197,7 @@ namespace WindEditor
 			m_Translation = new OpenTK.Vector2(stream.ReadSingle(), stream.ReadSingle()); 
 			m_YRotation = stream.ReadInt16(); 
 			m_Room = stream.ReadByte(); 
-			m_WaveHeightAddition = stream.ReadByte(); 
+			m_WaveHeightMaximum = stream.ReadByte(); 
 			Transform.Rotation = Quaterniond.Identity.FromEulerAnglesRobust(
 				new Vector3(0, WMath.RotationShortToFloat(m_YRotation), 0),
 				Transform.RotationOrder, Transform.UsesXRotation, Transform.UsesYRotation, Transform.UsesZRotation
@@ -3212,7 +3212,7 @@ namespace WindEditor
 			if (Transform.UsesYRotation) { m_YRotation = WMath.RotationFloatToShort(eulerRot.Y); }
 			stream.Write((short)m_YRotation);
 			stream.Write((byte)Room);
-			stream.Write((byte)WaveHeightAddition);
+			stream.Write((byte)WaveHeightMaximum);
 		}
 	}
 

@@ -6,6 +6,6 @@
 		{"Name" : "Translation", "Type" : "Vector2"},
 		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
 		{"Name" : "Room", "Type" : "Byte"},
-		{"Name" : "Wave Height Addition", "Type" : "Byte"}
+		{"Name" : "Wave Height Maximum", "Type" : "Byte", "Tooltip": "The maximum height of the ocean's waves in this sector.\nSet to 0 to disable the ocean for just this sector."}
 	]
 }
