@@ -61,13 +61,13 @@
                     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="142" Width="398">
                         <Label Content="% Chance of Spawn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-5,0,0,0"/>
                         <sc:IntegerUpDown Width="278" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Margin="112,1,0,0"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,42,0,0" Height="24" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" Margin="0,47,0,0" Height="24" VerticalAlignment="Top">
                             <ComboBox Width="90" Margin="0,0,10,0"/>
                             <ComboBox Width="90" Margin="0,0,10,0"/>
                             <ComboBox Width="90" Margin="0,0,10,0"/>
                             <ComboBox Width="90"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,76,0,0" Height="24" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" Margin="0,90,0,0" Height="24" VerticalAlignment="Top">
                             <ComboBox Width="90" Margin="0,0,10,0"/>
                             <ComboBox Width="90" Margin="0,0,10,0"/>
                             <ComboBox Width="90" Margin="0,0,10,0"/>

@@ -13,7 +13,7 @@ using WindEditor.Minitors.EnemyDrop;
 
 namespace WindEditor.Minitors
 {
-    public class EnemyDropMinitor : IMinitor, INotifyPropertyChanged
+    public class EnemyDropMinitor : /*IMinitor,*/ INotifyPropertyChanged
     {
         #region IMinitor Interface
         public MenuItem GetMenuItem()
