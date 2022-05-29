@@ -74,9 +74,9 @@ namespace WindEditor.Minitors
         const int ISLAND_NAME_COUNT = 50;
 
         const string SEQUENCE_NAME_DATABASE = "resources/BGMSequencesDatabase.txt";
-        const int SEQUENCE_NAME_COUNT = 96;
+        const int SEQUENCE_NAME_COUNT = 97;
         const string STREAM_NAME_DATABASE = "resources/BGMStreamsDatabase.txt";
-        const int STREAM_NAME_COUNT = 74;
+        const int STREAM_NAME_COUNT = 75;
 
         public ICommand OpenMinitorCommand { get { return new RelayCommand(x => OnRequestOpenBGMEditor(),
             x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
