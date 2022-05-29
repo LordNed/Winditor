@@ -75,25 +75,49 @@
             <TabItem Header="Islands">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="38*"/>
-                        <ColumnDefinition Width="359*"/>
+                        <ColumnDefinition Width="162*" MinWidth="150"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="627*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="Island_ListBox" ItemsSource="{Binding IslandEntries}" SelectedItem="{Binding SelectedIslandEntry}" DisplayMemberPath="Name" Margin="10,10,649,10" Grid.ColumnSpan="2"/>
 
-                    <Label Content="BGM Type:" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <ComboBox SelectedItem="{Binding SelectedIslandEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="151,15,0,0" VerticalAlignment="Top" Width="127" Grid.Column="1"/>
+                    <DockPanel Grid.Column="0" LastChildFill="True" Grid.ColumnSpan="1" Margin="0,-3,1,0">
+                        <Grid>
+                            <ListBox x:Name="Island_ListBox" ItemsSource="{Binding IslandEntries}" SelectedItem="{Binding SelectedIslandEntry}" DisplayMemberPath="Name" Margin="10,10,10,10"/>
+                        </Grid>
+                    </DockPanel>
 
-                    <Label Content="BGM ID:" HorizontalAlignment="Left" Margin="74,47,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.ID}" HorizontalAlignment="Left" Margin="151,49,0,0" VerticalAlignment="Top" Width="127" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.ColumnSpan="1"/>
 
-                    <Label Content="Wave Bank 1:" HorizontalAlignment="Left" Margin="74,84,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
-                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank1}" HorizontalAlignment="Left" Margin="159,87,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
-                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="74,119,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
-                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank2}" HorizontalAlignment="Left" Margin="159,123,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
-                    <Label Content="Wave Bank 3:" HorizontalAlignment="Left" Margin="74,151,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
-                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank3}" HorizontalAlignment="Left" Margin="159,155,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
-                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="74,183,0,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
-                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank4}" HorizontalAlignment="Left" Margin="159,187,0,0" VerticalAlignment="Top" Width="119" Minimum="0" Maximum="32767" Grid.Column="1"/>
+                    <DockPanel Grid.Column="2" LastChildFill="True">
+                        <Grid>
+                            <GroupBox Header="Music Info" Margin="10,10,10,0" Height="70" VerticalAlignment="Top">
+                                <Grid>
+                                    <Label Content="Type:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="26" Width="41"/>
+                                    <ComboBox SelectedItem="{Binding SelectedIslandEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center" Width="139" Height="22"/>
+
+                                    <Label Content="ID:" HorizontalAlignment="Left" Margin="201,0,0,0" VerticalAlignment="Center" Height="26" Width="24"/>
+                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.ID}" Margin="230,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Header="Main Wave Banks" Margin="10,85,10,0" Height="69" VerticalAlignment="Top">
+                                <Grid>
+                                    <Label Content="Wave Bank 1:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="28" Width="81"/>
+                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank1}" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="99" Minimum="0" Maximum="32767" Height="20"/>
+                                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="28" Width="84"/>
+                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank2}" Margin="287,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Extra Wave Banks" Margin="10,159,10,0" VerticalAlignment="Top" Height="70">
+                                <Grid>
+                                    <Label Content="Wave Bank 3:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="28" Width="81"/>
+                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank3}" HorizontalAlignment="Left" Margin="96,14,0,0" VerticalAlignment="Top" Width="99" Minimum="0" Maximum="32767" Height="20"/>
+                                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="28" Width="84"/>
+                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank4}" Margin="287,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
                 </Grid>
             </TabItem>
         </TabControl>
