@@ -73,5 +73,3 @@ m_35_03.afc
 m_35_04.afc
 m_42_07.afc
 m_42_08.afc
-e3title.afc
-m_31_01.afc
