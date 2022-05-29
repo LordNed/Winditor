@@ -76,6 +76,8 @@ namespace WindEditor.Minitors
         public ICommand OpenMinitorCommand { get { return new RelayCommand(x => OnRequestOpenBGMEditor(),
             x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
 
+        public ICommand SaveBGMDataCommand { get { return new RelayCommand(x => OnRequestSaveBGMData()); } }
+
         public List<BGMEntry> MapEntries
         {
             get { return m_MapEntries; }
@@ -170,7 +172,7 @@ namespace WindEditor.Minitors
 
         public void OnRequestSaveBGMData()
         {
-
+            SaveBGMData();
         }
 
         private bool TryLoadSystemArchive()
@@ -263,6 +265,157 @@ namespace WindEditor.Minitors
             }
 
             RefreshIslandNameList();
+        }
+
+        private void SaveBGMData()
+        {
+            VirtualFilesystemFile bgm_dat = m_SystemArchive.GetFileAtPath(BGM_DAT_NAME);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                EndianBinaryWriter writer = new EndianBinaryWriter(ms, Endian.Big);
+
+                writer.Write(MapEntries.Count);
+                writer.Write(0x20);
+
+                writer.Write(IslandEntries.Count);
+                writer.Write(0);
+
+                writer.Write(0);
+                writer.Write(0);
+
+                writer.Write(0);
+                writer.Write(0);
+
+                List<Tuple<byte, byte>> WaveList1 = new List<Tuple<byte, byte>>();
+                List<Tuple<byte, byte>> WaveList2 = new List<Tuple<byte, byte>>();
+                List<string> NameList = new List<string>();
+
+                for (int i = 0; i < MapEntries.Count; i++)
+                {
+                    Tuple<byte, byte> wave1 = new Tuple<byte, byte>(MapEntries[i].WaveBank1, MapEntries[i].WaveBank2);
+                    Tuple<byte, byte> wave2 = new Tuple<byte, byte>(MapEntries[i].WaveBank3, MapEntries[i].WaveBank4);
+
+                    if (!WaveList1.Contains(wave1))
+                    {
+                        MapEntries[i].WaveBankIndex1 = (byte)WaveList1.Count;
+                        WaveList1.Add(wave1);
+                    }
+                    else
+                        MapEntries[i].WaveBankIndex1 = (byte)WaveList1.IndexOf(wave1);
+
+                    if (!WaveList2.Contains(wave2))
+                    {
+                        MapEntries[i].WaveBankIndex2 = (byte)WaveList2.Count;
+                        WaveList2.Add(wave2);
+                    }
+                    else
+                        MapEntries[i].WaveBankIndex2 = (byte)WaveList2.IndexOf(wave2);
+
+                    if (i != 0)
+                        NameList.Add(MapEntries[i].Name);
+
+                    MapEntries[i].Write(writer);
+                }
+
+                int pad32delta = WMath.Pad16Delta(writer.BaseStream.Position);
+                for (int i = 0; i < pad32delta; i++)
+                    writer.Write((byte)0x00);
+
+                writer.BaseStream.Seek(0x0C, SeekOrigin.Begin);
+                writer.Write((int)writer.BaseStream.Length);
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+
+                for (int i = 0; i < IslandEntries.Count; i++)
+                {
+                    Tuple<byte, byte> wave1 = new Tuple<byte, byte>(IslandEntries[i].WaveBank1, IslandEntries[i].WaveBank2);
+                    Tuple<byte, byte> wave2 = new Tuple<byte, byte>(IslandEntries[i].WaveBank3, IslandEntries[i].WaveBank4);
+
+                    if (!WaveList1.Contains(wave1))
+                    {
+                        IslandEntries[i].WaveBankIndex1 = (byte)WaveList1.Count;
+                        WaveList1.Add(wave1);
+                    }
+                    else
+                        IslandEntries[i].WaveBankIndex1 = (byte)WaveList1.IndexOf(wave1);
+
+                    if (!WaveList2.Contains(wave2))
+                    {
+                        IslandEntries[i].WaveBankIndex2 = (byte)WaveList2.Count;
+                        WaveList2.Add(wave2);
+                    }
+                    else
+                        IslandEntries[i].WaveBankIndex2 = (byte)WaveList2.IndexOf(wave2);
+
+                    IslandEntries[i].Write(writer);
+                }
+
+                pad32delta = WMath.Pad16Delta(writer.BaseStream.Position);
+                for (int i = 0; i < pad32delta; i++)
+                    writer.Write((byte)0x00);
+
+                writer.BaseStream.Seek(0x10, SeekOrigin.Begin);
+                writer.Write((int)writer.BaseStream.Length);
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+
+                foreach (Tuple<byte, byte> b in WaveList1)
+                {
+                    writer.Write(b.Item1);
+                    writer.Write(b.Item2);
+                }
+
+                pad32delta = WMath.Pad16Delta(writer.BaseStream.Position);
+                for (int i = 0; i < pad32delta; i++)
+                    writer.Write((byte)0x00);
+
+                writer.BaseStream.Seek(0x14, SeekOrigin.Begin);
+                writer.Write((int)writer.BaseStream.Length);
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+
+                foreach (Tuple<byte, byte> b in WaveList2)
+                {
+                    writer.Write(b.Item1);
+                    writer.Write(b.Item2);
+                }
+
+                pad32delta = WMath.Pad16Delta(writer.BaseStream.Position);
+                for (int i = 0; i < pad32delta; i++)
+                    writer.Write((byte)0x00);
+
+                writer.BaseStream.Seek(0x18, SeekOrigin.Begin);
+                writer.Write((int)writer.BaseStream.Length);
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+
+                List<int> nameOffsets = new List<int>();
+
+                foreach (string s in NameList)
+                {
+                    nameOffsets.Add((int)writer.BaseStream.Position);
+                    writer.WriteFixedString(s, s.Length + 1);
+                }
+
+                pad32delta = WMath.Pad16Delta(writer.BaseStream.Position);
+                for (int i = 0; i < pad32delta; i++)
+                    writer.Write((byte)0x00);
+
+                writer.BaseStream.Seek(0x1C, SeekOrigin.Begin);
+                writer.Write((int)writer.BaseStream.Length);
+                writer.BaseStream.Seek(0, SeekOrigin.End);
+
+                foreach (int i in nameOffsets)
+                {
+                    writer.Write(i);
+                }
+
+                pad32delta = WMath.Pad16Delta(writer.BaseStream.Position);
+                for (int i = 0; i < pad32delta; i++)
+                    writer.Write((byte)0x00);
+
+                bgm_dat.Data = ms.ToArray();
+            }
+
+            string file_path = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Object", "System.arc");
+            ArchiveUtilities.WriteArchive(file_path, m_SystemArchive);
         }
 
         private void RefreshIslandNameList()
