@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WindEditor.Minitors.BGM"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="WindEditor.Minitors.BGM.BGMMinitorWindow"
         mc:Ignorable="d"
-        Title="Scene BGM Editor" Height="461" Width="594" ResizeMode="NoResize">
+        Title="Scene BGM Editor" Height="461" Width="674" ResizeMode="NoResize">
     <Grid>
         <DockPanel VerticalAlignment="Top" Height="20">
             <Menu DockPanel.Dock="Top">
@@ -55,17 +55,17 @@
                             <GroupBox Header="Main Wave Banks" Margin="10,116,10,0" Height="69" VerticalAlignment="Top">
                                 <Grid>
                                     <Label Content="Wave Bank 1:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="28" Width="81"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank1}" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="99" Minimum="0" Maximum="32767" Height="20"/>
-                                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="28" Width="84"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank2}" Margin="287,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedMapEntry.WaveBank1}" ItemsSource="{Binding BankNames}" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="130" Height="23"/>
+                                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Center" Height="28" Width="84"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedMapEntry.WaveBank2}" ItemsSource="{Binding BankNames}" Margin="326,0,10,0" VerticalAlignment="Center" Height="23"/>
                                 </Grid>
                             </GroupBox>
                             <GroupBox Header="Extra Wave Banks" Margin="10,190,10,0" VerticalAlignment="Top" Height="70">
                                 <Grid>
                                     <Label Content="Wave Bank 3:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="28" Width="81"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank3}" HorizontalAlignment="Left" Margin="96,14,0,0" VerticalAlignment="Top" Width="99" Minimum="0" Maximum="32767" Height="20"/>
-                                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="28" Width="84"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.WaveBank4}" Margin="287,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedMapEntry.WaveBank3}" ItemsSource="{Binding BankNames}" HorizontalAlignment="Left" Margin="96,14,0,0" VerticalAlignment="Top" Width="130" Height="23"/>
+                                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Center" Height="28" Width="84"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedMapEntry.WaveBank4}" ItemsSource="{Binding BankNames}" Margin="326,0,10,0" VerticalAlignment="Center" Height="23"/>
                                 </Grid>
                             </GroupBox>
                         </Grid>
@@ -102,17 +102,17 @@
                             <GroupBox Header="Main Wave Banks" Margin="10,85,10,0" Height="69" VerticalAlignment="Top">
                                 <Grid>
                                     <Label Content="Wave Bank 1:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="28" Width="81"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank1}" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="99" Minimum="0" Maximum="32767" Height="20"/>
-                                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="28" Width="84"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank2}" Margin="287,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedIslandEntry.WaveBank1}" ItemsSource="{Binding BankNames}" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Center" Width="130" Height="23"/>
+                                    <Label Content="Wave Bank 2:" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Center" Height="28" Width="84"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedIslandEntry.WaveBank2}" ItemsSource="{Binding BankNames}" Margin="326,0,10,0" VerticalAlignment="Center" Height="23"/>
                                 </Grid>
                             </GroupBox>
                             <GroupBox Header="Extra Wave Banks" Margin="10,159,10,0" VerticalAlignment="Top" Height="70">
                                 <Grid>
                                     <Label Content="Wave Bank 3:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="28" Width="81"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank3}" HorizontalAlignment="Left" Margin="96,14,0,0" VerticalAlignment="Top" Width="99" Minimum="0" Maximum="32767" Height="20"/>
-                                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Height="28" Width="84"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.WaveBank4}" Margin="287,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedIslandEntry.WaveBank3}" ItemsSource="{Binding BankNames}" HorizontalAlignment="Left" Margin="96,14,0,0" VerticalAlignment="Top" Width="130" Height="23"/>
+                                    <Label Content="Wave Bank 4:" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Center" Height="28" Width="84"/>
+                                    <ComboBox SelectedIndex="{Binding SelectedIslandEntry.WaveBank4}" ItemsSource="{Binding BankNames}" Margin="326,0,10,0" VerticalAlignment="Center" Height="23"/>
                                 </Grid>
                             </GroupBox>
                         </Grid>

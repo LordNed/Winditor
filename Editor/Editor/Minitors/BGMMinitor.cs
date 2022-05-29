@@ -78,6 +78,9 @@ namespace WindEditor.Minitors
         const string STREAM_NAME_DATABASE = "resources/BGMStreamsDatabase.txt";
         const int STREAM_NAME_COUNT = 74;
 
+        const string BANK_NAME_DATABASE = "resources/WaveBanksDatabase.txt";
+        const int BANK_NAME_COUNT = 65;
+
         public ICommand OpenMinitorCommand { get { return new RelayCommand(x => OnRequestOpenBGMEditor(),
             x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
 
@@ -165,6 +168,19 @@ namespace WindEditor.Minitors
             }
         }
 
+        public List<string> BankNames
+        {
+            get { return m_BankNames; }
+            set
+            {
+                if (value != m_BankNames)
+                {
+                    m_BankNames = value;
+                    OnPropertyChanged("BankNames");
+                }
+            }
+        }
+
         private BGMMinitorWindow m_MinitorWindow;
         private bool m_IsDataDirty;
         private VirtualFilesystemDirectory m_SystemArchive;
@@ -176,6 +192,7 @@ namespace WindEditor.Minitors
 
         private List<string> m_SequenceNames;
         private List<string> m_StreamNames;
+        private List<string> m_BankNames;
 
         public void OnRequestOpenBGMEditor()
         {
@@ -200,6 +217,7 @@ namespace WindEditor.Minitors
             }
 
             RefreshMusicNameLists();
+            RefreshBankNameList();
 
             m_MinitorWindow = new BGMMinitorWindow();
             m_MinitorWindow.DataContext = this;
@@ -500,6 +518,20 @@ namespace WindEditor.Minitors
                 StreamNames = new List<string>();
                 for (int i = 0; i < STREAM_NAME_COUNT; i++)
                     StreamNames.Add($"Stream {i}");
+            }
+        }
+
+        private void RefreshBankNameList()
+        {
+            // Try to load names from file if the file exists
+            if (File.Exists(BANK_NAME_DATABASE))
+                BankNames = new List<string>(File.ReadAllLines(BANK_NAME_DATABASE));
+            // Otherwise generate generic names!
+            else
+            {
+                BankNames = new List<string>();
+                for (int i = 0; i < BANK_NAME_COUNT; i++)
+                    BankNames.Add($"Bank {i}");
             }
         }
 
