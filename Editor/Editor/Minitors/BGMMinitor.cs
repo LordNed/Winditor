@@ -73,6 +73,11 @@ namespace WindEditor.Minitors
         const string ISLAND_NAME_DATABASE = "resources/IslandNamesDatabase.txt";
         const int ISLAND_NAME_COUNT = 50;
 
+        const string SEQUENCE_NAME_DATABASE = "resources/BGMSequencesDatabase.txt";
+        const int SEQUENCE_NAME_COUNT = 96;
+        const string STREAM_NAME_DATABASE = "resources/BGMStreamsDatabase.txt";
+        const int STREAM_NAME_COUNT = 74;
+
         public ICommand OpenMinitorCommand { get { return new RelayCommand(x => OnRequestOpenBGMEditor(),
             x => !string.IsNullOrEmpty(WSettingsManager.GetSettings().RootDirectoryPath)); } }
 
@@ -113,6 +118,8 @@ namespace WindEditor.Minitors
                 {
                     m_SelectedMapEntry = value;
                     OnPropertyChanged("SelectedMapEntry");
+
+                    UpdateMapNameCombobox(m_SelectedMapEntry.Type);
                 }
             }
         }
@@ -126,6 +133,34 @@ namespace WindEditor.Minitors
                 {
                     m_SelectedIslandEntry = value;
                     OnPropertyChanged("SelectedIslandEntry");
+
+                    UpdateIslandNameCombobox(m_SelectedIslandEntry.Type);
+                }
+            }
+        }
+
+        public List<string> SequenceNames
+        {
+            get { return m_SequenceNames; }
+            set 
+            {
+                if (value != m_SequenceNames)
+                {
+                    m_SequenceNames = value;
+                    OnPropertyChanged("SequenceNames");
+                }
+            }
+        }
+
+        public List<string> StreamNames
+        {
+            get { return m_StreamNames; }
+            set
+            {
+                if (value != m_StreamNames)
+                {
+                    m_StreamNames = value;
+                    OnPropertyChanged("StreamNames");
                 }
             }
         }
@@ -136,9 +171,11 @@ namespace WindEditor.Minitors
 
         private List<BGMEntry> m_MapEntries;
         private List<BGMEntry> m_IslandEntries;
-
         private BGMEntry m_SelectedMapEntry;
         private BGMEntry m_SelectedIslandEntry;
+
+        private List<string> m_SequenceNames;
+        private List<string> m_StreamNames;
 
         public void OnRequestOpenBGMEditor()
         {
@@ -161,6 +198,8 @@ namespace WindEditor.Minitors
                     return;
                 }
             }
+
+            RefreshMusicNameLists();
 
             m_MinitorWindow = new BGMMinitorWindow();
             m_MinitorWindow.DataContext = this;
@@ -437,6 +476,59 @@ namespace WindEditor.Minitors
 
             for (int i = 0; i < IslandEntries.Count; i++)
                 m_IslandEntries[i].Name = islandNames[i];
+        }
+
+        private void RefreshMusicNameLists()
+        {
+            // Try to load names from file if the file exists
+            if (File.Exists(SEQUENCE_NAME_DATABASE))
+                SequenceNames = new List<string>(File.ReadAllLines(SEQUENCE_NAME_DATABASE));
+            // Otherwise generate generic names!
+            else
+            {
+                SequenceNames = new List<string>();
+                for (int i = 0; i < SEQUENCE_NAME_COUNT; i++)
+                    SequenceNames.Add($"Sequence { i }");
+            }
+
+            // Try to load names from file if the file exists
+            if (File.Exists(STREAM_NAME_DATABASE))
+                StreamNames = new List<string>(File.ReadAllLines(STREAM_NAME_DATABASE));
+            // Otherwise generate generic names!
+            else
+            {
+                StreamNames = new List<string>();
+                for (int i = 0; i < STREAM_NAME_COUNT; i++)
+                    StreamNames.Add($"Stream {i}");
+            }
+        }
+
+        public void UpdateMapNameCombobox(BGMType newType)
+        {
+            if (newType == BGMType.Stream)
+            {
+                m_MinitorWindow.NameMap_ComboBox.ItemsSource = StreamNames;
+            }
+            else
+            {
+                m_MinitorWindow.NameMap_ComboBox.ItemsSource = SequenceNames;
+            }
+
+            m_MinitorWindow.NameMap_ComboBox.SelectedIndex = m_SelectedMapEntry.ID;
+        }
+
+        public void UpdateIslandNameCombobox(BGMType newType)
+        {
+            if (newType == BGMType.Stream)
+            {
+                m_MinitorWindow.NameIsland_ComboBox.ItemsSource = StreamNames;
+            }
+            else
+            {
+                m_MinitorWindow.NameIsland_ComboBox.ItemsSource = SequenceNames;
+            }
+
+            m_MinitorWindow.NameIsland_ComboBox.SelectedIndex = m_SelectedIslandEntry.ID;
         }
 
         public IEnumerable<BGMType> BGMTypeValues

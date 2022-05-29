@@ -141,7 +141,7 @@ namespace WindEditor.Minitors.BGM
             else
                 m_Type = BGMType.Stream;
 
-            m_ID = (ushort)(bgmID & ~ID_TYPE_MASK);
+            m_ID = (ushort)(bgmID & 0x7FFF);
 
             WaveBankIndex1 = reader.ReadByte();
             WaveBankIndex2 = reader.ReadByte();

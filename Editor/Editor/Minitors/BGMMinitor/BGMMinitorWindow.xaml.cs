@@ -23,5 +23,17 @@ namespace WindEditor.Minitors.BGM
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BGMMinitor context = DataContext as BGMMinitor;
+            context.UpdateMapNameCombobox((BGMType)e.AddedItems[0]);
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            BGMMinitor context = DataContext as BGMMinitor;
+            context.UpdateIslandNameCombobox((BGMType)e.AddedItems[0]);
+        }
     }
 }

@@ -45,10 +45,10 @@
                             <GroupBox Header="Music Info" Margin="10,41,10,0" Height="70" VerticalAlignment="Top">
                                 <Grid>
                                     <Label Content="Type:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="26" Width="41"/>
-                                    <ComboBox SelectedItem="{Binding SelectedMapEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center" Width="139" Height="22"/>
+                                    <ComboBox SelectedItem="{Binding SelectedMapEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center" Width="113" Height="22" SelectionChanged="ComboBox_SelectionChanged"/>
 
-                                    <Label Content="ID:" HorizontalAlignment="Left" Margin="201,0,0,0" VerticalAlignment="Center" Height="26" Width="24"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedMapEntry.ID}" Margin="230,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                    <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="46" Margin="175,0,0,0"/>
+                                    <ComboBox x:Name="NameMap_ComboBox" SelectedIndex="{Binding SelectedMapEntry.ID}" ItemsSource="{Binding SequenceNames}" Margin="226,13,10,12"/>
                                 </Grid>
                             </GroupBox>
 
@@ -93,10 +93,9 @@
                             <GroupBox Header="Music Info" Margin="10,10,10,0" Height="70" VerticalAlignment="Top">
                                 <Grid>
                                     <Label Content="Type:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="26" Width="41"/>
-                                    <ComboBox SelectedItem="{Binding SelectedIslandEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center" Width="139" Height="22"/>
-
-                                    <Label Content="ID:" HorizontalAlignment="Left" Margin="201,0,0,0" VerticalAlignment="Center" Height="26" Width="24"/>
-                                    <xctk:IntegerUpDown Value="{Binding SelectedIslandEntry.ID}" Margin="230,0,10,0" VerticalAlignment="Center" Minimum="0" Maximum="32767" Height="20"/>
+                                    <ComboBox SelectedItem="{Binding SelectedIslandEntry.Type}" ItemsSource="{Binding BGMTypeValues}" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center" Width="114" Height="22" SelectionChanged="ComboBox_SelectionChanged_1"/>
+                                    <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="46" Margin="175,0,0,0"/>
+                                    <ComboBox x:Name="NameIsland_ComboBox" SelectedIndex="{Binding SelectedIslandEntry.ID}" ItemsSource="{Binding SequenceNames}" Margin="226,13,10,12"/>
                                 </Grid>
                             </GroupBox>
 
