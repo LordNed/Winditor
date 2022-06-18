@@ -643,6 +643,9 @@ namespace WindEditor
             }
 
             ImportVisualMeshToCategory(importWindow, meshCategory, newMeshName);
+
+            // Re-apply MULT transform to the imported mesh.
+            room.SetRoomTransform(room.RoomTransform);
         }
 
         private void ImportVisualMeshToCategory(View.VisualMeshImportWindow importWindow, CategoryDOMNode category, string meshName)
