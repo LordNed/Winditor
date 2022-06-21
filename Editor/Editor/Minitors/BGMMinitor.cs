@@ -70,6 +70,8 @@ namespace WindEditor.Minitors
         #endregion
 
         const string BGM_DAT_NAME = "dat/bgm_dat.bin";
+        const string DEFAULT_BGM_DAT_PATH = "resources/patches/bgm_dat.bin";
+
         const string ISLAND_NAME_DATABASE = "resources/IslandNamesDatabase.txt";
         const int ISLAND_NAME_COUNT = 50;
 
@@ -244,6 +246,35 @@ namespace WindEditor.Minitors
             m_SystemArchive = ArchiveUtilities.LoadArchive(system_path);
 
             VirtualFilesystemFile bgm_dat = m_SystemArchive.GetFileAtPath(BGM_DAT_NAME);
+
+            if (bgm_dat == null)
+            {
+                string dirName = Path.GetDirectoryName(BGM_DAT_NAME);
+                string fileName = Path.GetFileNameWithoutExtension(BGM_DAT_NAME);
+                string fileExt = Path.GetExtension(BGM_DAT_NAME);
+
+                VirtualFilesystemDirectory dat_dir = null;
+                foreach (VirtualFilesystemNode n in m_SystemArchive.Children)
+                {
+                    if (n.Name == dirName)
+                    {
+                        dat_dir = n as VirtualFilesystemDirectory;
+                        break;
+                    }
+                }
+                if (dat_dir == null)
+                {
+                    throw new Exception("System.arc does not contain a dat directory in it. Cannot add bgm_dat.bin to it.");
+                }
+                using (BinaryReader reader = new BinaryReader(File.Open(DEFAULT_BGM_DAT_PATH, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    byte[] data = reader.ReadBytes((int)reader.BaseStream.Length);
+                    VirtualFilesystemFile vfFile = new VirtualFilesystemFile(fileName, fileExt, data);
+                    dat_dir.Children.Add(vfFile);
+                }
+
+                bgm_dat = m_SystemArchive.GetFileAtPath(BGM_DAT_NAME);
+            }
 
             using (MemoryStream strm = new MemoryStream(bgm_dat.Data))
             {

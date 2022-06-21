@@ -1161,6 +1161,9 @@
     <Content Include="resources\patches\disable_song_playback.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\patches\bgm_dat.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="resources\templates\MapEntityData\spc_item.json" />
     <None Include="resources\templates\MapEntityData\acorn_leaf.json" />
     <None Include="resources\templates\MapEntityData\agbsw0.json" />
