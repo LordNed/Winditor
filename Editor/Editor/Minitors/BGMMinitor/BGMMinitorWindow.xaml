@@ -7,6 +7,9 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="WindEditor.Minitors.BGM.BGMMinitorWindow"
         mc:Ignorable="d"
         Title="Scene BGM Editor" Height="461" Width="674" ResizeMode="NoResize">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding SaveBGMDataCommand}" Key="S" Modifiers="Ctrl"/>
+    </Window.InputBindings>
     <Grid>
         <DockPanel VerticalAlignment="Top" Height="20">
             <Menu DockPanel.Dock="Top">
