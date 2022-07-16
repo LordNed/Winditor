@@ -423,6 +423,13 @@ namespace WindEditor.Collision
                 }
             }
 
+            // Hack to prevent rounding errors from deleting parts of the mesh when saving.
+            min_x -= 0.1f;
+            min_y -= 0.1f;
+            min_z -= 0.1f;
+            max_x += 0.1f;
+            max_y += 0.1f;
+            max_z += 0.1f;
             Bounds = new FAABox(new Vector3(min_x, min_y, min_z), new Vector3(max_x, max_y, max_z));
         }
 
