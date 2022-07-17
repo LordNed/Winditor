@@ -524,8 +524,24 @@ namespace WindEditor
                     if (originalMeshList.Count > 0)
                         origRootRoomTableIndex = originalMeshList[0].RootNode.RoomTableIndex;
 
-                    newMesh = new WCollisionMesh(MainWorld, window.FileName, room.RoomIndex, origRootRoomTableIndex);
-                    newMesh.Name = "room";
+                    try
+                    {
+                        newMesh = new WCollisionMesh(MainWorld, window.FileName, room.RoomIndex, origRootRoomTableIndex);
+                        newMesh.Name = "room";
+                    }
+                    catch (Exception e)
+                    {
+                        if (newMesh != null)
+                        {
+                            newMesh.ReleaseResources();
+                        }
+                        string error = "";
+                        error += e.GetType().FullName + "\n";
+                        error += e.Message + "\n";
+                        error += e.StackTrace;
+                        MessageBox.Show(error, "Mesh Import Error");
+                        return;
+                    }
                 }
                 else
                     newMesh = new WCollisionMesh(MainWorld, window.FileName);
