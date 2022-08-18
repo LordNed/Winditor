@@ -7501,7 +7501,7 @@
     "ActorClassType": "obj_barrel",
     "Wait Animations": null,
     "Actor Name": "Ktarux",
-    "English Name": "obj_barrel",
+    "English Name": "Barrel",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -7517,7 +7517,7 @@
     "ActorClassType": "obj_barrel2",
     "Wait Animations": null,
     "Actor Name": "Ktarur",
-    "English Name": "obj_barrel2",
+    "English Name": "Giant Floating Barrel",
     "Tags": null,
     "Explanation": null,
     "Locations": [

@@ -12,13 +12,17 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Flag Type",
       "ValueSource": "Parameters",
       "Mask": 0x00000100,
       "Hidden": false,
       "Category": "obj_buoyflag",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Skull and crossbones",
+        1: "White",
+      }
     },
     {
       "Name": "Unknown_3",

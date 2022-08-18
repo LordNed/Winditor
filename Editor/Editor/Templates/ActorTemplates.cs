@@ -12797,37 +12797,49 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("obj_barrel2", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("obj_barrel2", "Has Flag", true, "", SourceScene.Room)]
+		public bool HasFlag
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
-				return value_as_int;
+				if (value_as_int == 0) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = value ? 0 : 1;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("HasFlag");
 			}
 		}
+		public enum FlagTypeEnum
+		{
+			Skull_and_crossbones = 0,
+			White = 1,
+		}
 
-		[WProperty("obj_barrel2", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+
+		[WProperty("obj_barrel2", "Flag Type", true, "", SourceScene.Room)]
+		public FlagTypeEnum FlagType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000400) >> 10);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(FlagTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (FlagTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000400 | (value_as_int << 10 & 0x00000400));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("FlagType");
 			}
 		}
 
@@ -12895,8 +12907,6 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
 			Unknown_6 = -1;
@@ -13232,21 +13242,29 @@ namespace WindEditor
 				OnPropertyChanged("Unknown_1");
 			}
 		}
+		public enum FlagTypeEnum
+		{
+			Skull_and_crossbones = 0,
+			White = 1,
+		}
 
-		[WProperty("obj_buoyflag", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("obj_buoyflag", "Flag Type", true, "", SourceScene.Room)]
+		public FlagTypeEnum FlagType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000100) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(FlagTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (FlagTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("FlagType");
 			}
 		}
 
@@ -13280,7 +13298,6 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			Unknown_1 = -1;
-			Unknown_2 = -1;
 			Unknown_3 = -1;
 		}
 	}
