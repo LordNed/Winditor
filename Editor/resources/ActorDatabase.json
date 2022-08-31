@@ -23,7 +23,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbA",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Manual Hint Region",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -256,7 +256,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbCSW",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Time-Based Hint Region",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -345,7 +345,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbR",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Secret Item Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -366,7 +366,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbB",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Item Restriction Region",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -390,7 +390,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbD",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Stuck Cursor Region",
     "Tags": null,
     "Explanation": null,
     "Locations": [

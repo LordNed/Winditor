@@ -54,7 +54,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		public enum TypeEnum
 		{
-			agbA = 0,
+			Manual_Hint_Region = 0,
 			agbAT = 1,
 			agbMARK = 2,
 			agbA2 = 3,
@@ -62,10 +62,10 @@ namespace WindEditor
 			agbF = 5,
 			Tingle_Bomb_Trigger = 6,
 			agbMW = 7,
-			agbCSW = 8,
-			agbR = 9,
-			agbB = 10,
-			agbD = 11,
+			Time_Based_Hint_Region = 8,
+			Secret_Item_Trigger = 9,
+			Item_Restriction_Region = 10,
+			Stuck_Cursor_Region = 11,
 			agbFA = 12,
 			Unknown_13 = 13,
 			Unknown_14 = 14,
@@ -92,8 +92,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Tingle Bomb Trigger", "GBA Message to Send After Bombed", true, "", SourceScene.Room)]
-		public int GBAMessagetoSendAfterBombed
+		[WProperty("GBA Message", "GBA Message to Send", true, "The message sent to the connect GBA.\nIf set to 65535, will instead default to 14.", SourceScene.Room)]
+		public int GBAMessagetoSend
 		{ 
 			get
 			{
@@ -105,7 +105,41 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
-				OnPropertyChanged("GBAMessagetoSendAfterBombed");
+				OnPropertyChanged("GBAMessagetoSend");
+			}
+		}
+
+		[WProperty("Manual Hint Region", "Manual Hint Unknown Switch 1", true, "", SourceScene.Room)]
+		public int ManualHintUnknownSwitch1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("ManualHintUnknownSwitch1");
+			}
+		}
+
+		[WProperty("Manual Hint Region", "Manual Hint Unknown Switch 2", true, "", SourceScene.Room)]
+		public int ManualHintUnknownSwitch2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("ManualHintUnknownSwitch2");
 			}
 		}
 
@@ -123,6 +157,141 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("BombedSwitch");
+			}
+		}
+
+		[WProperty("Time Based Hint Region", "Countdown Time (Seconds)", true, "This number multiplied by 30 frames is how long the player must be within the region before the hint will appear.", SourceScene.Room)]
+		public int CountdownTimeSeconds
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("CountdownTimeSeconds");
+			}
+		}
+
+		[WProperty("Secret Item Trigger", "Secret Item", true, "Only works for IDs 0x00-0x1E, otherwise it defaults to 0x00 (Heart Pickup).", SourceScene.Room)]
+		public ItemID SecretItem
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+					value_as_int = 0;
+				return (ItemID)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("SecretItem");
+			}
+		}
+
+		[WProperty("Secret Item Trigger", "Secret Item Spawned Switch", true, "This region will set this switch when spawning the item and won't spawn it again as long as it's set.", SourceScene.Room)]
+		public int SecretItemSpawnedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("SecretItemSpawnedSwitch");
+			}
+		}
+		public enum Unknown_5Enum
+		{
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+		}
+
+
+		[WProperty("Item Restriction Region", "Unknown_5", true, "", SourceScene.Room)]
+		public Unknown_5Enum Unknown_5
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (!Enum.IsDefined(typeof(Unknown_5Enum), value_as_int))
+					value_as_int = 0;
+				return (Unknown_5Enum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("Unknown_5");
+			}
+		}
+
+		[WProperty("Stuck Cursor Region", "Stuck Cursor Reward Item", true, "Only works for IDs 0x00-0x06, 0x09-0x14, 0x16-0x1E.", SourceScene.Room)]
+		public ItemID StuckCursorRewardItem
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+					value_as_int = 0;
+				return (ItemID)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("StuckCursorRewardItem");
+			}
+		}
+
+		[WProperty("Stuck Cursor Region", "Stuck Cursor Unknown Switch 1", true, "", SourceScene.Room)]
+		public int StuckCursorUnknownSwitch1
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("StuckCursorUnknownSwitch1");
+			}
+		}
+
+		[WProperty("Stuck Cursor Region", "Stuck Cursor Unknown Switch 2", true, "", SourceScene.Room)]
+		public int StuckCursorUnknownSwitch2
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("StuckCursorUnknownSwitch2");
 			}
 		}
 
@@ -182,23 +351,6 @@ namespace WindEditor
 		{ 
 			get
 			{
-				int value_as_int = (int)((m_Parameters & 0xFFFF0000) >> 16);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xFFFF0000 | (value_as_int << 16 & 0xFFFF0000));
-				OnPropertyChanged("Unknown_4");
-			}
-		}
-
-		[WProperty("agbsw0", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
-		{ 
-			get
-			{
 				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
 				return value_as_int;
 			}
@@ -207,7 +359,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Unknown_4");
 			}
 		}
 
@@ -218,20 +370,43 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Manual_Hint_Region] = new string[] { "GBA Message", "Manual Hint Region" };
+			TypeSpecificCategories["Type"][TypeEnum.agbAT] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.agbMARK] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.agbA2] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.agbF2] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.agbF] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.Tingle_Bomb_Trigger] = new string[] { "GBA Message", "Tingle Bomb Trigger" };
+			TypeSpecificCategories["Type"][TypeEnum.agbMW] = new string[] {  };
+			TypeSpecificCategories["Type"][TypeEnum.Time_Based_Hint_Region] = new string[] { "GBA Message", "Time Based Hint Region" };
+			TypeSpecificCategories["Type"][TypeEnum.Secret_Item_Trigger] = new string[] { "GBA Message", "Secret Item Trigger" };
+			TypeSpecificCategories["Type"][TypeEnum.Item_Restriction_Region] = new string[] { "Item Restriction Region" };
+			TypeSpecificCategories["Type"][TypeEnum.Stuck_Cursor_Region] = new string[] { "GBA Message", "Stuck Cursor Region" };
+			TypeSpecificCategories["Type"][TypeEnum.agbFA] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.Unknown_13] = new string[] { "GBA Message" };
+			TypeSpecificCategories["Type"][TypeEnum.Unknown_14] = new string[] {  };
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			GBAMessagetoSendAfterBombed = -1;
+			GBAMessagetoSend = -1;
+			ManualHintUnknownSwitch1 = -1;
+			ManualHintUnknownSwitch2 = -1;
 			BombedSwitch = -1;
+			CountdownTimeSeconds = -1;
+			SecretItem = ItemID.No_item;
+			SecretItemSpawnedSwitch = -1;
+			StuckCursorRewardItem = ItemID.No_item;
+			StuckCursorUnknownSwitch1 = -1;
+			StuckCursorUnknownSwitch2 = -1;
 			Unknown_1 = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
-			Unknown_5 = -1;
 			if (Name == "agbA") {
-				Type = TypeEnum.agbA;
+				Type = TypeEnum.Manual_Hint_Region;
 			}
 			if (Name == "agbAT") {
 				Type = TypeEnum.agbAT;
@@ -255,16 +430,16 @@ namespace WindEditor
 				Type = TypeEnum.agbMW;
 			}
 			if (Name == "agbCSW") {
-				Type = TypeEnum.agbCSW;
+				Type = TypeEnum.Time_Based_Hint_Region;
 			}
 			if (Name == "agbR") {
-				Type = TypeEnum.agbR;
+				Type = TypeEnum.Secret_Item_Trigger;
 			}
 			if (Name == "agbB") {
-				Type = TypeEnum.agbB;
+				Type = TypeEnum.Item_Restriction_Region;
 			}
 			if (Name == "agbD") {
-				Type = TypeEnum.agbD;
+				Type = TypeEnum.Stuck_Cursor_Region;
 			}
 			if (Name == "agbFA") {
 				Type = TypeEnum.agbFA;

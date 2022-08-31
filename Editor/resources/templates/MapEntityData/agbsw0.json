@@ -11,49 +11,88 @@
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
-        0: "agbA",
-        1: "agbAT",
-        2: "agbMARK",
-        3: "agbA2",
-        4: "agbF2",
-        5: "agbF",
-        6: "Tingle Bomb Trigger",
-        7: "agbMW",
-        8: "agbCSW",
-        9: "agbR",
-        10: "agbB",
-        11: "agbD",
-        12: "agbFA",
-        13: "Unknown 13",
-        14: "Unknown 14",
+        0: "Manual Hint Region",       // agbA,    ExeSubA
+        1: "agbAT",                    // agbAT,   ExeSubAT
+        2: "agbMARK",                  // agbMARK, ExeSubM
+        3: "agbA2",                    // agbA2,   ExeSubA2
+        4: "agbF2",                    // agbF2,   ExeSubF2
+        5: "agbF",                     // agbF,    ExeSubF
+        6: "Tingle Bomb Trigger",      // agbTBOX, ExeSubT
+        7: "agbMW",                    // agbMW,   ExeSubMW (repeatable manual hint?)
+        8: "Time Based Hint Region",   // agbCSW,  ExeSubS
+        9: "Secret Item Trigger",      // agbR,    ExeSubR
+        10: "Item Restriction Region", // agbB,    ExeSubB
+        11: "Stuck Cursor Region",     // agbD,    ExeSubD (cursor gets stuck, if you walk over it you get an item)
+        12: "agbFA",                   // agbFA,   ExeSubFA
+        13: "Unknown 13",              // ???,     ExeSubM2
+        14: "Unknown 14",              // ???,     ExeSubM3 (triforce related?)
       },
       "UpdateModel": true,
       "DefaultsByActorName": {
-        "agbA": "agbA",
-        "agbAT": "agbAT",
+        "agbA":    "Manual Hint Region",
+        "agbAT":   "agbAT",
         "agbMARK": "agbMARK",
-        "agbA2": "agbA2",
-        "agbF2": "agbF2",
-        "agbF": "agbF",
+        "agbA2":   "agbA2",
+        "agbF2":   "agbF2",
+        "agbF":    "agbF",
         "agbTBOX": "Tingle Bomb Trigger",
-        "agbMW": "agbMW",
-        "agbCSW": "agbCSW",
-        "agbR": "agbR",
-        "agbB": "agbB",
-        "agbD": "agbD",
-        "agbFA": "agbFA",
+        "agbMW":   "agbMW",
+        "agbCSW":  "Time Based Hint Region",
+        "agbR":    "Secret Item Trigger",
+        "agbB":    "Item Restriction Region",
+        "agbD":    "Stuck Cursor Region",
+        "agbFA":   "agbFA",
+      },
+      "TypeSpecificCategories": {
+        "Manual Hint Region":      ["GBA Message", "Manual Hint Region"],
+        "agbAT":                   ["GBA Message"],
+        "agbMARK":                 ["GBA Message"],
+        "agbA2":                   ["GBA Message"],
+        "agbF2":                   ["GBA Message"],
+        "agbF":                    ["GBA Message"],
+        "Tingle Bomb Trigger":     ["GBA Message", "Tingle Bomb Trigger"],
+        "agbMW":                   [],
+        "Time Based Hint Region":  ["GBA Message", "Time Based Hint Region"],
+        "Secret Item Trigger":     ["GBA Message", "Secret Item Trigger"],
+        "Item Restriction Region": ["Item Restriction Region"],
+        "Stuck Cursor Region":     ["GBA Message", "Stuck Cursor Region"],
+        "agbFA":                   ["GBA Message"],
+        "Unknown 13":              ["GBA Message"],
+        "Unknown 14":              [],
       }
     },
     
     {
-      "Name": "GBA Message to Send After Bombed",
+      "Name": "GBA Message to Send",
       "ValueSource": "Parameters",
       "Mask": 0x0000FFFF,
       "Hidden": false,
-      "Category": "Tingle Bomb Trigger",
+      "Category": "GBA Message",
+      "ToolTip": "The message sent to the connect GBA.\nIf set to 65535, will instead default to 14.",
+      "DataType": "Integer"
+    },
+    
+    // Manual Hint Region (agbA)
+    {
+      "Name": "Manual Hint Unknown Switch 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Manual Hint Region",
       "ToolTip": "",
       "DataType": "Integer"
     },
+    {
+      "Name": "Manual Hint Unknown Switch 2",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Manual Hint Region",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    
+    // Tingle Bomb Trigger (agbTBOX)
     {
       "Name": "Bombed Switch",
       "ValueSource": "Parameters",
@@ -64,6 +103,89 @@
       "DataType": "Integer"
     },
     
+    // Time Based Hint Region (agbCSW)
+    // TODO more?
+    {
+      "Name": "Countdown Time (Seconds)",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Time Based Hint Region",
+      "ToolTip": "This number multiplied by 30 frames is how long the player must be within the region before the hint will appear.",
+      "DataType": "Integer"
+    },
+    
+    // Secret Item Trigger (agbR)
+    // TODO more params?
+    {
+      "Name": "Secret Item",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Secret Item Trigger",
+      "ToolTip": "Only works for IDs 0x00-0x1E, otherwise it defaults to 0x00 (Heart Pickup).", // TODO: item IDs not shown in UI. find better way of communicating compatible items.
+      "DataType": "ItemID"
+    },
+    {
+      "Name": "Secret Item Spawned Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Secret Item Trigger",
+      "ToolTip": "This region will set this switch when spawning the item and won't spawn it again as long as it's set.",
+      "DataType": "Integer"
+    },
+    
+    // Item Restriction Region (agbB)
+    {
+      "Name": "Unknown_5",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Item Restriction Region",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+        1: "Unknown 1", // 2aa4 (default)
+        2: "Unknown 2", // 29d0 (makes param 0x00FF0000 be a tbox flag instead of a switch)
+        3: "Unknown 3", // 2a04, 2a40
+        4: "Unknown 4", // 2324
+        5: "Unknown 5", // 24fc
+        6: "Unknown 6", // 256c, 2a20
+      }
+    },
+    
+    // Stuck Cursor Region (agbD)
+    // TODO more params?
+    {
+      "Name": "Stuck Cursor Reward Item",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Stuck Cursor Region",
+      "ToolTip": "Only works for IDs 0x00-0x06, 0x09-0x14, 0x16-0x1E.", // TODO: item IDs not shown in UI. find better way of communicating compatible items.
+      "DataType": "ItemID"
+    },
+    {
+      "Name": "Stuck Cursor Unknown Switch 1",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Stuck Cursor Region",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Stuck Cursor Unknown Switch 2",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Stuck Cursor Region",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    
+    // Unknowns:
     {
       "Name": "Unknown_1",
       "ValueSource": "Parameters",
@@ -74,7 +196,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Unknown_2", // switch to check for types: A, A2, F, F2, M, MW, T, S, R, B, D, FA. switch to set for types: T, S. switch to UNset for types: MW. tbox flag to check for types: AT, B (sometimes)
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
@@ -83,7 +205,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Unknown_3", // switch to check for types: D. switch to set for types: S.
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
@@ -93,15 +215,17 @@
     },
     {
       "Name": "Unknown_4",
-      "ValueSource": "Parameters",
-      "Mask": 0xFFFF0000,
-      "Hidden": false,
-      "Category": "agbsw0",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_5",
+      // agbA: arg r4 to MoveCheck, index in list 5B48 (index can be 0x00-0x83). seems to be a condition for if it should exist?
+      // agbAT: arg r4 to MoveCheck. this has to be anything except 0 for 0x00FF0000 to be a tbox flag. this value determines which hardcoded condition in the MoveCheck function determines when this trigger region should appear. then when the tbox flag is set, the region will disappear.
+      // agbA2: arg r4 to MoveCheck
+      // agbF: arg r4 to MoveCheck
+      // agbF2: arg r4 to MoveCheck
+      // agbMW: ? if -1, it deletes at 1b50. otherwise it goes to 1b5c and turns off a switch.
+      // agbCSW: this times 30 is the number of frames for the countdown to last.
+      // /agbR: the item ID to spawn as a reward. only works for IDs 00-1E, otherwise it defaults to 00 (heart pickup).
+      // agbB: ??? enum
+      // /agbD: the item ID to spawn as a reward. only works for IDs 00-06, 09-14, 16-1E.
+      // agbFA: arg r4 to MoveCheck
       "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
@@ -111,3 +235,18 @@
     },
   ]
 }
+
+// TODO:
+//these agbsw types can check tingle statues (if xrot/unknown_4 is == 9/A/B/C/D)
+//A
+//AT
+//A2
+//F
+//F2
+//FA
+
+// TODO:
+// 4758 in d_a_agbsw0.rel: hardcoded to check switch 7C
+// 1E44 in d_a_agbsw0.rel: hardcoded to check tbox flag 0C (stage M_NewD2, room C, aka DRC's big key chest room). this is so the agbCSW deletes itself once the chest is opened.
+
+// TODO: find the size multiplier (and shape) of each type
