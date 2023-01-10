@@ -130,6 +130,14 @@ namespace WindEditor
 			base.PostLoad();
 
             m_objRender = WResourceManager.LoadObjResource("resources/editor/EditorCube.obj", new OpenTK.Vector4(1, 1, 1, 1));
+
+            if (Name == "")
+            {
+                // Blanked-out actor that doesn't do anything.
+                // Show as transparent so it doesn't obscure anything.
+                m_objRender.BlendingEnabled = true;
+                m_objRender.FaceCullingEnabled = false;
+            }
         }
 
 		public override FAABox GetBoundingBox()
@@ -296,7 +304,16 @@ namespace WindEditor
 		#region IRenderable
 		virtual public void AddToRenderer(WSceneView view)
 		{
-			view.AddOpaqueMesh(this);
+            if (Name == "")
+            {
+                // Blanked-out actor that doesn't do anything.
+                // Show as transparent so it doesn't obscure anything.
+                view.AddTransparentMesh(this);
+            }
+            else
+            {
+                view.AddOpaqueMesh(this);
+            }
 		}
 
 		virtual public void Draw(WSceneView view)
