@@ -52,65 +52,223 @@ namespace WindEditor
 	public partial class agbsw0 : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
-		public enum TypeEnum
+		public enum BehaviorTypeEnum
 		{
-			Manual_Hint_Region = 0,
-			agbAT = 1,
-			agbMARK = 2,
-			agbA2 = 3,
-			agbF2 = 4,
-			agbF = 5,
+			Repeatable_A_Button_Trigger = 0,
+			Repeatable_Chest_A_Button_Trigger = 1,
+			Marker_A_Button_Trigger = 2,
+			OneOff_A_Button_Trigger = 3,
+			Stuck_Cursor_Link_Trigger = 4,
+			Link_Trigger = 5,
 			Tingle_Bomb_Trigger = 6,
-			agbMW = 7,
-			Time_Based_Hint_Region = 8,
-			Secret_Item_Trigger = 9,
+			Target_Point = 7,
+			Cursor_or_Timed_Link_Trigger = 8,
+			Secret_Item_A_Button_Trigger = 9,
 			Item_Restriction_Region = 10,
-			Stuck_Cursor_Region = 11,
-			agbFA = 12,
-			Unknown_13 = 13,
-			Unknown_14 = 14,
+			Stuck_Cursor_Secret_Trigger = 11,
+			Link_or_A_Button_Trigger = 12,
 		}
 
 
-		[WProperty("Tingle Tuner Region", "Type", true, "", SourceScene.Room)]
-		public TypeEnum Type
+		[WProperty("Tingle Tuner Region", "Behavior Type", true, "", SourceScene.Room)]
+		public BehaviorTypeEnum BehaviorType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_ZRotation & 0x00FF) >> 0);
-				if (!Enum.IsDefined(typeof(TypeEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(BehaviorTypeEnum), value_as_int))
 					value_as_int = 0;
-				return (TypeEnum)value_as_int;
+				return (BehaviorTypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
-				OnPropertyChanged("Type");
+				OnPropertyChanged("BehaviorType");
 				UpdateModel();
 			}
 		}
 
-		[WProperty("GBA Message", "GBA Message to Send", true, "The message sent to the connect GBA.\nIf set to 65535, will instead default to 14.", SourceScene.Room)]
-		public int GBAMessagetoSend
+		[WProperty("GBA Message", "GBA Message ID", true, "The message ID sent to the connected GBA to be shown on the Tingle Tuner.\n\nFor behavior type 'Item Restriction Region', this value will default to 14 when set to -1.", SourceScene.Room)]
+		public int GBAMessageID
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FFFF) >> 0);
-				return value_as_int;
+				if (value_as_int > 32767) {
+					return value_as_int - 65536;
+				} else {
+					return value_as_int;
+				}
 			}
 
 			set
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
-				OnPropertyChanged("GBAMessagetoSend");
+				OnPropertyChanged("GBAMessageID");
+			}
+		}
+		public enum EnabledConditionEnum
+		{
+			Condition_switch_enables_trigger = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+			Unknown_5 = 5,
+			Unknown_6 = 6,
+			Unknown_7 = 7,
+			Unknown_8 = 8,
+			Unknown_9 = 9,
+			Unknown_10 = 10,
+			Unknown_11 = 11,
+			Unknown_12 = 12,
+			Unknown_13 = 13,
+			Unknown_14 = 14,
+			Unknown_15 = 15,
+			Unknown_16 = 16,
+			Unknown_17 = 17,
+			Unknown_18 = 18,
+			Unknown_19 = 19,
+			Unknown_20 = 20,
+			Unknown_21 = 21,
+			Unknown_22 = 22,
+			Unknown_23 = 23,
+			Unknown_24 = 24,
+			Unknown_25 = 25,
+			Unknown_26 = 26,
+			Unknown_27 = 27,
+			Unknown_28 = 28,
+			Unknown_29 = 29,
+			Unknown_30 = 30,
+			Unknown_31 = 31,
+			Unknown_32 = 32,
+			Unknown_33 = 33,
+			Unknown_34 = 34,
+			Unknown_35 = 35,
+			Unknown_36 = 36,
+			Unknown_37 = 37,
+			Unknown_38 = 38,
+			Unknown_39 = 39,
+			Unknown_40 = 40,
+			Unknown_41 = 41,
+			Unknown_42 = 42,
+			Unknown_43 = 43,
+			Unknown_44 = 44,
+			Unknown_45 = 45,
+			Unknown_46 = 46,
+			Unknown_47 = 47,
+			Unknown_48 = 48,
+			Unknown_49 = 49,
+			Unknown_50 = 50,
+			Unknown_51 = 51,
+			Unknown_52 = 52,
+			Unknown_53 = 53,
+			Unknown_54 = 54,
+			Unknown_55 = 55,
+			Unknown_56 = 56,
+			Unknown_57 = 57,
+			Unknown_58 = 58,
+			Unknown_59 = 59,
+			Unknown_60 = 60,
+			Unknown_61 = 61,
+			Unknown_62 = 62,
+			Unknown_63 = 63,
+			Unknown_64 = 64,
+			Unknown_65 = 65,
+			Unknown_66 = 66,
+			Unknown_67 = 67,
+			Unknown_68 = 68,
+			Unknown_69 = 69,
+			Unknown_70 = 70,
+			Unknown_71 = 71,
+			Unknown_72 = 72,
+			Unknown_73 = 73,
+			Unknown_74 = 74,
+			Unknown_75 = 75,
+			Unknown_76 = 76,
+			Unknown_77 = 77,
+			Unknown_78 = 78,
+			Unknown_79 = 79,
+			Unknown_80 = 80,
+			Unknown_81 = 81,
+			Unknown_82 = 82,
+			Unknown_83 = 83,
+			Unknown_84 = 84,
+			Unknown_85 = 85,
+			Unknown_86 = 86,
+			Unknown_87 = 87,
+			Unknown_88 = 88,
+			Unknown_89 = 89,
+			Unknown_90 = 90,
+			Unknown_91 = 91,
+			Unknown_92 = 92,
+			Unknown_93 = 93,
+			Unknown_94 = 94,
+			Unknown_95 = 95,
+			Unknown_96 = 96,
+			Unknown_97 = 97,
+			Unknown_98 = 98,
+			Unknown_99 = 99,
+			Unknown_100 = 100,
+			Unknown_101 = 101,
+			Unknown_102 = 102,
+			Unknown_103 = 103,
+			Unknown_104 = 104,
+			Unknown_105 = 105,
+			Unknown_106 = 106,
+			Unknown_107 = 107,
+			Unknown_108 = 108,
+			Unknown_109 = 109,
+			Unknown_110 = 110,
+			Unknown_111 = 111,
+			Unknown_112 = 112,
+			Unknown_113 = 113,
+			Unknown_114 = 114,
+			Unknown_115 = 115,
+			Unknown_116 = 116,
+			Unknown_117 = 117,
+			Unknown_118 = 118,
+			Unknown_119 = 119,
+			Unknown_120 = 120,
+			Unknown_121 = 121,
+			Unknown_122 = 122,
+			Unknown_123 = 123,
+			Unknown_124 = 124,
+			Checks_switch_124 = 125,
+			Unknown_126 = 126,
+			Unknown_127 = 127,
+			Unknown_128 = 128,
+			Unknown_129 = 129,
+			Unknown_130 = 130,
+			Unknown_131 = 131,
+			Condition_switch_disables_trigger = 65535,
+		}
+
+
+		[WProperty("Enabled Condition", "Enabled Condition", true, "", SourceScene.Room)]
+		public EnabledConditionEnum EnabledCondition
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (!Enum.IsDefined(typeof(EnabledConditionEnum), value_as_int))
+					value_as_int = 65535;
+				return (EnabledConditionEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("EnabledCondition");
 			}
 		}
 
-		[WProperty("Manual Hint Region", "Manual Hint Unknown Switch 1", true, "", SourceScene.Room)]
-		public int ManualHintUnknownSwitch1
+		[WProperty("Repeatable A Button Trigger", "Repeatable A Trigger Condition Switch", true, "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default. When some other actor sets this switch, this trigger will become disabled.", SourceScene.Room)]
+		public int RepeatableATriggerConditionSwitch
 		{ 
 			get
 			{
@@ -122,12 +280,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("ManualHintUnknownSwitch1");
+				OnPropertyChanged("RepeatableATriggerConditionSwitch");
 			}
 		}
 
-		[WProperty("Manual Hint Region", "Manual Hint Unknown Switch 2", true, "", SourceScene.Room)]
-		public int ManualHintUnknownSwitch2
+		[WProperty("Repeatable A Button Trigger", "Repeatable A Trigger Activated Switch", true, "Switch that this trigger sets when the player activates it by pressing the A button.", SourceScene.Room)]
+		public int RepeatableATriggerActivatedSwitch
 		{ 
 			get
 			{
@@ -139,12 +297,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("ManualHintUnknownSwitch2");
+				OnPropertyChanged("RepeatableATriggerActivatedSwitch");
 			}
 		}
 
-		[WProperty("Tingle Bomb Trigger", "Bombed Switch", true, "When this region is bombed with a Tingle Bomb, it will set this switch.", SourceScene.Room)]
-		public int BombedSwitch
+		[WProperty("Repeatable Chest A Button Trigger", "Chest A Trigger Condition Chest Flag", true, "If this number is 0-31, that chest open flag will be checked.\nIf this number is 32 or greater, then Salvage Flag 15 for the sunken treasure chest in the current sector will be checked instead.\n\nIf 'Enabled Condition' is 'Condition switch enables trigger': The chest must be opened before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default. When the chest is opened, this trigger will become disabled.", SourceScene.Room)]
+		public int ChestATriggerConditionChestFlag
 		{ 
 			get
 			{
@@ -156,17 +314,304 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("BombedSwitch");
+				OnPropertyChanged("ChestATriggerConditionChestFlag");
 			}
 		}
 
-		[WProperty("Time Based Hint Region", "Countdown Time (Seconds)", true, "This number multiplied by 30 frames is how long the player must be within the region before the hint will appear.", SourceScene.Room)]
+		[WProperty("Repeatable Chest A Button Trigger", "Chest A Trigger Activated Switch", true, "Switch that this trigger sets when the player activates it by pressing the A button.", SourceScene.Room)]
+		public int ChestATriggerActivatedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("ChestATriggerActivatedSwitch");
+			}
+		}
+
+		[WProperty("Marker A Button Trigger", "Marker A Trigger Enabled Switch", true, "When some other actor sets this switch, this trigger will become enabled.", SourceScene.Room)]
+		public int MarkerATriggerEnabledSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("MarkerATriggerEnabledSwitch");
+			}
+		}
+		public enum MarkerATriggerIconEnum
+		{
+			Dot = 0,
+			North_arrow = 1,
+			Northeast_arrow = 2,
+			East_arrow = 3,
+			Southeast_arrow = 4,
+			South_arrow = 5,
+			Southwest_arrow = 6,
+			West_arrow = 7,
+			Northwest_arrow = 8,
+			Plus_sign_0 = 9,
+			Plus_sign_1 = 10,
+			Plus_sign_2 = 11,
+			Plus_sign_3 = 12,
+			Plus_sign_4 = 13,
+			Plus_sign_5 = 14,
+			Plus_sign_6 = 15,
+			Plus_sign_7 = 16,
+			Plus_sign_8 = 17,
+			Plus_sign_9 = 18,
+			Plus_sign_10 = 19,
+			Plus_sign_11 = 20,
+			Plus_sign_12 = 21,
+			Plus_sign_13 = 22,
+			Plus_sign_14 = 23,
+			Plus_sign_15 = 24,
+			Grey_question_mark = 25,
+			Aryll_hint_north_arrow = 26,
+			Aryll_hint_northeast_arrow = 27,
+			Aryll_hint_east_arrow = 28,
+			Aryll_hint_southeast_arrow = 29,
+			Aryll_hint_south_arrow = 30,
+			Aryll_hint_southwest_arrow = 31,
+			Aryll_hint_west_arrow = 32,
+			Aryll_hint_northwest_arrow = 33,
+			Triforce_hint = 34,
+		}
+
+
+		[WProperty("Marker A Button Trigger", "Marker A Trigger Icon", true, "What icon this marker should display as on the GBA screen.\n\nThe 'Aryll hint' arrows have special behavior - instead of checking a switch they only appears if you own the Skull Hammer and event bit 0x2D01 (resuced Aryll) is not set.\n\n'Triforce hint' shows as a Triforce icon, and has special behavior - it checks event bit 0x1820 instead of a switch, and its hint dynamically changes depending on where you are in the Triforce quest.", SourceScene.Room)]
+		public MarkerATriggerIconEnum MarkerATriggerIcon
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (!Enum.IsDefined(typeof(MarkerATriggerIconEnum), value_as_int))
+					value_as_int = 0;
+				return (MarkerATriggerIconEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("MarkerATriggerIcon");
+			}
+		}
+
+		[WProperty("One-Off A Button Trigger", "One-Off A Trigger Condition Switch", true, "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.", SourceScene.Room)]
+		public int OneOffATriggerConditionSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("OneOffATriggerConditionSwitch");
+			}
+		}
+
+		[WProperty("One-Off A Button Trigger", "One-Off A Trigger Activated Switch", true, "Switch that this trigger toggles when the player activates it by pressing the A button.", SourceScene.Room)]
+		public int OneOffATriggerActivatedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("OneOffATriggerActivatedSwitch");
+			}
+		}
+
+		[WProperty("Stuck Cursor Link Trigger", "Link Stuck Cursor Condition Switch", true, "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.", SourceScene.Room)]
+		public int LinkStuckCursorConditionSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("LinkStuckCursorConditionSwitch");
+			}
+		}
+
+		[WProperty("Stuck Cursor Link Trigger", "Link Stuck Cursor Activated Switch", true, "Switch that this trigger toggles when the player activates it by first walking through it while the cursor locked onto Link, and then walking through the cursor after it gets stuck in the center of the trigger.", SourceScene.Room)]
+		public int LinkStuckCursorActivatedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("LinkStuckCursorActivatedSwitch");
+			}
+		}
+
+		[WProperty("Link Trigger", "Link Trigger Condition Switch", true, "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.", SourceScene.Room)]
+		public int LinkTriggerConditionSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("LinkTriggerConditionSwitch");
+			}
+		}
+
+		[WProperty("Link Trigger", "Link Trigger Activated Switch", true, "Switch that this trigger toggles when the player activates it by walking through it while the cursor locked onto Link.", SourceScene.Room)]
+		public int LinkTriggerActivatedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("LinkTriggerActivatedSwitch");
+			}
+		}
+
+		[WProperty("Tingle Bomb Trigger", "Tingle Bomb Trigger Bombed Switch", true, "Switch that this trigger sets when the player hits it with a Tingle Bomb.", SourceScene.Room)]
+		public int TingleBombTriggerBombedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("TingleBombTriggerBombedSwitch");
+			}
+		}
+
+		[WProperty("Target Point", "Target Point Switch", true, "When some other actor sets this switch, this actor will force Link to look towards it for a second.\nIf 'Target Point Should Unset Switch' is checked, this actor will unset this switch afterwards, and the process can be repeated. Otherwise it's one-time only.", SourceScene.Room)]
+		public int TargetPointSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("TargetPointSwitch");
+			}
+		}
+
+		[WProperty("Target Point", "Target Point Should Unset Switch", true, "", SourceScene.Room)]
+		public bool TargetPointShouldUnsetSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (value_as_int == 0) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			set
+			{
+				int value_as_int = value ? 0 : 1;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("TargetPointShouldUnsetSwitch");
+			}
+		}
+
+		[WProperty("Cursor or Timed Link Trigger", "Cursor or Timed Link Condition Switch", true, "This trigger is enabled by default. When this trigger is activated, it will set this switch and then become disabled.", SourceScene.Room)]
+		public int CursororTimedLinkConditionSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("CursororTimedLinkConditionSwitch");
+			}
+		}
+
+		[WProperty("Cursor or Timed Link Trigger", "Cursor or Timed Link Activated Switch", true, "Switch that this trigger sets when it is activated. See tooltip for 'Countdown Time' for details on what activates it.", SourceScene.Room)]
+		public int CursororTimedLinkActivatedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("CursororTimedLinkActivatedSwitch");
+			}
+		}
+
+		[WProperty("Cursor or Timed Link Trigger", "Countdown Time (Seconds)", true, "If this number is positive, then it's the number of seconds the Link must be within the trigger before it will activate.\nIf this number is negative, then it works completely differently - it instead activates instantly when the cursor enters this trigger, regardless of where Link is.", SourceScene.Room)]
 		public int CountdownTimeSeconds
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
-				return value_as_int;
+				if (value_as_int > 32767) {
+					return value_as_int - 65536;
+				} else {
+					return value_as_int;
+				}
 			}
 
 			set
@@ -177,26 +622,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Secret Item Trigger", "Secret Item", true, "Only works for IDs 0x00-0x1E, otherwise it defaults to 0x00 (Heart Pickup).", SourceScene.Room)]
-		public ItemID SecretItem
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
-				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
-					value_as_int = 0;
-				return (ItemID)value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = (int)value;
-				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("SecretItem");
-			}
-		}
-
-		[WProperty("Secret Item Trigger", "Secret Item Spawned Switch", true, "This region will set this switch when spawning the item and won't spawn it again as long as it's set.", SourceScene.Room)]
+		[WProperty("Secret Item A Button Trigger", "Secret Item Spawned Switch", true, "Switch that this trigger toggles when the player activates it by pressing the A button while the cursor is not locked onto Link. The trigger won't reappear as long as this switch is set.", SourceScene.Room)]
 		public int SecretItemSpawnedSwitch
 		{ 
 			get
@@ -212,57 +638,92 @@ namespace WindEditor
 				OnPropertyChanged("SecretItemSpawnedSwitch");
 			}
 		}
-		public enum Unknown_5Enum
+		public enum SecretItemEnum
 		{
-			Unknown_1 = 1,
-			Unknown_2 = 2,
-			Unknown_3 = 3,
-			Unknown_4 = 4,
-			Unknown_5 = 5,
-			Unknown_6 = 6,
+			Heart = 0,
+			Green_Rupee = 1,
+			Blue_Rupee = 2,
+			Yellow_Rupee = 3,
+			Red_Rupee = 4,
+			Purple_Rupee = 5,
+			Orange_Rupee = 6,
+			Invalid_7 = 7,
+			Invalid_8 = 8,
+			Small_Magic_Jar = 9,
+			Large_Magic_Jar = 10,
+			Bombs_5 = 11,
+			Bombs_10 = 12,
+			Bombs_20 = 13,
+			Bombs_30 = 14,
+			Silver_Rupee = 15,
+			Arrows_10 = 16,
+			Arrows_20 = 17,
+			Arrows_30 = 18,
+			Unknown_13 = 19,
+			Unknown_14 = 20,
+			Invalid_15 = 21,
+			Fairy = 22,
+			Unknown_17 = 23,
+			Unknown_18 = 24,
+			Unknown_19 = 25,
+			Yellow_Rupee_Joke_Message = 26,
+			Unknown_1B = 27,
+			Unknown_1C = 28,
+			Unknown_1D = 29,
+			Three_Hearts = 30,
 		}
 
 
-		[WProperty("Item Restriction Region", "Unknown_5", true, "", SourceScene.Room)]
-		public Unknown_5Enum Unknown_5
+		[WProperty("Secret Item A Button Trigger", "Secret Item", true, "Which item to spawn when the switch is set.", SourceScene.Room)]
+		public SecretItemEnum SecretItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
-				if (!Enum.IsDefined(typeof(Unknown_5Enum), value_as_int))
+				if (!Enum.IsDefined(typeof(SecretItemEnum), value_as_int))
 					value_as_int = 0;
-				return (Unknown_5Enum)value_as_int;
+				return (SecretItemEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("SecretItem");
 			}
 		}
+		public enum RestrictionTypeEnum
+		{
+			Tingle_Bombs = 1,
+			Tingle_Bombs_for_Chest = 2,
+			Tingle_Balloon_and_Shield = 3,
+			Tuner_Out_of_Range = 4,
+			Calling_Tingle = 5,
+			Invisible_Wall = 6,
+		}
 
-		[WProperty("Stuck Cursor Region", "Stuck Cursor Reward Item", true, "Only works for IDs 0x00-0x06, 0x09-0x14, 0x16-0x1E.", SourceScene.Room)]
-		public ItemID StuckCursorRewardItem
+
+		[WProperty("Item Restriction Region", "Restriction Type", true, "'Tingle Bombs' and 'Tingle Bombs for Chest' prevent Tingle from bombing in this region.\n'Tingle Balloon and Shield' prevents usage of Tingle Balloon, Tingle Shield, and Kooloo-limpah! in this region.\n'Tuner Out of Range' is for when you're at the top of Tingle Tower. It sets event bit 0x2E08 when you enter it.\n'Calling Tingle' prevents you from pressing the A button to make Link look towards the cursor.\n'Invisible Wall' prevents the cursor from entering this region. But if Link himself touches the region it disappears, and then the cursor can enter it too.", SourceScene.Room)]
+		public RestrictionTypeEnum RestrictionType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
-				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+				if (!Enum.IsDefined(typeof(RestrictionTypeEnum), value_as_int))
 					value_as_int = 0;
-				return (ItemID)value_as_int;
+				return (RestrictionTypeEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("StuckCursorRewardItem");
+				OnPropertyChanged("RestrictionType");
 			}
 		}
 
-		[WProperty("Stuck Cursor Region", "Stuck Cursor Unknown Switch 1", true, "", SourceScene.Room)]
-		public int StuckCursorUnknownSwitch1
+		[WProperty("Item Restriction Region", "Item Restriction Region Condition Flag", true, "For restriction types 'Tingle Bombs' and 'Tingle Balloon and Shield': This flag is a switch that disables the restriction once it gets set by something else.\nIf the switch is 255 the restriction is always enabled.\n\nFor restriction type 'Tingle Bombs for Chest': This flag is a chest open flag that disables the restriction once that chest is opened.\nIf the chest flag is 32 or greater the restriction is always enabled.", SourceScene.Room)]
+		public int ItemRestrictionRegionConditionFlag
 		{ 
 			get
 			{
@@ -274,29 +735,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("StuckCursorUnknownSwitch1");
+				OnPropertyChanged("ItemRestrictionRegionConditionFlag");
 			}
 		}
 
-		[WProperty("Stuck Cursor Region", "Stuck Cursor Unknown Switch 2", true, "", SourceScene.Room)]
-		public int StuckCursorUnknownSwitch2
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("StuckCursorUnknownSwitch2");
-			}
-		}
-
-		[WProperty("agbsw0", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Item Restriction Region", "Item Restriction Region Unknown", true, "", SourceScene.Room)]
+		public int ItemRestrictionRegionUnknown
 		{ 
 			get
 			{
@@ -308,12 +752,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ItemRestrictionRegionUnknown");
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Stuck Cursor Secret Trigger", "Secret Stuck Cursor Reset Switch", true, "If some other actor sets this switch, this trigger will reset the cursor onto Link and then the trigger will disappear.\nIt does not set this switch itself.", SourceScene.Room)]
+		public int SecretStuckCursorResetSwitch
 		{ 
 			get
 			{
@@ -325,12 +769,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("SecretStuckCursorResetSwitch");
 			}
 		}
 
-		[WProperty("agbsw0", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Stuck Cursor Secret Trigger", "Secret Stuck Cursor Activated Switch", true, "Switch that this trigger toggles when the player activates it by first moving the cursor through it while the cursor is NOT locked onto Link, and then walking through the cursor after it gets stuck in the center of the trigger in order to rescue Tingle.\nIf this switch is set when the trigger actor first loads in, the trigger will not appear.\nIf this switch is 255, the trigger will never appear in the first place.", SourceScene.Room)]
+		public int SecretStuckCursorActivatedSwitch
 		{ 
 			get
 			{
@@ -342,24 +786,95 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SecretStuckCursorActivatedSwitch");
 			}
 		}
+		public enum SecretStuckCursorItemEnum
+		{
+			Heart = 0,
+			Green_Rupee = 1,
+			Blue_Rupee = 2,
+			Yellow_Rupee = 3,
+			Red_Rupee = 4,
+			Purple_Rupee = 5,
+			Orange_Rupee = 6,
+			Invalid_7 = 7,
+			Invalid_8 = 8,
+			Small_Magic_Jar = 9,
+			Large_Magic_Jar = 10,
+			Bombs_5 = 11,
+			Bombs_10 = 12,
+			Bombs_20 = 13,
+			Bombs_30 = 14,
+			Silver_Rupee = 15,
+			Arrows_10 = 16,
+			Arrows_20 = 17,
+			Arrows_30 = 18,
+			Unknown_13 = 19,
+			Unknown_14 = 20,
+			Invalid_15 = 21,
+			Fairy = 22,
+			Unknown_17 = 23,
+			Unknown_18 = 24,
+			Unknown_19 = 25,
+			Yellow_Rupee_Joke_Message = 26,
+			Unknown_1B = 27,
+			Unknown_1C = 28,
+			Unknown_1D = 29,
+			Three_Hearts = 30,
+		}
 
-		[WProperty("agbsw0", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+
+		[WProperty("Stuck Cursor Secret Trigger", "Secret Stuck Cursor Item", true, "Which item to spawn when you rescue Tingle.", SourceScene.Room)]
+		public SecretStuckCursorItemEnum SecretStuckCursorItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_XRotation & 0xFFFF) >> 0);
+				if (!Enum.IsDefined(typeof(SecretStuckCursorItemEnum), value_as_int))
+					value_as_int = 0;
+				return (SecretStuckCursorItemEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
+				OnPropertyChanged("SecretStuckCursorItem");
+			}
+		}
+
+		[WProperty("Link or A Button Trigger", "Link or A Trigger Condition Switch", true, "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.", SourceScene.Room)]
+		public int LinkorATriggerConditionSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
 				return value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = value;
-				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
-				OnPropertyChanged("Unknown_4");
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("LinkorATriggerConditionSwitch");
+			}
+		}
+
+		[WProperty("Link or A Button Trigger", "Link or A Trigger Activated Switch", true, "Switch that this trigger toggles when the player activates it by either walking through it while the cursor locked onto Link, or pressing the A button.", SourceScene.Room)]
+		public int LinkorATriggerActivatedSwitch
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
+				OnPropertyChanged("LinkorATriggerActivatedSwitch");
 			}
 		}
 
@@ -370,79 +885,87 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
-			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
-			TypeSpecificCategories["Type"][TypeEnum.Manual_Hint_Region] = new string[] { "GBA Message", "Manual Hint Region" };
-			TypeSpecificCategories["Type"][TypeEnum.agbAT] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.agbMARK] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.agbA2] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.agbF2] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.agbF] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.Tingle_Bomb_Trigger] = new string[] { "GBA Message", "Tingle Bomb Trigger" };
-			TypeSpecificCategories["Type"][TypeEnum.agbMW] = new string[] {  };
-			TypeSpecificCategories["Type"][TypeEnum.Time_Based_Hint_Region] = new string[] { "GBA Message", "Time Based Hint Region" };
-			TypeSpecificCategories["Type"][TypeEnum.Secret_Item_Trigger] = new string[] { "GBA Message", "Secret Item Trigger" };
-			TypeSpecificCategories["Type"][TypeEnum.Item_Restriction_Region] = new string[] { "Item Restriction Region" };
-			TypeSpecificCategories["Type"][TypeEnum.Stuck_Cursor_Region] = new string[] { "GBA Message", "Stuck Cursor Region" };
-			TypeSpecificCategories["Type"][TypeEnum.agbFA] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.Unknown_13] = new string[] { "GBA Message" };
-			TypeSpecificCategories["Type"][TypeEnum.Unknown_14] = new string[] {  };
+			TypeSpecificCategories["BehaviorType"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Repeatable_A_Button_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Repeatable A Button Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Repeatable_Chest_A_Button_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Repeatable Chest A Button Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Marker_A_Button_Trigger] = new string[] { "GBA Message", "Marker A Button Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.OneOff_A_Button_Trigger] = new string[] { "GBA Message", "Enabled Condition", "One-Off A Button Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Stuck_Cursor_Link_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Stuck Cursor Link Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Link_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Link Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Tingle_Bomb_Trigger] = new string[] { "GBA Message", "Tingle Bomb Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Target_Point] = new string[] { "Target Point" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Cursor_or_Timed_Link_Trigger] = new string[] { "GBA Message", "Cursor or Timed Link Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Secret_Item_A_Button_Trigger] = new string[] { "GBA Message", "Secret Item A Button Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Item_Restriction_Region] = new string[] { "Item Restriction Region" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Stuck_Cursor_Secret_Trigger] = new string[] { "GBA Message", "Stuck Cursor Secret Trigger" };
+			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Link_or_A_Button_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Link or A Button Trigger" };
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			GBAMessagetoSend = -1;
-			ManualHintUnknownSwitch1 = -1;
-			ManualHintUnknownSwitch2 = -1;
-			BombedSwitch = -1;
+			GBAMessageID = -1;
+			RepeatableATriggerConditionSwitch = -1;
+			RepeatableATriggerActivatedSwitch = -1;
+			ChestATriggerConditionChestFlag = -1;
+			ChestATriggerActivatedSwitch = -1;
+			MarkerATriggerEnabledSwitch = -1;
+			OneOffATriggerConditionSwitch = -1;
+			OneOffATriggerActivatedSwitch = -1;
+			LinkStuckCursorConditionSwitch = -1;
+			LinkStuckCursorActivatedSwitch = -1;
+			LinkTriggerConditionSwitch = -1;
+			LinkTriggerActivatedSwitch = -1;
+			TingleBombTriggerBombedSwitch = -1;
+			TargetPointSwitch = -1;
+			CursororTimedLinkConditionSwitch = -1;
+			CursororTimedLinkActivatedSwitch = -1;
 			CountdownTimeSeconds = -1;
-			SecretItem = ItemID.No_item;
 			SecretItemSpawnedSwitch = -1;
-			StuckCursorRewardItem = ItemID.No_item;
-			StuckCursorUnknownSwitch1 = -1;
-			StuckCursorUnknownSwitch2 = -1;
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			ItemRestrictionRegionConditionFlag = -1;
+			ItemRestrictionRegionUnknown = -1;
+			SecretStuckCursorResetSwitch = -1;
+			SecretStuckCursorActivatedSwitch = -1;
+			LinkorATriggerConditionSwitch = -1;
+			LinkorATriggerActivatedSwitch = -1;
 			if (Name == "agbA") {
-				Type = TypeEnum.Manual_Hint_Region;
+				BehaviorType = BehaviorTypeEnum.Repeatable_A_Button_Trigger;
 			}
 			if (Name == "agbAT") {
-				Type = TypeEnum.agbAT;
+				BehaviorType = BehaviorTypeEnum.Repeatable_Chest_A_Button_Trigger;
 			}
 			if (Name == "agbMARK") {
-				Type = TypeEnum.agbMARK;
+				BehaviorType = BehaviorTypeEnum.Marker_A_Button_Trigger;
 			}
 			if (Name == "agbA2") {
-				Type = TypeEnum.agbA2;
+				BehaviorType = BehaviorTypeEnum.OneOff_A_Button_Trigger;
 			}
 			if (Name == "agbF2") {
-				Type = TypeEnum.agbF2;
+				BehaviorType = BehaviorTypeEnum.Stuck_Cursor_Link_Trigger;
 			}
 			if (Name == "agbF") {
-				Type = TypeEnum.agbF;
+				BehaviorType = BehaviorTypeEnum.Link_Trigger;
 			}
 			if (Name == "agbTBOX") {
-				Type = TypeEnum.Tingle_Bomb_Trigger;
+				BehaviorType = BehaviorTypeEnum.Tingle_Bomb_Trigger;
 			}
 			if (Name == "agbMW") {
-				Type = TypeEnum.agbMW;
+				BehaviorType = BehaviorTypeEnum.Target_Point;
 			}
 			if (Name == "agbCSW") {
-				Type = TypeEnum.Time_Based_Hint_Region;
+				BehaviorType = BehaviorTypeEnum.Cursor_or_Timed_Link_Trigger;
 			}
 			if (Name == "agbR") {
-				Type = TypeEnum.Secret_Item_Trigger;
+				BehaviorType = BehaviorTypeEnum.Secret_Item_A_Button_Trigger;
 			}
 			if (Name == "agbB") {
-				Type = TypeEnum.Item_Restriction_Region;
+				BehaviorType = BehaviorTypeEnum.Item_Restriction_Region;
 			}
 			if (Name == "agbD") {
-				Type = TypeEnum.Stuck_Cursor_Region;
+				BehaviorType = BehaviorTypeEnum.Stuck_Cursor_Secret_Trigger;
 			}
 			if (Name == "agbFA") {
-				Type = TypeEnum.agbFA;
+				BehaviorType = BehaviorTypeEnum.Link_or_A_Button_Trigger;
 			}
 		}
 	}

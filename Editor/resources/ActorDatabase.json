@@ -23,7 +23,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbA",
-    "English Name": "Tingle Tuner Manual Hint Region",
+    "English Name": "Tingle Tuner Repeatable A Button Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -49,7 +49,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbAT",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Repeatable Chest A Button Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -68,7 +68,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbA2",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner One-Off A Button Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -130,7 +130,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbF",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Link Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -155,7 +155,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbF2",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Stuck Cursor Link Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -170,7 +170,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbMARK",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Marker A Button Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -237,7 +237,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbMW",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Target Point",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -256,7 +256,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbCSW",
-    "English Name": "Tingle Tuner Time-Based Hint Region",
+    "English Name": "Tingle Tuner Cursor or Timed Link Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -321,7 +321,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbTBOX",
-    "English Name": "Tingle Bomb Trigger",
+    "English Name": "Tingle Tuner Tingle Bomb Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -345,7 +345,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbR",
-    "English Name": "Tingle Tuner Secret Item Trigger",
+    "English Name": "Tingle Tuner Secret Item A Button Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -390,7 +390,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbD",
-    "English Name": "Tingle Tuner Stuck Cursor Region",
+    "English Name": "Tingle Tuner Stuck Cursor Secret Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -408,7 +408,7 @@
     "ActorClassType": "agbsw0",
     "Wait Animations": null,
     "Actor Name": "agbFA",
-    "English Name": "agbsw0",
+    "English Name": "Tingle Tuner Link or A Button Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -11928,7 +11928,7 @@
     "ActorClassType": "salvage",
     "Wait Animations": null,
     "Actor Name": "SwSlvg",
-    "English Name": "Gunboat/Big Octo Salvage Point",
+    "English Name": "Switch-Activated Salvage Point",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -12092,7 +12092,7 @@
     "ActorClassType": "salvage",
     "Wait Animations": null,
     "Actor Name": "SalvFM",
-    "English Name": "Full Moon Salvage Point",
+    "English Name": "Full Moon Nighttime Salvage Point",
     "Tags": null,
     "Explanation": null,
     "Locations": [

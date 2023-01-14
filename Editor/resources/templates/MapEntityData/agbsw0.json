@@ -3,7 +3,7 @@
   "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Type",
+      "Name": "Behavior Type",
       "ValueSource": "ZRotation",
       "Mask": 0x00FF,
       "Hidden": false,
@@ -11,242 +11,613 @@
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
-        0: "Manual Hint Region",       // agbA,    ExeSubA
-        1: "agbAT",                    // agbAT,   ExeSubAT
-        2: "agbMARK",                  // agbMARK, ExeSubM
-        3: "agbA2",                    // agbA2,   ExeSubA2
-        4: "agbF2",                    // agbF2,   ExeSubF2
-        5: "agbF",                     // agbF,    ExeSubF
-        6: "Tingle Bomb Trigger",      // agbTBOX, ExeSubT
-        7: "agbMW",                    // agbMW,   ExeSubMW (repeatable manual hint?)
-        8: "Time Based Hint Region",   // agbCSW,  ExeSubS
-        9: "Secret Item Trigger",      // agbR,    ExeSubR
-        10: "Item Restriction Region", // agbB,    ExeSubB
-        11: "Stuck Cursor Region",     // agbD,    ExeSubD (cursor gets stuck, if you walk over it you get an item)
-        12: "agbFA",                   // agbFA,   ExeSubFA
-        13: "Unknown 13",              // ???,     ExeSubM2
-        14: "Unknown 14",              // ???,     ExeSubM3 (triforce related?)
+        0: "Repeatable A Button Trigger",       // agbA,    ExeSubA
+        1: "Repeatable Chest A Button Trigger", // agbAT,   ExeSubAT
+        2: "Marker A Button Trigger",           // agbMARK, ExeSubM
+        3: "One-Off A Button Trigger",          // agbA2,   ExeSubA2
+        4: "Stuck Cursor Link Trigger",         // agbF2,   ExeSubF2
+        5: "Link Trigger",                      // agbF,    ExeSubF
+        6: "Tingle Bomb Trigger",               // agbTBOX, ExeSubT
+        7: "Target Point",                      // agbMW,   ExeSubMW
+        8: "Cursor or Timed Link Trigger",      // agbCSW,  ExeSubS
+        9: "Secret Item A Button Trigger",      // agbR,    ExeSubR
+        10: "Item Restriction Region",          // agbB,    ExeSubB
+        11: "Stuck Cursor Secret Trigger",      // agbD,    ExeSubD
+        12: "Link or A Button Trigger",         // agbFA,   ExeSubFA
+        //13: "Aryll Hint",                     // [N/A],   ExeSubM2, shouldn't be placed manually
+        //14: "Triforce Hint A Button Trigger", // [N/A],   ExeSubM3, shouldn't be placed manually
       },
       "UpdateModel": true,
       "DefaultsByActorName": {
-        "agbA":    "Manual Hint Region",
-        "agbAT":   "agbAT",
-        "agbMARK": "agbMARK",
-        "agbA2":   "agbA2",
-        "agbF2":   "agbF2",
-        "agbF":    "agbF",
+        "agbA":    "Repeatable A Button Trigger",
+        "agbAT":   "Repeatable Chest A Button Trigger",
+        "agbMARK": "Marker A Button Trigger",
+        "agbA2":   "One-Off A Button Trigger",
+        "agbF2":   "Stuck Cursor Link Trigger",
+        "agbF":    "Link Trigger",
         "agbTBOX": "Tingle Bomb Trigger",
-        "agbMW":   "agbMW",
-        "agbCSW":  "Time Based Hint Region",
-        "agbR":    "Secret Item Trigger",
-        "agbB":    "Item Restriction Region",
-        "agbD":    "Stuck Cursor Region",
-        "agbFA":   "agbFA",
+        "agbMW":   "Target Point",
+        "agbCSW":  "Cursor or Timed Link Trigger",
+        "agbR":    "Secret Item A Button Trigger",
+        "agbB":    "Item Restriction Region",   //
+        "agbD":    "Stuck Cursor Secret Trigger",
+        "agbFA":   "Link or A Button Trigger",
       },
       "TypeSpecificCategories": {
-        "Manual Hint Region":      ["GBA Message", "Manual Hint Region"],
-        "agbAT":                   ["GBA Message"],
-        "agbMARK":                 ["GBA Message"],
-        "agbA2":                   ["GBA Message"],
-        "agbF2":                   ["GBA Message"],
-        "agbF":                    ["GBA Message"],
-        "Tingle Bomb Trigger":     ["GBA Message", "Tingle Bomb Trigger"],
-        "agbMW":                   [],
-        "Time Based Hint Region":  ["GBA Message", "Time Based Hint Region"],
-        "Secret Item Trigger":     ["GBA Message", "Secret Item Trigger"],
-        "Item Restriction Region": ["Item Restriction Region"],
-        "Stuck Cursor Region":     ["GBA Message", "Stuck Cursor Region"],
-        "agbFA":                   ["GBA Message"],
-        "Unknown 13":              ["GBA Message"],
-        "Unknown 14":              [],
+        "Repeatable A Button Trigger":       ["GBA Message", "Enabled Condition", "Repeatable A Button Trigger"],
+        "Repeatable Chest A Button Trigger": ["GBA Message", "Enabled Condition", "Repeatable Chest A Button Trigger"],
+        "Marker A Button Trigger":           ["GBA Message", "Marker A Button Trigger"],
+        "One-Off A Button Trigger":          ["GBA Message", "Enabled Condition", "One-Off A Button Trigger"],
+        "Stuck Cursor Link Trigger":         ["GBA Message", "Enabled Condition", "Stuck Cursor Link Trigger"],
+        "Link Trigger":                      ["GBA Message", "Enabled Condition", "Link Trigger"],
+        "Tingle Bomb Trigger":               ["GBA Message", "Tingle Bomb Trigger"],
+        "Target Point":                      ["Target Point"],
+        "Cursor or Timed Link Trigger":      ["GBA Message", "Cursor or Timed Link Trigger"],
+        "Secret Item A Button Trigger":      ["GBA Message", "Secret Item A Button Trigger"],
+        "Item Restriction Region":           ["Item Restriction Region"],
+        "Stuck Cursor Secret Trigger":       ["GBA Message", "Stuck Cursor Secret Trigger"],
+        "Link or A Button Trigger":          ["GBA Message", "Enabled Condition", "Link or A Button Trigger"],
+        //"Aryll Hint":                      ["GBA Message"],
+        //"Triforce Hint A Button Trigger":  [],
       }
     },
     
     {
-      "Name": "GBA Message to Send",
+      "Name": "GBA Message ID",
       "ValueSource": "Parameters",
       "Mask": 0x0000FFFF,
       "Hidden": false,
       "Category": "GBA Message",
-      "ToolTip": "The message sent to the connect GBA.\nIf set to 65535, will instead default to 14.",
-      "DataType": "Integer"
+      "ToolTip": "The message ID sent to the connected GBA to be shown on the Tingle Tuner.\n\nFor behavior type 'Item Restriction Region', this value will default to 14 when set to -1.",
+      "DataType": "SignedInteger"
+    },
+    {
+      "Name": "Enabled Condition", // 5B48 has the list of switch statement cases for the unknown values
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Enabled Condition",
+      "ToolTip": "",
+      "DataType": "Enum",
+      "EnumValues": {
+            0: "Condition switch enables trigger",
+            1: "Unknown 1",
+            2: "Unknown 2",
+            3: "Unknown 3",
+            4: "Unknown 4",
+            5: "Unknown 5",
+            6: "Unknown 6",
+            7: "Unknown 7",
+            8: "Unknown 8",
+            9: "Unknown 9",
+           10: "Unknown 10",
+           11: "Unknown 11",
+           12: "Unknown 12",
+           13: "Unknown 13",
+           14: "Unknown 14",
+           15: "Unknown 15",
+           16: "Unknown 16",
+           17: "Unknown 17",
+           18: "Unknown 18",
+           19: "Unknown 19",
+           20: "Unknown 20",
+           21: "Unknown 21",
+           22: "Unknown 22",
+           23: "Unknown 23",
+           24: "Unknown 24",
+           25: "Unknown 25",
+           26: "Unknown 26",
+           27: "Unknown 27",
+           28: "Unknown 28",
+           29: "Unknown 29",
+           30: "Unknown 30",
+           31: "Unknown 31",
+           32: "Unknown 32",
+           33: "Unknown 33",
+           34: "Unknown 34",
+           35: "Unknown 35",
+           36: "Unknown 36",
+           37: "Unknown 37",
+           38: "Unknown 38",
+           39: "Unknown 39",
+           40: "Unknown 40",
+           41: "Unknown 41",
+           42: "Unknown 42",
+           43: "Unknown 43",
+           44: "Unknown 44",
+           45: "Unknown 45",
+           46: "Unknown 46",
+           47: "Unknown 47",
+           48: "Unknown 48",
+           49: "Unknown 49",
+           50: "Unknown 50",
+           51: "Unknown 51",
+           52: "Unknown 52",
+           53: "Unknown 53",
+           54: "Unknown 54",
+           55: "Unknown 55",
+           56: "Unknown 56",
+           57: "Unknown 57",
+           58: "Unknown 58",
+           59: "Unknown 59",
+           60: "Unknown 60",
+           61: "Unknown 61",
+           62: "Unknown 62",
+           63: "Unknown 63",
+           64: "Unknown 64",
+           65: "Unknown 65",
+           66: "Unknown 66",
+           67: "Unknown 67",
+           68: "Unknown 68",
+           69: "Unknown 69",
+           70: "Unknown 70",
+           71: "Unknown 71",
+           72: "Unknown 72",
+           73: "Unknown 73",
+           74: "Unknown 74",
+           75: "Unknown 75",
+           76: "Unknown 76",
+           77: "Unknown 77",
+           78: "Unknown 78",
+           79: "Unknown 79",
+           80: "Unknown 80",
+           81: "Unknown 81",
+           82: "Unknown 82",
+           83: "Unknown 83",
+           84: "Unknown 84",
+           85: "Unknown 85",
+           86: "Unknown 86",
+           87: "Unknown 87",
+           88: "Unknown 88",
+           89: "Unknown 89",
+           90: "Unknown 90",
+           91: "Unknown 91",
+           92: "Unknown 92",
+           93: "Unknown 93",
+           94: "Unknown 94",
+           95: "Unknown 95",
+           96: "Unknown 96",
+           97: "Unknown 97",
+           98: "Unknown 98",
+           99: "Unknown 99",
+          100: "Unknown 100",
+          101: "Unknown 101",
+          102: "Unknown 102",
+          103: "Unknown 103",
+          104: "Unknown 104",
+          105: "Unknown 105",
+          106: "Unknown 106",
+          107: "Unknown 107",
+          108: "Unknown 108",
+          109: "Unknown 109",
+          110: "Unknown 110",
+          111: "Unknown 111",
+          112: "Unknown 112",
+          113: "Unknown 113",
+          114: "Unknown 114",
+          115: "Unknown 115",
+          116: "Unknown 116",
+          117: "Unknown 117",
+          118: "Unknown 118",
+          119: "Unknown 119",
+          120: "Unknown 120",
+          121: "Unknown 121",
+          122: "Unknown 122",
+          123: "Unknown 123",
+          124: "Unknown 124",
+          125: "Checks switch 124",
+          126: "Unknown 126",
+          127: "Unknown 127",
+          128: "Unknown 128",
+          129: "Unknown 129",
+          130: "Unknown 130",
+          131: "Unknown 131",
+        65535: "Condition switch disables trigger",
+      },
+      "EnumDefaultValue": 65535
     },
     
-    // Manual Hint Region (agbA)
+    // Repeatable A Button Trigger (agbA)
     {
-      "Name": "Manual Hint Unknown Switch 1",
+      "Name": "Repeatable A Trigger Condition Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "Manual Hint Region",
-      "ToolTip": "",
+      "Category": "Repeatable A Button Trigger",
+      "ToolTip": "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default. When some other actor sets this switch, this trigger will become disabled.",
       "DataType": "Integer"
     },
     {
-      "Name": "Manual Hint Unknown Switch 2",
+      "Name": "Repeatable A Trigger Activated Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "Manual Hint Region",
-      "ToolTip": "",
+      "Category": "Repeatable A Button Trigger",
+      "ToolTip": "Switch that this trigger sets when the player activates it by pressing the A button.",
+      "DataType": "Integer"
+    },
+    
+    // Repeatable Chest A Button Trigger (agbAT)
+    {
+      "Name": "Chest A Trigger Condition Chest Flag",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Repeatable Chest A Button Trigger",
+      "ToolTip": "If this number is 0-31, that chest open flag will be checked.\nIf this number is 32 or greater, then Salvage Flag 15 for the sunken treasure chest in the current sector will be checked instead.\n\nIf 'Enabled Condition' is 'Condition switch enables trigger': The chest must be opened before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default. When the chest is opened, this trigger will become disabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Chest A Trigger Activated Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Repeatable Chest A Button Trigger",
+      "ToolTip": "Switch that this trigger sets when the player activates it by pressing the A button.",
+      "DataType": "Integer"
+    },
+    
+    // Marker A Button Trigger (agbMARK)
+    {
+      "Name": "Marker A Trigger Enabled Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Marker A Button Trigger",
+      "ToolTip": "When some other actor sets this switch, this trigger will become enabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Marker A Trigger Icon",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Marker A Button Trigger",
+      "ToolTip": "What icon this marker should display as on the GBA screen.\n\nThe 'Aryll hint' arrows have special behavior - instead of checking a switch they only appears if you own the Skull Hammer and event bit 0x2D01 (resuced Aryll) is not set.\n\n'Triforce hint' shows as a Triforce icon, and has special behavior - it checks event bit 0x1820 instead of a switch, and its hint dynamically changes depending on where you are in the Triforce quest.",
+      "DataType": "Enum",
+      "EnumValues": {
+         0: "Dot",
+         1: "North arrow",
+         2: "Northeast arrow",
+         3: "East arrow",
+         4: "Southeast arrow",
+         5: "South arrow",
+         6: "Southwest arrow",
+         7: "West arrow",
+         8: "Northwest arrow",
+         9: "Plus sign 0", // TODO: What is the difference between the 16 plus signs? They don't seem to be chest flags.
+        10: "Plus sign 1", // Unused
+        11: "Plus sign 2", // Siren/Room7 kindan/Room13
+        12: "Plus sign 3", // Siren/Room7 kindan/Room13
+        13: "Plus sign 4", // Siren/Room7 kindan/Room13
+        14: "Plus sign 5", // Siren/Room7 kindan/Room13
+        15: "Plus sign 6", // Siren/Room7 kindan/Room13
+        16: "Plus sign 7", // Unused
+        17: "Plus sign 8", // Unused
+        18: "Plus sign 9", // Unused
+        19: "Plus sign 10", // Unused
+        20: "Plus sign 11", // Unused
+        21: "Plus sign 12", // Unused
+        22: "Plus sign 13", // Unused
+        23: "Plus sign 14", // Unused
+        24: "Plus sign 15", // Unused
+        25: "Grey question mark",
+        26: "Aryll hint north arrow", // These Aryll Hint types turn the actor into behavior type 13 and uses exec func ExeSubM2
+        27: "Aryll hint northeast arrow",
+        28: "Aryll hint east arrow",
+        29: "Aryll hint southeast arrow",
+        30: "Aryll hint south arrow",
+        31: "Aryll hint southwest arrow",
+        32: "Aryll hint west arrow",
+        33: "Aryll hint northwest arrow",
+        34: "Triforce hint", // This turns the actor into behavior type 14 and uses exec func ExeSubM3
+      }
+    },
+    
+    // One-Off A Button Trigger (agbA2)
+    {
+      "Name": "One-Off A Trigger Condition Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "One-Off A Button Trigger",
+      "ToolTip": "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "One-Off A Trigger Activated Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "One-Off A Button Trigger",
+      "ToolTip": "Switch that this trigger toggles when the player activates it by pressing the A button.",
+      "DataType": "Integer"
+    },
+    
+    // Stuck Cursor Link Trigger (agbF2)
+    {
+      "Name": "Link Stuck Cursor Condition Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Stuck Cursor Link Trigger",
+      "ToolTip": "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Link Stuck Cursor Activated Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Stuck Cursor Link Trigger",
+      "ToolTip": "Switch that this trigger toggles when the player activates it by first walking through it while the cursor locked onto Link, and then walking through the cursor after it gets stuck in the center of the trigger.",
+      "DataType": "Integer"
+    },
+    
+    // Link Trigger (agbF)
+    {
+      "Name": "Link Trigger Condition Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Link Trigger",
+      "ToolTip": "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Link Trigger Activated Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Link Trigger",
+      "ToolTip": "Switch that this trigger toggles when the player activates it by walking through it while the cursor locked onto Link.",
       "DataType": "Integer"
     },
     
     // Tingle Bomb Trigger (agbTBOX)
+    // Note: If GBA Message ID is -1, this trigger deletes itself as soon as it's activated.
+    // But if it does have a GBA Message ID, it instead waits one second before showing the message and then deleting itself.
     {
-      "Name": "Bombed Switch",
+      "Name": "Tingle Bomb Trigger Bombed Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "Tingle Bomb Trigger",
-      "ToolTip": "When this region is bombed with a Tingle Bomb, it will set this switch.",
+      "ToolTip": "Switch that this trigger sets when the player hits it with a Tingle Bomb.",
       "DataType": "Integer"
     },
     
-    // Time Based Hint Region (agbCSW)
-    // TODO more?
+    // Target Point (agbMW)
+    {
+      "Name": "Target Point Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Target Point",
+      "ToolTip": "When some other actor sets this switch, this actor will force Link to look towards it for a second.\nIf 'Target Point Should Unset Switch' is checked, this actor will unset this switch afterwards, and the process can be repeated. Otherwise it's one-time only.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Target Point Should Unset Switch",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Target Point",
+      "ToolTip": "",
+      "DataType": "Boolean",
+      "BooleanDefaultValue": false,
+      "BooleanNonDefaults": [0]
+    },
+    
+    // Cursor or Timed Link Trigger (agbCSW)
+    // Note: If this is in room 12 of M_NewD2 (DRC big key chest room) and treasure chest flag 0xC is set, this actor is hardcoded to delete itself automatically.
+    {
+      "Name": "Cursor or Timed Link Condition Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Cursor or Timed Link Trigger",
+      "ToolTip": "This trigger is enabled by default. When this trigger is activated, it will set this switch and then become disabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Cursor or Timed Link Activated Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Cursor or Timed Link Trigger",
+      "ToolTip": "Switch that this trigger sets when it is activated. See tooltip for 'Countdown Time' for details on what activates it.",
+      "DataType": "Integer"
+    },
     {
       "Name": "Countdown Time (Seconds)",
       "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "Time Based Hint Region",
-      "ToolTip": "This number multiplied by 30 frames is how long the player must be within the region before the hint will appear.",
-      "DataType": "Integer"
+      "Category": "Cursor or Timed Link Trigger",
+      "ToolTip": "If this number is positive, then it's the number of seconds the Link must be within the trigger before it will activate.\nIf this number is negative, then it works completely differently - it instead activates instantly when the cursor enters this trigger, regardless of where Link is.",
+      "DataType": "SignedInteger"
     },
     
-    // Secret Item Trigger (agbR)
-    // TODO more params?
-    {
-      "Name": "Secret Item",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "Secret Item Trigger",
-      "ToolTip": "Only works for IDs 0x00-0x1E, otherwise it defaults to 0x00 (Heart Pickup).", // TODO: item IDs not shown in UI. find better way of communicating compatible items.
-      "DataType": "ItemID"
-    },
+    // Secret Item A Button Trigger (agbR)
     {
       "Name": "Secret Item Spawned Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "Secret Item Trigger",
-      "ToolTip": "This region will set this switch when spawning the item and won't spawn it again as long as it's set.",
+      "Category": "Secret Item A Button Trigger",
+      "ToolTip": "Switch that this trigger toggles when the player activates it by pressing the A button while the cursor is not locked onto Link. The trigger won't reappear as long as this switch is set.",
       "DataType": "Integer"
+    },
+    {
+      "Name": "Secret Item",
+      "ValueSource": "XRotation",
+      "Mask": 0xFFFF,
+      "Hidden": false,
+      "Category": "Secret Item A Button Trigger",
+      "ToolTip": "Which item to spawn when the switch is set.",
+      "DataType": "Enum",
+      "EnumValues": {
+            0: "Heart",
+            1: "Green Rupee",
+            2: "Blue Rupee",
+            3: "Yellow Rupee",
+            4: "Red Rupee",
+            5: "Purple Rupee",
+            6: "Orange Rupee",
+            7: "Invalid 7",
+            8: "Invalid 8",
+            9: "Small Magic Jar",
+           10: "Large Magic Jar",
+           11: "Bombs 5",
+           12: "Bombs 10",
+           13: "Bombs 20",
+           14: "Bombs 30",
+           15: "Silver Rupee",
+           16: "Arrows 10",
+           17: "Arrows 20",
+           18: "Arrows 30",
+           19: "Unknown 13",
+           20: "Unknown 14",
+           21: "Invalid 15",
+           22: "Fairy",
+           23: "Unknown 17",
+           24: "Unknown 18",
+           25: "Unknown 19",
+           26: "Yellow Rupee Joke Message",
+           27: "Unknown 1B",
+           28: "Unknown 1C",
+           29: "Unknown 1D",
+           30: "Three Hearts",
+        // -1/-2/-3 turn this into an Item Restriction region and negate this param.
+        // But this is never used in the vanilla game and it's pointless, so I'm not putting these as options here.
+        //65533: "Item Restriction Tingle Balloon and Shield",
+        //65534: "Item Restriction Tingle Bombs for Chest",
+        //65535: "Item Restriction Tingle Bombs",
+      }
     },
     
     // Item Restriction Region (agbB)
     {
-      "Name": "Unknown_5",
+      "Name": "Restriction Type",
       "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
       "Category": "Item Restriction Region",
-      "ToolTip": "",
+      "ToolTip": "'Tingle Bombs' and 'Tingle Bombs for Chest' prevent Tingle from bombing in this region.\n'Tingle Balloon and Shield' prevents usage of Tingle Balloon, Tingle Shield, and Kooloo-limpah! in this region.\n'Tuner Out of Range' is for when you're at the top of Tingle Tower. It sets event bit 0x2E08 when you enter it.\n'Calling Tingle' prevents you from pressing the A button to make Link look towards the cursor.\n'Invisible Wall' prevents the cursor from entering this region. But if Link himself touches the region it disappears, and then the cursor can enter it too.",
       "DataType": "Enum",
       "EnumValues": {
-        1: "Unknown 1", // 2aa4 (default)
-        2: "Unknown 2", // 29d0 (makes param 0x00FF0000 be a tbox flag instead of a switch)
-        3: "Unknown 3", // 2a04, 2a40
-        4: "Unknown 4", // 2324
-        5: "Unknown 5", // 24fc
-        6: "Unknown 6", // 256c, 2a20
+        1: "Tingle Bombs", // Default for all other values
+        2: "Tingle Bombs for Chest", // Unused
+        3: "Tingle Balloon and Shield",
+        4: "Tuner Out of Range",
+        5: "Calling Tingle",
+        6: "Invisible Wall",
       }
     },
-    
-    // Stuck Cursor Region (agbD)
-    // TODO more params?
     {
-      "Name": "Stuck Cursor Reward Item",
-      "ValueSource": "XRotation",
-      "Mask": 0xFFFF,
-      "Hidden": false,
-      "Category": "Stuck Cursor Region",
-      "ToolTip": "Only works for IDs 0x00-0x06, 0x09-0x14, 0x16-0x1E.", // TODO: item IDs not shown in UI. find better way of communicating compatible items.
-      "DataType": "ItemID"
-    },
-    {
-      "Name": "Stuck Cursor Unknown Switch 1",
+      "Name": "Item Restriction Region Condition Flag",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "Stuck Cursor Region",
-      "ToolTip": "",
+      "Category": "Item Restriction Region",
+      "ToolTip": "For restriction types 'Tingle Bombs' and 'Tingle Balloon and Shield': This flag is a switch that disables the restriction once it gets set by something else.\nIf the switch is 255 the restriction is always enabled.\n\nFor restriction type 'Tingle Bombs for Chest': This flag is a chest open flag that disables the restriction once that chest is opened.\nIf the chest flag is 32 or greater the restriction is always enabled.",
       "DataType": "Integer"
     },
+    // Unknown what this field does, but its value is copied to the AGB cursor's fields for certain types:
+    // Types 1/2: field 0x65E
+    // Type 3: field 0x660
+    // Type 5: field 0x662
     {
-      "Name": "Stuck Cursor Unknown Switch 2",
-      "ValueSource": "Parameters",
-      "Mask": 0xFF000000,
-      "Hidden": false,
-      "Category": "Stuck Cursor Region",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    
-    // Unknowns:
-    {
-      "Name": "Unknown_1",
+      "Name": "Item Restriction Region Unknown",
       "ValueSource": "Parameters",
       "Mask": 0x0000FFFF,
       "Hidden": false,
-      "Category": "agbsw0",
+      "Category": "Item Restriction Region",
       "ToolTip": "",
       "DataType": "Integer"
     },
+    
+    // Stuck Cursor Secret Trigger (agbD)
     {
-      "Name": "Unknown_2", // switch to check for types: A, A2, F, F2, M, MW, T, S, R, B, D, FA. switch to set for types: T, S. switch to UNset for types: MW. tbox flag to check for types: AT, B (sometimes)
+      "Name": "Secret Stuck Cursor Reset Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "agbsw0",
-      "ToolTip": "",
+      "Category": "Stuck Cursor Secret Trigger",
+      "ToolTip": "If some other actor sets this switch, this trigger will reset the cursor onto Link and then the trigger will disappear.\nIt does not set this switch itself.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3", // switch to check for types: D. switch to set for types: S.
+      "Name": "Secret Stuck Cursor Activated Switch",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "agbsw0",
-      "ToolTip": "",
+      "Category": "Stuck Cursor Secret Trigger",
+      "ToolTip": "Switch that this trigger toggles when the player activates it by first moving the cursor through it while the cursor is NOT locked onto Link, and then walking through the cursor after it gets stuck in the center of the trigger in order to rescue Tingle.\nIf this switch is set when the trigger actor first loads in, the trigger will not appear.\nIf this switch is 255, the trigger will never appear in the first place.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
-      // agbA: arg r4 to MoveCheck, index in list 5B48 (index can be 0x00-0x83). seems to be a condition for if it should exist?
-      // agbAT: arg r4 to MoveCheck. this has to be anything except 0 for 0x00FF0000 to be a tbox flag. this value determines which hardcoded condition in the MoveCheck function determines when this trigger region should appear. then when the tbox flag is set, the region will disappear.
-      // agbA2: arg r4 to MoveCheck
-      // agbF: arg r4 to MoveCheck
-      // agbF2: arg r4 to MoveCheck
-      // agbMW: ? if -1, it deletes at 1b50. otherwise it goes to 1b5c and turns off a switch.
-      // agbCSW: this times 30 is the number of frames for the countdown to last.
-      // /agbR: the item ID to spawn as a reward. only works for IDs 00-1E, otherwise it defaults to 00 (heart pickup).
-      // agbB: ??? enum
-      // /agbD: the item ID to spawn as a reward. only works for IDs 00-06, 09-14, 16-1E.
-      // agbFA: arg r4 to MoveCheck
+      "Name": "Secret Stuck Cursor Item",
       "ValueSource": "XRotation",
       "Mask": 0xFFFF,
       "Hidden": false,
-      "Category": "agbsw0",
-      "ToolTip": "",
+      "Category": "Stuck Cursor Secret Trigger",
+      "ToolTip": "Which item to spawn when you rescue Tingle.",
+      "DataType": "Enum",
+      "EnumValues": {
+         0: "Heart",
+         1: "Green Rupee",
+         2: "Blue Rupee",
+         3: "Yellow Rupee",
+         4: "Red Rupee",
+         5: "Purple Rupee",
+         6: "Orange Rupee",
+         7: "Invalid 7",
+         8: "Invalid 8",
+         9: "Small Magic Jar",
+        10: "Large Magic Jar",
+        11: "Bombs 5",
+        12: "Bombs 10",
+        13: "Bombs 20",
+        14: "Bombs 30",
+        15: "Silver Rupee",
+        16: "Arrows 10",
+        17: "Arrows 20",
+        18: "Arrows 30",
+        19: "Unknown 13",
+        20: "Unknown 14",
+        21: "Invalid 15",
+        22: "Fairy",
+        23: "Unknown 17",
+        24: "Unknown 18",
+        25: "Unknown 19",
+        26: "Yellow Rupee Joke Message",
+        27: "Unknown 1B",
+        28: "Unknown 1C",
+        29: "Unknown 1D",
+        30: "Three Hearts",
+      }
+    },
+    
+    // Link or A Button Trigger (agbFA)
+    {
+      "Name": "Link or A Trigger Condition Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Link or A Button Trigger",
+      "ToolTip": "If 'Enabled Condition' is 'Condition switch enables trigger': This switch must be set by some other actor before this trigger becomes enabled.\nOtherwise: This trigger is enabled by default.\nEither way, when this trigger is activated, it will toggle this switch and then become disabled.",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Link or A Trigger Activated Switch",
+      "ValueSource": "Parameters",
+      "Mask": 0xFF000000,
+      "Hidden": false,
+      "Category": "Link or A Button Trigger",
+      "ToolTip": "Switch that this trigger toggles when the player activates it by either walking through it while the cursor locked onto Link, or pressing the A button.",
       "DataType": "Integer"
     },
   ]
 }
-
-// TODO:
-//these agbsw types can check tingle statues (if xrot/unknown_4 is == 9/A/B/C/D)
-//A
-//AT
-//A2
-//F
-//F2
-//FA
-
-// TODO:
-// 4758 in d_a_agbsw0.rel: hardcoded to check switch 7C
-// 1E44 in d_a_agbsw0.rel: hardcoded to check tbox flag 0C (stage M_NewD2, room C, aka DRC's big key chest room). this is so the agbCSW deletes itself once the chest is opened.
-
-// TODO: find the size multiplier (and shape) of each type
