@@ -232,6 +232,10 @@ namespace WindEditor
             }
 
             room = GetRoomNumberFromSceneName(scene.Name);
+
+            WStage stage = scene.World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
+            List<SpawnPoint> stageSpawns = stage.GetChildrenOfType<SpawnPoint>();
+
             if (selected != null && selected.PrimarySelectedObject is SpawnPoint)
             {
                 // If the user has a spawn point selected, spawn the player at that spawn point.
@@ -239,6 +243,15 @@ namespace WindEditor
 
                 room = spawn_pt.Room;
                 spawn = spawn_pt.SpawnID;
+            }
+            else if (stageSpawns.Count() > 0)
+            {
+                // If any stage spawns exist, the game will not use room spawns.
+                // So instead, we pick whichever stage spawn is physically closest to the selected entity.
+                SpawnPoint closestSpawnPt = stageSpawns.OrderBy(spawnPt => (spawnPt.Transform.Position - selected.PrimarySelectedObject.Transform.Position).Length).First();
+                room = closestSpawnPt.Room;
+                spawn = closestSpawnPt.SpawnID;
+                return;
             }
             else if (selected != null && selected.PrimarySelectedObject != null)
             {
@@ -275,8 +288,7 @@ namespace WindEditor
                 }
                 else
                 {
-                    WStage stage = room_node.World.Map.SceneList.First(x => x.GetType() == typeof(WStage)) as WStage;
-                    spawn_pt = stage.GetChildrenOfType<SpawnPoint>().FirstOrDefault(x => x.Room == room_node.RoomIndex);
+                    spawn_pt = stageSpawns.FirstOrDefault(x => x.Room == room_node.RoomIndex);
                     if (spawn_pt != null)
                     {
                         room = spawn_pt.Room;
