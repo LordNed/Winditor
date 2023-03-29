@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Unknown Switch", // probably front switch
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
@@ -12,7 +12,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Unknown_2", // maybe type?
       "ValueSource": "Parameters",
       "Mask": 0x00000F00,
       "Hidden": false,
@@ -22,6 +22,24 @@
     },
     {
       "Name": "Unknown_3",
+      "ValueSource": "XRotation",
+      "Mask": 0x003F,
+      "Hidden": false,
+      "Category": "mbdoor",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown_4", // maybe back room number?
+      "ValueSource": "XRotation",
+      "Mask": 0x0FC0,
+      "Hidden": false,
+      "Category": "mbdoor",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
+      "Name": "Unknown_5",
       "ValueSource": "ZRotation",
       "Mask": 0x003F,
       "Hidden": false,

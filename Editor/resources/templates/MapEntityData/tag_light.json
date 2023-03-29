@@ -23,8 +23,8 @@
         "LTagR0": "Light Detector",
       },
       "TypeSpecificCategories": {
-        "Invisible Light Region": ["Light Region"],
-        "Light Beam": [],
+        "Invisible Light Region": ["Light"],
+        "Light Beam": ["Light"],
         "Light Detector": ["Light Detector"],
       }
     },
@@ -70,7 +70,7 @@
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "Light Region",
+      "Category": "Light",
       "ToolTip": "",
       "DataType": "Integer"
     },

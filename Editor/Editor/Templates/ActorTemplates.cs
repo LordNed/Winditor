@@ -9152,8 +9152,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("mbdoor", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("mbdoor", "Unknown Switch", true, "", SourceScene.Room)]
+		public int UnknownSwitch
 		{ 
 			get
 			{
@@ -9165,7 +9165,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("UnknownSwitch");
 			}
 		}
 
@@ -9191,6 +9191,40 @@ namespace WindEditor
 		{ 
 			get
 			{
+				int value_as_int = (int)((m_XRotation & 0x003F) >> 0);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
+				OnPropertyChanged("Unknown_3");
+			}
+		}
+
+		[WProperty("mbdoor", "Unknown_4", true, "", SourceScene.Room)]
+		public int Unknown_4
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_XRotation & 0x0FC0) >> 6);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
+				OnPropertyChanged("Unknown_4");
+			}
+		}
+
+		[WProperty("mbdoor", "Unknown_5", true, "", SourceScene.Room)]
+		public int Unknown_5
+		{ 
+			get
+			{
 				int value_as_int = (int)((m_ZRotation & 0x003F) >> 0);
 				return value_as_int;
 			}
@@ -9199,14 +9233,14 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Unknown_5");
 			}
 		}
 
 		// Constructor
 		public mbdoor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
-			Transform.UsesXRotation = true;
+			Transform.UsesXRotation = false;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
@@ -9215,9 +9249,11 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			UnknownSwitch = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
+			Unknown_4 = -1;
+			Unknown_5 = -1;
 		}
 	}
 
@@ -20406,8 +20442,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_volcano", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_volcano", "Unknown Switch", true, "", SourceScene.Room)]
+		public int UnknownSwitch
 		{ 
 			get
 			{
@@ -20419,7 +20455,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("UnknownSwitch");
 			}
 		}
 
@@ -20435,7 +20471,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			UnknownSwitch = -1;
 		}
 	}
 
@@ -25335,7 +25371,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Light Region", "Enable Spawn Switch", true, "", SourceScene.Room)]
+		[WProperty("Light", "Enable Spawn Switch", true, "", SourceScene.Room)]
 		public int EnableSpawnSwitch
 		{ 
 			get
@@ -25394,8 +25430,8 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "YXZ";
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
-			TypeSpecificCategories["Type"][TypeEnum.Invisible_Light_Region] = new string[] { "Light Region" };
-			TypeSpecificCategories["Type"][TypeEnum.Light_Beam] = new string[] {  };
+			TypeSpecificCategories["Type"][TypeEnum.Invisible_Light_Region] = new string[] { "Light" };
+			TypeSpecificCategories["Type"][TypeEnum.Light_Beam] = new string[] { "Light" };
 			TypeSpecificCategories["Type"][TypeEnum.Light_Detector] = new string[] { "Light Detector" };
 		}
 
