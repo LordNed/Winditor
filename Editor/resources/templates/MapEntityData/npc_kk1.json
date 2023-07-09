@@ -7,36 +7,27 @@
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "npc_kk1",
+      "Category": "Poor Mila",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Enable Path Follow Switch",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "npc_kk1",
+      "Category": "Poor Mila",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
-      "ValueSource": "Parameters",
-      "Mask": 0x00030000,
-      "Hidden": false,
-      "Category": "npc_kk1",
-      "ToolTip": "",
-      "DataType": "Integer"
-    },
-    {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "npc_kk1",
+      "Category": "Poor Mila",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Path"
     }
   ]
 }
