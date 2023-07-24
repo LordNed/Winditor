@@ -4,7 +4,7 @@ This tutorial will go over how to use Winditor to change what background music p
 ### Patching Your Project
 Before you can use Winditor to change which BGM plays where, you first need to apply a code patch to your modified Wind Waker project (Winditor itself cannot currently apply this patch). If you try to use the BGM editor without doing this step, your changes will appear to be saved in Winditor, but the game itself will ignore them and continue to use the original music.
 
-First you must download [this repository](https://github.com/LagoLunatic/WW_Hacking_API) to allow Wind Waker's code to be modified. Then follow the instructions in the "Requirements" and "Installation" sections of that repository's README.
+First you must install the [WW_Hacking_API](https://github.com/LagoLunatic/WW_Hacking_API) repository to allow Wind Waker's code to be modified. To do so, follow the instructions in the Requirements and Installation sections of that repository's README.
 
 Once you have that repository set up, open the file WW_Hacking_API/asm_patches/main.asm in a text editor and delete just the semicolon at the start of the line that says `;.include "includes/bgm_file.asm"`. Then save the file.
 
