@@ -27,6 +27,9 @@ The [Importing a Collision Mesh](basics/import_collision.html) tutorial explains
 ### Text Editor
 [This guide](text/text.html) talks about Winditor's text editor.
 
+### Scene BGM Editor
+The [Scene BGM Editor](bgm/bgm.html) tutorial explains how to change which BGM track plays in each stage or island.
+
 <hr>
 <p align="center">
   <a href="../index.html">Back</a>
