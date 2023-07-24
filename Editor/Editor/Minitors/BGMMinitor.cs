@@ -88,6 +88,8 @@ namespace WindEditor.Minitors
 
         public ICommand SaveBGMDataCommand { get { return new RelayCommand(x => OnRequestSaveBGMData()); } }
 
+        public ICommand OpenTutorialCommand { get { return new RelayCommand(x => OnRequestOpenTutorial()); } }
+
         public List<BGMEntry> MapEntries
         {
             get { return m_MapEntries; }
@@ -601,6 +603,11 @@ namespace WindEditor.Minitors
                 return Enum.GetValues(typeof(BGMType))
                     .Cast<BGMType>();
             }
+        }
+
+        private void OnRequestOpenTutorial()
+        {
+            System.Diagnostics.Process.Start("https://lordned.github.io/Winditor/tutorials/bgm/bgm.html");
         }
     }
 }
