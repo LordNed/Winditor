@@ -576,15 +576,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -606,6 +650,10 @@ namespace WindEditor
 		public Actor(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
@@ -633,7 +681,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
