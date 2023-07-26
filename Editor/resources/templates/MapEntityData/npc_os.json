@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Returned Switch",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
       "Category": "npc_os",
-      "ToolTip": "",
+      "ToolTip": "For Os: The switch this Servant of the Tower will check to see if you have finished learning the Command Melody from the stone tablet.\nFor Os1 and Os2: The switch this Servant of the Tower will set when it has been brought into the central hub room (must be room 7).",
       "DataType": "Integer"
     }
   ]

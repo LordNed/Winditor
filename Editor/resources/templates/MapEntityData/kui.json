@@ -38,6 +38,15 @@
       "DataType": "Integer"
     },
     {
+      "Name": "Unknown_4",
+      "ValueSource": "Parameters",
+      "Mask": 0x00FF0000,
+      "Hidden": false,
+      "Category": "Unknown",
+      "ToolTip": "",
+      "DataType": "Integer"
+    },
+    {
       "Name": "Switch to Activate",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,

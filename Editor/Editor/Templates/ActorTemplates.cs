@@ -8119,6 +8119,23 @@ namespace WindEditor
 			}
 		}
 
+		[WProperty("Unknown", "Unknown_4", true, "", SourceScene.Room)]
+		public int Unknown_4
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
+				return value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = value;
+				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
+				OnPropertyChanged("Unknown_4");
+			}
+		}
+
 		[WProperty("Grapple Point", "Switch to Activate", true, "The switch to set when Link grapples the object.", SourceScene.Room)]
 		public int SwitchtoActivate
 		{ 
@@ -8150,6 +8167,7 @@ namespace WindEditor
 			base.PopulateDefaultProperties();
 			Unknown_2 = -1;
 			Unknown_3 = -1;
+			Unknown_4 = -1;
 			SwitchtoActivate = -1;
 		}
 	}
@@ -11849,8 +11867,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("npc_os", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("npc_os", "Returned Switch", true, "For Os: The switch this Servant of the Tower will check to see if you have finished learning the Command Melody from the stone tablet.\nFor Os1 and Os2: The switch this Servant of the Tower will set when it has been brought into the central hub room (must be room 7).", SourceScene.Room)]
+		public int ReturnedSwitch
 		{ 
 			get
 			{
@@ -11862,7 +11880,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ReturnedSwitch");
 			}
 		}
 
@@ -11878,7 +11896,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			ReturnedSwitch = -1;
 		}
 	}
 
