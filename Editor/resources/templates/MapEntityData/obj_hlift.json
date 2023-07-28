@@ -3,38 +3,47 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Height",
       "ValueSource": "Parameters",
       "Mask": 0x00000007,
       "Hidden": false,
-      "Category": "obj_hlift",
-      "ToolTip": "",
+      "Category": "Lift",
+      "ToolTip": "The height of the platform when it is raised.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Size",
       "ValueSource": "Parameters",
       "Mask": 0x00000010,
       "Hidden": false,
-      "Category": "obj_hlift",
+      "Category": "Lift",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Big",
+        1: "Small",
+      },
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Hlift": "Big",
+        "Hliftb": "Small",
+      }
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "obj_hlift",
+      "Category": "Lift",
       "ToolTip": "",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Event",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "obj_hlift",
+      "Category": "Lift",
       "ToolTip": "",
       "DataType": "Integer"
     }

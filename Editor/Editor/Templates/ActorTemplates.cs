@@ -15840,8 +15840,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_hlift", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Lift", "Height", true, "The height of the platform when it is raised.", SourceScene.Room)]
+		public int Height
 		{ 
 			get
 			{
@@ -15853,29 +15853,38 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Height");
 			}
 		}
+		public enum SizeEnum
+		{
+			Big = 0,
+			Small = 1,
+		}
 
-		[WProperty("obj_hlift", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Lift", "Size", true, "", SourceScene.Room)]
+		public SizeEnum Size
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00000010) >> 4);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(SizeEnum), value_as_int))
+					value_as_int = 0;
+				return (SizeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Size");
+				UpdateModel();
 			}
 		}
 
-		[WProperty("obj_hlift", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Lift", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -15887,12 +15896,12 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("SwitchtoCheck");
 			}
 		}
 
-		[WProperty("obj_hlift", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Lift", "Event", true, "", SourceScene.Room)]
+		public int Event
 		{ 
 			get
 			{
@@ -15904,7 +15913,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Event");
 			}
 		}
 
@@ -15920,10 +15929,15 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
+			Height = -1;
+			SwitchtoCheck = -1;
+			Event = -1;
+			if (Name == "Hlift") {
+				Size = SizeEnum.Big;
+			}
+			if (Name == "Hliftb") {
+				Size = SizeEnum.Small;
+			}
 		}
 	}
 

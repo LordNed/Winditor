@@ -8486,7 +8486,7 @@
     "ActorClassType": "obj_hlift",
     "Wait Animations": null,
     "Actor Name": "Hlift",
-    "English Name": "obj_hlift",
+    "English Name": "Lift (Big)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -8501,7 +8501,7 @@
     "ActorClassType": "obj_hlift",
     "Wait Animations": null,
     "Actor Name": "Hliftb",
-    "English Name": "obj_hlift",
+    "English Name": "Lift (Small)",
     "Tags": null,
     "Explanation": null,
     "Locations": [
