@@ -42,10 +42,15 @@ namespace WindEditor
 		[WProperty("Entity", "English Name", false, "", SourceScene.Room)]
 		public string EnglishName { get { return this.GetType().Name; } }
 
+        protected Dictionary<string, List<string>> PropertiesUsingValueSource;
+
 		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
 		{
 			FourCC = fourCC;
 			OnConstruction();
+            
+            PropertiesUsingValueSource = new Dictionary<string, List<string>>();
+            PropertyChanged += SerializableDOMNode_PropertyChanged;
 		}
 
 		// Called by the constructor, override this if you want to put things in your own constructor in a partial class.
@@ -59,6 +64,28 @@ namespace WindEditor
 		
 		// Called when the user creates a new entity. Use this to specify custom logic for setting property default values.
 		public virtual void PopulateDefaultProperties() {}
+        
+        // When the user directly edits a bitfield (e.g. Parameters), we need to update all of the properties that are a part of the bitfield.
+        private void SerializableDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+		    foreach(var item in PropertiesUsingValueSource)
+		    {
+                string valueSourceName = item.Key;
+                if (e.PropertyName == valueSourceName)
+                {
+                    foreach (var fieldName in item.Value)
+                    {
+                        OnPropertyChanged(fieldName);
+                    }
+                }
+		    }
+        }
+
+        protected void RegisterValueSourceFieldProperty(string valueSourceName, string fieldName) {
+			if (!PropertiesUsingValueSource.ContainsKey(valueSourceName))
+				PropertiesUsingValueSource.Add(valueSourceName, new List<string>());
+			PropertiesUsingValueSource[valueSourceName].Add(fieldName);
+        }
 
 		public WScene GetScene() {
 			WDOMNode currNode = this;
@@ -174,6 +201,14 @@ foreach (var file in Directory.GetFiles(TemplatePath))
 			Transform.UsesYRotation = <#= descriptor.Fields.Any(x => x.FieldName.Replace(" ", "") == "YRotation") && !descriptor.ParameterFields.Any(x => x.ValueSource == "YRotation") ? "true" : "false" #>;
 			Transform.UsesZRotation = <#= descriptor.Fields.Any(x => x.FieldName.Replace(" ", "") == "ZRotation") && !descriptor.ParameterFields.Any(x => x.ValueSource == "ZRotation") ? "true" : "false" #>;
 			Transform.RotationOrder = "<#= descriptor.RotationOrder #>";
+            
+<#
+		foreach(var field in descriptor.ParameterFields)
+		{
+#>			RegisterValueSourceFieldProperty("<#= field.ValueSource #>", "<#= EscapeIdentifier(field.FieldName) #>");
+<#
+		}
+#>
 		}
 
 		override public void Load(EndianBinaryReader stream)

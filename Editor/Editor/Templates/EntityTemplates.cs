@@ -23,10 +23,15 @@ namespace WindEditor
 		[WProperty("Entity", "English Name", false, "", SourceScene.Room)]
 		public string EnglishName { get { return this.GetType().Name; } }
 
+        protected Dictionary<string, List<string>> PropertiesUsingValueSource;
+
 		public SerializableDOMNode(FourCC fourCC, WWorld world) : base(world)
 		{
 			FourCC = fourCC;
 			OnConstruction();
+            
+            PropertiesUsingValueSource = new Dictionary<string, List<string>>();
+            PropertyChanged += SerializableDOMNode_PropertyChanged;
 		}
 
 		// Called by the constructor, override this if you want to put things in your own constructor in a partial class.
@@ -40,6 +45,28 @@ namespace WindEditor
 		
 		// Called when the user creates a new entity. Use this to specify custom logic for setting property default values.
 		public virtual void PopulateDefaultProperties() {}
+        
+        // When the user directly edits a bitfield (e.g. Parameters), we need to update all of the properties that are a part of the bitfield.
+        private void SerializableDOMNode_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+		    foreach(var item in PropertiesUsingValueSource)
+		    {
+                string valueSourceName = item.Key;
+                if (e.PropertyName == valueSourceName)
+                {
+                    foreach (var fieldName in item.Value)
+                    {
+                        OnPropertyChanged(fieldName);
+                    }
+                }
+		    }
+        }
+
+        protected void RegisterValueSourceFieldProperty(string valueSourceName, string fieldName) {
+			if (!PropertiesUsingValueSource.ContainsKey(valueSourceName))
+				PropertiesUsingValueSource.Add(valueSourceName, new List<string>());
+			PropertiesUsingValueSource[valueSourceName].Add(fieldName);
+        }
 
 		public WScene GetScene() {
 			WDOMNode currNode = this;
@@ -238,6 +265,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0x0F | (value_as_int << 0 & 0x0F));
 				OnPropertyChanged("SectorXCoordinate");
+				OnPropertyChanged("SectorCoordinates");
 			}
 		}
 
@@ -259,6 +287,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0xF0 | (value_as_int << 4 & 0xF0));
 				OnPropertyChanged("SectorYCoordinate");
+				OnPropertyChanged("SectorCoordinates");
 			}
 		}
 
@@ -279,6 +308,9 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
+			RegisterValueSourceFieldProperty("Sector Coordinates", "SectorXCoordinate");
+			RegisterValueSourceFieldProperty("Sector Coordinates", "SectorYCoordinate");
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -480,6 +512,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0x0F | (value_as_int << 0 & 0x0F));
 				OnPropertyChanged("SectorXCoordinate");
+				OnPropertyChanged("SectorCoordinates");
 			}
 		}
 
@@ -501,6 +534,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_SectorCoordinates = (byte)(m_SectorCoordinates & ~0xF0 | (value_as_int << 4 & 0xF0));
 				OnPropertyChanged("SectorYCoordinate");
+				OnPropertyChanged("SectorCoordinates");
 			}
 		}
 
@@ -521,6 +555,9 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
+			RegisterValueSourceFieldProperty("Sector Coordinates", "SectorXCoordinate");
+			RegisterValueSourceFieldProperty("Sector Coordinates", "SectorYCoordinate");
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -659,6 +696,7 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -736,6 +774,7 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -802,6 +841,7 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -904,6 +944,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1012,6 +1053,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1054,15 +1096,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -1129,6 +1215,10 @@ namespace WindEditor
 		public Door_DOOR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale X", TargetProperties = new string[] { "ScaleX"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Scale Y", TargetProperties = new string[] { "ScaleY"} });
@@ -1137,6 +1227,7 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1163,7 +1254,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -1446,6 +1537,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1565,6 +1657,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1628,6 +1721,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -1731,6 +1825,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2000,6 +2095,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2237,6 +2333,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2322,6 +2419,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2513,6 +2611,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2633,6 +2732,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2683,6 +2783,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2740,6 +2841,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2801,6 +2903,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2845,6 +2948,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -2879,15 +2983,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -2919,6 +3067,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Room");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2942,6 +3091,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2965,6 +3115,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("Unknown2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2982,6 +3133,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2999,6 +3151,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000F000 | (value_as_int << 12 & 0x0000F000));
 				OnPropertyChanged("SpawnType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3016,6 +3169,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3039,6 +3193,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3056,6 +3211,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SpawnID");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -3073,6 +3229,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Unknown6");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -3080,11 +3237,25 @@ namespace WindEditor
 		public SpawnPoint(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
+			RegisterValueSourceFieldProperty("Parameters", "Room");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown3");
+			RegisterValueSourceFieldProperty("Parameters", "SpawnType");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown4");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+			RegisterValueSourceFieldProperty("ZRotation", "SpawnID");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown6");
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3107,7 +3278,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -3125,7 +3296,7 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		protected int m_Parameters;
 
-		[WProperty("Misc.", "Parameters", true, "")]
+		[WProperty("Advanced", "Parameters", true, "")]
 		 public int Parameters
 		{ 
 			get { return m_Parameters; }
@@ -3161,6 +3332,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3238,6 +3410,7 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3291,6 +3464,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3325,15 +3499,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -3358,11 +3576,16 @@ namespace WindEditor
 		public ScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3389,7 +3612,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -3450,6 +3673,7 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3623,6 +3847,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3703,14 +3928,36 @@ namespace WindEditor
 				
 
 		protected byte m_Parameters1;
+
+		[WProperty("Advanced", "Parameters1", true, "")]
+		 public byte Parameters1
+		{ 
+			get { return m_Parameters1; }
+			set
+			{
+				m_Parameters1 = value;
+				OnPropertyChanged("Parameters1");
+			}
+		}
 				
 
 		protected short m_Parameters2;
+
+		[WProperty("Advanced", "Parameters2", true, "")]
+		 public short Parameters2
+		{ 
+			get { return m_Parameters2; }
+			set
+			{
+				m_Parameters2 = value;
+				OnPropertyChanged("Parameters2");
+			}
+		}
 				
 
 		protected int m_Parameters3;
 
-		[WProperty("Misc.", "Parameters3", true, "")]
+		[WProperty("Advanced", "Parameters3", true, "")]
 		 public int Parameters3
 		{ 
 			get { return m_Parameters3; }
@@ -3724,7 +3971,7 @@ namespace WindEditor
 
 		protected int m_Parameters4;
 
-		[WProperty("Misc.", "Parameters4", true, "")]
+		[WProperty("Advanced", "Parameters4", true, "")]
 		 public int Parameters4
 		{ 
 			get { return m_Parameters4; }
@@ -3757,6 +4004,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters1 = (byte)(m_Parameters1 & ~0x01 | (value_as_int << 0 & 0x01));
 				OnPropertyChanged("IsDungeon");
+				OnPropertyChanged("Parameters1");
 			}
 		}
 
@@ -3774,6 +4022,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters1 = (byte)(m_Parameters1 & ~0xFE | (value_as_int << 1 & 0xFE));
 				OnPropertyChanged("StageSaveInfoID");
+				OnPropertyChanged("Parameters1");
 			}
 		}
 		public enum MinimapTypeEnum
@@ -3801,6 +4050,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters2 = (short)(m_Parameters2 & ~0x0003 | (value_as_int << 0 & 0x0003));
 				OnPropertyChanged("MinimapType");
+				OnPropertyChanged("Parameters2");
 			}
 		}
 
@@ -3824,6 +4074,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters2 = (short)(m_Parameters2 & ~0x0004 | (value_as_int << 2 & 0x0004));
 				OnPropertyChanged("Unknown2");
+				OnPropertyChanged("Parameters2");
 			}
 		}
 
@@ -3841,6 +4092,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters2 = (short)(m_Parameters2 & ~0x07F8 | (value_as_int << 3 & 0x07F8));
 				OnPropertyChanged("ParticleBank");
+				OnPropertyChanged("Parameters2");
 			}
 		}
 
@@ -3858,6 +4110,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters2 = (short)(m_Parameters2 & ~0xF800 | (value_as_int << 11 & 0xF800));
 				OnPropertyChanged("Unknown3");
+				OnPropertyChanged("Parameters2");
 			}
 		}
 
@@ -3879,6 +4132,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters3 = (int)(m_Parameters3 & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("DefaultTimeofDay");
+				OnPropertyChanged("Parameters3");
 			}
 		}
 		public enum StageTypeEnum
@@ -3910,6 +4164,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters3 = (int)(m_Parameters3 & ~0x00070000 | (value_as_int << 16 & 0x00070000));
 				OnPropertyChanged("StageType");
+				OnPropertyChanged("Parameters3");
 			}
 		}
 
@@ -3927,6 +4182,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters4 = (int)(m_Parameters4 & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("BaseActorDrawDistance");
+				OnPropertyChanged("Parameters4");
 			}
 		}
 
@@ -3936,12 +4192,24 @@ namespace WindEditor
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Min", TargetProperties = new string[] { "ZDepthMin"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Depth Max", TargetProperties = new string[] { "ZDepthMax"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Unknown 1", TargetProperties = new string[] { "Unknown1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters1", TargetProperties = new string[] { "Parameters1"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters2", TargetProperties = new string[] { "Parameters2"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters3", TargetProperties = new string[] { "Parameters3"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters4", TargetProperties = new string[] { "Parameters4"} });
 			Transform.UsesXRotation = false;
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
+			RegisterValueSourceFieldProperty("Parameters1", "IsDungeon");
+			RegisterValueSourceFieldProperty("Parameters1", "StageSaveInfoID");
+			RegisterValueSourceFieldProperty("Parameters2", "MinimapType");
+			RegisterValueSourceFieldProperty("Parameters2", "Unknown2");
+			RegisterValueSourceFieldProperty("Parameters2", "ParticleBank");
+			RegisterValueSourceFieldProperty("Parameters2", "Unknown3");
+			RegisterValueSourceFieldProperty("Parameters3", "DefaultTimeofDay");
+			RegisterValueSourceFieldProperty("Parameters3", "StageType");
+			RegisterValueSourceFieldProperty("Parameters4", "BaseActorDrawDistance");
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -3962,8 +4230,8 @@ namespace WindEditor
 			stream.Write((float)ZDepthMin);
 			stream.Write((float)ZDepthMax);
 			stream.Write((byte)Unknown1);
-			stream.Write((byte)m_Parameters1);
-			stream.Write((short)m_Parameters2);
+			stream.Write((byte)Parameters1);
+			stream.Write((short)Parameters2);
 			stream.Write((int)Parameters3);
 			stream.Write((int)Parameters4);
 		}
@@ -3988,15 +4256,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -4021,11 +4333,16 @@ namespace WindEditor
 		public TGDR(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4052,7 +4369,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -4087,15 +4404,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -4117,11 +4478,16 @@ namespace WindEditor
 		public TagObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4144,7 +4510,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -4175,15 +4541,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -4208,11 +4618,16 @@ namespace WindEditor
 		public TagScaleableObject(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4239,7 +4654,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -4274,15 +4689,59 @@ namespace WindEditor
 				
 
 		protected int m_Parameters;
+
+		[WProperty("Advanced", "Parameters", true, "")]
+		 public int Parameters
+		{ 
+			get { return m_Parameters; }
+			set
+			{
+				m_Parameters = value;
+				OnPropertyChanged("Parameters");
+			}
+		}
 				
 
 		protected short m_XRotation;
+
+		[WProperty("Advanced", "X Rotation", true, "")]
+		 public short XRotation
+		{ 
+			get { return m_XRotation; }
+			set
+			{
+				m_XRotation = value;
+				OnPropertyChanged("XRotation");
+			}
+		}
 				
 
 		protected short m_YRotation;
+
+		[WProperty("Advanced", "Y Rotation", true, "")]
+		 public short YRotation
+		{ 
+			get { return m_YRotation; }
+			set
+			{
+				m_YRotation = value;
+				OnPropertyChanged("YRotation");
+			}
+		}
 				
 
 		protected short m_ZRotation;
+
+		[WProperty("Advanced", "Z Rotation", true, "")]
+		 public short ZRotation
+		{ 
+			get { return m_ZRotation; }
+			set
+			{
+				m_ZRotation = value;
+				OnPropertyChanged("ZRotation");
+			}
+		}
 				
 
 		protected short m_EnemyNumber;
@@ -4304,11 +4763,16 @@ namespace WindEditor
 		public TreasureChest(FourCC fourCC, WWorld world) : base(fourCC, world)
 		{
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Name", TargetProperties = new string[] { "Name"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Parameters", TargetProperties = new string[] { "Parameters"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "X Rotation", TargetProperties = new string[] { "XRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Y Rotation", TargetProperties = new string[] { "YRotation"} });
+			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Z Rotation", TargetProperties = new string[] { "ZRotation"} });
 			VisibleProperties.Add(new Xceed.Wpf.Toolkit.PropertyGrid.PropertyDefinition() { DisplayName = "Enemy Number", TargetProperties = new string[] { "EnemyNumber"} });
 			Transform.UsesXRotation = true;
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4331,7 +4795,7 @@ namespace WindEditor
 			var eulerRot = Transform.RotationAsIdealEulerAngles();
 			
 			stream.Write(Name.PadRight(8, '\0').ToCharArray());
-			stream.Write((int)m_Parameters);
+			stream.Write((int)Parameters);
 			stream.Write((float)Transform.Position.X); stream.Write((float)Transform.Position.Y); stream.Write((float)Transform.Position.Z);
 			if (Transform.UsesXRotation) { m_XRotation = WMath.RotationFloatToShort(eulerRot.X); }
 			stream.Write((short)m_XRotation);
@@ -4427,6 +4891,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_NextPathIndex = (short)(m_NextPathIndex & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("NextPath");
+				OnPropertyChanged("NextPathIndex");
 			}
 		}
 
@@ -4440,6 +4905,8 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
+			RegisterValueSourceFieldProperty("NextPathIndex", "NextPath");
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4563,6 +5030,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_NextPathIndex = (short)(m_NextPathIndex & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("NextPath");
+				OnPropertyChanged("NextPathIndex");
 			}
 		}
 
@@ -4577,6 +5045,8 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
+			RegisterValueSourceFieldProperty("NextPathIndex", "NextPath");
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4676,6 +5146,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)
@@ -4771,6 +5242,7 @@ namespace WindEditor
 			Transform.UsesYRotation = false;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+            
 		}
 
 		override public void Load(EndianBinaryReader stream)

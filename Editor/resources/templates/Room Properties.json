@@ -3,7 +3,7 @@
 	"FourCC" : "FILI",
 	"Fields" :
 	[
-		{"Name" : "Parameters", "Type" : "Int"},
+		{"Name" : "Parameters", "Type" : "Int", "Category": "Advanced"},
 		{"Name" : "Skybox Y Height", "Type" : "Float"}
 	]
 }

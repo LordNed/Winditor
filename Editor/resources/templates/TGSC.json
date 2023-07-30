@@ -5,11 +5,11 @@
 	"Fields" :
 	[
 		{"Name" : "Name", "Type" : "FixedLengthString", "Length" : 8, "Category": "Actor"},
-		{"Name" : "Parameters", "Type" : "Int", "Hidden": true},
+		{"Name" : "Parameters", "Type" : "Int", "Category": "Advanced"},
 		{"Name" : "Position", "Type" : "Vector3"},
-		{"Name" : "X Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Y Rotation", "Type" : "Short", "Hidden": true},
-		{"Name" : "Z Rotation", "Type" : "Short", "Hidden": true},
+		{"Name" : "X Rotation", "Type" : "Short", "Category": "Advanced"},
+		{"Name" : "Y Rotation", "Type" : "Short", "Category": "Advanced"},
+		{"Name" : "Z Rotation", "Type" : "Short", "Category": "Advanced"},
 		{"Name" : "Enemy Number", "Type" : "Short", "Category": "Actor"},
 		{"Name" : "X Scale", "Type" : "Byte"},
 		{"Name" : "Y Scale", "Type" : "Byte"},

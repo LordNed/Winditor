@@ -6,10 +6,10 @@
 		{"Name" : "Z Depth Min", "Type" : "Float", "Category": "Stage Properties"},
 		{"Name" : "Z Depth Max", "Type" : "Float", "Category": "Stage Properties"},
 		{"Name" : "Unknown 1", "Type" : "Byte", "Category": "Stage Properties"},
-		{"Name" : "Parameters1", "Type" : "Byte", "Hidden": true},
-		{"Name" : "Parameters2", "Type" : "Short", "Hidden": true},
-		{"Name" : "Parameters3", "Type" : "Int"},
-		{"Name" : "Parameters4", "Type" : "Int"},
+		{"Name" : "Parameters1", "Type" : "Byte", "Category": "Advanced"},
+		{"Name" : "Parameters2", "Type" : "Short", "Category": "Advanced"},
+		{"Name" : "Parameters3", "Type" : "Int", "Category": "Advanced"},
+		{"Name" : "Parameters4", "Type" : "Int", "Category": "Advanced"},
   ],
   "ParameterFields":
   [

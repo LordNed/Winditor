@@ -347,6 +347,7 @@
 #>
 				<#= privateValueSource #> = (<#= valueSourceType #>)(<#= privateValueSource #> & ~<#= bitMaskHex #> | (value_as_int << <#= bitShift #> & <#= bitMaskHex #>));
 				OnPropertyChanged("<#=fieldName#>");
+				OnPropertyChanged("<#=valueSource#>");
 <#
 				if (field.UpdateModel) {
 #>

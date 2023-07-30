@@ -29,6 +29,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -39,6 +40,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -86,6 +90,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("ZRotation");
 				UpdateModel();
 			}
 		}
@@ -108,6 +113,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("GBAMessageID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum EnabledConditionEnum
@@ -264,6 +270,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("EnabledCondition");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -281,6 +288,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("RepeatableATriggerConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -298,6 +306,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("RepeatableATriggerActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -315,6 +324,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("ChestATriggerConditionChestFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -332,6 +342,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("ChestATriggerActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -349,6 +360,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("MarkerATriggerEnabledSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum MarkerATriggerIconEnum
@@ -407,6 +419,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MarkerATriggerIcon");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -424,6 +437,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("OneOffATriggerConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -441,6 +455,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("OneOffATriggerActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -458,6 +473,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("LinkStuckCursorConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -475,6 +491,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("LinkStuckCursorActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -492,6 +509,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("LinkTriggerConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -509,6 +527,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("LinkTriggerActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -526,6 +545,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("TingleBombTriggerBombedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -543,6 +563,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("TargetPointSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -564,6 +585,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 1;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("TargetPointShouldUnsetSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -581,6 +603,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("CursororTimedLinkConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -598,6 +621,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("CursororTimedLinkActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -619,6 +643,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("CountdownTimeSeconds");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -636,6 +661,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SecretItemSpawnedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum SecretItemEnum
@@ -690,6 +716,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("SecretItem");
+				OnPropertyChanged("XRotation");
 			}
 		}
 		public enum RestrictionTypeEnum
@@ -719,6 +746,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("RestrictionType");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -736,6 +764,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("ItemRestrictionRegionConditionFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -753,6 +782,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("ItemRestrictionRegionUnknown");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -770,6 +800,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SecretStuckCursorResetSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -787,6 +818,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("SecretStuckCursorActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum SecretStuckCursorItemEnum
@@ -841,6 +873,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("SecretStuckCursorItem");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -858,6 +891,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("LinkorATriggerConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -875,6 +909,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("LinkorATriggerActivatedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -885,6 +920,39 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("ZRotation", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "GBAMessageID");
+			RegisterValueSourceFieldProperty("XRotation", "EnabledCondition");
+			RegisterValueSourceFieldProperty("Parameters", "RepeatableATriggerConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "RepeatableATriggerActivatedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "ChestATriggerConditionChestFlag");
+			RegisterValueSourceFieldProperty("Parameters", "ChestATriggerActivatedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "MarkerATriggerEnabledSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "MarkerATriggerIcon");
+			RegisterValueSourceFieldProperty("Parameters", "OneOffATriggerConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "OneOffATriggerActivatedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "LinkStuckCursorConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "LinkStuckCursorActivatedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "LinkTriggerConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "LinkTriggerActivatedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "TingleBombTriggerBombedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "TargetPointSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "TargetPointShouldUnsetSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "CursororTimedLinkConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "CursororTimedLinkActivatedSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "CountdownTimeSeconds");
+			RegisterValueSourceFieldProperty("Parameters", "SecretItemSpawnedSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "SecretItem");
+			RegisterValueSourceFieldProperty("XRotation", "RestrictionType");
+			RegisterValueSourceFieldProperty("Parameters", "ItemRestrictionRegionConditionFlag");
+			RegisterValueSourceFieldProperty("Parameters", "ItemRestrictionRegionUnknown");
+			RegisterValueSourceFieldProperty("Parameters", "SecretStuckCursorResetSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "SecretStuckCursorActivatedSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "SecretStuckCursorItem");
+			RegisterValueSourceFieldProperty("Parameters", "LinkorATriggerConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "LinkorATriggerActivatedSwitch");
+            
 			TypeSpecificCategories["BehaviorType"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Repeatable_A_Button_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Repeatable A Button Trigger" };
 			TypeSpecificCategories["BehaviorType"][BehaviorTypeEnum.Repeatable_Chest_A_Button_Trigger] = new string[] { "GBA Message", "Enabled Condition", "Repeatable Chest A Button Trigger" };
@@ -989,6 +1057,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -999,6 +1068,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1035,6 +1107,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1052,6 +1125,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("GuardedAreaRadiusHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1075,6 +1149,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchActivatesArmosKnight");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1092,6 +1167,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1102,6 +1178,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "GuardedAreaRadiusHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchActivatesArmosKnight");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1129,6 +1211,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unused_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1146,6 +1229,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1169,6 +1253,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchActivatesArmos");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1186,6 +1271,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1196,6 +1282,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unused_1");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchActivatesArmos");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1226,6 +1318,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1243,6 +1336,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1253,6 +1347,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1292,6 +1390,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1309,6 +1408,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("FirstSwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1326,6 +1426,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("NumSwitchestoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1343,6 +1444,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1366,6 +1468,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -1383,6 +1486,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("TimeLimitHalfSeconds");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -1393,6 +1497,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "FirstSwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "NumSwitchestoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("XRotation", "Event");
+			RegisterValueSourceFieldProperty("ZRotation", "TimeLimitHalfSeconds");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1433,6 +1545,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1450,6 +1563,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FirstSwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1467,6 +1581,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("NumSwitchestoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1484,6 +1599,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1507,6 +1623,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -1524,6 +1641,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("TimeLimitHalfSeconds");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -1534,6 +1652,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "FirstSwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "NumSwitchestoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("XRotation", "Event");
+			RegisterValueSourceFieldProperty("ZRotation", "TimeLimitHalfSeconds");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1559,6 +1685,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -1581,6 +1709,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1591,6 +1720,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1619,6 +1751,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1629,6 +1762,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1657,6 +1793,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1667,6 +1804,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1688,6 +1828,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -1722,6 +1864,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1739,6 +1882,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1770,6 +1914,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1787,6 +1932,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1804,6 +1950,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -1814,6 +1961,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "YXZ";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1845,6 +1999,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1855,6 +2010,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1883,6 +2041,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1900,6 +2059,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1910,6 +2070,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -1939,6 +2103,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1956,6 +2121,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1973,6 +2139,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -1990,6 +2157,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2007,6 +2175,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2024,6 +2193,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2041,6 +2211,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xC0000000 | (value_as_int << 30 & 0xC0000000));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2058,6 +2229,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_8");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -2068,6 +2240,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_6");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_7");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_8");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2111,6 +2293,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("FlowerType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -2129,6 +2312,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("WateredSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2139,6 +2323,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "YXZ";
+
+			RegisterValueSourceFieldProperty("Parameters", "FlowerType");
+			RegisterValueSourceFieldProperty("Parameters", "WateredSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2173,6 +2361,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2183,6 +2372,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2204,6 +2396,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -2219,6 +2413,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -2241,6 +2437,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2258,6 +2455,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2275,6 +2473,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2285,6 +2484,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2315,6 +2519,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2332,6 +2537,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2342,6 +2548,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2388,6 +2598,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -2412,6 +2623,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000020 | (value_as_int << 5 & 0x00000020));
 				OnPropertyChanged("IsGreen");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum WeaponEnum
@@ -2439,6 +2651,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Weapon");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2456,6 +2669,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2487,6 +2701,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2510,6 +2725,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("InvertSpawnConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2527,6 +2743,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("SpawnConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2544,6 +2761,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -2554,6 +2772,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "IsGreen");
+			RegisterValueSourceFieldProperty("Parameters", "Weapon");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "InvertSpawnConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "SpawnConditionSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2596,6 +2824,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2613,6 +2842,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2644,6 +2874,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2667,6 +2898,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FloatatInitialHeight");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2677,6 +2909,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "FloatatInitialHeight");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2705,6 +2943,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -2727,6 +2967,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2737,6 +2978,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2765,6 +3009,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2782,6 +3027,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2799,6 +3045,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000001F | (value_as_int << 0 & 0x0000001F));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2809,6 +3056,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2849,6 +3101,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2872,6 +3125,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("LeaveBehindBabaBud");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2882,6 +3136,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "LeaveBehindBabaBud");
+            
 		}
 	}
 
@@ -2916,6 +3174,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -2933,6 +3192,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -2943,6 +3203,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -2980,6 +3244,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3001,6 +3266,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 1;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("PlayerCanPickUp");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3011,6 +3277,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "PlayerCanPickUp");
+            
 		}
 	}
 
@@ -3033,6 +3303,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("StageSaveInfoID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3043,6 +3314,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "StageSaveInfoID");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3071,6 +3345,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3088,6 +3363,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3105,6 +3381,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3115,6 +3392,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3138,6 +3420,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3158,6 +3442,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("TypeBitfield");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -3176,6 +3461,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3207,6 +3493,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3217,6 +3504,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "TypeBitfield");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3256,6 +3548,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ComponentType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -3267,6 +3560,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ComponentType");
+            
 		}
 	}
 
@@ -3282,6 +3578,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3304,6 +3602,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3314,6 +3613,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3335,6 +3637,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3357,6 +3661,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3367,6 +3672,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3395,6 +3703,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -3405,6 +3714,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3444,6 +3756,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ColorTypeEnum
@@ -3478,6 +3791,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ColorType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -3496,6 +3810,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3513,6 +3828,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3523,6 +3839,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "ColorType");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3560,6 +3882,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3575,6 +3899,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3643,6 +3969,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("EventRegisterforPlacedItemID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3653,6 +3980,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "EventRegisterforPlacedItemID");
+            
 		}
 	}
 
@@ -3684,6 +4014,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("NumberofEyes");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3701,6 +4032,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3718,6 +4050,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("PostLossSpawnID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3735,6 +4068,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3756,6 +4090,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 1;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DeathEventWaitsforGreatFairy");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -3766,6 +4101,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "NumberofEyes");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "PostLossSpawnID");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DeathEventWaitsforGreatFairy");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3789,6 +4131,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3811,6 +4155,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3821,6 +4166,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3842,6 +4190,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3864,6 +4214,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3881,6 +4232,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3891,6 +4243,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3913,6 +4269,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -3935,6 +4293,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -3945,6 +4304,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -3985,6 +4347,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4003,6 +4366,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FrontRoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -4020,6 +4384,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("BackRoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -4037,6 +4402,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("FrontSwitch");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4055,6 +4421,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("BackBarsSwitch");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4073,6 +4440,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4090,6 +4458,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 		public enum SpecialTypeEnum
@@ -4124,6 +4493,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("SpecialType");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -4134,6 +4504,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("XRotation", "FrontRoomNumber");
+			RegisterValueSourceFieldProperty("XRotation", "BackRoomNumber");
+			RegisterValueSourceFieldProperty("Parameters", "FrontSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "BackBarsSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "EventID");
+			RegisterValueSourceFieldProperty("ZRotation", "ShipID");
+			RegisterValueSourceFieldProperty("ZRotation", "SpecialType");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4200,6 +4580,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4230,6 +4611,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("AppearanceType");
+				OnPropertyChanged("ZRotation");
 				UpdateModel();
 			}
 		}
@@ -4248,6 +4630,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FrontRoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -4265,6 +4648,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("BackRoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -4282,6 +4666,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("FrontSwitch");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4300,6 +4685,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("BackBarsSwitch");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4318,6 +4704,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4335,6 +4722,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -4345,6 +4733,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("ZRotation", "AppearanceType");
+			RegisterValueSourceFieldProperty("XRotation", "FrontRoomNumber");
+			RegisterValueSourceFieldProperty("XRotation", "BackRoomNumber");
+			RegisterValueSourceFieldProperty("Parameters", "FrontSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "BackBarsSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "EventID");
+			RegisterValueSourceFieldProperty("ZRotation", "ShipID");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4401,6 +4799,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -4416,6 +4816,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -4431,6 +4833,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -4463,6 +4867,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4487,6 +4892,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("HasFireflies");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4510,6 +4916,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000080 | (value_as_int << 7 & 0x00000080));
 				OnPropertyChanged("IsWooden");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -4528,6 +4935,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4545,6 +4953,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4562,6 +4971,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("OnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4572,6 +4982,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "HasFireflies");
+			RegisterValueSourceFieldProperty("Parameters", "IsWooden");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "OnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4595,6 +5013,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -4617,6 +5037,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4627,6 +5048,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4655,6 +5079,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4672,6 +5097,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4682,6 +5108,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4711,6 +5141,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4728,6 +5159,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4745,6 +5177,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFF00FF | (value_as_int << 0 & 0xFFFF00FF));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4755,6 +5188,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4796,6 +5234,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4813,6 +5252,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("WhichClone");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4830,6 +5270,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4847,6 +5288,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4864,6 +5306,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FightinProgressSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4874,6 +5317,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "WhichClone");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "FightinProgressSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4905,6 +5355,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4915,6 +5366,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -4943,6 +5397,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum Unknown_2Enum
@@ -4969,6 +5424,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -4986,6 +5442,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0001F000 | (value_as_int << 12 & 0x0001F000));
 				OnPropertyChanged("DisableSpawnChestOpenFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum DisableSpawnConditionEnum
@@ -5011,6 +5468,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000E0000 | (value_as_int << 17 & 0x000E0000));
 				OnPropertyChanged("DisableSpawnCondition");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5028,6 +5486,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5038,6 +5497,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnChestOpenFlag");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnCondition");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5074,6 +5540,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DisableSpawnonDestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5084,6 +5551,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5121,6 +5591,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum TargetingBehaviorTypeEnum
@@ -5147,6 +5618,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000C00 | (value_as_int << 10 & 0x00000C00));
 				OnPropertyChanged("TargetingBehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5178,6 +5650,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5195,6 +5668,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5212,6 +5686,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -5243,6 +5718,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("LinkCapturedExit");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5266,6 +5742,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("PartnerCapturedExit");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -5283,6 +5760,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -5293,6 +5771,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "TargetingBehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "DisableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "LinkCapturedExit");
+			RegisterValueSourceFieldProperty("XRotation", "PartnerCapturedExit");
+			RegisterValueSourceFieldProperty("ZRotation", "SightRangeHundreds");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5328,6 +5816,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -5350,6 +5840,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5367,6 +5858,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5377,6 +5869,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5415,6 +5911,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -5442,6 +5939,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("MothulaType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -5458,6 +5956,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("MissingWings");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -5476,6 +5975,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum WhichWingEnum
@@ -5504,6 +6004,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("WhichWing");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -5526,6 +6027,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -5536,6 +6038,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "MothulaType");
+			RegisterValueSourceFieldProperty("Parameters", "MissingWings");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "WhichWing");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_5");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5565,6 +6075,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5582,6 +6093,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5592,6 +6104,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5621,6 +6137,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5638,6 +6155,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5648,6 +6166,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5687,6 +6209,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000030 | (value_as_int << 4 & 0x00000030));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -5719,6 +6242,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("SpawnPattern");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5738,6 +6262,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000FC0 | (value_as_int << 6 & 0x00000FC0));
 				OnPropertyChanged("DroppedItem");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5748,6 +6273,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SpawnPattern");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5813,6 +6343,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -5843,6 +6375,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5860,6 +6393,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("NumberofGyorgs");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5877,6 +6411,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeThousands");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5894,6 +6429,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5904,6 +6440,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "NumberofGyorgs");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeThousands");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -5940,6 +6482,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5957,6 +6500,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5974,6 +6518,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -5991,6 +6536,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6008,6 +6554,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6018,6 +6565,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6050,6 +6604,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6060,6 +6615,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6097,6 +6655,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x78000000 | (value_as_int << 27 & 0x78000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -6129,6 +6688,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6146,6 +6706,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("EnableMovementSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6163,6 +6724,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EyeShotSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -6180,6 +6742,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6197,6 +6760,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00300000 | (value_as_int << 20 & 0x00300000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6214,6 +6778,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x07C00000 | (value_as_int << 22 & 0x07C00000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6231,6 +6796,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6241,6 +6807,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableMovementSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "EyeShotSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_7");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6284,6 +6860,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6301,6 +6878,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6311,6 +6889,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6340,6 +6922,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSetWhenShot");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum SizeEnum
@@ -6365,6 +6948,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Size");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -6376,6 +6960,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSetWhenShot");
+			RegisterValueSourceFieldProperty("Parameters", "Size");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6418,6 +7006,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -6450,6 +7039,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("PathtoFollow");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6467,6 +7057,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("DoNotFreezePlayerSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6477,6 +7068,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "PathtoFollow");
+			RegisterValueSourceFieldProperty("Parameters", "DoNotFreezePlayerSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6512,6 +7108,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6529,6 +7126,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6539,6 +7137,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6570,6 +7172,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ItemID");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -6588,6 +7191,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6605,6 +7209,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum BehaviorTypeEnum
@@ -6632,6 +7237,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ItemActionEnum
@@ -6668,6 +7274,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xFC000000 | (value_as_int << 26 & 0xFC000000));
 				OnPropertyChanged("ItemAction");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6685,6 +7292,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableActivationSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -6695,6 +7303,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ItemID");
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "ItemAction");
+			RegisterValueSourceFieldProperty("ZRotation", "EnableActivationSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6726,6 +7342,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6736,6 +7353,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6757,6 +7377,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -6790,6 +7412,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6807,6 +7430,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6838,6 +7462,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6855,6 +7480,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6865,6 +7491,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6895,6 +7527,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFF00000 | (value_as_int << 20 & 0xFFF00000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public int MessageID
@@ -6910,6 +7543,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6920,6 +7554,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "MessageID");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -6949,6 +7587,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6966,6 +7605,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6983,6 +7623,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -6993,6 +7634,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7045,6 +7691,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Color");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -7063,6 +7710,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7080,6 +7728,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7111,6 +7760,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7128,6 +7778,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -7138,6 +7789,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Color");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_5");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7169,6 +7827,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchBit");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7186,6 +7845,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7203,6 +7863,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("EventID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7220,6 +7881,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SwitchBit2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7237,6 +7899,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("FromRoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -7254,6 +7917,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("ToRoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -7271,6 +7935,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("ShipID");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -7288,6 +7953,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Arg1");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -7298,6 +7964,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchBit");
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "EventID");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchBit2");
+			RegisterValueSourceFieldProperty("XRotation", "FromRoomNumber");
+			RegisterValueSourceFieldProperty("XRotation", "ToRoomNumber");
+			RegisterValueSourceFieldProperty("ZRotation", "ShipID");
+			RegisterValueSourceFieldProperty("ZRotation", "Arg1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7345,6 +8021,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum SightRangeEnum
@@ -7372,6 +8049,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("SightRange");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7395,6 +8073,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("IsFireKeese");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7426,6 +8105,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7443,6 +8123,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7453,6 +8134,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "SightRange");
+			RegisterValueSourceFieldProperty("Parameters", "IsFireKeese");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7488,6 +8176,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7505,6 +8194,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7515,6 +8205,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7554,6 +8248,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7585,6 +8280,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7602,6 +8298,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("AtPoint1Switch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -7612,6 +8309,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("ZRotation", "AtPoint1Switch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7634,6 +8336,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -7656,6 +8360,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7673,6 +8378,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7683,6 +8389,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7725,6 +8435,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum StyleEnum
@@ -7756,6 +8467,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("Style");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -7774,6 +8486,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -7791,6 +8504,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("RoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -7812,6 +8526,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Type2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7822,6 +8537,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Style");
+			RegisterValueSourceFieldProperty("ZRotation", "MessageID");
+			RegisterValueSourceFieldProperty("XRotation", "RoomNumber");
+			RegisterValueSourceFieldProperty("Parameters", "Type2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7875,6 +8597,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7892,6 +8615,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FallenSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7902,6 +8626,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "FallenSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -7924,6 +8652,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -7959,6 +8689,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7976,6 +8707,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("NumberinGroup");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -7993,6 +8725,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("PotSightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8003,6 +8736,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "NumberinGroup");
+			RegisterValueSourceFieldProperty("Parameters", "PotSightRangeTens");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8032,6 +8770,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8042,6 +8781,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8081,6 +8823,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("ModelType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -8099,6 +8842,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8116,6 +8860,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8133,6 +8878,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8150,6 +8896,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("SwitchtoActivate");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8160,6 +8907,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ModelType");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoActivate");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8206,6 +8960,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ColoEntry");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum EffectTypeEnum
@@ -8241,6 +8996,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("EffectType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8258,6 +9014,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("FadeRadius");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8275,6 +9032,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("FadeHeight");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8292,6 +9050,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -8315,6 +9074,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("InvertPositionChecks");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -8336,6 +9096,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -8346,6 +9107,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ColoEntry");
+			RegisterValueSourceFieldProperty("Parameters", "EffectType");
+			RegisterValueSourceFieldProperty("Parameters", "FadeRadius");
+			RegisterValueSourceFieldProperty("Parameters", "FadeHeight");
+			RegisterValueSourceFieldProperty("XRotation", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("XRotation", "InvertPositionChecks");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_7");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8369,6 +9139,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -8405,6 +9177,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8415,6 +9188,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8443,6 +9219,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8453,6 +9230,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8481,6 +9261,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8498,6 +9279,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8515,6 +9297,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -8525,6 +9308,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8555,6 +9343,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8565,6 +9354,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8586,6 +9378,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -8608,6 +9402,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8618,6 +9413,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8654,6 +9452,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("AmountofSwing");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8664,6 +9463,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "AmountofSwing");
+            
 		}
 	}
 
@@ -8686,6 +9488,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8696,6 +9499,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8724,6 +9530,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8734,6 +9541,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8762,6 +9572,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("IslandIndex");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8772,6 +9583,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "IslandIndex");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8947,6 +9761,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -8957,6 +9772,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -8978,6 +9796,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -9000,6 +9820,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9010,6 +9831,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9052,6 +9876,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("BubblesPath");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9062,6 +9887,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BubblesPath");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9090,6 +9918,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9107,6 +9936,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9117,6 +9947,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9146,6 +9980,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9156,6 +9991,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9184,6 +10022,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("UnknownSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9201,6 +10040,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9218,6 +10058,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -9235,6 +10076,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x0FC0 | (value_as_int << 6 & 0x0FC0));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -9252,6 +10094,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -9262,6 +10105,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "UnknownSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_3");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_4");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_5");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9294,6 +10144,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9311,6 +10162,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9328,6 +10180,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9345,6 +10198,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9355,6 +10209,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9386,6 +10246,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9403,6 +10264,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9413,6 +10275,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9435,6 +10301,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -9450,6 +10318,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -9483,6 +10353,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -9509,6 +10380,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("FrozeninTimePose");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9540,6 +10412,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9557,6 +10430,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9574,6 +10448,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -9584,6 +10459,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "FrozeninTimePose");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9607,6 +10489,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -9629,6 +10513,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9639,6 +10524,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9667,6 +10555,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9677,6 +10566,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9705,6 +10597,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9722,6 +10615,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9739,6 +10633,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00008000 | (value_as_int << 15 & 0x00008000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9770,6 +10665,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9787,6 +10683,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9804,6 +10701,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -9814,6 +10712,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9847,6 +10753,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9857,6 +10764,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9885,6 +10795,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9902,6 +10813,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9912,6 +10824,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -9957,6 +10873,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("WhichMessageID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9974,6 +10891,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -9984,6 +10902,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "WhichMessageID");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10022,6 +10944,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10039,6 +10962,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("UnknownSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10049,6 +10973,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "UnknownSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10070,6 +10998,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -10092,6 +11022,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10102,6 +11033,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10130,6 +11064,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10147,6 +11082,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10157,6 +11093,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10198,6 +11138,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("QuillType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10225,6 +11166,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SkettandAkootType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10253,6 +11195,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BashtandBishtandHoskitType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10282,6 +11225,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("IlariandPashliType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10309,6 +11253,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("NamaliandKogoliType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10338,6 +11283,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SpawnCondition");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10370,6 +11316,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10380,6 +11327,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "QuillType");
+			RegisterValueSourceFieldProperty("Parameters", "SkettandAkootType");
+			RegisterValueSourceFieldProperty("Parameters", "BashtandBishtandHoskitType");
+			RegisterValueSourceFieldProperty("Parameters", "IlariandPashliType");
+			RegisterValueSourceFieldProperty("Parameters", "NamaliandKogoliType");
+			RegisterValueSourceFieldProperty("Parameters", "SpawnCondition");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10408,6 +11364,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10418,6 +11375,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10446,6 +11406,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10456,6 +11417,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10477,6 +11441,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -10510,6 +11476,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("WhichShop");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10531,6 +11498,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("IsMaskedBeedle");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10542,6 +11510,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "WhichShop");
+			RegisterValueSourceFieldProperty("Parameters", "IsMaskedBeedle");
+            
 		}
 	}
 
@@ -10557,6 +11529,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -10593,6 +11567,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10603,6 +11578,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10631,6 +11609,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10641,6 +11620,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10669,6 +11651,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10679,6 +11662,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10707,6 +11693,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10717,6 +11704,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10745,6 +11735,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10755,6 +11746,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10783,6 +11777,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10793,6 +11788,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10821,6 +11819,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10838,6 +11837,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10848,6 +11848,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10877,6 +11881,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10887,6 +11892,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -10908,6 +11916,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -10930,6 +11940,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -10948,6 +11959,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -10965,6 +11977,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -10975,6 +11988,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11005,6 +12023,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11015,6 +12034,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11036,6 +12058,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -11058,6 +12082,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -11075,6 +12100,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -11085,6 +12111,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_1");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11114,6 +12144,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("UnusedType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11131,6 +12162,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("PlayerIsNearExitSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11162,6 +12194,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum Unknown_4Enum
@@ -11187,6 +12220,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11197,6 +12231,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "UnusedType");
+			RegisterValueSourceFieldProperty("Parameters", "PlayerIsNearExitSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11220,6 +12260,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -11235,6 +12277,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -11257,6 +12301,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11274,6 +12319,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("EnablePathFollowSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11305,6 +12351,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11315,6 +12362,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "EnablePathFollowSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11345,6 +12397,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11355,6 +12408,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11395,6 +12451,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ZillType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -11425,6 +12482,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("JoelType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -11457,6 +12515,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11467,6 +12526,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ZillType");
+			RegisterValueSourceFieldProperty("Parameters", "JoelType");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11495,6 +12559,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("UnusedType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11505,6 +12570,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "UnusedType");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11545,6 +12613,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11555,6 +12624,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+            
 		}
 	}
 
@@ -11577,6 +12649,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11594,6 +12667,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11611,6 +12685,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11621,6 +12696,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11651,6 +12731,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11668,6 +12749,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11678,6 +12760,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11707,6 +12793,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11724,6 +12811,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11755,6 +12843,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11765,6 +12854,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11788,6 +12882,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -11803,6 +12899,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -11825,6 +12923,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11842,6 +12941,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11852,6 +12952,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11881,6 +12985,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("ReturnedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11891,6 +12996,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ReturnedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11919,6 +13027,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -11937,6 +13046,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -11947,6 +13057,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -11976,6 +13090,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -11994,6 +13109,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12011,6 +13127,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12021,6 +13138,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12051,6 +13173,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12082,6 +13205,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12105,6 +13229,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12115,6 +13240,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12144,6 +13274,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("UnusedType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12175,6 +13306,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12185,6 +13317,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "UnusedType");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12214,6 +13350,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12231,6 +13368,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12241,6 +13379,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12270,6 +13412,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("UnusedType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12280,6 +13423,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "UnusedType");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12308,6 +13454,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12325,6 +13472,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -12336,6 +13484,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12365,6 +13517,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12382,6 +13535,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12392,6 +13546,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12414,6 +13572,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -12429,6 +13589,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -12444,6 +13606,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -12466,6 +13630,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12483,6 +13648,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12493,6 +13659,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12515,6 +13685,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -12545,6 +13717,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12576,6 +13749,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum WhichKillerBeeEnum
@@ -12602,6 +13776,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("WhichKillerBee");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -12613,6 +13788,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "WhichKillerBee");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12641,6 +13821,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12651,6 +13832,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12690,6 +13874,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12721,6 +13906,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12731,6 +13917,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12759,6 +13949,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12769,6 +13960,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12797,6 +13991,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12807,6 +14002,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12835,6 +14033,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum TypeEnum
@@ -12860,6 +14059,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -12878,6 +14078,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12888,6 +14089,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -12926,6 +14132,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12943,6 +14150,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SightRangeFives");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12960,6 +14168,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("MaximumNumberofRats");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public int Unused
@@ -12975,6 +14184,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unused");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -12985,6 +14195,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeFives");
+			RegisterValueSourceFieldProperty("Parameters", "MaximumNumberofRats");
+			RegisterValueSourceFieldProperty("Parameters", "Unused");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13008,6 +14224,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -13030,6 +14248,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13040,6 +14259,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13061,6 +14283,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -13093,6 +14317,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("CollisionArchive");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -13111,6 +14336,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ScaleModeEnum
@@ -13138,6 +14364,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("ScaleMode");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -13162,6 +14389,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
 				OnPropertyChanged("AlwaysOn");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13172,6 +14400,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "CollisionArchive");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "ScaleMode");
+			RegisterValueSourceFieldProperty("Parameters", "AlwaysOn");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13224,6 +14458,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13234,6 +14469,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+            
 		}
 	}
 
@@ -13256,6 +14494,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13273,6 +14512,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13283,6 +14523,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13312,6 +14556,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13329,6 +14574,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13352,6 +14598,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13369,6 +14616,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13379,6 +14627,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13415,6 +14669,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("HasLadder");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -13426,6 +14681,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "HasLadder");
+            
 		}
 	}
 
@@ -13448,6 +14706,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13458,6 +14717,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13486,6 +14748,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13503,6 +14766,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -13513,6 +14777,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13542,6 +14810,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13563,6 +14832,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 1;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("HasFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum FlagTypeEnum
@@ -13588,6 +14858,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000400 | (value_as_int << 10 & 0x00000400));
 				OnPropertyChanged("FlagType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13605,6 +14876,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13622,6 +14894,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13639,6 +14912,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x10000000 | (value_as_int << 28 & 0x10000000));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13649,6 +14923,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "HasFlag");
+			RegisterValueSourceFieldProperty("Parameters", "FlagType");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_6");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13680,6 +14962,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13697,6 +14980,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13707,6 +14991,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13745,6 +15033,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -13763,6 +15052,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13780,6 +15070,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DeactivationSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13801,6 +15092,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("HeadRotationSpeed");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum BehaviorTypeEnum
@@ -13827,6 +15119,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13858,6 +15151,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("LaserPath");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13877,6 +15171,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("DroppedItem");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -13894,6 +15189,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x1FC0 | (value_as_int << 6 & 0x1FC0));
 				OnPropertyChanged("DroppedItemPickupFlag");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -13904,6 +15200,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "DeactivationSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "HeadRotationSpeed");
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "LaserPath");
+			RegisterValueSourceFieldProperty("ZRotation", "DroppedItem");
+			RegisterValueSourceFieldProperty("ZRotation", "DroppedItemPickupFlag");
+            
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["Type"][TypeEnum.Blue_Beamos] = new string[] { "Beamos" };
 			TypeSpecificCategories["Type"][TypeEnum.Red_Beamos] = new string[] { "Beamos", "Red Beamos" };
@@ -13950,6 +15256,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -13960,6 +15267,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -13988,6 +15298,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum FlagTypeEnum
@@ -14013,6 +15324,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("FlagType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14030,6 +15342,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14040,6 +15353,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "FlagType");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14069,6 +15387,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14086,6 +15405,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14096,6 +15416,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14118,6 +15442,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -14140,6 +15466,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ExtraScale");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -14158,6 +15485,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14189,6 +15517,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("VisibleAreaPath");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14206,6 +15535,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14216,6 +15546,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ExtraScale");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "VisibleAreaPath");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14247,6 +15583,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14264,6 +15601,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14281,6 +15619,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14298,6 +15637,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14315,6 +15655,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14332,6 +15673,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14342,6 +15684,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_6");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14389,6 +15739,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14406,6 +15757,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14429,6 +15781,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14439,6 +15792,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14485,6 +15843,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -14500,6 +15860,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -14522,6 +15884,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14532,6 +15895,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14560,6 +15926,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14570,6 +15937,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14598,6 +15968,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14608,6 +15979,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14636,6 +16010,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14646,6 +16021,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14667,6 +16045,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -14689,6 +16069,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BombedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14699,6 +16080,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BombedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14727,6 +16111,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14737,6 +16122,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14765,6 +16153,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14775,6 +16164,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14803,6 +16195,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14813,6 +16206,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -14841,6 +16237,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -14851,6 +16248,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15019,6 +16419,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("WhichFigurine");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -15030,6 +16431,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "WhichFigurine");
+            
 		}
 	}
 
@@ -15052,6 +16456,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15062,6 +16467,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15100,6 +16508,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x30000000 | (value_as_int << 28 & 0x30000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -15118,6 +16527,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15135,6 +16545,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00001F00 | (value_as_int << 8 & 0x00001F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15152,6 +16563,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00006000 | (value_as_int << 13 & 0x00006000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15169,6 +16581,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15186,6 +16599,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15196,6 +16610,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "YXZ";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_6");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15228,6 +16650,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15238,6 +16661,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15259,6 +16685,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15274,6 +16702,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15289,6 +16719,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15311,6 +16743,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15321,6 +16754,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15342,6 +16778,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15357,6 +16795,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15372,6 +16812,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15394,6 +16836,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ActivationSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15404,6 +16847,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ActivationSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15425,6 +16871,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15447,6 +16895,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15457,6 +16906,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15485,6 +16937,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15502,6 +16955,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15519,6 +16973,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15529,6 +16984,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15559,6 +17019,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15569,6 +17030,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15597,6 +17061,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15607,6 +17072,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15635,6 +17103,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15652,6 +17121,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15669,6 +17139,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15679,6 +17150,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15709,6 +17185,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15726,6 +17203,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15743,6 +17221,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15753,6 +17232,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15776,6 +17260,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -15798,6 +17284,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15815,6 +17302,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15825,6 +17313,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15854,6 +17346,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Height");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum SizeEnum
@@ -15879,6 +17372,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("Size");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -15897,6 +17391,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15914,6 +17409,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15924,6 +17420,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Height");
+			RegisterValueSourceFieldProperty("Parameters", "Size");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -15974,6 +17476,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Exit");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -15995,6 +17498,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("HasVisibleHole");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -16013,6 +17517,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("HoleScale");
+				OnPropertyChanged("ZRotation");
 				UpdateModel();
 			}
 		}
@@ -16024,6 +17529,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Exit");
+			RegisterValueSourceFieldProperty("Parameters", "HasVisibleHole");
+			RegisterValueSourceFieldProperty("ZRotation", "HoleScale");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16061,6 +17571,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -16081,6 +17592,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0003F000 | (value_as_int << 12 & 0x0003F000));
 				OnPropertyChanged("DroppedItem");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16098,6 +17610,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
 				OnPropertyChanged("ItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum EnemytoSpawnEnum
@@ -16133,6 +17646,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x003C0000 | (value_as_int << 18 & 0x003C0000));
 				OnPropertyChanged("EnemytoSpawn");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16150,6 +17664,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16160,6 +17675,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
+			RegisterValueSourceFieldProperty("Parameters", "EnemytoSpawn");
+			RegisterValueSourceFieldProperty("Parameters", "DestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16190,6 +17712,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16207,6 +17730,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000002 | (value_as_int << 1 & 0x00000002));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16217,6 +17741,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16246,6 +17774,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16263,6 +17792,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("Message");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16273,6 +17803,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Message");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16302,6 +17836,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16312,6 +17847,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16340,6 +17878,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("MeltedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16350,6 +17889,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "MeltedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16378,6 +17920,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16388,6 +17931,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16427,6 +17973,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -16445,6 +17992,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000003F0 | (value_as_int << 4 & 0x000003F0));
 				OnPropertyChanged("InteriorRoomNumber");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16462,6 +18010,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0003FC00 | (value_as_int << 10 & 0x0003FC00));
 				OnPropertyChanged("InteriorSpawnID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16479,6 +18028,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x03FC0000 | (value_as_int << 18 & 0x03FC0000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16496,6 +18046,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -16527,6 +18078,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("PathtoFollow");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -16558,6 +18110,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SalvageCorpPathtoFollow");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16568,6 +18121,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "InteriorRoomNumber");
+			RegisterValueSourceFieldProperty("Parameters", "InteriorSpawnID");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_6");
+			RegisterValueSourceFieldProperty("XRotation", "PathtoFollow");
+			RegisterValueSourceFieldProperty("Parameters", "SalvageCorpPathtoFollow");
+            
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["Type"][TypeEnum.Raft] = new string[] { "Rafts, Beedle, and Submarines" };
 			TypeSpecificCategories["Type"][TypeEnum.Beedles_Shop_Ship] = new string[] { "Rafts, Beedle, and Submarines" };
@@ -16622,6 +18184,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16639,6 +18202,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16649,6 +18213,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16678,6 +18246,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16688,6 +18257,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16716,6 +18288,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16726,6 +18299,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16760,6 +18336,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("IsUpright");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -16778,6 +18355,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003E | (value_as_int << 1 & 0x0000003E));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16795,6 +18373,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16812,6 +18391,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("OpenedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16829,6 +18409,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("UnusedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public int UnusedZRotation
@@ -16844,6 +18425,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("UnusedZRotation");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -16854,6 +18436,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "IsUpright");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "OpenedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "UnusedSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "UnusedZRotation");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16903,6 +18493,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Length");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -16921,6 +18512,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16944,6 +18536,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("FallEvent");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -16954,6 +18547,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Length");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "FallEvent");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -16998,6 +18596,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17015,6 +18614,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00001FC0 | (value_as_int << 6 & 0x00001FC0));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17032,6 +18632,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x001FE000 | (value_as_int << 13 & 0x001FE000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17042,6 +18643,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17065,6 +18671,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -17080,6 +18688,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -17102,6 +18712,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17119,6 +18730,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17129,6 +18741,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17158,6 +18774,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17168,6 +18785,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17196,6 +18816,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17213,6 +18834,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -17231,6 +18853,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00001000 | (value_as_int << 12 & 0x00001000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17248,6 +18871,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00002000 | (value_as_int << 13 & 0x00002000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17265,6 +18889,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("DestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17275,6 +18900,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "DestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17307,6 +18939,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17330,6 +18963,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("DoNotPlayJingle");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17340,6 +18974,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "DoNotPlayJingle");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17368,6 +19006,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17385,6 +19024,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17395,6 +19035,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17417,6 +19061,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -17439,6 +19085,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17456,6 +19103,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17466,6 +19114,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17514,6 +19166,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -17538,6 +19191,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("DisableFlagonTop");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17555,6 +19209,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -17574,6 +19229,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("DroppedItem");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17591,6 +19247,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("DroppedItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17614,6 +19271,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("DoNotStayMovedAfterReload");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17645,6 +19303,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("StayMovedtoPath");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -17662,6 +19321,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("StayMovedSwitch1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17679,6 +19339,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("StayMovedSwitch2");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -17689,6 +19350,17 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "DisableFlagonTop");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_7");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItemPickupFlag");
+			RegisterValueSourceFieldProperty("Parameters", "DoNotStayMovedAfterReload");
+			RegisterValueSourceFieldProperty("ZRotation", "StayMovedtoPath");
+			RegisterValueSourceFieldProperty("Parameters", "StayMovedSwitch1");
+			RegisterValueSourceFieldProperty("ZRotation", "StayMovedSwitch2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17770,6 +19442,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum StaircaseLengthEnum
@@ -17795,6 +19468,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("StaircaseLength");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17812,6 +19486,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00040000 | (value_as_int << 18 & 0x00040000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17835,6 +19510,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17845,6 +19521,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "StaircaseLength");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17875,6 +19557,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17885,6 +19568,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17913,6 +19599,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17930,6 +19617,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("WhichStairIndex");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum StaircaseLengthEnum
@@ -17955,6 +19643,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("StaircaseLength");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -17965,6 +19654,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "WhichStairIndex");
+			RegisterValueSourceFieldProperty("Parameters", "StaircaseLength");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -17994,6 +19688,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18011,6 +19706,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18021,6 +19717,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18059,6 +19759,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18069,6 +19770,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+            
 		}
 	}
 
@@ -18105,6 +19809,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -18123,6 +19828,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ConditionTypeEnum
@@ -18149,6 +19855,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("ConditionType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18166,6 +19873,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18176,6 +19884,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "ConditionType");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18222,6 +19936,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18244,6 +19960,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("OpenedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18254,6 +19971,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "OpenedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18275,6 +19995,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18307,6 +20029,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("WhattoDrop");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18326,6 +20049,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("DroppedItemID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18336,6 +20060,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "WhattoDrop");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItemID");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18364,6 +20092,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18374,6 +20103,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18411,6 +20143,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -18427,6 +20160,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18437,6 +20171,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "MessageID");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18467,6 +20205,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18482,6 +20222,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18497,6 +20239,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18525,6 +20269,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum DoorTypeEnum
@@ -18550,6 +20295,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("DoorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18581,6 +20327,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum Unknown_4Enum
@@ -18610,6 +20357,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18620,6 +20368,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "DoorType");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18641,6 +20395,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18663,6 +20419,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18680,6 +20437,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000700 | (value_as_int << 8 & 0x00000700));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18697,6 +20455,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00003800 | (value_as_int << 11 & 0x00003800));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18707,6 +20466,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18737,6 +20501,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18747,6 +20512,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18768,6 +20536,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18783,6 +20553,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -18805,6 +20577,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18815,6 +20588,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18852,6 +20628,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum Unknown_2Enum
@@ -18882,6 +20659,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18913,6 +20691,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("PathtoSearch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18930,6 +20709,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -18947,6 +20727,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -18957,6 +20738,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "PathtoSearch");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("XRotation", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -18987,6 +20775,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19004,6 +20793,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -19014,6 +20804,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19043,6 +20837,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19053,6 +20848,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19081,6 +20879,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19091,6 +20890,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19119,6 +20921,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19129,6 +20932,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19166,6 +20972,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19183,6 +20990,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19200,6 +21008,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("DisabledSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19210,6 +21019,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "DisabledSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19248,6 +21062,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoUnset");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19265,6 +21080,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19275,6 +21091,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoUnset");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19314,6 +21134,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19331,6 +21152,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19341,6 +21163,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19375,6 +21201,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19392,6 +21219,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("OtherSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19415,6 +21243,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("IsPaired");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19425,6 +21254,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "OtherSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "IsPaired");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19470,6 +21304,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19493,6 +21328,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("EventtoStart");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19510,6 +21346,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19533,6 +21370,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("AltModelNoEffect");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19556,6 +21394,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x40000000 | (value_as_int << 30 & 0x40000000));
 				OnPropertyChanged("ShouldUseDisabledSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19573,6 +21412,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisabledSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -19583,6 +21423,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "EventtoStart");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "AltModelNoEffect");
+			RegisterValueSourceFieldProperty("Parameters", "ShouldUseDisabledSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DisabledSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19622,6 +21470,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19632,6 +21481,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19660,6 +21512,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19677,6 +21530,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19687,6 +21541,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19716,6 +21574,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19733,6 +21592,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19743,6 +21603,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19772,6 +21636,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00070000 | (value_as_int << 16 & 0x00070000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19789,6 +21654,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19799,6 +21665,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19828,6 +21698,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("TimeLimitHalfSeconds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19845,6 +21716,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchtoUnset");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19855,6 +21727,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "TimeLimitHalfSeconds");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoUnset");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19884,6 +21760,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19901,6 +21778,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19922,6 +21800,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19939,6 +21818,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00060000 | (value_as_int << 17 & 0x00060000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -19949,6 +21829,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -19972,6 +21858,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -19987,6 +21875,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20002,6 +21892,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20038,6 +21930,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20055,6 +21948,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20065,6 +21959,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20094,6 +21992,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20111,6 +22010,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00010000 | (value_as_int << 16 & 0x00010000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20121,6 +22021,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20169,6 +22073,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -20187,6 +22092,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum PlacedorUnplacedEnum
@@ -20212,6 +22118,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("PlacedorUnplaced");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20222,6 +22129,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "PlacedorUnplaced");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20303,6 +22215,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20325,6 +22239,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20335,6 +22250,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20363,6 +22281,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20373,6 +22292,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20394,6 +22316,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20416,6 +22340,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20426,6 +22351,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20447,6 +22375,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20462,6 +22392,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20484,6 +22416,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("UnknownSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20494,6 +22427,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "UnknownSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20515,6 +22451,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20537,6 +22475,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20547,6 +22486,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20575,6 +22517,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20585,6 +22528,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -20624,6 +22570,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum UnlockedRegisterEnum
@@ -20653,6 +22600,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("UnlockedRegister");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20684,6 +22632,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ExittoFirstPotinCycle");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20715,6 +22664,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("ExittoSecondPotinCycle");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20746,6 +22696,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("ExittoThirdPotinCycle");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20763,6 +22714,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("TopUnblockedSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -20784,6 +22736,7 @@ namespace WindEditor
 				int value_as_int = value ? 255 : 0;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("PlayUnlockedSoundEffect");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -20805,6 +22758,7 @@ namespace WindEditor
 				int value_as_int = value ? 255 : 0;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("IsLocked");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -20836,6 +22790,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("UnusedExittoThisPot");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20867,6 +22822,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("ExittoDestinationPot");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -20884,6 +22840,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("ThisUnlockedSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -20901,6 +22858,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("DestinationUnlockedSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -20911,6 +22869,20 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "UnlockedRegister");
+			RegisterValueSourceFieldProperty("Parameters", "ExittoFirstPotinCycle");
+			RegisterValueSourceFieldProperty("Parameters", "ExittoSecondPotinCycle");
+			RegisterValueSourceFieldProperty("Parameters", "ExittoThirdPotinCycle");
+			RegisterValueSourceFieldProperty("XRotation", "TopUnblockedSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "PlayUnlockedSoundEffect");
+			RegisterValueSourceFieldProperty("ZRotation", "IsLocked");
+			RegisterValueSourceFieldProperty("Parameters", "UnusedExittoThisPot");
+			RegisterValueSourceFieldProperty("Parameters", "ExittoDestinationPot");
+			RegisterValueSourceFieldProperty("XRotation", "ThisUnlockedSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "DestinationUnlockedSwitch");
+            
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["Type"][TypeEnum.Locked_noncyclic_pot] = new string[] { "Noncyclic Warp Pot" };
 			TypeSpecificCategories["Type"][TypeEnum.Unlocked_noncyclic_pot] = new string[] { "Noncyclic Warp Pot" };
@@ -20960,6 +22932,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20975,6 +22949,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -20997,6 +22973,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("DisabledSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21007,6 +22984,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisabledSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21035,6 +23015,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000007 | (value_as_int << 0 & 0x00000007));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21045,6 +23026,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21073,6 +23057,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21083,6 +23068,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21111,6 +23099,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21121,6 +23110,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21162,6 +23154,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -21188,6 +23181,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ProjectileType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21205,6 +23199,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SightRangeThousands");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21215,6 +23210,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "ProjectileType");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeThousands");
+            
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["Type"][TypeEnum.Freshwater_Octorok] = new string[] { "Freshwater Octorok" };
 			TypeSpecificCategories["Type"][TypeEnum.Saltwater_Octorok_spawner] = new string[] { "Saltwater Octorok Spawner" };
@@ -21261,6 +23261,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21278,6 +23279,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21295,6 +23297,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000F000 | (value_as_int << 12 & 0x0000F000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21326,6 +23329,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21343,6 +23347,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21360,6 +23365,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -21381,6 +23387,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 255;
 				m_XRotation = (short)(m_XRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("IsGolden");
+				OnPropertyChanged("XRotation");
 				UpdateModel();
 			}
 		}
@@ -21392,6 +23399,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "IsGolden");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21424,6 +23440,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21434,6 +23451,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21470,6 +23490,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21487,6 +23508,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("HorizontalSightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21504,6 +23526,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("VerticalSightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21514,6 +23537,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "HorizontalSightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "VerticalSightRangeHundreds");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21536,6 +23564,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -21566,6 +23596,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21589,6 +23620,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000010 | (value_as_int << 4 & 0x00000010));
 				OnPropertyChanged("InitialMiniblinWontSpawnOnscreen");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum RespawnDelayEnum
@@ -21620,6 +23652,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000E0 | (value_as_int << 5 & 0x000000E0));
 				OnPropertyChanged("RespawnDelay");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21637,6 +23670,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeHundreds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21654,6 +23688,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("DisableRespawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21671,6 +23706,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21688,6 +23724,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("InitialSpawnDelay");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -21698,6 +23735,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "InitialMiniblinWontSpawnOnscreen");
+			RegisterValueSourceFieldProperty("Parameters", "RespawnDelay");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeHundreds");
+			RegisterValueSourceFieldProperty("Parameters", "DisableRespawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "InitialSpawnDelay");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21740,6 +23786,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21763,6 +23810,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x00000100 | (value_as_int << 8 & 0x00000100));
 				OnPropertyChanged("HoversAtInitialHeight");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ColorEnum
@@ -21792,6 +23840,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FE00 | (value_as_int << 9 & 0x0000FE00));
 				OnPropertyChanged("Color");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -21810,6 +23859,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21841,6 +23891,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21851,6 +23902,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "HoversAtInitialHeight");
+			RegisterValueSourceFieldProperty("Parameters", "Color");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21880,6 +23938,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21890,6 +23949,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -21918,6 +23980,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21935,6 +23998,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21952,6 +24016,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00078000 | (value_as_int << 15 & 0x00078000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -21962,6 +24027,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22000,6 +24070,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("IdleAnimation");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -22018,6 +24089,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FE | (value_as_int << 1 & 0x000000FE));
 				OnPropertyChanged("GuardedAreaRadius");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22039,6 +24111,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 1;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ShouldCheckSwitchToEnableSpawn");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22056,6 +24129,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22066,6 +24140,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "IdleAnimation");
+			RegisterValueSourceFieldProperty("Parameters", "GuardedAreaRadius");
+			RegisterValueSourceFieldProperty("Parameters", "ShouldCheckSwitchToEnableSpawn");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22089,6 +24169,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22104,6 +24186,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22134,6 +24218,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Height");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -22160,6 +24245,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Strength");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -22178,6 +24264,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("BottomDestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22195,6 +24282,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("TopDestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22205,6 +24293,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Height");
+			RegisterValueSourceFieldProperty("Parameters", "Strength");
+			RegisterValueSourceFieldProperty("Parameters", "BottomDestroyedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "TopDestroyedSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22253,6 +24347,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22272,6 +24367,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000FF0 | (value_as_int << 4 & 0x00000FF0));
 				OnPropertyChanged("ItemID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22289,6 +24385,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("UnknownSalvagedObjectType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22306,6 +24403,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("Chart");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22323,6 +24421,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SalvageFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum SalvagedEventBitEnum
@@ -22362,6 +24461,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("SalvagedEventBit");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22379,6 +24479,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x0003 | (value_as_int << 0 & 0x0003));
 				OnPropertyChanged("DuplicatePlacementID");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -22396,6 +24497,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -22406,6 +24508,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "ItemID");
+			RegisterValueSourceFieldProperty("Parameters", "UnknownSalvagedObjectType");
+			RegisterValueSourceFieldProperty("Parameters", "Chart");
+			RegisterValueSourceFieldProperty("Parameters", "SalvageFlag");
+			RegisterValueSourceFieldProperty("Parameters", "SalvagedEventBit");
+			RegisterValueSourceFieldProperty("ZRotation", "DuplicatePlacementID");
+			RegisterValueSourceFieldProperty("ZRotation", "SwitchtoCheck");
+            
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["Type"][TypeEnum.Needs_Chart] = new string[] { "Chart Salvage Point" };
 			TypeSpecificCategories["Type"][TypeEnum.Checks_Switch] = new string[] { "Switch Salvage Point", "Light Ring Salvage Point" };
@@ -22465,6 +24577,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ItemID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22482,6 +24595,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22492,6 +24606,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "ItemID");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22514,6 +24632,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22529,6 +24649,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22544,6 +24666,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22559,6 +24683,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22581,6 +24707,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22591,6 +24718,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22619,6 +24749,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22629,6 +24760,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22663,6 +24797,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BoundaryPath");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22684,6 +24819,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22694,6 +24830,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BoundaryPath");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22722,6 +24862,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22739,6 +24880,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22749,6 +24891,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22778,6 +24924,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ModelEnum
@@ -22803,6 +24950,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Model");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -22814,6 +24962,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "Model");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22848,6 +25000,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22858,6 +25011,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22879,6 +25035,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -22901,6 +25059,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -22919,6 +25078,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22936,6 +25096,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22953,6 +25114,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -22963,6 +25125,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -22994,6 +25162,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23011,6 +25180,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23021,6 +25191,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23050,6 +25224,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23067,6 +25242,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23084,6 +25260,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23094,6 +25271,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23124,6 +25306,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23134,6 +25317,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23162,6 +25348,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000001 | (value_as_int << 0 & 0x00000001));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23172,6 +25359,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23208,6 +25398,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -23226,6 +25417,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23243,6 +25435,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23253,6 +25446,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23291,6 +25489,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23308,6 +25507,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23325,6 +25525,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23335,6 +25536,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23372,6 +25578,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SFXType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23389,6 +25596,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23406,6 +25614,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23416,6 +25625,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SFXType");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23456,6 +25670,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23473,6 +25688,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("AmbushSightRangeTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public int Unused
@@ -23488,6 +25704,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unused");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23505,6 +25722,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("AmbushSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23522,6 +25740,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -23532,6 +25751,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "AmbushSightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "Unused");
+			RegisterValueSourceFieldProperty("Parameters", "AmbushSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23563,6 +25789,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23573,6 +25800,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23612,6 +25842,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -23630,6 +25861,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23647,6 +25879,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23664,6 +25897,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23681,6 +25915,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23698,6 +25933,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23708,6 +25944,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_6");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23749,6 +25993,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x07000000 | (value_as_int << 24 & 0x07000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -23769,6 +26014,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("DroppedItem");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23786,6 +26032,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("DestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23803,6 +26050,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("DroppedItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23820,6 +26068,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23837,6 +26086,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("Unknown_6");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23860,6 +26110,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DestroyedEvent");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -23870,6 +26121,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "YXZ";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
+			RegisterValueSourceFieldProperty("Parameters", "DestroyedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItemPickupFlag");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_6");
+			RegisterValueSourceFieldProperty("ZRotation", "DestroyedEvent");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23912,6 +26172,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23929,6 +26190,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23939,6 +26201,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -23978,6 +26244,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00030000 | (value_as_int << 16 & 0x00030000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -23995,6 +26262,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24012,6 +26280,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("PrerequisiteSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24022,6 +26291,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "PrerequisiteSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24062,6 +26336,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24079,6 +26354,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24102,6 +26378,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24119,6 +26396,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0FF00000 | (value_as_int << 20 & 0x0FF00000));
 				OnPropertyChanged("TimeLimitHalfSeconds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24136,6 +26414,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -24153,6 +26432,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -24163,6 +26443,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+			RegisterValueSourceFieldProperty("Parameters", "TimeLimitHalfSeconds");
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_5");
+			RegisterValueSourceFieldProperty("ZRotation", "SwitchtoCheck");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24209,6 +26497,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("WhatTriggersIt");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24228,6 +26517,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
 				OnPropertyChanged("SpawnedItem");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -24246,6 +26536,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x001FC000 | (value_as_int << 14 & 0x001FC000));
 				OnPropertyChanged("ItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24256,6 +26547,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "WhatTriggersIt");
+			RegisterValueSourceFieldProperty("Parameters", "SpawnedItem");
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24285,6 +26581,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24302,6 +26599,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24312,6 +26610,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24341,6 +26643,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum WindWakerSongTriggerEnum
@@ -24370,6 +26673,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("WindWakerSongTrigger");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24393,6 +26697,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x000F0000 | (value_as_int << 16 & 0x000F0000));
 				OnPropertyChanged("ShowWindEmblemModel");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -24404,6 +26709,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "WindWakerSongTrigger");
+			RegisterValueSourceFieldProperty("Parameters", "ShowWindEmblemModel");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24438,6 +26748,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24455,6 +26766,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24465,6 +26777,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24487,6 +26803,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -24519,6 +26837,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24536,6 +26855,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24546,6 +26866,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24567,6 +26891,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -24589,6 +26915,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24612,6 +26939,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24622,6 +26950,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24672,6 +27004,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24689,6 +27022,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24706,6 +27040,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24729,6 +27064,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24746,6 +27082,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("EnableSpawnEventBit");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -24756,6 +27093,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+			RegisterValueSourceFieldProperty("ZRotation", "EnableSpawnEventBit");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24795,6 +27139,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x03000000 | (value_as_int << 24 & 0x03000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24812,6 +27157,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24829,6 +27175,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FFFF00 | (value_as_int << 8 & 0x00FFFF00));
 				OnPropertyChanged("EventBittoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24839,6 +27186,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "EventBittoCheck");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24868,6 +27220,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24885,6 +27238,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24895,6 +27249,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -24924,6 +27282,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24941,6 +27300,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24958,6 +27318,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24975,6 +27336,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -24998,6 +27360,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public int MessageID
@@ -25013,6 +27376,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -25030,6 +27394,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -25040,6 +27405,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+			RegisterValueSourceFieldProperty("XRotation", "MessageID");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_7");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25088,6 +27462,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25105,6 +27480,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25128,6 +27504,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25138,6 +27515,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25169,6 +27551,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Item");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25186,6 +27569,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("ItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25207,6 +27591,7 @@ namespace WindEditor
 				int value_as_int = value ? 0 : 255;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("ShouldSetSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25224,6 +27609,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25234,6 +27620,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Item");
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
+			RegisterValueSourceFieldProperty("Parameters", "ShouldSetSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25264,6 +27656,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25274,6 +27667,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25295,6 +27691,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -25326,6 +27724,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000003 | (value_as_int << 0 & 0x00000003));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -25344,6 +27743,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000300 | (value_as_int << 8 & 0x00000300));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25361,6 +27761,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000003FC | (value_as_int << 2 & 0x000003FC));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25378,6 +27779,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00003C00 | (value_as_int << 10 & 0x00003C00));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -25396,6 +27798,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25413,6 +27816,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25430,6 +27834,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25447,6 +27852,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25457,6 +27863,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "YXZ";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_7");
+            
 			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
 			TypeSpecificCategories["Type"][TypeEnum.Invisible_Light_Region] = new string[] { "Light" };
 			TypeSpecificCategories["Type"][TypeEnum.Light_Beam] = new string[] { "Light" };
@@ -25502,6 +27918,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FFFF | (value_as_int << 0 & 0x0000FFFF));
 				OnPropertyChanged("MessageID");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25519,6 +27936,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("FirstSwitchtoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25536,6 +27954,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("NumSwitchestoCheck");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25553,6 +27972,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -25563,6 +27983,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "MessageID");
+			RegisterValueSourceFieldProperty("Parameters", "FirstSwitchtoCheck");
+			RegisterValueSourceFieldProperty("Parameters", "NumSwitchestoCheck");
+			RegisterValueSourceFieldProperty("XRotation", "DisableSpawnSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25594,6 +28020,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25611,6 +28038,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25628,6 +28056,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25638,6 +28067,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25676,6 +28110,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00000040 | (value_as_int << 6 & 0x00000040));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public int MessageID
@@ -25691,6 +28126,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("MessageID");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -25708,6 +28144,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25725,6 +28162,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("EnableSpawnEventBit");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -25742,6 +28180,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25765,6 +28204,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Event");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25775,6 +28215,14 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("XRotation", "MessageID");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "EnableSpawnEventBit");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "Event");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25813,6 +28261,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25823,6 +28272,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25851,6 +28303,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25861,6 +28314,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25889,6 +28345,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25906,6 +28363,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25923,6 +28381,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -25933,6 +28392,11 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -25963,6 +28427,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("DisableSpawnTreasureChestOpenFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum TypeEnum
@@ -25989,6 +28454,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000C0 | (value_as_int << 6 & 0x000000C0));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26006,6 +28472,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("SwitchtoSet");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26023,6 +28490,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("TimerDurationTensofSeconds");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26033,6 +28501,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnTreasureChestOpenFlag");
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
+			RegisterValueSourceFieldProperty("Parameters", "TimerDurationTensofSeconds");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26063,6 +28537,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26073,6 +28548,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26101,6 +28579,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0xFFFF | (value_as_int << 0 & 0xFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -26111,6 +28590,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("XRotation", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26154,6 +28636,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000007F | (value_as_int << 0 & 0x0000007F));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26171,6 +28654,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F80 | (value_as_int << 7 & 0x00000F80));
 				OnPropertyChanged("ChestOpenFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26188,6 +28672,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000FF000 | (value_as_int << 12 & 0x000FF000));
 				OnPropertyChanged("AppearConditionSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum AppearanceTypeEnum
@@ -26215,6 +28700,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("AppearanceType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -26233,6 +28719,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_XRotation = (short)(m_XRotation & ~0x003F | (value_as_int << 0 & 0x003F));
 				OnPropertyChanged("RoomNumber");
+				OnPropertyChanged("XRotation");
 			}
 		}
 
@@ -26250,6 +28737,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("OpenSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -26269,6 +28757,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
 				OnPropertyChanged("Item");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -26279,6 +28768,15 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "ChestOpenFlag");
+			RegisterValueSourceFieldProperty("Parameters", "AppearConditionSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "AppearanceType");
+			RegisterValueSourceFieldProperty("XRotation", "RoomNumber");
+			RegisterValueSourceFieldProperty("ZRotation", "OpenSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "Item");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26380,6 +28878,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -26413,6 +28913,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ColorEnum
@@ -26442,6 +28943,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000F0 | (value_as_int << 4 & 0x000000F0));
 				OnPropertyChanged("Color");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -26460,6 +28962,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("GuardedAreaRadiusTens");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum FrozeninTimePoseEnum
@@ -26485,6 +28988,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("FrozeninTimePose");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -26517,6 +29021,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26534,6 +29039,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum ExtraEquipmentEnum
@@ -26563,6 +29069,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_XRotation = (short)(m_XRotation & ~0x00E0 | (value_as_int << 5 & 0x00E0));
 				OnPropertyChanged("ExtraEquipment");
+				OnPropertyChanged("XRotation");
 				UpdateModel();
 			}
 		}
@@ -26581,6 +29088,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -26591,6 +29099,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "Color");
+			RegisterValueSourceFieldProperty("Parameters", "GuardedAreaRadiusTens");
+			RegisterValueSourceFieldProperty("Parameters", "FrozeninTimePose");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("XRotation", "ExtraEquipment");
+			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26622,6 +29140,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DisabledSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26639,6 +29158,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26649,6 +29169,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisabledSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26671,6 +29195,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -26693,6 +29219,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26703,6 +29230,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -26724,6 +29254,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -26768,6 +29300,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0F000000 | (value_as_int << 24 & 0x0F000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -26856,6 +29389,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x00003F00 | (value_as_int << 8 & 0x00003F00));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26875,6 +29409,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
 				OnPropertyChanged("DroppedItem");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26892,6 +29427,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x007F0000 | (value_as_int << 16 & 0x007F0000));
 				OnPropertyChanged("ItemPickupFlag");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum Unknown_3Enum
@@ -26919,6 +29455,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000C000 | (value_as_int << 14 & 0x0000C000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26936,6 +29473,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x70000000 | (value_as_int << 28 & 0x70000000));
 				OnPropertyChanged("InvincibleWhenOffCamera");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26959,6 +29497,7 @@ namespace WindEditor
 				int value_as_int = value ? 1 : 0;
 				m_Parameters = (int)(m_Parameters & ~0x80000000 | (value_as_int << 31 & 0x80000000));
 				OnPropertyChanged("DoNotGroundOnSpawn");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -26976,6 +29515,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnableSpawnActivationSwitch");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -26986,6 +29526,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "InvincibleWhenOffCamera");
+			RegisterValueSourceFieldProperty("Parameters", "DoNotGroundOnSpawn");
+			RegisterValueSourceFieldProperty("ZRotation", "EnableSpawnActivationSwitch");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27054,6 +29604,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("DisableSpawnonDestroyedSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27071,6 +29622,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -27082,6 +29634,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDestroyedSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27111,6 +29667,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27121,6 +29678,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27149,6 +29709,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27159,6 +29720,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27180,6 +29744,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -27202,6 +29768,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27219,6 +29786,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27229,6 +29797,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27258,6 +29830,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27268,6 +29841,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27304,6 +29880,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0xF0000000 | (value_as_int << 28 & 0xF0000000));
 				OnPropertyChanged("Type");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -27336,6 +29913,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Exit");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27353,6 +29931,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("ActivationSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27376,6 +29955,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("ActivatedEvent");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27386,6 +29966,12 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Type");
+			RegisterValueSourceFieldProperty("Parameters", "Exit");
+			RegisterValueSourceFieldProperty("Parameters", "ActivationSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "ActivatedEvent");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27416,6 +30002,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27426,6 +30013,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27454,6 +30044,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27471,6 +30062,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00000F00 | (value_as_int << 8 & 0x00000F00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27481,6 +30073,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27503,6 +30099,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
@@ -27525,6 +30123,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27535,6 +30134,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27563,6 +30165,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27580,6 +30183,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27597,6 +30201,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x001F0000 | (value_as_int << 16 & 0x001F0000));
 				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27614,6 +30219,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00600000 | (value_as_int << 21 & 0x00600000));
 				OnPropertyChanged("Unknown_4");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27631,6 +30237,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00800000 | (value_as_int << 23 & 0x00800000));
 				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27648,6 +30255,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("DisableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27665,6 +30273,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x000F | (value_as_int << 0 & 0x000F));
 				OnPropertyChanged("Unknown_7");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -27682,6 +30291,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00F0 | (value_as_int << 4 & 0x00F0));
 				OnPropertyChanged("Unknown_8");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -27692,6 +30302,16 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnSwitch");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_7");
+			RegisterValueSourceFieldProperty("ZRotation", "Unknown_8");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27740,6 +30360,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
 				OnPropertyChanged("BehaviorType");
+				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
 		}
@@ -27758,6 +30379,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("DisableSpawnonDeathSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27775,6 +30397,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
 				OnPropertyChanged("EnableSpawnSwitch");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27806,6 +30429,7 @@ namespace WindEditor
 				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
 				OnPropertyChanged("Path");
+				OnPropertyChanged("Parameters");
 			}
 		}
 		public enum EnemySummonTableEnum
@@ -27844,6 +30468,7 @@ namespace WindEditor
 				int value_as_int = (int)value;
 				m_ZRotation = (short)(m_ZRotation & ~0x00FF | (value_as_int << 0 & 0x00FF));
 				OnPropertyChanged("EnemySummonTable");
+				OnPropertyChanged("ZRotation");
 			}
 		}
 
@@ -27854,6 +30479,13 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = false;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
+			RegisterValueSourceFieldProperty("Parameters", "DisableSpawnonDeathSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
+			RegisterValueSourceFieldProperty("ZRotation", "EnemySummonTable");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27884,6 +30516,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000000F | (value_as_int << 0 & 0x0000000F));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27894,6 +30527,9 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27922,6 +30558,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
 				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27939,6 +30576,7 @@ namespace WindEditor
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00F00000 | (value_as_int << 20 & 0x00F00000));
 				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Parameters");
 			}
 		}
 
@@ -27949,6 +30587,10 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+            
 		}
 
 		override public void PopulateDefaultProperties()
@@ -27971,6 +30613,8 @@ namespace WindEditor
 			Transform.UsesYRotation = true;
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
+
+            
 		}
 	}
 
