@@ -6506,27 +6506,39 @@ namespace WindEditor
 	public partial class himo3 : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum AttachmentModelTypeEnum
+		{
+			Lit_Candle = 0,
+			Grappling_Hook = 1,
+			Unlit_Candle_2 = 2,
+			Unlit_Candle_3 = 3,
+			Unlit_Candle_4 = 4,
+			Unfinished_15 = 15,
+		}
 
-		[WProperty("himo3", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Swingable Rope", "Attachment Model Type", true, "Note: Unfinished 15 is intended to use a different rope texture, but just crashes the game instead.", SourceScene.Room)]
+		public AttachmentModelTypeEnum AttachmentModelType
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(AttachmentModelTypeEnum), value_as_int))
+					value_as_int = 0;
+				return (AttachmentModelTypeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("AttachmentModelType");
 				OnPropertyChanged("Parameters");
 			}
 		}
 
-		[WProperty("himo3", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("Swingable Rope", "Rope Length", true, "The length of the rope, from 1 to 200.\nA length of 0 or above 200 will cause the rope to not appear at all.", SourceScene.Room)]
+		public int RopeLength
 		{ 
 			get
 			{
@@ -6538,13 +6550,13 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("RopeLength");
 				OnPropertyChanged("Parameters");
 			}
 		}
 
-		[WProperty("himo3", "Unknown_3", true, "", SourceScene.Room)]
-		public int Unknown_3
+		[WProperty("Swingable Rope", "Movement Speed", true, "How fast the rope moves along the path.", SourceScene.Room)]
+		public int MovementSpeed
 		{ 
 			get
 			{
@@ -6556,43 +6568,39 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_3");
+				OnPropertyChanged("MovementSpeed");
 				OnPropertyChanged("Parameters");
 			}
 		}
 
-		[WProperty("himo3", "Unknown_4", true, "", SourceScene.Room)]
-		public int Unknown_4
+		[WProperty("Swingable Rope", "Path", true, "The path for this rope to move along.", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0xFF000000) >> 24);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0xFF000000 | (value_as_int << 24 & 0xFF000000));
-				OnPropertyChanged("Unknown_4");
-				OnPropertyChanged("Parameters");
-			}
-		}
-
-		[WProperty("himo3", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
-		{ 
-			get
-			{
-				int value_as_int = (int)((m_Parameters & 0xFFFFFFFF) >> 0);
-				return value_as_int;
-			}
-
-			set
-			{
-				int value_as_int = value;
-				m_Parameters = (int)(m_Parameters & ~0xFFFFFFFF | (value_as_int << 0 & 0xFFFFFFFF));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("Path");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -6605,22 +6613,19 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "AttachmentModelType");
+			RegisterValueSourceFieldProperty("Parameters", "RopeLength");
+			RegisterValueSourceFieldProperty("Parameters", "MovementSpeed");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
             
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
-			Unknown_3 = -1;
-			Unknown_4 = -1;
-			Unknown_5 = -1;
+			RopeLength = -1;
+			MovementSpeed = -1;
+			Path = null;
 		}
 	}
 

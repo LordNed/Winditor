@@ -3,49 +3,61 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Attachment Model Type",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "himo3",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Swingable Rope",
+      "ToolTip": "Note: Unfinished 15 is intended to use a different rope texture, but just crashes the game instead.",
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Lit Candle",
+        1: "Grappling Hook",
+        2: "Unlit Candle 2",
+        3: "Unlit Candle 3",
+        4: "Unlit Candle 4",
+        15: "Unfinished 15",
+      },
+      "EnumDefaultValue": 0
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Rope Length",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "himo3",
-      "ToolTip": "",
+      "Category": "Swingable Rope",
+      "ToolTip": "The length of the rope, from 1 to 200.\nA length of 0 or above 200 will cause the rope to not appear at all.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_3",
+      "Name": "Movement Speed",
       "ValueSource": "Parameters",
       "Mask": 0x00FF0000,
       "Hidden": false,
-      "Category": "himo3",
-      "ToolTip": "",
+      "Category": "Swingable Rope",
+      "ToolTip": "How fast the rope moves along the path.",
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown_4",
+      "Name": "Path",
       "ValueSource": "Parameters",
       "Mask": 0xFF000000,
       "Hidden": false,
-      "Category": "himo3",
-      "ToolTip": "",
-      "DataType": "Integer"
+      "Category": "Swingable Rope",
+      "ToolTip": "The path for this rope to move along.",
+      "DataType": "Path"
     },
-    {
-      "Name": "Unknown_5",
-      "ValueSource": "Parameters",
-      "Mask": 0xFFFFFFFF,
-      "Hidden": false,
-      "Category": "himo3",
-      "ToolTip": "",
-      "DataType": "Integer"
-    }
+    
+    // The rope's code references the entire bitfield together a couple times, but I'm not sure why.
+    // The checks it makes look erroneous, only passing if length, speed, and path are all 0.
+    //{
+    //  "Name": "Unknown_5",
+    //  "ValueSource": "Parameters",
+    //  "Mask": 0xFFFFFFFF,
+    //  "Hidden": false,
+    //  "Category": "Swingable Rope",
+    //  "ToolTip": "",
+    //  "DataType": "Integer"
+    //}
   ]
 }
