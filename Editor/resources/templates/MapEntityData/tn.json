@@ -15,7 +15,7 @@
         4: "Guards an area",
         13: "Mini-boss",
         14: "Drops down during event",
-        15: "Frozen in time",
+        15: "Frozen",
       }
     },
     {
@@ -47,7 +47,7 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Frozen in Time Pose",
+      "Name": "Frozen Pose",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,

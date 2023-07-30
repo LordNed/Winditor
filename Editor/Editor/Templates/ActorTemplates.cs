@@ -2578,7 +2578,7 @@ namespace WindEditor
 			Jumping = 7,
 			Guarding_and_Yawning = 10,
 			Pink_Bokoblin_with_Telescope = 11,
-			Debug = 15,
+			Frozen = 15,
 		}
 
 
@@ -2655,8 +2655,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Bokoblin", "Unknown_5", true, "", SourceScene.Room)]
-		public int Unknown_5
+		[WProperty("Unfrozen Bokoblin", "Sight Range (Tens)", true, "This number multiplied by 10 is the range within it will notice the player.\nIf this is 255, it will default to 50 (500 units) instead.\nOnly works for some types.", SourceScene.Room)]
+		public int SightRangeTens
 		{ 
 			get
 			{
@@ -2668,7 +2668,33 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_5");
+				OnPropertyChanged("SightRangeTens");
+				OnPropertyChanged("Parameters");
+			}
+		}
+		public enum FrozenPoseEnum
+		{
+			Attacking_pose = 0,
+			Yawning_pose = 1,
+		}
+
+
+		[WProperty("Frozen Bokoblin", "Frozen Pose", true, "", SourceScene.Room)]
+		public FrozenPoseEnum FrozenPose
+		{ 
+			get
+			{
+				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
+				if (!Enum.IsDefined(typeof(FrozenPoseEnum), value_as_int))
+					value_as_int = 1;
+				return (FrozenPoseEnum)value_as_int;
+			}
+
+			set
+			{
+				int value_as_int = (int)value;
+				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
+				OnPropertyChanged("FrozenPose");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -2776,18 +2802,31 @@ namespace WindEditor
 			RegisterValueSourceFieldProperty("Parameters", "Type");
 			RegisterValueSourceFieldProperty("Parameters", "IsGreen");
 			RegisterValueSourceFieldProperty("Parameters", "Weapon");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_5");
+			RegisterValueSourceFieldProperty("Parameters", "SightRangeTens");
+			RegisterValueSourceFieldProperty("Parameters", "FrozenPose");
 			RegisterValueSourceFieldProperty("Parameters", "Path");
 			RegisterValueSourceFieldProperty("Parameters", "InvertSpawnConditionSwitch");
 			RegisterValueSourceFieldProperty("Parameters", "SpawnConditionSwitch");
 			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
             
+			TypeSpecificCategories["Type"] = new Dictionary<object, string[]>();
+			TypeSpecificCategories["Type"][TypeEnum.Wandering] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Unknown_1] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Unknown_2] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Hiding_in_a_Pot] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Guarding] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Being_carried_by_a_Kargaroc] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Search_Light_Operator] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Jumping] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Guarding_and_Yawning] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Pink_Bokoblin_with_Telescope] = new string[] { "Unfrozen Bokoblin" };
+			TypeSpecificCategories["Type"][TypeEnum.Frozen] = new string[] { "Frozen Bokoblin" };
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_5 = -1;
+			SightRangeTens = -1;
 			Path = null;
 			SpawnConditionSwitch = -1;
 			DisableSpawnonDeathSwitch = -1;
@@ -10332,7 +10371,7 @@ namespace WindEditor
 			Blue_skin_without_lantern = 0,
 			Brown_skin_with_lantern = 1,
 			Carried_through_the_air = 5,
-			Frozen_in_time = 15,
+			Frozen = 15,
 			Blue_skin_without_lantern_unused = 100,
 		}
 
@@ -10357,29 +10396,29 @@ namespace WindEditor
 				UpdateModel();
 			}
 		}
-		public enum FrozeninTimePoseEnum
+		public enum FrozenPoseEnum
 		{
 			Attacking_pose = 0,
 			Walking_pose = 1,
 		}
 
 
-		[WProperty("mo2", "Frozen in Time Pose", true, "", SourceScene.Room)]
-		public FrozeninTimePoseEnum FrozeninTimePose
+		[WProperty("mo2", "Frozen Pose", true, "", SourceScene.Room)]
+		public FrozenPoseEnum FrozenPose
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (!Enum.IsDefined(typeof(FrozeninTimePoseEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(FrozenPoseEnum), value_as_int))
 					value_as_int = 0;
-				return (FrozeninTimePoseEnum)value_as_int;
+				return (FrozenPoseEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("FrozeninTimePose");
+				OnPropertyChanged("FrozenPose");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -10461,7 +10500,7 @@ namespace WindEditor
 			Transform.RotationOrder = "ZYX";
 
 			RegisterValueSourceFieldProperty("Parameters", "Type");
-			RegisterValueSourceFieldProperty("Parameters", "FrozeninTimePose");
+			RegisterValueSourceFieldProperty("Parameters", "FrozenPose");
 			RegisterValueSourceFieldProperty("Parameters", "Path");
 			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
 			RegisterValueSourceFieldProperty("ZRotation", "DisableSpawnonDeathSwitch");
@@ -28893,7 +28932,7 @@ namespace WindEditor
 			Guards_an_area = 4,
 			Miniboss = 13,
 			Drops_down_during_event = 14,
-			Frozen_in_time = 15,
+			Frozen = 15,
 		}
 
 
@@ -28965,29 +29004,29 @@ namespace WindEditor
 				OnPropertyChanged("Parameters");
 			}
 		}
-		public enum FrozeninTimePoseEnum
+		public enum FrozenPoseEnum
 		{
 			Walking_pose = 0,
 			Attacking_pose = 1,
 		}
 
 
-		[WProperty("tn", "Frozen in Time Pose", true, "", SourceScene.Room)]
-		public FrozeninTimePoseEnum FrozeninTimePose
+		[WProperty("tn", "Frozen Pose", true, "", SourceScene.Room)]
+		public FrozenPoseEnum FrozenPose
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				if (!Enum.IsDefined(typeof(FrozeninTimePoseEnum), value_as_int))
+				if (!Enum.IsDefined(typeof(FrozenPoseEnum), value_as_int))
 					value_as_int = 0;
-				return (FrozeninTimePoseEnum)value_as_int;
+				return (FrozenPoseEnum)value_as_int;
 			}
 
 			set
 			{
 				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("FrozeninTimePose");
+				OnPropertyChanged("FrozenPose");
 				OnPropertyChanged("Parameters");
 				UpdateModel();
 			}
@@ -29103,7 +29142,7 @@ namespace WindEditor
 			RegisterValueSourceFieldProperty("Parameters", "BehaviorType");
 			RegisterValueSourceFieldProperty("Parameters", "Color");
 			RegisterValueSourceFieldProperty("Parameters", "GuardedAreaRadiusTens");
-			RegisterValueSourceFieldProperty("Parameters", "FrozeninTimePose");
+			RegisterValueSourceFieldProperty("Parameters", "FrozenPose");
 			RegisterValueSourceFieldProperty("Parameters", "Path");
 			RegisterValueSourceFieldProperty("Parameters", "EnableSpawnSwitch");
 			RegisterValueSourceFieldProperty("XRotation", "ExtraEquipment");
