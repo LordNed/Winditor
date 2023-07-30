@@ -18,6 +18,7 @@ using WindEditor.Editor.Modes;
 using System.Windows;
 using WindEditor.Collision;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace WindEditor
 {
@@ -26,6 +27,7 @@ namespace WindEditor
         public WWorld MainWorld { get { return m_editorWorlds[0]; } }
         public ICommand OpenProjectCommand { get { return new RelayCommand(x => OnApplicationRequestOpenProject()); } }
         public ICommand OpenRoomsCommand { get { return new RelayCommand(x => OnApplicationRequestOpenRooms()); } }
+        public ICommand OpenRoomsFromExitCommand { get { return new RelayCommand(x => OnApplicationRequestOpenRoomsFromExit()); } }
         public ICommand ExportProjectCommand { get { return new RelayCommand(x => OnApplicationRequestExportProject(), x => MainWorld.Map != null); } }
         public ICommand ExportProjectAsCommand { get { return new RelayCommand(x => OnApplicationRequestExportAsProject(), x => MainWorld.Map != null); } }
         public ICommand CloseProjectCommand { get { return new RelayCommand(x => OnApplicationRequestCloseProject()); } }
@@ -100,48 +102,53 @@ namespace WindEditor
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                List<string> files = new List<string>(Directory.GetFiles(ofd.FileName));
-                List<string> dirs = new List<string>(Directory.GetDirectories(ofd.FileName));
+                OpenStage(ofd.FileName);
+            }
+        }
 
-                // There are directories here, and one of them is an unpacked Stage folder, so try to load all of these instead of loading the .arcs.
-                if (dirs.Count != 0 && File.Exists(Path.Combine(ofd.FileName, "Stage/dzs/stage.dzs")))
+        public void OpenStage(string dirPath)
+        {
+            List<string> files = new List<string>(Directory.GetFiles(dirPath));
+            List<string> dirs = new List<string>(Directory.GetDirectories(dirPath));
+
+            // There are directories here, and one of them is an unpacked Stage folder, so try to load all of these instead of loading the .arcs.
+            if (dirs.Count != 0 && File.Exists(Path.Combine(dirPath, "Stage/dzs/stage.dzs")))
+            {
+                LoadProject(dirPath, dirPath);
+                m_sourceDataPath = dirPath;
+            }
+            // We'll have to dump the contents of the arcs
+            else
+            {
+                string tempMapPath = HandleTempPath(dirPath);
+
+                foreach (var arc in files)
                 {
-                    LoadProject(ofd.FileName, ofd.FileName);
-                    m_sourceDataPath = ofd.FileName;
+                    var filename = Path.GetFileName(arc);
+                    Regex reg = new Regex(@"(Stage|Room\d+).arc", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                    if (!reg.IsMatch(filename))
+                        continue;
+
+                    VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
+                    if (archiveRoot == null)
+                        continue;
+
+                    string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
+
+                    if (!Directory.Exists(tempArcPath))
+                        Directory.CreateDirectory(tempMapPath);
+
+                    DumpContents(archiveRoot, tempArcPath);
                 }
-                // We'll have to dump the contents of the arcs
-                else
-                {
-                    string tempMapPath = HandleTempPath(ofd.FileName);
 
-                    foreach (var arc in files)
-                    {
-                        var filename = Path.GetFileName(arc);
-                        Regex reg = new Regex(@"(Stage|Room\d+).arc", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                        if (!reg.IsMatch(filename))
-                            continue;
+                LoadProject(tempMapPath, dirPath);
 
-                        VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
-                        if (archiveRoot == null)
-                            continue;
+                // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
+                MainWorld.Map.SavePath = null;
+                m_sourceDataPath = tempMapPath;
 
-                        string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
-
-                        if (!Directory.Exists(tempArcPath))
-                            Directory.CreateDirectory(tempMapPath);
-
-                        DumpContents(archiveRoot, tempArcPath);
-                    }
-
-                    LoadProject(tempMapPath, ofd.FileName);
-
-                    // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
-                    MainWorld.Map.SavePath = null;
-                    m_sourceDataPath = tempMapPath;
-
-                    WSettingsManager.GetSettings().LastStagePath.FilePath = ofd.FileName;
-                    WSettingsManager.SaveSettings();
-                }
+                WSettingsManager.GetSettings().LastStagePath.FilePath = dirPath;
+                WSettingsManager.SaveSettings();
             }
         }
 
@@ -184,49 +191,152 @@ namespace WindEditor
 
             if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                List<string> files = new List<string>(ofd.FileNames);
-                string dirPath = Path.GetDirectoryName(files[0]);
+                OpenRooms(ofd.FileNames);
+            }
+        }
 
-                string stageArcPath = Path.Combine(dirPath, "Stage.arc");
-                if (!files.Contains(stageArcPath) && File.Exists(stageArcPath))
+        public void OnApplicationRequestOpenRoomsFromExit()
+        {
+            if (MainWorld.ActorMode.EditorSelection.PrimarySelectedObject != null)
+            {
+                var entity = MainWorld.ActorMode.EditorSelection.PrimarySelectedObject;
+                if (!(entity is ExitData))
+                    return;
+                var exit = entity as ExitData;
+
+                bool shouldLoadMap = true;
+                if (MainWorld.Map.MapName == exit.MapName)
                 {
-                    // Always load the stage arc even if it wasn't selected by the user.
-                    files.Add(stageArcPath);
+                    // We already have the right stage loaded.
+                    // Check if the right room is loaded.
+                    if (exit.RoomIndex == 255)
+                    {
+                        // Spawn is in the stage file.
+                        // We need to grab the spawn to know what room we need.
+                        var stage = MainWorld.Map.SceneList.First(x => x.GetType() == typeof(WStage));
+                        var spawns = stage.GetChildrenOfType<SpawnPoint>().Where(x => x.SpawnID == exit.SpawnID);
+                        if (spawns.Any() && MainWorld.Map.SceneList.Any(x => x is WRoom && x.RoomIndex == spawns.First().Room))
+                        {
+                            // Target room already loaded.
+                            shouldLoadMap = false;
+                        }
+                    }
+                    else if (MainWorld.Map.SceneList.Any(x => x is WRoom && x.RoomIndex == exit.RoomIndex))
+                    {
+                        // Spawn is in the room file.
+                        // Target room already loaded.
+                        shouldLoadMap = false;
+                    }
                 }
 
-                string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(dirPath)); // This is where we'll dump the arc contents to
+                if (shouldLoadMap)
+                {
+                    string rootStagesPath = Path.Combine(WSettingsManager.GetSettings().RootDirectoryPath, "files", "res", "Stage");
+                    string stagePath = Path.Combine(rootStagesPath, exit.MapName);
 
-                DeleteDumpContentsFromTempDir();
+                    if (!Directory.Exists(stagePath))
+                    {
+                        string error = "";
+                        error += string.Format("Could not find a stage named '{0}'.\n", exit.MapName);
+                        error += "Check that the stage name is correct and that your Game Root is set properly in the Options menu.";
+                        MessageBox.Show(error, "Map not found");
+                        return;
+                    }
 
-                if (!Directory.Exists(GetStageDumpPath()))
-                    Directory.CreateDirectory(GetStageDumpPath());
+                    if (exit.RoomIndex == 255)
+                    {
+                        // We don't know what room this exit leads to.
+                        // We could oad the entire stage, but first try to load just the stage.dzs file and grab the room number from there.
 
-                if (!Directory.Exists(tempMapPath))
+                        string stageFilePath = Path.Combine(stagePath, "Stage.arc");
+                        List<string> filePaths = new List<string>();
+                        filePaths.Add(stageFilePath);
+                        OpenRooms(filePaths);
+
+                        var stage = MainWorld.Map.SceneList.First(x => x.GetType() == typeof(WStage));
+                        var spawns = stage.GetChildrenOfType<SpawnPoint>().Where(x => x.SpawnID == exit.SpawnID);
+                        if (spawns.Any())
+                        {
+                            // Load just the room this spawn is for.
+                            string roomPath = Path.Combine(stagePath, string.Format("Room{0}.arc", spawns.First().Room));
+                            filePaths = new List<string>();
+                            filePaths.Add(roomPath);
+                            OpenRooms(filePaths);
+                        }
+                        else
+                        {
+                            // Can't find the spawn. Just load the entire stage instead.
+                            OpenStage(stagePath);
+                        }
+                    }
+                    else
+                    {
+                        string roomPath = Path.Combine(stagePath, string.Format("Room{0}.arc", exit.RoomIndex));
+                        List<string> roomPaths = new List<string>();
+                        roomPaths.Add(roomPath);
+                        OpenRooms(roomPaths);
+                    }
+                }
+
+                MainWorld.ActorMode.EditorSelection.ClearSelection();
+                foreach (WScene scene in MainWorld.Map.SceneList)
+                {
+                    var spawns = scene.GetChildrenOfType<SpawnPoint>();
+                    spawns = spawns.Where(x => x.SpawnID == exit.SpawnID).ToList();
+                    if (exit.RoomIndex != 255 && scene is WRoom)
+                    {
+                        spawns = spawns.Where(x => x.Room == exit.RoomIndex).ToList();
+                    }
+                    MainWorld.ActorMode.EditorSelection.AddToSelection(spawns);
+                }
+                MainWorld.ActorMode.GoToEntity();
+            }
+        }
+
+        public void OpenRooms(IEnumerable<string> roomFilePaths)
+        {
+            List<string> files = new List<string>(roomFilePaths);
+            string dirPath = Path.GetDirectoryName(files[0]);
+
+            string stageArcPath = Path.Combine(dirPath, "Stage.arc");
+            if (!files.Contains(stageArcPath) && File.Exists(stageArcPath))
+            {
+                // Always load the stage arc even if it wasn't selected by the user.
+                files.Add(stageArcPath);
+            }
+
+            string tempMapPath = Path.Combine(GetStageDumpPath(), Path.GetFileName(dirPath)); // This is where we'll dump the arc contents to
+
+            DeleteDumpContentsFromTempDir();
+
+            if (!Directory.Exists(GetStageDumpPath()))
+                Directory.CreateDirectory(GetStageDumpPath());
+
+            if (!Directory.Exists(tempMapPath))
+                Directory.CreateDirectory(tempMapPath);
+
+            foreach (var arc in files)
+            {
+                VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
+                if (archiveRoot == null)
+                    continue;
+
+                string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
+
+                if (!Directory.Exists(tempArcPath))
                     Directory.CreateDirectory(tempMapPath);
 
-                foreach (var arc in files)
-                {
-                    VirtualFilesystemDirectory archiveRoot = ArchiveUtilities.LoadArchive(arc);
-                    if (archiveRoot == null)
-                        continue;
-
-                    string tempArcPath = $"{tempMapPath}\\{archiveRoot.Name}";
-
-                    if (!Directory.Exists(tempArcPath))
-                        Directory.CreateDirectory(tempMapPath);
-
-                    DumpContents(archiveRoot, tempArcPath);
-                }
-
-                LoadProject(tempMapPath, dirPath);
-
-                // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
-                MainWorld.Map.SavePath = null;
-                m_sourceDataPath = tempMapPath;
-
-                WSettingsManager.GetSettings().LastStagePath.FilePath = dirPath;
-                WSettingsManager.SaveSettings();
+                DumpContents(archiveRoot, tempArcPath);
             }
+
+            LoadProject(tempMapPath, dirPath);
+
+            // This will signal that we loaded from archives, and that there is no valid path to save the map yet.
+            MainWorld.Map.SavePath = null;
+            m_sourceDataPath = tempMapPath;
+
+            WSettingsManager.GetSettings().LastStagePath.FilePath = dirPath;
+            WSettingsManager.SaveSettings();
         }
 
         private void DumpContents(VirtualFilesystemDirectory dir, string rootPath)

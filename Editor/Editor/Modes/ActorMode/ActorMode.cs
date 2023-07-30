@@ -62,6 +62,18 @@ namespace WindEditor.Editor.Modes
 
         public event EventHandler<GenerateUndoEventArgs> GenerateUndoEvent;
 
+        public bool IsExitSelected
+        {
+            get
+            {
+                if (EditorSelection.PrimarySelectedObject == null)
+                    return false;
+                if (EditorSelection.PrimarySelectedObject is ExitData)
+                    return true;
+                return false;
+            }
+        }
+
         public ActorMode(WWorld world)
         {
             World = world;
@@ -256,6 +268,8 @@ namespace WindEditor.Editor.Modes
 
             if (EditorSelection.PrimarySelectedObject != null)
                 DetailsViewModel.ReflectObject(EditorSelection.PrimarySelectedObject);
+
+            OnPropertyChanged("IsExitSelected");
         }
 
         public void ClearSelection()
