@@ -61,9 +61,6 @@ namespace WindEditor.Events
 
             EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
-            if (def == null)
-                return cut_names;
-
             for (int i = 0; i < def.Actions.Length; i++)
             {
                 cut_names.Add(def.Actions[i].ActionName, def.Actions[i].ReadableName != "" ? def.Actions[i].ReadableName : def.Actions[i].ActionName);
@@ -74,10 +71,10 @@ namespace WindEditor.Events
 
         public static bool CanActionCopyFromViewport(string actor_name, string action_name)
         {
-            EventActorDefinition def = m_EventActorDefinitions[actor_name];
-
-            if (def == null)
+            if (!m_EventActorDefinitions.ContainsKey(actor_name))
                 return false;
+
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
             for (int i = 0; i < def.Actions.Length; i++)
             {
@@ -92,10 +89,10 @@ namespace WindEditor.Events
 
         public static bool CanActionCopyStartFromViewport(string actor_name, string action_name)
         {
-            EventActorDefinition def = m_EventActorDefinitions[actor_name];
-
-            if (def == null)
+            if (!m_EventActorDefinitions.ContainsKey(actor_name))
                 return false;
+
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
             for (int i = 0; i < def.Actions.Length; i++)
             {
@@ -112,10 +109,10 @@ namespace WindEditor.Events
         {
             Dictionary<string, string> prop_names = new Dictionary<string, string>();
 
-            EventActorDefinition def = m_EventActorDefinitions[actor_name];
-
-            if (def == null)
+            if (!m_EventActorDefinitions.ContainsKey(actor_name))
                 return prop_names;
+
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
             for (int i = 0; i < def.Actions.Length; i++)
             {
@@ -139,10 +136,10 @@ namespace WindEditor.Events
             default_value = "";
             SubstanceType sub = SubstanceType.Float;
 
-            EventActorDefinition def = m_EventActorDefinitions[actor_name];
-
-            if (def == null)
+            if (!m_EventActorDefinitions.ContainsKey(actor_name))
                 return sub;
+
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
             for (int i = 0; i < def.Actions.Length; i++)
             {
@@ -181,11 +178,12 @@ namespace WindEditor.Events
 
         public static string GetCutDisplayName(string actor_name, string cut_name)
         {
-            EventActorDefinition def = m_EventActorDefinitions[actor_name];
             string disp_name = cut_name;
 
-            if (def == null)
+            if (!m_EventActorDefinitions.ContainsKey(actor_name))
                 return disp_name;
+
+            EventActorDefinition def = m_EventActorDefinitions[actor_name];
 
             foreach (EventActionDefinition action in def.Actions)
             {
