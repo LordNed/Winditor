@@ -328,6 +328,21 @@
         "ReadableName": "Look Up"
       },
       {
+        "ActionName": "028",
+        "Properties": [],
+        "ReadableName": "QuakeWait"
+      },
+      {
+        "ActionName": "029",
+        "Properties": [],
+        "ReadableName": "Dance"
+      },
+      {
+        "ActionName": "030",
+        "Properties": [],
+        "ReadableName": "Caught"
+      },
+      {
         "ActionName": "031lwait",
         "Properties": [
           {
@@ -420,6 +435,11 @@
           }
         ],
         "ReadableName": ""
+      },
+      {
+        "ActionName": "045",
+        "Properties": [],
+        "ReadableName": "TactPlayOriginal"
       },
       {
         "ActionName": "046pget",
@@ -568,6 +588,11 @@
         "ReadableName": "Look at Hands"
       },
       {
+        "ActionName": "068",
+        "Properties": [],
+        "ReadableName": "ShipBow"
+      },
+      {
         "ActionName": "069shipsit",
         "Properties": [
           {
@@ -584,14 +609,29 @@
         "ReadableName": ""
       },
       {
+        "ActionName": "070",
+        "Properties": [],
+        "ReadableName": "LastCombo"
+      },
+      {
         "ActionName": "071shipoff",
         "Properties": [],
         "ReadableName": ""
       },
       {
+        "ActionName": "072",
+        "Properties": [],
+        "ReadableName": "HandUp"
+      },
+      {
         "ActionName": "073foodthrow",
         "Properties": [],
         "ReadableName": "Throw Bait"
+      },
+      {
+        "ActionName": "074",
+        "Properties": [],
+        "ReadableName": "IceSlip"
       },
       {
         "ActionName": "DUMMY",
