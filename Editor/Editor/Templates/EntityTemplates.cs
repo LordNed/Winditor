@@ -3215,8 +3215,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("Unknowns", "Unknown 6", true, "", SourceScene.Room)]
-		public int Unknown6
+		[WProperty("Spawn Properties", "Ship ID", true, "", SourceScene.Room)]
+		public int ShipID
 		{ 
 			get
 			{
@@ -3228,7 +3228,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_ZRotation = (short)(m_ZRotation & ~0xFF00 | (value_as_int << 8 & 0xFF00));
-				OnPropertyChanged("Unknown6");
+				OnPropertyChanged("ShipID");
 				OnPropertyChanged("ZRotation");
 			}
 		}
@@ -3255,7 +3255,7 @@ namespace WindEditor
 			RegisterValueSourceFieldProperty("Parameters", "Unknown4");
 			RegisterValueSourceFieldProperty("Parameters", "Event");
 			RegisterValueSourceFieldProperty("ZRotation", "SpawnID");
-			RegisterValueSourceFieldProperty("ZRotation", "Unknown6");
+			RegisterValueSourceFieldProperty("ZRotation", "ShipID");
 		}
 
 		override public void Load(EndianBinaryReader stream)

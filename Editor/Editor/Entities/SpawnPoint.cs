@@ -27,7 +27,7 @@ namespace WindEditor
             EnemyNumber = -1;
             Event = null;
             Unknown4 = -1;
-            Unknown6 = -1;
+            ShipID = -1;
 
             // Try to assign the room index automatically if this is a room spawn.
             WDOMNode cur_object = this;

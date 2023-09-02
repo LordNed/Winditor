@@ -87,11 +87,11 @@
       "DataType": "Integer"
     },
     {
-      "Name": "Unknown 6",
+      "Name": "Ship ID",
       "ValueSource": "ZRotation",
       "Mask": 0xFF00,
       "Hidden": false,
-      "Category": "Unknowns",
+      "Category": "Spawn Properties",
       "ToolTip": "",
       "DataType": "Integer"
     },
