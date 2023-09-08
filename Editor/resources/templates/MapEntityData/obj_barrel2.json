@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Hidden": false,
       "Category": "obj_barrel2",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "DroppedItemID"
     },
     {
       "Name": "Has Flag",

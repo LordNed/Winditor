@@ -3,7 +3,7 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Unknown Switch",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,

@@ -20,13 +20,13 @@
       "UpdateModel": true
     },
     {
-      "Name": "Unknown_1",
+      "Name": "Dropped Item",
       "ValueSource": "Parameters",
       "Mask": 0x0000003F,
       "Hidden": false,
       "Category": "stone",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "DroppedItemID"
     },
     {
       "Name": "Unknown_2",

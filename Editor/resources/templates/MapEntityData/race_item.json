@@ -3,13 +3,13 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Item ID",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "race_item",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "ItemID"
     },
     {
       "Name": "Unknown_2",

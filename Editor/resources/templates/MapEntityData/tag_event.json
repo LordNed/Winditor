@@ -11,20 +11,21 @@
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
-        0: "Unknown 1",
-        1: "Unknown 2",
-        2: "Unknown 3",
-        3: "Unknown 4",
-        4: "Unknown 5",
-        5: "Unknown 6",
-        6: "Unknown 7",
-        7: "Unknown 8",
-        8: "Unknown 9",
-        9: "Unknown 10",
-        10: "Unknown 11",
-        11: "Unknown 12",
-        12: "Unknown 13",
-        13: "Unknown 14",
+        // These unknowns are all just hardcoded one-off events.
+        0: "Unknown 1",   // Unused
+        1: "Unknown 2",   // Used in A_mori
+        2: "Unknown 3",   // Used in A_mori
+        3: "Unknown 4",   // Used in sea/Room44
+        4: "Unknown 5",   // Unused
+        5: "Unknown 6",   // Used in M_Dra09
+        6: "Unknown 7",   // Used in M_Dra09
+        7: "Unknown 8",   // Used in M_Dra09
+        8: "Unknown 9",   // Used in Atorizk
+        9: "Unknown 10",  // Used in Obombh
+        10: "Unknown 11", // Used in LinkRM
+        11: "Unknown 12", // Used in sea/Room1
+        12: "Unknown 13", // Used in SirenMB
+        13: "Unknown 14", // Used in sea/Room9 (queen fairy check?)
         255: "Normal",
       }
     },

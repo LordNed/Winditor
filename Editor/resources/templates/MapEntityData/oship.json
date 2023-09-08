@@ -11,9 +11,9 @@
       "ToolTip": "",
       "DataType": "Enum",
       "EnumValues": {
-        0: "Unknown 0",
-        1: "Unknown 1",
-        2: "Unknown 2",
+        0: "Unknown 0", // Does not follow path
+        1: "Unknown 1", // Follows path
+        2: "Unknown 2", // Follows path
       }
     },
     {

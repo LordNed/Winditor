@@ -12,7 +12,8 @@ namespace WindEditor
 		public override void PostLoad()
 		{
 			base.PostLoad();
-		}
+            m_actorMeshes = WResourceManager.LoadActorResource("FF Floor Spikes");
+        }
 
 		public override void PreSave()
 		{

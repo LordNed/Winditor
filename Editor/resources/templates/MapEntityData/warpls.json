@@ -14,7 +14,11 @@
         0: "Pink Warp",
         1: "White Warp",
       },
-      "UpdateModel": true
+      "UpdateModel": true,
+      "DefaultsByActorName": {
+        "Ywarp00": "Pink Warp",
+        "Ysdls00": "White Warp",
+      }
     },
     {
       "Name": "Exit",

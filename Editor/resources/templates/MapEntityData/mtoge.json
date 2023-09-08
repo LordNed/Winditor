@@ -3,11 +3,11 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Check",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "mtoge",
+      "Category": "FF Floor Spikes",
       "ToolTip": "",
       "DataType": "Integer"
     }

@@ -4882,6 +4882,15 @@
     ]
   },
   {
+    "Name": "FF Floor Spikes",
+    "Archive": "Mtoge",
+    "Models": [
+      {
+        "Path": "bmd/s_mtoge.bmd"
+      }
+    ]
+  },
+  {
     "Name": "Black Box",
     "Archive": "Osiblk",
     "Models": [
@@ -7368,5 +7377,50 @@
         ]
       }
     ]
-  }
+  },
+  {
+    "Name": "Jagged Edge Wooden Platform",
+    "Archive": "Bita",
+    "Models": [
+      {
+        "Path": "bdlm/mbit1.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Straight Edge Wooden Platform",
+    "Archive": "Bita",
+    "Models": [
+      {
+        "Path": "bdlm/mbit2.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Two-Pronged Anchor",
+    "Archive": "Ikari",
+    "Models": [
+      {
+        "Path": "bdl/s_ikari2.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Three-Pronged Anchor",
+    "Archive": "Ikari",
+    "Models": [
+      {
+        "Path": "bdl/s_ikari3.bdl"
+      }
+    ]
+  },
+  {
+    "Name": "Four-Pronged Anchor",
+    "Archive": "Ikari",
+    "Models": [
+      {
+        "Path": "bdl/s_ikari4.bdl"
+      }
+    ]
+  },
 ]

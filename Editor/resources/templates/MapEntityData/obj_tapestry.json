@@ -3,12 +3,12 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Switch to Set",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
       "Category": "obj_tapestry",
-      "ToolTip": "",
+      "ToolTip": "When this tapestry is burned, it will set this switch.",
       "DataType": "Integer"
     },
     {

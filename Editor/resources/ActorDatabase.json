@@ -3086,7 +3086,7 @@
     "ActorClassType": "ikari",
     "Wait Animations": null,
     "Actor Name": "Ikari",
-    "English Name": "ikari",
+    "English Name": "Anchor",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -5137,7 +5137,7 @@
     "ActorClassType": "mtoge",
     "Wait Animations": null,
     "Actor Name": "SMtoge",
-    "English Name": "mtoge",
+    "English Name": "FF Floor Spikes",
     "Tags": null,
     "Explanation": null,
     "Locations": [
@@ -13552,7 +13552,7 @@
     "ActorClassType": "tag_ret",
     "Wait Animations": null,
     "Actor Name": "ReTag0",
-    "English Name": "tag_ret",
+    "English Name": "Respawn Point Trigger",
     "Tags": null,
     "Explanation": null,
     "Locations": [

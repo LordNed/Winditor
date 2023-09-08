@@ -1,13 +1,13 @@
 {
   "ClassName": "tag_ret",
-  "ParentClassOverride": "Actor",
+  "ParentClassOverride": "TriggerRegion",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Spawn ID To Use",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "tag_ret",
+      "Category": "Respawn Point Trigger",
       "ToolTip": "",
       "DataType": "Integer"
     }

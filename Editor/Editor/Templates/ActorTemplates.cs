@@ -1524,12 +1524,12 @@ namespace WindEditor
 		// Auto-Generated Properties from Templates
 		public enum TypeEnum
 		{
-			Unknown_0 = 0,
-			Unknown_1 = 1,
+			Normal = 0,
+			Continuous = 1,
 		}
 
 
-		[WProperty("andsw2", "Type", true, "", SourceScene.Room)]
+		[WProperty("andsw2", "Type", true, "Normal will check the 'Switches to Check' until they are all set, then set 'Switch to Set' once and stop.\nContinuous will continue checking even after the switches have been set, and if any of them are unset, this actor will *unset* 'Switch to Set'.", SourceScene.Room)]
 		public TypeEnum Type
 		{ 
 			get
@@ -2504,40 +2504,61 @@ namespace WindEditor
 	public partial class bita : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum ModelEnum
+		{
+			Jagged_Edge = 0,
+			Straight_Edge = 1,
+		}
 
-		[WProperty("bita", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Wooden Platform", "Model", true, "", SourceScene.Room)]
+		public ModelEnum Model
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ModelEnum), value_as_int))
+					value_as_int = 0;
+				return (ModelEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Model");
 				OnPropertyChanged("Parameters");
+				UpdateModel();
 			}
 		}
+		public enum VisualSizeEnum
+		{
+			Unknown_0 = 0,
+			Unknown_1 = 1,
+			Unknown_2 = 2,
+			Unknown_3 = 3,
+			Unknown_4 = 4,
+		}
 
-		[WProperty("bita", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Wooden Platform", "Visual Size", true, "", SourceScene.Room)]
+		public VisualSizeEnum VisualSize
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(VisualSizeEnum), value_as_int))
+					value_as_int = 0;
+				return (VisualSizeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("VisualSize");
 				OnPropertyChanged("Parameters");
+				UpdateModel();
 			}
 		}
 
@@ -2549,16 +2570,9 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Model");
+			RegisterValueSourceFieldProperty("Parameters", "VisualSize");
             
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
 		}
 	}
 
@@ -7137,40 +7151,62 @@ namespace WindEditor
 	public partial class ikari : Actor
 	{
 		// Auto-Generated Properties from Templates
+		public enum SizeEnum
+		{
+			Scalable = 0,
+			Big = 1,
+			Normal = 255,
+		}
 
-		[WProperty("ikari", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+
+		[WProperty("Anchor", "Size", true, "", SourceScene.Room)]
+		public SizeEnum Size
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(SizeEnum), value_as_int))
+					value_as_int = 0;
+				return (SizeEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("Size");
 				OnPropertyChanged("Parameters");
+				UpdateModel();
 			}
 		}
+		public enum ModelEnum
+		{
+			Two_Prongs_A = 0,
+			Two_Prongs_B = 1,
+			Two_Prongs_C = 2,
+			Three_Prongs = 3,
+			Four_Prongs = 4,
+		}
 
-		[WProperty("ikari", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+
+		[WProperty("Anchor", "Model", true, "", SourceScene.Room)]
+		public ModelEnum Model
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000FF00) >> 8);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ModelEnum), value_as_int))
+					value_as_int = 0;
+				return (ModelEnum)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000FF00 | (value_as_int << 8 & 0x0000FF00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Model");
 				OnPropertyChanged("Parameters");
+				UpdateModel();
 			}
 		}
 
@@ -7182,16 +7218,9 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "Size");
+			RegisterValueSourceFieldProperty("Parameters", "Model");
             
-		}
-
-		override public void PopulateDefaultProperties()
-		{
-			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
 		}
 	}
 
@@ -10174,8 +10203,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("mdoor", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("mdoor", "Unknown Switch", true, "", SourceScene.Room)]
+		public int UnknownSwitch
 		{ 
 			get
 			{
@@ -10187,7 +10216,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("UnknownSwitch");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -10254,7 +10283,7 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "UnknownSwitch");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
@@ -10264,7 +10293,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			UnknownSwitch = -1;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
@@ -10783,8 +10812,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("mtoge", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("FF Floor Spikes", "Switch to Check", true, "", SourceScene.Room)]
+		public int SwitchtoCheck
 		{ 
 			get
 			{
@@ -10796,7 +10825,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoCheck");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -10809,14 +10838,14 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoCheck");
             
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoCheck = -1;
 		}
 	}
 
@@ -14840,20 +14869,22 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_barrel2", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_barrel2", "Dropped Item", true, "", SourceScene.Room)]
+		public DroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+					value_as_int = 0;
+				return (DroppedItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DroppedItem");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -14968,7 +14999,7 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
 			RegisterValueSourceFieldProperty("Parameters", "HasFlag");
 			RegisterValueSourceFieldProperty("Parameters", "FlagType");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
@@ -14980,7 +15011,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DroppedItem = DroppedItemID.No_item;
 			Unknown_4 = -1;
 			Unknown_5 = -1;
 			Unknown_6 = -1;
@@ -21542,8 +21573,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("obj_tapestry", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("obj_tapestry", "Switch to Set", true, "When this tapestry is burned, it will set this switch.", SourceScene.Room)]
+		public int SwitchtoSet
 		{ 
 			get
 			{
@@ -21555,7 +21586,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SwitchtoSet");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -21586,7 +21617,7 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "SwitchtoSet");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
             
 		}
@@ -21594,7 +21625,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SwitchtoSet = -1;
 			Unknown_2 = -1;
 		}
 	}
@@ -24010,20 +24041,22 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("race_item", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("race_item", "Item ID", true, "", SourceScene.Room)]
+		public ItemID ItemID
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x000000FF) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(ItemID), value_as_int))
+					value_as_int = 0;
+				return (ItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("ItemID");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -24072,7 +24105,7 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "ItemID");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
             
@@ -24081,7 +24114,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			ItemID = ItemID.No_item;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 		}
@@ -25891,20 +25924,22 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("stone", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("stone", "Dropped Item", true, "", SourceScene.Room)]
+		public DroppedItemID DroppedItem
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x0000003F) >> 0);
-				return value_as_int;
+				if (!Enum.IsDefined(typeof(DroppedItemID), value_as_int))
+					value_as_int = 0;
+				return (DroppedItemID)value_as_int;
 			}
 
 			set
 			{
-				int value_as_int = value;
+				int value_as_int = (int)value;
 				m_Parameters = (int)(m_Parameters & ~0x0000003F | (value_as_int << 0 & 0x0000003F));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("DroppedItem");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -25990,7 +26025,7 @@ namespace WindEditor
 			Transform.RotationOrder = "ZYX";
 
 			RegisterValueSourceFieldProperty("Parameters", "Type");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "DroppedItem");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_4");
@@ -26001,7 +26036,7 @@ namespace WindEditor
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			DroppedItem = DroppedItemID.No_item;
 			Unknown_2 = -1;
 			Unknown_3 = -1;
 			Unknown_4 = -1;
@@ -28329,12 +28364,12 @@ namespace WindEditor
 	}
 
 	// AUTO-GENERATED, MODIFICATIONS TO THIS FILE WILL BE LOST
-	public partial class tag_ret : Actor
+	public partial class tag_ret : TriggerRegion
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("tag_ret", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("Respawn Point Trigger", "Spawn ID To Use", true, "", SourceScene.Room)]
+		public int SpawnIDToUse
 		{ 
 			get
 			{
@@ -28346,7 +28381,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("SpawnIDToUse");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -28359,14 +28394,14 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
+			RegisterValueSourceFieldProperty("Parameters", "SpawnIDToUse");
             
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
+			SpawnIDToUse = -1;
 		}
 	}
 
@@ -30024,6 +30059,12 @@ namespace WindEditor
 			Exit = null;
 			ActivationSwitch = -1;
 			ActivatedEvent = null;
+			if (Name == "Ywarp00") {
+				Type = TypeEnum.Pink_Warp;
+			}
+			if (Name == "Ysdls00") {
+				Type = TypeEnum.White_Warp;
+			}
 		}
 	}
 

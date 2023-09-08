@@ -3,22 +3,37 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Size",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "ikari",
+      "Category": "Anchor",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0  : "Scalable", // Keeps the scale it was given
+        1  : "Big",      // 1.27 scale
+        255: "Normal",   // 1.0 scale
+      },
+      "EnumDefaultValue": 0,
+      "UpdateModel": true,
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Model",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "ikari",
+      "Category": "Anchor",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Two Prongs A",
+        1: "Two Prongs B",
+        2: "Two Prongs C",
+        3: "Three Prongs",
+        4: "Four Prongs",
+      },
+      "UpdateModel": true,
     }
   ]
 }

@@ -8,11 +8,11 @@
       "Mask": 0x0000FF00,
       "Hidden": false,
       "Category": "andsw2",
-      "ToolTip": "",
+      "ToolTip": "Normal will check the 'Switches to Check' until they are all set, then set 'Switch to Set' once and stop.\nContinuous will continue checking even after the switches have been set, and if any of them are unset, this actor will *unset* 'Switch to Set'.",
       "DataType": "Enum",
       "EnumValues": {
-        0: "Unknown 0",
-        1: "Unknown 1"
+        0: "Normal",
+        1: "Continuous",
       }
     },
     {

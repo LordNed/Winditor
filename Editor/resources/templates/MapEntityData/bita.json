@@ -3,22 +3,35 @@
   "ParentClassOverride": "Actor",
   "ParameterFields": [
     {
-      "Name": "Unknown_1",
+      "Name": "Model",
       "ValueSource": "Parameters",
       "Mask": 0x000000FF,
       "Hidden": false,
-      "Category": "bita",
+      "Category": "Wooden Platform",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Jagged Edge",
+        1: "Straight Edge",
+      },
+      "UpdateModel": true,
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Visual Size",
       "ValueSource": "Parameters",
       "Mask": 0x0000FF00,
       "Hidden": false,
-      "Category": "bita",
+      "Category": "Wooden Platform",
       "ToolTip": "",
-      "DataType": "Integer"
+      "DataType": "Enum",
+      "EnumValues": {
+        0: "Unknown 0",
+        1: "Unknown 1",
+        2: "Unknown 2",
+        3: "Unknown 3",
+        4: "Unknown 4",
+      },
+      "UpdateModel": true,
     }
   ]
 }
