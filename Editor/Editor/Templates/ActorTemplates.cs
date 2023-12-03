@@ -1549,7 +1549,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("andsw2", "First Switch to Check", true, "The first switch index to check. The other switches it checks are after this one sequentially.\nFor example, if this is 5 and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.", SourceScene.Room)]
+		[WProperty("andsw2", "First Switch to Check", true, "The first switch index to check. The other switches it checks are after this one sequentially.\nFor example, if this is 5 and 'Num Switches to Check' is 3, it will check switches 5, 6, and 7.\nIf this is 255, then it will instead start checking from the switch that is one plus Switch to Set.", SourceScene.Room)]
 		public int FirstSwitchtoCheck
 		{ 
 			get
@@ -5879,8 +5879,8 @@ namespace WindEditor
 	{
 		// Auto-Generated Properties from Templates
 
-		[WProperty("ghostship", "Unknown_1", true, "", SourceScene.Room)]
-		public int Unknown_1
+		[WProperty("ghostship", "Moon Phase", true, "", SourceScene.Room)]
+		public int MoonPhase
 		{ 
 			get
 			{
@@ -5892,25 +5892,39 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x000000FF | (value_as_int << 0 & 0x000000FF));
-				OnPropertyChanged("Unknown_1");
+				OnPropertyChanged("MoonPhase");
 				OnPropertyChanged("Parameters");
 			}
 		}
 
-		[WProperty("ghostship", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("ghostship", "Path", true, "", SourceScene.Room)]
+		public Path_v2 Path
 		{ 
 			get
 			{
 				int value_as_int = (int)((m_Parameters & 0x00FF0000) >> 16);
-				return value_as_int;
+				if (value_as_int == 0xFF) { return null; }
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				if (value_as_int >= list.Count) { return null; }
+				return list[value_as_int];
 			}
 
 			set
 			{
-				int value_as_int = value;
+				WDOMNode cur_object = this;
+				while (cur_object.Parent != null)
+				{
+					cur_object = cur_object.Parent;
+				}
+				List<Path_v2> list = cur_object.GetChildrenOfType<Path_v2>();
+				int value_as_int = list.IndexOf(value);
 				m_Parameters = (int)(m_Parameters & ~0x00FF0000 | (value_as_int << 16 & 0x00FF0000));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("Path");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -5923,16 +5937,16 @@ namespace WindEditor
 			Transform.UsesZRotation = true;
 			Transform.RotationOrder = "ZYX";
 
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_1");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "MoonPhase");
+			RegisterValueSourceFieldProperty("Parameters", "Path");
             
 		}
 
 		override public void PopulateDefaultProperties()
 		{
 			base.PopulateDefaultProperties();
-			Unknown_1 = -1;
-			Unknown_2 = -1;
+			MoonPhase = -1;
+			Path = null;
 		}
 	}
 
@@ -24061,8 +24075,8 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("race_item", "Unknown_2", true, "", SourceScene.Room)]
-		public int Unknown_2
+		[WProperty("race_item", "Item Pickup Flag", true, "", SourceScene.Room)]
+		public int ItemPickupFlag
 		{ 
 			get
 			{
@@ -24074,7 +24088,7 @@ namespace WindEditor
 			{
 				int value_as_int = value;
 				m_Parameters = (int)(m_Parameters & ~0x00007F00 | (value_as_int << 8 & 0x00007F00));
-				OnPropertyChanged("Unknown_2");
+				OnPropertyChanged("ItemPickupFlag");
 				OnPropertyChanged("Parameters");
 			}
 		}
@@ -24106,7 +24120,7 @@ namespace WindEditor
 			Transform.RotationOrder = "ZYX";
 
 			RegisterValueSourceFieldProperty("Parameters", "ItemID");
-			RegisterValueSourceFieldProperty("Parameters", "Unknown_2");
+			RegisterValueSourceFieldProperty("Parameters", "ItemPickupFlag");
 			RegisterValueSourceFieldProperty("Parameters", "Unknown_3");
             
 		}
@@ -24115,7 +24129,7 @@ namespace WindEditor
 		{
 			base.PopulateDefaultProperties();
 			ItemID = ItemID.No_item;
-			Unknown_2 = -1;
+			ItemPickupFlag = -1;
 			Unknown_3 = -1;
 		}
 	}
@@ -24152,7 +24166,7 @@ namespace WindEditor
 			}
 		}
 
-		[WProperty("ReDead", "Guarded Area Radius", true, "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.", SourceScene.Room)]
+		[WProperty("ReDead", "Guarded Area Radius", true, "The ReDead has a base radius of 650 and this value is added to that.\nIf this is set to 127, it defaults to 0 added radius.\nBecause the maximum value here is 126, this doesn't change the size of the area it guards very much.", SourceScene.Room)]
 		public int GuardedAreaRadius
 		{ 
 			get

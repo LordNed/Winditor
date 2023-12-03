@@ -12,7 +12,7 @@
       "DataType": "ItemID"
     },
     {
-      "Name": "Unknown_2",
+      "Name": "Item Pickup Flag",
       "ValueSource": "Parameters",
       "Mask": 0x00007F00,
       "Hidden": false,

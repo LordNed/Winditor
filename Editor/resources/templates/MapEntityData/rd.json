@@ -22,7 +22,7 @@
       "Mask": 0x000000FE,
       "Hidden": false,
       "Category": "ReDead",
-      "ToolTip": "The ReDead has a base radius of 650 and this value is added to that.\nBecause the maximum value here is 127, this doesn't change the size of the area it guards very much.",
+      "ToolTip": "The ReDead has a base radius of 650 and this value is added to that.\nIf this is set to 127, it defaults to 0 added radius.\nBecause the maximum value here is 126, this doesn't change the size of the area it guards very much.",
       "DataType": "Integer"
     },
     {
