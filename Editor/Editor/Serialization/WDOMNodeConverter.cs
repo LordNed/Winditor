@@ -220,6 +220,15 @@ namespace WindEditor.Serialization
                             prop.SetValue(newNode, evnt);
                         }
                     }
+                    else if (prop.PropertyType == typeof(WLinearColor))
+                    {
+                        WLinearColor value = new WLinearColor();
+                        value.R = ((float?)jsonValue["R"]).GetValueOrDefault();
+                        value.G = ((float?)jsonValue["G"]).GetValueOrDefault();
+                        value.B = ((float?)jsonValue["B"]).GetValueOrDefault();
+                        value.A = ((float?)jsonValue["A"]).GetValueOrDefault();
+                        prop.SetValue(newNode, value);
+                    }
                     else
                     {
                         var value = Convert.ChangeType(jsonValue, prop.PropertyType);
